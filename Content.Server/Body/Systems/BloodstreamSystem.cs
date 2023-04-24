@@ -104,6 +104,12 @@ public sealed class BloodstreamSystem : EntitySystem
 
             if (!_solutionContainerSystem.ResolveSolution(uid, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
                 continue;
+            //WD-EDIT
+            if (bloodstream.IsBleeding)
+                _alertsSystem.ShowAlert(uid, AlertType.Bleed);
+            else
+                _alertsSystem.ClearAlert(uid, AlertType.Bleed);
+            //WD-EDIT
 
             // Adds blood to their blood level if it is below the maximum; Blood regeneration. Must be alive.
             if (bloodSolution.Volume < bloodSolution.MaxVolume && !_mobStateSystem.IsDead(uid))
