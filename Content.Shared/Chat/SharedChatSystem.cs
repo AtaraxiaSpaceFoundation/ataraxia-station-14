@@ -1,4 +1,3 @@
-using System.Collections.Frozen;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
@@ -37,7 +36,7 @@ public abstract class SharedChatSystem : EntitySystem
     /// <summary>
     /// Cache of the keycodes for faster lookup.
     /// </summary>
-    private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
+    private readonly Dictionary<char, RadioChannelPrototype> _keyCodes = new();
 
     public override void Initialize()
     {
@@ -83,7 +82,7 @@ public abstract class SharedChatSystem : EntitySystem
         SpeechVerbPrototype? current = null;
         foreach (var (str, id) in speech.SuffixSpeechVerbs)
         {
-            var proto = _prototypeManager.Index<SpeechVerbPrototype>(id);
+            var proto = _prototypeManager.Index(id);
             if (message.EndsWith(Loc.GetString(str)) && proto.Priority >= (current?.Priority ?? 0))
             {
                 current = proto;
@@ -91,7 +90,7 @@ public abstract class SharedChatSystem : EntitySystem
         }
 
         // if no applicable suffix verb return the normal one used by the entity
-        return current ?? _prototypeManager.Index<SpeechVerbPrototype>(speech.SpeechVerb);
+        return current ?? _prototypeManager.Index(speech.SpeechVerb);
     }
 
     /// <summary>
@@ -164,35 +163,6 @@ public abstract class SharedChatSystem : EntitySystem
             return message;
         // Capitalize first letter
         message = char.ToUpper(message[0]) + message.Remove(0, 1);
-        return message;
-    }
-
-    public string SanitizeMessageCapitalizeTheWordI(string message, string theWordI = "i")
-    {
-        if (string.IsNullOrEmpty(message))
-            return message;
-
-        for
-        (
-            var index = message.IndexOf(theWordI);
-            index != -1;
-            index = message.IndexOf(theWordI, index + 1)
-        )
-        {
-            // Stops the code If It's tryIng to capItalIze the letter I In the mIddle of words
-            // Repeating the code twice is the simplest option
-            if (index + 1 < message.Length && char.IsLetter(message[index + 1]))
-                continue;
-            if (index - 1 >= 0 && char.IsLetter(message[index - 1]))
-                continue;
-
-            var beforeTarget = message.Substring(0, index);
-            var target = message.Substring(index, theWordI.Length);
-            var afterTarget = message.Substring(index + theWordI.Length);
-
-            message = beforeTarget + target.ToUpper() + afterTarget;
-        }
-
         return message;
     }
 }
