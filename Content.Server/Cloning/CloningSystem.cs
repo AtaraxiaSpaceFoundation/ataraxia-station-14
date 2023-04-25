@@ -14,6 +14,7 @@ using Content.Server.Traits.Assorted;
 using Content.Shared.Atmos;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Cloning;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking.Events;
@@ -261,6 +262,10 @@ namespace Content.Server.Cloning
 
             AddComp<ActiveCloningPodComponent>(uid);
 
+            //WD-EDIT
+            AddComp<ForcedSleepingComponent>(mob);
+            //WD-EDIT
+
             // TODO: Ideally, components like this should be components on the mind entity so this isn't necessary.
             // Add on special job components to the mob.
             if (_jobs.MindTryGetJob(mindEnt, out _, out var prototype))
@@ -330,6 +335,7 @@ namespace Content.Server.Cloning
             clonePod.UsedBiomass = 0;
             UpdateStatus(uid, CloningPodStatus.Idle, clonePod);
             RemCompDeferred<ActiveCloningPodComponent>(uid);
+            RemComp<ForcedSleepingComponent>(entity); //WD-EDIT
         }
 
         private void EndFailedCloning(EntityUid uid, CloningPodComponent clonePod)
