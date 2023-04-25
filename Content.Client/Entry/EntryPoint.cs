@@ -21,6 +21,8 @@ using Content.Client.Singularity;
 using Content.Client.Stylesheets;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Client.White.JoinQueue;
+using Content.Client.White.Sponsors;
 using Content.Shared.Ame;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
@@ -70,6 +72,11 @@ namespace Content.Client.Entry
         [Dependency] private readonly IResourceManager _resourceManager = default!;
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
+
+        //WD-EDIT
+        [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        [Dependency] private readonly JoinQueueManager _queueManager = default!;
+        //WD-EDIT
 
         public override void Init()
         {
@@ -162,6 +169,11 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _documentParsingManager.Initialize();
+
+            //WD-EDIT
+            _sponsorsManager.Initialize();
+            _queueManager.Initialize();
+            //WD-EDIT
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

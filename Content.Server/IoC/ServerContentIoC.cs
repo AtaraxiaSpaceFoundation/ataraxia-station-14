@@ -19,6 +19,8 @@ using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
+using Content.Server.White.JoinQueue;
+using Content.Server.White.Sponsors;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
@@ -58,6 +60,11 @@ namespace Content.Server.IoC
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
             IoCManager.Register<ServerDbEntryManager>();
+
+            // WD-EDIT
+            IoCManager.Register<SponsorsManager>();
+            IoCManager.Register<JoinQueueManager>();
+            // WD-EDIT
         }
     }
 }

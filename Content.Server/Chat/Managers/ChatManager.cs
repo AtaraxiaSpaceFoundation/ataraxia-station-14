@@ -6,6 +6,7 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.MoMMI;
 using Content.Server.Preferences.Managers;
+using Content.Server.White.Sponsors;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
@@ -46,6 +47,10 @@ namespace Content.Server.Chat.Managers
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
 
+        /// WD-EDIT
+        [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        /// WD-EDIT
+
         /// <summary>
         /// The maximum length a player-sent message can be sent
         /// </summary>
@@ -69,7 +74,8 @@ namespace Content.Server.Chat.Managers
 
         private void OnOocEnabledChanged(bool val)
         {
-            if (_oocEnabled == val) return;
+            if (_oocEnabled == val)
+                return;
 
             _oocEnabled = val;
             DispatchServerAnnouncement(Loc.GetString(val ? "chat-manager-ooc-chat-enabled-message" : "chat-manager-ooc-chat-disabled-message"));
@@ -77,7 +83,8 @@ namespace Content.Server.Chat.Managers
 
         private void OnAdminOocEnabledChanged(bool val)
         {
-            if (_adminOocEnabled == val) return;
+            if (_adminOocEnabled == val)
+                return;
 
             _adminOocEnabled = val;
             DispatchServerAnnouncement(Loc.GetString(val ? "chat-manager-admin-ooc-chat-enabled-message" : "chat-manager-admin-ooc-chat-disabled-message"));
@@ -119,7 +126,7 @@ namespace Content.Server.Chat.Managers
         public void DispatchServerMessage(ICommonSession player, string message, bool suppressLog = false)
         {
             var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(message)));
-            ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, player.ConnectedClient);
+            ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, player.Channel);
 
             if (!suppressLog)
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Server message to {player:Player}: {message}");
@@ -127,7 +134,7 @@ namespace Content.Server.Chat.Managers
 
         public void SendAdminAnnouncement(string message)
         {
-            var clients = _adminManager.ActiveAdmins.Select(p => p.ConnectedClient);
+            var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
 
             var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
                 ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")), ("message", FormattedMessage.EscapeText(message)));
@@ -138,7 +145,7 @@ namespace Content.Server.Chat.Managers
 
         public void SendAdminAlert(string message)
         {
-            var clients = _adminManager.ActiveAdmins.Select(p => p.ConnectedClient);
+            var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
 
             var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
                 ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")), ("message", FormattedMessage.EscapeText(message)));
@@ -149,7 +156,7 @@ namespace Content.Server.Chat.Managers
         public void SendAdminAlert(EntityUid player, string message)
         {
             var mindSystem = _entityManager.System<SharedMindSystem>();
-            if (!mindSystem.TryGetMind(player, out var mindId, out var mind))
+            if (!mindSystem.TryGetMind(player, out _, out var mind))
             {
                 SendAdminAlert(message);
                 return;
@@ -230,11 +237,18 @@ namespace Content.Server.Chat.Managers
                 var prefs = _preferencesManager.GetPreferences(player.UserId);
                 colorOverride = prefs.AdminOOCColor;
             }
-            if (player.ConnectedClient.UserData.PatronTier is { } patron &&
+            if (player.Channel.UserData.PatronTier is { } patron &&
                      PatronOocColors.TryGetValue(patron, out var patronColor))
             {
                 wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
             }
+
+            //WD-EDIT
+            if (_sponsorsManager.TryGetInfo(player.UserId, out var sponsorData) && sponsorData.OOCColor != null)
+            {
+                wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", sponsorData.OOCColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            }
+            //WD-EDIT
 
             //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
             ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
@@ -250,14 +264,14 @@ namespace Content.Server.Chat.Managers
                 return;
             }
 
-            var clients = _adminManager.ActiveAdmins.Select(p => p.ConnectedClient);
+            var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
             var wrappedMessage = Loc.GetString("chat-manager-send-admin-chat-wrap-message",
                                             ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
                                             ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
 
             foreach (var client in clients)
             {
-                var isSource = client != player.ConnectedClient;
+                var isSource = client != player.Channel;
                 ChatMessageToOne(ChatChannel.AdminChat,
                     message,
                     wrappedMessage,
@@ -283,7 +297,7 @@ namespace Content.Server.Chat.Managers
             user?.AddEntity(netSource);
 
             var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-            _netManager.ServerSendMessage(new MsgChatMessage() { Message = msg }, client);
+            _netManager.ServerSendMessage(new MsgChatMessage { Message = msg }, client);
 
             if (!recordReplay)
                 return;
@@ -296,7 +310,10 @@ namespace Content.Server.Chat.Managers
         }
 
         public void ChatMessageToMany(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, bool recordReplay, IEnumerable<INetChannel> clients, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
-            => ChatMessageToMany(channel, message, wrappedMessage, source, hideChat, recordReplay, clients.ToList(), colorOverride, audioPath, audioVolume, author);
+        {
+            ChatMessageToMany(channel, message, wrappedMessage, source, hideChat, recordReplay, clients.ToList(),
+                colorOverride, audioPath, audioVolume, author);
+        }
 
         public void ChatMessageToMany(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, bool recordReplay, List<INetChannel> clients, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
         {
@@ -305,7 +322,7 @@ namespace Content.Server.Chat.Managers
             user?.AddEntity(netSource);
 
             var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-            _netManager.ServerSendToMany(new MsgChatMessage() { Message = msg }, clients);
+            _netManager.ServerSendToMany(new MsgChatMessage { Message = msg }, clients);
 
             if (!recordReplay)
                 return;
@@ -317,8 +334,17 @@ namespace Content.Server.Chat.Managers
             }
         }
 
-        public void ChatMessageToManyFiltered(Filter filter, ChatChannel channel, string message, string wrappedMessage, EntityUid source,
-            bool hideChat, bool recordReplay, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0)
+        public void ChatMessageToManyFiltered(
+            Filter filter,
+            ChatChannel channel,
+            string message,
+            string wrappedMessage,
+            EntityUid source,
+            bool hideChat,
+            bool recordReplay,
+            Color? colorOverride = null,
+            string? audioPath = null,
+            float audioVolume = 0)
         {
             if (!recordReplay && !filter.Recipients.Any())
                 return;
@@ -326,7 +352,7 @@ namespace Content.Server.Chat.Managers
             var clients = new List<INetChannel>();
             foreach (var recipient in filter.Recipients)
             {
-                clients.Add(recipient.ConnectedClient);
+                clients.Add(recipient.Channel);
             }
 
             ChatMessageToMany(channel, message, wrappedMessage, source, hideChat, recordReplay, clients, colorOverride, audioPath, audioVolume);
@@ -339,7 +365,7 @@ namespace Content.Server.Chat.Managers
             user?.AddEntity(netSource);
 
             var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-            _netManager.ServerSendToAll(new MsgChatMessage() { Message = msg });
+            _netManager.ServerSendToAll(new MsgChatMessage { Message = msg });
 
             if (!recordReplay)
                 return;

@@ -188,7 +188,7 @@ namespace Content.Shared.Humanoid
             return new(color.RByte, color.GByte, color.BByte);
         }
 
-        public static HumanoidCharacterAppearance EnsureValid(HumanoidCharacterAppearance appearance, string species, Sex sex)
+        public static HumanoidCharacterAppearance EnsureValid(HumanoidCharacterAppearance appearance, string species, string[] sponsorMarkings) //WD-EDIT
         {
             var hairStyleId = appearance.HairStyleId;
             var facialHairStyleId = appearance.FacialHairStyleId;
@@ -205,26 +205,56 @@ namespace Content.Shared.Humanoid
                 hairStyleId = HairStyles.DefaultHairStyle;
             }
 
+            // WD-EDIT
+            if (proto.TryIndex(hairStyleId, out MarkingPrototype? hairProto) &&
+                hairProto.SponsorOnly &&
+                !sponsorMarkings.Contains(hairStyleId))
+            {
+                hairStyleId = HairStyles.DefaultHairStyle;
+            }
+            // WD-EDIT
+
             if (!markingManager.MarkingsByCategory(MarkingCategories.FacialHair).ContainsKey(facialHairStyleId))
             {
                 facialHairStyleId = HairStyles.DefaultFacialHairStyle;
             }
 
+            // WD-EDIT
+            if (proto.TryIndex(facialHairStyleId, out MarkingPrototype? facialHairProto) &&
+                facialHairProto.SponsorOnly &&
+                !sponsorMarkings.Contains(facialHairStyleId))
+            {
+                facialHairStyleId = HairStyles.DefaultFacialHairStyle;
+            }
+            // WD-EDIT
+
             var markingSet = new MarkingSet();
             var skinColor = appearance.SkinColor;
-            if (proto.TryIndex(species, out SpeciesPrototype? speciesProto))
+            if (!proto.TryIndex(species, out SpeciesPrototype? speciesProto))
             {
-                markingSet = new MarkingSet(appearance.Markings, speciesProto.MarkingPoints, markingManager, proto);
-                markingSet.EnsureValid(markingManager);
-
-                if (!Humanoid.SkinColor.VerifySkinColor(speciesProto.SkinColoration, skinColor))
-                {
-                    skinColor = Humanoid.SkinColor.ValidSkinTone(speciesProto.SkinColoration, skinColor);
-                }
-
-                markingSet.EnsureSpecies(species, skinColor, markingManager);
-                markingSet.EnsureSexes(sex, markingManager);
+                return new HumanoidCharacterAppearance(
+                    hairStyleId,
+                    hairColor,
+                    facialHairStyleId,
+                    facialHairColor,
+                    eyeColor,
+                    skinColor,
+                    markingSet.GetForwardEnumerator().ToList());
             }
+
+            markingSet = new MarkingSet(appearance.Markings, speciesProto.MarkingPoints, markingManager, proto);
+            markingSet.EnsureValid(markingManager);
+
+            if (!Humanoid.SkinColor.VerifySkinColor(speciesProto.SkinColoration, skinColor))
+            {
+                skinColor = Humanoid.SkinColor.ValidSkinTone(speciesProto.SkinColoration, skinColor);
+            }
+
+            markingSet.EnsureSpecies(species, skinColor, markingManager);
+
+            // WD-EDIT
+            markingSet.FilterSponsor(sponsorMarkings, markingManager);
+            // WD-EDIT
 
             return new HumanoidCharacterAppearance(
                 hairStyleId,
@@ -238,15 +268,21 @@ namespace Content.Shared.Humanoid
 
         public bool MemberwiseEquals(ICharacterAppearance maybeOther)
         {
-            if (maybeOther is not HumanoidCharacterAppearance other) return false;
-            if (HairStyleId != other.HairStyleId) return false;
-            if (!HairColor.Equals(other.HairColor)) return false;
-            if (FacialHairStyleId != other.FacialHairStyleId) return false;
-            if (!FacialHairColor.Equals(other.FacialHairColor)) return false;
-            if (!EyeColor.Equals(other.EyeColor)) return false;
-            if (!SkinColor.Equals(other.SkinColor)) return false;
-            if (!Markings.SequenceEqual(other.Markings)) return false;
-            return true;
+            if (maybeOther is not HumanoidCharacterAppearance other)
+                return false;
+            if (HairStyleId != other.HairStyleId)
+                return false;
+            if (!HairColor.Equals(other.HairColor))
+                return false;
+            if (FacialHairStyleId != other.FacialHairStyleId)
+                return false;
+            if (!FacialHairColor.Equals(other.FacialHairColor))
+                return false;
+            if (!EyeColor.Equals(other.EyeColor))
+                return false;
+            if (!SkinColor.Equals(other.SkinColor))
+                return false;
+            return Markings.SequenceEqual(other.Markings);
         }
     }
 }
