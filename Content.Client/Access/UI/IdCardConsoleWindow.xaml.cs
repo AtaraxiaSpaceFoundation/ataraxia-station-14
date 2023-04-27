@@ -53,6 +53,7 @@ namespace Content.Client.Access.UI
             var jobs = _prototypeManager.EnumeratePrototypes<JobPrototype>().ToList();
             jobs.Sort((x, y) => string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCulture));
 
+            List<Button> buttonsToAdd = new();
             foreach (var job in jobs)
             {
                 if (!job.SetPreference)
@@ -79,9 +80,16 @@ namespace Content.Client.Access.UI
                     Text = GetAccessLevelName(accessLevel),
                     ToggleMode = true,
                 };
-                AccessLevelGrid.AddChild(newButton);
                 _accessButtons.Add(accessLevel.ID, newButton);
                 newButton.OnPressed += _ => SubmitData();
+                buttonsToAdd.Add(newButton);
+            }
+
+            buttonsToAdd.Sort((x,y) => string.Compare(x.Text, y.Text, StringComparison.Ordinal));
+
+            foreach (var button in buttonsToAdd)
+            {
+                AccessLevelGrid.AddChild(button);
             }
         }
 
