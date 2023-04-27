@@ -67,6 +67,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     protected const string AmmoExamineColor = "yellow";
     protected const string FireRateExamineColor = "yellow";
     protected const string ModeExamineColor = "cyan";
+    protected const string TwoModeExamineColor = "red";
 
     public override void Initialize()
     {
@@ -501,4 +502,5 @@ public enum AmmoVisuals : byte
     HasAmmo, // used for generic visualizers. c# stuff can just check ammocount != 0
     MagLoaded,
     BoltClosed,
+    InStun
 }

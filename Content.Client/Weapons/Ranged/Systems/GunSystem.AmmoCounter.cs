@@ -251,14 +251,19 @@ public sealed partial class GunSystem
             _ammoCount.Visible = true;
 
             _ammoCount.Text = $"x{count:00}";
-            max = Math.Min(max, 8);
-            FillBulletRow(_bulletsList, count, max);
+            float step = 1;
+            if (max > 8)
+            {
+                step = ((float)max / 8);
+            }
+            FillBulletRow(_bulletsList, count, max, step);
         }
 
-        private static void FillBulletRow(Control container, int count, int capacity)
+        private static void FillBulletRow(Control container, int count, int capacity, float step = 1)
         {
             var colorGone = Color.FromHex("#000000");
             var color = Color.FromHex("#E00000");
+            int emptyNumber = 0;
 
             // Draw the empty ones
             for (var i = count; i < capacity; i++)

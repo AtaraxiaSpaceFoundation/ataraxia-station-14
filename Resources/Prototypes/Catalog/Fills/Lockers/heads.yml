@@ -31,7 +31,7 @@
       - id: CaptainIDCard
       - id: ClothingOuterHardsuitCap
       - id: ClothingMaskGasCaptain
-      - id: WeaponDisabler
+      - id: WeaponEgun
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
       - id: SpaceCash1000
@@ -85,7 +85,7 @@
       - id: BoxID
       - id: BoxHeadset
       - id: IDComputerCircuitboard
-      - id: WeaponDisabler
+      - id: WeaponEgun
       - id: CigarGoldCase
         prob: 0.25
         # Fuck the HoP they don't deserve fucking cigars.
@@ -258,7 +258,10 @@
   - type: StorageFill
     contents:
       - id: ClothingEyesHudSecurity
-      - id: WeaponDisabler
+      - id: WeaponEgun
+      - id: ClothingHeadHatBeretHoS
+      - id: ClothingHeadHatHoshat
+      - id: ClothingNeckCloakHos
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
