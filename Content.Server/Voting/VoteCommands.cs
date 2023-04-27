@@ -164,11 +164,13 @@ namespace Content.Server.Voting
                     var ties = string.Join(", ", eventArgs.Winners.Select(c => args[(int) c]));
                     _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Custom vote {options.Title} finished as tie: {ties}");
                     chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-tie",("ties", ties)));
+                    DisplayVoteResult(vote, chatMgr, args);
                 }
                 else
                 {
                     _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Custom vote {options.Title} finished: {args[(int) eventArgs.Winner]}");
                     chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-win",("winner", args[(int) eventArgs.Winner])));
+                    DisplayVoteResult(vote, chatMgr, args);
                 }
 
                 for (int i = 0; i < eventArgs.Votes.Count - 1; i++)
@@ -183,6 +185,17 @@ namespace Content.Server.Voting
 
                 WebhookMessage(payload, _webhookId);
             };
+        }
+
+        private void DisplayVoteResult(IVoteHandle vote, IChatManager chatMgr, string[] args)
+        {
+            chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-votes", ("title", vote.Title)));
+            for (var x = 1; x < args.Length; x++)
+            {
+                var option = args[x];
+                var votes = vote.VotesPerOption[x];
+                chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-option-votes",("option", option), ("votes", votes)));
+            }
         }
 
         public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
