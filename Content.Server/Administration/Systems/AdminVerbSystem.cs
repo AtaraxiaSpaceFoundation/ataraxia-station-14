@@ -90,7 +90,7 @@ namespace Content.Server.Administration.Systems
 
             var player = actor.PlayerSession;
 
-            if (_adminManager.IsAdmin(player))
+            if (_adminManager.HasAdminFlag(player, AdminFlags.Admin))
             {
                 Verb mark = new();
                 mark.Text = Loc.GetString("toolshed-verb-mark");

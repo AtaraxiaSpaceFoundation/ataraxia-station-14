@@ -12,6 +12,7 @@ using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.White;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -307,11 +308,21 @@ namespace Content.Server.GameTicking
         /// <summary>
         /// Causes the given player to join the current game as observer ghost. See also <see cref="SpawnObserver"/>
         /// </summary>
-        public void JoinAsObserver(ICommonSession player)
+        public async void JoinAsObserver(ICommonSession player)
         {
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
                 return;
+
+            if (_configurationManager.GetCVar(WhiteCVars.StalinEnabled))
+            {
+                var allowEnterData = await _stalinManager.AllowEnter(player);
+                if (!allowEnterData.allow)
+                {
+                    _chatManager.DispatchServerMessage(player, $"Вход в игру запрещен: {allowEnterData.errorMessage}");
+                    return;
+                }
+            }
 
             PlayerJoinGame(player);
             SpawnObserver(player);
