@@ -1166,7 +1166,7 @@ namespace Content.Shared.CCVar
         /// <summary>
         /// If true, whenever OOC is disabled the Discord OOC relay will also be disabled.
         /// </summary>
-        public static readonly CVarDef<bool> DisablingOOCDisablesRelay = CVarDef.Create("ooc.disabling_ooc_disables_relay", true, CVar.SERVERONLY);
+        public static readonly CVarDef<bool> DisableHookedOOC = CVarDef.Create("ooc.disabling_ooc_disables_relay", false, CVar.SERVERONLY); //WD-EDIT
 
         /// <summary>
         /// Whether or not OOC chat should be enabled during a round.
@@ -1360,6 +1360,12 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> ArrivalsReturns =
             CVarDef.Create("shuttle.arrivals_returns", false, CVar.SERVERONLY);
+
+        /// <summary>
+        /// Whether cargo shuttles are enabled.
+        /// </summary>
+        public static readonly CVarDef<bool> CargoShuttles =
+            CVarDef.Create("shuttle.cargo", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether to automatically spawn escape shuttles.

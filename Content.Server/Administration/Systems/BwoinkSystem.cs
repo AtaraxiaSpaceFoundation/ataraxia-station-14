@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
-using Content.Server.Discord;
 using Content.Server.GameTicking;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -346,13 +346,13 @@ namespace Content.Server.Administration.Systems
             {
                 Username = username,
                 AvatarUrl = string.IsNullOrWhiteSpace(_avatarUrl) ? null : _avatarUrl,
-                Embeds = new List<WebhookEmbed>
+                Embeds = new List<Embed>
                 {
                     new()
                     {
                         Description = messages,
                         Color = color,
-                        Footer = new WebhookEmbedFooter
+                        Footer = new EmbedFooter
                         {
                             Text = $"{serverName} ({round})",
                             IconUrl = string.IsNullOrWhiteSpace(_footerIconUrl) ? null : _footerIconUrl
@@ -495,7 +495,7 @@ namespace Content.Server.Administration.Systems
         private static string GenerateAHelpMessage(string username, string message, bool admin, string roundTime, GameRunLevel roundState, bool noReceivers = false)
         {
             var stringbuilder = new StringBuilder();
-            
+
             if (admin)
                 stringbuilder.Append(":outbox_tray:");
             else if (noReceivers)
@@ -509,6 +509,118 @@ namespace Content.Server.Administration.Systems
             stringbuilder.Append(message);
             return stringbuilder.ToString();
         }
+
+        // https://discord.com/developers/docs/resources/channel#message-object-message-structure
+        private struct WebhookPayload
+        {
+            [JsonPropertyName("username")]
+            public string Username { get; set; } = "";
+
+            [JsonPropertyName("avatar_url")]
+            public string? AvatarUrl { get; set; } = "";
+
+            [JsonPropertyName("embeds")]
+            public List<Embed>? Embeds { get; set; } = null;
+
+            [JsonPropertyName("allowed_mentions")]
+            public Dictionary<string, string[]> AllowedMentions { get; set; } =
+                new()
+                {
+                    { "parse", Array.Empty<string>() },
+                };
+
+            public WebhookPayload()
+            {
+            }
+        }
+
+        // https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
+        private struct Embed
+        {
+            [JsonPropertyName("description")]
+            public string Description { get; set; } = "";
+
+            [JsonPropertyName("color")]
+            public int Color { get; set; } = 0;
+
+            [JsonPropertyName("footer")]
+            public EmbedFooter? Footer { get; set; } = null;
+
+            public Embed()
+            {
+            }
+        }
+
+        // https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
+        private struct EmbedFooter
+        {
+            [JsonPropertyName("text")]
+            public string Text { get; set; } = "";
+
+            [JsonPropertyName("icon_url")]
+            public string? IconUrl { get; set; }
+
+            public EmbedFooter()
+            {
+            }
+        }
+
+        // https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-structure
+        private struct WebhookData
+        {
+            [JsonPropertyName("guild_id")]
+            public string? GuildId { get; set; } = null;
+
+            [JsonPropertyName("channel_id")]
+            public string? ChannelId { get; set; } = null;
+
+            public WebhookData()
+            {
+            }
+        }
+
+        //WD-EDIT
+        public void SendUtkaBwoinkMessage(NetUserId receiver, string sender, string text)
+        {
+            var bwoinkText = $"[color=red](D) {sender}[/color]: {text}";
+            _playerManager.TryGetUserId(sender, out var senderId);
+            var msg = new BwoinkTextMessage(receiver, senderId, bwoinkText);
+
+            LogBwoink(msg);
+
+            var admins = GetTargetAdmins();
+
+            // Notify all admins
+            foreach (var channel in admins)
+            {
+                RaiseNetworkEvent(msg, channel);
+            }
+
+            // Notify player
+            if (_playerManager.TryGetSessionById(receiver, out var session))
+            {
+                if (!admins.Contains(session.ConnectedClient))
+                    RaiseNetworkEvent(msg, session.ConnectedClient);
+            }
+
+            var sendsWebhook = _webhookUrl != string.Empty;
+            if (sendsWebhook)
+            {
+                if (!_messageQueues.ContainsKey(msg.UserId))
+                    _messageQueues[msg.UserId] = new Queue<string>();
+
+                var str = text;
+                var unameLength = sender.Length;
+
+                if (unameLength + str.Length + _maxAdditionalChars > DescriptionMax)
+                {
+                    str = str[..(DescriptionMax - _maxAdditionalChars - unameLength)];
+                }
+                _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(sender, str, true,
+                    _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"), _gameTicker.RunLevel));
+            }
+        }
+        //WD-EDIT
     }
 }
 

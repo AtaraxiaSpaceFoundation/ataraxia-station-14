@@ -234,6 +234,11 @@ public sealed partial class EmergencyShuttleSystem
 
                 _shuttle.AddFTLDestination(comp.Entity.Value, true);
             }
+
+            if (EarlyLaunchAuthorized)
+                SendRoundStatus("shuttle_escaped");
+            else
+                SendRoundStatus("shuttle_left");
         }
     }
 

@@ -8,6 +8,7 @@ using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Server.UtkaIntegration;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
@@ -55,6 +56,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
+
+    //WD-EDIT
+    [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!;
+    //WD-EDIT
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -571,6 +576,28 @@ public sealed partial class ChatSystem : SharedChatSystem
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user} as {name}: {action}");
         else
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user}: {action}");
+
+        //WD-EDIT
+
+        string ckey = string.Empty;
+
+        if (TryComp<ActorComponent>(source, out var actorComponent))
+        {
+            ckey = actorComponent.PlayerSession.Name;
+        }
+
+        if(string.IsNullOrEmpty(ckey)) return;
+
+        var utkaEmoteEvent = new UtkaChatMeEvent()
+        {
+            Ckey = ckey,
+            Message = action,
+            CharacterName = MetaData(source).EntityName
+        };
+
+        _utkaSockets.SendMessageToAll(utkaEmoteEvent);
+
+        //WD-EDIT
     }
 
     // ReSharper disable once InconsistentNaming
