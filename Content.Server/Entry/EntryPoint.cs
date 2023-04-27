@@ -32,6 +32,7 @@ using Robust.Shared.Utility;
 using Content.Server.UtkaIntegration;
 using Content.Server.White.JoinQueue;
 using Content.Server.White.Sponsors;
+using Content.Server.White.TTS;
 
 namespace Content.Server.Entry
 {
@@ -109,6 +110,7 @@ namespace Content.Server.Entry
             //WD-EDIT
             IoCManager.Resolve<SponsorsManager>().Initialize();
             IoCManager.Resolve<JoinQueueManager>().Initialize();
+            IoCManager.Resolve<TTSManager>().Initialize();
             //WD-EDIT
 
             _voteManager.Initialize();
@@ -147,8 +149,6 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();
-                IoCManager.Resolve<IBqlQueryManager>().DoAutoRegistrations();
-                IoCManager.Resolve<RoleBanManager>().Initialize();
 
                 //WD-EDIT
                 IoCManager.Resolve<UtkaTCPWrapper>().Initialize();

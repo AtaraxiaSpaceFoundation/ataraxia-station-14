@@ -69,6 +69,11 @@ namespace Content.Client.Preferences.UI
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
         private OptionButton _genderButton => CPronounsButton;
+
+        //WD-EDIT
+        private OptionButton _voiceButton => CVoiceButton;
+        //WD-EDIT
+
         private Slider _skinColor => CSkin;
         private OptionButton _clothingButton => CClothingButton;
         private OptionButton _backpackButton => CBackpackButton;
@@ -171,6 +176,14 @@ namespace Content.Client.Preferences.UI
             };
 
             #endregion Gender
+
+            //TTS-Start
+            #region Voice
+
+            InitializeVoice();
+
+            #endregion
+            //TTS-End
 
             #region Species
 
@@ -748,8 +761,17 @@ namespace Content.Client.Preferences.UI
             }
             UpdateGenderControls();
             CMarkings.SetSex(newSex);
+            UpdateTTSVoicesControls(); //WD-EDIT
             IsDirty = true;
         }
+
+        //WD-EDIT
+        private void SetVoice(string newVoice)
+        {
+            Profile = Profile?.WithVoice(newVoice);
+            IsDirty = true;
+        }
+        //WD-EDIT
 
         private void SetGender(Gender newGender)
         {
@@ -1111,6 +1133,10 @@ namespace Content.Client.Preferences.UI
             UpdateHairPickers();
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
+
+            //WD-EDIT
+            UpdateTTSVoicesControls();
+            //WD-EDIT
 
             _preferenceUnavailableButton.SelectId((int) Profile.PreferenceUnavailable);
         }

@@ -22,6 +22,8 @@ using Content.Server.Worldgen.Tools;
 using Content.Server.UtkaIntegration;
 using Content.Server.White.JoinQueue;
 using Content.Server.White.Sponsors;
+using Content.Server.White.TTS;
+using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
@@ -66,6 +68,7 @@ namespace Content.Server.IoC
             IoCManager.Register<SponsorsManager>();
             IoCManager.Register<JoinQueueManager>();
             IoCManager.Register<UtkaTCPWrapper>();
+            IoCManager.Register<TTSManager>();
             // WD-EDIT
         }
     }

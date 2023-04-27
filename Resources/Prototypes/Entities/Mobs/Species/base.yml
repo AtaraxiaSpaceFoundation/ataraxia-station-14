@@ -197,6 +197,12 @@
       - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
   - type: Puller
+  - type: Butcherable
+    butcheringType: Spike # TODO human.
+    spawned:
+      - id: FoodMeat
+        amount: 5
+  - type: TTS
   - type: Speech
     speechSounds: Alto
   - type: DamageForceSay

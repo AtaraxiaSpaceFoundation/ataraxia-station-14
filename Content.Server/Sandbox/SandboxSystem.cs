@@ -67,7 +67,7 @@ namespace Content.Server.Sandbox
                 //Logger.Info($"{placement.MsgChannel.UserName} spawned {placement.EntityTemplateName} on position {placement.EntityCoordinates}");
                 var data = _playerManager.GetSessionByUserId(placement.MsgChannel.UserId);
                 var playerUid = data.AttachedEntity.GetValueOrDefault();
-                var coordinates = placement.EntityCoordinates;
+                var coordinates = placement.NetCoordinates;
                 switch (placement.PlaceType)
                 {
                     case PlacementManagerMessage.StartPlacement:
@@ -77,7 +77,7 @@ namespace Content.Server.Sandbox
                     case PlacementManagerMessage.RequestPlacement:
                         _adminLogger.Add(LogType.EntitySpawn, LogImpact.High, $"{placement.EntityTemplateName} was spawned by" +
                                                                               $" {ToPrettyString(playerUid):player} at " +
-                                                                              $"{ToPrettyString(coordinates.EntityId):entity} X={coordinates.X}, Y={coordinates.Y}");
+                                                                              $"{ToPrettyString(coordinates.NetEntity):entity} X={coordinates.X}, Y={coordinates.Y}");
                         break;
                     case PlacementManagerMessage.RequestEntRemove:
                         _adminLogger.Add(LogType.EntitySpawn, LogImpact.High, $"{ToPrettyString(placement.EntityUid):entity} was deleted by {ToPrettyString(playerUid):player}");

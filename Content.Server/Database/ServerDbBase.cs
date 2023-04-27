@@ -190,6 +190,10 @@ namespace Content.Server.Database
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
 
+            var voice = profile.Voice;
+            if (voice == string.Empty)
+                voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             var markingsRaw = profile.Markings?.Deserialize<List<string>>();
 
@@ -210,6 +214,7 @@ namespace Content.Server.Database
                 profile.CharacterName,
                 profile.FlavorText,
                 profile.Species,
+                voice,
                 profile.Age,
                 sex,
                 gender,
@@ -260,6 +265,7 @@ namespace Content.Server.Database
             profile.Markings = markings;
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
+            profile.Voice = humanoid.Voice;
 
             profile.Jobs.Clear();
             profile.Jobs.AddRange(

@@ -54,7 +54,7 @@ public sealed class UtkaStatusCommand : IUtkaCommand
 
         string? gameMap = null;
         string? stationCode = null;
-        foreach (var station in _station.Stations)
+        foreach (var station in _station.GetStations())
         {
             if (!_entMan.TryGetComponent(station, out AlertLevelComponent? alert) || stationCode != null)
             {
