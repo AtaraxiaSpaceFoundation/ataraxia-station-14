@@ -85,4 +85,8 @@ public sealed partial class ExplosiveComponent : Component
     ///     Avoid somehow double-triggering this explosion (e.g. by damaging this entity from its own explosion.
     /// </summary>
     public bool Exploded;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("canShakeGrid")]
+    public bool CanShakeGrid;
 }
