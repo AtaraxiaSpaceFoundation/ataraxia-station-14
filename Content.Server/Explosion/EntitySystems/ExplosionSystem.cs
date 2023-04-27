@@ -60,6 +60,7 @@ public sealed partial class ExplosionSystem
 
     //WD-EDIT
     [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
     //WD-EDIT
 
     /// <summary>
@@ -273,6 +274,8 @@ public sealed partial class ExplosionSystem
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
                 $"{ToPrettyString(uid):entity} exploded ({typeId}) at {pos.Coordinates:coordinates} with intensity {totalIntensity} slope {slope}");
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-explosion-no-player",
+                ("entity", ToPrettyString(uid)), ("coordinates", pos), ("intensity", totalIntensity), ("slope", slope)));
         }
         else
         {
