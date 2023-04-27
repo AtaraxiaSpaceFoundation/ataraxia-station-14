@@ -1,4 +1,5 @@
 using Content.Shared.Access;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
@@ -98,5 +99,9 @@ namespace Content.Shared.Roles
 
         [DataField("extendedAccessGroups", customTypeSerializer: typeof(PrototypeIdListSerializer<AccessGroupPrototype>))]
         public IReadOnlyCollection<string> ExtendedAccessGroups { get; private set; } = Array.Empty<string>();
+
+        [DataField("whitelistedSpecies", customTypeSerializer: typeof(PrototypeIdListSerializer<SpeciesPrototype>))]
+        public IReadOnlyCollection<string> WhitelistedSpecies { get; private set;  } = Array.Empty<string>();
+
     }
 }

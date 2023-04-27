@@ -22,6 +22,9 @@
   requireAdminNotify: true
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
+  whitelistedSpecies:
+    - Human
+    - Dwarf
   canBeAntag: false
   accessGroups:
   - AllAccess

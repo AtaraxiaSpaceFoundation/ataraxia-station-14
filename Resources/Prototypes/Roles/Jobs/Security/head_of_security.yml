@@ -20,6 +20,9 @@
   icon: "JobIconHeadOfSecurity"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
+  whitelistedSpecies:
+    - Human
+    - Dwarf
   canBeAntag: false
   access:
   - HeadOfSecurity

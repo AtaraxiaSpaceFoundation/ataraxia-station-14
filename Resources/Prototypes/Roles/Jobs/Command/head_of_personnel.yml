@@ -21,6 +21,8 @@
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
+  whitelistedSpecies:
+    - Human
   canBeAntag: false
   access:
   - Command

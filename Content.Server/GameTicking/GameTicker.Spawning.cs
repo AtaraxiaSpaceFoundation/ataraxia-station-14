@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Managers;
+using System.Text;
 using Content.Server.Ghost;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
@@ -209,6 +210,36 @@ namespace Content.Server.GameTicking
             var jobName = _jobs.MindTryGetJobName(newMind);
 
             _playTimeTrackings.PlayerRolesChanged(player);
+
+            var whitelistedSpecies = jobPrototype.WhitelistedSpecies;
+
+            if (whitelistedSpecies.Count > 0 && !whitelistedSpecies.Contains(character.Species))
+            {
+                var playerProfiles = _prefsManager.GetPreferences(player.UserId).Characters.Values.Cast<HumanoidCharacterProfile>().ToList();
+
+                var existedAllowedProfile = playerProfiles.FindAll(x => whitelistedSpecies.Contains(x.Species));
+
+                if (existedAllowedProfile.Count == 0)
+                {
+                    character = HumanoidCharacterProfile.RandomWithSpecies(_robustRandom.Pick(whitelistedSpecies));
+                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
+                }
+                else
+                {
+                    character = _robustRandom.Pick(existedAllowedProfile);
+                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность с подходящим видом из вашего профиля.");
+                }
+
+                StringBuilder availableSpeciesLoc = new StringBuilder();
+                foreach (var specie in whitelistedSpecies)
+                {
+                    availableSpeciesLoc.AppendLine("-" + Loc.GetString($"species-name-{specie.ToLower()}"));
+                }
+
+                _chatManager.DispatchServerMessage(player, $"Доступные виды: \n {availableSpeciesLoc}");
+            }
+
+
 
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, job, character);
             DebugTools.AssertNotNull(mobMaybe);
