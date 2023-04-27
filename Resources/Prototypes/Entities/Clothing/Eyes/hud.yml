@@ -8,10 +8,16 @@
     sprite: Clothing/Eyes/Hud/diag.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/diag.rsi
-  - type: ShowHealthBars
-    damageContainers: 
-    - Inorganic
-    - Silicon
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Inorganic
+#   - Silicon
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Inorganic
+        - Silicon
 
 - type: entity
   parent: ClothingEyesBase
@@ -23,12 +29,17 @@
     sprite: Clothing/Eyes/Hud/med.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/med.rsi
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
-  - type: ShowHealthIcons
-    damageContainers: 
-    - Biological
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
+# - type: ShowHealthIcons
+#   damageContainers:
+#   - Biological
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
 
 - type: entity
   parent: ClothingEyesBase
@@ -104,12 +115,17 @@
     sprite: Clothing/Eyes/Hud/medonion.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/medonion.rsi
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
-  - type: ShowHealthIcons
-    damageContainers: 
-    - Biological
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
+# - type: ShowHealthIcons
+#   damageContainers:
+#   - Biological
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
   - type: ShowHungerIcons
 
 - type: entity
@@ -122,12 +138,17 @@
     sprite: Clothing/Eyes/Hud/medonionbeer.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/medonionbeer.rsi
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
-  - type: ShowHealthIcons
-    damageContainers: 
-    - Biological
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
+# - type: ShowHealthIcons
+#   damageContainers:
+#   - Biological
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
   - type: ShowHungerIcons
   - type: ShowThirstIcons
 
@@ -154,13 +175,19 @@
   - type: Clothing
     sprite: Clothing/Eyes/Hud/medsecengi.rsi
   - type: ShowSecurityIcons
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
-    - Inorganic
-  - type: ShowHealthIcons
-    damageContainers: 
-    - Biological
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
+        - Inorganic
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
+#   - Inorganic
+# - type: ShowHealthIcons
+#   damageContainers:
+#   - Biological
   - type: ShowSyndicateIcons
 
 - type: entity
@@ -174,13 +201,19 @@
   - type: Clothing
     sprite: Clothing/Eyes/Hud/omni.rsi
   - type: ShowSecurityIcons
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
-    - Inorganic
-  - type: ShowHealthIcons
-    damageContainers: 
-    - Biological
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
+#   - Inorganic
+# - type: ShowHealthIcons
+#   damageContainers:
+#   - Biological
+  - type: ClothingGrantComponent
+    component:
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
+        - Inorganic
   - type: ShowHungerIcons
   - type: ShowThirstIcons
   - type: ShowSyndicateIcons

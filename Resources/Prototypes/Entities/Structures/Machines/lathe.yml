@@ -801,6 +801,7 @@
       - MedkitAdvanced
       - MedkitRadiation
       - MedkitCombat
+      - ClothingEyesHudMedical
     dynamicRecipes:
       - HandheldCrewMonitor
       - ClothingHandsGlovesNitrile
