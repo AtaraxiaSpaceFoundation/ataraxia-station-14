@@ -13,6 +13,7 @@ using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Input;
+using Content.Shared.White;
 using JetBrains.Annotations;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
@@ -21,6 +22,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Network;
@@ -38,6 +40,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [UISystemDependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IClientAdminManager _clientAdminManager = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private BwoinkSystem? _bwoinkSystem;
     private MenuButton? GameAHelpButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.AHelpButton;
@@ -47,12 +51,17 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     private bool _hasUnreadAHelp;
     private string? _aHelpSound;
 
+    private float defaultBwoinkVolume;
+    private float adminBwoinkVolume;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<BwoinkDiscordRelayUpdated>(DiscordRelayUpdated);
         SubscribeNetworkEvent<BwoinkPlayerTypingUpdated>(PeopleTypingUpdated);
+        defaultBwoinkVolume = WhiteCVars.BwoinkVolume.DefaultValue;
+        _cfg.OnValueChanged(WhiteCVars.BwoinkVolume, volume => adminBwoinkVolume = volume);
 
         _adminManager.AdminStatusUpdated += OnAdminStatusUpdated;
         _config.OnValueChanged(CCVars.AHelpSound, v => _aHelpSound = v, true);
@@ -133,10 +142,20 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         {
             return;
         }
+
+
+        float bwoinkVolume = _clientAdminManager.IsActive() ? adminBwoinkVolume : defaultBwoinkVolume;
+
+        var audioParams = new AudioParams()
+        {
+            Volume = bwoinkVolume
+        };
+
+
         if (localPlayer.UserId != message.TrueSender)
         {
             if (_aHelpSound != null)
-                _audio.PlayGlobal(_aHelpSound, Filter.Local(), false);
+                _audio.PlayGlobal(_aHelpSound, Filter.Local(), false, audioParams);
             _clyde.RequestWindowAttention();
         }
 
