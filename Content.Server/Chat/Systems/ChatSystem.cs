@@ -310,6 +310,14 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
     }
 
+
+    public string AfterSpeechTransformed(EntityUid sender, string message)
+    {
+        var ev = new SpeechTransformedEvent(sender, message);
+        RaiseLocalEvent(ev);
+        return ev.Message;
+    }
+
     #region Announcements
 
     /// <summary>
@@ -396,6 +404,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (message.Length == 0)
             return;
 
+        message = AfterSpeechTransformed(source, message);
+
         // get the entity's apparent name (if no override provided).
         string name;
         if (nameOverride != null)
@@ -418,7 +428,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         //WD-EDIT
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-say-wrap-message",
-            ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
+            ("entityName", name), ("message", message));
 
         SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range);
 
@@ -469,6 +479,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (message.Length == 0)
             return;
 
+        message = AfterSpeechTransformed(source, message);
+
         var obfuscatedMessage = ObfuscateMessageReadability(message, 0.2f);
 
         // get the entity's name by visual identity (if no override provided).
@@ -488,13 +500,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         name = FormattedMessage.EscapeText(name);
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
-            ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
+            ("entityName", name), ("message", message));
 
         var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
-            ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+            ("entityName", nameIdentity), ("message", obfuscatedMessage));
 
         var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
-            ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+            ("message", obfuscatedMessage));
 
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
@@ -975,6 +987,19 @@ public class SetSpeakerColorEvent
         Name = name;
     }
 }
+
+public sealed class SpeechTransformedEvent : EntityEventArgs
+{
+    public EntityUid Sender;
+    public string Message;
+
+    public SpeechTransformedEvent(EntityUid sender, string message)
+    {
+        Sender = sender;
+        Message = message;
+    }
+}
+
 //WD-EDIT
 
 /// <summary>

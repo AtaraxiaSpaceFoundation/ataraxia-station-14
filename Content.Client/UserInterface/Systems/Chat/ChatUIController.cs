@@ -380,6 +380,7 @@ public sealed class ChatUIController : UIController
             return;
         }
 
+        msg.Message = FormattedMessage.RemoveMarkup(msg.Message);
         EnqueueSpeechBubble(ent, msg, speechType);
     }
 
