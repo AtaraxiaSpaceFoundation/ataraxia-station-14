@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.GameTicking.Presets;
 using Content.Server.Maps;
+using Content.Server.Ghost;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -21,6 +22,7 @@ namespace Content.Server.GameTicking
     public sealed partial class GameTicker
     {
         [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private readonly GhostSystem _ghostSystem = default!;
 
         public const float PresetFailedCooldownIncrease = 30f;
 
@@ -303,6 +305,11 @@ namespace Content.Server.GameTicking
                 _mind.Visit(mindId, ghost, mind);
             else
                 _mind.TransferTo(mindId, ghost, mind: mind);
+
+            var player = mind.Session;
+            var userId = player!.UserId;
+            if (!_ghostSystem._deathTime.TryGetValue(userId, out _))
+                _ghostSystem._deathTime[userId] = _gameTiming.CurTime;
             return true;
         }
 

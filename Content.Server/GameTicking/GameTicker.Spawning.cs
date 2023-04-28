@@ -9,6 +9,7 @@ using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -377,6 +378,7 @@ namespace Content.Server.GameTicking
             }
 
             var name = GetPlayerProfile(player).Name;
+
             var ghost = SpawnObserverMob();
             _metaData.SetEntityName(ghost, name);
             _ghost.SetCanReturnToBody(ghost, false);
