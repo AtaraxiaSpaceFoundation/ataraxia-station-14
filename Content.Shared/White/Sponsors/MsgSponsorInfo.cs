@@ -24,6 +24,9 @@ public sealed class SponsorInfo
 
     [JsonPropertyName("extraSlots")]
     public int ExtraSlots { get; set; }
+
+    [JsonPropertyName("MeatyOreCoin")]
+    public int MeatyOreCoin { get; set; }
 }
 
 /// <summary>
