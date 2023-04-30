@@ -5,7 +5,6 @@ using Content.Shared.Database;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 
-
 namespace Content.Server.Database
 {
     public sealed class ServerBanDef
@@ -24,8 +23,9 @@ namespace Content.Server.Database
         public NetUserId? BanningAdmin { get; }
         public ServerUnbanDef? Unban { get; }
 
-        public ServerBanDef(
-            int? id,
+        public string ServerName { get; }
+
+        public ServerBanDef(int? id,
             NetUserId? userId,
             (IPAddress, int)? address,
             ImmutableArray<byte>? hwId,
@@ -36,7 +36,8 @@ namespace Content.Server.Database
             string reason,
             NoteSeverity severity,
             NetUserId? banningAdmin,
-            ServerUnbanDef? unban)
+            ServerUnbanDef? unban,
+            string serverName)
         {
             if (userId == null && address == null && hwId ==  null)
             {
@@ -62,6 +63,7 @@ namespace Content.Server.Database
             Severity = severity;
             BanningAdmin = banningAdmin;
             Unban = unban;
+            ServerName = serverName;
         }
 
         public string FormatBanMessage(IConfigurationManager cfg, ILocalizationManager loc)

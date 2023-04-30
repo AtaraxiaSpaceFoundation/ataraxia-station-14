@@ -37,6 +37,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
 
     public const string SawmillId = "admin.bans";
     public const string JobPrefix = "Job:";
+    public const string UnknownServer = "unknown";
 
     private readonly Dictionary<NetUserId, HashSet<ServerRoleBanDef>> _cachedRoleBans = new();
 
@@ -52,7 +53,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         if (e.NewStatus != SessionStatus.Connected || _cachedRoleBans.ContainsKey(e.Session.UserId))
             return;
 
-        var netChannel = e.Session.ConnectedClient;
+        var netChannel = e.Session.Channel;
         ImmutableArray<byte>? hwId = netChannel.UserData.HWId.Length == 0 ? null : netChannel.UserData.HWId;
         await CacheDbRoleBans(e.Session.UserId, netChannel.RemoteEndPoint.Address, hwId);
 
@@ -112,12 +113,19 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     }
 
     #region Server Bans
-    public async void CreateServerBan(NetUserId? target, string? targetUsername, NetUserId? banningAdmin, (IPAddress, int)? addressRange, ImmutableArray<byte>? hwid, uint? minutes, NoteSeverity severity, string reason)
+    public async void CreateServerBan(NetUserId? target, string? targetUsername, NetUserId? banningAdmin, (IPAddress, int)? addressRange, ImmutableArray<byte>? hwid, uint? minutes, NoteSeverity severity, string reason, bool isGlobalBan)
     {
         DateTimeOffset? expires = null;
         if (minutes > 0)
         {
             expires = DateTimeOffset.Now + TimeSpan.FromMinutes(minutes.Value);
+        }
+
+        var serverName = _cfg.GetCVar(CCVars.AdminLogsServerName);
+
+        if (isGlobalBan)
+        {
+            serverName = UnknownServer;
         }
 
         _systems.TryGetEntitySystem<GameTicker>(out var ticker);
@@ -136,7 +144,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             reason,
             severity,
             banningAdmin,
-            null);
+            null,
+            serverName);
 
         await _db.AddServerBanAsync(banDef);
         var adminName = banningAdmin == null
@@ -175,14 +184,14 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             return;
         // If they are, kick them
         var message = banDef.FormatBanMessage(_cfg, _localizationManager);
-        targetPlayer.ConnectedClient.Disconnect(message);
+        targetPlayer.Channel.Disconnect(message);
     }
     #endregion
 
     #region Job Bans
     // If you are trying to remove timeOfBan, please don't. It's there because the note system groups role bans by time, reason and banning admin.
     // Removing it will clutter the note list. Please also make sure that department bans are applied to roles with the same DateTimeOffset.
-    public async void CreateRoleBan(NetUserId? target, string? targetUsername, NetUserId? banningAdmin, (IPAddress, int)? addressRange, ImmutableArray<byte>? hwid, string role, uint? minutes, NoteSeverity severity, string reason, DateTimeOffset timeOfBan)
+    public async void CreateRoleBan(NetUserId? target, string? targetUsername, NetUserId? banningAdmin, (IPAddress, int)? addressRange, ImmutableArray<byte>? hwid, string role, uint? minutes, NoteSeverity severity, string reason, DateTimeOffset timeOfBan, bool isGlobalBan)
     {
         if (!_prototypeManager.TryIndex(role, out JobPrototype? _))
         {
@@ -194,6 +203,13 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         if (minutes > 0)
         {
             expires = DateTimeOffset.Now + TimeSpan.FromMinutes(minutes.Value);
+        }
+
+        var serverName = _cfg.GetCVar(CCVars.AdminLogsServerName);
+
+        if (isGlobalBan)
+        {
+            serverName = UnknownServer;
         }
 
         _systems.TryGetEntitySystem(out GameTicker? ticker);
@@ -213,7 +229,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             severity,
             banningAdmin,
             null,
-            role);
+            role,
+            serverName);
 
         if (!await AddRoleBan(banDef))
         {
@@ -293,7 +310,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         };
 
         _sawmill.Debug($"Sent rolebans to {pSession.Name}");
-        _netManager.ServerSendMessage(bans, pSession.ConnectedClient);
+        _netManager.ServerSendMessage(bans, pSession.Channel);
     }
 
     public void PostInject()

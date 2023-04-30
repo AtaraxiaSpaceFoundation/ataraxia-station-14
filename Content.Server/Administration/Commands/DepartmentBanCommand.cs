@@ -23,10 +23,12 @@ public sealed class DepartmentBanCommand : IConsoleCommand
 
     public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        string target;
-        string department;
-        string reason;
-        uint minutes;
+
+        var target = args[0];
+        var department = args[1];
+        var reason = args[2];
+        var minutes = 0u;
+        var isGlobalBan = false;
         if (!Enum.TryParse(_cfg.GetCVar(CCVars.DepartmentBanDefaultSeverity), out NoteSeverity severity))
         {
             Logger.WarningS("admin.department_ban", "Department ban severity could not be parsed from config! Defaulting to medium.");
@@ -36,28 +38,28 @@ public sealed class DepartmentBanCommand : IConsoleCommand
         switch (args.Length)
         {
             case 3:
-                target = args[0];
-                department = args[1];
-                reason = args[2];
-                minutes = 0;
                 break;
             case 4:
-                target = args[0];
-                department = args[1];
-                reason = args[2];
-
+                if (!uint.TryParse(args[3], out minutes))
+                {
+                    shell.WriteError(Loc.GetString("cmd-roleban-minutes-parse", ("time", args[3]), ("help", Help)));
+                    return;
+                }
+                break;
+            case 5:
                 if (!uint.TryParse(args[3], out minutes))
                 {
                     shell.WriteError(Loc.GetString("cmd-roleban-minutes-parse", ("time", args[3]), ("help", Help)));
                     return;
                 }
 
+                if (!Enum.TryParse(args[4], ignoreCase: true, out severity))
+                {
+                    shell.WriteLine(Loc.GetString("cmd-roleban-severity-parse", ("severity", args[4]), ("help", Help)));
+                    return;
+                }
                 break;
-            case 5:
-                target = args[0];
-                department = args[1];
-                reason = args[2];
-
+            case 6:
                 if (!uint.TryParse(args[3], out minutes))
                 {
                     shell.WriteError(Loc.GetString("cmd-roleban-minutes-parse", ("time", args[3]), ("help", Help)));
@@ -70,6 +72,11 @@ public sealed class DepartmentBanCommand : IConsoleCommand
                     return;
                 }
 
+                if (!bool.TryParse(args[5], out isGlobalBan))
+                {
+                    shell.WriteLine($"{args[5]} should be True or False.\n{Help}");
+                    return;
+                }
                 break;
             default:
                 shell.WriteError(Loc.GetString("cmd-roleban-arg-count"));
@@ -97,7 +104,7 @@ public sealed class DepartmentBanCommand : IConsoleCommand
         var now = DateTimeOffset.UtcNow;
         foreach (var job in departmentProto.Roles)
         {
-            _banManager.CreateRoleBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, job, minutes, severity, reason, now);
+            _banManager.CreateRoleBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, job, minutes, severity, reason, now, isGlobalBan);
         }
     }
 
@@ -130,6 +137,7 @@ public sealed class DepartmentBanCommand : IConsoleCommand
             3 => CompletionResult.FromHint(Loc.GetString("cmd-roleban-hint-3")),
             4 => CompletionResult.FromHintOptions(durOpts, Loc.GetString("cmd-roleban-hint-4")),
             5 => CompletionResult.FromHintOptions(severities, Loc.GetString("cmd-roleban-hint-5")),
+            6 => CompletionResult.FromHint("<server>"),
             _ => CompletionResult.Empty
         };
     }

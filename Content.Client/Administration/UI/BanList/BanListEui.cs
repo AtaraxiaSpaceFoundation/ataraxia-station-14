@@ -92,6 +92,7 @@ public sealed class BanListEui : BaseEui
         }
 
         line.BanningAdmin.Text = ban.BanningAdminName;
+        line.ServerName.Text = ban.ServerName == "unknown" ? "GLOBAL" : ban.ServerName;
     }
 
     private void OnLineIdsClicked<T>(IBanListLine<T> line) where T : SharedServerBan

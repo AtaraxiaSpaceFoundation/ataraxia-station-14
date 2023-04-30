@@ -52,7 +52,7 @@ public sealed class BanPanelEui : BaseEui
         switch (msg)
         {
             case BanPanelEuiStateMsg.CreateBanRequest r:
-                BanPlayer(r.Player, r.IpAddress, r.UseLastIp, r.Hwid?.ToImmutableArray(), r.UseLastHwid, r.Minutes, r.Severity, r.Reason, r.Roles, r.Erase);
+                BanPlayer(r.Player, r.IpAddress, r.UseLastIp, r.Hwid?.ToImmutableArray(), r.UseLastHwid, r.Minutes, r.Severity, r.Reason, r.Erase, r.IsGlobalBan);
                 break;
             case BanPanelEuiStateMsg.GetPlayerInfoRequest r:
                 ChangePlayer(r.PlayerUsername);
@@ -60,13 +60,14 @@ public sealed class BanPanelEui : BaseEui
         }
     }
 
-    private async void BanPlayer(string? target, string? ipAddressString, bool useLastIp, ImmutableArray<byte>? hwid, bool useLastHwid, uint minutes, NoteSeverity severity, string reason, IReadOnlyCollection<string>? roles, bool erase)
+    private async void BanPlayer(string? target, string? ipAddressString, bool useLastIp, ImmutableArray<byte>? hwid, bool useLastHwid, uint minutes, NoteSeverity severity, string reason, bool erase, bool isGlobalBan)
     {
         if (!_admins.HasAdminFlag(Player, AdminFlags.Ban))
         {
             _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to create a ban with no ban flag");
             return;
         }
+
         if (target == null && string.IsNullOrWhiteSpace(ipAddressString) && hwid == null)
         {
             _chat.DispatchServerMessage(Player, Loc.GetString("ban-panel-no-data"));
@@ -119,21 +120,7 @@ public sealed class BanPanelEui : BaseEui
             targetHWid = useLastHwid ? located.LastHWId : hwid;
         }
 
-        if (roles?.Count > 0)
-        {
-            var now = DateTimeOffset.UtcNow;
-            foreach (var role in roles)
-            {
-                _banManager.CreateRoleBan(targetUid, target, Player.UserId, addressRange, targetHWid, role, minutes, severity, reason, now);
-            }
-
-            Close();
-            return;
-        }
-
-        if (erase &&
-            targetUid != null &&
-            _playerManager.TryGetSessionById(targetUid.Value, out var targetPlayer))
+        if (erase && targetUid != null && _playerManager.TryGetSessionById(targetUid.Value, out var targetPlayer))
         {
             try
             {
@@ -146,7 +133,7 @@ public sealed class BanPanelEui : BaseEui
             }
         }
 
-        _banManager.CreateServerBan(targetUid, target, Player.UserId, addressRange, targetHWid, minutes, severity, reason);
+        _banManager.CreateServerBan(targetUid, target, Player.UserId, addressRange, targetHWid, minutes, severity, reason, isGlobalBan);
 
         Close();
     }

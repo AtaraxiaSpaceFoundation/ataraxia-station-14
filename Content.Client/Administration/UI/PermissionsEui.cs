@@ -131,6 +131,8 @@ namespace Content.Client.Administration.UI
 
             var title = string.IsNullOrWhiteSpace(popup.TitleEdit.Text) ? null : popup.TitleEdit.Text;
 
+            var adminServer = string.IsNullOrWhiteSpace(popup.ServerNameEdit.Text) ? "unknown" : popup.ServerNameEdit.Text;
+
             if (popup.SourceData is { } src)
             {
                 SendMessage(new UpdateAdmin
@@ -139,7 +141,8 @@ namespace Content.Client.Administration.UI
                     Title = title,
                     PosFlags = pos,
                     NegFlags = neg,
-                    RankId = rank
+                    RankId = rank,
+                    AdminServer = adminServer
                 });
             }
             else
@@ -152,7 +155,8 @@ namespace Content.Client.Administration.UI
                     Title = title,
                     PosFlags = pos,
                     NegFlags = neg,
-                    RankId = rank
+                    RankId = rank,
+                    AdminServer = adminServer
                 });
             }
 
@@ -249,6 +253,11 @@ namespace Content.Client.Administration.UI
                     Text = flagsText,
                     HorizontalExpand = true,
                     HorizontalAlignment = Control.HAlignment.Center,
+                });
+
+                al.AddChild(new Label
+                {
+                    Text = admin.AdminServer,
                 });
 
                 var editButton = new Button { Text = Loc.GetString("permissions-eui-edit-title-button") };
@@ -351,6 +360,7 @@ namespace Content.Client.Administration.UI
             public readonly OptionButton RankButton;
             public readonly Button SaveButton;
             public readonly Button? RemoveButton;
+            public readonly LineEdit ServerNameEdit;
 
             public readonly Dictionary<AdminFlags, (Button inherit, Button sub, Button plus)> FlagButtons
                 = new();
@@ -380,6 +390,7 @@ namespace Content.Client.Administration.UI
                 TitleEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-title-edit-placeholder") };
                 RankButton = new OptionButton();
                 SaveButton = new Button { Text = Loc.GetString("permissions-eui-edit-admin-window-save-button"), HorizontalAlignment = HAlignment.Right };
+                ServerNameEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-server-edit-placeholder") };
 
                 RankButton.AddItem(Loc.GetString("permissions-eui-edit-admin-window-no-rank-button"), NoRank);
                 foreach (var (rId, rank) in ui._ranks)
@@ -496,6 +507,7 @@ namespace Content.Client.Administration.UI
                                     {
                                         nameControl,
                                         TitleEdit,
+                                        ServerNameEdit,
                                         RankButton
                                     }
                                 },

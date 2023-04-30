@@ -133,7 +133,7 @@ namespace Content.IntegrationTests.Tests.Commands
             Assert.Multiple(async () =>
             {
                 // No bans should be returned
-                Assert.That(await sDatabase.GetServerBanAsync(null, clientId, null), Is.Null);
+                Assert.That(await sDatabase.GetServerBanAsync(null, clientId, null, false), Is.Null);
 
                 // Direct id lookup returns a pardoned ban
                 Assert.That(await sDatabase.GetServerBanAsync(1), Is.Not.Null);

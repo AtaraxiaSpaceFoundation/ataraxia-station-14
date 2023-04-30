@@ -21,6 +21,7 @@ namespace Content.Server.Database
 {
     public abstract class ServerDbBase
     {
+        protected const string GlobalServerName = "unknown";
         private readonly ISawmill _opsLog;
 
         /// <param name="opsLog">Sawmill to trace log database operations to.</param>
@@ -337,7 +338,8 @@ namespace Content.Server.Database
         public abstract Task<ServerBanDef?> GetServerBanAsync(
             IPAddress? address,
             NetUserId? userId,
-            ImmutableArray<byte>? hwId);
+            ImmutableArray<byte>? hwId,
+            string serverName = GlobalServerName);
 
         /// <summary>
         ///     Looks up an user's ban history.
@@ -353,7 +355,8 @@ namespace Content.Server.Database
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned);
+            bool includeUnbanned,
+            string serverName = GlobalServerName);
 
         public abstract Task AddServerBanAsync(ServerBanDef serverBan);
         public abstract Task AddServerUnbanAsync(ServerUnbanDef serverUnban);
@@ -445,7 +448,8 @@ namespace Content.Server.Database
         public abstract Task<List<ServerRoleBanDef>> GetServerRoleBansAsync(IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned);
+            bool includeUnbanned,
+            string serverName = GlobalServerName);
 
         public abstract Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan);
         public abstract Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban);
@@ -660,6 +664,7 @@ namespace Content.Server.Database
             existing.Flags = admin.Flags;
             existing.Title = admin.Title;
             existing.AdminRankId = admin.AdminRankId;
+            existing.AdminServer = admin.AdminServer;
 
             await db.DbContext.SaveChangesAsync(cancel);
         }
