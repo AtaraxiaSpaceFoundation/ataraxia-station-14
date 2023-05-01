@@ -36,7 +36,7 @@ public sealed class UtkaTCPSession : TcpSession
 
     protected override void OnConnected()
     {
-        SendAsync("Hello from грабли, знай утка я ебал тебя в зад!!!");
+        SendAsync("HandShake??? Hello.");
         base.OnConnected();
     }
 
