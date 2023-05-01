@@ -213,70 +213,29 @@
         shader: unshaded
 
 - type: entity
-  name: Double Bladed Energy Sword
+  name: double energy sword
   parent: EnergySword
-  id: EnergySwordDouble
-  description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
+  id: EnergyDoubleSword
+  description: A very dangerous doubled energy sword. Can be stored in pockets when turned off. Makes a lot of noise when used or turned on.
   components:
-  - type: EnergySword
-  - type: ItemToggle
-    soundActivate:
-      path: /Audio/Weapons/ebladeon.ogg
-      params:
-        volume: 3
-    soundDeactivate:
-      path: /Audio/Weapons/ebladeoff.ogg
-      params:
-        volume: 3
-  - type: ItemToggleMeleeWeapon
-    activatedSoundOnSwing:
-      path: /Audio/Weapons/eblademiss.ogg
-      params:
-        volume: 3
-        variation: 0.250
-    activatedDamage:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/double_esword.rsi
+      layers:
+        - state: e_sword
+        - state: e_sword_blade
+          visible: false
+          shader: unshaded
+          map: [ "blade" ]
+    - type: Wieldable
+    - type: IncreaseDamageOnWield
+      damage:
         types:
-            Slash: 12
-            Heat: 12
-            Structural: 15
-  - type: ItemToggleActiveSound
-    activeSound:
-      path: /Audio/Weapons/ebladehum.ogg
-      params:
-        volume: 3
-  - type: ItemToggleDisarmMalus
-    activatedDisarmMalus: 0.7
-  - type: Wieldable
-  - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 1.5
-    angle: 100
-    damage:
-      types:
-        Blunt: 4.5
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/e_sword_double.rsi
-    layers:
-      - state: e_sword_double
-      - state: e_sword_double_blade
-        color: "#FFFFFF"
-        visible: false
-        shader: unshaded
-        map: [ "blade" ]
-  - type: Item
-    size: Small
-    sprite: Objects/Weapons/Melee/e_sword_double-inhands.rsi
-  - type: Reflect
-    reflectProb: .75
-    spread: 75
-  - type: UseDelay
-    delay: 1
-  - type: ToggleableLightVisuals
-    spriteLayer: blade
-    inhandVisuals:
-      left:
-      - state: inhand-left-blade
-        shader: unshaded
-      right:
-      - state: inhand-right-blade
-        shader: unshaded
+          Slash: 15
+          Heat: 13
+    - type: MeleeWeapon
+      attackRate: 1
+    - type: Reflect
+      enabled: false
+      energeticChance: 0.7
+      kineticChance: 0.7
+      spread: 45

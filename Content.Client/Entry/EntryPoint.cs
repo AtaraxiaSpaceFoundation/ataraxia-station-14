@@ -130,6 +130,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("alertLevels");
             _prototypeManager.RegisterIgnore("nukeopsRole");
 
+            //WD-EDIT
+            _prototypeManager.RegisterIgnore("loadout");
+            //WD-EDIT
+
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
             _screenshotHook.Initialize();

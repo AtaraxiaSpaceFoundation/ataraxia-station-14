@@ -179,7 +179,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         ICommonSession? player = null,
         string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false
+        bool ignoreActionBlocker = false,
+        bool force = false
         )
     {
         if (HasComp<GhostComponent>(source))
@@ -201,7 +202,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-        if (!CanSendInGame(message, shell, player))
+        if (!force && !CanSendInGame(message, shell, player))
             return;
 
         ignoreActionBlocker = CheckIgnoreSpeechBlocker(source, ignoreActionBlocker);
@@ -233,9 +234,9 @@ public sealed partial class ChatSystem : SharedChatSystem
         message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, sanitizeSlang);
 
         // Was there an emote in the message? If so, send it.
-        if (player != null && emoteStr != message && emoteStr != null)
+        if (emoteStr != message && emoteStr != null)
         {
-            SendEntityEmote(source, emoteStr, range, nameOverride, ignoreActionBlocker);
+            SendEntityEmote(source, emoteStr, range, nameOverride, ignoreActionBlocker, force: force);
         }
 
         // This can happen if the entire string is sanitized out.
@@ -262,7 +263,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker);
                 break;
             case InGameICChatType.Emote:
-                SendEntityEmote(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
+                SendEntityEmote(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker, force: force);
                 break;
         }
     }
@@ -566,7 +567,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
-        NetUserId? author = null
+        NetUserId? author = null,
+        bool force = false
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
