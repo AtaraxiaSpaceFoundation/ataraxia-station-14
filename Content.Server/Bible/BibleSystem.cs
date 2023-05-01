@@ -2,6 +2,7 @@ using Content.Server.Bible.Components;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Popups;
+using Content.Server.White.Other.Lazy;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Bible;
@@ -160,6 +161,9 @@ namespace Content.Server.Bible
             if (!args.CanInteract || !args.CanAccess || component.AlreadySummoned || component.SpecialItemPrototype == null)
                 return;
 
+            if (HasComp<EarsSpawnComponent>(component.Owner))
+                return;
+
             if (component.RequiresBibleUser && !HasComp<BibleUserComponent>(args.User))
                 return;
 
@@ -181,6 +185,9 @@ namespace Content.Server.Bible
         private void GetSummonAction(EntityUid uid, SummonableComponent component, GetItemActionsEvent args)
         {
             if (component.AlreadySummoned)
+                return;
+
+            if (HasComp<EarsSpawnComponent>(component.Owner))
                 return;
 
             args.AddAction(ref component.SummonActionEntity, component.SummonAction);
