@@ -53,7 +53,9 @@
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-  innerClothingSkirt: ClothingUniformJumpskirtHoS
+    underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
+  underweart: ClothingUnderwearTopBraHOS # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtHoS
   satchel: ClothingBackpackSatchelHOSFilled
   duffelbag: ClothingBackpackDuffelHOSFilled

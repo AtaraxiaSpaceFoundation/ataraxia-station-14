@@ -1,3 +1,4 @@
+using Content.Shared.Humanoid;
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
 
@@ -23,6 +24,13 @@ namespace Content.Shared.Roles
 
         [DataField]
         public List<EntProtoId> Inhand = new(0);
+        // White underwear
+        [DataField("underweart")]
+        private string _underweart = string.Empty;
+
+        [DataField("underwearb")]
+        private string _underwearb = string.Empty;
+        // White underwear end
 
         [ViewVariables]
         [IdDataField]
@@ -38,6 +46,12 @@ namespace Content.Shared.Roles
                     return Satchel;
                 if (slot == "back" && profile.Backpack == BackpackPreference.Duffelbag && !string.IsNullOrEmpty(Duffelbag))
                     return Duffelbag;
+                // White underwear
+                if (slot == "underweart" && profile.Sex == Sex.Female && !string.IsNullOrEmpty(_underweart))
+                    return _underweart;
+                if (slot == "underwearb" && profile.Sex == Sex.Female && !string.IsNullOrEmpty(_underwearb))
+                    return _underwearb;
+                // White underwear end
             }
 
             return Equipment.TryGetValue(slot, out var equipment) ? equipment : string.Empty;

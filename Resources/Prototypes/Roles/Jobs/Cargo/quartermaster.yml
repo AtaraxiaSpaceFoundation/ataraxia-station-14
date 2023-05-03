@@ -49,6 +49,9 @@
     ears: ClothingHeadsetQM
     belt: BoxFolderClipboard
     pocket1: AppraisalTool
-  innerClothingSkirt: ClothingUniformJumpskirtQM
+    underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
+  underweart: ClothingUnderwearTopBraQM # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtQM
   satchel: ClothingBackpackSatchelQuartermasterFilled
   duffelbag: ClothingBackpackDuffelQuartermasterFilled

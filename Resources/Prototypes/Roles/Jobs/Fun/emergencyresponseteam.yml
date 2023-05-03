@@ -25,10 +25,12 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTLeaderPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-    pocket2: FlashlightSeclite
+    ears: ClothingHeadsetAltCommand
+    belt: ClothingBeltSecurityWebbing
+    pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 - type: startingGear
   id: ERTLeaderGearEVA
@@ -44,27 +46,10 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-    pocket2: FlashlightSeclite
-
-- type: startingGear
-  id: ERTLeaderGearEVALecter
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitERTLeader
-    back: ClothingBackpackERTLeaderFilled
-    shoes: ClothingShoesBootsMagAdv
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTLeader
-    suitstorage: WeaponRifleLecter
-    id: ERTLeaderPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
-  inhand:
-    - AirTankFilled
+    pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 # Engineer
 - type: job
@@ -96,7 +81,9 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
     pocket1: Flare
-    pocket2: GasAnalyzer
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 - type: startingGear
   id: ERTEngineerGearEVA
@@ -113,7 +100,9 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
     pocket1: Flare
-    pocket2: GasAnalyzer
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 # Security
 - type: job
@@ -139,13 +128,15 @@
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetERTSecurity
     eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
-    id: ERTSecurityPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-    pocket2: FlashlightSeclite
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterVestKevlar
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCommand
+    belt: ClothingBeltSecurityWebbing
+    pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 - type: startingGear
   id: ERTSecurityGearEVA
@@ -157,31 +148,14 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
-    suitstorage: AirTankFilled
-    id: ERTSecurityPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-    pocket2: FlashlightSeclite
-
-- type: startingGear
-  id: ERTSecurityGearEVALecter
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitERTSecurity
-    back: ClothingBackpackERTSecurityFilled
-    shoes: ClothingShoesBootsMag
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTSecurity
-    suitstorage: WeaponRifleLecter
-    id: ERTSecurityPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
-  inhand:
-    - AirTankFilled
+    suitstorage: OxygenTankFilled
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCommand
+    belt: ClothingBeltSecurityWebbing
+    pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 # Medical
 - type: job
@@ -214,6 +188,9 @@
     belt: ClothingBeltMedicalFilled
     pocket1: HandheldHealthAnalyzer
     pocket2: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 - type: startingGear
   id: ERTMedicalGearEVA
@@ -231,6 +208,9 @@
     belt: ClothingBeltMedicalFilled
     pocket1: HandheldHealthAnalyzer
     pocket2: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 # Janitor
 - type: job
@@ -261,6 +241,9 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
     pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
 
 - type: startingGear
   id: ERTJanitorGearEVA
@@ -276,3 +259,6 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
     pocket1: Flare
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

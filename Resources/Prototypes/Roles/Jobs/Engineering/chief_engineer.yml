@@ -50,7 +50,10 @@
     id: CEPDA
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE
-    belt: ClothingBeltUtilityEngineering
-  innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
+    belt: ClothingBeltChiefEngineerFilled
+    underwearb: ClothingUnderwearBottomBoxersCE # White-Underwear
+  underweart: ClothingUnderwearTopBraCE # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesCE # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtChiefEngineer
   satchel: ClothingBackpackSatchelChiefEngineerFilled
   duffelbag: ClothingBackpackDuffelChiefEngineerFilled

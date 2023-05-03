@@ -68,7 +68,9 @@
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltCommand
-    belt: BoxFolderClipboard
-  innerClothingSkirt: ClothingUniformJumpskirtHoP
+    underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
+  underweart: ClothingUnderwearTopBraHOP # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtHoP
   satchel: ClothingBackpackSatchelHOPFilled
   duffelbag: ClothingBackpackDuffelHOPFilled

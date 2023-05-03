@@ -50,6 +50,9 @@
     id: CMOPDA
     ears: ClothingHeadsetCMO
     belt: ClothingBeltMedicalFilled
-  innerClothingSkirt: ClothingUniformJumpskirtCMO
+    underwearb: ClothingUnderwearBottomBoxersCMO # White-Underwear
+  underweart: ClothingUnderwearTopBraCMO # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesCMO # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtCMO
   satchel: ClothingBackpackSatchelCMOFilled
   duffelbag: ClothingBackpackDuffelCMOFilled

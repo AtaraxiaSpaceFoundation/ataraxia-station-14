@@ -22,6 +22,9 @@
     id: CargoPDA
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
-  innerClothingSkirt: ClothingUniformJumpskirtCargo
-  satchel: ClothingBackpackSatchelCargoFilled
-  duffelbag: ClothingBackpackDuffelCargoFilled
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtCargo
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled

@@ -40,6 +40,9 @@
     outerClothing: ClothingOuterCoatRD
     id: RnDPDA
     ears: ClothingHeadsetRD
-  innerClothingSkirt: ClothingUniformJumpskirtResearchDirector
+    underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
+  underweart: ClothingUnderwearTopBraRD # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtResearchDirector
   satchel: ClothingBackpackSatchelResearchDirectorFilled
   duffelbag: ClothingBackpackDuffelResearchDirectorFilled

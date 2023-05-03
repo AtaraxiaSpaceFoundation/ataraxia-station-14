@@ -27,6 +27,9 @@
     id: AtmosPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
-  innerClothingSkirt: ClothingUniformJumpskirtAtmos
-  satchel: ClothingBackpackSatchelAtmosphericsFilled
-  duffelbag: ClothingBackpackDuffelAtmosphericsFilled
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtAtmos
+  satchel: ClothingBackpackSatchelEngineeringFilled
+  duffelbag: ClothingBackpackDuffelEngineeringFilled
