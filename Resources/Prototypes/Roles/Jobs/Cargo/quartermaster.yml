@@ -5,38 +5,28 @@
   playTimeTracker: JobQuartermaster
   requirements:
     - !type:RoleTimeRequirement
-      role: JobCargoTechnician
-      time: 21600 #6 hrs
-    - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 10800 #3 hrs
+      time: 3600
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 36000 #10 hours
+      time: 18000
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs
+      time: 108000
   weight: 10
   startingGear: QuartermasterGear
-  icon: "JobIconQuarterMaster"
-  supervisors: job-supervisors-captain
+  icon: "QuarterMaster"
+  supervisors: job-supervisors-hop
   whitelistedSpecies:
     - Human
     - Dwarf
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false
   access:
   - Cargo
   - Salvage
   - Quartermaster
   - Maintenance
+  - External
   - Command
-  - Brig
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-      - type: CommandStaff
 
 - type: startingGear
   id: QuartermasterGear
@@ -47,8 +37,10 @@
     shoes: ClothingShoesColorBrown
     id: QuartermasterPDA
     ears: ClothingHeadsetQM
-    belt: BoxFolderClipboard
     pocket1: AppraisalTool
-  innerClothingSkirt: ClothingUniformJumpskirtQM
+    underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
+  underweart: ClothingUnderwearTopBraQM # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtQM
   satchel: ClothingBackpackSatchelQuartermasterFilled
   duffelbag: ClothingBackpackDuffelQuartermasterFilled

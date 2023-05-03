@@ -6,12 +6,12 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 54000 #15 hrs
+      time: 28800
       inverted: true # stop playing intern if you're good at engineering!
   startingGear: TechnicalAssistantGear
-  icon: "JobIconTechnicalAssistant"
+  icon: "TechnicalAssistant"
   supervisors: job-supervisors-engineering
-  canBeAntag: true
+  canBeAntag: false
   access:
   - Maintenance
   - Engineering
@@ -20,12 +20,16 @@
 - type: startingGear
   id: TechnicalAssistantGear
   equipment:
+    head: ClothingHeadHatWelding
     jumpsuit: ClothingUniformJumpsuitColorYellow
     back: ClothingBackpackEngineeringFilled
     shoes: ClothingShoesBootsWork
     id: TechnicalAssistantPDA
-    belt: ClothingBeltUtilityEngineering
+    belt: ClothingBeltUtilityFilled
     ears: ClothingHeadsetEngineering
-  innerClothingSkirt: ClothingUniformJumpskirtColorYellow
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtColorYellow
   satchel: ClothingBackpackSatchelEngineeringFilled
   duffelbag: ClothingBackpackDuffelEngineeringFilled

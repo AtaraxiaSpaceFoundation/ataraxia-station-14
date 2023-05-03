@@ -6,22 +6,20 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobWarden
-      time: 10800 #3 hrs
-    - !type:RoleTimeRequirement
-      role: JobSecurityOfficer
-      time: 36000 #10 hrs
+      time: 3600
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 108000 # 30 hrs
+      time: 18000
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs
+      time: 108000
   weight: 10
   startingGear: HoSGear
-  icon: "JobIconHeadOfSecurity"
+  icon: "HeadOfSecurity"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human
+    - Dwarf
   canBeAntag: false
   access:
   - HeadOfSecurity
@@ -33,12 +31,6 @@
   - Service
   - External
   - Detective
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-      - type: CommandStaff
 
 - type: startingGear
   id: HoSGear
@@ -47,13 +39,15 @@
     back: ClothingBackpackHOSFilled
     shoes: ClothingShoesBootsCombatFilled
     outerClothing: ClothingOuterCoatHoSTrench
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHatBeretHoS
     id: HoSPDA
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-  innerClothingSkirt: ClothingUniformJumpskirtHoS
+    underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
+  underweart: ClothingUnderwearTopBraHOS # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtHoS
   satchel: ClothingBackpackSatchelHOSFilled
   duffelbag: ClothingBackpackDuffelHOSFilled

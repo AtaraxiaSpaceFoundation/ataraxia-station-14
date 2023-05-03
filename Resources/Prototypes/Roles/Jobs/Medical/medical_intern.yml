@@ -6,12 +6,12 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 54000 # 15 hrs
+      time: 28800
       inverted: true # stop playing intern if you're good at med!
   startingGear: MedicalInternGear
-  icon: "JobIconMedicalIntern"
+  icon: "MedicalIntern"
   supervisors: job-supervisors-medicine
-  canBeAntag: true
+  canBeAntag: false
   access:
   - Medical
   - Maintenance
@@ -25,6 +25,9 @@
     id: MedicalInternPDA
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
-  innerClothingSkirt: ClothingUniformJumpskirtColorWhite
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtColorWhite
   satchel: ClothingBackpackSatchelMedicalFilled
   duffelbag: ClothingBackpackDuffelMedicalFilled

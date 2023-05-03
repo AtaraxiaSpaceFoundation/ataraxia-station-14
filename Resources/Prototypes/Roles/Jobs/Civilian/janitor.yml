@@ -4,10 +4,9 @@
   description: job-description-janitor
   playTimeTracker: JobJanitor
   startingGear: JanitorGear
-  icon: "JobIconJanitor"
+  icon: "Janitor"
   supervisors: job-supervisors-hop
   access:
-  - Service
   - Janitor
   - Maintenance
   special:
@@ -23,10 +22,12 @@
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHatPurplesoft
     id: JanitorPDA
-    gloves: ClothingHandsGlovesJanitor
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled
-  innerClothingSkirt: ClothingUniformJumpskirtJanitor
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtJanitor
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelFilled
 
@@ -36,10 +37,9 @@
     jumpsuit: ClothingUniformJumpskirtJanimaid
     back: ClothingBackpackFilled
     id: JanitorPDA
-    gloves: ClothingHandsGlovesJanitor
     head: ClothingHeadHatCatEars
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled
-  innerClothingSkirt: ClothingUniformJumpskirtJanimaid
+  innerclothingskirt: ClothingUniformJumpskirtJanimaid
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelFilled

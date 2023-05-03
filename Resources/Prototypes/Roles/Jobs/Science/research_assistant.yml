@@ -1,4 +1,4 @@
-- type: job
+﻿- type: job
   id: ResearchAssistant
   name: job-name-research-assistant
   description: job-description-research-assistant
@@ -6,12 +6,12 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 54000 #15 hrs
+      time: 28800
       inverted: true # stop playing intern if you're good at science!
   startingGear: ResearchAssistantGear
-  icon: "JobIconResearchAssistant"
-  supervisors: job-supervisors-science
-  canBeAntag: true
+  icon: "ResearchAssistant"
+  supervisors: job-supervisors-rd
+  canBeAntag: false
   access:
   - Research
   - Maintenance
@@ -24,6 +24,9 @@
     shoes: ClothingShoesColorWhite
     id: ResearchAssistantPDA
     ears: ClothingHeadsetScience
-  innerClothingSkirt: ClothingUniformJumpskirtColorWhite
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  innerclothingskirt: ClothingUniformJumpskirtColorWhite
   satchel: ClothingBackpackSatchelScienceFilled
   duffelbag: ClothingBackpackDuffelScienceFilled
