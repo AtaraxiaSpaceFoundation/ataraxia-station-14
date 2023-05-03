@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Globalization;
 
 namespace Content.Shared.White.Utils;
 
@@ -14,8 +15,8 @@ public static class Vector2Utils
             return new Vector2(0, 0);
         }
 
-        var hasX = float.TryParse(dataSplit[0], out var x);
-        var hasY = float.TryParse(dataSplit[1], out var y);
+        var hasX = float.TryParse(dataSplit[0], CultureInfo.InvariantCulture, out var x);
+        var hasY = float.TryParse(dataSplit[1], CultureInfo.InvariantCulture, out var y);
 
         if (!hasX || !hasY)
         {
