@@ -26,6 +26,7 @@ using Content.Client.White.Jukebox;
 using Content.Client.White.Sponsors;
 using Content.Shared.Ame;
 using Content.Client.White.Stalin;
+using Content.Client.White.TTS;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
 using Robust.Client;
@@ -80,6 +81,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly JoinQueueManager _queueManager = default!;
         [Dependency] private readonly StalinManager _stalinManager = default!;
         [Dependency] private readonly ClientJukeboxSongsSyncManager _jukeboxSyncManager = default!;
+        [Dependency] private readonly TTSManager _ttsManager = default!;
         //WD-EDIT
 
         public override void Init()
@@ -186,6 +188,7 @@ namespace Content.Client.Entry
             _sponsorsManager.Initialize();
             _queueManager.Initialize();
             _jukeboxSyncManager.Initialize();
+            _ttsManager.Initialize();
             //WD-EDIT
 
             _baseClient.RunLevelChanged += (_, args) =>
