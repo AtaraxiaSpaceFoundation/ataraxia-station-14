@@ -202,7 +202,7 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
 
-            var newMind = _mind.CreateMind(data!.UserId, character.Name);
+            var newMind = _mind.CreateMind(data!.UserId, character.Name, character.ClownName, character.MimeName, character.BorgName);
             _mind.SetUserId(newMind, data.UserId);
 
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
@@ -210,41 +210,30 @@ namespace Content.Server.GameTicking
             _roles.MindAddRole(newMind, job, silent: silent);
             var jobName = _jobs.MindTryGetJobName(newMind);
 
-            _playTimeTrackings.PlayerRolesChanged(player);
-
-            var whitelistedSpecies = jobPrototype.WhitelistedSpecies;
-
-            if (whitelistedSpecies.Count > 0 && !whitelistedSpecies.Contains(character.Species))
+            if (_cfg.GetCVar(WhiteCVars.FanaticXenophobiaEnabled))
             {
-                var playerProfiles = _prefsManager.GetPreferences(player.UserId).Characters.Values.Cast<HumanoidCharacterProfile>().ToList();
-
-                var existedAllowedProfile = playerProfiles.FindAll(x => whitelistedSpecies.Contains(x.Species));
-
-                if (existedAllowedProfile.Count == 0)
-                {
-                    character = HumanoidCharacterProfile.RandomWithSpecies(_robustRandom.Pick(whitelistedSpecies));
-                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
-                }
-                else
-                {
-                    character = _robustRandom.Pick(existedAllowedProfile);
-                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность с подходящим видом из вашего профиля.");
-                }
-
-                StringBuilder availableSpeciesLoc = new StringBuilder();
-                foreach (var specie in whitelistedSpecies)
-                {
-                    availableSpeciesLoc.AppendLine("-" + Loc.GetString($"species-name-{specie.ToLower()}"));
-                }
-
-                _chatManager.DispatchServerMessage(player, $"Доступные виды: \n {availableSpeciesLoc}");
+                character = ReplaceBlacklistedSpecies(player, character, jobPrototype);
+                newMind.Comp.CharacterName = character.Name;
+                newMind.Comp.ClownName = character.ClownName;
+                newMind.Comp.MimeName = character.MimeName;
+                newMind.Comp.BorgName = character.BorgName;
             }
 
-
+            _playTimeTrackings.PlayerRolesChanged(player);
 
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, job, character);
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
+
+            if (jobId.Contains("Clown"))
+                if (newMind.Comp.ClownName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.ClownName);
+            if (jobId.Contains("Mime"))
+                if (newMind.Comp.MimeName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.MimeName);
+            if (jobId.Contains("Cyborg"))
+                if (newMind.Comp.BorgName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.BorgName);
 
             _mind.TransferTo(newMind, mob);
 
@@ -306,6 +295,42 @@ namespace Content.Server.GameTicking
             PlayersJoinedRoundNormally++;
             var aev = new PlayerSpawnCompleteEvent(mob, player, jobId, lateJoin, PlayersJoinedRoundNormally, station, character);
             RaiseLocalEvent(mob, aev, true);
+        }
+
+        private HumanoidCharacterProfile ReplaceBlacklistedSpecies(ICommonSession player, HumanoidCharacterProfile character, JobPrototype jobPrototype)
+        {
+            var whitelistedSpecies = jobPrototype.WhitelistedSpecies;
+
+            if (whitelistedSpecies.Count > 0 && !whitelistedSpecies.Contains(character.Species))
+            {
+                var playerProfiles = _prefsManager.GetPreferences(player.UserId).Characters.Values
+                    .Cast<HumanoidCharacterProfile>().ToList();
+
+                var existedAllowedProfile = playerProfiles.FindAll(x => whitelistedSpecies.Contains(x.Species));
+
+                if (existedAllowedProfile.Count == 0)
+                {
+                    character = HumanoidCharacterProfile.RandomWithSpecies(_robustRandom.Pick(whitelistedSpecies));
+                    _chatManager.DispatchServerMessage(player,
+                        "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
+                }
+                else
+                {
+                    character = _robustRandom.Pick(existedAllowedProfile);
+                    _chatManager.DispatchServerMessage(player,
+                        "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность с подходящим видом из вашего профиля.");
+                }
+
+                StringBuilder availableSpeciesLoc = new StringBuilder();
+                foreach (var specie in whitelistedSpecies)
+                {
+                    availableSpeciesLoc.AppendLine("-" + Loc.GetString($"species-name-{specie.ToLower()}"));
+                }
+
+                _chatManager.DispatchServerMessage(player, $"Доступные виды: \n {availableSpeciesLoc}");
+            }
+
+            return character;
         }
 
         public void Respawn(ICommonSession player)

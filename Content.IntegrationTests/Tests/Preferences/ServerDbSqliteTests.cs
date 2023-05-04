@@ -40,6 +40,9 @@ namespace Content.IntegrationTests.Tests.Preferences
         {
             return new(
                 "Charlie Charlieson",
+                "HONK",
+                "Quiet",
+                "Silicon",
                 "The biggest boy around.",
                 "Human",
                 "Eugene",

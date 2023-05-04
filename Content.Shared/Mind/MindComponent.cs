@@ -64,6 +64,15 @@ namespace Content.Shared.Mind
         [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
         public string? CharacterName { get; set; }
 
+        [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+        public string? ClownName { get; set; }
+
+        [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+        public string? MimeName { get; set; }
+
+        [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+        public string? BorgName { get; set; }
+
         /// <summary>
         ///     The time of death for this Mind.
         ///     Can be null - will be null if the Mind is not considered "dead".

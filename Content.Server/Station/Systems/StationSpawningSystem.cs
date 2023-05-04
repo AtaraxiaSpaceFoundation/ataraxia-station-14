@@ -105,7 +105,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             DebugTools.Assert(entity is null);
             var jobEntity = EntityManager.SpawnEntity(prototype.JobEntity, coordinates);
             MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
-            DoJobSpecials(job, jobEntity);
+            DoJobSpecials(job, jobEntity, profile);
             _identity.QueueIdentityUpdate(jobEntity);
             return jobEntity;
         }
@@ -141,7 +141,14 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
             EquipStartingGear(entity.Value, startingGear, profile);
             if (profile != null)
-                EquipIdCard(entity.Value, profile.Name, prototype, station);
+            {
+                if (prototype.ID.Contains("Clown"))
+                    EquipIdCard(entity.Value, profile.ClownName, prototype, station);
+                else if (prototype.ID.Contains("Mime"))
+                    EquipIdCard(entity.Value, profile.MimeName, prototype, station);
+                else
+                    EquipIdCard(entity.Value, profile.Name, prototype, station);
+            }
         }
 
         if (profile != null)
@@ -154,12 +161,12 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             }
         }
 
-        DoJobSpecials(job, entity.Value);
+        DoJobSpecials(job, entity.Value, profile);
         _identity.QueueIdentityUpdate(entity.Value);
         return entity.Value;
     }
 
-    private void DoJobSpecials(JobComponent? job, EntityUid entity)
+    private void DoJobSpecials(JobComponent? job, EntityUid entity, HumanoidCharacterProfile? profile)
     {
         if (!_prototypeManager.TryIndex(job?.Prototype ?? string.Empty, out JobPrototype? prototype))
             return;
@@ -167,6 +174,42 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         foreach (var jobSpecial in prototype.Special)
         {
             jobSpecial.AfterEquip(entity);
+        }
+
+        if (prototype.ID.Contains("Cyborg"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetBorgName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.BorgName);
+            }
+        }
+
+        if (prototype.ID.Contains("Clown"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetClownName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.ClownName);
+            }
+        }
+
+        if (prototype.ID.Contains("Mime"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetMimeName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.MimeName);
+            }
         }
     }
 

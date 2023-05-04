@@ -213,6 +213,9 @@ namespace Content.Server.Database
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
+                profile.ClownName,
+                profile.MimeName,
+                profile.BorgName,
                 profile.FlavorText,
                 profile.Species,
                 voice,
@@ -250,6 +253,9 @@ namespace Content.Server.Database
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 
             profile.CharacterName = humanoid.Name;
+            profile.ClownName = humanoid.ClownName;
+            profile.MimeName = humanoid.MimeName;
+            profile.BorgName = humanoid.BorgName;
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
             profile.Age = humanoid.Age;

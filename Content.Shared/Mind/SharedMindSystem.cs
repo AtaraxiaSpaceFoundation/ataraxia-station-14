@@ -184,12 +184,15 @@ public abstract class SharedMindSystem : EntitySystem
         return null;
     }
 
-    public Entity<MindComponent> CreateMind(NetUserId? userId, string? name = null)
+    public Entity<MindComponent> CreateMind(NetUserId? userId, string? name = null, string? clownName = null, string? mimeName = null, string? borgName = null)
     {
         var mindId = Spawn(null, MapCoordinates.Nullspace);
         _metadata.SetEntityName(mindId, name == null ? "mind" : $"mind ({name})");
         var mind = EnsureComp<MindComponent>(mindId);
         mind.CharacterName = name;
+        mind.ClownName = clownName;
+        mind.MimeName = mimeName;
+        mind.BorgName = borgName;
         SetUserId(mindId, userId, mind);
 
         return (mindId, mind);
