@@ -1197,3 +1197,6 @@
   id: Crystal
 
 # WHITE END
+
+- type: Tag
+  id: TapeRecorderCoin

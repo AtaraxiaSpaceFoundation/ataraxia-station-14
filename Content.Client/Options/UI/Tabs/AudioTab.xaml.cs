@@ -39,6 +39,7 @@ namespace Content.Client.Options.UI.Tabs
             LobbyVolumeSlider.OnValueChanged += OnLobbyVolumeSliderChanged;
             TtsVolumeSlider.OnValueChanged += OnTtsVolumeSliderChanged;
             InterfaceVolumeSlider.OnValueChanged += OnInterfaceVolumeSliderChanged;
+            JukeboxVolumeSlider.OnValueChanged += OnJukeboxVolumeSliderChanged;
             LobbyMusicCheckBox.OnToggled += OnLobbyMusicCheckToggled;
             RestartSoundsCheckBox.OnToggled += OnRestartSoundsCheckToggled;
             EventMusicCheckBox.OnToggled += OnEventMusicCheckToggled;
@@ -63,6 +64,7 @@ namespace Content.Client.Options.UI.Tabs
 
             //WD-EDIT
             TtsVolumeSlider.OnValueChanged -= OnTtsVolumeSliderChanged;
+            JukeboxVolumeSlider.OnValueChanged -= OnJukeboxVolumeSliderChanged;
             //WD-EDIT
 
             base.Dispose(disposing);
@@ -75,6 +77,13 @@ namespace Content.Client.Options.UI.Tabs
             UpdateChanges();
         }
         //TTS-End
+
+        //JUKEBOX
+        private void OnJukeboxVolumeSliderChanged(Range obj)
+        {
+            UpdateChanges();
+        }
+        //JUKEBOX
 
         private void OnLobbyVolumeSliderChanged(Range obj)
         {
@@ -150,6 +159,7 @@ namespace Content.Client.Options.UI.Tabs
 
             //WD-EDIT
             _cfg.SetCVar(WhiteCVars.TtsVolume, LV100ToDB(TtsVolumeSlider.Value));
+            _cfg.SetCVar(WhiteCVars.JukeboxVolume, LV100ToDB(JukeboxVolumeSlider.Value));
             //WD-EDIT
 
             _cfg.SaveToFile();
@@ -179,6 +189,7 @@ namespace Content.Client.Options.UI.Tabs
 
             //WD-EDIT
             TtsVolumeSlider.Value = DBToLV100(_cfg.GetCVar(WhiteCVars.TtsVolume));
+            JukeboxVolumeSlider.Value = DBToLV100(_cfg.GetCVar(WhiteCVars.JukeboxVolume));
             //WD-EDIT
 
 
@@ -222,6 +233,8 @@ namespace Content.Client.Options.UI.Tabs
             //WD-EDIT
             var isTtsVolumeSame =
                 Math.Abs(TtsVolumeSlider.Value - DBToLV100(_cfg.GetCVar(WhiteCVars.TtsVolume))) < 0.01f;
+            var isJukeboxVolumeSame =
+                Math.Abs(JukeboxVolumeSlider.Value - DBToLV100(_cfg.GetCVar(WhiteCVars.JukeboxVolume))) < 0.01f;
             //WD-EDIT
 
             var isRestartSoundsSame = RestartSoundsCheckBox.Pressed == _cfg.GetCVar(CCVars.RestartSoundsEnabled);
@@ -230,6 +243,7 @@ namespace Content.Client.Options.UI.Tabs
             var isEverythingSame = isMasterVolumeSame && isMidiVolumeSame && isAmbientVolumeSame && isAmbientMusicVolumeSame && isAmbientSoundsSame && isLobbySame && isRestartSoundsSame && isEventSame
                 && isAdminSoundsSame && isLobbyVolumeSame && isInterfaceVolumeSame;
             isEverythingSame = isEverythingSame && isTtsVolumeSame; //WD-EDIT
+            isEverythingSame = isEverythingSame && isTtsVolumeSame && isJukeboxVolumeSame; //WD-EDIT
             ApplyButton.Disabled = isEverythingSame;
             ResetButton.Disabled = isEverythingSame;
             MasterVolumeLabel.Text =
@@ -249,6 +263,8 @@ namespace Content.Client.Options.UI.Tabs
             //WD-EDIT
             TtsVolumeLabel.Text =
                 Loc.GetString("ui-options-volume-percent", ("volume", TtsVolumeSlider.Value / 100));
+            JukeboxVolumeLabel.Text =
+                Loc.GetString("ui-options-volume-percent", ("volume", JukeboxVolumeSlider.Value / 100));
             //WD-EDIT
         }
     }
