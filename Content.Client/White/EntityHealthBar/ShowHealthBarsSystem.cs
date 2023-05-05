@@ -10,7 +10,6 @@ namespace Content.Client.EntityHealthBar
     public sealed class ShowHealthBarsSystem : EntitySystem
     {
         [Dependency] private readonly IPlayerManager _player = default!;
-        [Dependency] private readonly IPrototypeManager _protoMan = default!;
         [Dependency] private readonly IOverlayManager _overlayMan = default!;
 
         private EntityHealthBarOverlay _overlay = default!;
@@ -18,16 +17,16 @@ namespace Content.Client.EntityHealthBar
         {
             base.Initialize();
 
-            SubscribeLocalEvent<ShowHealthBarsComponent, ComponentInit>(OnInit);
-            SubscribeLocalEvent<ShowHealthBarsComponent, ComponentRemove>(OnRemove);
-            SubscribeLocalEvent<ShowHealthBarsComponent, PlayerAttachedEvent>(OnPlayerAttached);
-            SubscribeLocalEvent<ShowHealthBarsComponent, PlayerDetachedEvent>(OnPlayerDetached);
+            SubscribeLocalEvent<ShowWhiteHealthBarsComponent, ComponentInit>(OnInit);
+            SubscribeLocalEvent<ShowWhiteHealthBarsComponent, ComponentRemove>(OnRemove);
+            SubscribeLocalEvent<ShowWhiteHealthBarsComponent, PlayerAttachedEvent>(OnPlayerAttached);
+            SubscribeLocalEvent<ShowWhiteHealthBarsComponent, PlayerDetachedEvent>(OnPlayerDetached);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
-            _overlay = new(EntityManager, _protoMan);
+            _overlay = new(EntityManager);
         }
 
-        private void OnInit(EntityUid uid, ShowHealthBarsComponent component, ComponentInit args)
+        private void OnInit(EntityUid uid, ShowWhiteHealthBarsComponent component, ComponentInit args)
         {
             if (_player.LocalPlayer?.ControlledEntity == uid)
             {
@@ -37,7 +36,7 @@ namespace Content.Client.EntityHealthBar
 
 
         }
-        private void OnRemove(EntityUid uid, ShowHealthBarsComponent component, ComponentRemove args)
+        private void OnRemove(EntityUid uid, ShowWhiteHealthBarsComponent component, ComponentRemove args)
         {
             if (_player.LocalPlayer?.ControlledEntity == uid)
             {
@@ -45,13 +44,13 @@ namespace Content.Client.EntityHealthBar
             }
         }
 
-        private void OnPlayerAttached(EntityUid uid, ShowHealthBarsComponent component, PlayerAttachedEvent args)
+        private void OnPlayerAttached(EntityUid uid, ShowWhiteHealthBarsComponent component, PlayerAttachedEvent args)
         {
             _overlayMan.AddOverlay(_overlay);
             _overlay.DamageContainers = component.DamageContainers;
         }
 
-        private void OnPlayerDetached(EntityUid uid, ShowHealthBarsComponent component, PlayerDetachedEvent args)
+        private void OnPlayerDetached(EntityUid uid, ShowWhiteHealthBarsComponent component, PlayerDetachedEvent args)
         {
             _overlayMan.RemoveOverlay(_overlay);
         }

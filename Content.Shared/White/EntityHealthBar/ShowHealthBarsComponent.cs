@@ -8,11 +8,10 @@ namespace Content.Shared.EntityHealthBar
     /// This component allows you to see health bars above damageable mobs.
     /// </summary>
     [RegisterComponent]
-    public sealed partial class ShowHealthBarsComponent : Component
+    public sealed partial class ShowWhiteHealthBarsComponent : Component
     {
         /// <summary>
-        /// If null, displays all health bars.
-        /// If not null, displays health bars of only that damage container.
+        /// Displays health bars of the damage containers.
         /// </summary>
 
         [DataField("damageContainers", customTypeSerializer: typeof(PrototypeIdListSerializer<DamageContainerPrototype>))]

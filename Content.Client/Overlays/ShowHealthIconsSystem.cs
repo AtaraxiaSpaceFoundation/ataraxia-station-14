@@ -18,7 +18,7 @@ public sealed class ShowHealthIconsSystem : EquipmentHudSystem<ShowHealthIconsCo
     public HashSet<string> DamageContainers = new();
 
     [ValidatePrototypeId<StatusIconPrototype>]
-    private const string HealthIconFine = "HealthIconFine";
+    private const string HealthIconFine = "HealthIconLife"; // WD EDIT
 
     public override void Initialize()
     {

@@ -220,6 +220,12 @@
     access: [["Medical"], ["Command"], ["Research"]]
   - type: Inventory
     templateId: borgDutch
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+  - type: ShowWhiteHealthBars
+    damageContainers:
+    - Biological
 
 - type: entity
   id: BorgChassisService

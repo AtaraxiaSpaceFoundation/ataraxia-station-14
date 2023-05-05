@@ -29,14 +29,14 @@ namespace Content.Client.Commands
                 return;
             }
 
-            if (!_entityManager.TryGetComponent<ShowHealthBarsComponent>(playerEntity, out var glassComp))
+            if (!_entityManager.TryGetComponent<ShowWhiteHealthBarsComponent>(playerEntity, out var glassComp))
             {
-                _entityManager.AddComponent<ShowHealthBarsComponent>((EntityUid) playerEntity);
+                _entityManager.AddComponent<ShowWhiteHealthBarsComponent>((EntityUid) playerEntity);
                 shell.WriteLine("Enabled health overlay.");
                 return;
             }
 
-            _entityManager.RemoveComponent<ShowHealthBarsComponent>((EntityUid) playerEntity);
+            _entityManager.RemoveComponent<ShowWhiteHealthBarsComponent>((EntityUid) playerEntity);
             shell.WriteLine("Disabled health overlay.");
             return;
         }
