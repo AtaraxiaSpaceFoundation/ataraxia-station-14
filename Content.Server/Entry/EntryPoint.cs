@@ -30,6 +30,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.UtkaIntegration;
+using Content.Server.White;
 using Content.Server.White.JoinQueue;
 using Content.Server.White.Jukebox;
 using Content.Server.White.Sponsors;
@@ -108,6 +109,7 @@ namespace Content.Server.Entry
             IoCManager.Resolve<ContentNetworkResourceManager>().Initialize();
             IoCManager.Resolve<GhostKickManager>().Initialize();
             IoCManager.Resolve<ServerInfoManager>().Initialize();
+            UnsafePseudoIoC.Initialize();
 
             //WD-EDIT
             IoCManager.Resolve<SponsorsManager>().Initialize();
