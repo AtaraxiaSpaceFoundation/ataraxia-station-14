@@ -225,6 +225,7 @@
     - CanPilot
     - FootstepSound
     - DoorBumpOpener
+  - type: Carriable
 
 - type: entity
   save: false

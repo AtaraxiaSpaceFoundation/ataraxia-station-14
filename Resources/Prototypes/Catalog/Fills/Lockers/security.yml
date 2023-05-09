@@ -30,7 +30,7 @@
   - type: StorageFill
     contents:
       - id: FlashlightSeclite
-      - id: WeaponEgun
+      - id: WeaponDisabler
       - id: ClothingHeadHatWarden
       - id: ClothingHeadHatBeretWarden
       - id: ClothingBeltSecurityFilled
@@ -105,7 +105,7 @@
         prob: 0.7
       - id: ClothingNeckCloakMoth #bzzz Moth-pocalypse
         prob: 0.15
-      - id: WeaponEgun
+      - id: WeaponDisabler
 
 - type: entity
   id: LockerDetectiveFilled
