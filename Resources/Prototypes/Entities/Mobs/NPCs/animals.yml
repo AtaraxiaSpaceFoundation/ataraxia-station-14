@@ -1339,6 +1339,7 @@
   components:
   - type: Body
     prototype: Mouse
+  - type: FelinidFood
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
@@ -2550,7 +2551,7 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
-   
+
 - type: entity
   name: space cat
   id: MobCatSpace
