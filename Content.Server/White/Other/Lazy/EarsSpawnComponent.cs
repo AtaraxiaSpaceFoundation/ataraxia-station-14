@@ -6,8 +6,15 @@ namespace Content.Server.White.Other.Lazy;
 [RegisterComponent]
 public sealed partial class EarsSpawnComponent : Component
 {
-    [DataField("summonAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string SummonAction = "ActionEarsSummon";
+    [DataField("summonActionEars", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string SummonActionEars = "ActionEarsSummon";
 
-    [DataField("summonActionEntity")] public EntityUid? SummonActionEntity;
+    [DataField("summonActionCat", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string SummonActionCat = "ActionCatSummon";
+
+    [DataField("summonActionEntityEars")] public EntityUid? SummonActionEntityEars;
+    [DataField("summonActionEntityCat")] public EntityUid? SummonActionEntityCat;
+
+    public int CatEarsUses = 30;
+    public int СatSpawnUses = 20;
 }
