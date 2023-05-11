@@ -1,7 +1,7 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Server.White.Other.Lazy;
+namespace Content.Server.White.Other.CustomFluffSystems.merkka;
 
 [RegisterComponent]
 public sealed partial class EarsSpawnComponent : Component

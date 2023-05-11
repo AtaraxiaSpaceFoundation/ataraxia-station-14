@@ -8,7 +8,7 @@ using Content.Shared.White.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 
-namespace Content.Server.White.Other.Lazy;
+namespace Content.Server.White.Other.CustomFluffSystems.merkka;
 
 public sealed class EarsSpawnSystem : EntitySystem
 {
