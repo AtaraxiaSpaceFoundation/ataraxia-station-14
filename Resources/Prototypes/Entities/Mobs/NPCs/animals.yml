@@ -2964,3 +2964,4 @@
       name: Кошка
       description: Мяу!
     - type: GhostTakeoverAvailable
+    - type: CustomCatExamine
