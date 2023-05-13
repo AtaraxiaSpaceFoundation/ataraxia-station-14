@@ -40,6 +40,7 @@ public sealed class CustomGhostSpriteSystem : EntitySystem
             if (string.Equals(customGhostPrototype.Ckey, ckey, StringComparison.CurrentCultureIgnoreCase))
             {
                 _appearanceSystem.SetData(ghostUid, CustomGhostAppearance.Sprite, customGhostPrototype.CustomSpritePath.ToString());
+                _appearanceSystem.SetData(ghostUid, CustomGhostAppearance.SizeOverride, customGhostPrototype.SizeOverride);
 
                 if(customGhostPrototype.AlphaOverride > 0)
                 {
@@ -55,6 +56,9 @@ public sealed class CustomGhostSpriteSystem : EntitySystem
                 {
                     _metaData.SetEntityDescription(ghostUid, customGhostPrototype.GhostDescription);
                 }
+
+
+
 
                 return;
             }
