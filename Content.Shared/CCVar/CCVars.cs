@@ -1329,7 +1329,7 @@ namespace Content.Shared.CCVar
         /// - When traversing grids it will snap to the nearest cardinal which will generally be imperceptible.
         /// </summary>
         public static readonly CVarDef<bool> CameraRotationLocked =
-            CVarDef.Create("shuttle.camera_rotation_locked", true, CVar.REPLICATED);
+            CVarDef.Create("shuttle.camera_rotation_locked", false, CVar.REPLICATED);
 
         /// <summary>
         /// Whether the arrivals terminal should be on a planet map.
