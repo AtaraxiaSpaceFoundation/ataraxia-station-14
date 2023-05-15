@@ -1,5 +1,5 @@
-using System.Linq;
 using Content.Server.Administration.Managers;
+using Content.Server.UtkaIntegration;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -15,7 +15,7 @@ public sealed class BanCommand : LocalizedCommands
     [Dependency] private readonly IPlayerLocator _locator = default!;
     [Dependency] private readonly IBanManager _bans = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
 
     public override string Command => "ban";
 
@@ -106,6 +106,19 @@ public sealed class BanCommand : LocalizedCommands
         var targetHWid = located.LastHWId;
 
         _bans.CreateServerBan(targetUid, target, player?.UserId, null, targetHWid, minutes, severity, reason, isGlobalBan);
+
+        //WD start
+        var utkaBanned = new UtkaBannedEvent()
+        {
+            Ckey = target,
+            ACkey = player?.Name,
+            Bantype = "server",
+            Duration = minutes,
+            Global = isGlobalBan,
+            Reason = reason
+        };
+        _utkaSockets.SendMessageToAll(utkaBanned);
+        //WD end
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
