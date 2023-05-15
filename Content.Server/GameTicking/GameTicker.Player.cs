@@ -1,5 +1,4 @@
 using Content.Server.Database;
-using Content.Server.UtkaIntegration;
 using Content.Shared.GameTicking;
 using Content.Shared.GameWindow;
 using Content.Shared.Players;
@@ -17,7 +16,6 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IServerDbManager _dbManager = default!;
-        [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
 
         private void InitializePlayer()
         {
@@ -66,14 +64,6 @@ namespace Content.Server.GameTicking
                     _chatManager.SendAdminAnnouncement(firstConnection
                         ? Loc.GetString("player-first-join-message", ("name", args.Session.Name))
                         : Loc.GetString("player-join-message", ("name", args.Session.Name)));
-
-                    //WD start
-                    var utkaPlayerJoined = new UtkaPlayerJoinedEvent()
-                    {
-                        Ckey = args.Session.Name
-                    };
-                    _utkaSockets.SendMessageToAll(utkaPlayerJoined);
-                    //WD end
 
                     if (LobbyEnabled && _roundStartCountdownHasNotStartedYetDueToNoPlayers)
                     {
@@ -132,14 +122,6 @@ namespace Content.Server.GameTicking
                         _pvsOverride.ClearOverride(GetNetEntity(mindId!.Value));
                         mind.Session = null;
                     }
-
-                    //WD start
-                    var utkaPlayerLeft = new UtkaPlayerLeftEvent()
-                    {
-                        Ckey = args.Session.Name
-                    };
-                    _utkaSockets.SendMessageToAll(utkaPlayerLeft);
-                    //WD end
 
                     if (_playerGameStatuses.ContainsKey(args.Session.UserId)) //WD-EDIT
                         _userDb.ClientDisconnected(session);
