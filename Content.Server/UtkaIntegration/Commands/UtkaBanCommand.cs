@@ -15,7 +15,6 @@ namespace Content.Server.UtkaIntegration;
 public sealed class UtkaBanCommand : IUtkaCommand
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private UtkaTCPWrapper _utkaSocketWrapper = default!;
 
     private const ILocalizationManager LocalizationManager = default!;
@@ -125,7 +124,9 @@ public sealed class UtkaBanCommand : IUtkaCommand
             Bantype = "server",
             Duration = message.Duration,
             Global = message.Global,
-            Reason = message.Reason
+            Reason = message.Reason,
+            Rid = EntitySystem.Get<GameTicker>().RoundId,
+            BanId = banId
         };
         _utkaSocketWrapper.SendMessageToAll(utkaBanned);
     }

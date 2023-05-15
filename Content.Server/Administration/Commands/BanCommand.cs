@@ -1,9 +1,13 @@
 using Content.Server.Administration.Managers;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using Content.Server.Database;
+using Content.Server.GameTicking;
 using Content.Server.UtkaIntegration;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 
@@ -108,6 +112,10 @@ public sealed class BanCommand : LocalizedCommands
         _bans.CreateServerBan(targetUid, target, player?.UserId, null, targetHWid, minutes, severity, reason, isGlobalBan);
 
         //WD start
+        var dbMan = IoCManager.Resolve<IServerDbManager>();
+        var banlist = await dbMan.GetServerBansAsync(null, targetUid, null);
+        var banId = banlist[^1].Id;
+
         var utkaBanned = new UtkaBannedEvent()
         {
             Ckey = target,
@@ -115,7 +123,9 @@ public sealed class BanCommand : LocalizedCommands
             Bantype = "server",
             Duration = minutes,
             Global = isGlobalBan,
-            Reason = reason
+            Reason = reason,
+            Rid = EntitySystem.Get<GameTicker>().RoundId,
+            BanId = banId
         };
         _utkaSockets.SendMessageToAll(utkaBanned);
         //WD end

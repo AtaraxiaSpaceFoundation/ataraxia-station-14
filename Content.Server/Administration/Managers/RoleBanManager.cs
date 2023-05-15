@@ -318,7 +318,9 @@ public sealed class RoleBanManager
             Duration = duration,
             Bantype = job,
             Global = global,
-            Reason = reason
+            Reason = reason,
+            Rid = EntitySystem.Get<GameTicker>().RoundId,
+            BanId = banId
         };
 
         _utkaSockets.SendMessageToAll(utkaBanned);
