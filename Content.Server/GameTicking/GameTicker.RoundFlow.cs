@@ -222,7 +222,6 @@ namespace Content.Server.GameTicking
             var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
             var stalinBunkerEnabled = _configurationManager.GetCVar(WhiteCVars.StalinEnabled);
 
-            await _stalinManager.RefreshUsersData();
 
             foreach (var (userId, status) in _playerGameStatuses)
             {
@@ -231,6 +230,7 @@ namespace Content.Server.GameTicking
 
                 if (stalinBunkerEnabled)
                 {
+                    await _stalinManager.RefreshUsersData();
                     var playerData = await _stalinManager.AllowEnter(session, false);
 
                     if (!playerData.allow)
