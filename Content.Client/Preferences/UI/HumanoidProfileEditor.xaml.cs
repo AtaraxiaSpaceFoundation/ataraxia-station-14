@@ -207,24 +207,41 @@ namespace Content.Client.Preferences.UI
 
             #region Species
 
+            //WD EDIT
             _speciesList = prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart).ToList();
+
+            if (_sponsorsManager.TryGetInfo(out var sponsor))
+            {
+                for (int i = _speciesList.Count - 1; i >= 0; i--)
+                {
+                    var specie = _speciesList[i];
+
+                    if (specie.SponsorOnly && !sponsor.AllowedMarkings.Contains(specie.ID))
+                    {
+                        _speciesList.RemoveAt(i);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = _speciesList.Count - 1; i >= 0; i--)
+                {
+                    var specie = _speciesList[i];
+
+                    if (specie.SponsorOnly)
+                    {
+                        _speciesList.RemoveAt(i);
+                    }
+                }
+            }
+            //WD EDIT END
 
             for (var i = 0; i < _speciesList.Count; i++)
             {
-                //WD EDIT
-                var specie = _speciesList[i];
+
+                var specie = _speciesList[i]; // WD EDIT
                 var name = Loc.GetString(specie.Name);
 
-                if (specie.SponsorOnly)
-                {
-                    if(_sponsorsManager.TryGetInfo(out var info) && info.AllowedMarkings.Contains(specie.ID))
-                    {
-                        CSpeciesButton.AddItem(name, i);
-                    }
-                    continue;
-                }
-
-                //WD EDIT
                 CSpeciesButton.AddItem(name, i);
             }
 
@@ -1004,6 +1021,8 @@ namespace Content.Client.Preferences.UI
             {
                 return;
             }
+
+            var species = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>();
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
