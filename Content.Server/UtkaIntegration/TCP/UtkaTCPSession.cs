@@ -4,12 +4,14 @@ using System.Text;
 using System.Text.Json;
 using NetCoreServer;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace Content.Server.UtkaIntegration.TCP;
 
 public sealed class UtkaTCPSession : TcpSession
 {
     public event EventHandler<UtkaBaseMessage>? OnMessageReceived;
+    private string BufferCahce = string.Empty;
 
     public bool Authenticated { get; set; }
 
@@ -19,13 +21,9 @@ public sealed class UtkaTCPSession : TcpSession
 
     protected override void OnReceived(byte[] buffer, long offset, long size)
     {
-        if (!ValidateMessage(buffer, offset, size, out var message))
-        {
-            this.SendAsync("Validation fail");
-            return;
-        }
+        BufferCahce += Encoding.UTF8.GetString(buffer, (int) offset, (int) size);
 
-        OnMessageReceived?.Invoke(this, message!);
+        HandleCache();
     }
 
     protected override void OnError(SocketError error)
@@ -36,13 +34,12 @@ public sealed class UtkaTCPSession : TcpSession
 
     protected override void OnConnected()
     {
-        SendAsync("HandShake??? Hello.");
+        SendAsync("Utka sosal handshake");
         base.OnConnected();
     }
 
-    private bool ValidateMessage(byte[] buffer, long offset, long size, out UtkaBaseMessage? fromDiscordMessage)
+    private bool ValidateMessage(string message, out UtkaBaseMessage? fromDiscordMessage)
     {
-        var message = Encoding.UTF8.GetString(buffer, (int) offset, (int) size);
         fromDiscordMessage = null;
 
         if (string.IsNullOrEmpty(message))
@@ -77,5 +74,26 @@ public sealed class UtkaTCPSession : TcpSession
     {
         base.OnDisconnecting();
         Dispose();
+        BufferCahce = string.Empty;
+    }
+
+    private void HandleCache()
+    {
+        var regex = new Regex("{.+?}");
+        var matches = regex.Matches(BufferCahce);
+
+        foreach (Match match in matches)
+        {
+            var pos = BufferCahce.IndexOf(match.Value);
+            BufferCahce = BufferCahce.Substring(0, pos) + BufferCahce.Substring(pos + match.Value.Length);
+
+            if (!ValidateMessage(match.Value, out var message))
+            {
+                this.SendAsync("Validation fail");
+                return;
+            }
+
+            OnMessageReceived?.Invoke(this, message!);
+        }
     }
 }
