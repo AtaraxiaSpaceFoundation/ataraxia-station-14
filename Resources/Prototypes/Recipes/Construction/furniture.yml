@@ -86,7 +86,7 @@
 
 - type: construction
   name: comfy chair
-  id: ChairComfy
+  id: ComfyChair
   graph: Seat
   startNode: start
   targetNode: chairComfy
@@ -103,7 +103,7 @@
 
 - type: construction
   name: pilots chair
-  id: chairPilotSeat
+  id: ChairPilotSeat
   graph: Seat
   startNode: start
   targetNode: chairPilotSeat
@@ -464,7 +464,7 @@
 
 #misc
 - type: construction
-  id: MeatSpike
+  id: KitchenSpike
   name: meat spike
   description: A spike found in kitchens butchering animals.
   graph: MeatSpike
@@ -481,7 +481,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: Curtains
+  id: HospitalCurtains
   name: curtains
   description: Contains less than 1% mercury.
   graph: Curtains

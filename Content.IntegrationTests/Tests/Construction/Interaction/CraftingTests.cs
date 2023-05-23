@@ -29,7 +29,7 @@ public sealed class CraftingTests : InteractionTest
     public async Task CraftGrenade()
     {
         await PlaceInHands(Steel, 5);
-        await CraftItem("ModularGrenadeRecipe");
+        await CraftItem("ModularGrenade");
         await FindEntity("ModularGrenade");
     }
 

@@ -270,7 +270,7 @@
 - type: entity
   parent: SheetPGlass
   id: SheetRPGlass
-  name: reinforced plasma glass
+  name: усиленное плазменное стекло
   description: A reinforced sheet of translucent plasma.
   suffix: Full
   components:
@@ -312,7 +312,7 @@
 - type: entity
   parent: SheetRPGlass
   id: SheetRPGlass1
-  name: reinforced plasma glass
+  name: усиленное плазменное стекло
   suffix: Single
   components:
   - type: Sprite
