@@ -316,3 +316,24 @@ public sealed class UtkaUnbanResponse : UtkaBaseMessage
     [JsonPropertyName("unbanned")]
     public bool? Unbanned { get; set; }
 }
+
+public sealed class UtkaUnJobBanRequest : UtkaBaseMessage
+{
+    [JsonPropertyName("command")]
+    public override string? Command => "unjobban";
+
+    [JsonPropertyName("a_ckey")]
+    public string? ACkey { get; set; }
+
+    [JsonPropertyName("bid")]
+    public int? Bid { get; set; }
+}
+
+public sealed class UtkaUnJobBanResponse : UtkaBaseMessage
+{
+    [JsonPropertyName("command")]
+    public override string? Command => "unjobban";
+
+    [JsonPropertyName("unbanned")]
+    public bool? Unbanned { get; set; }
+}
