@@ -128,6 +128,9 @@ public class EmoteAnimationSystem : EntitySystem
             return;
 
         component.AnimationId = state.AnimationId;
-        _emoteList[component.AnimationId].Invoke(uid);
+        if (_emoteList.ContainsKey(component.AnimationId))
+        {
+            _emoteList[component.AnimationId].Invoke(uid);
+        }
     }
 }
