@@ -3,6 +3,7 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared.Administration;
+using Content.Server.White.EndOfRoundStats.InstrumentPlayed;
 using Content.Shared.Instruments;
 using Content.Shared.Instruments.UI;
 using Content.Shared.Physics;
@@ -30,6 +31,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly InteractionSystem _interactions = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private const float MaxInstrumentBandRange = 10f;
 
@@ -113,6 +115,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
         instrument.Playing = true;
         Dirty(uid, instrument);
+        instrument.TimeStartedPlaying = _gameTiming.CurTime;
     }
 
     private void OnMidiStop(InstrumentStopMidiEvent msg, EntitySessionEventArgs args)
@@ -235,7 +238,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
     {
         var metadataQuery = EntityManager.GetEntityQuery<MetaDataComponent>();
 
-        if (Deleted(uid, metadataQuery))
+        if (Deleted(uid))
             return Array.Empty<(NetEntity, string)>();
 
         var list = new ValueList<(NetEntity, string)>();
@@ -290,6 +293,17 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
             RaiseNetworkEvent(new InstrumentStopMidiEvent(netUid));
         }
+
+        if (instrument.TimeStartedPlaying != null && instrument.InstrumentPlayer != null)
+        {
+            var username = instrument.InstrumentPlayer.Name;
+            var entity = instrument.InstrumentPlayer.AttachedEntity;
+            var name = entity != null ? MetaData((EntityUid) entity).EntityName : "Unknown";
+
+            RaiseLocalEvent(new InstrumentPlayedStatEvent(name, (TimeSpan) (_gameTiming.CurTime - instrument.TimeStartedPlaying), username));
+        }
+
+        instrument.TimeStartedPlaying = null;
 
         instrument.Playing = false;
         instrument.Master = null;
@@ -392,7 +406,6 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         }
 
         var activeQuery = EntityManager.GetEntityQuery<ActiveInstrumentComponent>();
-        var metadataQuery = EntityManager.GetEntityQuery<MetaDataComponent>();
         var transformQuery = EntityManager.GetEntityQuery<TransformComponent>();
 
         var query = AllEntityQuery<ActiveInstrumentComponent, InstrumentComponent>();
@@ -400,7 +413,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         {
             if (instrument.Master is {} master)
             {
-                if (Deleted(master, metadataQuery))
+                if (Deleted(master))
                 {
                     Clean(uid, instrument);
                 }

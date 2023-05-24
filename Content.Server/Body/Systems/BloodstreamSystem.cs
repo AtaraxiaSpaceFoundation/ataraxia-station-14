@@ -5,6 +5,7 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.HealthExaminable;
 using Content.Server.Popups;
+using Content.Server.White.EndOfRoundStats.BloodLost;
 using Content.Shared.Alert;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -92,6 +93,8 @@ public sealed class BloodstreamSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        var totalBloodLost = 0f; // White-EndOfRoundStats
+
         var query = EntityQueryEnumerator<BloodstreamComponent>();
         while (query.MoveNext(out var uid, out var bloodstream))
         {
@@ -125,6 +128,7 @@ public sealed class BloodstreamSystem : EntitySystem
                 TryModifyBloodLevel(uid, (-bloodstream.BleedAmount), bloodstream);
                 // Bleed rate is reduced by the bleed reduction amount in the bloodstream component.
                 TryModifyBleedAmount(uid, -bloodstream.BleedReductionAmount, bloodstream);
+                totalBloodLost += bloodstream.BleedAmount; // White - EndOfRoundStats
             }
 
             // deal bloodloss damage if their blood level is below a threshold.
@@ -157,6 +161,7 @@ public sealed class BloodstreamSystem : EntitySystem
                 bloodstream.StatusTime = 0;
             }
         }
+        RaiseLocalEvent(new BloodLostStatEvent(totalBloodLost)); // White-EndOfRoundStats
     }
 
     private void OnComponentInit(Entity<BloodstreamComponent> entity, ref ComponentInit args)
