@@ -86,7 +86,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     /// <summary>
     /// used internally for tracking how many times an item was purchased.
     /// </summary>
-    public int PurchaseAmount = 0;
+    public int PurchaseAmount;
 
     /// <summary>
     /// Used to delay purchase of some items.

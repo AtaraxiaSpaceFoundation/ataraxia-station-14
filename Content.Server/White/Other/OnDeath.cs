@@ -3,6 +3,7 @@ using Content.Server.Ghost.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -18,7 +19,7 @@ public sealed class OnDeath : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<HumanoidAppearanceComponent, MobStateChangedEvent>(HandleDeathEvent);
-        SubscribeLocalEvent<GhostComponent, ComponentInit>(OnGhosted);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerDetachedEvent>(OnDetach);
     }
 
     private readonly Dictionary<EntityUid, EntityUid> _playingStreams = new();
@@ -89,9 +90,8 @@ public sealed class OnDeath : EntitySystem
     private void PlayDeathSound(EntityUid uid)
         => _audio.PlayEntity(DeathSounds, uid, uid, AudioParams.Default);
 
-    private void OnGhosted(EntityUid uid, GhostComponent component, ComponentInit args)
-    {
-        StopPlayingStream(uid);
-    }
+    private void OnDetach(EntityUid uid, HumanoidAppearanceComponent component, PlayerDetachedEvent args)
+        => StopPlayingStream(args.Entity);
+
 
 }
