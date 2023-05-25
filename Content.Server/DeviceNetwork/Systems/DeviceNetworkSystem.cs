@@ -6,8 +6,9 @@ using Robust.Shared.Random;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Doors.Components;
 using Content.Shared.Examine;
+using Robust.Shared.Timing;
 
 namespace Content.Server.DeviceNetwork.Systems
 {
@@ -38,6 +39,10 @@ namespace Content.Server.DeviceNetwork.Systems
         /// </summary>
         private Queue<DeviceNetworkPacketEvent> _nextQueue = null!;
 
+        [Dependency] private readonly IGameTiming _gameTiming = default!; //WD
+
+        private readonly TimeSpan _packetDelay = TimeSpan.FromMilliseconds(500); //WD
+        private TimeSpan _lastPacket = TimeSpan.Zero; //WD
 
         public override void Initialize()
         {
@@ -54,6 +59,20 @@ namespace Content.Server.DeviceNetwork.Systems
 
             while (_activeQueue.TryDequeue(out var packet))
             {
+                //WD edit
+                if (TryComp<DoorComponent>(packet.Sender, out _))
+                {
+                    if (_lastPacket == TimeSpan.Zero)
+                        _lastPacket = _gameTiming.CurTime;
+                    else
+                    {
+                        if (_gameTiming.CurTime - _lastPacket < _packetDelay)
+                            return;
+                    }
+                }
+
+                _lastPacket = _gameTiming.CurTime;
+                //WD edit
                 SendPacket(packet);
             }
 
@@ -358,10 +377,10 @@ namespace Content.Server.DeviceNetwork.Systems
                 if (connection.Owner == packet.Sender)
                     continue;
 
-                RaiseLocalEvent(connection.Owner, beforeEv, false);
+                RaiseLocalEvent(connection.Owner, beforeEv);
 
                 if (!beforeEv.Cancelled)
-                    RaiseLocalEvent(connection.Owner, packet, false);
+                    RaiseLocalEvent(connection.Owner, packet);
                 else
                     beforeEv.Uncancel();
             }
