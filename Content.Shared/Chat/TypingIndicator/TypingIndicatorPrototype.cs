@@ -20,7 +20,7 @@ public sealed partial class TypingIndicatorPrototype : IPrototype
     public string TypingState = default!;
 
     [DataField("offset")]
-    public Vector2 Offset = new(0, 0);
+    public Vector2 Offset = new(0.5f, 0.5f);
 
     [DataField("shader")]
     public string Shader = "unshaded";
