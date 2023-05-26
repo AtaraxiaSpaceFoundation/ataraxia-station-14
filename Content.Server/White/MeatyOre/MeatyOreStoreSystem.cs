@@ -55,14 +55,12 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnPostRoundCleanup);
         SubscribeNetworkEvent<MeatyOreShopRequestEvent>(OnShopRequested);
-        SubscribeLocalEvent<MindComponent, MeatyTraitorRequestActionEvent>(OnAntagPurchase);
         SubscribeLocalEvent<GetVerbsEvent<Verb>>(MeatyOreVerbs);
 
     }
 
     private void MeatyOreVerbs(GetVerbsEvent<Verb> ev)
     {
-        if(ev.User == ev.Target) return;
         if(!EntityManager.TryGetComponent<ActorComponent>(ev.User, out var actorComponent)) return;
         if(!_sponsorsManager.TryGetInfo(actorComponent.PlayerSession.UserId, out _)) return;
         if(!HasComp<HumanoidAppearanceComponent>(ev.Target)) return;
@@ -112,15 +110,6 @@ public sealed class MeatyOreStoreSystem : EntitySystem
         }
         MeatyOrePanelEnabled = newValue;
     }
-
-
-    private void OnAntagPurchase(EntityUid uid, MindComponent component, MeatyTraitorRequestActionEvent args)
-    {
-        if(component.Session == null) return;
-
-        _traitorRuleSystem.MakeTraitor(component.Session!);
-    }
-
     private void OnShopRequested(MeatyOreShopRequestEvent msg, EntitySessionEventArgs args)
     {
 
