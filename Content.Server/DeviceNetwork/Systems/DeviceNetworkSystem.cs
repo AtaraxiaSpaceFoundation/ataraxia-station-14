@@ -6,9 +6,7 @@ using Robust.Shared.Random;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared.Doors.Components;
 using Content.Shared.Examine;
-using Robust.Shared.Timing;
 
 namespace Content.Server.DeviceNetwork.Systems
 {
@@ -39,11 +37,6 @@ namespace Content.Server.DeviceNetwork.Systems
         /// </summary>
         private Queue<DeviceNetworkPacketEvent> _nextQueue = null!;
 
-        [Dependency] private readonly IGameTiming _gameTiming = default!; //WD
-
-        private readonly TimeSpan _packetDelay = TimeSpan.FromMilliseconds(500); //WD
-        private TimeSpan _lastPacket = TimeSpan.Zero; //WD
-
         public override void Initialize()
         {
             SubscribeLocalEvent<DeviceNetworkComponent, MapInitEvent>(OnMapInit);
@@ -59,20 +52,6 @@ namespace Content.Server.DeviceNetwork.Systems
 
             while (_activeQueue.TryDequeue(out var packet))
             {
-                //WD edit
-                if (TryComp<DoorComponent>(packet.Sender, out _))
-                {
-                    if (_lastPacket == TimeSpan.Zero)
-                        _lastPacket = _gameTiming.CurTime;
-                    else
-                    {
-                        if (_gameTiming.CurTime - _lastPacket < _packetDelay)
-                            return;
-                    }
-                }
-
-                _lastPacket = _gameTiming.CurTime;
-                //WD edit
                 SendPacket(packet);
             }
 
@@ -236,7 +215,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.ReceiveFrequency == frequency) return;
+            if (device.ReceiveFrequency == frequency)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -255,7 +235,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.ReceiveAll == receiveAll) return;
+            if (device.ReceiveAll == receiveAll)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -268,7 +249,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.Address == address && device.CustomAddress) return;
+            if (device.Address == address && device.CustomAddress)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -291,8 +273,10 @@ namespace Content.Server.DeviceNetwork.Systems
         /// <summary>
         ///     Try to find a device on a network using its address.
         /// </summary>
-        private bool TryGetDevice(int netId, string address, [NotNullWhen(true)] out DeviceNetworkComponent? device) =>
-            GetNetwork(netId).Devices.TryGetValue(address, out device);
+        private bool TryGetDevice(int netId, string address, [NotNullWhen(true)] out DeviceNetworkComponent? device)
+        {
+            return GetNetwork(netId).Devices.TryGetValue(address, out device);
+        }
 
         private void SendPacket(DeviceNetworkPacketEvent packet)
         {
