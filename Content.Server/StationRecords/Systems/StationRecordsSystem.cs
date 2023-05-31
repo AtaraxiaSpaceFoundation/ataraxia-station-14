@@ -127,7 +127,8 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
             Gender = gender,
             DisplayPriority = jobPrototype.Weight,
             Fingerprint = mobFingerprint,
-            DNA = dna
+            DNA = dna,
+            Profile = profile
         };
 
         var key = AddRecordEntry(station, record);
