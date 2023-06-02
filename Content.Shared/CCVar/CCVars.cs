@@ -202,7 +202,7 @@ namespace Content.Shared.CCVar
         ///     Prototype to use for map pool.
         /// </summary>
         public static readonly CVarDef<string>
-            GameMapPool = CVarDef.Create("game.map_pool", "DefaultMapPool", CVar.SERVERONLY);
+            GameMapPool = CVarDef.Create("game.map_pool", "WhiteMapPool", CVar.SERVERONLY);
 
         /// <summary>
         /// The depth of the queue used to calculate which map is next in rotation.
@@ -1915,7 +1915,7 @@ namespace Content.Shared.CCVar
         ///     Whether or not world generation is enabled.
         /// </summary>
         public static readonly CVarDef<bool> WorldgenEnabled =
-            CVarDef.Create("worldgen.enabled", false, CVar.SERVERONLY);
+            CVarDef.Create("worldgen.enabled", true, CVar.SERVERONLY);
 
         /// <summary>
         ///     The worldgen config to use.
@@ -1927,7 +1927,7 @@ namespace Content.Shared.CCVar
         ///     The maximum amount of time the entity GC can process, in ms.
         /// </summary>
         public static readonly CVarDef<int> GCMaximumTimeMs =
-            CVarDef.Create("entgc.maximum_time_ms", 5, CVar.SERVERONLY);
+            CVarDef.Create("entgc.maximum_time_ms", 500, CVar.SERVERONLY);
 
         /*
          * Replays
