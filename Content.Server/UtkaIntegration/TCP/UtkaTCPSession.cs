@@ -28,13 +28,13 @@ public sealed class UtkaTCPSession : TcpSession
 
     protected override void OnError(SocketError error)
     {
-        SendAsync($"{error.ToString()}");
+        SendAsync($"{error.ToString()}&%^sep^%&");
         base.OnError(error);
     }
 
     protected override void OnConnected()
     {
-        SendAsync("Utka sosal handshake");
+        SendAsync("Utka sosal handshake&%^sep^%&");
         base.OnConnected();
     }
 
@@ -97,7 +97,7 @@ public sealed class UtkaTCPSession : TcpSession
 
             if (!ValidateMessage(handle, out var message))
             {
-                SendAsync("Validation fail");
+                SendAsync("Validation fail&%^sep^%&");
                 return;
             }
 
