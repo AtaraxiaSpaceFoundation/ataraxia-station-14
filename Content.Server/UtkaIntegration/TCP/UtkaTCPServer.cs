@@ -44,7 +44,9 @@ public sealed class UtkaTCPServer : TcpServer
         {
             if(!session.Authenticated) continue;
 
-            session.SendAsync(JsonSerializer.Serialize(message, message.GetType()));
+            var json = JsonSerializer.Serialize(message, message.GetType());
+
+            session.SendAsync(json + "&%^sep^%&");
         }
     }
 
