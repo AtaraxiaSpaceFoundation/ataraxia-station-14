@@ -88,23 +88,25 @@ public sealed class CuffedTimeStatSystem : EntitySystem
 
     private string GenerateTopPlayer(PlayerData data, TimeSpan timeCuffed)
     {
+        var line = String.Empty;
+
         if (data.Username != null)
-        {
-            return Loc.GetString
+            line += Loc.GetString
             (
                 "eorstats-cuffedtime-hasusername",
                 ("username", data.Username),
                 ("name", data.Name),
                 ("timeCuffedMinutes", Math.Round(timeCuffed.TotalMinutes))
             );
-        }
+        else
+            line += Loc.GetString
+            (
+                "eorstats-cuffedtime-hasnousername",
+                ("name", data.Name),
+                ("timeCuffedMinutes", Math.Round(timeCuffed.TotalMinutes))
+            );
 
-        return Loc.GetString
-        (
-            "eorstats-cuffedtime-nousername",
-            ("name", data.Name),
-            ("timeCuffedMinutes", Math.Round(timeCuffed.TotalMinutes))
-        );
+        return line;
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
