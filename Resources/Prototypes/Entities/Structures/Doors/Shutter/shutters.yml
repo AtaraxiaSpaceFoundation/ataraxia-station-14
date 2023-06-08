@@ -35,6 +35,7 @@
   - type: Door
     openDrawDepth: BlastDoors
     closedDrawDepth: BlastDoors
+    canCrush: false
     bumpOpen: false
     clickOpen: false
     closeTimeOne: 0.2
