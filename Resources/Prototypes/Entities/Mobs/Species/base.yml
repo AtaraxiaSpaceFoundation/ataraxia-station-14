@@ -205,7 +205,6 @@
     spawned:
       - id: FoodMeat
         amount: 5
-  - type: TTS
   - type: Speech
     speechSounds: Alto
   - type: DamageForceSay
@@ -230,6 +229,10 @@
     - FootstepSound
     - DoorBumpOpener
   - type: Carriable
+  - type: TTS
+  - type: DeathGasps
+  - type: ExaminableClothes
+  - type: CharacterInformation
 
 - type: entity
   save: false
