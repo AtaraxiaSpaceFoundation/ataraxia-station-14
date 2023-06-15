@@ -72,14 +72,14 @@ public sealed class RenameCommand : IConsoleCommand
                 {
                     var origin = keyStorage.Key.Value.OriginStation;
 
-                    if (recordsSystem.TryGetRecord<GeneralStationRecord>(origin,
+                    if (recordsSystem.TryGetRecord<GeneralStationRecord>(_entManager.GetEntity(origin),
                             keyStorage.Key.Value,
                             out var generalRecord))
                     {
                         generalRecord.Name = name;
                     }
 
-                    recordsSystem.Synchronize(origin);
+                    recordsSystem.Synchronize(_entManager.GetEntity(origin));
                 }
             }
         }

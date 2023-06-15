@@ -224,7 +224,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         if (!Resolve(station, ref records))
             return StationRecordKey.Invalid;
 
-        return records.Records.AddRecordEntry(station, record);
+        return records.Records.AddRecordEntry(GetNetEntity(station), record);
     }
 
     /// <summary>

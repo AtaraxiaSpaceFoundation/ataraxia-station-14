@@ -56,7 +56,7 @@ public sealed partial class StationRecordSet
     /// </summary>
     /// <param name="entry">Entry to add.</param>
     /// <typeparam name="T">Type of the entry that's being added.</typeparam>
-    public StationRecordKey AddRecordEntry<T>(EntityUid station, T entry)
+    public StationRecordKey AddRecordEntry<T>(NetEntity station, T entry)
     {
         if (entry == null)
             return StationRecordKey.Invalid;
