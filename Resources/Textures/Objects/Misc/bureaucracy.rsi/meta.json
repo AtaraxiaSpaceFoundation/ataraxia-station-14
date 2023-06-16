@@ -245,6 +245,12 @@
     {
       "name": "paper_stamp-warden"
     },
+      {
+          "name": "stamp-lawyer"
+      },
+      {
+          "name": "paper_stamp-lawyer"
+      },
     {
       "name": "paper_stamp-generic"
     }
