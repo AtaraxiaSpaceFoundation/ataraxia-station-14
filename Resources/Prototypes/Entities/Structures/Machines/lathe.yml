@@ -436,6 +436,7 @@
       - SodaDispenserMachineCircuitboard
       - TelecomServerCircuitboard
       - MassMediaCircuitboard
+      - CriminalRecordsServerCircuitboard # WD-EDIT
   - type: MaterialStorage
     whitelist:
       tags:

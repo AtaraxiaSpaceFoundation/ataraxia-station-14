@@ -48,10 +48,11 @@ public sealed class CriminalRecordsConsoleBuiState : BoundUserInterfaceState
     public Dictionary<StationRecordKey, CriminalRecordInfo>? Cache { get; }
     public IdCardNetInfo? ContainedId { get; }
     public bool IsAllowed { get; }
+    public bool HasServer { get; }
     //public GeneralStationRecordsFilter? Filter { get; }
     public CriminalRecordsConsoleBuiState(StationRecordKey? key, GeneralStationRecord? record,
         Dictionary<StationRecordKey, string>? recordListing, Dictionary<StationRecordKey, CriminalRecordInfo>? cache
-           , IdCardNetInfo? containedId, bool isAllowed) //GeneralStationRecordsFilter? newFilter
+           , IdCardNetInfo? containedId, bool isAllowed, bool hasServer) //GeneralStationRecordsFilter? newFilter
     {
         SelectedKey = key;
         Record = record;
@@ -59,6 +60,7 @@ public sealed class CriminalRecordsConsoleBuiState : BoundUserInterfaceState
         Cache = cache;
         ContainedId = containedId;
         IsAllowed = isAllowed;
+        HasServer = hasServer;
         //Filter = newFilter;
     }
 

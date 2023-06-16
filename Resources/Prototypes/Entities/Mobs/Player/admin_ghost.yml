@@ -83,6 +83,9 @@
   - type: Stripping
   - type: SolutionScanner
   - type: IgnoreUIRange
+  - type: ShowSecurityIcons
+  - type: ShowHealthIcons
+  - type: ShowWhiteHealthBars
 
 - type: entity
   id: ActionAGhostShowSolar

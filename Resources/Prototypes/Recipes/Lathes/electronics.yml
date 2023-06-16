@@ -781,3 +781,13 @@
      Steel: 100
      Glass: 900
      Gold: 100
+
+# WD-EDIT
+
+- type: latheRecipe
+  id: CriminalRecordsServerCircuitboard
+  result: CriminalRecordsServerCircuitboard
+  completetime: 4
+  materials:
+     Steel: 100
+     Glass: 900
