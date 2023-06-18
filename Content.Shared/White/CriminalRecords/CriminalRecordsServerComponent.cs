@@ -33,8 +33,7 @@ public sealed class CriminalRecordInfo
     }
 }
 
-[RegisterComponent]
-[NetworkedComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class CriminalRecordsServerComponent : Component
 {
     [DataField("Cache")] public Dictionary<StationRecordKey, CriminalRecordInfo> Cache = new();
