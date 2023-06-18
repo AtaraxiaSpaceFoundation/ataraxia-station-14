@@ -115,7 +115,7 @@ public sealed class TTSSystem : EntitySystem
     private bool TryCreateAudioSource(byte[] data, [NotNullWhen(true)] out IAudioSource? source)
     {
         var dataStream = new MemoryStream(data) { Position = 0 };
-        var audioStream = _audioSystem.LoadAudioWav(dataStream);
+        var audioStream = _audioSystem.LoadAudioOggVorbis(dataStream);
         source = _audioSystem.CreateAudioSource(audioStream);
         if (source == null)
         {
