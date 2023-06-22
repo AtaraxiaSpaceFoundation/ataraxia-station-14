@@ -308,9 +308,9 @@ namespace Content.Server.GameTicking
                 _mind.TransferTo(mindId, ghost, mind: mind);
 
             var player = mind.Session;
-            var userId = player!.UserId;
-            if (!_ghostSystem._deathTime.TryGetValue(userId, out _))
-                _ghostSystem._deathTime[userId] = _gameTiming.CurTime;
+            var userId = player?.UserId;
+            if (userId.HasValue && !_ghostSystem._deathTime.TryGetValue(userId.Value, out _))
+                _ghostSystem._deathTime[userId.Value] = _gameTiming.CurTime;
             return true;
         }
 
