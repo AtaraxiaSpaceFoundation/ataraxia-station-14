@@ -126,11 +126,10 @@ namespace Content.Client.Preferences.UI
                     continue;
                 }
 
-                isDisplayedMaxSlots = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
-                if (isDisplayedMaxSlots)
-                    break;
-
                 numberOfFullSlots++;
+
+                isDisplayedMaxSlots = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
+
                 var characterPickerButton = new CharacterPickerButton(_entityManager,
                     _preferencesManager,
                     _prototypeManager,
@@ -148,6 +147,7 @@ namespace Content.Client.Preferences.UI
                     UpdateUI();
                     args.Event.Handle();
                 };
+                characterPickerButton.Disabled = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots + 1;
             }
 
             _createNewCharacterButton.Disabled = isDisplayedMaxSlots;
