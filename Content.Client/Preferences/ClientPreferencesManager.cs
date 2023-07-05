@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using Content.Client.Administration.Managers;
 using Content.Client.White.Sponsors;
+using Content.Shared.Administration;
 using Content.Shared.Preferences;
 using Robust.Client;
-using Robust.Shared.IoC;
+using Robust.Client.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
@@ -22,6 +22,8 @@ namespace Content.Client.Preferences
 
         //WD-EDIT
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly IClientAdminManager _adminManager = default!;
         //WD-EDIT
 
         public event Action? OnServerDataLoaded;
@@ -67,7 +69,7 @@ namespace Content.Client.Preferences
         {
             //WD-EDIT
             var allowedMarkings = _sponsorsManager.TryGetInfo(out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
-            profile.EnsureValid(allowedMarkings);
+            profile.EnsureValid(allowedMarkings, _adminManager.HasFlag(AdminFlags.AdminSpecies));
             //WD-EDIT
             var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) {[slot] = profile};
             Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor);

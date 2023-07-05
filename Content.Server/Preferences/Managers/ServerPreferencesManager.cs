@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Server.Humanoid;
 using Content.Server.White.Sponsors;
@@ -29,7 +30,9 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private readonly IPrototypeManager _protos = default!;
 
         // WD-EDIT
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly SponsorsManager _sponsors = default!;
+        [Dependency] private readonly IAdminManager _adminManager = default!;
         // WD-EDIT
 
         // Cache player prefs on the server so we don't need as much async hell related to them.
@@ -104,7 +107,14 @@ namespace Content.Server.Preferences.Managers
 
             // WD-EDIT
             var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
-            profile.EnsureValid(allowedMarkings);
+
+            bool isAdminSpecie = false;
+            if (_playerManager.TryGetSessionById(message.MsgChannel.UserId, out var session))
+            {
+                isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+            }
+
+            profile.EnsureValid(allowedMarkings, isAdminSpecie);
             // WD-EDIT
 
             var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
@@ -204,7 +214,8 @@ namespace Content.Server.Preferences.Managers
                     foreach (var (_, profile) in prefs.Characters)
                     {
                         var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
-                        profile.EnsureValid(allowedMarkings);
+                        bool isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+                        profile.EnsureValid(allowedMarkings, isAdminSpecie);
                     }
                     // WD-EDIT
 

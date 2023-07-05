@@ -15,6 +15,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Administration.Managers;
+using Content.Shared.Administration;
 
 namespace Content.Shared.Preferences
 {
@@ -406,7 +408,7 @@ namespace Content.Shared.Preferences
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
-        public void EnsureValid(string[] sponsorMarkings) //WD-EDIT
+        public void EnsureValid(string[] sponsorMarkings, bool isAdminSpecie) //WD-EDIT
         {
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
 
@@ -416,7 +418,8 @@ namespace Content.Shared.Preferences
                 speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);
             }
 
-            if (speciesPrototype.SponsorOnly && !sponsorMarkings.Contains(Species))
+            if (speciesPrototype.SponsorOnly && !sponsorMarkings.Contains(Species)
+                && speciesPrototype.ForAdmins && !isAdminSpecie)
             {
                 Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
                 speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);

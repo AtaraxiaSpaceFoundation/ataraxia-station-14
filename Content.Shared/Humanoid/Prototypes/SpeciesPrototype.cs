@@ -128,6 +128,9 @@ public sealed partial class SpeciesPrototype : IPrototype
 
     [DataField("sponsorOnly")]
     public bool SponsorOnly { get; } = false;
+
+    [DataField("forAmins")]
+    public bool ForAdmins { get; } = false;
 }
 
 public enum SpeciesNaming : byte
