@@ -6,6 +6,7 @@ using Content.Server.Shuttles.Events;
 using Content.Server.Station.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Doors.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Maps;
@@ -504,6 +505,11 @@ public sealed partial class ShuttleSystem
         while (childEnumerator.MoveNext(out var child))
         {
             if (!_buckleQuery.TryGetComponent(child, out var buckle) || buckle.Buckled)
+                continue;
+
+            // WD
+            if (_inventory.TryGetSlotEntity(child, "shoes", out var shoes) &&
+                TryComp<MagbootsComponent>(shoes, out var magboots) && magboots.On)
                 continue;
 
             toKnock.Add(child);
