@@ -1,5 +1,4 @@
-﻿using Content.Server.Administration.Managers;
-using Content.Server.Chat.Managers;
+﻿using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Roles;
@@ -9,7 +8,6 @@ using Content.Server.White.Sponsors;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
-using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles.Jobs;
@@ -22,7 +20,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Random;
 
 namespace Content.Server.White;
 
@@ -42,8 +39,8 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
 
     private static readonly string StorePresetPrototype = "StorePresetMeatyOre";
-    private static readonly string MeatyOreCurrensyPrototype = "MeatyOreCoin";
-    private static bool MeatyOrePanelEnabled;
+    private static readonly string MeatyOreCurrencyPrototype = "MeatyOreCoin";
+    private bool _meatyOrePanelEnabled;
 
 
     private readonly Dictionary<NetUserId, StoreComponent> _meatyOreStores = new();
@@ -81,10 +78,10 @@ public sealed class MeatyOreStoreSystem : EntitySystem
         {
             Text = $"Выдать роль.",
             ConfirmationPopup = true,
-            Message = $"Цена - {MeatyOreCurrensyPrototype}:10",
+            Message = $"Цена - {MeatyOreCurrencyPrototype}:10",
             Act = () =>
             {
-                _storeSystem.TryAddCurrency(new Dictionary<string, FixedPoint2> {{MeatyOreCurrensyPrototype, -10}}, store.Owner, store);
+                _storeSystem.TryAddCurrency(new Dictionary<string, FixedPoint2> {{MeatyOreCurrencyPrototype, -10}}, store.Owner, store);
                 _traitorRuleSystem.MakeTraitor(mind.Session);
             },
             Category = VerbCategory.MeatyOre
@@ -94,9 +91,9 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
     }
 
-    private void OnPanelEnableChanged(bool newValue)
+    private void OnPanelEnableChanged(bool enabled)
     {
-        if (newValue != true)
+        if (!enabled)
         {
             foreach (var meatyOreStoreData in _meatyOreStores)
             {
@@ -108,14 +105,15 @@ public sealed class MeatyOreStoreSystem : EntitySystem
                 _storeSystem.CloseUi(playerEntity.Value, meatyOreStoreData.Value);
             }
         }
-        MeatyOrePanelEnabled = newValue;
+
+        _meatyOrePanelEnabled = enabled;
     }
     private void OnShopRequested(MeatyOreShopRequestEvent msg, EntitySessionEventArgs args)
     {
 
         var playerSession = args.SenderSession;
 
-        if (!MeatyOrePanelEnabled)
+        if (!_meatyOrePanelEnabled)
         {
             _chatManager.DispatchServerMessage(playerSession!, "Мясная панель отключена на данном сервере! Приятной игры!");
             return;
@@ -163,10 +161,10 @@ public sealed class MeatyOreStoreSystem : EntitySystem
         var shopEntity = _entityManager.SpawnEntity("StoreMeatyOreEntity", MapCoordinates.Nullspace);
         var storeComponent = Comp<StoreComponent>(shopEntity);
 
-        _storeSystem.InitializeFromPreset("StorePresetMeatyOre", shopEntity, storeComponent);
+        _storeSystem.InitializeFromPreset(StorePresetPrototype, shopEntity, storeComponent);
         storeComponent.Balance.Clear();
 
-        _storeSystem.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { MeatyOreCurrensyPrototype, balance } }, storeComponent.Owner, storeComponent);
+        _storeSystem.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { MeatyOreCurrencyPrototype, balance } }, storeComponent.Owner, storeComponent);
         _meatyOreStores[userId] = storeComponent;
         _pvsOverrideSystem.AddSessionOverride(shopEntity, session);
 
