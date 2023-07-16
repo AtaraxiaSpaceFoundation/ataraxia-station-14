@@ -233,8 +233,8 @@
     - type: IncreaseDamageOnWield
       damage:
         types:
-          Slash: 7.5
-          Heat: 7.5
+          Slash: 1.5
+          Heat: 1.5
     - type: MeleeWeapon
       attackRate: 1
     - type: Reflect
