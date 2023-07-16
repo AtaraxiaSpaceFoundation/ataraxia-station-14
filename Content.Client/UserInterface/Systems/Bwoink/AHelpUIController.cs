@@ -143,8 +143,9 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
             return;
         }
 
-
-        float bwoinkVolume = _clientAdminManager.IsActive() ? adminBwoinkVolume : defaultBwoinkVolume;
+        var isAdmin = _adminManager.IsActive();
+        var notify = !isAdmin || !message.IsAdmin;
+        float bwoinkVolume = isAdmin ? adminBwoinkVolume : defaultBwoinkVolume;
 
         var audioParams = new AudioParams()
         {
@@ -152,7 +153,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         };
 
 
-        if (localPlayer.UserId != message.TrueSender)
+        if (localPlayer.UserId != message.TrueSender && notify)
         {
             if (_aHelpSound != null)
                 _audio.PlayGlobal(_aHelpSound, Filter.Local(), false, audioParams);
@@ -161,7 +162,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         EnsureUIHelper();
 
-        if (!UIHelper!.IsOpen)
+        if (!UIHelper!.IsOpen && notify)
         {
             UnreadAHelpReceived();
         }
@@ -192,7 +193,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         UIHelper = isAdmin ? new AdminAHelpUIHandler(ownerUserId) : new UserAHelpUIHandler(ownerUserId);
         UIHelper.DiscordRelayChanged(_discordRelayActive);
 
-        UIHelper.SendMessageAction = (userId, textMessage) => _bwoinkSystem?.Send(userId, textMessage);
+        UIHelper.SendMessageAction = (userId, textMessage) => _bwoinkSystem?.Send(userId, textMessage, isAdmin);
         UIHelper.InputTextChanged += (channel, text) => _bwoinkSystem?.SendInputTextUpdated(channel, text.Length > 0);
         UIHelper.OnClose += () => { SetAHelpPressed(false); };
         UIHelper.OnOpen +=  () => { SetAHelpPressed(true); };

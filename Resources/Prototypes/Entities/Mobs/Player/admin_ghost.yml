@@ -88,6 +88,7 @@
     damageContainers:
     - Biological
   - type: ShowWhiteHealthBars
+  - type: Invisibility
 
 - type: entity
   id: ActionAGhostShowSolar

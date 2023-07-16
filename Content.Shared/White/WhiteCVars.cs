@@ -181,6 +181,13 @@ public sealed class WhiteCVars
     public static readonly CVarDef<string> DefaultChatSize =
         CVarDef.Create("white.chat_size_default", "300;500", CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /*
+     * Mark dead chat messages as admin
+     */
+    public static readonly CVarDef<bool> DeadChatAdmin =
+        CVarDef.Create("white.admin.deadChatAdmin", false, CVar.CLIENT | CVar.REPLICATED | CVar.ARCHIVE);
+
+
         /*
      * End of round stats
         */
