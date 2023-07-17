@@ -11,6 +11,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Players;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
@@ -310,9 +311,8 @@ namespace Content.Server.GameTicking
 
                 if (existedAllowedProfile.Count == 0)
                 {
-                    character = HumanoidCharacterProfile.RandomWithSpecies(_robustRandom.Pick(whitelistedSpecies));
-                    _chatManager.DispatchServerMessage(player,
-                        "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
+                    character = HumanoidCharacterProfile.DefaultWithSpecies();
+                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
                 }
                 else
                 {
