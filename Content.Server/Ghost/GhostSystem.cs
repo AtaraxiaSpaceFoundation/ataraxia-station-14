@@ -418,6 +418,10 @@ namespace Content.Server.Ghost
             var entityQuery = EntityQueryEnumerator<GhostComponent, VisibilityComponent>();
             while (entityQuery.MoveNext(out var uid, out _, out var vis))
             {
+                // WD
+                if (EntityManager.TryGetComponent(vis.Owner, out InvisibilityComponent? invis) && invis.Invisible)
+                    continue;
+
                 if (visible)
                 {
                     _visibilitySystem.AddLayer(uid, vis, (int) VisibilityFlags.Normal, false);

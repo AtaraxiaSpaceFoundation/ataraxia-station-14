@@ -51,8 +51,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     private bool _hasUnreadAHelp;
     private string? _aHelpSound;
 
-    private float defaultBwoinkVolume;
-    private float adminBwoinkVolume;
+    private float _defaultBwoinkVolume;
+    private float _adminBwoinkVolume;
 
     public override void Initialize()
     {
@@ -60,9 +60,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         SubscribeNetworkEvent<BwoinkDiscordRelayUpdated>(DiscordRelayUpdated);
         SubscribeNetworkEvent<BwoinkPlayerTypingUpdated>(PeopleTypingUpdated);
-        defaultBwoinkVolume = WhiteCVars.BwoinkVolume.DefaultValue;
-        _cfg.OnValueChanged(WhiteCVars.BwoinkVolume, volume => adminBwoinkVolume = volume);
-
+        _defaultBwoinkVolume = WhiteCVars.BwoinkVolume.DefaultValue;
+        _cfg.OnValueChanged(WhiteCVars.BwoinkVolume, volume => _adminBwoinkVolume = volume, true);
         _adminManager.AdminStatusUpdated += OnAdminStatusUpdated;
         _config.OnValueChanged(CCVars.AHelpSound, v => _aHelpSound = v, true);
     }
@@ -145,7 +144,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         var isAdmin = _adminManager.IsActive();
         var notify = !isAdmin || !message.IsAdmin;
-        float bwoinkVolume = isAdmin ? adminBwoinkVolume : defaultBwoinkVolume;
+        var bwoinkVolume = isAdmin ? _adminBwoinkVolume : _defaultBwoinkVolume;
 
         var audioParams = new AudioParams()
         {
