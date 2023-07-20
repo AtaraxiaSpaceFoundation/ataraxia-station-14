@@ -237,7 +237,7 @@ public sealed class JukeboxSystem : EntitySystem
 
     private JukeboxAudio? TryCreateStream(JukeboxComponent jukeboxComponent, TransformComponent jukeboxXform, TransformComponent playerXform)
     {
-        if (jukeboxComponent.PlayingSongData == null) return null;
+        if (jukeboxComponent.PlayingSongData == null) return null!;
 
         var resourcePath = jukeboxComponent.PlayingSongData.SongPath!;
 
@@ -250,11 +250,13 @@ public sealed class JukeboxSystem : EntitySystem
         }
 
         var playingStream = _clydeAudio.CreateAudioSource(audio.AudioStream);
+
         if (playingStream == null)
             return null!;
 
         playingStream.Volume = _jukeboxVolume;
         playingStream.RolloffFactor = 3.5f;
+        playingStream.PlaybackPosition = jukeboxComponent.PlayingSongData.PlaybackPosition;
 
         playingStream.Position = jukeboxXform.MapPosition.Position;
 
