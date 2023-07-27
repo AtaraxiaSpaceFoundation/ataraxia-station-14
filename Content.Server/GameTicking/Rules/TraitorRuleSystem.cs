@@ -26,6 +26,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server.Objectives;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -45,6 +46,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private readonly RoleSystem _roles = default!; // WD
 
     private int PlayersPerTraitor => _cfg.GetCVar(CCVars.TraitorPlayersPerTraitor);
     private int MaxTraitors => _cfg.GetCVar(CCVars.TraitorMaxTraitors);
@@ -182,6 +184,14 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         if (mind.OwnedEntity is not { } entity)
         {
             Log.Error("Mind picked for traitor did not have an attached entity.");
+            return false;
+        }
+        /*if (HasComp<CultistComponent>(mind.OwnedEntity)) // Cause no CultistRole this why i supposed to do this.......
+        {
+            return false;
+        }*/
+        if (_roles.MindIsAntagonist(mindId))
+        {
             return false;
         }
 

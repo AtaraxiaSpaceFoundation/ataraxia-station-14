@@ -1,5 +1,5 @@
-﻿﻿using Content.Server.Chat.Managers;
-﻿using System.Linq;
+﻿using Content.Server.Chat.Managers;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -8,6 +8,7 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
  using Content.Server.Popups;
  using Content.Server.Roles;
+using Content.Server.Popups;
 using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
 using Content.Server.White.Sponsors;
@@ -18,6 +19,7 @@ using Content.Shared.Humanoid;
  using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Content.Shared.White;
 using Content.Shared.White.MeatyOre;
@@ -49,6 +51,7 @@ public sealed class MeatyOreStoreSystem : EntitySystem
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
+
 
     private HttpClient _httpClient = default!;
     private string _apiUrl = default!;
