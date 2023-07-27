@@ -182,6 +182,13 @@ public sealed class WhiteCVars
         CVarDef.Create("white.chat_size_default", "300;500", CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /*
+    * OnlyInOhio
+     */
+
+    public static readonly CVarDef<string> OnlyInOhio =
+        CVarDef.Create("white.ohio_api_link", "", CVar.SERVERONLY | CVar.ARCHIVE | CVar.CONFIDENTIAL);
+
+    /*
      * Mark dead chat messages as admin
      */
     public static readonly CVarDef<bool> DeadChatAdmin =
