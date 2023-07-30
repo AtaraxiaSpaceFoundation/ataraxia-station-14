@@ -1137,6 +1137,7 @@
     - Scientist
     - ResearchDirector
     - Chef
+    - ResearchAssistant
 
 - type: listing
   id: UplinkSingarityBeacon
