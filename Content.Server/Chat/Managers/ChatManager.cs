@@ -5,6 +5,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.MoMMI;
+using Content.Server.Players;
 using Content.Server.Preferences.Managers;
 using Content.Server.UtkaIntegration;
 using Content.Server.White.Sponsors;
@@ -13,6 +14,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Content.Shared.White;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -62,6 +64,7 @@ namespace Content.Server.Chat.Managers
         private bool _adminOocEnabled = true;
 
         private readonly Dictionary<NetUserId, ChatUser> _players = new();
+        private Dictionary<NetUserId, string> _lastMessages = new();
 
         public void Initialize()
         {
@@ -201,6 +204,29 @@ namespace Content.Server.Chat.Managers
 
             _utkaSocketWrapper.SendMessageToAll(asayEventMessage);
         }
+
+        public bool TrySendNewMessage(ICommonSession session, string newMessage)
+        {
+            if (!_configurationManager.GetCVar(WhiteCVars.ChatAntispam))
+                return true;
+
+            if (_lastMessages.TryGetValue(session.Data.UserId, out var value))
+            {
+                if (value == newMessage)
+                {
+                    DispatchServerMessage(session, "Не повторяйте сообщение.");
+                    return false;
+                }
+
+                _lastMessages[session.Data.UserId] = newMessage;
+            }
+            else
+            {
+                _lastMessages.Add(session.Data.UserId, newMessage);
+            }
+
+            return true;
+        }
         //WD-EDIT
 
         #endregion
@@ -253,6 +279,9 @@ namespace Content.Server.Chat.Managers
             {
                 return;
             }
+
+            if (!TrySendNewMessage(player, message)) // WD
+                return;
 
             Color? colorOverride = null;
             var wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message", ("playerName",player.Name), ("message", FormattedMessage.EscapeText(message)));

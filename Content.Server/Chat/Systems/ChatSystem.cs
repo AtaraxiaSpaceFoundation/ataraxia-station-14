@@ -6,6 +6,10 @@ using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
+using Content.Server.Ghost.Components;
+using Content.Server.Players;
+using Content.Server.Popups;
+using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.UtkaIntegration;
@@ -245,6 +249,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (string.IsNullOrEmpty(message))
             return;
 
+        if (desiredType != InGameICChatType.Emote && player is not null &&
+            !_chatManager.TrySendNewMessage(player, message)) // WD
+            return;
+
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
         {
@@ -300,6 +308,9 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         // If crit player LOOC is disabled, don't send the message at all.
         if (!_critLoocEnabled && _mobStateSystem.IsCritical(source))
+            return;
+
+        if (!_chatManager.TrySendNewMessage(player, message)) // WD
             return;
 
         switch (sendType)
