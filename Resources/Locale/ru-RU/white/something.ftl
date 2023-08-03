@@ -23,8 +23,8 @@ eorstats-slippedcount-none = Экипаж не поскользнулся ни �
 eorstats-slippedcount-topslipper-hasusername = { $username } под именем { $name } был неуклюжим в эту смену и поскользнулся { $slipcount } раз!
 eorstats-slippedcount-topslipper-hasnousername = { $name } был неуклюжим в эту смену и поскользнулся { $slipcount } раз!
 
-
 # Cringers examine system
+
 
 # Он
 
@@ -87,7 +87,24 @@ shoes-they = На ногах у них
 character-information-verb-message = Информация о персонаже
 character-information-verb-text = Информация о персонаже
 character-information-ui-title = Информация о персонаже
-character-information-ui-flavor-text-placeholder =
-    Нет заданного флавора.
-character-information-ui-flavor-text-disabled =
-    На этом сервере отключен флавор.
+character-information-ui-flavor-text-placeholder = Нет заданного флавора.
+character-information-ui-flavor-text-disabled = На этом сервере отключен флавор.
+
+# sm
+
+supermatter-self = Supermatter
+supermatter-danger-message = Danger! Crystal hyperstructure integrity faltering! Integrity: { $integrity }%
+supermatter-warning-message = WARNING! Crystal hyperstructure integrity reaching critical levels! Integrity: { $integrity }%
+supermatter-safe-alert = Crystalline hyperstructure returning to safe operating parameters. Failsafe has been Disengaged. Integrity: { $integrity }%
+supermatter-delamination-overmass = The Supermatter has Reached Critical Mass Falure. Singularity formation Imminent
+supermatter-delamination-default = The Supermatter has Reached Critical Integrity Falure. Emergency Causality Destabilization Field has been Activated.
+supermatter-seconds-before-delam = { $Seconds } Seconds Remain Before Delamination.
+
+# Cult
+
+cult-role-greeting =
+    Вы - член культа!
+    Ваши цели перечислены в меню персонажа.
+    В ваш рюкзак были добавлены предметы, которые помогут вам.
+    И помните - вы не единственный.
+    Слава Нар`си!
