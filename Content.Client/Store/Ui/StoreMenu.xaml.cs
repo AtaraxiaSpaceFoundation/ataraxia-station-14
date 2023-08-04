@@ -159,8 +159,12 @@ public sealed partial class StoreMenu : DefaultWindow
             canBuy = false;
         }
 
-        if (listing.SaleAmount > 0) // WD
+        // WD START
+        if (listing.SaleAmount > 0)
             listingName += $" [СКИДКА] ({listing.SaleAmount}%!)";
+        else if (listing.OldCost.Count > 0)
+            listingName += " [Скидка закончилась]";
+        // WD END
 
         var newListing = new StoreListingControl(listingName, listingDesc, listingInStock, canBuy, texture);
 

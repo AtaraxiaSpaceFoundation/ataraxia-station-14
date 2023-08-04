@@ -15,6 +15,7 @@
       blacklist:
         tags:
           - NukeOpsUplink
+  saleLimit: 1
 
 - type: listing
   id: UplinkPistolViper
@@ -25,6 +26,7 @@
     Telecrystal: 3
   categories:
   - UplinkWeapons
+  saleLimit: 1
 
 - type: listing
   id: UplinkRevolverPython
@@ -35,6 +37,7 @@
     Telecrystal: 8 # Originally was 13 TC but was not used due to high cost
   categories:
   - UplinkWeapons
+  saleLimit: 1
 
 # Inbuilt suppressor so it's sneaky + more expensive.
 - type: listing
@@ -46,6 +49,7 @@
     Telecrystal: 4
   categories:
   - UplinkWeapons
+  saleLimit: 1
 
 # Poor accuracy, slow to fire, cheap option
 - type: listing
@@ -57,6 +61,7 @@
     Telecrystal: 1
   categories:
   - UplinkWeapons
+  saleLimit: 1
 
 - type: listing
   id: UplinkEsword
@@ -68,6 +73,7 @@
     Telecrystal: 10
   categories:
   - UplinkWeapons
+  saleLimit: 2
 
 - type: listing
   id: UplinkEnergyDagger
@@ -79,6 +85,18 @@
     Telecrystal: 2
   categories:
   - UplinkWeapons
+  saleLimit: 1
+
+- type: listing
+  id: UplinkFireAxeFlaming
+  name: uplink-fire-axe-flaming-name
+  description: uplink-fire-axe-flaming-desc
+  productEntity: FireAxeFlaming
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWeapons
+  saleLimit: 1
 
 - type: listing
   id: UplinkGlovesNorthStar
@@ -89,6 +107,7 @@
     Telecrystal: 8
   categories:
   - UplinkWeapons
+  saleLimit: 1
 
 - type: listing
   id: UplinkDisposableTurret
@@ -116,6 +135,7 @@
     Telecrystal: 4
   categories:
   - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkExplosiveGrenadeFlash
@@ -126,6 +146,7 @@
     Telecrystal: 1
   categories:
   - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkSmokeGrenade
@@ -146,6 +167,7 @@
     Telecrystal: 6
   categories:
     - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkSupermatterGrenade
@@ -181,6 +203,7 @@
     blacklist:
       components:
       - SurplusBundle
+  saleLimit: 3
 
 - type: listing
   id: UplinkC4
@@ -191,6 +214,7 @@
     Telecrystal: 2
   categories:
   - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkGrenadierRig
@@ -206,6 +230,7 @@
     whitelist:
       tags:
       - NukeOpsUplink
+  saleLimit: 1
 
 - type: listing
   id: UplinkC4Bundle
@@ -216,6 +241,7 @@
     Telecrystal: 12 #you're buying bulk so its a 25% discount
   categories:
   - UplinkExplosives
+  saleLimit: 1
 
 - type: listing
   id: UplinkEmpGrenade
@@ -226,6 +252,7 @@
     Telecrystal: 2
   categories:
   - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkExplodingPen
@@ -237,6 +264,7 @@
     Telecrystal: 5
   categories:
   - UplinkExplosives
+  saleLimit: 3
 
 - type: listing
   id: UplinkSyndicateBomb
@@ -731,6 +759,7 @@
       blacklist:
         components:
           - SurplusBundle
+  saleLimit: 1
 
 - type: listing
   id: UplinkChemistryKitBundle
@@ -761,6 +790,7 @@
       blacklist:
         components:
           - SurplusBundle
+  saleLimit: 1
 
 - type: listing
   id: UplinkSniperBundle
@@ -772,6 +802,7 @@
     Telecrystal: 12
   categories:
   - UplinkBundles
+  saleLimit: 1
 
 - type: listing
   id: UplinkC20RBundle
@@ -783,6 +814,7 @@
     Telecrystal: 17
   categories:
   - UplinkBundles
+  saleLimit: 1
 
 - type: listing
   id: UplinkBulldogBundle
@@ -794,6 +826,7 @@
     Telecrystal: 20
   categories:
   - UplinkBundles
+  saleLimit: 1
 
 - type: listing
   id: UplinkGrenadeLauncherBundle
@@ -805,6 +838,7 @@
     Telecrystal: 25
   categories:
   - UplinkBundles
+  saleLimit: 1
 
 - type: listing
   id: UplinkL6SawBundle
@@ -816,6 +850,7 @@
     Telecrystal: 30
   categories:
   - UplinkBundles
+  saleLimit: 1
 
 - type: listing
   id: UplinkZombieBundle
@@ -836,6 +871,7 @@
     blacklist:
       components:
       - SurplusBundle
+  saleLimit: 1
 
 - type: listing
   id: UplinkSurplusBundle
@@ -1014,6 +1050,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Chaplain
+  saleLimit: 3
 
 - type: listing
   id: uplinkRevolverCapGunFake
@@ -1029,6 +1066,7 @@
     whitelist:
     - Mime
     - Clown
+  saleLimit: 1
 
 - type: listing
   id: uplinkBananaPeelExplosive
@@ -1044,6 +1082,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+  saleLimit: 3
 
 - type: listing
   id: UplinkClusterBananaPeel
@@ -1090,6 +1129,7 @@
     - Botanist
     - Clown
     - Mime
+  saleLimit: 3
 
 - type: listing
   id: UplinkChimpUpgradeKit
@@ -1122,6 +1162,7 @@
     blacklist:
       components:
       - SurplusBundle
+  saleLimit: 3
 
 - type: listing
   id: UplinkSyndicateSpongeBox
@@ -1289,6 +1330,7 @@
     Telecrystal: 6
   categories:
   - UplinkMisc
+  saleLimit: 1
 
 - type: listing
   id: UplinkSoapSyndie

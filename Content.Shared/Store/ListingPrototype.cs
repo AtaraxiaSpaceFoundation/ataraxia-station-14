@@ -95,10 +95,15 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     public int RestockTime;
 
     // WD START
+    [DataField("saleLimit")]
+    public int SaleLimit;
+
     [DataField("saleBlacklist")]
     public bool SaleBlacklist;
 
     public int SaleAmount;
+
+    public Dictionary<string, FixedPoint2> OldCost = new();
     // WD END
 
     public bool Equals(ListingData? listing)
@@ -155,8 +160,10 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             PurchaseAmount = PurchaseAmount,
             RestockTime = RestockTime,
             // WD START
+            SaleLimit = SaleLimit,
             SaleBlacklist = SaleBlacklist,
             SaleAmount = SaleAmount,
+            OldCost = OldCost,
             // WD END
         };
     }
