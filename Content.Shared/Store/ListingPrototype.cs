@@ -94,6 +94,13 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     [DataField("restockTime")]
     public int RestockTime;
 
+    // WD START
+    [DataField("saleBlacklist")]
+    public bool SaleBlacklist;
+
+    public int SaleAmount;
+    // WD END
+
     public bool Equals(ListingData? listing)
     {
         if (listing == null)
@@ -147,6 +154,10 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             ProductEvent = ProductEvent,
             PurchaseAmount = PurchaseAmount,
             RestockTime = RestockTime,
+            // WD START
+            SaleBlacklist = SaleBlacklist,
+            SaleAmount = SaleAmount,
+            // WD END
         };
     }
 }

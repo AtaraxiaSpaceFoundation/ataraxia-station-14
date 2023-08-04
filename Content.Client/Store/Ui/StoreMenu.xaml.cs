@@ -159,7 +159,14 @@ public sealed partial class StoreMenu : DefaultWindow
             canBuy = false;
         }
 
+        if (listing.SaleAmount > 0) // WD
+            listingName += $" [СКИДКА] ({listing.SaleAmount}%!)";
+
         var newListing = new StoreListingControl(listingName, listingDesc, listingInStock, canBuy, texture);
+
+        if (listing.SaleAmount > 0) // WD
+            newListing.StoreItemBuyButton.AddStyleClass("ButtonColorRed");
+
         newListing.StoreItemBuyButton.OnButtonDown += args
             => OnListingButtonPressed?.Invoke(args, listing);
 

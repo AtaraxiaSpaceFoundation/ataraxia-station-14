@@ -669,6 +669,7 @@
       blacklist:
         tags:
           - NukeOpsUplink
+  saleBlacklist: true
 
 - type: listing
   id: UplinkDeathRattle
@@ -854,6 +855,7 @@
     blacklist:
       components:
       - SurplusBundle
+  saleBlacklist: true
 
 - type: listing
   id: UplinkSuperSurplusBundle
@@ -873,6 +875,7 @@
     blacklist:
       components:
       - SurplusBundle
+  saleBlacklist: true
 
 # Tools
 
