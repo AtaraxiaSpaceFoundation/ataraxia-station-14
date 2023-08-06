@@ -96,7 +96,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
 
     // WD START
     [DataField("saleLimit")]
-    public int SaleLimit = 5;
+    public int SaleLimit = 3;
 
     [DataField("saleBlacklist")]
     public bool SaleBlacklist;

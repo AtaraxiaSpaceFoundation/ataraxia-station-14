@@ -135,7 +135,6 @@
     Telecrystal: 4
   categories:
   - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkExplosiveGrenadeFlash
@@ -146,7 +145,6 @@
     Telecrystal: 1
   categories:
   - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkSmokeGrenade
@@ -167,7 +165,6 @@
     Telecrystal: 6
   categories:
     - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkSupermatterGrenade
@@ -203,7 +200,6 @@
     blacklist:
       components:
       - SurplusBundle
-  saleLimit: 3
 
 - type: listing
   id: UplinkC4
@@ -214,7 +210,6 @@
     Telecrystal: 2
   categories:
   - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkGrenadierRig
@@ -252,7 +247,6 @@
     Telecrystal: 2
   categories:
   - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkExplodingPen
@@ -264,7 +258,6 @@
     Telecrystal: 5
   categories:
   - UplinkExplosives
-  saleLimit: 3
 
 - type: listing
   id: UplinkSyndicateBomb
@@ -276,6 +269,7 @@
   categories:
     - UplinkExplosives
   restockTime: 30
+  saleLimit: 1
 
 - type: listing
   id: UplinkClusterGrenade
@@ -400,6 +394,7 @@
     blacklist:
       tags:
       - NukeOpsUplink
+  saleLimit: 1
 
 - type: listing
   id: UplinkHolster
@@ -485,7 +480,6 @@
     Telecrystal: 8
   categories:
   - UplinkUtility
-  saleLimit: 3
 
 - type: listing
   id: UplinkStealthBox
@@ -1053,7 +1047,6 @@
   - !type:BuyerJobCondition
     whitelist:
     - Chaplain
-  saleLimit: 3
 
 - type: listing
   id: uplinkRevolverCapGunFake
@@ -1085,7 +1078,6 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
-  saleLimit: 3
 
 - type: listing
   id: UplinkClusterBananaPeel
@@ -1132,7 +1124,6 @@
     - Botanist
     - Clown
     - Mime
-  saleLimit: 3
 
 - type: listing
   id: UplinkChimpUpgradeKit
@@ -1165,7 +1156,6 @@
     blacklist:
       components:
       - SurplusBundle
-  saleLimit: 3
 
 - type: listing
   id: UplinkSyndicateSpongeBox
@@ -1195,6 +1185,7 @@
     Telecrystal: 12
   categories:
     - UplinkUtility
+  saleLimit: 1
 
 # Armor
 
