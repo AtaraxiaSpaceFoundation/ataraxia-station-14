@@ -53,7 +53,7 @@ public sealed partial class TTSSystem : EntitySystem
 
         var soundData = await GenerateTTS(ev.Uid, ev.Text, protoVoice.Speaker);
         if (soundData != null)
-            RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(ev.Uid), soundData), Filter.SinglePlayer(session));
+            RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(ev.Uid), soundData), Filter.SinglePlayer(session), false);
     }
 
     private async void OnEntitySpoke(EntityUid uid, TTSComponent component, EntitySpokeEvent args)
@@ -85,7 +85,7 @@ public sealed partial class TTSSystem : EntitySystem
         // Say
         if (args.ObfuscatedMessage is null)
         {
-            RaiseNetworkEvent(ttsEvent, Filter.Pvs(uid));
+            RaiseNetworkEvent(ttsEvent, Filter.Pvs(uid), false);
             return;
         }
 
@@ -107,6 +107,8 @@ public sealed partial class TTSSystem : EntitySystem
         var xformQuery = GetEntityQuery<TransformComponent>();
         var sourcePos = _xforms.GetWorldPosition(xformQuery.GetComponent(uid), xformQuery);
         var receptions = Filter.Pvs(uid).Recipients;
+
+
         foreach (var session in receptions)
         {
             if (!session.AttachedEntity.HasValue)
@@ -116,7 +118,18 @@ public sealed partial class TTSSystem : EntitySystem
             if (distance > (ChatSystem.VoiceRange * ChatSystem.VoiceRange))
                 continue;
 
-            RaiseNetworkEvent(distance > ChatSystem.WhisperClearRange ? obfTtsEvent : ttsEvent, session);
+            EntityEventArgs actualEvent;
+
+            if (distance > ChatSystem.WhisperClearRange)
+            {
+                actualEvent = obfTtsEvent;
+            }
+            else
+            {
+                actualEvent = ttsEvent;
+            }
+
+            RaiseNetworkEvent(actualEvent, Filter.SinglePlayer(session), false);
         }
     }
 
