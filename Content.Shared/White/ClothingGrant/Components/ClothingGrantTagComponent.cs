@@ -1,11 +1,16 @@
-namespace Content.Shared.Clothing
+using Robust.Shared.GameStates;
+
+namespace Content.Shared.White.ClothingGrant.Components
 {
-    [RegisterComponent]
+    [RegisterComponent, NetworkedComponent]
+    [AutoGenerateComponentState]
     public sealed partial class ClothingGrantTagComponent : Component
     {
         [DataField("tag", required: true), ViewVariables(VVAccess.ReadWrite)]
         public string Tag = "";
 
-        [ViewVariables(VVAccess.ReadWrite)] public bool IsActive = false;
+        [ViewVariables(VVAccess.ReadWrite)]
+        [AutoNetworkedField]
+        public bool IsActive = false;
     }
 }

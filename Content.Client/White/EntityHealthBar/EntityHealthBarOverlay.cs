@@ -11,7 +11,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.Timing;
 
-namespace Content.Client.EntityHealthBar;
+namespace Content.Client.White.EntityHealthBar;
 
 /// <summary>
 /// Yeah a lot of this is duplicated from doafters.

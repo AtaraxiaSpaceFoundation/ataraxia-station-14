@@ -1,11 +1,11 @@
-using Content.Shared.EntityHealthBar;
+using Content.Shared.White.EntityHealthBar;
 using Content.Shared.GameTicking;
 using Robust.Client.Player;
 using Robust.Client.Graphics;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.EntityHealthBar
+namespace Content.Client.White.EntityHealthBar
 {
     public sealed class ShowHealthBarsSystem : EntitySystem
     {
