@@ -78,6 +78,13 @@
     malus: 0
   - type: Reflect
     enabled: false
+  - type: Tag
+    tags:
+    - EnergySword
+  - type: Construction
+    deconstructionTarget: null
+    graph: EnergyDoubleSwordGraph
+    node: esword
 
 - type: entity
   name: pen
@@ -244,3 +251,7 @@
       energeticChance: 0.6
       kineticChance: 0.6
       spread: 45
+    - type: Construction
+      deconstructionTarget: null
+      graph: EnergyDoubleSwordGraph
+      node: desword

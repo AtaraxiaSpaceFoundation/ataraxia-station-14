@@ -116,7 +116,7 @@
 
 - type: entity
   name: cowelding tool
-  parent: Welder
+  parent: BaseWelder
   id: Cowelder
   description: "Melts anything as long as it's fueled, don't forget your eye protection! Moo!"
   components:
