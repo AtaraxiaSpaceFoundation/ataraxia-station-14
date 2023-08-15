@@ -149,7 +149,7 @@
         - 0 # water vapor
         - 0 # ammonia
         - 0.014251686 # 5% N2O
-        # 0.285033721       total 
+        # 0.285033721       total
       temperature: 293.15
 
 - type: entity
@@ -217,14 +217,14 @@
   name: plasma tank
   suffix: Filled
   components:
-  - type: GasTank
-    outputPressure: 101.3
-    air:
-      # 6 minutes of agony
-      volume: 5
-      moles:
-        - 0           # oxygen
-        - 0           # nitrogen
-        - 0           # CO2
-        - 2.051379050 # plasma
-      temperature: 293.15
+    - type: GasTank
+      outputPressure: 101.3
+      air:
+        # 20 minutes of agony
+        volume: 15
+        moles:
+          - 0           # oxygen
+          - 0           # nitrogen
+          - 0           # CO2
+          - 18.74958767 # plasma
+        temperature: 96.22

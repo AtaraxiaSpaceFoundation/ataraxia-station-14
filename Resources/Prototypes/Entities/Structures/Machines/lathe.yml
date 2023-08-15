@@ -158,6 +158,8 @@
        - MagazineBoxMagnum
        - MagazineBoxRifle
        - MagazineBoxLightRifle
+       - OxygenTank
+       - PlasmaTank
     emagDynamicRecipes:
       - CartridgePistolRubber
       - CartridgeMagnumRubber
