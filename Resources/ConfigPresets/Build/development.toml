@@ -29,3 +29,6 @@ see_own_notes = true
 
 [worldgen]
 enabled = false
+
+[white]
+ert_load = false

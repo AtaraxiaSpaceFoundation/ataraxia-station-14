@@ -4,7 +4,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Shared.White.GhostRecruitment;
 
 [RegisterComponent]
-public sealed class GhostRecruitmentSpawnPointComponent : Component
+public sealed partial class GhostRecruitmentSpawnPointComponent : Component
 {
     [DataField("prototype", customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>),required:true)]
     public string EntityPrototype = default!;

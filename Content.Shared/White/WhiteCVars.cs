@@ -291,4 +291,12 @@ public sealed class WhiteCVars
     /// </summary>
     public static readonly CVarDef<bool> SlippedCountTopSlipper =
         CVarDef.Create("eorstats.slippedcount_topslipper", true, CVar.SERVERONLY);
+
+    public static readonly CVarDef<string>
+        ServerCulture = CVarDef.Create("white.culture", "ru-RU", CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    ///     Should load a ERT map?
+    /// </summary>
+    public static readonly CVarDef<bool> LoadERTMap = CVarDef.Create("white.ert_load", false, CVar.SERVERONLY);
 }

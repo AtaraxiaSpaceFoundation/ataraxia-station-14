@@ -1,5 +1,4 @@
-using Robust.Server.Player;
-using Robust.Shared.Serialization;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.GhostRecruitment;
 
@@ -7,9 +6,9 @@ namespace Content.Server.White.GhostRecruitment;
 public sealed class GhostRecruitmentSuccessEvent : EntityEventArgs
 {
     public string RecruitmentName;
-    public IPlayerSession PlayerSession;
+    public ICommonSession PlayerSession;
 
-    public GhostRecruitmentSuccessEvent(string recruitmentName, IPlayerSession playerSession)
+    public GhostRecruitmentSuccessEvent(string recruitmentName, ICommonSession playerSession)
     {
         RecruitmentName = recruitmentName;
         PlayerSession = playerSession;
