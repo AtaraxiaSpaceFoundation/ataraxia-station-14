@@ -53,6 +53,7 @@ namespace Content.Server.Chat.Managers
         /// WD-EDIT
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
         [Dependency] private readonly UtkaTCPWrapper _utkaSocketWrapper = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
         /// WD-EDIT
 
         /// <summary>
@@ -64,7 +65,10 @@ namespace Content.Server.Chat.Managers
         private bool _adminOocEnabled = true;
 
         private readonly Dictionary<NetUserId, ChatUser> _players = new();
-        private Dictionary<NetUserId, string> _lastMessages = new();
+        private readonly Dictionary<NetUserId, (string, TimeSpan)> _lastMessages = new();
+        private bool _antispam;
+        private int _antispamMinLength;
+        private double _antispamIntervalSeconds;
 
         public void Initialize()
         {
@@ -75,6 +79,13 @@ namespace Content.Server.Chat.Managers
             _configurationManager.OnValueChanged(CCVars.AdminOocEnabled, OnAdminOocEnabledChanged, true);
 
             _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+
+            // WD START
+            _configurationManager.OnValueChanged(WhiteCVars.ChatAntispam, val => _antispam = val, true);
+            _configurationManager.OnValueChanged(WhiteCVars.AntispamMinLength, val => _antispamMinLength = val, true);
+            _configurationManager.OnValueChanged(WhiteCVars.AntispamIntervalSeconds,
+                val => _antispamIntervalSeconds = val, true);
+            // WD END
         }
 
         private void OnOocEnabledChanged(bool val)
@@ -207,23 +218,25 @@ namespace Content.Server.Chat.Managers
 
         public bool TrySendNewMessage(ICommonSession session, string newMessage)
         {
-            if (!_configurationManager.GetCVar(WhiteCVars.ChatAntispam))
+            if (!_antispam || newMessage.Length < _antispamMinLength)
+            {
+                _lastMessages.Remove(session.Data.UserId);
                 return true;
+            }
 
+            var curTime = _timing.CurTime;
             if (_lastMessages.TryGetValue(session.Data.UserId, out var value))
             {
-                if (value == newMessage)
+                var interval = (curTime - value.Item2).TotalSeconds;
+                var difference = _antispamIntervalSeconds - interval;
+                if (value.Item1 == newMessage && difference > 0d)
                 {
-                    DispatchServerMessage(session, "Не повторяйте сообщение.");
+                    DispatchServerMessage(session,
+                        Loc.GetString("chat-manager-antispam-warn-message", ("remainingTime", (int) difference)));
                     return false;
                 }
-
-                _lastMessages[session.Data.UserId] = newMessage;
             }
-            else
-            {
-                _lastMessages.Add(session.Data.UserId, newMessage);
-            }
+            _lastMessages[session.Data.UserId] = (newMessage, curTime);
 
             return true;
         }

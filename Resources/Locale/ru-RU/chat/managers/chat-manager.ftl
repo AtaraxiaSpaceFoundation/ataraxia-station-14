@@ -105,3 +105,7 @@ chat-speech-verb-ghost-1 = жалуется
 chat-speech-verb-ghost-2 = дышит
 chat-speech-verb-ghost-3 = мычит
 chat-speech-verb-ghost-4 = бормочет
+
+chat-manager-cooldown-warn-message_channel = Вы сможете писать { $inChat } через: { $remainingTime } сек.
+chat-manager-cooldown-warn-message = Вы сможете писать через { $remainingTime } сек.
+chat-manager-antispam-warn-message = Вы сможете повторить сообщение через { $remainingTime } сек.
