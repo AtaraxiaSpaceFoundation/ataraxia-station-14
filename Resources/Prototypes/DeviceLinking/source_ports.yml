@@ -154,3 +154,9 @@
   id: ChemMasterSender
   name: Раздатчик
   description: Передатчик сигнала ХимМастера
+
+- type: sourcePort
+  id: LightStatus
+  name: Статус светильника
+  description: Этот порт вызывается всякий раз, когда меняется статус светильника
+  defaultLinks: [ Toggle ]

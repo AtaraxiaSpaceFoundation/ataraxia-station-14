@@ -44,7 +44,7 @@ public sealed class LogicGateSystem : EntitySystem
             }
             if (comp.StateB == SignalState.Momentary)
             {
-                comp.StateB = SignalState.High;
+                comp.StateB = SignalState.Low;
             }
 
             // output most likely changed so update it
@@ -56,6 +56,8 @@ public sealed class LogicGateSystem : EntitySystem
     {
         _deviceLink.EnsureSinkPorts(uid, comp.InputPortA, comp.InputPortB);
         _deviceLink.EnsureSourcePorts(uid, comp.OutputPort);
+
+        _appearance.SetData(uid, LogicGateVisuals.Gate, comp.Gate); // WD
     }
 
     private void OnExamined(EntityUid uid, LogicGateComponent comp, ExaminedEvent args)
