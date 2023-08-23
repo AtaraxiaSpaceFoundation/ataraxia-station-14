@@ -93,3 +93,10 @@
     guides:
     - Chemicals
     - Chemist
+  - type: DeviceList
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: BasicDevice
+  - type: DeviceLinkSink
+    ports:
+      - ChemMasterReceiver

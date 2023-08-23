@@ -208,10 +208,13 @@ namespace Content.Client.Chemistry.UI
                             MakeReagentButton("1", ChemMasterReagentAmount.U1, reagent, true, StyleBase.ButtonOpenRight),
                             MakeReagentButton("5", ChemMasterReagentAmount.U5, reagent, true, StyleBase.ButtonOpenBoth),
                             MakeReagentButton("10", ChemMasterReagentAmount.U10, reagent, true, StyleBase.ButtonOpenBoth),
+                            MakeReagentButton("15", ChemMasterReagentAmount.U15, reagent, true, StyleBase.ButtonOpenBoth),
+                            MakeReagentButton("20", ChemMasterReagentAmount.U20, reagent, true, StyleBase.ButtonOpenBoth),
                             MakeReagentButton("25", ChemMasterReagentAmount.U25, reagent, true, StyleBase.ButtonOpenBoth),
+                            MakeReagentButton("30", ChemMasterReagentAmount.U30, reagent, true, StyleBase.ButtonOpenBoth),
                             MakeReagentButton("50", ChemMasterReagentAmount.U50, reagent, true, StyleBase.ButtonOpenBoth),
+                            MakeReagentButton("75", ChemMasterReagentAmount.U75, reagent, true, StyleBase.ButtonOpenBoth),
                             MakeReagentButton("100", ChemMasterReagentAmount.U100, reagent, true, StyleBase.ButtonOpenBoth),
-                            MakeReagentButton(Loc.GetString("chem-master-window-buffer-all-amount"), ChemMasterReagentAmount.All, reagent, true, StyleBase.ButtonOpenLeft),
                         }
                     });
                 }
@@ -300,9 +303,17 @@ namespace Content.Client.Chemistry.UI
                         cs.Add(MakeReagentButton(
                             "10", ChemMasterReagentAmount.U10, id, false, StyleBase.ButtonOpenBoth));
                         cs.Add(MakeReagentButton(
+                            "15", ChemMasterReagentAmount.U15, id, false, StyleBase.ButtonOpenBoth));
+                        cs.Add(MakeReagentButton(
+                            "20", ChemMasterReagentAmount.U20, id, false, StyleBase.ButtonOpenBoth));
+                        cs.Add(MakeReagentButton(
                             "25", ChemMasterReagentAmount.U25, id, false, StyleBase.ButtonOpenBoth));
                         cs.Add(MakeReagentButton(
+                            "30", ChemMasterReagentAmount.U30, id, false, StyleBase.ButtonOpenBoth));
+                        cs.Add(MakeReagentButton(
                             "50", ChemMasterReagentAmount.U50, id, false, StyleBase.ButtonOpenBoth));
+                        cs.Add(MakeReagentButton(
+                            "75", ChemMasterReagentAmount.U75, id, false, StyleBase.ButtonOpenBoth));
                         cs.Add(MakeReagentButton(
                             "100", ChemMasterReagentAmount.U100, id, false, StyleBase.ButtonOpenBoth));
                         cs.Add(MakeReagentButton(

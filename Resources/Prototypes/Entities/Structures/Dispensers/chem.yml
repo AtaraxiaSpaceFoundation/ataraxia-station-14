@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: ChemDispenser
   name: chemical dispenser
   parent: ReagentDispenserBase
@@ -37,3 +37,6 @@
     - Chemist
   - type: StealTarget
     stealGroup: ChemDispenser
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: BasicDevice
