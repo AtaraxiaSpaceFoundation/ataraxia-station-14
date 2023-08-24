@@ -167,6 +167,16 @@ public partial class GunComponent : Component
     /// </summary>
     [DataField("clumsyProof"), ViewVariables(VVAccess.ReadWrite)]
     public bool ClumsyProof = false;
+
+    // WD START
+    [DataField("forceThrowingAngle")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool ForceThrowingAngle;
+
+    [DataField("angle")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public Angle Angle;
+    // WD END
 }
 
 [Flags]

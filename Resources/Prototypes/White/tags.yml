@@ -3,3 +3,6 @@
 
 - type: Tag
   id: EnergySword
+
+- type: Tag
+  id: CrossbowBolt

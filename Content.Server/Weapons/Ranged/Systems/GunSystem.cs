@@ -6,6 +6,7 @@ using Content.Server.Interaction;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Server.Weapons.Ranged.Components;
+using Content.Server.White.Crossbow;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -13,6 +14,7 @@ using Content.Shared.Effects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Projectiles;
+using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
@@ -42,6 +44,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly StunSystem _stun = default!;
+    [Dependency] private readonly PoweredSystem _powered = default!; // WD
 
     public const float DamagePitchVariation = SharedMeleeWeaponSystem.DamagePitchVariation;
     public const float GunClumsyChance = 0.5f;
@@ -306,7 +309,17 @@ public sealed partial class GunSystem : SharedGunSystem
         {
             RemoveShootable(uid);
             // TODO: Someone can probably yeet this a billion miles so need to pre-validate input somewhere up the call stack.
-            ThrowingSystem.TryThrow(uid, mapDirection, gun.ProjectileSpeed, user);
+            // WD EDIT START
+            var coefficient = _powered.GetPowerCoefficient(gunUid);
+            if (gun.ForceThrowingAngle)
+            {
+                var angle = EnsureComp<ThrowingAngleComponent>(uid);
+                angle.Angle = gun.Angle;
+            }
+            ThrowingSystem.TryThrow(uid, mapDirection.Normalized() * 7f * coefficient, gun.ProjectileSpeed, user);
+            if (gun.ForceThrowingAngle)
+                RemComp<ThrowingAngleComponent>(uid);
+            // WD EDIT END
             return;
         }
 

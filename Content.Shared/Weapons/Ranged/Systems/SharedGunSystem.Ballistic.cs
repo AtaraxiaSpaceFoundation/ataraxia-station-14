@@ -2,6 +2,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Stacks;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -47,14 +48,25 @@ public abstract partial class SharedGunSystem
         if (GetBallisticShots(component) >= component.Capacity)
             return;
 
-        component.Entities.Add(args.Used);
-        Containers.Insert(args.Used, component.Container);
+        var entity = args.Used; // WD EDIT START
+        var doInsert = true;
+        if (TryComp(args.Used, out StackComponent? stack) && stack.Count > 1)
+        {
+            entity = GetStackEntity(args.Used, stack);
+            doInsert = false;
+        }
+
+        component.Entities.Add(entity);
+        if (_netManager.IsServer || doInsert)
+            Containers.Insert(entity, component.Container); // WD EDIT END
         // Not predicted so
         Audio.PlayPredicted(component.SoundInsert, uid, args.User);
         args.Handled = true;
         UpdateBallisticAppearance(uid, component);
         Dirty(uid, component);
     }
+
+    protected virtual EntityUid GetStackEntity(EntityUid uid, StackComponent stack) { return uid; }
 
     private void OnBallisticAfterInteract(EntityUid uid, BallisticAmmoProviderComponent component, AfterInteractEvent args)
     {

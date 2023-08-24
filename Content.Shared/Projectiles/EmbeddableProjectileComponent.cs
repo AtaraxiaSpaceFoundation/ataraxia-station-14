@@ -46,4 +46,15 @@ public sealed partial class EmbeddableProjectileComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public SoundSpecifier? Sound;
+
+    // WD START
+    [AutoNetworkedField]
+    public bool PreventEmbedding;
+
+    [AutoNetworkedField]
+    public bool Penetrate;
+
+    [AutoNetworkedField]
+    public EntityUid? PenetratedUid;
+    // WD END
 }
