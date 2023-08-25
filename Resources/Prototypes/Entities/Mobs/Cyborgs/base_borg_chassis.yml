@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseMob
   id: BaseBorgChassis
   name: cyborg
@@ -205,6 +205,7 @@
   - type: GuideHelp
     guides:
       - Cyborgs
+  - type: Penetrated
 
 - type: entity
   id: BaseBorgChassisNT

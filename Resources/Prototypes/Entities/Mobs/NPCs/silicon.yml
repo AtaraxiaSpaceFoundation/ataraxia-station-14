@@ -107,6 +107,7 @@
   - type: TypingIndicator
     proto: robot
   - type: ZombieImmune
+  - type: Penetrated
 
 - type: entity
   parent: [ MobSiliconBase, BaseVehicle]

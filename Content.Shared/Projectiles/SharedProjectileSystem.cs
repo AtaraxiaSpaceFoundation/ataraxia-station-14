@@ -39,7 +39,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, ActivateInWorldEvent>(OnEmbedActivate);
         SubscribeLocalEvent<EmbeddableProjectileComponent, RemoveEmbeddedProjectileEvent>(OnEmbedRemove);
         SubscribeLocalEvent<EmbeddableProjectileComponent, AttemptPacifiedThrowEvent>(OnAttemptPacifiedThrow);
+
         SubscribeLocalEvent<EmbeddableProjectileComponent, LandEvent>(OnLand); // WD
+        SubscribeLocalEvent<EmbeddableProjectileComponent, ComponentRemove>(OnRemove); // WD
+        SubscribeLocalEvent<EmbeddableProjectileComponent, EntityTerminatingEvent>(OnEntityTerminating); // WD
     }
 
     private void OnEmbedActivate(EntityUid uid, EmbeddableProjectileComponent component, ActivateInWorldEvent args)
@@ -201,6 +204,26 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     }
 
     // WD EDIT START
+    private void OnEntityTerminating(EntityUid uid, EmbeddableProjectileComponent component,
+        ref EntityTerminatingEvent args)
+    {
+        FreePenetrated(component);
+    }
+
+    private void OnRemove(EntityUid uid, EmbeddableProjectileComponent component, ComponentRemove args)
+    {
+        FreePenetrated(component);
+    }
+
+    private void FreePenetrated(EmbeddableProjectileComponent component)
+    {
+        if (component.PenetratedUid == null)
+            return;
+
+        _penetratedSystem.FreePenetrated(component.PenetratedUid.Value);
+        component.PenetratedUid = null;
+    }
+    
     private void OnLand(EntityUid uid, EmbeddableProjectileComponent component, ref LandEvent args)
     {
         if (component.PenetratedUid == null)

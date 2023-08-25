@@ -79,6 +79,7 @@
   - type: Speech
     speechVerb: SmallMob
   - type: NonSpreaderZombie
+  - type: Penetrated
 
 - type: entity
   id: MobTickSalvage

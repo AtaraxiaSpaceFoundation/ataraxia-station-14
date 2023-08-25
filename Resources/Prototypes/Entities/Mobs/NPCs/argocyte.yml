@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   save: false
   parent: [ BaseSimpleMob, MobCombat ]
   id: BaseMobArgocyte
@@ -82,6 +82,7 @@
     damage:
       types:
         Blunt: 3
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -120,6 +121,7 @@
     damage:
       types:
         Blunt: 3
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -156,6 +158,7 @@
     damage:
       types:
         Slash: 3
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -179,6 +182,7 @@
       60: Dead
   - type: MovementSpeedModifier
     baseSprintSpeed : 5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -202,6 +206,7 @@
   - type: MovementSpeedModifier
     baseSprintSpeed : 4
     baseWalkSpeed : 3.5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -227,6 +232,7 @@
       types:
         Blunt: 2.5
         Slash: 7.5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -255,6 +261,7 @@
   - type: MovementSpeedModifier
     baseSprintSpeed : 5
     baseWalkSpeed: 4.5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -281,6 +288,7 @@
         Blunt: 5
         Slash: 10
         Structural: 5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -311,6 +319,7 @@
   - type: MovementSpeedModifier
     baseSprintSpeed : 6.5
     baseWalkSpeed: 5
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte
@@ -340,6 +349,7 @@
   - type: MovementSpeedModifier
     baseSprintSpeed : 3.5
     baseWalkSpeed: 3
+  - type: Penetrated
 
 - type: entity
   parent: BaseMobArgocyte

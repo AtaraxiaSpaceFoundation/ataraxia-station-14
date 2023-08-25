@@ -79,6 +79,7 @@
       interactFailureString: petting-failure-carp
       interactFailureSound:
         path: /Audio/Effects/bite.ogg
+    - type: Penetrated
 
 - type: entity
   parent: BaseMobCarp
