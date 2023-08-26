@@ -49,7 +49,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     {
         // WD EDIT START
         if (args.Handled || !TryComp<PhysicsComponent>(uid, out var physics) || physics.BodyType != BodyType.Static)
+        {
+            FreePenetrated(component);
             return;
+        }
 
         args.Handled = true;
 
@@ -66,6 +69,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         if (component.DeleteOnRemove)
         {
             QueueDel(uid);
+            // WD START
+            FreePenetrated(component);
+            RaiseLocalEvent(uid, new EmbedRemovedEvent());
+            // WD END
             return;
         }
 
@@ -83,12 +90,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         }
 
         // WD START
-        if (component.PenetratedUid != null)
-        {
-            _penetratedSystem.FreePenetrated(component.PenetratedUid.Value);
-            component.PenetratedUid = null;
-        }
-
+        FreePenetrated(component);
         RaiseLocalEvent(uid, new EmbedRemovedEvent());
         // WD END
 
@@ -121,6 +123,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
             _transform.SetLocalPosition(args.Target,
                 xform.LocalPosition + Transform(uid).LocalRotation.RotateVec(new Vector2(0.5f, 0.5f)), xform);
             Dirty(uid, component);
+            Dirty(args.Target, penetrated);
             return;
         }
 
@@ -207,12 +210,14 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     private void OnEntityTerminating(EntityUid uid, EmbeddableProjectileComponent component,
         ref EntityTerminatingEvent args)
     {
-        FreePenetrated(component);
+        if (!_netManager.IsClient)
+            FreePenetrated(component);
     }
 
     private void OnRemove(EntityUid uid, EmbeddableProjectileComponent component, ComponentRemove args)
     {
-        FreePenetrated(component);
+        if (!_netManager.IsClient)
+            FreePenetrated(component);
     }
 
     private void FreePenetrated(EmbeddableProjectileComponent component)
@@ -223,7 +228,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         _penetratedSystem.FreePenetrated(component.PenetratedUid.Value);
         component.PenetratedUid = null;
     }
-    
+
     private void OnLand(EntityUid uid, EmbeddableProjectileComponent component, ref LandEvent args)
     {
         if (component.PenetratedUid == null)

@@ -48,13 +48,13 @@ public sealed partial class EmbeddableProjectileComponent : Component
     public SoundSpecifier? Sound;
 
     // WD START
-    [AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool PreventEmbedding;
 
-    [AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool Penetrate;
 
-    [AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public EntityUid? PenetratedUid;
     // WD END
 }
