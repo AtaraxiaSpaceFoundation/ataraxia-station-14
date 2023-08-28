@@ -55,5 +55,10 @@ namespace Content.Server.Communications
         /// </summary>
         [DataField]
         public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
+
+        //WD-start
+        [DataField("ttsVoiceId")]
+        public string TtsVoiceId = "Glados";
+        //WD-end
     }
 }
