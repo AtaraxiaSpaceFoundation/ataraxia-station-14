@@ -85,7 +85,7 @@ namespace Content.Client.Options.UI.Tabs
             ViewportLowResCheckBox.Pressed = !_cfg.GetCVar(CCVars.ViewportScaleRender);
             ParallaxLowQualityCheckBox.Pressed = _cfg.GetCVar(CCVars.ParallaxLowQuality);
             FpsCounterCheckBox.Pressed = _cfg.GetCVar(CCVars.HudFpsCounterVisible);
-            LogInChatCheckBox.Pressed = _cfg.GetCVar(WhiteCVars.LogInChat);
+            LogInChatCheckBox.Pressed = _cfg.GetCVar(WhiteCVars.LogChatActions);
             ViewportWidthSlider.Value = _cfg.GetCVar(CCVars.ViewportWidth);
 
             _cfg.OnValueChanged(CCVars.ViewportMinimumWidth, _ => UpdateViewportWidthRange());
@@ -118,7 +118,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.ViewportScaleRender, !ViewportLowResCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ParallaxLowQuality, ParallaxLowQualityCheckBox.Pressed);
             _cfg.SetCVar(CCVars.HudFpsCounterVisible, FpsCounterCheckBox.Pressed);
-            _cfg.SetCVar(WhiteCVars.LogInChat, LogInChatCheckBox.Pressed);
+            _cfg.SetCVar(WhiteCVars.LogChatActions, LogInChatCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ViewportWidth, (int) ViewportWidthSlider.Value);
 
             _cfg.SaveToFile();
@@ -148,7 +148,7 @@ namespace Content.Client.Options.UI.Tabs
             var isVPResSame = ViewportLowResCheckBox.Pressed == !_cfg.GetCVar(CCVars.ViewportScaleRender);
             var isPLQSame = ParallaxLowQualityCheckBox.Pressed == _cfg.GetCVar(CCVars.ParallaxLowQuality);
             var isFpsCounterVisibleSame = FpsCounterCheckBox.Pressed == _cfg.GetCVar(CCVars.HudFpsCounterVisible);
-            var isLogInChatSame = LogInChatCheckBox.Pressed == _cfg.GetCVar(WhiteCVars.LogInChat);
+            var isLogInChatSame = LogInChatCheckBox.Pressed == _cfg.GetCVar(WhiteCVars.LogChatActions);
             var isWidthSame = (int) ViewportWidthSlider.Value == _cfg.GetCVar(CCVars.ViewportWidth);
 
             ApplyButton.Disabled = isVSyncSame &&

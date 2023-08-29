@@ -300,6 +300,6 @@ public sealed class WhiteCVars
     /// </summary>
     public static readonly CVarDef<bool> LoadERTMap = CVarDef.Create("white.ert_load", false, CVar.SERVERONLY);
 
-    public static readonly CVarDef<bool> LogInChat =
-        CVarDef.Create("white.log_in_chat", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> LogChatActions =
+        CVarDef.Create("white.log_to_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 }
