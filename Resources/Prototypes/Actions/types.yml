@@ -315,3 +315,16 @@
     event: !type:ToggleEyesActionEvent
     useDelay: 1 # so u cant give yourself and observers eyestrain by rapidly spamming the action
 
+
+- type: entity
+  id: Halt
+  name: Halt!
+  description: Halt!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 5
+    icon:
+      sprite: Objects/Weapons/Melee/stunbaton.rsi
+      state: stunbaton_off
+    event: !type:HaltAction

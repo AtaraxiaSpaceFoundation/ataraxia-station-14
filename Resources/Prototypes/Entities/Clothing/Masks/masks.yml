@@ -36,6 +36,7 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
+  - type: Halt
 
 - type: entity
   parent: ClothingMaskGas
