@@ -236,6 +236,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
                 bufferSolution.Value.Comp.Solution.AddReagent(message.ReagentId, FixedPoint2.New((int)reagentDispenser.Comp.DispenseAmount));
                 _chemMasterSystem.UpdateUiState((chemMasterUid.Value, chemMaster));
+                ClickSound(reagentDispenser);
 
                 return;
             } // WD EDIT END

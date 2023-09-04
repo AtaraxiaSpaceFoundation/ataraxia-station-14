@@ -24,7 +24,7 @@ namespace Content.Server.Chat.Managers
 
         // WD-EDIT
         void SendHookAdminChat(string sender, string message);
-        bool TrySendNewMessage(ICommonSession session, string newMessage);
+        bool TrySendNewMessage(ICommonSession session, string newMessage, bool checkLength = false);
         // WD-EDIT
 
         void SendAdminAnnouncement(string message);
