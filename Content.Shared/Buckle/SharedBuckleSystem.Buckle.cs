@@ -439,7 +439,7 @@ public abstract partial class SharedBuckleSystem
 
             if (ActionBlocker.CanInteract(userUid, buckleUid) == false)
                 return false;
-            
+
             // If the strap is a vehicle and the rider is not the person unbuckling, return. Unless the rider is crit or dead.
             if (TryComp<VehicleComponent>(strapUid, out var vehicle) && vehicle.Rider != userUid && !_mobState.IsIncapacitated(buckleUid))
                 return false;
