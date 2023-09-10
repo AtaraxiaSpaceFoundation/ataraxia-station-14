@@ -250,14 +250,14 @@
     - type: IncreaseDamageOnWield
       damage:
         types:
-          Slash: 1.5
-          Heat: 1.5
+          Slash: 15
+          Heat: 15
     - type: MeleeWeapon
       attackRate: 1
     - type: Reflect
       enabled: false
-      energeticChance: 0.6
-      kineticChance: 0.6
+      energeticChance: 1
+      kineticChance: 0
       spread: 45
     - type: Construction
       deconstructionTarget: null
