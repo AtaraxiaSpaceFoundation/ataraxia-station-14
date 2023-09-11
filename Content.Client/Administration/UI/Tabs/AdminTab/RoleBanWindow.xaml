@@ -51,7 +51,6 @@
                         <CheckBox Name="SecurityOfficer" Text="{Loc job-name-security}"/>
                         <CheckBox Name="Detective" Text="{Loc job-name-detective}"/>
                         <CheckBox Name="SecurityCadet" Text="{Loc job-name-cadet}"/>
-                        <CheckBox Name="Brigmedic" Text="{Loc job-name-brigmedic}"/>
                         <Label Text="{Loc department-Medical}" FontColorOverride="DeepSkyBlue"/>
                         <CheckBox Name="Chemist" Text="{Loc job-name-chemist}"/>
                         <CheckBox Name="MedicalDoctor" Text="{Loc job-name-doctor}"/>
@@ -83,6 +82,7 @@
                         <CheckBox Name="Musician" Text="{Loc job-name-musician}"/>
                         <CheckBox Name="Reporter" Text="{Loc job-name-reporter}"/>
                         <CheckBox Name="Zookeeper" Text="{Loc job-name-zookeeper}"/>
+                        <CheckBox Name="Boxer" Text="{Loc job-name-boxer}"/>
                         <!--<Label Text="{Loc department-Silicon}" FontColorOverride="LightGray"/>
                         <CheckBox Name="Cyborg" Text="{Loc job-name-cyborg}"/>
                         <CheckBox Name="MedicalCyborg" Text="{Loc job-name-medical-cyborg}"/>
