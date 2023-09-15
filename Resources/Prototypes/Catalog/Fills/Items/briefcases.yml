@@ -27,7 +27,8 @@
       - id: MagazineBoxAntiMateriel
       - id: ClothingNeckTieRed
       - id: ClothingUniformJumpsuitLawyerBlack
-<<<<<<< HEAD
+      - id: ClothingHandsGlovesCombat # WD edit
+      - id: ClothingShoesBootsLaceup
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled
@@ -40,8 +41,3 @@
       - id: ClothingEyesGlassesSunglasses
       - id: SpaceCash1000
         amount: 5
-=======
-      - id: ClothingHandsGlovesCombat # WD edit
-      - id: ClothingShoesBootsLaceup
-      - id: WeaponPistolCobra #WD edit
->>>>>>> ef8809aaff (Бафф христова + форсвелдед прикол (#400))
