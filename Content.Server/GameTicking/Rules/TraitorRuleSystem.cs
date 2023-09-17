@@ -340,6 +340,39 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         args.AgentName = Loc.GetString("traitor-round-end-agent-name");
     }
 
+    public List<(EntityUid Id, MindComponent Mind)> GetAllLivingConnectedTraitors()
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        var traitorRules = EntityQuery<TraitorRuleComponent>();
+
+        foreach (var traitorRule in traitorRules)
+        {
+            traitors.AddRange(GetLivingConnectedTraitors(traitorRule));
+        }
+
+        return traitors;
+    }
+
+    private List<(EntityUid Id, MindComponent Mind)> GetLivingConnectedTraitors(TraitorRuleComponent traitorRule)
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        foreach (var traitor in traitorRule.TraitorMinds)
+        {
+            if (TryComp(traitor, out MindComponent? mind) &&
+                mind.OwnedEntity != null &&
+                mind.Session != null &&
+                _mobStateSystem.IsAlive(mind.OwnedEntity.Value) &&
+                mind.CurrentEntity == mind.OwnedEntity)
+            {
+                traitors.Add((traitor, mind));
+            }
+        }
+
+        return traitors;
+    }
+
     private void OnObjectivesTextPrepend(EntityUid uid, TraitorRuleComponent comp, ref ObjectivesTextPrependEvent args)
     {
         args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", comp.Codewords)));
