@@ -107,7 +107,7 @@ namespace Content.Server.White.AspectsSystem.Aspects
                 }
             }
 
-            _chatSystem.DispatchGlobalAnnouncement(msg, "Мяукиман Крысус");
+            _chatSystem.DispatchGlobalAnnouncement(msg, "Мяукиман Крысус", colorOverride: Color.Aquamarine);
 
             ForceEndSelf(uid, rule);
         }

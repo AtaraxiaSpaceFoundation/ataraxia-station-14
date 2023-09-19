@@ -812,7 +812,7 @@
     damageCoefficient: 0.2
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitDeathsquad
-
+  - type: GiftIgnore
 
 #CBURN Hardsuit
 - type: entity
