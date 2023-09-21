@@ -169,7 +169,7 @@ public sealed partial class StaminaSystem : EntitySystem
             toHit.Add((ent, stam));
         }
 
-        var hitEvent = new StaminaMeleeHitEvent(toHit);
+        var hitEvent = new StaminaMeleeHitEvent(toHit, args.User); // WD EDIT
         RaiseLocalEvent(uid, hitEvent);
 
         if (hitEvent.Handled)

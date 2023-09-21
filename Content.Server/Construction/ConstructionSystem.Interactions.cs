@@ -11,6 +11,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Prying.Systems;
 using Content.Shared.Radio.EntitySystems;
+using Content.Shared.Stacks;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.Containers;
@@ -90,6 +91,9 @@ namespace Content.Server.Construction
         private HandleResult HandleNode(EntityUid uid, object ev, ConstructionGraphNode node, bool validation, ConstructionComponent? construction = null)
         {
             if (!Resolve(uid, ref construction))
+                return HandleResult.False;
+
+            if (TryComp(uid, out StackComponent? stack) && stack.Count > 1) // WD
                 return HandleResult.False;
 
             // Let's make extra sure this is zero...
