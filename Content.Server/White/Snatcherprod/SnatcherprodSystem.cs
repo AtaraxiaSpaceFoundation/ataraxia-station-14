@@ -52,7 +52,7 @@ public sealed class SnatcherprodSystem : EntitySystem
     {
         if (TerminatingOrDeleted(uid))
             return;
-        
+
         if (!_itemToggle.IsActivated(uid))
         {
             if (TryComp<AppearanceComponent>(uid, out var appearance))
