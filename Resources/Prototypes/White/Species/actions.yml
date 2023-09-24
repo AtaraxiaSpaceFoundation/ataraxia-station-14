@@ -21,3 +21,12 @@
     event: !type:HairballActionEvent
     charges: 1
     useDelay: 30
+
+- type: entity
+  id: SelfHealAction
+  name: Lick wounds.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      event: !type:SelfHealEvent
+      icon: White/Icons/tongue.png
