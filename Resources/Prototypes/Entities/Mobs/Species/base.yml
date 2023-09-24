@@ -234,6 +234,7 @@
   - type: ExaminableClothes
   - type: CharacterInformation
   - type: Penetrated
+  - type: Mood
 
 - type: entity
   save: false

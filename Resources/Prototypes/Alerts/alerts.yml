@@ -6,6 +6,7 @@
   order:
     - category: Health
     - alertType: Bleeding
+    - category: Mood # WD edit
     - category: Stamina
     - alertType: SuitPower
     - category: Internals
