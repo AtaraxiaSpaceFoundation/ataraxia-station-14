@@ -159,8 +159,9 @@ public sealed class SelfHealSystem: EntitySystem
         var doAfterEventArgs =
             new DoAfterArgs(EntityManager, user, component.Delay, new SelfHealDoAfterEvent(), target, target)
             {
-                BreakOnUserMove = true,
                 BreakOnTargetMove = true,
+                BreakOnUserMove = true,
+                BreakOnDamage = true,
             };
         _doAfter.TryStartDoAfter(doAfterEventArgs);
     }

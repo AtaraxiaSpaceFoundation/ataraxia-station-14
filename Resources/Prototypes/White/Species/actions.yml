@@ -30,3 +30,4 @@
     - type: EntityTargetAction
       event: !type:SelfHealEvent
       icon: White/Icons/tongue.png
+      itemIconStyle: BigAction
