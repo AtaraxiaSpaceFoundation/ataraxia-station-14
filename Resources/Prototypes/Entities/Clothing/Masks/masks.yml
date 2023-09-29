@@ -323,6 +323,7 @@
     sprite: Clothing/Mask/swat.rsi
   - type: Clothing
     sprite: Clothing/Mask/swat.rsi
+  - type: Halt
 
 - type: entity
   parent: ClothingMaskGasExplorer
@@ -345,6 +346,9 @@
     sprite: Clothing/Mask/ert.rsi
   - type: Clothing
     sprite: Clothing/Mask/ert.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Halt
 
 - type: entity
   parent: ClothingMaskGasERT

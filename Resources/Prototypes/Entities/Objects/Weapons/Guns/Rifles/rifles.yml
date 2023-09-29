@@ -19,7 +19,7 @@
     fireRate: 5
     selectedMode: FullAuto
     availableModes:
-      - FullAuto
+    - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
   - type: ChamberMagazineAmmoProvider
@@ -35,14 +35,14 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineLightRifle
+          - MagazineLightRifle
       gun_chamber:
         name: Chamber
         startingItem: CartridgeLightRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeLightRifle
+          - CartridgeLightRifle
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -59,14 +59,14 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-0
+      map: [ "enum.GunVisualLayers.Mag" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/rifle2.ogg
+      path: /Audio/Weapons/Guns/Gunshots/ak.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
@@ -80,14 +80,14 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineLightRifle
+          - MagazineLightRifle
       gun_chamber:
         name: Chamber
         startingItem: CartridgeLightRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeLightRifle
+          - CartridgeLightRifle
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -107,10 +107,10 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Rifles/carbine.rsi
     layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-0
+      map: [ "enum.GunVisualLayers.Mag" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/carbine.rsi
   - type: ItemSlots
@@ -123,14 +123,14 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineRifle
+          - MagazineRifle
       gun_chamber:
         name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeRifle
+          - CartridgeRifle
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -150,10 +150,10 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
     layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-0
+      map: [ "enum.GunVisualLayers.Mag" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
@@ -169,14 +169,14 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineRifle
+          - MagazineRifle
       gun_chamber:
         name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeRifle
+          - CartridgeRifle
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
