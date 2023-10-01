@@ -10,7 +10,21 @@
     sprite: Clothing/Belt/utility.rsi
   - type: Clothing
     sprite: Clothing/Belt/utility.rsi
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_drop.ogg
   - type: Storage
+    storageInsertSound:
+      path: /Audio/Items/belt_equip.ogg
+    # WD edit sounds end
+    # TODO: Fill this out more.
     maxItemSize: Normal
     # TODO: Fill this out more.
     whitelist:
@@ -125,27 +139,27 @@
       drill:
         whitelist:
           tags:
-          - Powerdrill
+            - Powerdrill
       cutters_red:
         whitelist:
           tags:
-          - Wirecutter
+            - Wirecutter
       crowbar:
         whitelist:
           tags:
-          - Crowbar
+            - Crowbar
       crowbar_red:
         whitelist:
           tags:
-          - CrowbarRed
+            - CrowbarRed
       jaws:
         whitelist:
           tags:
-          - JawsOfLife
+            - JawsOfLife
       screwdriver_nuke:
         whitelist:
           tags:
-          - Screwdriver
+            - Screwdriver
       multitool:
         whitelist:
           tags:
@@ -153,12 +167,25 @@
       wrench:
         whitelist:
           tags:
-          - Wrench
+            - Wrench
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
 
 - type: entity
-  parent: ClothingBeltStorageBase
+  parent: ClothingBeltUtility # WD edit
+  id: ClothingBeltChiefEngineer
+  name: chief engineer's toolbelt
+  description: Holds tools, looks snazzy.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/ce.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/ce.rsi
+  - type: Storage
+    capacity: 105
+
+- type: entity
+  parent: ClothingBeltSecurity # WD edit
   id: ClothingBeltAssault
   name: assault belt
   description: A tactical assault belt.
@@ -169,9 +196,6 @@
     sprite: Clothing/Belt/assault.rsi
   - type: Storage
     whitelist:
-      tags:
-        - CigPack
-        - Taser
       components:
         - Stunbaton
         - FlashOnTrigger
@@ -441,11 +465,26 @@
   name: security belt
   description: Can hold security gear like handcuffs and flashes.
   components:
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/toolbelt_drop.ogg
+  # WD edit sounds end
   - type: Sprite
     sprite: Clothing/Belt/security.rsi
   - type: Clothing
     sprite: Clothing/Belt/security.rsi
+  # WD edit sounds start
   - type: Storage
+    storageInsertSound:
+      path: /Audio/Items/belt_equip.ogg
+  # WD edit sounds end
     whitelist:
       tags:
         - CigPack
@@ -493,6 +532,12 @@
   - type: ItemSlots
     slots:
       item:
+        # WD edit sounds start
+        insertSound:
+          path: /Audio/White/Items/equip/sabre_hide.ogg
+        ejectSound:
+          path: /Audio/White/Items/equip/sabre_equip.ogg
+        # WD edit sounds end
         name: Sabre
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb

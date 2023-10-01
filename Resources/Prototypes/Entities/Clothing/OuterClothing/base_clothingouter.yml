@@ -23,6 +23,17 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/cloth_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/cloth_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/cloth_drop.ogg
+  # WD edit sounds end
 
 - type: entity
   abstract: true
@@ -42,6 +53,17 @@
       type: StorageBoundUserInterface
   - type: StaticPrice
     price: 80
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/cloth_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/cloth_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/cloth_drop.ogg
+  # WD edit sounds end
 
 - type: entity
   abstract: true

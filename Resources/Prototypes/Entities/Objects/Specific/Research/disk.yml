@@ -11,6 +11,17 @@
   - type: GuideHelp
     guides:
     - Science
+    # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/disk_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/disk_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/disk_drop.ogg
+    # WD edit sounds end
 
 - type: entity
   parent: ResearchDisk
@@ -61,6 +72,17 @@
     price: 100
   - type: StealTarget
     stealGroup: TechnologyDisk
+    # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/disk_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/disk_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/disk_drop.ogg
+    # WD edit sounds end
 
 - type: entity
   parent: TechnologyDisk
