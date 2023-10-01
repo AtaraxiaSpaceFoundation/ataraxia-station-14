@@ -6,7 +6,8 @@
     HydroponicsToolClippers: 4
     HydroponicsToolScythe: 4
     HydroponicsToolHatchet: 4
-    PlantBag: 3
+    PlantBag: 4
+    HandheldSeedAnalyzer: 4
     PlantBGoneSpray: 20
     WeedSpray: 20
     PestSpray: 20
