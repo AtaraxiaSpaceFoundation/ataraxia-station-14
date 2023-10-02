@@ -102,6 +102,7 @@
         prob: 0.05
         orGroup: Surgshrubs
       - id: ClothingMaskSterile
+      - id: Eftpos
 
 - type: entity
   id: LockerChemistryFilled
@@ -123,6 +124,7 @@
       - id: ClothingMaskSterile
       - id: HandLabeler
         prob: 0.5
+      - id: Eftpos
 
 - type: entity
   id: LockerParamedicFilled
@@ -144,3 +146,4 @@
       - id: ClothingMaskSterile
       - id: MedkitFilled
         prob: 0.3
+      - id: Eftpos

@@ -29,6 +29,8 @@ namespace Content.Shared.Mind
         [DataField, AutoNetworkedField]
         public List<EntityUid> Objectives = new();
 
+        internal readonly List<Memory> _memories = new();
+
         /// <summary>
         ///     The session ID of the player owning this mind.
         /// </summary>
@@ -72,6 +74,21 @@ namespace Content.Shared.Mind
 
         [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
         public string? BorgName { get; set; }
+
+        [ViewVariables]
+        public IEnumerable<Memory> AllMemories => _memories;
+
+        //WD EDIT
+        public void AddMemory(Memory memory)
+        {
+            if (_memories.Contains(memory))
+            {
+                return;
+            }
+
+            _memories.Add(memory);
+        }
+        //WD EDIT END
 
         /// <summary>
         ///     The time of death for this Mind.

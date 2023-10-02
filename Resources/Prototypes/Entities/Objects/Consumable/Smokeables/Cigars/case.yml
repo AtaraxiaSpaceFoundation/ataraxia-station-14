@@ -61,6 +61,8 @@
     - cigar7
     - cigar8
   - type: Appearance
+  - type: StaticPrice
+    price: 40
 
 - type: entity
   id: CigarGoldCase
@@ -72,3 +74,5 @@
     contents:
     - id: CigarGold
       amount: 8
+  - type: StaticPrice
+    price: 80

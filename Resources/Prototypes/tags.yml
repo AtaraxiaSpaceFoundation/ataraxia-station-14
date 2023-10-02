@@ -1199,4 +1199,6 @@
 - type: Tag
   id: ZombifyableByMelee
 
+- type: Tag
+  id: SpaceCash
 # WHITE END

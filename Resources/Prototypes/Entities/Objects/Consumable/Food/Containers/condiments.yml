@@ -17,7 +17,7 @@
     solution: food
   - type: SpaceGarbage
   - type: StaticPrice
-    price: 0
+    price: 5
 
 # Packets
 

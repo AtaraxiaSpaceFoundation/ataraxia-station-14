@@ -16,6 +16,7 @@
     EZNutrientChemistryBottle: 3
     Bucket: 3
     DiseaseSwab: 20
+    Eftpos: 4 #WD edit
     #TO DO:
     #plant analyzer
   emaggedInventory:
