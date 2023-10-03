@@ -113,3 +113,5 @@
     tags:
     - Trash
   - type: SpaceGarbage
+  - type: StaticPrice
+    price: 5

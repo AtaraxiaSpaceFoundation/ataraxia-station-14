@@ -27,6 +27,7 @@ ent-SecurityBudgetCard = Ведомственная карточка (Оборо
     .suffix = { "" }
 
 ent-CommandBudgetPinPaper = PIN-код станционного бюджета.
+    .desc = Листок белой бумаги
     .suffix = { "" }
 
 command-budget-pin-message = PIN-код станционного бюджета: { $pin }

@@ -27,6 +27,8 @@
     tags:
     - ClothMade
     - WhitelistChameleon
+  - type: StaticPrice
+    price: 30
   # WD edit sounds start
   - type: EmitSoundOnPickup
     sound:
