@@ -26,14 +26,12 @@ public sealed class JukeboxSystem : EntitySystem
 
     private readonly Dictionary<JukeboxComponent, JukeboxAudio> _playingJukeboxes = new();
 
-    private float _maxAudioRange;
     private float _jukeboxVolume;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _cfg.OnValueChanged(WhiteCVars.MaxJukeboxSoundRange, range => _maxAudioRange = range, true);
         _cfg.OnValueChanged(WhiteCVars.JukeboxVolume, JukeboxVolumeChanged, true);
 
         SubscribeLocalEvent<JukeboxComponent, ComponentHandleState>(OnStateChanged);
@@ -116,7 +114,7 @@ public sealed class JukeboxSystem : EntitySystem
         foreach (var (jukeboxComponent, jukeboxXform) in jukeboxes)
         {
 
-            if (jukeboxXform.MapID != playerXform.MapID || (jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() > _maxAudioRange)
+            if (jukeboxXform.MapID != playerXform.MapID || (jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() > jukeboxComponent.MaxAudioRange)
             {
                 if (_playingJukeboxes.TryGetValue(jukeboxComponent, out var stream))
                 {
@@ -143,7 +141,7 @@ public sealed class JukeboxSystem : EntitySystem
                     continue;
                 }
 
-                SetOcclusion(playerXform, jukeboxXform, jukeboxAudio);
+                SetRolloffAndOcclusion(jukeboxComponent, playerXform, jukeboxXform, jukeboxAudio);
                 SetPosition(jukeboxXform, jukeboxAudio);
             }
             else
@@ -172,7 +170,7 @@ public sealed class JukeboxSystem : EntitySystem
         jukeboxAudio.PlayingStream.Position = jukeboxXform.MapPosition.Position;
     }
 
-    private void SetOcclusion(TransformComponent playerXform, TransformComponent jukeboxXform, JukeboxAudio jukeboxAudio)
+    private void SetRolloffAndOcclusion(JukeboxComponent jukeboxComponent, TransformComponent playerXform, TransformComponent jukeboxXform, JukeboxAudio jukeboxAudio)
     {
         var collisionMask = CollisionGroup.Impassable;
         var sourceRelative = playerXform.MapPosition.Position - jukeboxXform.MapPosition.Position;
@@ -186,6 +184,7 @@ public sealed class JukeboxSystem : EntitySystem
         }
 
         jukeboxAudio.PlayingStream.Occlusion = occlusion;
+        jukeboxAudio.PlayingStream.RolloffFactor = (jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() * jukeboxComponent.RolloffFactor;
     }
 
     private void HandleSongChanged(JukeboxAudio jukeboxAudio, JukeboxComponent jukeboxComponent, TransformComponent jukeboxXform, TransformComponent playerXform)
@@ -255,14 +254,13 @@ public sealed class JukeboxSystem : EntitySystem
             return null!;
 
         playingStream.Volume = _jukeboxVolume;
-        playingStream.RolloffFactor = 3.5f;
         playingStream.PlaybackPosition = jukeboxComponent.PlayingSongData.PlaybackPosition;
 
         playingStream.Position = jukeboxXform.MapPosition.Position;
 
         var jukeboxAudio = new JukeboxAudio(playingStream!, audio, jukeboxComponent.PlayingSongData);
 
-        SetOcclusion(playerXform, jukeboxXform, jukeboxAudio);
+        SetRolloffAndOcclusion(jukeboxComponent, playerXform, jukeboxXform, jukeboxAudio);
         playingStream.StartPlaying();
 
         return jukeboxAudio;
