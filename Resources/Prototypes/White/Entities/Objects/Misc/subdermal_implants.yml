@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: SmokeImplant
+  name: Имплант дыма
+  description: Этот имплант выпускает облако дыма при активации.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      implantAction: ActivateSmokeImplant
+    - type: TriggerImplantAction
+    - type: SmokeOnTrigger
+      spreadAmount: 25
+      duration: 15
+    - type: SoundOnTrigger
+      sound: /Audio/Effects/smoke.ogg

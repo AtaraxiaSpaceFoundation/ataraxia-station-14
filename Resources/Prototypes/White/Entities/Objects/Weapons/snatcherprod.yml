@@ -33,10 +33,10 @@
     angle: 0
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit
-    damage: 40
+    damage: 30
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
-    damage: 20
+    damage: 30
   - type: UseDelay
   - type: Item
     size: Normal

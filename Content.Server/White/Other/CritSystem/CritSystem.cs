@@ -34,7 +34,7 @@ public sealed class CritSystem : EntitySystem
         if (component.IsBloodDagger)
         {
             args.PushMarkup(
-                "[color=red]Критическая жажда: Кинжал Жажды обладает смертоносной точностью. Его владелец имеет 25% шанс нанести критический урон, поражая врага в его самые уязвимые места.\n" +
+                "[color=red]Критическая жажда: Кинжал Жажды обладает смертоносной точностью. Его владелец имеет 40% шанс нанести критический урон, поражая врага в его самые уязвимые места.\n" +
                 "Кровавый абсорб: При каждом успешном критическом ударе, кинжал извлекает кровь из цели, восстанавливая здоровье владельцу пропорционально количеству высосанной крови.[/color]"
             );
         }
@@ -59,7 +59,7 @@ public sealed class CritSystem : EntitySystem
 
                 _bloodstream.TryModifyBloodLevel(target, -ohio);
                 _bloodstream.TryModifyBloodLevel(args.User, ohio);
-                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(damageGroup, -ohio * 2));
+                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(damageGroup, -ohio));
 
                 damage = args.BaseDamage.Total * component.CritMultiplier + ohio;
             }
