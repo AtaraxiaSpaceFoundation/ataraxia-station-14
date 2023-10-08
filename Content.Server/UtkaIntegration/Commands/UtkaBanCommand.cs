@@ -16,6 +16,8 @@ public sealed class UtkaBanCommand : IUtkaCommand
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private UtkaTCPWrapper _utkaSocketWrapper = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
     private const ILocalizationManager LocalizationManager = default!;
 
@@ -27,7 +29,6 @@ public sealed class UtkaBanCommand : IUtkaCommand
 
         var plyMgr = IoCManager.Resolve<IPlayerManager>();
         var locator = IoCManager.Resolve<IPlayerLocator>();
-        var dbMan = IoCManager.Resolve<IServerDbManager>();
         IoCManager.InjectDependencies(this);
 
         var locatedPlayer = await locator.LookupIdByNameOrIdAsync(message.ACkey!);
@@ -87,7 +88,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
 
         IoCManager.Resolve<IEntitySystemManager>().TryGetEntitySystem<GameTicker>(out var ticker);
         int? roundId = ticker == null || ticker.RoundId == 0 ? null : ticker.RoundId;
-        var playtime = (await dbMan.GetPlayTimes(targetUid)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
+        var playtime = (await _db.GetPlayTimes(targetUid)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
 
         var banDef = new ServerBanDef(
             null,
@@ -106,7 +107,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
 
         UtkaSendResponse(true);
 
-        await dbMan.AddServerBanAsync(banDef);
+        await _db.AddServerBanAsync(banDef);
 
         if (plyMgr.TryGetSessionById(targetUid, out var targetPlayer))
         {
@@ -114,7 +115,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
             targetPlayer.ConnectedClient.Disconnect(msg);
         }
 
-        var banlist = await dbMan.GetServerBansAsync(null, targetUid, null);
+        var banlist = await _db.GetServerBansAsync(null, targetUid, null);
         var banId = banlist[^1].Id;
 
         var utkaBanned = new UtkaBannedEvent()
@@ -129,6 +130,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
             BanId = banId
         };
         _utkaSocketWrapper.SendMessageToAll(utkaBanned);
+        _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
     }
 
     private void UtkaSendResponse(bool banned)

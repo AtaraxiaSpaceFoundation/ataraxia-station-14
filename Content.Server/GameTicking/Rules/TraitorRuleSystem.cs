@@ -15,18 +15,15 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.PDA;
-using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
-using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Server.Objectives;
+using Content.Server.White.Reputation;
 using Content.Shared.White.Mood;
 
 namespace Content.Server.GameTicking.Rules;
@@ -48,6 +45,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly RoleSystem _roles = default!; // WD
+
+    private ISawmill _sawmill = default!;
 
     private int PlayersPerTraitor => _cfg.GetCVar(CCVars.TraitorPlayersPerTraitor);
     private int MaxTraitors => _cfg.GetCVar(CCVars.TraitorMaxTraitors);

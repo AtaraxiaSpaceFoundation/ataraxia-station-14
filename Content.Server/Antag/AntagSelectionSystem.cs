@@ -27,6 +27,7 @@ using Robust.Server.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Server.Shuttles.Components;
+using Content.Server.White.Reputation;
 using Content.Shared.Players;
 
 namespace Content.Server.Antag;
@@ -47,6 +48,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private readonly RoleSystem _roles = default!; // WD
     [Dependency] private readonly SharedPlayerSystem _sharedPlayerSystem = default!; // WD
+    [Dependency] private readonly ReputationManager _reputationManager = default!; // WD
 
     /// <summary>
     /// Attempts to start the game rule by checking if there are enough players in lobby and readied.
@@ -217,7 +219,12 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         for (var i = 0; i < antagCount; i++)
         {
-            results.Add(_random.PickAndTake(prefList));
+            //results.Add(_random.PickAndTake(prefList));
+            // WD EDIT START
+            var pref = _reputationManager.PickPlayerBasedOnReputation(prefList);
+            prefList.Remove(pref);
+            results.Add(pref);
+            // WD EDIT END
             Log.Info("Selected a preferred antag.");
         }
         return results;

@@ -23,6 +23,7 @@ using Content.Server.UtkaIntegration;
 using Content.Server.White;
 using Content.Server.White.JoinQueue;
 using Content.Server.White.Jukebox;
+using Content.Server.White.Reputation;
 using Content.Server.White.Sponsors;
 using Content.Server.White.Stalin;
 using Content.Server.White.TTS;
@@ -75,6 +76,7 @@ namespace Content.Server.IoC
             IoCManager.Register<StalinManager>();
             IoCManager.Register<ServerJukeboxSongsSyncManager>();
             IoCManager.Register<SalusManager>();
+            IoCManager.Register<ReputationManager>();
             // WD-EDIT
         }
     }

@@ -39,6 +39,7 @@ namespace Content.Server.Database
         public DbSet<AdminNote> AdminNotes { get; set; } = null!;
         public DbSet<AdminWatchlist> AdminWatchlists { get; set; } = null!;
         public DbSet<AdminMessage> AdminMessages { get; set; } = null!;
+        public DbSet<PlayerReputation> PlayerReputations { get; set; } = default!; // WD edit
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -300,6 +301,15 @@ namespace Content.Server.Database
 
         public abstract int CountAdminLogs();
     }
+
+    // WD start
+    public class PlayerReputation
+    {
+        public int Id { get; set; }
+        public Guid UserId { get; set; }
+        public float Reputation { get; set; }
+    }
+    // WD end
 
     public class Preference
     {

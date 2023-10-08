@@ -20,6 +20,7 @@ public sealed class BanCommand : LocalizedCommands
     [Dependency] private readonly IBanManager _bans = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
+    [Dependency] private readonly IEntityManager _entMan = default!; // WD
 
     public override string Command => "ban";
 
@@ -128,6 +129,7 @@ public sealed class BanCommand : LocalizedCommands
             BanId = banId
         };
         _utkaSockets.SendMessageToAll(utkaBanned);
+        _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
         //WD end
     }
 

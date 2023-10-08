@@ -19,6 +19,7 @@ using Content.Client.Guidebook;
 using Content.Client.Replay;
 using Content.Client.White.JoinQueue;
 using Content.Client.White.Jukebox;
+using Content.Client.White.Reputation;
 using Content.Client.White.Sponsors;
 using Content.Client.White.Stalin;
 using Content.Client.White.Trail.Line.Manager;
@@ -59,6 +60,7 @@ namespace Content.Client.IoC
             IoCManager.Register<ClientJukeboxSongsSyncManager>();
             IoCManager.Register<TTSManager>();
             IoCManager.Register<ITrailLineManager, TrailSplineManager>();
+            IoCManager.Register<ReputationManager>();
             //WD-EDIT
         }
     }
