@@ -75,7 +75,11 @@ public sealed class CritMobActionsSystem : EntitySystem
                 }
                 lastWords += "...";
 
-                _chat.TrySendInGameICMessage(uid, lastWords, InGameICChatType.Whisper, ChatTransmitRange.Normal, checkRadioPrefix: false, ignoreActionBlocker: true);
+                // WD EDIT START
+                _chat.TryProccessRadioMessage(uid, lastWords, out var output, out _);
+                _chat.TrySendInGameICMessage(uid, output, InGameICChatType.Whisper, ChatTransmitRange.Normal, checkRadioPrefix: false, ignoreActionBlocker: true);
+                // WD EDIT END
+
                 _host.ExecuteCommand(actor.PlayerSession, "ghost");
             });
 

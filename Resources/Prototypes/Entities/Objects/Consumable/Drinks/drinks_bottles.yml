@@ -73,6 +73,8 @@
   - type: PhysicalComposition
     materialComposition:
       Glass: 100
+  - type: StaticPrice
+    price: 50
 
 - type: entity
   parent: DrinkBottleGlassBaseFull
