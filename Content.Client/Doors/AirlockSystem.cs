@@ -102,6 +102,7 @@ public sealed class AirlockSystem : SharedAirlockSystem
                     (state == DoorState.Closing
                 ||  state == DoorState.Opening
                 ||  state == DoorState.Denying
+                ||  state == DoorState.Welded
                 || (state == DoorState.Open && comp.OpenUnlitVisible)
                 || (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.ClosedLights, out var closedLights, args.Component) && closedLights))
                     && !boltedVisible && !emergencyLightsVisible; ;
