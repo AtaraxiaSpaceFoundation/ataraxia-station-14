@@ -50,6 +50,8 @@
     price: 80
   - type: RadiationBlocker
     resistance: 3
+  - type: WindowMark
+    replacementProto: WallSolid
 
 - type: entity
   parent: UraniumWindow

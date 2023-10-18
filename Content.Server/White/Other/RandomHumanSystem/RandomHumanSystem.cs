@@ -1,12 +1,12 @@
-using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
-using Content.Server.Mind.Components;
 using Content.Server.PDA;
 using Content.Server.Roles;
 using Content.Shared.Access.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Mind.Components;
+using Content.Shared.NukeOps;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 
@@ -20,6 +20,7 @@ public sealed class RandomHumanSystem : EntitySystem
     [Dependency] private readonly IdCardSystem _card = default!;
     [Dependency] private readonly PdaSystem _pda = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;
+    [Dependency] private readonly RoleSystem _roles = default!;
 
     public override void Initialize()
     {
@@ -34,8 +35,7 @@ public sealed class RandomHumanSystem : EntitySystem
 
         _humanoid.LoadProfile(uid, newProfile);
 
-        if (TryComp(uid, out MindContainerComponent? mindContainer) && mindContainer.HasMind &&
-            mindContainer.Mind.Roles.OfType<NukeopsRole>().Any())
+        if (HasComp<NukeOperativeComponent>(uid))
             return;
 
         _metaData.SetEntityName(uid, newProfile.Name);

@@ -60,6 +60,7 @@
             max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: LightMark
   placement:
     mode: SnapgridCenter
     snap:

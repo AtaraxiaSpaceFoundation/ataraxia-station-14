@@ -52,6 +52,8 @@
     price: 140
   - type: RadiationBlocker
     resistance: 5
+  - type: WindowMark
+    replacementProto: WallReinforced
 
 - type: entity
   parent: ReinforcedUraniumWindow

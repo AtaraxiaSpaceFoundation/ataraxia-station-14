@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: Airlock
   parent: BaseStructure
   name: airlock
@@ -136,6 +136,7 @@
       - Airlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
   - type: PryUnpowered
+  - type: ReflectAspectMark
   placement:
     mode: SnapgridCenter
 

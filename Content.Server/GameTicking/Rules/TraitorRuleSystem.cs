@@ -23,6 +23,10 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server.Objectives;
+using Content.Server.White.Administration;
+using Content.Server.White.AspectsSystem.Aspects;
+using Content.Server.White.AspectsSystem.Aspects.Components;
 using Content.Server.White.Reputation;
 using Content.Shared.White.Mood;
 
@@ -44,7 +48,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
-    [Dependency] private readonly RoleSystem _roles = default!; // WD
+    //WD EDIT
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -190,7 +195,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         {
             return false;
         }*/
-        if (_roles.MindIsAntagonist(mindId))
+        if (_roleSystem.MindIsAntagonist(mindId))
         {
             return false;
         }
@@ -199,6 +204,15 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         var startingBalance = _cfg.GetCVar(CCVars.TraitorStartingBalance);
         if (_jobs.MindTryGetJob(mindId, out _, out var prototype))
             startingBalance = Math.Max(startingBalance - prototype.AntagAdvantage, 0);
+
+        // WD START
+        var richAspect = false;
+        if (_gameTicker.GetActiveGameRules().Where(HasComp<TraitorRichAspectComponent>).Any())
+        {
+            startingBalance += 10;
+            richAspect = true;
+        }
+        // WD END
 
         // Give traitors their codewords and uplink code to keep in their character info menu
         var briefing = Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", traitorRule.Codewords)));
@@ -236,6 +250,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         }, mind);
         _roleSystem.MindPlaySound(mindId, traitorRule.GreetSoundNotification, mind);
         SendTraitorBriefing(mindId, traitorRule.Codewords, code);
+        if (richAspect) // WD
+            TraitorRichAspect.NotifyTraitor(mind, _chatManager);
         traitorRule.TraitorMinds.Add(mindId);
 
         // Change the faction

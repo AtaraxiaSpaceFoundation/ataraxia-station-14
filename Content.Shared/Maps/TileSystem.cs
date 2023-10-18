@@ -112,7 +112,7 @@ public sealed class TileSystem : EntitySystem
         return true;
     }
 
-    private bool DeconstructTile(TileRef tileRef)
+    public bool DeconstructTile(TileRef tileRef, bool spawnTile = true) // WD EDIT
     {
         if (tileRef.Tile.IsEmpty)
             return false;
@@ -133,9 +133,12 @@ public sealed class TileSystem : EntitySystem
                 (_robustRandom.NextFloat() - 0.5f) * bounds,
                 (_robustRandom.NextFloat() - 0.5f) * bounds));
 
-        //Actually spawn the relevant tile item at the right position and give it some random offset.
-        var tileItem = Spawn(tileDef.ItemDropPrototypeName, coordinates);
-        Transform(tileItem).LocalRotation = _robustRandom.NextDouble() * Math.Tau;
+        if (spawnTile) // WD EDIT
+        {
+            //Actually spawn the relevant tile item at the right position and give it some random offset.
+            var tileItem = Spawn(tileDef.ItemDropPrototypeName, coordinates);
+            Transform(tileItem).LocalRotation = _robustRandom.NextDouble() * Math.Tau;
+        }
 
         // Destroy any decals on the tile
         var decals = _decal.GetDecalsInRange(gridUid, coordinates.SnapToGrid(EntityManager, _mapManager).Position, 0.5f);
