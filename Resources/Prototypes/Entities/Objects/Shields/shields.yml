@@ -89,6 +89,10 @@
           Heat: 0.7
         flatReductions:
           Heat: 2
+    - type: Reflect
+      reflectProb: 0.25
+      reflects:
+        - Energy
 
 - type: entity
   name: riot bullet shield
