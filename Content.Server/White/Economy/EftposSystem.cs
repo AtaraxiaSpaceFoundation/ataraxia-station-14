@@ -26,10 +26,10 @@ public sealed class EftposSystem : EntitySystem
     private void OnInteractUsing(EntityUid uid, EftposComponent component, InteractUsingEvent args)
     {
         if (component.BankAccountId == null || !TryComp(args.Used, out BankCardComponent? bankCard) ||
-            bankCard.BankAccountId == component.BankAccountId || component.Amount <= 0 || bankCard.CommandBudgetCard)
+            bankCard.AccountId == component.BankAccountId || component.Amount <= 0 || bankCard.CommandBudgetCard)
             return;
 
-        if (_bankCardSystem.TryChangeBalance(bankCard.BankAccountId!.Value, -component.Amount) &&
+        if (_bankCardSystem.TryChangeBalance(bankCard.AccountId!.Value, -component.Amount) &&
             _bankCardSystem.TryChangeBalance(component.BankAccountId.Value, component.Amount))
         {
             _popupSystem.PopupEntity(Loc.GetString("eftpos-transaction-success"), uid);
@@ -50,10 +50,10 @@ public sealed class EftposSystem : EntitySystem
 
         if (component.BankAccountId == null)
         {
-            component.BankAccountId = bankCard.BankAccountId;
+            component.BankAccountId = bankCard.AccountId;
             component.Amount = args.Amount;
         }
-        else if (component.BankAccountId == bankCard.BankAccountId)
+        else if (component.BankAccountId == bankCard.AccountId)
         {
             component.BankAccountId = null;
             component.Amount = 0;

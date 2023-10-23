@@ -66,22 +66,22 @@ public sealed class ATMSystem : SharedATMSystem
         var bankCard = Comp<BankCardComponent>(component.CardSlot.Item.Value);
         var amount = stack.Count;
 
-        _bankCardSystem.TryChangeBalance(bankCard.BankAccountId!.Value, amount);
+        _bankCardSystem.TryChangeBalance(bankCard.AccountId!.Value, amount);
         Del(args.Used);
 
         _audioSystem.PlayPvs(component.SoundInsertCurrency, uid);
-        UpdateUiState(uid, _bankCardSystem.GetBalance(bankCard.BankAccountId.Value), true, Loc.GetString("atm-ui-select-withdraw-amount"));
+        UpdateUiState(uid, _bankCardSystem.GetBalance(bankCard.AccountId.Value), true, Loc.GetString("atm-ui-select-withdraw-amount"));
     }
 
     private void OnCardInserted(EntityUid uid, ATMComponent component, EntInsertedIntoContainerMessage args)
     {
-        if (!TryComp<BankCardComponent>(args.Entity, out var bankCard) || !bankCard.BankAccountId.HasValue)
+        if (!TryComp<BankCardComponent>(args.Entity, out var bankCard) || !bankCard.AccountId.HasValue)
         {
             _container.EmptyContainer(args.Container);
             return;
         }
 
-        UpdateUiState(uid, _bankCardSystem.GetBalance(bankCard.BankAccountId.Value), true, Loc.GetString("atm-ui-select-withdraw-amount"));
+        UpdateUiState(uid, _bankCardSystem.GetBalance(bankCard.AccountId.Value), true, Loc.GetString("atm-ui-select-withdraw-amount"));
     }
 
     private void OnCardRemoved(EntityUid uid, ATMComponent component, EntRemovedFromContainerMessage args)
@@ -91,14 +91,14 @@ public sealed class ATMSystem : SharedATMSystem
 
     private void OnWithdrawRequest(EntityUid uid, ATMComponent component, ATMRequestWithdrawMessage args)
     {
-        if (!TryComp<BankCardComponent>(component.CardSlot.Item, out var bankCard) || !bankCard.BankAccountId.HasValue)
+        if (!TryComp<BankCardComponent>(component.CardSlot.Item, out var bankCard) || !bankCard.AccountId.HasValue)
         {
             if (component.CardSlot.ContainerSlot != null)
                 _container.EmptyContainer(component.CardSlot.ContainerSlot);
             return;
         }
 
-        if (!_bankCardSystem.TryGetAccount(bankCard.BankAccountId.Value, out var account) ||
+        if (!_bankCardSystem.TryGetAccount(bankCard.AccountId.Value, out var account) ||
             account.AccountPin != args.Pin && !HasComp<EmaggedComponent>(uid))
         {
             _popupSystem.PopupEntity(Loc.GetString("atm-wrong-pin"), uid);

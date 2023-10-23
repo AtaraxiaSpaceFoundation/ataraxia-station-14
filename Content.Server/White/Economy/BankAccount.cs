@@ -12,7 +12,6 @@ public sealed class BankAccount
     public string Name = string.Empty;
 
     public EntityUid? CartridgeUid;
-    public EntityUid? LoaderUid;
 
     public BankAccount(int accountId, int balance)
     {

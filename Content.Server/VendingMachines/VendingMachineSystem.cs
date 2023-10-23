@@ -367,12 +367,12 @@ namespace Content.Server.VendingMachines
                         if (TryComp(item, out PdaComponent? pda) && pda.ContainedId is { Valid: true } id)
                             nextItem = id;
 
-                        if (!TryComp<BankCardComponent>(nextItem, out var bankCard) || !bankCard.BankAccountId.HasValue
-                            || !_bankCard.TryGetAccount(bankCard.BankAccountId.Value, out var account)
+                        if (!TryComp<BankCardComponent>(nextItem, out var bankCard) || !bankCard.AccountId.HasValue
+                            || !_bankCard.TryGetAccount(bankCard.AccountId.Value, out var account)
                             || account.Balance < price)
                             continue;
 
-                        _bankCard.TryChangeBalance(bankCard.BankAccountId.Value, -price);
+                        _bankCard.TryChangeBalance(bankCard.AccountId.Value, -price);
                         success = true;
                         break;
                     }

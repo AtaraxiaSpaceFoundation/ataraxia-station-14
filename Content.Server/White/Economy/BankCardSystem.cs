@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
+using Content.Server.CartridgeLoader;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Roles.Jobs;
@@ -34,6 +35,7 @@ public sealed class BankCardSystem : EntitySystem
     [Dependency] private readonly BankCartridgeSystem _bankCartridge = default!;
     [Dependency] private readonly JobSystem _job = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
 
     private const int SalaryDelay = 1200;
 
@@ -96,18 +98,17 @@ public sealed class BankCardSystem : EntitySystem
         if (component.CommandBudgetCard &&
             TryComp(_station.GetOwningStation(uid), out StationBankAccountComponent? acc))
         {
-            component.BankAccountId = acc.BankAccount.AccountId;
+            component.AccountId = acc.BankAccount.AccountId;
             return;
         }
-
-        if (component.BankAccountId.HasValue)
+        if (component.AccountId.HasValue)
         {
-            CreateAccount(component.BankAccountId.Value, component.StartingBalance);
+            CreateAccount(component.AccountId.Value, component.StartingBalance);
             return;
         }
 
         var account = CreateAccount(default, component.StartingBalance);
-        component.BankAccountId = account.AccountId;
+        component.AccountId = account.AccountId;
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
@@ -122,7 +123,7 @@ public sealed class BankCardSystem : EntitySystem
             var cardEntity = id.Owner;
             var bankCardComponent = EnsureComp<BankCardComponent>(cardEntity);
 
-            if (!bankCardComponent.BankAccountId.HasValue || !TryGetAccount(bankCardComponent.BankAccountId.Value, out var bankAccount))
+            if (!bankCardComponent.AccountId.HasValue || !TryGetAccount(bankCardComponent.AccountId.Value, out var bankAccount))
                 return;
 
             if (!TryComp(mind.Mind, out MindComponent? mindComponent))
@@ -130,25 +131,23 @@ public sealed class BankCardSystem : EntitySystem
 
             bankAccount.Balance = GetSalary(mind.Mind) + 100;
             mindComponent.AddMemory(new Memory("PIN", bankAccount.AccountPin.ToString()));
+            mindComponent.AddMemory(new Memory(Loc.GetString("character-info-memories-account-number"),
+                bankAccount.AccountId.ToString()));
             bankAccount.Mind = (mind.Mind.Value, mindComponent);
             bankAccount.Name = Name(ev.Mob);
 
-            if (!_inventorySystem.TryGetSlotEntity(ev.Mob, "id", out var pdaUid) ||
-                !TryComp(pdaUid, out CartridgeLoaderComponent? cartridgeLoader))
+            if (!_inventorySystem.TryGetSlotEntity(ev.Mob, "id", out var pdaUid))
                 return;
 
             BankCartridgeComponent? comp = null;
 
-            var programs = new List<EntityUid>(cartridgeLoader.BackgroundPrograms);
-            if (cartridgeLoader.ActiveProgram != null)
-                programs.Add(cartridgeLoader.ActiveProgram.Value);
+            var programs = _cartridgeLoader.GetInstalled(pdaUid.Value);
 
-            var program = programs.Find(program => TryComp(program, out comp));
+            var program = programs.ToList().Find(program => TryComp(program, out comp));
             if (comp == null)
                 return;
 
             bankAccount.CartridgeUid = program;
-            bankAccount.LoaderUid = pdaUid;
             comp.AccountId = bankAccount.AccountId;
         }
     }
@@ -219,8 +218,8 @@ public sealed class BankCardSystem : EntitySystem
         }
 
         account.Balance += amount;
-        if (account is {CartridgeUid: not null, LoaderUid: not null})
-            _bankCartridge.UpdateUiState(account.CartridgeUid.Value, account.LoaderUid.Value);
+        if (account.CartridgeUid != null)
+            _bankCartridge.UpdateUiState(account.CartridgeUid.Value);
 
         return true;
     }

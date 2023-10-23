@@ -1,11 +1,9 @@
 ﻿using Content.Shared.Containers.ItemSlots;
-using Robust.Shared.Containers;
 
 namespace Content.Shared.White.Economy;
 
 public abstract class SharedATMSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
 
     public override void Initialize()
