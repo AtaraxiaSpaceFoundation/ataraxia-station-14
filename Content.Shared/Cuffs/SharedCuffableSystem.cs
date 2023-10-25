@@ -9,6 +9,7 @@ using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Effects;
+using Content.Shared.Glue;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -18,6 +19,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
+using Content.Shared.Lube;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Physics.Pull;
@@ -59,6 +61,7 @@ namespace Content.Shared.Cuffs
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!; // Parkstation-EndOfRoundStats
+        [Dependency] private readonly MetaDataSystem _metaData = default!; // WD
 
         public override void Initialize()
         {
@@ -452,6 +455,21 @@ namespace Content.Shared.Cuffs
 
             if (!_interaction.InRangeUnobstructed(handcuff, target))
                 return false;
+
+            // WD START
+            if (TryComp(handcuff, out GluedComponent? glue))
+            {
+                _metaData.SetEntityName(handcuff, glue.BeforeGluedEntityName);
+                RemComp<GluedComponent>(handcuff);
+                RemComp<UnremoveableComponent>(handcuff);
+            }
+
+            if (TryComp(handcuff, out LubedComponent? lube))
+            {
+                _metaData.SetEntityName(handcuff, lube.BeforeLubedEntityName);
+                RemComp<LubedComponent>(handcuff);
+            }
+            // WD END
 
             // Success!
             _hands.TryDrop(user, handcuff);
