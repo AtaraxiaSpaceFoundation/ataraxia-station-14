@@ -13,6 +13,9 @@ public sealed partial class GasLeakRuleComponent : Component
         Gas.Plasma,
         Gas.Tritium,
         Gas.Frezon,
+        Gas.BZ,
+        Gas.Hydrogen,
+        Gas.Halon
     };
 
     /// <summary>

@@ -53,6 +53,17 @@
         Ammonia: stationAmmonia
         NitrousOxide: stationNO
         Frezon: danger
+        BZ: danger
+        Pluoxium: unwanted
+        Hydrogen: danger
+        Nitrium: unwanted
+        Healium: danger
+        HyperNoblium: unwanted
+        ProtoNitrate: danger
+        Zauker: danger
+        Halon: danger
+        Helium: unwanted
+        AntiNoblium: danger
     - type: Tag
       tags:
         - GasVent
@@ -144,6 +155,17 @@
         Ammonia: stationAmmonia
         NitrousOxide: stationNO
         Frezon: danger
+        BZ: danger
+        Pluoxium: unwanted
+        Hydrogen: danger
+        Nitrium: unwanted
+        Healium: danger
+        HyperNoblium: unwanted
+        ProtoNitrate: danger
+        Zauker: danger
+        Halon: danger
+        Helium: unwanted
+        AntiNoblium: danger
     - type: Tag
       tags:
         - GasScrubber
