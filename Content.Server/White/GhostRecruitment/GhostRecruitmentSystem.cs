@@ -21,6 +21,8 @@ public sealed class GhostRecruitmentSystem : EntitySystem
 {
     [Dependency] private readonly EuiManager _eui = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private readonly Dictionary<ICommonSession, GhostRecruitmentEuiAccept> _openUis = new();
 
@@ -57,9 +59,11 @@ public sealed class GhostRecruitmentSystem : EntitySystem
         var spawners = GetEventSpawners(recruitmentName).ToList();
 
         // We prioritize the queue, for example, the commander first, and then the engineer
-        spawners = spawners.OrderBy(o => o.Item2.Priority).ToList();
+        spawners = spawners.OrderBy(o => o.Item2.Priority).ThenBy(_ => _random.Next()).ToList();
 
         var count = 0;
+
+        var maxCount = Math.Max(3, _playerManager.PlayerCount / 6);
 
         var query = EntityQueryEnumerator<GhostRecruitedComponent>();
 
@@ -72,7 +76,7 @@ public sealed class GhostRecruitmentSystem : EntitySystem
                 continue;
 
             // if there are too many recruited, then just skip
-            if(count >= spawners.Count)
+            if(count >= spawners.Count || count >= maxCount)
                 continue;
 
             var (spawnerUid, spawnerComponent) = spawners[count];
