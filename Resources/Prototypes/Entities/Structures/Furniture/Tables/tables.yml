@@ -31,7 +31,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 300 # WD edit
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -88,7 +88,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -172,7 +172,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 125
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -210,7 +210,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -263,7 +263,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 300 # WD edit
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -309,7 +309,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -358,7 +358,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 250
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -401,7 +401,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -502,10 +502,21 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
+        damage: 300 #excess damage (nuke?). avoid computational cost of spawning entities.
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWebSilk:
+            min: 1
+            max: 2
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -558,7 +569,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -572,7 +583,7 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
-            min: 0
+            min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -598,7 +609,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 125
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -614,7 +625,7 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetSteel1:
-            min: 0
+            min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]

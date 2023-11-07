@@ -49,7 +49,7 @@
   - type: Tag
     tags:
     - Trash
-  - type: SpaceGarbage
+# - type: SpaceGarbage # WD edit
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
