@@ -213,6 +213,9 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
     public void CloseStorage(EntityUid uid, SharedEntityStorageComponent? component = null)
     {
+        if (EntityManager.IsQueuedForDeletion(uid)) // WD
+            return;
+            
         if (!ResolveStorage(uid, ref component))
             return;
 
