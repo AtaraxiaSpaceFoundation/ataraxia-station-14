@@ -15,7 +15,8 @@ using Content.Server.White.Sponsors;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
- using Content.Shared.Mind.Components;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
  using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles.Jobs;
@@ -80,27 +81,16 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
     private void MeatyOreVerbs(GetVerbsEvent<Verb> ev)
     {
-        if(!EntityManager.TryGetComponent<ActorComponent>(ev.User, out var actorComponent))
+        if (!EntityManager.TryGetComponent<ActorComponent>(ev.User, out var actorComponent))
             return;
-        if(!_sponsorsManager.TryGetInfo(actorComponent.PlayerSession.UserId, out _))
+
+        if (!_sponsorsManager.TryGetInfo(actorComponent.PlayerSession.UserId, out _))
             return;
-        if(!HasComp<HumanoidAppearanceComponent>(ev.Target))
+
+        if (!HasComp<HumanoidAppearanceComponent>(ev.Target))
             return;
-        if(!TryComp<MobStateComponent>(ev.Target, out var state) || state.CurrentState != MobState.Alive)
-            return;
-        if(!TryGetStore(actorComponent.PlayerSession, out var store))
-            return;
-        if (!_mindSystem.TryGetMind(ev.Target, out var mindId, out var mind))
-            return;
-        if (_roleSystem.MindIsAntagonist(mindId))
-            return;
-        if (mind.Session == null)
-            return;
-        if (!_jobSystem.CanBeAntag(mind.Session))
-            return;
-        if (!store.Balance.TryGetValue("MeatyOreCoin", out var currency))
-            return;
-        if(currency - 10 < 0)
+
+        if (!TryGetStore(actorComponent.PlayerSession, out var store))
             return;
 
         var verb = new Verb()
@@ -153,8 +143,10 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
         if(!playerEntity.HasValue)
             return;
+
         if(!HasComp<HumanoidAppearanceComponent>(playerEntity.Value))
             return;
+
         if(!TryGetStore(playerSession!, out var storeComponent))
             return;
 
@@ -207,8 +199,18 @@ public sealed class MeatyOreStoreSystem : EntitySystem
     {
         if (!EntityManager.TryGetComponent<ActorComponent>(user, out var userActorComponent))
             return;
+
         if (!EntityManager.TryGetComponent<ActorComponent>(target, out var targetActorComponent))
             return;
+
+        if (!TryComp<MindContainerComponent>(target, out var targetMind) ||
+            !TryComp(targetMind.Mind, out MindComponent? mindComponent) || mindComponent.Session == null)
+        {
+            return;
+        }
+
+
+        var fake = _roleSystem.MindIsAntagonist(targetMind.Mind.Value) || _jobSystem.CanBeAntag(mindComponent.Session);
 
         var ckey = userActorComponent.PlayerSession.Name;
         var grant = user == target;
@@ -216,8 +218,21 @@ public sealed class MeatyOreStoreSystem : EntitySystem
 
         if (result)
         {
-            _traitorRuleSystem.MakeTraitor(targetActorComponent.PlayerSession);
             _storeSystem.TryAddCurrency(new Dictionary<string, FixedPoint2> { { MeatyOreCurrencyPrototype, -10 } }, store.Owner, store);
+
+            if (!fake)
+            {
+                _traitorRuleSystem.MakeTraitor(targetActorComponent.PlayerSession);
+
+                var msg = $"Игрок с сикеем {ckey} выдал антажку {targetActorComponent.PlayerSession.Name}";
+                _chatManager.SendAdminAnnouncement(msg);
+            }
+            else
+            {
+                var msg = $"Игрок с сикеем {ckey} попытался выдать антажку {targetActorComponent.PlayerSession.Name}. Но обосрался. Была выдана фейковая антажка.";
+                _chatManager.SendAdminAnnouncement(msg);
+            }
+
         }
         else
         {
@@ -228,7 +243,6 @@ public sealed class MeatyOreStoreSystem : EntitySystem
             _popupSystem.PopupEntity(timeMessage, user, user);
         }
     }
-
 
     private async Task<bool> GrantAntagonist(string ckey, bool isFriend)
     {
