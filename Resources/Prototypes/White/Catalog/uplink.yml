@@ -84,3 +84,15 @@
     Telecrystal: 15
   categories:
   - UplinkImplants
+
+# Night Vision
+- type: listing
+  id: UplinkNightGoggles
+  name: ПНВ [Хамелеон]
+  description: Теперь ты видишь во тьме!
+  productEntity: ClothingEyesNightVisionGogglesSyndie
+  icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkArmor
