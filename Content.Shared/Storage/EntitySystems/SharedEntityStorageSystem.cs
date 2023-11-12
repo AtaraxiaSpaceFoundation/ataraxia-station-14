@@ -215,7 +215,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
     {
         if (EntityManager.IsQueuedForDeletion(uid)) // WD
             return;
-            
+
         if (!ResolveStorage(uid, ref component))
             return;
 
