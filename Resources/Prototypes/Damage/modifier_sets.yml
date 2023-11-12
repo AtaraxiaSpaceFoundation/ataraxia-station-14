@@ -309,3 +309,10 @@
   flatReductions:
     # can't punch the endoskeleton to death
     Blunt: 5
+
+- type: damageModifierSet
+  id: Harpy
+  coefficients:
+    Blunt: 1.15
+    Slash: 1.15
+    Piercing: 1.15
