@@ -308,6 +308,7 @@
       - FauxTileAstroGrass
       - FauxTileAstroIce
       - OreBagOfHolding
+      - ClothingEyesNightVisionGoggles # WD EDIT
   - type: EmagLatheRecipes
     emagDynamicRecipes:
       - ExplosivePayload
