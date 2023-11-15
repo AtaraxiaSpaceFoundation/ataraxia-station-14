@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using Content.Server.Chemistry.Components.SolutionManager;
 using Content.Server.Stunnable;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;

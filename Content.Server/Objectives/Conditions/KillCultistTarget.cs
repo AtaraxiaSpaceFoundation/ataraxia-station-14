@@ -1,9 +1,8 @@
-using System.Diagnostics;
+/*using System.Diagnostics;
 using System.Linq;
 using Content.Server.Mind;
 using Content.Server.White.Cult.GameRule;
 using Content.Shared.Mind;
-using Content.Shared.Objectives.Interfaces;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Utility;
 
@@ -85,4 +84,4 @@ public sealed partial class KillCultistTarget : IObjectiveCondition
     {
         return TargetMindId?.GetHashCode() ?? 0;
     }
-}
+}*/

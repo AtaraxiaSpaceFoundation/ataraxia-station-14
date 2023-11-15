@@ -6,7 +6,6 @@ using Content.Server.Popups;
 using Content.Server.White.Cult.GameRule;
 using Content.Server.White.IncorporealSystem;
 using Content.Shared.Actions;
-using Content.Shared.Actions.ActionTypes;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Maps;
@@ -48,8 +47,7 @@ public partial class CultSystem
     {
         foreach (var action in component.Actions)
         {
-            var actionPrototype = _prototypeManager.Index<InstantActionPrototype>(action);
-            _actionsSystem.AddAction(uid, new InstantAction(actionPrototype), uid);
+            _actionsSystem.AddAction(uid, action, uid);
         }
 
         var query = EntityQueryEnumerator<CultRuleComponent, GameRuleComponent>();

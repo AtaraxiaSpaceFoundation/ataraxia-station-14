@@ -1,8 +1,11 @@
 ﻿using Content.Client._White.UserInterface.Radial;
+using Content.Shared.Actions;
 using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Utility;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client._White.Cult.UI.SpellSelector;
 
@@ -22,9 +25,27 @@ public sealed class SpellSelectorBUI : BoundUserInterface
         _radialContainer = new RadialContainer();
         _radialContainer.Closed += Close;
 
+        var protoMan = IoCManager.Resolve<IPrototypeManager>();
+
         foreach (var action in CultistComponent.CultistActions)
         {
-            var button = _radialContainer.AddButton(action.DisplayName, action.Icon?.Frame0());
+            if (!protoMan.TryIndex(action, out var proto))
+                continue;
+
+            SpriteSpecifier? icon;
+            if (action.StartsWith("InstantAction") && proto.TryGetComponent(out InstantActionComponent? instantComp))
+                icon = instantComp.Icon;
+            else
+            {
+                if (!proto.TryGetComponent(out EntityTargetActionComponent? targetComp))
+                    continue;
+                icon = targetComp.Icon;
+            }
+
+            if (icon == null)
+                continue;
+
+            var button = _radialContainer.AddButton(proto.Name, icon.ToString());
 
             button.Controller.OnPressed += _ =>
             {

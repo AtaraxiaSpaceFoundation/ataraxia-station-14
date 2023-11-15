@@ -53,7 +53,7 @@ public sealed class ChatUIController : UIController
     [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly CultistWordGeneratorManager _wordGenerator = default!;
-
+    [Dependency] private readonly IEntityManager _entities = default!;
 
     [UISystemDependency] private readonly ExamineSystem? _examine = default;
     [UISystemDependency] private readonly GhostSystem? _ghost = default;

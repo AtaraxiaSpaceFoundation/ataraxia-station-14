@@ -1,8 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Actions.ActionTypes;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.White.Cult.Components;
 
@@ -19,9 +16,9 @@ public sealed partial class CultEmpowerComponent : Component
 [Serializable, NetSerializable]
 public sealed class CultEmpowerSelectedBuiMessage : BoundUserInterfaceMessage
 {
-    public ActionType ActionType;
+    public string ActionType;
 
-    public CultEmpowerSelectedBuiMessage(ActionType actionType)
+    public CultEmpowerSelectedBuiMessage(string actionType)
     {
         ActionType = actionType;
     }

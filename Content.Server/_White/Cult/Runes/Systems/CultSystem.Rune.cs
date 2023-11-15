@@ -5,14 +5,13 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Body.Systems;
-using Content.Server.Chemistry.Components.SolutionManager;
 using Content.Server.DoAfter;
 using Content.Server.Hands.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Server.White.Cult.GameRule;
 using Content.Server.White.Cult.Runes.Comps;
 using Content.Shared.Actions;
-using Content.Shared.Actions.ActionTypes;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -147,7 +146,7 @@ public sealed partial class CultSystem : EntitySystem
 
         if (_ui.TryGetUi(uid, ListViewSelectorUiKey.Key, out var bui))
         {
-            UserInterfaceSystem.SetUiState(bui, new ListViewBUIState(component.RunePrototypes, false));
+            _ui.SetUiState(bui, new ListViewBUIState(component.RunePrototypes, false));
             _ui.OpenUi(bui, actorComponent.PlayerSession);
         }
     }
@@ -166,8 +165,8 @@ public sealed partial class CultSystem : EntitySystem
         if (!TryDraw(whoCalled, runePrototype))
             return;
 
-        if (component.UserInterface != null)
-            _ui.CloseUi(component.UserInterface, actorComponent.PlayerSession);
+        /*if (component.UserInterface != null)
+            _ui.CloseUi(component.UserInterface, actorComponent.PlayerSession);*/
     }
 
     private bool TryDraw(EntityUid whoCalled, string runePrototype)
@@ -192,7 +191,7 @@ public sealed partial class CultSystem : EntitySystem
             Rune = runePrototype
         };
 
-        var argsDoAfterEvent = new DoAfterArgs(whoCalled, _timeToDraw, ev, whoCalled)
+        var argsDoAfterEvent = new DoAfterArgs(_entityManager, whoCalled, _timeToDraw, ev, whoCalled)
         {
             BreakOnUserMove = true,
             NeedHand = true
@@ -280,7 +279,7 @@ public sealed partial class CultSystem : EntitySystem
             TargetEntityId = target
         };
 
-        var argsDoAfterEvent = new DoAfterArgs(user, time, ev, target)
+        var argsDoAfterEvent = new DoAfterArgs(_entityManager, user, time, ev, target)
         {
             BreakOnUserMove = true,
             NeedHand = true
@@ -632,7 +631,7 @@ public sealed partial class CultSystem : EntitySystem
         providerComponent.Targets = victims;
         providerComponent.BaseRune = rune;
 
-        UserInterfaceSystem.SetUiState(ui, new TeleportRunesListWindowBUIState(list, labels));
+        _ui.SetUiState(ui, new TeleportRunesListWindowBUIState(list, labels));
 
         if (_ui.IsUiOpen(user, ui.UiKey))
             return false;
@@ -724,7 +723,7 @@ public sealed partial class CultSystem : EntitySystem
 
         var ev = new SummonNarsieDoAfterEvent();
 
-        var argsDoAfterEvent = new DoAfterArgs(user, TimeSpan.FromSeconds(40), ev, user)
+        var argsDoAfterEvent = new DoAfterArgs(_entityManager, user, TimeSpan.FromSeconds(40), ev, user)
         {
             BreakOnUserMove = true
         };
@@ -920,7 +919,7 @@ public sealed partial class CultSystem : EntitySystem
         _entityManager.EnsureComponent<CultRuneSummoningProviderComponent>(user, out var providerComponent);
         providerComponent.BaseRune = rune;
 
-        UserInterfaceSystem.SetUiState(ui, new SummonCultistListWindowBUIState(list, labels));
+        _ui.SetUiState(ui, new SummonCultistListWindowBUIState(list, labels));
 
         if (_ui.IsUiOpen(user, ui.UiKey))
             return false;
@@ -1115,17 +1114,25 @@ public sealed partial class CultSystem : EntitySystem
     {
         var playerEntity = args.Session.AttachedEntity;
 
-        if (!playerEntity.HasValue || !TryComp<CultistComponent>(playerEntity, out _) ||
+        if (!playerEntity.HasValue || !TryComp<CultistComponent>(playerEntity, out var comp) ||
             !TryComp<ActionsComponent>(playerEntity, out var actionsComponent))
             return;
 
-        var cultistsActions = actionsComponent.Actions.Intersect(CultistComponent.CultistActions).Count();
+        var cultistsActions = 0;
+
+        foreach (var userAction in actionsComponent.Actions)
+        {
+            var entityPrototypeId = MetaData(userAction).EntityPrototype?.ID;
+            if (entityPrototypeId != null && CultistComponent.CultistActions.Contains(entityPrototypeId))
+                cultistsActions++;
+        }
 
         var action = CultistComponent.CultistActions.FirstOrDefault(x => x.Equals(args.ActionType));
 
         if (action == null)
             return;
 
+        EntityUid? actionId = null;
         if (component.IsRune)
         {
             if (cultistsActions > component.MaxAllowedCultistActions)
@@ -1134,11 +1141,11 @@ public sealed partial class CultSystem : EntitySystem
                 return;
             }
 
-            _actionsSystem.AddAction(playerEntity.Value, (ActionType) action.Clone(), null!);
+            _actionsSystem.AddAction(playerEntity.Value, ref actionId, action);
         }
         else if (cultistsActions < component.MinRequiredCultistActions)
         {
-            _actionsSystem.AddAction(playerEntity.Value, (ActionType) action.Clone(), null!);
+            _actionsSystem.AddAction(playerEntity.Value, ref actionId, action);
         }
     }
 

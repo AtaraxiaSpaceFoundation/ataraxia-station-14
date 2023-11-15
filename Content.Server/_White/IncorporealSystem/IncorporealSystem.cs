@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Content.Server.Visible;
+using Content.Shared.Eye;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Robust.Server.GameObjects;

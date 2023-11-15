@@ -1,11 +1,8 @@
-﻿using Content.Shared.Actions.ActionTypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
-
-namespace Content.Server.White.Cult;
+﻿namespace Content.Server.White.Cult;
 
 [RegisterComponent]
 public sealed partial class ConstructComponent : Component
 {
-    [DataField("actions", customTypeSerializer: typeof(PrototypeIdListSerializer<InstantActionPrototype>))]
+    [DataField("actions")]
     public List<string> Actions = new();
 }

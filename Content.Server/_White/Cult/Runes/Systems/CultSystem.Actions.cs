@@ -1,9 +1,9 @@
 using System.Linq;
 using Content.Server.Body.Components;
-using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server.White.Cult.UI;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;

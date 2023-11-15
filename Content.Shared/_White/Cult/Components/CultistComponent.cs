@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using Content.Shared.Actions.ActionTypes;
 using Content.Shared.White.Cult.Actions;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
@@ -23,74 +22,19 @@ public sealed partial class CultistComponent : Component
     public CancellationTokenSource? HolyConvertToken;
 
     [NonSerialized]
-    public List<ActionType> SelectedEmpowers = new();
+    public List<string> SelectedEmpowers = new();
 
-    public static InstantAction SummonCultDaggerAction = new()
-    {
-        UseDelay = TimeSpan.FromSeconds(200),
-        DisplayName = "Summon cult dagger.",
-        Description = "Summons a ritual dagger.",
-        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/interface.rsi"), "icon"),
-        Event = new CultSummonDaggerActionEvent()
-    };
+    public static string SummonCultDaggerAction = "InstantActionSummonCultDagger";
 
-    public static InstantAction BloodRitesAction = new()
-    {
-        UseDelay = TimeSpan.FromSeconds(35),
-        DisplayName = "Blood Rites",
-        Description = "Sucks blood and heals you",
-        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/actions_cult.rsi"), "blood_rites"),
-        Event = new CultBloodRitesInstantActionEvent()
-    };
+    public static string BloodRitesAction = "InstantActionBloodRites";
 
-    public static EntityTargetAction CultTwistedConstructionAction = new()
-    {
-        UseDelay = TimeSpan.FromSeconds(50),
-        DisplayName = "Twisted Construction",
-        Description = "A sinister spell that is used to turn metal into runic metal.",
-        Icon = new SpriteSpecifier.Texture(new ResPath("Objects/Materials/Sheets/metal.rsi/steel.png")),
-        Event = new CultTwistedConstructionActionEvent()
-    };
+    public static string CultTwistedConstructionAction = "ActionCultTwistedConstruction";
 
-    public static EntityTargetAction CultTeleportAction = new()
-    {
-        UseDelay = TimeSpan.FromSeconds(30),
-        DisplayName = "Teleport",
-        CanTargetSelf = true,
-        DeselectOnMiss = true,
-        Repeat = false,
-        Description = "A useful spell that teleports cultists to a chosen destination",
-        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/actions_cult.rsi"), "teleport"),
-        Event = new CultTeleportTargetActionEvent(),
-        Whitelist = new EntityWhitelist
-        {
-            Components = new[]
-            {
-                "HumanoidAppearance", "Cultist"
-            }
-        }
-    };
+    public static string CultTeleportAction = "ActionCultTeleport";
 
-    public static EntityTargetAction CultSummonCombatEquipmentAction = new()
-    {
-        UseDelay = TimeSpan.FromSeconds(300),
-        DisplayName = "Summon combat equipment",
-        CanTargetSelf = true,
-        DeselectOnMiss = true,
-        Repeat = false,
-        Description = "A crucial spell that enables you to summon a full set of combat gear",
-        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/actions_cult.rsi"), "armor"),
-        Event = new CultSummonCombatEquipmentTargetActionEvent(),
-        Whitelist = new EntityWhitelist
-        {
-            Components = new[]
-            {
-                "HumanoidAppearance", "Cultist"
-            }
-        }
-    };
+    public static string CultSummonCombatEquipmentAction = "ActionCultSummonCombatEquipment";
 
-    public static List<ActionType> CultistActions = new()
+    public static List<string> CultistActions = new()
     {
         SummonCultDaggerAction, BloodRitesAction, CultTwistedConstructionAction, CultTeleportAction,
         CultSummonCombatEquipmentAction
