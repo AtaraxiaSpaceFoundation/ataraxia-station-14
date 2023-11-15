@@ -135,7 +135,9 @@ public sealed class VoidTeleportSystem : EntitySystem
     private void CreatePulse(EntityUid uid, VoidTeleportComponent component)
     {
         if (TryComp<PointLightComponent>(uid, out var light))
+#pragma warning disable RA0002
             light.Energy = 5f;
+#pragma warning restore RA0002
 
         Timer.Spawn(component.TimerDelay, () => TurnOffPulse(uid, component), component.Token.Token);
     }
@@ -145,7 +147,9 @@ public sealed class VoidTeleportSystem : EntitySystem
         if (!TryComp<PointLightComponent>(uid, out var light))
             return;
 
+#pragma warning disable RA0002
         light.Energy = 1f;
+#pragma warning restore RA0002
 
         comp.Token = new CancellationTokenSource();
 
@@ -154,7 +158,9 @@ public sealed class VoidTeleportSystem : EntitySystem
             comp.Active = false;
             UpdateAppearance(uid, comp);
 
+#pragma warning disable RA0002
             light.Enabled = false;
+#pragma warning restore RA0002
         }
     }
 }

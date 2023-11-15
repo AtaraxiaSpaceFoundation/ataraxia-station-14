@@ -135,7 +135,7 @@ public sealed partial class CultSystem : EntitySystem
 
     private void OnRuneDrawerUseInHand(EntityUid uid, RuneDrawerProviderComponent component, UseInHandEvent args)
     {
-        if (component.UserInterface == null)
+        if (!_ui.TryGetUi(uid, component.UserInterfaceKey, out _))
             return;
 
         if (!TryComp<ActorComponent>(args.User, out var actorComponent))

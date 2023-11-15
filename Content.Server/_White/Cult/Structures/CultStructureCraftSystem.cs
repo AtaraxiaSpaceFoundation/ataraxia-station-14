@@ -25,10 +25,10 @@ public sealed class CultStructureCraftSystem : EntitySystem
         if (!_playerManager.TryGetSessionByEntity(args.User, out var session) || session is not IPlayerSession playerSession)
             return;
 
-        if (component.UserInterface != null)
+        if (_uiSystem.TryGetUi(uid, component.UserInterfaceKey, out var bui))
         {
-            _uiSystem.CloseUi(component.UserInterface, playerSession);
-            _uiSystem.OpenUi(component.UserInterface, playerSession);
+            _uiSystem.CloseUi(bui, playerSession);
+            _uiSystem.OpenUi(bui, playerSession);
         }
     }
 }

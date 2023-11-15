@@ -1,5 +1,11 @@
-- type: objective
+- type: entity
+  noSpawn: true
+  parent: BaseObjective
   id: CultistKillObjective
-  issuer: Cult
-  conditions:
-    - !type:KillCultistTarget {}
+  description: objective-condition-kill-person-description
+  components:
+    - type: Objective
+      icon:
+        sprite: /White/Cult/interface.rsi
+        state: icon
+    - type: KillCultistTargetCondition

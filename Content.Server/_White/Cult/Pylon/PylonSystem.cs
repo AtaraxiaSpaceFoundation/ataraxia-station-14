@@ -222,7 +222,9 @@ public sealed class PylonSystem : EntitySystem
             if (!TryComp<PointLightComponent>(uid, out var light))
                 return;
 
+#pragma warning disable RA0002
             light.Enabled = comp.Activated;
+#pragma warning restore RA0002
 
             var toggleMsg = Loc.GetString(comp.Activated ? "pylon-toggle-on" : "pylon-toggle-off");
             _popupSystem.PopupEntity(toggleMsg, uid);

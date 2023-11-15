@@ -81,7 +81,7 @@ public sealed class CultistFactorySystem : EntitySystem
 
         if (_ui.TryGetUi(uid, CultistAltarUiKey.Key, out var bui))
         {
-            UserInterfaceSystem.SetUiState(bui, new CultistFactoryBUIState(component.Products));
+            _ui.SetUiState(bui, new CultistFactoryBUIState(component.Products));
             _ui.OpenUi(bui, actor.PlayerSession);
         }
     }
@@ -128,7 +128,7 @@ public sealed class CultistFactorySystem : EntitySystem
 
         var xform = Transform(uid);
         var ev = new CultAnchorDoAfterEvent(xform.Anchored);
-        var doArgs = new DoAfterArgs(user, time, ev, uid, uid);
+        var doArgs = new DoAfterArgs(_entityManager, user, time, ev, uid, uid);
 
         _doAfterSystem.TryStartDoAfter(doArgs);
     }

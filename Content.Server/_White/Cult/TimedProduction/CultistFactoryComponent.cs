@@ -20,7 +20,7 @@ public sealed partial class CultistFactoryComponent : Component
     [DataField("products", customTypeSerializer: typeof(PrototypeIdListSerializer<CultistFactoryProductionPrototype>))]
     public IReadOnlyCollection<string> Products = ArraySegment<string>.Empty;
 
-    public BoundUserInterface? UserInterface => Owner.GetUIOrNull(CultistAltarUiKey.Key);
+    public Enum UserInterfaceKey = CultistAltarUiKey.Key;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public bool Active = true;

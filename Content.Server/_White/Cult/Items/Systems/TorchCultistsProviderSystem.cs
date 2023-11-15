@@ -95,7 +95,9 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             return;
         }
 
-        if (provider.UserInterface == null)
+        var ui = _ui.GetUiOrNull(uid, comp.UserInterfaceKey);
+
+        if (ui == null)
             return;
 
         provider.ItemSelected = args.Target;
@@ -120,12 +122,12 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             return;
         }
 
-        UserInterfaceSystem.SetUiState(provider.UserInterface, new TorchWindowBUIState(list));
+        _ui.SetUiState(ui, new TorchWindowBUIState(list));
 
         if (!TryComp<ActorComponent>(args.User, out var actorComponent))
             return;
 
-        _ui.ToggleUi(provider.UserInterface, actorComponent.PlayerSession);
+        _ui.ToggleUi(ui, actorComponent.PlayerSession);
     }
 
     private void OnCultistSelected(

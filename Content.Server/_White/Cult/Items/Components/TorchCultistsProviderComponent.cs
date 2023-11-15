@@ -8,7 +8,7 @@ namespace Content.Server.White.Cult.Items.Components;
 public sealed partial class TorchCultistsProviderComponent : Component
 {
     [ViewVariables(VVAccess.ReadOnly)]
-    public BoundUserInterface? UserInterface => Owner.GetUIOrNull(CultTeleporterUiKey.Key);
+    public Enum UserInterfaceKey = CultTeleporterUiKey.Key;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? ItemSelected;

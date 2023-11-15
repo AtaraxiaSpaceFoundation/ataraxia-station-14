@@ -8,7 +8,7 @@ namespace Content.Server.White.Cult.Structures;
 public sealed partial class RunicMetalComponent : Component
 {
     [ViewVariables(VVAccess.ReadOnly)]
-    public BoundUserInterface? UserInterface => Owner.GetUIOrNull(CultStructureCraftUiKey.Key);
+    public Enum UserInterfaceKey = CultStructureCraftUiKey.Key;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("delay")]
     public float Delay = 1;

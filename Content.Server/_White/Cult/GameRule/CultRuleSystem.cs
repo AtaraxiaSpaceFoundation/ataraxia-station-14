@@ -452,7 +452,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
                 if (backPack != null)
                 {
-                    _storageSystem.Insert(backPack.Value, itemEntity);
+                    _storageSystem.Insert(backPack.Value, itemEntity, out _);
                 }
             }
         }
@@ -462,10 +462,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         _chatManager.DispatchServerMessage(cultist, Loc.GetString("cult-role-greeting"));
 
-        if (_prototypeManager.TryIndex<ObjectivePrototype>("CultistKillObjective", out var cultistObjective))
-        {
-            _mindSystem.TryAddObjective(mind.Value, mindComponent,cultistObjective);
-        }
+        _mindSystem.TryAddObjective(mind.Value, mindComponent, "CultistKillObjective");
 
         return true;
     }

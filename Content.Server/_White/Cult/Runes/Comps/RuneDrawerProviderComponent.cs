@@ -8,7 +8,7 @@ namespace Content.Shared.White.Cult;
 public sealed partial class RuneDrawerProviderComponent : Component
 {
     [ViewVariables]
-    public BoundUserInterface? UserInterface => Owner.GetUIOrNull(ListViewSelectorUiKey.Key);
+    public Enum UserInterfaceKey = ListViewSelectorUiKey.Key;
 
     [DataField("runePrototypes")]
     public List<string> RunePrototypes = new();
