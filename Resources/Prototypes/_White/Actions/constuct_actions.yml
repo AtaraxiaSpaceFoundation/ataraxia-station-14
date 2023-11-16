@@ -1,82 +1,102 @@
-﻿- type: instantAction
-  id: ArtificerCreateSoulStone
+﻿- type: entity
+  id: InstantActionArtificerCreateSoulStone
   name: artificer-create-soul-stone-action-name
   description: artificer-create-soul-stone-action-description
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: phaseshift
+      event: !type:ArtificerCreateSoulStoneActionEvent
+      useDelay: 300
+      sound: /Audio/White/Cult/curse.ogg
 
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: phaseshift
-  sound: /Audio/White/Cult/curse.ogg
-  useDelay: 300
-  event: !type:ArtificerCreateSoulStoneActionEvent
-
-- type: instantAction
-  id: ArtificerCreateConstructShell
+- type: entity
+  id: InstantActionArtificerCreateConstructShell
   name: artificer-create-construct-shell-action-name
   description: artificer-create-construct-shell-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: artificer
-  sound: /Audio/White/Cult/curse.ogg
-  useDelay: 180
-  event: !type:ArtificerCreateConstructShellActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: artificer
+      sound: /Audio/White/Cult/curse.ogg
+      useDelay: 180
+      event: !type:ArtificerCreateConstructShellActionEvent
 
-- type: instantAction
-  id: ArtificerConvertCultistFloor
+- type: entity
+  id: InstantActionArtificerConvertCultistFloor
   name: artificer-convert-cultist-floor-action-name
   description: artificer-convert-cultist-floor-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: floorconstruct
-  sound: /Audio/White/Cult/curse.ogg
-  useDelay: 2
-  event: !type:ArtificerConvertCultistFloorActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: floorconstruct
+      sound: /Audio/White/Cult/curse.ogg
+      useDelay: 2
+      event: !type:ArtificerConvertCultistFloorActionEvent
 
-- type: instantAction
-  id: ArtificerCreateCultistWall
+- type: entity
+  id: InstantActionArtificerCreateCultistWall
   name: artificer-create-cultist-wall-action-name
   description: artificer-create-cultist-wall-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: lesserconstruct
-  sound: /Audio/White/Cult/curse.ogg
-  useDelay: 20
-  event: !type:ArtificerCreateCultistWallActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: lesserconstruct
+      sound: /Audio/White/Cult/curse.ogg
+      useDelay: 20
+      event: !type:ArtificerCreateCultistWallActionEvent
 
-- type: instantAction
-  id: ArtificerCreateCultistAirlock
+- type: entity
+  id: InstantActionArtificerCreateCultistAirlock
   name: artificer-create-cultist-airlock-action-name
   description: artificer-create-cultist-airlock-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: lesserconstruct
-  sound: /Audio/White/Cult/curse.ogg
-  useDelay: 60
-  event: !type:ArtificerCreateCultistAirlockActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: lesserconstruct
+      sound: /Audio/White/Cult/curse.ogg
+      useDelay: 60
+      event: !type:ArtificerCreateCultistAirlockActionEvent
 
-- type: instantAction
-  id: WraithPhase
+- type: entity
+  id: InstantActionWraithPhase
   name: wraith-phase-action-name
   description: wraith-phase-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: phaseshift
-  sound: /Audio/White/Cult/wraith_phase.ogg
-  useDelay: 20
-  event: !type:WraithPhaseActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: phaseshift
+      sound: /Audio/White/Cult/wraith_phase.ogg
+      useDelay: 20
+      event: !type:WraithPhaseActionEvent
 
-- type: instantAction
-  id: JuggernautCreateWall
+- type: entity
+  id: InstantActionJuggernautCreateWall
   name: juggernaut-create-wall-action-name
   description: juggernaut-create-wall-action-description
-  itemIconStyle: NoItem
-  icon:
-    sprite: White/Cult/actions_cult.rsi
-    state: cultforcewall
-  useDelay: 35
-  event: !type:JuggernautCreateWallActionEvent
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: cultforcewall
+      useDelay: 35
+      event: !type:JuggernautCreateWallActionEvent

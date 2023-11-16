@@ -5,6 +5,8 @@
   description: objective-condition-kill-person-description
   components:
     - type: Objective
+      difficulty: 1.5
+      issuer: Cult
       icon:
         sprite: /White/Cult/interface.rsi
         state: icon

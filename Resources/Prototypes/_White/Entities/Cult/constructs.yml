@@ -45,7 +45,6 @@
       allowedStates:
         - Alive
         - Dead
-    - type: HeatResistance
     - type: CombatMode
       canDisarm: false
     - type: Internals
