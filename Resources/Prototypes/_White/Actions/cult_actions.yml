@@ -8,7 +8,7 @@
       useDelay: 50
       canTargetSelf: false
       icon:
-        sprite: /Objects/Materials/Sheets/metal.rsi
+        sprite: /Textures/Objects/Materials/Sheets/metal.rsi
         state: steel
       event: !type:CultTwistedConstructionActionEvent
 

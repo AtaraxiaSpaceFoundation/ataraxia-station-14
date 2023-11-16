@@ -45,7 +45,8 @@ public sealed class SpellSelectorBUI : BoundUserInterface
             if (icon == null)
                 continue;
 
-            var button = _radialContainer.AddButton(proto.Name, icon.ToString());
+            var texture = icon.Frame0();
+            var button = _radialContainer.AddButton(proto.Name, texture);
 
             button.Controller.OnPressed += _ =>
             {
