@@ -274,9 +274,11 @@ public sealed partial class CultSystem : EntitySystem
         if (HasComp<CultBuffComponent>(user))
             time /= 2;
 
+        var netEntity = GetNetEntity(target);
+
         var ev = new CultEraseEvent
         {
-            TargetEntityId = target
+            TargetEntityId = netEntity
         };
 
         var argsDoAfterEvent = new DoAfterArgs(_entityManager, user, time, ev, target)
@@ -296,7 +298,9 @@ public sealed partial class CultSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        _entityManager.DeleteEntity(args.TargetEntityId);
+        var target = GetEntity(args.TargetEntityId);
+
+        _entityManager.DeleteEntity(target);
         _popupSystem.PopupEntity(Loc.GetString("cult-erased-rune"), args.User);
     }
 

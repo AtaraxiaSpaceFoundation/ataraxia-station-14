@@ -6,5 +6,5 @@ namespace Content.Shared.White.Cult.Runes;
 [Serializable, NetSerializable]
 public sealed partial class CultEraseEvent : SimpleDoAfterEvent
 {
-    public EntityUid TargetEntityId;
+    public NetEntity TargetEntityId;
 }
