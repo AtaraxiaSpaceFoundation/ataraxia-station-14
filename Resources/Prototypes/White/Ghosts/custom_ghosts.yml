@@ -314,3 +314,12 @@
   ghostName: Мяукалка
   ghostDescription: Мяу!
   size: 0.6, 0.6
+
+- type: customGhost
+  id: raindrop-ghost
+  ckey: raindrop.
+  sprite: White/Ghosts/raindrop-ghost.rsi
+  alpha: 0.7
+  ghostName: Акулёнок
+  ghostDescription: Что-то замышляет.
+  size: 0.9, 0.9
