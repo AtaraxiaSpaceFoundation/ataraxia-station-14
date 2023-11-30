@@ -327,6 +327,22 @@
     radius: 7
     energy: 3
 
+#Head of Personnel's Hardsuit WD
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitHOP
+  noSpawn: true
+  name: head of personnel's hardsuit helmet
+  description: Lightweight hardsuit helmet that doesn't restrict your head movements. Belongs to the HoP.
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hardsuits/hop.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hardsuits/hop.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
 - type: entity

@@ -437,6 +437,37 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitLuxury
 
+#Head of Personnel's Hardsuit WD
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitHOP
+  name: head of personnel's hardsuit
+  description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of light armor.
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/hop.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/hop.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.45
+      lowPressureMultiplier: 1000
+    - type: ExplosionResistance
+      damageCoefficient: 0.2
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.2
+          Slash: 0.1
+          Piercing: 0.1
+          Radiation: 0.1
+          Caustic: 0.2
+          Heat: 0.1
+    - type: ClothingSpeedModifier
+      walkModifier: 0.9
+      sprintModifier: 0.9
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitHOP
+
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
 - type: entity
