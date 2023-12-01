@@ -526,3 +526,51 @@
   name: tts-voice-name-sulik
   sex: Male
   speaker: sulik
+
+- type: ttsVoice
+  id: Astrid
+  name: tts-voice-name-astrid
+  sex: Female
+  speaker: astrid
+
+- type: ttsVoice
+  id: Maven
+  name: tts-voice-name-maven
+  sex: Female
+  speaker: maven
+
+- type: ttsVoice
+  id: Nazir
+  name: tts-voice-name-nazir
+  sex: Male
+  speaker: nazir
+
+- type: ttsVoice
+  id: Jackie
+  name: tts-voice-name-jackie
+  sex: Male
+  speaker: jackie
+
+- type: ttsVoice
+  id: EvilThalya
+  name: tts-voice-name-evil-thalya
+  sex: Female
+  speaker: evil_thalya
+
+- type: ttsVoice
+  id: PostalDude
+  name: tts-voice-name-dude
+  sex: Male
+  speaker: dude
+
+- type: ttsVoice
+  id: Anduin
+  name: tts-voice-name-anduin
+  sex: Male
+  speaker: anduin
+
+- type: ttsVoice
+  id: Brukan
+  name: tts-voice-name-brukan
+  sex: Male
+  speaker: brukan
