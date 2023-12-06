@@ -43,3 +43,7 @@ marking-SomeTailHZZ-tail_tip = Кончик
 marking-knifeCappyEars1 = Ушки Аксолотля
 marking-knifeCappyTail1 = Хвост Аксолотля
 marking-knifeCappyTail2 = Хвост Аксолотля
+
+marking-FoxEarsIMercuryI = Льсьи ушки
+marking-FoxTailIMercuryI = Лисий хвост
+marking-FoxTailWaggingIMercuryI = Лисий хвост, махает.
