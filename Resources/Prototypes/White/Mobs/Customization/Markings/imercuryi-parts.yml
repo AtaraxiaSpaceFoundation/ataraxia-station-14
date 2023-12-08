@@ -3,7 +3,7 @@
   id: FoxEarsIMercuryI
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Human, Felinid]
   sponsorOnly: true
   sprites:
     - sprite: White/Mobs/Customization/imercuryi.rsi
@@ -13,7 +13,7 @@
   id: FoxTailIMercuryI
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Human, Felinid]
   sponsorOnly: true
   sprites:
     - sprite: White/Mobs/Customization/imercuryi.rsi
@@ -23,7 +23,7 @@
   id: FoxTailWaggingIMercuryI
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Human, Felinid]
   sponsorOnly: true
   sprites:
     - sprite: White/Mobs/Customization/imercuryi.rsi
