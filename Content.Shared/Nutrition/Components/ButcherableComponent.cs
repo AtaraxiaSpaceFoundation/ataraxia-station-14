@@ -18,6 +18,9 @@ namespace Content.Shared.Nutrition.Components
         [ViewVariables(VVAccess.ReadWrite), DataField("butcheringType")]
         public ButcheringType Type = ButcheringType.Knife;
 
+        [DataField("syndieRoleRequired")] // WD
+        public bool SyndieRoleRequired;
+
         /// <summary>
         /// Prevents butchering same entity on two and more spikes simultaneously and multiple doAfters on the same Spike
         /// </summary>

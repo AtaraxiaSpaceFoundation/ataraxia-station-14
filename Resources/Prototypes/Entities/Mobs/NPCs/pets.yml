@@ -531,6 +531,7 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: Butcherable
+    syndieRoleRequired: true
     spawned:
     - id: FoodMeat
       amount: 3

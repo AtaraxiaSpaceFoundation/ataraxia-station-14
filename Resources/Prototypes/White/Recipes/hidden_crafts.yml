@@ -119,6 +119,14 @@
       - to: snatcherprod
         steps:
           - material: Telecrystal
-            traitorOnly: true
   - node: snatcherprod
     entity: Snatcherprod
+    edges:
+      - to: rod
+        steps:
+          - tool: Cutting
+            doAfter: 5
+        completed:
+        - !type:SpawnPrototype
+          prototype: Telecrystal1
+        - !type:EmptyAllContainers

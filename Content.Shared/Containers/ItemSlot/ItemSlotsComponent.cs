@@ -219,6 +219,9 @@ namespace Content.Shared.Containers.ItemSlots
         [DataField("priority")]
         public int Priority = 0;
 
+        [DataField("maxStackAmount")] // WD
+        public int MaxStackAmount;
+
         /// <summary>
         ///     If false, errors when adding an item slot with a duplicate key are suppressed. Local==true implies that
         ///     the slot was added via client component state handling.

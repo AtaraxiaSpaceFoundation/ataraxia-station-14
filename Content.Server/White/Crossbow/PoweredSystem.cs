@@ -14,6 +14,7 @@ public sealed class PoweredSystem : EntitySystem
     [Dependency] private readonly BatterySystem _battery = default!;
 
     private const string CellSlot = "cell_slot";
+    private const string CrystalSlot = "crystal_slot";
 
     public override void Initialize()
     {
@@ -27,7 +28,7 @@ public sealed class PoweredSystem : EntitySystem
         if (!TryGetBatteryComponent(uid, out var battery, out var batteryUid))
             return;
 
-        var (factor, charge) = GetFactor(component, battery, batteryUid.Value);
+        var (factor, charge) = GetFactor(uid, component, battery, batteryUid.Value);
 
          // Чтобы затриггерить взрыв на полную мощь, если есть плазма в батарейке
         _battery.SetCharge(batteryUid.Value, battery.CurrentCharge, battery);
@@ -54,17 +55,24 @@ public sealed class PoweredSystem : EntitySystem
             !TryGetBatteryComponent(uid, out var battery, out var batteryUid))
             return 1f;
 
-        return 1f + GetFactor(component, battery, batteryUid.Value).Item1;
+        return 1f + GetFactor(uid, component, battery, batteryUid.Value).Item1;
     }
 
-    private (float, float) GetFactor(PoweredComponent component, BatteryComponent battery, EntityUid batteryUid)
+    private (float, float) GetFactor(EntityUid uid, PoweredComponent component, BatteryComponent battery, EntityUid batteryUid)
     {
         DebugTools.Assert(component.Charge != 0f);
         var charge = MathF.Min(battery.CurrentCharge, component.Charge);
         var factor = charge / component.Charge;
+        var multiplier = 1f;
 
         if (TryComp(batteryUid, out RiggableComponent? rig) && rig.IsRigged)
-            factor *= 2f;
+            multiplier += 1f;
+
+        if (_containers.TryGetContainer(uid, CrystalSlot, out var container) && container is ContainerSlot slot &&
+            slot.ContainedEntity.HasValue)
+            multiplier += 1f;
+
+        factor *= multiplier;
 
         return (factor, charge);
     }

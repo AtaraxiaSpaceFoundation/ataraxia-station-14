@@ -1,5 +1,10 @@
-﻿using Content.Server.Body.Systems;
+﻿using System.Linq;
+using Content.Server.Body.Systems;
+using Content.Server.GameTicking.Rules.Components;
+using Content.Server.Ghost.Components;
 using Content.Server.Kitchen.Components;
+using Content.Server.Mind.Components;
+using Content.Server.Roles;
 using Content.Shared.Body.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.Components;
@@ -58,6 +63,16 @@ public sealed class SharpSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("butcherable-different-tool", ("target", target)), knife, user);
             return;
         }
+
+        // WD START
+        if (butcher.SyndieRoleRequired && !HasComp<NukeOperativeComponent>(user) && !HasComp<GhostComponent>(user) &&
+            TryComp(user, out MindContainerComponent? mc) && mc.Mind != null &&
+            !mc.Mind.Roles.OfType<TraitorRole>().Any())
+        {
+            _popupSystem.PopupEntity("Вы не можете разделать столь милое существо.", user, user);
+            return;
+        }
+        // WD END
 
         if (TryComp<MobStateComponent>(target, out var mobState) && !_mobStateSystem.IsDead(target, mobState))
             return;
