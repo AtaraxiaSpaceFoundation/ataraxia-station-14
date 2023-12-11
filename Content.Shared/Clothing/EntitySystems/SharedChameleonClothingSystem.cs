@@ -84,6 +84,10 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
         if (!proto.TryGetComponent(out TagComponent? tags, _factory) || !tags.Tags.Contains("WhitelistChameleon"))
             return false;
 
+        //WD EDIT
+        if (proto.EditorSuffix?.ToLower() == "fluff")
+            return false;
+
         // check if it's valid clothing
         if (!proto.TryGetComponent("Clothing", out ClothingComponent? clothing))
             return false;
