@@ -323,3 +323,12 @@
   ghostName: Акулёнок
   ghostDescription: Что-то замышляет.
   size: 0.9, 0.9
+
+- type: customGhost
+  id: veryfish-ghost
+  ckey: veryfish
+  sprite: White/Ghosts/veryfish-ghost.rsi
+  alpha: 0.8
+  ghostName: Mask of the Red Death
+  ghostDescription: A blasphemous mockery.
+  size: 0.5, 0.5
