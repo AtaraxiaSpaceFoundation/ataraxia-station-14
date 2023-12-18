@@ -574,3 +574,76 @@
   name: tts-voice-name-brukan
   sex: Male
   speaker: brukan
+
+- type: ttsVoice
+  id: Puchkow
+  name: tts-voice-name-puchkow
+  sex: Male
+  speaker: puchkow
+
+- type: ttsVoice
+  id: Moriarti
+  name: tts-voice-name-moriarti
+  sex: Male
+  speaker: moriarti
+
+- type: ttsVoice
+  id: NecoArcTwo
+  name: tts-voice-name-neco-arc-two
+  sex: Female
+  speaker: neco_arc_2
+
+- type: ttsVoice
+  id: AngryNecoArc
+  name: tts-voice-name-angry-neco-arc
+  sex: Female
+  speaker: angry_neco_arc
+
+- type: ttsVoice
+  id: Squidward
+  name: tts-voice-name-squidward
+  sex: Male
+  speaker: squidward
+
+- type: ttsVoice
+  id: Garrosh
+  name: tts-voice-name-garrosh
+  sex: Male
+  speaker: garrosh
+
+- type: ttsVoice
+  id: Jaina
+  name: tts-voice-name-jaina
+  sex: Female
+  speaker: jaina
+
+- type: ttsVoice
+  id: Adjutant
+  name: tts-voice-name-adjutant
+  sex: Female
+  speaker: adjutant
+
+- type: ttsVoice
+  id: Hanson
+  name: tts-voice-name-hanson
+  sex: Female
+  speaker: hanson
+
+- type: ttsVoice
+  id: Bralik
+  name: tts-voice-name-bralik
+  sex: Male
+  speaker: bralik
+
+- type: ttsVoice
+  id: Horner
+  name: tts-voice-name-horner
+  sex: Male
+  speaker: horner
+
+- type: ttsVoice
+  id: Villager
+  name: tts-voice-name-villager
+  sex: Male
+  speaker: villager
+  roundStart: false
