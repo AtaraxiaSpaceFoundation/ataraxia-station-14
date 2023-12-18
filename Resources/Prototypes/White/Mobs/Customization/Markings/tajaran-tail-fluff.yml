@@ -2,7 +2,6 @@
   id: TajaranTailCommisar
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Human, Felinid]
   sponsorOnly: true
   sprites:
     - sprite: White/Fluff/CommissarRadoha/tail_tajaran_fluff.rsi
