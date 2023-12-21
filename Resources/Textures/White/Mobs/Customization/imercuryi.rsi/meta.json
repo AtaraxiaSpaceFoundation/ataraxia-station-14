@@ -10,11 +10,15 @@
       "directions": 4
     },
     {
-      "name": "fox_tail",
+      "name": "fox_tail_FRONT",
       "directions": 4
     },
     {
-      "name": "fox_tail_wagging",
+      "name": "fox_tail_BEHIND",
+      "directions": 4
+    },
+    {
+      "name": "fox_tail_wagging_BEHIND",
       "directions": 4,
       "delays": [
         [
