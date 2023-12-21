@@ -604,6 +604,17 @@
     - type: Sprite
       sprite: White/Fluff/6elblu/white-cloak.rsi
 
+#6elblu
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterStorage6elbluOvercoat
+  name: Белая шинель
+  suffix: fluff
+  description: Очень удобная и приятная на ощупь шинель с меховым воротником. На нарукавных повязках виднеется эмблема NT.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/6elblu/white-overcoat.rsi
+
 #Serafim547
 - type: entity
   parent: ClothingEyesBase

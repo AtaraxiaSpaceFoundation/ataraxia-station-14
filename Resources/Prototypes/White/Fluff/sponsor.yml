@@ -207,8 +207,8 @@
   sponsorOnly: true
 
 - type: loadout
-  id: 6elbluGlovesLoadout
-  entity: ClothingHandsGlovesColorBlack
+  id: 6elbluOvercoatLoadout
+  entity: ClothingOuterStorage6elbluOvercoat
   sponsorOnly: true
 - type: loadout
 
