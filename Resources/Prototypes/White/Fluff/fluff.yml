@@ -973,6 +973,36 @@
     - type: Clothing
       sprite: White/Fluff/antohag/hosmask.rsi
 
+# kreses
+- type: entity
+  parent: ClothingBackpack
+  id: KresesClothingBackpackDeath
+  name: рюкзак из исследователя пустоты
+  suffix: fluff
+  description: Кажется когда то это не было рюкзаком. Вы чувствуйте на себя взгляды из пустоты.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Backpacks/ertleader.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitDeathSquad
+  id: KresesClothingJumpsuitDeath
+  name: комбинезон исследователя из пустоты
+  suffix: fluff
+  description: Костюм тех, кто видел что внутри черной дыры. Если слишком долго смотреть в пустоту, то пустота начнёт смотреть в тебя.
+
+- type: entity
+  parent: ClothingMaskGas
+  id: KresesClothingMaskGasDeath
+  name: противогаз исследователя пустоты
+  suffix: fluff
+  description: Стандартный противогаз для тех, кто любит полетать в космосе и понаблюдать вблизи за чёрной дырой.
+  components:
+    - type: Sprite
+      sprite: Clothing/Mask/squadron.rsi
+    - type: Clothing
+      sprite: Clothing/Mask/squadron.rsi
+
 - type: entity
   parent: ClothingOuterStorageBase
   id: ClothingOuterJacketReider207
@@ -984,3 +1014,4 @@
       sprite: White/Fluff/Reider207/jacket.rsi
     - type: Clothing
       sprite: White/Fluff/Reider207/jacket.rsi
+

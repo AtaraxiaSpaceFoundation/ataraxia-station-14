@@ -375,6 +375,21 @@
   entity: PlushieRyanForg
   sponsorOnly: true
 
+# kreses
+- type: loadout
+  id: KresesGasMaskDeath
+  entity: KresesClothingMaskGasDeath
+  sponsorOnly: true
+
+- type: loadout
+  id: KresesJumpsuitDeath
+  entity: KresesClothingJumpsuitDeath
+  sponsorOnly: true
+
+- type: loadout
+  id: KresesBackpackDeath
+  entity: KresesClothingBackpackDeath
+
 # Reider207
 - type: loadout
   id: Reider207Jacket
