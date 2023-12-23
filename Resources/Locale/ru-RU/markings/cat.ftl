@@ -47,3 +47,7 @@ marking-knifeCappyTail2 = Хвост Аксолотля
 marking-FoxEarsIMercuryI = Льсьи ушки
 marking-FoxTailIMercuryI = Лисий хвост
 marking-FoxTailWaggingIMercuryI = Лисий хвост, махает.
+
+marking-TailReider207 = Волчий хвост
+marking-TailReider207-tail = Хвост
+marking-TailReider207-tailtip = Кончик

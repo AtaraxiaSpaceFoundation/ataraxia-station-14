@@ -972,3 +972,15 @@
       sprite: White/Fluff/antohag/hosmask.rsi
     - type: Clothing
       sprite: White/Fluff/antohag/hosmask.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterJacketReider207
+  name: Куртка "Trauma Team"
+  description: Эта куртка, выполненная из высокотехнологичных материалов, идеально сочетает в себе практичность и эстетику. С ходом времени и сменой владельцев, её функции и предназначения были утеряны. Единственный понятный элемент – это зелёный символ, нанесённый несмываемой краской, каким-то идиотом.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Reider207/jacket.rsi
+    - type: Clothing
+      sprite: White/Fluff/Reider207/jacket.rsi

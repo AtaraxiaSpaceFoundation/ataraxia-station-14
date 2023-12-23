@@ -1,4 +1,4 @@
-﻿# DOOMMAX
+# DOOMMAX
 - type: loadout
   id: SuitGlamorousLoadout
   entity: ClothingOuterSuitGlamorous
@@ -373,4 +373,10 @@
 - type: loadout
   id: ForgPlushieRyan
   entity: PlushieRyanForg
+  sponsorOnly: true
+
+# Reider207
+- type: loadout
+  id: Reider207Jacket
+  entity: ClothingOuterJacketReider207
   sponsorOnly: true
