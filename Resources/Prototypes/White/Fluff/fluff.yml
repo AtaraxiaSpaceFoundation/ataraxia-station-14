@@ -559,7 +559,7 @@
   id: ClothingOuterCoatThechaotic
   name: Тренч Маллена
   suffix: fluff
-  description: Провонял сигаретами и разрушенными мечтами.
+  description: Сшитый на заказ тренч криминалиста. Пропах никотином насквозь.
   components:
     - type: Sprite
       sprite: White/Fluff/thechaotic/coat.rsi
