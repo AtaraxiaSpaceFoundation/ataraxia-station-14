@@ -210,8 +210,8 @@
   id: 6elbluOvercoatLoadout
   entity: ClothingOuterStorage6elbluOvercoat
   sponsorOnly: true
-- type: loadout
 
+- type: loadout
   id: 6elbluBootsLoadout
   entity: ClothingShoesTourist
   sponsorOnly: true
