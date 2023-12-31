@@ -395,3 +395,16 @@
   id: Reider207Jacket
   entity: ClothingOuterJacketReider207
   sponsorOnly: true
+
+# egoruch17
+- type: loadout
+  id: Egoruch17Mask
+  entity: EgoruchClothingMaskHoly
+  sponsorOnly: true
+  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, SeniorEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, SeniorResearcher, Scientist, ResearchAssistant ]
+
+- type: loadout
+  id: Egoruch17Mantle
+  entity: EgoruchClothingOuterMantle
+  sponsorOnly: true
+  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, SeniorEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, SeniorResearcher, Scientist, ResearchAssistant ]

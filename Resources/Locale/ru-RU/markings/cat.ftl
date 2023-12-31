@@ -51,3 +51,6 @@ marking-FoxTailWaggingIMercuryI = Лисий хвост, махает.
 marking-TailReider207 = Волчий хвост
 marking-TailReider207-tail = Хвост
 marking-TailReider207-tailtip = Кончик
+
+marking-TechnoClawsEgoruch = Слуга Омниссии
+marking-TechnoClawsEgoruch-claws_overlay = Клешни

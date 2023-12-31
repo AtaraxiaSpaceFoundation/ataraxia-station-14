@@ -1015,3 +1015,27 @@
     - type: Clothing
       sprite: White/Fluff/Reider207/jacket.rsi
 
+# egoruch17
+- type: entity
+  parent: ClothingMaskMime
+  id: EgoruchClothingMaskHoly
+  name: фальшивая аугметика
+  description: Встроенный фильтр предаёт вдыхаемому воздуху аромат  мира-кузницы. Неповторимое сочетание промышленных выхлопов и свинца.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/egoruch17/mask.rsi
+    - type: Clothing
+      sprite: White/Fluff/egoruch17/mask.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: EgoruchClothingOuterMantle
+  name: ряса техножреца
+  description: Идеально подходит, чтобы скрыть слабость своей плоти! Ткань сильно наэлектризована и пахнет машинным маслом.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/egoruch17/mantle.rsi
+    - type: Clothing
+      sprite: White/Fluff/egoruch17/mantle.rsi

@@ -1,0 +1,8 @@
+- type: marking
+  id: TechnoClawsEgoruch
+  bodyPart: Chest
+  markingCategory: Overlay
+  sponsorOnly: false
+  sprites:
+    - sprite: White/Mobs/Customization/egoruch17_claws.rsi
+      state: claws_overlay
