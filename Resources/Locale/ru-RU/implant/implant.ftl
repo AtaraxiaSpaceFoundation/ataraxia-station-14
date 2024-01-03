@@ -11,7 +11,7 @@ implanter-inject-text = Установка
 implanter-empty-text = Пусто
 implanter-implant-text = { $implantName }{ $lineBreak }{ $implantDescription }
 implanter-contained-implant-text = [color=green]{ $desc }[/color]
-implanter-label = [color=white]Имплант: { $currentEntities }{ $lineBreak }Режим: { $modeString }[/color]
+implanter-label = [color=white]Имплант: { $implantName }{ $lineBreak }Режим: { $modeString }[/color]
 
 ## Implanter Actions
 

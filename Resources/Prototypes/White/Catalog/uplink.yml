@@ -73,3 +73,14 @@
     Telecrystal: 2
   categories:
   - UplinkImplants
+
+- type: listing
+  id: UplinkHardlightSpearImplanter
+  name: uplink-hardlight-spear-implant-name
+  description: uplink-hardlight-spear-implant-desc
+  icon: { sprite: /Textures/White/Objects/Weapons/hardlight_spear.rsi, state: spear }
+  productEntity: HardlightSpearImplanter
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkImplants
