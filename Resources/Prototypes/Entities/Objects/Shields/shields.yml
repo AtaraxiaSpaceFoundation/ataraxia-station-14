@@ -436,6 +436,8 @@
     - type: Damageable
       damageContainer: Shield
     - type: Rechargeable
+      maxCharge: 20
+      rechargeDelay: 15
     - type: StaticPrice
       price: 350
 

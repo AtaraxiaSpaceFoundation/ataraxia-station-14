@@ -1,4 +1,7 @@
-﻿using Content.Server.Administration.Logs;
+﻿using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
+using System.Text.RegularExpressions;
+using Content.Server.Administration.Logs;
 using Content.Server.Hands.Systems;
 using Content.Server.White.Other;
 using Content.Shared.Database;
@@ -104,7 +107,8 @@ public sealed class RandomGiftSystem : EntitySystem
 
             if (!proto.Components.ContainsKey(itemCompName) || proto.Components.ContainsKey(giftIgnoreCompName) ||
                 proto.Components.ContainsKey(unremovableCompName) || proto.SetSuffix != null &&
-                (proto.SetSuffix.Contains("DEBUG") || proto.SetSuffix.Contains("Admeme"))) // WD EDIT
+                new[] {"Debug, Admeme, Admin"}.Any(x =>
+                    proto.SetSuffix.Contains(x, StringComparison.OrdinalIgnoreCase))) // WD EDIT
                 continue;
 
             _possibleGiftsSafe.Add(proto.ID);

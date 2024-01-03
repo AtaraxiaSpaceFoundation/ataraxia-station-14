@@ -64,6 +64,6 @@
     sprite: Objects/Weapons/Guns/Battery/egun.rsi
     state: base
   product: CrateArmoryEgun
-  cost: 2500
+  cost: 5500
   category: Armory
   group: market
