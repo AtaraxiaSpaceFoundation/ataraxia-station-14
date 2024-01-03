@@ -77,3 +77,13 @@
   cost: 1000
   category: Security
   group: market
+
+- type: cargoProduct
+  id: SecurityBodycam
+  icon:
+    sprite: Objects/Specific/Security/body-camera.rsi
+    state: unpowered
+  product: CrateSecurityBodyCamera
+  cost: 2000
+  category: Security
+  group: market

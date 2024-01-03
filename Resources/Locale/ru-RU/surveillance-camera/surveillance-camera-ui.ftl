@@ -9,3 +9,5 @@ surveillance-camera-monitor-ui-status-disconnected = Отключено
 surveillance-camera-monitor-ui-no-subnets = Нет подсетей
 surveillance-camera-setup = Настроить
 surveillance-camera-setup-ui-set = Установить
+surveillance-body-camera-on = Камера включена
+surveillance-body-camera-off = Камера выключена

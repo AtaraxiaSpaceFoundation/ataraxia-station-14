@@ -97,5 +97,14 @@
         amount: 4
       - id: TrackingImplanter
         amount: 4
-        
+
 # Cosmetic Crates
+
+- type: entity
+  id: CrateSecurityBodyCamera
+  parent: CrateSecgear
+  components:
+    - type: StorageFill
+      contents:
+        - id: BoxBodyCamera
+          amount: 2
