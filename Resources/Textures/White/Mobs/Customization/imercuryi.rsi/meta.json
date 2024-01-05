@@ -1,5 +1,7 @@
 {
   "version": 1,
+  "license": null,
+  "copyright": null,
   "size": {
     "x": 32,
     "y": 32
@@ -10,15 +12,11 @@
       "directions": 4
     },
     {
-      "name": "fox_tail_FRONT",
+      "name": "fox_tail",
       "directions": 4
     },
     {
-      "name": "fox_tail_BEHIND",
-      "directions": 4
-    },
-    {
-      "name": "fox_tail_wagging_BEHIND",
+      "name": "fox_tail_wagging",
       "directions": 4,
       "delays": [
         [
