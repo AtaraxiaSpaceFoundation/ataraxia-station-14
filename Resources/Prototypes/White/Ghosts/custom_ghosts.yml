@@ -1,4 +1,4 @@
-﻿- type: customGhost
+- type: customGhost
   id: ravmorgan-ghost
   ckey: ravmorgan
   sprite: White/Ghosts/ravmorgan-ghost.rsi
@@ -55,14 +55,14 @@
   ghostName: Фырчало
   ghostDescription: Инженерный борг
 
-#reider207-frametamer
+#reider207
 - type: customGhost
   id: reider207-ghost
-  ckey: frametamer
+  ckey: reider207
   sprite: White/Ghosts/reider207-ghost.rsi
   alpha: 0.8
-  ghostName: Гань Юй
-  ghostDescription: Священная Крио Лань
+  ghostName: Соня
+  ghostDescription: Видишь спит соня? Так не буди
   size: 0.8, 0.8
 
 #mikvisan
