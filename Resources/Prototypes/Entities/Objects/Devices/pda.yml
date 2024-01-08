@@ -414,6 +414,18 @@
   - type: Icon
     state: pda-lawyer
 
+#WHITE
+- type: entity
+  parent: BasePDA
+  id: InspectorPDA
+  name: inspector PDA
+  description: For inspectors to inspect.
+  components:
+  - type: Pda
+    id: InspectorIDCard
+    state: pda-inspector
+
+
 - type: entity
   parent: BasePDA
   id: JanitorPDA

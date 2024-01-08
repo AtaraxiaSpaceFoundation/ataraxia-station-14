@@ -243,3 +243,20 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
   - type: FlashImmunity
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesInspector
+  name: inspector's sunglasses
+  description: Inspector's sunglasses. The same as usual, but cooler.
+  components:
+    - type: Sprite
+      sprite: Clothing/Eyes/Glasses/inspectorglasses.rsi
+    - type: Clothing
+      sprite: Clothing/Eyes/Glasses/inspectorglasses.rsi
+    - type: FlashImmunity
+    - type: Tag
+      tags:
+        - HamsterWearable
+        - WhitelistChameleon
+    - type: ShowSecurityIcons

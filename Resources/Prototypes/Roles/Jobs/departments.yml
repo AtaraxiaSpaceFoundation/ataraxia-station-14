@@ -21,7 +21,6 @@
   - Clown
   - HeadOfPersonnel
   - Janitor
-  - Lawyer
   - Librarian
   - Mime
   - Musician
@@ -43,6 +42,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  - Inspector
 
 - type: department
   id: Engineering
@@ -95,3 +95,11 @@
   - Reporter
   - Zookeeper
   - Psychologist
+
+- type: department
+  id: Justice
+  description: department-Justice-description
+  color: "#710d00"
+  roles:
+  - Inspector
+  - Lawyer

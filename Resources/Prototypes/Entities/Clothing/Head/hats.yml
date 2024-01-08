@@ -867,3 +867,25 @@
     sprite: Clothing/Head/Hats/party_blue.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/party_blue.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatInspector
+  name: inspector's hat
+  description: A strict inspector's cap. Let the crew fear you!
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hats/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hats/inspector.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadCapInspector
+  name: inspector's cap
+  description: A strict inspector's cap. Let the crew know that you are a dandy!
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hats/inspectorcap.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hats/inspectorcap.rsi

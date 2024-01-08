@@ -1,5 +1,7 @@
 ent-ClothingUnderwearTopBraCap = бра
     .desc = Бра капитана.
+ent-ClothingUnderwearTopBraInspector = бра
+    .desc = Довольно откровенное бра инспектора.
 ent-ClothingUnderwearTopBraCE = бра
     .desc = Бра старшего инженера.
 ent-ClothingUnderwearTopBraCMO = бра

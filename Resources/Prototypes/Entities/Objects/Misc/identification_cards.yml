@@ -363,6 +363,19 @@
     - type: PresetIdCard
       job: Lawyer
 
+#WHITE
+- type: entity
+  parent: IDCardStandard
+  id: InspectorIDCard
+  name: inspector ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: silver
+    - state: idinspector
+  - type: PresetIdCard
+    job: Inspector
+
 - type: entity
   parent: IDCardStandard
   id: HoPIDCard
@@ -646,6 +659,7 @@
     - JobIconServiceWorker
     - JobIconSecurityCadet
     - JobIconZookeeper
+    - JobIconInspector
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
     inHandsOnly: true

@@ -54,6 +54,15 @@
 
 - type: entity
   parent: ClothingUnderwearTopBase
+  id: ClothingUnderwearTopBraInspector
+  name: inspector's bra
+  description: Pretty revealing inspector's bra.
+  components:
+    - type: Sprite
+      sprite: White/Clothing/Underwear/Top/heads/inspector/bra.rsi
+
+- type: entity
+  parent: ClothingUnderwearTopBase
   id: ClothingUnderwearTopBraCE
   name: chief engineer's bra
   description: Standard station chief engineer's underwear.

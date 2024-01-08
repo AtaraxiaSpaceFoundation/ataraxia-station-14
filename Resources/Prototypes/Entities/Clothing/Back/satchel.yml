@@ -18,6 +18,15 @@
 
 - type: entity
   parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelInspector
+  name: inspector's leather satchel
+  description: A stylish leather bag made from the skin of those who failed to do their job. It's best not to even try to find out what's inside.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Satchels/inspector.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelEngineering
   name: engineering satchel
   description: A tough satchel with extra pockets.

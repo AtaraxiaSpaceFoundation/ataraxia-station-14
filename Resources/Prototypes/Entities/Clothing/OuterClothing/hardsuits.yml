@@ -275,6 +275,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitCap
 
+#Inspector's Hardsuit
+- type: entity
+  parent: ClothingOuterHardsuitHOP
+  id: ClothingOuterHardsuitInspector
+  name: inspector's hardsuit
+  description: Definitely not for spece assholes.
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/inspector.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitInspector
+
 #Chief Engineer's Hardsuit
 - type: entity
   parent: ClothingOuterHardsuitBase

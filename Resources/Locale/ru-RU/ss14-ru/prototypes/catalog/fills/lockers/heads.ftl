@@ -19,3 +19,6 @@ ent-LockerResearchDirectorFilled = { ent-LockerResearchDirector }
 ent-LockerHeadOfSecurityFilled = { ent-LockerHeadOfSecurity }
     .suffix = Заполненный
     .desc = { ent-LockerHeadOfSecurity.desc }
+ent-LockerInspectorFilled = { ent-LockerInspector }
+    .suffix = Заполненный
+    .desc = { ent-LockerInspector.desc }

@@ -449,3 +449,18 @@
     stateBaseClosed: hop
     stateDoorOpen: hop_open
     stateDoorClosed: representative_door
+
+# Inspector
+- type: entity
+  id: LockerInspector
+  parent: LockerBaseSecure
+  name: inspector's locker
+  description: Contains a unique wardrobe to the latest fashion.
+  components:
+    - type: Appearance
+    - type: EntityStorageVisuals
+      stateBaseClosed: inspector
+      stateDoorOpen: inspector_open
+      stateDoorClosed: inspector_door
+    - type: AccessReader
+      access: [["Command"]]

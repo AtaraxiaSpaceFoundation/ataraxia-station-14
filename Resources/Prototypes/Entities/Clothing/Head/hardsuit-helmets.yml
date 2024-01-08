@@ -227,6 +227,22 @@
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
 
+#Inspector's Hardsuit
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitInspector
+  noSpawn: true
+  name: inspector's hardsuit helmet
+  description: Lightweight hardsuit helmet that doesn't restrict your head movements. Belongs to the HoP.
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hardsuits/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hardsuits/inspector.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+
 #Chief Engineer's Hardsuit
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase

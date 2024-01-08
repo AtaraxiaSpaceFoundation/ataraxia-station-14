@@ -24,6 +24,7 @@ job-name-reporter = репортёр
 job-name-musician = музыкант
 job-name-librarian = библиотекарь
 job-name-lawyer = юрист
+job-name-inspector = инспектор
 job-name-mime = мим
 job-name-ce = старший инженер
 job-name-janitor = уборщик

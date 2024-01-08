@@ -70,3 +70,6 @@ ent-LockerEvidence = шкаф для улик
 ent-LockerSyndicatePersonal = оружейный шкаф
     .desc = Это персональное хранилище для оперативного снаряжения.
     .suffix = { "" }
+ent-LockerInspector = шкаф инспектора
+    .desc = Содержит уникальный гардероб по последнему слову моды.
+    .suffix = { "" }

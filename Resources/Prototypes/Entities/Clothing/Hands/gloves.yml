@@ -407,3 +407,20 @@
     fiberMaterial: fibers-rubber
     fiberColor: fibers-yellow
   - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesInspector
+  name: inspector's leather gloves
+  description: Inspector's leather gloves with a strict design. Brilliant!
+  components:
+    - type: Sprite
+      sprite: Clothing/Hands/Gloves/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Hands/Gloves/inspector.rsi
+    - type: GloveHeatResistance
+      heatResistance: 1400
+    - type: Fiber
+      fiberMaterial: fibers-leather
+      fiberColor: fibers-black
+    - type: FingerprintMask

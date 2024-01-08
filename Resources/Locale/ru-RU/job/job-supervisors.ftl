@@ -14,3 +14,4 @@ job-supervisors-science = ученые, старший научный сотру
 job-supervisors-security = офицерам, смотрителю, и главе службы безопасности
 job-supervisors-hire = своим нанимателям
 job-supervisors-everyone = вообще всем
+job-supervisors-inspector = инспектору

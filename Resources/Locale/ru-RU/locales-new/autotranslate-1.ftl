@@ -38,3 +38,5 @@ ent-ClothingHeadBandBlack = черная бандана
    .desc = Черная бандана, чтобы выглядеть круто.
 ent-ClothingHeadBandBlue = синяя бандана
    .desc = Синяя бандана, чтобы выглядеть круто.
+ent-ClothingHandsGlovesInspector = перчатки инспектора
+    .desc = Длинные кожаные перчатки иснпектора со строгим дизайном. Блестяще!

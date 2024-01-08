@@ -295,3 +295,29 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
+
+- type: entity
+  id: LockerInspectorFilled
+  suffix: Filled
+  parent: LockerInspector
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterJacketInspector
+        - id: ClothingOuterWinterInspector
+        - id: ClothingOuterOverCoatInspector
+        - id: ClothingOuterTrenchCoatInspector
+        - id: ClothingNeckCloakInspector
+        - id: ClothingNeckMantleInspector
+        - id: ClothingNeckInspectorbadge
+        - id: ClothingHeadHatInspector
+        - id: ClothingHeadCapInspector
+        - id: ClothingEyesGlassesInspector
+        - id: ClothingBackpackSatchelInspector
+        - id: ClothingUniformJumpsuitWhiteInspector
+        - id: ClothingUniformJumpskirtInspector
+        - id: ClothingUniformJumpskirtInspectorFormal
+        - id: ClothingHandsGlovesInspector
+        - id: ClothingHeadsetAltSecurity
+        - id: BookSpaceLaws
+        - id: RubberStampInspector

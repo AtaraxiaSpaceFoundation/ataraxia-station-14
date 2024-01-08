@@ -8,7 +8,7 @@
     sprite: Clothing/Neck/Cloaks/centcomcloakformal.rsi
   - type: StealTarget
     stealGroup: HeadCloak # leaving this here because I suppose it might be interesting?
-    
+
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckCloakCap
@@ -272,3 +272,13 @@
   - type: Sprite
     sprite: Clothing/Neck/Cloaks/pan.rsi
 
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakInspector
+  name: inspector's cloak
+  description: A strict, gloomy, shiny and broad-shouldered cloak that spreads to the floor. Really emphasizes the seriousness of your intentions! ... and also perfectly matches your suit.
+  components:
+    - type: Sprite
+      sprite: Clothing/Neck/Cloaks/inspector.rsi
+    - type: TypingIndicatorClothing
+      proto: lawyer

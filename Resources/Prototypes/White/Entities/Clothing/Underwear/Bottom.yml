@@ -45,6 +45,15 @@
 
 - type: entity
   parent: ClothingUnderwearBottomBase
+  id: ClothingUnderwearBottomBoxersInspector
+  name: inspector's pants
+  description: Wait, how did it get here?
+  components:
+    - type: Sprite
+      sprite: White/Clothing/Underwear/Bottom/heads/inspector/boxers.rsi
+
+- type: entity
+  parent: ClothingUnderwearBottomBase
   id: ClothingUnderwearBottomBoxersCE
   name: chief engineer's boxers
   description: Standard station chief engineer underwear.
@@ -107,6 +116,15 @@
   components:
   - type: Sprite
     sprite: White/Clothing/Underwear/Bottom/heads/capitan/panties.rsi
+
+- type: entity
+  parent: ClothingUnderwearBottomBase
+  id: ClothingUnderwearBottomPantiesInspector
+  name: inspector's panties
+  description: Inspector's tight leather panties, definitely not the reason for his dissatisfaction with the crew.
+  components:
+    - type: Sprite
+      sprite: White/Clothing/Underwear/Bottom/heads/inspector/panties.rsi
 
 - type: entity
   parent: ClothingUnderwearBottomBase

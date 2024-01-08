@@ -25,3 +25,6 @@ ent-ClothingEyesGlassesSecurity = солнцезащитные очки охра
 ent-ClothingEyesGlassesThermal = оптический термальный сканер
     .desc = Термалы в форме очков.
     .suffix = { "" }
+ent-ClothingEyesGlassesInspector = очки инспектора
+    .desc = Солнцезащитные очки инспектора. Такие же, как обычные, но круче.
+    .suffix = { "" }

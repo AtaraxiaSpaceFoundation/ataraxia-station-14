@@ -233,6 +233,8 @@
       - state: green
       - state: librarian
 
+# JUSTICE
+
 - type: entity
   id: SpawnPointLawyer
   parent: SpawnPointJobBase
@@ -240,6 +242,19 @@
   components:
   - type: SpawnPoint
     job_id: Lawyer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lawyer
+
+# WHITE INSPECTOR
+- type: entity
+  id: SpawnPointInspector
+  parent: SpawnPointJobBase
+  name: inspector
+  components:
+  - type: SpawnPoint
+    job_id: Inspector
   - type: Sprite
     layers:
       - state: green
