@@ -134,6 +134,11 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             return;
         }
 
+        if (TryComp<SurveillanceBodyCameraComponent>(uid, out var bodycamComp))
+        {
+            component.NameSet = false;
+        }
+
         if (component.NameSet && component.NetworkSet)
         {
             return;
