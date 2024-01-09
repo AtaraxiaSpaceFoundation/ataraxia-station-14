@@ -6,9 +6,8 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.MoMMI;
-using Content.Server.Players;
 using Content.Server.Preferences.Managers;
-using Content.Server.UtkaIntegration;
+using Content.Server.White.PandaSocket.Main;
 using Content.Server.White.Reputation;
 using Content.Server.White.Sponsors;
 using Content.Shared.Administration;
@@ -55,7 +54,7 @@ namespace Content.Server.Chat.Managers
 
         /// WD-EDIT
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
-        [Dependency] private readonly UtkaTCPWrapper _utkaSocketWrapper = default!;
+        [Dependency] private readonly PandaWebManager _pandaWeb = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly ReputationManager _repManager = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
@@ -210,15 +209,6 @@ namespace Content.Server.Chat.Managers
                 ("playerName", sender), ("message", FormattedMessage.EscapeText(message)));
 
             ChatMessageToMany(ChatChannel.Admin, message, wrappedMessage, EntityUid.Invalid, false, false, admins.Select(p => p.ConnectedClient));
-
-            var asayEventMessage = new UtkaChatEventMessage()
-            {
-                Command = "asay",
-                Ckey = sender,
-                Message = message
-            };
-
-            _utkaSocketWrapper.SendMessageToAll(asayEventMessage);
         }
 
         public bool TrySendNewMessage(ICommonSession session, string newMessage, bool checkLength = false)
@@ -348,7 +338,7 @@ namespace Content.Server.Chat.Managers
                 Message = message,
             };
 
-            _utkaSocketWrapper.SendMessageToAll(toUtkaMessage);
+            _pandaWeb.SendBotMessage(toUtkaMessage);
             //WD-EDIT
         }
 
@@ -391,7 +381,7 @@ namespace Content.Server.Chat.Managers
                 Message = message
             };
 
-            _utkaSocketWrapper.SendMessageToAll(asayEventMessage);
+            _pandaWeb.SendBotMessage(asayEventMessage);
             //WD-EDIT
         }
 

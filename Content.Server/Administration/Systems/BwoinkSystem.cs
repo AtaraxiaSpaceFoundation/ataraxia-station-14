@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.GameTicking;
-using Content.Server.UtkaIntegration;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Mind;
@@ -34,7 +34,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IPlayerLocator _playerLocator = default!;
         [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly SharedMindSystem _minds = default!;
-        [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
+        [Dependency] private readonly PandaWebManager _pandaWeb = default!; // WD
 
         private ISawmill _sawmill = default!;
         private readonly HttpClient _httpClient = new();
@@ -658,7 +658,7 @@ namespace Content.Server.Administration.Systems
                 Entity = entity
             };
 
-            _utkaSockets.SendMessageToAll(utkaAhelpEvent);
+            _pandaWeb.SendBotMessage(utkaAhelpEvent);
         }
         //WD-EDIT
     }

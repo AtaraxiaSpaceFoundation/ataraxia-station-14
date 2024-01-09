@@ -1,16 +1,15 @@
 ﻿using Content.Server.Administration;
 using Content.Server.Database;
-using Content.Server.UtkaIntegration.TCP;
+using Content.Server.White.PandaSocket.Interfaces;
+using Content.Server.White.PandaSocket.Main;
 
-namespace Content.Server.UtkaIntegration;
+namespace Content.Server.White.PandaSocket.Commands;
 
-public sealed class UtkaUnbanCommand : IUtkaCommand
+public sealed class PandaUnbanCommand : IPandaCommand
 {
-    [Dependency] private UtkaTCPWrapper _utkaSocketWrapper = default!;
-
     public string Name => "unban";
     public Type RequestMessageType => typeof(UtkaUnbanRequest);
-    public async void Execute(UtkaTCPSession session, UtkaBaseMessage baseMessage)
+    public async void Execute(IPandaStatusHandlerContext context, PandaBaseMessage baseMessage)
     {
         if (baseMessage is not UtkaUnbanRequest message) return;
 
@@ -21,7 +20,7 @@ public sealed class UtkaUnbanCommand : IUtkaCommand
         var located = await locator.LookupIdByNameOrIdAsync(message.ACkey!);
         if (located == null)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(false, context);
             return;
         }
         var player = located.UserId;
@@ -31,29 +30,34 @@ public sealed class UtkaUnbanCommand : IUtkaCommand
 
         if (ban == null || ban.Unban != null)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(false, context);
             return;
         }
 
         var adminData = await dbMan.GetAdminDataForAsync(player);
         if (adminData?.AdminRank == null || ban.ServerName != "unknown" && adminData.AdminServer is not (null or "unknown") && adminData.AdminServer != ban.ServerName)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(false, context);
             return;
         }
 
         await dbMan.AddServerUnbanAsync(new ServerUnbanDef(banId, player, DateTimeOffset.Now));
 
-        UtkaSendResponse(true);
+        UtkaSendResponse(true, context);
     }
 
-    private void UtkaSendResponse(bool unbanned)
+    public void Response(IPandaStatusHandlerContext context, PandaBaseMessage? message = null)
+    {
+        context.RespondJsonAsync(message!);
+    }
+
+    private void UtkaSendResponse(bool unbanned, IPandaStatusHandlerContext context)
     {
         var utkaResponse = new UtkaUnbanResponse()
         {
             Unbanned = unbanned
         };
 
-        _utkaSocketWrapper.SendMessageToAll(utkaResponse);
+        Response(context, utkaResponse);
     }
 }

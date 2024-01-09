@@ -1,10 +1,7 @@
 using Content.Server.Administration.Managers;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using Content.Server.Database;
 using Content.Server.GameTicking;
-using Content.Server.UtkaIntegration;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -19,7 +16,7 @@ public sealed class BanCommand : LocalizedCommands
     [Dependency] private readonly IPlayerLocator _locator = default!;
     [Dependency] private readonly IBanManager _bans = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
+    [Dependency] private readonly PandaWebManager _pandaWeb = default!; // WD
     [Dependency] private readonly IEntityManager _entMan = default!; // WD
 
     public override string Command => "ban";
@@ -128,7 +125,7 @@ public sealed class BanCommand : LocalizedCommands
             Rid = EntitySystem.Get<GameTicker>().RoundId,
             BanId = banId
         };
-        _utkaSockets.SendMessageToAll(utkaBanned);
+        _pandaWeb.SendBotMessage(utkaBanned);
         _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
         //WD end
     }

@@ -3,27 +3,28 @@ using System.Net.Sockets;
 using Content.Server.Administration;
 using Content.Server.Database;
 using Content.Server.GameTicking;
-using Content.Server.UtkaIntegration.TCP;
+using Content.Server.White.PandaSocket.Interfaces;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players.PlayTimeTracking;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 
-namespace Content.Server.UtkaIntegration;
+namespace Content.Server.White.PandaSocket.Commands;
 
-public sealed class UtkaBanCommand : IUtkaCommand
+public sealed class PandaBanCommand : IPandaCommand
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private UtkaTCPWrapper _utkaSocketWrapper = default!;
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private readonly PandaWebManager _pandaWeb = default!;
 
     private const ILocalizationManager LocalizationManager = default!;
 
     public string Name => "ban";
     public Type RequestMessageType => typeof(UtkaBanRequest);
-    public async void Execute(UtkaTCPSession session, UtkaBaseMessage baseMessage)
+    public async void Execute(IPandaStatusHandlerContext context, PandaBaseMessage baseMessage)
     {
         if (baseMessage is not UtkaBanRequest message) return;
 
@@ -34,7 +35,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
         var locatedPlayer = await locator.LookupIdByNameOrIdAsync(message.ACkey!);
         if (locatedPlayer == null)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(context, false);
             return;
         }
 
@@ -48,7 +49,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
         var located = await locator.LookupIdByNameOrIdAsync(target);
         if (located == null)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(context, false);
             return;
         }
 
@@ -58,7 +59,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
 
         if (player == targetUid)
         {
-            UtkaSendResponse(false);
+            UtkaSendResponse(context, false);
             return;
         }
 
@@ -105,7 +106,7 @@ public sealed class UtkaBanCommand : IUtkaCommand
             null,
             serverName);
 
-        UtkaSendResponse(true);
+        UtkaSendResponse(context, true);
 
         await _db.AddServerBanAsync(banDef);
 
@@ -129,17 +130,23 @@ public sealed class UtkaBanCommand : IUtkaCommand
             Rid = EntitySystem.Get<GameTicker>().RoundId,
             BanId = banId
         };
-        _utkaSocketWrapper.SendMessageToAll(utkaBanned);
+
+        _pandaWeb.SendBotMessage(utkaBanned);
         _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
     }
 
-    private void UtkaSendResponse(bool banned)
+    public void Response(IPandaStatusHandlerContext context, PandaBaseMessage? message = null)
+    {
+        context.RespondJsonAsync(message!);
+    }
+
+    private void UtkaSendResponse(IPandaStatusHandlerContext context, bool banned)
     {
         var utkaResponse = new UtkaBanResponse()
         {
             Banned = banned
         };
 
-        _utkaSocketWrapper.SendMessageToAll(utkaResponse);
+        Response(context, utkaResponse);
     }
 }

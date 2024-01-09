@@ -15,7 +15,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.UtkaIntegration;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -64,7 +64,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
     //WD-EDIT
-    [Dependency] private readonly UtkaTCPWrapper _utkaSocketWrapper = default!;
+   [Dependency] private readonly PandaWebManager _pandaWeb = default!;
     //WD-EDIT
 
     private ISawmill _sawmill = default!;
@@ -584,6 +584,6 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             Message = status
         };
 
-        _utkaSocketWrapper.SendMessageToAll(utkaRoundStatusEvent);
+        _pandaWeb.SendBotMessage(utkaRoundStatusEvent);
     }
 }

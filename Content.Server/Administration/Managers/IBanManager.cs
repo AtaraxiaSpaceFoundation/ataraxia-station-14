@@ -1,7 +1,9 @@
 using System.Collections.Immutable;
 using System.Net;
 using System.Threading.Tasks;
+using Content.Server.White.PandaSocket.Interfaces;
 using Content.Shared.Database;
+using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -56,4 +58,13 @@ public interface IBanManager
     /// </summary>
     /// <param name="pSession">Player's session</param>
     public void SendRoleBans(ICommonSession pSession);
+
+    // WD START
+    public void UtkaCreateDepartmentBan(string admin, string target, DepartmentPrototype department,
+        string reason, uint minutes, bool isGlobalBan,
+        IPandaStatusHandlerContext context);
+
+    public void UtkaCreateJobBan(string admin, string target, string job, string reason, uint minutes, bool isGlobalBan,
+        IPandaStatusHandlerContext context);
+    // WD END
 }

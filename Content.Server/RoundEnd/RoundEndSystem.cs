@@ -12,7 +12,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.UtkaIntegration;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Robust.Shared.Audio.Systems;
@@ -47,7 +47,7 @@ namespace Content.Server.RoundEnd
         [Dependency] private readonly StationSystem _stationSystem = default!;
 
         //WD-EDIT
-        [Dependency] private readonly UtkaTCPWrapper _utkaSocketWrapper = default!;
+        [Dependency] private readonly PandaWebManager _pandaWeb = default!;
         //WD-EDIT
 
         public TimeSpan DefaultCooldownDuration { get; set; } = TimeSpan.FromSeconds(30);
@@ -307,7 +307,7 @@ namespace Content.Server.RoundEnd
                 Message = status
             };
 
-            _utkaSocketWrapper.SendMessageToAll(utkaRoundStatusEvent);
+            _pandaWeb.SendBotMessage(utkaRoundStatusEvent);
         }
         //WD-EDIT
 

@@ -1,23 +1,15 @@
 ﻿using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.Json;
 using Content.Server.Administration.Managers;
-using Content.Server.UtkaIntegration.TCP;
-using Content.Shared.CCVar;
-using Robust.Shared;
-using Robust.Shared.Configuration;
+using Content.Server.White.PandaSocket.Interfaces;
+using Content.Server.White.PandaSocket.Main;
 
-namespace Content.Server.UtkaIntegration;
+namespace Content.Server.White.PandaSocket.Commands;
 
-public sealed class UtkaAdminWhoCommand : IUtkaCommand
+public sealed class PandaAdminWhoCommand : IPandaCommand
 {
     public string Name => "adminwho";
     public Type RequestMessageType => typeof(UtkaAdminWhoRequest);
-
-    [Dependency] private readonly UtkaTCPWrapper _utkaSocketWrapper = default!;
-
-    public void Execute(UtkaTCPSession session, UtkaBaseMessage baseMessage)
+    public void Execute(IPandaStatusHandlerContext context, PandaBaseMessage baseMessage)
     {
         if(baseMessage is not UtkaAdminWhoRequest message) return;
         IoCManager.InjectDependencies(this);
@@ -30,6 +22,11 @@ public sealed class UtkaAdminWhoCommand : IUtkaCommand
 
         foreach (var admin in admins)
         {
+            var adminData = adminManager.GetAdminData(admin)!;
+
+            if (adminData.Stealth)
+                continue;
+
             adminsList.Add(admin.Name);
         }
 
@@ -38,6 +35,11 @@ public sealed class UtkaAdminWhoCommand : IUtkaCommand
             Admins = adminsList
         };
 
-        _utkaSocketWrapper.SendMessageToAll(toUtkaMessage);
+        Response(context, toUtkaMessage);
+    }
+
+    public void Response(IPandaStatusHandlerContext context, PandaBaseMessage? message = null)
+    {
+        context.RespondJsonAsync(message!);
     }
 }

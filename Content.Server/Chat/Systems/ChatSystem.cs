@@ -12,9 +12,9 @@ using Content.Server.Popups;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.UtkaIntegration;
 using Content.Server.White.AspectsSystem.Aspects.Components;
 using Content.Server.White.Other.Speech;
+using Content.Server.White.PandaSocket.Main;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -67,7 +67,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly GameTicker _gameTicker = default!; // WD
 
     //WD-EDIT
-    [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!;
+    [Dependency] private readonly PandaWebManager _pandaWeb = default!;
     //WD-EDIT
 
     public const int VoiceRange = 10; // how far voice goes in world units
@@ -648,7 +648,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             CharacterName = MetaData(source).EntityName
         };
 
-        _utkaSockets.SendMessageToAll(utkaEmoteEvent);
+        _pandaWeb.SendBotMessage(utkaEmoteEvent);
 
         //WD-EDIT
     }

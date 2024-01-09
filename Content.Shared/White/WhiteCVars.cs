@@ -341,4 +341,19 @@ public sealed class WhiteCVars
      */
     public static readonly CVarDef<bool> EnableGrantAntag =
         CVarDef.Create("white.antag_grant_enabled", true, CVar.SERVERONLY);
+
+    /*
+     * Panda Socket
+     */
+    public static readonly CVarDef<string> PandaStatusBind =
+        CVarDef.Create("white.panda_status_bind", "", CVar.SERVERONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<int> PandaStatusMaxConnections =
+        CVarDef.Create("white.panda_status_max_connections", 100, CVar.SERVERONLY);
+
+    public static readonly CVarDef<string> PandaToken =
+        CVarDef.Create("white.panda_token", "ass", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    public static readonly CVarDef<string> UtkaClientBind =
+        CVarDef.Create("white.utka_client_bind", "", CVar.SERVERONLY);
 }
