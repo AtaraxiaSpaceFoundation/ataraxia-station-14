@@ -851,6 +851,21 @@
     - type: Clothing
       sprite: White/Fluff/Geraldiy/ussp_mask.rsi
 
+- type: entity
+  parent: RubberStampBase
+  id: GeraldiyRubberStamp
+  name: печать древних
+  description: Старая и потёртая печать с логотипом "Древние". На ней почти высохли чернила, но она все ещё может послужить убедительным аргументом в руках нужных людей.
+  suffix: fluff
+  components:
+    - type: Stamp
+      stampedName: stamp-component-stamped-name-geraldiy
+      stampState: "paper_stamp-geraldiy"
+      stampedColor: "#a23e3e"
+    - type: Sprite
+      sprite: White/Fluff/Geraldiy/stamp.rsi
+      state: stamp-geraldiy
+
 # KnifeCappy
 - type: entity
   parent: ClothingOuterStorageBase

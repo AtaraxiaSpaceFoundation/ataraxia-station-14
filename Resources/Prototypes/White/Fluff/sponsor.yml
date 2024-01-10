@@ -309,9 +309,13 @@
   entity: ClothingOuterCoatUSSPOvercoatBlack
   sponsorOnly: true
 
+#- type: loadout
+#  id: GeraldiyUSSPMask
+#  entity: ClothingMaskGasGeraldiy
+#  sponsorOnly: true
 - type: loadout
-  id: GeraldiyUSSPMask
-  entity: ClothingMaskGasGeraldiy
+  id: GeraldiyStamp
+  entity: GeraldiyRubberStamp
   sponsorOnly: true
 
 # KnifeCappy
