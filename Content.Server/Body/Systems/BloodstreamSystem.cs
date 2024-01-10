@@ -106,9 +106,9 @@ public sealed class BloodstreamSystem : EntitySystem
                 continue;
             //WD-EDIT
             if (bloodstream.IsBleeding)
-                _alertsSystem.ShowAlert(uid, AlertType.Bleed);
+                _alertsSystem.ShowAlert(uid, AlertType.Bleeding);
             else
-                _alertsSystem.ClearAlert(uid, AlertType.Bleed);
+                _alertsSystem.ClearAlert(uid, AlertType.Bleeding);
             //WD-EDIT
 
             // Adds blood to their blood level if it is below the maximum; Blood regeneration. Must be alive.
@@ -385,14 +385,6 @@ public sealed class BloodstreamSystem : EntitySystem
 
         component.BleedAmount += amount;
         component.BleedAmount = Math.Clamp(component.BleedAmount, 0, component.MaxBleedAmount);
-
-        if (component.BleedAmount == 0)
-            _alertsSystem.ClearAlert(uid, AlertType.Bleed);
-        else
-        {
-            var severity = (short) Math.Clamp(Math.Round(component.BleedAmount, MidpointRounding.ToZero), 0, 10);
-            _alertsSystem.ShowAlert(uid, AlertType.Bleed, severity);
-        }
 
         return true;
     }
