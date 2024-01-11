@@ -1,16 +1,14 @@
 using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Traits.Assorted;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.White;
 using Content.Shared.White.NonPeacefulRoundEnd;
+using Robust.Server.Audio;
 using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -27,7 +25,7 @@ public sealed class NonPeacefulRoundEndSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly SharedAudioSystem _sharedAudioSystem = default!;
+    [Dependency] private readonly AudioSystem _sharedAudioSystem = default!;
 
     private NonPeacefulRoundItemsPrototype _nonPeacefulRoundItemsPrototype = default!;
 
@@ -58,8 +56,6 @@ public sealed class NonPeacefulRoundEndSystem : EntitySystem
             if (!session.AttachedEntity.HasValue) continue;
 
             RemComp<PacifiedComponent>(session.AttachedEntity.Value);
-            RemComp<PacifistComponent>(session.AttachedEntity.Value);
-
 
             GiveItem(session.AttachedEntity.Value);
         }
