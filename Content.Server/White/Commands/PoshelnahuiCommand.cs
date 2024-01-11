@@ -21,7 +21,7 @@ public sealed class PoshelnahuiCommand : IConsoleCommand
         }
 
         var playerManager = IoCManager.Resolve<IPlayerManager>();
-        var players = playerManager.ServerSessions.ToList();
+        var players = playerManager.Sessions.ToList();
 
         var player = players.Find(x => x.Name == args[0]);
 
@@ -40,7 +40,7 @@ public sealed class PoshelnahuiCommand : IConsoleCommand
         if (args.Length == 1)
         {
             var playerMgr = IoCManager.Resolve<IPlayerManager>();
-            var options = playerMgr.ServerSessions.Select(c => c.Name).OrderBy(c => c).ToArray();
+            var options = playerMgr.Sessions.Select(c => c.Name).OrderBy(c => c).ToArray();
             return CompletionResult.FromHintOptions(options, "ckey");
         }
 

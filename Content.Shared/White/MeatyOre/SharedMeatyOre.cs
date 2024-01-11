@@ -17,7 +17,7 @@ public sealed class MeatyTraitorRequestActionEvent
 }
 
 [NetworkedComponent, RegisterComponent]
-public sealed class IgnorBUIInteractionRangeComponent : Component
+public sealed partial class IgnorBUIInteractionRangeComponent : Component
 {
 
 }

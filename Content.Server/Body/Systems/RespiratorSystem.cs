@@ -291,7 +291,7 @@ namespace Content.Server.Body.Systems
         private void DoCPR(EntityUid target, RespiratorComponent comp, EntityUid user)
         {
 
-            var doAfterEventArgs = new DoAfterArgs(EntityManager, user, comp.CycleDelay * 4, new CPREndedEvent(user, target), target, target: target)
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, user, comp.CycleDelay * 4, new CPREndedEvent(), target, target: target)
             {
                 BreakOnTargetMove = true,
                 BreakOnUserMove = true,
@@ -309,7 +309,7 @@ namespace Content.Server.Body.Systems
             comp.CPRPerformedBy = user;
 
             _popupSystem.PopupEntity(Loc.GetString("cpr-started", ("target", Identity.Entity(target, EntityManager)), ("user", Identity.Entity(user, EntityManager))), target, PopupType.Medium);
-            comp.CPRPlayingStream = _audio.PlayPvs(comp.CPRSound, target, audioParams: AudioParams.Default.WithVolume(-3f).WithLoop(true));
+            comp.CPRPlayingStream = _audio.PlayPvs(comp.CPRSound, target, audioParams: AudioParams.Default.WithVolume(-3f).WithLoop(true)).Value.Entity;
 
             _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(user):entity} начал произовдить СЛР на {ToPrettyString(target):entity}");
         }
@@ -321,7 +321,7 @@ namespace Content.Server.Body.Systems
 
             if (args.Cancelled || !TryComp<MobStateComponent>(args.Target, out var targetState) || targetState!.CurrentState != MobState.Critical)
             {
-                component.CPRPlayingStream?.Stop();
+                _audio.Stop(component.CPRPlayingStream);
                 component.CPRPerformedBy = null;
                 _popupSystem.PopupEntity(Loc.GetString("cpr-failed"), args.User, args.User);
                 _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(args.User):entity} не удалось произвести СЛР на {ToPrettyString(args.Target):entity}");
@@ -336,7 +336,7 @@ namespace Content.Server.Body.Systems
 
             _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(args.User):entity} произвёл СЛР на {ToPrettyString(args.Target):entity}");
 
-            if (CanCPR(args.Target, component, args.User))
+            if (args.Target != null && CanCPR(args.Target.Value, component, args.User))
                 args.Repeat = true;
             else
                 component.CPRPerformedBy = null;

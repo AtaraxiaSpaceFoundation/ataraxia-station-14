@@ -1,6 +1,5 @@
 using Content.Server.Chat.Managers;
 using Content.Shared.Administration;
-using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Random;
 
@@ -16,7 +15,7 @@ namespace Content.Server.Administration.Commands
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
-            if (shell.Player is not IPlayerSession player)
+            if (shell.Player == null)
             {
                 shell.WriteLine("You cannot use this command from the server console.");
                 return;
@@ -36,7 +35,7 @@ namespace Content.Server.Administration.Commands
 
             var random = IoCManager.Resolve<IRobustRandom>();
             var chatManager = IoCManager.Resolve<IChatManager>();
-            chatManager.DispatchServerAnnouncement($"{player.Name} has thrown the D{maxNum} and the {random.Next(1, maxNum)} rolled.");
+            chatManager.DispatchServerAnnouncement($"{shell.Player.Name} has thrown the D{maxNum} and the {random.Next(1, maxNum)} rolled.");
 
         }
     }

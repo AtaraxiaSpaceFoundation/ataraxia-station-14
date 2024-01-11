@@ -1,10 +1,10 @@
 ﻿using Content.Server.White.Sponsors;
 using Content.Shared.Store;
-using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 
 namespace Content.Server.Store.Conditions;
 
-public sealed class DonationTierLockCondition : ListingCondition
+public sealed partial class DonationTierLockCondition : ListingCondition
 {
     [DataField("tier", required: true)]
     public int Tier;

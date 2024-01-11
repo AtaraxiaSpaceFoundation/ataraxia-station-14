@@ -66,7 +66,7 @@ namespace Content.Server.Body.Components
         [DataField("CPRSound")]
         public SoundSpecifier CPRSound { get; set; } = new SoundPathSpecifier("/White/Audio/CPR.ogg");
 
-        public IPlayingAudioStream? CPRPlayingStream;
+        public EntityUid? CPRPlayingStream;
 
         public EntityUid? CPRPerformedBy = null;
         // WD end

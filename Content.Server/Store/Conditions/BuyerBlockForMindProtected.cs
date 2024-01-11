@@ -1,21 +1,20 @@
-﻿using Content.Server.Mind.Components;
+﻿using Content.Server.Mind;
+using Content.Server.Roles.Jobs;
 using Content.Shared.Store;
 
 namespace Content.Server.Store.Conditions;
 
-public sealed class BuyerBlockForMindProtected : ListingCondition
+public sealed partial class BuyerBlockForMindProtected : ListingCondition
 {
     public override bool Condition(ListingConditionArgs args)
     {
-        var buyer = args.Buyer;
         var ent = args.EntityManager;
-
-        if (!ent.TryGetComponent<MindComponent>(buyer, out var mind) || mind.Mind == null)
+        var roleSystem = ent.System<JobSystem>();
+        var mindSystem = ent.System<MindSystem>();
+        if (!mindSystem.TryGetMind(args.Buyer, out var mindId, out var mind))
             return false;
-
-        if (mind.Mind.CurrentJob?.CanBeAntag != true)
+        if (mind.Session == null)
             return false;
-
-        return true;
+        return !roleSystem.CanBeAntag(mind.Session);
     }
 }

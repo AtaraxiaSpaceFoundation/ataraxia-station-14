@@ -74,13 +74,13 @@ public abstract partial class SharedGunSystem
     {
         if (!TryComp<AppearanceComponent>(uid, out var appearance))
             return;
-        if (!TryComp<ItemComponent?>(uid, out var item))
+        if (!TryComp<ItemComponent>(uid, out var item))
             return;
 
         if (component.InStun)
-            _item.SetHeldPrefix(uid, null, item);
+            _item.SetHeldPrefix(uid, null, false, item);
         else
-            _item.SetHeldPrefix(uid, "laser", item);
+            _item.SetHeldPrefix(uid, "laser", false, item);
 
 
         Appearance.SetData(uid, AmmoVisuals.InStun, component.InStun, appearance);

@@ -6,13 +6,14 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
+using Robust.Server.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     protected override void InitializeBattery()
     {
@@ -31,7 +32,7 @@ public sealed partial class GunSystem
         //TwoModeEnergy
         SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, ComponentStartup>(OnBatteryStartup);
         SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, ChargeChangedEvent>(OnBatteryChargeChange);
-        SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
+        SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
         SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, UseInHandEvent>(OnBatteryModeChange);
     }
 
