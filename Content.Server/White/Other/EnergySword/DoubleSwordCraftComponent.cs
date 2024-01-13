@@ -1,6 +1,6 @@
 ﻿namespace Content.Server.White.Other.EnergySword;
 
 [RegisterComponent]
-public sealed class DoubleSwordCraftComponent : Component
+public sealed partial class DoubleSwordCraftComponent : Component
 {
 }

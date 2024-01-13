@@ -67,7 +67,7 @@ public sealed partial class TapeCreatorMenu : DefaultWindow
         {
             SongName = songName,
             SongBytes = songBytes,
-            TapeCreatorUid = _component.Owner
+            TapeCreatorUid = _entityManager.GetNetEntity(_component.Owner)
         };
 
         _huetaSystem.SendNetMessage(msg);

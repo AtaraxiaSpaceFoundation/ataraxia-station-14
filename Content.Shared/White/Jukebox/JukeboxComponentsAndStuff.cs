@@ -22,7 +22,7 @@ public enum TapeCreatorUIKey : byte
 }
 
 [NetworkedComponent, RegisterComponent]
-public class JukeboxComponent : Component
+public sealed partial class JukeboxComponent : Component
 {
 
     public static string JukeboxContainerName = "jukebox_tapes";
@@ -46,7 +46,7 @@ public class JukeboxComponent : Component
     public PlayingSongData? PlayingSongData { get; set; }
 }
 
-public class TapeContainerComponent : Component
+public sealed partial class TapeContainerComponent : Component
 {
     public int MaxTapeCount = 1;
     public Container TapeContainer { get; set; } = new();
@@ -71,7 +71,7 @@ public class JukeboxComponentState : ComponentState
 }
 
 [Serializable, NetSerializable, DataDefinition]
-public class JukeboxSong
+public sealed partial class JukeboxSong
 {
     [DataField("songName")]
     public string? SongName;
@@ -84,20 +84,20 @@ public class JukeboxRequestSongPlay : EntityEventArgs
 {
     public string? SongName { get; set; }
     public ResPath? SongPath { get; set; }
-    public EntityUid? Jukebox { get; set; }
+    public NetEntity? Jukebox { get; set; }
     public float SongDuration { get; set; }
 }
 
 [Serializable, NetSerializable]
 public class JukeboxRequestStop : EntityEventArgs
 {
-    public EntityUid? JukeboxUid { get; set; }
+    public NetEntity? JukeboxUid { get; set; }
 }
 
 [Serializable, NetSerializable]
 public class JukeboxStopPlaying : EntityEventArgs
 {
-    public EntityUid? JukeboxUid { get; set; }
+    public NetEntity? JukeboxUid { get; set; }
 }
 
 [Serializable, NetSerializable]
@@ -105,7 +105,7 @@ public class JukeboxSongUploadRequest : EntityEventArgs
 {
     public string SongName = string.Empty;
     public List<byte> SongBytes = new();
-    public EntityUid TapeCreatorUid = default!;
+    public NetEntity TapeCreatorUid = default!;
 }
 
 public class JukeboxSongUploadNetMessage : NetMessage

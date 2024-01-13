@@ -4,6 +4,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Content.Shared.White.Jukebox;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
 using Robust.Shared.Containers;
@@ -21,7 +22,7 @@ public sealed class JukeboxSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly PVSOverrideSystem _pvsOverrideSystem = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvsOverrideSystem = default!;
 
 
     private readonly List<JukeboxComponent> _playingJukeboxes = new();
@@ -132,7 +133,7 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void OnSongRequestPlay(JukeboxRequestSongPlay msg, EntitySessionEventArgs args)
     {
-        var jukebox = Comp<JukeboxComponent>(msg.Jukebox!.Value);
+        var jukebox = Comp<JukeboxComponent>(GetEntity(msg.Jukebox!.Value));
         jukebox.Repeating = true;
 
         var songData = new PlayingSongData()

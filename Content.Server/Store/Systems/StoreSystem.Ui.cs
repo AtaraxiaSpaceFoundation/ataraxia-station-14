@@ -227,7 +227,7 @@ public sealed partial class StoreSystem
         UpdateUserInterface(buyer, uid, component);
     }
 
-    public void CloseSessionUi(EntityUid user, StoreComponent component)
+    public void CloseUi(EntityUid user, StoreComponent component)
     {
         if (!TryComp<ActorComponent>(user, out var actor))
             return;

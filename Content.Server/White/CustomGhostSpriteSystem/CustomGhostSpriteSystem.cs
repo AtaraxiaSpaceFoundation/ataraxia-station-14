@@ -1,7 +1,9 @@
 using Content.Server.Ghost.Components;
+using Content.Shared.Ghost;
 using Content.Shared.White.CustomGhostSystem;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.White.CustomGhostSpriteSystem;
@@ -11,6 +13,7 @@ public sealed class CustomGhostSpriteSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
 
 
     public override void Initialize()
@@ -45,12 +48,12 @@ public sealed class CustomGhostSpriteSystem : EntitySystem
 
                 if (customGhostPrototype.GhostName != string.Empty)
                 {
-                    MetaData(ghostUid).EntityName = customGhostPrototype.GhostName;
+                    _metaData.SetEntityName(ghostUid, customGhostPrototype.GhostName);
                 }
 
                 if (customGhostPrototype.GhostDescription != string.Empty)
                 {
-                    MetaData(ghostUid).EntityDescription = customGhostPrototype.GhostDescription;
+                    _metaData.SetEntityDescription(ghostUid, customGhostPrototype.GhostDescription);
                 }
 
                 return;

@@ -3,7 +3,9 @@ using Content.Shared.Actions;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
+using Content.Shared.White.Events;
 using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.Other.Lazy;
 
@@ -79,10 +81,6 @@ public sealed class EarsSpawnSystem : EntitySystem
 
     private static void GetSummonAction(EntityUid uid, EarsSpawnComponent component, GetItemActionsEvent args)
     {
-        args.Actions.Add(component.SummonAction);
+        args.AddAction(ref component.SummonActionEntity, component.SummonAction);
     }
-}
-
-public sealed class SummonActionEarsEvent : InstantActionEvent
-{
 }

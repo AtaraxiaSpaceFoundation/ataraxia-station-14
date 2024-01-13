@@ -4,14 +4,14 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.White.Jukebox;
 
 [RegisterComponent, NetworkedComponent]
-public sealed class TapeComponent : Component
+public sealed partial class TapeComponent : Component
 {
     [DataField("songs")]
     public List<JukeboxSong> Songs { get; set; } = new();
 }
 
 [Serializable, NetSerializable]
-public sealed class TapeComponentState : ComponentState
+public sealed partial class TapeComponentState : ComponentState
 {
     public List<JukeboxSong> Songs { get; set; } = new();
 }

@@ -60,7 +60,11 @@ public sealed class LoadoutSystem : EntitySystem
                     // Automatically search empty slot for clothes to equip
                     string? firstSlotName = null;
                     bool isEquiped = false;
-                    foreach (var slot in _inventorySystem.GetSlots(ev.Mob))
+
+                    if (!_inventorySystem.TryGetSlots(ev.Mob, out var slots))
+                        continue;
+
+                    foreach (var slot in slots)
                     {
                         if (!clothing.Slots.HasFlag(slot.SlotFlags))
                             continue;
@@ -87,7 +91,7 @@ public sealed class LoadoutSystem : EntitySystem
                         _inventorySystem.TryGetSlotEntity(ev.Mob, BackpackSlotId, out var backEntity) &&
                         _storageSystem.CanInsert(backEntity.Value, slotEntity.Value, out _))
                     {
-                        _storageSystem.Insert(backEntity.Value, slotEntity.Value);
+                        _storageSystem.Insert(backEntity.Value, slotEntity.Value, out _);
                     }
                     _inventorySystem.TryEquip(ev.Mob, entity, firstSlotName, true);
                 }

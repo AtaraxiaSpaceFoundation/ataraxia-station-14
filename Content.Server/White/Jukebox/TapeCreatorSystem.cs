@@ -113,7 +113,7 @@ public sealed class TapeCreatorSystem : EntitySystem
                 component.TapeContainer.Insert(args.Used);
             }
 
-            component.InsertedTape = tape.Owner;
+            component.InsertedTape = GetNetEntity(tape.Owner);
             Dirty(component);
             return;
         }
@@ -130,7 +130,7 @@ public sealed class TapeCreatorSystem : EntitySystem
 
     private void OnSongUploaded(JukeboxSongUploadRequest ev)
     {
-        if(!TryComp<TapeCreatorComponent>(ev.TapeCreatorUid, out var tapeCreatorComponent)) return;
+        if(!TryComp<TapeCreatorComponent>(GetEntity(ev.TapeCreatorUid), out var tapeCreatorComponent)) return;
 
         if (!tapeCreatorComponent.InsertedTape.HasValue || tapeCreatorComponent.CoinBalance <= 0)
         {
@@ -141,7 +141,7 @@ public sealed class TapeCreatorSystem : EntitySystem
         tapeCreatorComponent.CoinBalance -= 1;
         tapeCreatorComponent.Recording = true;
 
-        var tapeComponent = Comp<TapeComponent>(tapeCreatorComponent.InsertedTape.Value);
+        var tapeComponent = Comp<TapeComponent>(GetEntity(tapeCreatorComponent.InsertedTape.Value));
         var songData = _songsSyncManager.SyncSongData(ev.SongName, ev.SongBytes);
 
         var song = new JukeboxSong()
@@ -152,7 +152,7 @@ public sealed class TapeCreatorSystem : EntitySystem
 
         tapeComponent.Songs.Add(song);
         _popupSystem.PopupEntity($"Запись началась, примерное время ожидания: {_recordTime} секунд", tapeCreatorComponent.Owner);
-        Dirty(ev.TapeCreatorUid);
+        DirtyEntity(GetEntity(ev.TapeCreatorUid));
         Dirty(tapeComponent);
         StartRecordDelayAsync(tapeCreatorComponent, _popupSystem, _containerSystem);
     }

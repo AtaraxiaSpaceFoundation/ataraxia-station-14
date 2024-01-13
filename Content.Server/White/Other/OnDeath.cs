@@ -1,8 +1,10 @@
 ﻿using Content.Server.Chat.Systems;
 using Content.Server.Ghost.Components;
+using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 
 namespace Content.Server.White.Other;
@@ -19,7 +21,7 @@ public sealed class OnDeath : EntitySystem
         SubscribeLocalEvent<GhostComponent, ComponentInit>(OnGhosted);
     }
 
-    private readonly Dictionary<EntityUid, IPlayingAudioStream> _playingStreams = new();
+    private readonly Dictionary<EntityUid, EntityUid> _playingStreams = new();
     private static readonly SoundSpecifier DeathSounds = new SoundCollectionSpecifier("deathSounds");
     private static readonly SoundSpecifier HeartSounds = new SoundCollectionSpecifier("heartSounds");
     private static readonly string[] DeathGaspMessages =
@@ -58,14 +60,11 @@ public sealed class OnDeath : EntitySystem
     {
         if (_playingStreams.TryGetValue(uid, out var currentStream))
         {
-            currentStream.Stop();
+            _audio.Stop(currentStream);
         }
 
         var newStream = _audio.PlayEntity(HeartSounds, uid, uid, AudioParams.Default.WithLoop(true));
-        if (newStream != null)
-        {
-            _playingStreams[uid] = newStream;
-        }
+        _playingStreams[uid] = newStream.Value.Entity;
 
     }
 
@@ -73,7 +72,7 @@ public sealed class OnDeath : EntitySystem
     {
         if (_playingStreams.TryGetValue(uid, out var currentStream))
         {
-            currentStream.Stop();
+            _audio.Stop(currentStream);
             _playingStreams.Remove(uid);
         }
     }
@@ -85,7 +84,7 @@ public sealed class OnDeath : EntitySystem
         => Loc.GetString(message);
 
     private void SendDeathGaspMessage(EntityUid uid, string message)
-        => _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, false, force: true);
+        => _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.Normal, force: true);
 
     private void PlayDeathSound(EntityUid uid)
         => _audio.PlayEntity(DeathSounds, uid, uid, AudioParams.Default);

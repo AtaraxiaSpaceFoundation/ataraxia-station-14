@@ -107,7 +107,7 @@ public sealed class MeatyOreStoreSystem : EntitySystem
                 var playerEntity = session.AttachedEntity;
                 if(!playerEntity.HasValue) continue;
 
-                _storeSystem.CloseSessionUi(playerEntity.Value, meatyOreStoreData.Value);
+                _storeSystem.CloseUi(playerEntity.Value, meatyOreStoreData.Value);
             }
         }
         MeatyOrePanelEnabled = newValue;

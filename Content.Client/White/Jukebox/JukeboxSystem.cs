@@ -10,6 +10,8 @@ using Robust.Client.Physics;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameStates;
@@ -67,18 +69,18 @@ public sealed class JukeboxSystem : EntitySystem
     private void OnComponentRemoved(EntityUid uid, JukeboxComponent component, ComponentRemove args)
     {
         if (!_playingJukeboxes.TryGetValue(component, out var playingData)) return;
-        playingData.PlayingStream.Stop();
+        _audioSystem.Stop(playingData.PlayingStream, playingData.Component);
         _playingJukeboxes.Remove(component);
     }
 
     private void OnStopPlaying(JukeboxStopPlaying ev)
     {
         if (!ev.JukeboxUid.HasValue) return;
-        if(!TryComp<JukeboxComponent>(ev.JukeboxUid, out var jukeboxComponent)) return;
+        if(!TryComp<JukeboxComponent>(GetEntity(ev.JukeboxUid), out var jukeboxComponent)) return;
 
         if(!_playingJukeboxes.TryGetValue(jukeboxComponent, out var jukeboxAudio)) return;
 
-        jukeboxAudio.PlayingStream.Stop();
+        _audioSystem.Stop(jukeboxAudio.PlayingStream, jukeboxAudio.Component);
         _playingJukeboxes.Remove(jukeboxComponent);
     }
 
@@ -91,7 +93,7 @@ public sealed class JukeboxSystem : EntitySystem
 
         RaiseNetworkEvent(new JukeboxRequestSongPlay()
         {
-            Jukebox = component.Owner,
+            Jukebox = GetNetEntity(component.Owner),
             SongName = jukeboxSong.SongName,
             SongPath = jukeboxSong.SongPath,
             SongDuration = (float)songResource.AudioStream.Length.TotalSeconds
@@ -128,11 +130,11 @@ public sealed class JukeboxSystem : EntitySystem
         {
 
             if(jukeboxXform.MapID != playerXform.MapID) continue;
-            if ((jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length > _maxAudioRange) continue;
+            if ((jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() > _maxAudioRange) continue;
 
             if (_playingJukeboxes.TryGetValue(jukeboxComponent, out var jukeboxAudio))
             {
-                if (jukeboxAudio.PlayingStream.Done)
+                if (!jukeboxAudio.Component.Playing)
                 {
                     HandleDoneStream(jukeboxAudio, jukeboxComponent);
                     return;
@@ -167,7 +169,7 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void HandleSongChanged(JukeboxAudio jukeboxAudio, JukeboxComponent jukeboxComponent)
     {
-        jukeboxAudio.PlayingStream.Stop();
+        _audioSystem.Stop(jukeboxAudio.PlayingStream, jukeboxAudio.Component);
 
         if (jukeboxComponent.PlayingSongData != null && jukeboxComponent.PlayingSongData.SongPath == jukeboxAudio.SongData.SongPath)
         {
@@ -188,7 +190,7 @@ public sealed class JukeboxSystem : EntitySystem
     {
         if (!jukeboxComponent.Repeating)
         {
-            jukeboxAudio.PlayingStream.Stop();
+            _audioSystem.Stop(jukeboxAudio.PlayingStream, jukeboxAudio.Component);
             _playingJukeboxes.Remove(jukeboxComponent);
             SetBarsLayerVisible(jukeboxComponent, false);
             return;
@@ -234,25 +236,22 @@ public sealed class JukeboxSystem : EntitySystem
             MaxDistance = _maxAudioRange
         };
 
-        AudioSystem.PlayingStream? playingStream = null!;
+        var playingStream = _audioSystem.PlayEntity(resourcePath.ToString()!, localSession, jukeboxComponent.Owner, audioParams);
 
-        playingStream = _audioSystem.PlayEntity(resourcePath.ToString()!, localSession, jukeboxComponent.Owner, audioParams) as AudioSystem.PlayingStream;
-
-        if (playingStream == null)
-            return null!;
-
-        return new JukeboxAudio(playingStream, audio!, jukeboxComponent.PlayingSongData);
+        return new JukeboxAudio(playingStream.Value.Entity, playingStream.Value.Component, audio!, jukeboxComponent.PlayingSongData);
     }
 
     private class JukeboxAudio
     {
         public PlayingSongData SongData { get; }
-        public AudioSystem.PlayingStream PlayingStream { get; }
+        public EntityUid PlayingStream { get; }
+        public AudioComponent Component { get; }
         public AudioResource AudioStream { get; }
 
-        public JukeboxAudio(AudioSystem.PlayingStream playingStream, AudioResource audioStream, PlayingSongData songData)
+        public JukeboxAudio(EntityUid playingStream, AudioComponent component, AudioResource audioStream, PlayingSongData songData)
         {
             PlayingStream = playingStream;
+            Component = component;
             AudioStream = audioStream;
             SongData = songData;
         }
@@ -269,7 +268,7 @@ public sealed class JukeboxSystem : EntitySystem
     {
         foreach (var playingJukebox in _playingJukeboxes.Values)
         {
-            playingJukebox.PlayingStream.Stop();
+            _audioSystem.Stop(playingJukebox.PlayingStream, playingJukebox.Component);
         }
 
         _playingJukeboxes.Clear();

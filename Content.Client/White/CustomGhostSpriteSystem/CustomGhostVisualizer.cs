@@ -1,4 +1,4 @@
-using Content.Client.Ghost;
+using Content.Shared.Ghost;
 using Content.Shared.White.CustomGhostSystem;
 using Robust.Client.GameObjects;
 
