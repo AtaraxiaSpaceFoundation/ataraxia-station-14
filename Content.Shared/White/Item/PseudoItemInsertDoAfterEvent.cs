@@ -4,7 +4,7 @@ using Content.Shared.DoAfter;
 namespace Content.Shared.Item.PseudoItem
 {
     [Serializable, NetSerializable]
-    public sealed class PseudoItemInsertDoAfterEvent : SimpleDoAfterEvent
+    public sealed partial class PseudoItemInsertDoAfterEvent : SimpleDoAfterEvent
     {
     }
 }

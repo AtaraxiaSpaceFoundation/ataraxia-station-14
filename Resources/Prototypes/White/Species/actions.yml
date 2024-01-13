@@ -1,14 +1,23 @@
-﻿- type: instantAction
+- type: entity
   id: EatMouse
-  name: action-name-eat-mouse
-  description: action-description-eat-mouse
-  icon: White/Icons/verbiconfangs.png
-  serverEvent: !type:EatMouseActionEvent
+  name: Eat mouse
+  description: Eat the mouse in your hand, receiving nutrients and a hairball charge.
+  nospawn: true
+  components:
+  - type: InstantAction
+    icon: White/Icons/verbiconfangs.png
+    event: !type:EatMouseActionEvent
 
-- type: instantAction
+- type: entity
   id: HairballAction
-  name: hairball-action
-  description: hairball-action-desc
-  charges: 1
-  useDelay: 30
-  serverEvent: !type:HairballActionEvent
+  name: Cough up a hairball.
+  description: People don't like that.
+  nospawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: White/Specific/Species/felinid.rsi
+      state: icon
+    event: !type:HairballActionEvent
+    charges: 1
+    useDelay: 30

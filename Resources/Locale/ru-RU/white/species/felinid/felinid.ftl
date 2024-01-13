@@ -6,6 +6,11 @@ hairball-cough = {CAPITALIZE(THE($name))} пытается выкашлять к
 action-name-eat-mouse = Съесть мышь.
 action-description-eat-mouse = Съешьте мышь в своей руке, получая питательные вещества и заряд комка шерсти.
 
+ent-HairballAction = Откашлять комок шерсти.
+    .desc = Люди это не любят.
+
+ent-EatMouse = Съесть мышь.
+    .desc = Съешьте мышь в своей руке, получая питательные вещества и заряд комка шерсти.
 
 marking-FelinidEarsBasic = Обычные ушки
 marking-FelinidEarsBasic-basic_outer = Внешняя часть уха

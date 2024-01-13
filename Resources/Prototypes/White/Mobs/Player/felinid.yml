@@ -31,9 +31,6 @@
   - type: CameraRecoil
   - type: Examiner
   - type: CanHostGuardian
-  - type: Faction
-    factions:
-    - NanoTrasen
   - type: Felinid #since this just adds an action...
   - type: InteractionPopup
     successChance: 1

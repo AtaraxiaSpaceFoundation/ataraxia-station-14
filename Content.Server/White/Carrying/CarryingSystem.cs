@@ -1,11 +1,9 @@
 using System.Threading;
 using Content.Server.DoAfter;
-using Content.Server.Body.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Resist;
 using Content.Server.Popups;
 using Content.Server.Contests;
-using Content.Server.Climbing;
 using Content.Shared.Mobs;
 using Content.Shared.DoAfter;
 using Content.Shared.Buckle.Components;
@@ -21,6 +19,7 @@ using Content.Shared.Pulling;
 using Content.Shared.Pulling.Components;
 using Content.Shared.Standing;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Climbing.Events;
 using Content.Shared.Throwing;
 using Content.Shared.Physics.Pull;
 using Content.Shared.Mobs.Systems;
@@ -225,7 +224,7 @@ namespace Content.Server.Carrying
             component.CancelToken = new CancellationTokenSource();
 
             var ev = new CarryDoAfterEvent();
-            var args = new DoAfterArgs(carrier, length, ev, carried, target: carried)
+            var args = new DoAfterArgs(EntityManager, carrier, length, ev, carried, target: carried)
             {
                 BreakOnTargetMove = true,
                 BreakOnUserMove = true,

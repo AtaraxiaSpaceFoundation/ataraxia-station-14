@@ -1,22 +1,20 @@
 using Content.Shared.Actions;
-using Content.Shared.Audio;
 using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 using Content.Shared.Item;
 using Content.Shared.Inventory;
 using Content.Shared.Hands;
-using Content.Shared.Actions.ActionTypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Server.Body.Components;
+using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Medical;
-using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Nutrition.Components;
-using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Popups;
+using Content.Shared.White.Events;
+using Robust.Server.Audio;
 using Robust.Shared.Audio;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
 
@@ -24,7 +22,6 @@ namespace Content.Server.Abilities.Felinid
 {
     public sealed class FelinidSystem : EntitySystem
     {
-
         [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
         [Dependency] private readonly HungerSystem _hungerSystem = default!;
         [Dependency] private readonly VomitSystem _vomitSystem = default!;
@@ -32,7 +29,7 @@ namespace Content.Server.Abilities.Felinid
         [Dependency] private readonly IRobustRandom _robustRandom = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+        [Dependency] private readonly AudioSystem _audio = default!;
 
         public override void Initialize()
         {
@@ -71,11 +68,7 @@ namespace Content.Server.Abilities.Felinid
 
         private void OnInit(EntityUid uid, FelinidComponent component, ComponentInit args)
         {
-            if (!_prototypeManager.TryIndex<InstantActionPrototype>("HairballAction", out var hairball))
-                return;
-
-            component.HairballAction = new InstantAction(hairball);
-            _actionsSystem.AddAction(uid, component.HairballAction, uid);
+            _actionsSystem.AddAction(uid, ref component.HairballAction, "HairballAction");
         }
 
         private void OnEquipped(EntityUid uid, FelinidComponent component, DidEquipHandEvent args)
@@ -85,8 +78,7 @@ namespace Content.Server.Abilities.Felinid
 
             component.PotentialTarget = args.Equipped;
 
-            if (_prototypeManager.TryIndex<InstantActionPrototype>("EatMouse", out var eatMouse))
-                _actionsSystem.AddAction(uid, new InstantAction(eatMouse), null);
+            _actionsSystem.AddAction(uid, ref component.EatMouseAction, "EatMouse");
         }
 
         private void OnUnequipped(EntityUid uid, FelinidComponent component, DidUnequipHandEvent args)
@@ -94,8 +86,7 @@ namespace Content.Server.Abilities.Felinid
             if (args.Unequipped == component.PotentialTarget)
             {
                 component.PotentialTarget = null;
-                if (_prototypeManager.TryIndex<InstantActionPrototype>("EatMouse", out var eatMouse))
-                    _actionsSystem.RemoveAction(uid, eatMouse);
+                _actionsSystem.RemoveAction(uid, component.EatMouseAction);
             }
         }
 
@@ -110,7 +101,7 @@ namespace Content.Server.Abilities.Felinid
             }
 
             _popupSystem.PopupEntity(Loc.GetString("hairball-cough", ("name", Identity.Entity(uid, EntityManager))), uid);
-            SoundSystem.Play("/Audio/White/Felinid/hairball.ogg", Filter.Pvs(uid), uid, AudioHelpers.WithVariation(0.15f));
+            _audio.PlayPvs("/Audio/White/Felinid/hairball.ogg", uid, AudioParams.Default.WithVariation(0.15f));
 
             EnsureComp<CoughingUpHairballComponent>(uid);
             args.Handled = true;
@@ -140,18 +131,17 @@ namespace Content.Server.Abilities.Felinid
 
             if (component.HairballAction != null)
             {
-                _actionsSystem.SetCharges(component.HairballAction, component.HairballAction.Charges + 1);
+                _actionsSystem.AddCharges(component.HairballAction, 1);
                 _actionsSystem.SetEnabled(component.HairballAction, true);
             }
             Del(component.PotentialTarget.Value);
             component.PotentialTarget = null;
 
-            SoundSystem.Play("/Audio/Items/eatfood.ogg", Filter.Pvs(uid), uid, AudioHelpers.WithVariation(0.15f));
+            _audio.PlayPvs("/Audio/Items/eatfood.ogg", uid, AudioParams.Default.WithVariation(0.15f));
 
             _hungerSystem.ModifyHunger(uid, 70f, hunger);
 
-            if (_prototypeManager.TryIndex<InstantActionPrototype>("EatMouse", out var eatMouse))
-                    _actionsSystem.RemoveAction(uid, eatMouse);
+            _actionsSystem.RemoveAction(uid, component.EatMouseAction);
         }
 
         private void SpawnHairball(EntityUid uid, FelinidComponent component)
@@ -159,13 +149,13 @@ namespace Content.Server.Abilities.Felinid
             var hairball = EntityManager.SpawnEntity(component.HairballPrototype, Transform(uid).Coordinates);
             var hairballComp = Comp<HairballComponent>(hairball);
 
-            if (TryComp<BloodstreamComponent>(uid, out var bloodstream))
+            if (TryComp<BloodstreamComponent>(uid, out var bloodstream) && bloodstream.ChemicalSolution != null)
             {
-                var temp = bloodstream.ChemicalSolution.SplitSolution(20);
+                var temp = _solutionSystem.SplitSolution(bloodstream.ChemicalSolution.Value, 20);
 
                 if (_solutionSystem.TryGetSolution(hairball, hairballComp.SolutionName, out var hairballSolution))
                 {
-                    _solutionSystem.TryAddSolution(hairball, hairballSolution, temp);
+                    _solutionSystem.TryAddSolution(hairballSolution.Value, temp);
                 }
             }
         }
@@ -189,7 +179,4 @@ namespace Content.Server.Abilities.Felinid
             }
         }
     }
-
-    public sealed class HairballActionEvent : InstantActionEvent {}
-    public sealed class EatMouseActionEvent : InstantActionEvent {}
 }
