@@ -1,4 +1,4 @@
-- type: job
+﻿- type: job
   id: SecurityCadet
   name: job-name-cadet
   description: job-description-cadet
@@ -11,7 +11,7 @@
       time: 28800 #8 hrs
       inverted: true # stop playing intern if you're good at security!
   startingGear: SecurityCadetGear
-  icon: "JobIconSecurityCadet"
+  icon: "SecurityCadet"
   supervisors: job-supervisors-security
   whitelistedSpecies:
     - Human

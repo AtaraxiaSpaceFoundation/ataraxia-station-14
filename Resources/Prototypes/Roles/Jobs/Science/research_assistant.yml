@@ -1,4 +1,4 @@
-- type: job
+﻿- type: job
   id: ResearchAssistant
   name: job-name-research-assistant
   description: job-description-research-assistant
@@ -9,7 +9,7 @@
       time: 28800
       inverted: true # stop playing intern if you're good at science!
   startingGear: ResearchAssistantGear
-  icon: "JobIconResearchAssistant"
+  icon: "ResearchAssistant"
   supervisors: job-supervisors-rd
   canBeAntag: false
   access:

@@ -14,7 +14,7 @@
       time: 108000
   weight: 10
   startingGear: QuartermasterGear
-  icon: "JobIconQuarterMaster"
+  icon: "QuarterMaster"
   supervisors: job-supervisors-hop
   whitelistedSpecies:
     - Human

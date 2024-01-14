@@ -1,10 +1,10 @@
-- type: job
+﻿- type: job
   id: ServiceWorker
   name: job-name-serviceworker
   description: job-description-serviceworker
   playTimeTracker: JobServiceWorker
   startingGear: ServiceWorkerGear
-  icon: "JobIconServiceWorker"
+  icon: "ServiceWorker"
   supervisors: job-supervisors-service
   canBeAntag: false
   access:

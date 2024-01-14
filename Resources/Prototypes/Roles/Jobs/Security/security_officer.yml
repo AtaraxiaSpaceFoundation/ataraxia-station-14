@@ -8,7 +8,7 @@
       department: Security
       time: 3600 #1 hr
   startingGear: SecurityOfficerGear
-  icon: "JobIconSecurityOfficer"
+  icon: "SecurityOfficer"
   supervisors: job-supervisors-hos
   whitelistedSpecies:
     - Human

@@ -5,7 +5,7 @@
   playTimeTracker: JobCentralCommandOfficial
   setPreference: false
   startingGear: CentcomGear
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-hos
   canBeAntag: false
   accessGroups:

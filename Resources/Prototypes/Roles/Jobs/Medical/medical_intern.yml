@@ -1,4 +1,4 @@
-- type: job
+﻿- type: job
   id: MedicalIntern
   name: job-name-intern
   description: job-description-intern
@@ -9,7 +9,7 @@
       time: 28800
       inverted: true # stop playing intern if you're good at med!
   startingGear: MedicalInternGear
-  icon: "JobIconMedicalIntern"
+  icon: "MedicalIntern"
   supervisors: job-supervisors-medicine
   canBeAntag: false
   access:

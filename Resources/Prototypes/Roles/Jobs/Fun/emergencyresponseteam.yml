@@ -6,7 +6,7 @@
   playTimeTracker: JobERTLeader
   setPreference: false
   startingGear: ERTLeaderGearEVA
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -57,7 +57,7 @@
   playTimeTracker: JobERTEngineer
   setPreference: false
   startingGear: ERTEngineerGearEVA
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -108,7 +108,7 @@
   playTimeTracker: JobERTSecurity
   setPreference: false
   startingGear: ERTEngineerGearEVA
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -159,7 +159,7 @@
   playTimeTracker: JobERTMedical
   setPreference: false
   startingGear: ERTMedicalGearEVA
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:
@@ -212,7 +212,7 @@
   playTimeTracker: JobERTJanitor
   setPreference: false
   startingGear: ERTJanitorGearEVA
-  icon: "JobIconNanotrasen"
+  icon: "Nanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:

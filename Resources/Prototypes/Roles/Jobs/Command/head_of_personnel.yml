@@ -17,7 +17,7 @@
       time: 108000
   weight: 20
   startingGear: HoPGear
-  icon: "JobIconHeadOfPersonnel"
+  icon: "HeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
   whitelistedSpecies:
