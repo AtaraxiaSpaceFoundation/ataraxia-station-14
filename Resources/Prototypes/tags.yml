@@ -1182,21 +1182,3 @@
   id: WriteIgnoreStamps
 
 # PUT YOUR TAGS IN ALPHABETICAL ORDER
-
-# WHITE
-- type: Tag
-  id: socks
-
-- type: Tag
-  id: underwearb
-
-- type: Tag
-  id: underweart
-
-- type: Tag
-  id: Crystal
-
-# WHITE END
-
-- type: Tag
-  id: TapeRecorderCoin
