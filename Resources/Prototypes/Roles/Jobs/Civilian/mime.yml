@@ -4,7 +4,7 @@
   description: job-description-mime
   playTimeTracker: JobMime
   startingGear: MimeGear
-  icon: "Mime"
+  icon: "JobIconMime"
   supervisors: job-supervisors-hop
   access:
   - Theatre

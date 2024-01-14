@@ -8,7 +8,7 @@
       department: Security
       time: 10800
   startingGear: WardenGear
-  icon: "Warden"
+  icon: "JobIconWarden"
   supervisors: job-supervisors-hos
   whitelistedSpecies:
     - Human
