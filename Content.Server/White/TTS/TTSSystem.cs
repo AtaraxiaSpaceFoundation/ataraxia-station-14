@@ -48,7 +48,7 @@ public sealed partial class TTSSystem : EntitySystem
 
         var soundData = await GenerateTTS(ev.Uid, ev.Text, protoVoice.Speaker);
         if (soundData != null)
-            RaiseNetworkEvent(new PlayTTSEvent(ev.Uid, soundData), Filter.SinglePlayer(session));
+            RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(ev.Uid), soundData), Filter.SinglePlayer(session));
     }
 
     private async void OnEntitySpoke(EntityUid uid, TTSComponent component, EntitySpokeEvent args)
