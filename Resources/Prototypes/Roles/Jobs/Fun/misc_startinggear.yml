@@ -268,8 +268,8 @@
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
   innerclothingskirt: ClothingUniformJumpsuitColorBrown
-  satchel: ClothingBackpackDuffelCBURN
-  duffelbag: ClothingBackpackDuffelCBURN
+  satchel: ClothingBackpackDuffelCBURNFilled
+  duffelbag: ClothingBackpackDuffelCBURNFilled
 
 - type: startingGear
   id: BoxingKangarooGear
