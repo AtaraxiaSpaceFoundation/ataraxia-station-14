@@ -163,7 +163,7 @@ public sealed partial class PandaStatusHost : IDisposable
 
         var collection = HttpUtility.ParseQueryString(message);
 #pragma warning disable CS8714
-        var json = JsonSerializer.Serialize(collection.AllKeys.ToDictionary(y => y, y => collection[y]));
+        var json = JsonSerializer.Serialize(collection.AllKeys.ToDictionary(y => y!, y => collection[y]));
 #pragma warning restore CS8714
         var jsonDocument = JsonDocument.Parse(json);
         var root = jsonDocument.RootElement;
