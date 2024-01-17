@@ -8,12 +8,14 @@ using Content.Server.Database;
 using Content.Server.UtkaIntegration;
 using Content.Server.White;
 using Content.Shared.CCVar;
+using Content.Shared.Database;
 using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Administration.Managers;
@@ -171,7 +173,10 @@ public sealed class RoleBanManager
             targetHWid,
             DateTimeOffset.Now,
             expires,
+            null,
+            TimeSpan.Zero, // IDK what it means
             reason,
+            NoteSeverity.High,
             player,
             null,
             role,
@@ -232,7 +237,7 @@ public sealed class RoleBanManager
             serverName = "unknown";
         }
 
-        var player = shell.Player as IPlayerSession;
+        var player = shell.Player;
         var banDef = new ServerRoleBanDef(
             null,
             targetUid,
@@ -240,7 +245,10 @@ public sealed class RoleBanManager
             targetHWid,
             DateTimeOffset.Now,
             expires,
+            null,
+            TimeSpan.Zero, // IDK what it means
             reason,
+            NoteSeverity.High,
             player?.UserId,
             null,
             role,
