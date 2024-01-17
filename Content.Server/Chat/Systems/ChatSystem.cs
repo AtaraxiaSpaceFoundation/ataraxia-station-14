@@ -429,8 +429,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         name = colorEv.Name;
         //WD-EDIT
 
-        var wrappedMessage = Loc.GetString("chat-manager-entity-say-wrap-message",
-            ("entityName", name), ("message", message));
+        var speech = GetSpeechVerb(source, message);
+        var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
+            ("entityName", name),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("message", FormattedMessage.EscapeText(message)));
 
         //WD-EDIT
         if (TryComp<VoiceOfGodComponent>(source, out var comp))

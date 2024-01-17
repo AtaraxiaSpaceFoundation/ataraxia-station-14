@@ -133,7 +133,7 @@ namespace Content.IntegrationTests.Tests.Commands
             Assert.Multiple(async () =>
             {
                 // No bans should be returned
-                Assert.That(await sDatabase.GetServerBanAsync(null, clientId, null, false), Is.Null);
+                Assert.That(await sDatabase.GetServerBanAsync(null, clientId, null), Is.Null);
 
                 // Direct id lookup returns a pardoned ban
                 Assert.That(await sDatabase.GetServerBanAsync(1), Is.Not.Null);
@@ -143,11 +143,11 @@ namespace Content.IntegrationTests.Tests.Commands
             });
 
             // Reconnect client. Slightly faster than dirtying the pair.
-            Assert.That(sPlayerManager.Sessions.Count(), Is.EqualTo(0));
+            Assert.That(sPlayerManager.Sessions, Is.Empty);
             client.SetConnectTarget(server);
             await client.WaitPost(() => netMan.ClientConnect(null!, 0, null!));
             await pair.RunTicksSync(5);
-            Assert.That(sPlayerManager.Sessions.Count(), Is.EqualTo(1));
+            Assert.That(sPlayerManager.Sessions, Has.Length.EqualTo(1));
 
             await pair.CleanReturnAsync();
         }
