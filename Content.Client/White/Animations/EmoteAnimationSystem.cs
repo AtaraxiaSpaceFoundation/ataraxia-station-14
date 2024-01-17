@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared.Animations;
 using Robust.Client.Animations;
 using Robust.Shared.Animations;
@@ -16,7 +17,7 @@ public class EmoteAnimationSystem : EntitySystem
         SubscribeLocalEvent<EmoteAnimationComponent, ComponentHandleState>(OnHandleState);
 
         // EmoteFlip animation
-        _emoteList.Add("EmoteFlip", (EntityUid uid) =>
+        _emoteList.Add("EmoteFlip", uid =>
         {
             var animationKey = "emoteAnimationKeyId";
 

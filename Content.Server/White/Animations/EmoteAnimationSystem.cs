@@ -1,7 +1,7 @@
+using System.Linq;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Content.Server.Actions;
-using Content.Shared.Actions.ActionTypes;
 using Content.Shared.Animations;
 using static Content.Shared.Animations.EmoteAnimationComponent;
 using Content.Server.Chat.Systems;
@@ -35,20 +35,15 @@ public class EmoteAnimationSystem : EntitySystem
 
     private void OnMapInint(EntityUid uid, EmoteAnimationComponent component, MapInitEvent args)
     {
-        foreach (var item in _proto.EnumeratePrototypes<InstantActionPrototype>())
+        foreach (var item in _proto.EnumeratePrototypes<EntityPrototype>())
         {
-            InstantAction? action;
-            if (item.ID.Length > INSTANT_IDENTIFIER.Length &&
-                item.ID[..INSTANT_IDENTIFIER.Length] == INSTANT_IDENTIFIER)
-                action = new InstantAction(item);
-            else
+            if (item.ID.Length <= INSTANT_IDENTIFIER.Length ||
+                item.ID[..INSTANT_IDENTIFIER.Length] != INSTANT_IDENTIFIER)
                 continue;
 
-            if (action != null)
-            {
-                component.Actions.Add(action);
-                _action.AddAction(uid, action, null);
-            }
+            EntityUid? action = null;
+            component.Actions.Add(action);
+            _action.AddAction(uid, ref action, item.ID);
         }
     }
 
