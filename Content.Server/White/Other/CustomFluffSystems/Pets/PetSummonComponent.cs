@@ -1,26 +1,19 @@
-﻿using Content.Shared.Actions.ActionTypes;
-using Robust.Shared.Utility;
+﻿using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.White.Other.CustomFluffSystems.Pets;
 
 [RegisterComponent]
-public sealed class PetSummonComponent : Component
+public sealed partial class PetSummonComponent : Component
 {
-    public InstantAction PetSummonAction = new()
-    {
-        Icon = new SpriteSpecifier.Texture(new ResPath("Objects/Misc/books.rsi/summon_book.png")),
-        DisplayName = "Призыв",
-        Description = "Призыв питомца БЕЗ возможности вселения призрака",
-        Event = new PetSummonActionEvent()
-    };
+    [DataField("petSummonAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string PetSummonAction = "PetSummonAction";
 
-    public InstantAction PetGhostSummonAction = new()
-    {
-        Icon = new SpriteSpecifier.Texture(new ResPath("Mobs/Ghosts/ghost_human.rsi/icon.png")),
-        DisplayName = "Призрачный призыв",
-        Description = "Призыв питомца С возможностью вселения призрака",
-        Event = new PetGhostSummonActionEvent()
-    };
+    [DataField("petGhostSummonAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string PetGhostSummonAction = "PetGhostSummonAction";
+
+    [DataField("petSummonActionEntity")] public EntityUid? PetSummonActionEntity;
+    [DataField("petGhostSummonActionEntity")] public EntityUid? PetGhostSummonActionEntity;
 
     public int UsesLeft = 10;
 

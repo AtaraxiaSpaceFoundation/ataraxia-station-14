@@ -2,12 +2,12 @@
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
-using Content.Shared.Item;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Robust.Server.GameObjects;
+using Content.Shared.White.Events;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.Other.CustomFluffSystems.Pets;
 
@@ -16,7 +16,6 @@ public sealed class PetSummonSystem : EntitySystem
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     private IReadOnlyDictionary<string, string> MobMap = new Dictionary<string, string>()
     {
@@ -158,15 +157,7 @@ public sealed class PetSummonSystem : EntitySystem
 
     private void GetSummonAction(EntityUid uid, PetSummonComponent component, GetItemActionsEvent args)
     {
-        args.Actions.Add(component.PetSummonAction);
-        args.Actions.Add(component.PetGhostSummonAction);
+        args.AddAction(ref component.PetSummonActionEntity, component.PetSummonAction);
+        args.AddAction(ref component.PetGhostSummonActionEntity, component.PetGhostSummonAction);
     }
-}
-
-public sealed class PetSummonActionEvent : InstantActionEvent
-{
-}
-
-public sealed class PetGhostSummonActionEvent : InstantActionEvent
-{
 }
