@@ -1,11 +1,11 @@
-﻿# Kommandant
+# Kommandant
 - type: entity
   parent: SimpleMobBase
   id: KommandantPetSpider
   name: паук Валера
   description: Любит мух и деньги.
   components:
-  - type: Faction
+  - type: NpcFactionMember
     factions:
       - PetsNT
   - type: Sprite
@@ -57,7 +57,7 @@
   - type: Bloodstream
     bloodMaxVolume: 150
     bloodReagent: SpiderBlood
-  - type: Pacifist
+  - type: Pacified
   - type: Tag
     tags:
       - CannotSuicide

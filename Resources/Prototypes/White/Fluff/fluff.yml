@@ -1,4 +1,4 @@
-﻿# DOOMMAX
+# DOOMMAX
 - type: entity
   parent: ClothingOuterEVASuitBase
   id: ClothingOuterSuitGlamorous
@@ -151,7 +151,6 @@
     - type: Item
       sprite: White/Fluff/Omntns/gavel_hammer.rsi
       size: 5
-    - type: ItemCooldown
     - type: EmitSoundOnUse
       sound:
         path: /Audio/White/Fluff/Omntns/gavel.ogg

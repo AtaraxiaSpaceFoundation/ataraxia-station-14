@@ -5,10 +5,12 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Content.Server.Database;
+using Content.Server.GameTicking;
 using Content.Server.UtkaIntegration;
 using Content.Server.White;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -27,6 +29,7 @@ public sealed class RoleBanManager
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IPlayerLocator _playerLocator = default!;
     [Dependency] private readonly UtkaTCPWrapper _utkaSockets = default!; // WD
+    [Dependency] private readonly IEntitySystemManager _systems = default!; // WD
 
     private const string JobPrefix = "Job:";
 
@@ -165,6 +168,10 @@ public sealed class RoleBanManager
             return;
         }
 
+        _systems.TryGetEntitySystem<GameTicker>(out var ticker);
+        int? roundId = ticker == null || ticker.RoundId == 0 ? null : ticker.RoundId;
+        var playtime = (await _db.GetPlayTimes(targetUid)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
+
         var player = locatedPlayer.UserId;
         var banDef = new ServerRoleBanDef(
             null,
@@ -173,8 +180,8 @@ public sealed class RoleBanManager
             targetHWid,
             DateTimeOffset.Now,
             expires,
-            null,
-            TimeSpan.Zero, // IDK what it means
+            roundId,
+            playtime,
             reason,
             NoteSeverity.High,
             player,
@@ -245,6 +252,10 @@ public sealed class RoleBanManager
             serverName = "unknown";
         }
 
+        _systems.TryGetEntitySystem<GameTicker>(out var ticker);
+        int? roundId = ticker == null || ticker.RoundId == 0 ? null : ticker.RoundId;
+        var playtime = (await _db.GetPlayTimes(targetUid)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
+
         var player = shell.Player;
         var banDef = new ServerRoleBanDef(
             null,
@@ -253,8 +264,8 @@ public sealed class RoleBanManager
             targetHWid,
             DateTimeOffset.Now,
             expires,
-            null,
-            TimeSpan.Zero, // IDK what it means
+            roundId,
+            playtime,
             reason,
             NoteSeverity.High,
             player?.UserId,

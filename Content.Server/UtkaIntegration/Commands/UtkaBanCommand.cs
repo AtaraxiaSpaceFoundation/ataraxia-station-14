@@ -2,7 +2,11 @@
 using System.Net.Sockets;
 using Content.Server.Administration;
 using Content.Server.Database;
+using Content.Server.GameTicking;
+using Content.Server.UtkaIntegration.TCP;
 using Content.Shared.CCVar;
+using Content.Shared.Database;
+using Content.Shared.Players.PlayTimeTracking;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 
@@ -82,6 +86,10 @@ public sealed class UtkaBanCommand : IUtkaCommand
             serverName = "unknown";
         }
 
+        IoCManager.Resolve<IEntitySystemManager>().TryGetEntitySystem<GameTicker>(out var ticker);
+        int? roundId = ticker == null || ticker.RoundId == 0 ? null : ticker.RoundId;
+        var playtime = (await dbMan.GetPlayTimes(targetUid)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
+
         var banDef = new ServerBanDef(
             null,
             targetUid,
@@ -89,7 +97,10 @@ public sealed class UtkaBanCommand : IUtkaCommand
             targetHWid,
             DateTimeOffset.Now,
             expires,
+            roundId,
+            playtime,
             reason,
+            NoteSeverity.High,
             player,
             null,
             serverName);
