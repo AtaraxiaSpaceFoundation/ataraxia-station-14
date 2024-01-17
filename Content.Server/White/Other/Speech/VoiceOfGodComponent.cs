@@ -1,7 +1,7 @@
 namespace Content.Server.White.Other.Speech;
 
 [RegisterComponent]
-public sealed class VoiceOfGodComponent : Component
+public sealed partial class VoiceOfGodComponent : Component
 {
     [DataField("sound"), ViewVariables(VVAccess.ReadWrite)]
     public string Sound { get; set; } = "/Audio/White/Voice/voice_of_god.ogg";

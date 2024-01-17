@@ -1,4 +1,5 @@
 using Content.Server.Speech;
+using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 
@@ -6,6 +7,7 @@ namespace Content.Server.White.Other.Speech;
 
 public sealed class VoiceOfGodSystem : EntitySystem
 {
+    [Dependency] private readonly AudioSystem _audio = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -17,8 +19,7 @@ public sealed class VoiceOfGodSystem : EntitySystem
     {
         if (!string.IsNullOrEmpty(component.Sound))
         {
-            SoundSystem.Play(component.Sound,
-                Filter.Pvs(component.Owner, component.SoundRange),
+            _audio.PlayPvs(component.Sound,
                 component.Owner,
                 new AudioParams()
                 {
