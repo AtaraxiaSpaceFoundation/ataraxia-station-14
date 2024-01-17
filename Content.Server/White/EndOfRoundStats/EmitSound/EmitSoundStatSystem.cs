@@ -13,7 +13,6 @@ public sealed class EmitSoundStatSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
 
-
     Dictionary<SoundSources, int> soundsEmitted = new();
 
     // This Enum must match the exact tag you're searching for.
@@ -22,8 +21,7 @@ public sealed class EmitSoundStatSystem : EntitySystem
     // and should have a parameter of "times" (e.g. Horns were honked a total of {$times} times!)
     private enum SoundSources
     {
-        BikeHorn,
-        Plushie
+        BikeHorn
     }
 
     public override void Initialize()
@@ -52,18 +50,15 @@ public sealed class EmitSoundStatSystem : EntitySystem
         if (source == null)
             return;
 
-        if (soundsEmitted.ContainsKey(source.Value))
+        if (!soundsEmitted.TryAdd(source.Value, 1))
         {
             soundsEmitted[source.Value]++;
-            return;
         }
-
-        soundsEmitted.Add(source.Value, 1);
     }
 
     private void OnRoundEnd(RoundEndTextAppendEvent ev)
     {
-        var minCount = _config.GetCVar<int>(WhiteCVars.EmitSoundThreshold);
+        var minCount = _config.GetCVar(WhiteCVars.EmitSoundThreshold);
 
         var line = string.Empty;
         var entry = false;
@@ -85,11 +80,11 @@ public sealed class EmitSoundStatSystem : EntitySystem
             ev.AddLine("[color=springGreen]" + line + "[/color]");
     }
 
-    private bool TryGenerateSoundsEmitted(SoundSources source, int soundsEmitted, [NotNullWhen(true)] out string? line)
+    private bool TryGenerateSoundsEmitted(SoundSources source, int amountOfsoundsSoundsEmitted, [NotNullWhen(true)] out string? line)
     {
-        string preLocalString = "eorstats-emitsound-" + source.ToString();
+        var preLocalString = "eorstats-emitsound-" + source;
 
-        if (!Loc.TryGetString(preLocalString, out var localString, ("times", soundsEmitted)))
+        if (!Loc.TryGetString(preLocalString, out var localString, ("times", amountOfsoundsSoundsEmitted)))
         {
             Logger.DebugS("eorstats", "Unknown messageId: {0}", preLocalString);
             Logger.Debug("Make sure the string is following the correct format, and matches the enum! (eorstats-emitsound-<enum>)");

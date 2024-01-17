@@ -1,24 +1,24 @@
-using System.Linq;
+using Content.Server.Actions;
+using Content.Server.Chat.Systems;
+using Content.Shared.Animations;
+using Content.Shared.Chat.Prototypes;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Content.Server.Actions;
-using Content.Shared.Animations;
 using static Content.Shared.Animations.EmoteAnimationComponent;
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat.Prototypes;
 
-namespace Content.Server.Animations;
+namespace Content.Server.White.Animations;
 
-public class EmoteAnimationSystem : EntitySystem
+public sealed class EmoteAnimationSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _action = default!;
-    [Dependency] public readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
 
     /// <summary>
     /// We write 'EmoteAction' word before id name for instant action.
     /// Example: EmoteActionJump, EmoteActionFlip and etc.
     /// </summary>
-    private const string INSTANT_IDENTIFIER = "EmoteAction";
+    private const string InstantIdentifier = "EmoteAction";
+
     public override void Initialize()
     {
         SubscribeLocalEvent<EmoteAnimationComponent, ComponentGetState>(OnGetState);
@@ -37,8 +37,8 @@ public class EmoteAnimationSystem : EntitySystem
     {
         foreach (var item in _proto.EnumeratePrototypes<EntityPrototype>())
         {
-            if (item.ID.Length <= INSTANT_IDENTIFIER.Length ||
-                item.ID[..INSTANT_IDENTIFIER.Length] != INSTANT_IDENTIFIER)
+            if (item.ID.Length <= InstantIdentifier.Length ||
+                item.ID[..InstantIdentifier.Length] != InstantIdentifier)
                 continue;
 
             EntityUid? action = null;
@@ -66,6 +66,7 @@ public class EmoteAnimationSystem : EntitySystem
     private void OnEmoteAction(EntityUid uid, EmoteAnimationComponent component, EmoteActionEvent args)
     {
         PlayEmoteAnimation(uid, component, args.Emote);
+        args.Handled = true;
     }
 
     public void PlayEmoteAnimation(EntityUid uid, EmoteAnimationComponent component, string emoteId)

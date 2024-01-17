@@ -1,11 +1,9 @@
 ﻿using Content.Server.Chat.Systems;
-using Content.Server.Ghost.Components;
-using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
-using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server.White.Other;
@@ -65,8 +63,7 @@ public sealed class OnDeath : EntitySystem
         }
 
         var newStream = _audio.PlayEntity(HeartSounds, uid, uid, AudioParams.Default.WithLoop(true));
-        if (newStream.HasValue)
-            _playingStreams[uid] = newStream.Value.Entity;
+        _playingStreams[uid] = newStream.Value.Entity;
     }
 
     private void StopPlayingStream(EntityUid uid)
@@ -79,19 +76,27 @@ public sealed class OnDeath : EntitySystem
     }
 
     private string SelectRandomDeathGaspMessage()
-        => DeathGaspMessages[_random.Next(DeathGaspMessages.Length)];
+    {
+        return DeathGaspMessages[_random.Next(DeathGaspMessages.Length)];
+    }
 
     private string LocalizeDeathGaspMessage(string message)
-        => Loc.GetString(message);
+    {
+        return Loc.GetString(message);
+    }
 
     private void SendDeathGaspMessage(EntityUid uid, string message)
-        => _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.Normal, force: true);
+    {
+        _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote, ChatTransmitRange.Normal, force: true);
+    }
 
     private void PlayDeathSound(EntityUid uid)
-        => _audio.PlayEntity(DeathSounds, uid, uid, AudioParams.Default);
+    {
+        _audio.PlayEntity(DeathSounds, uid, uid, AudioParams.Default);
+    }
 
     private void OnDetach(EntityUid uid, HumanoidAppearanceComponent component, PlayerDetachedEvent args)
-        => StopPlayingStream(args.Entity);
-
-
+    {
+        StopPlayingStream(args.Entity);
+    }
 }
