@@ -6,7 +6,7 @@ using Robust.Shared.Utility;
 namespace Content.Server.Worldgen.Components;
 
 [RegisterComponent]
-public sealed class BlueprintPlacerComponent : Component
+public sealed partial class BlueprintPlacerComponent : Component
 {
     [DataField("blueprint", required: true, customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath Blueprint = default!;
@@ -15,7 +15,7 @@ public sealed class BlueprintPlacerComponent : Component
     /// The components that get added to the target grid.
     /// </summary>
     [DataField("components", required: true)]
-    public ComponentRegistry Components { get; } = default!;
+    public ComponentRegistry Components { get; set; } = default!;
 
     //TODO: Get someone to make this a method on componentregistry that does it Correctly.
     /// <summary>

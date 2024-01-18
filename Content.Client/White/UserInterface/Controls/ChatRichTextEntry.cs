@@ -1,10 +1,9 @@
+using System.Numerics;
 using System.Text;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Collections;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Client.White.UserInterface.Controls;
@@ -51,7 +50,7 @@ internal struct ChatRichTextEntry
             if (node.Name == null)
                 continue;
 
-            if (!_tagManager.TryGetMarkupTag(node.Name, out var tag) || !tag.TryGetControl(node, out var control))
+            if (!_tagManager.TryGetMarkupTag(node.Name, null, out var tag) || !tag.TryGetControl(node, out var control))
                 continue;
 
             parent.Children.Add(control);
@@ -251,7 +250,7 @@ internal struct ChatRichTextEntry
             return node.Value.StringValue ?? "";
 
         //Skip the node if there is no markup tag for it.
-        if (!_tagManager.TryGetMarkupTag(node.Name, out var tag))
+        if (!_tagManager.TryGetMarkupTag(node.Name, null, out var tag))
             return "";
 
         if (!node.Closing)

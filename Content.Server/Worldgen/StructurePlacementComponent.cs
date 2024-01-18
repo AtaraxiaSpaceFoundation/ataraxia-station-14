@@ -2,7 +2,7 @@ namespace Content.Server.Worldgen;
 
 
 [RegisterComponent]
-public sealed class StructurePlacementComponent : Component
+public sealed partial class StructurePlacementComponent : Component
 {
     /// <summary>
     /// The structures to place into the world.
@@ -21,7 +21,7 @@ public sealed class StructurePlacementComponent : Component
 /// A single structure's placement config.
 /// </summary>
 [DataDefinition]
-public sealed class StructureConfig
+public sealed partial class StructureConfig
 {
     /// <summary>
     /// The entity to spawn into the world.

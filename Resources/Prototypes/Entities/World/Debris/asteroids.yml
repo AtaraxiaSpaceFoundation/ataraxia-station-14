@@ -154,8 +154,6 @@
       entries:
         FloorAsteroidCoarseSand0:
           - id: AsteroidRockMining
-    - type: GCAbleObject
-      queue: SpaceDebris
     - type: IFF
       flags: HideLabel
       color: "#d67e27"

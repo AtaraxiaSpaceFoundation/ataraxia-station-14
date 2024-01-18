@@ -1,6 +1,6 @@
 reflect-shot = Отразил!
 carry-verb = Тащить на руках
-chat-manager-entity-say-god-wrap-message = { $entityName } командует, "[color={ $color }]{ $message }[/color]"
+chat-manager-entity-say-god-wrap-message = [BubbleHeader][bold]{$entityName}[/bold][/BubbleHeader] командует, "[BubbleContent][color={ $color }][bold]{$message}[/bold][/color][/BubbleContent]"
 eorstats-bloodlost-total = { $bloodLost } единиц крови было потеряно в этом раунде!
 eorstats-cuffedtime-hasusername = { $username } под именем { $name } провел(а) { $timeCuffedMinutes } минут в наручниках в этом раунде! Что он натворил?
 eorstats-cuffedtime-hasnousername = { $name } провел(а) { $timeCuffedMinutes } минут в наручниках в этом раунде! Что он натворил?
