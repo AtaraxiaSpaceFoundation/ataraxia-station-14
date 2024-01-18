@@ -63,7 +63,8 @@ public sealed class OnDeath : EntitySystem
         }
 
         var newStream = _audio.PlayEntity(HeartSounds, uid, uid, AudioParams.Default.WithLoop(true));
-        _playingStreams[uid] = newStream.Value.Entity;
+        if (newStream != null)
+            _playingStreams[uid] = newStream.Value.Entity;
     }
 
     private void StopPlayingStream(EntityUid uid)

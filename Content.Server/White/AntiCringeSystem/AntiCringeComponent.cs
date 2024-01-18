@@ -1,7 +1,7 @@
 ﻿namespace Content.Server.White.AntiCringeSystem;
 
 [RegisterComponent]
-public sealed class AntiCringeComponent : Component
+public sealed partial class AntiCringeComponent : Component
 {
 
 }

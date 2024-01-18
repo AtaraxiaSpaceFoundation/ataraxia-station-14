@@ -3,27 +3,36 @@
   id: EmoteActionFlip
   name: emote-flip-action-name
   description: emote-flip-action-description
-  icon: White/Actions/EmoteFlip.png
-  event: !type:EmoteActionEvent
-    emote: EmoteFlip
+  nospawn: true
+  components:
+  - type: InstantAction
+    icon: White/Actions/EmoteFlip.png
+    event: !type:EmoteActionEvent
+      emote: EmoteFlip
 
 # jump animation
 - type: entity
   id: EmoteActionJump
   name: emote-jump-action-name
   description: emote-jump-action-description
-  icon: White/Actions/EmoteJump.png
-  event: !type:EmoteActionEvent
-    emote: EmoteJump
+  nospawn: true
+  components:
+  - type: InstantAction
+    icon: White/Actions/EmoteJump.png
+    event: !type:EmoteActionEvent
+      emote: EmoteJump
 
   # turn around in 4 directions animation
 - type: entity
   id: EmoteActionTurn
   name: emote-turn-action-name
   description: emote-turn-action-description
-  icon: White/Actions/EmoteTurn.png
-  event: !type:EmoteActionEvent
-    emote: EmoteTurn
+  nospawn: true
+  components:
+  - type: InstantAction
+    icon: White/Actions/EmoteTurn.png
+    event: !type:EmoteActionEvent
+      emote: EmoteTurn
 
 
 # Using EmoteAnimation from IC action chat
