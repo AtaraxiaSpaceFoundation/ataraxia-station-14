@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -20,7 +20,7 @@ public sealed partial class TypingIndicatorPrototype : IPrototype
     public string TypingState = default!;
 
     [DataField("offset")]
-    public Vector2 Offset = new(0.5f, 0.5f);
+    public Vector2 Offset = new(0, 0);
 
     [DataField("shader")]
     public string Shader = "unshaded";
