@@ -412,3 +412,19 @@
   entity: EgoruchClothingOuterMantle
   sponsorOnly: true
   whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, SeniorEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, SeniorResearcher, Scientist, ResearchAssistant ]
+
+# g13
+- type: loadout
+  id: G13Eyepatch
+  entity: G13ClothingEyesEyepatch
+  sponsorOnly: true
+
+- type: loadout
+  id: G13Suit
+  entity: G13ClothingUniformSuit
+  sponsorOnly: true
+
+- type: loadout
+  id: G13Coat
+  entity: G13ClothingOuterCoat
+  sponsorOnly: true

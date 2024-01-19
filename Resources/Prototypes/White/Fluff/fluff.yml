@@ -1054,3 +1054,38 @@
       sprite: White/Fluff/egoruch17/mantle.rsi
     - type: Clothing
       sprite: White/Fluff/egoruch17/mantle.rsi
+
+# g13
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: G13ClothingOuterCoat
+  name: гламурное белое пальто
+  description: В таком только на показ мод.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/coat.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: G13ClothingEyesEyepatch
+  name: белая повязка на глаз
+  description: Даже когда ты пират, нужно выглядеть гламурно.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/eyepatch.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/eyepatch.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: G13ClothingUniformSuit
+  name: стильный белый адвокатский костюм
+  description: -Моего клиента на смертную казнь! -Но я же просто украл пирожок...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/jumpsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/jumpsuit.rsi
