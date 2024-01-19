@@ -26,9 +26,9 @@ public sealed class RadialSystem : SharedRadialSystem
 
         private void HandleRadialRequest(RequestServerRadialsEvent args, EntitySessionEventArgs eventArgs)
         {
-            var player = (IPlayerSession) eventArgs.SenderSession;
+            var player = eventArgs.SenderSession;
 
-            if (!EntityManager.EntityExists(args.EntityUid))
+            if (!EntityManager.EntityExists(GetEntity(args.EntityUid)))
             {
                 Logger.Warning($"{nameof(HandleRadialRequest)} called on a non-existent entity with id {args.EntityUid} by player {player}.");
                 return;
@@ -44,8 +44,7 @@ public sealed class RadialSystem : SharedRadialSystem
             // this, and some verbs (e.g. view variables) won't even care about whether an entity is accessible through
             // the entity menu or not.
 
-            var force = args.AdminRequest && eventArgs.SenderSession is IPlayerSession playerSession &&
-                        _adminMgr.HasAdminFlag(playerSession, AdminFlags.Admin);
+            var force = args.AdminRequest && _adminMgr.HasAdminFlag(eventArgs.SenderSession, AdminFlags.Admin);
 
             List<Type> radialsTypes = new();
             foreach (var key in args.RadialTypes)
@@ -59,7 +58,7 @@ public sealed class RadialSystem : SharedRadialSystem
             }
 
             var response =
-                new RadialsResponseEvent(args.EntityUid, GetLocalRadials(args.EntityUid, attached, radialsTypes, force));
+                new RadialsResponseEvent(args.EntityUid, GetLocalRadials(GetEntity(args.EntityUid), attached, radialsTypes, force));
             RaiseNetworkEvent(response, player.ConnectedClient);
         }
 

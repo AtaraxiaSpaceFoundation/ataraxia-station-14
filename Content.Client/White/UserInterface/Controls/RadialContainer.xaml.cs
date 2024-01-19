@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 using Content.Client.Gameplay;
 using Content.Client.Resources;
 using Content.Client.Viewport;

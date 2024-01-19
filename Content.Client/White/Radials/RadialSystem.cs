@@ -182,9 +182,9 @@ namespace Content.Client.White.Radials;
         public SortedSet<Radial> GetRadials(EntityUid target, EntityUid user, List<Type> verbTypes,
             bool force = false)
         {
-            if (!target.IsClientSide())
+            if (!IsClientSide(target))
             {
-                RaiseNetworkEvent(new RequestServerRadialsEvent(target, verbTypes, adminRequest: force));
+                RaiseNetworkEvent(new RequestServerRadialsEvent(GetNetEntity(target), verbTypes, adminRequest: force));
             }
 
             // Some admin menu interactions will try get verbs for entities that have not yet been sent to the player.
@@ -216,10 +216,10 @@ namespace Content.Client.White.Radials;
                 return;
             }
 
-            if (radial.ClientExclusive || target.IsClientSide())
+            if (radial.ClientExclusive || IsClientSide(target))
                 ExecuteRadial(radial, user.Value, target);
             else
-                EntityManager.RaisePredictiveEvent(new ExecuteRadialEvent(target, radial));
+                EntityManager.RaisePredictiveEvent(new ExecuteRadialEvent(GetNetEntity(target), radial));
         }
 
         private void HandleRadialsResponse(RadialsResponseEvent msg)

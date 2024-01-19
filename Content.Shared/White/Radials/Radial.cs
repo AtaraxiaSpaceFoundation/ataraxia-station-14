@@ -40,7 +40,7 @@ namespace Content.Shared.White.Radials;
 
         public int Priority;
 
-        public EntityUid? IconEntity;
+        public NetEntity? IconEntity;
 
         public bool? CloseMenu;
 

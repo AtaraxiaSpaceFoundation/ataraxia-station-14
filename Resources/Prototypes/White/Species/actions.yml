@@ -2,7 +2,7 @@
   id: EatMouse
   name: Eat mouse
   description: Eat the mouse in your hand, receiving nutrients and a hairball charge.
-  nospawn: true
+  noSpawn: true
   components:
   - type: InstantAction
     icon: White/Icons/verbiconfangs.png
@@ -12,7 +12,7 @@
   id: HairballAction
   name: Cough up a hairball.
   description: People don't like that.
-  nospawn: true
+  noSpawn: true
   components:
   - type: InstantAction
     icon:

@@ -85,6 +85,8 @@
   - type: IgnoreUIRange
   - type: ShowSecurityIcons
   - type: ShowHealthIcons
+    damageContainers:
+    - Biological
   - type: ShowWhiteHealthBars
 
 - type: entity

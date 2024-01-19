@@ -3,7 +3,7 @@
   id: EmoteActionFlip
   name: emote-flip-action-name
   description: emote-flip-action-description
-  nospawn: true
+  noSpawn: true
   components:
   - type: InstantAction
     icon: White/Actions/EmoteFlip.png
@@ -15,7 +15,7 @@
   id: EmoteActionJump
   name: emote-jump-action-name
   description: emote-jump-action-description
-  nospawn: true
+  noSpawn: true
   components:
   - type: InstantAction
     icon: White/Actions/EmoteJump.png
@@ -27,7 +27,7 @@
   id: EmoteActionTurn
   name: emote-turn-action-name
   description: emote-turn-action-description
-  nospawn: true
+  noSpawn: true
   components:
   - type: InstantAction
     icon: White/Actions/EmoteTurn.png

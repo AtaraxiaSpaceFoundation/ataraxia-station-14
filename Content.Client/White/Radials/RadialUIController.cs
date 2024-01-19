@@ -22,6 +22,7 @@ public sealed class RadialUIController : UIController, IOnStateEntered<GameplayS
     {
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
+        [Dependency] private readonly IEntityManager _entityManager = default!;
         //[Dependency] private readonly ContextMenuUIController _context = default!;
 
         [UISystemDependency] private readonly CombatModeSystem _combatMode = default!;
@@ -108,7 +109,7 @@ public sealed class RadialUIController : UIController, IOnStateEntered<GameplayS
 
         private void HandleVerbsResponse(RadialsResponseEvent msg)
         {
-            if (OpenMenu == null || CurrentTarget != msg.Entity)
+            if (OpenMenu == null || CurrentTarget != _entityManager.GetEntity(msg.Entity))
                 return;
 
             if (msg.Radials == null)

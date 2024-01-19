@@ -11,15 +11,15 @@ namespace Content.Shared.White.Radials;
     [Serializable, NetSerializable]
     public sealed class RequestServerRadialsEvent : EntityEventArgs
     {
-        public readonly EntityUid EntityUid;
+        public readonly NetEntity EntityUid;
 
         public readonly List<string> RadialTypes = new();
 
-        public readonly EntityUid? SlotOwner;
+        public readonly NetEntity? SlotOwner;
 
         public readonly bool AdminRequest;
 
-        public RequestServerRadialsEvent(EntityUid entityUid, IEnumerable<Type> radialTypes, EntityUid? slotOwner = null, bool adminRequest = false)
+        public RequestServerRadialsEvent(NetEntity entityUid, IEnumerable<Type> radialTypes, NetEntity? slotOwner = null, bool adminRequest = false)
         {
             EntityUid = entityUid;
             SlotOwner = slotOwner;
@@ -37,9 +37,9 @@ namespace Content.Shared.White.Radials;
     public sealed class RadialsResponseEvent : EntityEventArgs
     {
         public readonly List<Radial>? Radials;
-        public readonly EntityUid Entity;
+        public readonly NetEntity Entity;
 
-        public RadialsResponseEvent(EntityUid entity, SortedSet<Radial>? radials)
+        public RadialsResponseEvent(NetEntity entity, SortedSet<Radial>? radials)
         {
             Entity = entity;
 
@@ -53,10 +53,10 @@ namespace Content.Shared.White.Radials;
     [Serializable, NetSerializable]
     public sealed class ExecuteRadialEvent : EntityEventArgs
     {
-        public readonly EntityUid Target;
+        public readonly NetEntity Target;
         public readonly Radial RequestedRadial;
 
-        public ExecuteRadialEvent(EntityUid target, Radial requestedRadial)
+        public ExecuteRadialEvent(NetEntity target, Radial requestedRadial)
         {
             Target = target;
             RequestedRadial = requestedRadial;

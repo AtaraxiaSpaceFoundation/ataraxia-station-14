@@ -25,13 +25,13 @@ public abstract class SharedRadialSystem : EntitySystem
             if (user == null)
                 return;
 
-            if (Deleted(args.Target) || Deleted(user))
+            if (Deleted(GetEntity(args.Target)) || Deleted(user))
                 return;
 
-            var radials = GetLocalRadials(args.Target, user.Value, args.RequestedRadial.GetType());
+            var radials = GetLocalRadials(GetEntity(args.Target), user.Value, args.RequestedRadial.GetType());
 
             if (radials.TryGetValue(args.RequestedRadial, out var radial))
-                ExecuteRadial(radial, user.Value, args.Target);
+                ExecuteRadial(radial, user.Value, GetEntity(args.Target));
         }
 
         /// <summary>
