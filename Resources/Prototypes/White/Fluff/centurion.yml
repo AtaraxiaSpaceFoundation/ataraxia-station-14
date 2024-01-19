@@ -20,9 +20,9 @@
   description: Яйца олега
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/deathsquad.rsi
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/deathsquad.rsi
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
 
 #CE
 - type: entity
