@@ -25,7 +25,7 @@ public sealed class EntityHealthBarOverlay : Overlay
     private readonly MobThresholdSystem _mobThresholdSystem;
     private readonly Texture _barTexture;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
-    public List<string> DamageContainers = new();
+    public List<string>? DamageContainers;
     // for icon frame change timer
     int iconFrame = 1;
     double delayTime = 0.25;
@@ -70,7 +70,7 @@ public sealed class EntityHealthBarOverlay : Overlay
                 continue;
             }
 
-            if (dmg.DamageContainerID == null || !DamageContainers.Contains(dmg.DamageContainerID))
+            if (dmg.DamageContainerID == null || DamageContainers != null && !DamageContainers.Contains(dmg.DamageContainerID))
                 continue;
 
             var worldPosition = _transform.GetWorldPosition(xform);

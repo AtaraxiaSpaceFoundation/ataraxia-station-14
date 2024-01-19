@@ -15,6 +15,6 @@ namespace Content.Shared.EntityHealthBar
         /// </summary>
 
         [DataField("damageContainers", customTypeSerializer: typeof(PrototypeIdListSerializer<DamageContainerPrototype>))]
-        public List<string> DamageContainers = new();
+        public List<string>? DamageContainers;
     }
 }
