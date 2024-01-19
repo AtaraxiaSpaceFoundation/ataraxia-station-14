@@ -8,7 +8,6 @@ namespace Content.Client.White.Administration;
 
 public sealed class InvisibilitySystem : SharedInvisibilitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly IClientConsoleHost _console = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
@@ -16,34 +15,23 @@ public sealed class InvisibilitySystem : SharedInvisibilitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<InvisibilityComponent, ComponentInit>(OnInvisibilityInit);
-        SubscribeLocalEvent<InvisibilityComponent, ComponentRemove>(OnInvisibilityRemove);
-
         SubscribeLocalEvent<InvisibilityComponent, ToggleInvisibilityActionEvent>(OnToggleGhosts);
         SubscribeNetworkEvent<InvisibilityToggleEvent>(OnInvisibilityToggle);
     }
 
     private void OnInvisibilityToggle(InvisibilityToggleEvent ev)
     {
-        if (!EntityManager.TryGetComponent(ev.Uid, out SpriteComponent? sprite))
+        var ent = GetEntity(ev.Uid);
+
+        if (!EntityManager.TryGetComponent(ent, out SpriteComponent? sprite))
             return;
 
-        var component = EntityManager.EnsureComponent<InvisibilityComponent>(ev.Uid);
+        var component = EntityManager.EnsureComponent<InvisibilityComponent>(ent);
         component.Invisible = ev.Invisible;
         component.DefaultAlpha ??= sprite.Color.A;
 
         var newAlpha = ev.Invisible ? component.DefaultAlpha.Value / 3f : component.DefaultAlpha.Value;
         sprite.Color = sprite.Color.WithAlpha(newAlpha);
-    }
-
-    private void OnInvisibilityInit(EntityUid uid, InvisibilityComponent component, ComponentInit args)
-    {
-        _actions.AddAction(uid, component.ToggleInvisibilityAction, null);
-    }
-
-    private void OnInvisibilityRemove(EntityUid uid, InvisibilityComponent component, ComponentRemove args)
-    {
-        _actions.RemoveAction(uid, component.ToggleInvisibilityAction);
     }
 
     private void OnToggleGhosts(EntityUid uid, InvisibilityComponent component, ToggleInvisibilityActionEvent args)

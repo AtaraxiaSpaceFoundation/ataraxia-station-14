@@ -453,7 +453,7 @@ namespace Content.Server.Administration.Systems
                             overrideMsgText = $"{senderSession.Name}: {escapedText}"; // Not an admin, name is not overridden.
                         }
 
-                        RaiseNetworkEvent(new BwoinkTextMessage(message.UserId, senderSession.UserId, overrideMsgText), session.ConnectedClient);
+                        RaiseNetworkEvent(new BwoinkTextMessage(message.UserId, senderSession.UserId, overrideMsgText, senderAHelpAdmin), session.ConnectedClient);
                     }
                     else
                         RaiseNetworkEvent(msg, session.ConnectedClient);

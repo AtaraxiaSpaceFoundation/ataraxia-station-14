@@ -11,6 +11,7 @@ public sealed class InvisibilitySystem : SharedInvisibilitySystem
 {
     [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
     [Dependency] private readonly FollowerSystem _followerSystem = default!;
+    [Dependency] private readonly SharedEyeSystem _eyeSystem = default!;
 
     public override void Initialize()
     {
@@ -24,7 +25,7 @@ public sealed class InvisibilitySystem : SharedInvisibilitySystem
     {
         if (EntityManager.TryGetComponent(uid, out EyeComponent? eye))
         {
-            eye.VisibilityMask |= (int) VisibilityFlags.AdminInvisible;
+            _eyeSystem.SetVisibilityMask(uid, eye.VisibilityMask | (int) VisibilityFlags.AdminInvisible, eye);
         }
     }
 
@@ -37,7 +38,7 @@ public sealed class InvisibilitySystem : SharedInvisibilitySystem
 
         if (EntityManager.TryGetComponent(uid, out EyeComponent? eye))
         {
-            eye.VisibilityMask &= ~(int) VisibilityFlags.AdminInvisible;
+            _eyeSystem.SetVisibilityMask(uid, eye.VisibilityMask & ~(int) VisibilityFlags.AdminInvisible, eye);
         }
     }
 
@@ -56,6 +57,6 @@ public sealed class InvisibilitySystem : SharedInvisibilitySystem
                 EntityManager.HasComponent<GhostComponent>(uid) ? VisibilityFlags.Ghost : VisibilityFlags.Normal
             ));
 
-        RaiseNetworkEvent(new InvisibilityToggleEvent(uid, component.Invisible));
+        RaiseNetworkEvent(new InvisibilityToggleEvent(GetNetEntity(uid), component.Invisible));
     }
 }

@@ -16,7 +16,7 @@ public sealed class StealthCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (shell.Player is not IPlayerSession player)
+        if (shell.Player is not {} player)
         {
             shell.WriteLine("You cannot use this command from the server console.");
             return;

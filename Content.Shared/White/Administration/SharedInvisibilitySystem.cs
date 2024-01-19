@@ -1,3 +1,4 @@
+using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Robust.Shared.Serialization;
 
@@ -5,11 +6,25 @@ namespace Content.Shared.White.Administration;
 
 public abstract class SharedInvisibilitySystem : EntitySystem
 {
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<InvisibilityComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<InvisibilityComponent, MapInitEvent>(OnInvisibilityInit);
+        SubscribeLocalEvent<InvisibilityComponent, ComponentRemove>(OnInvisibilityRemove);
+    }
+
+    private void OnInvisibilityInit(EntityUid uid, InvisibilityComponent component, MapInitEvent args)
+    {
+        _actions.AddAction(uid, ref component.ToggleInvisibilityActionEntity, component.ToggleInvisibilityAction);
+    }
+
+    private void OnInvisibilityRemove(EntityUid uid, InvisibilityComponent component, ComponentRemove args)
+    {
+        _actions.RemoveAction(uid, component.ToggleInvisibilityActionEntity);
     }
 
     private void OnExamined(EntityUid uid, InvisibilityComponent component, ExaminedEvent args)
@@ -22,10 +37,10 @@ public abstract class SharedInvisibilitySystem : EntitySystem
 [Serializable, NetSerializable]
 public sealed class InvisibilityToggleEvent : EntityEventArgs
 {
-    public EntityUid Uid { get; }
+    public NetEntity Uid { get; }
     public bool Invisible { get; }
 
-    public InvisibilityToggleEvent(EntityUid uid, bool invisible)
+    public InvisibilityToggleEvent(NetEntity uid, bool invisible)
     {
         Uid = uid;
         Invisible = invisible;
