@@ -1,7 +1,7 @@
 namespace Content.Server.White.Other.CritSystem;
 
 [RegisterComponent]
-public sealed class CritComponent : Component
+public sealed partial class CritComponent : Component
 {
     [DataField("critChance", required: true)]
     [ViewVariables(VVAccess.ReadWrite)]
