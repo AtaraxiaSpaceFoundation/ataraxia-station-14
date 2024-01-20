@@ -402,16 +402,24 @@
         - key: enum.InstrumentUiKey.Key
           type: InstrumentBoundUserInterface
     - type: ClothingMidi
-      midiAction:
-        name: MIDI
-        checkCanInteract: false
-        icon: White/Fluff/koitorra/koitorra_mask.rsi/icon.png
-        description: Проиграть MIDI.
-        event: !type:OpenUiActionEvent
-          key: enum.InstrumentUiKey.Key
+      midiAction: MidiActionKoitorra
     - type: Instrument
       allowPercussion: false
       handheld: false
       bank: 1
       program: 2
 
+
+- type: entity
+  id: MidiActionKoitorra
+  name: MIDI
+  description: Проиграть MIDI.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      checkCanInteract: false
+      icon:
+        sprite: White/Fluff/koitorra/koitorra_mask.rsi
+        state: icon
+      event: !type:OpenUiActionEvent
+        key: enum.InstrumentUiKey.Key

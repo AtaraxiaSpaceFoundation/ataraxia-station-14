@@ -1,25 +1,25 @@
 namespace Content.Shared.White.Sales;
 
 [DataDefinition]
-public sealed class SalesSpecifier
+public sealed partial class SalesSpecifier
 {
     [DataField("enabled")]
-    public bool Enabled { get; }
+    public bool Enabled { get; private set; }
 
     [DataField("minMultiplier")]
-    public float MinMultiplier { get; }
+    public float MinMultiplier { get; private set; }
 
     [DataField("maxMultiplier")]
-    public float MaxMultiplier { get; }
+    public float MaxMultiplier { get; private set; }
 
     [DataField("minItems")]
-    public int MinItems { get; }
+    public int MinItems { get; private set;  }
 
     [DataField("maxItems")]
-    public int MaxItems { get; }
+    public int MaxItems { get; private set; }
 
     [DataField("salesCategory")]
-    public string SalesCategory { get; } = string.Empty;
+    public string SalesCategory { get; private set; } = string.Empty;
 
     public SalesSpecifier()
     {

@@ -24,12 +24,12 @@ public sealed class ClothingMidiSystem : EntitySystem
     {
         if (component.MidiAction != null)
         {
-            if (!TryComp<ServerUserInterfaceComponent>(args.Equipment, out var ui) || ui.Interfaces.Count == 0)
+            if (!TryComp<UserInterfaceComponent>(args.Equipment, out var ui) || ui.Interfaces.Count == 0)
                 return;
-            var comp = EnsureComp<ServerUserInterfaceComponent>(args.Equipee);
+            var comp = EnsureComp<UserInterfaceComponent>(args.Equipee);
             comp.Interfaces.Add(ui.Interfaces.First().Key, ui.Interfaces.First().Value);
 
-            _actionsSystem.AddAction(args.Equipee, component.MidiAction, null);
+            _actionsSystem.AddAction(args.Equipee, ref component.MidiActionEntity, component.MidiAction);
         }
     }
 
@@ -37,17 +37,17 @@ public sealed class ClothingMidiSystem : EntitySystem
     {
         if (component.MidiAction != null)
         {
-            _actionsSystem.RemoveAction(args.Equipee, component.MidiAction);
+            _actionsSystem.RemoveAction(args.Equipee, component.MidiActionEntity);
 
-            if (!TryComp<ServerUserInterfaceComponent>(args.Equipment, out var ui) || ui.Interfaces.Count == 0)
+            if (!TryComp<UserInterfaceComponent>(args.Equipment, out var ui) || ui.Interfaces.Count == 0)
                 return;
 
-            if (!TryComp<ServerUserInterfaceComponent>(args.Equipee, out var personUi))
+            if (!TryComp<UserInterfaceComponent>(args.Equipee, out var personUi))
                 return;
 
             if (personUi.Interfaces.Count is 0 or 1)
             {
-                RemComp<ServerUserInterfaceComponent>(args.Equipee);
+                RemComp<UserInterfaceComponent>(args.Equipee);
                 return;
             }
 
