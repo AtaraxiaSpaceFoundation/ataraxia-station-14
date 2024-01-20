@@ -1089,3 +1089,16 @@
       sprite: White/Fluff/g13/jumpsuit.rsi
     - type: Clothing
       sprite: White/Fluff/g13/jumpsuit.rsi
+
+#KommenDant
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterWinterCoatKommenDant
+  name: футуристичное пальто
+  description: Зелёное, утеплённое пальто выполненное в единственном экземпляре, на нем отсутствуют кнопки или молнии – только скрытый магнитный механизм, имеет вшитые меховые и броневые подкладки, что обеспечивает хорошую термоизоляцию и защиту.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/kommendant/coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/kommendant/coat.rsi

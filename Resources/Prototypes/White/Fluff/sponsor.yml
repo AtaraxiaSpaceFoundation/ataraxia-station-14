@@ -428,3 +428,10 @@
   id: G13Coat
   entity: G13ClothingOuterCoat
   sponsorOnly: true
+
+# KommenDant
+- type: loadout
+  id: KommenDantCoat
+  entity: ClothingOuterWinterCoatKommenDant
+  sponsorOnly: true
+  whitelistJobs: [ Detective ]
