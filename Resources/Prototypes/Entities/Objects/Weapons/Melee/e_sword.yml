@@ -90,6 +90,9 @@
     deconstructionTarget: null
     graph: EnergyDoubleSwordGraph
     node: esword
+  - type: Tag
+    tags:
+    - EnergySword
 
 - type: entity
   name: pen
