@@ -12,7 +12,7 @@
     slots:
     - Back
   - type: Item
-    size: 80
+    size: Huge
     sprite: White/Objects/Weapons/crossbow.rsi
   - type: Gun
     forceThrowingAngle: true
@@ -68,7 +68,7 @@
     sprite: White/Objects/Weapons/crossbow.rsi
     state: base
   - type: Item
-    size: 80
+    size: Huge
     sprite: White/Objects/Weapons/crossbow.rsi
   - type: Clothing
     quickEquip: false

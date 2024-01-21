@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Buckle;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -29,6 +30,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PenetratedSystem _penetratedSystem = default!; // WD
+    [Dependency] private readonly SharedBuckleSystem _buckle = default!; // WD
 
     public override void Initialize()
     {
@@ -114,16 +116,20 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         if (component is {Penetrate: true, PenetratedUid: null} &&
             TryComp(args.Target, out PenetratedComponent? penetrated) &&
             penetrated is {ProjectileUid: null, IsPinned: false} &&
-            TryComp(args.Target, out PhysicsComponent? physics))
+            TryComp(args.Target, out PhysicsComponent? physics) &&
+            TryComp(uid, out PhysicsComponent? body) && body.BodyStatus == BodyStatus.InAir)
         {
             component.PenetratedUid = args.Target;
             penetrated.ProjectileUid = uid;
+            _buckle.TryUnbuckle(args.Target, args.Target, true);
             _physics.SetLinearVelocity(args.Target, Vector2.Zero, body: physics);
             _physics.SetBodyType(args.Target, BodyType.Static, body: physics);
             var xform = Transform(args.Target);
+            _transform.AttachToGridOrMap(args.Target, xform);
+            _transform.SetLocalPosition(args.Target, Transform(uid).LocalPosition, xform);
             _transform.SetParent(args.Target, xform, uid);
-            _transform.SetLocalPosition(args.Target,
-                xform.LocalPosition + Transform(uid).LocalRotation.RotateVec(new Vector2(0.5f, 0.5f)), xform);
+            if (TryComp(uid, out PhysicsComponent? projPhysics))
+                _physics.SetLinearVelocity(uid, projPhysics.LinearVelocity / 2, body: projPhysics);
             Dirty(uid, component);
             Dirty(args.Target, penetrated);
             return;
@@ -152,7 +158,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     private void Embed(EntityUid uid, EntityUid target, EmbeddableProjectileComponent component)
     {
-        if (component.PreventEmbedding || component.PenetratedUid == target) // WD START
+        if (component.PreventEmbedding || component.PenetratedUid == target || _netManager.IsClient) // WD START
             return;
 
         var ev = new EmbedStartEvent(component);
@@ -255,11 +261,20 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         if (component.RemovalTime == null)
             return false;
 
-        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.RemovalTime.Value,
+        if (!TryComp(uid, out TransformComponent? xform) || !TryComp(user, out TransformComponent? userXform) ||
+            !xform.Coordinates.InRange(EntityManager, _transform, userXform.Coordinates,
+                SharedInteractionSystem.InteractionRange + 1f) || !TryComp(user, out DoAfterComponent? doAfter))
+        {
+            return false;
+        }
+
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.RemovalTime.Value,
             new RemoveEmbeddedProjectileEvent(), eventTarget: uid, target: uid)
         {
             DistanceThreshold = SharedInteractionSystem.InteractionRange,
-        });
+        }, doAfter);
+
+        return true;
     }
     // WD EDIT END
 }
