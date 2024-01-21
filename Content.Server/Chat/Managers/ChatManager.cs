@@ -331,14 +331,14 @@ namespace Content.Server.Chat.Managers
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"OOC from {player:Player}: {message}");
 
             //WD-EDIT
-            var toUtkaMessage = new UtkaChatEventMessage()
+            var toUtkaMessage = new UtkaChatMessageEvent()
             {
                 Command = "ooc",
                 Ckey = player.Name,
                 Message = message,
             };
 
-            _pandaWeb.SendBotMessage(toUtkaMessage);
+            _pandaWeb.SendBotPostMessage(toUtkaMessage);
             //WD-EDIT
         }
 
@@ -374,14 +374,14 @@ namespace Content.Server.Chat.Managers
             _adminLogger.Add(LogType.Chat, $"Admin chat from {player:Player}: {message}");
 
             //WD-EDIT
-            var asayEventMessage = new UtkaChatEventMessage()
+            var asayEventMessage = new UtkaChatMessageEvent()
             {
                 Command = "asay",
                 Ckey = player.Name,
                 Message = message
             };
 
-            _pandaWeb.SendBotMessage(asayEventMessage);
+            _pandaWeb.SendBotPostMessage(asayEventMessage);
             //WD-EDIT
         }
 

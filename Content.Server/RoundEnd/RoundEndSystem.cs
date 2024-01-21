@@ -307,7 +307,7 @@ namespace Content.Server.RoundEnd
                 Message = status
             };
 
-            _pandaWeb.SendBotMessage(utkaRoundStatusEvent);
+            _pandaWeb.SendBotPostMessage(utkaRoundStatusEvent);
         }
         //WD-EDIT
 

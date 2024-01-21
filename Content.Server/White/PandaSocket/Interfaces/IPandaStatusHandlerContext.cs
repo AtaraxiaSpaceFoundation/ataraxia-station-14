@@ -17,6 +17,7 @@ public interface IPandaStatusHandlerContext
     Stream RequestBody { get; }
     Uri Url { get; }
     bool IsGetLike { get; }
+    bool IsPostLike { get; }
     IReadOnlyDictionary<string, StringValues> RequestHeaders { get; }
 
     IDictionary<string, string> ResponseHeaders { get; }

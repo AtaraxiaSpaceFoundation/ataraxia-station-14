@@ -8,7 +8,13 @@ public class PandaBaseMessage
     public virtual string? Command { get; set; }
 }
 
-public class UtkaOOCRequest : PandaBaseMessage
+public class PandaBaseRequestEventMessage : PandaBaseMessage
+{
+    [JsonPropertyName("token")]
+    public string? Token { get; set; }
+}
+
+public class UtkaOOCRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "ooc";
@@ -20,7 +26,7 @@ public class UtkaOOCRequest : PandaBaseMessage
     public string? Message { get; set; }
 }
 
-public class UtkaAsayRequest : PandaBaseMessage
+public class UtkaAsayRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "asay";
@@ -32,7 +38,7 @@ public class UtkaAsayRequest : PandaBaseMessage
     public string? Message { get; set; }
 }
 
-public class UtkaPmRequest : PandaBaseMessage
+public class UtkaPmRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "discordpm";
@@ -56,7 +62,7 @@ public class UtkaPmResponse : PandaBaseMessage
     public bool? Message { get; set; }
 }
 
-public class UtkaWhoRequest : PandaBaseMessage
+public class UtkaWhoRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "who";
@@ -71,7 +77,7 @@ public class UtkaWhoResponse : PandaBaseMessage
     public List<string>? Players { get; set; }
 }
 
-public class UtkaAdminWhoRequest : PandaBaseMessage
+public class UtkaAdminWhoRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "adminwho";
@@ -86,7 +92,7 @@ public class UtkaAdminWhoResponse : PandaBaseMessage
     public List<string>? Admins { get; set; }
 }
 
-public class UtkaStatusRequest : PandaBaseMessage
+public class UtkaStatusRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "status";
@@ -116,7 +122,7 @@ public class UtkaStatusResponse : PandaBaseMessage
     public string? StationCode { get; set; }
 }
 
-public sealed class UtkaBanRequest : PandaBaseMessage
+public sealed class UtkaBanRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "ban";
@@ -146,7 +152,7 @@ public sealed class UtkaBanResponse : PandaBaseMessage
     public bool? Banned { get; set; }
 }
 
-public sealed class UtkaJobBanRequest : PandaBaseMessage
+public sealed class UtkaJobBanRequest : PandaBaseRequestEventMessage
 {
     public override string? Command => "jobban";
 
@@ -178,7 +184,7 @@ public sealed class UtkaJobBanResponse : PandaBaseMessage
     public bool? Banned { get; set; }
 }
 
-public sealed class UtkaRestartRoundRequest : PandaBaseMessage
+public sealed class UtkaRestartRoundRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "restartround";
@@ -193,7 +199,7 @@ public sealed class UtkaRestartRoundResponse : PandaBaseMessage
     public bool? Restarted { get; set; }
 }
 
-public sealed class UtkaUnbanRequest : PandaBaseMessage
+public sealed class UtkaUnbanRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "unban";
@@ -214,7 +220,7 @@ public sealed class UtkaUnbanResponse : PandaBaseMessage
     public bool? Unbanned { get; set; }
 }
 
-public sealed class UtkaUnJobBanRequest : PandaBaseMessage
+public sealed class UtkaUnJobBanRequest : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "unjobban";
@@ -235,7 +241,7 @@ public sealed class UtkaUnJobBanResponse : PandaBaseMessage
     public bool? Unbanned { get; set; }
 }
 
-public sealed class UtkaBannedEvent : PandaBaseMessage
+public sealed class UtkaBannedEvent : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "banned";
@@ -265,7 +271,7 @@ public sealed class UtkaBannedEvent : PandaBaseMessage
     public int? BanId { get; set; }
 }
 
-public sealed class UtkaChatEventMessage : PandaBaseMessage
+public sealed class UtkaChatMessageEvent : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("ckey")]
     public string? Ckey { get; set; }
@@ -274,7 +280,7 @@ public sealed class UtkaChatEventMessage : PandaBaseMessage
     public string? Message { get; set; }
 }
 
-public sealed class UtkaRoundStatusEvent : PandaBaseMessage
+public sealed class UtkaRoundStatusEvent : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "roundstatus";
@@ -283,7 +289,7 @@ public sealed class UtkaRoundStatusEvent : PandaBaseMessage
     public string? Message { get; set; }
 }
 
-public sealed class UtkaChatMeEvent : PandaBaseMessage
+public sealed class UtkaChatMeEvent : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "me";
@@ -298,7 +304,7 @@ public sealed class UtkaChatMeEvent : PandaBaseMessage
     public string? CharacterName { get; set; }
 }
 
-public sealed class UtkaAhelpPmEvent : PandaBaseMessage
+public sealed class UtkaAhelpPmEvent : PandaBaseRequestEventMessage
 {
     [JsonPropertyName("command")]
     public override string? Command => "pm";

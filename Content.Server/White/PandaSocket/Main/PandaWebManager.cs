@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using Content.Shared.White;
 using Newtonsoft.Json;
@@ -28,7 +29,7 @@ public sealed class PandaWebManager
         _cfg.OnValueChanged(WhiteCVars.UtkaClientBind, uri => _utkaUri = uri, true);
     }
 
-    public async void SendBotMessage(PandaBaseMessage message)
+    public async void SendBotGetMessage(PandaBaseMessage message)
     {
         if (_utkaUri is null || _token is null)
             return;
@@ -44,6 +45,28 @@ public sealed class PandaWebManager
         try
         {
             await _httpClient.GetAsync(request);
+        }
+        catch (Exception e)
+        {
+            return;
+        }
+    }
+
+    public async void SendBotPostMessage(PandaBaseRequestEventMessage message)
+    {
+        if (_utkaUri is null || _token is null)
+            return;
+
+        message.Token = _token;
+
+        var request = $"http://{_utkaUri}";
+        var json = JsonSerializer.Serialize(message, message.GetType());
+
+        HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        try
+        {
+            await _httpClient.PostAsync(request, content);
         }
         catch (Exception e)
         {

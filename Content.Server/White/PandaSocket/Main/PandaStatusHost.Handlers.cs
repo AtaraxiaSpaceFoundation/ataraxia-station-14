@@ -44,12 +44,12 @@ public sealed partial class PandaStatusHost
 
     private async Task<bool> HandleRequest(IPandaStatusHandlerContext context)
     {
-        if (!context.IsGetLike || context.Url!.AbsolutePath != "/request")
+        if (!context.IsPostLike || context.Url!.AbsolutePath != "/request")
         {
             return false;
         }
 
-        if (!ValidateMessage(context.Url.Query, out var message) || message == null)
+        if (!ValidatePostMessage(context.RequestBody, out var message) || message == null)
             return false;
 
         ExecuteCommand(context, message);

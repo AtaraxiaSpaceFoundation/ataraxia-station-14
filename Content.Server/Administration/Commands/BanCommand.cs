@@ -125,7 +125,7 @@ public sealed class BanCommand : LocalizedCommands
             Rid = EntitySystem.Get<GameTicker>().RoundId,
             BanId = banId
         };
-        _pandaWeb.SendBotMessage(utkaBanned);
+        _pandaWeb.SendBotPostMessage(utkaBanned);
         _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
         //WD end
     }

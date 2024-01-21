@@ -162,9 +162,51 @@ public sealed partial class PandaStatusHost : IDisposable
             return false;
 
         var collection = HttpUtility.ParseQueryString(message);
-#pragma warning disable CS8714
         var json = JsonSerializer.Serialize(collection.AllKeys.ToDictionary(y => y!, y => collection[y]));
-#pragma warning restore CS8714
+        var jsonDocument = JsonDocument.Parse(json);
+        var root = jsonDocument.RootElement;
+
+        if (!root.TryGetProperty("token", out var token))
+            return false;
+
+        if (token.GetString() != _token)
+            return false;
+
+        if (!root.TryGetProperty("command", out var commandNameElement))
+            return false;
+
+        var commandName = commandNameElement.GetString();
+        if (commandName == null)
+            return false;
+
+        var pandaCommand = Commands.Values.FirstOrDefault(x => x.Name == commandName);
+        if (pandaCommand == null)
+            return false;
+
+        var messageType = pandaCommand.RequestMessageType;
+
+        try
+        {
+            baseMessage = JsonConvert.DeserializeObject(json, messageType) as PandaBaseMessage;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool ValidatePostMessage(Stream message, out PandaBaseMessage? baseMessage)
+    {
+        baseMessage = null;
+
+        var reader = new StreamReader(message, Encoding.UTF8);
+
+        var task = Task.Run(async () => await reader.ReadToEndAsync());
+        _taskManager.BlockWaitOnTask(task);
+        var json = task.GetAwaiter().GetResult();
+
         var jsonDocument = JsonDocument.Parse(json);
         var root = jsonDocument.RootElement;
 
@@ -219,6 +261,7 @@ public sealed partial class PandaStatusHost : IDisposable
         public Stream RequestBody => _context.Request.InputStream;
         public Uri Url => _context.Request.Url!;
         public bool IsGetLike => RequestMethod == HttpMethod.Head || RequestMethod == HttpMethod.Get;
+        public bool IsPostLike => RequestMethod == HttpMethod.Post;
         public IReadOnlyDictionary<string, StringValues> RequestHeaders { get; }
 
         public bool KeepAlive

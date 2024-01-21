@@ -648,7 +648,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             CharacterName = MetaData(source).EntityName
         };
 
-        _pandaWeb.SendBotMessage(utkaEmoteEvent);
+        _pandaWeb.SendBotPostMessage(utkaEmoteEvent);
 
         //WD-EDIT
     }

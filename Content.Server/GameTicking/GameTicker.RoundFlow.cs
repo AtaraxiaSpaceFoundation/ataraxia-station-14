@@ -567,7 +567,7 @@ namespace Content.Server.GameTicking
                 Message = status
             };
 
-            _pandaWeb.SendBotMessage(utkaRoundStatusEvent);
+            _pandaWeb.SendBotPostMessage(utkaRoundStatusEvent);
 
         }
 
