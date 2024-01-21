@@ -1092,7 +1092,7 @@
 
 #KommenDant
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterCoatDetective
   id: ClothingOuterWinterCoatKommenDant
   name: футуристичное пальто
   description: Зелёное, утеплённое пальто выполненное в единственном экземпляре, на нем отсутствуют кнопки или молнии – только скрытый магнитный механизм, имеет вшитые меховые и броневые подкладки, что обеспечивает хорошую термоизоляцию и защиту.
