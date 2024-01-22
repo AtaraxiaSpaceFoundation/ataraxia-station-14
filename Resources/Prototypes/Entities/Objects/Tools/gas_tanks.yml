@@ -245,7 +245,6 @@
   - type: Sprite
     sprite: Objects/Tanks/plasma.rsi
   - type: Item
-    size: 25
     sprite: Objects/Tanks/plasma.rsi
   - type: GasTank
     outputPressure: 101.3
