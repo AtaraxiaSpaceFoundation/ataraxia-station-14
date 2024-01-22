@@ -173,6 +173,34 @@
       sprite: White/Fluff/serbwo/helmets/ertmedical.rsi
     - type: GiftIgnore
 
+
+- type: entity
+  parent: ClothingOuterHardsuitVoidParamed
+  id: ClothingOuterScufSuitFluff
+  name: Рифуела Гильдии
+  suffix: fluff
+  description: "Прототип нано экзоскелета. Защита типа O5-23. На маркировке видно знак НТГил! Создан Учёными гильдии для Тех кто не любит умирать от революции."
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/suits/scuf.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/suits/scuf.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingOuterCargoHelmetScuf
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSalvage
+  id: ClothingOuterCargoHelmetScuf
+  name: Рифуела Гильдии
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/helmets/scuf.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/helmets/scuf.rsi
+    - type: GiftIgnore
+
 # KILL ME PLEASE
 
 - type: entity
@@ -184,6 +212,13 @@
   components:
     - type: Sprite
       sprite: White/Fluff/serbwo/admiralcloak.rsi
+
+
+- type: loadout
+  id: ScuffLoadoutSW
+  entity: ClothingOuterScufSuitFluff
+  sponsorOnly: true
+  whitelistJobs: [ SeniorSalvageSpecialist, SeniorEngineer, SeniorPhysician, SeniorResearcher, Detective ]
 
 - type: loadout
   id: CapLoadoutSO
