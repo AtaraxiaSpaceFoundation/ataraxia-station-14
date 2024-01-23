@@ -1,4 +1,4 @@
-chat-manager-entity-say-hailer-wrap-message = { $entityName } командует, "[font size=13][color={ $color }]{ $hMessage }[/color][/size]"
+chat-manager-entity-say-hailer-wrap-message = [BubbleHeader][bold]{$entityName}[/bold][/BubbleHeader] командует, "[BubbleContent][font size=13][color={ $color }]{$hMessage}[/color][/size][/BubbleContent]"
 
 halt-phrase = СТОЯТЬ! СТОЯТЬ! СТОЯТЬ!
 bobby-phrase = Стоять! Во имя Закона!
