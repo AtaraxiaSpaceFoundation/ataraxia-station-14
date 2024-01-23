@@ -50,9 +50,9 @@ namespace Content.Server.White.Other.ExamineSystem
             RaiseLocalEvent(uid, ev);
             if (ev.Cancelled)
             {
-                if (_idCard.TryFindIdCard(uid, out var id) && !string.IsNullOrWhiteSpace(id.FullName))
+                if (_idCard.TryFindIdCard(uid, out var id) && !string.IsNullOrWhiteSpace(id.Comp.FullName))
                 {
-                    name = id.FullName;
+                    name = id.Comp.FullName;
                 }
                 else
                 {
