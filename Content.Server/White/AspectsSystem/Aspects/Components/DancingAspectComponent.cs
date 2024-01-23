@@ -1,6 +1,6 @@
 namespace Content.Server.White.AspectsSystem.Aspects.Components;
 
 [RegisterComponent]
-public sealed class DancingAspectComponent : Component
+public sealed partial class DancingAspectComponent : Component
 {
 }
