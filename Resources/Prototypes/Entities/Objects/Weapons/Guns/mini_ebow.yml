@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/mini-ebow.rsi
   - type: Item
-    size: 10
+    size: Small
     sprite: Objects/Weapons/Guns/Battery/mini-ebow.rsi
   - type: Clothing
     slots:
