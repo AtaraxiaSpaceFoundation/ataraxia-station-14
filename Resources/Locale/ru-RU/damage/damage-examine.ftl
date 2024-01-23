@@ -15,4 +15,5 @@ damage-value =
         [Heat] теплового
         [Radiation] радиационного
         [Caustic] кислотного
+        [Structural] структурного
     }[/color] урона.
