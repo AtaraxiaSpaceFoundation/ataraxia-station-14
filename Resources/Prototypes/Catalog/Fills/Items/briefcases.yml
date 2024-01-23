@@ -27,7 +27,6 @@
       - id: MagazineBoxAntiMateriel
       - id: ClothingNeckTieRed
       - id: ClothingUniformJumpsuitLawyerBlack
-      - id: ClothingHandsGlovesCombat # WD edit
       - id: ClothingShoesBootsLaceup
 
 - type: entity
