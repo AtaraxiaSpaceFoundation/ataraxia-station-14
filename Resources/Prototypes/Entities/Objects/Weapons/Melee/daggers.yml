@@ -15,7 +15,7 @@
       soundHit:
         path: /Audio/Weapons/bladeslice.ogg
     - type: Item
-      size: 20
+      size: Normal
     - type: Clothing
       sprite: Objects/Weapons/Melee/blood_dagger.rsi
       slots:

@@ -182,7 +182,7 @@
       sprite: White/Fluff/merkkaa/bible.rsi
       state: icon
     - type: Item
-      size: 10
+      size: Small
       sprite: White/Fluff/merkkaa/bible.rsi
     - type: PointLight
       radius: 2
@@ -240,7 +240,7 @@
       state: icon
     - type: Item
       sprite: White/Fluff/Omntns/gavel_hammer.rsi
-      size: 5
+      size: Small
     - type: EmitSoundOnUse
       sound:
         path: /Audio/White/Fluff/Omntns/gavel.ogg
@@ -266,7 +266,7 @@
       layers:
       - state: summon_book
     - type: Item
-      size: 5
+      size: Small
     - type: Paper
       content: Ego voco electi pet
     - type: PetSummon
@@ -305,7 +305,7 @@
       sprite: White/Fluff/Derderiot/super-synthesizer.rsi
       state: icon
     - type: Item
-      size: 20
+      size: Normal
       sprite: White/Fluff/Derderiot/super-synthesizer.rsi
 
 #Hskveez Atmospherics Hardsuit

@@ -243,7 +243,7 @@
           shader: unshaded
           map: [ "blade" ]
     - type: Item
-      size: 10
+      size: Small
       sprite: Objects/Weapons/Melee/double_esword.rsi
     - type: Wieldable
       wieldTime: 0

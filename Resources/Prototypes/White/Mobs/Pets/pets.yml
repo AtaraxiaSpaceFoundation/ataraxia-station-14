@@ -62,7 +62,7 @@
     tags:
       - CannotSuicide
   - type: Item
-    size: 10
+    size: Small
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
