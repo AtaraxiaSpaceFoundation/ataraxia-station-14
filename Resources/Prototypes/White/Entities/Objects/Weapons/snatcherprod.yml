@@ -70,7 +70,7 @@
     sprite: White/Objects/Weapons/prod.rsi
     state: prod_unfinished
   - type: Item
-    size: 30
+    size: Normal
   - type: Construction
     deconstructionTarget: null
     graph: SnatcherprodGraph
