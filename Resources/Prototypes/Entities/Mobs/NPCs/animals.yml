@@ -1388,7 +1388,7 @@
     actions:
       Critical:
       - ActionCritSuccumb
-      - ActionCritFakeDeath
+      #- ActionCritFakeDeath
       - ActionCritLastWords
   - type: MobThresholds
     thresholds:
@@ -2793,7 +2793,7 @@
     actions:
       Critical:
       - ActionCritSuccumb
-      - ActionCritFakeDeath
+      #- ActionCritFakeDeath
       - ActionCritLastWords
   - type: MobThresholds
     thresholds:

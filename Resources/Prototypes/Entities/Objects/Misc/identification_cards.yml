@@ -589,7 +589,7 @@
   suffix: Agent
   components:
   - type: IdCard
-    jobTitle: Passenger
+    jobTitle: ассистент
   - type: Access
     tags:
     - Maintenance

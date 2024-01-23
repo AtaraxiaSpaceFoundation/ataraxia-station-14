@@ -16,7 +16,7 @@ internal sealed class NoticeCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (shell.Player is not IPlayerSession player)
+        if (shell.Player is not { } player)
         {
             shell.WriteError("This command cannot be run from the server.");
             return;

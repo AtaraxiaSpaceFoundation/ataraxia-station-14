@@ -8,6 +8,7 @@ using Content.Shared.White;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.Other.ExamineSystem
 {
