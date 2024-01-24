@@ -48,7 +48,7 @@
     - type: Item
       sprite: White/Objects/Devices/walkman.rsi
       heldPrefix: walkman
-      size: 20
+      size: Normal
     - type: UserInterface
       interfaces:
         - key: enum.JukeboxUIKey.Key
