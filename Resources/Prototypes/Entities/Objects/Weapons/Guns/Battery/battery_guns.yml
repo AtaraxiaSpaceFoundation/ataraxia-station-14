@@ -136,8 +136,8 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
   - type: MagazineVisuals
     magState: mag
@@ -161,8 +161,8 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
   - type: Battery
     maxCharge: 500
@@ -217,8 +217,8 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
 
 - type: entity
@@ -227,8 +227,8 @@
   id: WeaponLaserCarbinePractice
   description: This modified laser rifle fires harmless beams in the 40-watt range, for target practice.
   components:
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaserPractice
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserPractice
     fireCost: 62.5
 
 - type: entity
@@ -253,8 +253,8 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 200
   - type: Battery
     maxCharge: 2000
@@ -284,8 +284,8 @@
       - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 200
   - type: Battery
     maxCharge: 5000
@@ -311,8 +311,8 @@
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 100
   - type: Battery
     maxCharge: 40000
@@ -338,8 +338,8 @@
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedHeavyLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserHeavy
     fireCost: 100
 
 - type: entity
@@ -392,8 +392,8 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: XrayLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserXray
     fireCost: 100
   - type: MagazineVisuals
     magState: mag
@@ -554,8 +554,8 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -595,8 +595,8 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -682,8 +682,8 @@
     fireRate: 1
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_clown.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -721,15 +721,18 @@
       - suitStorage
     - type: Gun
       soundGunshot:
-        path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+        path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+      projectileSpeed: 12
     - type: TwoModeEnergyAmmoProvider
-      projProto: BulletDisabler
-      fireCost: 50
-      projFireCost: 50
-      hitscanProto: RedLaser
-      hitscanFireCost: 100
-      projSound: "/Audio/Weapons/Guns/Gunshots/taser2.ogg"
-      hitscanSound: "/Audio/Weapons/Guns/Gunshots/laser_cannon.ogg"
+      stunPrototype: BulletDisabler
+      laserPrototype: BulletTrailLaser
+      fireCost: 100
+      laserFireCost: 99
+      stunFireCost: 49
+      stunProjectileSpeed: 25
+      laserProjectileSpeed: 25
+      stunSound: "/Audio/Weapons/Guns/Gunshots/taser2.ogg"
+      laserSound: "/Audio/Weapons/Guns/Gunshots/laser_cannon.ogg"
     - type: MagazineVisuals
       magState: mag
       steps: 5
