@@ -528,17 +528,15 @@
       scale: 0.7, 0.7
       layers:
         - state: base
-          map: ["enum.WelderLayers.Base"]
         - state: light
-          map: ["enum.WelderLayers.Flame"]
+          map: ["flame"]
           shader: unshaded
           visible: false
     - type: Item
       size: Tiny
-      sprite: White/Fluff/skrimex/zippo-lighter.rsi
+      sprite: Objects/Tools/lighters.rsi
       heldPrefix: off
     - type: UseDelay
-    - type: ItemStatus
     - type: RefillableSolution
       solution: Welder
     - type: SolutionContainerManager
@@ -579,6 +577,6 @@
     - type: GenericVisualizer
       visuals:
         enum.ToggleVisuals.Toggled:
-          light:
+          flame:
             True: { visible: true }
             False: { visible: false }
