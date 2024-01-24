@@ -42,7 +42,9 @@ namespace Content.Client.Access.UI
             };
 
             _window.CrewManifestButton.OnPressed += _ => SendMessage(new CrewManifestOpenUiMessage());
-            _window.PrivilegedIdButton.OnPressed += _ => SendMessage(new ItemSlotButtonPressedEvent(PrivilegedIdCardSlotId));
+            _window.PrivilegedIdButton.OnPressed +=
+                _ => SendMessage(new ItemSlotButtonPressedEvent(PrivilegedIdCardSlotId));
+
             _window.TargetIdButton.OnPressed += _ => SendMessage(new ItemSlotButtonPressedEvent(TargetIdCardSlotId));
 
             _window.OnClose += Close;
@@ -65,7 +67,12 @@ namespace Content.Client.Access.UI
             _window?.UpdateState(castState);
         }
 
-        public void SubmitData(string newFullName, string newJobTitle, List<string> newAccessList, string newJobPrototype)
+        public void SubmitData(
+            string newFullName,
+            string newJobTitle,
+            List<string> newAccessList,
+            string newJobPrototype,
+            string? newJobIcon)
         {
             if (newFullName.Length > MaxFullNameLength)
                 newFullName = newFullName[..MaxFullNameLength];
@@ -77,7 +84,8 @@ namespace Content.Client.Access.UI
                 newFullName,
                 newJobTitle,
                 newAccessList,
-                newJobPrototype));
+                newJobPrototype,
+                newJobIcon));
         }
     }
 }
