@@ -20,7 +20,6 @@ public sealed class DoAfterOverlay : Overlay
     private readonly MetaDataSystem _meta;
 
     private readonly Texture _barTexture;
-    private readonly ShaderInstance _shader;
 
     /// <summary>
     ///     Flash time for cancelled DoAfters
@@ -33,17 +32,16 @@ public sealed class DoAfterOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
-    public DoAfterOverlay(IEntityManager entManager, IPrototypeManager protoManager, IGameTiming timing, IPlayerManager player)
+    public DoAfterOverlay(IEntityManager entManager, IGameTiming timing, IPlayerManager player)
     {
         _entManager = entManager;
         _timing = timing;
         _player = player;
         _transform = _entManager.EntitySysManager.GetEntitySystem<SharedTransformSystem>();
         _meta = _entManager.EntitySysManager.GetEntitySystem<MetaDataSystem>();
-        var sprite = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/progress_bar.rsi"), "icon");
-        _barTexture = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>().Frame0(sprite);
 
-        _shader = protoManager.Index<ShaderPrototype>("unshaded").Instance();
+        var sprite = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/progress_bar.rsi"), "icon");
+        _barTexture = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>().Frame0(sprite);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -56,7 +54,6 @@ public sealed class DoAfterOverlay : Overlay
         const float scale = 1f;
         var scaleMatrix = Matrix3.CreateScale(new Vector2(scale, scale));
         var rotationMatrix = Matrix3.CreateRotation(-rotation);
-        handle.UseShader(_shader);
 
         var curTime = _timing.CurTime;
 
@@ -64,7 +61,9 @@ public sealed class DoAfterOverlay : Overlay
         var localEnt = _player.LocalSession?.AttachedEntity;
 
         var metaQuery = _entManager.GetEntityQuery<MetaDataComponent>();
-        var enumerator = _entManager.AllEntityQueryEnumerator<ActiveDoAfterComponent, DoAfterComponent, SpriteComponent, TransformComponent>();
+        var enumerator = _entManager
+            .AllEntityQueryEnumerator<ActiveDoAfterComponent, DoAfterComponent, SpriteComponent, TransformComponent>();
+
         while (enumerator.MoveNext(out var uid, out _, out var comp, out var sprite, out var xform))
         {
             if (xform.MapID != args.MapId)
@@ -105,7 +104,7 @@ public sealed class DoAfterOverlay : Overlay
 
                 // Use the sprite itself if we know its bounds. This means short or tall sprites don't get overlapped
                 // by the bar.
-                float yOffset = sprite.Bounds.Height / 2f + 0.05f;
+                var yOffset = sprite.Bounds.Height / 2f + 0.05f;
 
                 // Position above the entity (we've already applied the matrix transform to the entity itself)
                 // Offset by the texture size for every do_after we have.
@@ -135,7 +134,9 @@ public sealed class DoAfterOverlay : Overlay
                 }
 
                 var xProgress = (EndX - StartX) * elapsedRatio + StartX;
-                var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
+                var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter,
+                    new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
+
                 box = box.Translated(position);
                 handle.DrawRect(box, color);
                 offset += _barTexture.Height / scale;
@@ -152,6 +153,7 @@ public sealed class DoAfterOverlay : Overlay
         {
             return new Color(0f, 1f, 0f, alpha);
         }
+
         // lerp
         var hue = (5f / 18f) * progress;
         return Color.FromHsv((hue, 1f, 0.75f, alpha));
