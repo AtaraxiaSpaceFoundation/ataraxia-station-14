@@ -1,13 +1,10 @@
 using Content.Server.Power.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
-using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Audio;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
@@ -41,28 +38,30 @@ public sealed partial class GunSystem
         if (!TryComp<GunComponent>(uid, out var gun))
             return;
 
-        if (component.CurrentMode == EnergyModes.Stun)
+        switch (component.CurrentMode)
         {
-            component.InStun = false;
-            gun.SoundGunshot = component.HitscanSound;
-            component.CurrentMode = EnergyModes.Laser;
-            component.FireCost = component.HitscanFireCost;
-            _audio.PlayPvs(component.ToggleSound, args.User);
+            case EnergyModes.Stun:
+                component.InStun = false;
+                component.CurrentMode = EnergyModes.Laser;
+                component.FireCost = component.LaserFireCost;
+                gun.SoundGunshot = component.LaserSound;
+                gun.ProjectileSpeed = component.LaserProjectileSpeed;
+                _audio.PlayPvs(component.ToggleSound, args.User);
+                break;
+            case EnergyModes.Laser:
+                component.InStun = true;
+                component.CurrentMode = EnergyModes.Stun;
+                component.FireCost = component.StunFireCost;
+                gun.SoundGunshot = component.StunSound;
+                gun.ProjectileSpeed = component.StunProjectileSpeed;
+                _audio.PlayPvs(component.ToggleSound, args.User);
+                break;
         }
-        else if (component.CurrentMode == EnergyModes.Laser)
-        {
-            component.InStun = true;
-            gun.SoundGunshot = component.ProjSound;
-            component.CurrentMode = EnergyModes.Stun;
-            component.FireCost = component.ProjFireCost;
-            _audio.PlayPvs(component.ToggleSound, args.User);
-        }
+
         UpdateShots(uid, component);
         UpdateTwoModeAppearance(uid, component);
         UpdateBatteryAppearance(uid, component);
         UpdateAmmoCount(uid);
-        Dirty(gun);
-        Dirty(component);
     }
 
     private void OnBatteryStartup(EntityUid uid, BatteryAmmoProviderComponent component, ComponentStartup args)
@@ -70,7 +69,10 @@ public sealed partial class GunSystem
         UpdateShots(uid, component);
     }
 
-    private void OnBatteryChargeChange(EntityUid uid, BatteryAmmoProviderComponent component, ref ChargeChangedEvent args)
+    private void OnBatteryChargeChange(
+        EntityUid uid,
+        BatteryAmmoProviderComponent component,
+        ref ChargeChangedEvent args)
     {
         UpdateShots(uid, component, args.Charge, args.MaxCharge);
     }
@@ -90,7 +92,7 @@ public sealed partial class GunSystem
 
         if (component.Shots != shots || component.Capacity != maxShots)
         {
-            Dirty(component);
+            Dirty(uid, component);
         }
 
         component.Shots = shots;
@@ -98,78 +100,41 @@ public sealed partial class GunSystem
         UpdateBatteryAppearance(uid, component);
     }
 
-    private void OnBatteryDamageExamine(EntityUid uid, BatteryAmmoProviderComponent component, ref DamageExamineEvent args)
+    private void OnBatteryDamageExamine(
+        EntityUid uid,
+        BatteryAmmoProviderComponent component,
+        ref DamageExamineEvent args)
     {
         var damageSpec = GetDamage(component);
 
         if (damageSpec == null)
             return;
 
-        string? damageType;
-        switch (component)
+        var damageType = component switch
         {
-            case HitscanBatteryAmmoProviderComponent:
-                damageType = Loc.GetString("damage-hitscan");
-                break;
-            case ProjectileBatteryAmmoProviderComponent:
-                damageType = Loc.GetString("damage-projectile");
-                break;
-            case TwoModeEnergyAmmoProviderComponent twoMode:
-                if (twoMode.CurrentMode == EnergyModes.Stun)
-                    damageType = Loc.GetString("damage-projectile");
-                else
-                    damageType = Loc.GetString("damage-hitscan");
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            HitscanBatteryAmmoProviderComponent    => Loc.GetString("damage-hitscan"),
+            ProjectileBatteryAmmoProviderComponent => Loc.GetString("damage-projectile"),
+            TwoModeEnergyAmmoProviderComponent twoMode => Loc.GetString(twoMode.CurrentMode == EnergyModes.Stun
+                ? "damage-projectile"
+                : "damage-hitscan"),
+            _ => throw new ArgumentOutOfRangeException()
+        };
 
         _damageExamine.AddDamageExamine(args.Message, damageSpec, damageType);
     }
 
     private DamageSpecifier? GetDamage(BatteryAmmoProviderComponent component)
     {
-        if (component is ProjectileBatteryAmmoProviderComponent battery)
+        return component switch
         {
-            if (ProtoManager.Index<EntityPrototype>(battery.Prototype).Components
-                .TryGetValue(_factory.GetComponentName(typeof(ProjectileComponent)), out var projectile))
-            {
-                var p = (ProjectileComponent) projectile.Component;
-
-                if (!p.Damage.Empty)
-                {
-                    return p.Damage;
-                }
-            }
-
-            return null;
-        }
-
-        if (component is HitscanBatteryAmmoProviderComponent hitscan)
-        {
-            return ProtoManager.Index<HitscanPrototype>(hitscan.Prototype).Damage;
-        }
-
-        if (component is TwoModeEnergyAmmoProviderComponent twoMode)
-        {
-            if (twoMode.CurrentMode == EnergyModes.Stun)
-            {
-                if (ProtoManager.Index<EntityPrototype>(twoMode.ProjectilePrototype).Components
-                    .TryGetValue(_factory.GetComponentName(typeof(ProjectileComponent)), out var projectile))
-                {
-                    var p = (ProjectileComponent) projectile.Component;
-
-                    if (p.Damage.Total > FixedPoint2.Zero)
-                    {
-                        return p.Damage;
-                    }
-                }
-
-                return null;
-            }
-            return ProtoManager.Index<HitscanPrototype>(twoMode.HitscanPrototype).Damage;
-        }
-        return null;
+            HitscanBatteryAmmoProviderComponent hitscan =>
+                ProtoManager.Index<HitscanPrototype>(hitscan.Prototype).Damage,
+            ProjectileBatteryAmmoProviderComponent battery => GetProjectileDamage(battery.Prototype),
+            TwoModeEnergyAmmoProviderComponent twoMode => GetProjectileDamage(twoMode.CurrentMode == EnergyModes.Laser
+                ? twoMode.LaserPrototype
+                : twoMode.StunPrototype),
+            _ => null
+        };
     }
 
     protected override void TakeCharge(EntityUid uid, BatteryAmmoProviderComponent component)

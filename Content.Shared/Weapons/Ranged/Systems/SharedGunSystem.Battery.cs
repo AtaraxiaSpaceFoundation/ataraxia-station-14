@@ -38,15 +38,18 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, ExaminedEvent>(OnBatteryExamine);
     }
 
-
     private void OnTwoModeInit(EntityUid uid, TwoModeEnergyAmmoProviderComponent component, ComponentInit args)
     {
-        if (!Timing.IsFirstTimePredicted || !TryComp<AppearanceComponent>(component.Owner, out var appearance)) return;
+        if (!Timing.IsFirstTimePredicted || !TryComp<AppearanceComponent>(component.Owner, out var appearance))
+            return;
 
         Appearance.SetData(appearance.Owner, AmmoVisuals.InStun, component.InStun, appearance);
     }
 
-    private void OnBatteryTwoModeHandleState(EntityUid uid, TwoModeEnergyAmmoProviderComponent component, ref ComponentHandleState args)
+    private void OnBatteryTwoModeHandleState(
+        EntityUid uid,
+        TwoModeEnergyAmmoProviderComponent component,
+        ref ComponentHandleState args)
     {
         if (args.Current is not TwoModeComponentState state)
             return;
@@ -58,7 +61,10 @@ public abstract partial class SharedGunSystem
         component.InStun = state.InStun;
     }
 
-    private void OnBatteryTwoModeGetState(EntityUid uid, TwoModeEnergyAmmoProviderComponent component, ref ComponentGetState args)
+    private void OnBatteryTwoModeGetState(
+        EntityUid uid,
+        TwoModeEnergyAmmoProviderComponent component,
+        ref ComponentGetState args)
     {
         args.State = new TwoModeComponentState()
         {
@@ -74,19 +80,20 @@ public abstract partial class SharedGunSystem
     {
         if (!TryComp<AppearanceComponent>(uid, out var appearance))
             return;
+
         if (!TryComp<ItemComponent>(uid, out var item))
             return;
 
-        if (component.InStun)
-            _item.SetHeldPrefix(uid, null, false, item);
-        else
-            _item.SetHeldPrefix(uid, "laser", false, item);
-
+        _item.SetHeldPrefix(uid, component.InStun ? null : "laser", false, item);
 
         Appearance.SetData(uid, AmmoVisuals.InStun, component.InStun, appearance);
+        Dirty(uid, component);
     }
 
-    private void OnBatteryHandleState(EntityUid uid, BatteryAmmoProviderComponent component, ref ComponentHandleState args)
+    private void OnBatteryHandleState(
+        EntityUid uid,
+        BatteryAmmoProviderComponent component,
+        ref ComponentHandleState args)
     {
         if (args.Current is not BatteryAmmoProviderComponentState state)
             return;
@@ -139,7 +146,7 @@ public abstract partial class SharedGunSystem
     /// <summary>
     /// Update the battery (server-only) whenever fired.
     /// </summary>
-    protected virtual void TakeCharge(EntityUid uid, BatteryAmmoProviderComponent component) {}
+    protected virtual void TakeCharge(EntityUid uid, BatteryAmmoProviderComponent component) { }
 
     protected void UpdateBatteryAppearance(EntityUid uid, BatteryAmmoProviderComponent component)
     {
@@ -151,7 +158,9 @@ public abstract partial class SharedGunSystem
         Appearance.SetData(uid, AmmoVisuals.AmmoMax, component.Capacity, appearance);
     }
 
-    private (EntityUid? Entity, IShootable) GetShootable(BatteryAmmoProviderComponent component, EntityCoordinates coordinates)
+    private (EntityUid? Entity, IShootable) GetShootable(
+        BatteryAmmoProviderComponent component,
+        EntityCoordinates coordinates)
     {
         switch (component)
         {
@@ -161,12 +170,13 @@ public abstract partial class SharedGunSystem
             case HitscanBatteryAmmoProviderComponent hitscan:
                 return (null, ProtoManager.Index<HitscanPrototype>(hitscan.Prototype));
             case TwoModeEnergyAmmoProviderComponent twoMode:
-                if (twoMode.CurrentMode == EnergyModes.Stun)
-                {
-                    var projEnt = Spawn(twoMode.ProjectilePrototype, coordinates);
-                    return (projEnt, EnsureComp<AmmoComponent>(projEnt));
-                }
-                return (null, ProtoManager.Index<HitscanPrototype>(twoMode.HitscanPrototype));
+                var projEntity =
+                    Spawn(twoMode.CurrentMode == EnergyModes.Stun
+                            ? twoMode.StunPrototype
+                            : twoMode.LaserPrototype,
+                        coordinates);
+
+                return (projEntity, EnsureComp<AmmoComponent>(projEntity));
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -184,6 +194,7 @@ public abstract partial class SharedGunSystem
     public sealed class TwoModeComponentState : ComponentState
     {
         public EnergyModes CurrentMode { get; init; }
+
         public int Shots;
         public int MaxShots;
         public float FireCost;
