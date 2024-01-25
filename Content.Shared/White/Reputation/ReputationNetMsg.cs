@@ -22,7 +22,8 @@ public sealed class ReputationNetMsg : NetMessage
             return;
 
         var length = buffer.ReadVariableInt32();
-        using var stream = buffer.ReadAlignedMemory(length);
+        using var stream = new MemoryStream();
+        buffer.ReadAlignedMemory(stream, length);
         serializer.DeserializeDirect(stream, out Info);
     }
 

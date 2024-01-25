@@ -1,11 +1,15 @@
 ﻿using System.Linq;
 using Content.Server.Administration;
 using Content.Server.GameTicking;
-using Content.Server.Mind.Components;
+using Content.Server.Objectives;
+using Content.Server.Roles;
 using Content.Server.UtkaIntegration;
 using Content.Server.White.AspectsSystem.Base;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Objectives.Components;
 using Content.Shared.White;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -21,6 +25,8 @@ public sealed class ReputationSystem : EntitySystem
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerLocator _locator = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly RoleSystem _roles = default!;
+    [Dependency] private readonly ObjectivesSystem _objectives = default!;
 
     private const int MinPlayers = 15;
     private const int MinRoundLength = 25;
@@ -109,34 +115,34 @@ public sealed class ReputationSystem : EntitySystem
 
         if (TryComp<MindContainerComponent>(entity, out var mind)
             && mind.Mind != null
-            && mind.Mind.AllRoles.Any(role => role.Antagonist))
+            && _roles.MindIsAntagonist(mind.Mind)
+            && TryComp(mind.Mind, out MindComponent? mindComp))
         {
-            var condCompleted = 0;
-            var totalCond = 0;
-            foreach (var obj in mind.Mind.AllObjectives)
+            var objCompleted = 0;
+            var totalObj = 0;
+            foreach (var obj in mindComp.Objectives)
             {
-                foreach (var condition in obj.Conditions)
-                {
-                    totalCond++;
+                totalObj++;
 
-                    if (condition.Progress > 0.99f)
-                        condCompleted++;
-                }
+                var info = _objectives.GetInfo(obj, mind.Mind.Value, mindComp);
+
+                if (info is {Progress: > 0.99f})
+                    objCompleted++;
             }
 
             if (aspect)
             {
-                if (condCompleted == totalCond)
-                    deltaValue += 1f + condCompleted;
+                if (objCompleted == totalObj)
+                    deltaValue += 1f + objCompleted;
                 else
-                    deltaValue += 1f + condCompleted * 0.5f;
+                    deltaValue += 1f + objCompleted * 0.5f;
             }
             else
             {
-                if (condCompleted == totalCond)
-                    deltaValue += 2f + condCompleted * 0.5f;
+                if (objCompleted == totalObj)
+                    deltaValue += 2f + objCompleted * 0.5f;
                 else
-                    deltaValue += condCompleted * 0.5f;
+                    deltaValue += objCompleted * 0.5f;
             }
         }
 

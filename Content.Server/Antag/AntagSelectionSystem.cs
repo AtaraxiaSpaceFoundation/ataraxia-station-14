@@ -135,7 +135,11 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             }
             else
             {
-                chosenPlayer = _random.PickAndTake(prefList);
+                //chosenPlayer = _random.PickAndTake(prefList);
+                // WD EDIT START
+                chosenPlayer = _reputationManager.PickPlayerBasedOnReputation(prefList);
+                prefList.Remove(chosenPlayer);
+                // WD EDIT END
                 playerList.Remove(chosenPlayer);
             }
 

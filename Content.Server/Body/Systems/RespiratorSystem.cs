@@ -346,7 +346,7 @@ namespace Content.Server.Body.Systems
             else
             {
                 component.CPRPerformedBy = null;
-                component.CPRPlayingStream?.Stop();
+                _audio.Stop(component.CPRPlayingStream);
             }
 
             RaiseLocalEvent(args.User, new MoodEffectEvent("SavedLife"));
