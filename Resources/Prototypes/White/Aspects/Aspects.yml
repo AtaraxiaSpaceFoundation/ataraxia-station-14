@@ -11,18 +11,19 @@
         path: /Audio/White/Aspects/accent.ogg
     - type: RandomAccentAspect
 
-- type: entity
-  id: FastAndFuriousAspect
-  parent: BaseGameRule
-  noSpawn: true
-  components:
-    - type: Aspect
-      name: "Fast and Furious"
-      description: "Люди спешат и не важно куда."
-      weight: 3
-      startAudio:
-        path: /Audio/White/Aspects/accent.ogg
-    - type: FastAndFuriousAspect
+# Disabled this cause movement speed increase isn't predicted and it feels awful due to this
+#- type: entity
+#  id: FastAndFuriousAspect
+#  parent: BaseGameRule
+#  noSpawn: true
+#  components:
+#    - type: Aspect
+#      name: "Fast and Furious"
+#      description: "Люди спешат и не важно куда."
+#      weight: 3
+#      startAudio:
+#        path: /Audio/White/Aspects/accent.ogg
+#    - type: FastAndFuriousAspect
 
 - type: entity
   id: RandomAppearanceAspect
