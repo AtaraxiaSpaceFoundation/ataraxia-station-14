@@ -26,9 +26,6 @@
   id: Crystal
 
 - type: Tag
-  id: ZombifyableByMelee
-
-- type: Tag
   id: SpaceCash
 
 - type: Tag
