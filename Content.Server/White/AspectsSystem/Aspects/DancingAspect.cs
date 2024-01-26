@@ -1,10 +1,10 @@
-using Content.Server.Animations;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
+using Content.Server.White.Animations;
 using Content.Server.White.AspectsSystem.Aspects.Components;
 using Content.Server.White.AspectsSystem.Base;
-using Content.Shared.Animations;
 using Content.Shared.Mobs.Components;
+using Content.Shared.White.Animations;
 
 namespace Content.Server.White.AspectsSystem.Aspects;
 
@@ -16,7 +16,11 @@ public sealed class DancingAspect : AspectSystem<DancingAspectComponent>
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(HandleLateJoin);
     }
 
-    protected override void Started(EntityUid uid, DancingAspectComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(
+        EntityUid uid,
+        DancingAspectComponent component,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
         var query = EntityQueryEnumerator<EmoteAnimationComponent, MobStateComponent>();
