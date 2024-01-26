@@ -8,9 +8,8 @@ using Content.Shared.Examine;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Verbs;
 using Content.Shared.White.Item.Tricorder;
-using Robust.Server.GameObjects;
+using Robust.Server.Audio;
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 
 namespace Content.Server.White.Items.Tricorder;
@@ -38,8 +37,7 @@ public sealed class TricorderSystem : SharedTricorderSystem
 
     private void OnAddSwitchModeVerbs(EntityUid uid, TricorderComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue ||
-            !HasComp<TricorderComponent>(args.Target))
+        if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue || !HasComp<TricorderComponent>(args.Target))
         {
             return;
         }
@@ -100,44 +98,41 @@ public sealed class TricorderSystem : SharedTricorderSystem
         if (!user.HasValue)
             return;
 
-        UpdateModeAppearance(user.Value, tricorder);
+        UpdateModeAppearance(user.Value, tricoderUid, tricorder);
     }
 
-    private void UpdateModeAppearance(
-        EntityUid userUid,
-        TricorderComponent tricorder)
+    private void UpdateModeAppearance(EntityUid userUid, EntityUid tricoderUid, TricorderComponent tricorder)
     {
-        Dirty(tricorder);
         _audioSystem.PlayPvs(tricorder.SoundSwitchMode, userUid, AudioParams.Default.WithVolume(1.5f));
+        Dirty(tricoderUid, tricorder);
     }
 
     private void SetToMultitool(EntityUid uid)
     {
-        var comp = AddComp<NetworkConfiguratorComponent>(uid);
         RemComp<GasAnalyzerComponent>(uid);
         RemComp<HealthAnalyzerComponent>(uid);
-        Dirty(comp);
 
-        if (!TryComp(uid, out ActivatableUIComponent? ui))
+        var comp = AddComp<NetworkConfiguratorComponent>(uid);
+        if (TryComp(uid, out ActivatableUIComponent? ui))
         {
-            return;
+            ui.Key = NetworkConfiguratorUiKey.Configure;
         }
 
-        ui.Key = NetworkConfiguratorUiKey.Configure;
+        Dirty(uid, comp);
     }
 
     private void SetToGasAnalyzer(EntityUid uid)
     {
         RemComp<NetworkConfiguratorComponent>(uid);
-        AddComp<GasAnalyzerComponent>(uid);
         RemComp<HealthAnalyzerComponent>(uid);
 
-        if (!TryComp(uid, out ActivatableUIComponent? ui))
+        var comp = AddComp<GasAnalyzerComponent>(uid);
+        if (TryComp(uid, out ActivatableUIComponent? ui))
         {
-            return;
+            ui.Key = GasAnalyzerComponent.GasAnalyzerUiKey.Key;
         }
 
-        ui.Key = GasAnalyzerComponent.GasAnalyzerUiKey.Key;
+        Dirty(uid, comp);
     }
 
     private void SetToHealthAnalyzer(EntityUid uid)
@@ -147,15 +142,12 @@ public sealed class TricorderSystem : SharedTricorderSystem
 
         var healthAnalyzerComponent = _componentFactory.GetComponent<HealthAnalyzerComponent>();
         healthAnalyzerComponent.ScanningEndSound = new SoundPathSpecifier("/Audio/Items/Medical/healthscanner.ogg");
-
         healthAnalyzerComponent.Owner = uid;
+
         _entityManager.AddComponent(uid, healthAnalyzerComponent);
-
-        if (!TryComp(uid, out ActivatableUIComponent? ui))
+        if (TryComp(uid, out ActivatableUIComponent? ui))
         {
-            return;
+            ui.Key = HealthAnalyzerUiKey.Key;
         }
-
-        ui.Key = HealthAnalyzerUiKey.Key;
     }
 }

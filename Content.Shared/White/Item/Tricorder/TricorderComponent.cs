@@ -4,10 +4,8 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared.White.Item.Tricorder;
 
-[RegisterComponent]
-[NetworkedComponent]
-[Access(typeof(SharedTricorderSystem))]
-public sealed class TricorderComponent : Component
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedTricorderSystem))]
+public sealed partial class TricorderComponent : Component
 {
     [DataField("currentState"), ViewVariables(VVAccess.ReadWrite)]
     public TricorderMode CurrentMode = TricorderMode.Multitool;

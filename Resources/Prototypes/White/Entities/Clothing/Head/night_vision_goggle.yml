@@ -17,6 +17,7 @@
 - type: entity
   parent: ClothingEyesNightVisionGoggles
   id: ClothingEyesNightVisionGogglesSyndie
+  suffix: "Хамелеон"
   components:
   - type: ChameleonClothing
     slot: [ eyes ]
