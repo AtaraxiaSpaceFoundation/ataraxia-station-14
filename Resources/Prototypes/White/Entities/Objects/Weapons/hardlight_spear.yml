@@ -6,6 +6,8 @@
   components:
   - type: Sprite
     sprite: White/Objects/Weapons/hardlight_spear.rsi
+    layers:
+    - state: spear
   - type: MeleeWeapon
     damage:
       types:
