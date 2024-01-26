@@ -370,7 +370,7 @@
 
 - type: statusIcon
   parent: JobIcon
-  id: JobIconSeniorInspector
+  id: JobIconInspector
   icon:
     sprite: Interface/Misc/job_icons.rsi
     state: Inspector
