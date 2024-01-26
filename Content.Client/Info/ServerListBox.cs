@@ -1,4 +1,5 @@
 using Robust.Client;
+using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
 
@@ -8,26 +9,27 @@ namespace Content.Client.Info
     {
         private IGameController _gameController;
         private List<Button> _connectButtons = new();
+        private IUriOpener _uriOpener;
 
         public ServerListBox()
         {
             _gameController = IoCManager.Resolve<IGameController>();
+            _uriOpener = IoCManager.Resolve<IUriOpener>();
             Orientation = LayoutOrientation.Vertical;
             AddServers();
         }
 
         private void AddServers()
         {
-            AddServerInfo("Грид", "Сервер с постоянным безумием");
-            AddServerInfo("Мэйд", "Сервер с лучшим сервисом");
-            AddServerInfo("Енги", "Сервер с расслабленным геймплеем");
-            AddServerInfo("Амур", "Сервер для любителей ЕРП");
-            AddServerInfo("Инфинити️", "Сервер без правил");
-            AddServerInfo("Гласио", "Сервер с лучшим отыгрышем");
-            AddServerInfo("Атараксия", "Для любителей ролевой игры");
+            AddServerInfo("Grid", "Сервер с постоянным безумием", "ss14://s0.ss14.su:3333", null);
+            AddServerInfo("Maid", "Сервер с лучшим сервисом", "ss14://s5.ss14.su:6666", null);
+            AddServerInfo("Engi", "Сервер с расслабленным геймплеем", "ss14://s5.ss14.su:7777", null);
+            AddServerInfo("Amour", "Сервер для любителей ЕРП", "ss14://s0.ss14.su:8888", "https://discord.gg/vxHPsZ3Qyr");
+            AddServerInfo("Glasio", "Сервер с лучшим отыгрышем", "ss14://s0.ss14.su:4444", "https://discord.gg/TGzZep96cR");
+            AddServerInfo("Ataraxia", "Для любителей ролевой игры", "ss14://s0.ss14.su:10101", "https://discord.gg/BCPkP3TcDT");
         }
 
-        private void AddServerInfo(string serverName, string description)
+        private void AddServerInfo(string serverName, string description, string serverUrl, string ?discord)
         {
             var serverBox = new BoxContainer
             {
@@ -53,21 +55,36 @@ namespace Content.Client.Info
 
             var buttonBox = new BoxContainer
             {
-                Orientation = LayoutOrientation.Vertical,
+                Orientation = LayoutOrientation.Horizontal,
                 HorizontalExpand = true,
                 HorizontalAlignment = HAlignment.Right
             };
 
             var connectButton = new Button
             {
-                Text = "Connect"
+                Text = "Подключиться"
             };
+
+            if (discord != null)
+            {
+                var discordButton = new Button
+                {
+                    Text = "Discord"
+                };
+
+                discordButton.OnPressed += _ =>
+                {
+                    _uriOpener.OpenUri(discord);
+                };
+
+                buttonBox.AddChild(discordButton);
+            }
 
             _connectButtons.Add(connectButton);
 
             connectButton.OnPressed += _ =>
             {
-                ConnectToServer(serverName);
+                _gameController.Redial(serverUrl, "Connecting to another server...");
 
                 foreach (var connectButton in _connectButtons)
                 {
@@ -84,37 +101,6 @@ namespace Content.Client.Info
             serverBox.AddChild(buttonBox);
 
             AddChild(serverBox);
-        }
-
-        private void ConnectToServer(string serverName)
-        {
-            var url = "";
-
-            switch (serverName)
-            {
-                case "Грид":
-                    url = "ss14://s0.ss14.su:3333";
-                    break;
-                case "Мэйд":
-                    url = "ss14://s5.ss14.su:6666";
-                    break;
-                case "Енги":
-                    url = "ss14://s5.ss14.su:7777";
-                    break;
-                case "Амур":
-                    url = "ss14://s0.ss14.su:8888";
-                    break;
-                case "Инфинити️":
-                    url = "ss14://s0.ss14.su:5555";
-                    break;
-                case "Гласио":
-                    url = "ss14://s0.ss14.su:4444";
-                    break;
-                case "Атараксия":
-                    url = "ss14://s0.ss14.su:10101";
-                    break;
-            }
-            _gameController.Redial(url, "Connecting to another server...");
         }
     }
 }

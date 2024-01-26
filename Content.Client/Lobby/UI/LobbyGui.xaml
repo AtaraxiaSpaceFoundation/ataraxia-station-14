@@ -45,14 +45,6 @@
                         </PanelContainer>
 
                         <BoxContainer Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                            <PanelContainer Name="TopLeftContainer" MinHeight="350" MinWidth="469" StyleClasses="LobbyGayBackground">
-                                <info:DiscordListBox Name="DiscordListBox" Access="Public" MinSize="0 30" VerticalExpand="True" HorizontalExpand="True" Margin="3 3 3 3" HorizontalAlignment="Stretch"/>
-                            </PanelContainer>
-
-                            <BoxContainer HorizontalAlignment="Stretch" HorizontalExpand="True">
-                                <!-- Empty container to create spacing -->
-                            </BoxContainer>
-
                             <PanelContainer Name="TopRightContainer" MinHeight="350" MinWidth="469" StyleClasses="LobbyGayBackground">
                                 <info:ServerListBox Name="ServerListBox" Access="Public" MinSize="0 30" VerticalExpand="True" HorizontalExpand="True" Margin="3 3 3 3" HorizontalAlignment="Stretch"/>
                             </PanelContainer>
