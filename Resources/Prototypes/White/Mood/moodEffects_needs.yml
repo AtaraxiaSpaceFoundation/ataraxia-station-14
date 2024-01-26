@@ -17,7 +17,7 @@
   id: HungerPeckish
   desc: "Хочу есть."
   moodChange: enum.MoodChangeLevel.Medium
-  positiveEffect: true
+  positiveEffect: false
   category: "Hunger"
 
 - type: moodEffect
