@@ -1,16 +1,22 @@
+using Content.Shared.White.Animations;
 using System.Numerics;
-using Content.Shared.Animations;
 using Robust.Client.Animations;
+using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 using Robust.Shared.GameStates;
-using Robust.Client.GameObjects;
-using static Content.Shared.Animations.EmoteAnimationComponent;
-namespace Content.Client.Animations;
+using static Content.Shared.White.Animations.EmoteAnimationComponent;
 
-public class EmoteAnimationSystem : EntitySystem
+namespace Content.Client.White.Animations;
+
+public sealed class EmoteAnimationSystem : EntitySystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animationSystem = default!;
+
     private readonly Dictionary<string, Action<EntityUid>> _emoteList = new();
+
+    private const string AnimationKey = "emoteAnimationKeyId";
+    private const string AnimationKeyTurn = "emoteAnimationKeyId_rotate";
+
     //OnVerbsResponse?.Invoke(msg);
     public override void Initialize()
     {
@@ -19,16 +25,13 @@ public class EmoteAnimationSystem : EntitySystem
         // EmoteFlip animation
         _emoteList.Add("EmoteFlip", uid =>
         {
-            var animationKey = "emoteAnimationKeyId";
-
-            if (_animationSystem.HasRunningAnimation(uid, animationKey))
+            if (_animationSystem.HasRunningAnimation(uid, AnimationKey))
                 return;
 
             var baseAngle = Angle.Zero;
             if (EntityManager.TryGetComponent(uid, out SpriteComponent? sprite))
             {
-                if (sprite != null)
-                    baseAngle = sprite.Rotation;
+                baseAngle = sprite.Rotation;
             }
 
             var animation = new Animation
@@ -43,7 +46,7 @@ public class EmoteAnimationSystem : EntitySystem
                         InterpolationMode = AnimationInterpolationMode.Linear,
                         KeyFrames =
                         {
-                            new AnimationTrackProperty.KeyFrame(Angle.FromDegrees(baseAngle.Degrees), 0f),
+                            new AnimationTrackProperty.KeyFrame(Angle.FromDegrees(baseAngle.Degrees - 10), 0f),
                             new AnimationTrackProperty.KeyFrame(Angle.FromDegrees(baseAngle.Degrees + 180), 0.25f),
                             new AnimationTrackProperty.KeyFrame(Angle.FromDegrees(baseAngle.Degrees + 360), 0.25f),
                             new AnimationTrackProperty.KeyFrame(Angle.FromDegrees(baseAngle.Degrees), 0f),
@@ -52,14 +55,13 @@ public class EmoteAnimationSystem : EntitySystem
                 }
             };
 
-            _animationSystem.Play(uid, animation, animationKey);
+            _animationSystem.Play(uid, animation, AnimationKey);
         });
-        // EmoteJump animation
-        _emoteList.Add("EmoteJump", (EntityUid uid) =>
-        {
-            var animationKey = "emoteAnimationKeyId";
 
-            if (_animationSystem.HasRunningAnimation(uid, animationKey))
+        // EmoteJump animation
+        _emoteList.Add("EmoteJump", uid =>
+        {
+            if (_animationSystem.HasRunningAnimation(uid, AnimationKey))
                 return;
 
             var animation = new Animation
@@ -82,19 +84,18 @@ public class EmoteAnimationSystem : EntitySystem
                 }
             };
 
-            _animationSystem.Play(uid, animation, animationKey);
+            _animationSystem.Play(uid, animation, AnimationKey);
         });
-        // EmoteTurn animation
-        _emoteList.Add("EmoteTurn", (EntityUid uid) =>
-        {
-            var animationKey = "emoteAnimationKeyId_rotate"; // it needs for only rotate anim
 
-            if (_animationSystem.HasRunningAnimation(uid, animationKey))
+        // EmoteTurn animation
+        _emoteList.Add("EmoteTurn", uid =>
+        {
+            if (_animationSystem.HasRunningAnimation(uid, AnimationKeyTurn))
                 return;
 
             var animation = new Animation
             {
-                Length = TimeSpan.FromMilliseconds(600),  // Пока пусть на 0.6 секунд. В идеале бы до 0.9 на 3 поворота
+                Length = TimeSpan.FromMilliseconds(900),
                 AnimationTracks =
                 {
                     new AnimationTrackComponentProperty
@@ -118,7 +119,7 @@ public class EmoteAnimationSystem : EntitySystem
                 }
             };
 
-            _animationSystem.Play(uid, animation, animationKey);
+            _animationSystem.Play(uid, animation, AnimationKeyTurn);
         });
     }
 
@@ -128,9 +129,9 @@ public class EmoteAnimationSystem : EntitySystem
             return;
 
         component.AnimationId = state.AnimationId;
-        if (_emoteList.ContainsKey(component.AnimationId))
+        if (_emoteList.TryGetValue(component.AnimationId, out var value))
         {
-            _emoteList[component.AnimationId].Invoke(uid);
+            value.Invoke(uid);
         }
     }
 }

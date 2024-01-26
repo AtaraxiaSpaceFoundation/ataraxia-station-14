@@ -11,3 +11,13 @@
   completetime: 5
   materials:
     Steel: 1500
+- type: latheRecipe
+  id: ClothingEyesNightVisionGoggles
+  result: ClothingEyesNightVisionGoggles
+  completetime: 2
+  materials:
+    Steel: 200
+    Glass: 100
+    Silver: 100
+    Gold: 100
+

@@ -1,11 +1,10 @@
-using Content.Server.White.Animations;
-using Content.Shared.Animations;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.White.Animations;
 using Robust.Shared.Random;
 
-namespace Content.Server.Animations;
+namespace Content.Server.White.Animations;
 
 public sealed class DancingSystem : EntitySystem
 {
@@ -13,7 +12,7 @@ public sealed class DancingSystem : EntitySystem
     [Dependency] private readonly EmoteAnimationSystem _emoteAnimation = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
-    private readonly string[] _emoteList = {"EmoteFlip", "EmoteTurn"};
+    private readonly string[] _emoteList = { "EmoteFlip", "EmoteTurn" };
 
     public override void Initialize()
     {
