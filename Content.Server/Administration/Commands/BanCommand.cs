@@ -112,7 +112,7 @@ public sealed class BanCommand : LocalizedCommands
         //WD start
         var dbMan = IoCManager.Resolve<IServerDbManager>();
         var banlist = await dbMan.GetServerBansAsync(null, targetUid, null);
-        var banId = banlist[^1].Id;
+        var banId = banlist.Count == 0 ? null : banlist[^1].Id;
 
         var utkaBanned = new UtkaBannedEvent()
         {
