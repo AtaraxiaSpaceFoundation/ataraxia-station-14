@@ -16,6 +16,7 @@ using Content.Shared.White.Cult.Pylon;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
@@ -180,7 +181,7 @@ public sealed class PylonSystem : EntitySystem
                 ? damageComp
                 : null;
 
-            if (playerDamageComp == null || playerDamageComp.Damage.Total == 0)
+            if (playerDamageComp == null)
                 continue;
 
             var uid = comp.Owner;
@@ -234,7 +235,7 @@ public sealed class PylonSystem : EntitySystem
         var damage = comp.BurnDamageOnInteract;
         var burnMsg = Loc.GetString("powered-light-component-burn-hand");
 
-        _audio.Play(comp.BurnHandSound, Filter.Pvs(pylon), pylon, true);
+        _audio.PlayEntity(comp.BurnHandSound, Filter.Pvs(pylon), pylon, true);
         _popupSystem.PopupEntity(burnMsg, pylon, user);
         _damageSystem.TryChangeDamage(user, damage, true);
     }

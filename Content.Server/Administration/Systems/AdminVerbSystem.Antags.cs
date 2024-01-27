@@ -157,7 +157,7 @@ public sealed partial class AdminVerbSystem
                 if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
                     return;
 
-                var playerSession = session as ICommonSession;
+                var playerSession = session;
                 _cultRule.MakeCultist(playerSession!);
             }
         };

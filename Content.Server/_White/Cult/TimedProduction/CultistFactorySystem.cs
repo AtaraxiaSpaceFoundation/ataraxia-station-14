@@ -7,6 +7,8 @@ using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Structures;
 using Content.Shared.White.Cult.UI;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 

@@ -11,4 +11,9 @@ public sealed partial class ExitContainerOnMoveComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public string ContainerId;
+
+    public ExitContainerOnMoveComponent(string containerId)
+    {
+        ContainerId = containerId;
+    }
 }

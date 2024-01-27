@@ -1,8 +1,10 @@
 using System.Linq;
 using Content.Server.Body.Components;
+using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server.White.Cult.UI;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -16,6 +18,7 @@ using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Actions;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.Cult.Runes.Systems;
 
@@ -89,7 +92,7 @@ public partial class CultSystem
             if (!_solutionSystem.TryGetSolution(solutionEntity, puddleComponent.SolutionName, out var solution))
                 continue;
 
-            foreach (var solutionContent in solution.Contents.ToList())
+            foreach (var solutionContent in solution.Value.Comp.Solution.Contents.ToList())
             {
                 if (solutionContent.Reagent.Prototype != "Blood")
                     continue;
@@ -97,7 +100,7 @@ public partial class CultSystem
                 totalBloodAmount += solutionContent.Quantity;
 
                 _bloodstreamSystem.TryModifyBloodLevel(uid, solutionContent.Quantity / 6f);
-                _solutionSystem.RemoveReagent(solutionEntity, solution, "Blood", FixedPoint2.MaxValue);
+                _solutionSystem.RemoveReagent((Entity<SolutionComponent>) solution, "Blood", FixedPoint2.MaxValue);
 
                 if (GetMissingBloodValue(bloodstreamComponent) == 0)
                 {
@@ -120,7 +123,7 @@ public partial class CultSystem
 
     private static FixedPoint2 GetMissingBloodValue(BloodstreamComponent bloodstreamComponent)
     {
-        return bloodstreamComponent.BloodMaxVolume - bloodstreamComponent.BloodSolution.Volume;
+        return bloodstreamComponent.BloodMaxVolume - bloodstreamComponent.BloodSolution!.Value.Comp.Solution.Volume;
     }
 
     private void OnConcealPresence(EntityUid uid, CultistComponent component, CultConcealPresenceWorldActionEvent args)

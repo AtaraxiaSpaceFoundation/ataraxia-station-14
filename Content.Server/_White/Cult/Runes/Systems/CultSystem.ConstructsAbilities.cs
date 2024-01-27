@@ -183,8 +183,8 @@ public partial class CultSystem
             return false;
         }
 
-        // Check there are no mobs there
-        foreach (var entity in _lookupSystem.GetEntitiesIntersecting(tile.Value))
+        // Check there are no mobs there;
+        foreach (var entity in tile.Value.GetEntitiesInTile())
         {
             if (HasComp<MobStateComponent>(entity) && entity != performer)
             {

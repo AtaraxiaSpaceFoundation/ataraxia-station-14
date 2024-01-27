@@ -31,6 +31,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Shared._White;
 using Content.Shared.Mind;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.White.Cult.GameRule;
 
@@ -308,7 +309,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         }
     }
 
-    private List<MindContainerComponent> FindPotentialTargets(List<IPlayerSession> exclude = null!)
+    private List<MindContainerComponent> FindPotentialTargets(List<ICommonSession> exclude = null!)
     {
         var querry = EntityManager.EntityQuery<MindContainerComponent, HumanoidAppearanceComponent, ActorComponent>();
 
@@ -332,9 +333,9 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         return potentialTargets;
     }
 
-    private List<IPlayerSession> FindPotentialCultist(in Dictionary<IPlayerSession, HumanoidCharacterProfile> candidates)
+    private List<ICommonSession> FindPotentialCultist(in Dictionary<ICommonSession, HumanoidCharacterProfile> candidates)
     {
-        var list = new List<IPlayerSession>();
+        var list = new List<ICommonSession>();
         var pendingQuery = GetEntityQuery<PendingClockInComponent>();
 
         foreach (var player in candidates.Keys)
@@ -349,7 +350,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             list.Add(player);
         }
 
-        var prefList = new List<IPlayerSession>();
+        var prefList = new List<ICommonSession>();
 
         foreach (var player in list)
         {
@@ -388,9 +389,9 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         return prefList;
     }
 
-    private List<IPlayerSession> PickCultists(List<IPlayerSession> prefList)
+    private List<ICommonSession> PickCultists(List<ICommonSession> prefList)
     {
-        var result = new List<IPlayerSession>();
+        var result = new List<ICommonSession>();
         if (prefList.Count == 0)
         {
             _sawmill.Info("Insufficient ready players to fill up with cultists, stopping the selection.");
@@ -410,7 +411,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         return result;
     }
 
-    public bool MakeCultist(IPlayerSession cultist)
+    public bool MakeCultist(ICommonSession cultist)
     {
         var cultistRule = EntityQuery<CultRuleComponent>().FirstOrDefault();
 

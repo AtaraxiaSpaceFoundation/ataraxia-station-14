@@ -2,6 +2,7 @@
 using Content.Shared.White.Cult;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Player;
 
 namespace Content.Server.White.Cult.Structures;
 
@@ -22,7 +23,7 @@ public sealed class CultStructureCraftSystem : EntitySystem
         if (!HasComp<CultistComponent>(args.User))
             return;
 
-        if (!_playerManager.TryGetSessionByEntity(args.User, out var session) || session is not IPlayerSession playerSession)
+        if (!_playerManager.TryGetSessionByEntity(args.User, out var session) || session is not { } playerSession)
             return;
 
         if (_uiSystem.TryGetUi(uid, component.UserInterfaceKey, out var bui))

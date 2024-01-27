@@ -107,6 +107,11 @@ public sealed partial class ArtifactCrusherComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public bool AutoLock = false;
+
+    public ArtifactCrusherComponent(Container outputContainer)
+    {
+        OutputContainer = outputContainer;
+    }
 }
 
 [Serializable, NetSerializable]

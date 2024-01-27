@@ -17,4 +17,9 @@ public sealed partial class DragInsertContainerComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool UseVerbs = true;
+
+    public DragInsertContainerComponent(string containerId)
+    {
+        ContainerId = containerId;
+    }
 }

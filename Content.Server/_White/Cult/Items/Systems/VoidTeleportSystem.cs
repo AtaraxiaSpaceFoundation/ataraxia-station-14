@@ -9,6 +9,7 @@ using Content.Shared.Pulling.Components;
 using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Items;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Timer = Robust.Shared.Timing.Timer;

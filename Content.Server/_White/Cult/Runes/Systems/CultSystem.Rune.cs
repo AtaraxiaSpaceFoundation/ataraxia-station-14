@@ -34,6 +34,8 @@ using Content.Shared.White.Cult.Runes;
 using Content.Shared.White.Cult.UI;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
@@ -117,8 +119,6 @@ public sealed partial class CultSystem : EntitySystem
     private const string CultBarrierPrototypeId = "CultBarrier";
 
     private bool _doAfterAlreadyStarted;
-
-    private IPlayingAudioStream? _playingStream;
 
     private readonly SoundPathSpecifier _teleportInSound = new("/Audio/White/Cult/veilin.ogg");
     private readonly SoundPathSpecifier _teleportOutSound = new("/Audio/White/Cult/veilout.ogg");
@@ -310,11 +310,12 @@ public sealed partial class CultSystem : EntitySystem
         {
             return;
         }
-
-        if (solution.Solutions.TryGetValue("vapor", out var vapor) && vapor.Contents.Any(x => x.Reagent.Prototype == "HolyWater"))
+#pragma warning disable RA0002
+        if (solution.Solutions!.TryGetValue("vapor", out var vapor) && vapor.Contents.Any(x => x.Reagent.Prototype == "HolyWater"))
         {
             Del(uid);
         }
+#pragma warning restore RA0002
     }
 
     //Erasing end
@@ -414,7 +415,8 @@ public sealed partial class CultSystem : EntitySystem
             var canBeConverted = _entityManager.TryGetComponent<MindContainerComponent>(victim.Value, out var mind) && mind.HasMind;
 
             // Проверка, является ли жертва целью
-            var isTarget = mind != null && mind.Mind!.Value == target?.OwnedComponent?.Mind!.Value;
+            _entityManager.TryGetComponent<MindContainerComponent>(target?.CurrentEntity, out var targetMind);
+            var isTarget = mind != null && mind.Mind!.Value == targetMind?.Mind!.Value;
             var jobAllowConvert = true;
 
             if(_jobSystem.MindTryGetJob(mind!.Mind!.Value, out var _, out var prototype))
@@ -742,17 +744,13 @@ public sealed partial class CultSystem : EntitySystem
         _chat.DispatchGlobalAnnouncement(Loc.GetString("cult-ritual-started"), "CULT", false,
             colorOverride: Color.DarkRed);
 
-        _playingStream = _audio.PlayGlobal(_narsie40Sec, Filter.Broadcast(), false,
-            AudioParams.Default.WithLoop(true).WithVolume(0.15f));
+        _audio.PlayGlobal(_narsie40Sec, Filter.Broadcast(), false, AudioParams.Default.WithLoop(true).WithVolume(0.15f));
 
         return true;
     }
 
     private void NarsieSpawn(EntityUid uid, CultistComponent component, SummonNarsieDoAfterEvent args)
     {
-        if (_playingStream != null)
-            _playingStream.Stop();
-
         _doAfterAlreadyStarted = false;
 
         if (args.Cancelled)

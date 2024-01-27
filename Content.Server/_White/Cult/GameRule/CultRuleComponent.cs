@@ -7,6 +7,7 @@ using Content.Shared.Roles;
 using Content.Shared.White.Cult;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
@@ -41,7 +42,7 @@ public sealed partial class CultRuleComponent : Component
     [DataField("pentagramThreshold")]
     public static int PentagramThreshold = 8;
 
-    public Dictionary<IPlayerSession, HumanoidCharacterProfile> StarCandidates = new();
+    public Dictionary<ICommonSession, HumanoidCharacterProfile> StarCandidates = new();
 
     [DataField("cultistStartingItems", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
     public List<string> StartingItems = new();
