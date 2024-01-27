@@ -45,7 +45,7 @@
   - type: Item
     sprite: Objects/Tools/wirecutters.rsi
     storedRotation: -90
-  - type: LatticeCutting
+  - type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -188,7 +188,7 @@
       - Prying
     useSound:
       path: /Audio/Items/crowbar.ogg
-  - type: TilePrying
+  - type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -479,7 +479,6 @@
   - type: Tag
     tags:
     - Multitool
-  - type: TilePrying
   - type: Prying
     enabled: false
   - type: Tool
@@ -487,7 +486,7 @@
       - Screwing
     speed: 1.2 # Kept for future adjustments. Currently 1.2x for balance
     useSound: /Audio/Items/drill_use.ogg
-  - type: LatticeCutting
+  - type: ToolTileCompatible
   - type: MultipleTool
     statusShowBehavior: true
     entries:
@@ -537,9 +536,6 @@
   id: Shovel
   description: A large tool for digging and moving dirt.
   components:
-  - type: Tag
-    tags:
-    - Shovel
   - type: Sprite
     sprite: Objects/Tools/shovel.rsi
     state: icon
@@ -557,6 +553,7 @@
       Wood: 50
   - type: StaticPrice
     price: 25
+  - type: Shovel
 
 - type: entity
   parent: BaseItem

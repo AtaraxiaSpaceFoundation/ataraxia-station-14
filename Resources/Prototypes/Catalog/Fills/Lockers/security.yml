@@ -72,6 +72,8 @@
         prob: 0.1
       - id: ClothingEyesHudSecurity
       - id: WeaponDisabler
+      - id: HoloprojectorSecurity
+        prob: 0.6
 
 - type: entity
   id: LockerBrigmedicFilled
@@ -128,6 +130,7 @@
       - id: BoxForensicPad
       - id: DrinkDetFlask
       - id: ClothingHandsGlovesForensic
+      - id: HoloprojectorSecurity
 
 - type: entity
   id: ClosetBombFilled

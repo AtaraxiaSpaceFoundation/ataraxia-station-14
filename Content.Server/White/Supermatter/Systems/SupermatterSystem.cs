@@ -551,7 +551,7 @@ namespace Content.Server.White.Supermatter.Systems
             if (EntityManager.TryGetComponent<SupermatterFoodComponent>(target, out var supermatterFood))
                 supermatter.Power += supermatterFood.Energy;
             else if (EntityManager.TryGetComponent<ProjectileComponent>(target, out var projectile))
-                supermatter.Power += (float) projectile.Damage.Total;
+                supermatter.Power += (float) projectile.Damage.GetTotal();
             else
                 supermatter.Power++;
 

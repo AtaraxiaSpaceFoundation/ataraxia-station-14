@@ -20,7 +20,6 @@ using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
 using Robust.Server.GameStates;
 using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -69,10 +68,6 @@ public sealed partial class ExplosionSystem
     public const ushort DefaultTileSize = 1;
 
     public const int MaxExplosionAudioRange = 30;
-
-    //WD-EDIT
-    private readonly SoundCollectionSpecifier _meteorsHit = new("ShuttleImpactSound");
-    //WD-EDIT
 
     /// <summary>
     ///     The "default" explosion prototype.
@@ -187,7 +182,6 @@ public sealed partial class ExplosionSystem
             explosive.TileBreakScale,
             explosive.MaxTileBreak,
             explosive.CanCreateVacuum,
-            explosive.CanShakeGrid, //WD-EDIT
             user);
 
         if (explosive.DeleteAfterExplosion ?? delete)
@@ -258,14 +252,16 @@ public sealed partial class ExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool canShakeGrid = false, //WD-EDIT
         EntityUid? user = null,
         bool addLog = true)
     {
         var pos = Transform(uid);
 
+        var mapPos = _transformSystem.GetMapCoordinates(pos);
 
-        QueueExplosion(pos.MapPosition, typeId, totalIntensity, slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum, canShakeGrid, addLog: false); //WD-EDIT
+        var posFound = _transformSystem.TryGetMapOrGridCoordinates(uid, out var gridPos, pos);
+
+        QueueExplosion(mapPos, typeId, totalIntensity, slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false);
 
         if (!addLog)
             return;
@@ -273,17 +269,17 @@ public sealed partial class ExplosionSystem
         if (user == null)
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(uid):entity} exploded ({typeId}) at {pos.Coordinates:coordinates} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(uid):entity} exploded ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
             _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-explosion-no-player",
                 ("entity", ToPrettyString(uid)), ("coordinates", pos), ("intensity", totalIntensity), ("slope", slope)));
         }
         else
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at {pos.Coordinates:coordinates} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
             var alertMinExplosionIntensity = _cfg.GetCVar(CCVars.AdminAlertExplosionMinIntensity);
             if (alertMinExplosionIntensity > -1 && totalIntensity >= alertMinExplosionIntensity)
-                _chat.SendAdminAlert(user.Value, $"caused {ToPrettyString(uid)} to explode ({typeId}:{totalIntensity}) at {pos.Coordinates:coordinates}");
+                _chat.SendAdminAlert(user.Value, $"caused {ToPrettyString(uid)} to explode ({typeId}:{totalIntensity}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")}");
         }
     }
 
@@ -298,7 +294,6 @@ public sealed partial class ExplosionSystem
         float tileBreakScale = 1f,
         int maxTileBreak = int.MaxValue,
         bool canCreateVacuum = true,
-        bool canShakeGrid = false, //WD-EDIT
         bool addLog = true)
     {
         if (totalIntensity <= 0 || slope <= 0)
@@ -314,7 +309,7 @@ public sealed partial class ExplosionSystem
             _adminLogger.Add(LogType.Explosion, LogImpact.High, $"Explosion ({typeId}) spawned at {epicenter:coordinates} with intensity {totalIntensity} slope {slope}");
 
         _explosionQueue.Enqueue(() => SpawnExplosion(epicenter, type, totalIntensity,
-            slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum, canShakeGrid)); //WD-EDIT
+            slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum));
     }
 
     /// <summary>
@@ -329,8 +324,7 @@ public sealed partial class ExplosionSystem
         float maxTileIntensity,
         float tileBreakScale,
         int maxTileBreak,
-        bool canCreateVacuum,
-        bool canShakeGrid) //WD-EDIT
+        bool canCreateVacuum)
     {
         if (!_mapManager.MapExists(epicenter.MapId))
             return null;
@@ -343,13 +337,6 @@ public sealed partial class ExplosionSystem
         var (area, iterationIntensity, spaceData, gridData, spaceMatrix) = results.Value;
 
         var visualEnt = CreateExplosionVisualEntity(epicenter, type.ID, spaceMatrix, spaceData, gridData.Values, iterationIntensity);
-
-        //WD-EDIT
-        if (canShakeGrid)
-        {
-            ShakeGrid(epicenter, totalIntensity);
-        }
-        //WD-EDIT
 
         // camera shake
         CameraShake(iterationIntensity.Count * 4f, epicenter, totalIntensity);
@@ -379,13 +366,6 @@ public sealed partial class ExplosionSystem
             : type.SoundFar;
 
         _audio.PlayGlobal(farSound, farFilter, true, farSound.Params);
-
-        //WD-EDIT
-        if (canShakeGrid)
-        {
-            ShakeGrid(epicenter, totalIntensity);
-        }
-        //WD-EDIT
 
         return new Explosion(this,
             type,
@@ -433,24 +413,4 @@ public sealed partial class ExplosionSystem
         args.Msg.PushNewline();
         args.Msg.AddMarkup(Loc.GetString(component.Examine, ("value", value)));
     }
-
-    //WD-EDIT
-    private void ShakeGrid(MapCoordinates epicenter, float totalIntensity)
-    {
-        foreach (var grid in _mapManager.GetAllMapGrids(epicenter.MapId))
-        {
-            if (HasComp<MapGridComponent>(grid.Owner))
-            {
-                CameraShake(1000, epicenter, totalIntensity);
-                PlayShakeSound(epicenter);
-            }
-        }
-    }
-
-    private void PlayShakeSound(MapCoordinates epicenter)
-    {
-        var filter = Filter.Pvs(epicenter).AddPlayersByPvs(epicenter, 1000);
-        _audio.PlayGlobal(_meteorsHit, filter, false, AudioHelpers.WithVariation(1f).WithVolume(-10f));
-    }
-    //WD-EDIT
 }

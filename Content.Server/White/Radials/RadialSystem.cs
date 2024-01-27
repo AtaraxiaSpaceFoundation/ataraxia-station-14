@@ -5,6 +5,7 @@ using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Hands.Components;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Verbs;
 using Content.Shared.White.Radials;
 using Content.Shared.White.Radials.Systems;
@@ -97,7 +98,7 @@ public sealed class RadialSystem : SharedRadialSystem
             }
 
             // if this is a virtual pull, get the held entity
-            if (holding != null && TryComp(holding, out HandVirtualItemComponent? pull))
+            if (holding != null && TryComp(holding, out VirtualItemComponent? pull))
                 holding = pull.BlockingEntity;
 
             var verbText = $"{radial.Text}".Trim();

@@ -127,7 +127,7 @@ namespace Content.Server.Sandbox
             if (e.NewStatus != SessionStatus.Connected || e.OldStatus != SessionStatus.Connecting)
                 return;
 
-            RaiseNetworkEvent(new MsgSandboxStatus { SandboxAllowed = IsSandboxEnabled }, e.Session.ConnectedClient);
+            RaiseNetworkEvent(new MsgSandboxStatus { SandboxAllowed = IsSandboxEnabled }, e.Session.Channel);
         }
 
         private void SandboxRespawnReceived(MsgSandboxRespawn message, EntitySessionEventArgs args)
@@ -135,7 +135,7 @@ namespace Content.Server.Sandbox
             if (!IsSandboxEnabled)
                 return;
 
-            var player = _playerManager.GetSessionByChannel(args.SenderSession.ConnectedClient);
+            var player = _playerManager.GetSessionByChannel(args.SenderSession.Channel);
             if (player.AttachedEntity == null) return;
 
             _ticker.Respawn(player);
@@ -146,7 +146,7 @@ namespace Content.Server.Sandbox
             if (!IsSandboxEnabled)
                 return;
 
-            var player = _playerManager.GetSessionByChannel(args.SenderSession.ConnectedClient);
+            var player = _playerManager.GetSessionByChannel(args.SenderSession.Channel);
             if (player.AttachedEntity is not { } attached)
             {
                 return;
@@ -207,7 +207,7 @@ namespace Content.Server.Sandbox
             if (!IsSandboxEnabled)
                 return;
 
-            var player = _playerManager.GetSessionByChannel(args.SenderSession.ConnectedClient);
+            var player = _playerManager.GetSessionByChannel(args.SenderSession.Channel);
 
             _host.ExecuteCommand(player, _conGroupController.CanCommand(player, "aghost") ? "aghost" : "ghost");
         }
@@ -217,7 +217,7 @@ namespace Content.Server.Sandbox
             if (!IsSandboxEnabled)
                 return;
 
-            var player = _playerManager.GetSessionByChannel(args.SenderSession.ConnectedClient);
+            var player = _playerManager.GetSessionByChannel(args.SenderSession.Channel);
             _host.ExecuteCommand(player, "suicide");
         }
 

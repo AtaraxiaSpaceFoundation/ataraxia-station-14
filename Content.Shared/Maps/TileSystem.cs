@@ -65,22 +65,7 @@ public sealed class TileSystem : EntitySystem
 
         var tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.TypeId];
 
-        if (!tileDef.CanCrowbar && !(pryPlating && tileDef.CanAxe))
-            return false;
-
-        return DeconstructTile(tileRef);
-    }
-
-    public bool CutTile(TileRef tileRef)
-    {
-        var tile = tileRef.Tile;
-
-        if (tile.IsEmpty)
-            return false;
-
-        var tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.TypeId];
-
-        if (!tileDef.CanWirecutter)
+        if (!tileDef.CanCrowbar)
             return false;
 
         return DeconstructTile(tileRef);

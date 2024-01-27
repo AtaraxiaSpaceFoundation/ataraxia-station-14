@@ -175,7 +175,7 @@ namespace Content.Server.Voting
                     DisplayVoteResult(vote, chatMgr, args);
                 }
 
-                for (int i = 0; i < eventArgs.Votes.Count - 1; i++)
+                for (int i = 0; i < eventArgs.Votes.Count; i++)
                 {
                     var oldName = payload.Embeds[0].Fields[i].Name;
                     var newValue = eventArgs.Votes[i].ToString();

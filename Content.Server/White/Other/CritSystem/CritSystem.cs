@@ -50,7 +50,7 @@ public sealed class CritSystem : EntitySystem
             if (!TryComp<MobStateComponent>(target, out var mobState) || _mobState.IsDead(target, mobState))
                 continue;
 
-            var damage = args.BaseDamage.Total * component.CritMultiplier;
+            var damage = args.BaseDamage.GetTotal() * component.CritMultiplier;
 
             if (component.IsBloodDagger)
             {
@@ -61,11 +61,11 @@ public sealed class CritSystem : EntitySystem
                 _bloodstream.TryModifyBloodLevel(args.User, ohio);
                 _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(damageGroup, -ohio));
 
-                damage = args.BaseDamage.Total * component.CritMultiplier + ohio;
+                damage = args.BaseDamage.GetTotal() * component.CritMultiplier + ohio;
             }
 
             args.BonusDamage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"),
-                damage - args.BaseDamage.Total);
+                damage - args.BaseDamage.GetTotal());
 
             _popup.PopupEntity($@"Crit! {damage}", args.User, PopupType.MediumCaution);
         }

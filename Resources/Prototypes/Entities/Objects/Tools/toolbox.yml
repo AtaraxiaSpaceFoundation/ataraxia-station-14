@@ -3,7 +3,6 @@
   parent: BaseStorageItem
   abstract: true
   components:
-  - type: Sprite
   # WD edit sounds start
   - type: EmitSoundOnPickup
     sound:
@@ -12,6 +11,10 @@
     sound:
       path: /Audio/Items/toolbox_drop.ogg
   # WD edit sounds end
+  - type: Sprite
+    layers:
+      - map: [ base ]
+        state: icon
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/toolbox_drop.ogg
@@ -31,6 +34,13 @@
     tags:
     - DroneUsable
     - Toolbox
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
+  - type: Appearance
 
 - type: entity
   name: emergency toolbox

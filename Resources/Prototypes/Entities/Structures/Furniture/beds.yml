@@ -105,7 +105,7 @@
         acts: ["Destruction"]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
@@ -148,9 +148,9 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
-#     - !type:PlaySoundBehavior WD edit - govno
-#       sound:
-#         path: /Audio/Effects/woodhit.ogg
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWebSilk:
