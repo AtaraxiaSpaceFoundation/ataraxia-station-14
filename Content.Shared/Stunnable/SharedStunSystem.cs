@@ -252,6 +252,13 @@ public abstract class SharedStunSystem : EntitySystem
         args.Modifier *= KnockDownModifier;
     }
 
+    //WD EDIT START
+    public bool IsParalyzed(EntityUid uid)
+    {
+        return HasComp<StunnedComponent>(uid) || HasComp<KnockedDownComponent>(uid);
+    }
+    //WD EDIT END
+
     #region Attempt Event Handling
 
     private void OnMoveAttempt(EntityUid uid, StunnedComponent stunned, UpdateCanMoveEvent args)

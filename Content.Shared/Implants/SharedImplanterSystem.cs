@@ -14,6 +14,31 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Implants;
 
+//WD EDIT START
+public class SubdermalImplantInserted
+{
+    public EntityUid Entity;
+    public SubdermalImplantComponent Component;
+    public SubdermalImplantInserted(EntityUid entity, SubdermalImplantComponent component)
+    {
+        Entity = entity;
+        Component = component;
+    }
+}
+
+public class SubdermalImplantRemoved
+{
+    public EntityUid Entity;
+    public SubdermalImplantComponent Component;
+    public SubdermalImplantRemoved(EntityUid entity, SubdermalImplantComponent component)
+    {
+        Entity = entity;
+        Component = component;
+    }
+}
+
+//WD EDIT END
+
 public abstract class SharedImplanterSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -68,6 +93,7 @@ public abstract class SharedImplanterSystem : EntitySystem
         implantComp.ImplantedEntity = target;
         implantContainer.OccludesLight = false;
         _container.Insert(implant.Value, implantContainer);
+        RaiseLocalEvent(new SubdermalImplantInserted(implantComp.ImplantedEntity!.Value, implantComp)); //WD EDIT
 
         if (component.CurrentMode == ImplanterToggleMode.Inject && !component.ImplantOnly)
             DrawMode(implanter, component);
@@ -142,6 +168,7 @@ public abstract class SharedImplanterSystem : EntitySystem
                 }
 
                 _container.Remove(implant, implantContainer);
+                RaiseLocalEvent(new SubdermalImplantRemoved(implantComp.ImplantedEntity!.Value, implantComp)); // WD EDIT
                 implantComp.ImplantedEntity = null;
                 _container.Insert(implant, implanterContainer);
                 permanentFound = implantComp.Permanent;

@@ -201,6 +201,14 @@
         type: HumanoidMarkingModifierBoundUserInterface
       - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
+      # WD-EDIT
+      - key: enum.NameSelectorUIKey.Key
+        type: NameSelectorBUI
+      - key: enum.RuneTeleporterUiKey.Key
+        type: TeleportRunesListWindowBUI
+      - key: enum.SummonCultistUiKey.Key
+        type: SummonCultistListWindowBUI
+      # WD-EDIT END
   - type: Puller
   - type: Butcherable
     butcheringType: Spike # TODO human.

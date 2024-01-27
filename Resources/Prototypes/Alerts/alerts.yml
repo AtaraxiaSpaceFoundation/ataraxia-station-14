@@ -469,6 +469,12 @@
   name: Debug6
   description: Debug
 
+- type: alert
+  id: CultBuffed
+  icons: [ /Textures/Interface/Alerts/buff.png ]
+  name: alerts-cult-buff-name
+  description: alerts-cult-buff-desc
+
 # WD-EDIT
 - type: alert
   id: Bleeding

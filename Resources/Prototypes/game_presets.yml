@@ -123,3 +123,32 @@
   rules:
     - Pirates
     - BasicStationEventScheduler
+
+- type: gamePreset
+  id: PeaceAndTranquility
+  alias:
+    - Peace
+  name: peace-and-tranquility-title
+  description: peace-and-tranquility-desc
+  showInVote: true
+
+- type: gamePreset
+  id: EventsMode
+  alias:
+    - Events
+  name: event-mode-title
+  description: event-mode-desc
+  showInVote: false
+
+#WD EDIT START
+- type: gamePreset
+  id: Cult
+  alias:
+    - cult
+  name: CULT
+  description: CULT
+  showInVote: true
+  rules:
+    - Cult
+    - BasicStationEventScheduler
+#WD EDIT END

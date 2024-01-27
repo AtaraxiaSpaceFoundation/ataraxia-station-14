@@ -85,3 +85,11 @@
   spawn: MaterialBones1
   maxCount: 30
   itemSize: 1
+
+- type: stack
+  id: RunicMetalSheets
+  name: runic metal
+  icon: { sprite: /Textures/White/Cult/Entities/runic_metal.rsi, state: runic}
+  spawn: CultRunicMetal1
+  maxCount: 30
+  itemSize: 1

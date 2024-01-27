@@ -20,6 +20,8 @@ using Content.Shared.Input;
 using Content.Shared.Radio;
 using Content.Shared.White;
 using Content.Shared.White.Utils;
+using Content.Shared.White.Cult;
+using Content.Shared.White.Cult.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -50,6 +52,8 @@ public sealed class ChatUIController : UIController
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly CultistWordGeneratorManager _wordGenerator = default!;
+
 
     [UISystemDependency] private readonly ExamineSystem? _examine = default;
     [UISystemDependency] private readonly GhostSystem? _ghost = default;
@@ -69,7 +73,8 @@ public sealed class ChatUIController : UIController
         {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
-        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead}
+        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
+        {SharedChatSystem.CultPrefix, ChatSelectChannel.Cult}, //WD EDIT
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -82,7 +87,9 @@ public sealed class ChatUIController : UIController
         {ChatSelectChannel.Emotes, SharedChatSystem.EmotesPrefix},
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
-        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix}
+        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
+        {ChatSelectChannel.Cult, SharedChatSystem.CultPrefix} // WD EDIT
+
     };
 
     /// <summary>
@@ -195,6 +202,9 @@ public sealed class ChatUIController : UIController
         _input.SetInputCommand(ContentKeyFunctions.FocusAdminChat,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Admin)));
 
+        _input.SetInputCommand(ContentKeyFunctions.FocusCultChat,
+            InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Cult)));
+
         _input.SetInputCommand(ContentKeyFunctions.FocusRadio,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Radio)));
 
@@ -210,10 +220,21 @@ public sealed class ChatUIController : UIController
         _input.SetInputCommand(ContentKeyFunctions.CycleChatChannelBackward,
             InputCmdHandler.FromDelegate(_ => CycleChatChannel(false)));
 
+        // WD EDIT
+        SubscribeLocalEvent<EventCultistComponentState>(OnUpdateCultState);
+        // WD EDIT END
+
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
     }
+
+    // WD EDIT
+    private void OnUpdateCultState(EventCultistComponentState ev)
+    {
+        UpdateChannelPermissions();
+    }
+    // WD EDIT END
 
     public void OnScreenLoad()
     {
@@ -512,6 +533,15 @@ public sealed class ChatUIController : UIController
             CanSendChannels |= ChatSelectChannel.Admin;
         }
 
+        // WD EDIT
+        var localEnt = _player.LocalPlayer != null ? _player.LocalPlayer.ControlledEntity : null;
+        if (_entities.TryGetComponent(localEnt, out CultistComponent? comp))
+        {
+            FilterableChannels |= ChatChannel.Cult;
+            CanSendChannels |= ChatSelectChannel.Cult;
+        }
+        // WD EDIT END
+
         SelectableChannels = CanSendChannels;
 
         // Necessary so that we always have a channel to fall back to.
@@ -800,6 +830,13 @@ public sealed class ChatUIController : UIController
             case ChatChannel.Whisper:
                 AddSpeechBubble(msg, SpeechBubble.SpeechType.Whisper);
                 break;
+
+            // WD EDIT
+            case ChatChannel.Cult:
+                msg.Message = _wordGenerator.GenerateText(msg.Message);
+                AddSpeechBubble(msg, SpeechBubble.SpeechType.Whisper);
+                break;
+            // WD EDIT END
 
             case ChatChannel.Dead:
                 if (_ghost is not {IsGhost: true})

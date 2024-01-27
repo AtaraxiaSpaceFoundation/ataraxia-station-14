@@ -30,6 +30,7 @@ using Content.Shared.Players;
 using Content.Shared.Radio;
 using Content.Shared.White;
 using Content.Shared.Speech;
+using Content.Shared.White.Cult;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -342,6 +343,9 @@ public sealed partial class ChatSystem : SharedChatSystem
                 break;
             case InGameOOCChatType.Looc:
                 SendLOOC(source, player, message, hideChat);
+                break;
+            case InGameOOCChatType.Cult:
+                SendCultChat(source, player, message, hideChat);
                 break;
         }
     }
@@ -699,6 +703,32 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         SendInVoiceRange(ChatChannel.LOOC, message, wrappedMessage, source, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, player.UserId);
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"LOOC from {player:Player}: {message}");
+    }
+
+    // WD EDIT
+    private void SendCultChat(EntityUid source, ICommonSession player, string message, bool hideChat)
+    {
+        var clients = GetCultChatClients();
+        var playerName = Name(source);
+        string wrappedMessage;
+        wrappedMessage = Loc.GetString("chat-manager-send-cult-chat-wrap-message",
+            ("channelName", Loc.GetString("chat-manager-cult-channel-name")),
+            ("player", playerName),
+            ("message", FormattedMessage.EscapeText(message)));
+
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Cult chat from {player:Player}: {message}");
+
+        _chatManager.ChatMessageToMany(ChatChannel.Cult, message, wrappedMessage, source, hideChat, false, clients.ToList());
+    }
+
+    private IEnumerable<INetChannel> GetCultChatClients()
+    {
+        return Filter.Empty()
+            .AddWhereAttachedEntity(HasComp<GhostComponent>)
+            .AddWhereAttachedEntity(HasComp<CultistComponent>)
+            .Recipients
+            .Union(_adminManager.ActiveAdmins)
+            .Select(p => p.ConnectedClient);
     }
 
     private void SendDeadChat(EntityUid source, ICommonSession player, string message, bool hideChat)
@@ -1104,7 +1134,8 @@ public enum InGameICChatType : byte
 public enum InGameOOCChatType : byte
 {
     Looc,
-    Dead
+    Dead,
+    Cult
 }
 
 /// <summary>

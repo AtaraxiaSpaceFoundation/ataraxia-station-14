@@ -83,3 +83,14 @@
   - Zombie
   - SimpleHostile
   - Dragon
+
+# WD EDIT STARt
+- type: npcFaction
+  id: Cultist
+  hostile:
+    - NanoTrasen
+    - SimpleHostile
+    - Xeno
+    - PetsNT
+    - Syndicate
+# WD EDIT END
