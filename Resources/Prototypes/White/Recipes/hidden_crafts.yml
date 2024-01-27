@@ -9,7 +9,7 @@
         steps:
           - tag: EnergySword
   - node: desword
-    entity: EnergyDoubleSword
+    entity: EnergySwordDouble
 
 - type: constructionGraph
   id: WeaponFlamethrowerGraph
