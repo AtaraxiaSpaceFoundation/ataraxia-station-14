@@ -54,6 +54,6 @@
     underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
   underweart: ClothingUnderwearTopBraHOS # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtHoS
+  innerClothingSkirt: ClothingUniformJumpskirtHoS
   satchel: ClothingBackpackSatchelHOSFilled
   duffelbag: ClothingBackpackDuffelHOSFilled

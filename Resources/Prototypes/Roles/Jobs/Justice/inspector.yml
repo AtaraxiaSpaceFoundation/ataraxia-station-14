@@ -34,6 +34,6 @@
   underwearb: ClothingUnderwearBottomPantiesInspector # White-Underwear
   inhand:
     - BriefcaseBrownFilled
-  innerclothingskirt: ClothingUniformJumpskirtInspector
+  innerClothingSkirt: ClothingUniformJumpskirtInspector
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelFilled

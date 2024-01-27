@@ -2,7 +2,7 @@
   id: GauzeLefteyePatch
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Moth, Dwarf, Human, Arachnid]
+  speciesRestriction: [Moth, Dwarf, Human]
   coloring:
     default:
       type:
@@ -16,7 +16,7 @@
   id: GauzeLefteyeTape
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Moth, Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Moth, Dwarf, Human, Reptilian]
   coloring:
     default:
       type:
@@ -30,7 +30,7 @@
   id: GauzeRighteyePatch
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Moth, Dwarf, Human, Arachnid]
+  speciesRestriction: [Moth, Dwarf, Human]
   coloring:
     default:
       type:
@@ -44,7 +44,7 @@
   id: GauzeRighteyeTape
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Moth, Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Moth, Dwarf, Human, Reptilian]
   coloring:
     default:
       type:
@@ -58,7 +58,7 @@
   id: GauzeBlindfold
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Moth, Dwarf, Human, Arachnid]
+  speciesRestriction: [Moth, Dwarf, Human]
   coloring:
     default:
       type:
@@ -81,7 +81,7 @@
   sprites:
   - sprite: Mobs/Customization/gauze.rsi
     state: gauze_shoulder
-    
+
 - type: marking
   id: GauzeStomach
   bodyPart: Chest
@@ -179,7 +179,7 @@
   sprites:
   - sprite: Mobs/Customization/gauze.rsi
     state: gauze_upperleg_r
-    
+
 - type: marking
   id: GauzeLowerLegRight
   bodyPart: RFoot
@@ -193,7 +193,7 @@
   sprites:
   - sprite: Mobs/Customization/gauze.rsi
     state: gauze_lowerleg_r
-    
+
 - type: marking
   id: GauzeBoxerWrapRight
   bodyPart: RHand
@@ -207,7 +207,7 @@
   sprites:
   - sprite: Mobs/Customization/gauze.rsi
     state: gauze_boxerwrap_r
-    
+
 - type: marking
   id: GauzeBoxerWrapLeft
   bodyPart: LHand

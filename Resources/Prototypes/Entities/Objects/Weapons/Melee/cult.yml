@@ -39,7 +39,7 @@
     attackRate: 0.75
     damage:
       types:
-        Slash: 16
+        Slash: 33
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Item
@@ -69,14 +69,14 @@
     damage:
       types:
         Blunt: 10
-        Slash: 10
+        Slash: 20
         Structural: 5
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 5
-        Slash: 5
+        Blunt: 4
+        Slash: 12
         Structural: 10
   - type: Item
     size: Ginormous

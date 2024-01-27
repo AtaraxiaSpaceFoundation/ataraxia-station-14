@@ -73,6 +73,9 @@
     Telecrystal: 2
   categories:
   - UplinkImplants
+  conditions:
+  - !type:ListingLimitedStockCondition # To prevent infinitely cheinsmoking using multiple implants
+    stock: 1
 
 - type: listing
   id: UplinkHardlightSpearImplanter
