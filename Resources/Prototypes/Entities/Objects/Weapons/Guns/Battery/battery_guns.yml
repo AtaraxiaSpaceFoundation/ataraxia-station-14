@@ -751,4 +751,8 @@
     - type: StaticPrice
       price: 800
     - type: Item
-      size: Normal
+      size: Large
+    - type: Tag
+      tags:
+        - Taser
+        - Sidearm
