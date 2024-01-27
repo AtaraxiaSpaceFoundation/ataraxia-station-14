@@ -298,6 +298,9 @@
     soundHit:
       collection: WeakHit
     forceSound: true
+  - type: Reflective
+    reflective:
+    - Energy
 
 - type: entity
   name: emitter bolt
@@ -375,6 +378,9 @@
         Cold: 10
   - type: TimedDespawn
     lifetime: 3
+  - type: Reflective
+    reflective:
+    - Energy
 
 - type: entity
   name: magmawing watcher bolt
@@ -394,6 +400,9 @@
     damage:
       types:
         Heat: 10
+  - type: Reflective
+    reflective:
+    - Energy
 
 - type: entity
   id: BulletKinetic
@@ -902,8 +911,7 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Impassable
-        - BulletImpassable
+        - Opaque
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
