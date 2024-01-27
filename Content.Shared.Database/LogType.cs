@@ -9,9 +9,6 @@ public enum LogType
     Healed = 3,
     Slip = 4,
     EventAnnounced = 5,
-    AspectAnnounced = 86,
-    AspectStarted = 87,
-    AspectStopped = 88,
     EventStarted = 6,
     EventRan = 16,
     EventStopped = 7,
@@ -98,4 +95,10 @@ public enum LogType
     /// </summary>
     ChatRateLimited = 87,
     AtmosTemperatureChanged = 88,
+
+    // WD EDIT
+    AspectAnnounced = 89,
+    AspectStarted = 90,
+    AspectStopped = 91,
+    // WD EDIT
 }
