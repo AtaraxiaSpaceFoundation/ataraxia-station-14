@@ -268,6 +268,7 @@
     Telecrystal: 11
   categories:
     - UplinkExplosives
+  saleLimit: 1
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
@@ -483,6 +484,7 @@
     Telecrystal: 65
   categories:
     - UplinkUtility
+  saleLimit: 1
   conditions:
     - !type:StoreWhitelistCondition
       whitelist:
@@ -707,6 +709,7 @@
     Telecrystal: 20
   categories:
   - UplinkImplants
+  saleLimit: 1
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
@@ -1000,6 +1003,7 @@
     Telecrystal: 8
   categories:
   - UplinkTools
+  saleLimit: 1
   conditions:
   - !type:BuyerWhitelistCondition
     blacklist:
@@ -1037,19 +1041,19 @@
     whitelist:
     - Botanist
 
-- type: listing
-  id: uplinkRiggedBoxingGlovesPassenger
-  name: uplink-rigged-boxing-gloves-name
-  description: uplink-rigged-boxing-gloves-desc
-  productEntity: ClothingHandsGlovesBoxingRigged
-  cost:
-    Telecrystal: 6
-  categories:
-    - UplinkJob
-  conditions:
-    - !type:BuyerJobCondition
-      whitelist:
-        - Passenger
+#- type: listing
+#  id: uplinkRiggedBoxingGlovesPassenger
+#  name: uplink-rigged-boxing-gloves-name
+#  description: uplink-rigged-boxing-gloves-desc
+#  productEntity: ClothingHandsGlovesBoxingRigged
+#  cost:
+#    Telecrystal: 6
+#  categories:
+#    - UplinkJob
+#  conditions:
+#    - !type:BuyerJobCondition
+#      whitelist:
+#        - Passenger
 
 - type: listing
   id: uplinkRiggedBoxingGlovesBoxer
@@ -1060,6 +1064,7 @@
     Telecrystal: 4
   categories:
   - UplinkJob
+  saleLimit: 1
   conditions:
   - !type:BuyerJobCondition
     whitelist:
@@ -1157,6 +1162,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+  saleLimit: 1
 
 - type: listing
   id: uplinkHotPotato
@@ -1188,6 +1194,7 @@
   - !type:BuyerDepartmentCondition
     whitelist:
     - Science
+  saleLimit: 1
 
 - type: listing
   id: uplinkProximityMine
@@ -1311,6 +1318,7 @@
     Telecrystal: 8
   categories:
   - UplinkArmor
+  saleLimit: 1
 
 - type: listing
   id: UplinkHardsuitSyndieElite
@@ -1321,6 +1329,7 @@
     Telecrystal: 10
   categories:
   - UplinkArmor
+  saleLimit: 1
 
 - type: listing
   id: UplinkClothingOuterHardsuitJuggernaut
@@ -1382,7 +1391,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_shield.rsi, state: eshield-on }
   productEntity: EnergyShield
   cost:
-    Telecrystal: 6
+    Telecrystal: 3
   categories:
   - UplinkMisc
   saleLimit: 1
