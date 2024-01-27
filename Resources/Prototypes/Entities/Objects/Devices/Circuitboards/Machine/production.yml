@@ -553,7 +553,7 @@
     - type: Sprite
       state: medical
     - type: MachineBoard
-      prototype: ChemDispenserEmpty
+      prototype: ChemDispenser
       requirements:
         Capacitor: 1
       materialRequirements:
@@ -1168,7 +1168,7 @@
     - type: Sprite
       state: service
     - type: MachineBoard
-      prototype: BoozeDispenserEmpty
+      prototype: BoozeDispenser
       materialRequirements:
         Steel: 5
       tagRequirements:
@@ -1201,7 +1201,7 @@
     - type: Sprite
       state: service
     - type: MachineBoard
-      prototype: SodaDispenserEmpty
+      prototype: soda_dispenser
       materialRequirements:
         Steel: 5
       tagRequirements:
