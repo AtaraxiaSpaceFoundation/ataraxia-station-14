@@ -732,11 +732,10 @@
     - type: Gun
       soundGunshot:
         path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-      projectileSpeed: 12
     - type: TwoModeEnergyAmmoProvider
       stunPrototype: BulletDisabler
       laserPrototype: BulletTrailLaser
-      fireCost: 100
+      fireCost: 49
       laserFireCost: 99
       stunFireCost: 49
       stunProjectileSpeed: 25
