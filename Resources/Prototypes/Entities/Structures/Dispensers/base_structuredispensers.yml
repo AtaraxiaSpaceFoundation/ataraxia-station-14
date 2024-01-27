@@ -68,7 +68,7 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
-      beakerSlot: !type:ContainerSlot
+      ReagentDispenser-beakerSlot: !type:ContainerSlot
   - type: StaticPrice
     price: 1000
   - type: Wires
