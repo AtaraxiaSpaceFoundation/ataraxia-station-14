@@ -53,7 +53,7 @@
   chatMessages: [пиукает]
   chatTriggers:
     - пиу
-    - пиу-пиу
+    - пеу-пиу
     - пиукает.
     - пиукает
     - pew.
@@ -92,10 +92,9 @@
   category: Vocal
   chatMessages: [щёлкает]
   chatTriggers:
-    - щелкает клювом
     - щелк
     - щёлкает
-    - щёлкает клювом
+    - щелкает
     - щёлк
     - clicks.
     - click.
@@ -152,8 +151,12 @@
   category: Vocal
   chatMessages: [тарахтит]
   chatTriggers:
+    - щебечет
+    - щебечет.
+    - щебечет!
     - тарахтит
-    - тараътит.
+    - тарахтит.
+    - тарахтит!
     - chitter
     - chitter.
     - chitter!
