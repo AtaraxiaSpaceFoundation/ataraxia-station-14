@@ -267,6 +267,7 @@
       enabled: false
       reflects:
         - Energy
+    - type: ToggleableWielded
     - type: Construction
       deconstructionTarget: null
       graph: EnergyDoubleSwordGraph
