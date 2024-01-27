@@ -41,6 +41,6 @@
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtWarden
+  innerClothingSkirt: ClothingUniformJumpskirtWarden
   satchel: ClothingBackpackSatchelSecurityFilled
   duffelbag: ClothingBackpackDuffelSecurityFilled

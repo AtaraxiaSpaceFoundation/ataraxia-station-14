@@ -25,6 +25,6 @@
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
   inhand:
     - BriefcaseBrownFilled
-  innerclothingskirt: ClothingUniformJumpskirtColorLightBrown
+  innerClothingSkirt: ClothingUniformJumpskirtColorLightBrown
   satchel: ClothingBackpackSatchelLibrarianFilled
   duffelbag: ClothingBackpackDuffelLibrarianFilled

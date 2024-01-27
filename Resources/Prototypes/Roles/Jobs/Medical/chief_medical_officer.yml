@@ -47,6 +47,6 @@
     underwearb: ClothingUnderwearBottomBoxersCMO # White-Underwear
   underweart: ClothingUnderwearTopBraCMO # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCMO # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtCMO
+  innerClothingSkirt: ClothingUniformJumpskirtCMO
   satchel: ClothingBackpackSatchelCMOFilled
   duffelbag: ClothingBackpackDuffelCMOFilled

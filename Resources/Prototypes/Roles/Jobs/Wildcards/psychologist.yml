@@ -23,6 +23,6 @@
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraSports # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerclothingskirt: ClothingUniformJumpsuitPsychologist
+  innerClothingSkirt: ClothingUniformJumpsuitPsychologist
   satchel: ClothingBackpackSatchelMedicalFilled
   duffelbag: ClothingBackpackDuffelMedicalFilled

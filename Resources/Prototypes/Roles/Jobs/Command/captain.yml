@@ -49,6 +49,6 @@
     underwearb: ClothingUnderwearBottomBoxersCap # White-Underwear
   underweart: ClothingUnderwearTopBraCap # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCap # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtCaptain
+  innerClothingSkirt: ClothingUniformJumpskirtCaptain
   satchel: ClothingBackpackSatchelCaptainFilled
   duffelbag: ClothingBackpackDuffelCaptainFilled

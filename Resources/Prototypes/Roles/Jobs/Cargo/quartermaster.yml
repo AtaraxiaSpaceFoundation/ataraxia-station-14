@@ -49,6 +49,6 @@
     underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
   underweart: ClothingUnderwearTopBraQM # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtQM
+  innerClothingSkirt: ClothingUniformJumpskirtQM
   satchel: ClothingBackpackSatchelQuartermasterFilled
   duffelbag: ClothingBackpackDuffelQuartermasterFilled

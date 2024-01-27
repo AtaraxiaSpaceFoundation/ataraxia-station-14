@@ -43,6 +43,6 @@
     underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
   underweart: ClothingUnderwearTopBraRD # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtResearchDirector
+  innerClothingSkirt: ClothingUniformJumpskirtResearchDirector
   satchel: ClothingBackpackSatchelResearchDirectorFilled
   duffelbag: ClothingBackpackDuffelResearchDirectorFilled

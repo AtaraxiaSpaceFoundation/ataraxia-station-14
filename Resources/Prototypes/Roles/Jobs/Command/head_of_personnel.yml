@@ -71,6 +71,6 @@
     underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
   underweart: ClothingUnderwearTopBraHOP # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtHoP
+  innerClothingSkirt: ClothingUniformJumpskirtHoP
   satchel: ClothingBackpackSatchelHOPFilled
   duffelbag: ClothingBackpackDuffelHOPFilled

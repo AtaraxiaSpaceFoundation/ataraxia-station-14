@@ -30,6 +30,6 @@
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerclothingskirt: ClothingUniformJumpskirtChemistry
+  innerClothingSkirt: ClothingUniformJumpskirtChemistry
   satchel: ClothingBackpackSatchelChemistryFilled
   duffelbag: ClothingBackpackDuffelChemistryFilled
