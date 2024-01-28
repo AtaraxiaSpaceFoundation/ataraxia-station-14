@@ -4,6 +4,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Utility;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Client._White.Cult;
 

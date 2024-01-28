@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   10: FloorAsteroidSand
   68: FloorSteel
   71: FloorSteelDirty
@@ -548,8 +548,6 @@ entities:
     - pos: 2.5,5.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CigaretteSpent

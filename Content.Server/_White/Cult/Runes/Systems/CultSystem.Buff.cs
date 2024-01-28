@@ -7,6 +7,7 @@ using Content.Shared.Maps;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
 using Robust.Shared.Map;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

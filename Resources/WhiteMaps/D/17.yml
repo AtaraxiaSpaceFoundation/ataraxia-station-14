@@ -119,8 +119,6 @@ entities:
     - pos: 3.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 146.0101673
       type: EmitSoundOnCollide
 - proto: GasPipeStraight
@@ -131,8 +129,6 @@ entities:
       pos: 2.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 175.970036
       type: EmitSoundOnCollide
   - uid: 31
@@ -141,8 +137,6 @@ entities:
       pos: 2.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 176.5894146
       type: EmitSoundOnCollide
   - uid: 32
@@ -151,8 +145,6 @@ entities:
       pos: 3.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 183.302466
       type: EmitSoundOnCollide
   - uid: 33
@@ -161,8 +153,6 @@ entities:
       pos: 3.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 183.302466
       type: EmitSoundOnCollide
   - uid: 34
@@ -171,8 +161,6 @@ entities:
       pos: 1.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 185.3862263
       type: EmitSoundOnCollide
   - uid: 35
@@ -181,8 +169,6 @@ entities:
       pos: 1.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 185.3862263
       type: EmitSoundOnCollide
   - uid: 36
@@ -191,8 +177,6 @@ entities:
       pos: 1.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 185.3862263
       type: EmitSoundOnCollide
 - proto: GasPipeTJunction
@@ -203,8 +187,6 @@ entities:
       pos: 3.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 169.2024365
       type: EmitSoundOnCollide
   - uid: 29
@@ -213,8 +195,6 @@ entities:
       pos: 3.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 172.2857082
       type: EmitSoundOnCollide
 - proto: GasVentScrubber

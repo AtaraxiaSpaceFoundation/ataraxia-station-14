@@ -4,6 +4,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared._White.Cult;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Items.Systems;
 

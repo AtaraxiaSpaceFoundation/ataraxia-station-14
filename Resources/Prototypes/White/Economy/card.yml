@@ -8,6 +8,7 @@
     - type: Sprite
       sprite: White/Misc/cards.rsi
       scale: 0.8, 0.8
+      state: budgetcard
 
 - type: entity
   parent: BaseDepartmentBudgetCard

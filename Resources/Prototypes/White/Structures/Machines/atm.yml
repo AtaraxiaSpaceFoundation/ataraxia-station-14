@@ -25,6 +25,7 @@
       shader: unshaded
   - type: ATM
     idCardSlot:
+      name: id-card-slot
       ejectSound: /Audio/Machines/id_swipe.ogg
       insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
       ejectOnBreak: true
@@ -35,7 +36,7 @@
   - type: ItemSlots
   - type: ContainerContainer
     containers:
-      IdCardSlot: !type:ContainerSlot
+      card-slot: !type:ContainerSlot
   - type: Appearance
   - type: AmbientOnPowered
   - type: AmbientSound

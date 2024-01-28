@@ -9,7 +9,7 @@ namespace Content.Shared._White.Economy;
 public sealed partial class ATMComponent : Component
 {
     [DataField("idCardSlot")]
-    public ItemSlot CardSlot = default!;
+    public ItemSlot CardSlot = new ();
 
     [DataField("currencyType")]
     public string CurrencyType = "SpaceCash";

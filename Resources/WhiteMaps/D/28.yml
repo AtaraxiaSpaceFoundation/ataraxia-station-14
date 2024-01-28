@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   5: FloorAsteroidCoarseSandDug
   71: FloorSteelDiagonalMini
   73: FloorSteelHerringbone
@@ -925,8 +925,6 @@ entities:
     - pos: 6.5,7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 233
@@ -1067,8 +1065,6 @@ entities:
     - pos: 4.5,7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 253
@@ -1076,8 +1072,6 @@ entities:
     - pos: 4.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 254
@@ -1085,8 +1079,6 @@ entities:
     - pos: 4.5,9.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 255
@@ -1157,8 +1149,6 @@ entities:
     - pos: 1.5,12.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 265
@@ -1180,8 +1170,6 @@ entities:
     - pos: 1.5,10.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 268
@@ -1233,8 +1221,6 @@ entities:
     - pos: 6.5,7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 275
@@ -1256,8 +1242,6 @@ entities:
     - pos: 4.5,7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 278
@@ -1265,8 +1249,6 @@ entities:
     - pos: 4.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 279
@@ -1274,8 +1256,6 @@ entities:
     - pos: 4.5,9.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 280
@@ -1318,8 +1298,6 @@ entities:
     - pos: 1.5,12.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 286
@@ -1356,7 +1334,7 @@ entities:
     - canCollide: False
       type: Physics
     - type: InsideEntityStorage
-- proto: ClothingHeadHelmetHelmet
+- proto: ClothingHeadHelmetBasic
   entities:
   - uid: 315
     components:

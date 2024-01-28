@@ -146,13 +146,13 @@
     - type: MapGrid
     - type: BlobFloorPlanBuilder
       floorTileset:
-        - FloorAsteroidCoarseSand0
+        - FloorAsteroidSand
       blobDrawProb: 0.5
       radius: 6
       floorPlacements: 16
     - type: SimpleFloorPlanPopulator
       entries:
-        FloorAsteroidCoarseSand0:
+        FloorAsteroidSand:
           - id: AsteroidRockMining
     - type: IFF
       flags: HideLabel

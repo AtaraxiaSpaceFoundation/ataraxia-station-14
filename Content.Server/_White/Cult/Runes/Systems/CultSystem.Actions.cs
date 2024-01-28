@@ -20,6 +20,7 @@ using Content.Shared._White.Cult.Actions;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

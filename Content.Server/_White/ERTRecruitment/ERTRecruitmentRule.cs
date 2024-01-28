@@ -85,7 +85,7 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
 
         if (_recruitment.GetEventSpawners(ERTRecruitmentRuleComponent.EventName).Count() < component.MinPlayer)
         {
-            _logger.Error("Not enough spawners!");
+            _logger.Debug("Not enough spawners!");
 
             DeclineERT(component.TargetStation.Value);
             return;

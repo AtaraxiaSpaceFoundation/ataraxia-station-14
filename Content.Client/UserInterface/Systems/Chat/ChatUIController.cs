@@ -36,6 +36,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Client.UserInterface.Systems.Chat;
 

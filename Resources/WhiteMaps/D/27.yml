@@ -150,8 +150,6 @@ entities:
     - pos: 4.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 141
@@ -159,8 +157,6 @@ entities:
     - pos: -2.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 142
@@ -168,8 +164,6 @@ entities:
     - pos: -2.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 143
@@ -177,8 +171,6 @@ entities:
     - pos: -1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 144
@@ -193,8 +185,6 @@ entities:
     - pos: -1.5,5.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 146
@@ -202,8 +192,6 @@ entities:
     - pos: -1.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 147
@@ -211,8 +199,6 @@ entities:
     - pos: -1.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 148
@@ -227,8 +213,6 @@ entities:
     - pos: -1.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 150
@@ -236,8 +220,6 @@ entities:
     - pos: -3.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 151
@@ -245,8 +227,6 @@ entities:
     - pos: -3.5,5.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 152
@@ -254,8 +234,6 @@ entities:
     - pos: -4.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 153
@@ -263,8 +241,6 @@ entities:
     - pos: 0.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 154
@@ -272,8 +248,6 @@ entities:
     - pos: 0.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 155
@@ -281,8 +255,6 @@ entities:
     - pos: 0.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 156
@@ -290,8 +262,6 @@ entities:
     - pos: 0.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 157
@@ -299,8 +269,6 @@ entities:
     - pos: 0.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 158
@@ -308,8 +276,6 @@ entities:
     - pos: 0.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 159
@@ -380,8 +346,6 @@ entities:
     - pos: 4.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 169
@@ -389,8 +353,6 @@ entities:
     - pos: 4.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 170
@@ -398,8 +360,6 @@ entities:
     - pos: 4.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 171
@@ -407,8 +367,6 @@ entities:
     - pos: 4.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 172
@@ -416,8 +374,6 @@ entities:
     - pos: 0.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CableHV
@@ -427,8 +383,6 @@ entities:
     - pos: 7.5,5.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 93
@@ -436,8 +390,6 @@ entities:
     - pos: 7.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 101
@@ -445,8 +397,6 @@ entities:
     - pos: 7.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 102
@@ -454,8 +404,6 @@ entities:
     - pos: 7.5,7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 103
@@ -463,8 +411,6 @@ entities:
     - pos: 7.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 105
@@ -472,8 +418,6 @@ entities:
     - pos: 7.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 106
@@ -481,8 +425,6 @@ entities:
     - pos: 7.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 107
@@ -490,8 +432,6 @@ entities:
     - pos: 7.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 108
@@ -499,8 +439,6 @@ entities:
     - pos: 7.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 109
@@ -508,8 +446,6 @@ entities:
     - pos: 7.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 110
@@ -517,8 +453,6 @@ entities:
     - pos: 7.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 111
@@ -526,8 +460,6 @@ entities:
     - pos: 8.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 112
@@ -535,8 +467,6 @@ entities:
     - pos: 9.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 113
@@ -544,8 +474,6 @@ entities:
     - pos: 11.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 114
@@ -553,8 +481,6 @@ entities:
     - pos: 12.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 115
@@ -562,8 +488,6 @@ entities:
     - pos: 13.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 116
@@ -620,8 +544,6 @@ entities:
     - pos: 0.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 124
@@ -636,8 +558,6 @@ entities:
     - pos: -1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 126
@@ -645,8 +565,6 @@ entities:
     - pos: -2.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 127
@@ -654,8 +572,6 @@ entities:
     - pos: -3.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CableMV
@@ -665,8 +581,6 @@ entities:
     - pos: -2.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 104
@@ -674,8 +588,6 @@ entities:
     - pos: 2.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 128
@@ -683,8 +595,6 @@ entities:
     - pos: -2.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 129
@@ -692,8 +602,6 @@ entities:
     - pos: -3.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 130
@@ -701,8 +609,6 @@ entities:
     - pos: -4.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 131
@@ -710,8 +616,6 @@ entities:
     - pos: -1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 132
@@ -726,8 +630,6 @@ entities:
     - pos: 0.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 134
@@ -770,8 +672,6 @@ entities:
     - pos: 2.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 140
@@ -779,8 +679,6 @@ entities:
     - pos: 2.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: ClothingHandsGlovesColorYellow

@@ -8,6 +8,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared._White.Cult;
 using Robust.Shared.Timing;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Items.Systems;
 

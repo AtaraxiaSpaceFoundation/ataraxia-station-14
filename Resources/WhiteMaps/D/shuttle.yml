@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   65: FloorShuttleWhite
   94: Plating
 entities:
@@ -821,8 +821,6 @@ entities:
     - pos: 5.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 168
@@ -858,8 +856,6 @@ entities:
     - pos: 2.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 173
@@ -874,8 +870,6 @@ entities:
     - pos: 2.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 175
@@ -904,8 +898,6 @@ entities:
     - pos: 8.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 179
@@ -913,8 +905,6 @@ entities:
     - pos: 8.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 180

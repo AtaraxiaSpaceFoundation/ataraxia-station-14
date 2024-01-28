@@ -5,6 +5,7 @@ using Content.Shared._White.Cult.Components;
 using Robust.Client.Utility;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Client._White.Cult.UI.SpellSelector;
 

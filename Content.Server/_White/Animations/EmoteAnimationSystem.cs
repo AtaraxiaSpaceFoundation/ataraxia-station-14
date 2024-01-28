@@ -21,7 +21,7 @@ public sealed class EmoteAnimationSystem : EntitySystem
 
     private void OnEmote(EntityUid uid, EmoteAnimationComponent component, ref EmoteEvent args)
     {
-        if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Gesture))
+        if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Hands))
             return;
 
         PlayEmoteAnimation(uid, component, args.Emote.ID);

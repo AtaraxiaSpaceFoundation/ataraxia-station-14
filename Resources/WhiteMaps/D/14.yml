@@ -315,7 +315,7 @@ entities:
     - pos: 4.5,-2.5
       parent: 1
       type: Transform
-- proto: WindoorMedicalLocked
+- proto: WindoorSecureMedicalLocked
   entities:
   - uid: 29
     components:

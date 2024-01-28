@@ -27,7 +27,12 @@ public sealed class BlueprintPlacerSystem : EntitySystem
             Rotation = xform.LocalRotation,
         };
 
-        _mapLoader.TryLoad(xform.MapID, component.Blueprint.ToString(), out var root, options);
+        if (component.Blueprint.CanonPath is null)
+        {
+            return;
+        }
+
+        _mapLoader.TryLoad(xform.MapID, component.Blueprint.CanonPath, out var root, options);
 
         if (root is null)
             return;

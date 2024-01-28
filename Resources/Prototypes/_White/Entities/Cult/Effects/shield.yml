@@ -46,7 +46,7 @@
                   max: 5
             - !type:PlaySoundBehavior
               sound:
-                path: /Audio/Effects/metalbreak.ogg
+                collection: MetalBreak
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
     - type: PointLight

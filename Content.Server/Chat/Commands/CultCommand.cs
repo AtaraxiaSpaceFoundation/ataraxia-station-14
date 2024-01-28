@@ -3,6 +3,7 @@ using Content.Shared.Administration;
 using Content.Shared._White.Cult;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server.Chat.Commands
 {

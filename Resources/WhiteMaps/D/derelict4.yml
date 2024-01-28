@@ -115,8 +115,6 @@ entities:
     - pos: 1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 40
@@ -201,8 +199,6 @@ entities:
     - pos: -0.5,10.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 52
@@ -217,8 +213,6 @@ entities:
     - pos: 0.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 54
@@ -240,8 +234,6 @@ entities:
     - pos: 3.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 57
@@ -256,8 +248,6 @@ entities:
     - pos: 5.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 120
@@ -281,8 +271,6 @@ entities:
     - pos: 1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 60
@@ -332,8 +320,6 @@ entities:
     - pos: 0.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 67
@@ -355,8 +341,6 @@ entities:
     - pos: 3.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 70
@@ -371,8 +355,6 @@ entities:
     - pos: 5.5,8.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: ChairOfficeLight
@@ -620,7 +602,6 @@ entities:
         Pressed:
         - 77
       type: DeviceLinkSource
-    - type: ItemCooldown
 - proto: SpaceTickSpawner
   entities:
   - uid: 112

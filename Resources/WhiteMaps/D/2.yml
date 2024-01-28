@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   5: FloorAsteroidCoarseSandDug
   94: Lattice
 entities:

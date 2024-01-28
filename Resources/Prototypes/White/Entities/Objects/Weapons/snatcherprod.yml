@@ -54,6 +54,9 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot {}
   - type: Snatcherprod
   - type: Construction
     deconstructionTarget: null

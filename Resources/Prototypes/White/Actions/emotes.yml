@@ -1,7 +1,7 @@
 # Using EmoteAnimation from IC action chat
 - type: emote
   id: EmoteFlip
-  category: Gesture
+  category: Hands
   buttonText: Сальто
   chatMessages: [делает сальто]
   chatTriggers:
@@ -17,7 +17,7 @@
 
 - type: emote
   id: EmoteJump
-  category: Gesture
+  category: Hands
   buttonText: Прыгнуть
   chatMessages: [прыгает]
   chatTriggers:
@@ -31,7 +31,7 @@
 
 - type: emote
   id: EmoteTurn
-  category: Gesture
+  category: Hands
   buttonText: Танцевать
   chatMessages: [танцует]
   chatTriggers:

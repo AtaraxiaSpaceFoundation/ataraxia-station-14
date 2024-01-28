@@ -5,7 +5,7 @@ namespace Content.Shared._White.Economy;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BankCardComponent : Component
 {
-    [DataField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public int? AccountId;
 
     [DataField("startingBalance")]

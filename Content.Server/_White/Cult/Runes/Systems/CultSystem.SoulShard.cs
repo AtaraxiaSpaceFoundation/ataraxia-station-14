@@ -9,6 +9,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Items;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

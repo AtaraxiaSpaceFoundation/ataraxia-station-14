@@ -19,7 +19,7 @@ public sealed class CultItemSystem : EntitySystem
 
     private void OnHandPickUp(EntityUid uid, CultItemComponent component, GettingPickedUpAttemptEvent args)
     {
-        if (HasComp<CultistComponent>(args.User) || HasComp<GhostComponent>(args.User))
+        if (HasComp<Components.CultistComponent>(args.User) || HasComp<GhostComponent>(args.User))
             return;
 
         args.Cancel();

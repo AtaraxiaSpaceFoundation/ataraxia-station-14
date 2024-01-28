@@ -4,6 +4,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Stunnable;
 using Content.Shared._White.Cult;
 using Robust.Shared.Physics.Systems;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Structures;
 

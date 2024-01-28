@@ -4,6 +4,7 @@ using Content.Server.IdentityManagement;
 using Content.Server.PDA;
 using Content.Server.Roles;
 using Content.Shared.Access.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.NukeOps;
@@ -31,9 +32,14 @@ public sealed class RandomHumanSystem : EntitySystem
 
     private void OnInit(EntityUid uid, RandomHumanComponent component, ComponentInit args)
     {
+        if (!TryComp(uid, out HumanoidAppearanceComponent? humanoidAppearanceComponent))
+        {
+            return;
+        }
+
         var newProfile = HumanoidCharacterProfile.RandomWithSpecies();
 
-        _humanoid.LoadProfile(uid, newProfile);
+        _humanoid.LoadProfile(uid, newProfile, humanoidAppearanceComponent);
 
         if (HasComp<NukeOperativeComponent>(uid))
             return;
@@ -43,7 +49,8 @@ public sealed class RandomHumanSystem : EntitySystem
         if (!_inventorySystem.TryGetSlotEntity(uid, "id", out var idUid))
             return;
 
-        if (!EntityManager.TryGetComponent(idUid, out PdaComponent? pdaComponent) || !TryComp<IdCardComponent>(pdaComponent.ContainedId, out var card))
+        if (!EntityManager.TryGetComponent(idUid, out PdaComponent? pdaComponent) ||
+            !TryComp<IdCardComponent>(pdaComponent.ContainedId, out var card))
             return;
 
         var cardId = pdaComponent.ContainedId.Value;

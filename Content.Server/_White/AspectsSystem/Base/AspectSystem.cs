@@ -78,7 +78,8 @@ namespace Content.Server._White.AspectsSystem.Base
 
             if (aspect is { Description: not null, IsHidden: false })
             {
-                _chatSystem.DispatchGlobalAnnouncement(aspect.Description, playSound: false, colorOverride: Color.Aquamarine);
+                _chatSystem.DispatchGlobalAnnouncement(aspect.Description, playSound: false,
+                    colorOverride: Color.Aquamarine);
             }
 
             _audio.PlayGlobal(aspect.StartAudio, Filter.Broadcast(), true);
@@ -88,7 +89,11 @@ namespace Content.Server._White.AspectsSystem.Base
         /// <summary>
         /// Called when an aspect is started.
         /// </summary>
-        protected override void Started(EntityUid uid, T component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+        protected override void Started(
+            EntityUid uid,
+            T component,
+            GameRuleComponent gameRule,
+            GameRuleStartedEvent args)
         {
             base.Started(uid, component, gameRule, args);
 
@@ -112,13 +117,14 @@ namespace Content.Server._White.AspectsSystem.Base
 
             if (aspect is { Name: not null, IsHidden: false })
             {
-                _chatSystem.DispatchGlobalAnnouncement($"Именем аспекта являлось: {aspect.Name}", playSound: false, colorOverride: Color.Aquamarine);
+                _chatSystem.DispatchGlobalAnnouncement($"Именем аспекта являлось: {aspect.Name}", playSound: false,
+                    colorOverride: Color.Aquamarine);
             }
 
             _audio.PlayGlobal(aspect.EndAudio, Filter.Broadcast(), true);
         }
 
-        #region Helpers
+#region Helpers
 
         /// <summary>
         /// Forces this aspect to end prematurely.
@@ -130,13 +136,19 @@ namespace Content.Server._White.AspectsSystem.Base
             GameTicker.EndGameRule(uid, component);
         }
 
-        protected bool TryGetRandomStation([NotNullWhen(true)] out EntityUid? station, Func<EntityUid, bool>? filter = null)
+        protected bool TryGetRandomStation(
+            [NotNullWhen(true)] out EntityUid? station,
+            Func<EntityUid, bool>? filter = null)
         {
             var stations = new ValueList<EntityUid>();
 
             if (filter == null)
             {
-                stations.EnsureCapacity(Count<StationEventEligibleComponent>());
+                var stationCount = Count<StationEventEligibleComponent>();
+                if (stationCount > 0)
+                {
+                    stations.EnsureCapacity(stationCount);
+                }
             }
 
             filter ??= _ => true;
@@ -160,7 +172,8 @@ namespace Content.Server._White.AspectsSystem.Base
             return true;
         }
 
-        protected bool TryGetStationGrids([NotNullWhen(true)] out EntityUid? targetStation,
+        protected bool TryGetStationGrids(
+            [NotNullWhen(true)] out EntityUid? targetStation,
             [NotNullWhen(true)] out HashSet<EntityUid>? grids)
         {
             if (!TryGetRandomStation(out targetStation))
@@ -175,7 +188,11 @@ namespace Content.Server._White.AspectsSystem.Base
             return grids.Count > 0;
         }
 
-        protected bool TryFindRandomTile(out Vector2i tile, [NotNullWhen(true)] out EntityUid? targetStation, out EntityUid targetGrid, out EntityCoordinates targetCoords)
+        protected bool TryFindRandomTile(
+            out Vector2i tile,
+            [NotNullWhen(true)] out EntityUid? targetStation,
+            out EntityUid targetGrid,
+            out EntityCoordinates targetCoords)
         {
             tile = default;
 
@@ -219,6 +236,7 @@ namespace Content.Server._White.AspectsSystem.Base
                 {
                     if (!physQuery.TryGetComponent(ent, out var body))
                         continue;
+
                     if (body.BodyType != BodyType.Static ||
                         !body.Hard ||
                         (body.CollisionLayer & (int) CollisionGroup.Impassable) == 0)
@@ -239,8 +257,6 @@ namespace Content.Server._White.AspectsSystem.Base
             return found;
         }
 
-
-        #endregion
-
+#endregion
     }
 }

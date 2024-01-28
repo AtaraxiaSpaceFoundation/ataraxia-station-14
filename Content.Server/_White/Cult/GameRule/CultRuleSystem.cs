@@ -32,6 +32,7 @@ using Robust.Shared.Utility;
 using Content.Shared._White;
 using Content.Shared.Mind;
 using Robust.Shared.Audio.Systems;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.GameRule;
 

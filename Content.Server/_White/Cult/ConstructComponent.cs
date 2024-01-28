@@ -1,8 +1,10 @@
-﻿namespace Content.Server._White.Cult;
+﻿using Robust.Shared.Prototypes;
+
+namespace Content.Server._White.Cult;
 
 [RegisterComponent]
 public sealed partial class ConstructComponent : Component
 {
     [DataField("actions")]
-    public List<string> Actions = new();
+    public List<EntProtoId> Actions = new();
 }

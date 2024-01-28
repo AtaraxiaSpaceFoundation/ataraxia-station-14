@@ -1,11 +1,8 @@
 ﻿using System.Threading;
-using Content.Shared._White.Cult.Actions;
-using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
-using Robust.Shared.Utility;
 
-namespace Content.Shared._White.Cult;
+namespace Content.Shared._White.Cult.Components;
 
 /// <summary>
 /// This is used for tagging a mob as a cultist.

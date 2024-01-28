@@ -415,8 +415,6 @@ entities:
     - pos: -7.5,11.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 73
@@ -431,8 +429,6 @@ entities:
     - pos: -9.5,11.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 75
@@ -538,8 +534,6 @@ entities:
     - pos: -7.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 90
@@ -668,8 +662,6 @@ entities:
     - pos: -9.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CableMV
@@ -679,8 +671,6 @@ entities:
     - pos: -7.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 61
@@ -688,8 +678,6 @@ entities:
     - pos: -9.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 63
@@ -753,8 +741,6 @@ entities:
     - pos: -7.5,11.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: ChairPilotSeat
@@ -878,7 +864,7 @@ entities:
     - pos: -8.5,12.5
       parent: 1
       type: Transform
-- proto: GeneratorUranium
+- proto: PortableGeneratorSuperPacman
   entities:
   - uid: 57
     components:

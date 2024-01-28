@@ -88,21 +88,6 @@
     - beeped.
 
 - type: emote
-  id: Click
-  category: Vocal
-  chatMessages: [щёлкает]
-  chatTriggers:
-    - щелк
-    - щёлкает
-    - щелкает
-    - щёлк
-    - clicks.
-    - click.
-    - click!
-    - clicking.
-    - clicked.
-
-- type: emote
   id: Caw
   category: Vocal
   chatMessages: [воркует]
@@ -146,42 +131,3 @@
     - издает рёв
     - издает рёв.
 
-- type: emote
-  id: Chitter
-  category: Vocal
-  chatMessages: [тарахтит]
-  chatTriggers:
-    - щебечет
-    - щебечет.
-    - щебечет!
-    - тарахтит
-    - тарахтит.
-    - тарахтит!
-    - chitter
-    - chitter.
-    - chitter!
-    - chitters
-    - chitters.
-    - chitters!
-    - chittered
-    - chittered.
-    - chittered!
-
-- type: emote
-  id: Squeak
-  category: Vocal
-  chatMessages: [сквикает]
-  chatTriggers:
-    - сквик
-    - сквик.
-    - сквикает
-    - сквикает.
-    - squeak
-    - squeak.
-    - squeak!
-    - squeaks
-    - squeaks.
-    - squeaks!
-    - squeaked
-    - squeaked.
-    - squeaked!

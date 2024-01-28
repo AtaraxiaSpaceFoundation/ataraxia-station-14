@@ -7,7 +7,7 @@
       - map: [ "enum.NarsieLayer.Default" ]
         state: narsie_spawn_anim
         sprite: White/Cult/narsie.rsi
-    drawdepth: 100
+    drawdepth: Overdoors
     shader: unshaded
     scale: 0.6, 0.6
   - type: RandomWalk

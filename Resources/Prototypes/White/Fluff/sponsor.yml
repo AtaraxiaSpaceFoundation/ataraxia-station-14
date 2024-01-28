@@ -3,7 +3,7 @@
   id: SuitGlamorousLoadout
   entity: ClothingOuterSuitGlamorous
   sponsorOnly: true
-  blacklistJobs: [Captain, HeadOfPersonnel, ChiefEngineer, ChiefMedicalOfficer, ResearchDirector, HeadOfSecurity, Warden, Detective, SeniorOfficer, SecurityOfficer, Quartermaster]
+  blacklistJobs: [Captain, HeadOfPersonnel, ChiefEngineer, ChiefMedicalOfficer, ResearchDirector, HeadOfSecurity, Warden, Detective, SecurityOfficer, Quartermaster]
 
 - type: loadout
   id: ClothingOuterHardsuitEVAGLAMOURsLoadout
@@ -15,13 +15,13 @@
   id: GammaUniformLoadout
   entity: ClothingUniformJumpsuitGamma
   sponsorOnly: true
-  whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective, SeniorOfficer]
+  whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective]
 
 - type: loadout
   id: GammaBeretLoadout
   entity: ClothingHeadHatBeretGamma
   sponsorOnly: true
-  whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective, SeniorOfficer]
+  whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective]
 
 - type: loadout
   id: ChaplanSchemaLoadout
@@ -115,11 +115,6 @@
 - type: loadout
   id: BibleNyaLoadout
   entity: BibleNya
-  sponsorOnly: true
-
-- type: loadout # WHITEGPT HUETA ДЛЯ КЛОУНОВ И ВЫШЕ
-  id: WhiteGPTLoadout
-  entity: PersonalNeuralAI
   sponsorOnly: true
 
 # Warete
@@ -405,13 +400,13 @@
   id: Egoruch17Mask
   entity: EgoruchClothingMaskHoly
   sponsorOnly: true
-  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, SeniorEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, SeniorResearcher, Scientist, ResearchAssistant ]
+  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, Scientist, ResearchAssistant ]
 
 - type: loadout
   id: Egoruch17Mantle
   entity: EgoruchClothingOuterMantle
   sponsorOnly: true
-  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, SeniorEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, SeniorResearcher, Scientist, ResearchAssistant ]
+  whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, Scientist, ResearchAssistant ]
 
 # g13
 - type: loadout

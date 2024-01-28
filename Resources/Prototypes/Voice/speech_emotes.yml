@@ -1,0 +1,222 @@
+﻿# vocal emotes
+- type: emote
+  id: Scream
+  category: Vocal
+  buttonText: Кричать
+  chatMessages: [ кричит, орет, вопит, рявкает ]
+  chatTriggers:
+  - кричит
+  - закричал
+  - закричала
+  - орет
+  - заорал
+  - заорала
+  - визжит
+  - завизжал
+  - завизжала
+  - взвизгнул
+  - взвизгнула
+  - рявкает
+  - рявкнул
+  - рявкнула
+  - вопит
+  allowMenu: true
+
+- type: emote
+  id: Laugh
+  category: Vocal
+  buttonText: Смеяться
+  chatMessages: [ смеется, ржет, усмехается, хохочет, гогочет ]
+  chatTriggers:
+  - смеется
+  - просмеялся
+  - засмеялся
+  - засмеялась
+  - хихикает
+  - хихикнул
+  - хихикнула
+  - хихикает
+  - ржет
+  - усмехается
+  - усмехнулась
+  - усмехнулся
+  - хохочет
+  - гогочет
+  allowMenu: true
+
+- type: emote
+  id: Honk
+  category: Vocal
+  chatMessages: [ хонкает ]
+
+- type: emote
+  id: Sigh
+  category: Vocal
+  buttonText: Вздохнуть
+  chatMessages: [ вздыхает ]
+  chatTriggers:
+  - вздыхает
+  - вздохнула
+  - вздохнул
+  - вздохнуло
+  allowMenu: true
+
+- type: emote
+  id: Whistle
+  category: Vocal
+  buttonText: Свистнуть
+  chatMessages: [ свистит ]
+  chatTriggers:
+  - свистнул
+  - свистнула
+  - свистнуло
+  allowMenu: true
+
+- type: emote
+  id: Crying
+  category: Vocal
+  buttonText: Плакать
+  chatMessages: [ плакать ]
+  chatTriggers:
+  - плачет
+  - заплакал
+  - заплакала
+  - заплакало
+  - рыдает
+  - хнычет
+  allowMenu: true
+
+- type: emote
+  id: Squish
+  category: Vocal
+  chatMessages: [ хлюпает ]
+  chatTriggers:
+  - хлюпать
+  - хлюпает
+
+- type: emote
+  id: Chitter
+  category: Vocal
+  chatMessages: [ тарахтит ]
+  chatTriggers:
+  - щебечет
+  - щебечет.
+  - щебечет!
+  - тарахтит
+  - тарахтит.
+  - тарахтит!
+
+- type: emote
+  id: Squeak
+  category: Vocal
+  chatMessages: [сквикает]
+  chatTriggers:
+  - сквик
+  - сквик.
+  - сквикает
+  - сквикает.
+
+- type: emote
+  id: Click
+  category: Vocal
+  chatMessages: [щёлкает]
+  chatTriggers:
+  - щелк
+  - щёлкает
+  - щелкает
+  - щёлк
+
+# hand emotes
+- type: emote
+  id: Clap
+  category: Hands
+  buttonText: Хлопать
+  chatMessages: [ хлопает ]
+  chatTriggers:
+  - хлопает
+  - хлопает!
+  - захлопала
+  - захлопала!
+  - захлопал
+  - захлопал!
+  - похлопал
+  - похлопал!
+  allowMenu: true
+
+- type: emote
+  id: Snap
+  category: Hands
+  buttonText: Щелкать пальцами
+  chatMessages: [ щелкает пальцами ] # snaps <{THEIR($ent)}> fingers?
+  chatTriggers:
+  - щелкает пальцами
+  - щелкнул пальцами
+  - щелкнула пальцами
+  - щелкунл пальцами
+  - щелкунла пальцами
+  allowMenu: true
+
+- type: emote
+  id: Salute
+  category: Hands
+  buttonText: Отдать честь
+  chatMessages: [ отдает честь ]
+  chatTriggers:
+  - салютует
+  - отдаёт честь
+  allowMenu: true
+
+- type: emote
+  id: WaveHand
+  category: Hands
+  buttonText: Махать рукой
+  chatMessages: [машет рукой]
+  allowMenu: true
+
+- type: emote
+  id: Nod
+  category: Hands
+  buttonText: Кивать
+  chatMessages: [кивает]
+  allowMenu: true
+
+- type: emote
+  id: ShakeHead
+  category: Hands
+  buttonText: Покачать головой
+  chatMessages: [качает головой]
+  allowMenu: true
+
+- type: emote
+  id: Frown
+  category: Hands
+  buttonText: Хмуриться
+  chatMessages: [хмурится]
+  allowMenu: true
+
+- type: emote
+  id: Smile
+  category: Hands
+  buttonText: Улыбаться
+  chatMessages: [улыбается]
+  allowMenu: true
+
+- type: emote
+  id: Sniff
+  category: Hands
+  buttonText: Принюхиваться
+  chatMessages: [принюхивается]
+  allowMenu: true
+
+- type: emote
+  id: LickLips
+  category: Hands
+  buttonText: Облизываться
+  chatMessages: [облизывается]
+  allowMenu: true
+
+- type: emote
+  id: DefaultDeathgasp
+  chatMessages: [ "emote-deathgasp" ]
+  chatTriggers:
+  - задыхается

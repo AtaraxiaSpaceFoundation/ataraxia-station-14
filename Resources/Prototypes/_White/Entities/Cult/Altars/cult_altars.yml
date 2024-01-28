@@ -112,7 +112,7 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
   - type: Appearance
   - type: CultCraftStructureVisuals
   - type: CultistFactory
@@ -171,7 +171,7 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
   - type: Appearance
   - type: CultCraftStructureVisuals
   - type: CultistFactory
@@ -229,7 +229,7 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
   - type: Appearance
   - type: CultCraftStructureVisuals
   - type: CultistFactory

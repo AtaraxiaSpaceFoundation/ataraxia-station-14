@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   5: FloorAsteroidCoarseSandDug
   80: FloorTechMaint3
   93: Lattice
@@ -763,7 +763,7 @@ entities:
       type: Transform
     - nextSound: 565.1570556
       type: EmitSoundOnCollide
-- proto: GeneratorPlasma
+- proto: PortableGeneratorPacman
   entities:
   - uid: 5
     components:

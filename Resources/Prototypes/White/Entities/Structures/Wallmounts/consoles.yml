@@ -56,8 +56,7 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
+        collection: GlassSmash
   - type: Construction
     graph: ComputerWall
     node: computer
@@ -129,7 +128,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetSteel1:
@@ -193,7 +192,7 @@
     interfaces:
     - key: enum.SalvageConsoleUiKey.Expedition
       type: SalvageExpeditionConsoleBoundUserInterface
-  - type: Construction
+  - type: Computer
     board: SalvageConsoleWallMountCircuitboard
   - type: PointLight
     radius: 1.5

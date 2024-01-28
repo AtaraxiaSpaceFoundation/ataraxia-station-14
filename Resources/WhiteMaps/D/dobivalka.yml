@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   68: FloorSteel
   71: FloorSteelDirty
   93: Lattice
@@ -436,8 +436,6 @@ entities:
     - pos: 1.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 30
@@ -445,8 +443,6 @@ entities:
     - pos: 1.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 31
@@ -454,8 +450,6 @@ entities:
     - pos: 1.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 44
@@ -463,8 +457,6 @@ entities:
     - pos: -0.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 46
@@ -493,8 +485,6 @@ entities:
     - pos: 0.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 74
@@ -502,8 +492,6 @@ entities:
     - pos: 3.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 75
@@ -511,8 +499,6 @@ entities:
     - pos: 1.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 76
@@ -520,8 +506,6 @@ entities:
     - pos: 1.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 89
@@ -529,8 +513,6 @@ entities:
     - pos: 4.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 92
@@ -538,8 +520,6 @@ entities:
     - pos: 0.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 93
@@ -547,8 +527,6 @@ entities:
     - pos: 2.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 94
@@ -570,8 +548,6 @@ entities:
     - pos: 3.5,-5.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 97
@@ -579,8 +555,6 @@ entities:
     - pos: 3.5,-6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 98
@@ -588,8 +562,6 @@ entities:
     - pos: 3.5,-7.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 99
@@ -597,8 +569,6 @@ entities:
     - pos: 3.5,-4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: Catwalk

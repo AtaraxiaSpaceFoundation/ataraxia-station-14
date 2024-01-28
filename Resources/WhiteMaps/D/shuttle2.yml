@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   78: FloorTechMaint
   81: FloorWhite
   93: Lattice
@@ -841,8 +841,6 @@ entities:
     - pos: 5.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 205
@@ -850,8 +848,6 @@ entities:
     - pos: 6.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 206
@@ -859,8 +855,6 @@ entities:
     - pos: 6.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 207
@@ -884,8 +878,6 @@ entities:
     - pos: 5.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 201
@@ -893,8 +885,6 @@ entities:
     - pos: 6.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 202
@@ -1082,8 +1072,7 @@ entities:
   entities:
   - uid: 45
     components:
-    - rot: -1.5707963267948966 rad
-      pos: 2.5,-0.5
+    - pos: 2.5,-0.5
       parent: 1
       type: Transform
 - proto: PartRodMetal1

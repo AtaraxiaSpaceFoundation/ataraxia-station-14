@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   68: FloorSteel
   71: FloorSteelDirty
   93: Lattice
@@ -1085,8 +1085,6 @@ entities:
     - pos: 2.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 210
@@ -1101,8 +1099,6 @@ entities:
     - pos: 2.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 212
@@ -1110,8 +1106,6 @@ entities:
     - pos: 2.5,-0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 225
@@ -1119,8 +1113,6 @@ entities:
     - pos: 6.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 226
@@ -1149,8 +1141,6 @@ entities:
     - pos: 3.5,-4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: Catwalk
@@ -1307,8 +1297,6 @@ entities:
       pos: 1.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 1290.3621632
       type: EmitSoundOnCollide
   - uid: 146
@@ -1327,8 +1315,6 @@ entities:
       pos: 2.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 1378.9669987
       type: EmitSoundOnCollide
   - uid: 241
@@ -1336,8 +1322,6 @@ entities:
     - pos: 1.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 1377.0344677
       type: EmitSoundOnCollide
 - proto: GasPipeStraight

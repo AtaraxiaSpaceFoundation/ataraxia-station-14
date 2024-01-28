@@ -3,7 +3,7 @@ meta:
   postmapinit: false
 tilemap:
   0: Space
-  4: FloorAsteroidCoarseSand0
+  4: FloorAsteroidSand
   11: FloorAsteroidTile
   68: FloorSteel
   71: FloorSteelDirty

@@ -3,6 +3,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Stealth.Components;
 using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

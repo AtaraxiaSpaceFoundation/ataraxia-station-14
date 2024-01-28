@@ -79,3 +79,4 @@ research-technology-honk-mech = H.O.N.K. Mech
 research-technology-advanced-spray = Advanced Spray
 research-technology-bluespace-cargo-transport = Bluespace Cargo Transport
 research-technology-quantum-fiber-weaving = Quantum Fiber Weaving
+research-technology-night-vision = Night Vision Device

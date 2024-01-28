@@ -12,6 +12,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._White.Cult.Items.Systems;

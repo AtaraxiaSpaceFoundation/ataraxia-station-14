@@ -157,8 +157,6 @@ entities:
     - pos: 1.5,-2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 57

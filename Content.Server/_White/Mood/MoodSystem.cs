@@ -10,7 +10,6 @@ using Content.Shared.Movement.Systems;
 using Content.Shared._White.Mood;
 using Content.Shared._White.Overlays;
 using JetBrains.Annotations;
-using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
@@ -56,7 +55,8 @@ public sealed class MoodSystem : EntitySystem
 
     private void OnRefreshMoveSpeed(EntityUid uid, MoodComponent component, RefreshMovementSpeedModifiersEvent args)
     {
-        if (component.CurrentMoodThreshold is > MoodThreshold.VeryBad and < MoodThreshold.VeryGood or MoodThreshold.Dead)
+        if (component.CurrentMoodThreshold is > MoodThreshold.VeryBad and < MoodThreshold.VeryGood
+            or MoodThreshold.Dead)
             return;
 
         if (_jetpack.IsUserFlying(uid))
@@ -65,8 +65,8 @@ public sealed class MoodSystem : EntitySystem
         var modifier = GetMovementThreshold(component.CurrentMoodThreshold) switch
         {
             -1 => component.SlowdownSpeedModifier,
-            1 => component.IncreaseSpeedModifier,
-            _ => 1
+            1  => component.IncreaseSpeedModifier,
+            _  => 1
         };
 
         args.ModifySpeed(modifier, modifier);
@@ -100,7 +100,9 @@ public sealed class MoodSystem : EntitySystem
                     if (!component.MoodChangeValues.TryGetValue(oldPrototype.MoodChange, out var oldValue))
                         return;
 
-                    amount += (oldPrototype.PositiveEffect ? -oldValue : oldValue) + (prototype.PositiveEffect ? value : -value);
+                    amount += (oldPrototype.PositiveEffect ? -oldValue : oldValue) +
+                        (prototype.PositiveEffect ? value : -value);
+
                     component.CategorisedEffects[prototype.Category] = prototype.ID;
                 }
             }
@@ -111,7 +113,10 @@ public sealed class MoodSystem : EntitySystem
             }
 
             if (prototype.Timeout != 0)
-                Timer.Spawn(TimeSpan.FromMinutes(prototype.Timeout), () => RemoveTimedOutEffect(uid, prototype.ID, prototype.Category));
+            {
+                Timer.Spawn(TimeSpan.FromMinutes(prototype.Timeout),
+                    () => RemoveTimedOutEffect(uid, prototype.ID, prototype.Category));
+            }
         }
         //Apply uncategorised effect
         else
@@ -150,10 +155,13 @@ public sealed class MoodSystem : EntitySystem
         {
             if (!comp.CategorisedEffects.TryGetValue(category, out var currentProtoId))
                 return;
+
             if (currentProtoId != prototypeId)
                 return;
+
             if (!_prototypeManager.TryIndex<MoodEffectPrototype>(currentProtoId, out var currentProto))
                 return;
+
             if (!comp.MoodChangeValues.TryGetValue(currentProto.MoodChange, out var value))
                 return;
 
@@ -202,15 +210,28 @@ public sealed class MoodSystem : EntitySystem
 
     private void OnInit(EntityUid uid, MoodComponent component, ComponentInit args)
     {
-        _mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold);
-        if (critThreshold != null)
-            component.CritThresholdBeforeModify = critThreshold.Value;
+        if (!TryComp(uid, out MobThresholdsComponent? thresholdsComponent))
+        {
+            return;
+        }
+
+        if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold, thresholdsComponent))
+        {
+            return;
+        }
+
+        component.CritThresholdBeforeModify = critThreshold.Value;
 
         var amount = component.MoodThresholds[MoodThreshold.Neutral];
         SetMood(uid, amount, component, refresh: true);
     }
 
-    public void SetMood(EntityUid uid, float amount, MoodComponent? component = null, bool force = false, bool refresh = false)
+    public void SetMood(
+        EntityUid uid,
+        float amount,
+        MoodComponent? component = null,
+        bool force = false,
+        bool refresh = false)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -298,9 +319,9 @@ public sealed class MoodSystem : EntitySystem
 
         var newKey = modifier switch
         {
-            1 => FixedPoint2.New(key.Value.Float() * component.IncreaseCritThreshold),
+            1  => FixedPoint2.New(key.Value.Float() * component.IncreaseCritThreshold),
             -1 => FixedPoint2.New(key.Value.Float() * component.DecreaseCritThreshold),
-            _ => component.CritThresholdBeforeModify
+            _  => component.CritThresholdBeforeModify
         };
 
         component.CritThresholdBeforeModify = key.Value;
@@ -330,12 +351,12 @@ public sealed class MoodSystem : EntitySystem
         return threshold switch
         {
             >= MoodThreshold.VeryGood => 1,
-            <= MoodThreshold.VeryBad => -1,
-            _ => 0
+            <= MoodThreshold.VeryBad  => -1,
+            _                         => 0
         };
     }
 
-    #region HealthStatusCheck
+#region HealthStatusCheck
 
     private void OnDamageChange(EntityUid uid, MoodComponent component, DamageChangedEvent args)
     {
@@ -356,7 +377,7 @@ public sealed class MoodSystem : EntitySystem
         RaiseLocalEvent(uid, ev);
     }
 
-    #endregion
+#endregion
 }
 
 [UsedImplicitly]
@@ -380,7 +401,7 @@ public sealed partial class ShowMoodEffects : IAlertClick
 
         var msgStart = Loc.GetString("mood-show-effects-start");
         chatManager.ChatMessageToOne(ChatChannel.Emotes, msgStart, msgStart, EntityUid.Invalid, false,
-            actorComp.PlayerSession.ConnectedClient);
+            actorComp.PlayerSession.Channel);
 
         foreach (var (_, protoId) in comp.CategorisedEffects)
         {
@@ -413,6 +434,6 @@ public sealed partial class ShowMoodEffects : IAlertClick
         var msg = $"[font size=10][color={color}]{proto.Description}[/color][/font]";
 
         chatManager.ChatMessageToOne(ChatChannel.Emotes, msg, msg, EntityUid.Invalid, false,
-            comp.PlayerSession.ConnectedClient);
+            comp.PlayerSession.Channel);
     }
 }

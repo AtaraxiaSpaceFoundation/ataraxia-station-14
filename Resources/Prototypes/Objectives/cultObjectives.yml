@@ -8,6 +8,6 @@
       difficulty: 1.5
       issuer: Cult
       icon:
-        sprite: /White/Cult/interface.rsi
+        sprite: White/Cult/interface.rsi
         state: icon
     - type: KillCultistTargetCondition

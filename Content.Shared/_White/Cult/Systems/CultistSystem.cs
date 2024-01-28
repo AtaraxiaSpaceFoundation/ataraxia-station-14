@@ -9,16 +9,16 @@ public sealed class CultistSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CultistComponent, ComponentStartup>(OnInit);
-        SubscribeLocalEvent<CultistComponent, ComponentShutdown>(OnRemove);
+        SubscribeLocalEvent<Components.CultistComponent, ComponentStartup>(OnInit);
+        SubscribeLocalEvent<Components.CultistComponent, ComponentShutdown>(OnRemove);
     }
 
-    private void OnInit(EntityUid uid, CultistComponent component, ComponentStartup args)
+    private void OnInit(EntityUid uid, Components.CultistComponent component, ComponentStartup args)
     {
         RaiseLocalEvent(new EventCultistComponentState(true));
     }
 
-    private void OnRemove(EntityUid uid, CultistComponent component, ComponentShutdown args)
+    private void OnRemove(EntityUid uid, Components.CultistComponent component, ComponentShutdown args)
     {
         RaiseLocalEvent(new EventCultistComponentState(false));
     }

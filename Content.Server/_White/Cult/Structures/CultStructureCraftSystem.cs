@@ -3,6 +3,7 @@ using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Structures;
 

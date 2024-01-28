@@ -2,7 +2,7 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Shared._White.Cult.Runes.Components;
+namespace Content.Shared._White.Cult.Components;
 
 [RegisterComponent]
 public sealed partial class ConstructShellComponent : Component

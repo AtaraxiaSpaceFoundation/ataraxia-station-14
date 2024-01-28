@@ -36,7 +36,11 @@ public sealed class RadialUIController : UIController, IOnStateEntered<GameplayS
     public void OnStateExited(GameplayState state)
     {
         //_context.OnContextClosed -= Close;
-        _radialSystem.OnRadialsResponse -= HandleVerbsResponse;
+        if (_radialSystem != null)
+        {
+            _radialSystem.OnRadialsResponse -= HandleVerbsResponse;
+        }
+
         Close();
     }
 

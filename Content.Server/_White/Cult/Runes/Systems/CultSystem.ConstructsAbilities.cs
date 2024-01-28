@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using Content.Server.GameTicking;
+﻿using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Maps;
 using Content.Server.Popups;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.IncorporealSystem;
@@ -25,6 +23,7 @@ public partial class CultSystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
 
     public void InitializeConstructsAbilities()
     {
@@ -39,17 +38,22 @@ public partial class CultSystem
 
         SubscribeLocalEvent<JuggernautCreateWallActionEvent>(OnJuggernautCreateWall);
 
+        SubscribeLocalEvent<ConstructComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ConstructComponent, ComponentInit>(OnConstructInit);
         SubscribeLocalEvent<ConstructComponent, ComponentRemove>(OnConstructComponentRemoved);
     }
 
+    private void OnMapInit(EntityUid uid, ConstructComponent component, MapInitEvent args)
+    {
+        var comp = EnsureComp<ActionsContainerComponent>(uid);
+        foreach (var id in component.Actions)
+        {
+            _actionContainer.AddAction(uid, id, comp);
+        }
+    }
+
     private void OnConstructInit(EntityUid uid, ConstructComponent component, ComponentInit args)
     {
-        foreach (var action in component.Actions)
-        {
-            _actionsSystem.AddAction(uid, action, uid);
-        }
-
         var query = EntityQueryEnumerator<CultRuleComponent, GameRuleComponent>();
 
         while (query.MoveNext(out var ruleEnt, out var cultRuleComponent, out _))

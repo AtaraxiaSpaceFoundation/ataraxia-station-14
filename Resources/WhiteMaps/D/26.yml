@@ -442,8 +442,6 @@ entities:
     - pos: 0.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 918.3258061
       type: EmitSoundOnCollide
   - uid: 30
@@ -451,8 +449,6 @@ entities:
     - pos: -1.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - nextSound: 921.5788935
       type: EmitSoundOnCollide
 - proto: GasPort
@@ -615,7 +611,6 @@ entities:
       type: Transform
     - state: True
       type: SignalSwitch
-    - type: ItemCooldown
 - proto: SpawnMobCarp
   entities:
   - uid: 6

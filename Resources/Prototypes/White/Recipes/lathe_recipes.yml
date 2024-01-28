@@ -3,7 +3,7 @@
   result: OxygenTank
   completetime: 3
   materials:
-    Steel: 500
+    Steel: 700
 
 - type: latheRecipe
   id: PlasmaTank

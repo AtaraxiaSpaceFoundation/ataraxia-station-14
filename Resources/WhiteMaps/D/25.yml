@@ -150,8 +150,6 @@ entities:
     - pos: -0.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 136
@@ -194,8 +192,6 @@ entities:
     - pos: 4.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 142
@@ -280,8 +276,6 @@ entities:
     - pos: 5.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CableMV
@@ -291,8 +285,6 @@ entities:
     - pos: -0.5,1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 147
@@ -335,8 +327,6 @@ entities:
     - pos: 4.5,0.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 153
@@ -421,8 +411,6 @@ entities:
     - pos: 5.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: Chair

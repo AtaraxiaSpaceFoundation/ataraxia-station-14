@@ -150,8 +150,6 @@ entities:
     - pos: 8.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 87
@@ -208,8 +206,6 @@ entities:
     - pos: 5.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 95
@@ -224,8 +220,6 @@ entities:
     - pos: 7.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 97
@@ -233,8 +227,6 @@ entities:
     - pos: 8.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 98
@@ -242,8 +234,6 @@ entities:
     - pos: 9.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 99
@@ -258,8 +248,6 @@ entities:
     - pos: 11.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 101
@@ -295,8 +283,6 @@ entities:
     - pos: 5.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 106
@@ -325,8 +311,6 @@ entities:
     - pos: 6.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 110
@@ -334,8 +318,6 @@ entities:
     - pos: 7.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 111
@@ -357,8 +339,6 @@ entities:
     - pos: 11.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 114
@@ -366,8 +346,6 @@ entities:
     - pos: 12.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
 - proto: CableApcStack1
@@ -393,8 +371,6 @@ entities:
     - pos: 9.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 115
@@ -416,8 +392,6 @@ entities:
     - pos: 6.5,3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 118
@@ -432,8 +406,6 @@ entities:
     - pos: 5.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 120
@@ -448,8 +420,6 @@ entities:
     - pos: 5.5,6.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 122
@@ -823,7 +793,7 @@ entities:
     - pos: 6.5,7.5
       parent: 1
       type: Transform
-- proto: WindoorMedicalLocked
+- proto: WindoorSecureMedicalLocked
   entities:
   - uid: 38
     components:

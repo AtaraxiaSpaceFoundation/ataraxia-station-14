@@ -47,10 +47,6 @@
   path: /Fonts/ComicSans/ComicSansMS.ttf
 
 - type: font
-  id: SmallFont
-  path: /Fonts/SmallFonts/SmallFont.ttf
-
-- type: font
   id: Bedstead
   path: /Fonts/Bedstead/Bedstead.otf
 

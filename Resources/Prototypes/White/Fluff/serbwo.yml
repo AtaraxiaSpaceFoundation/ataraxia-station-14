@@ -218,7 +218,7 @@
   id: ScuffLoadoutSW
   entity: ClothingOuterScufSuitFluff
   sponsorOnly: true
-  whitelistJobs: [ SeniorSalvageSpecialist, SeniorEngineer, SeniorPhysician, SeniorResearcher, Detective ]
+  whitelistJobs: [ Detective ]
 
 - type: loadout
   id: CapLoadoutSO

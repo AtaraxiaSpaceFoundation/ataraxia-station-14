@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Content.Client._White.UserInterface.Radial;
-using Content.Shared._White.Cult.Runes.Components;
 using Content.Shared._White.Cult.UI;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
+using ConstructShellComponent = Content.Shared._White.Cult.Components.ConstructShellComponent;
 
 namespace Content.Client._White.Cult.UI.ConstructSelector;
 

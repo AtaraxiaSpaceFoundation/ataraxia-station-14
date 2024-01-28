@@ -408,8 +408,6 @@ entities:
     - pos: -1.5,4.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 73
@@ -480,8 +478,6 @@ entities:
     - pos: -3.5,-1.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 104
@@ -489,8 +485,6 @@ entities:
     - pos: 2.5,-3.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 111
@@ -498,8 +492,6 @@ entities:
     - pos: 4.5,2.5
       parent: 1
       type: Transform
-    - enabled: True
-      type: AmbientSound
     - fixtures: {}
       type: Fixtures
   - uid: 118

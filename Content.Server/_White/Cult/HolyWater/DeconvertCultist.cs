@@ -8,6 +8,7 @@ using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._White.Cult.HolyWater;

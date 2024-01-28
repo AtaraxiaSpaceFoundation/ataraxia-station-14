@@ -247,7 +247,7 @@
   id: SecLoadoutCenturion
   entity: ClothingOuterHardsuitSecurityCenturion
   sponsorOnly: true
-  whitelistJobs: [SecurityOfficer, Warden, SecurityCadet, Detective, SeniorOfficer]
+  whitelistJobs: [Warden, SecurityCadet, SecurityOfficer, Detective]
 
 - type: loadout
   id: SalvageLoadoutCenturion

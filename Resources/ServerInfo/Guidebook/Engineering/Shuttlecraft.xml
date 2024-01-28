@@ -9,7 +9,7 @@
 <GuideEntityEmbed Entity="Thruster"/>
 <GuideEntityEmbed Entity="ComputerShuttle"/>
 <GuideEntityEmbed Entity="SubstationBasic"/>
-<GuideEntityEmbed Entity="GeneratorPlasma"/>
+<GuideEntityEmbed Entity="PortableGeneratorPacman"/>
 </Box>
 <Box>
 <GuideEntityEmbed Entity="CableHVStack"/>

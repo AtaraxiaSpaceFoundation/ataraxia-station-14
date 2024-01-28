@@ -7,8 +7,7 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
+        collection: GlassSmash
   - type: InteractionOutline
   - type: Sprite
     sprite: /Textures/White/Cult/Structures/cult_airlock.rsi

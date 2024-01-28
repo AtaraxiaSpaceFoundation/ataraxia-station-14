@@ -41,6 +41,10 @@
       thresholds:
         0: Alive
         60: Dead
+    - type: ActionsContainer
+    - type: ContainerContainer
+      containers:
+        actions: !type:Container
     - type: MobState
       allowedStates:
         - Alive
@@ -77,7 +81,8 @@
       baseWalkSpeed: 2
       baseSprintSpeed: 2
     - type: Construct
-      actions: [InstantActionJuggernautCreateWall]
+      actions:
+      - InstantActionJuggernautCreateWall
     - type: MeleeWeapon
       hidden: true
       angle: 30
@@ -190,6 +195,7 @@
     - type: Sprite
       sprite: White/Cult/Entities/construct_cult.rsi
       state: construct_cult
+    - type: ItemSlots
     - type: ConstructShell
       shardSlot:
         ejectOnBreak: true
