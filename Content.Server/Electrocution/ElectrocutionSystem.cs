@@ -25,6 +25,7 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Wires;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -150,7 +151,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
 
             if (tileRef != null)
             {
-                foreach (var entity in _entityLookup.GetEntitiesIntersecting(tileRef.Value, flags: LookupFlags.StaticSundries))
+                foreach (var entity in _entityLookup.GetLocalEntitiesIntersecting(tileRef.Value, flags: LookupFlags.StaticSundries))
                 {
                     if (_tag.HasTag(entity, "Window"))
                         return false;
@@ -213,6 +214,10 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
 
         TryDoElectrifiedAct(uid, args.User, siemens, electrified);
     }
+    private bool IsPanelClosed(EntityUid uid) // WD
+    {
+        return TryComp(uid, out WiresPanelComponent? panel) && !panel.Open;
+    }
 
     public bool TryDoElectrifiedAct(EntityUid uid, EntityUid targetUid,
         float siemens = 1,
@@ -224,6 +229,9 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
             return false;
 
         if (!IsPowered(uid, electrified, transform))
+            return false;
+
+        if (IsPanelClosed(uid)) // WD
             return false;
 
         EnsureComp<ActivatedElectrifiedComponent>(uid);

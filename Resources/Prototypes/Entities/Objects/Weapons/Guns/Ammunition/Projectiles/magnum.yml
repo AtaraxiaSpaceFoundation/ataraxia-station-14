@@ -44,7 +44,7 @@
       types:
         Blunt: 3
         Heat: 32
-        
+
 - type: entity
   id: BulletMagnumAP
   name: bullet (.45 magnum armor-piercing)
@@ -54,13 +54,13 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 26 # 20% decrease
+        Piercing: 35
     ignoreResistances: true
 
 - type: entity
   id: BulletMagnumUranium
   name: bullet (.45 magnum uranium)
-  parent: BaseBullet
+  parent: BaseBulletUranium
   noSpawn: true
   components:
   - type: Projectile

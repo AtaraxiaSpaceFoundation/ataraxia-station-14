@@ -21,6 +21,8 @@ public sealed partial class VoiceMaskSystem
 
         var comp = EnsureComp<VoiceMaskComponent>(user);
         comp.VoiceName = component.LastSetName;
+        if (component.LastSetVoice != null)
+            comp.VoiceId = component.LastSetVoice;
 
         _actions.AddAction(user, ref component.ActionEntity, component.Action, uid);
     }

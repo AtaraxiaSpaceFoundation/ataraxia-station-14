@@ -10,6 +10,10 @@ namespace Content.Server.Atmos.Reactions
     {
         public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
         {
+            var initialHyperNoblium = mixture.GetMoles(Gas.HyperNoblium);
+            if (initialHyperNoblium >= 5.0f && mixture.Temperature > 20f)
+                return ReactionResult.NoReaction;
+
             var energyReleased = 0f;
             var oldHeatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
             var temperature = mixture.Temperature;
@@ -19,7 +23,7 @@ namespace Content.Server.Atmos.Reactions
             var initialTrit = mixture.GetMoles(Gas.Tritium);
 
             if (mixture.GetMoles(Gas.Oxygen) < initialTrit ||
-                Atmospherics.MinimumTritiumOxyburnEnergy > (temperature * oldHeatCapacity))
+                Atmospherics.MinimumTritiumOxyburnEnergy > (temperature * oldHeatCapacity * heatScale))
             {
                 burnedFuel = mixture.GetMoles(Gas.Oxygen) / Atmospherics.TritiumBurnOxyFactor;
                 if (burnedFuel > initialTrit)

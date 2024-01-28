@@ -6,6 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Server.UserInterface;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Alert;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Popups;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
@@ -43,12 +44,18 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
-        SubscribeLocalEvent<ShuttleConsoleComponent, ShuttleConsoleFTLRequestMessage>(OnDestinationMessage);
-        SubscribeLocalEvent<ShuttleConsoleComponent, BoundUIClosedEvent>(OnConsoleUIClose);
+        Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
+        {
+            subs.Event<ShuttleConsoleFTLRequestMessage>(OnDestinationMessage);
+            subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
+        });
 
         SubscribeLocalEvent<DroneConsoleComponent, ConsoleShuttleEvent>(OnCargoGetConsole);
         SubscribeLocalEvent<DroneConsoleComponent, AfterActivatableUIOpenEvent>(OnDronePilotConsoleOpen);
-        SubscribeLocalEvent<DroneConsoleComponent, BoundUIClosedEvent>(OnDronePilotConsoleClose);
+        Subs.BuiEvents<DroneConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
+        {
+            subs.Event<BoundUIClosedEvent>(OnDronePilotConsoleClose);
+        });
 
         SubscribeLocalEvent<DockEvent>(OnDock);
         SubscribeLocalEvent<UndockEvent>(OnUndock);
@@ -126,7 +133,16 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var ev = new ShuttleConsoleFTLTravelStartEvent(uid);
         RaiseLocalEvent(ref ev);
 
-        _shuttle.FTLTravel(xform.GridUid.Value, shuttle, destination, dock: dock, priorityTag: tagEv.Tag);
+        //WD-EDIT
+        if (HasComp<CargoShuttleComponent>(shuttleUid))
+        {
+            _shuttle.FTLTravel(xform.GridUid.Value, shuttle, destination, dock: dock, priorityTag: "DockCargo");
+        }
+        else
+        {
+            _shuttle.FTLTravel(xform.GridUid.Value, shuttle, destination, dock: dock, priorityTag: tagEv.Tag);
+        }
+        //WD-EDIT
     }
 
     private void OnDock(DockEvent ev)

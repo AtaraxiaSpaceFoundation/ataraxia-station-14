@@ -1,5 +1,6 @@
 using Content.Server.Body.Systems;
 using Content.Server.Chemistry.EntitySystems;
+using Content.Server._White.Medical.BodyScanner;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -9,7 +10,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Server.Body.Components
 {
-    [RegisterComponent, Access(typeof(BloodstreamSystem), (typeof(ChemistrySystem)))]
+    [RegisterComponent, Access(typeof(BloodstreamSystem), typeof(ChemistrySystem), typeof(BodyScannerConsoleSystem))] // WD EDIT
     public sealed partial class BloodstreamComponent : Component
     {
         public static string DefaultChemicalsSolutionName = "chemicals";
@@ -165,5 +166,14 @@ namespace Content.Server.Body.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
         public float StatusTime;
+
+        //WD-EDIT
+
+        /// <summary>
+        ///     Bool for bleeding alert.
+        /// </summary>
+        public bool IsBleeding => BleedAmount > 0;
+
+        //WD-EDIT
     }
 }

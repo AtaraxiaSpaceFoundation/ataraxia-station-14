@@ -19,6 +19,7 @@
         amount: 2
       - id: RagItem
         amount: 2
+      - id: Eftpos
 
 #- type: entity
 #  id: LockerFormalFilled
@@ -33,7 +34,7 @@
   - type: StorageFill
     contents:
       - id: CrowbarRed
-      - id: MonkeyCubeBox
+      - id: VariantCubeBox
       - id: BoxMousetrap
         amount: 2
       - id: SprayBottleWater
@@ -50,6 +51,7 @@
       - id: DrinkMilkCarton
         amount: 2
       - id: DrinkSoyMilkCarton
+      - id: Eftpos
 
 - type: entity
   id: ClosetJanitorFilled
@@ -106,6 +108,7 @@
       - id: ClothingUniformOveralls
       - id: ClothingHeadHatTrucker
         prob: 0.1
+      - id: Eftpos
 
 - type: entity
   id: LockerBotanistLoot

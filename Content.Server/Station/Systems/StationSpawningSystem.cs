@@ -1,5 +1,4 @@
 using Content.Server.Access.Systems;
-using Content.Server.DetailExaminable;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
 using Content.Server.Mind.Commands;
@@ -18,6 +17,7 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Station;
 using Content.Shared.StatusIcon;
+using Content.Shared._White.CharacterExamine;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -105,7 +105,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             DebugTools.Assert(entity is null);
             var jobEntity = EntityManager.SpawnEntity(prototype.JobEntity, coordinates);
             MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
-            DoJobSpecials(job, jobEntity);
+            DoJobSpecials(job, jobEntity, profile);
             _identity.QueueIdentityUpdate(jobEntity);
             return jobEntity;
         }
@@ -141,7 +141,14 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
             EquipStartingGear(entity.Value, startingGear, profile);
             if (profile != null)
-                EquipIdCard(entity.Value, profile.Name, prototype, station);
+            {
+                if (prototype.ID.Contains("Clown"))
+                    EquipIdCard(entity.Value, profile.ClownName, prototype, station);
+                else if (prototype.ID.Contains("Mime"))
+                    EquipIdCard(entity.Value, profile.MimeName, prototype, station);
+                else
+                    EquipIdCard(entity.Value, profile.Name, prototype, station);
+            }
         }
 
         if (profile != null)
@@ -150,16 +157,18 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _metaSystem.SetEntityName(entity.Value, profile.Name);
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
             {
-                AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
+                var detail = AddComp<DetailExaminableComponent>(entity.Value);
+                detail.Content = profile.FlavorText;
+                Dirty(detail);
             }
         }
 
-        DoJobSpecials(job, entity.Value);
+        DoJobSpecials(job, entity.Value, profile);
         _identity.QueueIdentityUpdate(entity.Value);
         return entity.Value;
     }
 
-    private void DoJobSpecials(JobComponent? job, EntityUid entity)
+    private void DoJobSpecials(JobComponent? job, EntityUid entity, HumanoidCharacterProfile? profile)
     {
         if (!_prototypeManager.TryIndex(job?.Prototype ?? string.Empty, out JobPrototype? prototype))
             return;
@@ -167,6 +176,42 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         foreach (var jobSpecial in prototype.Special)
         {
             jobSpecial.AfterEquip(entity);
+        }
+
+        if (prototype.ID.Contains("Cyborg"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetBorgName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.BorgName);
+            }
+        }
+
+        if (prototype.ID.Contains("Clown"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetClownName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.ClownName);
+            }
+        }
+
+        if (prototype.ID.Contains("Mime"))
+        {
+            if (_randomizeCharacters || profile == null)
+            {
+                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetMimeName());
+            }
+            else
+            {
+                _metaSystem.SetEntityName(entity, profile.MimeName);
+            }
         }
     }
 
@@ -182,10 +227,13 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (!InventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
             return;
 
-        if (!EntityManager.TryGetComponent(idUid, out PdaComponent? pdaComponent) || !TryComp<IdCardComponent>(pdaComponent.ContainedId, out var card))
+        var cardId = idUid.Value;
+        if (TryComp<PdaComponent>(idUid, out var pdaComponent) && pdaComponent.ContainedId != null)
+            cardId = pdaComponent.ContainedId.Value;
+
+        if (!TryComp<IdCardComponent>(cardId, out var card))
             return;
 
-        var cardId = pdaComponent.ContainedId.Value;
         _cardSystem.TryChangeFullName(cardId, characterName, card);
         _cardSystem.TryChangeJobTitle(cardId, jobPrototype.LocalizedName, card);
 
@@ -203,7 +251,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         _accessSystem.SetAccessToJob(cardId, jobPrototype, extendedAccess);
 
-        _pdaSystem.SetOwner(idUid.Value, pdaComponent, characterName);
+        if (pdaComponent != null)
+            _pdaSystem.SetOwner(idUid.Value, pdaComponent, characterName);
     }
 
 

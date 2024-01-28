@@ -245,3 +245,18 @@
     stampState: "paper_stamp-deny"
   - type: Sprite
     state: stamp-deny
+
+- type: entity
+  name: inspector's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampInspector
+  suffix: DO NOT MAP
+  description: A rubber stamp for stamping important documents.
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-inspector
+    stampedColor: "#a23e3e"
+    stampState: "paper_stamp-inspector"
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: stamp-inspector

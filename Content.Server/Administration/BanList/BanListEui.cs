@@ -78,7 +78,8 @@ public sealed class BanListEui : BaseEui
                 ban.BanningAdmin == null
                     ? null
                     : (await _playerLocator.LookupIdAsync(ban.BanningAdmin.Value))?.Username,
-                unban
+                unban,
+                ban.ServerName
             ));
         }
     }
@@ -110,7 +111,8 @@ public sealed class BanListEui : BaseEui
                     ? null
                     : (await _playerLocator.LookupIdAsync(ban.BanningAdmin.Value))?.Username,
                 unban,
-                ban.Role
+                ban.Role,
+                ban.ServerName ?? "unknown"
             ));
         }
     }

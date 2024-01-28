@@ -4,7 +4,7 @@
     "x": 32,
     "y": 32
   },
-  "copyright": "Taken from tgstation, brigmedic locker is a resprited CMO locker by PuroSlavKing (Github)",
+  "copyright": "Taken from tgstation, brigmedic locker is a resprited CMO locker by PuroSlavKing (Github). Inspector White Dream SS14 original by Gargarien",
   "license": "CC-BY-SA-3.0",
   "states": [
     {
@@ -546,6 +546,15 @@
     },
     {
       "name": "representative_door"
+    },
+    {
+      "name": "inspector"
+    },
+    {
+      "name": "inspector_door"
+    },
+    {
+      "name": "inspector_open"
     }
   ]
 }

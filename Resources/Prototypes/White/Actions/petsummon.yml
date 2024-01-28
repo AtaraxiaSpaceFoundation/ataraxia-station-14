@@ -1,0 +1,21 @@
+- type: entity
+  id: PetSummonAction
+  name: Призыв
+  description: Призыв питомца БЕЗ возможности вселения призрака
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Objects/Misc/books.rsi, state: summon_book }
+    event: !type:PetSummonActionEvent {}
+    useDelay: 1
+
+- type: entity
+  id: PetGhostSummonAction
+  name: Призрачный призыв
+  description: Призыв питомца С возможностью вселения призрака
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Mobs/Ghosts/ghost_human.rsi, state: icon }
+    event: !type:PetGhostSummonActionEvent {}
+    useDelay: 1

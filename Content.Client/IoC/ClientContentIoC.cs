@@ -1,8 +1,14 @@
+using Content.Client._White.JoinQueue;
+using Content.Client._White.Jukebox;
+using Content.Client._White.Reputation;
+using Content.Client._White.Sponsors;
+using Content.Client._White.Stalin;
+using Content.Client._White.Trail.Line.Manager;
+using Content.Client._White.TTS;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
-using Content.Client.Options;
 using Content.Client.Eui;
 using Content.Client.GhostKick;
 using Content.Client.Info;
@@ -15,13 +21,10 @@ using Content.Client.Fullscreen;
 using Content.Client.Stylesheets;
 using Content.Client.Viewport;
 using Content.Client.Voting;
-using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
-using Content.Shared.Module;
 using Content.Client.Guidebook;
 using Content.Client.Replay;
 using Content.Shared.Administration.Managers;
-
 
 namespace Content.Client.IoC
 {
@@ -49,6 +52,16 @@ namespace Content.Client.IoC
             IoCManager.Register<JobRequirementsManager>();
             IoCManager.Register<DocumentParsingManager>();
             IoCManager.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
+
+            //WD-EDIT
+            IoCManager.Register<JoinQueueManager>();
+            IoCManager.Register<SponsorsManager>();
+            IoCManager.Register<StalinManager>();
+            IoCManager.Register<ClientJukeboxSongsSyncManager>();
+            IoCManager.Register<TTSManager>();
+            IoCManager.Register<ITrailLineManager, TrailSplineManager>();
+            IoCManager.Register<ReputationManager>();
+            //WD-EDIT
         }
     }
 }

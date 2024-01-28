@@ -1,5 +1,5 @@
 using System.Numerics;
-using Content.Client.Chat.Managers;
+using Content.Client._White.UserInterface.Controls;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Robust.Client.Graphics;
@@ -209,7 +209,7 @@ namespace Content.Client.Chat.UI
 
         protected override Control BuildBubble(ChatMessage message, string speechStyleClass, Color? fontColor = null)
         {
-            var label = new RichTextLabel
+            var label = new ChatRichTextLabel
             {
                 MaxWidth = SpeechMaxWidth,
             };

@@ -15,6 +15,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Server._White.PandaSocket.Main;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -62,6 +63,10 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transformSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
+    //WD-EDIT
+   [Dependency] private readonly PandaWebManager _pandaWeb = default!;
+    //WD-EDIT
+
     private ISawmill _sawmill = default!;
 
     private const float ShuttleSpawnBuffer = 1f;
@@ -91,8 +96,10 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
     private void OnRoundStart(RoundStartingEvent ev)
     {
-        CleanupEmergencyConsole();
+        // WD EDIT START
         _roundEndCancelToken?.Cancel();
+        CleanupEmergencyConsole();
+        // WD EDIT END
         _roundEndCancelToken = new CancellationTokenSource();
     }
 
@@ -185,6 +192,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         if (config == null)
             return;
 
+        SendRoundStatus("shuttle_docked");
         RaiseNetworkEvent(new EmergencyShuttlePositionMessage()
         {
             StationUid = GetNetEntity(targetGrid),
@@ -197,25 +205,25 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     /// </summary>
     private void OnEmergencyFTL(EntityUid uid, EmergencyShuttleComponent component, ref FTLStartedEvent args)
     {
-        TimeSpan ftlTime = TimeSpan.FromSeconds
+        var ftlTime = TimeSpan.FromSeconds
         (
-            TryComp<FTLComponent>(uid, out var ftlComp) ?
-            ftlComp.TravelTime : ShuttleSystem.DefaultTravelTime
+            TryComp<FTLComponent>(uid, out var ftlComp) ? ftlComp.TravelTime : ShuttleSystem.DefaultTravelTime
         );
 
-        if (TryComp<DeviceNetworkComponent>(uid, out var netComp))
+        if (!TryComp<DeviceNetworkComponent>(uid, out var netComp))
+            return;
+
+        var payload = new NetworkPayload
         {
-            var payload = new NetworkPayload
-            {
-                [ShuttleTimerMasks.ShuttleMap] = uid,
-                [ShuttleTimerMasks.SourceMap] = args.FromMapUid,
-                [ShuttleTimerMasks.DestMap] = args.TargetCoordinates.GetMapUid(_entityManager),
-                [ShuttleTimerMasks.ShuttleTime] = ftlTime,
-                [ShuttleTimerMasks.SourceTime] = ftlTime,
-                [ShuttleTimerMasks.DestTime] = ftlTime
-            };
-            _deviceNetworkSystem.QueuePacket(uid, null, payload, netComp.TransmitFrequency);
-        }
+            [ShuttleTimerMasks.ShuttleMap] = uid,
+            [ShuttleTimerMasks.SourceMap] = args.FromMapUid,
+            [ShuttleTimerMasks.DestMap] = args.TargetCoordinates.GetMapUid(_entityManager),
+            [ShuttleTimerMasks.ShuttleTime] = ftlTime,
+            [ShuttleTimerMasks.SourceTime] = ftlTime,
+            [ShuttleTimerMasks.DestTime] = ftlTime
+        };
+
+        _deviceNetworkSystem.QueuePacket(uid, null, payload, netComp.TransmitFrequency);
     }
 
     /// <summary>
@@ -225,20 +233,21 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     {
         var countdownTime = TimeSpan.FromSeconds(_configManager.GetCVar(CCVars.RoundRestartTime));
         var shuttle = args.Entity;
-        if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
+        if (!TryComp<DeviceNetworkComponent>(shuttle, out var net))
+            return;
+
+        var payload = new NetworkPayload
         {
-            var payload = new NetworkPayload
-            {
-                [ShuttleTimerMasks.ShuttleMap] = shuttle,
-                [ShuttleTimerMasks.SourceMap] = _roundEnd.GetCentcomm(),
-                [ShuttleTimerMasks.DestMap] = _roundEnd.GetStation(),
-                [ShuttleTimerMasks.ShuttleTime] = countdownTime,
-                [ShuttleTimerMasks.SourceTime] = countdownTime,
-                [ShuttleTimerMasks.DestTime] = countdownTime,
-                [ShuttleTimerMasks.Text] = new string?[] { "BYE!" }
-            };
-            _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
-        }
+            [ShuttleTimerMasks.ShuttleMap] = shuttle,
+            [ShuttleTimerMasks.SourceMap] = _roundEnd.GetCentcomm(),
+            [ShuttleTimerMasks.DestMap] = _roundEnd.GetStation(),
+            [ShuttleTimerMasks.ShuttleTime] = countdownTime,
+            [ShuttleTimerMasks.SourceTime] = countdownTime,
+            [ShuttleTimerMasks.DestTime] = countdownTime,
+            [ShuttleTimerMasks.Text] = new[] { "BYE!" }
+        };
+
+        _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
     }
 
     /// <summary>
@@ -258,8 +267,12 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         // UHH GOOD LUCK
         if (targetGrid == null)
         {
-            _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle {ToPrettyString(stationUid)} unable to dock with station {ToPrettyString(stationUid)}");
-            _chatSystem.DispatchStationAnnouncement(stationUid, Loc.GetString("emergency-shuttle-good-luck"), playDefaultSound: false);
+            _logger.Add(LogType.EmergencyShuttle, LogImpact.High,
+                $"Emergency shuttle {ToPrettyString(stationUid)} unable to dock with station {ToPrettyString(stationUid)}");
+
+            _chatSystem.DispatchStationAnnouncement(stationUid, Loc.GetString("emergency-shuttle-good-luck"),
+                playDefaultSound: false);
+
             // TODO: Need filter extensions or something don't blame me.
             _audio.PlayGlobal("/Audio/Misc/notice1.ogg", Filter.Broadcast(), true);
             return;
@@ -271,8 +284,12 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         {
             if (TryComp<TransformComponent>(targetGrid.Value, out var targetXform))
             {
-                var angle = _dock.GetAngle(stationShuttle.EmergencyShuttle.Value, xform, targetGrid.Value, targetXform, xformQuery);
-                _chatSystem.DispatchStationAnnouncement(stationUid, Loc.GetString("emergency-shuttle-docked", ("time", $"{_consoleAccumulator:0}"), ("direction", angle.GetDir())), playDefaultSound: false);
+                var angle = _dock.GetAngle(stationShuttle.EmergencyShuttle.Value, xform, targetGrid.Value, targetXform,
+                    xformQuery);
+
+                _chatSystem.DispatchStationAnnouncement(stationUid,
+                    Loc.GetString("emergency-shuttle-docked", ("time", $"{_consoleAccumulator:0}"),
+                        ("direction", angle.GetDir())), playDefaultSound: false);
             }
 
             // shuttle timers
@@ -289,10 +306,14 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
                     [ShuttleTimerMasks.DestTime] = time + TimeSpan.FromSeconds(TransitTime),
                     [ShuttleTimerMasks.Docked] = true
                 };
-                _deviceNetworkSystem.QueuePacket(stationShuttle.EmergencyShuttle.Value, null, payload, netComp.TransmitFrequency);
+
+                _deviceNetworkSystem.QueuePacket(stationShuttle.EmergencyShuttle.Value, null, payload,
+                    netComp.TransmitFrequency);
             }
 
-            _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle {ToPrettyString(stationUid)} docked with stations");
+            _logger.Add(LogType.EmergencyShuttle, LogImpact.High,
+                $"Emergency shuttle {ToPrettyString(stationUid)} docked with stations");
+
             // TODO: Need filter extensions or something don't blame me.
             _audio.PlayGlobal("/Audio/Announcements/shuttle_dock.ogg", Filter.Broadcast(), true);
         }
@@ -300,11 +321,16 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         {
             if (TryComp<TransformComponent>(targetGrid.Value, out var targetXform))
             {
-                var angle = _dock.GetAngle(stationShuttle.EmergencyShuttle.Value, xform, targetGrid.Value, targetXform, xformQuery);
-                _chatSystem.DispatchStationAnnouncement(stationUid, Loc.GetString("emergency-shuttle-nearby", ("direction", angle.GetDir())), playDefaultSound: false);
+                var angle = _dock.GetAngle(stationShuttle.EmergencyShuttle.Value, xform, targetGrid.Value, targetXform,
+                    xformQuery);
+
+                _chatSystem.DispatchStationAnnouncement(stationUid,
+                    Loc.GetString("emergency-shuttle-nearby", ("direction", angle.GetDir())), playDefaultSound: false);
             }
 
-            _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle {ToPrettyString(stationUid)} unable to find a valid docking port for {ToPrettyString(stationUid)}");
+            _logger.Add(LogType.EmergencyShuttle, LogImpact.High,
+                $"Emergency shuttle {ToPrettyString(stationUid)} unable to find a valid docking port for {ToPrettyString(stationUid)}");
+
             // TODO: Need filter extensions or something don't blame me.
             _audio.PlayGlobal("/Audio/Misc/notice1.ogg", Filter.Broadcast(), true);
         }
@@ -372,7 +398,9 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         var query = AllEntityQuery<StationEmergencyShuttleComponent>();
 
         while (query.MoveNext(out var uid, out var comp))
+        {
             AddEmergencyShuttle(uid, comp);
+        }
     }
 
     private void AddCentcomm(StationCentcommComponent component)
@@ -409,10 +437,11 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         }
 
         var mapId = _mapManager.CreateMap();
-        var grid = _map.LoadGrid(mapId, component.Map.ToString(),  new MapLoadOptions()
+        var grid = _map.LoadGrid(mapId, component.Map.ToString(), new MapLoadOptions
         {
             LoadMap = false,
         });
+
         var map = _mapManager.GetMapEntityId(mapId);
 
         if (!Exists(map))
@@ -535,11 +564,26 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         return false;
     }
 
-    private bool IsOnGrid(TransformComponent xform, EntityUid shuttle, MapGridComponent? grid = null, TransformComponent? shuttleXform = null)
+    private bool IsOnGrid(
+        TransformComponent xform,
+        EntityUid shuttle,
+        MapGridComponent? grid = null,
+        TransformComponent? shuttleXform = null)
     {
         if (!Resolve(shuttle, ref grid, ref shuttleXform))
             return false;
 
-        return _transformSystem.GetWorldMatrix(shuttleXform).TransformBox(grid.LocalAABB).Contains(_transformSystem.GetWorldPosition(xform));
+        return _transformSystem.GetWorldMatrix(shuttleXform).TransformBox(grid.LocalAABB)
+            .Contains(_transformSystem.GetWorldPosition(xform));
+    }
+
+    private void SendRoundStatus(string status)
+    {
+        var utkaRoundStatusEvent = new UtkaRoundStatusEvent()
+        {
+            Message = status
+        };
+
+        _pandaWeb.SendBotPostMessage(utkaRoundStatusEvent);
     }
 }

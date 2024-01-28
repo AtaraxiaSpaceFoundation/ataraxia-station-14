@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
+using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Shared._White;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -16,6 +18,7 @@ namespace Content.Server.Connection
     public interface IConnectionManager
     {
         void Initialize();
+        Task<bool> HavePrivilegedJoin(NetUserId userId); // WD-EDIT
     }
 
     /// <summary>
@@ -30,6 +33,10 @@ namespace Content.Server.Connection
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
         [Dependency] private readonly ServerDbEntryManager _serverDbEntry = default!;
+
+        //WD-EDIT
+        [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        //WD-EDIT
 
         public void Initialize()
         {
@@ -114,15 +121,16 @@ namespace Content.Server.Connection
                 var minMinutesAge = _cfg.GetCVar(CCVars.PanicBunkerMinAccountAge);
                 var record = await _dbManager.GetPlayerRecordByUserId(userId);
                 var validAccountAge = record != null &&
-                                        record.FirstSeenTime.CompareTo(DateTimeOffset.Now - TimeSpan.FromMinutes(minMinutesAge)) <= 0;
+                                      record.FirstSeenTime.CompareTo(DateTimeOffset.Now - TimeSpan.FromMinutes(minMinutesAge)) <= 0;
+                var bypassAllowed = _cfg.GetCVar(CCVars.BypassBunkerWhitelist) && await _db.GetWhitelistStatusAsync(userId);
 
                 // Use the custom reason if it exists & they don't have the minimum account age
-                if (customReason != string.Empty && !validAccountAge)
+                if (customReason != string.Empty && !validAccountAge && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic, customReason, null);
                 }
 
-                if (showReason && !validAccountAge)
+                if (showReason && !validAccountAge && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic,
                         Loc.GetString("panic-bunker-account-denied-reason",
@@ -134,31 +142,32 @@ namespace Content.Server.Connection
                 var haveMinOverallTime = overallTime != null && overallTime.TimeSpent.TotalHours > minOverallHours;
 
                 // Use the custom reason if it exists & they don't have the minimum time
-                if (customReason != string.Empty && !haveMinOverallTime)
+                if (customReason != string.Empty && !haveMinOverallTime && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic, customReason, null);
                 }
 
-                if (showReason && !haveMinOverallTime)
+                if (showReason && !haveMinOverallTime && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic,
                         Loc.GetString("panic-bunker-account-denied-reason",
                             ("reason", Loc.GetString("panic-bunker-account-reason-overall", ("hours", minOverallHours)))), null);
                 }
 
-                if (!validAccountAge || !haveMinOverallTime)
+                if (!validAccountAge || !haveMinOverallTime && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic, Loc.GetString("panic-bunker-account-denied"), null);
                 }
             }
 
-            var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
-                            ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
-                            status == PlayerGameStatus.JoinedGame;
-            if ((_plyMgr.PlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && adminData is null) && !wasInGame)
+            //WD-EDIT
+            var isQueueEnabled = _cfg.GetCVar(WhiteCVars.QueueEnabled);
+            var isPrivileged = await HavePrivilegedJoin(e.UserId);
+            if (_plyMgr.PlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !isPrivileged && !isQueueEnabled)
             {
                 return (ConnectionDenyReason.Full, Loc.GetString("soft-player-cap-full"), null);
             }
+            //WD-EDIT
 
             var bans = await _db.GetServerBansAsync(addr, userId, hwId, includeUnbanned: false);
             if (bans.Count > 0)
@@ -205,5 +214,20 @@ namespace Content.Server.Connection
             await _db.AssignUserIdAsync(name, assigned);
             return assigned;
         }
+
+        //WD-EDIT
+        public async Task<bool> HavePrivilegedJoin(NetUserId userId)
+        {
+            var adminData = await _dbManager.GetAdminDataForAsync(userId);
+
+            var havePriorityJoin = _sponsorsManager.TryGetInfo(userId, out var sponsorData) && sponsorData.HavePriorityJoin;
+            var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
+                            ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
+                            status == PlayerGameStatus.JoinedGame;
+            return adminData != null ||
+                   havePriorityJoin ||
+                   wasInGame;
+        }
+        //WD-EDIT
     }
 }

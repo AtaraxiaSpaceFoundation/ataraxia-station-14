@@ -3,13 +3,13 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
-using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Effects;
+using Content.Shared.Glue;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -18,7 +18,9 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
+using Content.Shared.Lube;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Physics.Pull;
@@ -29,12 +31,14 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Content.Shared._White.EndOfRoundStats.CuffedTime;
+using Content.Shared._White.Mood;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Cuffs
 {
@@ -53,10 +57,12 @@ namespace Content.Shared.Cuffs
         [Dependency] private readonly SharedContainerSystem _container = default!;
         [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
         [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly SharedHandVirtualItemSystem _handVirtualItem = default!;
+        [Dependency] private readonly SharedVirtualItemSystem _virtualItem = default!;
         [Dependency] private readonly SharedInteractionSystem _interaction = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
+        [Dependency] private readonly IGameTiming _gameTiming = default!; // Parkstation-EndOfRoundStats
+        [Dependency] private readonly MetaDataSystem _metaData = default!; // WD
 
         public override void Initialize()
         {
@@ -149,7 +155,7 @@ namespace Content.Shared.Cuffs
             if (args.Container.ID != component.Container?.ID)
                 return;
 
-            _handVirtualItem.DeleteInHandsMatching(uid, args.Entity);
+            _virtualItem.DeleteInHandsMatching(uid, args.Entity);
             UpdateCuffState(uid, component);
         }
 
@@ -171,9 +177,15 @@ namespace Content.Shared.Cuffs
             _actionBlocker.UpdateCanMove(uid);
 
             if (component.CanStillInteract)
+            {
                 _alerts.ClearAlert(uid, AlertType.Handcuffed);
+                RaiseLocalEvent(uid, new MoodRemoveEffectEvent("Handcuffed")); //WD edit
+            }
             else
+            {
                 _alerts.ShowAlert(uid, AlertType.Handcuffed);
+                RaiseLocalEvent(uid, new MoodEffectEvent("Handcuffed")); // WD edit
+            }
 
             var ev = new CuffedStateChangeEvent();
             RaiseLocalEvent(uid, ref ev);
@@ -427,10 +439,10 @@ namespace Content.Shared.Cuffs
                     break;
             }
 
-            if (_handVirtualItem.TrySpawnVirtualItemInHand(handcuff, uid, out var virtItem1))
+            if (_virtualItem.TrySpawnVirtualItemInHand(handcuff, uid, out var virtItem1))
                 EnsureComp<UnremoveableComponent>(virtItem1.Value);
 
-            if (_handVirtualItem.TrySpawnVirtualItemInHand(handcuff, uid, out var virtItem2))
+            if (_virtualItem.TrySpawnVirtualItemInHand(handcuff, uid, out var virtItem2))
                 EnsureComp<UnremoveableComponent>(virtItem2.Value);
         }
 
@@ -445,11 +457,30 @@ namespace Content.Shared.Cuffs
             if (!_interaction.InRangeUnobstructed(handcuff, target))
                 return false;
 
+            // WD START
+            if (TryComp(handcuff, out GluedComponent? glue))
+            {
+                _metaData.SetEntityName(handcuff, glue.BeforeGluedEntityName);
+                RemComp<GluedComponent>(handcuff);
+                RemComp<UnremoveableComponent>(handcuff);
+            }
+
+            if (TryComp(handcuff, out LubedComponent? lube))
+            {
+                _metaData.SetEntityName(handcuff, lube.BeforeLubedEntityName);
+                RemComp<LubedComponent>(handcuff);
+            }
+            // WD END
+
             // Success!
             _hands.TryDrop(user, handcuff);
 
             _container.Insert(handcuff, component.Container);
             UpdateHeldItems(target, handcuff, component);
+
+            if (_net.IsServer)
+                component.CuffedTime = _gameTiming.CurTime;
+
             return true;
         }
 
@@ -636,6 +667,12 @@ namespace Content.Shared.Cuffs
             _audio.PlayPredicted(cuff.EndUncuffSound, target, user);
 
             _container.Remove(cuffsToRemove, cuffable.Container);
+
+            if (_net.IsServer && cuffable.CuffedTime != null)
+            {
+                RaiseLocalEvent(target, new CuffedTimeStatEvent(_gameTiming.CurTime - cuffable.CuffedTime.Value));
+                cuffable.CuffedTime = null;
+            }
 
             if (_net.IsServer)
             {

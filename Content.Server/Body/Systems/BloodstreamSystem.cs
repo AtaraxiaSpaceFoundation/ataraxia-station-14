@@ -5,6 +5,7 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.HealthExaminable;
 using Content.Server.Popups;
+using Content.Server._White.EndOfRoundStats.BloodLost;
 using Content.Shared.Alert;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -92,6 +93,8 @@ public sealed class BloodstreamSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        var totalBloodLost = 0f; // White-EndOfRoundStats
+
         var query = EntityQueryEnumerator<BloodstreamComponent>();
         while (query.MoveNext(out var uid, out var bloodstream))
         {
@@ -104,6 +107,12 @@ public sealed class BloodstreamSystem : EntitySystem
 
             if (!_solutionContainerSystem.ResolveSolution(uid, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
                 continue;
+            //WD-EDIT
+            if (bloodstream.IsBleeding)
+                _alertsSystem.ShowAlert(uid, AlertType.Bleeding);
+            else
+                _alertsSystem.ClearAlert(uid, AlertType.Bleeding);
+            //WD-EDIT
 
             // Adds blood to their blood level if it is below the maximum; Blood regeneration. Must be alive.
             if (bloodSolution.Volume < bloodSolution.MaxVolume && !_mobStateSystem.IsDead(uid))
@@ -119,6 +128,7 @@ public sealed class BloodstreamSystem : EntitySystem
                 TryModifyBloodLevel(uid, (-bloodstream.BleedAmount), bloodstream);
                 // Bleed rate is reduced by the bleed reduction amount in the bloodstream component.
                 TryModifyBleedAmount(uid, -bloodstream.BleedReductionAmount, bloodstream);
+                totalBloodLost += bloodstream.BleedAmount; // White - EndOfRoundStats
             }
 
             // deal bloodloss damage if their blood level is below a threshold.
@@ -151,6 +161,7 @@ public sealed class BloodstreamSystem : EntitySystem
                 bloodstream.StatusTime = 0;
             }
         }
+        RaiseLocalEvent(new BloodLostStatEvent(totalBloodLost)); // White-EndOfRoundStats
     }
 
     private void OnComponentInit(Entity<BloodstreamComponent> entity, ref ComponentInit args)
@@ -187,7 +198,7 @@ public sealed class BloodstreamSystem : EntitySystem
 
         // Does the calculation of how much bleed rate should be added/removed, then applies it
         var oldBleedAmount = component.BleedAmount;
-        var total = bloodloss.Total;
+        var total = bloodloss.GetTotal();
         var totalFloat = total.Float();
         TryModifyBleedAmount(uid, totalFloat, component);
 
@@ -326,7 +337,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Attempts to modify the blood level of this entity directly.
     /// </summary>
-    public bool TryModifyBloodLevel(EntityUid uid, FixedPoint2 amount, BloodstreamComponent? component = null)
+    public bool TryModifyBloodLevel(EntityUid uid, FixedPoint2 amount, BloodstreamComponent? component = null, bool createPuddle = true) // WD EDIT
     {
         if (!Resolve(uid, ref component, false))
             return false;
@@ -347,7 +358,7 @@ public sealed class BloodstreamSystem : EntitySystem
 
         tempSolution.AddSolution(newSol, _prototypeManager);
 
-        if (tempSolution.Volume > component.BleedPuddleThreshold)
+        if (tempSolution.Volume > component.BleedPuddleThreshold && createPuddle) //WD EDIT
         {
             // Pass some of the chemstream into the spilled blood.
             if (_solutionContainerSystem.ResolveSolution(uid, component.ChemicalSolutionName, ref component.ChemicalSolution))
@@ -379,14 +390,6 @@ public sealed class BloodstreamSystem : EntitySystem
 
         component.BleedAmount += amount;
         component.BleedAmount = Math.Clamp(component.BleedAmount, 0, component.MaxBleedAmount);
-
-        if (component.BleedAmount == 0)
-            _alertsSystem.ClearAlert(uid, AlertType.Bleed);
-        else
-        {
-            var severity = (short) Math.Clamp(Math.Round(component.BleedAmount, MidpointRounding.ToZero), 0, 10);
-            _alertsSystem.ShowAlert(uid, AlertType.Bleed, severity);
-        }
 
         return true;
     }

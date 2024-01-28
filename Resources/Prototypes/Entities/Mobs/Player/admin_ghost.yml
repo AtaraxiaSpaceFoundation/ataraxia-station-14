@@ -12,6 +12,8 @@
     - CanPilot
     - BypassInteractionRangeChecks
     - BypassDropChecks
+    - SMImmune
+    - IgnoreBalanceChecks
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -83,6 +85,12 @@
   - type: Stripping
   - type: SolutionScanner
   - type: IgnoreUIRange
+  - type: ShowSecurityIcons
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+  - type: ShowWhiteHealthBars
+  - type: Invisibility
 
 - type: entity
   id: ActionAGhostShowSolar
@@ -161,3 +169,16 @@
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.GeneralStationRecordConsoleKey.Key }
+
+- type: entity
+  id: ToggleInvisibilityAction
+  name: Переключить невидимость
+  description: Переключить невидимость вашего призрака.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: "White/Icons/transparent-ghost.png"
+    checkCanInteract: false
+    clientExclusive: true
+    priority: -5
+    event: !type:ToggleInvisibilityActionEvent

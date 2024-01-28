@@ -1,8 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.GameTicking.Presets;
 using Content.Server.Maps;
+using Content.Server.Ghost;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -21,6 +23,7 @@ namespace Content.Server.GameTicking
     public sealed partial class GameTicker
     {
         [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private readonly GhostSystem _ghostSystem = default!;
 
         public const float PresetFailedCooldownIncrease = 30f;
 
@@ -303,6 +306,11 @@ namespace Content.Server.GameTicking
                 _mind.Visit(mindId, ghost, mind);
             else
                 _mind.TransferTo(mindId, ghost, mind: mind);
+
+            var player = mind.Session;
+            var userId = player?.UserId;
+            if (userId.HasValue && !_ghostSystem._deathTime.TryGetValue(userId.Value, out _))
+                _ghostSystem._deathTime[userId.Value] = _gameTiming.CurTime;
             return true;
         }
 
@@ -314,14 +322,32 @@ namespace Content.Server.GameTicking
             // TODO FIXME AAAAAAAAAAAAAAAAAAAH THIS IS BROKEN
             // Task.Run as a terrible dirty workaround to avoid synchronization context deadlock from .Result here.
             // This whole setup logic should be made asynchronous so we can properly wait on the DB AAAAAAAAAAAAAH
+            //WD start (HitPanda - Possibly fixed round start crashes here)
+            var mutex = new SemaphoreSlim(1, 1);
+            int result = default;
+
             var task = Task.Run(async () =>
             {
                 var server = await _dbEntryManager.ServerEntity;
-                return await _db.AddNewRound(server, playerIds);
+
+                await mutex.WaitAsync();
+
+                try
+                {
+                    var round = await _db.AddNewRound(server, playerIds);
+                    result = round;
+                }
+                finally
+                {
+                    mutex.Release();
+                }
             });
 
             _taskManager.BlockWaitOnTask(task);
-            RoundId = task.GetAwaiter().GetResult();
+            task.Wait();
+
+            RoundId = result;
+            //WD end
         }
     }
 

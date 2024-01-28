@@ -79,6 +79,9 @@ namespace Content.Shared.Chat
         /// </summary>
         Unspecified = 1 << 13,
 
+        //WD EDIT
+        Cult = 1 << 14,
+
         /// <summary>
         ///     Channels considered to be IC.
         /// </summary>

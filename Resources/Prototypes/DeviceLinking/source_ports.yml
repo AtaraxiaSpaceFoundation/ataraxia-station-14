@@ -149,3 +149,20 @@
   id: PowerDischarging
   name: signal-port-name-power-discharging
   description: signal-port-description-power-discharging
+
+- type: sourcePort
+  id: ChemMasterSender
+  name: Раздатчик
+  description: Передатчик сигнала ХимМастера
+
+# WD
+- type: sourcePort
+  id: LightStatus
+  name: Статус светильника
+  description: Этот порт вызывается всякий раз, когда меняется статус светильника
+  defaultLinks: [ Toggle ]
+
+- type: sourcePort
+  id: BodyScannerSender
+  name: Сканер тела
+  description: Передатчик сканера тела

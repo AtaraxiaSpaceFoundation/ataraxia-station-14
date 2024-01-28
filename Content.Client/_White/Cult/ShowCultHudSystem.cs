@@ -1,0 +1,49 @@
+﻿using Content.Shared._White.Cult;
+using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Shared.Player;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
+
+namespace Content.Client._White.Cult;
+
+public sealed class ShowCultHudSystem : EntitySystem
+{
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IOverlayManager _overlayManager = default!;
+
+    private Overlay _overlay = default!;
+
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<CultistComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<CultistComponent, ComponentRemove>(OnComponentRemoved);
+        SubscribeLocalEvent<CultistComponent, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<CultistComponent, PlayerDetachedEvent>(OnPlayerDetached);
+
+        _overlay = new CultHudOverlay(EntityManager);
+    }
+
+    private void OnComponentInit(EntityUid uid, CultistComponent component, ComponentInit args)
+    {
+        if (_player.LocalPlayer?.ControlledEntity != uid) return;
+        _overlayManager.AddOverlay(_overlay);
+
+    }
+
+    private void OnComponentRemoved(EntityUid uid, CultistComponent component, ComponentRemove args)
+    {
+        if (_player.LocalPlayer?.ControlledEntity != uid) return;
+        _overlayManager.RemoveOverlay(_overlay);
+
+    }
+
+    private void OnPlayerAttached(EntityUid uid, CultistComponent component, PlayerAttachedEvent args)
+    {
+        _overlayManager.AddOverlay(_overlay);
+    }
+
+    private void OnPlayerDetached(EntityUid uid, CultistComponent component, PlayerDetachedEvent args)
+    {
+        _overlayManager.RemoveOverlay(_overlay);
+    }
+}

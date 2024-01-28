@@ -22,11 +22,6 @@
     speechSounds: Slime
   - type: TypingIndicator
     proto: slime
-  - type: Vocal
-    sounds:
-      Male: MaleSlime
-      Female: FemaleSlime
-      Unsexed: MaleSlime
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Slime
@@ -40,7 +35,7 @@
   - type: Barotrauma
     damage:
       types:
-        Blunt: 0.60 #per second, scales with pressure and other constants. Slighty more than humans.
+        Blunt: 0.45 #per second, scales with pressure and other constants. Slighty more than humans.
   - type: Reactive
     groups:
       Flammable: [ Touch ]

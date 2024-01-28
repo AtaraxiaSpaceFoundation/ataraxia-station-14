@@ -5,6 +5,8 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -14,6 +16,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -52,7 +55,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
             && keys.Channels.Contains(args.Channel.ID))
         {
-            _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
+            _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset, false);
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
@@ -100,7 +103,48 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
         if (TryComp(Transform(uid).ParentUid, out ActorComponent? actor))
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.ConnectedClient);
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+
+        var aparams = AudioParams.Default.WithVolume(-12);
+
+        //WD-EDIT
+        switch (args.Channel.ID)
+        {
+            case "Security":
+                _audio.PlayPvs("/Audio/White/Radio/security.ogg", uid, aparams);
+                break;
+            case "Common":
+                _audio.PlayPvs("/Audio/White/Radio/common.ogg", uid, aparams);
+                break;
+            case "Engineering":
+                _audio.PlayPvs("/Audio/White/Radio/eng.ogg", uid, aparams);
+                break;
+            case "Medical":
+                _audio.PlayPvs("/Audio/White/Radio/med.ogg", uid, aparams);
+                break;
+            case "Supply":
+                _audio.PlayPvs("/Audio/White/Radio/cargo.ogg", uid, aparams);
+                break;
+            case "Science":
+                _audio.PlayPvs("/Audio/White/Radio/science.ogg", uid, aparams);
+                break;
+            case "CentCom":
+                _audio.PlayPvs("/Audio/White/Radio/cc.ogg", uid, aparams);
+                break;
+            case "Command":
+                _audio.PlayPvs("/Audio/White/Radio/command.ogg", uid, aparams);
+                break;
+            case "Service":
+                _audio.PlayPvs("/Audio/White/Radio/common.ogg", uid, aparams);
+                break;
+            case "Syndicate":
+                _audio.PlayPvs("/Audio/White/Radio/security.ogg", uid, aparams);
+                break;
+            default:
+                _audio.PlayPvs("/Audio/White/Radio/common.ogg", uid, aparams);
+                break;
+        }
+        //WD-EDIT
     }
 
     private void OnEmpPulse(EntityUid uid, HeadsetComponent component, ref EmpPulseEvent args)

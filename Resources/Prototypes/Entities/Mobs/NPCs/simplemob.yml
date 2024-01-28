@@ -30,6 +30,7 @@
   - type: Tag
     tags:
     - DoorBumpOpener
+  - type: ContentEye
 
 - type: entity
   abstract: true
@@ -106,4 +107,5 @@
   - type: FloatingVisuals
   - type: Puller
     needsHands: True
+  - type: Penetrated
 

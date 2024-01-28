@@ -1,0 +1,1104 @@
+# DOOMMAX
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterSuitGlamorous
+  name: glamorous suit
+  suffix: fluff
+  description: An emergency suit in cases of... emergencies. But glamorous.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/glamorous.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/glamorous.rsi
+    - type: ClothingSpeedModifier
+      walkModifier: 0.7
+      sprintModifier: 0.7
+    - type: TemperatureProtection
+      coefficient: 0.7
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetEVA
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingOuterHardsuitEVA
+  id: ClothingOuterHardsuitEVAGLAMOUR
+  name: скафандр EVA GLAMOUR
+  suffix: fluff
+  description: Улучшеный Скафандр Гламура! Модный, стильный, совершенный! Способен защитить вас от космического вакуума. В этом скафандре все главы будут ваши. На скафандре подписан владелец - Алина Бэккен.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/evaglamour.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/evaglamour.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetEVAGLAMOUR
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetEVA
+  id: ClothingHeadHelmetEVAGLAMOUR
+  name: шлем EVA GLAMOUR
+  suffix: fluff
+  description: Гламурный вариант шлема EVA.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/helmetglamour.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/helmetglamour.rsi
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGamma
+  suffix: fluff
+  name: Снаряжение отряда «Гамма»
+  description: Довольно старая и потрёпанная форма секретного и элитного отряда.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/uniform.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/uniform.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretGamma
+  suffix: fluff
+  name: Потрёпанный берет
+  description: Старый, слегка рваный и подгоревший берет лидера отряда «Гамма». На нем еще не засохла кровь былых боев.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/hat.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/hat.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: DommaxChaplainSchema
+  name: Великая Схима
+  suffix: fluff
+  description: Высшая монашеская степень. Схима указывает, что носящий ее мертв, или есть мертвец, но живой. Мертв для сей жизни, а живет другою жизнию.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/bishop_schema.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/bishop_schema.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHatChaplainSchema
+      requiredSlot:
+        - neck
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot { }
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatChaplainSchema
+  name: Капюшон Великой Схимы
+  description: Высшая монашеская степень. Схима указывает, что носящий ее мертв, или есть мертвец, но живой. Мертв для сей жизни, а живет другою жизнию.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/bishop_schema_hood.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/bishop_schema_hood.rsi
+
+# Maury
+#- type: entity
+#  parent: ClothingUniformJumpsuitChemistry
+#  id: ClothingUniformJumpsuitMauryZ #Should be ClothingUniformJumpsuitMaury but i`m retard and lazy idiot
+#  name: Rupi's chemist uniform
+#  description: Обычно NanoTrasen не позволяет сотрудникам изменять выданную им униформу, но по отношению к Руперту они проявили снисходительность.
+#  components:
+#    - type: Sprite
+#      sprite: White/Fluff/Maury/chemshit.rsi
+#    - type: Clothing
+#      sprite: White/Fluff/Maury/chemshit.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitColorGrey
+  id: ClothingUniformJumpsuitColorMaury #Should be ClothingUniformJumpsuitMaury but i`m retard and lazy idiot
+  name: красное худи
+  suffix: fluff
+  description: Любимая худи Рупи с шортиками. Довольно странно, что NanoTrasen разрешила ему в очередной раз видоизменить свою форму, хотя и с условиями.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Maury/hoodie.rsi
+    - type: Clothing
+      sprite: White/Fluff/Maury/hoodie.rsi
+
+- type: entity
+  parent: ClothingShoesColorBlack
+  id: ClothingShoesMaurySneakers
+  name: кеды
+  suffix: fluff
+  description: Крутые высокие кеды некой дочерней компании демократической страны, которая производила кеды с XX века.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Maury/sneakers.rsi
+    - type: Clothing
+      sprite: White/Fluff/Maury/sneakers.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMauryChoker
+  name: кошачий ошейник
+  suffix: fluff
+  description: Кошачий ошейник с колокольчиком. Мило дзынькает и выглядит, но Рупи не даст вам его на себя надеть.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Maury/choker.rsi
+    - type: Clothing
+      sprite: White/Fluff/Maury/choker.rsi
+    - type: FootstepModifier
+      footstepSoundCollection:
+        collection: FootstepJester
+
+# YouWellLeer
+
+#- type: entity
+#  parent: Crowbar
+#  id: Sledgebar
+#  name: Mjolnir
+#  description: Отлично ломает кости ассистентам и клоуну.
+#  components:
+#    - type: Sprite
+#      sprite: White/Fluff/YouWellLeer/sledgebar.rsi
+#      state: icon
+#      netsync: false
+#    - type: Item
+#      sprite: White/Fluff/YouWellLeer/sledgebar.rsi
+#      size: 30
+#    - type: Wieldable
+#    - type: IncreaseDamageOnWield
+#      damage:
+#        types:
+#          Blunt: 10
+
+#- type: entity
+#  parent: ClothingShoesBootsJack
+#  id: LeerBoots
+#  name: Дисциплина
+#  description: Несогласные будут раздавлены.
+#  components:
+#    - type: Sprite
+#      sprite: White/Fluff/YouWellLeer/hosboots.rsi
+#    - type: Clothing
+#      sprite: White/Fluff/YouWellLeer/hosboots.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: LeerCap
+  name: старая фуражка
+  suffix: fluff
+  description: Реплика фуражки времен старого космоса. Согласно некоторым источникам, такую фуражку носили солдаты несколько столетий назад.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hoscap.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hoscap.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: LeerCloak
+  name: плащ-палатка
+  suffix: fluff
+  description: Плащ, который при необходимости можно оборудовать в палатку, незаменимая вещь на войне.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hoscloak.rsi
+
+#- type: entity
+#  parent: ClothingHandsGlovesCombat
+#  id: LeerGloves
+#  name: Наказание
+#  description: Тактические перчатки из синтетических волокон с дополнительной защитой рук.
+#  components:
+#    - type: Sprite
+#      sprite: White/Fluff/YouWellLeer/hosgloves.rsi
+#    - type: Clothing
+#      sprite: White/Fluff/YouWellLeer/hosgloves.rsi
+
+- type: entity
+  parent: ClothingOuterHardsuitSecurityRed
+  id: LeerHardsuit
+  name: Первопроходец
+  suffix: fluff
+  description: Боевой скафандр десантников ВКФ, умело разобранный и модифицированный мастерами-любителями.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hoshardsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hoshardsuit.rsi
+    - type: ToggleableClothing
+      clothingPrototype: LeerHelmet
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSecurityRed
+  id: LeerHelmet
+  name: шлем
+  suffix: fluff
+  description: Просто шлем
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hoshelmet.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hoshelmet.rsi
+    - type: PointLight
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingUniformJumpsuitHoS
+  id: LeerJumpsuit
+  name: водолазка ВКФ
+  suffix: fluff
+  description: Комплект прочной одежды со страховочными ремнями.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hosjumpsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hosjumpsuit.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: LeerMask
+  name: Заслон-1
+  suffix: fluff
+  description: Полумаска из прочных материалов с возможностью подключения ЗСД.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hosmask.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hosmask.rsi
+
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: LeerTrench
+  name: Офицерский китель
+  suffix: fluff
+  description: Бронежилет, поверх которого надет парадный китель офицера ВКФ. Погоны, кажется, сорваны.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/YouWellLeer/hostrench.rsi
+    - type: Clothing
+      sprite: White/Fluff/YouWellLeer/hostrench.rsi
+
+# merkkaa
+- type: entity
+  parent: Bible
+  name: няко библия
+  suffix: fluff
+  description: Книга является заметками кошко богини. Её потомки используют эту книгу как Библию.
+  id: BibleNya
+  components:
+    - type: EarsSpawn
+    - type: Sprite
+      netsync: false
+      sprite: White/Fluff/merkkaa/bible.rsi
+      state: icon
+    - type: Item
+      size: Small
+      sprite: White/Fluff/merkkaa/bible.rsi
+    - type: PointLight
+      radius: 2
+      energy: 2
+      color: pink
+
+# Warete
+- type: entity
+  parent: ClothingUniformBase
+  id: WareteJumpskirt
+  name: репонит
+  suffix: fluff
+  description: Жаростойкая куртка. С предупреждением о возможной взрывоопасности.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Warete/warete_jumpsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/Warete/warete_jumpsuit.rsi
+
+# HSKveez
+- type: entity
+  parent: ClothingNeckBase
+  id: HSKveezKulon
+  name: плазменное сердце
+  suffix: fluff
+  description: Не взрывай.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/HSKveez/hope.rsi
+    - type: Clothing
+      sprite: White/Fluff/HSKveez/hope.rsi
+    - type: PointLight
+      radius: 2
+      energy: 2
+      color: "#ff6bff"
+
+- type: entity
+  name: дубинка контрактника
+  suffix: fluff
+  parent: Stunbaton
+  id: HSKveezStunBaton
+  description: Телескопическая дубинка, наносящая легкий электрический шок.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/HSKveez/contactor_batton.rsi
+    - type: Clothing
+      sprite: White/Fluff/HSKveez/contactor_batton.rsi
+
+#Omntns
+- type: entity
+  parent: BaseItem
+  id: OmntnsHammer
+  name: Молоток судьи.
+  suffix: fluff
+  description: Порядок, порядок! Никаких бомб в здании моего суда.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Omntns/gavel_hammer.rsi
+      state: icon
+    - type: Item
+      sprite: White/Fluff/Omntns/gavel_hammer.rsi
+      size: Small
+    - type: EmitSoundOnUse
+      sound:
+        path: /Audio/White/Fluff/Omntns/gavel.ogg
+    - type: UseDelay
+      delay: 2
+    - type: MeleeWeapon
+      soundHit:
+        path: /Audio/White/Fluff/Omntns/gavel.ogg
+      damage:
+        types:
+          Blunt: 0
+
+# Pets book
+- type: entity
+  parent: BookBase
+  id: PetSummonBook
+  name: странная потрёпанная книга
+  description: Книга непонятного происхождения.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/books.rsi
+      layers:
+        - state: summon_book
+    - type: Item
+      size: Small
+    - type: Paper
+      content: Ego voco electi pet
+    - type: PetSummon
+
+# 2sh0nka
+- type: entity
+  parent: ClothingUnderwearSocksBase
+  id: ClothingUnderwearSocksBlack2sh0nka
+  name: чёрные чулки
+  description: Вау. Они.. чёрные?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/deadman1740/black.rsi
+
+- type: entity
+  parent: ClothingUnderwearSocksBase
+  id: ClothingUnderwearSocksGray2sh0nka
+  name: серые чулки
+  suffix: fluff
+  description: Вау. Они.. серые?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/deadman1740/gray.rsi
+
+# Derderiot
+- type: entity
+  parent: BaseHandheldInstrument
+  id: SuperSynthesizerInstrumentDerderiot
+  name: клавитара
+  suffix: fluff
+  description: Выглядит модно. Прямиком из 80-ых! Да!
+  components:
+    - type: Instrument
+      allowPercussion: true
+      allowProgramChange: true
+      respectMidiLimits: false
+    - type: Sprite
+      sprite: White/Fluff/Derderiot/super-synthesizer.rsi
+      state: icon
+    - type: Item
+      size: Normal
+      sprite: White/Fluff/Derderiot/super-synthesizer.rsi
+
+#Hskveez Atmospherics Hardsuit
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitHskveezAtmos
+  name: "старый скафандр атмос-техника"
+  suffix: fluff
+  description: "Специальный костюм, защищающий от опасной среды с низким давлением. Имеет тепловую защиту. В отличии от его новых версий имеет облегченную конструкцию без части защитных пластин. На запястье гравировка Ахахах! Уроды! Хахаах! Кто добавил в воздушную смесь Плазму и Закись Азота?! Хехехе! Одна половина станции горит, а вторая ржет над этим!!!. АХАХАХА!"
+  components:
+    - type: Sprite
+      sprite: White/Fluff/HSKveez/hardsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/HSKveez/hardsuit.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.02
+      lowPressureMultiplier: 10000
+    - type: ClothingSpeedModifier
+      walkModifier: 0.8
+      sprintModifier: 0.8
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.95
+          Slash: 0.95
+          Piercing: 0.95
+          Heat: 0.35
+          Radiation: 0.8
+          Caustic: 0.85
+    - type: TemperatureProtection
+      coefficient: 0.001
+    - type: ExplosionResistance
+      damageCoefficient: 0.90
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitHskveezAtmos
+    - type: GiftIgnore
+
+#Hskveez Atmospherics Hardsuit
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitHskveezAtmos
+  suffix: fluff
+  noSpawn: true
+  name: "старый шлем атмос-техника"
+  description: "Шлем скафандра. Защищает от давления и высоких температур, немного легче стандартного из-за более легкой конструкции"
+  components:
+    - type: Sprite
+      sprite: White/Fluff/HSKveez/helmet.rsi
+      layers:
+        - state: icon
+        - state: icon-unshaded
+          shader: unshaded
+        - state: light-overlay
+          visible: false
+          shader: unshaded
+          map: ["light"]
+    - type: HandheldLight
+      addPrefix: false
+    - type: ToggleableLightVisuals
+      spriteLayer: light
+      clothingVisuals:
+        head:
+          - state: equipped-head-light
+            shader: unshaded
+    - type: Clothing
+      clothingVisuals:
+        head:
+          - state: equipped-head
+          - state: equipped-head-unshaded
+            shader: unshaded
+    - type: PointLight
+      color: "#ffffff"
+    - type: PressureProtection
+      highPressureMultiplier: 0.08
+      lowPressureMultiplier: 10000
+    - type: TemperatureProtection
+      coefficient: 0.005
+
+#koitorra
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasKoitorra
+  name: бионическая нейрочелюсть
+  suffix: fluff
+  description: "Жесткая и темная. По центру шеи расположен светодиод, обрамлённый металлическими вставками, что плавно двигаются вниз. На краю шеи есть еле видное обозначение модели: 'JawV-02, Роджер Фенелон'."
+  components:
+    - type: Sprite
+      sprite: White/Fluff/koitorra/koitorra_mask.rsi
+    - type: Item
+      sprite: White/Fluff/koitorra/koitorra_mask.rsi
+    - type: Clothing
+      sprite:
+    - type: VoiceMasker
+      default: ClothingMaskGas
+    - type: UserInterface
+      interfaces:
+        - key: enum.InstrumentUiKey.Key
+          type: InstrumentBoundUserInterface
+    - type: ClothingMidi
+      midiAction: MidiActionKoitorra
+    - type: Instrument
+      allowPercussion: false
+      handheld: false
+      bank: 1
+      program: 2
+
+
+- type: entity
+  id: MidiActionKoitorra
+  name: MIDI
+  description: Проиграть MIDI.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      checkCanInteract: false
+      icon:
+        sprite: White/Fluff/koitorra/koitorra_mask.rsi
+        state: icon
+      event: !type:OpenUiActionEvent
+        key: enum.InstrumentUiKey.Key
+
+#thechaotic
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatThechaotic
+  name: Тренч Маллена
+  suffix: fluff
+  description: Сшитый на заказ тренч криминалиста. Пропах никотином насквозь.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/thechaotic/coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/thechaotic/coat.rsi
+    - type: StorageFill
+      contents:
+        - id: SmokingPipeFilledTobacco
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckTieThechaotic
+  name: багровый галстук
+  description: Свободно завязанный тёмно-красный галстук, показывает что детектив работает не в полную силу.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/thechaotic/red_tie.rsi
+    - type: Clothing
+      sprite: White/Fluff/thechaotic/red_tie.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingJumpsuitBlackThechaotic
+  name: экстра нуарный костюм
+  description: Когда просто нуарного для полного эффекта не хватает.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/thechaotic/black_suit.rsi
+    - type: Clothing
+      sprite: White/Fluff/thechaotic/black_suit.rsi
+
+#6elblu
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeck6elbluCap
+  name: Плащ NanoTrasen
+  suffix: fluff
+  description: Плащ NanoTrasen весьма странной окраски. Так и веет бюрократией и запахом алкоголя.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/6elblu/white-cloak.rsi
+
+#6elblu
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterStorage6elbluOvercoat
+  name: Белая шинель
+  suffix: fluff
+  description: Очень удобная и приятная на ощупь шинель с меховым воротником. На нарукавных повязках виднеется эмблема NT.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/6elblu/white-overcoat.rsi
+
+#Serafim547
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesMesonBlue
+  name: Утилизаторные очки
+  suffix: fluff
+  description: Очки с фиолетовым затемнением, использующие патентованный полимер, обеспечивающие надежную защиту глаз от всех видов повреждений.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Serafim547/meason_blue.rsi
+    - type: Clothing
+      sprite: White/Fluff/Serafim547/meason_blue.rsi
+    - type: EyeProtection
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSerafimSalvageSpecialist
+  name: комбинезон специалиста по утилизации
+  suffix: fluff
+  description: Удобный прочный комбинезон. Особенно грязный.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Serafim547/salvage.rsi
+    - type: Clothing
+      sprite: White/Fluff/Serafim547/salvage.rsi
+
+- type: entity
+  parent: BaseDice
+  id: VulpCoin
+  name: Золотая монета
+  suffix: fluff
+  description: Коллекционная чеканная монета с родины вульпканин, редкая находка обладающая не столь реальной, сколько символической ценностью.
+  components:
+    - type: Dice
+      sound:
+        collection: CoinDrop
+      sides: 2
+      currentValue: 2
+    - type: Sprite
+      sprite: White/Fluff/Serafim547/vulp_coin.rsi
+      state: coin_2
+
+# Skrimex
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSkrimexCap
+  name: Сердце-переливающий плащ
+  suffix: fluff
+  description: "Плащ, в котором сердце переливается в центре, можно описать как впечатляющий и загадочный предмет одежды. Он выполнен из темной и непрозрачной ткани, создающей мистическую ауру вокруг носителя. Внутри плаща можно заметить нашивку с инициалами:  Возгалова К. Д."
+  components:
+    - type: Sprite
+      sprite: White/Fluff/skrimex/heart-cap.rsi
+    - type: Clothing
+      sprite: White/Fluff/skrimex/heart-cap.rsi
+
+- type: entity
+  parent: FlippoLighter
+  id: ZippoLighterSkrimex
+  name: Золотой Zippo
+  suffix: fluff
+  description: "Золотое покрытие придает этой зажигалке особую элегантность и роскошность. Она может быть выполнена из разных оттенков золота - бледного, яркого или розового. Корпус зажигалки может быть гладким или украшенным гравировкой, что добавляет ей аристократический шик. А на заднем обороте заметна гравировка с инициалами: Возгалова К. Д."
+  components:
+    - type: Sprite
+      sprite: White/Fluff/skrimex/zippo-lighter.rsi
+      scale: 0.7, 0.7
+      layers:
+        - state: base
+        - state: light
+          map: ["flame"]
+          shader: unshaded
+          visible: false
+    - type: Item
+      size: Tiny
+      sprite: Objects/Tools/lighters.rsi
+      heldPrefix: off
+    - type: UseDelay
+    - type: RefillableSolution
+      solution: Welder
+    - type: SolutionContainerManager
+      solutions:
+        Welder:
+          reagents:
+            - ReagentId: WeldingFuel
+              Quantity: 1
+          maxVol: 1
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 0 #this feels hacky, but is needed for burn damage while active (i think)
+    - type: IgnitionSource
+      ignited: false
+    - type: ItemToggle
+      predictable: false
+      soundActivate:
+        collection: lighterOnSounds
+      soundDeactivate:
+        collection: lighterOffSounds
+    - type: ItemToggleMeleeWeapon
+      activatedDamage:
+          types:
+              Heat: 1
+    - type: ItemToggleSize
+      activatedSize: Small
+    - type: ItemToggleHot
+    - type: Welder
+      fuelConsumption: 0
+      fuelLitCost: 0
+      tankSafe: true
+    - type: PointLight
+      enabled: false
+      radius: 1.5 #smallest possible
+      color: orange
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleVisuals.Toggled:
+          flame:
+            True: { visible: true }
+            False: { visible: false }
+
+
+# Deus
+
+- type: entity
+  parent: ClothingUniformBase
+  id: DeusJumpskirt
+  name: пионер в юбке
+  suffix: fluff
+  description: На какой-то далёкой станции есть группа феленидов, которые ходят в этой форме. Кажется происхождение этой традиции уже давно позабыли, но этот набор одежды выглядит довольно так мило.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/deus/deus_jumpsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/deus/deus_jumpsuit.rsi
+
+# GusMopsik
+- type: entity
+  parent: ClothingUniformBase
+  id: GusMopsikJumpsuit
+  name: Форма 404
+  suffix: fluff
+  description: Обычная форма обычного сотрудника "СБ"
+  components:
+  - type: Sprite
+    sprite: White/Fluff/GusMopsik/ss_uniform.rsi
+  - type: Clothing
+    sprite: White/Fluff/GusMopsik/ss_uniform.rsi
+
+# Vtergot
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitISB
+  name: Офицерская форма ИСБ
+  suffix: fluff
+  description: Старая, но довольно-таки хорошо сохранившаяся форма офицера ИСБ
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Vtergot/isbform.rsi
+    - type: Clothing
+      sprite: White/Fluff/Vtergot/isbform.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakOrder
+  name: Порядок
+  suffix: fluff
+  description: Чисто белый цвет этого плаща ознаменовывает пришествие безопасности и порядка в то место, куда приходит его владелец.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Vtergot/order.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesStrict
+  name: Строгие офицерские перчатки
+  suffix: fluff
+  description: Удерживайте галактику в своих ежовых рукавицах при помощи страха.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Vtergot/strictgloves.rsi
+    - type: Clothing
+      sprite: White/Fluff/Vtergot/strictgloves.rsi
+    - type: Fiber
+      fiberMaterial: fibers-leather
+    - type: FingerprintMask
+
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsPeopledav
+  name: Людодавы
+  suffix: fluff
+  description: Давите несогласных!
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Vtergot/peopledav.rsi
+    - type: Clothing
+      sprite: White/Fluff/Vtergot/peopledav.rsi
+
+# Geraldiy
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCapUSSPBlack
+  name: кожаная фуражка СССП
+  description: Довольная старая вещь эпохи СССП.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Geraldiy/ussp_hat.rsi
+    - type: Clothing
+      sprite: White/Fluff/Geraldiy/ussp_hat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatUSSPOvercoatBlack
+  name: бронированная шинель СССП
+  description: Довольная старая вещь эпохи СССП.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Geraldiy/ussp_coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/Geraldiy/ussp_coat.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasGeraldiy
+  name: противогаз СССП
+  description: Противогаз времен эпохи СССП. На нем видно много потёртостей, изношены укрепляющие пластины, но он до сих пор служит своему владельцу на протяжении сотен лет.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Geraldiy/ussp_mask.rsi
+    - type: Clothing
+      sprite: White/Fluff/Geraldiy/ussp_mask.rsi
+
+- type: entity
+  parent: RubberStampBase
+  id: GeraldiyRubberStamp
+  name: печать древних
+  description: Старая и потёртая печать с логотипом "Древние". На ней почти высохли чернила, но она все ещё может послужить убедительным аргументом в руках нужных людей.
+  suffix: fluff
+  components:
+    - type: Stamp
+      stampedName: stamp-component-stamped-name-geraldiy
+      stampState: "paper_stamp-geraldiy"
+      stampedColor: "#a23e3e"
+    - type: Sprite
+      sprite: White/Fluff/Geraldiy/stamp.rsi
+      state: stamp-geraldiy
+
+# KnifeCappy
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSamuraiCappy
+  name: куртка самурая
+  description: Культовая куртка рокера из старых годов, от неё исходит ощущение перемен.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/KnifeCappy/samurai_jacket.rsi
+    - type: Clothing
+      sprite: White/Fluff/KnifeCappy/samurai_jacket.rsi
+
+# Medicgaming
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesDealGlassesMedic
+  name: СделкоДел
+  description: Модные розово-жёлтые очки. Даются только самым модным и успешным продавцам.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Medicgaming/deal_glasses.rsi
+    - type: Clothing
+      sprite: White/Fluff/Medicgaming/deal_glasses.rsi
+
+# Oleg_Tinkoff
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetGopTinkoff
+  name: шлем с забралом "Маска-1"
+  description: Защитный шлем «Маска-1» появился на вооружении в давних временах, как замена шлему «Сфера».
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Oleg_Tinkoff/helmet_gop.rsi
+    - type: Clothing
+      sprite: White/Fluff/Oleg_Tinkoff/helmet_gop.rsi
+
+- type: entity
+  parent: ClothingShoesColorBlack
+  id: ClothingShoesGopTinkoff
+  name: cпортивные кроссовки "ГОП ПАК"
+  description: Предназначены для спорта и гоп стопа.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Oleg_Tinkoff/shoes_gop.rsi
+    - type: Clothing
+      sprite: White/Fluff/Oleg_Tinkoff/shoes_gop.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformGopTinkoff
+  name: cпортивный костюм "ГОП ПАК"
+  description: От костюма пахнет семечками, порохом и криминалом.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Oleg_Tinkoff/uniform_gop.rsi
+    - type: Clothing
+      sprite: White/Fluff/Oleg_Tinkoff/uniform_gop.rsi
+
+# Zilendorie
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadFurazhkaZilendorie
+  name: фуражка комиссара
+  description: Фирменная фуражка Имперских комиссаров. Символ власти, объект страха и просто красивая шляпа.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Zilendorie/furazhka.rsi
+    - type: Clothing
+      sprite: White/Fluff/Zilendorie/furazhka.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformMundirZilendorie
+  name: форма комиссара
+  description: Стандартная форма Имперского Комиссара. Пояс украшает знаковый красный кушак, выдаваемый юным комиссарам по завершению Схолы Прогениум.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Zilendorie/mundir.rsi
+    - type: Clothing
+      sprite: White/Fluff/Zilendorie/mundir.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterShinelZilendorie
+  name: шинель комиссара
+  description: Парадная шинель Имперского Комиссара.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Zilendorie/shinel.rsi
+    - type: Clothing
+      sprite: White/Fluff/Zilendorie/shinel.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingSvinkaNeckFluff
+  name: офицерский плащ
+  suffix: fluff
+  description: Офицерский плащ с логотипом NanoTrasen, показывающий преданность своему делу его владельца.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/svinka/cloak.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: AntohagGasMaskFluff
+  name: Промышленный противогаз утилизатора
+  suffix: fluff
+  description: Плотно прилегающий противогаз, использующийся для защиты от внешних опасностей атмосферы.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/antohag/hosmask.rsi
+    - type: Clothing
+      sprite: White/Fluff/antohag/hosmask.rsi
+
+# kreses
+- type: entity
+  parent: ClothingBackpack
+  id: KresesClothingBackpackDeath
+  name: рюкзак из исследователя пустоты
+  suffix: fluff
+  description: Кажется когда то это не было рюкзаком. Вы чувствуйте на себя взгляды из пустоты.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Backpacks/ertleader.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitDeathSquad
+  id: KresesClothingJumpsuitDeath
+  name: комбинезон исследователя из пустоты
+  suffix: fluff
+  description: Костюм тех, кто видел что внутри черной дыры. Если слишком долго смотреть в пустоту, то пустота начнёт смотреть в тебя.
+
+- type: entity
+  parent: ClothingMaskGas
+  id: KresesClothingMaskGasDeath
+  name: противогаз исследователя пустоты
+  suffix: fluff
+  description: Стандартный противогаз для тех, кто любит полетать в космосе и понаблюдать вблизи за чёрной дырой.
+  components:
+    - type: Sprite
+      sprite: Clothing/Mask/squadron.rsi
+    - type: Clothing
+      sprite: Clothing/Mask/squadron.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterJacketReider207
+  name: Куртка "Trauma Team"
+  description: Эта куртка, выполненная из высокотехнологичных материалов, идеально сочетает в себе практичность и эстетику. С ходом времени и сменой владельцев, её функции и предназначения были утеряны. Единственный понятный элемент – это зелёный символ, нанесённый несмываемой краской, каким-то идиотом.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Reider207/jacket.rsi
+    - type: Clothing
+      sprite: White/Fluff/Reider207/jacket.rsi
+
+# egoruch17
+- type: entity
+  parent: ClothingMaskMime
+  id: EgoruchClothingMaskHoly
+  name: фальшивая аугметика
+  description: Встроенный фильтр предаёт вдыхаемому воздуху аромат  мира-кузницы. Неповторимое сочетание промышленных выхлопов и свинца.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/egoruch17/mask.rsi
+    - type: Clothing
+      sprite: White/Fluff/egoruch17/mask.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: EgoruchClothingOuterMantle
+  name: ряса техножреца
+  description: Идеально подходит, чтобы скрыть слабость своей плоти! Ткань сильно наэлектризована и пахнет машинным маслом.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/egoruch17/mantle.rsi
+    - type: Clothing
+      sprite: White/Fluff/egoruch17/mantle.rsi
+
+# g13
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: G13ClothingOuterCoat
+  name: гламурное белое пальто
+  description: В таком только на показ мод.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/coat.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: G13ClothingEyesEyepatch
+  name: белая повязка на глаз
+  description: Даже когда ты пират, нужно выглядеть гламурно.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/eyepatch.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/eyepatch.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: G13ClothingUniformSuit
+  name: стильный белый адвокатский костюм
+  description: -Моего клиента на смертную казнь! -Но я же просто украл пирожок...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/g13/jumpsuit.rsi
+    - type: Clothing
+      sprite: White/Fluff/g13/jumpsuit.rsi
+
+#KommenDant
+- type: entity
+  parent: ClothingOuterCoatDetective
+  id: ClothingOuterWinterCoatKommenDant
+  name: футуристичное пальто
+  description: Зелёное, утеплённое пальто выполненное в единственном экземпляре, на нем отсутствуют кнопки или молнии – только скрытый магнитный механизм, имеет вшитые меховые и броневые подкладки, что обеспечивает хорошую термоизоляцию и защиту.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/kommendant/coat.rsi
+    - type: Clothing
+      sprite: White/Fluff/kommendant/coat.rsi

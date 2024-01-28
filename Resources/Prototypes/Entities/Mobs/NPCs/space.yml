@@ -67,6 +67,7 @@
   - type: GhostTakeoverAvailable
   - type: Speech
     speechVerb: LargeMob
+  - type: Penetrated
 
 - type: entity
   name: space bear
@@ -268,6 +269,8 @@
       Male: UnisexArachnid
       Female: UnisexArachnid
       Unsexed: UnisexArachnid
+  - type: TypingIndicator
+    proto: spider
 
 - type: entity
   id: MobSpiderSpaceSalvage

@@ -2,8 +2,11 @@ using Content.Client.Administration.Managers;
 using Content.Client.Ghost;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
+using Content.Shared._White.Cult;
 using Robust.Client.Console;
+using Robust.Client.Player;
 using Robust.Shared.Utility;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Client.Chat.Managers
 {
@@ -12,6 +15,9 @@ namespace Content.Client.Chat.Managers
         [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
         [Dependency] private readonly IClientAdminManager _adminMgr = default!;
         [Dependency] private readonly IEntitySystemManager _systems = default!;
+        [Dependency] private readonly IEntityManager _entities = default!;
+        [Dependency] private readonly IPlayerManager _player = default!;
+
 
         private ISawmill _sawmill = default!;
 
@@ -45,6 +51,12 @@ namespace Content.Client.Chat.Managers
 
                 case ChatSelectChannel.Emotes:
                     _consoleHost.ExecuteCommand($"me \"{CommandParsing.Escape(str)}\"");
+                    break;
+
+                case ChatSelectChannel.Cult:
+                    var localEnt = _player.LocalPlayer != null ? _player.LocalPlayer.ControlledEntity : null;
+                    if (_entities.TryGetComponent(localEnt, out CultistComponent? comp))
+                        _consoleHost.ExecuteCommand($"csay \"{CommandParsing.Escape(str)}\"");
                     break;
 
                 case ChatSelectChannel.Dead:

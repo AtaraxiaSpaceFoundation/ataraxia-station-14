@@ -16,8 +16,8 @@
       fix1:
         shape: !type:PolygonShape
           vertices:
-            - -0.40,-0.30
-            - -0.30,-0.40
+            - -0.20,-0.10
+            - -0.10,-0.20
             - 0.40,0.30
             - 0.30,0.40
         density: 20
@@ -42,6 +42,7 @@
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+    range: 2 # Spears are long
   - type: DamageOtherOnHit
     damage:
       types:
@@ -67,6 +68,7 @@
     solution: melee
   - type: SolutionInjectOnCollide
     transferAmount: 2
+    fixtureId: "throw-fixture"
     blockSlots: NONE
   - type: SolutionTransfer
     maxTransferAmount: 2

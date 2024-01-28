@@ -1,0 +1,12 @@
+- type: entity
+  id: ERTRecruitment
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+    - type: StationEvent
+      earliestStart: 25
+      weight: 0
+      minimumPlayers: 125
+      duration: 20
+    - type: ERTRecruitmentRule
+

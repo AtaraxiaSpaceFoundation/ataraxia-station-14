@@ -1,6 +1,5 @@
 using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
-using Robust.Shared.Audio;
+using Content.Shared.Item.ItemToggle.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 
@@ -48,6 +47,8 @@ public sealed partial class BlockingSystem
                 return;
 
             var blockFraction = blocking.IsBlocking ? blocking.ActiveBlockFraction : blocking.PassiveBlockFraction;
+            if (TryComp(component.BlockingItem, out ItemToggleComponent? toggle) && !toggle.Activated) // WD
+                blockFraction = 0f;
             blockFraction = Math.Clamp(blockFraction, 0, 1);
             _damageable.TryChangeDamage(component.BlockingItem, blockFraction * args.OriginalDamage);
 

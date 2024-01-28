@@ -19,10 +19,11 @@ using Robust.Shared.Console;
 
 namespace Content.Server.Voting
 {
-    [AnyCommand]
+    [AdminCommand(AdminFlags.Admin)] // WD MODIFICATION
     public sealed class CreateVoteCommand : IConsoleCommand
     {
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+
 
         public string Command => "createvote";
         public string Description => Loc.GetString("cmd-createvote-desc");
@@ -30,6 +31,7 @@ namespace Content.Server.Voting
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
+
             if (args.Length != 1)
             {
                 shell.WriteError(Loc.GetString("shell-need-exactly-one-argument"));
@@ -164,14 +166,16 @@ namespace Content.Server.Voting
                     var ties = string.Join(", ", eventArgs.Winners.Select(c => args[(int) c]));
                     _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Custom vote {options.Title} finished as tie: {ties}");
                     chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-tie",("ties", ties)));
+                    DisplayVoteResult(vote, chatMgr, args);
                 }
                 else
                 {
                     _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Custom vote {options.Title} finished: {args[(int) eventArgs.Winner]}");
                     chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-win",("winner", args[(int) eventArgs.Winner])));
+                    DisplayVoteResult(vote, chatMgr, args);
                 }
 
-                for (int i = 0; i < eventArgs.Votes.Count - 1; i++)
+                for (int i = 0; i < eventArgs.Votes.Count; i++)
                 {
                     var oldName = payload.Embeds[0].Fields[i].Name;
                     var newValue = eventArgs.Votes[i].ToString();
@@ -183,6 +187,17 @@ namespace Content.Server.Voting
 
                 WebhookMessage(payload, _webhookId);
             };
+        }
+
+        private void DisplayVoteResult(IVoteHandle vote, IChatManager chatMgr, string[] args)
+        {
+            chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-on-finished-votes", ("title", vote.Title)));
+            for (var x = 1; x < args.Length; x++)
+            {
+                var option = args[x];
+                var votes = vote.VotesPerOption[x];
+                chatMgr.DispatchServerAnnouncement(Loc.GetString("cmd-customvote-option-votes",("option", option), ("votes", votes)));
+            }
         }
 
         public CompletionResult GetCompletion(IConsoleShell shell, string[] args)

@@ -4,6 +4,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.Cargo.Systems;
+using Content.Server.Chat.Managers;
 using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
@@ -36,6 +37,9 @@ public sealed class GasCanisterSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly ItemSlotsSystem _slots = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+
+    private readonly int _plasmaThreshold = 1000;
 
     public override void Initialize()
     {
@@ -134,19 +138,24 @@ public sealed class GasCanisterSystem : EntitySystem
 
     private void OnCanisterChangeReleaseValve(EntityUid uid, GasCanisterComponent canister, GasCanisterChangeReleaseValveMessage args)
     {
-        var impact = LogImpact.High;
         // filling a jetpack with plasma is less important than filling a room with it
-        impact = canister.GasTankSlot.HasItem ? LogImpact.Medium : LogImpact.High;
+        var impact = canister.GasTankSlot.HasItem ? LogImpact.Medium : LogImpact.High;
 
         var containedGasDict = new Dictionary<Gas, float>();
         var containedGasArray = Gas.GetValues(typeof(Gas));
 
-        for (int i = 0; i < containedGasArray.Length; i++)
+        for (var i = 0; i < containedGasArray.Length; i++)
         {
             containedGasDict.Add((Gas)i, canister.Air.Moles[i]);
         }
 
-        _adminLogger.Add(LogType.CanisterValve, impact, $"{ToPrettyString(args.Session.AttachedEntity.GetValueOrDefault()):player} set the valve on {ToPrettyString(uid):canister} to {args.Valve:valveState} while it contained [{string.Join(", ", containedGasDict)}]");
+        var player = args.Session.AttachedEntity.GetValueOrDefault();
+        _adminLogger.Add(LogType.CanisterValve, impact, $"{ToPrettyString(player):player} set the valve on {ToPrettyString(uid):canister} to {args.Valve:valveState} while it contained [{string.Join(", ", containedGasDict)}]");
+        if (args.Valve && containedGasDict[Gas.Plasma] >= _plasmaThreshold)
+        {
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-plasma-canister-opened",
+                ("player", ToPrettyString(player)), ("canister", ToPrettyString(uid))));
+        }
 
         canister.ReleaseValve = args.Valve;
         DirtyUI(uid, canister);

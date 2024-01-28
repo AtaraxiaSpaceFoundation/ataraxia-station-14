@@ -157,10 +157,6 @@
     spawned:
     - id: FoodMeatDragon
       amount: 1
-  - type: MeleeWeapon
-    damage:
-      groups:
-        Brute: 12
 
 - type: entity
   id: ActionSpawnRift

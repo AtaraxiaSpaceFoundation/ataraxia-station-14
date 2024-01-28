@@ -1,0 +1,287 @@
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterSuitDeadSquadFake
+  name: Эскадрон Гильдии
+  suffix: fluff
+  description: An advanced hardsuit favored by assistant for use in pool party.
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
+    - type: ClothingSpeedModifier
+      walkModifier: 0.7
+      sprintModifier: 0.7
+    - type: TemperatureProtection
+      coefficient: 0.7
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetEVA
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: GiftIgnore
+
+#CAP
+- type: entity
+  parent: ClothingOuterHardsuitCap
+  id: ClothingOuterHardsuitERTLeaderFluff
+  name: ERT leader's hardsuit
+  suffix: fluff
+  description: A protective hardsuit worn by members of an emergency response team.
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertleader.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertleader.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitERTLeader
+    - type: GiftIgnore
+
+#CE
+- type: entity
+  parent: ClothingOuterHardsuitEngineeringWhite
+  id: ClothingOuterHardsuitERTEngineerFluff
+  name: ERT engineer's hardsuit
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertengineer.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertengineer.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitERTEngineer
+    - type: GiftIgnore
+
+#CMO
+- type: entity
+  parent: ClothingOuterHardsuitMedical
+  id: ClothingOuterHardsuitERTMedicalFluff
+  name: ERT medic's hardsuit
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitERTMedical
+    - type: GiftIgnore
+
+#SEC
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitERTSecurityFluff
+  name: ERT security's hardsuit
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertsecurity.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertsecurity.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitERTSecurity
+    - type: GiftIgnore
+
+# RD
+- type: entity
+  parent: ClothingOuterHardsuitRd
+  id: ClothingOuterHardsuitERTJanitorFluff
+  name: ERT janitor's hardsuit
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertjanitor.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertjanitor.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitERTJanitor
+    - type: GiftIgnore
+
+# other
+- type: entity
+  parent: ClothingOuterHardsuitEngineering
+  id: ClothingOuterHardsuitWizardFluff
+  name: wizard hardsuit
+  suffix: fluff
+  description: A bizarre gem-encrusted suit that radiates magical energies.
+  components:
+    - type: Sprite
+      sprite: Clothing/OuterClothing/Hardsuits/wizard.rsi
+    - type: Clothing
+      sprite: Clothing/OuterClothing/Hardsuits/wizard.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitWizard
+    - type: GiftIgnore
+
+
+# Penis
+
+- type: entity
+  parent: ClothingOuterHardsuitVoidParamed
+  id: ClothingOuterParamedicSuitFluff
+  name: Ревуела Гильдии
+  suffix: fluff
+  description: Трава...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/suits/ertleader.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/suits/ertleader.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingOuterParamedicHelmetFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingOuterParamedicHelmetFluff
+  name: Ревуела Гильдии
+  suffix: fluff
+  description: Трава...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/helmets/ertleader.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/helmets/ertleader.rsi
+    - type: GiftIgnore
+
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  id: ClothingOuterCargoSuitFluff
+  name: Ревуела Гильдии
+  suffix: fluff
+  description: Трава...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/suits/ertmedical.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/suits/ertmedical.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingOuterCargoHelmetFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSalvage
+  id: ClothingOuterCargoHelmetFluff
+  name: Ревуела Гильдии
+  suffix: fluff
+  description: Трава...
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/helmets/ertmedical.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/helmets/ertmedical.rsi
+    - type: GiftIgnore
+
+
+- type: entity
+  parent: ClothingOuterHardsuitVoidParamed
+  id: ClothingOuterScufSuitFluff
+  name: Рифуела Гильдии
+  suffix: fluff
+  description: "Прототип нано экзоскелета. Защита типа O5-23. На маркировке видно знак НТГил! Создан Учёными гильдии для Тех кто не любит умирать от революции."
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/suits/scuf.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/suits/scuf.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingOuterCargoHelmetScuf
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSalvage
+  id: ClothingOuterCargoHelmetScuf
+  name: Рифуела Гильдии
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/helmets/scuf.rsi
+    - type: Clothing
+      sprite: White/Fluff/serbwo/helmets/scuf.rsi
+    - type: GiftIgnore
+
+# KILL ME PLEASE
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingSerbwoNeckFluff
+  name: плащ гильдии
+  suffix: fluff
+  description: излучает ауру спокойствия и умиротворения!
+  components:
+    - type: Sprite
+      sprite: White/Fluff/serbwo/admiralcloak.rsi
+
+
+- type: loadout
+  id: ScuffLoadoutSW
+  entity: ClothingOuterScufSuitFluff
+  sponsorOnly: true
+  whitelistJobs: [ Detective ]
+
+- type: loadout
+  id: CapLoadoutSO
+  entity: ClothingOuterHardsuitERTLeaderFluff
+  sponsorOnly: true
+  whitelistJobs: [Captain]
+
+- type: loadout
+  id: CeLoadoutSO
+  entity: ClothingOuterHardsuitERTEngineerFluff
+  sponsorOnly: true
+  whitelistJobs: [ChiefEngineer]
+
+- type: loadout
+  id: CmoLoadoutSO
+  entity: ClothingOuterHardsuitERTMedicalFluff
+  sponsorOnly: true
+  whitelistJobs: [ChiefMedicalOfficer]
+
+- type: loadout
+  id: RDLoadoutSO
+  entity: ClothingOuterHardsuitERTJanitorFluff
+  sponsorOnly: true
+  whitelistJobs: [ResearchDirector]
+
+- type: loadout
+  id: HOSLoadoutSO
+  entity: ClothingOuterHardsuitERTSecurityFluff
+  sponsorOnly: true
+  whitelistJobs: [HeadOfSecurity, SecurityOfficer]
+
+- type: loadout
+  id: EngLoadoutSO
+  entity: ClothingOuterHardsuitWizardFluff
+  sponsorOnly: true
+  whitelistJobs: [AtmosphericTechnician, StationEngineer, TechnicalAssistant, Scientist]
+
+- type: loadout
+  id: AssLoadoutSO
+  entity: ClothingOuterSuitDeadSquadFake
+  sponsorOnly: true
+  whitelistJobs: [Passenger]
+
+- type: loadout
+  id: NeckLoadoutSO
+  entity: ClothingSerbwoNeckFluff
+  sponsorOnly: true
+  whitelistJobs: [Captain, HeadOfSecurity, ResearchDirector, ChiefEngineer, AtmosphericTechnician, StationEngineer, TechnicalAssistant, CargoTechnician, Quartermaster, SalvageSpecialist, ResearchAssistant, Scientist]
+
+- type: loadout
+  id: MaskSerbwoLoadoutSO
+  entity: ClothingMaskBreathMedicalSecurity
+  sponsorOnly: true
+  whitelistJobs: [Captain, HeadOfSecurity, ResearchDirector, ChiefEngineer, AtmosphericTechnician, StationEngineer, TechnicalAssistant, CargoTechnician, Quartermaster, SalvageSpecialist, ResearchAssistant, Scientist]
+
+- type: loadout
+  id: CargoLoadoutSerbwoSO
+  entity: ClothingOuterCargoSuitFluff
+  sponsorOnly: true
+  whitelistJobs: [Quartermaster, SalvageSpecialist]
+
+- type: loadout
+  id: ParamedicLoadoutSerbwoSO
+  entity: ClothingOuterParamedicSuitFluff
+  sponsorOnly: true
+  whitelistJobs: [Paramedic]

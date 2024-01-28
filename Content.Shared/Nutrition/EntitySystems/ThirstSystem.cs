@@ -6,6 +6,11 @@ using Content.Shared.Rejuvenate;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Movement.Components;
+using Content.Shared.Alert;
+using Content.Shared.Movement.Systems;
+using Content.Shared.Rejuvenate;
+using Content.Shared._White.Mood;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -26,7 +31,7 @@ public sealed class ThirstSystem : EntitySystem
 
         _sawmill = Logger.GetSawmill("thirst");
 
-        SubscribeLocalEvent<ThirstComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
+        //SubscribeLocalEvent<ThirstComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed); WD-edit
         SubscribeLocalEvent<ThirstComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ThirstComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<ThirstComponent, EntityUnpausedEvent>(OnUnpaused);
@@ -114,11 +119,13 @@ public sealed class ThirstSystem : EntitySystem
 
     private void UpdateEffects(EntityUid uid, ThirstComponent component)
     {
-        if (IsMovementThreshold(component.LastThirstThreshold) != IsMovementThreshold(component.CurrentThirstThreshold) &&
+        //WD start
+        /*if (IsMovementThreshold(component.LastThirstThreshold) != IsMovementThreshold(component.CurrentThirstThreshold) &&
                 TryComp(uid, out MovementSpeedModifierComponent? movementSlowdownComponent))
         {
             _movement.RefreshMovementSpeedModifiers(uid, movementSlowdownComponent);
-        }
+        }*/
+        //WD end
 
         // Update UI
         if (ThirstComponent.ThirstThresholdAlertTypes.TryGetValue(component.CurrentThirstThreshold, out var alertId))
@@ -129,6 +136,11 @@ public sealed class ThirstSystem : EntitySystem
         {
             _alerts.ClearAlertCategory(uid, AlertCategory.Thirst);
         }
+
+        //WD start
+        var ev = new MoodEffectEvent("Thirst" + component.CurrentThirstThreshold);
+        RaiseLocalEvent(uid, ev);
+        //WD end
 
         switch (component.CurrentThirstThreshold)
         {

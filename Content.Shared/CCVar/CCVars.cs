@@ -224,6 +224,12 @@ namespace Content.Shared.CCVar
             GameRoleTimers = CVarDef.Create("game.role_timers", true, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
+        /// Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
+        /// </summary>
+        public static readonly CVarDef<bool>
+            GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", false, CVar.SERVER | CVar.REPLICATED);
+
+        /// <summary>
         ///     Whether a random position offset will be applied to the station on roundstart.
         /// </summary>
         public static readonly CVarDef<bool> StationOffset =
@@ -304,6 +310,12 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<string> PanicBunkerCustomReason =
             CVarDef.Create("game.panic_bunker.custom_reason", string.Empty, CVar.SERVERONLY);
+
+        /// <summary>
+        /// Allow bypassing the panic bunker if the user is whitelisted.
+        /// </summary>
+        public static readonly CVarDef<bool> BypassBunkerWhitelist =
+            CVarDef.Create("game.panic_bunker.whitelisted_can_bypass", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Make people bonk when trying to climb certain objects like tables.
@@ -990,7 +1002,7 @@ namespace Content.Shared.CCVar
         ///     Whether gas differences will move entities.
         /// </summary>
         public static readonly CVarDef<bool> SpaceWind =
-            CVarDef.Create("atmos.space_wind", false, CVar.SERVERONLY);
+            CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
 
         /// <summary>
         ///     Divisor from maxForce (pressureDifference * 2.25f) to force applied on objects.
@@ -1039,7 +1051,7 @@ namespace Content.Shared.CCVar
 		///     Also looks weird on slow spacing for unrelated reasons. If you do want to enable this, you should probably turn on instaspacing.
         /// </summary>
         public static readonly CVarDef<bool> MonstermosRipTiles =
-            CVarDef.Create("atmos.monstermos_rip_tiles", false, CVar.SERVERONLY);
+            CVarDef.Create("atmos.monstermos_rip_tiles", true, CVar.SERVERONLY);
 
         /// <summary>
         ///     Whether explosive depressurization will cause the grid to gain an impulse.
@@ -1053,7 +1065,7 @@ namespace Content.Shared.CCVar
         ///     1.0 for instant spacing, 0.2 means 20% of remaining air lost each time
         /// </summary>
         public static readonly CVarDef<float> AtmosSpacingEscapeRatio =
-            CVarDef.Create("atmos.mmos_spacing_speed", 0.05f, CVar.SERVERONLY);
+            CVarDef.Create("atmos.mmos_spacing_speed", 1f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Minimum amount of air allowed on a spaced tile before it is reset to 0 immediately in kPa
@@ -1166,7 +1178,7 @@ namespace Content.Shared.CCVar
         /// <summary>
         /// If true, whenever OOC is disabled the Discord OOC relay will also be disabled.
         /// </summary>
-        public static readonly CVarDef<bool> DisablingOOCDisablesRelay = CVarDef.Create("ooc.disabling_ooc_disables_relay", true, CVar.SERVERONLY);
+        public static readonly CVarDef<bool> DisableHookedOOC = CVarDef.Create("ooc.disabling_ooc_disables_relay", false, CVar.SERVERONLY); //WD-EDIT
 
         /// <summary>
         /// Whether or not OOC chat should be enabled during a round.
@@ -1243,6 +1255,18 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> VoteRestartEnabled =
             CVarDef.Create("vote.restart_enabled", true, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Config for when the restart vote should be allowed to be called regardless with less than this amount of players.
+        /// </summary>
+        public static readonly CVarDef<int> VoteRestartMaxPlayers =
+            CVarDef.Create("vote.restart_max_players", 20, CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Config for when the restart vote should be allowed to be called based on percentage of ghosts.
+        ///
+        public static readonly CVarDef<int> VoteRestartGhostPercentage =
+            CVarDef.Create("vote.restart_ghost_percentage", 75, CVar.SERVERONLY);
 
         /// <summary>
         ///     See vote.enabled, but specific to preset votes
@@ -1359,7 +1383,13 @@ namespace Content.Shared.CCVar
         /// Are players allowed to return on the arrivals shuttle.
         /// </summary>
         public static readonly CVarDef<bool> ArrivalsReturns =
-            CVarDef.Create("shuttle.arrivals_returns", false, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.arrivals_returns", true, CVar.SERVERONLY);
+
+        /// <summary>
+        /// Whether cargo shuttles are enabled.
+        /// </summary>
+        public static readonly CVarDef<bool> CargoShuttles =
+            CVarDef.Create("shuttle.cargo", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether to automatically spawn escape shuttles.
@@ -1418,7 +1448,7 @@ namespace Content.Shared.CCVar
         ///     Time in minutes after round start to auto-call the shuttle. Set to zero to disable.
         /// </summary>
         public static readonly CVarDef<int> EmergencyShuttleAutoCallTime =
-            CVarDef.Create("shuttle.auto_call_time", 90, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.auto_call_time", 0, CVar.SERVERONLY);
 
         /// <summary>
         ///     Time in minutes after the round was extended (by recalling the shuttle) to call
@@ -1513,7 +1543,7 @@ namespace Content.Shared.CCVar
          */
 
         public static readonly CVarDef<string> UILayout =
-            CVarDef.Create("ui.layout", "Default", CVar.CLIENTONLY | CVar.ARCHIVE);
+            CVarDef.Create("ui.layout", "Separated", CVar.CLIENTONLY | CVar.ARCHIVE);
 
         public static readonly CVarDef<string> DefaultScreenChatSize =
             CVarDef.Create("ui.default_chat_size", "", CVar.CLIENTONLY | CVar.ARCHIVE);
@@ -1574,6 +1604,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<int> ChatMaxMessageLength =
             CVarDef.Create("chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
 
+        public static readonly CVarDef<int> ChatMaxAnnouncementLength =
+            CVarDef.Create("chat.max_announcement_length", 1024, CVar.SERVER | CVar.REPLICATED);
+
         public static readonly CVarDef<bool> ChatSanitizerEnabled =
             CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);
 
@@ -1619,7 +1652,7 @@ namespace Content.Shared.CCVar
         /// Allows flavor text (character descriptions)
         /// </summary>
         public static readonly CVarDef<bool> FlavorText =
-            CVarDef.Create("ic.flavor_text", false, CVar.SERVER | CVar.REPLICATED);
+            CVarDef.Create("ic.flavor_text", true, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         /// Adds a period at the end of a sentence if the sentence ends in a letter.

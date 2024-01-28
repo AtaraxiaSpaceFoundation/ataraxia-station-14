@@ -18,6 +18,8 @@
       blacklist:
         components:
         - Guardian # no holoparasite macrobomb wombo combo
+        tags:
+        - Unimplantable
       currentMode: Draw
       implanterSlot:
         name: Implant
@@ -179,6 +181,7 @@
   components:
   - type: Implanter
     implant: UplinkImplant
+  - type: GiftIgnore
 
 - type: entity
   id: EmpImplanter

@@ -15,9 +15,9 @@ public sealed class MenuButton : ContainerButton
     public const string StyleClassLabelTopButton = "topButtonLabel";
     public const string StyleClassRedTopButton = "topButtonLabel";
 
-    private static readonly Color ColorNormal = Color.FromHex("#7b7e9e");
-    private static readonly Color ColorRedNormal = Color.FromHex("#FEFEFE");
-    private static readonly Color ColorHovered = Color.FromHex("#9699bb");
+    private static readonly Color ColorNormal = Color.FromHex("#879B8F");
+    private static readonly Color ColorRedNormal = Color.FromHex("#aC4D5B");
+    private static readonly Color ColorHovered = Color.FromHex("#ffffff");
     private static readonly Color ColorRedHovered = Color.FromHex("#FFFFFF");
     private static readonly Color ColorPressed = Color.FromHex("#789B8C");
 
@@ -95,11 +95,15 @@ public sealed class MenuButton : ContainerButton
 
     private void OnKeyBindingChanged(IKeyBinding obj)
     {
+        if(string.IsNullOrEmpty(_function.FunctionName)) return; //WD EDIT
+
         _buttonLabel!.Text = BoundKeyHelper.ShortKeyName(_function);
     }
 
     private void OnKeyBindingChanged()
     {
+        if(string.IsNullOrEmpty(_function.FunctionName)) return; //WD EDIT
+
         _buttonLabel!.Text = BoundKeyHelper.ShortKeyName(_function);
     }
 

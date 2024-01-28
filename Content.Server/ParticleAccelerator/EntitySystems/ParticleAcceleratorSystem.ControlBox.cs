@@ -5,6 +5,7 @@ using Content.Shared.Singularity.Components;
 using Robust.Shared.Utility;
 using System.Diagnostics;
 using Content.Server.Administration.Managers;
+using Content.Server.Chat.Managers;
 using Content.Shared.CCVar;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -18,6 +19,7 @@ public sealed partial class ParticleAcceleratorSystem
     [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
 
     private void InitializeControlBoxSystem()
     {
@@ -78,7 +80,12 @@ public sealed partial class ParticleAcceleratorSystem
             return;
 
         if (user?.AttachedEntity is { } player)
-            _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(player):player} has turned {ToPrettyString(uid)} on");
+        {
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(player):player} has turned {ToPrettyString(uid)} on");
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-particle-accelerator-on",
+                ("player", ToPrettyString(player))));
+        }
 
         comp.Enabled = true;
         UpdatePowerDraw(uid, comp);
@@ -98,7 +105,12 @@ public sealed partial class ParticleAcceleratorSystem
             return;
 
         if (user?.AttachedEntity is { } player)
-            _adminLogger.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(player):player} has turned {ToPrettyString(uid)} off");
+        {
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(player):player} has turned {ToPrettyString(uid)} off");
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-particle-accelerator-off",
+                ("player", ToPrettyString(player))));
+        }
 
         comp.Enabled = false;
         UpdatePowerDraw(uid, comp);
@@ -167,7 +179,7 @@ public sealed partial class ParticleAcceleratorSystem
             };
 
             _adminLogger.Add(LogType.Action, impact, $"{ToPrettyString(player):player} has set the strength of {ToPrettyString(uid)} to {strength}");
-
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-particle-strength-change", ("player", ToPrettyString(player)), ("state", strength)));
 
             var alertMinPowerState = (ParticleAcceleratorPowerState)_cfg.GetCVar(CCVars.AdminAlertParticleAcceleratorMinPowerState);
             if (strength >= alertMinPowerState)

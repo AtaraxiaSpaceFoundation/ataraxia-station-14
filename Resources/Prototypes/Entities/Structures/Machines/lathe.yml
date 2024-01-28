@@ -25,6 +25,9 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
       - !type:ChangeConstructionNodeBehavior
         node: machineFrame
       - !type:DoActsBehavior
@@ -111,10 +114,18 @@
       - ExteriorLightTube
       - LightBulb
       - Bucket
+      - DrinkMug
+      - DrinkMugMetal
+      - DrinkGlass
+      - DrinkShotGlass
+      - DrinkGlassCoupeShaped
       - FoodPlate
       - FoodPlateSmall
       - FoodPlatePlastic
       - FoodPlateSmallPlastic
+      - FoodBowlBig
+      - FoodPlateTin
+      - FoodKebabSkewer
       - SprayBottle
       - MopItem
       - Holoprojector
@@ -158,6 +169,9 @@
        - MagazineBoxMagnum
        - MagazineBoxRifle
        - MagazineBoxLightRifle
+       - OxygenTank
+       - PlasmaTank
+       - GrenadeBlast
     emagDynamicRecipes:
       - CartridgePistolRubber
       - CartridgeMagnumRubber
@@ -186,6 +200,12 @@
       - MagazineBoxMagnumUranium
       - MagazineBoxLightRifleUranium
       - MagazineBoxRifleUranium
+      - PowerCageSmall
+      - PowerCageMedium
+      - PowerCageHigh
+      - MagazineGrenadeEmpty
+      - GrenadeEMP
+      - GrenadeFlash
 
 - type: entity
   id: AutolatheHyperConvection
@@ -260,12 +280,6 @@
       - PillCanister
       - ChemistryEmptyBottle01
       - Drone
-      - AdvancedCapacitorStockPart
-      - AdvancedMatterBinStockPart
-      - NanoManipulatorStockPart
-      - SuperCapacitorStockPart
-      - SuperMatterBinStockPart
-      - PicoManipulatorStockPart
       - AdvMopItem
       - WeaponSprayNozzle
       - ClothingBackpackWaterTank
@@ -289,9 +303,6 @@
       - HolofanProjector
       - BluespaceBeaker
       - SyringeBluespace
-      - WeaponCrusher
-      - WeaponCrusherDagger
-      - WeaponCrusherGlaive
       - WeaponForceGun
       - WeaponLaserSvalinn
       - WeaponProtoKineticAccelerator
@@ -306,6 +317,8 @@
       - FauxTileAstroGrass
       - FauxTileAstroIce
       - OreBagOfHolding
+      - ClothingEyesNightVisionGoggles # WD EDIT
+      - DeviceQuantumSpinInverter
   - type: EmagLatheRecipes
     emagDynamicRecipes:
       - ExplosivePayload
@@ -366,6 +379,7 @@
     - FloorBlueCircuit
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
+      - HellfireFreezerMachineCircuitBoard
       - PortableScrubberMachineCircuitBoard
       - CloningPodMachineCircuitboard
       - MedicalScannerMachineCircuitboard
@@ -386,6 +400,7 @@
       - HydroponicsTrayMachineCircuitboard
       - SolarControlComputerCircuitboard
       - SolarTrackerElectronics
+      - TurboItemRechargerCircuitboard
       - PowerComputerCircuitboard
       - AutolatheHyperConvectionMachineCircuitboard
       - ProtolatheHyperConvectionMachineCircuitboard
@@ -417,10 +432,12 @@
       - WallmountGeneratorElectronics
       - WallmountGeneratorAPUElectronics
       - WallmountSubstationElectronics
+      - PowerCageRechargerCircuitboard
       - EmitterCircuitboard
       - ThrusterMachineCircuitboard
       - GyroscopeMachineCircuitboard
       - MiniGravityGeneratorCircuitboard
+      - ShuttleGunKineticCircuitboard
       - GasRecyclerMachineCircuitboard
       - SeedExtractorMachineCircuitboard
       - AnalysisComputerCircuitboard
@@ -436,6 +453,7 @@
       - SodaDispenserMachineCircuitboard
       - TelecomServerCircuitboard
       - MassMediaCircuitboard
+      - CriminalRecordsServerCircuitboard # WD-EDIT
   - type: MaterialStorage
     whitelist:
       tags:
@@ -635,6 +653,7 @@
       - ForensicPad
       - RiotShield
       - ShellShotgun
+      - ShellShotgunSlug
       - ShellShotgunFlare
       - ShellTranquilizer
       - MagazinePistol
@@ -686,6 +705,9 @@
       - MagazineBoxMagnumRubber
       - MagazineBoxPistolRubber
       - MagazineBoxRifleRubber
+      - MagazineGrenadeEmpty
+      - GrenadeEMP
+      - GrenadeFlash
       - ShellShotgunBeanbag
       - ShellShotgunIncendiary
       - ShellShotgunUranium
@@ -701,6 +723,13 @@
       - WeaponLaserCannon
       - WeaponLaserCarbine
       - WeaponXrayCannon
+      - PowerCageSmall
+      - PowerCageMedium
+      - PowerCageHigh
+      - ShuttleGunSvalinnMachineGunCircuitboard
+      - ShuttleGunPerforatorCircuitboard
+      - ShuttleGunFriendshipCircuitboard
+      - ShuttleGunDusterCircuitboard
   - type: MaterialStorage
     whitelist:
       tags:
@@ -736,6 +765,7 @@
         - CartridgePistol
         - CartridgeMagnum
         - ShellShotgun
+        - ShellShotgunSlug
         - ShellShotgunFlare
         - ShellTranquilizer
         - CartridgeLightRifle
@@ -748,9 +778,7 @@
       whitelist:
         tags:
           - Sheet
-    - type: StealTarget
-      stealGroup: AmmoTechFabCircuitboard
-      
+
 - type: entity
   id: MedicalTechFab
   parent: BaseLathe
@@ -801,6 +829,7 @@
       - MedkitAdvanced
       - MedkitRadiation
       - MedkitCombat
+      - ClothingEyesHudMedical
     dynamicRecipes:
       - HandheldCrewMonitor
       - ClothingHandsGlovesNitrile
@@ -817,11 +846,12 @@
       - SyringeBluespace
       - Jug
       - SyringeCryostasis
+      - ClothingEyesHudMedical
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard
-    
+
 - type: entity
   parent: BaseLathe
   id: UniformPrinter
@@ -927,6 +957,7 @@
       - ClothingHeadHatWarden
       - ClothingUniformJumpsuitWarden
       - ClothingUniformJumpskirtWarden
+      # Winter outfits
       - ClothingOuterWinterCap
       - ClothingOuterWinterCE
       - ClothingOuterWinterCMO
@@ -961,6 +992,10 @@
       - ClothingOuterWinterSci
       - ClothingOuterWinterRobo
       - ClothingOuterWinterSec
+      # Ties
+      - ClothingNeckTieRed
+      - ClothingNeckTieDet
+      - ClothingNeckTieSci
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - ClothingHeadHatCentcomcap
@@ -1045,6 +1080,20 @@
   - type: Lathe
     materialUseMultiplier: 0.75
     timeMultiplier: 0.5
+    staticRecipes:
+      - SheetSteel30
+      - SheetGlass30
+      - SheetRGlass30
+      - SheetPlasma30
+      - SheetPGlass30
+      - SheetRPGlass30
+      - SheetPlasteel30
+      - SheetUranium30
+      - SheetUGlass30
+      - SheetRUGlass30
+      - IngotGold30
+      - IngotSilver30
+      - MaterialBananium10
 
 - type: entity
   parent: BaseLathe

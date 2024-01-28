@@ -3,6 +3,7 @@ using Content.Shared.Administration;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
 using Robust.Shared.Console;
+using Robust.Shared.Map;
 
 namespace Content.Server.Administration.Commands
 {
@@ -33,6 +34,10 @@ namespace Content.Server.Administration.Commands
 
             var metaDataSystem = _entities.System<MetaDataSystem>();
 
+            EntityCoordinates? coordinates = null;
+            if (player.AttachedEntity != null)
+                coordinates = _entities.GetComponent<TransformComponent>(player.AttachedEntity.Value).Coordinates;
+
             if (mind.VisitingEntity != default && _entities.TryGetComponent<GhostComponent>(mind.VisitingEntity, out var oldGhostComponent))
             {
                 mindSystem.UnVisit(mindId, mind);
@@ -43,10 +48,10 @@ namespace Content.Server.Administration.Commands
 
             var canReturn = mind.CurrentEntity != null
                             && !_entities.HasComponent<GhostComponent>(mind.CurrentEntity);
-            var coordinates = player.AttachedEntity != null
+            coordinates ??= player.AttachedEntity != null
                 ? _entities.GetComponent<TransformComponent>(player.AttachedEntity.Value).Coordinates
                 : EntitySystem.Get<GameTicker>().GetObserverSpawnPoint();
-            var ghost = _entities.SpawnEntity(GameTicker.AdminObserverPrototypeName, coordinates);
+            var ghost = _entities.SpawnEntity(GameTicker.AdminObserverPrototypeName, coordinates.Value);
             _entities.GetComponent<TransformComponent>(ghost).AttachToGridOrMap();
 
             if (canReturn)

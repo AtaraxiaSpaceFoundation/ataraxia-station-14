@@ -8,6 +8,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
+using Content.Shared.Stacks;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -205,6 +206,20 @@ namespace Content.Shared.Containers.ItemSlots
 
                 if (!CanInsert(uid, args.Used, args.User, slot, swap: slot.Swap, popup: args.User))
                     continue;
+
+                // WD START
+                if (slot.MaxStackAmount > 0 && TryComp(args.Used, out StackComponent? stack) &&
+                    stack.Count > slot.MaxStackAmount)
+                {
+                    if (_netManager.IsClient && _timing.IsFirstTimePredicted)
+                    {
+                        _popupSystem.PopupEntity(
+                            $"Невозможно одновременно вставить {stack.Count}, максимум: {slot.MaxStackAmount}.", uid,
+                            args.User);
+                    }
+                    continue;
+                }
+                // WD END
 
                 // Drop the held item onto the floor. Return if the user cannot drop.
                 if (!_handsSystem.TryDrop(args.User, args.Used, handsComp: hands))

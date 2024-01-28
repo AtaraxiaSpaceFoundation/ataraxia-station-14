@@ -57,6 +57,7 @@
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
     coefficient: 0.005
+  - type: EyeProtection # WD edit
 
 #Engineering Hardsuit
 - type: entity
@@ -75,6 +76,7 @@
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
+  - type: EyeProtection # WD edit
 
 #Spationaut Hardsuit
 - type: entity
@@ -130,6 +132,29 @@
     radius: 7
     energy: 3
 
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitMaxim
+  noSpawn: true
+  name: salvager maxim helmet
+  description: A predication of decay washes over your mind.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Clothing/Head/Hardsuits/maxim.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hardsuits/maxim.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
 #Security Hardsuit
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
@@ -154,6 +179,7 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
 
 #Brigmedic Hardsuit
 - type: entity
@@ -206,6 +232,7 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
 
 #Captain's Hardsuit
 - type: entity
@@ -222,6 +249,22 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
+
+#Inspector's Hardsuit
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitInspector
+  noSpawn: true
+  name: inspector's hardsuit helmet
+  description: Lightweight hardsuit helmet that doesn't restrict your head movements. Belongs to the HoP.
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hardsuits/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hardsuits/inspector.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
 
 #Chief Engineer's Hardsuit
 - type: entity
@@ -240,6 +283,7 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
+  - type: EyeProtection # WD edit
 
 #Chief Medical Officer's Hardsuit
 - type: entity
@@ -301,6 +345,7 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity
 
 #Luxury Mining Hardsuit
 - type: entity
@@ -320,6 +365,22 @@
   - type: PointLight
     radius: 7
     energy: 3
+
+#Head of Personnel's Hardsuit WD
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitHOP
+  noSpawn: true
+  name: head of personnel's hardsuit helmet
+  description: Lightweight hardsuit helmet that doesn't restrict your head movements. Belongs to the HoP.
+  components:
+    - type: Sprite
+      sprite: Clothing/Head/Hardsuits/hop.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Hardsuits/hop.rsi
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
 
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
@@ -346,6 +407,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Blood-red Medic Hardsuit
 - type: entity
@@ -371,6 +434,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Syndicate Elite Hardsuit
 - type: entity
@@ -398,6 +463,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -423,6 +490,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
@@ -446,6 +515,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Wizard Hardsuit
 - type: entity
@@ -544,6 +615,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #ERT Engineer Hardsuit
 - type: entity
@@ -566,6 +639,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #ERT Medical Hardsuit
 - type: entity
@@ -581,6 +656,8 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertmedical.rsi
   - type: PointLight
     color: "#adffec"
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #ERT Security Hardsuit
 - type: entity
@@ -603,6 +680,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #ERT Janitor Hardsuit
 - type: entity
@@ -618,6 +697,8 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertjanitor.rsi
   - type: PointLight
     color: "#cbadff"
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #CBURN Hardsuit
 - type: entity
@@ -657,6 +738,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #Deathsquad Hardsuit
 - type: entity
@@ -682,6 +765,8 @@
         Heat: 0.80
         Radiation: 0.80
         Caustic: 0.95
+  - type: FlashImmunity # WD edit
+  - type: EyeProtection # WD edit
 
 #MISC. HARDSUITS
 #Clown Hardsuit
@@ -699,6 +784,19 @@
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Effects/Emotes/parp1.ogg
 
+#Mime Hardsuit
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSecurity
+  id: ClothingHeadHelmetHardsuitMime
+  name: mime hardsuit helmet
+  description: A mime hardsuit helmet.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Clothing/Head/Hardsuits/mime.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hardsuits/mime.rsi
+
 #Santas Hardsuit
 - type: entity
   parent: ClothingHeadHardsuitBase
@@ -714,4 +812,4 @@
   - type: PointLight
     color: "#f4ffad"
     radius: 5
-    energy: 2  
+    energy: 2

@@ -71,7 +71,7 @@ public sealed partial class StoreMenu : DefaultWindow
                 disabled = false;
         }
 
-        WithdrawButton.Disabled = disabled;
+        WithdrawButton.Visible = !disabled;
     }
 
     public void UpdateListing(List<ListingData> listings)
@@ -159,7 +159,18 @@ public sealed partial class StoreMenu : DefaultWindow
             canBuy = false;
         }
 
+        // WD START
+        if (listing.SaleAmount > 0)
+            listingName += $" [СКИДКА] ({listing.SaleAmount}%!)";
+        else if (listing.OldCost.Count > 0)
+            listingName += " [Скидка закончилась]";
+        // WD END
+
         var newListing = new StoreListingControl(listingName, listingDesc, listingInStock, canBuy, texture);
+
+        if (listing.SaleAmount > 0) // WD
+            newListing.StoreItemBuyButton.AddStyleClass("ButtonColorRed");
+
         newListing.StoreItemBuyButton.OnButtonDown += args
             => OnListingButtonPressed?.Invoke(args, listing);
 

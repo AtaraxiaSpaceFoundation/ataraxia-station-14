@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Cargo;
 using Content.Client.Cargo.UI;
 using Content.Shared.Cargo.BUI;
@@ -50,8 +51,9 @@ namespace Content.Client.Cargo.BUI
             base.Open();
 
             var spriteSystem = EntMan.System<SpriteSystem>();
-            _menu = new CargoConsoleMenu(IoCManager.Resolve<IPrototypeManager>(), spriteSystem);
-            var localPlayer = IoCManager.Resolve<IPlayerManager>()?.LocalPlayer?.ControlledEntity;
+            var dependencies = IoCManager.Instance!;
+            _menu = new CargoConsoleMenu(Owner, EntMan, dependencies.Resolve<IPrototypeManager>(), spriteSystem);
+            var localPlayer = dependencies.Resolve<IPlayerManager>().LocalEntity;
             var description = new FormattedMessage();
 
             string orderRequester;
@@ -143,9 +145,12 @@ namespace Content.Client.Cargo.BUI
                 return false;
             }
 
+            var requester = new string(_orderMenu?.Requester.Text.Take(200).ToArray()) ?? "";
+            var reason = new string(_orderMenu?.Reason.Text.Take(200).ToArray()) ?? "";
+
             SendMessage(new CargoConsoleAddOrderMessage(
-                _orderMenu?.Requester.Text ?? "",
-                _orderMenu?.Reason.Text ?? "",
+                requester,
+                reason,
                 _product?.ID ?? "",
                 orderAmt));
 

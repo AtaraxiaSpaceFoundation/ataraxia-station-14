@@ -1,3 +1,4 @@
+using Content.Shared.Preferences;
 using Robust.Shared.Enums;
 using Robust.Shared.Serialization;
 
@@ -14,6 +15,15 @@ public sealed class GeneralStationRecord
     /// </summary>
     [ViewVariables]
     public string Name = string.Empty;
+
+    [ViewVariables]
+    public string ClownName = string.Empty;
+
+    [ViewVariables]
+    public string MimeName = string.Empty;
+
+    [ViewVariables]
+    public string BorgName = string.Empty;
 
     /// <summary>
     ///     Age of the person that this station record represents.
@@ -68,4 +78,9 @@ public sealed class GeneralStationRecord
     /// </summary>
     [ViewVariables]
     public string? DNA;
+
+    /// <sumary>
+    ///     HumanoidCharacterProfile
+    /// </sumary>
+    [ViewVariables] public HumanoidCharacterProfile? Profile;
 }

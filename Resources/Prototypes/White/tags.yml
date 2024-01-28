@@ -1,0 +1,47 @@
+- type: Tag
+  id: TankPlasma
+
+- type: Tag
+  id: EnergySword
+
+- type: Tag
+  id: CrossbowBolt
+
+- type: Tag
+  id: SMImmune
+
+- type: Tag
+  id: IgnoreBalanceChecks
+
+- type: Tag
+  id: socks
+
+- type: Tag
+  id: underwearb
+
+- type: Tag
+  id: underweart
+
+- type: Tag
+  id: Crystal
+
+- type: Tag
+  id: SpaceCash
+
+- type: Tag
+  id: TapeRecorderCoin
+
+- type: Tag
+  id: Plushie
+
+- type: Tag
+  id: DeleteWithWindows
+
+- type: Tag
+  id: WallMountConsoleElectronics
+
+- type: Tag
+  id: Telecrystal
+
+- type: Tag
+  id: SurveillanceBodyCamera

@@ -1,0 +1,82 @@
+- type: entity
+  id: ActionCultTwistedConstruction
+  name: Twisted Construction
+  description: A sinister spell that is used to turn metal into runic metal.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      useDelay: 50
+      canTargetSelf: false
+      icon:
+        sprite: /Textures/Objects/Materials/Sheets/metal.rsi
+        state: steel
+      event: !type:CultTwistedConstructionActionEvent
+      itemIconStyle: BigAction
+
+- type: entity
+  id: ActionCultTeleport
+  name: Teleport
+  description: A useful spell that teleports cultists to a chosen destination.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      useDelay: 30
+      whitelist:
+        components:
+          - HumanoidAppearance
+          - Cultist
+      canTargetSelf: true
+      deselectOnMiss: true
+      repeat: false
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: teleport
+      event: !type:CultTeleportTargetActionEvent
+      itemIconStyle: BigAction
+
+- type: entity
+  id: ActionCultSummonCombatEquipment
+  name: Summon combat equipment
+  description: A crucial spell that enables you to summon a full set of combat gear.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      useDelay: 300
+      whitelist:
+        components:
+          - HumanoidAppearance
+          - Cultist
+      canTargetSelf: true
+      deselectOnMiss: true
+      repeat: false
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: armor
+      event: !type:CultSummonCombatEquipmentTargetActionEvent
+      itemIconStyle: BigAction
+
+- type: entity
+  id: InstantActionSummonCultDagger
+  name: Summon cult dagger
+  description: Summons a ritual dagger.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: /Textures/White/Cult/interface.rsi
+        state: icon
+      event: !type:CultSummonDaggerActionEvent
+      useDelay: 200
+
+- type: entity
+  id: InstantActionBloodRites
+  name: Blood Rites
+  description: Sucks blood and heals you.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: blood_rites
+      event: !type:CultBloodRitesInstantActionEvent
+      useDelay: 35

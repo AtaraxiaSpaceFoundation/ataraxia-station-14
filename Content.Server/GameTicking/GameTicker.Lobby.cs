@@ -4,6 +4,7 @@ using Content.Server.Station.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using System.Text;
+using Content.Shared._White;
 
 namespace Content.Server.GameTicking
 {
@@ -86,17 +87,22 @@ namespace Content.Server.GameTicking
                 ("desc", desc));
         }
 
+        private TickerConnectionStatusEvent GetConnectionStatusMsg()
+        {
+            return new TickerConnectionStatusEvent(RoundStartTimeSpan);
+        }
+
         private TickerLobbyStatusEvent GetStatusMsg(ICommonSession session)
         {
             _playerGameStatuses.TryGetValue(session.UserId, out var status);
-            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbySong, LobbyBackground,status == PlayerGameStatus.ReadyToPlay, _roundStartTime, RoundPreloadTime, RoundStartTimeSpan, Paused);
+            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbySong, LobbyBackground, status == PlayerGameStatus.ReadyToPlay, _roundStartTime, RoundPreloadTime, RoundStartTimeSpan, Paused);
         }
 
         private void SendStatusToAll()
         {
             foreach (var player in _playerManager.Sessions)
             {
-                RaiseNetworkEvent(GetStatusMsg(player), player.ConnectedClient);
+                RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
             }
         }
 
@@ -151,7 +157,7 @@ namespace Content.Server.GameTicking
                 _playerGameStatuses[playerUserId] = status;
                 if (!_playerManager.TryGetSessionById(playerUserId, out var playerSession))
                     continue;
-                RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.ConnectedClient);
+                RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
             }
         }
 
@@ -168,9 +174,14 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            if (_configurationManager.GetCVar(WhiteCVars.StalinEnabled))
+            {
+                _chatManager.DispatchServerMessage(player, "Внимание, на сервере включен бункер. Если ваш аккаунт не был привязан к дискорду, то вы не сможете зайти в раунд. Для того чтобы привязать аккаунт - нажмите на кнопку ПРИВЯЗАТЬ АККАУНТ");
+            }
+
             var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
-            RaiseNetworkEvent(GetStatusMsg(player), player.ConnectedClient);
+            RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
             // update server info to reflect new ready count
             UpdateInfoText();
         }

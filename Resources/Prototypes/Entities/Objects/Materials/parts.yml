@@ -32,6 +32,10 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 50 #Half of a regular steel sheet to reflect the crafting recipe
+  - type: Tag
+    tags:
+    - DroneUsable
+    - CrossbowBolt
   - type: Stack
     stackType: MetalRod
     baseLayer: base
@@ -82,6 +86,7 @@
     tags:
     - RodMetal1
     - DroneUsable
+    - CrossbowBolt
   - type: Sprite
     state: rods
   - type: Stack
@@ -97,10 +102,35 @@
     tags:
     - RodMetal1
     - DroneUsable
+    - CrossbowBolt
+  - type: Ammo
+    muzzleFlash: null
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 0
   - type: Sprite
     state: rods
   - type: Stack
     count: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+            - -0.20,-0.10
+            - -0.10,-0.20
+            - 0.40,0.30
+            - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: Construction
+    deconstructionTarget: null
+    graph: SnatcherprodGraph
+    node: rod
 
 - type: entity
   parent: PartRodMetal

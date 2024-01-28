@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -27,6 +27,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int?>("AdminRankId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("admin_rank_id");
+
+                    b.Property<string>("AdminServer")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("admin_server");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT")
@@ -75,13 +79,13 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             modelBuilder.Entity("Content.Server.Database.AdminLog", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("admin_log_id");
-
                     b.Property<int>("RoundId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("round_id");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("admin_log_id");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT")
@@ -105,13 +109,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("type");
 
-                    b.HasKey("Id", "RoundId")
+                    b.HasKey("RoundId", "Id")
                         .HasName("PK_admin_log");
 
                     b.HasIndex("Date");
-
-                    b.HasIndex("RoundId")
-                        .HasDatabaseName("IX_admin_log_round_id");
 
                     b.HasIndex("Type")
                         .HasDatabaseName("IX_admin_log_type");
@@ -121,22 +122,23 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             modelBuilder.Entity("Content.Server.Database.AdminLogPlayer", b =>
                 {
-                    b.Property<Guid>("PlayerUserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("player_user_id");
+                    b.Property<int>("RoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("round_id");
 
                     b.Property<int>("LogId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("log_id");
 
-                    b.Property<int>("RoundId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("round_id");
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
 
-                    b.HasKey("PlayerUserId", "LogId", "RoundId")
+                    b.HasKey("RoundId", "LogId", "PlayerUserId")
                         .HasName("PK_admin_log_player");
 
-                    b.HasIndex("LogId", "RoundId");
+                    b.HasIndex("PlayerUserId")
+                        .HasDatabaseName("IX_admin_log_player_player_user_id");
 
                     b.ToTable("admin_log_player", (string)null);
                 });
@@ -643,6 +645,27 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("player", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerReputation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("player_reputations_id");
+
+                    b.Property<float>("Reputation")
+                        .HasColumnType("REAL")
+                        .HasColumnName("reputation");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_reputations");
+
+                    b.ToTable("player_reputations", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -688,6 +711,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("backpack");
 
+                    b.Property<string>("BorgName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("borg_name");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -697,6 +725,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("clothing");
+
+                    b.Property<string>("ClownName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("clown_name");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -737,6 +770,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
 
+                    b.Property<string>("MimeName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("mime_name");
+
                     b.Property<int>("PreferenceId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("preference_id");
@@ -763,6 +801,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
+
+                    b.Property<string>("Voice")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("voice");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");
@@ -885,6 +928,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int?>("RoundId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("round_id");
+
+                    b.Property<string>("ServerName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("server_name");
 
                     b.Property<int>("Severity")
                         .HasColumnType("INTEGER")
@@ -1018,6 +1065,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int?>("RoundId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("round_id");
+
+                    b.Property<string>("ServerName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("server_name");
 
                     b.Property<int>("Severity")
                         .HasColumnType("INTEGER")
@@ -1235,10 +1286,10 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                     b.HasOne("Content.Server.Database.AdminLog", "Log")
                         .WithMany("Players")
-                        .HasForeignKey("LogId", "RoundId")
+                        .HasForeignKey("RoundId", "LogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_admin_log_player_admin_log_log_id_round_id");
+                        .HasConstraintName("FK_admin_log_player_admin_log_round_id_log_id");
 
                     b.Navigation("Log");
 

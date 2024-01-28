@@ -1,4 +1,6 @@
 using Content.Shared.Actions;
+using Content.Shared.Stacks;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -50,6 +52,8 @@ namespace Content.Shared.VendingMachines
         public string? NextItemToEject;
 
         public bool Broken;
+
+        public bool ShouldSayThankYou;
 
         /// <summary>
         /// When true, will forcefully throw any object it dispenses
@@ -179,6 +183,27 @@ namespace Content.Shared.VendingMachines
         [DataField("loopDeny")]
         public bool LoopDenyAnimation = true;
         #endregion
+
+        //WD EDIT
+
+        [DataField("priceMultiplier")]
+        public double PriceMultiplier;
+
+        [ValidatePrototypeId<StackPrototype>]
+        public string CreditStackPrototype = "Credit";
+
+        [DataField("currencyType")]
+        public string CurrencyType = "SpaceCash";
+
+        [DataField("soundInsertCurrency")]
+        public SoundSpecifier SoundInsertCurrency = new SoundPathSpecifier("/Audio/White/Machines/polaroid2.ogg");
+
+        [DataField("soundWithdrawCurrency")]
+        public SoundSpecifier SoundWithdrawCurrency = new SoundPathSpecifier("/Audio/White/Machines/polaroid1.ogg");
+
+        [ViewVariables]
+        public int Credits;
+        //WD EDIT END
     }
 
     [Serializable, NetSerializable]
@@ -190,11 +215,14 @@ namespace Content.Shared.VendingMachines
         public string ID;
         [ViewVariables(VVAccess.ReadWrite)]
         public uint Amount;
-        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount)
+        [ViewVariables(VVAccess.ReadWrite)]
+        public int Price; // WD
+        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, int price)
         {
             Type = type;
             ID = id;
             Amount = amount;
+            Price = price; // WD
         }
     }
 

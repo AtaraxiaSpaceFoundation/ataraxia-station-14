@@ -24,6 +24,7 @@ namespace Content.Server.Database
 {
     public interface IServerDbManager
     {
+        const string GlobalServerName = "unknown";
         void Init();
 
         void Shutdown();
@@ -68,7 +69,8 @@ namespace Content.Server.Database
         Task<ServerBanDef?> GetServerBanAsync(
             IPAddress? address,
             NetUserId? userId,
-            ImmutableArray<byte>? hwId);
+            ImmutableArray<byte>? hwId,
+            string serverName = GlobalServerName);
 
         /// <summary>
         ///     Looks up an user's ban history.
@@ -83,7 +85,8 @@ namespace Content.Server.Database
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned=true);
+            bool includeUnbanned=true,
+            string serverName = GlobalServerName);
 
         Task AddServerBanAsync(ServerBanDef serverBan);
         Task AddServerUnbanAsync(ServerUnbanDef serverBan);
@@ -137,7 +140,8 @@ namespace Content.Server.Database
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned = true);
+            bool includeUnbanned = true,
+            string serverName = GlobalServerName);
 
         Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverBan);
         Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverBan);
@@ -277,10 +281,37 @@ namespace Content.Server.Database
         Task MarkMessageAsSeen(int id);
 
         #endregion
+
+        #region Player Reputation (WD edit)
+
+        /// <summary>
+        /// Set player's reputation to the certain value.
+        /// </summary>
+        /// <param name="player">Guid of the player to set the value.</param>
+        /// <param name="value">Value to set.</param>
+        Task SetPlayerReputation(Guid player, float value);
+
+        /// <summary>
+        /// Modify player's reputation by adding value (currentValue + value).
+        /// </summary>
+        /// <param name="player">Guid of the player to modify the value.</param>
+        /// <param name="value">Value to add.</param>
+        Task ModifyPlayerReputation(Guid player, float value);
+
+        /// <summary>
+        /// Gets value of player reputation.
+        /// </summary>
+        /// <param name="player">Guid of the player to get the value.</param>
+        /// <returns>Value of player's reputation.</returns>
+        Task<float> GetPlayerReputation(Guid player);
+
+        #endregion
     }
 
     public sealed class ServerDbManager : IServerDbManager
     {
+        private const string GlobalServerName = "unknown";
+
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",
             "Amount of read operations processed by the database manager.");
@@ -395,20 +426,22 @@ namespace Content.Server.Database
         public Task<ServerBanDef?> GetServerBanAsync(
             IPAddress? address,
             NetUserId? userId,
-            ImmutableArray<byte>? hwId)
+            ImmutableArray<byte>? hwId,
+            string serverName = GlobalServerName)
         {
             DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetServerBanAsync(address, userId, hwId));
+            return RunDbCommand(() => _db.GetServerBanAsync(address, userId, hwId, serverName));
         }
 
         public Task<List<ServerBanDef>> GetServerBansAsync(
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned=true)
+            bool includeUnbanned=true,
+            string serverName = GlobalServerName)
         {
             DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetServerBansAsync(address, userId, hwId, includeUnbanned));
+            return RunDbCommand(() => _db.GetServerBansAsync(address, userId, hwId, includeUnbanned, serverName));
         }
 
         public Task AddServerBanAsync(ServerBanDef serverBan)
@@ -452,10 +485,11 @@ namespace Content.Server.Database
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned = true)
+            bool includeUnbanned=true,
+            string serverName = GlobalServerName)
         {
             DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetServerRoleBansAsync(address, userId, hwId, includeUnbanned));
+            return RunDbCommand(() => _db.GetServerRoleBansAsync(address, userId, hwId, includeUnbanned, serverName));
         }
 
         public Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan)
@@ -489,6 +523,28 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.UpdatePlayTimes(updates));
+        }
+
+        #endregion
+
+        #region Player Reputation (WD edit)
+
+        public Task SetPlayerReputation(Guid player, float value)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPlayerReputation(player, value));
+        }
+
+        public Task ModifyPlayerReputation(Guid player, float value)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPlayerReputation(player, value));
+        }
+
+        public Task<float> GetPlayerReputation(Guid player)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerReputation(player));
         }
 
         #endregion

@@ -14,7 +14,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Slash: 10
+        Slash: 12
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Sprite
@@ -126,7 +126,7 @@
     attackRate: 1.0
     damage:
       types:
-        Slash: 15
+        Slash: 18 # Same DPS as combat knife
   - type: Item
     sprite: Objects/Weapons/Melee/kukri_knife.rsi
 

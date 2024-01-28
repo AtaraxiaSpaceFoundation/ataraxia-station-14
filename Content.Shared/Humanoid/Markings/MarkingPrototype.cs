@@ -23,6 +23,10 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("sexRestriction")]
         public Sex? SexRestriction { get; private set; }
 
+        // WD-EDIT
+        [DataField("sponsorOnly")] public bool SponsorOnly;
+        // WD-EDIT
+
         [DataField("followSkinColor")]
         public bool FollowSkinColor { get; private set; } = false;
 

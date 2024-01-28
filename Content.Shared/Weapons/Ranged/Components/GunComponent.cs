@@ -5,7 +5,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Weapons.Ranged.Components;
 
@@ -16,7 +15,7 @@ public partial class GunComponent : Component
     #region Sound
 
     [ViewVariables(VVAccess.ReadWrite), DataField("soundGunshot")]
-    public SoundSpecifier? SoundGunshot = new SoundPathSpecifier("/Audio/Weapons/Guns/Gunshots/smg.ogg");
+    public SoundSpecifier? SoundGunshot { get; set; } = new SoundPathSpecifier("/Audio/Weapons/Guns/Gunshots/smg.ogg");
 
     [ViewVariables(VVAccess.ReadWrite), DataField("soundEmpty")]
     public SoundSpecifier? SoundEmpty = new SoundPathSpecifier("/Audio/Weapons/Guns/Empty/empty.ogg");
@@ -167,6 +166,16 @@ public partial class GunComponent : Component
     /// </summary>
     [DataField("clumsyProof"), ViewVariables(VVAccess.ReadWrite)]
     public bool ClumsyProof = false;
+
+    // WD START
+    [DataField("forceThrowingAngle")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool ForceThrowingAngle;
+
+    [DataField("angle")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public Angle Angle;
+    // WD END
 }
 
 [Flags]

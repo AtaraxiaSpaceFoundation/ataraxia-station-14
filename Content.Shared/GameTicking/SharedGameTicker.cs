@@ -63,6 +63,15 @@ namespace Content.Shared.GameTicking
         }
     }
 
+    [Serializable, NetSerializable]
+    public sealed class TickerConnectionStatusEvent : EntityEventArgs
+    {
+        public TimeSpan RoundStartTimeSpan { get; }
+        public TickerConnectionStatusEvent(TimeSpan roundStartTimeSpan)
+        {
+            RoundStartTimeSpan = roundStartTimeSpan;
+        }
+    }
 
     [Serializable, NetSerializable]
     public sealed class TickerLobbyStatusEvent : EntityEventArgs
@@ -148,6 +157,7 @@ namespace Content.Shared.GameTicking
             public bool Antag;
             public bool Observer;
             public bool Connected;
+            public string Reputation; // WD edit
         }
 
         public string GamemodeTitle { get; }
@@ -157,6 +167,10 @@ namespace Content.Shared.GameTicking
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
         public string? LobbySong;
+
+        /// <summary>
+        /// Sound gets networked due to how entity lifecycle works between client / server and to avoid clipping.
+        /// </summary>
         public string? RestartSound;
 
         public RoundEndMessageEvent(
@@ -166,7 +180,8 @@ namespace Content.Shared.GameTicking
             int roundId,
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
-            string? lobbySong)
+            string? lobbySong,
+            string? restartSound)
         {
             GamemodeTitle = gamemodeTitle;
             RoundEndText = roundEndText;
@@ -175,6 +190,7 @@ namespace Content.Shared.GameTicking
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
             LobbySong = lobbySong;
+            RestartSound = restartSound;
         }
     }
 

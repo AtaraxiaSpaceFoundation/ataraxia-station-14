@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Clothing.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.DeviceLinking.Systems;
+using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Emp;
@@ -79,6 +80,7 @@ namespace Content.Server.Light.EntitySystems
         {
             light.LightBulbContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, LightBulbContainer);
             _signalSystem.EnsureSinkPorts(uid, light.OnPort, light.OffPort, light.TogglePort);
+            _signalSystem.EnsureSourcePorts(uid, light.StatusPort); // WD
         }
 
         private void OnMapInit(EntityUid uid, PoweredLightComponent light, MapInitEvent args)
@@ -127,19 +129,20 @@ namespace Content.Server.Light.EntitySystems
                 var burnedHand = light.CurrentLit && res < lightBulb.BurningTemperature;
                 if (burnedHand)
                 {
-                    // apply damage to users hands and show message with sound
-                    var burnMsg = Loc.GetString("powered-light-component-burn-hand");
-                    _popupSystem.PopupEntity(burnMsg, uid, userUid);
-
                     var damage = _damageableSystem.TryChangeDamage(userUid, light.Damage, origin: userUid);
 
+                    // If damage is null then the entity could not take heat damage so they did not get burned.
                     if (damage != null)
-                        _adminLogger.Add(LogType.Damaged, $"{ToPrettyString(args.User):user} burned their hand on {ToPrettyString(args.Target):target} and received {damage.Total:damage} damage");
+                    {
 
-                    _audio.PlayEntity(light.BurnHandSound, Filter.Pvs(uid), uid, true);
+                        var burnMsg = Loc.GetString("powered-light-component-burn-hand");
+                        _popupSystem.PopupEntity(burnMsg, uid, userUid);
+                        _adminLogger.Add(LogType.Damaged, $"{ToPrettyString(args.User):user} burned their hand on {ToPrettyString(args.Target):target} and received {damage.GetTotal():damage} damage");
+                        _audio.PlayEntity(light.BurnHandSound, Filter.Pvs(uid), uid, true);
 
-                    args.Handled = true;
-                    return;
+                        args.Handled = true;
+                        return;
+                    }
                 }
             }
 
@@ -421,6 +424,15 @@ namespace Content.Server.Light.EntitySystems
                 return;
 
             light.On = !light.On;
+
+            // WD START
+            var data = new NetworkPayload
+            {
+                {DeviceNetworkConstants.LogicState, light.On ? SignalState.High : SignalState.Low}
+            };
+            _signalSystem.InvokePort(uid, light.StatusPort, data);
+            // WD END
+
             UpdateLight(uid, light);
         }
 

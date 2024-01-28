@@ -9,6 +9,9 @@
     },
     "states": [
         {
+            "name": "CustomId"
+        },
+        {
             "name": "Detective"
         },
         {
@@ -175,6 +178,9 @@
         },
         {
             "name": "Syndicate"
+        },
+        {
+            "name": "Inspector"
         }
     ]
 }

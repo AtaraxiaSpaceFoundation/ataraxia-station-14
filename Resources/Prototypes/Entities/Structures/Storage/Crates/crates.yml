@@ -83,7 +83,7 @@
     sprite: Structures/Storage/Crates/o2.rsi
 
 - type: entity
-  parent: CratePlastic
+  parent: CrateGenericSteel
   id: CrateElectrical
   name: electrical crate
   components:
@@ -145,18 +145,29 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
+        damage: 300 #excess damage (nuke?). avoid computational cost of spawning entities.  # WD edit start
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger  # WD edit end
         damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWebSilk:
             min: 3
             max: 5
+  - type: MeleeSound  # WD edit start
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Weapons/slash.ogg"  # WD edit end
   - type: EntityStorage
     closeSound:
       path: /Audio/Effects/rustle1.ogg
@@ -317,7 +328,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroyHeavy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
@@ -367,7 +378,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: MetalGlassBreak
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetPlastic:
@@ -462,7 +473,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
@@ -496,11 +507,11 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 15
+        damage: 200 # discourage just beating the grave to break it open
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
@@ -510,6 +521,15 @@
         acts: [ "Destruction" ]
   - type: Physics
     bodyType: Static
+  - type: Grave
+  - type: ProRottingContainer
+  - type: EntityStorage
+    airtight: true
+    isCollidableWhenOpen: false
+    closeSound:
+      path: /Audio/Items/shovel_dig.ogg
+    openSound:
+      path: /Audio/Items/shovel_dig.ogg
 
 - type: entity
   parent: CrateWoodenGrave
@@ -531,6 +551,8 @@
 - type: entity
   parent: CrateGenericSteel
   id: CrateSyndicate
+  name: Syndicate crate
+  description: A dark steel crate with red bands and a letter S embossed on the front.
   components:
   - type: Icon
     sprite: Structures/Storage/Crates/syndicate.rsi

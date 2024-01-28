@@ -19,6 +19,15 @@ using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
+using Content.Server._White;
+using Content.Server._White.JoinQueue;
+using Content.Server._White.Jukebox;
+using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.Reputation;
+using Content.Server._White.Sponsors;
+using Content.Server._White.Stalin;
+using Content.Server._White.TTS;
+using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
@@ -58,6 +67,18 @@ namespace Content.Server.IoC
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
             IoCManager.Register<ServerDbEntryManager>();
+
+            // WD-EDIT
+            IoCManager.Register<SponsorsManager>();
+            IoCManager.Register<JoinQueueManager>();
+            IoCManager.Register<TTSManager>();
+            IoCManager.Register<StalinManager>();
+            IoCManager.Register<ServerJukeboxSongsSyncManager>();
+            IoCManager.Register<SalusManager>();
+            IoCManager.Register<ReputationManager>();
+            IoCManager.Register<PandaStatusHost>();
+            IoCManager.Register<PandaWebManager>();
+            // WD-EDIT
         }
     }
 }

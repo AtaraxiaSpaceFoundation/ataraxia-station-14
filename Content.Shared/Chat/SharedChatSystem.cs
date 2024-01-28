@@ -1,4 +1,3 @@
-using System.Collections.Frozen;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
@@ -22,6 +21,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
     public const char DefaultChannelKey = 'h';
+    public const char CultPrefix = '^'; // WD EDIT
 
     [ValidatePrototypeId<RadioChannelPrototype>]
     public const string CommonChannel = "Common";
@@ -37,7 +37,7 @@ public abstract class SharedChatSystem : EntitySystem
     /// <summary>
     /// Cache of the keycodes for faster lookup.
     /// </summary>
-    private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
+    private readonly Dictionary<char, RadioChannelPrototype> _keyCodes = new();
 
     public override void Initialize()
     {
@@ -55,8 +55,19 @@ public abstract class SharedChatSystem : EntitySystem
 
     private void CacheRadios()
     {
-        _keyCodes = _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>()
-            .ToFrozenDictionary(x => x.KeyCode);
+        _keyCodes.Clear();
+
+        foreach (var proto in _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>())
+        {
+            //WD-EDIT
+            foreach (var keycode in proto.KeyCodes)
+            {
+                if (_keyCodes.ContainsKey(keycode))
+                    continue;
+                _keyCodes.Add(keycode, proto);
+            }
+            //WD-EDIT
+        }
     }
 
     /// <summary>
@@ -72,7 +83,7 @@ public abstract class SharedChatSystem : EntitySystem
         SpeechVerbPrototype? current = null;
         foreach (var (str, id) in speech.SuffixSpeechVerbs)
         {
-            var proto = _prototypeManager.Index<SpeechVerbPrototype>(id);
+            var proto = _prototypeManager.Index(id);
             if (message.EndsWith(Loc.GetString(str)) && proto.Priority >= (current?.Priority ?? 0))
             {
                 current = proto;
@@ -80,7 +91,7 @@ public abstract class SharedChatSystem : EntitySystem
         }
 
         // if no applicable suffix verb return the normal one used by the entity
-        return current ?? _prototypeManager.Index<SpeechVerbPrototype>(speech.SpeechVerb);
+        return current ?? _prototypeManager.Index(speech.SpeechVerb);
     }
 
     /// <summary>
@@ -183,5 +194,35 @@ public abstract class SharedChatSystem : EntitySystem
         }
 
         return message;
+    }
+
+    public static string SanitizeAnnouncement(string message, int maxLength = 0, int maxNewlines = 2)
+    {
+        var trimmed = message.Trim();
+        if (maxLength > 0 && trimmed.Length > maxLength)
+        {
+            trimmed = $"{message[..maxLength]}...";
+        }
+
+        // No more than max newlines, other replaced to spaces
+        if (maxNewlines > 0)
+        {
+            var chars = trimmed.ToCharArray();
+            var newlines = 0;
+            for (var i = 0; i < chars.Length; i++)
+            {
+                if (chars[i] != '\n')
+                    continue;
+
+                if (newlines >= maxNewlines)
+                    chars[i] = ' ';
+
+                newlines++;
+            }
+
+            return new string(chars);
+        }
+
+        return trimmed;
     }
 }

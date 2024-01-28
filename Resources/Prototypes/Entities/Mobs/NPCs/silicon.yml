@@ -107,6 +107,7 @@
   - type: TypingIndicator
     proto: robot
   - type: ZombieImmune
+  - type: Penetrated
 
 - type: entity
   parent: [ MobSiliconBase, BaseVehicle]
@@ -349,13 +350,16 @@
     interactFailureString: petting-failure-medibot
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: ShowHealthBars
-    damageContainers: 
-    - Biological
+# - type: ShowHealthBars
+#   damageContainers:
+#   - Biological
   - type: ShowHealthIcons
-    damageContainers: 
+    damageContainers:
     - Biological
-  
+  - type: ShowWhiteHealthBars
+    damageContainers:
+    - Biological
+
 - type: entity
   parent: MobSiliconBase
   id: MobMimeBot

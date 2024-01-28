@@ -34,8 +34,8 @@ chat-manager-entity-me-wrap-message = [italic]{ PROPER($entity) ->
     }
 
 chat-manager-entity-looc-wrap-message = LOOC: [bold]{$entityName}:[/bold] {$message}
-chat-manager-send-ooc-wrap-message = OOC: [bold]{$playerName}:[/bold] {$message}
-chat-manager-send-ooc-patron-wrap-message = OOC: [bold][color={$patronColor}]{$playerName}[/color]:[/bold] {$message}
+chat-manager-send-ooc-wrap-message = OOC: [bold]{$playerName}{$rep}:[/bold] {$message}
+chat-manager-send-ooc-patron-wrap-message = OOC: [bold][color={$patronColor}]{$playerName}[/color]{$rep}:[/bold] {$message}
 
 chat-manager-send-dead-chat-wrap-message = {$deadChannelName}: [bold][BubbleHeader]{$playerName}[/BubbleHeader]:[/bold] [BubbleContent]{$message}[/BubbleContent]
 chat-manager-send-admin-dead-chat-wrap-message = {$adminChannelName}: [bold]([BubbleHeader]{$userName}[/BubbleHeader]):[/bold] [BubbleContent]{$message}[/BubbleContent]
@@ -113,3 +113,7 @@ chat-speech-verb-ghost-1 = complains
 chat-speech-verb-ghost-2 = breathes
 chat-speech-verb-ghost-3 = hums
 chat-speech-verb-ghost-4 = mutters
+
+chat-speech-verb-electricity-1 = crackles
+chat-speech-verb-electricity-2 = buzzes
+chat-speech-verb-electricity-3 = screeches

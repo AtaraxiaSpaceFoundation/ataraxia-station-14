@@ -1,6 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Server.Construction;
+using Content.Server.Chat.Managers;
 using Content.Server.Power.Components;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
@@ -19,6 +20,8 @@ namespace Content.Server.Gravity
         [Dependency] private readonly SharedPointLightSystem _lights = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
+        [Dependency] private readonly IChatManager _chatManager = default!;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -27,7 +30,6 @@ namespace Content.Server.Gravity
             SubscribeLocalEvent<GravityGeneratorComponent, ComponentShutdown>(OnComponentShutdown);
             SubscribeLocalEvent<GravityGeneratorComponent, EntParentChangedMessage>(OnParentChanged); // Or just anchor changed?
             SubscribeLocalEvent<GravityGeneratorComponent, InteractHandEvent>(OnInteractHand);
-            SubscribeLocalEvent<GravityGeneratorComponent, RefreshPartsEvent>(OnRefreshParts);
             SubscribeLocalEvent<GravityGeneratorComponent, SharedGravityGeneratorComponent.SwitchGeneratorMessage>(
                 OnSwitchGenerator);
         }
@@ -139,7 +141,12 @@ namespace Content.Server.Gravity
                 return;
 
             if (session is { AttachedEntity: { } })
-                _adminLogger.Add(LogType.Action, on ? LogImpact.Medium : LogImpact.High, $"{session:player} set ${ToPrettyString(uid):target} to {(on ? "on" : "off")}");
+            {
+                var player = session.AttachedEntity.Value;
+                _adminLogger.Add(LogType.Action, on ? LogImpact.Medium : LogImpact.High, $"{ToPrettyString(player):player} set ${ToPrettyString(uid):target} to {(on ? "on" : "off")}");
+                _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-gravity-generator-turned",
+                    ("player", ToPrettyString(player)), ("gravgen", ToPrettyString(uid)), ("status", on ? "on" : "off")));
+            }
 
             component.SwitchedOn = on;
             UpdatePowerState(component, powerReceiver);
@@ -254,12 +261,6 @@ namespace Content.Server.Gravity
             {
                 MakeOn((uid, grav), appearance);
             }
-        }
-
-        private void OnRefreshParts(EntityUid uid, GravityGeneratorComponent component, RefreshPartsEvent args)
-        {
-            var maxChargeMultipler = args.PartRatings[component.MachinePartMaxChargeMultiplier];
-            component.MaxCharge = maxChargeMultipler * 1;
         }
 
         private void MakeBroken(Entity<GravityGeneratorComponent> ent, AppearanceComponent? appearance)

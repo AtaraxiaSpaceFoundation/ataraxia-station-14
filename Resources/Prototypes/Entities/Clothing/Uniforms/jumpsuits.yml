@@ -962,7 +962,7 @@
       mode: SensorOff
 
 - type: entity
-  parent: UnsensoredClothingUniformBase
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitMercenary
   name: mercenary jumpsuit
   description: Clothing for real mercenaries who have gone through fire, water and the jungle of planets flooded with dangerous monsters or targets for which a reward has been assigned.
@@ -1448,3 +1448,25 @@
     sprite: Clothing/Uniforms/Jumpsuit/familiar_garbs.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/familiar_garbs.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitWhiteInspector
+  name: inspector's uniform
+  description: Inspector's informal uniform. Relax because while you are on the station, only you can afford to relax.
+  components:
+    - type: Sprite
+      sprite: Clothing/Uniforms/Jumpsuit/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Uniforms/Jumpsuit/inspector.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitWhiteInspectorFormal
+  name: inspector's formal uniform
+  description: Shirt, vest, pants and a bright red tie. This is a set of strict official uniform of perhaps the most terrifying person on the station - the inspector.
+  components:
+    - type: Sprite
+      sprite: Clothing/Uniforms/Jumpsuit/inspectorformal.rsi
+    - type: Clothing
+      sprite: Clothing/Uniforms/Jumpsuit/inspectorformal.rsi

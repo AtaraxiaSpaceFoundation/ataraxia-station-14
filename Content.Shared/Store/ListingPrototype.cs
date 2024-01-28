@@ -86,13 +86,25 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     /// <summary>
     /// used internally for tracking how many times an item was purchased.
     /// </summary>
-    public int PurchaseAmount = 0;
+    public int PurchaseAmount;
 
     /// <summary>
     /// Used to delay purchase of some items.
     /// </summary>
     [DataField("restockTime")]
     public int RestockTime;
+
+    // WD START
+    [DataField("saleLimit")]
+    public int SaleLimit = 3;
+
+    [DataField("saleBlacklist")]
+    public bool SaleBlacklist;
+
+    public int SaleAmount;
+
+    public Dictionary<string, FixedPoint2> OldCost = new();
+    // WD END
 
     public bool Equals(ListingData? listing)
     {
@@ -104,8 +116,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             Name != listing.Name ||
             Description != listing.Description ||
             ProductEntity != listing.ProductEntity ||
-            ProductAction != listing.ProductAction ||
-            ProductEvent != listing.ProductEvent)
+            ProductAction != listing.ProductAction)
             return false;
 
         if (Icon != null && !Icon.Equals(listing.Icon))
@@ -148,6 +159,12 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             ProductEvent = ProductEvent,
             PurchaseAmount = PurchaseAmount,
             RestockTime = RestockTime,
+            // WD START
+            SaleLimit = SaleLimit,
+            SaleBlacklist = SaleBlacklist,
+            SaleAmount = SaleAmount,
+            OldCost = OldCost,
+            // WD END
         };
     }
 }

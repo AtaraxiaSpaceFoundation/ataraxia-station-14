@@ -1,0 +1,334 @@
+- type: customGhost
+  id: ravmorgan-ghost
+  ckey: ravmorgan
+  sprite: White/Ghosts/ravmorgan-ghost.rsi
+  alpha: 1.0
+  ghostName: Девочка из аниме
+  ghostDescription: А я корчу лицо в рожицу ахегао.
+
+- type: customGhost
+  id: merkkaa-ghost
+  ckey: merkkaa
+  sprite: White/Ghosts/merkkaa-ghost.rsi
+  alpha: 0.9
+  ghostName: Мурка
+  ghostDescription: Ня...
+
+- type: customGhost
+  id: nairsark-ghost
+  ckey: nairsark
+  sprite: White/Ghosts/frostnova-ghost.rsi
+  alpha: 0.7
+  ghostName: Winter's Scar
+  ghostDescription: ...
+
+- type: customGhost
+  id: animeshka-ghost
+  ckey: animeshka
+  sprite: White/Ghosts/animeshka-ghost.rsi
+  alpha: 0.7
+  ghostName: Грабля
+  ghostDescription: Ну привет уебан!
+
+- type: customGhost
+  id: shelupon-ghost
+  ckey: shelupon
+  sprite: White/Ghosts/shelupon-ghost.rsi
+  alpha: 1
+  ghostName: Величайший
+  ghostDescription: Восстал из небытия.
+
+- type: customGhost
+  id: hskveez-ghost
+  ckey: hskveez
+  sprite: White/Ghosts/hskveez-ghost.rsi
+  alpha: 0.9
+  ghostName: Огонек
+  ghostDescription: А где тут огнетушитель?
+
+#pointpng
+- type: customGhost
+  id: cheeseCheese-ghost
+  ckey: cheese_cheese
+  sprite: White/Ghosts/cheese_cheese-ghost.rsi
+  alpha: 0.8
+  ghostName: Фырчало
+  ghostDescription: Инженерный борг
+
+#reider207
+- type: customGhost
+  id: reider207-ghost
+  ckey: reider207
+  sprite: White/Ghosts/reider207-ghost.rsi
+  alpha: 0.8
+  ghostName: Соня
+  ghostDescription: Видишь спит соня? Так не буди
+  size: 0.8, 0.8
+
+#mikvisan
+- type: customGhost
+  id: mikvisan-ghost
+  ckey: mikvisan
+  sprite: White/Ghosts/mikvisan-ghost.rsi
+  alpha: 0.8
+  ghostName: Мона
+  ghostDescription: Годротянка с хорошей задницей
+  size: 0.8, 0.8
+
+#felix
+- type: customGhost
+  id: felix163-ghost
+  ckey: felix163
+  sprite: White/Ghosts/felix-ghost.rsi
+  alpha: 1
+  ghostName: Кошмар
+  ghostDescription: ползёт, ползёт...
+  size: 0.8, 0.8
+
+#felix
+- type: customGhost
+  id: mapperian-ghost
+  ckey: mapperian
+  sprite: White/Ghosts/suzuran.rsi
+  alpha: 1
+  ghostName: Operator Suzuran
+  ghostDescription: Uoooooooh!!!
+  size: 0.8, 0.8
+
+#doommax
+- type: customGhost
+  id: doommax-ghost
+  ckey: doommax
+  sprite: White/Ghosts/doommax-ghost.rsi
+  alpha: 0.95
+  ghostName: Наблюдатель
+  ghostDescription: Явился из другого мира с целью наблюдать за другими разумными существами
+  size: 1, 1
+
+- type: customGhost
+  id: serbwo-ghost
+  ckey: serbwo
+  sprite: White/Ghosts/serbo-ghost.rsi
+  alpha: 0.8
+  ghostName: Karseba
+  ghostDescription: Дракон который делает Ням-Ням
+  size: 1, 1
+
+- type: customGhost
+  id: centurion-ghost
+  ckey: centurion
+  sprite: White/Ghosts/vkuser_ghost.rsi
+  alpha: 0.8
+  ghostName: Central Hampter
+  ghostDescription: Мур!
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: zmes2-ghost
+  ckey: zmes2
+  sprite: White/Ghosts/zmes2-ghost.rsi
+  alpha: 0.8
+  ghostName: Спящий
+  ghostDescription: Выглядит умиротвореным...
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: hitpanda-ghost
+  ckey: hitpanda
+  sprite: White/Ghosts/hitpanda_ghost.rsi
+  alpha: 0.8
+  ghostName: Панда
+  ghostDescription: Полыхает...
+  size: 1, 1
+
+- type: customGhost
+  id: quazvr-ghost
+  ckey: quazvr
+  sprite: White/Ghosts/quazvr-ghost.rsi
+  alpha: 0.8
+  ghostName: Neco
+  ghostDescription: Buranyaaa...
+  size: 0.6, 0.6
+
+- type: customGhost
+  id: valtos-ghost
+  ckey: valtos
+  sprite: White/Ghosts/valtos-ghost.rsi
+  alpha: 1.0
+  ghostName: Мяукалка
+  ghostDescription: Дает деньги если погладить по животику...
+  size: 0.7, 0.7
+
+- type: customGhost
+  id: nexmachina-ghost
+  ckey: nexmachina
+  sprite: White/Ghosts/nexmachina-ghost.rsi
+  alpha: 0.7
+  ghostName: CoreOverHeaven
+  ghostDescription: Плоф
+  size: 1.0, 1.0
+
+- type: customGhost
+  id: 17shu-ghost
+  ckey: 17shu
+  sprite: White/Ghosts/17shu-ghost.rsi
+  alpha: 0.9
+  ghostName: Квакалка
+  ghostDescription: Квакающий покемон..
+  size: 0.7, 0.7
+
+- type: customGhost
+  id: renosan-ghost
+  ckey: ren0san
+  sprite: White/Ghosts/renosan-ghost.rsi
+  alpha: 0.8
+  ghostName: Энхиридион
+  ghostDescription: Древняя книга с кодексом чести, руководством и иной полезной информацией для героев.
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: deadisko-ghost
+  ckey: deadisko
+  sprite: White/Ghosts/deadisko-ghost.rsi
+  alpha: 0.8
+  ghostName: Летающий макаронный монстр
+  ghostDescription: Сложноуглеводное всеведующее создание, покровитель пиратов с большими митболами.
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: zilendorie-ghost
+  ckey: zilendorie
+  sprite: White/Ghosts/zilendorie-ghost.rsi
+  alpha: 0.8
+  ghostName: Эзра-Арк
+  ghostDescription: Призрак фембоя. Стал слишком глупеньким и отделился от тела.
+  size: 0.3, 0.3
+
+- type: customGhost
+  id: 4abere1-ghost
+  ckey: 4abere1
+  sprite: White/Ghosts/4abere1-ghost.rsi
+  alpha: 0.8
+  ghostName: Хамптер
+  ghostDescription: Любит чебуреки и мапить.
+  size: 1.3, 1.3
+
+- type: customGhost
+  id: omntns-ghost
+  ckey: omntns
+  sprite: White/Ghosts/omntns-ghost.rsi
+  alpha: 0.8
+  ghostName: Верховный судья
+  ghostDescription: Олицетворение главенства закона и мудрости оставляет ощущение постоянной слежки. Тем не менее, его лик наполняет вас решимостью.
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: s_k_r_i_m_e_x-ghost
+  ckey: s_k_r_i_m_e_x
+  sprite: White/Ghosts/s_k_r_i_m_e_x-ghost.rsi
+  alpha: 0.8
+  ghostName: Ху Тао
+  ghostDescription: Мяу!
+  size: 0.8, 0.8
+
+- type: customGhost
+  id: rendzidead-ghost
+  ckey: rendzidead
+  sprite: White/Ghosts/rendzidead-ghost.rsi
+  alpha: 0.6
+  ghostName: Смит Сайковски
+  ghostDescription: Олицетворение бюрократии, но почему-то от него ощущается сильная боль и чувство утраты. Кто знает, что пережила данная душа.
+  size: 0.6, 0.6
+
+- type: customGhost
+  id: nosireapo-ghost
+  ckey: nosireapo
+  sprite: White/Ghosts/nosireapo-ghost.rsi
+  alpha: 0.7
+  ghostName: Жабуля
+  ghostDescription: Неудачный(или слишком удачный) эксперимент по ксенобиологии создал данное существо. Любит квакоть.
+  size: 1.0, 1.0
+
+- type: customGhost
+  id: svinka-ghost
+  ckey: svinka
+  sprite: White/Ghosts/afanasy-ghost.rsi
+  alpha: 0.8
+  ghostName: Свинка
+  ghostDescription: хрю-хрю
+
+- type: customGhost
+  id: xivi-ghost
+  ckey: xivi
+  sprite: White/Ghosts/xivi-ghost.rsi
+  alpha: 0.9
+  ghostName: Project Bunny
+  ghostDescription: Ride on!
+  size: 0.6, 0.6
+
+- type: customGhost
+  id: warete-ghost
+  ckey: warete
+  sprite: White/Ghosts/warete-ghost.rsi
+  alpha: 0.8
+  ghostName: Fiammetta
+  ghostDescription: Горничная под своим кодовым именем. Следит за порядком в кафе Мастера.
+  size: 0.7, 0.7
+
+- type: customGhost
+  id: hayras-ghost
+  ckey: hayras
+  sprite: White/Ghosts/hayras-ghost.rsi
+  alpha: 0.8
+  ghostName: Витя
+  ghostDescription: Хню...
+
+- type: customGhost
+  id: trora-ghost
+  ckey: trora
+  sprite: White/Ghosts/nairsark-ghost.rsi
+  alpha: 1
+  ghostName: Maid
+  ghostDescription: Not a fucking fumo.
+
+- type: customGhost
+  id: mrregari-ghost
+  ckey: mr_regari
+  sprite: White/Ghosts/mr_regari.rsi
+  alpha: 0.9
+  ghostName: Обсидиановое сердце
+  ghostDescription: Сердце древнего бога, дабы не дать ему возродиться было заперто в бедрокиуме.
+
+- type: customGhost
+  id: thefrendlypsychopath-ghost
+  ckey: thefrendlypsychopath
+  sprite: White/Ghosts/psychopath-ghost.rsi
+  ghostName: ЕРП Кицуне
+  ghostDescription: Тут тебе не рады.
+
+- type: customGhost
+  id: ssao-ghost
+  ckey: ssao
+  sprite: White/Ghosts/ssao-ghost.rsi
+  alpha: 0.9
+  ghostName: Мяукалка
+  ghostDescription: Мяу!
+  size: 0.6, 0.6
+
+- type: customGhost
+  id: raindrop-ghost
+  ckey: raindrop
+  sprite: White/Ghosts/raindrop-ghost.rsi
+  alpha: 0.7
+  ghostName: Акулёнок
+  ghostDescription: Что-то замышляет.
+  size: 0.9, 0.9
+
+- type: customGhost
+  id: veryfish-ghost
+  ckey: veryfish
+  sprite: White/Ghosts/veryfish-ghost.rsi
+  alpha: 0.8
+  ghostName: Mask of the Red Death
+  ghostDescription: A blasphemous mockery.
+  size: 0.5, 0.5

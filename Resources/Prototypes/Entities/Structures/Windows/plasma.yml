@@ -19,13 +19,16 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
     - trigger:
         !type:DamageTrigger
         damage: 60
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: GlassBreak
+          collection: WindowShatter
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlassPlasma:
@@ -49,6 +52,8 @@
     price: 60
   - type: RadiationBlocker
     resistance: 2
+  - type: WindowMark
+    replacementProto: WallSolid
 
 - type: entity
   id: PlasmaWindowDirectional
@@ -84,7 +89,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: GlassBreak
+          collection: WindowShatter
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlassPlasma:

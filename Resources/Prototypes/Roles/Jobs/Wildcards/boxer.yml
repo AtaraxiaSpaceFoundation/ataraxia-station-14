@@ -20,6 +20,9 @@
     gloves: ClothingHandsGlovesBoxingRed
     shoes: ClothingShoesColorRed
     belt: ClothingBeltChampion
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraSports # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
   innerClothingSkirt: UniformShortsRedWithTop
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelFilled

@@ -1,4 +1,5 @@
 using Content.Server.Speech.EntitySystems;
+using Content.Server._White.AspectsSystem.Aspects;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;
 using Robust.Shared.Audio;
@@ -12,7 +13,7 @@ namespace Content.Server.Speech.Components;
 ///     Component required for entities to be able to do vocal emotions.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(VocalSystem))]
+[Access(typeof(VocalSystem), typeof(CatEarsAspect))]
 public sealed partial class VocalComponent : Component
 {
     /// <summary>
@@ -41,6 +42,6 @@ public sealed partial class VocalComponent : Component
     ///     Currently loaded emote sounds prototype, based on entity sex.
     ///     Null if no valid prototype for entity sex was found.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables(VVAccess.ReadWrite)]
     public EmoteSoundsPrototype? EmoteSounds = null;
 }

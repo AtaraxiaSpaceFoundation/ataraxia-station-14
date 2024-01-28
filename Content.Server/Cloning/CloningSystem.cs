@@ -1,7 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.Cloning.Components;
-using Content.Server.Construction;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.EUI;
 using Content.Server.Fluids.EntitySystems;
@@ -10,10 +9,10 @@ using Content.Server.Jobs;
 using Content.Server.Materials;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Traits.Assorted;
 using Content.Shared.Atmos;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Cloning;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking.Events;
@@ -71,8 +70,6 @@ namespace Content.Server.Cloning
             base.Initialize();
 
             SubscribeLocalEvent<CloningPodComponent, ComponentInit>(OnComponentInit);
-            SubscribeLocalEvent<CloningPodComponent, RefreshPartsEvent>(OnPartsRefreshed);
-            SubscribeLocalEvent<CloningPodComponent, UpgradeExamineEvent>(OnUpgradeExamine);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(Reset);
             SubscribeLocalEvent<BeingClonedComponent, MindAddedMessage>(HandleMindAdded);
             SubscribeLocalEvent<CloningPodComponent, PortDisconnectedEvent>(OnPortDisconnected);
@@ -85,21 +82,6 @@ namespace Content.Server.Cloning
         {
             clonePod.BodyContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, "clonepod-bodyContainer");
             _signalSystem.EnsureSinkPorts(uid, CloningPodComponent.PodPort);
-        }
-
-        private void OnPartsRefreshed(EntityUid uid, CloningPodComponent component, RefreshPartsEvent args)
-        {
-            var materialRating = args.PartRatings[component.MachinePartMaterialUse];
-            var speedRating = args.PartRatings[component.MachinePartCloningSpeed];
-
-            component.BiomassRequirementMultiplier = MathF.Pow(component.PartRatingMaterialMultiplier, materialRating - 1);
-            component.CloningTime = component.BaseCloningTime * MathF.Pow(component.PartRatingSpeedMultiplier, speedRating - 1);
-        }
-
-        private void OnUpgradeExamine(EntityUid uid, CloningPodComponent component, UpgradeExamineEvent args)
-        {
-            args.AddPercentageUpgrade("cloning-pod-component-upgrade-speed", component.BaseCloningTime / component.CloningTime);
-            args.AddPercentageUpgrade("cloning-pod-component-upgrade-biomass-requirement", component.BiomassRequirementMultiplier);
         }
 
         internal void TransferMindToClone(EntityUid mindId, MindComponent mind)
@@ -190,23 +172,10 @@ namespace Content.Server.Cloning
             if (!TryComp<PhysicsComponent>(bodyToClone, out var physics))
                 return false;
 
-            var cloningCost = (int) Math.Round(physics.FixturesMass * clonePod.BiomassRequirementMultiplier);
+            var cloningCost = (int) Math.Round(physics.FixturesMass);
 
             if (_configManager.GetCVar(CCVars.BiomassEasyMode))
                 cloningCost = (int) Math.Round(cloningCost * EasyModeCloningCost);
-
-            // Check if they have the uncloneable trait
-            if (TryComp<UncloneableComponent>(bodyToClone, out _))
-            {
-                if (clonePod.ConnectedConsole != null)
-                {
-                    _chatSystem.TrySendInGameICMessage(clonePod.ConnectedConsole.Value,
-                        Loc.GetString("cloning-console-uncloneable-trait-error"),
-                        InGameICChatType.Speak, false);
-                }
-
-                return false;
-            }
 
             // biomass checks
             var biomassAmount = _material.GetMaterialAmount(uid, clonePod.RequiredMaterial);
@@ -260,6 +229,10 @@ namespace Content.Server.Cloning
             _euiManager.OpenEui(new AcceptCloningEui(mindEnt, mind, this), client);
 
             AddComp<ActiveCloningPodComponent>(uid);
+
+            //WD-EDIT
+            AddComp<ForcedSleepingComponent>(mob);
+            //WD-EDIT
 
             // TODO: Ideally, components like this should be components on the mind entity so this isn't necessary.
             // Add on special job components to the mob.
@@ -330,6 +303,7 @@ namespace Content.Server.Cloning
             clonePod.UsedBiomass = 0;
             UpdateStatus(uid, CloningPodStatus.Idle, clonePod);
             RemCompDeferred<ActiveCloningPodComponent>(uid);
+            RemComp<ForcedSleepingComponent>(entity); //WD-EDIT
         }
 
         private void EndFailedCloning(EntityUid uid, CloningPodComponent clonePod)

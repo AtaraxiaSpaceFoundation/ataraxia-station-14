@@ -6,6 +6,8 @@ using Content.Server.Chat.Managers;
 using Content.Server.Explosion.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NPC.Pathfinding;
+using Content.Server.Station.Systems;
+using Content.Shared.Audio;
 using Content.Shared.Armor;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
@@ -14,16 +16,15 @@ using Content.Shared.Database;
 using Content.Shared.Explosion;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
-using Content.Shared.Mind;
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
 using Robust.Server.GameStates;
 using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -31,7 +32,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Explosion.EntitySystems;
 
-public sealed partial class ExplosionSystem : EntitySystem
+public sealed partial class ExplosionSystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
@@ -39,7 +40,6 @@ public sealed partial class ExplosionSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly NodeGroupSystem _nodeGroupSystem = default!;
@@ -54,9 +54,13 @@ public sealed partial class ExplosionSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _map = default!;
 
     private EntityQuery<TransformComponent> _transformQuery;
-    private EntityQuery<DamageableComponent> _damageQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<ProjectileComponent> _projectileQuery;
+
+    //WD-EDIT
+    [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    //WD-EDIT
 
     /// <summary>
     ///     "Tile-size" for space when there are no nearby grids to use as a reference.
@@ -106,7 +110,6 @@ public sealed partial class ExplosionSystem : EntitySystem
         InitVisuals();
 
         _transformQuery = GetEntityQuery<TransformComponent>();
-        _damageQuery = GetEntityQuery<DamageableComponent>();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _projectileQuery = GetEntityQuery<ProjectileComponent>();
     }
@@ -129,7 +132,9 @@ public sealed partial class ExplosionSystem : EntitySystem
         _pathfindingSystem.PauseUpdating = false;
     }
 
-    private void RelayedResistance(EntityUid uid, ExplosionResistanceComponent component,
+    private void RelayedResistance(
+        EntityUid uid,
+        ExplosionResistanceComponent component,
         InventoryRelayedEvent<GetExplosionResistanceEvent> args)
     {
         if (component.Worn)
@@ -238,7 +243,8 @@ public sealed partial class ExplosionSystem : EntitySystem
     /// <summary>
     ///     Queue an explosions, centered on some entity.
     /// </summary>
-    public void QueueExplosion(EntityUid uid,
+    public void QueueExplosion(
+        EntityUid uid,
         string typeId,
         float totalIntensity,
         float slope,
@@ -251,8 +257,11 @@ public sealed partial class ExplosionSystem : EntitySystem
     {
         var pos = Transform(uid);
 
+        var mapPos = _transformSystem.GetMapCoordinates(pos);
 
-        QueueExplosion(pos.MapPosition, typeId, totalIntensity, slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false);
+        var posFound = _transformSystem.TryGetMapOrGridCoordinates(uid, out var gridPos, pos);
+
+        QueueExplosion(mapPos, typeId, totalIntensity, slope, maxTileIntensity, tileBreakScale, maxTileBreak, canCreateVacuum, addLog: false);
 
         if (!addLog)
             return;
@@ -260,15 +269,17 @@ public sealed partial class ExplosionSystem : EntitySystem
         if (user == null)
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(uid):entity} exploded ({typeId}) at {pos.Coordinates:coordinates} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(uid):entity} exploded ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-explosion-no-player",
+                ("entity", ToPrettyString(uid)), ("coordinates", pos), ("intensity", totalIntensity), ("slope", slope)));
         }
         else
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at {pos.Coordinates:coordinates} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
             var alertMinExplosionIntensity = _cfg.GetCVar(CCVars.AdminAlertExplosionMinIntensity);
             if (alertMinExplosionIntensity > -1 && totalIntensity >= alertMinExplosionIntensity)
-                _chat.SendAdminAlert(user.Value, $"caused {ToPrettyString(uid)} to explode ({typeId}:{totalIntensity}) at {pos.Coordinates:coordinates}");
+                _chat.SendAdminAlert(user.Value, $"caused {ToPrettyString(uid)} to explode ({typeId}:{totalIntensity}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")}");
         }
     }
 
@@ -379,7 +390,7 @@ public sealed partial class ExplosionSystem : EntitySystem
 
         foreach (var player in players.Recipients)
         {
-            if (player.AttachedEntity is not EntityUid uid)
+            if (player.AttachedEntity is not { } uid)
                 continue;
 
             var playerPos = Transform(player.AttachedEntity!.Value).WorldPosition;

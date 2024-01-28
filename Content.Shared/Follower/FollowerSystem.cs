@@ -7,6 +7,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Physics.Pull;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
+using Content.Shared._White.Administration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Events;
@@ -14,6 +15,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Shared.Follower;
 
@@ -121,6 +123,14 @@ public sealed class FollowerSystem : EntitySystem
         StopAllFollowers(uid, component);
     }
 
+    private bool IsFollowingInvisibleEntity(EntityUid uid) // WD
+    {
+        if (TryComp(uid, out InvisibilityComponent? invisibility) && invisibility.Invisible)
+            return true;
+
+        return TryComp(uid, out FollowerComponent? follower) && IsFollowingInvisibleEntity(follower.Following);
+    }
+
     /// <summary>
     ///     Makes an entity follow another entity, by parenting to it.
     /// </summary>
@@ -128,6 +138,15 @@ public sealed class FollowerSystem : EntitySystem
     /// <param name="entity">The entity to be followed</param>
     public void StartFollowingEntity(EntityUid follower, EntityUid entity)
     {
+        if (IsFollowingInvisibleEntity(entity)) // WD
+        {
+            if (!HasComp<InvisibilityComponent>(follower))
+                return;
+
+            if (TryComp(follower, out FollowedComponent? followed))
+                StopAllFollowers(follower, followed);
+        }
+
         // No recursion for you
         var targetXform = Transform(entity);
         while (targetXform.ParentUid.IsValid())

@@ -1,4 +1,3 @@
-
 namespace Content.IntegrationTests.Tests.Interaction;
 
 // This partial class contains various constant prototype IDs common to interaction tests.
@@ -24,16 +23,12 @@ public abstract partial class InteractionTest
     protected const string RGlass = "ReinforcedGlass";
     protected const string Plastic = "Plastic";
     protected const string Cable = "Cable";
-    protected const string Rod = "MetalRod";
+    protected const string Rod = "PartRodMetal";
 
     // Parts
     protected const string Bin1 = "MatterBinStockPart";
-    protected const string Bin4 = "BluespaceMatterBinStockPart";
     protected const string Cap1 = "CapacitorStockPart";
-    protected const string Cap4 = "QuadraticCapacitorStockPart";
     protected const string Manipulator1 = "MicroManipulatorStockPart";
-    protected const string Manipulator4 = "FemtoManipulatorStockPart";
     protected const string Battery1 = "PowerCellSmall";
     protected const string Battery4 = "PowerCellHyper";
 }
-

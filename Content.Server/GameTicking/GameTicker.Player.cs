@@ -7,7 +7,6 @@ using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Server.GameTicking
@@ -32,7 +31,7 @@ namespace Content.Server.GameTicking
                 if (args.NewStatus != SessionStatus.Disconnected)
                 {
                     mind.Session = session;
-                    _pvsOverride.AddSessionOverride(GetNetEntity(mindId.Value), session);
+                    _pvsOverride.AddSessionOverride(mindId.Value, session);
                 }
 
                 DebugTools.Assert(mind.Session == session);
@@ -56,7 +55,7 @@ namespace Content.Server.GameTicking
 
                     // Make the player actually join the game.
                     // timer time must be > tick length
-                    Timer.Spawn(0, () => _playerManager.JoinGame(args.Session));
+                    // Timer.Spawn(0, args.Session.JoinGame); // Moved to `JoinQueueManager`(WD-EDIT)
 
                     var record = await _dbManager.GetPlayerRecordByUserId(args.Session.UserId);
                     var firstConnection = record != null &&
@@ -65,6 +64,8 @@ namespace Content.Server.GameTicking
                     _chatManager.SendAdminAnnouncement(firstConnection
                         ? Loc.GetString("player-first-join-message", ("name", args.Session.Name))
                         : Loc.GetString("player-join-message", ("name", args.Session.Name)));
+
+                    RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 
                     if (LobbyEnabled && _roundStartCountdownHasNotStartedYetDueToNoPlayers)
                     {
@@ -124,7 +125,8 @@ namespace Content.Server.GameTicking
                         mind.Session = null;
                     }
 
-                    _userDb.ClientDisconnected(session);
+                    if (_playerGameStatuses.ContainsKey(args.Session.UserId)) //WD-EDIT
+                        _userDb.ClientDisconnected(session);
                     break;
                 }
             }
@@ -166,7 +168,7 @@ namespace Content.Server.GameTicking
             _playerGameStatuses[session.UserId] = PlayerGameStatus.JoinedGame;
             _db.AddRoundPlayers(RoundId, session.UserId);
 
-            RaiseNetworkEvent(new TickerJoinGameEvent(), session.ConnectedClient);
+            RaiseNetworkEvent(new TickerJoinGameEvent(), session.Channel);
         }
 
         private void PlayerJoinLobby(ICommonSession session)
@@ -174,7 +176,7 @@ namespace Content.Server.GameTicking
             _playerGameStatuses[session.UserId] = LobbyEnabled ? PlayerGameStatus.NotReadyToPlay : PlayerGameStatus.ReadyToPlay;
             _db.AddRoundPlayers(RoundId, session.UserId);
 
-            var client = session.ConnectedClient;
+            var client = session.Channel;
             RaiseNetworkEvent(new TickerJoinLobbyEvent(), client);
             RaiseNetworkEvent(GetStatusMsg(session), client);
             RaiseNetworkEvent(GetInfoMsg(), client);

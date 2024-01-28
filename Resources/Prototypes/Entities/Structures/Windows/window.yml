@@ -11,8 +11,7 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
+        collection: GlassSmack
   - type: WallMount
     arc: 360 # interact despite grilles
   - type: Tag
@@ -49,6 +48,9 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
@@ -57,7 +59,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: GlassBreak
+          collection: WindowShatter
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlass:
@@ -67,7 +69,7 @@
         acts: [ "Destruction" ]
   - type: Airtight
   - type: IconSmooth
-    key: windows
+    key: walls
     base: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -86,6 +88,9 @@
       sprite: Structures/Windows/cracks.rsi
   - type: StaticPrice
     price: 100
+  - type: ReflectAspectMark
+  - type: WindowMark
+    replacementProto: WallSolid
 
 - type: entity
   id: WindowDirectional
@@ -105,8 +110,7 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
+        collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
     sprite: Structures/Windows/directional.rsi
@@ -145,13 +149,16 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
     - trigger:
         !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: GlassBreak
+          collection: WindowShatter
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlass:
@@ -175,6 +182,7 @@
       sprite: Structures/Windows/cracks_directional.rsi
   - type: StaticPrice
     price: 10
+  - type: ReflectAspectMark
 
 - type: entity
   id: WindowFrostedDirectional

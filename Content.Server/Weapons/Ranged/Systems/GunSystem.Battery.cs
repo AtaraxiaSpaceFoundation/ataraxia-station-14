@@ -1,16 +1,17 @@
 using Content.Server.Power.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
-using Content.Shared.FixedPoint;
-using Content.Shared.Projectiles;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
-using Robust.Shared.Prototypes;
+using Robust.Server.Audio;
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem
 {
+    [Dependency] private readonly AudioSystem _audio = default!;
+
     protected override void InitializeBattery()
     {
         base.InitializeBattery();
@@ -24,6 +25,43 @@ public sealed partial class GunSystem
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ComponentStartup>(OnBatteryStartup);
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ChargeChangedEvent>(OnBatteryChargeChange);
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
+
+        //TwoModeEnergy
+        SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, ComponentStartup>(OnBatteryStartup);
+        SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, ChargeChangedEvent>(OnBatteryChargeChange);
+        SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, DamageExamineEvent>(OnBatteryDamageExamine);
+        SubscribeLocalEvent<TwoModeEnergyAmmoProviderComponent, UseInHandEvent>(OnBatteryModeChange);
+    }
+
+    private void OnBatteryModeChange(EntityUid uid, TwoModeEnergyAmmoProviderComponent component, UseInHandEvent args)
+    {
+        if (!TryComp<GunComponent>(uid, out var gun))
+            return;
+
+        switch (component.CurrentMode)
+        {
+            case EnergyModes.Stun:
+                component.InStun = false;
+                component.CurrentMode = EnergyModes.Laser;
+                component.FireCost = component.LaserFireCost;
+                gun.SoundGunshot = component.LaserSound;
+                gun.ProjectileSpeed = component.LaserProjectileSpeed;
+                _audio.PlayPvs(component.ToggleSound, args.User);
+                break;
+            case EnergyModes.Laser:
+                component.InStun = true;
+                component.CurrentMode = EnergyModes.Stun;
+                component.FireCost = component.StunFireCost;
+                gun.SoundGunshot = component.StunSound;
+                gun.ProjectileSpeed = component.StunProjectileSpeed;
+                _audio.PlayPvs(component.ToggleSound, args.User);
+                break;
+        }
+
+        UpdateShots(uid, component);
+        UpdateTwoModeAppearance(uid, component);
+        UpdateBatteryAppearance(uid, component);
+        UpdateAmmoCount(uid);
     }
 
     private void OnBatteryStartup(EntityUid uid, BatteryAmmoProviderComponent component, ComponentStartup args)
@@ -31,7 +69,10 @@ public sealed partial class GunSystem
         UpdateShots(uid, component);
     }
 
-    private void OnBatteryChargeChange(EntityUid uid, BatteryAmmoProviderComponent component, ref ChargeChangedEvent args)
+    private void OnBatteryChargeChange(
+        EntityUid uid,
+        BatteryAmmoProviderComponent component,
+        ref ChargeChangedEvent args)
     {
         UpdateShots(uid, component, args.Charge, args.MaxCharge);
     }
@@ -51,7 +92,7 @@ public sealed partial class GunSystem
 
         if (component.Shots != shots || component.Capacity != maxShots)
         {
-            Dirty(component);
+            Dirty(uid, component);
         }
 
         component.Shots = shots;
@@ -59,7 +100,10 @@ public sealed partial class GunSystem
         UpdateBatteryAppearance(uid, component);
     }
 
-    private void OnBatteryDamageExamine(EntityUid uid, BatteryAmmoProviderComponent component, ref DamageExamineEvent args)
+    private void OnBatteryDamageExamine(
+        EntityUid uid,
+        BatteryAmmoProviderComponent component,
+        ref DamageExamineEvent args)
     {
         var damageSpec = GetDamage(component);
 
@@ -68,9 +112,12 @@ public sealed partial class GunSystem
 
         var damageType = component switch
         {
-            HitscanBatteryAmmoProviderComponent => Loc.GetString("damage-hitscan"),
+            HitscanBatteryAmmoProviderComponent    => Loc.GetString("damage-hitscan"),
             ProjectileBatteryAmmoProviderComponent => Loc.GetString("damage-projectile"),
-            _ => throw new ArgumentOutOfRangeException(),
+            TwoModeEnergyAmmoProviderComponent twoMode => Loc.GetString(twoMode.CurrentMode == EnergyModes.Stun
+                ? "damage-projectile"
+                : "damage-hitscan"),
+            _ => throw new ArgumentOutOfRangeException()
         };
 
         _damageExamine.AddDamageExamine(args.Message, damageSpec, damageType);
@@ -78,28 +125,16 @@ public sealed partial class GunSystem
 
     private DamageSpecifier? GetDamage(BatteryAmmoProviderComponent component)
     {
-        if (component is ProjectileBatteryAmmoProviderComponent battery)
+        return component switch
         {
-            if (ProtoManager.Index<EntityPrototype>(battery.Prototype).Components
-                .TryGetValue(_factory.GetComponentName(typeof(ProjectileComponent)), out var projectile))
-            {
-                var p = (ProjectileComponent) projectile.Component;
-
-                if (!p.Damage.Empty)
-                {
-                    return p.Damage;
-                }
-            }
-
-            return null;
-        }
-
-        if (component is HitscanBatteryAmmoProviderComponent hitscan)
-        {
-            return ProtoManager.Index<HitscanPrototype>(hitscan.Prototype).Damage;
-        }
-
-        return null;
+            HitscanBatteryAmmoProviderComponent hitscan =>
+                ProtoManager.Index<HitscanPrototype>(hitscan.Prototype).Damage,
+            ProjectileBatteryAmmoProviderComponent battery => GetProjectileDamage(battery.Prototype),
+            TwoModeEnergyAmmoProviderComponent twoMode => GetProjectileDamage(twoMode.CurrentMode == EnergyModes.Laser
+                ? twoMode.LaserPrototype
+                : twoMode.StunPrototype),
+            _ => null
+        };
     }
 
     protected override void TakeCharge(EntityUid uid, BatteryAmmoProviderComponent component)

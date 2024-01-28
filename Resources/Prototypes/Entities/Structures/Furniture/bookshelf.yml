@@ -26,10 +26,10 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroyHeavy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          MaterialWoodPlank1:
             min: 2
             max: 3
       - !type:DoActsBehavior

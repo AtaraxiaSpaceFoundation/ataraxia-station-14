@@ -6,7 +6,6 @@ using Robust.Shared.Random;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Examine;
 
 namespace Content.Server.DeviceNetwork.Systems
@@ -37,7 +36,6 @@ namespace Content.Server.DeviceNetwork.Systems
         /// The queue that will be processed in the next tick
         /// </summary>
         private Queue<DeviceNetworkPacketEvent> _nextQueue = null!;
-
 
         public override void Initialize()
         {
@@ -217,7 +215,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.ReceiveFrequency == frequency) return;
+            if (device.ReceiveFrequency == frequency)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -236,7 +235,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.ReceiveAll == receiveAll) return;
+            if (device.ReceiveAll == receiveAll)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -249,7 +249,8 @@ namespace Content.Server.DeviceNetwork.Systems
             if (!Resolve(uid, ref device, false))
                 return;
 
-            if (device.Address == address && device.CustomAddress) return;
+            if (device.Address == address && device.CustomAddress)
+                return;
 
             var deviceNet = GetNetwork(device.DeviceNetId);
             deviceNet.Remove(device);
@@ -272,8 +273,10 @@ namespace Content.Server.DeviceNetwork.Systems
         /// <summary>
         ///     Try to find a device on a network using its address.
         /// </summary>
-        private bool TryGetDevice(int netId, string address, [NotNullWhen(true)] out DeviceNetworkComponent? device) =>
-            GetNetwork(netId).Devices.TryGetValue(address, out device);
+        private bool TryGetDevice(int netId, string address, [NotNullWhen(true)] out DeviceNetworkComponent? device)
+        {
+            return GetNetwork(netId).Devices.TryGetValue(address, out device);
+        }
 
         private void SendPacket(DeviceNetworkPacketEvent packet)
         {
@@ -358,10 +361,10 @@ namespace Content.Server.DeviceNetwork.Systems
                 if (connection.Owner == packet.Sender)
                     continue;
 
-                RaiseLocalEvent(connection.Owner, beforeEv, false);
+                RaiseLocalEvent(connection.Owner, beforeEv);
 
                 if (!beforeEv.Cancelled)
-                    RaiseLocalEvent(connection.Owner, packet, false);
+                    RaiseLocalEvent(connection.Owner, packet);
                 else
                     beforeEv.Uncancel();
             }

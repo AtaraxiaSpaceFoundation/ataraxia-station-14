@@ -1,7 +1,9 @@
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
@@ -19,7 +21,7 @@ namespace Content.Shared.Wieldable;
 
 public sealed class WieldableSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandVirtualItemSystem _virtualItemSystem = default!;
+    [Dependency] private readonly SharedVirtualItemSystem _virtualItemSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedItemSystem _itemSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
@@ -43,6 +45,16 @@ public sealed class WieldableSystem : EntitySystem
         SubscribeLocalEvent<GunWieldBonusComponent, ItemUnwieldedEvent>(OnGunUnwielded);
 
         SubscribeLocalEvent<IncreaseDamageOnWieldComponent, GetMeleeDamageEvent>(OnGetMeleeDamage);
+        SubscribeLocalEvent<WieldableComponent, GotEquippedHandEvent>(OnHandEquipped);
+    }
+
+    // WD edit
+    private void OnHandEquipped(EntityUid uid, WieldableComponent component, GotEquippedHandEvent args)
+    {
+        if (component.ForceTwoHanded)
+        {
+            TryWield(args.Equipped, component, args.User, true);
+        }
     }
 
     private void OnMeleeAttempt(EntityUid uid, MeleeRequiresWieldComponent component, ref AttemptMeleeEvent args)
@@ -114,7 +126,7 @@ public sealed class WieldableSystem : EntitySystem
 
     private void OnUseInHand(EntityUid uid, WieldableComponent component, UseInHandEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || component.ForceTwoHanded)
             return;
 
         if (!component.Wielded)
@@ -160,9 +172,9 @@ public sealed class WieldableSystem : EntitySystem
     ///     Attempts to wield an item, starting a UseDelay after.
     /// </summary>
     /// <returns>True if the attempt wasn't blocked.</returns>
-    public bool TryWield(EntityUid used, WieldableComponent component, EntityUid user)
+    public bool TryWield(EntityUid used, WieldableComponent component, EntityUid user, bool quiet = false)
     {
-        if (!CanWield(used, component, user))
+        if (!CanWield(used, component, user, quiet))
             return false;
 
         var ev = new BeforeWieldEvent();
@@ -261,6 +273,12 @@ public sealed class WieldableSystem : EntitySystem
 
     private void OnVirtualItemDeleted(EntityUid uid, WieldableComponent component, VirtualItemDeletedEvent args)
     {
+        // WD edit
+        if (component.ForceTwoHanded && TryComp<HandsComponent>(args.User, out var handsComponent))
+        {
+            _handsSystem.TryDrop(args.User, uid, Transform(args.User).Coordinates, false, true, handsComponent);
+        }
+
         if (args.BlockingEntity == uid && component.Wielded)
             TryUnwield(args.BlockingEntity, component, args.User);
     }

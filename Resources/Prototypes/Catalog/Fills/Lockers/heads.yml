@@ -31,10 +31,9 @@
       - id: CaptainIDCard
       - id: ClothingOuterHardsuitCap
       - id: ClothingMaskGasCaptain
-      - id: WeaponDisabler
+      - id: WeaponEgun
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
       - id: CigarGoldCase
@@ -45,6 +44,8 @@
       - id: WeaponAntiqueLaser
       - id: JetpackCaptainFilled
       - id: MedalCase
+      - id: CommandBudgetCard
+      - id: CommandBudgetPinPaper
 
 - type: entity
   id: LockerCaptainFilled
@@ -60,7 +61,6 @@
       - id: WeaponDisabler
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
       - id: CigarGoldCase
@@ -71,6 +71,8 @@
       - id: WeaponAntiqueLaser
       - id: JetpackCaptainFilled
       - id: MedalCase
+      - id: CommandBudgetCard
+      - id: CommandBudgetPinPaper
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -85,7 +87,7 @@
       - id: BoxID
       - id: BoxHeadset
       - id: IDComputerCircuitboard
-      - id: WeaponDisabler
+      - id: WeaponEgun
       - id: CigarGoldCase
         prob: 0.25
         # Fuck the HoP they don't deserve fucking cigars.
@@ -168,6 +170,7 @@
       - id: RubberStampCMO
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
+      - id: Eftpos
 
 - type: entity
   id: LockerChiefMedicalOfficerFilled
@@ -188,6 +191,7 @@
       - id: RubberStampCMO
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
+      - id: Eftpos
 
 - type: entity
   id: LockerResearchDirectorFilledHardsuit
@@ -258,7 +262,10 @@
   - type: StorageFill
     contents:
       - id: ClothingEyesHudSecurity
-      - id: WeaponDisabler
+      - id: WeaponEgun
+      - id: ClothingHeadHatBeretHoS
+      - id: ClothingHeadHatHoshat
+      - id: ClothingNeckCloakHos
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
@@ -288,3 +295,29 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
+
+- type: entity
+  id: LockerInspectorFilled
+  suffix: Filled
+  parent: LockerInspector
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterJacketInspector
+        - id: ClothingOuterWinterInspector
+        - id: ClothingOuterOverCoatInspector
+        - id: ClothingOuterTrenchCoatInspector
+        - id: ClothingNeckCloakInspector
+        - id: ClothingNeckMantleInspector
+        - id: ClothingNeckInspectorbadge
+        - id: ClothingHeadHatInspector
+        - id: ClothingHeadCapInspector
+        - id: ClothingEyesGlassesInspector
+        - id: ClothingBackpackSatchelInspector
+        - id: ClothingUniformJumpsuitWhiteInspector
+        - id: ClothingUniformJumpskirtInspector
+        - id: ClothingUniformJumpskirtInspectorFormal
+        - id: ClothingHandsGlovesInspector
+        - id: ClothingHeadsetAltSecurity
+        - id: BookSpaceLaws
+        - id: RubberStampInspector

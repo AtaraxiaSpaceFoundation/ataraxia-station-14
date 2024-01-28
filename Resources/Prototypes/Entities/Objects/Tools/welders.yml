@@ -1,9 +1,18 @@
 - type: entity
   name: welding tool
   parent: BaseItem
-  id: Welder
+  id: BaseWelder
   description: "Melts anything as long as it's fueled, don't forget your eye protection!"
+  noSpawn: true
   components:
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/weldingtool_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+  # WD edit sounds end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/welder_drop.ogg
@@ -100,8 +109,19 @@
     temperature: 700
 
 - type: entity
+  name: welding tool
+  parent: BaseWelder
+  id: Welder
+  description: "Melts anything as long as it's fueled, don't forget your eye protection!"
+  components:
+  - type: Construction
+    deconstructionTarget: null
+    graph: WeaponFlamethrowerGraph
+    node: welder
+
+- type: entity
   name: industrial welding tool
-  parent: Welder
+  parent: BaseWelder
   id: WelderIndustrial
   description: "An industrial welder with over double the fuel capacity."
   components:
@@ -139,7 +159,7 @@
 
 - type: entity
   name: experimental welding tool
-  parent: Welder
+  parent: BaseWelder
   id: WelderExperimental
   description: "An experimental welder capable of self-fuel generation and less harmful to the eyes."
   components:
@@ -167,7 +187,7 @@
 
 - type: entity
   name: emergency welding tool
-  parent: Welder
+  parent: BaseWelder
   id: WelderMini
   description: "A miniature welder used during emergencies."
   components:

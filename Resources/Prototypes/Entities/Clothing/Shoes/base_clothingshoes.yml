@@ -9,7 +9,7 @@
   - type: Sprite
     state: icon
   - type: Item
-    size: Normal
+    size: Small
   - type: Food
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
@@ -23,6 +23,8 @@
     tags:
     - ClothMade
     - WhitelistChameleon
+  - type: StaticPrice
+    price: 25
 
 - type: entity
   abstract: true

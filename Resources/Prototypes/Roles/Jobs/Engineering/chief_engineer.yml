@@ -6,21 +6,22 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
-      time: 21600 #6 hrs
-    - !type:RoleTimeRequirement
-      role: JobStationEngineer
-      time: 21600 #6 hrs
+      time: 3600
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 36000 #10 hrs
+      time: 18000
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs
+      time: 108000
   weight: 10
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  canBeAntag: false
+  whitelistedSpecies:
+    - Human
+    - Dwarf
+    - Felinid
+  canBeAntag: true
   access:
   - Maintenance
   - Engineering
@@ -47,6 +48,9 @@
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE
     belt: ClothingBeltUtilityEngineering
+    underwearb: ClothingUnderwearBottomBoxersCE # White-Underwear
+  underweart: ClothingUnderwearTopBraCE # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesCE # White-Underwear
   innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
   satchel: ClothingBackpackSatchelChiefEngineerFilled
   duffelbag: ClothingBackpackDuffelChiefEngineerFilled

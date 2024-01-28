@@ -33,7 +33,18 @@ public sealed partial class EmotePrototype : IPrototype
     ///     All words should be unique across all emote prototypes.
     /// </summary>
     [DataField("chatTriggers")]
-    public HashSet<string> ChatTriggers = new();
+    public HashSet<string>? ChatTriggers = new();
+
+    /// <summary> White Dream EDIT Start
+    ///     Текст для кнопки в эмоут меню.
+    ///     Бля ну или как это описать, вы поняли короче. ¯\_(ツ)_/¯
+    /// </summary>
+    [DataField("buttonText")]
+    public string ButtonText { get; } = "Unknown";
+
+    [DataField("allowMenu")]
+    public bool AllowToEmotionsMenu { get; } = false;
+    // White Dream EDIT end
 }
 
 /// <summary>

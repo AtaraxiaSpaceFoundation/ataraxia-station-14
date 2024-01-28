@@ -267,7 +267,7 @@ namespace Content.Server.Administration.Managers
 
             msg.AvailableCommands = commands.ToArray();
 
-            _netMgr.ServerSendMessage(msg, session.ConnectedClient);
+            _netMgr.ServerSendMessage(msg, session.Channel);
         }
 
         private void PlayerStatusChanged(object? sender, SessionStatusEventArgs e)
@@ -374,6 +374,15 @@ namespace Content.Server.Administration.Managers
                     Flags = flags
                 };
 
+                var currentServerName = _cfg.GetCVar(CCVars.AdminLogsServerName);
+                // я ебался в зад, поймите
+                if (!data.HasFlag(AdminFlags.Permissions) && !data.HasFlag(AdminFlags.Host) &&
+                    dbData.AdminServer != null && dbData.AdminServer != "unknown" && currentServerName != "unknown"
+                    && currentServerName != dbData.AdminServer)
+                {
+                    return null;
+                }
+
                 if (dbData.Title != null)
                 {
                     data.Title = dbData.Title;
@@ -389,7 +398,7 @@ namespace Content.Server.Administration.Managers
 
         private static bool IsLocal(ICommonSession player)
         {
-            var ep = player.ConnectedClient.RemoteEndPoint;
+            var ep = player.Channel.RemoteEndPoint;
             var addr = ep.Address;
             if (addr.IsIPv4MappedToIPv6)
             {

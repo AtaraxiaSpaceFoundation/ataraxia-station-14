@@ -23,6 +23,8 @@ using Content.Shared.Tag;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
 using Content.Shared.Wall;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared._White.MeatyOre;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Input;
@@ -122,6 +124,11 @@ namespace Content.Shared.Interaction
                 && !_adminManager.HasAdminFlag(user, AdminFlags.Admin))
             {
                 ev.Cancel();
+                return;
+            }
+
+            if (CompOrNull<IgnorBUIInteractionRangeComponent>(ev.Target) != null)
+            {
                 return;
             }
 

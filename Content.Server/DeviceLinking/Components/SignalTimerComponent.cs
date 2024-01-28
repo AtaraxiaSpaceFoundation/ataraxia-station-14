@@ -1,4 +1,5 @@
 using Content.Shared.DeviceLinking;
+using Content.Shared.Radio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -43,5 +44,12 @@ public sealed partial class SignalTimerComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public SoundSpecifier? DoneSound;
+    [DataField("timerCanAnnounce")]
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool TimerCanAnnounce;
+
+    [DataField("SecChannel", customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
+    public static string SecChannel = "Security";
 }
 

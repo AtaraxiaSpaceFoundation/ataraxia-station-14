@@ -26,12 +26,6 @@
       collection: Snores
     Honk:
       collection: BikeHorn
-    Sigh:
-      collection: MaleSigh
-    Crying:
-      collection: MaleCry
-    Whistle:
-      collection: Whistles
 
 - type: emoteSounds
   id: FemaleHuman
@@ -60,12 +54,131 @@
       collection: Snores
     Honk:
       collection: CluwneHorn
+
+- type: emoteSounds
+  id: MaleFelinid
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: FelinidScreams
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Whistle:
+      collection: Whistles
+    Hiss:
+      collection: FelinidHisses
+    Meow:
+      collection: FelinidMeows
+    Mew:
+      collection: FelinidMews
+    Growl:
+      collection: FelinidGrowls
+    Purr:
+      collection: FelinidPurrs
+
+- type: emoteSounds
+  id: FemaleFelinid
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: FelinidScreams
+    Laugh:
+      collection: FemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
     Sigh:
       collection: FemaleSigh
     Crying:
       collection: FemaleCry
     Whistle:
       collection: Whistles
+    Hiss:
+      collection: FelinidHisses
+    Meow:
+      collection: FelinidMeows
+    Mew:
+      collection: FelinidMews
+    Growl:
+      collection: FelinidGrowls
+    Purr:
+      collection: FelinidPurrs
+
+- type: emoteSounds
+  id: SoundsHarpy
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: HarpyScreams
+    Laugh:
+      collection: HarpyLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: HarpyCry
+    Whistle:
+      collection: Whistles
+    Hiss:
+      collection: HarpyHisses
+    Meow:
+      collection: HarpyMeows
+    Mew:
+      collection: HarpyMews
+    Growl:
+      collection: HarpyGrowls
+    Purr:
+      collection: HarpyPurrs
+    Boom:
+      collection: HarpyBooms
+    Ring:
+      collection: HarpyRings
+    HonkHarpy:
+      collection: HarpyHonks
+    Pew:
+      collection: HarpyPews
+    Bang:
+      collection: HarpyBangs
+    Beep:
+      collection: HarpyBeeps
+    Rev:
+      collection: HarpyRevs
+    Click:
+      collection: HarpyClicks
+    Chitter:
+      collection: HarpyChitter
+    Squeak:
+      collection: HarpySqueak
+    Caw:
+      collection: HarpyCaws
+    Chirp:
+      collection: HarpyChirps
+
 
 - type: emoteSounds
   id: UnisexReptilian
@@ -78,10 +191,6 @@
       path: /Audio/Animals/lizard_happy.ogg
     Honk:
       collection: BikeHorn
-    Whistle:
-      collection: Whistles
-    Crying:
-      collection: MaleCry
 
 - type: emoteSounds
   id: MaleSlime
@@ -216,10 +325,6 @@
       collection: MaleSigh
     Honk:
       collection: BikeHorn
-    Crying:
-      collection: MaleCry
-    Whistle:
-      collection: Whistles
   params:
     variation: 0.125
     pitch: 0.75
@@ -251,10 +356,6 @@
       collection: FemaleSigh
     Honk:
       collection: BikeHorn
-    Crying:
-      collection: FemaleCry
-    Whistle:
-      collection: Whistles
   params:
     variation: 0.125
     pitch: 0.75
@@ -283,8 +384,6 @@
       collection: Snaps
       params:
         volume: -6
-    Salute:
-      collection: Salutes
 
 - type: emoteSounds
   id: DionaBodyEmotes

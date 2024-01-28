@@ -8,6 +8,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Singularity.Components;
 using Content.Shared.Singularity.EntitySystems;
 using Content.Shared.Tag;
+using Content.Server.Chat.Managers;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -30,6 +31,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
     #endregion Dependencies
 
     public override void Initialize()
@@ -82,6 +84,13 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
             var curTime = _timing.CurTime;
             if (eventHorizon.NextConsumeWaveTime <= curTime)
                 Update(uid, eventHorizon, xform);
+
+            if (eventHorizon is not { WasDetectedInBreach: false, CanBreachContainment: true })
+                continue;
+
+            _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-singularity-can-breach-containment",
+                ("singularity", ToPrettyString(uid))));
+            eventHorizon.WasDetectedInBreach = true;
         }
     }
 

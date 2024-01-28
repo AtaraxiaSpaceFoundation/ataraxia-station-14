@@ -2,6 +2,7 @@ using Content.Server.Bible.Components;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Popups;
+using Content.Server._White.Other.CustomFluffSystems.merkka;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Bible;
@@ -14,6 +15,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Content.Shared._White.Mood;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -153,11 +155,16 @@ namespace Content.Server.Bible
                 _audio.PlayPvs(component.HealSoundPath, args.User);
                 _delay.TryResetDelay((uid, useDelay));
             }
+
+            RaiseLocalEvent(args.Target.Value, new MoodEffectEvent("GotBlessed")); // WD edit
         }
 
         private void AddSummonVerb(EntityUid uid, SummonableComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
             if (!args.CanInteract || !args.CanAccess || component.AlreadySummoned || component.SpecialItemPrototype == null)
+                return;
+
+            if (HasComp<EarsSpawnComponent>(component.Owner))
                 return;
 
             if (component.RequiresBibleUser && !HasComp<BibleUserComponent>(args.User))
@@ -181,6 +188,9 @@ namespace Content.Server.Bible
         private void GetSummonAction(EntityUid uid, SummonableComponent component, GetItemActionsEvent args)
         {
             if (component.AlreadySummoned)
+                return;
+
+            if (HasComp<EarsSpawnComponent>(component.Owner))
                 return;
 
             args.AddAction(ref component.SummonActionEntity, component.SummonAction);

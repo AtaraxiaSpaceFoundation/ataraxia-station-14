@@ -15,6 +15,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction FocusLocalChat = "FocusLocalChatWindow";
         public static readonly BoundKeyFunction FocusEmote = "FocusEmote";
         public static readonly BoundKeyFunction FocusWhisperChat = "FocusWhisperChatWindow";
+        public static readonly BoundKeyFunction FocusCultChat = "FocusCultChatWindow";
         public static readonly BoundKeyFunction FocusRadio = "FocusRadioWindow";
         public static readonly BoundKeyFunction FocusLOOC = "FocusLOOCWindow";
         public static readonly BoundKeyFunction FocusOOC = "FocusOOCWindow";
@@ -25,6 +26,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction CycleChatChannelBackward = "CycleChatChannelBackward";
         public static readonly BoundKeyFunction EscapeContext = "EscapeContext";
         public static readonly BoundKeyFunction OpenCharacterMenu = "OpenCharacterMenu";
+        public static readonly BoundKeyFunction OpenEmotionsMenu = "OpenEmotionsMenu";
         public static readonly BoundKeyFunction OpenCraftingMenu = "OpenCraftingMenu";
         public static readonly BoundKeyFunction OpenGuidebook = "OpenGuidebook";
         public static readonly BoundKeyFunction OpenInventoryMenu = "OpenInventoryMenu";

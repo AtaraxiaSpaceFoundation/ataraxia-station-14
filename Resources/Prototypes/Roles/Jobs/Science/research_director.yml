@@ -6,15 +6,18 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 36000 #10 hrs
+      time: 18000
     - !type:OverallPlaytimeRequirement
-      time: 144000 #40 hrs
+      time: 108000
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  canBeAntag: false
+  whitelistedSpecies:
+    - Human
+    - Felinid
+  canBeAntag: true
   access:
   - Research
   - Command
@@ -37,6 +40,9 @@
     outerClothing: ClothingOuterCoatRD
     id: RnDPDA
     ears: ClothingHeadsetRD
+    underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
+  underweart: ClothingUnderwearTopBraRD # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
   innerClothingSkirt: ClothingUniformJumpskirtResearchDirector
   satchel: ClothingBackpackSatchelResearchDirectorFilled
   duffelbag: ClothingBackpackDuffelResearchDirectorFilled

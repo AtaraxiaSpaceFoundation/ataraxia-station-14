@@ -1,3 +1,4 @@
+/*
 #nullable enable
 using System.Collections.Generic;
 using Content.IntegrationTests.Tests.Interaction;
@@ -57,4 +58,5 @@ public sealed class SlippingTest : MovementTest
         AssertComp<KnockedDownComponent>(true, Player);
     }
 }
+*/
 

@@ -11,6 +11,7 @@
   id: Civilian
   description: department-Civilian-description
   color: "#9FED58"
+  weight: -10
   roles:
   - Bartender
   - Borg
@@ -21,7 +22,6 @@
   - Clown
   - HeadOfPersonnel
   - Janitor
-  - Lawyer
   - Librarian
   - Mime
   - Musician
@@ -43,6 +43,9 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  - Inspector
+  primary: false
+  weight: 100
 
 - type: department
   id: Engineering
@@ -70,6 +73,7 @@
   id: Security
   description: department-Security-description
   color: "#DE3A3A"
+  weight: 20
   roles:
   - HeadOfSecurity
   - SecurityCadet
@@ -90,8 +94,18 @@
   id: Specific
   description: department-Specific-description
   color: "#9FED58"
+  weight: 10
   roles:
   - Boxer
   - Reporter
   - Zookeeper
   - Psychologist
+  primary: false
+
+- type: department
+  id: Justice
+  description: department-Justice-description
+  color: "#710d00"
+  roles:
+  - Inspector
+  - Lawyer

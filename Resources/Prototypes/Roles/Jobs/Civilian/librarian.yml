@@ -20,6 +20,11 @@
     ears: ClothingHeadsetService
     pocket1: d10Dice
     pocket2: HandLabeler # for making named bestsellers
-  innerClothingSkirt: ClothingUniformJumpskirtLibrarian
+    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
+  underweart: ClothingUnderwearTopBraWhite # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
+  inhand:
+    - BriefcaseBrownFilled
+  innerClothingSkirt: ClothingUniformJumpskirtColorLightBrown
   satchel: ClothingBackpackSatchelLibrarianFilled
   duffelbag: ClothingBackpackDuffelLibrarianFilled

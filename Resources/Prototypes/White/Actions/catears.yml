@@ -1,0 +1,21 @@
+- type: entity
+  id: ActionEarsSummon
+  name: summon cat ears
+  description: meow!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Clothing/Head/Hats/witch.rsi, state: icon }
+    event: !type:SummonActionEarsEvent {}
+    useDelay: 1
+
+- type: entity
+  id: ActionCatSummon
+  name: summon cat
+  description: meow!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Clothing/Head/Hats/witch.rsi, state: icon }
+    event: !type:SummonActionCatEvent {}
+    useDelay: 1

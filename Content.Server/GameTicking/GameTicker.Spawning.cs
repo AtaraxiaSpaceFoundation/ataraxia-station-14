@@ -2,16 +2,24 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Managers;
+using System.Text;
 using Content.Server.Ghost;
+using Content.Server.Mind;
+using Content.Server.Players;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Players;
+using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using Content.Shared._White;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -154,6 +162,70 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            //WD start
+            //Ghost system return to round, check for whether the character isn't the same.
+            if (lateJoin && !_adminManager.IsAdmin(player))
+            {
+                var sameChar = false;
+                var checkAvoid = false;
+
+                var allPlayerMinds = EntityQuery<MindComponent>()
+                    .Where(mind => mind.OriginalOwnerUserId == player.UserId);
+                foreach (var mind in allPlayerMinds)
+                {
+                    if (mind.CharacterName == character.Name)
+                    {
+                        sameChar = true;
+                        break;
+                    }
+
+                    if (mind.ClownName == character.ClownName
+                        && mind.BorgName == character.BorgName
+                        && mind.MimeName == character.MimeName)
+                    {
+                        sameChar = true;
+                        break;
+                    }
+
+                    if (mind.CharacterName != null)
+                    {
+                        var similarity = CalculateStringSimilarity(mind.CharacterName, character.Name);
+
+                        switch (similarity)
+                        {
+                            case >= 85f:
+                            {
+                                _chatManager.SendAdminAlert(Loc.GetString("ghost-respawn-character-almost-same",
+                                    ("player", player.Name), ("try", false), ("oldName", mind.CharacterName), ("newName", character.Name)));
+                                checkAvoid = true;
+                                sameChar = true;
+                                break;
+                            }
+                            case >= 50f:
+                            {
+                                _chatManager.SendAdminAlert(Loc.GetString("ghost-respawn-character-almost-same",
+                                    ("player", player.Name), ("try", true), ("oldName", mind.CharacterName),
+                                    ("newName", character.Name)));
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (sameChar)
+                {
+                    var message = checkAvoid
+                        ? Loc.GetString("ghost-respawn-same-character-slightly-changed-name")
+                        : Loc.GetString("ghost-respawn-same-character");
+                    var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+                    _chatManager.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage,
+                        default, false, player.ConnectedClient, Color.Red);
+
+                    return;
+                }
+            }
+            //WD end
+
             // Automatically de-admin players who are joining.
             if (_cfg.GetCVar(CCVars.AdminDeadminOnJoin) && _adminManager.IsAdmin(player))
                 _adminManager.DeAdmin(player);
@@ -199,7 +271,7 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
 
-            var newMind = _mind.CreateMind(data!.UserId, character.Name);
+            var newMind = _mind.CreateMind(data!.UserId, character.Name, character.ClownName, character.MimeName, character.BorgName);
             _mind.SetUserId(newMind, data.UserId);
 
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
@@ -207,11 +279,30 @@ namespace Content.Server.GameTicking
             _roles.MindAddRole(newMind, job, silent: silent);
             var jobName = _jobs.MindTryGetJobName(newMind);
 
+            if (_cfg.GetCVar(WhiteCVars.FanaticXenophobiaEnabled))
+            {
+                character = ReplaceBlacklistedSpecies(player, character, jobPrototype);
+                newMind.Comp.CharacterName = character.Name;
+                newMind.Comp.ClownName = character.ClownName;
+                newMind.Comp.MimeName = character.MimeName;
+                newMind.Comp.BorgName = character.BorgName;
+            }
+
             _playTimeTrackings.PlayerRolesChanged(player);
 
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, job, character);
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
+
+            if (jobId.Contains("Clown"))
+                if (newMind.Comp.ClownName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.ClownName);
+            if (jobId.Contains("Mime"))
+                if (newMind.Comp.MimeName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.MimeName);
+            if (jobId.Contains("Cyborg"))
+                if (newMind.Comp.BorgName != null)
+                    _metaData.SetEntityName(mob, newMind.Comp.BorgName);
 
             _mind.TransferTo(newMind, mob);
 
@@ -221,7 +312,8 @@ namespace Content.Server.GameTicking
                     Loc.GetString(
                         "latejoin-arrival-announcement",
                     ("character", MetaData(mob).EntityName),
-                    ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))
+                        ("gender", character.Gender), // WD-EDIT
+                        ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))
                     ), Loc.GetString("latejoin-arrival-sender"),
                     playDefaultSound: false);
             }
@@ -231,7 +323,7 @@ namespace Content.Server.GameTicking
                 EntityManager.AddComponent<OwOAccentComponent>(mob);
             }
 
-            _stationJobs.TryAssignJob(station, jobPrototype);
+            _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
 
             if (lateJoin)
                 _adminLogger.Add(LogType.LateJoin, LogImpact.Medium, $"Player {player.Name} late joined as {character.Name:characterName} on station {Name(station):stationName} with {ToPrettyString(mob):entity} as a {jobName:jobName}.");
@@ -274,6 +366,62 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(mob, aev, true);
         }
 
+        //WD start - Need this to check player not respawning with the slightly changed name in the same round.
+        private float CalculateStringSimilarity(string str1, string str2)
+        {
+            var minLength = Math.Min(str1.Length, str2.Length);
+            var matchingCharacters = 0;
+
+            for (var i = 0; i < minLength; i++)
+            {
+                if (str1[i] == str2[i])
+                {
+                    matchingCharacters++;
+                }
+            }
+
+            float maxLength = Math.Max(str1.Length, str2.Length);
+            var similarityPercentage = (matchingCharacters / maxLength) * 100;
+
+            return similarityPercentage;
+        }
+        //WD end
+
+        private HumanoidCharacterProfile ReplaceBlacklistedSpecies(ICommonSession player, HumanoidCharacterProfile character, JobPrototype jobPrototype)
+        {
+            var whitelistedSpecies = jobPrototype.WhitelistedSpecies;
+
+            if (whitelistedSpecies.Count > 0 && !whitelistedSpecies.Contains(character.Species))
+            {
+                var playerProfiles = _prefsManager.GetPreferences(player.UserId).Characters.Values
+                    .Cast<HumanoidCharacterProfile>().ToList();
+
+                var existedAllowedProfile = playerProfiles.FindAll(x => whitelistedSpecies.Contains(x.Species));
+
+                if (existedAllowedProfile.Count == 0)
+                {
+                    character = HumanoidCharacterProfile.RandomWithSpecies();
+                    _chatManager.DispatchServerMessage(player, "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность.");
+                }
+                else
+                {
+                    character = _robustRandom.Pick(existedAllowedProfile);
+                    _chatManager.DispatchServerMessage(player,
+                        "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность с подходящим видом из вашего профиля.");
+                }
+
+                StringBuilder availableSpeciesLoc = new StringBuilder();
+                foreach (var specie in whitelistedSpecies)
+                {
+                    availableSpeciesLoc.AppendLine("-" + Loc.GetString($"species-name-{specie.ToLower()}"));
+                }
+
+                _chatManager.DispatchServerMessage(player, $"Доступные виды: \n {availableSpeciesLoc}");
+            }
+
+            return character;
+        }
+
         public void Respawn(ICommonSession player)
         {
             _mind.WipeMind(player);
@@ -306,11 +454,21 @@ namespace Content.Server.GameTicking
         /// <summary>
         /// Causes the given player to join the current game as observer ghost. See also <see cref="SpawnObserver"/>
         /// </summary>
-        public void JoinAsObserver(ICommonSession player)
+        public async void JoinAsObserver(ICommonSession player)
         {
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
                 return;
+
+            if (_configurationManager.GetCVar(WhiteCVars.StalinEnabled))
+            {
+                var allowEnterData = await _stalinManager.AllowEnter(player);
+                if (!allowEnterData.allow)
+                {
+                    _chatManager.DispatchServerMessage(player, $"Вход в игру запрещен: {allowEnterData.errorMessage}");
+                    return;
+                }
+            }
 
             PlayerJoinGame(player);
             SpawnObserver(player);
@@ -334,6 +492,7 @@ namespace Content.Server.GameTicking
             }
 
             var name = GetPlayerProfile(player).Name;
+
             var ghost = SpawnObserverMob();
             _metaData.SetEntityName(ghost, name);
             _ghost.SetCanReturnToBody(ghost, false);

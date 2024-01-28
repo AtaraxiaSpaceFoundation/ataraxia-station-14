@@ -65,7 +65,7 @@
           True: {state: stunbaton_on}
           False: {state: stunbaton_off}
   - type: StaticPrice
-    price: 100
+    price: 80
   - type: Riggable
   - type: SolutionContainerManager
     solutions:
@@ -109,7 +109,7 @@
     malus: 0.225
   - type: Appearance
   - type: StaticPrice
-    price: 100
+    price: 80
   - type: GuideHelp
     guides:
     - Security
@@ -146,6 +146,17 @@
     - type: StaticPrice
       price: 40
     - type: Appearance
+    # WD edit sounds start
+    - type: EmitSoundOnPickup
+      sound:
+        path: /Audio/White/Items/handling/component_pickup.ogg
+    - type: EmitSoundOnDrop
+      sound:
+        path: /Audio/White/Items/handling/component_drop.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: /Audio/White/Items/handling/component_drop.ogg
+    # WD edit sounds end
     - type: GenericVisualizer
       visuals:
         enum.FlashVisuals.Burnt:

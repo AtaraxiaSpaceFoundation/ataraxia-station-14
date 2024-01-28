@@ -28,8 +28,9 @@
       sprite: Objects/Misc/rifle_stock.rsi
       state: icon
     - type: Construction
-      graph: RifleStockGraph
-      node: riflestock
+      deconstructionTarget: null
+      graph: WeaponPoweredCrossbowGraph
+      node: stock
     - type: Tag
       tags:
       - RifleStock

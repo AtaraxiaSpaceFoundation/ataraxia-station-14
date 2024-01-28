@@ -4,21 +4,22 @@
          VerticalExpand="True" HorizontalExpand="True"
          MouseFilter="Stop">
     <parallax:ParallaxControl />
-    <Control VerticalExpand="True"
-             MaxWidth="650">
-        <PanelContainer StyleClasses="windowPanel" />
-        <ScrollContainer HScrollEnabled="False">
-            <BoxContainer Orientation="Vertical" SeparationOverride="10">
-                <info:RulesControl />
-                <Label Name="WaitLabel" />
-                <BoxContainer Orientation="Horizontal">
-                    <Button Name="AcceptButton"
-                            Text="{Loc 'ui-rules-accept'}"
-                            Disabled="True" />
-                    <Button Name="QuitButton"
-                            Text="{Loc 'ui-escape-quit'}" />
-                </BoxContainer>
+    <Control MaxWidth="650" MaxHeight="150">
+        <PanelContainer StyleClasses="BorderedWindowPanel" />
+        <BoxContainer Orientation="Vertical" SeparationOverride="10" VerticalAlignment="Center">
+            <info:RulesControl />
+            <Label Name="WaitLabel"
+                   HorizontalExpand="True"
+                   HorizontalAlignment="Center" />
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Button Name="AcceptButton"
+                        Text="{Loc 'ui-rules-accept'}"
+                        Disabled="True" />
+                <Button Name="QuitButton"
+                        HorizontalExpand="True"
+                        HorizontalAlignment="Right"
+                        Text="{Loc 'ui-escape-quit'}" />
             </BoxContainer>
-        </ScrollContainer>
+        </BoxContainer>
     </Control>
 </Control>

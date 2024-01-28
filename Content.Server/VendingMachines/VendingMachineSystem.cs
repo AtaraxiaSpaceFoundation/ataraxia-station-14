@@ -1,11 +1,16 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server.Advertise;
 using Content.Server.Cargo.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Stack;
+using Content.Server.Storage.Components;
+using Content.Server.Store.Components;
 using Content.Server.UserInterface;
+using Content.Server._White.Economy;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Actions;
@@ -15,14 +20,20 @@ using Content.Shared.DoAfter;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Emp;
+using Content.Shared.Interaction;
+using Content.Shared.PDA;
 using Content.Shared.Popups;
+using Content.Shared.Stacks;
+using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.VendingMachines;
+using Content.Shared._White.Economy;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.VendingMachines
 {
@@ -36,9 +47,16 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly ChatSystem _chat = default!;
+        [Dependency] private readonly AdvertiseSystem _advertise = default!;
+        // WD START
+        [Dependency] private readonly BankCardSystem _bankCard = default!;
+        [Dependency] private readonly TagSystem _tag = default!;
+        [Dependency] private readonly StackSystem _stackSystem = default!;
+        // WD END
 
         private ISawmill _sawmill = default!;
+
+        private double _priceMultiplier = 1.0; // WD
 
         public override void Initialize()
         {
@@ -54,12 +72,23 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse);
 
             SubscribeLocalEvent<VendingMachineComponent, ActivatableUIOpenAttemptEvent>(OnActivatableUIOpenAttempt);
-            SubscribeLocalEvent<VendingMachineComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
-            SubscribeLocalEvent<VendingMachineComponent, VendingMachineEjectMessage>(OnInventoryEjectMessage);
+
+            Subs.BuiEvents<VendingMachineComponent>(VendingMachineUiKey.Key, subs =>
+            {
+                subs.Event<BoundUIOpenedEvent>(OnBoundUIOpened);
+                subs.Event<BoundUIClosedEvent>(OnBoundUIClosed);
+                subs.Event<VendingMachineEjectMessage>(OnInventoryEjectMessage);
+            });
 
             SubscribeLocalEvent<VendingMachineComponent, VendingMachineSelfDispenseEvent>(OnSelfDispense);
 
             SubscribeLocalEvent<VendingMachineComponent, RestockDoAfterEvent>(OnDoAfter);
+            //WD EDIT
+
+            SubscribeLocalEvent<VendingMachineComponent, InteractUsingEvent>(OnInteractUsing);
+            SubscribeLocalEvent<VendingMachineComponent, VendingMachineWithdrawMessage>(OnWithdrawMessage);
+
+            //WD EDIT END
 
             SubscribeLocalEvent<VendingMachineRestockComponent, PriceCalculationEvent>(OnPriceCalculation);
         }
@@ -109,9 +138,20 @@ namespace Content.Server.VendingMachines
             UpdateVendingMachineInterfaceState(uid, component);
         }
 
+        private void OnBoundUIClosed(EntityUid uid, VendingMachineComponent component, BoundUIClosedEvent args)
+        {
+            // Only vendors that advertise will send message after dispensing
+            if (component.ShouldSayThankYou && TryComp<AdvertiseComponent>(uid, out var advertise))
+            {
+                _advertise.SayThankYou(uid, advertise);
+                component.ShouldSayThankYou = false;
+            }
+        }
+
         private void UpdateVendingMachineInterfaceState(EntityUid uid, VendingMachineComponent component)
         {
-            var state = new VendingMachineInterfaceState(GetAllInventory(uid, component));
+            var state = new VendingMachineInterfaceState(GetAllInventory(uid, component), GetPriceMultiplier(component),
+                component.Credits); // WD EDIT
 
             _userInterfaceSystem.TrySetUiState(uid, VendingMachineUiKey.Key, state);
         }
@@ -141,7 +181,10 @@ namespace Content.Server.VendingMachines
         private void OnEmagged(EntityUid uid, VendingMachineComponent component, ref GotEmaggedEvent args)
         {
             // only emag if there are emag-only items
-            args.Handled = component.EmaggedInventory.Count > 0;
+            args.Handled = component.EmaggedInventory.Count > 0 || component.PriceMultiplier > 0; // WD EDIT START
+            component.PriceMultiplier = 0;
+            UpdateVendingMachineInterfaceState(uid, component);
+            // WD EDIT END
         }
 
         private void OnDamage(EntityUid uid, VendingMachineComponent component, DamageChangedEvent args)
@@ -150,7 +193,7 @@ namespace Content.Server.VendingMachines
                 component.DispenseOnHitChance == null || args.DamageDelta == null)
                 return;
 
-            if (args.DamageIncreased && args.DamageDelta.Total >= component.DispenseOnHitThreshold &&
+            if (args.DamageIncreased && args.DamageDelta.GetTotal() >= component.DispenseOnHitThreshold &&
                 _random.Prob(component.DispenseOnHitChance.Value))
             {
                 if (component.DispenseOnHitCooldown > 0f)
@@ -189,6 +232,54 @@ namespace Content.Server.VendingMachines
 
             args.Handled = true;
         }
+
+        //WD EDIT
+
+        private void OnInteractUsing(EntityUid uid, VendingMachineComponent component, InteractUsingEvent args)
+        {
+            if (args.Handled)
+                return;
+
+            if (component.Broken || !this.IsPowered(uid, EntityManager))
+                return;
+
+            if (!TryComp<CurrencyComponent>(args.Used, out var currency) ||
+                !currency.Price.Keys.Contains(component.CurrencyType))
+                return;
+
+            var stack = Comp<StackComponent>(args.Used);
+            component.Credits += stack.Count;
+            Del(args.Used);
+            UpdateVendingMachineInterfaceState(uid, component);
+            Audio.PlayPvs(component.SoundInsertCurrency, uid);
+            args.Handled = true;
+        }
+
+        protected override int GetEntryPrice(EntityPrototype proto)
+        {
+            return (int) _pricing.GetEstimatedPrice(proto);
+        }
+
+        private int GetPrice(VendingMachineInventoryEntry entry, VendingMachineComponent comp)
+        {
+            return (int) (entry.Price * GetPriceMultiplier(comp));
+        }
+
+        private double GetPriceMultiplier(VendingMachineComponent comp)
+        {
+            return comp.PriceMultiplier * _priceMultiplier;
+        }
+
+        private void OnWithdrawMessage(EntityUid uid, VendingMachineComponent component, VendingMachineWithdrawMessage args)
+        {
+            _stackSystem.Spawn(component.Credits,
+                PrototypeManager.Index<StackPrototype>(component.CreditStackPrototype), Transform(uid).Coordinates);
+            component.Credits = 0;
+            Audio.PlayPvs(component.SoundWithdrawCurrency, uid);
+
+            UpdateVendingMachineInterfaceState(uid, component);
+        }
+        //WD EDIT END
 
         /// <summary>
         /// Sets the <see cref="VendingMachineComponent.CanShoot"/> property of the vending machine.
@@ -245,7 +336,7 @@ namespace Content.Server.VendingMachines
         /// <param name="itemId">The prototype ID of the item</param>
         /// <param name="throwItem">Whether the item should be thrown in a random direction after ejection</param>
         /// <param name="vendComponent"></param>
-        public void TryEjectVendorItem(EntityUid uid, InventoryType type, string itemId, bool throwItem, VendingMachineComponent? vendComponent = null)
+        public void TryEjectVendorItem(EntityUid uid, InventoryType type, string itemId, bool throwItem, VendingMachineComponent? vendComponent = null, EntityUid? sender = null) // WD EDIT
         {
             if (!Resolve(uid, ref vendComponent))
                 return;
@@ -274,11 +365,50 @@ namespace Content.Server.VendingMachines
             if (string.IsNullOrEmpty(entry.ID))
                 return;
 
+            // WD START
+            var price = GetPrice(entry, vendComponent);
+            if (price > 0 && sender.HasValue && !_tag.HasTag(sender.Value, "IgnoreBalanceChecks"))
+            {
+                var success = false;
+                if (vendComponent.Credits >= price)
+                {
+                    vendComponent.Credits -= price;
+                    success = true;
+                }
+                else
+                {
+                    var items = _accessReader.FindPotentialAccessItems(sender.Value);
+                    foreach (var item in items)
+                    {
+                        var nextItem = item;
+                        if (TryComp(item, out PdaComponent? pda) && pda.ContainedId is { Valid: true } id)
+                            nextItem = id;
+
+                        if (!TryComp<BankCardComponent>(nextItem, out var bankCard) || !bankCard.AccountId.HasValue
+                            || !_bankCard.TryGetAccount(bankCard.AccountId.Value, out var account)
+                            || account.Balance < price)
+                            continue;
+
+                        _bankCard.TryChangeBalance(bankCard.AccountId.Value, -price);
+                        success = true;
+                        break;
+                    }
+                }
+
+                if (!success)
+                {
+                    Popup.PopupEntity(Loc.GetString("vending-machine-component-no-balance"), uid);
+                    Deny(uid, vendComponent);
+                    return;
+                }
+            }
+            // WD END
 
             // Start Ejecting, and prevent users from ordering while anim playing
             vendComponent.Ejecting = true;
             vendComponent.NextItemToEject = entry.ID;
             vendComponent.ThrowNextItem = throwItem;
+            vendComponent.ShouldSayThankYou = true;
             entry.Amount--;
             UpdateVendingMachineInterfaceState(uid, vendComponent);
             TryUpdateVisualState(uid, vendComponent);
@@ -297,7 +427,7 @@ namespace Content.Server.VendingMachines
         {
             if (IsAuthorized(uid, sender, component))
             {
-                TryEjectVendorItem(uid, type, itemId, component.CanShoot, component);
+                TryEjectVendorItem(uid, type, itemId, component.CanShoot, component, sender);
             }
         }
 
@@ -385,9 +515,6 @@ namespace Content.Server.VendingMachines
                 var direction = new Vector2(_random.NextFloat(-range, range), _random.NextFloat(-range, range));
                 _throwingSystem.TryThrow(ent, direction, vendComponent.NonLimitedEjectForce);
             }
-
-            // Send message after dispensing
-            _chat.TrySendInGameICMessage(uid, Loc.GetString("vending-machine-thanks", ("name", Name(uid))), InGameICChatType.Speak, true);
 
             vendComponent.NextItemToEject = null;
             vendComponent.ThrowNextItem = false;

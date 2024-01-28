@@ -13,6 +13,7 @@ namespace Content.Server.Communications
         /// Remaining cooldown between making announcements.
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
+        [DataField]
         public float AnnouncementCooldownRemaining;
 
         /// <summary>
@@ -38,6 +39,13 @@ namespace Content.Server.Communications
         public int Delay = 90;
 
         /// <summary>
+        /// Time in seconds of announcement cooldown when a new console is created on a per-console basis
+        /// </summary>
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField]
+        public int InitialDelay = 30;
+
+        /// <summary>
         /// Can call or recall the shuttle
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
@@ -55,5 +63,10 @@ namespace Content.Server.Communications
         /// </summary>
         [DataField]
         public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
+
+        //WD-start
+        [DataField("ttsVoiceId")]
+        public string TtsVoiceId = "Glados";
+        //WD-end
     }
 }

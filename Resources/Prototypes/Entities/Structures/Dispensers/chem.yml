@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: ChemDispenser
   name: chemical dispenser
   parent: ReagentDispenserBase
@@ -19,6 +19,9 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
       - !type:ChangeConstructionNodeBehavior
         node: machineFrame
       - !type:DoActsBehavior
@@ -28,12 +31,12 @@
   - type: Wires
     boardName: wires-board-name-chemdispenser
     layoutId: ChemDispenser
-  - type: UpgradePowerDraw
-    powerDrawMultiplier: 0.75
-    scaling: Exponential
   - type: GuideHelp
     guides:
     - Chemicals
     - Chemist
   - type: StealTarget
     stealGroup: ChemDispenser
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: BasicDevice

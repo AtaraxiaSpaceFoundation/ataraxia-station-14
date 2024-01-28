@@ -1,0 +1,261 @@
+#CAP
+- type: entity
+  parent: ClothingOuterHardsuitCap
+  id: ClothingOuterHardsuitCapDeathSquadFluff
+  name: Истязательный Скафандр
+  suffix: fluff
+  description: Сколько же тайн в нём хранится?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetCapDeathSquadFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitCap
+  id: ClothingHeadHelmetCapDeathSquadFluff
+  noSpawn: true
+  name: Шлем истязательного скафандра
+  suffix: fluff
+  description: Яйца олега
+  components:
+  - type: Sprite
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+  - type: Clothing
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+
+#CE
+- type: entity
+  parent: ClothingOuterHardsuitEngineeringWhite
+  id: ClothingOuterHardsuitEngineeringWhiteDeathSquadFluff
+  name: Истязательный Скафандр
+  suffix: fluff
+  description: Сколько же тайн в нём хранится?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhiteDeathSquadFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitEngineeringWhite
+  id: ClothingHeadHelmetHardsuitEngineeringWhiteDeathSquadFluff
+  noSpawn: true
+  name: Шлем истязательного скафандра
+  suffix: fluff
+  description: Яйца олега
+  components:
+  - type: Sprite
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+  - type: Clothing
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+
+#CMO
+- type: entity
+  parent: ClothingOuterHardsuitMedical
+  id: ClothingOuterHardsuitMedicalDeathSquadFluff
+  name: Истязательный Скафандр
+  suffix: fluff
+  description: Сколько же тайн в нём хранится?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitMedicalDeathSquadFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitMedical
+  id: ClothingHeadHelmetHardsuitMedicalDeathSquadFluff
+  noSpawn: true
+  name: Шлем истязательного скафандра
+  suffix: fluff
+  description: Яйца олега
+  components:
+  - type: Sprite
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+  - type: Clothing
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+
+#HOS
+- type: entity
+  parent: ClothingOuterHardsuitSecurityRed
+  id: ClothingOuterHardsuitSecurityRedDeathSquadFluff
+  name: Истязательный Скафандр
+  suffix: fluff
+  description: Сколько же тайн в нём хранится?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitSecurityRedDeathSquadFluff
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSecurityRed
+  id: ClothingHeadHelmetHardsuitSecurityRedDeathSquadFluff
+  noSpawn: true
+  name: Шлем истязательного скафандра
+  suffix: fluff
+  description: Яйца олега
+  components:
+  - type: Sprite
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+  - type: Clothing
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+
+# RD
+- type: entity
+  parent: ClothingOuterHardsuitRd
+  id: ClothingOuterHardsuitRdDeathSquadFluff
+  name: Истязательный Скафандр
+  suffix: fluff
+  description: Сколько же тайн в нём хранится?
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/deathsquad.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitRdDeathSquadFluff
+    - type: GiftIgnore
+
+# Utilizator
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  id: ClothingOuterHardsuitSalvageCenturion
+  name: Штурмовой Скафандр
+  suffix: fluff
+  description: Робаст.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/breacher.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/breacher.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitSalvageCenturion
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSalvage
+  id: ClothingHeadHelmetHardsuitSalvageCenturion
+  name: Штурмовой Шлем
+  suffix: fluff
+  description: Анробаст.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/breacher-helmet.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/breacher-helmet.rsi
+    - type: GiftIgnore
+
+# Security
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitSecurityCenturion
+  name: Штурмовой Скафандр
+  suffix: fluff
+  description: Робаст.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/breacher.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/breacher.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHelmetHardsuitSecurityCenturion
+    - type: GiftIgnore
+
+# poxuy
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingCenturionNeckFluff
+  name: Мяукательный плащ
+  suffix: fluff
+  description: мяукает
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/fluff-coat-cent.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSecurity
+  id: ClothingHeadHelmetHardsuitSecurityCenturion
+  name: Штурмовой Шлем
+  suffix: fluff
+  description: Анробаст.
+  components:
+    - type: Sprite
+      sprite: White/Fluff/centurion/breacher-helmet.rsi
+    - type: Clothing
+      sprite: White/Fluff/centurion/breacher-helmet.rsi
+    - type: GiftIgnore
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitRd
+  id: ClothingHeadHelmetHardsuitRdDeathSquadFluff
+  noSpawn: true
+  name: Шлем истязательного скафандра
+  suffix: fluff
+  description: Яйца олега
+  components:
+  - type: Sprite
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+  - type: Clothing
+    sprite: White/Fluff/centurion/deathsquad-helmet.rsi
+
+- type: loadout
+  id: CapLoadoutCenturion
+  entity: ClothingOuterHardsuitCapDeathSquadFluff
+  sponsorOnly: true
+  whitelistJobs: [Captain]
+
+- type: loadout
+  id: CeLoadoutCenturion
+  entity: ClothingOuterHardsuitEngineeringWhiteDeathSquadFluff
+  sponsorOnly: true
+  whitelistJobs: [ChiefEngineer]
+
+- type: loadout
+  id: CmoLoadoutCenturion
+  entity: ClothingOuterHardsuitMedicalDeathSquadFluff
+  sponsorOnly: true
+  whitelistJobs: [ChiefMedicalOfficer]
+
+- type: loadout
+  id: RDLoadoutCenturion
+  entity: ClothingOuterHardsuitRdDeathSquadFluff
+  sponsorOnly: true
+  whitelistJobs: [ResearchDirector]
+
+- type: loadout
+  id: HOSLoadoutCenturion
+  entity: ClothingOuterHardsuitSecurityRedDeathSquadFluff
+  sponsorOnly: true
+  whitelistJobs: [HeadOfSecurity]
+
+- type: loadout
+  id: SecLoadoutCenturion
+  entity: ClothingOuterHardsuitSecurityCenturion
+  sponsorOnly: true
+  whitelistJobs: [Warden, SecurityCadet, SecurityOfficer, Detective]
+
+- type: loadout
+  id: SalvageLoadoutCenturion
+  entity: ClothingOuterHardsuitSalvageCenturion
+  sponsorOnly: true
+  whitelistJobs: [SalvageSpecialist]
+
+- type: loadout
+  id: centCoatMeowLoadout
+  entity: ClothingCenturionNeckFluff
+  sponsorOnly: true

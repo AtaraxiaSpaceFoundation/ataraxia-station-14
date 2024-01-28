@@ -3,7 +3,9 @@ using Content.Server.Administration.BanList;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Shared.Administration;
+using Content.Shared.CCVar;
 using Robust.Server.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 
 namespace Content.Server.Administration.Commands;
@@ -17,11 +19,13 @@ public sealed class BanListCommand : LocalizedCommands
     [Dependency] private readonly IServerDbManager _dbManager = default!;
     [Dependency] private readonly EuiManager _eui = default!;
     [Dependency] private readonly IPlayerLocator _locator = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     public override string Command => "banlist";
 
     public override async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        var serverName = _cfg.GetCVar(CCVars.AdminLogsServerName);
         if (args.Length != 1)
         {
             shell.WriteError(Help);
@@ -38,7 +42,7 @@ public sealed class BanListCommand : LocalizedCommands
 
         if (shell.Player is not { } player)
         {
-            var bans = await _dbManager.GetServerBansAsync(data.LastAddress, data.UserId, data.LastHWId, false);
+            var bans = await _dbManager.GetServerBansAsync(data.LastAddress, data.UserId, data.LastHWId, false, serverName);
 
             if (bans.Count == 0)
             {
@@ -48,7 +52,7 @@ public sealed class BanListCommand : LocalizedCommands
 
             foreach (var ban in bans)
             {
-                var msg = $"{ban.Id}: {ban.Reason}";
+                var msg = $"{ban.Id}: {ban.Reason} ({ban.ServerName})";
                 shell.WriteLine(msg);
             }
 

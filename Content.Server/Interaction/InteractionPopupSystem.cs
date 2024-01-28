@@ -5,6 +5,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared._White.Mood;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -20,16 +21,36 @@ public sealed class InteractionPopupSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<InteractionPopupComponent, InteractHandEvent>(OnInteractHand);
+        SubscribeLocalEvent<InteractionPopupComponent, ActivateInWorldEvent>(OnActivateInWorld);
+    }
+
+    private void OnActivateInWorld(EntityUid uid, InteractionPopupComponent component, ActivateInWorldEvent args)
+    {
+        if (!component.OnActivate)
+            return;
+
+        SharedInteract(uid, component, args, args.Target, args.User);
     }
 
     private void OnInteractHand(EntityUid uid, InteractionPopupComponent component, InteractHandEvent args)
     {
-        if (args.Handled || args.User == args.Target)
+        SharedInteract(uid, component, args, args.Target, args.User);
+    }
+
+    private void SharedInteract(
+        EntityUid uid,
+        InteractionPopupComponent component,
+        HandledEntityEventArgs args,
+        EntityUid target,
+        EntityUid user)
+    {
+        if (args.Handled || user == target)
             return;
 
         //Handling does nothing and this thing annoyingly plays way too often.
@@ -58,13 +79,27 @@ public sealed class InteractionPopupSystem : EntitySystem
         if (_random.Prob(component.SuccessChance))
         {
             if (component.InteractSuccessString != null)
+            {
                 msg = Loc.GetString(component.InteractSuccessString, ("target", Identity.Entity(uid, EntityManager))); // Success message (localized).
+                //WD start
+                if (component.InteractSuccessString == "hugging-success-generic")
+                {
+                    var ev = new MoodEffectEvent("BeingHugged");
+                    RaiseLocalEvent(uid, ev);
+                }
+                else if (component.InteractSuccessString.Contains("petting-success-"))
+                {
+                    var ev = new MoodEffectEvent("PetAnimal");
+                    RaiseLocalEvent(user, ev);
+                }
+                //WD end
+            }
 
             if (component.InteractSuccessSound != null)
                 sfx = component.InteractSuccessSound;
 
             if (component.InteractSuccessSpawn != null)
-                Spawn(component.InteractSuccessSpawn, Transform(uid).MapPosition);
+                Spawn(component.InteractSuccessSpawn, _transform.GetMapCoordinates(uid));
         }
         else
         {
@@ -75,25 +110,25 @@ public sealed class InteractionPopupSystem : EntitySystem
                 sfx = component.InteractFailureSound;
 
             if (component.InteractFailureSpawn != null)
-                Spawn(component.InteractFailureSpawn, Transform(uid).MapPosition);
+                Spawn(component.InteractFailureSpawn, _transform.GetMapCoordinates(uid));
         }
 
         if (component.MessagePerceivedByOthers != null)
         {
             var msgOthers = Loc.GetString(component.MessagePerceivedByOthers,
-                ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(uid, EntityManager)));
-            _popupSystem.PopupEntity(msg, uid, args.User);
-            _popupSystem.PopupEntity(msgOthers, uid, Filter.PvsExcept(args.User, entityManager: EntityManager), true);
+                ("user", Identity.Entity(user, EntityManager)), ("target", Identity.Entity(uid, EntityManager)));
+            _popupSystem.PopupEntity(msg, uid, user);
+            _popupSystem.PopupEntity(msgOthers, uid, Filter.PvsExcept(user, entityManager: EntityManager), true);
         }
         else
-            _popupSystem.PopupEntity(msg, uid, args.User); //play only for the initiating entity.
+            _popupSystem.PopupEntity(msg, uid, user); //play only for the initiating entity.
 
         if (sfx is not null) //not all cases will have sound.
         {
             if (component.SoundPerceivedByOthers)
-                _audio.PlayPvs(sfx, args.Target); //play for everyone in range
+                _audio.PlayPvs(sfx, target); //play for everyone in range
             else
-                _audio.PlayEntity(sfx, Filter.Entities(args.User, args.Target), args.Target, true); //play only for the initiating entity and its target.
+                _audio.PlayEntity(sfx, Filter.Entities(user, target), target, true); //play only for the initiating entity and its target.
         }
 
         component.LastInteractTime = curTime;

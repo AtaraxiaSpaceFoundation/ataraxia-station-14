@@ -180,6 +180,8 @@ public sealed partial class StoreSystem : EntitySystem
         if (component.Balance == new Dictionary<string, FixedPoint2>() && preset.InitialBalance != null) //if we don't have a value stored, use the preset
             TryAddCurrency(preset.InitialBalance, uid, component);
 
+        ApplySales(component.Listings, preset); // WD
+
         var ui = _ui.GetUiOrNull(uid, StoreUiKey.Key);
         if (ui != null)
         {

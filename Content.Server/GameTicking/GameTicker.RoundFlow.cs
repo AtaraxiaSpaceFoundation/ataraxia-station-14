@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Linq;
 using Content.Server.Announcements;
 using Content.Server.Discord;
@@ -19,6 +20,10 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.Reputation;
+using Content.Server._White.Stalin;
+using Content.Shared._White;
 
 namespace Content.Server.GameTicking
 {
@@ -26,6 +31,12 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
+
+        //WD-EDIT
+        [Dependency] private readonly PandaWebManager _pandaWeb = default!;
+        [Dependency] private readonly StalinManager _stalinManager = default!;
+        [Dependency] private readonly ReputationSystem _repSys = default!;
+        //WD-EDIT
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -158,7 +169,10 @@ namespace Content.Server.GameTicking
             var ev = new PreGameMapLoad(targetMapId, map, loadOpts);
             RaiseLocalEvent(ev);
 
-            var gridIds = _map.LoadMap(targetMapId, ev.GameMap.MapPath.ToString(), ev.Options);
+            if (!_map.TryLoad(targetMapId, ev.GameMap.MapPath.ToString(), out var gridIds, ev.Options))
+            {
+                return new Collection<EntityUid>();
+            }
 
             _metaData.SetEntityName(_mapManager.GetMapEntityId(targetMapId), "Station map");
 
@@ -168,7 +182,7 @@ namespace Content.Server.GameTicking
             return gridUids;
         }
 
-        public void StartRound(bool force = false)
+        public async void StartRound(bool force = false)
         {
 #if EXCEPTION_TOLERANCE
             try
@@ -205,11 +219,25 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(startingEvent);
             var readyPlayers = new List<ICommonSession>();
             var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
+            var stalinBunkerEnabled = _configurationManager.GetCVar(WhiteCVars.StalinEnabled);
+
 
             foreach (var (userId, status) in _playerGameStatuses)
             {
                 if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
                 if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
+
+                if (stalinBunkerEnabled)
+                {
+                    await _stalinManager.RefreshUsersData();
+                    var playerData = await _stalinManager.AllowEnter(session, false);
+
+                    if (!playerData.allow)
+                    {
+                        _chatManager.DispatchServerMessage(session, $"{playerData.errorMessage}");
+                        continue;
+                    }
+                }
 #if DEBUG
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif
@@ -250,7 +278,8 @@ namespace Content.Server.GameTicking
             UpdateLateJoinStatus();
             AnnounceRound();
             UpdateInfoText();
-            SendRoundStartedDiscordMessage();
+            RaiseLocalEvent(new RoundStartedEvent(RoundId)); // WD-EDIT
+            SendRoundStatus("game_started"); //WD-EDIT
 
 #if EXCEPTION_TOLERANCE
             }
@@ -304,7 +333,6 @@ namespace Content.Server.GameTicking
             LobbySong = _robustRandom.Pick(_lobbyMusicCollection.PickFiles).ToString();
 
             ShowRoundEndScoreboard(text);
-            SendRoundEndDiscordMessage();
         }
 
         public void ShowRoundEndScoreboard(string text = "")
@@ -360,10 +388,21 @@ namespace Content.Server.GameTicking
 
                 if (TryGetEntity(mind.OriginalOwnedEntity, out var entity))
                 {
-                    _pvsOverride.AddGlobalOverride(GetNetEntity(entity.Value), recursive: true);
+                    _pvsOverride.AddGlobalOverride(entity.Value);
                 }
 
                 var roles = _roles.MindGetAllRoles(mindId);
+
+                // WD start
+                var reputation = "";
+                if (mind.Session != null &&
+                    _repSys.TryModifyReputationOnRoundEnd(mind.Session.Name, out var value, out var delta))
+                {
+                    var color = value >= 0 ? "green" : "red";
+                    var change = delta >= 0 ? $"+{delta}" : $"{delta}";
+                    reputation = $"[color={color}]{value} ({change})";
+                }
+                // WD end
 
                 var playerEndRoundInfo = new RoundEndMessageEvent.RoundEndPlayerInfo()
                 {
@@ -378,16 +417,19 @@ namespace Content.Server.GameTicking
                         : roles.FirstOrDefault().Name ?? Loc.GetString("game-ticker-unknown-role"),
                     Antag = antag,
                     Observer = observer,
-                    Connected = connected
+                    Connected = connected,
+                    Reputation = reputation
                 };
                 listOfPlayerInfo.Add(playerEndRoundInfo);
             }
 
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
+            var sound = _audio.GetSound(new SoundCollectionSpecifier("RoundEnd"));
 
             RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
-                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong));
+                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong, sound));
+            RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // WD-EDIT
         }
 
         private async void SendRoundEndDiscordMessage()
@@ -447,6 +489,7 @@ namespace Content.Server.GameTicking
             ResettingCleanup();
             IncrementRoundNumber();
             SendRoundStartingDiscordMessage();
+            EnableShuttleCall(); // WD
 
             if (!LobbyEnabled)
             {
@@ -463,6 +506,7 @@ namespace Content.Server.GameTicking
                 UpdateInfoText();
 
                 ReqWindowAttentionAll();
+                SendRoundStatus("lobby_loaded"); //WD-EDIT
             }
         }
 
@@ -544,6 +588,31 @@ namespace Content.Server.GameTicking
 
             return true;
         }
+
+        //WD-EDIT
+        private void SendRoundStatus(string status)
+        {
+            if (!_postInitialized)
+                return;
+
+            var utkaRoundStatusEvent = new UtkaRoundStatusEvent()
+            {
+                Message = status
+            };
+
+            _pandaWeb.SendBotPostMessage(utkaRoundStatusEvent);
+
+        }
+
+        private void EnableShuttleCall()
+        {
+            if (_configurationManager.GetCVar(WhiteCVars.EmergencyShuttleCallEnabled))
+                return;
+
+            _configurationManager.SetCVar(WhiteCVars.EmergencyShuttleCallEnabled, true);
+            _chatManager.SendAdminAnnouncement("Вызов шаттла включен.");
+        }
+        //WD-EDIT
 
         private void UpdateRoundFlow(float frameTime)
         {

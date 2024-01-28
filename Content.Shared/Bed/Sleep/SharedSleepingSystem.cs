@@ -1,6 +1,7 @@
 using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage.ForceSay;
+using Content.Shared.Emoting;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Speech;
 using Robust.Shared.Network;
@@ -26,6 +27,12 @@ namespace Content.Server.Bed.Sleep
             SubscribeLocalEvent<SleepingComponent, SpeakAttemptEvent>(OnSpeakAttempt);
             SubscribeLocalEvent<SleepingComponent, CanSeeAttemptEvent>(OnSeeAttempt);
             SubscribeLocalEvent<SleepingComponent, EntityUnpausedEvent>(OnSleepUnpaused);
+            SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnTryEmote); // WD
+        }
+
+        private void OnTryEmote(EntityUid uid, SleepingComponent component, EmoteAttemptEvent args) // WD
+        {
+            args.Cancel();
         }
 
         private void OnSleepUnpaused(EntityUid uid, SleepingComponent component, ref EntityUnpausedEvent args)

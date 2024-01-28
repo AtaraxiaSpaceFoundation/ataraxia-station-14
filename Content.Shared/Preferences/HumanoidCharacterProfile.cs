@@ -8,12 +8,15 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
+using Content.Shared._White.TTS;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Administration.Managers;
+using Content.Shared.Administration;
 
 namespace Content.Shared.Preferences
 {
@@ -33,10 +36,14 @@ namespace Content.Shared.Preferences
 
         private HumanoidCharacterProfile(
             string name,
+            string clownName,
+            string mimeName,
+            string borgName,
             string flavortext,
             string species,
             int age,
             Sex sex,
+            string voice,
             Gender gender,
             HumanoidCharacterAppearance appearance,
             ClothingPreference clothing,
@@ -47,8 +54,12 @@ namespace Content.Shared.Preferences
             List<string> traitPreferences)
         {
             Name = name;
+            ClownName = clownName;
+            MimeName = mimeName;
+            BorgName = borgName;
             FlavorText = flavortext;
             Species = species;
+            Voice = voice;
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -67,7 +78,7 @@ namespace Content.Shared.Preferences
             Dictionary<string, JobPriority> jobPriorities,
             List<string> antagPreferences,
             List<string> traitPreferences)
-            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.Appearance, other.Clothing, other.Backpack,
+            : this(other.Name, other.ClownName, other.MimeName, other.BorgName, other.FlavorText, other.Species, other.Voice, other.Age, other.Sex, other.Gender, other.Appearance, other.Clothing, other.Backpack,
                 jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences)
         {
         }
@@ -80,8 +91,12 @@ namespace Content.Shared.Preferences
 
         public HumanoidCharacterProfile(
             string name,
+            string clownName,
+            string mimeName,
+            string borgName,
             string flavortext,
             string species,
+            string voice,
             int age,
             Sex sex,
             Gender gender,
@@ -92,7 +107,7 @@ namespace Content.Shared.Preferences
             PreferenceUnavailableMode preferenceUnavailable,
             IReadOnlyList<string> antagPreferences,
             IReadOnlyList<string> traitPreferences)
-            : this(name, flavortext, species, age, sex, gender, appearance, clothing, backpack, new Dictionary<string, JobPriority>(jobPriorities),
+            : this(name, clownName, mimeName, borgName, flavortext, species,  age, sex, voice, gender, appearance, clothing, backpack, new Dictionary<string, JobPriority>(jobPriorities),
                 preferenceUnavailable, new List<string>(antagPreferences), new List<string>(traitPreferences))
         {
         }
@@ -104,8 +119,12 @@ namespace Content.Shared.Preferences
         /// <returns></returns>
         public HumanoidCharacterProfile() : this(
             "John Doe",
+            "HONK",
+            "Quiet",
+            "Silicon",
             "",
             SharedHumanoidAppearanceSystem.DefaultSpecies,
+            SharedHumanoidAppearanceSystem.DefaultVoice,
             18,
             Sex.Male,
             Gender.Male,
@@ -131,8 +150,12 @@ namespace Content.Shared.Preferences
         {
             return new(
                 "John Doe",
+                "HONK",
+                "Quiet",
+                "Silicon",
                 "",
                 species,
+                SharedHumanoidAppearanceSystem.DefaultVoice,
                 18,
                 Sex.Male,
                 Gender.Male,
@@ -176,11 +199,19 @@ namespace Content.Shared.Preferences
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
             }
 
+            var voiceId = random.Pick(prototypeManager
+                .EnumeratePrototypes<TTSVoicePrototype>()
+                .Where(o => CanHaveVoice(o, sex)).ToArray()
+            ).ID;
+
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
 
             var name = GetName(species, gender);
+            var clownName = GetClownName();
+            var mimeName = GetMimeName();
+            var borgName = GetBorgName();
 
-            return new HumanoidCharacterProfile(name, "", species, age, sex, gender, HumanoidCharacterAppearance.Random(species, sex), ClothingPreference.Jumpsuit, BackpackPreference.Backpack,
+            return new HumanoidCharacterProfile(name, clownName, mimeName, borgName, "", species, voiceId, age, sex, gender, HumanoidCharacterAppearance.Random(species, sex), ClothingPreference.Jumpsuit, BackpackPreference.Backpack,
                 new Dictionary<string, JobPriority>
                 {
                     {SharedGameTicker.FallbackOverflowJob, JobPriority.High},
@@ -188,8 +219,13 @@ namespace Content.Shared.Preferences
         }
 
         public string Name { get; private set; }
+        public string ClownName { get; private set; }
+        public string MimeName { get; private set; }
+        public string BorgName { get; private set; }
         public string FlavorText { get; private set; }
         public string Species { get; private set; }
+
+        public string Voice { get; private set; }
 
         [DataField("age")]
         public int Age { get; private set; }
@@ -211,9 +247,28 @@ namespace Content.Shared.Preferences
         public IReadOnlyList<string> TraitPreferences => _traitPreferences;
         public PreferenceUnavailableMode PreferenceUnavailable { get; private set; }
 
+
+        public HumanoidCharacterProfile WithVoice(string voice)
+        {
+            return new(this) { Voice = voice };
+        }
+
         public HumanoidCharacterProfile WithName(string name)
         {
             return new(this) { Name = name };
+        }
+
+        public HumanoidCharacterProfile WithClownName(string name)
+        {
+            return new(this) { ClownName = name };
+        }
+        public HumanoidCharacterProfile WithMimeName(string name)
+        {
+            return new(this) { MimeName = name };
+        }
+        public HumanoidCharacterProfile WithBorgName(string name)
+        {
+            return new(this) { BorgName = name };
         }
 
         public HumanoidCharacterProfile WithFlavorText(string flavorText)
@@ -338,6 +393,9 @@ namespace Content.Shared.Preferences
         {
             if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
+            if (ClownName != other.ClownName) return false;
+            if (MimeName != other.MimeName) return false;
+            if (BorgName != other.BorgName) return false;
             if (Age != other.Age) return false;
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
@@ -350,11 +408,18 @@ namespace Content.Shared.Preferences
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
-        public void EnsureValid()
+        public void EnsureValid(string[] sponsorMarkings, bool isAdminSpecie) //WD-EDIT
         {
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
 
             if (!prototypeManager.TryIndex<SpeciesPrototype>(Species, out var speciesPrototype))
+            {
+                Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
+                speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);
+            }
+
+            if (speciesPrototype.SponsorOnly && !sponsorMarkings.Contains(Species)
+                && speciesPrototype.ForAdmins && !isAdminSpecie)
             {
                 Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
                 speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);
@@ -389,6 +454,9 @@ namespace Content.Shared.Preferences
             };
 
             string name;
+            string clownName;
+            string mimeName;
+            string borgName;
             if (string.IsNullOrEmpty(Name))
             {
                 name = GetName(Species, gender);
@@ -401,13 +469,55 @@ namespace Content.Shared.Preferences
             {
                 name = Name;
             }
+            if (string.IsNullOrEmpty(ClownName))
+            {
+                clownName = GetClownName();
+            }
+            else if (ClownName.Length > MaxNameLength)
+            {
+                clownName = ClownName[..MaxNameLength];
+            }
+            else
+            {
+                clownName = ClownName;
+            }
+            if (string.IsNullOrEmpty(MimeName))
+            {
+                mimeName = GetMimeName();
+            }
+            else if (MimeName.Length > MaxNameLength)
+            {
+                mimeName = MimeName[..MaxNameLength];
+            }
+            else
+            {
+                mimeName = MimeName;
+            }
+            if (string.IsNullOrEmpty(BorgName))
+            {
+                borgName = GetBorgName();
+            }
+            else if (BorgName.Length > MaxNameLength)
+            {
+                borgName = BorgName[..MaxNameLength];
+            }
+            else
+            {
+                borgName = BorgName;
+            }
 
             name = name.Trim();
+            clownName = clownName.Trim();
+            mimeName = mimeName.Trim();
+            borgName = borgName.Trim();
 
             var configManager = IoCManager.Resolve<IConfigurationManager>();
             if (configManager.GetCVar(CCVars.RestrictedNames))
             {
-                name = Regex.Replace(name, @"[^A-Z,a-z,0-9, -]", string.Empty);
+                name = Regex.Replace(name, @"[^А-Я,а-я,0-9, -]", string.Empty); //WD EDIT
+                clownName = Regex.Replace(clownName, @"[^А-Я,а-я,0-9, -]", string.Empty);
+                mimeName = Regex.Replace(mimeName, @"[^А-Я,а-я,0-9, -]", string.Empty);
+                borgName = Regex.Replace(borgName, @"[^А-Я,а-я,0-9, -]", string.Empty);
             }
 
             if (configManager.GetCVar(CCVars.ICNameCase))
@@ -416,11 +526,23 @@ namespace Content.Shared.Preferences
                 name = Regex.Replace(name,
                 @"^(?<word>\w)|\b(?<word>\w)(?=\w*$)",
                 m => m.Groups["word"].Value.ToUpper());
+                clownName = Regex.Replace(clownName,
+                    @"^(?<word>\w)|\b(?<word>\w)(?=\w*$)",
+                    m => m.Groups["word"].Value.ToUpper());
+                mimeName = Regex.Replace(mimeName,
+                    @"^(?<word>\w)|\b(?<word>\w)(?=\w*$)",
+                    m => m.Groups["word"].Value.ToUpper());
+                borgName = Regex.Replace(borgName,
+                    @"^(?<word>\w)|\b(?<word>\w)(?=\w*$)",
+                    m => m.Groups["word"].Value.ToUpper());
             }
 
             if (string.IsNullOrEmpty(name))
             {
                 name = GetName(Species, gender);
+                clownName = GetClownName();
+                mimeName = GetMimeName();
+                borgName = GetBorgName();
             }
 
             string flavortext;
@@ -433,7 +555,9 @@ namespace Content.Shared.Preferences
                 flavortext = FormattedMessage.RemoveMarkup(FlavorText);
             }
 
-            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
+            // WD-EDIT
+            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, sponsorMarkings);
+            // WD-EDIT
 
             var prefsUnavailableMode = PreferenceUnavailable switch
             {
@@ -476,6 +600,9 @@ namespace Content.Shared.Preferences
                          .ToList();
 
             Name = name;
+            ClownName = clownName;
+            MimeName = mimeName;
+            BorgName = borgName;
             FlavorText = flavortext;
             Age = age;
             Sex = sex;
@@ -498,6 +625,15 @@ namespace Content.Shared.Preferences
 
             _traitPreferences.Clear();
             _traitPreferences.AddRange(traits);
+
+            prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
+            if (voice is null)
+                Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+        }
+
+        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
+        {
+            return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
         }
 
         // sorry this is kind of weird and duplicated,
@@ -506,6 +642,24 @@ namespace Content.Shared.Preferences
         {
             var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
             return namingSystem.GetName(species, gender);
+        }
+
+        public static string GetClownName()
+        {
+            var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
+            return namingSystem.GetClownName();
+        }
+
+        public static string GetMimeName()
+        {
+            var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
+            return namingSystem.GetMimeName();
+        }
+
+        public static string GetBorgName()
+        {
+            var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
+            return namingSystem.GetBorgName();
         }
 
         public override bool Equals(object? obj)
@@ -526,6 +680,9 @@ namespace Content.Shared.Preferences
                     Clothing,
                     Backpack
                 ),
+                ClownName,
+                MimeName,
+                BorgName,
                 PreferenceUnavailable,
                 _jobPriorities,
                 _antagPreferences,

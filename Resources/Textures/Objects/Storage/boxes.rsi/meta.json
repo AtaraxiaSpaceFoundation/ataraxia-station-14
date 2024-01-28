@@ -205,6 +205,9 @@
         },
         {
             "name": "vials"
+        },
+        {
+            "name": "bodycam"
         }
     ]
 }

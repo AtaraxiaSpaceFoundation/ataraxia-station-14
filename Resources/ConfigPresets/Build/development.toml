@@ -1,4 +1,4 @@
-﻿[game]
+[game]
 # Straight in-game baby
 lobbyenabled = false
 # Dev map for faster loading & convenience
@@ -26,3 +26,9 @@ arrivals = false
 
 [admin]
 see_own_notes = true
+
+[worldgen]
+enabled = false
+
+[white]
+ert_load = false

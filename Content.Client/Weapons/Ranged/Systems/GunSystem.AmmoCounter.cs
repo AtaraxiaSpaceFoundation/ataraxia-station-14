@@ -58,11 +58,11 @@ public sealed partial class GunSystem
         RaiseLocalEvent(uid, ev, false);
     }
 
-    protected override void UpdateAmmoCount(EntityUid uid)
+    protected override void UpdateAmmoCount(EntityUid uid, bool prediction = true)
     {
         // Don't use resolves because the method is shared and there's no compref and I'm trying to
         // share as much code as possible
-        if (!Timing.IsFirstTimePredicted ||
+        if (prediction && !Timing.IsFirstTimePredicted ||
             !TryComp<AmmoCounterComponent>(uid, out var clientComp))
         {
             return;
@@ -98,7 +98,7 @@ public sealed partial class GunSystem
         {
             MinHeight = 15;
             HorizontalExpand = true;
-            VerticalAlignment = VAlignment.Center;
+            VerticalAlignment = Control.VAlignment.Center;
             AddChild(new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
@@ -213,7 +213,7 @@ public sealed partial class GunSystem
         {
             MinHeight = 15;
             HorizontalExpand = true;
-            VerticalAlignment = VAlignment.Center;
+            VerticalAlignment = Control.VAlignment.Center;
 
             AddChild(new BoxContainer
             {
@@ -251,14 +251,19 @@ public sealed partial class GunSystem
             _ammoCount.Visible = true;
 
             _ammoCount.Text = $"x{count:00}";
-            max = Math.Min(max, 8);
-            FillBulletRow(_bulletsList, count, max);
+            float step = 1;
+            if (max > 8)
+            {
+                step = ((float)max / 8);
+            }
+            FillBulletRow(_bulletsList, count, max, step);
         }
 
-        private static void FillBulletRow(Control container, int count, int capacity)
+        private static void FillBulletRow(Control container, int count, int capacity, float step = 1)
         {
             var colorGone = Color.FromHex("#000000");
             var color = Color.FromHex("#E00000");
+            int emptyNumber = 0;
 
             // Draw the empty ones
             for (var i = count; i < capacity; i++)
@@ -300,7 +305,7 @@ public sealed partial class GunSystem
         {
             MinHeight = 15;
             HorizontalExpand = true;
-            VerticalAlignment = VAlignment.Center;
+            VerticalAlignment = Control.VAlignment.Center;
 
             AddChild(new BoxContainer
             {
@@ -419,7 +424,7 @@ public sealed partial class GunSystem
         {
             MinHeight = 15;
             HorizontalExpand = true;
-            VerticalAlignment = VAlignment.Center;
+            VerticalAlignment = Control.VAlignment.Center;
             AddChild((_bulletsList = new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Horizontal,

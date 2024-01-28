@@ -7,14 +7,18 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
+using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Server._White.TTS;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Communications;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
 using Content.Shared.Popups;
+using Content.Shared._White;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 
@@ -35,8 +39,6 @@ namespace Content.Server.Communications
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
-        private const int MaxMessageLength = 256;
-        private const int MaxMessageNewlines = 2;
         private const float UIUpdateInterval = 5.0f;
 
         public override void Initialize()
@@ -52,6 +54,9 @@ namespace Content.Server.Communications
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleAnnounceMessage>(OnAnnounceMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleCallEmergencyShuttleMessage>(OnCallShuttleMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleRecallEmergencyShuttleMessage>(OnRecallShuttleMessage);
+
+            // On console init, set cooldown
+            SubscribeLocalEvent<CommunicationsConsoleComponent, MapInitEvent>(OnCommunicationsConsoleMapInit);
         }
 
         public override void Update(float frameTime)
@@ -77,6 +82,11 @@ namespace Content.Server.Communications
             }
 
             base.Update(frameTime);
+        }
+
+        public void OnCommunicationsConsoleMapInit(EntityUid uid, CommunicationsConsoleComponent comp, MapInitEvent args)
+        {
+            comp.AnnouncementCooldownRemaining = comp.InitialDelay;
         }
 
         /// <summary>
@@ -187,6 +197,10 @@ namespace Content.Server.Communications
             if (_emergency.EmergencyShuttleArrived || !_roundEndSystem.CanCallOrRecall())
                 return false;
 
+            var shuttleCallEnabled = _cfg.GetCVar(WhiteCVars.EmergencyShuttleCallEnabled);
+            if (!shuttleCallEnabled)
+                return false;
+
             // Calling shuttle checks
             if (_roundEndSystem.ExpectedCountdownEnd is null)
                 return comp.CanShuttle;
@@ -223,22 +237,8 @@ namespace Content.Server.Communications
         private void OnAnnounceMessage(EntityUid uid, CommunicationsConsoleComponent comp,
             CommunicationsConsoleAnnounceMessage message)
         {
-            var msgWords = message.Message.Trim();
-            var msgChars = (msgWords.Length <= MaxMessageLength ? msgWords : $"{msgWords[0..MaxMessageLength]}...").ToCharArray();
-
-            var newlines = 0;
-            for (var i = 0; i < msgChars.Length; i++)
-            {
-                if (msgChars[i] != '\n')
-                    continue;
-
-                if (newlines >= MaxMessageNewlines)
-                    msgChars[i] = ' ';
-
-                newlines++;
-            }
-
-            var msg = new string(msgChars);
+            var maxLength = _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength);
+            var msg = SharedChatSystem.SanitizeAnnouncement(message.Message, maxLength);
             var author = Loc.GetString("comms-console-announcement-unknown-sender");
             if (message.Session.AttachedEntity is { Valid: true } mob)
             {
@@ -281,6 +281,11 @@ namespace Content.Server.Communications
             }
             _chatSystem.DispatchStationAnnouncement(uid, msg, title, colorOverride: comp.Color);
 
+            //WD-start
+            var ttsEv = new TTSAnnouncementEvent(message.Message, comp.TtsVoiceId, uid, comp.Global);
+            RaiseLocalEvent(ttsEv);
+            //WD-end
+
             if (message.Session.AttachedEntity != null)
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(message.Session.AttachedEntity.Value):player} has sent the following station announcement: {msg}");
         }
@@ -290,8 +295,16 @@ namespace Content.Server.Communications
             if (!CanCallOrRecall(comp))
                 return;
 
-            if (message.Session.AttachedEntity is not { Valid: true } mob)
+            if (message.Session.AttachedEntity is not {Valid: true} mob)
                 return;
+
+            //WD-EDIT
+            if (!OnStationCallOrRecall(uid))
+            {
+                _popupSystem.PopupEntity(Loc.GetString("comms-console-no-connection"), uid, message.Session);
+                return;
+            }
+            //WD-EDIT
 
             if (!CanUse(mob, uid))
             {
@@ -316,8 +329,16 @@ namespace Content.Server.Communications
             if (!CanCallOrRecall(comp))
                 return;
 
-            if (message.Session.AttachedEntity is not { Valid: true } mob)
+            if (message.Session.AttachedEntity is not {Valid: true} mob)
                 return;
+
+            //WD-EDIT
+            if (!OnStationCallOrRecall(uid))
+            {
+                _popupSystem.PopupEntity(Loc.GetString("comms-console-no-connection"), uid, message.Session);
+                return;
+            }
+            //WD-EDIT
 
             if (!CanUse(mob, uid))
             {
@@ -327,6 +348,13 @@ namespace Content.Server.Communications
 
             _roundEndSystem.CancelRoundEndCountdown(uid);
             _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(mob):player} has recalled the shuttle.");
+        }
+
+        private bool OnStationCallOrRecall(EntityUid uid)
+        {
+            var parent = Transform(uid).ParentUid;
+            return (HasComp<BecomesStationComponent>(parent));
+
         }
     }
 

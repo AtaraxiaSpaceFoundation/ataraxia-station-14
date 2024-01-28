@@ -15,17 +15,20 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.PDA;
-using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
-using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server.Objectives;
+using Content.Server._White.Administration;
+using Content.Server._White.AspectsSystem.Aspects;
+using Content.Server._White.AspectsSystem.Aspects.Components;
+using Content.Server._White.Reputation;
+using Content.Shared._White.Mood;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -45,6 +48,10 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    //WD EDIT
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+
+    private ISawmill _sawmill = default!;
 
     private int PlayersPerTraitor => _cfg.GetCVar(CCVars.TraitorPlayersPerTraitor);
     private int MaxTraitors => _cfg.GetCVar(CCVars.TraitorMaxTraitors);
@@ -184,11 +191,28 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             Log.Error("Mind picked for traitor did not have an attached entity.");
             return false;
         }
+        /*if (HasComp<CultistComponent>(mind.OwnedEntity)) // Cause no CultistRole this why i supposed to do this.......
+        {
+            return false;
+        }*/
+        if (_roleSystem.MindIsAntagonist(mindId))
+        {
+            return false;
+        }
 
         // Calculate the amount of currency on the uplink.
         var startingBalance = _cfg.GetCVar(CCVars.TraitorStartingBalance);
         if (_jobs.MindTryGetJob(mindId, out _, out var prototype))
             startingBalance = Math.Max(startingBalance - prototype.AntagAdvantage, 0);
+
+        // WD START
+        var richAspect = false;
+        if (_gameTicker.GetActiveGameRules().Where(HasComp<TraitorRichAspectComponent>).Any())
+        {
+            startingBalance += 10;
+            richAspect = true;
+        }
+        // WD END
 
         // Give traitors their codewords and uplink code to keep in their character info menu
         var briefing = Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", traitorRule.Codewords)));
@@ -226,11 +250,15 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         }, mind);
         _roleSystem.MindPlaySound(mindId, traitorRule.GreetSoundNotification, mind);
         SendTraitorBriefing(mindId, traitorRule.Codewords, code);
+        if (richAspect) // WD
+            TraitorRichAspect.NotifyTraitor(mind, _chatManager);
         traitorRule.TraitorMinds.Add(mindId);
 
         // Change the faction
         _npcFaction.RemoveFaction(entity, "NanoTrasen", false);
         _npcFaction.AddFaction(entity, "Syndicate");
+
+        RaiseLocalEvent(mind.OwnedEntity.Value, new MoodEffectEvent("TraitorFocused")); // WD edit
 
         // Give traitors their objectives
         if (giveObjectives)
@@ -238,6 +266,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             var maxDifficulty = _cfg.GetCVar(CCVars.TraitorMaxDifficulty);
             var maxPicks = _cfg.GetCVar(CCVars.TraitorMaxPicks);
             var difficulty = 0f;
+            Log.Debug($"Attempting {maxPicks} objective picks with {maxDifficulty} difficulty");
             for (var pick = 0; pick < maxPicks && maxDifficulty > difficulty; pick++)
             {
                 var objective = _objectives.GetRandomObjective(mindId, mind, "TraitorObjectiveGroups");
@@ -245,7 +274,9 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
                     continue;
 
                 _mindSystem.AddObjective(mindId, mind, objective.Value);
-                difficulty += Comp<ObjectiveComponent>(objective.Value).Difficulty;
+                var adding = Comp<ObjectiveComponent>(objective.Value).Difficulty;
+                difficulty += adding;
+                Log.Debug($"Added objective {ToPrettyString(objective):objective} with {adding} difficulty");
             }
         }
 
@@ -328,6 +359,39 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     {
         args.Minds = comp.TraitorMinds;
         args.AgentName = Loc.GetString("traitor-round-end-agent-name");
+    }
+
+    public List<(EntityUid Id, MindComponent Mind)> GetAllLivingConnectedTraitors()
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        var traitorRules = EntityQuery<TraitorRuleComponent>();
+
+        foreach (var traitorRule in traitorRules)
+        {
+            traitors.AddRange(GetLivingConnectedTraitors(traitorRule));
+        }
+
+        return traitors;
+    }
+
+    private List<(EntityUid Id, MindComponent Mind)> GetLivingConnectedTraitors(TraitorRuleComponent traitorRule)
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        foreach (var traitor in traitorRule.TraitorMinds)
+        {
+            if (TryComp(traitor, out MindComponent? mind) &&
+                mind.OwnedEntity != null &&
+                mind.Session != null &&
+                _mobStateSystem.IsAlive(mind.OwnedEntity.Value) &&
+                mind.CurrentEntity == mind.OwnedEntity)
+            {
+                traitors.Add((traitor, mind));
+            }
+        }
+
+        return traitors;
     }
 
     private void OnObjectivesTextPrepend(EntityUid uid, TraitorRuleComponent comp, ref ObjectivesTextPrependEvent args)

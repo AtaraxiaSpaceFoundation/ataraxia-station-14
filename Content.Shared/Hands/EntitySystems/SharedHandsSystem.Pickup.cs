@@ -1,6 +1,8 @@
 using Content.Shared.Database;
 using Content.Shared.Hands.Components;
 using Content.Shared.Item;
+using Content.Shared.Popups;
+using Content.Shared.Wieldable.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -10,6 +12,7 @@ namespace Content.Shared.Hands.EntitySystems;
 
 public abstract partial class SharedHandsSystem : EntitySystem
 {
+    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     private void InitializePickup()
     {
         SubscribeLocalEvent<HandsComponent, EntInsertedIntoContainerMessage>(HandleEntityInserted);
@@ -177,6 +180,15 @@ public abstract partial class SharedHandsSystem : EntitySystem
 
         if (checkActionBlocker && !_actionBlocker.CanPickup(uid, entity))
             return false;
+
+        // WD edit
+        if (TryComp<WieldableComponent>(entity, out var wieldableComponent) && handsComp.CountFreeHands() < 2 && wieldableComponent.ForceTwoHanded)
+        {
+            var message = Loc.GetString("wieldable-component-not-enough-free-hands",
+                ("number", 1), ("item", entity));
+            _popupSystem.PopupClient(message, entity, uid);
+            return false;
+        }
 
         // check can insert (including raising attempt events).
         return ContainerSystem.CanInsert(entity, handContainer);

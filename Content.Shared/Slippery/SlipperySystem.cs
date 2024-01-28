@@ -4,9 +4,12 @@ using Content.Shared.Inventory;
 using Content.Shared.StatusEffect;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Stunnable;
+using Content.Shared._White;
+using Content.Shared._White.Mood;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
@@ -22,6 +25,11 @@ public sealed class SlipperySystem : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    // WD START
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+
+    private float SlipPowerModifier { get; set; }
+    // WD END
 
     public override void Initialize()
     {
@@ -32,6 +40,8 @@ public sealed class SlipperySystem : EntitySystem
         SubscribeLocalEvent<NoSlipComponent, SlipAttemptEvent>(OnNoSlipAttempt);
         // as long as slip-resistant mice are never added, this should be fine (otherwise a mouse-hat will transfer it's power to the wearer).
         SubscribeLocalEvent<NoSlipComponent, InventoryRelayedEvent<SlipAttemptEvent>>((e, c, ev) => OnNoSlipAttempt(e, c, ev.Args));
+
+        _cfg.OnValueChanged(WhiteCVars.SlipPowerModifier, x => SlipPowerModifier = x, true); // WD
     }
 
     private void HandleStepTrigger(EntityUid uid, SlipperyComponent component, ref StepTriggeredEvent args)
@@ -72,11 +82,13 @@ public sealed class SlipperySystem : EntitySystem
         RaiseLocalEvent(uid, ref ev);
 
         if (TryComp(other, out PhysicsComponent? physics))
-            _physics.SetLinearVelocity(other, physics.LinearVelocity * component.LaunchForwardsMultiplier, body: physics);
+            _physics.SetLinearVelocity(other, physics.LinearVelocity * component.LaunchForwardsMultiplier * SlipPowerModifier, body: physics); // WD EDIT
 
         var playSound = !_statusEffects.HasStatusEffect(other, "KnockedDown");
 
-        _stun.TryParalyze(other, TimeSpan.FromSeconds(component.ParalyzeTime), true);
+        _stun.TryParalyze(other, TimeSpan.FromSeconds(component.ParalyzeTime * SlipPowerModifier), true); // WD EDIT
+
+        RaiseLocalEvent(other, new MoodEffectEvent("MobSlipped")); // WD edit
 
         // Preventing from playing the slip sound when you are already knocked down.
         if (playSound)

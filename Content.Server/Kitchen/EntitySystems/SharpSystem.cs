@@ -1,5 +1,9 @@
-﻿using Content.Server.Body.Systems;
+﻿using System.Linq;
+using Content.Server.Body.Systems;
+using Content.Server.GameTicking.Rules.Components;
+using Content.Server.Ghost.Components;
 using Content.Server.Kitchen.Components;
+using Content.Server.Roles;
 using Content.Shared.Body.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.Components;
@@ -8,9 +12,12 @@ using Content.Shared.Storage;
 using Content.Shared.Verbs;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
+using Content.Shared.Ghost;
 using Content.Shared.Kitchen;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.NukeOps;
 using Robust.Server.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -26,6 +33,7 @@ public sealed class SharpSystem : EntitySystem
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
+    [Dependency] private readonly RoleSystem _role = default!;
 
     public override void Initialize()
     {
@@ -58,6 +66,16 @@ public sealed class SharpSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("butcherable-different-tool", ("target", target)), knife, user);
             return;
         }
+
+        // WD START
+        if (butcher.SyndieRoleRequired && !HasComp<NukeOperativeComponent>(user) && !HasComp<GhostComponent>(user) &&
+            TryComp(user, out MindContainerComponent? mc) && mc.Mind != null &&
+            !_role.MindHasRole<TraitorRoleComponent>(mc.Mind.Value))
+        {
+            _popupSystem.PopupEntity("Вы не можете разделать столь милое существо.", user, user);
+            return;
+        }
+        // WD END
 
         if (TryComp<MobStateComponent>(target, out var mobState) && !_mobStateSystem.IsDead(target, mobState))
             return;

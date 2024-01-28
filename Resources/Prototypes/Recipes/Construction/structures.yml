@@ -36,7 +36,7 @@
 
 - type: construction
   name: wall
-  id: Wall
+  id: WallSolid
   graph: Girder
   startNode: start
   targetNode: wall
@@ -54,7 +54,7 @@
 
 - type: construction
   name: reinforced wall
-  id: ReinforcedWall
+  id: WallReinforced
   graph: Girder
   startNode: start
   targetNode: reinforcedWall
@@ -72,7 +72,7 @@
 # here
 - type: construction
   name: wood wall
-  id: WoodWall
+  id: WallWood
   graph: Girder
   startNode: start
   targetNode: woodWall
@@ -90,7 +90,7 @@
 
 - type: construction
   name: uranium wall
-  id: UraniumWall
+  id: WallUranium
   graph: Girder
   startNode: start
   targetNode: uraniumWall
@@ -108,7 +108,7 @@
 
 - type: construction
   name: silver wall
-  id: SilverWall
+  id: WallSilver
   graph: Girder
   startNode: start
   targetNode: silverWall
@@ -126,7 +126,7 @@
 
 - type: construction
   name: plastic wall
-  id: PlasticWall
+  id: WallPlastic
   graph: Girder
   startNode: start
   targetNode: plasticWall
@@ -144,7 +144,7 @@
 
 - type: construction
   name: plasma wall
-  id: PlasmaWall
+  id: WallPlasma
   graph: Girder
   startNode: start
   targetNode: plasmaWall
@@ -162,7 +162,7 @@
 
 - type: construction
   name: gold wall
-  id: GoldWall
+  id: WallGold
   graph: Girder
   startNode: start
   targetNode: goldWall
@@ -214,7 +214,6 @@
   conditions:
     - !type:TileNotBlocked
 
-
 - type: construction
   name: diagonal shuttle wall
   id: DiagonalShuttleWall
@@ -235,7 +234,7 @@
 
 - type: construction
   name: bananium wall
-  id: ClownWall
+  id: WallClown
   graph: Girder
   startNode: start
   targetNode: bananiumWall
@@ -672,7 +671,7 @@
 
 - type: construction
   name: shutter
-  id: Shutters
+  id: ShuttersNormalOpen
   graph: Shutters
   startNode: start
   targetNode: Shutters
@@ -716,6 +715,21 @@
   canBuildInImpassable: true
 
 - type: construction
+  name: blast door
+  id: BlastDoor
+  graph: BlastDoor
+  startNode: start
+  targetNode: blastdoor
+  category: construction-category-structures
+  description: This one says 'BLAST DONGER'.
+  icon:
+    sprite: Structures/Doors/Shutters/blastdoor.rsi
+    state: closed
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+
+- type: construction
   name: catwalk
   id: Catwalk
   graph: Catwalk
@@ -739,7 +753,7 @@
 
 - type: construction
   name: bananium floor
-  id: FloorBananium
+  id: FloorBananiumEntity
   graph: FloorBananium
   startNode: start
   targetNode: BananiumFloor
@@ -1018,7 +1032,7 @@
 
 - type: construction
   name: secure windoor
-  id: SecureWindoor
+  id: WindoorSecure
   graph: Windoor
   startNode: start
   targetNode: windoorSecure
@@ -1037,7 +1051,7 @@
 #lighting
 - type: construction
   name: wall light
-  id: LightTubeFixture
+  id: PoweredlightEmpty
   graph: LightFixture
   startNode: start
   targetNode: tubeLight
@@ -1045,7 +1059,7 @@
   description: A wall light fixture. Use light tubes.
   icon:
     sprite: Structures/Wallmounts/Lighting/light_tube.rsi
-    state: base
+    state: off
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: true
@@ -1057,7 +1071,7 @@
 
 - type: construction
   name: small wall light
-  id: LightSmallFixture
+  id: PoweredSmallLightEmpty
   graph: LightFixture
   startNode: start
   targetNode: bulbLight
@@ -1065,7 +1079,7 @@
   description: A wall light fixture. Use light bulbs.
   icon:
     sprite: Structures/Wallmounts/Lighting/light_small.rsi
-    state: base
+    state: off
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: true
@@ -1076,7 +1090,7 @@
 
 - type: construction
   name: ground light post
-  id: LightGroundFixture
+  id: PoweredLightPostSmallEmpty
   graph: LightFixture
   startNode: start
   targetNode: groundLight
@@ -1229,7 +1243,7 @@
 
 - type: construction
   name: bananium clown statue
-  id: BananiumClownStatue
+  id: StatueBananiumClown
   graph: BananiumStatueClown
   startNode: start
   targetNode: bananiumStatue
@@ -1263,7 +1277,7 @@
 
 - type: construction
   name: bananium altar
-  id: BananiumAltar
+  id: AltarBananium
   graph: BananiumAltarGraph
   startNode: start
   targetNode: bananiumAltar

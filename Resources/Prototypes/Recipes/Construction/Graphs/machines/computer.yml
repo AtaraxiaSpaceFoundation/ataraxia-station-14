@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: Computer
   start: start
   graph:
@@ -24,7 +24,7 @@
           steps:
             - component: ComputerBoard
               store: board
-              name: any computer circuit board
+              name: машинная плата любой консоли
               icon:
                 sprite: "Objects/Misc/module.rsi"
                 state: "id_mod"
@@ -126,6 +126,11 @@
             - !type:AllWiresCut {}
           steps:
             - tool: Screwing
+          completed:
+            - !type:EmptyContainer
+              container: IdCardConsole-privilegedId
+            - !type:EmptyContainer
+              container: IdCardConsole-targetId
 
     - node: monitorBroken
       entity: ComputerBroken

@@ -1,7 +1,7 @@
 - type: currency
   id: Telecrystal
   displayName: store-currency-display-telecrystal
-  cash: 
+  cash:
     1: Telecrystal1
   canWithdraw: true
 
@@ -10,7 +10,18 @@
   displayName: store-currency-display-stolen-essence
   canWithdraw: false
 
+- type: currency
+  id: MeatyOreCoin
+  displayName: Meaty Ore Coin
+  canWithdraw: false
+
 #debug
 - type: currency
   id: DebugDollar
   displayName: store-currency-display-debugdollar
+
+- type: currency
+  id: SpaceCash
+  cash :
+    1: SpaceCash
+  displayName: store-currency-display-space-cash

@@ -10,6 +10,11 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
 using Robust.Shared.Player;
+using Content.Server.GameTicking.Rules.Components;
+using System.Linq;
+using Content.Server.Players;
+using Content.Server._White.Cult.GameRule;
+using Robust.Server.Player;
 
 namespace Content.Server.Administration.Systems;
 
@@ -22,6 +27,8 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
     [Dependency] private readonly RevolutionaryRuleSystem _revolutionaryRule = default!;
     [Dependency] private readonly SharedMindSystem _minds = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly CultRuleSystem _cultRule = default!;
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -110,7 +117,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-head-rev"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Misc/job_icons.rsi/HeadRevolutionary.png")),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "HeadRevolutionary"),
             Act = () =>
             {
                 if (!_minds.TryGetMind(args.Target, out var mindId, out var mind))
@@ -138,5 +145,23 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-verb-make-thief"),
         };
         args.Verbs.Add(thief);
+
+        // WD edit start
+        Verb cultist = new()
+        {
+            Text = "Сделать культистом.",
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Texture(new("/Textures//White/Cult/interface.rsi/icon.png")),
+            Act = () =>
+            {
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
+                var playerSession = session;
+                _cultRule.MakeCultist(playerSession!);
+            }
+        };
+        args.Verbs.Add(cultist);
+        //WD edit end
     }
 }

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.Decals;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -25,6 +26,13 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
     [ValidatePrototypeId<SpeciesPrototype>]
     public const string DefaultSpecies = "Human";
+    public const string DefaultVoice = "Eugene";
+    public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
+    {
+        {Sex.Male, "Eugene"},
+        {Sex.Female, "Kseniya"},
+        {Sex.Unsexed, "Xenia"},
+    };
 
     public override void Initialize()
     {

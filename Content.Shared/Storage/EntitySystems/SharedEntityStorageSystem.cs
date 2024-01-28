@@ -213,6 +213,9 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
     public void CloseStorage(EntityUid uid, SharedEntityStorageComponent? component = null)
     {
+        if (EntityManager.IsQueuedForDeletion(uid)) // WD
+            return;
+
         if (!ResolveStorage(uid, ref component))
             return;
 
@@ -334,6 +337,17 @@ public abstract class SharedEntityStorageSystem : EntitySystem
                 Popup.PopupClient(Loc.GetString("entity-storage-component-welded-shut-message"), target, user);
 
             return false;
+        }
+
+        if (_container.IsEntityInContainer(target))
+        {
+            if (_container.TryGetOuterContainer(target,Transform(target) ,out var container) &&
+                !HasComp<HandsComponent>(container.Owner))
+            {
+                Popup.PopupClient(Loc.GetString("entity-storage-component-already-contains-user-message"), user, user);
+
+                return false;
+            }
         }
 
         //Checks to see if the opening position, if offset, is inside of a wall.

@@ -13,6 +13,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Input;
 using Content.Shared.Inventory;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Strip.Components;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
@@ -150,7 +151,7 @@ namespace Content.Client.Inventory
             // for now: shit-code
             // this breaks for drones (too many hands, lots of empty vertical space), and looks shit for monkeys and the like.
             // but the window is realizable, so eh.
-            _strippingMenu.SetSize = new Vector2(220, snare?.IsEnsnared == true ? 550 : 530);
+            _strippingMenu.SetSize = new Vector2(290, snare?.IsEnsnared == true ? 550 : 530);
         }
 
         private void AddHandButton(Hand hand)
@@ -159,7 +160,7 @@ namespace Content.Client.Inventory
 
             button.Pressed += SlotPressed;
 
-            if (EntMan.TryGetComponent<HandVirtualItemComponent>(hand.HeldEntity, out var virt))
+            if (EntMan.TryGetComponent<VirtualItemComponent>(hand.HeldEntity, out var virt))
             {
                 button.Blocked = true;
                 if (EntMan.TryGetComponent<CuffableComponent>(Owner, out var cuff) && _cuffable.GetAllCuffs(cuff).Contains(virt.BlockingEntity))
@@ -224,7 +225,7 @@ namespace Content.Client.Inventory
             }
 
             EntityUid? viewEnt;
-            if (EntMan.TryGetComponent<HandVirtualItemComponent>(entity, out var virt))
+            if (EntMan.TryGetComponent<VirtualItemComponent>(entity, out var virt))
                 viewEnt = EntMan.HasComponent<SpriteComponent>(virt.BlockingEntity) ? virt.BlockingEntity : null;
             else if (EntMan.HasComponent<SpriteComponent>(entity))
                 viewEnt = entity;

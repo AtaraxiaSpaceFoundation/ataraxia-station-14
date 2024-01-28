@@ -31,7 +31,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 300 # WD edit
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -41,7 +41,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
@@ -88,7 +88,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -98,7 +98,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
@@ -141,7 +141,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
@@ -172,7 +172,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 125
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -182,7 +182,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
@@ -210,7 +210,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -220,7 +220,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
@@ -263,17 +263,20 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 300 # WD edit
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 5
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/glass_break2.ogg
+          collection: GlassBreak
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlass:
@@ -286,6 +289,9 @@
   - type: Construction
     graph: Table
     node: TableGlass
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepTile
 
 - type: entity
   id: TableReinforcedGlass
@@ -309,17 +315,20 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/glass_break2.ogg
+          collection: GlassBreak
       - !type:ChangeConstructionNodeBehavior
         node: TableFrame
       - !type:SpawnEntitiesBehavior
@@ -335,6 +344,9 @@
   - type: Construction
     graph: Table
     node: TableReinforcedGlass
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepTile
 
 - type: entity
   id: TablePlasmaGlass
@@ -358,17 +370,20 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 250
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/glass_break2.ogg
+          collection: GlassBreak
       - !type:ChangeConstructionNodeBehavior
         node: TableFrame
       - !type:SpawnEntitiesBehavior
@@ -384,6 +399,9 @@
   - type: Construction
     graph: Table
     node: TablePlasmaGlass
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepTile
 
 - type: entity
   id: TableWood
@@ -401,20 +419,23 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 15
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          MaterialWoodPlank1:
             min: 1
             max: 1
       - !type:DoActsBehavior
@@ -425,6 +446,9 @@
   - type: Tag
     tags:
     - Wooden
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWood
 
 - type: entity
   id: TableCarpet
@@ -446,10 +470,10 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          MaterialWoodPlank1:
             min: 1
             max: 1
           MaterialCloth1:
@@ -463,6 +487,9 @@
   - type: Tag
     tags:
     - Wooden
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepCarpet
 
 - type: entity
   id: TableStone
@@ -485,6 +512,9 @@
           path: /Audio/Effects/picaxe2.ogg
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepFloor
 
 - type: entity
   id: TableWeb
@@ -502,10 +532,21 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
+        damage: 300 #excess damage (nuke?). avoid computational cost of spawning entities.
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWebSilk:
+            min: 1
+            max: 2
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -514,6 +555,9 @@
   - type: Construction
     graph: WebStructures
     node: table
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepCarpet
 
 - type: entity
   id: TableDebug
@@ -558,7 +602,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -568,17 +612,20 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
-            min: 0
+            min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
     graph: Table
     node: CounterWood
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWood
 
 - type: entity
   id: TableCounterMetal
@@ -598,7 +645,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 125
+        damage: 300 # WD edit
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -608,13 +655,13 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetSteel1:
-            min: 0
+            min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]

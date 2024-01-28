@@ -136,8 +136,8 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
   - type: MagazineVisuals
     magState: mag
@@ -161,8 +161,8 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
   - type: Battery
     maxCharge: 500
@@ -213,12 +213,14 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+  - type: StaticPrice
+    price: 420
   - type: Gun
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
     fireCost: 62.5
 
 - type: entity
@@ -227,9 +229,11 @@
   id: WeaponLaserCarbinePractice
   description: This modified laser rifle fires harmless beams in the 40-watt range, for target practice.
   components:
-  - type: HitscanBatteryAmmoProvider
-    proto: RedLaserPractice
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserPractice
     fireCost: 62.5
+  - type: StaticPrice
+    price: 300
 
 - type: entity
   name: pulse pistol
@@ -253,8 +257,8 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 200
   - type: Battery
     maxCharge: 2000
@@ -284,8 +288,8 @@
       - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 200
   - type: Battery
     maxCharge: 5000
@@ -311,8 +315,8 @@
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+  - type: ProjectileBatteryAmmoProvider
+    proto: PulseBoltProjectile
     fireCost: 100
   - type: Battery
     maxCharge: 40000
@@ -338,8 +342,8 @@
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedHeavyLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserHeavy
     fireCost: 100
 
 - type: entity
@@ -355,7 +359,7 @@
       walkModifier: 0.6
       sprintModifier: 0.6
     - type: HeldSpeedModifier
-    - type: Sprite 
+    - type: Sprite
       sprite: Objects/Weapons/Guns/Battery/particle_decelerator.rsi
       layers:
         - state: base
@@ -392,8 +396,8 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: XrayLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserXray
     fireCost: 100
   - type: MagazineVisuals
     magState: mag
@@ -475,6 +479,8 @@
     magState: mag
     steps: 5
     zeroVisible: true
+  - type: StaticPrice
+    price: 260
 
 - type: entity
   name: practice disabler
@@ -495,6 +501,8 @@
       quickEquip: false
       slots:
         - Belt
+    - type: StaticPrice
+      price: 100
     - type: ProjectileBatteryAmmoProvider
       proto: BulletDisablerPractice
       fireCost: 100
@@ -542,7 +550,7 @@
   description: This is an antique laser pistol. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
+    sprite: White/Objects/Weapons/Guns/Battery/antiquelasergun.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -550,12 +558,12 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
+    sprite: White/Objects/Weapons/Guns/Battery/antiquelasergun.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -595,8 +603,8 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -649,6 +657,8 @@
   - type: Construction
     graph: UpgradeWeaponPistolCHIMP
     node: start
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   name: experimental C.H.I.M.P. handcannon
@@ -668,7 +678,7 @@
       fireCost: 100
 
 - type: entity
-  name: Eye of a behonker
+  name: eye of a behonker
   parent: BaseWeaponBatterySmall
   id: WeaponBehonkerLaser
   description: The eye of a behonker, it fires a laser when squeezed.
@@ -682,8 +692,8 @@
     fireRate: 1
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_clown.ogg
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserMedium
     fireCost: 100
   - type: BatterySelfRecharger
     autoRecharge: true
@@ -695,3 +705,49 @@
   - type: Appearance
   - type: StaticPrice
     price: 750
+
+- type: entity
+  name: egun
+  parent: BaseWeaponBattery
+  id: WeaponEgun
+  description: Egun
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Guns/Battery/egun.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-twomode1-4
+          map: ["enum.GunVisualLayers.TwoModeFirst"]
+          shader: unshaded
+        - state: mag-twomode2-4
+          map: ["enum.GunVisualLayers.TwoModeSecond"]
+          shader: unshaded
+    - type: Clothing
+      sprite: Objects/Weapons/Guns/Battery/egun.rsi
+      quickEquip: false
+      slots:
+      - Belt
+      - suitStorage
+    - type: Gun
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    - type: TwoModeEnergyAmmoProvider
+      stunPrototype: BulletDisabler
+      laserPrototype: BulletTrailLaser
+      fireCost: 49
+      laserFireCost: 99
+      stunFireCost: 49
+      stunProjectileSpeed: 25
+      laserProjectileSpeed: 25
+      stunSound: "/Audio/Weapons/Guns/Gunshots/taser2.ogg"
+      laserSound: "/Audio/Weapons/Guns/Gunshots/laser_cannon.ogg"
+    - type: MagazineVisuals
+      magState: mag
+      steps: 5
+      zeroVisible: true
+    - type: Appearance
+    - type: StaticPrice
+      price: 800
+    - type: Item
+      size: Large

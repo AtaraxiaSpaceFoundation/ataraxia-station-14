@@ -29,6 +29,13 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Server._White;
+using Content.Server._White.JoinQueue;
+using Content.Server._White.Jukebox;
+using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.Sponsors;
+using Content.Server._White.Stalin;
+using Content.Server._White.TTS;
 
 namespace Content.Server.Entry
 {
@@ -41,7 +48,6 @@ namespace Content.Server.Entry
         private IVoteManager _voteManager = default!;
         private ServerUpdateManager _updateManager = default!;
         private PlayTimeTrackingManager? _playTimeTracking;
-        private IEntitySystemManager? _sysMan;
         private IServerDbManager? _dbManager;
 
         /// <inheritdoc />
@@ -82,31 +88,43 @@ namespace Content.Server.Entry
             var configManager = IoCManager.Resolve<IConfigurationManager>();
             var dest = configManager.GetCVar(CCVars.DestinationFile);
             IoCManager.Resolve<ContentLocalizationManager>().Initialize();
-            if (string.IsNullOrEmpty(dest)) //hacky but it keeps load times for the generator down.
-            {
-                _euiManager = IoCManager.Resolve<EuiManager>();
-                _voteManager = IoCManager.Resolve<IVoteManager>();
-                _updateManager = IoCManager.Resolve<ServerUpdateManager>();
-                _playTimeTracking = IoCManager.Resolve<PlayTimeTrackingManager>();
-                _sysMan = IoCManager.Resolve<IEntitySystemManager>();
-                _dbManager = IoCManager.Resolve<IServerDbManager>();
+            if (!string.IsNullOrEmpty(dest)) //hacky but it keeps load times for the generator down.
+                return;
 
-                logManager.GetSawmill("Storage").Level = LogLevel.Info;
-                logManager.GetSawmill("db.ef").Level = LogLevel.Info;
+            _euiManager = IoCManager.Resolve<EuiManager>();
+            _voteManager = IoCManager.Resolve<IVoteManager>();
+            _updateManager = IoCManager.Resolve<ServerUpdateManager>();
+            _playTimeTracking = IoCManager.Resolve<PlayTimeTrackingManager>();
+            IoCManager.Resolve<IEntitySystemManager>();
+            _dbManager = IoCManager.Resolve<IServerDbManager>();
 
-                IoCManager.Resolve<IAdminLogManager>().Initialize();
-                IoCManager.Resolve<IConnectionManager>().Initialize();
-                _dbManager.Init();
-                IoCManager.Resolve<IServerPreferencesManager>().Init();
-                IoCManager.Resolve<INodeGroupFactory>().Initialize();
-                IoCManager.Resolve<ContentNetworkResourceManager>().Initialize();
-                IoCManager.Resolve<GhostKickManager>().Initialize();
-                IoCManager.Resolve<ServerInfoManager>().Initialize();
+            logManager.GetSawmill("Storage").Level = LogLevel.Info;
+            logManager.GetSawmill("db.ef").Level = LogLevel.Info;
 
-                _voteManager.Initialize();
-                _updateManager.Initialize();
-                _playTimeTracking.Initialize();
-            }
+            IoCManager.Resolve<IAdminLogManager>().Initialize();
+            IoCManager.Resolve<IConnectionManager>().Initialize();
+            UnsafePseudoIoC.Initialize(); // WD
+            _dbManager.Init();
+            IoCManager.Resolve<IServerPreferencesManager>().Init();
+            IoCManager.Resolve<INodeGroupFactory>().Initialize();
+            IoCManager.Resolve<ContentNetworkResourceManager>().Initialize();
+            IoCManager.Resolve<GhostKickManager>().Initialize();
+            IoCManager.Resolve<ServerInfoManager>().Initialize();
+
+            //WD-EDIT
+            IoCManager.Resolve<SponsorsManager>().Initialize();
+            IoCManager.Resolve<JoinQueueManager>().Initialize();
+            IoCManager.Resolve<TTSManager>().Initialize();
+            IoCManager.Resolve<StalinManager>().Initialize();
+            IoCManager.Resolve<ServerJukeboxSongsSyncManager>().Initialize();
+            IoCManager.Resolve<SalusManager>().Initialize();
+            IoCManager.Resolve<PandaStatusHost>().Start();
+            IoCManager.Resolve<PandaWebManager>().Initialize();
+            //WD-EDIT
+
+            _voteManager.Initialize();
+            _updateManager.Initialize();
+            _playTimeTracking.Initialize();
         }
 
         public override void PostInit()

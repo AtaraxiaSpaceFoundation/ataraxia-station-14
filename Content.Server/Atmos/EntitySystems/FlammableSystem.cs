@@ -13,6 +13,7 @@ using Content.Shared.Database;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Temperature;
 using Content.Shared.Throwing;
@@ -20,6 +21,9 @@ using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.Audio;
+using Content.Shared._White.Mood;
+using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -101,6 +105,12 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (!EntityManager.TryGetComponent(otherEnt, out FlammableComponent? flammable))
                 return;
+
+            //Only ignite when the colliding fixture is projectile or ignition.
+            if (args.OurFixtureId != component.FixtureId && args.OurFixtureId != SharedProjectileSystem.ProjectileFixture)
+            {
+                return;
+            }
 
             flammable.FireStacks += component.FireStacks;
             Ignite(otherEnt, uid, flammable);
@@ -371,10 +381,12 @@ namespace Content.Server.Atmos.EntitySystems
                 if (!flammable.OnFire)
                 {
                     _alertsSystem.ClearAlert(uid, AlertType.Fire);
+                    RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire")); // WD edit
                     continue;
                 }
 
                 _alertsSystem.ShowAlert(uid, AlertType.Fire);
+                RaiseLocalEvent(uid, new MoodEffectEvent("OnFire")); // WD edit
 
                 if (flammable.FireStacks > 0)
                 {

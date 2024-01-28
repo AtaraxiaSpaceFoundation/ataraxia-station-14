@@ -1,0 +1,12 @@
+# Night Vision Tech
+- type: technology
+  id: NightVisionTech
+  name: research-technology-night-vision
+  icon:
+    sprite: White/Clothing/Head/nightvision.rsi
+    state: icon
+  discipline: Experimental
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ClothingEyesNightVisionGoggles

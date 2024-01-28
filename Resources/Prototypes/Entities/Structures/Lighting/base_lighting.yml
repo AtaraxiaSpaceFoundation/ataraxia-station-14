@@ -13,8 +13,7 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
+        collection: GlassSmash
   - type: Transform
     anchored: true
   - type: Clickable
@@ -26,15 +25,13 @@
     sprite: Structures/Wallmounts/Lighting/light_tube.rsi
     drawdepth: WallMountedItems
     layers:
-    - map: ["enum.PoweredLightLayers.Base"]
-      state: base
-    - map: ["enum.PoweredLightLayers.Glow"]
-      state: glow
-      shader: unshaded
-    state: base
+    - state: on
+      map: ["enum.PoweredLightLayers.Base"]
+    state: on
   - type: PointLight
-    radius: 10
+    color: "#FFE4CE" # 5000K color temp
     energy: 0.8
+    radius: 10
     softness: 1
     offset: "0, -0.5"
   - type: Damageable
@@ -48,6 +45,9 @@
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
     - trigger:
         !type:DamageTrigger
         damage: 50
@@ -60,6 +60,10 @@
             max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+  - type: LightMark
   placement:
     mode: SnapgridCenter
     snap:
@@ -92,6 +96,9 @@
     receiveFrequencyId: SmartLight
   - type: WirelessNetworkConnection
     range: 200
+  - type: DeviceLinkSource
+    ports:
+    - LightStatus
   - type: DeviceLinkSink
     ports:
       - On
@@ -101,12 +108,6 @@
   - type: PoweredLightVisuals
     blinkingSound:
       path: "/Audio/Machines/light_tube_on.ogg"
-    spriteStateMap:
-      empty: empty
-      off: base
-      on: base
-      broken: broken
-      burned: burned
 
 - type: entity
   id: Poweredlight
@@ -115,7 +116,7 @@
   parent: PoweredlightEmpty
   components:
   - type: Sprite
-    state: base
+    state: off
   - type: PointLight
     enabled: true
   - type: PoweredLight
@@ -217,7 +218,7 @@
         path: /Audio/Ambience/Objects/light_hum.ogg
     - type: Sprite
       sprite: Structures/Wallmounts/Lighting/light_small.rsi
-      state: base
+      state: on
     - type: PointLight
       energy: 1.0
       radius: 6
@@ -279,14 +280,11 @@
     receiveFrequencyId: SmartLight
   - type: WirelessNetworkConnection
     range: 200
+  - type: DeviceLinkSource
+    ports:
+    - LightStatus
   - type: Appearance
   - type: PoweredLightVisuals
-    spriteStateMap:
-      empty: empty
-      off: base
-      on: base
-      broken: broken
-      burned: burned
   - type: DeviceLinkSink
     ports:
       - On
@@ -299,7 +297,7 @@
   parent: PoweredSmallLightEmpty
   components:
   - type: Sprite
-    state: base
+    state: off
   - type: PointLight
     enabled: true
   - type: PoweredLight
@@ -349,3 +347,72 @@
     mode: SnapgridCenter
     snap:
     - Wallmount
+
+#Coloured lights
+
+- type: entity
+  id: PoweredlightCyan
+  suffix: Cyan
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalCyan
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  id: PoweredlightBlue
+  suffix: Blue
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalBlue
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  id: PoweredlightPink
+  suffix: Pink
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalPink
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  id: PoweredlightOrange
+  suffix: Orange
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalOrange
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  id: PoweredlightRed
+  suffix: Red
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalRed
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  id: PoweredlightGreen
+  suffix: Green
+  parent: Poweredlight
+  components:
+  - type: PoweredLight
+    hasLampOnSpawn: LightTubeCrystalGreen
+    damage:
+      types:
+        Heat: 5
+

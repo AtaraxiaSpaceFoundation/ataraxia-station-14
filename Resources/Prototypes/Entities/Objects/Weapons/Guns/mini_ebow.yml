@@ -1,0 +1,35 @@
+- type: entity
+  parent: BaseItem
+  id: EnergyCrossbowMini
+  name: маленький энергетический арбалет
+  description: Стреляет энергетическими болтами, которые отравляют и оглушают цель.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/mini-ebow.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: Objects/Weapons/Guns/Battery/mini-ebow.rsi
+  - type: Clothing
+    slots:
+    - Belt
+  - type: Gun
+    fireRate: 0.3
+    soundGunshot:
+      path: /Audio/Weapons/click.ogg
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2.5
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BoltEnergyCrossbow
+    capacity: 1
+    count: 1
+  - type: AmmoCounter
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        base:
+          True: { state: icon }
+          False: { state: empty }
+  - type: Appearance

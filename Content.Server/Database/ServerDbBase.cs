@@ -21,6 +21,7 @@ namespace Content.Server.Database
 {
     public abstract class ServerDbBase
     {
+        protected const string GlobalServerName = "unknown";
         private readonly ISawmill _opsLog;
 
         /// <param name="opsLog">Sawmill to trace log database operations to.</param>
@@ -190,6 +191,10 @@ namespace Content.Server.Database
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
 
+            var voice = profile.Voice;
+            if (voice == string.Empty)
+                voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             var markingsRaw = profile.Markings?.Deserialize<List<string>>();
 
@@ -208,8 +213,12 @@ namespace Content.Server.Database
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
+                profile.ClownName,
+                profile.MimeName,
+                profile.BorgName,
                 profile.FlavorText,
                 profile.Species,
+                voice,
                 profile.Age,
                 sex,
                 gender,
@@ -244,6 +253,9 @@ namespace Content.Server.Database
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 
             profile.CharacterName = humanoid.Name;
+            profile.ClownName = humanoid.ClownName;
+            profile.MimeName = humanoid.MimeName;
+            profile.BorgName = humanoid.BorgName;
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
             profile.Age = humanoid.Age;
@@ -260,6 +272,7 @@ namespace Content.Server.Database
             profile.Markings = markings;
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
+            profile.Voice = humanoid.Voice;
 
             profile.Jobs.Clear();
             profile.Jobs.AddRange(
@@ -331,7 +344,8 @@ namespace Content.Server.Database
         public abstract Task<ServerBanDef?> GetServerBanAsync(
             IPAddress? address,
             NetUserId? userId,
-            ImmutableArray<byte>? hwId);
+            ImmutableArray<byte>? hwId,
+            string serverName = GlobalServerName);
 
         /// <summary>
         ///     Looks up an user's ban history.
@@ -347,7 +361,8 @@ namespace Content.Server.Database
             IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned);
+            bool includeUnbanned,
+            string serverName = GlobalServerName);
 
         public abstract Task AddServerBanAsync(ServerBanDef serverBan);
         public abstract Task AddServerUnbanAsync(ServerUnbanDef serverUnban);
@@ -439,7 +454,8 @@ namespace Content.Server.Database
         public abstract Task<List<ServerRoleBanDef>> GetServerRoleBansAsync(IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
-            bool includeUnbanned);
+            bool includeUnbanned,
+            string serverName = GlobalServerName);
 
         public abstract Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan);
         public abstract Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban);
@@ -654,6 +670,7 @@ namespace Content.Server.Database
             existing.Flags = admin.Flags;
             existing.Title = admin.Title;
             existing.AdminRankId = admin.AdminRankId;
+            existing.AdminServer = admin.AdminServer;
 
             await db.DbContext.SaveChangesAsync(cancel);
         }
@@ -1358,7 +1375,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
             // Client side query, as EF can't do groups yet
             var bansEnumerable = bansQuery
-                    .GroupBy(ban => new { ban.BanTime, CreatedBy = (Player?)ban.CreatedBy, ban.Reason, Unbanned = ban.Unban == null })
+                    .GroupBy(ban => new { ban.BanTime, ban.CreatedBy, ban.Reason, Unbanned = ban.Unban == null })
                     .Select(banGroup => banGroup)
                     .ToArray();
 
@@ -1383,6 +1400,69 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         }
 
         #endregion
+
+        #region Player Reputation (WD edit)
+
+        public async Task SetPlayerReputation(Guid player, float value)
+        {
+            await using var db = await GetDb();
+
+            var reputation = await db.DbContext.PlayerReputations
+                .SingleOrDefaultAsync(p => p.UserId == player);
+
+            if (reputation == null)
+            {
+                reputation = new PlayerReputation()
+                {
+                    UserId = player,
+                    Reputation = value
+                };
+                db.DbContext.PlayerReputations.Add(reputation);
+            }
+            else
+            {
+                reputation.Reputation = value;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task ModifyPlayerReputation(Guid player, float value)
+        {
+            await using var db = await GetDb();
+
+            var reputation = await db.DbContext.PlayerReputations
+                .SingleOrDefaultAsync(p => p.UserId == player);
+
+            if (reputation == null)
+            {
+                reputation = new PlayerReputation()
+                {
+                    UserId = player,
+                    Reputation = 0f + value
+                };
+                db.DbContext.PlayerReputations.Add(reputation);
+            }
+            else
+            {
+                reputation.Reputation += value;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<float> GetPlayerReputation(Guid player)
+        {
+            await using var db = await GetDb();
+
+            var reputation = await db.DbContext.PlayerReputations
+                .SingleOrDefaultAsync(p => p.UserId == player);
+
+            return reputation?.Reputation ?? 0f;
+        }
+
+        #endregion
+
 
         protected abstract Task<DbGuard> GetDb([CallerMemberName] string? name = null);
 

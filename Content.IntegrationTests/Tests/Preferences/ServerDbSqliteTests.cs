@@ -40,8 +40,12 @@ namespace Content.IntegrationTests.Tests.Preferences
         {
             return new(
                 "Charlie Charlieson",
+                "HONK",
+                "Quiet",
+                "Silicon",
                 "The biggest boy around.",
                 "Human",
+                "Eugene",
                 21,
                 Sex.Male,
                 Gender.Epicene,
@@ -83,7 +87,7 @@ namespace Content.IntegrationTests.Tests.Preferences
             var pair = await PoolManager.GetServerClient();
             var db = GetDb(pair.Server);
             // Database should be empty so a new GUID should do it.
-            Assert.Null(await db.GetPlayerPreferencesAsync(NewUserId()));
+            Assert.That(await db.GetPlayerPreferencesAsync(NewUserId()), Is.Null);
 
             await pair.CleanReturnAsync();
         }

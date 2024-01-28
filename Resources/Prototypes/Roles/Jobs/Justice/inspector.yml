@@ -1,0 +1,39 @@
+- type: job
+  id: Inspector
+  name: job-name-inspector
+  description: job-description-inspector
+  playTimeTracker: JobInspector
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 #30 hrs
+    - !type:DepartmentTimeRequirement
+      department: Justice
+      time: 54000 #15 hrs
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 #10 hrs
+  startingGear: InspectorGear
+  icon: "JobIconInspector"
+  supervisors: job-supervisors-captain
+  access:
+    - Service
+    - Brig
+    - Maintenance
+    - Command
+
+- type: startingGear
+  id: InspectorGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteInspectorFormal
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesBootsInspector
+    id: InspectorPDA
+    ears: ClothingHeadsetAltSecurity
+    underwearb: ClothingUnderwearBottomBoxersInspector # White-Underwear
+  underweart: ClothingUnderwearTopBraInspector # White-Underwear
+  underwearb: ClothingUnderwearBottomPantiesInspector # White-Underwear
+  inhand:
+    - BriefcaseBrownFilled
+  innerClothingSkirt: ClothingUniformJumpskirtInspector
+  satchel: ClothingBackpackSatchelFilled
+  duffelbag: ClothingBackpackDuffelFilled

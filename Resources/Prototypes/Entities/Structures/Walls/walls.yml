@@ -49,6 +49,8 @@
     price: 75
   - type: RadiationBlocker
     resistance: 2
+  - type: WallMark
+  - type: ReflectAspectMark
 
 - type: entity
   parent: BaseWall
@@ -196,18 +198,29 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 1200
       behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          Girder:
-            min: 1
-            max: 1
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    destroySound:
+      collection: MetalBreak
   - type: IconSmooth
     key: walls
     base: cult
+  - type: Construction
+    graph: CultGirder
+    node: wall
 
 - type: entity
   parent: BaseWall
@@ -293,6 +306,9 @@
         !type:DamageTrigger
         damage: 300
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
     - trigger:
@@ -301,13 +317,11 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: gold
@@ -364,6 +378,9 @@
         !type:DamageTrigger
         damage: 300
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
     - trigger:
@@ -372,13 +389,11 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: plasma
@@ -409,19 +424,20 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: plastic
@@ -513,19 +529,27 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 400
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior # WD edit start
+        spawn:
+          SheetPlasteel1:
+            min: 1
+            max: 2 # WD edit end
     destroySound:
-      path: /Audio/Effects/metalbreak.ogg
+      collection: MetalBreak
   - type: IconSmooth
     key: walls
     base: reinf_over
@@ -545,6 +569,46 @@
     price: 150
   - type: RadiationBlocker
     resistance: 5
+
+- type: entity
+  parent: WallReinforced
+  id: WallReinforcedRust
+  name: reinforced wall
+  suffix: rusted
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/solid_rust.rsi
+  - type: Icon
+    sprite: Structures/Walls/solid_rust.rsi
+    state: rgeneric
+  - type: Construction
+    graph: Girder
+    node: reinforcedWall
+  - type: IconSmooth
+    key: walls
+    base: reinf_over
+
+- type: entity
+  parent: WallShuttleDiagonal
+  id: WallReinforcedDiagonal
+  name: reinforced wall
+  suffix: diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: Structures/Walls/reinforced_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: Structures/Walls/reinforced_diagonal.rsi
+    state: state0
 
 # Riveting
 - type: entity
@@ -636,19 +700,20 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: silver
@@ -715,6 +780,9 @@
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 300
@@ -723,7 +791,7 @@
         node: girder
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: Construction
@@ -805,19 +873,25 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 200
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: solid
@@ -845,43 +919,22 @@
     state: state0
 
 - type: entity
-  parent: BaseWall
+  parent: WallSolid
   id: WallSolidRust
   name: solid wall
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solidrust.rsi
+    sprite: Structures/Walls/solid_rust.rsi
   - type: Icon
-    sprite: Structures/Walls/solidrust.rsi
+    sprite: Structures/Walls/solid_rust.rsi
     state: full
   - type: Construction
     graph: Girder
     node: wallrust
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 400
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/metalbreak.ogg
-      - !type:ChangeConstructionNodeBehavior
-        node: girder
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
-    base: solidrust
+    base: solid
 
 - type: entity
   parent: BaseWall
@@ -903,19 +956,20 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
     - trigger:
         !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalSlam
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: uranium
@@ -942,19 +996,20 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
     - trigger:
         !type:DamageTrigger
         damage: 150
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: WoodDestroyHeavy
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/Effects/metalbreak.ogg
   - type: IconSmooth
     key: walls
     base: wood
@@ -985,6 +1040,12 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
+        damage: 300 #excess damage (nuke?). avoid computational cost of spawning entities.
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
         damage: 30
       behaviors:
       - !type:DoActsBehavior
@@ -992,11 +1053,11 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWebSilk:
-            min: 1
-            max: 1
+            min: 2
+            max: 3
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/woodhit.ogg
+          collection: WoodDestroy
   - type: IconSmooth
     key: walls
     base: wall
@@ -1152,7 +1213,7 @@
 
 - type: entity
   id: WallForce
-  name: Force Wall
+  name: force wall
   components:
     - type: TimedDespawn
       lifetime: 20

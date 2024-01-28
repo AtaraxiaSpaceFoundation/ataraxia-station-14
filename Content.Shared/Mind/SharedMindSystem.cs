@@ -21,6 +21,7 @@ namespace Content.Shared.Mind;
 public abstract class SharedMindSystem : EntitySystem
 {
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly SharedPlayerSystem _player = default!;
@@ -146,6 +147,10 @@ public abstract class SharedMindSystem : EntitySystem
         if (!mindContainer.ShowExamineInfo || !args.IsInDetailsRange)
             return;
 
+        // TODO predict we can't right now because session stuff isnt networked
+        if (_net.IsClient)
+            return;
+
         var dead = _mobState.IsDead(uid);
         var hasUserId = CompOrNull<MindComponent>(mindContainer.Mind)?.UserId;
         var hasSession = CompOrNull<MindComponent>(mindContainer.Mind)?.Session;
@@ -184,12 +189,15 @@ public abstract class SharedMindSystem : EntitySystem
         return null;
     }
 
-    public Entity<MindComponent> CreateMind(NetUserId? userId, string? name = null)
+    public Entity<MindComponent> CreateMind(NetUserId? userId, string? name = null, string? clownName = null, string? mimeName = null, string? borgName = null)
     {
         var mindId = Spawn(null, MapCoordinates.Nullspace);
         _metadata.SetEntityName(mindId, name == null ? "mind" : $"mind ({name})");
         var mind = EnsureComp<MindComponent>(mindId);
         mind.CharacterName = name;
+        mind.ClownName = clownName;
+        mind.MimeName = mimeName;
+        mind.BorgName = borgName;
         SetUserId(mindId, userId, mind);
 
         return (mindId, mind);

@@ -23,6 +23,8 @@
     sprite: Objects/Consumable/Food/snacks.rsi
     heldPrefix: packet
     size: Tiny
+  - type: StaticPrice
+    price: 10
 # Snacks
 
 # "Snacks" means food in a packet. Down the line this stuff can have multiple
@@ -112,6 +114,8 @@
       - id: FoodSnackChocolateBar
     sound:
       path: /Audio/Effects/unwrap.ogg
+  - type: StaticPrice
+    price: 20
 
 - type: entity
   name: chocolate bar

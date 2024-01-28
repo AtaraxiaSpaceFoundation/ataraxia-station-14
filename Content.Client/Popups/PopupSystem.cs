@@ -1,6 +1,9 @@
 using System.Linq;
+using Content.Client.Chat.Managers;
+using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
+using Content.Shared._White;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -27,6 +30,7 @@ namespace Content.Client.Popups
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
+        [Dependency] private readonly IChatManager _chatManager = default!;
 
         public IReadOnlyList<WorldPopupLabel> WorldLabels => _aliveWorldLabels;
         public IReadOnlyList<CursorPopupLabel> CursorLabels => _aliveCursorLabels;
@@ -38,6 +42,8 @@ namespace Content.Client.Popups
         public const float MaximumPopupLifetime = 5f;
         public const float PopupLifetimePerCharacter = 0.04f;
 
+        private bool isLogging;
+
         public override void Initialize()
         {
             SubscribeNetworkEvent<PopupCursorEvent>(OnPopupCursorEvent);
@@ -46,6 +52,9 @@ namespace Content.Client.Popups
             SubscribeNetworkEvent<RoundRestartCleanupEvent>(OnRoundRestart);
             _overlay
                 .AddOverlay(new PopupOverlay(_configManager, EntityManager, _playerManager, _prototype, _resource, _uiManager, this));
+
+            isLogging = _configManager.GetCVar(WhiteCVars.LogChatActions);
+            _configManager.OnValueChanged(WhiteCVars.LogChatActions, (log) => { isLogging = log; });
         }
 
         public override void Shutdown()
@@ -72,6 +81,22 @@ namespace Content.Client.Popups
             };
 
             _aliveWorldLabels.Add(label);
+
+            var fontSizeDict = new Dictionary<PopupType, string>
+            {
+                { PopupType.Medium, "12" },
+                { PopupType.MediumCaution, "12" },
+                { PopupType.Large, "15" },
+                { PopupType.LargeCaution, "15" }
+            };
+
+            var fontsize = fontSizeDict.ContainsKey(type) ? fontSizeDict[type] : "10";
+            var fontcolor = (type == PopupType.LargeCaution || type == PopupType.MediumCaution || type == PopupType.SmallCaution) ? "c62828" : "aeabc4";
+
+            if (isLogging)
+            {
+                _chatManager.SendMessage($"notice [font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]", ChatSelectChannel.Console);
+            }
         }
 
         #region Abstract Method Implementations

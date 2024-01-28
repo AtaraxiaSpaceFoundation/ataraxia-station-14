@@ -41,3 +41,19 @@
 - type: font
   id: Monospace
   path: /EngineFonts/NotoSans/NotoSansMono-Regular.ttf
+
+- type: font
+  id: ComicSansMS
+  path: /Fonts/ComicSans/ComicSansMS.ttf
+
+- type: font
+  id: Bedstead
+  path: /Fonts/Bedstead/Bedstead.otf
+
+- type: font
+  id: NeuePixelSans
+  path: /Fonts/NeuePixelSans/NeuePixelSans.ttf
+
+- type: font
+  id: Fifaks
+  path: /Fonts/Fifaks/Fifaks.ttf

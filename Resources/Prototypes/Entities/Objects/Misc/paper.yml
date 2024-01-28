@@ -4,6 +4,23 @@
   id: Paper
   description: 'A piece of white paper.'
   components:
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/paper_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/paper_drop.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/White/Items/handling/paper_use.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/White/Items/handling/paper_drop.ogg
+  - type: EmitSoundOnThrow
+    sound:
+      path: /Audio/White/Items/handling/paper_throw.ogg
+  # WD edit sounds end
   - type: Sprite
     sprite: Objects/Misc/bureaucracy.rsi
     layers:
@@ -56,6 +73,17 @@
               max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+
+- type: entity
+  name: paper scrap
+  parent: Paper
+  id: PaperScrap
+  description: 'A crumpled up piece of white paper.'
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: scrap
 
 - type: entity
   name: office paper
@@ -317,7 +345,7 @@
     state: pen_cap
 
 - type: entity
-  name: Centcom pen
+  name: CentCom pen
   parent: CyberPen
   id: PenCentcom
   description: In an attempt to keep up with the "power" of the cybersun bureaucracy, NT made a replica of cyber pen, in their corporate style.
@@ -481,7 +509,7 @@
 
 - type: entity
   id: BoxFolderCentCom
-  name: centcom folder
+  name: CentCom folder
   parent: BoxFolderBase
   suffix: DO NOT MAP
   description: CentCom's miserable little pile of secrets!
@@ -517,7 +545,7 @@
   - type: ItemSlots
     slots:
       pen_slot:
-        name: Pen
+        name: clipboard-slot-component-slot-name-pen
         whitelist:
           tags:
             - Write
@@ -554,27 +582,8 @@
 - type: entity
   id: BoxFolderCentComClipboard
   parent: BoxFolderClipboard
-  name: centcom clipboard
+  name: CentCom clipboard
   description: A luxurious clipboard upholstered with green velvet. Often seen carried by CentCom officials, seldom seen actually used.
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/cc-clipboard.rsi
-    layers:
-    - state: clipboard
-    - state: clipboard_paper
-      map: ["clipboard_paper"]
-      visible: false
-    - state: clipboard_pen
-      map: ["clipboard_pen"]
-      visible: false
-    - state: clipboard_over
-  - type: Item
-    sprite: Objects/Misc/cc-clipboard.rsi
-    size: Small
-  - type: Clothing
-    slots: [belt]
-    quickEquip: false
-    sprite: Objects/Misc/cc-clipboard.rsi
 
 - type: entity
   id: BoxFolderQmClipboard
@@ -601,7 +610,7 @@
   - type: ItemSlots
     slots:
       pen_slot:
-        name: Pen
+        name: clipboard-slot-component-slot-name-pen
         whitelist:
           tags:
             - Write

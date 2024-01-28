@@ -52,16 +52,16 @@ public sealed partial class StoreSystem
         UpdateUserInterface(user, storeEnt, component);
     }
 
-    /// <summary>
-    /// Closes the store UI for everyone, if it's open
-    /// </summary>
-    public void CloseUi(EntityUid uid, StoreComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        _ui.TryCloseAll(uid, StoreUiKey.Key);
-    }
+    // /// <summary>
+    // /// Closes the store UI for everyone, if it's open
+    // /// </summary>
+    // public void CloseUi(EntityUid uid, StoreComponent? component = null)
+    // {
+    //     if (!Resolve(uid, ref component))
+    //         return;
+    //
+    //     _ui.TryCloseAll(uid, StoreUiKey.Key);
+    // }
 
     /// <summary>
     /// Updates the user interface for a store and refreshes the listings
@@ -173,7 +173,7 @@ public sealed partial class StoreSystem
         //broadcast event
         if (listing.ProductEvent != null)
         {
-            RaiseLocalEvent(listing.ProductEvent);
+            RaiseLocalEvent(buyer, listing.ProductEvent);
         }
 
         //log dat shit.
@@ -182,6 +182,14 @@ public sealed partial class StoreSystem
 
         listing.PurchaseAmount++; //track how many times something has been purchased
         _audio.PlayEntity(component.BuySuccessSound, msg.Session, uid); //cha-ching!
+
+        //WD START
+        if (listing.SaleLimit != 0 && listing.SaleAmount > 0 && listing.PurchaseAmount >= listing.SaleLimit)
+        {
+            listing.SaleAmount = 0;
+            listing.Cost = listing.OldCost;
+        }
+        //WD END
 
         UpdateUserInterface(buyer, uid, component);
     }
@@ -225,5 +233,13 @@ public sealed partial class StoreSystem
 
         component.Balance[msg.Currency] -= msg.Amount;
         UpdateUserInterface(buyer, uid, component);
+    }
+
+    public void CloseUi(EntityUid user, StoreComponent component)
+    {
+        if (!TryComp<ActorComponent>(user, out var actor))
+            return;
+
+        _ui.TryClose(component.Owner, StoreUiKey.Key, actor.PlayerSession);
     }
 }

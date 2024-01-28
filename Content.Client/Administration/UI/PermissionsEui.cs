@@ -131,6 +131,8 @@ namespace Content.Client.Administration.UI
 
             var title = string.IsNullOrWhiteSpace(popup.TitleEdit.Text) ? null : popup.TitleEdit.Text;
 
+            var adminServer = string.IsNullOrWhiteSpace(popup.ServerNameEdit.Text) ? "unknown" : popup.ServerNameEdit.Text;
+
             if (popup.SourceData is { } src)
             {
                 SendMessage(new UpdateAdmin
@@ -139,7 +141,8 @@ namespace Content.Client.Administration.UI
                     Title = title,
                     PosFlags = pos,
                     NegFlags = neg,
-                    RankId = rank
+                    RankId = rank,
+                    AdminServer = adminServer
                 });
             }
             else
@@ -152,7 +155,8 @@ namespace Content.Client.Administration.UI
                     Title = title,
                     PosFlags = pos,
                     NegFlags = neg,
-                    RankId = rank
+                    RankId = rank,
+                    AdminServer = adminServer
                 });
             }
 
@@ -251,6 +255,11 @@ namespace Content.Client.Administration.UI
                     HorizontalAlignment = Control.HAlignment.Center,
                 });
 
+                al.AddChild(new Label
+                {
+                    Text = admin.AdminServer,
+                });
+
                 var editButton = new Button { Text = Loc.GetString("permissions-eui-edit-title-button") };
                 editButton.OnPressed += _ => OnEditPressed(admin);
                 al.AddChild(editButton);
@@ -278,7 +287,7 @@ namespace Content.Client.Administration.UI
                 editButton.OnPressed += _ => OnEditRankPressed(kv);
                 _menu.AdminRanksList.AddChild(editButton);
 
-                if (!_adminManager.HasFlag(rank.Flags))
+                if (rank.Flags != AdminFlags.Host && !_adminManager.HasFlag(AdminFlags.Permissions) || rank.Flags == AdminFlags.Host && !_adminManager.HasFlag(AdminFlags.Host))
                 {
                     editButton.Disabled = true;
                     editButton.ToolTip = Loc.GetString("permissions-eui-do-not-have-required-flags-to-edit-rank-tooltip");
@@ -318,7 +327,7 @@ namespace Content.Client.Administration.UI
                     HorizontalAlignment = HAlignment.Right
                 };
 
-                AdminsList = new GridContainer { Columns = 5, VerticalExpand = true };
+                AdminsList = new GridContainer { Columns = 6, VerticalExpand = true };
                 var adminVBox = new BoxContainer
                 {
                     Orientation = LayoutOrientation.Vertical,
@@ -351,6 +360,7 @@ namespace Content.Client.Administration.UI
             public readonly OptionButton RankButton;
             public readonly Button SaveButton;
             public readonly Button? RemoveButton;
+            public readonly LineEdit ServerNameEdit;
 
             public readonly Dictionary<AdminFlags, (Button inherit, Button sub, Button plus)> FlagButtons
                 = new();
@@ -380,6 +390,7 @@ namespace Content.Client.Administration.UI
                 TitleEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-title-edit-placeholder") };
                 RankButton = new OptionButton();
                 SaveButton = new Button { Text = Loc.GetString("permissions-eui-edit-admin-window-save-button"), HorizontalAlignment = HAlignment.Right };
+                ServerNameEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-server-edit-placeholder") };
 
                 RankButton.AddItem(Loc.GetString("permissions-eui-edit-admin-window-no-rank-button"), NoRank);
                 foreach (var (rId, rank) in ui._ranks)
@@ -401,7 +412,15 @@ namespace Content.Client.Administration.UI
                 {
                     // Can only grant out perms you also have yourself.
                     // Primarily intended to prevent people giving themselves +HOST with +PERMISSIONS but generalized.
-                    var disable = !ui._adminManager.HasFlag(flag);
+                    bool disable;
+                    if (flag != AdminFlags.Host)
+                    {
+                        disable = !ui._adminManager.HasFlag(AdminFlags.Permissions);
+                    }
+                    else
+                    {
+                        disable = !ui._adminManager.HasFlag(AdminFlags.Host);
+                    }
                     var flagName = flag.ToString().ToUpper();
 
                     var group = new ButtonGroup();
@@ -488,6 +507,7 @@ namespace Content.Client.Administration.UI
                                     {
                                         nameControl,
                                         TitleEdit,
+                                        ServerNameEdit,
                                         RankButton
                                     }
                                 },

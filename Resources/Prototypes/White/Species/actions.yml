@@ -1,0 +1,33 @@
+- type: entity
+  id: EatMouse
+  name: Eat mouse
+  description: Eat the mouse in your hand, receiving nutrients and a hairball charge.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: White/Icons/verbiconfangs.png
+    event: !type:EatMouseActionEvent
+
+- type: entity
+  id: HairballAction
+  name: Cough up a hairball.
+  description: People don't like that.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: White/Specific/Species/felinid.rsi
+      state: icon
+    event: !type:HairballActionEvent
+    charges: 1
+    useDelay: 30
+
+- type: entity
+  id: SelfHealAction
+  name: Lick wounds.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      event: !type:SelfHealEvent
+      icon: White/Icons/tongue.png
+      itemIconStyle: BigAction

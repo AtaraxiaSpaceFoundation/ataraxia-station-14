@@ -27,6 +27,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         SubscribeLocalEvent<VoiceMaskerComponent, GotUnequippedEvent>(OnUnequip);
         SubscribeLocalEvent<VoiceMaskSetNameEvent>(OnSetName);
         // SubscribeLocalEvent<VoiceMaskerComponent, GetVerbsEvent<AlternativeVerb>>(GetVerbs);
+        InitializeTTS();
     }
 
     private void OnSetName(VoiceMaskSetNameEvent ev)
@@ -66,6 +67,8 @@ public sealed partial class VoiceMaskSystem : EntitySystem
                 */
 
             args.Name = component.VoiceName;
+            if (component.SpeechVerb != null)
+                args.SpeechVerb = component.SpeechVerb;
         }
     }
 
@@ -93,6 +96,6 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         }
 
         if (_uiSystem.TryGetUi(owner, VoiceMaskUIKey.Key, out var bui))
-            _uiSystem.SetUiState(bui, new VoiceMaskBuiState(component.VoiceName));
+            _uiSystem.SetUiState(bui, new VoiceMaskBuiState(component.VoiceName, component.VoiceId));
     }
 }

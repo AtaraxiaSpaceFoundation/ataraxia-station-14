@@ -1,12 +1,14 @@
 using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceLinking.Events;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.UserInterface;
 using Content.Shared.Access.Systems;
 using Content.Shared.MachineLinking;
+using Content.Shared.Radio;
 using Content.Shared.TextScreen;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.DeviceLinking.Systems;
@@ -19,11 +21,13 @@ public sealed class SignalTimerSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
+    [Dependency] private readonly RadioSystem _radioSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     /// <summary>
     /// Per-tick timer cache.
     /// </summary>
-    private List<Entity<SignalTimerComponent>> _timers = new();
+    private readonly List<Entity<SignalTimerComponent>> _timers = new();
 
     public override void Initialize()
     {
@@ -44,7 +48,10 @@ public sealed class SignalTimerSystem : EntitySystem
         _signalSystem.EnsureSinkPorts(uid, component.Trigger);
     }
 
-    private void OnAfterActivatableUIOpen(EntityUid uid, SignalTimerComponent component, AfterActivatableUIOpenEvent args)
+    private void OnAfterActivatableUIOpen(
+        EntityUid uid,
+        SignalTimerComponent component,
+        AfterActivatableUIOpenEvent args)
     {
         var time = TryComp<ActiveSignalTimerComponent>(uid, out var active) ? active.TriggerTime : TimeSpan.Zero;
 
@@ -70,6 +77,14 @@ public sealed class SignalTimerSystem : EntitySystem
         if (TryComp<AppearanceComponent>(uid, out var appearance))
         {
             _appearanceSystem.SetData(uid, TextScreenVisuals.ScreenText, new[] { signalTimer.Label }, appearance);
+        }
+
+        var announceMessage = signalTimer.Label;
+        if (string.IsNullOrWhiteSpace(announceMessage)) { announceMessage = Loc.GetString("label-none"); }
+
+        if (signalTimer.TimerCanAnnounce)
+        {
+            Report(uid, SignalTimerComponent.SecChannel, "timer-end-announcement", ("Label", announceMessage));
         }
 
         _audio.PlayPvs(signalTimer.DoneSound, uid);
@@ -120,15 +135,12 @@ public sealed class SignalTimerSystem : EntitySystem
     ///     Checks if a UI <paramref name="message"/> is allowed to be sent by the user.
     /// </summary>
     /// <param name="uid">The entity that is interacted with.</param>
-    private bool IsMessageValid(EntityUid uid, BoundUserInterfaceMessage message)
+    private bool IsMessageValid(EntityUid uid, BaseBoundUserInterfaceEvent message)
     {
         if (message.Session.AttachedEntity is not { Valid: true } mob)
             return false;
 
-        if (!_accessReader.IsAllowed(mob, uid))
-            return false;
-
-        return true;
+        return _accessReader.IsAllowed(mob, uid);
     }
 
     /// <summary>
@@ -143,14 +155,17 @@ public sealed class SignalTimerSystem : EntitySystem
         component.Label = args.Text[..Math.Min(5, args.Text.Length)];
 
         if (!HasComp<ActiveSignalTimerComponent>(uid))
-            _appearanceSystem.SetData(uid, TextScreenVisuals.ScreenText, new string?[] { component.Label });
+            _appearanceSystem.SetData(uid, TextScreenVisuals.ScreenText, new[] { component.Label });
     }
 
     /// <summary>
     ///     Called by <see cref="SignalTimerDelayChangedMessage"/> to change the <see cref="SignalTimerComponent"/>
     ///     delay, and propagate that change to a textscreen.
     /// </summary>
-    private void OnDelayChangedMessage(EntityUid uid, SignalTimerComponent component, SignalTimerDelayChangedMessage args)
+    private void OnDelayChangedMessage(
+        EntityUid uid,
+        SignalTimerComponent component,
+        SignalTimerDelayChangedMessage args)
     {
         if (!IsMessageValid(uid, args))
             return;
@@ -167,6 +182,7 @@ public sealed class SignalTimerSystem : EntitySystem
     {
         if (!IsMessageValid(uid, args))
             return;
+
         OnStartTimer(uid, component);
     }
 
@@ -191,5 +207,26 @@ public sealed class SignalTimerSystem : EntitySystem
         }
 
         _signalSystem.InvokePort(uid, component.StartPort);
+
+        var announceMessage = component.Label;
+        if (string.IsNullOrWhiteSpace(announceMessage)) { announceMessage = Loc.GetString("label-none"); }
+
+        //sorry, skill issue
+        var time = TimeSpan.FromSeconds(component.Delay);
+        var timeFormatted =
+            $"{(time.Duration().Hours > 0 ? $"{time.Hours:0} час;{(time.Hours == 1 ? string.Empty : "ов")} " : string.Empty)}{(time.Duration().Minutes > 0 ? $"{time.Minutes:0} минут;{(time.Minutes != 1 ? string.Empty : "а")} " : string.Empty)}{(time.Duration().Seconds > 0 ? $"{time.Seconds:0} секунд{(time.Seconds != 1 ? string.Empty : "а")} " : string.Empty)}";
+
+        if (component.TimerCanAnnounce)
+        {
+            Report(uid, SignalTimerComponent.SecChannel, "timer-start-announcement", ("Label", announceMessage),
+                ("Time", timeFormatted));
+        }
+    }
+
+    private void Report(EntityUid source, string channelName, string messageKey, params (string, object)[] args)
+    {
+        var message = args.Length == 0 ? Loc.GetString(messageKey) : Loc.GetString(messageKey, args);
+        var channel = _prototypeManager.Index<RadioChannelPrototype>(channelName);
+        _radioSystem.SendRadioMessage(source, message, channel, source);
     }
 }

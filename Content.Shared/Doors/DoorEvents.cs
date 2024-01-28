@@ -37,10 +37,12 @@ namespace Content.Shared.Doors
     public sealed class BeforeDoorClosedEvent : CancellableEntityEventArgs
     {
         public bool PerformCollisionCheck;
+        public EntityUid? User; // WD ADDED
 
-        public BeforeDoorClosedEvent(bool performCollisionCheck)
+        public BeforeDoorClosedEvent(bool performCollisionCheck, EntityUid? user)
         {
             PerformCollisionCheck = performCollisionCheck;
+            User = user; // WD ADDED
         }
     }
 

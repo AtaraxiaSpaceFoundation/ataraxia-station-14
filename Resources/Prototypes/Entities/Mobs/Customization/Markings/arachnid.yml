@@ -1,3 +1,30 @@
+# Eyes
+- type: marking
+  id: ArachnidEyesAngry
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Arachnid]
+  sprites:
+  - sprite: White/Mobs/Customization/Arachnid/eyes.rsi
+    state: angry
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+
+- type: marking
+  id: ArachnidEyesNormal
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Arachnid]
+  sprites:
+  - sprite: White/Mobs/Customization/Arachnid/eyes.rsi
+    state: normal
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+
 # Chelicerae
 - type: marking
   id: ArachnidCheliceraeDownwards
@@ -116,6 +143,17 @@
     state: freaky_primary
   - sprite: Mobs/Customization/Arachnid/appendages.rsi
     state: freaky_secondary
+
+- type: marking
+  id: ArachnidAppendagesSharpAlt
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Arachnid]
+  sprites:
+  - sprite: White/Mobs/Customization/Arachnid/appendages.rsi
+    state: web
+  - sprite: White/Mobs/Customization/Arachnid/appendages.rsi
+    state: sharp_alt
 
 # Chest
 - type: marking
@@ -321,7 +359,7 @@
   markingCategory: Legs
   speciesRestriction: [Arachnid]
   sprites:
-  - sprite: Mobs/Customization/Arachnid/legs.rsi
+  - sprite: White/Mobs/Customization/Arachnid/legs.rsi
     state: stripes_right
   coloring:
     default:
@@ -334,7 +372,7 @@
   markingCategory: Legs
   speciesRestriction: [Arachnid]
   sprites:
-  - sprite: Mobs/Customization/Arachnid/legs.rsi
+  - sprite: White/Mobs/Customization/Arachnid/legs.rsi
     state: stripes_left
   coloring:
     default:

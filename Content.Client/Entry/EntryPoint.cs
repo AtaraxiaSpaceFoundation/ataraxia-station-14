@@ -1,3 +1,9 @@
+using Content.Client._White.JoinQueue;
+using Content.Client._White.Jukebox;
+using Content.Client._White.Reputation;
+using Content.Client._White.Sponsors;
+using Content.Client._White.Stalin;
+using Content.Client._White.TTS;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -71,6 +77,15 @@ namespace Content.Client.Entry
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
 
+        //WD-EDIT
+        [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        [Dependency] private readonly JoinQueueManager _queueManager = default!;
+        [Dependency] private readonly StalinManager _stalinManager = default!;
+        [Dependency] private readonly ClientJukeboxSongsSyncManager _jukeboxSyncManager = default!;
+        [Dependency] private readonly TTSManager _ttsManager = default!;
+        [Dependency] private readonly ReputationManager _reputationManager = default!;
+        //WD-EDIT
+
         public override void Init()
         {
             ClientContentIoC.Register();
@@ -121,6 +136,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("alertLevels");
             _prototypeManager.RegisterIgnore("nukeopsRole");
 
+            //WD-EDIT
+            _prototypeManager.RegisterIgnore("loadout");
+            //WD-EDIT
+
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
             _screenshotHook.Initialize();
@@ -132,6 +151,10 @@ namespace Content.Client.Entry
             _extendedDisconnectInformation.Initialize();
             _jobRequirements.Initialize();
             _playbackMan.Initialize();
+
+            //WD-EDIT
+            _stalinManager.Initialize();
+            //WD-EDIT
 
             //AUTOSCALING default Setup!
             _configManager.SetCVar("interface.resolutionAutoScaleUpperCutoffX", 1080);
@@ -162,6 +185,14 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _documentParsingManager.Initialize();
+
+            //WD-EDIT
+            _sponsorsManager.Initialize();
+            _queueManager.Initialize();
+            _jukeboxSyncManager.Initialize();
+            _ttsManager.Initialize();
+            _reputationManager.Initialize();
+            //WD-EDIT
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

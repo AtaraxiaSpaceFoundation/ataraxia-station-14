@@ -1,0 +1,30 @@
+﻿#IMercuryI
+- type: marking
+  id: FoxEarsIMercuryI
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Human, Felinid]
+  sponsorOnly: true
+  sprites:
+    - sprite: White/Mobs/Customization/imercuryi.rsi
+      state: fox_ears
+
+- type: marking
+  id: FoxTailIMercuryI
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human, Felinid]
+  sponsorOnly: true
+  sprites:
+    - sprite: White/Mobs/Customization/imercuryi.rsi
+      state: fox_tail
+
+- type: marking
+  id: FoxTailWaggingIMercuryI
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human, Felinid]
+  sponsorOnly: true
+  sprites:
+    - sprite: White/Mobs/Customization/imercuryi.rsi
+      state: fox_tail_wagging

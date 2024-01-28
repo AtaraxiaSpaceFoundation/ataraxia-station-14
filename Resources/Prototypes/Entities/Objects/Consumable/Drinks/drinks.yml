@@ -35,12 +35,22 @@
     interfaces:
     - key: enum.TransferAmountUiKey.Key
       type: TransferAmountBoundUserInterface
+  - type: StaticPrice
+    price: 30
 
 - type: entity
   parent: DrinkBase
   id: DrinkGlassBase
   abstract: true
   components:
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/drinkglass_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/drinkglass_drop.ogg
+  # WD edit sounds end
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
@@ -109,7 +119,7 @@
   - type: TransformableContainer
 
 - type: entity
-  name: Coupe glass
+  name: coupe glass
   description: A classic thin neck coupe glass, the icon of fragile labels on crates around the galaxy.
   parent: DrinkGlassBase
   id: DrinkGlassCoupeShaped
@@ -702,7 +712,7 @@
 - type: entity
   parent: DrinkGlassBase
   id: DrinkFourteenLokoGlass
-  name: Fourteen loko glass
+  name: Fourteen Loko glass
   description: This is a container of Fourteen Loko, it appears to be of the highest quality. The drink, not the container.
   components:
   - type: SolutionContainerManager
@@ -736,7 +746,7 @@
 - type: entity
   parent: DrinkGlassBase
   id: DrinkGinGlass
-  name: Gin
+  name: gin
   description: Crystal clear Griffeater gin.
   components:
   - type: SolutionContainerManager
@@ -1052,7 +1062,7 @@
 - type: entity
   parent: DrinkGlassBase
   id: DrinkCoffeeLiqueurGlass
-  name: Coffee Liqueur glass
+  name: coffee liqueur glass
   description: DAMN, THIS THING LOOKS ROBUST
   components:
   - type: SolutionContainerManager
@@ -2210,3 +2220,20 @@
               Quantity: 30
     - type: Sprite
       sprite: Objects/Consumable/Drinks/bloodglass.rsi
+
+
+- type: entity
+  parent: DrinkGlassBase
+  id: DrinkKvassGlass
+  name: kvass glass
+  description: A cool refreshing drink with a taste of socialism.
+  components:
+    - type: SolutionContainerManager
+      solutions:
+        drink:
+          maxVol: 30
+          reagents:
+            - ReagentId: Kvass
+              Quantity: 30
+    - type: Sprite
+      sprite: Objects/Consumable/Drinks/kvass.rsi

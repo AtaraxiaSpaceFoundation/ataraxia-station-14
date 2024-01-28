@@ -6,6 +6,11 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Satchels/satchel.rsi
+  - type: Storage
+    grid:
+    - 0,0,1,3
+    - 3,0,6,3
+    - 8,0,9,3
 
 - type: entity
   parent: ClothingBackpackSatchel
@@ -15,6 +20,15 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Satchels/leather.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelInspector
+  name: inspector's leather satchel
+  description: A stylish leather bag made from the skin of those who failed to do their job. It's best not to even try to find out what's inside.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Satchels/inspector.rsi
 
 - type: entity
   parent: ClothingBackpackSatchel

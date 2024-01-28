@@ -188,3 +188,17 @@
   - type: Construction
     graph: WebObjects
     node: boots
+
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesBootsInspector
+  name: inspector's boots
+  description: High, heavy leather inspector's boots. They look shiny and face-beating!
+  components:
+    - type: Sprite
+      sprite: Clothing/Shoes/Boots/inspector.rsi
+    - type: Clothing
+      sprite: Clothing/Shoes/Boots/inspector.rsi
+    - type: FootstepModifier
+      footstepSoundCollection:
+        collection: FootstepHeavy

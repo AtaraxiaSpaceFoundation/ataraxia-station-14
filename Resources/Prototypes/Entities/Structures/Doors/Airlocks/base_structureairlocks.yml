@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: Airlock
   parent: BaseStructure
   name: airlock
@@ -27,7 +27,7 @@
     - state: emergency_unlit
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
       shader: unshaded
-    - state: panel_open
+    - state: panel_closed
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AnimationPlayer
   - type: Physics
@@ -64,6 +64,8 @@
   - type: Weldable
     time: 3
   - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
   - type: DoorBolt
   - type: Appearance
   - type: WiresVisuals
@@ -117,6 +119,10 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      # TODO this should go to the broken node first
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
   - type: Construction
     graph: Airlock
     node: airlock
@@ -124,9 +130,6 @@
     - board
   - type: PlacementReplacement
     key: walls
-  - type: IconSmooth
-    key: walls
-    mode: NoSprite
   - type: PaintableAirlock
     group: Standard
   - type: AccessReader
@@ -139,6 +142,7 @@
       - Airlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
   - type: PryUnpowered
+  - type: ReflectAspectMark
   placement:
     mode: SnapgridCenter
 

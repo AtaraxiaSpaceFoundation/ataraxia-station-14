@@ -1,0 +1,44 @@
+# Using EmoteAnimation from IC action chat
+- type: emote
+  id: EmoteFlip
+  category: Hands
+  buttonText: Сальто
+  chatMessages: [делает сальто]
+  chatTriggers:
+    - сделал сальто
+    - сделала сальто
+    - делает сальто
+    - устроила сальто
+    - устроил сальто
+    - ебанул сальтуху
+    - ебанула сальтуху
+    - ебашит сальтуху
+  allowMenu: true
+
+- type: emote
+  id: EmoteJump
+  category: Hands
+  buttonText: Прыгнуть
+  chatMessages: [прыгает]
+  chatTriggers:
+    - прыгает
+    - прыгнула
+    - прыгнул
+    - подпрыгнул
+    - подпрыгнула
+    - подскакивает
+  allowMenu: true
+
+- type: emote
+  id: EmoteTurn
+  category: Hands
+  buttonText: Танцевать
+  chatMessages: [танцует]
+  chatTriggers:
+    - танцует
+    - кружится
+    - оборачивается
+    - танцует
+    - покружилась
+    - покружился
+  allowMenu: true

@@ -3,6 +3,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Power.EntitySystems;
+using Content.Server._White.Cult.Structures;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
@@ -156,7 +157,7 @@ public sealed class DoorSystem : SharedDoorSystem
     {
         if (TryComp<AirlockComponent>(uid, out var airlockComponent))
         {
-            if (_bolts.IsBolted(uid) || !this.IsPowered(uid, EntityManager))
+            if (_bolts.IsBolted(uid) || !this.IsPowered(uid, EntityManager) && !HasComp<RunicDoorComponent>(uid)) // WD EDIT
                 return;
 
             if (door.State == DoorState.Closed)

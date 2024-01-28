@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Afk.Events;
 using Content.Server.GameTicking;
@@ -31,6 +32,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly MindSystem _minds = default!;
     [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!;
 
     public override void Initialize()
     {
@@ -157,14 +159,26 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         _tracking.QueueSendTimers(ev.PlayerSession);
     }
 
+    private bool IsBypassingChecks(ICommonSession player)
+    {
+        return _adminManager.IsAdmin(player, true);
+    }
+
     public bool IsAllowed(ICommonSession player, string role)
     {
+        if (IsBypassingChecks(player))
+            return true;
+
         if (!_prototypes.TryIndex<JobPrototype>(role, out var job) ||
             job.Requirements == null ||
             !_cfg.GetCVar(CCVars.GameRoleTimers))
             return true;
 
-        var playTimes = _tracking.GetTrackerTimes(player);
+        if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
+        {
+            Log.Error($"Unable to check playtimes {Environment.StackTrace}");
+            playTimes = new Dictionary<string, TimeSpan>();
+        }
 
         return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes);
     }
@@ -172,10 +186,18 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
     public HashSet<string> GetDisallowedJobs(ICommonSession player)
     {
         var roles = new HashSet<string>();
+
+        if (IsBypassingChecks(player))
+            return roles;
+
         if (!_cfg.GetCVar(CCVars.GameRoleTimers))
             return roles;
 
-        var playTimes = _tracking.GetTrackerTimes(player);
+        if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
+        {
+            Log.Error($"Unable to check playtimes {Environment.StackTrace}");
+            playTimes = new Dictionary<string, TimeSpan>();
+        }
 
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
@@ -202,7 +224,11 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         if (!_cfg.GetCVar(CCVars.GameRoleTimers))
             return;
 
-        var player = _playerManager.GetSessionByUserId(userId);
+        var player = _playerManager.GetSessionById(userId);
+
+        if (IsBypassingChecks(player))
+            return;
+
         if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
         {
             // Sorry mate but your playtimes haven't loaded.

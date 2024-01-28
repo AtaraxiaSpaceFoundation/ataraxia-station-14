@@ -35,7 +35,7 @@
         tags:
         - Write
     idSlot:
-      name: ID Card
+      name: access-id-card-component-default
       ejectSound: /Audio/Machines/id_swipe.ogg
       insertSound: /Audio/Machines/id_insert.ogg
       whitelist:
@@ -75,9 +75,10 @@
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NewsReadCartridge
+      - BankCartridge
     cartridgeSlot:
       priority: -1
-      name: Cartridge
+      name: device-pda-slot-component-slot-name-cartridge
       ejectSound: /Audio/Machines/id_swipe.ogg
       insertSound: /Audio/Machines/id_insert.ogg
       whitelist:
@@ -99,8 +100,6 @@
       type: InstrumentBoundUserInterface
     - key: enum.HealthAnalyzerUiKey.Key
       type: HealthAnalyzerBoundUserInterface
-  - type: CrewManifestViewer
-    unsecure: true
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -412,6 +411,18 @@
     borderColor: "#6f6192"
   - type: Icon
     state: pda-lawyer
+
+#WHITE
+- type: entity
+  parent: BasePDA
+  id: InspectorPDA
+  name: inspector PDA
+  description: For inspectors to inspect.
+  components:
+  - type: Pda
+    id: InspectorIDCard
+    state: pda-inspector
+
 
 - type: entity
   parent: BasePDA

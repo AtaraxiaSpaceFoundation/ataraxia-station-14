@@ -1,0 +1,47 @@
+- type: statusIcon
+  id: CriminalRecordIcon
+  abstract: true
+  priority: 3
+  locationPreference: Right
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconReleased
+  icon:
+    sprite: White/Interface/records.rsi
+    state: released
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconDischarged
+  icon:
+    sprite: White/Interface/records.rsi
+    state: discharged
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconParolled
+  icon:
+    sprite: White/Interface/records.rsi
+    state: parolled
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconSuspected
+  icon:
+    sprite: White/Interface/records.rsi
+    state: suspected
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconWanted
+  icon:
+    sprite: White/Interface/records.rsi
+    state: wanted
+
+- type: statusIcon
+  parent: CriminalRecordIcon
+  id: CriminalRecordIconIncarcerated
+  icon:
+    sprite: White/Interface/records.rsi
+    state: incarcerated

@@ -57,7 +57,7 @@ namespace Content.Client.Preferences.UI
             var back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = new Color(37, 37, 42)
+                Modulate = new Color(37, 42, 37)
             };
             back.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -118,6 +118,7 @@ namespace Content.Client.Preferences.UI
                 Loc.GetString("character-setup-gui-create-new-character-button-tooltip",
                 ("maxCharacters", _preferencesManager.Settings!.MaxCharacterSlots));
 
+            var isDisplayedMaxSlots = false;
             foreach (var (slot, character) in _preferencesManager.Preferences!.Characters)
             {
                 if (character is null)
@@ -126,6 +127,9 @@ namespace Content.Client.Preferences.UI
                 }
 
                 numberOfFullSlots++;
+
+                isDisplayedMaxSlots = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
+
                 var characterPickerButton = new CharacterPickerButton(_entityManager,
                     _preferencesManager,
                     _prototypeManager,
@@ -143,10 +147,10 @@ namespace Content.Client.Preferences.UI
                     UpdateUI();
                     args.Event.Handle();
                 };
+                characterPickerButton.Disabled = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots + 1;
             }
 
-            _createNewCharacterButton.Disabled =
-                numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
+            _createNewCharacterButton.Disabled = isDisplayedMaxSlots;
             Characters.AddChild(_createNewCharacterButton);
         }
 

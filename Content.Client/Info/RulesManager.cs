@@ -1,3 +1,4 @@
+using Content.Client._White.Rules;
 using Content.Client.Lobby;
 using Content.Client.Gameplay;
 using Content.Shared.CCVar;
@@ -100,6 +101,6 @@ public sealed class RulesManager : SharedRulesManager
     {
         rulesSection = new InfoSection("", "", false);
         UpdateRules();
-        return rulesSection;
+        return new RulesWikiSection(); // WD EDIT
     }
 }

@@ -1,11 +1,14 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._White.Sponsors;
+using Content.Client.Administration.Managers;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
+using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -26,6 +29,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
+using Robust.Shared.Log;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -42,7 +46,7 @@ namespace Content.Client.Preferences.UI
         {
             PanelOverride = new StyleBoxFlat()
             {
-                BackgroundColor = new Color(47, 47, 53),
+                BackgroundColor = new Color(35, 48, 35),
                 ContentMarginTopOverride = 10,
                 ContentMarginBottomOverride = 10,
                 ContentMarginLeftOverride = 10,
@@ -54,6 +58,12 @@ namespace Content.Client.Preferences.UI
     [GenerateTypedNameReferences]
     public sealed partial class HumanoidProfileEditor : Control
     {
+
+        //WD-EDIT
+        private readonly SponsorsManager _sponsorsManager;
+        private readonly IClientAdminManager _adminManager;
+        //WD-EDIT
+
         private readonly IClientPreferencesManager _preferencesManager;
         private readonly IEntityManager _entMan;
         private readonly IConfigurationManager _configurationManager;
@@ -63,12 +73,24 @@ namespace Content.Client.Preferences.UI
         private LineEdit _ageEdit => CAgeEdit;
         private LineEdit _nameEdit => CNameEdit;
         private TextEdit _flavorTextEdit = null!;
+        private LineEdit _nameClownEdit => CClownNameEdit;
+        private LineEdit _nameMimeEdit => CMimeNameEdit;
+        private LineEdit _nameBorgEdit => CBorgNameEdit;
         private Button _nameRandomButton => CNameRandomize;
+        private Button _nameClownRandomButton => CClownNameRandomize;
+        private Button _nameMimeRandomButton => CMimeNameRandomize;
+       private Button _nameBorgRandomButton => CBorgNameRandomize;
         private Button _randomizeEverythingButton => CRandomizeEverything;
         private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
         private OptionButton _genderButton => CPronounsButton;
+
+        //WD-EDIT
+        private OptionButton _voiceButton => CVoiceButton;
+        private Button _voicePlayButton => CVoicePlayButton;
+        //WD-EDIT
+
         private Slider _skinColor => CSkin;
         private OptionButton _clothingButton => CClothingButton;
         private OptionButton _backpackButton => CBackpackButton;
@@ -109,6 +131,8 @@ namespace Content.Client.Preferences.UI
             IEntityManager entityManager, IConfigurationManager configurationManager)
         {
             RobustXamlLoader.Load(this);
+            _sponsorsManager = IoCManager.Resolve<SponsorsManager>();
+            _adminManager = IoCManager.Resolve<IClientAdminManager>();
             _prototypeManager = prototypeManager;
             _entMan = entityManager;
             _preferencesManager = preferencesManager;
@@ -124,7 +148,13 @@ namespace Content.Client.Preferences.UI
             #region Name
 
             _nameEdit.OnTextChanged += args => { SetName(args.Text); };
+            _nameClownEdit.OnTextChanged += args => { SetClownName(args.Text); };
+            _nameMimeEdit.OnTextChanged += args => { SetMimeName(args.Text); };
+            _nameBorgEdit.OnTextChanged += args => { SetBorgName(args.Text); };
             _nameRandomButton.OnPressed += args => RandomizeName();
+            _nameClownRandomButton.OnPressed += args => RandomizeClownName();
+            _nameMimeRandomButton.OnPressed += args => RandomizeMimeName();
+            _nameBorgRandomButton.OnPressed += args => RandomizeBorgName();
             _randomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
             _warningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
 
@@ -172,12 +202,25 @@ namespace Content.Client.Preferences.UI
 
             #endregion Gender
 
+            //TTS-Start
+            #region Voice
+
+            InitializeVoice();
+
+            #endregion
+            //TTS-End
+
             #region Species
 
-            _speciesList = prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart).ToList();
+            //WD EDIT
+            _speciesList = GetAllowedSpecies();
+            //WD EDIT END
+
             for (var i = 0; i < _speciesList.Count; i++)
             {
-                var name = Loc.GetString(_speciesList[i].Name);
+                var specie = _speciesList[i]; // WD EDIT
+                var name = Loc.GetString(specie.Name);
+
                 CSpeciesButton.AddItem(name, i);
             }
 
@@ -523,7 +566,12 @@ namespace Content.Client.Preferences.UI
             _jobCategories.Clear();
             var firstCategory = true;
 
-            foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())
+            var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>()
+                .OrderByDescending(department => department.Weight)
+                .ThenBy(department => Loc.GetString($"department-{department.ID}"))
+                .ToList();
+
+            foreach (var department in departments)
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
 
@@ -567,8 +615,11 @@ namespace Content.Client.Preferences.UI
                     _jobList.AddChild(category);
                 }
 
-                var jobs = department.Roles.Select(o => _prototypeManager.Index<JobPrototype>(o)).Where(o => o.SetPreference).ToList();
-                jobs.Sort((x, y) => -string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCultureIgnoreCase));
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                    .Where(job => job.SetPreference)
+                    .OrderByDescending(job => job.Weight)
+                    .ThenBy(job => job.LocalizedName)
+                    .ToList();
 
                 foreach (var job in jobs)
                 {
@@ -604,6 +655,11 @@ namespace Content.Client.Preferences.UI
                     };
 
                 }
+            }
+
+            if (Profile is not null)
+            {
+                UpdateJobPriorities();
             }
         }
 
@@ -748,8 +804,17 @@ namespace Content.Client.Preferences.UI
             }
             UpdateGenderControls();
             CMarkings.SetSex(newSex);
+            UpdateTTSVoicesControls(); //WD-EDIT
             IsDirty = true;
         }
+
+        //WD-EDIT
+        private void SetVoice(string newVoice)
+        {
+            Profile = Profile?.WithVoice(newVoice);
+            IsDirty = true;
+        }
+        //WD-EDIT
 
         private void SetGender(Gender newGender)
         {
@@ -771,6 +836,24 @@ namespace Content.Client.Preferences.UI
         private void SetName(string newName)
         {
             Profile = Profile?.WithName(newName);
+            IsDirty = true;
+        }
+
+        private void SetClownName(string newName)
+        {
+            Profile = Profile?.WithClownName(newName);
+            IsDirty = true;
+        }
+
+        private void SetMimeName(string newName)
+        {
+            Profile = Profile?.WithMimeName(newName);
+            IsDirty = true;
+        }
+
+        private void SetBorgName(string newName)
+        {
+            Profile = Profile?.WithBorgName(newName);
             IsDirty = true;
         }
 
@@ -809,9 +892,12 @@ namespace Content.Client.Preferences.UI
             }
         }
 
-        private void UpdateNameEdit()
+        private void UpdateNamesEdit()
         {
             _nameEdit.Text = Profile?.Name ?? "";
+            _nameClownEdit.Text = Profile?.ClownName ?? "";
+            _nameMimeEdit.Text = Profile?.MimeName ?? "";
+            _nameBorgEdit.Text = Profile?.BorgName ?? "";
         }
 
         private void UpdateFlavorTextEdit()
@@ -927,6 +1013,8 @@ namespace Content.Client.Preferences.UI
             {
                 return;
             }
+
+            var species = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>();
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
@@ -1091,8 +1179,10 @@ namespace Content.Client.Preferences.UI
 
         public void UpdateControls()
         {
-            if (Profile is null) return;
-            UpdateNameEdit();
+            if (Profile is null)
+                return;
+
+            UpdateNamesEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();
             UpdateGenderControls();
@@ -1112,6 +1202,10 @@ namespace Content.Client.Preferences.UI
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
 
+            //WD-EDIT
+            UpdateTTSVoicesControls();
+            //WD-EDIT
+
             _preferenceUnavailableButton.SelectId((int) Profile.PreferenceUnavailable);
         }
 
@@ -1125,6 +1219,54 @@ namespace Content.Client.Preferences.UI
                 _needUpdatePreview = false;
             }
         }
+
+        //WD EDIT
+        private List<SpeciesPrototype> GetAllowedSpecies()
+        {
+            var allowedSpecies = new List<SpeciesPrototype>();
+
+            var rawSpecieList = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>()
+                .Where((specie) =>
+                {
+                    if (specie.RoundStart && (specie.SponsorOnly || specie.ForAdmins))
+                    {
+                        return true;
+                    }
+                    else if (specie.RoundStart)
+                    {
+                        allowedSpecies.Add(specie);
+                        return false;
+                    }
+                    return false;
+                }).ToList();
+
+            if (_sponsorsManager.TryGetInfo(out var sponsor))
+            {
+                foreach (var specie in rawSpecieList)
+                {
+                    if (specie.SponsorOnly
+                        && sponsor.AllowedMarkings.Contains(specie.ID)
+                        && !allowedSpecies.Contains(specie))
+                    {
+                        allowedSpecies.Add(specie);
+                    }
+                }
+            }
+
+            if (_adminManager.HasFlag(AdminFlags.AdminSpecies))
+            {
+                foreach (var specie in rawSpecieList)
+                {
+                    if (specie.ForAdmins && !allowedSpecies.Contains(specie))
+                    {
+                        allowedSpecies.Add(specie);
+                    }
+                }
+            }
+
+            return allowedSpecies;
+        }
+        //WD EDIT END
 
         private void UpdateJobPriorities()
         {

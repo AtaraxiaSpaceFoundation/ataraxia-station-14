@@ -2,12 +2,15 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Server.Humanoid;
+using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -27,11 +30,15 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IPrototypeManager _protos = default!;
 
+        // WD-EDIT
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly SponsorsManager _sponsors = default!;
+        [Dependency] private readonly IAdminManager _adminManager = default!;
+        // WD-EDIT
+
         // Cache player prefs on the server so we don't need as much async hell related to them.
         private readonly Dictionary<NetUserId, PlayerPrefData> _cachedPlayerPrefs =
             new();
-
-        private int MaxCharacterSlots => _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
 
         public void Init()
         {
@@ -52,7 +59,7 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (index < 0 || index >= MaxCharacterSlots)
+            if (index < 0 || index >= GetMaxUserCharacterSlots(userId))
             {
                 return;
             }
@@ -92,14 +99,24 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= MaxCharacterSlots)
+            if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId))
             {
                 return;
             }
 
             var curPrefs = prefsData.Prefs!;
 
-            profile.EnsureValid();
+            // WD-EDIT
+            var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
+
+            bool isAdminSpecie = false;
+            if (_playerManager.TryGetSessionById(message.MsgChannel.UserId, out var session))
+            {
+                isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+            }
+
+            profile.EnsureValid(allowedMarkings, isAdminSpecie);
+            // WD-EDIT
 
             var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
             {
@@ -125,7 +142,7 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= MaxCharacterSlots)
+            if (slot < 0)
             {
                 return;
             }
@@ -169,7 +186,7 @@ namespace Content.Server.Preferences.Managers
         // Should only be called via UserDbDataManager.
         public async Task LoadData(ICommonSession session, CancellationToken cancel)
         {
-            if (!ShouldStorePrefs(session.ConnectedClient.AuthType))
+            if (!ShouldStorePrefs(session.Channel.AuthType))
             {
                 // Don't store data for guests.
                 var prefsData = new PlayerPrefData
@@ -193,6 +210,16 @@ namespace Content.Server.Preferences.Managers
                 async Task LoadPrefs()
                 {
                     var prefs = await GetOrCreatePreferencesAsync(session.UserId);
+
+                    // WD-EDIT
+                    foreach (var (_, profile) in prefs.Characters)
+                    {
+                        var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
+                        bool isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+                        profile.EnsureValid(allowedMarkings, isAdminSpecie);
+                    }
+                    // WD-EDIT
+
                     prefsData.Prefs = prefs;
                     prefsData.PrefsLoaded = true;
 
@@ -200,9 +227,9 @@ namespace Content.Server.Preferences.Managers
                     msg.Preferences = prefs;
                     msg.Settings = new GameSettings
                     {
-                        MaxCharacterSlots = MaxCharacterSlots
+                        MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId)
                     };
-                    _netManager.ServerSendMessage(msg, session.ConnectedClient);
+                    _netManager.ServerSendMessage(msg, session.Channel);
                 }
             }
         }
@@ -217,6 +244,12 @@ namespace Content.Server.Preferences.Managers
             return _cachedPlayerPrefs.ContainsKey(session.UserId);
         }
 
+        private int GetMaxUserCharacterSlots(NetUserId userId)
+        {
+            var maxSlots = _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
+            var extraSlots = _sponsors.TryGetInfo(userId, out var sponsor) ? sponsor.ExtraSlots : 0;
+            return maxSlots + extraSlots;
+        }
 
         /// <summary>
         /// Tries to get the preferences from the cache

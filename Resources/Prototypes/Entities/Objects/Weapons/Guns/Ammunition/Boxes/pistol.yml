@@ -23,6 +23,20 @@
     steps: 2
     zeroVisible: false
   - type: Appearance
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/ammobox_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/ammobox_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/handling/ammobox_drop.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/White/Items/handling/ammobox_drop.ogg
+  # WD edit sounds end
 
 # Boxes
 - type: entity
@@ -97,4 +111,4 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-
+    - state: uranium

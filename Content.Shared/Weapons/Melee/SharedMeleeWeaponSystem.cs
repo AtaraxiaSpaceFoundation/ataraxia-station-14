@@ -21,15 +21,16 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared._White;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Robust.Shared.Toolshed.Syntax;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
 
 namespace Content.Shared.Weapons.Melee;
@@ -50,6 +51,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
     [Dependency] private   readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     public const float DamagePitchVariation = 0.05f;
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
@@ -59,6 +61,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     /// </summary>
     public const int MaxTargets = 5;
 
+    private float DamageModifier { get; set; }
+
+    private void SetDamage(float value) => DamageModifier = value;
+
     /// <summary>
     /// If an attack is released within this buffer it's assumed to be full damage.
     /// </summary>
@@ -67,6 +73,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        _cfg.OnValueChanged(WhiteCVars.DamageModifier, SetDamage, true);
 
         SubscribeLocalEvent<MeleeWeaponComponent, EntityUnpausedEvent>(OnMeleeUnpaused);
         SubscribeLocalEvent<MeleeWeaponComponent, HandSelectedEvent>(OnMeleeSelected);
@@ -238,7 +246,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var ev = new GetMeleeDamageEvent(uid, new (component.Damage), new(), user);
         RaiseLocalEvent(uid, ref ev);
 
-        return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
+        var modifiedDamage = ev.Damage * DamageModifier;
+
+        return DamageSpecifier.ApplyModifierSets(modifiedDamage, ev.Modifiers);
     }
 
     public float GetAttackRate(EntityUid uid, EntityUid user, MeleeWeaponComponent? component = null)
@@ -516,12 +526,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             if (meleeUid == user)
             {
                 AdminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
-                    $"{ToPrettyString(user):actor} melee attacked (light) {ToPrettyString(target.Value):subject} using their hands and dealt {damageResult.Total:damage} damage");
+                    $"{ToPrettyString(user):actor} melee attacked (light) {ToPrettyString(target.Value):subject} using their hands and dealt {damageResult.GetTotal():damage} damage");
             }
             else
             {
                 AdminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
-                    $"{ToPrettyString(user):actor} melee attacked (light) {ToPrettyString(target.Value):subject} using {ToPrettyString(meleeUid):tool} and dealt {damageResult.Total:damage} damage");
+                    $"{ToPrettyString(user):actor} melee attacked (light) {ToPrettyString(target.Value):subject} using {ToPrettyString(meleeUid):tool} and dealt {damageResult.GetTotal():damage} damage");
             }
 
             PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, _protoManager), hitEvent.HitSoundOverride, component.HitSound);
@@ -542,7 +552,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             }
         }
 
-        if (damageResult?.Total > FixedPoint2.Zero)
+        if (damageResult?.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, targetXform);
         }
@@ -670,7 +680,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 else
                 {
                     AdminLogger.Add(LogType.MeleeHit, LogImpact.Medium,
-                        $"{ToPrettyString(user):actor} melee attacked (heavy) {ToPrettyString(entity):subject} using {ToPrettyString(meleeUid):tool} and dealt {damageResult.Total:damage} damage");
+                        $"{ToPrettyString(user):actor} melee attacked (heavy) {ToPrettyString(entity):subject} using {ToPrettyString(meleeUid):tool} and dealt {damageResult.GetTotal():damage} damage");
                 }
             }
         }
@@ -736,26 +746,31 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         return true;
     }
 
-    private void PlayHitSound(EntityUid target, EntityUid? user, string? type, SoundSpecifier? hitSoundOverride, SoundSpecifier? hitSound)
+    public void PlayHitSound(EntityUid target, EntityUid? user, string? type, SoundSpecifier? hitSoundOverride, SoundSpecifier? hitSound)
     {
         var playedSound = false;
 
+        if (Deleted(target))
+            return;
+
+        // hitting can obv destroy an entity so we play at coords and not following them
+        var coords = Transform(target).Coordinates;
         // Play sound based off of highest damage type.
         if (TryComp<MeleeSoundComponent>(target, out var damageSoundComp))
         {
             if (type == null && damageSoundComp.NoDamageSound != null)
             {
-                Audio.PlayPredicted(damageSoundComp.NoDamageSound, target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                Audio.PlayPredicted(damageSoundComp.NoDamageSound, coords, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                 playedSound = true;
             }
             else if (type != null && damageSoundComp.SoundTypes?.TryGetValue(type, out var damageSoundType) == true)
             {
-                Audio.PlayPredicted(damageSoundType, target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                Audio.PlayPredicted(damageSoundType, coords, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                 playedSound = true;
             }
             else if (type != null && damageSoundComp.SoundGroups?.TryGetValue(type, out var damageSoundGroup) == true)
             {
-                Audio.PlayPredicted(damageSoundGroup, target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                Audio.PlayPredicted(damageSoundGroup, coords, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                 playedSound = true;
             }
         }
@@ -765,12 +780,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         {
             if (hitSoundOverride != null)
             {
-                Audio.PlayPredicted(hitSoundOverride, target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                Audio.PlayPredicted(hitSoundOverride, coords, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                 playedSound = true;
             }
             else if (hitSound != null)
             {
-                Audio.PlayPredicted(hitSound, target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                Audio.PlayPredicted(hitSound, coords, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                 playedSound = true;
             }
         }
@@ -789,10 +804,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     break;
                 // No damage, fallback to tappies
                 case null:
-                    Audio.PlayPredicted(new SoundPathSpecifier("/Audio/Weapons/tap.ogg"), target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                    Audio.PlayPredicted(new SoundCollectionSpecifier("WeakHit"), target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                     break;
                 case "Brute":
-                    Audio.PlayPredicted(new SoundPathSpecifier("/Audio/Weapons/smash.ogg"), target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
+                    Audio.PlayPredicted(new SoundCollectionSpecifier("MetalThud"), target, user, AudioParams.Default.WithVariation(DamagePitchVariation));
                     break;
             }
         }

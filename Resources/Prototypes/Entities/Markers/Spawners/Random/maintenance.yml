@@ -35,15 +35,6 @@
         - PonderingOrb
         - Skub
         - DrinkMugDog
-        - ClothingNeckLGBTPin
-        - ClothingNeckAromanticPin
-        - ClothingNeckAsexualPin
-        - ClothingNeckBisexualPin
-        - ClothingNeckIntersexPin
-        - ClothingNeckLesbianPin
-        - ClothingNeckNonBinaryPin
-        - ClothingNeckPansexualPin
-        - ClothingNeckTransPin
         - CluwneHorn
         - ClothingMaskRat
         - MysteryFigureBox
@@ -195,9 +186,9 @@
         - DoorElectronics
         - APCElectronics
         - InflatableWallStack5
-        - CableHVStack10
-        - CableMVStack10
-        - CableApcStack10
+        - CableHVStack
+        - CableMVStack
+        - CableApcStack
         - PetCarrier
       chance: 0.6
       offset: 0.0

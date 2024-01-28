@@ -28,7 +28,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: GlassBreak
+          collection: WindowShatter
       - !type:SpawnEntitiesBehavior
         spawn:
           ShardGlassReinforced:
@@ -53,6 +53,8 @@
       sprite: Structures/Windows/cracks.rsi
   - type: StaticPrice
     price: 100
+  - type: WindowMark
+    replacementProto: WallShuttle
 
 - type: entity
   parent: ShuttleWindow
