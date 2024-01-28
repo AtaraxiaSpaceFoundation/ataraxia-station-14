@@ -37,25 +37,33 @@ public sealed class SaturationScaleSystem : EntitySystem
 
     private void OnPlayerDetached(EntityUid uid, SaturationScaleComponent component, PlayerDetachedEvent args)
     {
+        if (_player.LocalSession != args.Player)
+            return;
+
         _overlayMan.RemoveOverlay(_overlay);
     }
 
     private void OnPlayerAttached(EntityUid uid, SaturationScaleComponent component, PlayerAttachedEvent args)
     {
+        if (_player.LocalSession != args.Player)
+            return;
+
         _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnShutdown(EntityUid uid, SaturationScaleComponent component, ComponentShutdown args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
-        {
-            _overlayMan.RemoveOverlay(_overlay);
-        }
+        if (_player.LocalSession?.AttachedEntity != uid)
+            return;
+
+        _overlayMan.RemoveOverlay(_overlay);
     }
 
     private void OnInit(EntityUid uid, SaturationScaleComponent component, ComponentInit args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
-            _overlayMan.AddOverlay(_overlay);
+        if (_player.LocalSession?.AttachedEntity != uid)
+            return;
+
+        _overlayMan.AddOverlay(_overlay);
     }
 }

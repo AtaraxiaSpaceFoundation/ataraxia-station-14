@@ -26,9 +26,11 @@ public partial class CultSystem
 
     private void OnShellSelected(EntityUid uid, ConstructShellComponent component, ConstructFormSelectedEvent args)
     {
-        if (args.Session.AttachedEntity != null)
+        var ent = args.Session.AttachedEntity;
+
+        if (ent != null)
         {
-            var construct = Spawn(args.SelectedForm, Transform(args.Session.AttachedEntity.Value).MapPosition);
+            var construct = Spawn(args.SelectedForm, Transform(ent.Value).MapPosition);
             var mind = Comp<MindContainerComponent>(args.Session.AttachedEntity!.Value);
 
             if(!mind.HasMind)
@@ -37,7 +39,7 @@ public partial class CultSystem
             _mindSystem.TransferTo(mind.Mind.Value, construct);
         }
 
-        Del(args.Session.AttachedEntity);
+        Del(uid);
     }
 
     private void OnShellInit(EntityUid uid, ConstructShellComponent component, ComponentInit args)

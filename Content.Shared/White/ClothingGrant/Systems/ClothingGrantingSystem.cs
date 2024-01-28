@@ -3,6 +3,7 @@ using Content.Shared.Inventory.Events;
 using Robust.Shared.Serialization.Manager;
 using Content.Shared.Tag;
 using Content.Shared.White.ClothingGrant.Components;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.White.ClothingGrant.Systems;
 
@@ -10,6 +11,7 @@ public sealed class ClothingGrantingSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly ISerializationManager _serializationManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
 
     public override void Initialize()
@@ -23,6 +25,9 @@ public sealed class ClothingGrantingSystem : EntitySystem
 
     private void OnCompEquip(EntityUid uid, ClothingGrantComponentComponent component, GotEquippedEvent args)
     {
+        if (_timing.ApplyingState)
+            return;
+
         if (!TryComp<ClothingComponent>(uid, out var clothing)) return;
 
         if (!clothing.Slots.HasFlag(args.SlotFlags)) return;

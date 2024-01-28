@@ -480,7 +480,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         {
             rule.WinCondition = CultWinCondition.CultWin;
         }
-        
+
         _roundEndSystem.EndRound();
 
         var query = EntityQuery<MobStateComponent, MindContainerComponent, CultistComponent>().ToList();

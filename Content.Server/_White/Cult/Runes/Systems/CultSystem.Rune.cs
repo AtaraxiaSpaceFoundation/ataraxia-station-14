@@ -454,7 +454,7 @@ public sealed partial class CultSystem : EntitySystem
 
         if (cultists.Count < offering.SacrificeMinCount)
         {
-            _popupSystem.PopupEntity(Loc.GetString("cult-convert-not-enough-cultists"), user, user);
+            _popupSystem.PopupEntity(Loc.GetString("cult-sacrifice-not-enough-cultists"), user, user);
             return false;
         }
 
