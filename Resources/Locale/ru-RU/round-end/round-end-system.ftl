@@ -9,6 +9,6 @@ round-end-system-shuttle-recalled-announcement-by-who =
     Эвакуационный шаттл был отозван.
     Шаттл отозвал { $requester }.
 round-end-system-shuttle-recalled-announcement = Эвакуационный шаттл был отозван.
-round-end-system-round-restart-eta-announcement = Раунд перезапустится через { $minutes } минут...
+round-end-system-round-restart-eta-announcement = Раунд перезапустится через { $time } { $units }...
 eta-units-minutes = минут
 eta-units-seconds = секунд
