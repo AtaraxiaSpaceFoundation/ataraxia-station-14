@@ -5,12 +5,13 @@ using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server.White.Cult.UI;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
@@ -29,6 +30,7 @@ public partial class CultSystem
     [Dependency] private readonly EmpSystem _empSystem = default!;
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     public void InitializeActions()
     {
@@ -59,6 +61,14 @@ public partial class CultSystem
         if (!TryComp<BloodstreamComponent>(args.Performer, out _) || !TryComp<ActorComponent>(uid, out var actor))
             return;
 
+        if (!TryComp<CultistComponent>(args.Target, out _) &&
+            !(TryComp<MobStateComponent>(args.Target, out var mobStateComponent) &&
+                mobStateComponent.CurrentState is not MobState.Alive))
+        {
+            _popupSystem.PopupEntity("Цель должна быть культистом или лежать", args.Performer);
+            return;
+        }
+
         var eui = new TeleportSpellEui(args.Performer, args.Target);
         _euiManager.OpenEui(eui, actor.PlayerSession);
         eui.StateDirty();
@@ -76,7 +86,7 @@ public partial class CultSystem
 
         var xform = Transform(uid);
 
-        var entitiesInRange = _lookup.GetEntitiesInRange(xform.MapPosition, 1.5f);
+        var entitiesInRange = _lookup.GetEntitiesInRange(_transform.GetMapCoordinates(xform), 1.5f);
 
         FixedPoint2 totalBloodAmount = 0f;
 
