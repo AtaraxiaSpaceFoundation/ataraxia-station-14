@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using NpgsqlTypes;
 
 #nullable disable
 
@@ -19,7 +20,7 @@ namespace Content.Server.Database.Migrations.Postgres
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -759,11 +760,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("backpack");
 
-                    b.Property<string>("BodyType")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("body_type");
-
                     b.Property<string>("BorgName")
                         .IsRequired()
                         .HasColumnType("text")
@@ -931,7 +927,7 @@ namespace Content.Server.Database.Migrations.Postgres
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<ValueTuple<IPAddress, int>?>("Address")
+                    b.Property<NpgsqlInet?>("Address")
                         .HasColumnType("inet")
                         .HasColumnName("address");
 
@@ -995,10 +991,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("Severity")
                         .HasColumnType("integer")
                         .HasColumnName("severity");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
 
                     b.HasKey("Id")
                         .HasName("PK_server_ban");
@@ -1081,7 +1073,7 @@ namespace Content.Server.Database.Migrations.Postgres
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<ValueTuple<IPAddress, int>?>("Address")
+                    b.Property<NpgsqlInet?>("Address")
                         .HasColumnType("inet")
                         .HasColumnName("address");
 
@@ -1142,10 +1134,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("Severity")
                         .HasColumnType("integer")
                         .HasColumnName("severity");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
 
                     b.HasKey("Id")
                         .HasName("PK_server_role_ban");
