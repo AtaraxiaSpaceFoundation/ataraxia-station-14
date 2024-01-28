@@ -44,6 +44,7 @@
   id: nonPeacefulRoundEndMelee
   items:
     - FireAxeFlaming
+    - FireAxe
     - CaptainSabre
     - Katana
     - Machete
@@ -61,8 +62,6 @@
     - EnergySwordDouble
     - EnergyCutlass
     - Cutlass
-    - UnholyHalberd
-    - EldritchBlade
     - BaseBallBat
     - BloodSuckerDagger
     - Truncheon

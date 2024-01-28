@@ -3,7 +3,9 @@ using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Inventory;
 using Content.Shared.White.Cult;
+using Content.Shared.White.Cult.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
@@ -50,5 +52,18 @@ public sealed partial class DeconvertCultist : ReagentEffect
         cultist.HolyConvertToken = null;
         entityManager.RemoveComponent<CultistComponent>(uid);
         entityManager.RemoveComponent<PentagramComponent>(uid);
+
+        var inventory = entityManager.System<InventorySystem>();
+        if (!inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
+            return;
+
+        while (enumerator.MoveNext(out var container))
+        {
+            if (container.ContainedEntity != null &&
+                entityManager.HasComponent<CultItemComponent>(container.ContainedEntity.Value))
+            {
+                container.Remove(container.ContainedEntity.Value, entityManager, force: true);
+            }
+        }
     }
 }

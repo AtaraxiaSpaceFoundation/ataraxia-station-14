@@ -22,6 +22,7 @@
     - type: PointLight
       color: red
       range: 2
+    - type: CultItem
 
 - type: entity
   parent: ClothingEyesBase
@@ -35,6 +36,7 @@
       sprite: Clothing/Eyes/Misc/blindfold.rsi
     - type: FlashImmunity
     - type: EyeProtection
+    - type: CultItem
     - type: ClothingGrantComponent
       component:
       - type: NightVision
@@ -74,6 +76,7 @@
       color: red
       range: 2
     - type: VoidTeleport
+    - type: CultItem
 
 - type: entity
   name: void torch
@@ -108,6 +111,7 @@
       interfaces:
           - key: enum.CultTeleporterUiKey.Key
             type: TorchWindowBUI
+    - type: CultItem
 
 - type: cultistFactoryProduction
   id: FactoryCultShuttleCurse
@@ -166,6 +170,7 @@
           type: StructureCraftBoundUserInterface
     - type: Item
       size: Normal
+    - type: CultItem
 
 - type: entity
   parent: CultRunicMetal

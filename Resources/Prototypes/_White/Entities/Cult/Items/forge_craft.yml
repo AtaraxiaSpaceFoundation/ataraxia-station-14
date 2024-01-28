@@ -5,6 +5,7 @@
   description: Some religious clothes.
   components:
     - type: CultRobeModifier
+    - type: CultItem
 
 - type: entity
   id: CultMirrorShield
@@ -32,7 +33,15 @@
       reflects:
         - Energy
     - type: ReturnItemOnThrow
+    - type: CultItem
 
+
+- type: cultistFactoryProduction
+  id: FactoryUnholyHalberd
+  name: Нечестивая секира
+  icon: "/Textures/Objects/Weapons/Melee/cult_halberd.rsi/icon.png"
+  item:
+    - UnholyHalberd
 
 - type: entity
   id: CultOuterArmor

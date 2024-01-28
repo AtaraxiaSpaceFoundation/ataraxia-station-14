@@ -21,8 +21,8 @@
     BoxCandleSmall: 2
     Urn: 5
   emaggedInventory:
-    ClothingOuterArmorCult: 1
-    ClothingHeadHelmetCult: 1
+    #ClothingOuterArmorCult: 1
+    #ClothingHeadHelmetCult: 1
     ClothingOuterRobesCult: 3
     ClothingHeadHatHoodCulthood: 3
     ClothingShoesCult: 4
