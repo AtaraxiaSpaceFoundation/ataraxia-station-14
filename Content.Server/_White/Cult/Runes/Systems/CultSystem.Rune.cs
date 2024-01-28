@@ -410,14 +410,15 @@ public sealed partial class CultSystem : EntitySystem
 
         if (state.CurrentState != MobState.Dead)
         {
-            var canBeConverted = _entityManager.TryGetComponent<MindContainerComponent>(victim.Value, out var mind) && mind.HasMind;
+            var canBeConverted = _entityManager.TryGetComponent<MindContainerComponent>(victim.Value, out var mind) &&
+                                 mind is {Mind: { }};
 
             // Проверка, является ли жертва целью
             _entityManager.TryGetComponent<MindContainerComponent>(target?.CurrentEntity, out var targetMind);
-            var isTarget = mind != null && mind.Mind!.Value == targetMind?.Mind!.Value;
+            var isTarget = mind!.Mind!.Value == targetMind?.Mind!.Value;
             var jobAllowConvert = true;
 
-            if(_jobSystem.MindTryGetJob(mind!.Mind!.Value, out var _, out var prototype))
+            if(_jobSystem.MindTryGetJob(mind.Mind!.Value, out var _, out var prototype))
             {
                 jobAllowConvert = prototype.CanBeAntag;
             }
