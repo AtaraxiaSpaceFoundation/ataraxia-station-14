@@ -11,6 +11,7 @@
         sprite: /Textures/Objects/Materials/Sheets/metal.rsi
         state: steel
       event: !type:CultTwistedConstructionActionEvent
+      itemIconStyle: BigAction
 
 - type: entity
   id: ActionCultTeleport
@@ -31,6 +32,7 @@
         sprite: /Textures/White/Cult/actions_cult.rsi
         state: teleport
       event: !type:CultTeleportTargetActionEvent
+      itemIconStyle: BigAction
 
 - type: entity
   id: ActionCultSummonCombatEquipment
@@ -51,6 +53,7 @@
         sprite: /Textures/White/Cult/actions_cult.rsi
         state: armor
       event: !type:CultSummonCombatEquipmentTargetActionEvent
+      itemIconStyle: BigAction
 
 - type: entity
   id: InstantActionSummonCultDagger
