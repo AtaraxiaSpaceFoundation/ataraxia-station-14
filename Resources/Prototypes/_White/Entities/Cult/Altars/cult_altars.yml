@@ -236,6 +236,7 @@
     products:
     - FactoryEldritchBlade
     - FactoryArmorCult
+    - FactoryHelmetCult
     - FactoryUnholyHalberd
     - FactoryCultRobeModify
     - FactoryCultMirrorShield
