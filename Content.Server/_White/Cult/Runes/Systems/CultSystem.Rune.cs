@@ -306,16 +306,14 @@ public sealed partial class CultSystem : EntitySystem
 
     private void HandleCollision(EntityUid uid, CultRuneBaseComponent component, ref StartCollideEvent args)
     {
-        if (!TryComp<SolutionContainerManagerComponent>(args.OtherEntity, out var solution))
+        if (!TryComp<SolutionContainerManagerComponent>(args.OtherEntity, out var solution) || solution.Solutions == null)
         {
             return;
         }
-#pragma warning disable RA0002
-        if (solution.Solutions!.TryGetValue("vapor", out var vapor) && vapor.Contents.Any(x => x.Reagent.Prototype == "HolyWater"))
+        if (solution.Solutions.TryGetValue("vapor", out var vapor) && vapor.Contents.Any(x => x.Reagent.Prototype == "HolyWater"))
         {
             Del(uid);
         }
-#pragma warning restore RA0002
     }
 
     //Erasing end

@@ -37,6 +37,9 @@
     interfaces:
       - key: enum.ListViewSelectorUiKey.Key
         type: ListViewSelectorBUI
+  - type: Tool
+    qualities:
+    - Dagger
 
 - type: entity
   name: eldritch blade

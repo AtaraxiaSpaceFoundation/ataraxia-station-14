@@ -30,6 +30,14 @@
         type: HumanoidMarkingModifierBoundUserInterface
       - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
+      # WD-EDIT
+      - key: enum.NameSelectorUIKey.Key
+        type: NameSelectorBUI
+      - key: enum.RuneTeleporterUiKey.Key
+        type: TeleportRunesListWindowBUI
+      - key: enum.SummonCultistUiKey.Key
+        type: SummonCultistListWindowBUI
+      # WD-EDIT END
   - type: Sprite
     scale: 0.9, 0.9
     layers:

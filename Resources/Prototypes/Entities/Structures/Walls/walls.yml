@@ -198,11 +198,11 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 600
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          Girder:
+          CultGirder:
             min: 1
             max: 1
       - !type:DoActsBehavior
@@ -210,6 +210,9 @@
   - type: IconSmooth
     key: walls
     base: cult
+  - type: Construction
+    graph: CultGirder
+    node: wall
 
 - type: entity
   parent: BaseWall

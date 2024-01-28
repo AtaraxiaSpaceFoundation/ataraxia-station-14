@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: CultGirder
   start: start
   graph:
@@ -24,8 +24,7 @@
           conditions:
             - !type:EntityAnchored
           steps:
-            - tool: Screwing
-              doAfter: 2
+            - tool: Dagger
         - to: wall
           completed:
             - !type:SnapToGrid
@@ -45,8 +44,7 @@
               prototype: CultRunicMetal1
               amount: 1
           steps:
-            - tool: Welding
-              doAfter: 10
+            - tool: Dagger
 
 - type: constructionGraph
   id: AirlockGlassCult

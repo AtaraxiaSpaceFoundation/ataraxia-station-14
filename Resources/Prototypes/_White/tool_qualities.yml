@@ -1,0 +1,6 @@
+- type: tool
+  id: Dagger
+  name: ritual dagger
+  toolName: ritual dagger
+  spawn: RitualDagger
+  icon: { sprite: Objects/Weapons/Melee/cult_dagger.rsi, state: icon }

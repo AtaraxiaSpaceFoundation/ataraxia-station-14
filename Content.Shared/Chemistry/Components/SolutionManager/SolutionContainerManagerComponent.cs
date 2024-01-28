@@ -32,5 +32,7 @@ public sealed partial class SolutionContainerManagerComponent : Component
     /// Should be null after mapinit.
     /// </remarks>
     [DataField, AutoNetworkedField]
+    [Access(typeof(SharedSolutionContainerSystem), Friend = AccessPermissions.ReadWriteExecute,
+        Other = AccessPermissions.ReadExecute)]
     public Dictionary<string, Solution>? Solutions = null;
 }

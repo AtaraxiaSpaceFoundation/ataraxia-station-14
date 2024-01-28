@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: WetStone
   parent: BaseItem
   name: wet stone
@@ -11,7 +11,7 @@
       size: 1
       state: sharpener
     - type: Item
-      size: 10
+      size: Small
       sprite: White/Items/Misc/wetstone.rsi
 
 - type: entity

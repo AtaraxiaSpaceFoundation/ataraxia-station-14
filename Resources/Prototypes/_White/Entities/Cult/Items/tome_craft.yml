@@ -35,6 +35,16 @@
       sprite: Clothing/Eyes/Misc/blindfold.rsi
     - type: FlashImmunity
     - type: EyeProtection
+    - type: ClothingGrantComponent
+      component:
+      - type: NightVision
+        color: White
+      - type: ShowWhiteHealthBars
+        damageContainers:
+        - Biological
+    - type: ShowHealthIcons
+      damageContainers:
+      - Biological
 
 - type: entity
   name: veil shifter
@@ -148,7 +158,6 @@
         - runic
         - runic_2
         - runic_3
-      sizeMultiplier: 0.17
     - type: Appearance
     - type: RunicMetal
     - type: UserInterface
@@ -156,6 +165,7 @@
         - key: enum.CultStructureCraftUiKey.Key
           type: StructureCraftBoundUserInterface
     - type: Item
+      size: Normal
 
 - type: entity
   parent: CultRunicMetal
@@ -166,9 +176,6 @@
       state: runic
     - type: Stack
       count: 1
-      sizeMultiplier: 0.17
-    - type: Item
-      size: 1
 
 - type: entity
   parent: CultRunicMetal
@@ -179,6 +186,3 @@
       state: runic
     - type: Stack
       count: 20
-      sizeMultiplier: 0.17
-    - type: Item
-      size: 3

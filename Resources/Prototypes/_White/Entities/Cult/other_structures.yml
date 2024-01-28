@@ -89,4 +89,3 @@
     - type: Construction
       graph: CultGirder
       node: girder
-    - type: RunicGirder
