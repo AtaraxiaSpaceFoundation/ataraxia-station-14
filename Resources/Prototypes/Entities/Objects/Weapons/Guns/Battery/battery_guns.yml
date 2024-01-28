@@ -751,7 +751,3 @@
       price: 800
     - type: Item
       size: Large
-    - type: Tag
-      tags:
-        - Taser
-        - Sidearm

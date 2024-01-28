@@ -126,7 +126,7 @@
     attackRate: 1.0
     damage:
       types:
-        Slash: 15
+        Slash: 18 # Same DPS as combat knife
   - type: Item
     sprite: Objects/Weapons/Melee/kukri_knife.rsi
 
