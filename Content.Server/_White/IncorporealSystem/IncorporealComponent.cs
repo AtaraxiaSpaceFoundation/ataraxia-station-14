@@ -1,4 +1,4 @@
-﻿namespace Content.Server.White.IncorporealSystem;
+﻿namespace Content.Server._White.IncorporealSystem;
 
 [RegisterComponent]
 public sealed partial class IncorporealComponent : Component

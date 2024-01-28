@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using System.Net;
 using System.Threading.Tasks;
-using Content.Server.White.PandaSocket.Interfaces;
+using Content.Server._White.PandaSocket.Interfaces;
 using Content.Shared.Database;
 using Content.Shared.Roles;
 using Robust.Shared.Network;

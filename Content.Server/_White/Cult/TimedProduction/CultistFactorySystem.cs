@@ -12,7 +12,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Server.White.Cult.TimedProduction;
+namespace Content.Server._White.Cult.TimedProduction;
 
 public sealed class CultistFactorySystem : EntitySystem
 {

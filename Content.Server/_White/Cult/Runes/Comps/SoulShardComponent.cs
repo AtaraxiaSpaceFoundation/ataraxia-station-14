@@ -1,4 +1,4 @@
-﻿namespace Content.Server.White.Cult.Runes.Comps;
+﻿namespace Content.Server._White.Cult.Runes.Comps;
 
 [RegisterComponent]
 public sealed partial class SoulShardComponent : Component

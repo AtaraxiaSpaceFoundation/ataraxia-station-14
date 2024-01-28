@@ -6,7 +6,7 @@ using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Stack;
 using Content.Server.Station.Systems;
-using Content.Server.White.Economy;
+using Content.Server._White.Economy;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Cargo;

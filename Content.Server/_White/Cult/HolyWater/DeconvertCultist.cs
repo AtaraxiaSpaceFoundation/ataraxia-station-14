@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Server.White.Cult.HolyWater;
+namespace Content.Server._White.Cult.HolyWater;
 
 [ImplicitDataDefinitionForInheritors]
 [MeansImplicitUse]

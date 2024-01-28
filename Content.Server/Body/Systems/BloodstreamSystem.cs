@@ -5,7 +5,7 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.HealthExaminable;
 using Content.Server.Popups;
-using Content.Server.White.EndOfRoundStats.BloodLost;
+using Content.Server._White.EndOfRoundStats.BloodLost;
 using Content.Shared.Alert;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;

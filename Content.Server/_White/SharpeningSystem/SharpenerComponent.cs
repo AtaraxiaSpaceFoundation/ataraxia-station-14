@@ -1,4 +1,4 @@
-﻿namespace Content.Server.White.SharpeningSystem;
+﻿namespace Content.Server._White.SharpeningSystem;
 
 [RegisterComponent]
 public sealed partial class SharpenerComponent : Component

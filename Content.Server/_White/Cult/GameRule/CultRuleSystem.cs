@@ -29,11 +29,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared._White;
+using Content.Shared.White;
 using Content.Shared.Mind;
 using Robust.Shared.Audio.Systems;
 
-namespace Content.Server.White.Cult.GameRule;
+namespace Content.Server._White.Cult.GameRule;
 
 public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 {

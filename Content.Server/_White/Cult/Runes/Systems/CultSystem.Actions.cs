@@ -3,7 +3,7 @@ using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Emp;
 using Content.Server.EUI;
-using Content.Server.White.Cult.UI;
+using Content.Server._White.Cult.UI;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -21,7 +21,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

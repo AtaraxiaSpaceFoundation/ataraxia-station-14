@@ -24,10 +24,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Server.Objectives;
-using Content.Server.White.Administration;
-using Content.Server.White.AspectsSystem.Aspects;
-using Content.Server.White.AspectsSystem.Aspects.Components;
-using Content.Server.White.Reputation;
+using Content.Server._White.Administration;
+using Content.Server._White.AspectsSystem.Aspects;
+using Content.Server._White.AspectsSystem.Aspects.Components;
+using Content.Server._White.Reputation;
 using Content.Shared.White.Mood;
 
 namespace Content.Server.GameTicking.Rules;

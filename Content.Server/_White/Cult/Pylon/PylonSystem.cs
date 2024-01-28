@@ -21,7 +21,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
-namespace Content.Server.White.Cult.Pylon;
+namespace Content.Server._White.Cult.Pylon;
 
 public sealed class PylonSystem : EntitySystem
 {

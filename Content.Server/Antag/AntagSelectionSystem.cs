@@ -27,7 +27,7 @@ using Robust.Server.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Server.Shuttles.Components;
-using Content.Server.White.Reputation;
+using Content.Server._White.Reputation;
 using Content.Shared.Players;
 
 namespace Content.Server.Antag;

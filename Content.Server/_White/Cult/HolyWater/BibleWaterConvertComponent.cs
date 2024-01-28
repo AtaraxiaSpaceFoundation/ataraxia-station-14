@@ -1,4 +1,4 @@
-﻿namespace Content.Server.White.Cult.HolyWater;
+﻿namespace Content.Server._White.Cult.HolyWater;
 
 [RegisterComponent]
 public sealed partial class BibleWaterConvertComponent : Component

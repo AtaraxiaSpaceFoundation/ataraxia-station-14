@@ -13,7 +13,7 @@ using Robust.Shared.Player;
 using Content.Server.GameTicking.Rules.Components;
 using System.Linq;
 using Content.Server.Players;
-using Content.Server.White.Cult.GameRule;
+using Content.Server._White.Cult.GameRule;
 using Robust.Server.Player;
 
 namespace Content.Server.Administration.Systems;

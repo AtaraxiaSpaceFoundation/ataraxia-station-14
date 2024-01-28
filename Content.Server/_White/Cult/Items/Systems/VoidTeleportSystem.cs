@@ -14,7 +14,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class VoidTeleportSystem : EntitySystem
 {

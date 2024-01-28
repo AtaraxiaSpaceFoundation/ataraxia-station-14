@@ -3,8 +3,8 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Maps;
 using Content.Server.Popups;
-using Content.Server.White.Cult.GameRule;
-using Content.Server.White.IncorporealSystem;
+using Content.Server._White.Cult.GameRule;
+using Content.Server._White.IncorporealSystem;
 using Content.Shared.Actions;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Interaction.Events;
@@ -14,7 +14,7 @@ using Content.Shared.Physics;
 using Content.Shared.StatusEffect;
 using Content.Shared.White.Cult;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

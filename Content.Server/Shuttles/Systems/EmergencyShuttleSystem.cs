@@ -15,7 +15,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.White.PandaSocket.Main;
+using Content.Server._White.PandaSocket.Main;
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;

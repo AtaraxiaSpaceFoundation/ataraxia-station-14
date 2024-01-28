@@ -1,7 +1,7 @@
 ﻿using Content.Server.Chat.Systems;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
-using Content.Server.White.Cult.Items.Components;
+using Content.Server._White.Cult.Items.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
@@ -9,7 +9,7 @@ using Content.Shared.Popups;
 using Content.Shared.White.Cult;
 using Robust.Shared.Timing;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class ShuttleCurseSystem : EntitySystem
 {

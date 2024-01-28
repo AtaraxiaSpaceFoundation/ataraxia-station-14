@@ -1,11 +1,11 @@
-﻿using Content.Server.White.Cult.Items.Components;
+﻿using Content.Server._White.Cult.Items.Components;
 using Content.Shared.Damage;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.White.Cult;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class CultRobeModifierSystem : EntitySystem
 {

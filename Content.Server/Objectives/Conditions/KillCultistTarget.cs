@@ -1,7 +1,7 @@
 /*using System.Diagnostics;
 using System.Linq;
 using Content.Server.Mind;
-using Content.Server.White.Cult.GameRule;
+using Content.Server._White.Cult.GameRule;
 using Content.Shared.Mind;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Utility;

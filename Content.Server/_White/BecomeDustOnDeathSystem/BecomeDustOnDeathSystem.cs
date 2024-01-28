@@ -1,6 +1,6 @@
 ﻿using Content.Shared.Mobs;
 
-namespace Content.Server.White.BecomeDustOnDeathSystem;
+namespace Content.Server._White.BecomeDustOnDeathSystem;
 
 public sealed class BecomeDustOnDeathSystem : EntitySystem
 {

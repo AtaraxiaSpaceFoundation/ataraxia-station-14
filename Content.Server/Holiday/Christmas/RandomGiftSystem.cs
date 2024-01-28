@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.JavaScript;
 using System.Text.RegularExpressions;
 using Content.Server.Administration.Logs;
 using Content.Server.Hands.Systems;
-using Content.Server.White.Other;
+using Content.Server._White.Other;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Components;

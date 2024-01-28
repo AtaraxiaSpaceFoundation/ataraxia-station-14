@@ -2,7 +2,7 @@
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
-namespace Content.Server.White.BecomeDustOnDeathSystem;
+namespace Content.Server._White.BecomeDustOnDeathSystem;
 
 [RegisterComponent]
 public sealed partial class BecomeDustOnDeathComponent : Component

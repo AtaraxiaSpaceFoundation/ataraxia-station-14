@@ -20,9 +20,9 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Server.White.PandaSocket.Main;
-using Content.Server.White.Reputation;
-using Content.Server.White.Stalin;
+using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.Reputation;
+using Content.Server._White.Stalin;
 using Content.Shared.White;
 
 namespace Content.Server.GameTicking

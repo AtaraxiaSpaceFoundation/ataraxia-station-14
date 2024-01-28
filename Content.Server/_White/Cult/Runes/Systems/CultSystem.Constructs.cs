@@ -9,7 +9,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

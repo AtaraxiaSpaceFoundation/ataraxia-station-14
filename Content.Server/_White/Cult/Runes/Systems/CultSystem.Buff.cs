@@ -1,14 +1,14 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.White.Cult.GameRule;
-using Content.Server.White.Cult.Runes.Comps;
+using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Alert;
 using Content.Shared.Maps;
 using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Components;
 using Robust.Shared.Map;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

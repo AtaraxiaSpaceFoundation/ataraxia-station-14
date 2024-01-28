@@ -1,5 +1,5 @@
 using System.Text.Json.Nodes;
-using Content.Server.White.JoinQueue;
+using Content.Server._White.JoinQueue;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Robust.Server.ServerStatus;

@@ -8,8 +8,8 @@ using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Hands.Systems;
 using Content.Server.Weapons.Ranged.Systems;
-using Content.Server.White.Cult.GameRule;
-using Content.Server.White.Cult.Runes.Comps;
+using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
@@ -41,7 +41,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public sealed partial class CultSystem : EntitySystem
 {

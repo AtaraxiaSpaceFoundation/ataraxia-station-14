@@ -1,6 +1,6 @@
 using Content.Server.Chat.Managers;
 using Content.Server.Station.Systems;
-using Content.Server.White.Stalin;
+using Content.Server._White.Stalin;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;

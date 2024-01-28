@@ -4,7 +4,7 @@ using Content.Shared.White.Cult.UI;
 using Robust.Server.GameObjects;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Server.White.Cult.TimedProduction;
+namespace Content.Server._White.Cult.TimedProduction;
 
 [RegisterComponent]
 public sealed partial class CultistFactoryComponent : Component

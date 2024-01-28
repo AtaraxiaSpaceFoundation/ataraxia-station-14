@@ -1,4 +1,4 @@
-﻿namespace Content.Server.White.Cult.Items.Components;
+﻿namespace Content.Server._White.Cult.Items.Components;
 
 [RegisterComponent]
 public sealed partial class ReturnItemOnThrowComponent : Component

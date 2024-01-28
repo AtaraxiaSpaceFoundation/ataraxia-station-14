@@ -1,10 +1,10 @@
-using Content.Server.White.Cult.Items.Components;
-using Content.Server.White.Cult.TimedProduction;
+using Content.Server._White.Cult.Items.Components;
+using Content.Server._White.Cult.TimedProduction;
 using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Pylon;
 using Robust.Shared.Physics.Events;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class BloodBoilProjectileSystem : EntitySystem
 {

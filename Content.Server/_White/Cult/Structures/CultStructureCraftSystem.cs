@@ -4,7 +4,7 @@ using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;
 
-namespace Content.Server.White.Cult.Structures;
+namespace Content.Server._White.Cult.Structures;
 
 public sealed class CultStructureCraftSystem : EntitySystem
 {

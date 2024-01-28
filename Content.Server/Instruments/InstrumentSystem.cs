@@ -3,7 +3,7 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared.Administration;
-using Content.Server.White.EndOfRoundStats.InstrumentPlayed;
+using Content.Server._White.EndOfRoundStats.InstrumentPlayed;
 using Content.Shared.Instruments;
 using Content.Shared.Instruments.UI;
 using Content.Shared.Physics;

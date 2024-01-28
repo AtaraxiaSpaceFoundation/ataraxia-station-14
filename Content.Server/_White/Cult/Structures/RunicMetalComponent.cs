@@ -2,7 +2,7 @@
 using Content.Shared.White.Cult.Structures;
 using Robust.Server.GameObjects;
 
-namespace Content.Server.White.Cult.Structures;
+namespace Content.Server._White.Cult.Structures;
 
 [RegisterComponent]
 public sealed partial class RunicMetalComponent : Component

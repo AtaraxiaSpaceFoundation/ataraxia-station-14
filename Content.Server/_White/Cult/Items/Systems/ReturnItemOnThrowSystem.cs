@@ -1,11 +1,11 @@
 ﻿using Content.Server.Hands.Systems;
 using Content.Server.Stunnable;
-using Content.Server.White.Cult.Items.Components;
+using Content.Server._White.Cult.Items.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
 using Content.Shared.White.Cult;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class ReturnItemOnThrowSystem : EntitySystem
 {

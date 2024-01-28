@@ -1,4 +1,4 @@
-using Content.Server.White.Economy;
+using Content.Server._White.Economy;
 using Content.Shared.Cargo;
 
 namespace Content.Server.Cargo.Components;

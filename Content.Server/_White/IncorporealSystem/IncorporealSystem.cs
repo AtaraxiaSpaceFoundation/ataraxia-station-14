@@ -6,7 +6,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 
-namespace Content.Server.White.IncorporealSystem;
+namespace Content.Server._White.IncorporealSystem;
 
 public sealed class IncorporealSystem : EntitySystem
 {

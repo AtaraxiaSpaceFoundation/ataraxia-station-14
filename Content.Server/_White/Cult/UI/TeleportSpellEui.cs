@@ -1,6 +1,6 @@
 ﻿using Content.Server.EUI;
 using Content.Server.Popups;
-using Content.Server.White.Cult.Runes.Comps;
+using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Actions;
 using Content.Shared.Eui;
 using Content.Shared.Popups;
@@ -9,7 +9,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
-namespace Content.Server.White.Cult.UI;
+namespace Content.Server._White.Cult.UI;
 
 public sealed class TeleportSpellEui : BaseEui
 {

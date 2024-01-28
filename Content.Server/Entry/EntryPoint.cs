@@ -30,12 +30,12 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.White;
-using Content.Server.White.JoinQueue;
-using Content.Server.White.Jukebox;
-using Content.Server.White.PandaSocket.Main;
-using Content.Server.White.Sponsors;
-using Content.Server.White.Stalin;
-using Content.Server.White.TTS;
+using Content.Server._White.JoinQueue;
+using Content.Server._White.Jukebox;
+using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.Sponsors;
+using Content.Server._White.Stalin;
+using Content.Server._White.TTS;
 
 namespace Content.Server.Entry
 {

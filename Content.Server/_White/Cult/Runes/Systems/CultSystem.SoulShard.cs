@@ -1,6 +1,6 @@
 ﻿using Content.Server.Mind;
 using Content.Server.Roles;
-using Content.Server.White.Cult.Runes.Comps;
+using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mind.Components;
@@ -10,7 +10,7 @@ using Content.Shared.Roles;
 using Content.Shared.White.Cult;
 using Content.Shared.White.Cult.Items;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

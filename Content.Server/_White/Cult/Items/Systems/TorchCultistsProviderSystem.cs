@@ -3,7 +3,7 @@ using Content.Server.Popups;
 using Content.Server.Pulling;
 using Content.Server.Station.Systems;
 using Content.Server.Station.Components;
-using Content.Server.White.Cult.Items.Components;
+using Content.Server._White.Cult.Items.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
@@ -19,7 +19,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server.White.Cult.Items.Systems;
+namespace Content.Server._White.Cult.Items.Systems;
 
 public sealed class TorchCultistsProviderSystem : EntitySystem
 {

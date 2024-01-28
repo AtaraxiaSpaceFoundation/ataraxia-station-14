@@ -7,7 +7,7 @@ using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.White.SharpeningSystem;
+namespace Content.Server._White.SharpeningSystem;
 
 public sealed class SharpeningSystem : EntitySystem
 {

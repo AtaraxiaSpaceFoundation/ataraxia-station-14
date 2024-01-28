@@ -3,7 +3,7 @@ using Content.Shared.White.Cult;
 using Robust.Server.GameObjects;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Server.White.Cult.Runes.Systems;
+namespace Content.Server._White.Cult.Runes.Systems;
 
 public partial class CultSystem
 {

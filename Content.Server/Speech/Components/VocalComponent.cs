@@ -1,5 +1,5 @@
 using Content.Server.Speech.EntitySystems;
-using Content.Server.White.AspectsSystem.Aspects;
+using Content.Server._White.AspectsSystem.Aspects;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;
 using Robust.Shared.Audio;

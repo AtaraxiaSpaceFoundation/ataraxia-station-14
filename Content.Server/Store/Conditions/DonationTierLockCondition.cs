@@ -1,4 +1,4 @@
-﻿using Content.Server.White.Sponsors;
+﻿using Content.Server._White.Sponsors;
 using Content.Shared.Store;
 using Robust.Shared.Player;
 

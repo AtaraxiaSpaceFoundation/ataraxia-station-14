@@ -5,7 +5,7 @@ using Content.Shared.Stunnable;
 using Content.Shared.White.Cult;
 using Robust.Shared.Physics.Systems;
 
-namespace Content.Server.White.Cult.Structures;
+namespace Content.Server._White.Cult.Structures;
 
 public sealed class RunicDoorSystem : EntitySystem
 {

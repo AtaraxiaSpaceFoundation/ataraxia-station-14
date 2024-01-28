@@ -2,7 +2,7 @@
 using Content.Shared.White.Cult.Items;
 using Robust.Server.GameObjects;
 
-namespace Content.Server.White.Cult.Items.Components;
+namespace Content.Server._White.Cult.Items.Components;
 
 [RegisterComponent]
 public sealed partial class TorchCultistsProviderComponent : Component

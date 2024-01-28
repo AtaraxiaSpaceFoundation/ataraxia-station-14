@@ -7,7 +7,7 @@ using Content.Shared.Popups;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 
-namespace Content.Server.White.Cult.HolyWater;
+namespace Content.Server._White.Cult.HolyWater;
 
 public sealed class HolyWaterSystem : EntitySystem
 {

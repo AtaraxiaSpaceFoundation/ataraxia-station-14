@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Components;
-using Content.Server.White.Reputation;
+using Content.Server._White.Reputation;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;

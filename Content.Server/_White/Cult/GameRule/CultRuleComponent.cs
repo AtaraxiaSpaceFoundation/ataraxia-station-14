@@ -12,7 +12,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Server.White.Cult.GameRule;
+namespace Content.Server._White.Cult.GameRule;
 
 [RegisterComponent]
 public sealed partial class CultRuleComponent : Component

@@ -10,7 +10,7 @@ using Content.Server.Stack;
 using Content.Server.Storage.Components;
 using Content.Server.Store.Components;
 using Content.Server.UserInterface;
-using Content.Server.White.Economy;
+using Content.Server._White.Economy;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Actions;

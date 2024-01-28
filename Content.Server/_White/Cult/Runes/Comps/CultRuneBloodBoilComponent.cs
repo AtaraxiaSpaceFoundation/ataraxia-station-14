@@ -1,7 +1,7 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Server.White.Cult.Runes.Comps;
+namespace Content.Server._White.Cult.Runes.Comps;
 
 [RegisterComponent]
 public sealed partial class CultRuneBloodBoilComponent : Component
