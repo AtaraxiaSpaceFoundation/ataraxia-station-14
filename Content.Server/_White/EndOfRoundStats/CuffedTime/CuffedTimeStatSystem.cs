@@ -3,8 +3,8 @@ using Content.Server.GameTicking;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
-using Content.Shared.White;
-using Content.Shared.White.EndOfRoundStats.CuffedTime;
+using Content.Shared._White;
+using Content.Shared._White.EndOfRoundStats.CuffedTime;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 

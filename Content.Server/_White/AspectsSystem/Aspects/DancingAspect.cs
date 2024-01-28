@@ -4,7 +4,7 @@ using Content.Server._White.Animations;
 using Content.Server._White.AspectsSystem.Aspects.Components;
 using Content.Server._White.AspectsSystem.Base;
 using Content.Shared.Mobs.Components;
-using Content.Shared.White.Animations;
+using Content.Shared._White.Animations;
 
 namespace Content.Server._White.AspectsSystem.Aspects;
 

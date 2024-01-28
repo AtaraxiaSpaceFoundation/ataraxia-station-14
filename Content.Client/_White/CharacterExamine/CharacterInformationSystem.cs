@@ -6,7 +6,7 @@ using Content.Shared.CCVar;
 using Content.Shared.PDA;
 using Content.Shared.Roles;
 using Content.Shared.Verbs;
-using Content.Shared.White.CharacterExamine;
+using Content.Shared._White.CharacterExamine;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;

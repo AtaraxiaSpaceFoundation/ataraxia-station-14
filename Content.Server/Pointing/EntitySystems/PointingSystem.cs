@@ -13,7 +13,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Pointing;
 using Content.Shared.Popups;
-using Content.Shared.White.Administration;
+using Content.Shared._White.Administration;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -23,6 +23,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Server.Pointing.EntitySystems
 {

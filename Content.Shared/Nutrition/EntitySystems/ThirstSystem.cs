@@ -10,7 +10,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Alert;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
-using Content.Shared.White.Mood;
+using Content.Shared._White.Mood;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 

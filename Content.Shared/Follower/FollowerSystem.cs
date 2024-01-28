@@ -7,7 +7,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Physics.Pull;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
-using Content.Shared.White.Administration;
+using Content.Shared._White.Administration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Events;
@@ -15,6 +15,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Shared.Follower;
 

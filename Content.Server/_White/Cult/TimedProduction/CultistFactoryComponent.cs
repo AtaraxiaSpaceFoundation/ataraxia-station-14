@@ -1,6 +1,6 @@
 ﻿using Content.Server.UserInterface;
-using Content.Shared.White.Cult;
-using Content.Shared.White.Cult.UI;
+using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.UI;
 using Robust.Server.GameObjects;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 

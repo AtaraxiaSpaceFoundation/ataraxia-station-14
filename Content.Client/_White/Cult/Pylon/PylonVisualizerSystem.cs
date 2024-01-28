@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.Cult.Pylon;
+﻿using Content.Shared._White.Cult.Pylon;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Cult.Pylon;

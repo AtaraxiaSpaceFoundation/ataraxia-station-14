@@ -4,7 +4,7 @@ using Content.Server.Station.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using System.Text;
-using Content.Shared.White;
+using Content.Shared._White;
 
 namespace Content.Server.GameTicking
 {

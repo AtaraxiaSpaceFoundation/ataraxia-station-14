@@ -3,7 +3,7 @@ using Content.Server.Stunnable;
 using Content.Server._White.Cult.Items.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 
 namespace Content.Server._White.Cult.Items.Systems;
 

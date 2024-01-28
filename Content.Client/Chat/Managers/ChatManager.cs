@@ -2,7 +2,7 @@ using Content.Client.Administration.Managers;
 using Content.Client.Ghost;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Client.Console;
 using Robust.Client.Player;
 using Robust.Shared.Utility;

@@ -1,5 +1,5 @@
 ﻿using Content.Shared.GameTicking;
-using Content.Shared.White.Overlays;
+using Content.Shared._White.Overlays;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;

@@ -1,4 +1,4 @@
-using Content.Shared.White.AuthPanel;
+using Content.Shared._White.AuthPanel;
 
 namespace Content.Client._White.AuthPanel;
 

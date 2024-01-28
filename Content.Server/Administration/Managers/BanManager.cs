@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
-using Content.Server.White;
+using Content.Server._White;
 using Content.Server._White.PandaSocket.Interfaces;
 using Content.Server._White.PandaSocket.Main;
 using Content.Shared.CCVar;

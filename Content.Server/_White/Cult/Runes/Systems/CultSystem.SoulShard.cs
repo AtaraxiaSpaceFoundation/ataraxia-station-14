@@ -7,8 +7,8 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
-using Content.Shared.White.Cult;
-using Content.Shared.White.Cult.Items;
+using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Items;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

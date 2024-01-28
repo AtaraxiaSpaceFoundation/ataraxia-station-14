@@ -1,7 +1,7 @@
 ﻿using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.White.Cult;
+namespace Content.Shared._White.Cult;
 
 [Prototype("cultistFactoryProduction")]
 public sealed class CultistFactoryProductionPrototype : IPrototype

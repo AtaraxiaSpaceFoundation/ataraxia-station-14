@@ -1,6 +1,6 @@
 using Content.Server.EUI;
 using Content.Shared.Eui;
-using Content.Shared.White.GhostRecruitment;
+using Content.Shared._White.GhostRecruitment;
 
 namespace Content.Server._White.GhostRecruitment;
 

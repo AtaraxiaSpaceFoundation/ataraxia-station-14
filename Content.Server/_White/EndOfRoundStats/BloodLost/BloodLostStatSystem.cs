@@ -2,7 +2,7 @@ using Content.Server.GameTicking;
 using Content.Shared.GameTicking;
 using Robust.Shared.Configuration;
 using Content.Shared.FixedPoint;
-using Content.Shared.White;
+using Content.Shared._White;
 
 namespace Content.Server._White.EndOfRoundStats.BloodLost;
 

@@ -1,11 +1,11 @@
 ﻿using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Shared.Administration;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 
-namespace Content.Server.White;
+namespace Content.Server._White;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class SalusCommand : IConsoleCommand

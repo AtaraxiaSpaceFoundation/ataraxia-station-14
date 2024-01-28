@@ -1,4 +1,4 @@
-using Content.Shared.White.JoinQueue;
+using Content.Shared._White.JoinQueue;
 using Robust.Client.State;
 using Robust.Shared.Network;
 

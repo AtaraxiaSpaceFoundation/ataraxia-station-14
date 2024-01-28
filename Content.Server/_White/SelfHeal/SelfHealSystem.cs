@@ -8,7 +8,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.White.SelfHeal;
+using Content.Shared._White.SelfHeal;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 

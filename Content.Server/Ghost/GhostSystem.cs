@@ -21,18 +21,19 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Storage.Components;
-using Content.Shared.White;
-using Content.Shared.White.Administration;
+using Content.Shared._White;
+using Content.Shared._White.Administration;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Server.Ghost
 {

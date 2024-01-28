@@ -1,5 +1,5 @@
 using System.Numerics;
-using Content.Shared.White.Trail;
+using Content.Shared._White.Trail;
 using Robust.Client.Graphics;
 using Robust.Shared.Map;
 

@@ -2,7 +2,7 @@ using Content.Shared.Access.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.White.Economy;
+using Content.Shared._White.Economy;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 

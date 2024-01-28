@@ -21,8 +21,8 @@ using Content.Shared.Mobs; // WD
 using Content.Shared.Mobs.Components; // WD
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups; // WD
-using Content.Shared.White.CPR.Events;
-using Content.Shared.White.Mood; // WD
+using Content.Shared._White.CPR.Events;
+using Content.Shared._White.Mood; // WD
 using JetBrains.Annotations;
 using Robust.Server.Audio; // WD
 using Robust.Shared.Audio; // WD

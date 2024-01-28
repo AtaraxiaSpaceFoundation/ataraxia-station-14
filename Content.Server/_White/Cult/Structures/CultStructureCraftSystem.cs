@@ -1,5 +1,5 @@
 ﻿using Content.Shared.Interaction.Events;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;

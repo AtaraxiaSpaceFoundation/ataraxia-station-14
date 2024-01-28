@@ -1,5 +1,5 @@
 ﻿using Content.Server.UserInterface;
-using Content.Shared.White.Cult.Structures;
+using Content.Shared._White.Cult.Structures;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._White.Cult.Structures;

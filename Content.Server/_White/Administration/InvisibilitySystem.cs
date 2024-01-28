@@ -1,9 +1,11 @@
+using Content.Shared._White.Administration;
 using Content.Shared.Eye;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
 using Content.Shared.Follower.Components;
-using Content.Shared.White.Administration;
+using Content.Shared._White.Administration;
 using Robust.Server.GameObjects;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Server._White.Administration;
 

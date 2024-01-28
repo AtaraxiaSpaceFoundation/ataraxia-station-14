@@ -1,6 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Administration;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 

@@ -2,7 +2,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.White.Cult.Items;
+namespace Content.Shared._White.Cult.Items;
 
 [RegisterComponent]
 public sealed partial class VoidTeleportComponent : Component

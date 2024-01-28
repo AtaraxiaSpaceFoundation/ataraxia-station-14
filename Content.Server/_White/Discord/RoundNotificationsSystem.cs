@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Content.Server.Maps;
 using Content.Shared.GameTicking;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 

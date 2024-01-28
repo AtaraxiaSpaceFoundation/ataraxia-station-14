@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Content.Server._White.PandaSocket.Interfaces;
-using Content.Shared.White;
+using Content.Shared._White;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using Robust.Server.Player;

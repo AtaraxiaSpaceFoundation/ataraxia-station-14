@@ -1,7 +1,7 @@
 using Content.Server.CartridgeLoader;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.PDA;
-using Content.Shared.White.Economy;
+using Content.Shared._White.Economy;
 
 namespace Content.Server._White.Economy;
 

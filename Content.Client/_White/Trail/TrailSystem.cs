@@ -1,5 +1,5 @@
 using Content.Client._White.Trail.Line.Manager;
-using Content.Shared.White.Trail;
+using Content.Shared._White.Trail;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.GameStates;

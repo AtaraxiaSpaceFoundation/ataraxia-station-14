@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Content.Shared.CCVar;
-using Content.Shared.White;
+using Content.Shared._White;
 using Prometheus;
 using Robust.Shared.Configuration;
 

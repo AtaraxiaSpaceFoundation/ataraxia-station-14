@@ -1,7 +1,7 @@
 using Content.Server.Power.Components;
 using Content.Server.Medical.Components;
 using Content.Shared.DeviceLinking.Events;
-using Content.Shared.White.Medical.BodyScanner;
+using Content.Shared._White.Medical.BodyScanner;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 using Content.Shared.Mobs.Components;

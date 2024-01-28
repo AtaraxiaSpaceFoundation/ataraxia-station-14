@@ -1,10 +1,10 @@
 using System.Numerics;
-using Content.Shared.White.Animations;
+using Content.Shared._White.Animations;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 using Robust.Shared.GameStates;
-using static Content.Shared.White.Animations.EmoteAnimationComponent;
+using static Content.Shared._White.Animations.EmoteAnimationComponent;
 
 namespace Content.Client._White.Animations;
 

@@ -1,6 +1,6 @@
 using Content.Client.UserInterface.Fragments;
 using Content.Shared.CartridgeLoader;
-using Content.Shared.White.Economy;
+using Content.Shared._White.Economy;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 

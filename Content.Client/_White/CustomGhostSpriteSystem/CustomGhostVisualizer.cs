@@ -1,6 +1,6 @@
 using System.Numerics;
 using Content.Shared.Ghost;
-using Content.Shared.White.CustomGhostSystem;
+using Content.Shared._White.CustomGhostSystem;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._White.CustomGhostSpriteSystem;

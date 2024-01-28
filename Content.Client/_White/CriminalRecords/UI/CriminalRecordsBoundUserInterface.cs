@@ -1,6 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.StationRecords;
-using Content.Shared.White.CriminalRecords;
+using Content.Shared._White.CriminalRecords;
 
 namespace Content.Client._White.CriminalRecords.UI;
 

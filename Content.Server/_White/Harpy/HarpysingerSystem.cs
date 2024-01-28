@@ -2,7 +2,7 @@ using Content.Server.Instruments;
 using Content.Server.Speech.Components;
 using Content.Server.UserInterface;
 using Content.Shared.ActionBlocker;
-using Content.Shared.White.Harpy;
+using Content.Shared._White.Harpy;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs;

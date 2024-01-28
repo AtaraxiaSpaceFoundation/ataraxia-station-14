@@ -1,6 +1,6 @@
 using Content.Shared.Actions;
 
-namespace Content.Shared.White.Cult.Actions;
+namespace Content.Shared._White.Cult.Actions;
 
 public sealed partial class CultTwistedConstructionActionEvent : EntityTargetActionEvent
 {

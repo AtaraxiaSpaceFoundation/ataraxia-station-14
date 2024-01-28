@@ -2,7 +2,7 @@
 using Content.Client._White.Sponsors;
 using Content.Client._White.TTS;
 using Content.Shared.Preferences;
-using Content.Shared.White.TTS;
+using Content.Shared._White.TTS;
 using Robust.Shared.Random;
 
 namespace Content.Client.Preferences.UI;

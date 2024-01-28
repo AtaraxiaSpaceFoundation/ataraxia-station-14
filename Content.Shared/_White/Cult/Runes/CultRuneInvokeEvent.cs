@@ -1,4 +1,4 @@
-namespace Content.Shared.White.Cult.Runes;
+namespace Content.Shared._White.Cult.Runes;
 
 public sealed class CultRuneInvokeEvent : EntityEventArgs
 {

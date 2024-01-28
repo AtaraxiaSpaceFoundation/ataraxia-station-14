@@ -1,7 +1,7 @@
 using Content.Server.GameTicking;
 using Content.Server._White.AspectsSystem.Base;
 using Content.Shared.GameTicking;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;

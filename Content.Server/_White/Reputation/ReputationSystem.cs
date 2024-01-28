@@ -9,7 +9,7 @@ using Content.Shared.Mind.Components;
 using Content.Server._White.PandaSocket.Main;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;

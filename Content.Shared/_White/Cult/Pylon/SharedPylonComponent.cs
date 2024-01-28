@@ -2,7 +2,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.White.Cult.Pylon;
+namespace Content.Shared._White.Cult.Pylon;
 
 [RegisterComponent]
 public sealed partial class SharedPylonComponent : Component

@@ -1,7 +1,7 @@
 ﻿using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.White.Cult.UI;
+namespace Content.Shared._White.Cult.UI;
 
 [Serializable, NetSerializable]
 public enum ListViewSelectorUiKey

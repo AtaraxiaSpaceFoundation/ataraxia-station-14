@@ -1,4 +1,4 @@
-namespace Content.Shared.White.Cult.Components;
+namespace Content.Shared._White.Cult.Components;
 
 [RegisterComponent]
 public sealed partial class CultBuffComponent : Component

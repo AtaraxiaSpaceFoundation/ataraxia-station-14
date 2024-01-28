@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server._White.Flamethrower;
-using Content.Shared.White.Flamethrower;
+using Content.Shared._White.Flamethrower;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Weapons.Ranged.Systems;

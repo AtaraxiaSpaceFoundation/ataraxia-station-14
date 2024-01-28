@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.TTS;
+﻿using Content.Shared._White.TTS;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._White.TTS;

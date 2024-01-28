@@ -1,6 +1,6 @@
 using Content.Server.Ghost.Components;
 using Content.Shared.Ghost;
-using Content.Shared.White.CustomGhostSystem;
+using Content.Shared._White.CustomGhostSystem;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;

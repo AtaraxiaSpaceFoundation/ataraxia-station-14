@@ -2,8 +2,8 @@
 using System.IO;
 using System.Linq;
 using Content.Shared.Physics;
-using Content.Shared.White;
-using Content.Shared.White.TTS;
+using Content.Shared._White;
+using Content.Shared._White.TTS;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Shared.Audio.Sources;

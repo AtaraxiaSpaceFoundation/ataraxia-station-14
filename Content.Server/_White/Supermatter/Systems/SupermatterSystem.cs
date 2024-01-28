@@ -21,8 +21,8 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Explosion.Components;
 using Content.Shared.Singularity.Components;
 using Content.Shared.Singularity.EntitySystems;
-using Content.Shared.White.Supermatter.Components;
-using Content.Shared.White.Supermatter.Systems;
+using Content.Shared._White.Supermatter.Components;
+using Content.Shared._White.Supermatter.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 

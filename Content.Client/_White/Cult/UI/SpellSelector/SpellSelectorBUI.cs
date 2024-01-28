@@ -1,7 +1,7 @@
 ﻿using Content.Client._White.UserInterface.Radial;
 using Content.Shared.Actions;
-using Content.Shared.White.Cult;
-using Content.Shared.White.Cult.Components;
+using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Components;
 using Robust.Client.Utility;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;

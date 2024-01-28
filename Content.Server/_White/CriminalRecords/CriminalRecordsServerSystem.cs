@@ -1,4 +1,4 @@
-using Content.Shared.White.CriminalRecords;
+using Content.Shared._White.CriminalRecords;
 using Robust.Server.GameStates;
 using Robust.Shared.GameStates;
 

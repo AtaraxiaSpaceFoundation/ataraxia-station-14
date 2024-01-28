@@ -1,7 +1,7 @@
 using Content.Server.Body.Systems;
 using Content.Shared.Body.Organ;
 using Content.Shared.Construction;
-using Content.Shared.White.CheapSurgery;
+using Content.Shared._White.CheapSurgery;
 
 namespace Content.Server._White.Construction.Completions;
 

@@ -2,7 +2,7 @@
 using Content.Shared.Doors;
 using Content.Shared.Humanoid;
 using Content.Shared.Stunnable;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Shared.Physics.Systems;
 
 namespace Content.Server._White.Cult.Structures;

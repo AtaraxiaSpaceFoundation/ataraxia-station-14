@@ -4,7 +4,7 @@ using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Actions;
 using Content.Shared.Eui;
 using Content.Shared.Popups;
-using Content.Shared.White.Cult.UI;
+using Content.Shared._White.Cult.UI;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;

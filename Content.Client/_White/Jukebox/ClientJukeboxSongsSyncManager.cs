@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.Jukebox;
+﻿using Content.Shared._White.Jukebox;
 
 namespace Content.Client._White.Jukebox;
 

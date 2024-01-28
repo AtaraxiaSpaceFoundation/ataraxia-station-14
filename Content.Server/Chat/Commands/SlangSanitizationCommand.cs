@@ -2,7 +2,7 @@ using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 

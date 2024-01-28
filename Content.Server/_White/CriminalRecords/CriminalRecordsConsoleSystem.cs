@@ -9,7 +9,7 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.PDA;
 using Content.Shared.Radio;
 using Content.Shared.StationRecords;
-using Content.Shared.White.CriminalRecords;
+using Content.Shared._White.CriminalRecords;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;

@@ -3,7 +3,7 @@ using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
 using Content.Shared.Revolutionary.Components;
 using Content.Shared.Stunnable;
-using Content.Shared.White.Mood;
+using Content.Shared._White.Mood;
 
 namespace Content.Shared.Revolutionary;
 

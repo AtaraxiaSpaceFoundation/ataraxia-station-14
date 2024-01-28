@@ -1,4 +1,4 @@
-using Content.Shared.White.Trail;
+using Content.Shared._White.Trail;
 using Robust.Shared.GameStates;
 
 namespace Content.Server._White.Trail;

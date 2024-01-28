@@ -12,7 +12,7 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.StatusEffect;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

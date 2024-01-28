@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Numerics;
-using Content.Shared.White.Spline;
-using Content.Shared.White.Trail;
+using Content.Shared._White.Spline;
+using Content.Shared._White.Trail;
 using Robust.Client.Graphics;
 using Vector4 = Robust.Shared.Maths.Vector4;
 

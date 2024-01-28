@@ -29,7 +29,7 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Server.White;
+using Content.Server._White;
 using Content.Server._White.JoinQueue;
 using Content.Server._White.Jukebox;
 using Content.Server._White.PandaSocket.Main;

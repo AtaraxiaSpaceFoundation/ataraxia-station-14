@@ -7,7 +7,7 @@ using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Examine;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Verbs;
-using Content.Shared.White.Item.Tricorder;
+using Content.Shared._White.Item.Tricorder;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Utility;

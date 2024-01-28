@@ -20,7 +20,7 @@ using Content.Shared.Objectives;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -29,7 +29,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared.White;
+using Content.Shared._White;
 using Content.Shared.Mind;
 using Robust.Shared.Audio.Systems;
 

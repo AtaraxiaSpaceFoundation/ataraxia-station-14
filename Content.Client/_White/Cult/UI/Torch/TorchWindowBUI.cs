@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.Cult.Items;
+﻿using Content.Shared._White.Cult.Items;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._White.Cult.UI.Torch;

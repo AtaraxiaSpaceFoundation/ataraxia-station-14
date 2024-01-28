@@ -4,7 +4,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;

@@ -1,4 +1,4 @@
-using Content.Shared.White.Medical.BodyScanner;
+using Content.Shared._White.Medical.BodyScanner;
 using JetBrains.Annotations;
 
 namespace Content.Client._White.Medical.BodyScanner

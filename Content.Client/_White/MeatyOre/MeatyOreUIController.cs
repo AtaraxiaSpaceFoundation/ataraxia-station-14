@@ -3,7 +3,7 @@ using Content.Client.Administration.Managers;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Humanoid;
-using Content.Shared.White.MeatyOre;
+using Content.Shared._White.MeatyOre;
 using Robust.Client.Player;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;

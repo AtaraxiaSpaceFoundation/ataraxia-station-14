@@ -1,7 +1,7 @@
 using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Interaction;
 using Content.Shared.Stealth.Components;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._White.Cult.Runes.Systems;

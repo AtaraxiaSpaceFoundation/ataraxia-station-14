@@ -1,5 +1,5 @@
 ﻿using Content.Server.UserInterface;
-using Content.Shared.White.Cult.Items;
+using Content.Shared._White.Cult.Items;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._White.Cult.Items.Components;

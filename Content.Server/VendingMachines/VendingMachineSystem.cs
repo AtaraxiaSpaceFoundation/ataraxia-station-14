@@ -27,7 +27,7 @@ using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.VendingMachines;
-using Content.Shared.White.Economy;
+using Content.Shared._White.Economy;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;

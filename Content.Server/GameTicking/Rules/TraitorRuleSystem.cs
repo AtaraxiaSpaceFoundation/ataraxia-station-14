@@ -28,7 +28,7 @@ using Content.Server._White.Administration;
 using Content.Server._White.AspectsSystem.Aspects;
 using Content.Server._White.AspectsSystem.Aspects.Components;
 using Content.Server._White.Reputation;
-using Content.Shared.White.Mood;
+using Content.Shared._White.Mood;
 
 namespace Content.Server.GameTicking.Rules;
 

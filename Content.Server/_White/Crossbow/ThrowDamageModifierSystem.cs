@@ -1,6 +1,6 @@
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
-using Content.Shared.White.Crossbow;
+using Content.Shared._White.Crossbow;
 
 namespace Content.Server._White.Crossbow;
 

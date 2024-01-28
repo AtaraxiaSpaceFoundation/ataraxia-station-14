@@ -1,7 +1,10 @@
+using Content.Shared._White.Administration;
 using Content.Shared.Popups;
-using Content.Shared.White.Administration;
+using Content.Shared._White.Administration;
 using Robust.Client.Console;
 using Robust.Client.GameObjects;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
+using ToggleInvisibilityActionEvent = Content.Shared._White.Administration.ToggleInvisibilityActionEvent;
 
 namespace Content.Client._White.Administration;
 

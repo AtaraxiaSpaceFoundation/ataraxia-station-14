@@ -1,4 +1,4 @@
-using Content.Shared.White.Medical.BodyScanner;
+using Content.Shared._White.Medical.BodyScanner;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;

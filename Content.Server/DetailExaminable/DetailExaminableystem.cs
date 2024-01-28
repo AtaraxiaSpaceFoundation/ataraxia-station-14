@@ -1,7 +1,7 @@
 /*using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
-using Content.Shared.White.CharacterExamine;
+using Content.Shared._White.CharacterExamine;
 using Robust.Shared.Utility;
 
 namespace Content.Server.DetailExaminable

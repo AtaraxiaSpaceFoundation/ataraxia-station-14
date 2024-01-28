@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.TTS;
+﻿using Content.Shared._White.TTS;
 using Robust.Shared.Network;
 
 namespace Content.Client._White.TTS;

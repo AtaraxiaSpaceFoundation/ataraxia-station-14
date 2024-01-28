@@ -1,5 +1,5 @@
 ﻿using Content.Client._White.Stalin.StalinUi;
-using Content.Shared.White.SaltedYayca;
+using Content.Shared._White.SaltedYayca;
 using Robust.Client.UserInterface;
 using Robust.Shared.Network;
 

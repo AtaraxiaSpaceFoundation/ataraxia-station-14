@@ -8,7 +8,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
-using Content.Shared.White.Crossbow;
+using Content.Shared._White.Crossbow;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;

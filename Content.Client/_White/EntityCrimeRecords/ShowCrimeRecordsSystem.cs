@@ -2,7 +2,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
-using Content.Shared.White.EntityCrimeRecords;
+using Content.Shared._White.EntityCrimeRecords;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;

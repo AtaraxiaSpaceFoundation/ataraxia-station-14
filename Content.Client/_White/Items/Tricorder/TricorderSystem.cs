@@ -1,7 +1,7 @@
 ﻿using Content.Client.Items;
 using Content.Client.Message;
 using Content.Client.Stylesheets;
-using Content.Shared.White.Item.Tricorder;
+using Content.Shared._White.Item.Tricorder;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.GameStates;

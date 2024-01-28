@@ -3,7 +3,7 @@ using Content.Shared.Access.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
-using Content.Shared.White.CriminalRecords;
+using Content.Shared._White.CriminalRecords;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;

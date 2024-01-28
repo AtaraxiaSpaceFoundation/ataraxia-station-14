@@ -6,7 +6,7 @@ using Content.Server._White.AspectsSystem.Base;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
-using Content.Shared.White.NonPeacefulRoundEnd;
+using Content.Shared._White.NonPeacefulRoundEnd;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 

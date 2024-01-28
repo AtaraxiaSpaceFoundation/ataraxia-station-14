@@ -8,7 +8,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.White.CheapSurgery;
+using Content.Shared._White.CheapSurgery;
 using Robust.Shared.Utility;
 
 namespace Content.Server._White.CheapSurgery;

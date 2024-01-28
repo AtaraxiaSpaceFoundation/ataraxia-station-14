@@ -1,5 +1,5 @@
 using Content.Client.Eui;
-using Content.Shared.White.GhostRecruitment;
+using Content.Shared._White.GhostRecruitment;
 using Robust.Client.Graphics;
 
 namespace Content.Client._White.GhostRecruitment;

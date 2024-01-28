@@ -1,5 +1,5 @@
 using Content.Client._White.UserInterface.Radial;
-using Content.Shared.White.CheapSurgery;
+using Content.Shared._White.CheapSurgery;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._White.CheapSurgery;

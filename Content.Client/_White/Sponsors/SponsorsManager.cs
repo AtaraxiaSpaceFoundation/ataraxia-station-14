@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.White.Sponsors;
+using Content.Shared._White.Sponsors;
 using Robust.Shared.Network;
 
 namespace Content.Client._White.Sponsors;

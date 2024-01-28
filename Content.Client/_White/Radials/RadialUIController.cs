@@ -2,7 +2,7 @@ using Content.Client._White.UserInterface.Radial;
 using Content.Client.CombatMode;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Gameplay;
-using Content.Shared.White.Radials;
+using Content.Shared._White.Radials;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;

@@ -6,7 +6,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Content.Shared.White.Events;
+using Content.Shared._White.Events;
 using Robust.Shared.Player;
 
 namespace Content.Server._White.Other.CustomFluffSystems.Pets;

@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Instruments;
 using Content.Shared.GameTicking;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 

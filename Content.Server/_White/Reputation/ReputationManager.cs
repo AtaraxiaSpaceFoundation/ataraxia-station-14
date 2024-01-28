@@ -4,7 +4,7 @@ using Content.Server.Administration;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Shared.GameTicking;
-using Content.Shared.White.Reputation;
+using Content.Shared._White.Reputation;
 using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;

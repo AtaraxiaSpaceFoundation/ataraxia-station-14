@@ -1,7 +1,7 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.White.Animations;
+using Content.Shared._White.Animations;
 using Robust.Shared.Random;
 
 namespace Content.Server._White.Animations;

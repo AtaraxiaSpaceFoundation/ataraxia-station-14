@@ -1,8 +1,8 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat.Prototypes;
-using Content.Shared.White.Animations;
+using Content.Shared._White.Animations;
 using Robust.Shared.GameStates;
-using static Content.Shared.White.Animations.EmoteAnimationComponent;
+using static Content.Shared._White.Animations.EmoteAnimationComponent;
 
 namespace Content.Server._White.Animations;
 

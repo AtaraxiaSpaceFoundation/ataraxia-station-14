@@ -6,7 +6,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 using Robust.Shared.Timing;
 
 namespace Content.Server._White.Cult.Items.Systems;

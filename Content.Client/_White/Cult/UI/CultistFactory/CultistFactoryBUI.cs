@@ -1,6 +1,6 @@
 ﻿using Content.Client._White.UserInterface.Radial;
-using Content.Shared.White.Cult;
-using Content.Shared.White.Cult.UI;
+using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.UI;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._White.Cult.UI.CultistFactory;

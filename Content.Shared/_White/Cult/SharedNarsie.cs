@@ -1,7 +1,7 @@
 ﻿using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.White.Cult;
+namespace Content.Shared._White.Cult;
 
 [Serializable, NetSerializable]
 public enum NarsieVisualState : byte

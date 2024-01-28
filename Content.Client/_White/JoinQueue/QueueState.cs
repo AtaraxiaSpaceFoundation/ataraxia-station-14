@@ -1,4 +1,4 @@
-using Content.Shared.White.JoinQueue;
+using Content.Shared._White.JoinQueue;
 using Robust.Client.Audio;
 using Robust.Client.Console;
 using Robust.Client.State;

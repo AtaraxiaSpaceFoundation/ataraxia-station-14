@@ -7,7 +7,7 @@ using Content.Shared.Overlays;
 using Content.Shared.PDA;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
-using Content.Shared.White.CriminalRecords;
+using Content.Shared._White.CriminalRecords;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;

@@ -1,9 +1,9 @@
 using Content.Shared.Ghost;
 using Content.Shared.Item;
 using Content.Shared.Popups;
-using Content.Shared.White.Cult.Components;
+using Content.Shared._White.Cult.Components;
 
-namespace Content.Shared.White.Cult.Systems;
+namespace Content.Shared._White.Cult.Systems;
 
 public sealed class CultItemSystem : EntitySystem
 {

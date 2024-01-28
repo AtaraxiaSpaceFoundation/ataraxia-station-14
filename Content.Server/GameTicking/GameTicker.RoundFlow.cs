@@ -23,7 +23,7 @@ using Robust.Shared.Utility;
 using Content.Server._White.PandaSocket.Main;
 using Content.Server._White.Reputation;
 using Content.Server._White.Stalin;
-using Content.Shared.White;
+using Content.Shared._White;
 
 namespace Content.Server.GameTicking
 {

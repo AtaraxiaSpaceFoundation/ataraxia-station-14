@@ -1,6 +1,6 @@
 using Content.Client._White.Trail.SplineRenderer;
-using Content.Shared.White.Spline;
-using Content.Shared.White.Trail;
+using Content.Shared._White.Spline;
+using Content.Shared._White.Trail;
 using Robust.Shared.Map;
 
 namespace Content.Client._White.Trail.Line.Manager;

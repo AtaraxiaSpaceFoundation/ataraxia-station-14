@@ -7,7 +7,7 @@ using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;

@@ -6,7 +6,7 @@ using Content.Server.Mind;
 using Content.Server.Players;
 using Content.Shared.Ghost;
 using Content.Shared.Players;
-using Content.Shared.White.GhostRecruitment;
+using Content.Shared._White.GhostRecruitment;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;

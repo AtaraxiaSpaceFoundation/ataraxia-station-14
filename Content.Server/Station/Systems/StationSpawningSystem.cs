@@ -17,7 +17,7 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Station;
 using Content.Shared.StatusIcon;
-using Content.Shared.White.CharacterExamine;
+using Content.Shared._White.CharacterExamine;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;

@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.Configuration;
 
-namespace Content.Server.White;
+namespace Content.Server._White;
 
 public static class UnsafePseudoIoC // Я НАНАВИЖУ IOCMAANGERRESOLVEPOSHEL NAHUI
 {

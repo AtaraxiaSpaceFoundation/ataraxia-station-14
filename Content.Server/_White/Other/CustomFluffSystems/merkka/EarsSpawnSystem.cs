@@ -4,7 +4,7 @@ using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Content.Shared.White.Events;
+using Content.Shared._White.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 

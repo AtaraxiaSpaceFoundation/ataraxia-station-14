@@ -1,8 +1,8 @@
 using System.Linq;
 using Content.Server.Connection;
 using Content.Shared.CCVar;
-using Content.Shared.White;
-using Content.Shared.White.JoinQueue;
+using Content.Shared._White;
+using Content.Shared._White.JoinQueue;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;

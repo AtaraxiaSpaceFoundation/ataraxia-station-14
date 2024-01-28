@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared.White.Reputation;
+using Content.Shared._White.Reputation;
 using Robust.Shared.Network;
 
 namespace Content.Client._White.Reputation;

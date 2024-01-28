@@ -1,4 +1,4 @@
-﻿using Content.Shared.White.Cult.UI;
+﻿using Content.Shared._White.Cult.UI;
 using JetBrains.Annotations;
 
 namespace Content.Client._White.Cult.UI.Altar;

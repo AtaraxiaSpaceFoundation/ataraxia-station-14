@@ -3,7 +3,7 @@ using Content.Client.Chat.Managers;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;

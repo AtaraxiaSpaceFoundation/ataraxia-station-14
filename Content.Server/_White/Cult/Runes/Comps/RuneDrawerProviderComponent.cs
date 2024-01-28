@@ -1,8 +1,8 @@
 ﻿using Content.Server.UserInterface;
-using Content.Shared.White.Cult.UI;
+using Content.Shared._White.Cult.UI;
 using Robust.Server.GameObjects;
 
-namespace Content.Shared.White.Cult;
+namespace Content.Shared._White.Cult;
 
 [RegisterComponent]
 public sealed partial class RuneDrawerProviderComponent : Component

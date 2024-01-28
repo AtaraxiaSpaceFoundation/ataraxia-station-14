@@ -1,6 +1,6 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
-using Content.Shared.White.EntityJobInfo;
+using Content.Shared._White.EntityJobInfo;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;

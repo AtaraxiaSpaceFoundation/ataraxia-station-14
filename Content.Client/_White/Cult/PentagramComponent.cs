@@ -1,4 +1,4 @@
-using Content.Shared.White.Cult.Pentagram;
+using Content.Shared._White.Cult.Pentagram;
 using Robust.Shared.GameStates;
 
 namespace Content.Client._White.Cult;

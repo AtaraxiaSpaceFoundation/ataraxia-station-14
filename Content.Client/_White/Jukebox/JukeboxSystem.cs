@@ -1,7 +1,7 @@
 ﻿using Content.Shared.GameTicking;
 using Content.Shared.Physics;
-using Content.Shared.White;
-using Content.Shared.White.Jukebox;
+using Content.Shared._White;
+using Content.Shared._White.Jukebox;
 using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;

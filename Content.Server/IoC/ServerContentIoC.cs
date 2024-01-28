@@ -19,7 +19,7 @@ using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
-using Content.Server.White;
+using Content.Server._White;
 using Content.Server._White.JoinQueue;
 using Content.Server._White.Jukebox;
 using Content.Server._White.PandaSocket.Main;

@@ -1,8 +1,9 @@
 using Content.Server.Administration;
 using Content.Server._White.Administration;
 using Content.Shared.Administration;
-using Content.Shared.White.Administration;
+using Content.Shared._White.Administration;
 using Robust.Shared.Console;
+using InvisibilityComponent = Content.Shared._White.Administration.InvisibilityComponent;
 
 namespace Content.Server._White.Commands;
 

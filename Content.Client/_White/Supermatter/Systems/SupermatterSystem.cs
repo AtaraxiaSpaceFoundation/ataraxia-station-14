@@ -1,5 +1,5 @@
-﻿using Content.Shared.White.Supermatter.Components;
-using Content.Shared.White.Supermatter.Systems;
+﻿using Content.Shared._White.Supermatter.Components;
+using Content.Shared._White.Supermatter.Systems;
 using Robust.Shared.GameStates;
 
 namespace Content.Client._White.Supermatter.Systems;

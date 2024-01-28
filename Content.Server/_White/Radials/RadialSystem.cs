@@ -7,8 +7,8 @@ using Content.Shared.Database;
 using Content.Shared.Hands.Components;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Verbs;
-using Content.Shared.White.Radials;
-using Content.Shared.White.Radials.Systems;
+using Content.Shared._White.Radials;
+using Content.Shared._White.Radials.Systems;
 using Robust.Server.Player;
 
 namespace Content.Server._White.Radials;

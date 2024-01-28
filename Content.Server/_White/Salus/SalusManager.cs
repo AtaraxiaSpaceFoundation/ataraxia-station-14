@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Shared.Database;
-using Content.Shared.White;
+using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 
-namespace Content.Server.White;
+namespace Content.Server._White;
 
 public sealed class SalusManager
 {

@@ -1,6 +1,6 @@
 using Robust.Shared.Random;
 
-namespace Content.Shared.White.Cult.Systems;
+namespace Content.Shared._White.Cult.Systems;
 
 /// <summary>
 /// Words generator for whisper

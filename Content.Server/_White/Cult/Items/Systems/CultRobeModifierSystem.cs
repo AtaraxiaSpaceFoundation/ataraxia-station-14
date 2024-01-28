@@ -3,7 +3,7 @@ using Content.Shared.Damage;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
-using Content.Shared.White.Cult;
+using Content.Shared._White.Cult;
 
 namespace Content.Server._White.Cult.Items.Systems;
 

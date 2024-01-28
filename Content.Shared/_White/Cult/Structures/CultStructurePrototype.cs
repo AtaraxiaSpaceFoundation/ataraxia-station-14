@@ -2,7 +2,7 @@
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared.White.Cult.Structures;
+namespace Content.Shared._White.Cult.Structures;
 
 [Prototype("cultStructure")]
 public sealed class CultStructurePrototype : IPrototype

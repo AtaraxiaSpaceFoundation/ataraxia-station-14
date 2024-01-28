@@ -1,6 +1,6 @@
 ﻿using Content.Shared.Actions;
 
-namespace Content.Shared.White.Cult;
+namespace Content.Shared._White.Cult;
 
 public sealed partial class ArtificerCreateSoulStoneActionEvent : InstantActionEvent
 {

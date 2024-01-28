@@ -1,5 +1,5 @@
 using Content.Shared.Weapons.Ranged.Systems;
-using Content.Shared.White.Crossbow;
+using Content.Shared._White.Crossbow;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Crossbow;

@@ -1,6 +1,6 @@
 using Robust.Client.Player;
 using Robust.Shared.Console;
-using Content.Shared.White.EntityHealthBar;
+using Content.Shared._White.EntityHealthBar;
 
 namespace Content.Client.Commands
 {
