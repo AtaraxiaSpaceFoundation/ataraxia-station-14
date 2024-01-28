@@ -1,7 +1,7 @@
 using System.Numerics;
+using Content.Client._White.UserInterface.Controls;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Client.White.UserInterface.Controls;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;

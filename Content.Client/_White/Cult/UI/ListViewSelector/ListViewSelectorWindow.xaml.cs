@@ -12,6 +12,7 @@ public partial class ListViewSelectorWindow : DefaultWindow
     public Action<string, int>? ItemSelected;
 
     private readonly IPrototypeManager _prototypeManager;
+
     public ListViewSelectorWindow(IPrototypeManager prototypeManager)
     {
         RobustXamlLoader.Load(this);
@@ -29,7 +30,7 @@ public partial class ListViewSelectorWindow : DefaultWindow
 
             if (isPrototypes)
             {
-                if(_prototypeManager.TryIndex<EntityPrototype>(item, out var itemPrototype))
+                if (_prototypeManager.TryIndex<EntityPrototype>(item, out var itemPrototype))
                 {
                     itemName = itemPrototype.Name;
                 }

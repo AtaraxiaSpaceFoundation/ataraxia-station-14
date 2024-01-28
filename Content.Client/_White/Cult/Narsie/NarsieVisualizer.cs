@@ -3,7 +3,7 @@ using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 
-namespace Content.Client._White.Cult;
+namespace Content.Client._White.Cult.Narsie;
 
 public sealed class NarsieVisualizer : VisualizerSystem<NarsieComponent>
 {

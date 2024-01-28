@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using Content.Client.Eui;
 using Content.Client._White.Cult.UI.TeleportRunesList;
+using Content.Client.Eui;
 using Content.Shared.Eui;
 using Content.Shared.White.Cult.UI;
 

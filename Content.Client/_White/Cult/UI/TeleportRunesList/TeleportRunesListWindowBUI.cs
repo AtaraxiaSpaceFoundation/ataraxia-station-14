@@ -1,5 +1,4 @@
 ﻿using Content.Shared.White.Cult.UI;
-using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Cult.UI.TeleportRunesList;
 
@@ -16,7 +15,7 @@ public sealed class TeleportRunesListWindowBUI : BoundUserInterface
     {
         base.Open();
 
-        _window = new();
+        _window = new TeleportRunesListWindow();
         _window.OpenCentered();
         _window.OnClose += Close;
 

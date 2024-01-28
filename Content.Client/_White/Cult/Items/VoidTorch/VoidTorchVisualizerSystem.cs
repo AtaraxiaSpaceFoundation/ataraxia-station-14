@@ -5,7 +5,10 @@ namespace Content.Client._White.Cult.Items.VoidTorch;
 
 public sealed class VoidTorchVisualizerSystem : VisualizerSystem<VoidTorchVisualsComponent>
 {
-    protected override void OnAppearanceChange(EntityUid uid, VoidTorchVisualsComponent component, ref AppearanceChangeEvent args)
+    protected override void OnAppearanceChange(
+        EntityUid uid,
+        VoidTorchVisualsComponent component,
+        ref AppearanceChangeEvent args)
     {
         base.OnAppearanceChange(uid, component, ref args);
 

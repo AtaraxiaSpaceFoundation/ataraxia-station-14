@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Client.White.Sponsors;
+using Content.Client._White.Sponsors;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;

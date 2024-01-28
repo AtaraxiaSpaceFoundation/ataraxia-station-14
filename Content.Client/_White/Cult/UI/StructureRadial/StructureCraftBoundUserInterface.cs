@@ -3,7 +3,6 @@ using Content.Client.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Popups;
 using Content.Shared.White.Cult.Structures;
-using Robust.Client.GameObjects;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Shared.Enums;

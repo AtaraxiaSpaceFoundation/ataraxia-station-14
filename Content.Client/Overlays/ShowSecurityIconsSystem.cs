@@ -1,4 +1,4 @@
-using Content.Client.White.EntityCrimeRecords;
+using Content.Client._White.EntityCrimeRecords;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Inventory;

@@ -1,5 +1,4 @@
 ﻿using Content.Shared.White.Cult;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;

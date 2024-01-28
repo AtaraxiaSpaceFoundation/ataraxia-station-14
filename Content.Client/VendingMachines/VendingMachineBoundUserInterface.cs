@@ -1,8 +1,6 @@
-using Content.Client.VendingMachines.UI;
 using Content.Shared.VendingMachines;
-using Robust.Client.UserInterface.Controls;
 using System.Linq;
-using Content.Client.White.Economy.Ui;
+using Content.Client._White.Economy.Ui;
 
 namespace Content.Client.VendingMachines
 {

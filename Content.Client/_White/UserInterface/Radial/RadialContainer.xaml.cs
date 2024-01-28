@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Threading.Tasks;
 using Content.Client.Message;
 using Content.Client.Resources;
 using Robust.Client.Animations;
@@ -222,7 +221,7 @@ public partial class RadialContainer : Control
             button.Controller.OnMouseEntered += (_) =>
             {
                 PlaySizeAnimation(button, _focusSize, OutSizeAnimationKey, InSizeAnimationKey);
-                ActionLabel.SetMarkup(button.Content ?? string.Empty);
+                RichTextLabelExt.SetMarkup(ActionLabel, button.Content ?? string.Empty);
                 ActionLabel.Visible = IsAction;
             };
             button.Controller.OnMouseExited += (_) =>
@@ -237,7 +236,7 @@ public partial class RadialContainer : Control
         CloseButton.Controller.OnMouseEntered += (_) =>
         {
             PlaySizeAnimation(CloseButton, _focusSize, OutSizeAnimationKey, InSizeAnimationKey);
-            ActionLabel.SetMarkup(CloseButton.Content ?? string.Empty);
+            RichTextLabelExt.SetMarkup(ActionLabel, CloseButton.Content ?? string.Empty);
             ActionLabel.Visible = true;
         };
 
@@ -405,10 +404,10 @@ public partial class RadialContainer : Control
     {
         var distance = FocusSize * 1.2f;
 
-        if (Layout.Children.Count() <= MaxButtons)
+        if (Enumerable.Count<Control>(Layout.Children) <= MaxButtons)
             return distance + offset;
 
-        for (var i = 0; i < (Layout.Children.Count() - MaxButtons); i++)
+        for (var i = 0; i < (Enumerable.Count<Control>(Layout.Children) - MaxButtons); i++)
         {
             distance += (NormalSize/3);
         }

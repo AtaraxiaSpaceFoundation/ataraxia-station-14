@@ -1,6 +1,4 @@
-﻿using System.Data;
-using Content.Shared.White.Cult.Items;
-using Robust.Client.GameObjects;
+﻿using Content.Shared.White.Cult.Items;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._White.Cult.UI.Torch;

@@ -1,3 +1,10 @@
+using Content.Client._White.JoinQueue;
+using Content.Client._White.Jukebox;
+using Content.Client._White.Reputation;
+using Content.Client._White.Sponsors;
+using Content.Client._White.Stalin;
+using Content.Client._White.Trail.Line.Manager;
+using Content.Client._White.TTS;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -17,13 +24,6 @@ using Content.Client.Voting;
 using Content.Shared.Administration.Logs;
 using Content.Client.Guidebook;
 using Content.Client.Replay;
-using Content.Client.White.JoinQueue;
-using Content.Client.White.Jukebox;
-using Content.Client.White.Reputation;
-using Content.Client.White.Sponsors;
-using Content.Client.White.Stalin;
-using Content.Client.White.Trail.Line.Manager;
-using Content.Client.White.TTS;
 using Content.Shared.Administration.Managers;
 
 namespace Content.Client.IoC

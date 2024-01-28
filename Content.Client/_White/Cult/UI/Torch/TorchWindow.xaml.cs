@@ -2,7 +2,6 @@
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._White.Cult.UI.Torch;
 

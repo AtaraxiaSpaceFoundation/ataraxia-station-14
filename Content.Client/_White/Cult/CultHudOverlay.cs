@@ -1,10 +1,8 @@
 ﻿using System.Numerics;
-using Content.Shared.Humanoid;
 using Content.Shared.White.Cult;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Client._White.Cult;

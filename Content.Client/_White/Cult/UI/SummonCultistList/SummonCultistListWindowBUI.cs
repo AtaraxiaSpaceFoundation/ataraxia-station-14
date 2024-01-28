@@ -1,5 +1,4 @@
 ﻿using Content.Shared.White.Cult.UI;
-using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Cult.UI.SummonCultistList;
 
@@ -16,7 +15,7 @@ public sealed class SummonCultistListWindowBUI : BoundUserInterface
     {
         base.Open();
 
-        _window = new();
+        _window = new SummonCultistListWindow();
         _window.OpenCentered();
         _window.OnClose += Close;
 

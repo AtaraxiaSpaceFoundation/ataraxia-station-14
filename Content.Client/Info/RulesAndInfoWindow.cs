@@ -1,8 +1,6 @@
 using System.Numerics;
+using Content.Client._White.Rules;
 using Content.Client.UserInterface.Systems.EscapeMenu;
-using Content.Client.White.Rules;
-using Content.Shared.White;
-using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;

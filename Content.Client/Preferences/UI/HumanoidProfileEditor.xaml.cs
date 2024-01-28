@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._White.Sponsors;
 using Content.Client.Administration.Managers;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI;
@@ -7,7 +8,6 @@ using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
-using Content.Client.White.Sponsors;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;

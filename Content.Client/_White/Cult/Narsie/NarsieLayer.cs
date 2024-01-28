@@ -1,4 +1,4 @@
-﻿namespace Content.Client._White.Cult;
+﻿namespace Content.Client._White.Cult.Narsie;
 
 public enum NarsieLayer
 {

@@ -1,6 +1,4 @@
-﻿using Content.Client.Storage.Visualizers;
-
-namespace Content.Client._White.Cult.Pylon;
+﻿namespace Content.Client._White.Cult.Pylon;
 
 [RegisterComponent]
 public sealed partial class PylonVisualsComponent : Component

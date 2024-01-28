@@ -1,5 +1,4 @@
 using Content.Shared.White.Cult.UI;
-using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Cult.UI.NameSelector;
 

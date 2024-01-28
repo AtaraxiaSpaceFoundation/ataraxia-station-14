@@ -1,8 +1,5 @@
 ﻿using Content.Shared.White.Cult.UI;
 using JetBrains.Annotations;
-using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Client._White.Cult.UI.Altar;
 

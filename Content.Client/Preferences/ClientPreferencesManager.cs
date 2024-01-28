@@ -1,6 +1,6 @@
 using System.Linq;
+using Content.Client._White.Sponsors;
 using Content.Client.Administration.Managers;
-using Content.Client.White.Sponsors;
 using Content.Shared.Administration;
 using Content.Shared.Preferences;
 using Robust.Client;
