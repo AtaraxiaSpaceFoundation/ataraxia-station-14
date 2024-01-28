@@ -497,7 +497,7 @@
     - BikeHorn
     - ClownRecorder
     - BikeHornInstrument
-   
+
 #syndicate modules
 - type: entity
   id: BorgModuleSyndicateWeapon
@@ -533,7 +533,7 @@
   id: BorgModuleEsword
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule ]
   name: energy sword cyborg module
-  description: A module that comes with a double energy sword.
+  description: A module that comes with an energy sword.
   components:
     - type: Sprite
       layers:
@@ -541,7 +541,7 @@
         - state: icon-tools
     - type: ItemBorgModule
       items:
-        - EnergySwordDouble
+        - EnergySword
         - PinpointerSyndicateNuclear
 
 - type: entity
