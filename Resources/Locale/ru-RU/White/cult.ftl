@@ -54,5 +54,5 @@ ent-CultSharpener = древний точильный камень
     .desc = Используется для заточки кромок стальных инструментов.
 
 chat-manager-cult-channel-name = Культ
-chat-manager-send-cult-chat-wrap-message = \[{ $channelName }\] { $player }: { $message }
+chat-manager-send-cult-chat-wrap-message = [bold]\[{ $channelName }\] [BubbleHeader]{ $player }[/BubbleHeader]:[/bold] [BubbleContent]{ $message }[/BubbleContent]
 hud-chatbox-select-channel-Cult = Культ

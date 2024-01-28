@@ -1,11 +1,8 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Administration;
-using Content.Shared.Chat;
 using Content.Shared.White.Cult;
-using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
-using Robust.Shared.Player;
 
 namespace Content.Server.Chat.Commands
 {
@@ -13,7 +10,9 @@ namespace Content.Server.Chat.Commands
     internal sealed class CultCommand : IConsoleCommand
     {
         public string Command => "csay";
+
         public string Description => "Send cult message";
+
         public string Help => "csay <text>";
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
@@ -43,7 +42,9 @@ namespace Content.Server.Chat.Commands
             var message = string.Join(" ", args).Trim();
             if (string.IsNullOrEmpty(message))
                 return;
-            EntitySystem.Get<ChatSystem>().TrySendInGameOOCMessage(entity, message, InGameOOCChatType.Cult, false, shell, player);
+
+            entityManager.System<ChatSystem>()
+                .TrySendInGameOOCMessage(entity, message, InGameOOCChatType.Cult, false, shell, player);
         }
     }
 }
