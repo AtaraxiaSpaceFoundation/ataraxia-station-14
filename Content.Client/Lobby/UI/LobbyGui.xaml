@@ -57,7 +57,7 @@
                     <!-- Vertical Padding -->
                     <Control VerticalExpand="True" />
 
-                    <ui:OhioRichTextLabel Name="LabelName" Access="Public" HorizontalAlignment="Left"
+                    <RichTextLabel Name="LabelName" Access="Public" HorizontalAlignment="Left"
                                           VerticalAlignment="Center" Margin="0 0 0 350" />
 
                     <!-- Ohio Container -->
