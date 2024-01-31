@@ -756,6 +756,12 @@
   name: tiles-showroom-floor
   sprite: /Textures/Tiles/showroom.png
   baseTurf: Plating
+  variants: 4
+  placementVariants:
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1269,12 +1275,6 @@
   id: FloorGlass
   name: tiles-glass-floor
   sprite: /Textures/Tiles/glass.png
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
