@@ -109,3 +109,13 @@
   id: SaturationScale
   kind: source
   path: "/Textures/Shaders/White/saturationscale.swsl"
+
+- type: shader
+  id: Grain
+  kind: source
+  path: "/Textures/Shaders/Ohio/grain.swsl"
+
+- type: shader
+  id: ATM
+  kind: source
+  path: "/Textures/Shaders/Ohio/atm.swsl"

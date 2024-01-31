@@ -1,5 +1,6 @@
 using Content.Client._White.JoinQueue;
 using Content.Client._White.Jukebox;
+using Content.Client._White.Overlays;
 using Content.Client._White.Reputation;
 using Content.Client._White.Sponsors;
 using Content.Client._White.Stalin;
@@ -178,6 +179,8 @@ namespace Content.Client.Entry
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new FlashOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
+            _overlayManager.AddOverlay(new GrainOverlay());
+            _overlayManager.AddOverlay(new AtmOverlay());
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
             _euiManager.Initialize();

@@ -1,0 +1,23 @@
+﻿uniform sampler2D SCREEN_TEXTURE;
+
+highp float random(highp float seed){
+    return fract(543.2543 * sin(seed * 3525.46));
+}
+
+void fragment() {
+    highp vec2 uv = UV;
+
+    highp float particles = random(TIME * 0.5 + uv.x * uv.y);
+
+    highp vec3 atmosphereColor = vec3(uv.x, uv.y, 0.5);
+
+    highp vec3 finalColor = atmosphereColor * 0.6;
+
+    finalColor += texture(SCREEN_TEXTURE, uv - vec2(0.01, 0.01)).rgb * 0.2;
+
+    finalColor *= vec3(particles);
+
+    finalColor *= vec3(1.0, 1.0, 1.0);
+
+    COLOR = vec4(finalColor, 0.01);
+}

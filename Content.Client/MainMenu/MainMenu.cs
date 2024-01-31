@@ -2,7 +2,6 @@ using System.Text.RegularExpressions;
 using Content.Client.MainMenu.UI;
 using Content.Client.UserInterface.Systems.EscapeMenu;
 using Robust.Client;
-using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared;
@@ -23,7 +22,6 @@ namespace Content.Client.MainMenu
         [Dependency] private readonly IClientNetManager _netManager = default!;
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
         [Dependency] private readonly IGameController _controllerProxy = default!;
-        [Dependency] private readonly IResourceCache _resourceCache = default!;
         [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
 
         private MainMenuControl _mainMenuControl = default!;
@@ -35,7 +33,7 @@ namespace Content.Client.MainMenu
         /// <inheritdoc />
         protected override void Startup()
         {
-            _mainMenuControl = new MainMenuControl(_resourceCache, _configurationManager);
+            _mainMenuControl = new MainMenuControl(_configurationManager);
             _userInterfaceManager.StateRoot.AddChild(_mainMenuControl);
 
             _mainMenuControl.QuitButton.OnPressed += QuitButtonPressed;
