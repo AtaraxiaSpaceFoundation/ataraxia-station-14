@@ -115,7 +115,14 @@ public sealed partial class GunSystem : SharedGunSystem
         // Update shot based on the recoil
         toMap = fromMap.Position + angle.ToVec() * mapDirection.Length();
         mapDirection = toMap - fromMap.Position;
-        var gunVelocity = Physics.GetMapLinearVelocity(gunUid);
+
+        // WD EDIT START
+        // var gunVelocity = Physics.GetMapLinearVelocity(gunUid);
+        var gunVelocity = Vector2.Zero;
+
+        if (grid != null && TryComp(gridUid, out PhysicsComponent? physics))
+            gunVelocity = physics.LinearVelocity;
+        // WD EDIT END
 
         // I must be high because this was getting tripped even when true.
         // DebugTools.Assert(direction != Vector2.Zero);

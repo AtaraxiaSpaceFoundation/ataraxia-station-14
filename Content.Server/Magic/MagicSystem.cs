@@ -21,6 +21,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Spawners;
@@ -164,15 +165,23 @@ public sealed class MagicSystem : EntitySystem
         Speak(ev);
 
         var xform = Transform(ev.Performer);
-        var userVelocity = _physics.GetMapLinearVelocity(ev.Performer);
+
+        // var userVelocity = _physics.GetMapLinearVelocity(ev.Performer); WD EDIT
 
         foreach (var pos in GetSpawnPositions(xform, ev.Pos))
         {
             // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
             var mapPos = pos.ToMap(EntityManager);
-            var spawnCoords = _mapManager.TryFindGridAt(mapPos, out var gridUid, out _)
+            var spawnCoords = _mapManager.TryFindGridAt(mapPos, out var gridUid, out var grid) // WD EDIT
                 ? pos.WithEntityId(gridUid, EntityManager)
                 : new(_mapManager.GetMapEntityId(mapPos.MapId), mapPos.Position);
+
+            // WD EDIT
+            var userVelocity = Vector2.Zero;
+
+            if (grid != null && TryComp(gridUid, out PhysicsComponent? physics))
+                userVelocity = physics.LinearVelocity;
+            // WD EDIT
 
             var ent = Spawn(ev.Prototype, spawnCoords);
             var direction = ev.Target.ToMapPos(EntityManager, _transformSystem) -
