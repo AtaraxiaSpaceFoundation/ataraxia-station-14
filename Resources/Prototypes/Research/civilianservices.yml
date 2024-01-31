@@ -50,6 +50,8 @@
   - ElectricGrillMachineCircuitboard
   - BoozeDispenserMachineCircuitboard
   - SodaDispenserMachineCircuitboard
+  - KitchenKnife
+  - ButchCleaver
 
 - type: technology
   id: AudioVisualCommunication

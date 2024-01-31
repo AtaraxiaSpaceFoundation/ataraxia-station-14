@@ -3,7 +3,6 @@
   start: esword
   graph:
   - node: esword
-    entity: EnergySword
     edges:
       - to: desword
         steps:
@@ -16,29 +15,20 @@
   start: welder
   graph:
   - node: welder
-    entity: Welder
-    edges:
-      - to: screwed-welder
-        steps:
-        - tool: Screwing
-          doAfter: 1
-  - node: screwed-welder
     edges:
       - to: no-igniter
         steps:
-          - material: MetalRod
-            amount: 5
-            doAfter: 5
+        - tool: Screwing
+          doAfter: 1
+        - material: MetalRod
+          amount: 5
+          doAfter: 5
   - node: no-igniter
     entity: WeaponFlamethrowerUnfinished
     edges:
-      - to: unscrewed
-        steps:
-          - tag: Igniter
-  - node: unscrewed
-    edges:
       - to: flamethrower
         steps:
+          - tag: Igniter
           - tool: Screwing
             doAfter: 1
   - node: flamethrower
@@ -49,7 +39,6 @@
   start: stock
   graph:
   - node: stock
-    entity: RifleStock
     edges:
       - to: unfinished
         steps:
@@ -57,40 +46,21 @@
             amount: 3
             doAfter: 3
   - node: unfinished
-    edges:
-      - to: rods
-  - node: unfinished
     entity: WeaponPoweredCrossbowUnfinished
-    edges:
-      - to: welded
-        steps:
-          - tool: Welding
-            doAfter: 5
-  - node: welded
-    edges:
-      - to: cables
-        steps:
-          - material: Cable
-            amount: 5
-            doAfter: 0.5
-  - node: cables
-    edges:
-      - to: plastic
-        steps:
-          - material: Plastic
-            amount: 3
-            doAfter: 0.5
-  - node: plastic
-    edges:
-      - to: unscrewed
-        steps:
-          - material: Cable
-            amount: 5
-            doAfter: 0.5
-  - node: unscrewed
     edges:
       - to: crossbow
         steps:
+          - tool: Welding
+            doAfter: 5
+          - material: Cable
+            amount: 5
+            doAfter: 0.5
+          - material: Plastic
+            amount: 3
+            doAfter: 0.5
+          - material: Cable
+            amount: 5
+            doAfter: 0.5
           - tool: Screwing
             doAfter: 1
   - node: crossbow
@@ -130,3 +100,77 @@
         - !type:SpawnPrototype
           prototype: Telecrystal1
         - !type:EmptyAllContainers
+
+- type: constructionGraph
+  id: ChainsawGraph
+  start: circular
+  graph:
+  - node: circular
+    edges:
+      - to: chainsaw
+        steps:
+          - material: Cable
+            amount: 3
+            doAfter: 0.5
+          - material: Plasteel
+            amount: 5
+            doAfter: 3
+          - tool: Welding
+            doAfter: 5
+  - node: chainsaw
+    entity: Chainsaw
+
+- type: constructionGraph
+  id: SwordGraph
+  start: knife
+  graph:
+  - node: knife
+    edges:
+      - to: machete
+        steps:
+          - tool: Welding
+            doAfter: 5
+            completed:
+            - !type:AddTag
+              tag: "WeldedKnife"
+          - tag: WeldedKnife
+  - node: machete
+    entity: Machete
+    edges:
+      - to: sword
+        steps:
+          - tool: Welding
+            doAfter: 5
+          - tag: WeldedKnife
+  - node: sword
+    entity: Claymore
+
+- type: constructionGraph
+  id: ImprovisedShellGraph
+  start: pipe_cut
+  graph:
+  - node: pipe_cut
+    edges:
+      - to: pipe_cut_closed
+        steps:
+          - material: Steel
+            amount: 1
+            doAfter: 0.5
+  - node: pipe_cut_closed
+    entity: PipeCutClosed
+    edges:
+      - to: shell
+        conditions:
+          - !type:MinSolution
+            solution: sol
+            reagent:
+              ReagentId: WeldingFuel
+            quantity: 5
+        steps:
+          - material: Cable
+            amount: 1
+            doAfter: 0.5
+          - tool: Screwing
+            doAfter: 1
+  - node: shell
+    entity: ShellShotgunImprovised

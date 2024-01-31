@@ -318,6 +318,8 @@
       - FauxTileAstroIce
       - OreBagOfHolding
       - ClothingEyesNightVisionGoggles # WD EDIT
+      - KitchenKnife # WD EDIT
+      - ButchCleaver # WD EDIT
       - DeviceQuantumSpinInverter
   - type: EmagLatheRecipes
     emagDynamicRecipes:

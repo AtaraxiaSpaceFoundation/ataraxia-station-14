@@ -1,0 +1,37 @@
+- type: entity
+  id: PipeCut
+  name: часть трубы
+  parent: BaseItem
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: White/Misc/improvised_shell.rsi
+    state: pipeCut
+  - type: Construction
+    deconstructionTarget: null
+    graph: ImprovisedShellGraph
+    node: pipe_cut
+
+- type: entity
+  id: PipeCutClosed
+  parent: PipeCut
+  components:
+  - type: Sprite
+    state: pipeCutClosed
+  - type: Construction
+    node: pipe_cut_closed
+  - type: SolutionContainerManager
+    solutions:
+      sol:
+        maxVol: 5
+  - type: DrawableSolution
+    solution: sol
+  - type: RefillableSolution
+    solution: sol
+  - type: DrainableSolution
+    solution: sol
+  - type: Spillable
+    solution: sol
+  - type: SolutionTransfer
+    maxTransferAmount: 5

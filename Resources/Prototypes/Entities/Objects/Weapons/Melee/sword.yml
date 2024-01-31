@@ -109,6 +109,10 @@
     size: Normal
     sprite: Objects/Weapons/Melee/machete.rsi
   - type: DisarmMalus
+  - type: Construction
+    deconstructionTarget: null
+    graph: SwordGraph
+    node: machete
 
 - type: entity
   name: claymore
@@ -135,6 +139,10 @@
     slots:
     - back
   - type: DisarmMalus
+  - type: Construction
+    deconstructionTarget: null
+    graph: SwordGraph
+    node: sword
 
 - type: entity
   name: cutlass

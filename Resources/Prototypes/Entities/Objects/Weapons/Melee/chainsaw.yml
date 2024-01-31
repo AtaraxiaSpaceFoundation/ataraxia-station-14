@@ -47,3 +47,7 @@
         maxVol: 300
   - type: UseDelay
     delay: 1
+  - type: Construction
+    deconstructionTarget: null
+    graph: ChainsawGraph
+    node: chainsaw

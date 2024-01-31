@@ -44,6 +44,10 @@
   - type: GuideHelp
     guides:
     - Chef
+  - type: Construction
+    deconstructionTarget: null
+    graph: SwordGraph
+    node: knife
 
 - type: entity
   name: butcher's cleaver
@@ -100,6 +104,10 @@
     sprite: Objects/Weapons/Melee/combat_knife.rsi
   - type: DisarmMalus
     malus: 0.225
+  - type: Construction
+    deconstructionTarget: null
+    graph: SwordGraph
+    node: knife
 
 - type: entity
   name: survival knife

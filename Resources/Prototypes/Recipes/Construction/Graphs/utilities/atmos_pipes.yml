@@ -65,6 +65,20 @@
       steps:
       - tool: Welding
         doAfter: 1
+    - to: pipe_cut
+      conditions:
+      - !type:EntityAnchored
+        anchored: false
+      steps:
+      - tool: Cutting
+        doAfter: 1
+      completed:
+      - !type:SpawnPrototype
+        prototype: PipeCut
+        amount: 4
+      - !type:DeleteEntity
+
+  - node: pipe_cut
 
   - node: bend
     entity: GasPipeBend
