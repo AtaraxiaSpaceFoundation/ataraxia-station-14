@@ -35,7 +35,7 @@ public sealed partial class CultRuleComponent : Component
     [DataField("eyeColor")]
     public static Color EyeColor = Color.FromHex("#f80000");
 
-    public static string HolyWaterReagent = "HolyWater";
+    public static string HolyWaterReagent = "Holywater";
 
     [DataField("redEyeThreshold")]
     public static int ReadEyeThreshold = 5;

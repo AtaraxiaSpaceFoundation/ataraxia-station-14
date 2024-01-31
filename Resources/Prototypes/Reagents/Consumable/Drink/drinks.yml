@@ -457,20 +457,3 @@
       effects:
       - !type:SatiateThirst
         factor: 0.6
-
-#WD start
-- type: reagent
-  id: HolyWater
-  name: reagent-name-holy-water
-  parent: Water
-  desc: reagent-desc-holy-water
-  metabolisms:
-    Drink:
-      effects:
-        - !type:SatiateThirst
-          factor: 4
-        - !type:DeconvertCultist
-          conditions:
-            - !type:ReagentThreshold
-              min: 25
-#WD end

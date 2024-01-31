@@ -311,7 +311,9 @@ public sealed partial class CultSystem : EntitySystem
         {
             return;
         }
-        if (solution.Solutions.TryGetValue("vapor", out var vapor) && vapor.Contents.Any(x => x.Reagent.Prototype == "HolyWater"))
+
+        if (solution.Solutions.TryGetValue("vapor", out var vapor) &&
+            vapor.Contents.Any(x => x.Reagent.Prototype == CultRuleComponent.HolyWaterReagent))
         {
             Del(uid);
         }

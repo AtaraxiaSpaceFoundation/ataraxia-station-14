@@ -1017,7 +1017,7 @@
     Medicine:
       effects:
       - !type:HealthChange
-        condition:
+        conditions:
         - !type:TotalDamage
           max: 50
         damage:
@@ -1027,6 +1027,10 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
+      - !type:DeconvertCultist
+        conditions:
+          - !type:ReagentThreshold
+            min: 15
 
 - type: reagent
   id: Pyrazine
