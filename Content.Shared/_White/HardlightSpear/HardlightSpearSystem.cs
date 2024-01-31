@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.Body.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction.Events;
@@ -7,6 +8,7 @@ using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Spawners;
@@ -25,6 +27,7 @@ public sealed class HardlightSpearSystem : EntitySystem
 
         SubscribeLocalEvent<HardlightSpearComponent, LandEvent>(OnLand);
         SubscribeLocalEvent<HardlightSpearComponent, DroppedEvent>(OnDrop);
+        SubscribeLocalEvent<HardlightSpearComponent, EntGotInsertedIntoContainerMessage>(OnInsert);
         SubscribeLocalEvent<HardlightSpearComponent, GettingPickedUpAttemptEvent>(OnPickupAttempt);
         SubscribeLocalEvent<HardlightSpearComponent, PreventCollideEvent>(OnPreventCollision);
         SubscribeLocalEvent<SubdermalImplantComponent, ActivateHardlightSpearImplantEvent>(OnImplantActivate);
@@ -75,5 +78,11 @@ public sealed class HardlightSpearSystem : EntitySystem
     private void OnLand(EntityUid uid, HardlightSpearComponent component, ref LandEvent args)
     {
         EnsureComp<TimedDespawnComponent>(uid);
+    }
+
+    private void OnInsert(EntityUid uid, HardlightSpearComponent component, EntGotInsertedIntoContainerMessage args)
+    {
+        if (!HasComp<BodyComponent>(args.Container.Owner))
+            EnsureComp<TimedDespawnComponent>(uid);
     }
 }

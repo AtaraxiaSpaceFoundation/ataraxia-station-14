@@ -42,3 +42,19 @@
     radius: 1.5
     energy: 2
     color: yellow
+  - type: ChangeThrowForce
+    throwForce: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+            - -0.20,-0.10
+            - -0.10,-0.20
+            - 0.40,0.30
+            - 0.30,0.40
+        density: 20
+        mask:
+        - Opaque
+        restitution: 0.3
+        friction: 0.2

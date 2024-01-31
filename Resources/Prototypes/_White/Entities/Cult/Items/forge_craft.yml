@@ -33,6 +33,8 @@
         - Energy
     - type: ReturnItemOnThrow
     - type: CultItem
+    - type: ChangeThrowForce
+      throwForce: 6.5
 
 
 - type: cultistFactoryProduction

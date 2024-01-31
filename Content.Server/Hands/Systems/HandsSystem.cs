@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server._White.Other.ChangeThrowForceSystem;
 using Content.Server.Inventory;
 using Content.Server.Pulling;
 using Content.Server.Stack;
@@ -206,6 +207,12 @@ namespace Content.Server.Hands.Systems
 
             var throwStrength = hands.ThrowForceMultiplier;
 
+            if (TryComp<ChangeThrowForceComponent>(throwEnt, out var thrownChangeForceComponent))
+            {
+                var component = EnsureComp<ChangeThrowForceComponent>(player);
+                component.ThrowForce = thrownChangeForceComponent.ThrowForce;
+            }
+
             // Let other systems change the thrown entity (useful for virtual items)
             // or the throw strength.
             var ev = new BeforeThrowEvent(throwEnt, direction, throwStrength, player);
@@ -219,6 +226,8 @@ namespace Content.Server.Hands.Systems
                 return false;
 
             _throwingSystem.TryThrow(ev.ItemUid, ev.Direction, ev.ThrowStrength, ev.PlayerUid);
+
+            RemComp<ChangeThrowForceComponent>(player);
 
             return true;
         }
