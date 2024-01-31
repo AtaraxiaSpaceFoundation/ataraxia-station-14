@@ -19,6 +19,7 @@
     <PackageReference Include="Newtonsoft.Json" />
     <PackageVersion Include="NetCoreServer" Version="6.7.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageVersion Remove="Microsoft.NET.ILLink.Tasks" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Packaging\Content.Packaging.csproj" />

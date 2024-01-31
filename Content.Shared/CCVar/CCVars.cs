@@ -495,7 +495,7 @@ namespace Content.Shared.CCVar
         ///     Whether tips being shown is enabled at all.
         /// </summary>
         public static readonly CVarDef<bool> TipsEnabled =
-            CVarDef.Create("tips.enabled", true);
+            CVarDef.Create("tips.enabled", false);
 
         /// <summary>
         ///     The dataset prototype to use when selecting a random tip.
@@ -677,9 +677,9 @@ namespace Content.Shared.CCVar
          * Specific Sounds
          */
         // Round  end sound (APC Destroyed)
+        // hailrakes note: this thing is broken somehow. Disabled for now
         public static readonly CVarDef<bool> RestartSoundsEnabled =
-            CVarDef.Create("ambience.restart_sounds_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
-
+            CVarDef.Create("ambience.restart_sounds_enabled", false, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /*
          * Admin sounds

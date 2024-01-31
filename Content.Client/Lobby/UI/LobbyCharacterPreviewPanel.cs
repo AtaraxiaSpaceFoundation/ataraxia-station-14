@@ -1,16 +1,13 @@
 using System.Linq;
 using System.Numerics;
-using Content.Client.Alerts;
 using Content.Client.Humanoid;
 using Content.Client.Inventory;
 using Content.Client.Preferences;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Map;
@@ -40,12 +37,12 @@ namespace Content.Client.Lobby.UI
                 Text = Loc.GetString("lobby-character-preview-panel-header")
             };
 
-            CharacterSetupButton = new Button
-            {
-                Text = Loc.GetString("lobby-character-preview-panel-character-setup-button"),
-                HorizontalAlignment = HAlignment.Center,
-                Margin = new Thickness(0, 5, 0, 0),
-            };
+            // CharacterSetupButton = new Button
+            // {
+            //     Text = Loc.GetString("lobby-character-preview-panel-character-setup-button"),
+            //     HorizontalAlignment = HAlignment.Center,
+            //     Margin = new Thickness(0, 5, 0, 0),
+            // };
 
             _summaryLabel = new Label
             {
@@ -69,12 +66,12 @@ namespace Content.Client.Lobby.UI
                 Orientation = LayoutOrientation.Horizontal,
                 HorizontalAlignment = HAlignment.Center,
             };
-            var _vSpacer = new VSpacer();
+            var vSpacer = new VSpacer();
 
             _loaded.AddChild(_summaryLabel);
             _loaded.AddChild(_viewBox);
-            _loaded.AddChild(_vSpacer);
-            _loaded.AddChild(CharacterSetupButton);
+            _loaded.AddChild(vSpacer);
+            //_loaded.AddChild(CharacterSetupButton);
 
             vBox.AddChild(header);
             vBox.AddChild(_loaded);
@@ -84,14 +81,18 @@ namespace Content.Client.Lobby.UI
             UpdateUI();
         }
 
-        public Button CharacterSetupButton { get; }
+        // public Button CharacterSetupButton { get; }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
 
-            if (!disposing) return;
-            if (_previewDummy != null) _entityManager.DeleteEntity(_previewDummy.Value);
+            if (!disposing)
+                return;
+
+            if (_previewDummy != null)
+                _entityManager.DeleteEntity(_previewDummy.Value);
+
             _previewDummy = default;
         }
 
@@ -134,7 +135,7 @@ namespace Content.Client.Lobby.UI
         {
             var protoMan = IoCManager.Resolve<IPrototypeManager>();
             var entMan = IoCManager.Resolve<IEntityManager>();
-            var invSystem = EntitySystem.Get<ClientInventorySystem>();
+            var invSystem = entMan.System<ClientInventorySystem>();
 
             var highPriorityJob = profile.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
 

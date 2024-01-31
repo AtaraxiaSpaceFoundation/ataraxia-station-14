@@ -19,5 +19,4 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    - /Audio/Lobby/saveheaven.ogg
-    - /Audio/Lobby/roomishere.ogg
+    - /Audio/Lobby/bobby.ogg

@@ -15,11 +15,11 @@ public sealed class MenuButton : ContainerButton
     public const string StyleClassLabelTopButton = "topButtonLabel";
     public const string StyleClassRedTopButton = "topButtonLabel";
 
-    private static readonly Color ColorNormal = Color.FromHex("#879B8F");
-    private static readonly Color ColorRedNormal = Color.FromHex("#aC4D5B");
-    private static readonly Color ColorHovered = Color.FromHex("#ffffff");
-    private static readonly Color ColorRedHovered = Color.FromHex("#FFFFFF");
-    private static readonly Color ColorPressed = Color.FromHex("#789B8C");
+    private static readonly Color ColorNormal = Color.FromHex("#5a5a5a");
+    private static readonly Color ColorRedNormal = Color.FromHex("#640000");
+    private static readonly Color ColorHovered = Color.FromHex("#646464");
+    private static readonly Color ColorRedHovered = Color.FromHex("#960000");
+    private static readonly Color ColorPressed = Color.FromHex("#464646");
 
     private const float VertPad = 8f;
     private Color NormalColor => HasStyleClass(StyleClassRedTopButton) ? ColorRedNormal : ColorNormal;

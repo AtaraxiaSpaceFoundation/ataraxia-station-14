@@ -410,13 +410,13 @@ namespace Content.Server.GameTicking
                         "Данному виду запрещено играть на этой профессии. Вам была выдана случайная внешность с подходящим видом из вашего профиля.");
                 }
 
-                StringBuilder availableSpeciesLoc = new StringBuilder();
+                var availableSpeciesLoc = new StringBuilder();
                 foreach (var specie in whitelistedSpecies)
                 {
-                    availableSpeciesLoc.AppendLine("-" + Loc.GetString($"species-name-{specie.ToLower()}"));
+                    availableSpeciesLoc.AppendLine("- " + Loc.GetString($"species-name-{specie.ToLower()}"));
                 }
 
-                _chatManager.DispatchServerMessage(player, $"Доступные виды: \n {availableSpeciesLoc}");
+                _chatManager.DispatchServerMessage(player, $"Доступные виды:\n{availableSpeciesLoc}");
             }
 
             return character;
