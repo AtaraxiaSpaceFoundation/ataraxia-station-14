@@ -117,7 +117,8 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
     /// <param name="target">The entity to be implanted</param>
     /// <param name="implant"> The implant</param>
     /// <param name="component">The implant component</param>
-    public void ForceImplant(EntityUid target, EntityUid implant, SubdermalImplantComponent component)
+    /// <param name="containerForce">Should we force inserting in container</param>
+    public void ForceImplant(EntityUid target, EntityUid implant, SubdermalImplantComponent component, bool containerForce = false)
     {
         //If the target doesn't have the implanted component, add it.
         var implantedComp = EnsureComp<ImplantedComponent>(target);
@@ -175,6 +176,48 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
             RaiseLocalEvent(implant, relayEv);
         }
     }
+
+    //Miracle edit
+
+    /// <summary>
+    /// Transfers all implants from one entity to another.
+    /// </summary>
+    /// <remarks>
+    /// This method transfers all implants from a donor entity to a recipient entity.
+    /// Implants are moved from the donor's implant container to the recipient's implant container.
+    /// </remarks>
+    /// <param name="donor">The entity from which implants will be transferred.</param>
+    /// <param name="recipient">The entity to which implants will be transferred.</param>
+    public void TransferImplants(EntityUid donor, EntityUid recipient)
+    {
+        // Check if the donor has an ImplantedComponent, indicating the presence of implants
+        if (!TryComp<ImplantedComponent>(donor, out var donorImplanted))
+            return;
+
+        // Get the implant containers for both the donor and recipient entities
+        var donorImplantContainer = donorImplanted.ImplantContainer;
+
+        // Get all implants from the donor's implant container
+        var donorImplants = donorImplantContainer.ContainedEntities.ToArray();
+
+        // Transfer each implant from the donor to the recipient
+        foreach (var donorImplant in donorImplants)
+        {
+            // Check for any conditions or filters before transferring (if needed)
+            // For instance, verifying if the recipient can receive specific implants, etc.
+
+            // Remove the implant from the donor's implant container
+            _container.Remove(donorImplant, donorImplantContainer, force: true);
+
+            if(!TryComp<SubdermalImplantComponent>(donorImplant, out var subdermal))
+                return;
+
+            // Insert the implant into the recipient's implant container
+            ForceImplant(recipient, donorImplant, subdermal, true);
+        }
+    }
+
+    //Miracle edit end
 }
 
 public sealed class ImplantRelayEvent<T> where T : notnull

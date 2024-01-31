@@ -1,3 +1,4 @@
+using Content.Server.Changeling;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents.Events;
@@ -23,6 +24,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly ZombieSystem _zombie = default!;
     [Dependency] private readonly ThiefRuleSystem _thief = default!;
     [Dependency] private readonly TraitorRuleSystem _traitorRule = default!;
+    [Dependency] private readonly ChangelingRuleSystem _changelingRule = default!;
     [Dependency] private readonly NukeopsRuleSystem _nukeopsRule = default!;
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
     [Dependency] private readonly RevolutionaryRuleSystem _revolutionaryRule = default!;
@@ -62,6 +64,25 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-verb-make-traitor"),
         };
         args.Verbs.Add(traitor);
+
+        Verb changeling = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-changeling"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/Actions/ling_absorb.png")),
+            Act = () =>
+            {
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
+                var isHuman = HasComp<HumanoidAppearanceComponent>(args.Target);
+                _changelingRule.MakeChangeling(session);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-changeling"),
+        };
+
+        args.Verbs.Add(changeling);
 
         Verb zombie = new()
         {

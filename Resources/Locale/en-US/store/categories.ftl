@@ -13,5 +13,7 @@ store-category-job = Job
 store-category-armor = Armor
 store-category-pointless = Pointless
 
-# Revenant
+# Revenant && Changeling
 store-category-abilities = Abilities
+store-category-stings = Stings
+store-category-boosters = Boosters

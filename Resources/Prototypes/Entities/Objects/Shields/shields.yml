@@ -118,6 +118,48 @@
           Blunt: 1.5
           Piercing: 1.5
 
+#Changeling shield
+- type: entity
+  name: organic shield
+  parent: BaseShield
+  id: OrganicShield
+  description: A large, fleshy shield.
+  components:
+    - type: Sprite
+      state: changeling-icon
+    - type: Item
+      heldPrefix: changeling
+    - type: Blocking
+      passiveBlockModifier:
+        coefficients:
+          Blunt: 0.8
+          Piercing: 0.8
+      activeBlockModifier:
+        coefficients:
+          Blunt: 0.7
+          Piercing: 0.7
+        flatReductions:
+          Blunt: 1.5
+          Piercing: 1.5
+    - type: Unremoveable
+      deleteOnDrop: true
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 80
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 50
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound: /Audio/Effects/gib2.ogg
+
 #Craftable shields
 
 - type: entity

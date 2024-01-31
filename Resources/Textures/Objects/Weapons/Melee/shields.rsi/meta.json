@@ -168,6 +168,17 @@
     {
       "name": "teleriot-inhand-left-on",
       "directions": 4
-    }
+    },
+      {
+          "name": "changeling-icon"
+      },
+      {
+          "name": "changeling-inhand-left",
+          "directions": 4
+      },
+      {
+          "name": "changeling-inhand-right",
+          "directions": 4
+      }
   ]
 }

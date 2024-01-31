@@ -6,6 +6,7 @@ using Content.Server.GameTicking.Presets;
 using Content.Server.Maps;
 using Content.Server.Ghost;
 using Content.Shared.CCVar;
+using Content.Shared.Changeling;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Database;
@@ -228,6 +229,11 @@ namespace Content.Server.GameTicking
 
                 return false;
             }
+
+            //Miracle edit
+            if (TryComp<ChangelingComponent>(playerEntity, out var changeling) && changeling.IsRegenerating)
+                return false;
+            //Miracle edit end
 
             if (HasComp<GhostComponent>(playerEntity))
                 return false;

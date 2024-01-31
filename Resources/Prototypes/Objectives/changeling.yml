@@ -1,0 +1,223 @@
+﻿- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseChangelingObjective
+  components:
+    - type: Objective
+      difficulty: 1.5
+      issuer: syndicate
+    - type: RoleRequirement
+      roles:
+        components:
+          - ChangelingRole
+
+- type: entity
+  abstract: true
+  parent: [BaseChangelingObjective, BaseStealObjective]
+  id: BaseChangelingStealObjective
+  components:
+    - type: StealCondition
+      verifyMapExistance: false
+    - type: Objective
+      difficulty: 2.75
+    - type: ObjectiveLimit
+      limit: 1
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingObjective
+  id: AbsorbDnaObjective
+  components:
+    - type: Objective
+      icon:
+        sprite: /Textures/Actions/changeling.rsi # TODO: Change icon
+        state: absorb
+    - type: AbsorbDnaCondition
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingObjective
+  id: AbsorbMoreDnaObjective
+  name: Absorb more humans, that others in the Hive.
+  description: Absorb as many you can.
+  components:
+    - type: Objective
+      difficulty: 2.0
+      icon:
+        sprite: /Textures/Actions/changeling.rsi # TODO: Change icon
+        state: absorb
+    - type: AbsorbMoreCondition
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingObjective
+  id: AbsorbChangelingObjective
+  components:
+    - type: Objective
+      difficulty: 3.0
+      icon:
+        sprite: /Textures/Actions/changeling.rsi # TODO: Change icon
+        state: blade
+    - type: TargetObjective
+      title: objective-condition-absorb-changeling-title
+    - type: PickRandomChangeling
+    - type: AbsorbChangelingCondition
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingObjective
+  id: EscapeWithIdentityObjective
+  components:
+    - type: Objective
+      icon:
+        sprite: /Textures/Mobs/Species/Human/parts.rsi
+        state: full
+    - type: TargetObjective
+      title: objective-condition-escape-with-identity-title
+    - type: PickRandomIdentity
+    - type: EscapeWithIdentityCondition
+
+# steal
+
+## cmo
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: CMOHyposprayStealObjectiveCh
+  components:
+    - type: NotJobRequirement
+      job: ChiefMedicalOfficer
+    - type: StealCondition
+      stealGroup: Hypospray
+      owner: job-name-cmo
+
+## rd
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: RDHardsuitStealObjectiveCh
+  components:
+    - type: StealCondition
+      stealGroup: ClothingOuterHardsuitRd
+      owner: job-name-rd
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: HandTeleporterStealObjectiveCh
+  components:
+    - type: StealCondition
+      stealGroup: HandTeleporter
+      owner: job-name-rd
+
+## hos
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: SecretDocumentsStealObjectiveCh
+  components:
+    - type: Objective
+      # hos has a gun ce does not, higher difficulty than most
+      difficulty: 3
+    - type: NotJobRequirement
+      job: HeadOfSecurity
+    - type: StealCondition
+      stealGroup: BookSecretDocuments
+      owner: job-name-hos
+
+## ce
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: MagbootsStealObjectiveCh
+  components:
+    - type: NotJobRequirement
+      job: ChiefEngineer
+    - type: StealCondition
+      stealGroup: ClothingShoesBootsMagAdv
+      owner: job-name-ce
+
+## qm
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: ClipboardStealObjectiveCh
+  components:
+    - type: NotJobRequirement
+      job: Quartermaster
+    - type: StealCondition
+      stealGroup: BoxFolderQmClipboard
+      owner: job-name-qm
+
+## hop
+
+- type: entity
+  noSpawn: true
+  parent: BaseChangelingStealObjective
+  id: CorgiMeatStealObjectiveCh
+  components:
+    - type: NotJobRequirement
+      job: HeadOfPersonnel
+    - type: ObjectiveLimit
+      limit: 3 # ian only has 2 slices, 3 obj for drama
+    - type: StealCondition
+      stealGroup: FoodMeatCorgi
+      owner: objective-condition-steal-Ian
+
+## cap
+
+- type: entity
+  abstract: true
+  parent: BaseChangelingStealObjective
+  id: BaseCaptainObjectiveCh
+  components:
+    - type: Objective
+      # sorry ce but your jordans are not as high security as the caps gear
+      difficulty: 3.5
+    - type: NotJobRequirement
+      job: Captain
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveCh
+  id: CaptainIDStealObjectiveCh
+  components:
+    - type: StealCondition
+      stealGroup: CaptainIDCard
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveCh
+  id: CaptainJetpackStealObjectiveCh
+  components:
+    - type: StealCondition
+      stealGroup: JetpackCaptainFilled
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveCh
+  id: CaptainGunStealObjectiveCh
+  components:
+    - type: StealCondition
+      stealGroup: WeaponAntiqueLaser
+      owner: job-name-captain
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveCh
+  id: NukeDiskStealObjectiveCh
+  components:
+    - type: Objective
+      # high difficulty since the hardest item both to steal, and to not get caught down the road,
+      # since anyone with a pinpointer can track you down and kill you
+      # it's close to being a stealth loneop
+      difficulty: 4
+    - type: NotCommandRequirement
+    - type: StealCondition
+      stealGroup: NukeDisk
+      owner: objective-condition-steal-station

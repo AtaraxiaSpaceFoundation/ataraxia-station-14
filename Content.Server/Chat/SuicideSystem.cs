@@ -1,5 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Popups;
+using Content.Shared.Changeling;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Database;
@@ -30,6 +31,11 @@ namespace Content.Server.Chat
             // Checks to see if the CannotSuicide tag exits, ghosts instead.
             if (_tagSystem.HasTag(victim, "CannotSuicide"))
                 return false;
+
+            //Miracle edit
+            if (TryComp<ChangelingComponent>(victim, out var changeling) && changeling.IsRegenerating)
+                return false;
+            //Miracle edit end
 
             // Checks to see if the player is dead.
             if (!TryComp<MobStateComponent>(victim, out var mobState) || _mobState.IsDead(victim, mobState))

@@ -261,6 +261,43 @@
             True: { state: base-unshaded }
             False: { state: base-unshaded-off }
 
+- type: entity
+  name: Tentacle Arm
+  parent: BaseItem
+  id: TentacleArmGun
+  components:
+    - type: TentacleGun
+    - type: Gun
+      soundGunshot: /Audio/Effects/gib1.ogg
+      fireRate: 0.3
+      selectedMode: PullItem
+      availableModes:
+        - PullItem
+        - PullMob
+    - type: BasicEntityAmmoProvider
+      proto: TentacleProjectile
+      capacity: 1
+      count: 1
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.75
+      playRechargeSound: false
+    - type: Sprite
+      sprite: Objects/Weapons/Guns/Launchers/tentacle_gun.rsi
+      layers:
+        - state: base
+    - type: UseDelay
+      delay: 1.5
+    - type: Appearance
+    - type: EmitSoundOnCollide
+      sound:
+        path: /Audio/Effects/gib3.ogg
+        params:
+          variation: 0.65
+          volume: -10
+    - type: Unremoveable
+      deleteOnDrop: true
+
+
 # Admeme
 - type: entity
   name: tether gun

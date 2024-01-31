@@ -14,6 +14,7 @@ using Content.Server._White.PandaSocket.Main;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared.Changeling;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Decals;
@@ -356,6 +357,9 @@ public sealed partial class ChatSystem : SharedChatSystem
                 break;
             case InGameOOCChatType.Looc:
                 SendLOOC(source, player, message, hideChat);
+                break;
+            case InGameOOCChatType.Changeling:
+                SendChangelingChat(source, player, message, hideChat);
                 break;
             case InGameOOCChatType.Cult:
                 SendCultChat(source, player, message, hideChat);
@@ -765,6 +769,37 @@ public sealed partial class ChatSystem : SharedChatSystem
             hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, player.UserId);
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"LOOC from {player:Player}: {message}");
+    }
+
+
+    private void SendChangelingChat(EntityUid source, ICommonSession player, string message, bool hideChat)
+    {
+        if (!TryComp<ChangelingComponent>(source, out var changeling))
+            return;
+
+        var clients = GetChangelingChatClients();
+
+        var playerName = changeling.HiveName;
+
+        message = $"{char.ToUpper(message[0])}{message[1..]}";
+
+        var wrappedMessage = Loc.GetString("chat-manager-send-changeling-chat-wrap-message",
+            ("player", playerName),
+            ("message", FormattedMessage.EscapeText(message)));
+
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Changeling chat from {player:Player}-({playerName}): {message}");
+
+        _chatManager.ChatMessageToMany(ChatChannel.Changeling, message, wrappedMessage, source,
+            hideChat, false, clients.ToList());
+    }
+
+    private IEnumerable<INetChannel> GetChangelingChatClients()
+    {
+        return Filter.Empty()
+            .AddWhereAttachedEntity(HasComp<GhostComponent>)
+            .AddWhereAttachedEntity(HasComp<ChangelingComponent>)
+            .Recipients
+            .Select(p => p.Channel);
     }
 
     // WD EDIT
@@ -1243,6 +1278,7 @@ public enum InGameOOCChatType : byte
 {
     Looc,
     Dead,
+    Changeling,
     Cult
 }
 

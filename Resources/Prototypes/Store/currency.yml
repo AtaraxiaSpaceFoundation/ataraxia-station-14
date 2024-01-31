@@ -11,6 +11,11 @@
   canWithdraw: false
 
 - type: currency
+  id: ChangelingPoint
+  displayName: store-currency-display-changeling-point
+  canWithdraw: false
+  
+- type: currency
   id: MeatyOreCoin
   displayName: Meaty Ore Coin
   canWithdraw: false

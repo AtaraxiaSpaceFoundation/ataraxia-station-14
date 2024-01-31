@@ -1,6 +1,9 @@
 ﻿roles-antag-syndicate-agent-name = Syndicate agent
 roles-antag-syndicate-agent-objective = Complete your objectives without being caught.
 
+roles-antag-changeling-name = Changeling
+roles-antag-changeling-objective = Complete your objectives without being caught.
+
 roles-antag-initial-infected-name = Initial Infected
 roles-antag-initial-infected-objective = Once you turn, infect as many other crew members as possible.
 

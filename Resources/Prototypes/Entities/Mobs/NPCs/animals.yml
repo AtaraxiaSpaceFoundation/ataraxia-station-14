@@ -1175,6 +1175,8 @@
     interfaces:
     - key: enum.StrippingUiKey.Key
       type: StrippableBoundUserInterface
+    - key: enum.ListViewSelectorUiKey.Key
+      type: ListViewSelectorBui
   - type: Sprite
     drawdepth: Mobs
     layers:

@@ -10,6 +10,7 @@
     - category: Stamina
     - alertType: SuitPower
     - category: Internals
+    - alertType: Chemicals
     - alertType: Fire
     - alertType: Handcuffed
     - alertType: Ensnared

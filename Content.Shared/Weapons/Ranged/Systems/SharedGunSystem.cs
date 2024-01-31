@@ -285,6 +285,10 @@ public abstract partial class SharedGunSystem : EntitySystem
         // Don't do this in the loop so we still reset NextFire.
         switch (gun.SelectedMode)
         {
+            //Miracle edit
+            case SelectiveFire.PullItem:
+            case SelectiveFire.PullMob:
+            //Miracle edit end
             case SelectiveFire.SemiAuto:
                 shots = Math.Min(shots, 1 - gun.ShotCounter);
                 break;

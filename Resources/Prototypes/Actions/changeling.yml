@@ -1,0 +1,208 @@
+- type: entity
+  id: ActionChangelingShop
+  name: Shop
+  description: Abilities shop.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/shop.png
+      event: !type:ChangelingShopActionEvent
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionChangelingAbsorb
+  name: Absorb
+  description: Absorbs the human.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon: Interface/Actions/ling_absorb.png
+    event: !type:AbsorbDnaActionEvent
+    canTargetSelf: false
+    useDelay: 10
+  - type: LesserFormRestricted
+
+- type: entity
+  id: ActionChangelingTransform
+  name: Transform
+  description: Transform to the chosen person.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/transform.png
+      event: !type:TransformActionEvent
+      useDelay: 30
+
+- type: entity
+  id: ActionChangelingRegenerate
+  name: Regenerate
+  description: Enter in a regenerative stasis to heal self.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/reviving_stasis.png
+      event: !type:RegenerateActionEvent
+      checkCanInteract: false
+      useDelay: 120
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionChangelingLesserForm
+  name: Lesser Form
+  description: Become a lesser form of self.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/lesser_form.png
+      event: !type:LesserFormActionEvent
+      useDelay: 90
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionTransformSting
+  name: Transform Sting
+  description: Injects a retrovirus that forces human victim to transform into another.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/sting_transform.png
+      event: !type:TransformStingActionEvent
+      canTargetSelf: false
+      useDelay: 120
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionBlindSting
+  name: Blind Sting
+  description: Stings a human, completely blinding them for a short time.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/sting_blind.png
+      event: !type:BlindStingActionEvent
+      canTargetSelf: false
+      useDelay: 30
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionMuteSting
+  name: Mute Sting
+  description: Silently stings a human, temporarily silencing them.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/sting_mute.png
+      event: !type:MuteStingActionEvent
+      canTargetSelf: false
+      useDelay: 30
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionHallucinationSting
+  name: Hallucination Sting
+  description: Injects large doses of hallucinogenic chemicals into their victim.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/sting_hallucination.png
+      event: !type:HallucinationStingActionEvent
+      canTargetSelf: false
+      useDelay: 30
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionCryoSting
+  name: Cryogenic Sting
+  description: Injects the target with a blend of chemicals that begins to turn their blood to ice.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/sting_cryo.png
+      event: !type:CryoStingActionEvent
+      canTargetSelf: false
+      useDelay: 30
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionAdrenalineSacs
+  name: Adrenaline Sacs
+  description: Allows to make use of additional adrenaline to instantly recover from knockdown.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/adrenaline_sacs.png
+      event: !type:AdrenalineSacsActionEvent
+      useDelay: 60
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionFleshmend
+  name: Fleshmend
+  description: Rapidly heal all type of damage.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/fleshmend.png
+      event: !type:FleshmendActionEvent
+      useDelay: 60
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionArmblade
+  name: Arm Blade
+  description: Reforms one of the changeling's arms into a grotesque blade made out of bone and flesh.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/arm_blade.png
+      event: !type:ArmbladeActionEvent
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionShield
+  name: Organic Shield
+  description: Reforms one of the changeling's arms into a large, fleshy shield.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/changeling_shield.png
+      event: !type:OrganicShieldActionEvent
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionArmor
+  name: Chitinous Armor
+  description: Inflates the changeling's body into an all-consuming chitinous mass of armor.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/changeling_armor.png
+      event: !type:ChitinousArmorActionEvent
+    - type: LesserFormRestricted
+
+- type: entity
+  id: ActionTentacleArm
+  name: Tentacle Arm
+  description: Reforms one of the arms into a tentacle. Can grab items or humans depending on mode.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: Interface/Actions/tentacle_arm.png
+      event: !type:TentacleArmActionEvent
+    - type: LesserFormRestricted

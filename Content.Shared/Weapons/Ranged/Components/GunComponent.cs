@@ -186,4 +186,9 @@ public enum SelectiveFire : byte
     SemiAuto = 1 << 0,
     Burst = 1 << 1,
     FullAuto = 1 << 2, // Not in the building!
+
+    //Miracle edit
+    PullItem = 1 << 3,
+    PullMob = 1 << 4
+    //Miracle edit end
 }

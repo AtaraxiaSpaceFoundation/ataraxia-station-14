@@ -12,6 +12,8 @@ gun-component-wrong-ammo = Wrong ammo!
 gun-SemiAuto = semi-auto
 gun-Burst = burst
 gun-FullAuto = full-auto
+gun-PullItem = grab item
+gun-PullMob = grab human
 
 # BallisticAmmoProvider
 gun-ballistic-cycle = Cycle

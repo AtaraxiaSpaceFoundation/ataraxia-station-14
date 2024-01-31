@@ -64,6 +64,7 @@ public sealed class ChannelSelectorButton : ChatPopupButton<ChannelSelectorPopup
             ChatSelectChannel.OOC => Color.LightSkyBlue,
             ChatSelectChannel.Dead => Color.MediumPurple,
             ChatSelectChannel.Admin => Color.HotPink,
+            ChatSelectChannel.Changeling => Color.Purple,
             ChatSelectChannel.Cult => Color.DarkRed,
             _ => Color.DarkGray
         };

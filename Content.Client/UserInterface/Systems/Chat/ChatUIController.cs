@@ -13,6 +13,7 @@ using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared.Changeling;
 using Content.Shared.Chat;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Examine;
@@ -75,7 +76,8 @@ public sealed class ChatUIController : UIController
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
         {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
-        {SharedChatSystem.CultPrefix, ChatSelectChannel.Cult}, //WD EDIT
+        {SharedChatSystem.CultPrefix, ChatSelectChannel.Cult},
+        {SharedChatSystem.ChangelingPrefix, ChatSelectChannel.Changeling}
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -89,7 +91,8 @@ public sealed class ChatUIController : UIController
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
         {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
-        {ChatSelectChannel.Cult, SharedChatSystem.CultPrefix} // WD EDIT
+        {ChatSelectChannel.Cult, SharedChatSystem.CultPrefix},
+        {ChatSelectChannel.Changeling, SharedChatSystem.ChangelingPrefix}
 
     };
 
@@ -203,6 +206,9 @@ public sealed class ChatUIController : UIController
         _input.SetInputCommand(ContentKeyFunctions.FocusAdminChat,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Admin)));
 
+        _input.SetInputCommand(ContentKeyFunctions.FocusChangelingChat,
+            InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Changeling)));
+
         _input.SetInputCommand(ContentKeyFunctions.FocusCultChat,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Cult)));
 
@@ -221,6 +227,7 @@ public sealed class ChatUIController : UIController
         _input.SetInputCommand(ContentKeyFunctions.CycleChatChannelBackward,
             InputCmdHandler.FromDelegate(_ => CycleChatChannel(false)));
 
+        SubscribeLocalEvent<ChangelingUserStart>(OnUpdateChangelingChat);
         // WD EDIT
         SubscribeLocalEvent<EventCultistComponentState>(OnUpdateCultState);
         // WD EDIT END
@@ -228,6 +235,11 @@ public sealed class ChatUIController : UIController
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+    }
+
+    private void OnUpdateChangelingChat(ChangelingUserStart ev)
+    {
+        UpdateChannelPermissions();
     }
 
     // WD EDIT

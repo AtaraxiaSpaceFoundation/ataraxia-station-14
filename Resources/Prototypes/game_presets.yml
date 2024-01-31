@@ -62,6 +62,17 @@
     - BasicStationEventScheduler
 
 - type: gamePreset
+  id: Changeling
+  alias:
+    - changeling
+  name: changeling-title
+  description: changeling-description
+  showInVote: false
+  rules:
+    - Changeling
+    - BasicStationEventScheduler
+
+- type: gamePreset
   id: Deathmatch
   alias:
     - deathmatch

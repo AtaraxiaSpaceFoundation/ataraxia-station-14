@@ -22,6 +22,12 @@ public sealed partial class RechargeBasicEntityAmmoComponent : Component
         Params = AudioParams.Default.WithVolume(-5f)
     };
 
+    //Miracle edit
+    [DataField("playRechargeSound")]
+    [AutoNetworkedField]
+    public bool PlayRechargeSound = true;
+    //Miracle edit end
+
     [ViewVariables(VVAccess.ReadWrite),
      DataField("nextCharge", customTypeSerializer:typeof(TimeOffsetSerializer)),
     AutoNetworkedField]

@@ -884,6 +884,45 @@
     - type: GrapplingProjectile
 
 - type: entity
+  id: TentacleProjectile
+  name: tentacle
+  noSpawn: true
+  components:
+    - type: EmbeddableProjectile
+      deleteOnRemove: true
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Ammo
+      muzzleFlash: null
+    - type: Sprite
+      noRot: false
+      sprite: Objects/Weapons/Guns/Launchers/tentacle_gun.rsi
+      layers:
+        - state: hook
+    - type: Physics
+      bodyType: Dynamic
+      linearDamping: 0
+      angularDamping: 0
+    - type: Projectile
+      deleteOnCollide: false
+      damage:
+        types:
+          Blunt: 0
+      soundHit:
+        path: /Audio/Effects/gib3.ogg
+    - type: Fixtures
+      fixtures:
+        projectile:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.1,-0.1,0.1,0.1"
+          hard: false
+          mask:
+            - Impassable
+            - BulletImpassable
+    - type: TentacleProjectile
+
+- type: entity
   name : disabler bolt smg
   id: BulletDisablerSmg
   parent: BaseBullet

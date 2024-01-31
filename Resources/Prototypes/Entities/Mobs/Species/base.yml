@@ -201,6 +201,10 @@
         type: HumanoidMarkingModifierBoundUserInterface
       - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
+      - key: enum.ListViewSelectorUiKeyChangeling.Key
+        type: ListViewSelectorBui
+      - key: enum.TransformStingSelectorUiKey.Key
+        type: TransformStingSelectorBui
       # WD-EDIT
       - key: enum.NameSelectorUIKey.Key
         type: NameSelectorBUI

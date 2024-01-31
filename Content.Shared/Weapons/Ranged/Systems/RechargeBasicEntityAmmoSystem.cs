@@ -51,7 +51,8 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
             {
                 // We don't predict this because occasionally on client it may not play.
                 // PlayPredicted will still be predicted on the client.
-                if (_netManager.IsServer)
+                //Miracle edit start/end
+                if (_netManager.IsServer && recharge.PlayRechargeSound)
                     _audio.PlayPvs(recharge.RechargeSound, uid);
             }
 

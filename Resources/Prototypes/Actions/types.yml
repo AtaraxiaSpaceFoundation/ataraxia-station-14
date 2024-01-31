@@ -9,6 +9,7 @@
     icon: Interface/Actions/scream.png
     event: !type:ScreamActionEvent
     checkCanInteract: false
+  - type: LesserFormRestricted
 
 - type: entity
   id: ActionTurnUndead

@@ -165,6 +165,23 @@
 
 - type: entity
   parent: BaseSubdermalImplant
+  id: ChangelingShopImplant
+  name: changeling shop implant
+  description: Opens evolution shop.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      permanent: true
+      implantAction: ActionChangelingShop
+    - type: Store
+      preset: StorePresetChangeling
+    - type: UserInterface
+      interfaces:
+        - key: enum.StoreUiKey.Key
+          type: StoreBoundUserInterface
+
+- type: entity
+  parent: BaseSubdermalImplant
   id: EmpImplant
   name: EMP implant
   description: This implant creates an electromagnetic pulse when activated.
@@ -177,7 +194,7 @@
       range: 1.75
       energyConsumption: 50000
       disableDuration: 10
-      
+
 - type: entity
   parent: BaseSubdermalImplant
   id: ScramImplant

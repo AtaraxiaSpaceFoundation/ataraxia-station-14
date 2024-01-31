@@ -23,3 +23,13 @@
     minItems: 3
     maxItems: 10
     salesCategory: UplinkSales
+
+- type: storePreset
+  id: StorePresetChangeling
+  storeName: Evolution Shop
+  categories:
+    - ChangelingAbilities
+    - ChangelingStings
+    - ChangelingBoosters
+  currencyWhitelist:
+    - ChangelingPoint

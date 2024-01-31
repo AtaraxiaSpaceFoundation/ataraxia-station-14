@@ -174,6 +174,32 @@ public sealed class ActionContainerSystem : EntitySystem
         DebugTools.AssertEqual(oldContainer.Container.Count, 0);
     }
 
+
+    //Miracle edit
+    public void TransferAllActionsFiltered(
+        EntityUid from,
+        EntityUid to,
+        ActionsContainerComponent? oldContainer = null,
+        ActionsContainerComponent? newContainer = null)
+    {
+        if (!Resolve(from, ref oldContainer) || !Resolve(to, ref newContainer))
+            return;
+
+        foreach (var action in oldContainer.Container.ContainedEntities.ToArray())
+        {
+            var actions = newContainer.Container.ContainedEntities;
+
+            var toAdd = MetaData(action).EntityPrototype?.ID;
+
+            if (actions.Select(act => MetaData(act).EntityPrototype?.ID).Any(ext => toAdd == ext))
+                continue;
+
+            TransferAction(action, to, container: newContainer);
+        }
+    }
+
+    //Miracle edit end
+
     /// <summary>
     /// Transfers an actions from one container to another, while changing the attached entity.
     /// </summary>

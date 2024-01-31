@@ -60,7 +60,10 @@
 - type: statusEffect
   id: StaminaModifier
 
+- type: statusEffect
+  id: BlurryVision
+  alwaysAllowed: true
+
 #WD EDIT
 - type: statusEffect
   id: Incorporeal
-

@@ -148,3 +148,93 @@
   revertOnDeath: true
   revertOnCrit: true
   duration: 20
+
+- type: polymorph
+  id: MonkeyChangeling
+  entity: MobMonkey
+  forced: true
+  inventory: Drop
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+
+- type: polymorph
+  id: MobHuman
+  entity: MobHuman
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobArachnid
+  entity: MobArachnid
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobDwarf
+  entity: MobDwarf
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobDiona
+  entity: MobDiona
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobMoth
+  entity: MobMoth
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobReptilian
+  entity: MobReptilian
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobVox
+  entity: MobVox
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer
+
+- type: polymorph
+  id: MobSlimePerson
+  entity: MobSlimePerson
+  forced: true
+  revertOnCrit: false
+  revertOnDeath: false
+  transferDamage: true
+  allowRepeatedMorphs: true
+  inventory: Transfer

@@ -126,4 +126,33 @@
   id: ThiefObjectiveGroupEscape
   weights:
     EscapeThiefShuttleObjective: 1
-#Changeling, crew, wizard, when you code it...
+
+# Changeling
+- type: weightedRandom
+  id: ChangelingObjectiveGroups
+  weights:
+    ChangelingObjectiveGroupSteal: 1
+    ChangelingObjectiveGroupKill: 1
+
+- type: weightedRandom
+  id: ChangelingObjectiveGroupSteal
+  weights:
+    CaptainIDStealObjectiveCh: 0.5
+    CMOHyposprayStealObjectiveCh: 0.5
+    RDHardsuitStealObjectiveCh: 0.5
+    NukeDiskStealObjectiveCh: 0.5
+    MagbootsStealObjectiveCh: 0.5
+    CorgiMeatStealObjectiveCh: 0.5
+    ClipboardStealObjectiveCh: 0.5
+    CaptainGunStealObjectiveCh: 0.5
+    CaptainJetpackStealObjectiveCh: 0.5
+    HandTeleporterStealObjectiveCh: 0.5
+    SecretDocumentsStealObjectiveCh: 0.5
+
+- type: weightedRandom
+  id: ChangelingObjectiveGroupKill
+  weights:
+    AbsorbDnaObjective: 1
+    AbsorbMoreDnaObjective: 0.75
+    AbsorbChangelingObjective: 0.25
+    EscapeWithIdentityObjective: 0.75
