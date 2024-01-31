@@ -65,7 +65,7 @@ public abstract class SharedMouseRotatorSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not { } ent
             || !TryComp<MouseRotatorComponent>(ent, out var rotator) || !rotator.Simple4DirMode)
         {
-            Log.Error($"User {args.SenderSession.Name} ({args.SenderSession.UserId}) tried setting 4-dir rotation directly without a valid mouse rotator component attached!");
+            Log.Warning($"User {args.SenderSession.Name} ({args.SenderSession.UserId}) tried setting 4-dir rotation directly without a valid mouse rotator component attached!");
             return;
         }
 
