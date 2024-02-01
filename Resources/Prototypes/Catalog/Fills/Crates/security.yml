@@ -123,3 +123,12 @@
       contents:
         - id: BoxBodyCamera
           amount: 2
+
+- type: entity
+  id: CrateSecurityVoiceRecorder
+  parent: CrateGenericSteel
+  components:
+    - type: StorageFill
+      contents:
+        - id: VoiceRecorder
+          amount: 4

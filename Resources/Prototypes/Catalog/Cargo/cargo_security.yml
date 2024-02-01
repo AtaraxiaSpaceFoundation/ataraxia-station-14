@@ -87,3 +87,13 @@
   cost: 2000
   category: Security
   group: market
+
+- type: cargoProduct
+  id: SecurityVoiceRecorder
+  icon:
+    sprite: White/VoiceRecorder/voicerecorder.rsi
+    state: icon
+  product: CrateSecurityVoiceRecorder
+  cost: 1000
+  category: Security
+  group: market

@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseItem
+  id: VoiceRecorder
+  name: voice recorder
+  description: BLCK-M type voice recorder. Has built-in printer for printing transcripts. Each new record erases previous one.
+  components:
+    - type: Sprite
+      sprite: White/VoiceRecorder/voicerecorder.rsi
+      layers:
+        - state: icon-on
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleVisuals.Toggled:
+          enum.ToggleVisuals.Layer:
+            True: { state: icon-on }
+            False: { state: icon }
+    - type: Item
+      heldPrefix: off
+      sprite: White/VoiceRecorder/voicerecorder.rsi
+    - type: Appearance
+    - type: VoiceRecorder
+      blacklist:
+        components:
+          - SurveillanceCamera
+          - SurveillanceCameraMonitor
+          - RadioSpeaker
+      range: 5
+    - type: ActiveListener
+      range: 5
