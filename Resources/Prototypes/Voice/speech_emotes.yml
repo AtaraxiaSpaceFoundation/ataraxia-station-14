@@ -1,4 +1,4 @@
-﻿# vocal emotes
+# vocal emotes
 - type: emote
   id: Scream
   category: Vocal
@@ -76,7 +76,7 @@
   id: Crying
   category: Vocal
   buttonText: Плакать
-  chatMessages: [ плакать ]
+  chatMessages: [ плачет ]
   chatTriggers:
   - плачет
   - заплакал

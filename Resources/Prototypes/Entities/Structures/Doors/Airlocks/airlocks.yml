@@ -95,6 +95,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/syndicate.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -103,6 +105,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/mining.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -113,6 +117,8 @@
     sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
   - type: WiresPanelSecurity
     securityLevel: medSecurity
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -121,6 +127,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -129,6 +137,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 # Glass
 
@@ -284,6 +294,8 @@
     sprite: Structures/Doors/Airlocks/Glass/syndicate.rsi
   - type: PaintableAirlock
     group: Glass
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: AirlockGlass
@@ -292,6 +304,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/mining.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: AirlockGlass
@@ -302,4 +316,6 @@
     sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
   - type: WiresPanelSecurity
     securityLevel: medSecurity
+  - type: Airlock
+    openUnlitVisible: false
 

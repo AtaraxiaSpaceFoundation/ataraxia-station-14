@@ -17,7 +17,6 @@ using Content.Shared.Stacks;
 using Content.Shared.Storage.Components;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
-using Content.Shared._White.Sounds;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -431,13 +430,6 @@ public abstract class SharedStorageSystem : EntitySystem
                 && storageComp.StorageRemoveSound != null)
                 Audio.PlayPredicted(storageComp.StorageRemoveSound, uid, player);
             {
-                // WD edit
-                if (hands.ActiveHand != null)
-                {
-                    var gotRemoved = new GotRemovedEvent(player, entity, hands.ActiveHand);
-                    RaiseLocalEvent(entity, gotRemoved, false);
-                }
-
                 return;
             }
         }

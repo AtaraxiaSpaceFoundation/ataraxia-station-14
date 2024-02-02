@@ -508,14 +508,14 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("fontType", speech.FontId),
             ("fontSize", speech.FontSize),
-            ("message", FormattedMessage.EscapeText(message)));
+            ("message", message));
 
         //WD-EDIT
         if (TryComp<VoiceOfGodComponent>(source, out var comp))
         {
             wrappedMessage = Loc.GetString(comp.ChatLoc,
                 ("entityName", name),
-                ("message", FormattedMessage.EscapeText(message)),
+                ("message", message),
                 ("color", comp.ChatColor)
             );
         }

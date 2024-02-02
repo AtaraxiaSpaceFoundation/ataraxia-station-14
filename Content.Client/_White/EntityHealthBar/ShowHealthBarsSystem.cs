@@ -27,30 +27,36 @@ namespace Content.Client._White.EntityHealthBar
 
         private void OnInit(EntityUid uid, ShowWhiteHealthBarsComponent component, ComponentInit args)
         {
-            if (_player.LocalPlayer?.ControlledEntity == uid)
-            {
-                _overlayMan.AddOverlay(_overlay);
-                _overlay.DamageContainers = component.DamageContainers;
-            }
+            if (_player.LocalSession?.AttachedEntity != uid)
+                return;
+
+            _overlayMan.AddOverlay(_overlay);
+            _overlay.DamageContainers = component.DamageContainers;
 
 
         }
         private void OnRemove(EntityUid uid, ShowWhiteHealthBarsComponent component, ComponentRemove args)
         {
-            if (_player.LocalPlayer?.ControlledEntity == uid)
-            {
-                _overlayMan.RemoveOverlay(_overlay);
-            }
+            if (_player.LocalSession?.AttachedEntity != uid)
+                return;
+
+            _overlayMan.RemoveOverlay(_overlay);
         }
 
         private void OnPlayerAttached(EntityUid uid, ShowWhiteHealthBarsComponent component, PlayerAttachedEvent args)
         {
+            if (_player.LocalSession != args.Player)
+                return;
+
             _overlayMan.AddOverlay(_overlay);
             _overlay.DamageContainers = component.DamageContainers;
         }
 
         private void OnPlayerDetached(EntityUid uid, ShowWhiteHealthBarsComponent component, PlayerDetachedEvent args)
         {
+            if (_player.LocalSession != args.Player)
+                return;
+
             _overlayMan.RemoveOverlay(_overlay);
         }
 

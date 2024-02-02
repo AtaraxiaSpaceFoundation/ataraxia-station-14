@@ -172,7 +172,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = "Сделать культистом.",
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(new("/Textures//White/Cult/interface.rsi/icon.png")),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/White/Cult/interface.rsi"), "icon"),
             Act = () =>
             {
                 if (!_minds.TryGetSession(targetMindComp.Mind, out var session))

@@ -25,25 +25,35 @@ public sealed class ShowCultHudSystem : EntitySystem
 
     private void OnComponentInit(EntityUid uid, CultistComponent component, ComponentInit args)
     {
-        if (_player.LocalPlayer?.ControlledEntity != uid) return;
+        if (_player.LocalSession?.AttachedEntity != uid)
+            return;
+
         _overlayManager.AddOverlay(_overlay);
 
     }
 
     private void OnComponentRemoved(EntityUid uid, CultistComponent component, ComponentRemove args)
     {
-        if (_player.LocalPlayer?.ControlledEntity != uid) return;
+        if (_player.LocalSession?.AttachedEntity != uid)
+            return;
+
         _overlayManager.RemoveOverlay(_overlay);
 
     }
 
     private void OnPlayerAttached(EntityUid uid, CultistComponent component, PlayerAttachedEvent args)
     {
+        if (_player.LocalSession != args.Player)
+            return;
+
         _overlayManager.AddOverlay(_overlay);
     }
 
     private void OnPlayerDetached(EntityUid uid, CultistComponent component, PlayerDetachedEvent args)
     {
+        if (_player.LocalSession != args.Player)
+            return;
+
         _overlayManager.RemoveOverlay(_overlay);
     }
 }

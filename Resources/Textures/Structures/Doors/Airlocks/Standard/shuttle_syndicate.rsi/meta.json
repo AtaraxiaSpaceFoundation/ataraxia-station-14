@@ -11,6 +11,15 @@
       "name": "bolted_unlit"
     },
     {
+      "name": "bolted_open_unlit"
+    },
+    {
+      "name": "open_unlit"
+    },
+    {
+      "name": "emergency_open_unlit"
+    },
+    {
       "name": "closed"
     },
     {
