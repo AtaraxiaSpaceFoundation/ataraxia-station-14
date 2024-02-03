@@ -417,7 +417,7 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 30))
             return;
 
-        _solutionContainer.TryAddReagent(injectable.Value, "Stimulants", 50);
+        _solutionContainer.TryAddReagent(injectable.Value, "Stimulants", 10);
 
         args.Handled = true;
     }

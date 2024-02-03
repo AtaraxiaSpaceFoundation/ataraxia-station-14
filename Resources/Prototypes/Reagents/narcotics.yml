@@ -257,6 +257,14 @@
             min: 1
           reagent: ChloralHydrate
           amount: -3
+        - !type:GenericStatusEffect
+          conditions:
+          - !type:ReagentThreshold
+            min: 10
+          key: StaminaModifier
+          component: StaminaModifier
+          time: 3
+          type: Add
 
 - type: reagent
   id: THC
