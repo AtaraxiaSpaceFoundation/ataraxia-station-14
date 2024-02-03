@@ -61,6 +61,7 @@
       type: WiresBoundUserInterface
   - type: Airtight
     fixVacuum: true
+    noAirWhenFullyAirBlocked: false
   - type: RadiationBlocker
     resistance: 2
   - type: Damageable
