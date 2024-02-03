@@ -1,3 +1,4 @@
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Chat.Managers;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
@@ -16,6 +17,12 @@ namespace Content.Server.Chat.Commands
             if (shell.Player is not { } player)
             {
                 shell.WriteError("This command cannot be run from the server.");
+                return;
+            }
+
+            var gulag = EntitySystem.Get<GulagSystem>();
+            if (gulag.IsUserGulaged(shell.Player.UserId, out var _))
+            {
                 return;
             }
 

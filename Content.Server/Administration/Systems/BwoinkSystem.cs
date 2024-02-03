@@ -6,6 +6,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Administration.Managers;
 using Content.Server.GameTicking;
 using Content.Server._White.PandaSocket.Main;
@@ -35,6 +36,8 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly SharedMindSystem _minds = default!;
         [Dependency] private readonly PandaWebManager _pandaWeb = default!; // WD
+        [Dependency] private readonly GulagSystem _gulagSystem = default!; // Miracle
+
 
         private ISawmill _sawmill = default!;
         private readonly HttpClient _httpClient = new();
@@ -388,6 +391,12 @@ namespace Content.Server.Administration.Systems
         {
             base.OnBwoinkTextMessage(message, eventArgs);
             var senderSession = eventArgs.SenderSession;
+
+            //No bwoink for banned
+            if (_gulagSystem.IsUserGulaged(senderSession.UserId, out _))
+            {
+                return;
+            }
 
             // TODO: Sanitize text?
             // Confirm that this person is actually allowed to send a message here.

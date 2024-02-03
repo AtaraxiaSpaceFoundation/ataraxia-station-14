@@ -1,3 +1,4 @@
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Administration.Logs;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles.Components;
@@ -37,6 +38,8 @@ namespace Content.Server.Ghost.Roles
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly SharedMindSystem _mindSystem = default!;
         [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
+        [Dependency] private readonly GulagSystem _gulagSystem = default!;
+
 
         private uint _nextRoleIdentifier;
         private bool _needsUpdateGhostRoleCount = true;
@@ -200,6 +203,11 @@ namespace Content.Server.Ghost.Roles
         {
             if (!_ghostRoles.TryGetValue(identifier, out var role))
                 return;
+
+            if (_gulagSystem.IsUserGulaged(player.UserId, out _))
+            {
+                return;
+            }
 
             var ev = new TakeGhostRoleEvent(player);
             RaiseLocalEvent(role, ref ev);
