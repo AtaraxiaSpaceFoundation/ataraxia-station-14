@@ -271,7 +271,7 @@
     - type: Gun
       soundGunshot: /Audio/Effects/gib1.ogg
       fireRate: 0.3
-      selectedMode: PullItem
+      selectedMode: PullMob
       availableModes:
         - PullItem
         - PullMob
