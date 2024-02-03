@@ -1,0 +1,17 @@
+﻿<windows:ScannerWindow
+    xmlns="https://spacestation14.io"
+    xmlns:windows="clr-namespace:Content.Client.Borer"
+    Name="AvailableReagents"
+    HorizontalExpand="True"
+    Title="{Loc 'borer-ui-scan-title'}"
+    VerticalExpand="True"
+    Resizable="True"
+    MinHeight="300"
+    MinWidth="300">
+    <BoxContainer Name="MainContainer" Orientation="Vertical" SeparationOverride="4" MinWidth="150">
+        <Label FontColorOverride="#55FF55" HorizontalAlignment="Center" Text="{Loc 'borer-ui-scan-label'}"/>
+        <BoxContainer Name="SolutionContainer" Orientation="Vertical" SeparationOverride="4" MinWidth="150" Access="Public">
+
+        </BoxContainer>
+    </BoxContainer>
+</windows:ScannerWindow>

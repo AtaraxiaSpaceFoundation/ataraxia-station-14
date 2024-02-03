@@ -1,0 +1,13 @@
+﻿<windows:ReagentWindow
+    xmlns="https://spacestation14.io"
+    xmlns:windows="clr-namespace:Content.Client.Borer"
+    Name="AvailableReagents"
+    HorizontalExpand="True"
+    Title="Reagents"
+    VerticalExpand="True"
+    Resizable="True"
+    MinHeight="300"
+    MinWidth="300">
+    <BoxContainer Name="MainContainer" Orientation="Vertical" SeparationOverride="4" MinWidth="150" Access="Public">
+    </BoxContainer>
+</windows:ReagentWindow>

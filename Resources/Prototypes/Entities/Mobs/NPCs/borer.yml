@@ -1,0 +1,72 @@
+- type: entity
+  name: basic borer
+  id: MobBorerBase
+  parent: SimpleSpaceMobBase
+  abstract: true
+  description: It looks like it's making you lose your mind.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: Mobs/Animals/borer.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: borer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: borer
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      20: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4
+  - type: Tag
+    tags:
+    - CannotSuicide
+    maxSaturation: 15
+  - type: Bloodstream
+    bloodReagent: Slime
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          1
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: NoSlip
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-borer-name
+    description: ghost-role-information-borer-description
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleOff
+  - type: Actions
+  - type: ActionsContainer
+  - type: Speech
+    enabled: false
+
+- type: entity
+  name: Cortical Borer
+  parent: MobBorerBase
+  id: MobSimpleBorer
+  components:
+    - type: Borer
+      reproduceCost: 100
+      assumeControlCost: 250

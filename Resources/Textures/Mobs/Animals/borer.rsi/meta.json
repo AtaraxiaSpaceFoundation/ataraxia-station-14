@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by Ogunefu",
+  "states": [
+    {
+      "name": "borer",
+      "directions": 4
+    },
+	{
+      "name": "dead",
+      "directions": 1
+    },
+	{
+	  "name": "action_out",
+	  "directions": 1
+	},
+	{
+	  "name": "action_infest",
+	  "directions": 1
+	},
+	{
+	  "name": "action_stun",
+	  "directions": 1
+	},
+	{
+	  "name": "action_brainspeech",
+	  "directions": 1
+	},
+	{
+	  "name": "action_inject",
+	  "directions": 1
+	},
+	{
+	  "name": "action_scanreagents",
+	  "directions": 1
+	},
+	{
+	  "name": "action_braintake",
+	  "directions": 1
+	},
+	{
+	  "name": "action_reproduce",
+	  "directions": 1
+	},
+	{
+	  "name": "action_brainrelease",
+	  "directions": 1
+	}
+  ]
+}

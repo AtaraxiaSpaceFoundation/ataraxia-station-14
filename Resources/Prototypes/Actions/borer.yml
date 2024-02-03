@@ -1,0 +1,133 @@
+- type: entity
+  id: ActionInfest
+  name: borer-abilities-infest-name
+  description: borer-abilities-infest-description
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_infest
+    event: !type:BorerInfestActionEvent
+    itemIconStyle: BigAction
+    canTargetSelf: false
+    useDelay: 15
+    
+- type: entity
+  id: ActionBorerStunVictim
+  name: borer-abilities-paralyze-name
+  description: borer-abilities-paralyze-description
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_stun
+    event: !type:BorerStunActionEvent
+    itemIconStyle: BigAction
+    canTargetSelf: false
+    useDelay: 40
+    
+- type: entity
+  id: ActionBorerOut
+  name: borer-abilities-release-host-name
+  description: borer-abilities-release-host-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_out
+    event: !type:BorerOutActionEvent
+    useDelay: 4
+    
+- type: entity
+  id: ActionBorerBrainSpeech
+  name: borer-abilities-converse-name
+  description: borer-abilities-converse-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_brainspeech
+    event: !type:BorerBrainSpeechActionEvent
+    useDelay: 4
+    
+- type: entity
+  id: ActionBorerInjectWindowOpen
+  name: borer-abilities-secrete-name
+  description: borer-abilities-secrete-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_inject
+    event: !type:BorerInjectWindowOpenEvent
+    useDelay: 4
+    
+- type: entity
+  id: ActionBorerScan
+  name: borer-abilities-scan-name
+  description: borer-abilities-scan-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_scanreagents
+    event: !type:BorerScanInstantActionEvent
+    useDelay: 5
+    
+- type: entity
+  id: ActionBorerBrainTake
+  name: borer-abilities-control-name
+  description: borer-abilities-control-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_braintake
+    event: !type:BorerBrainTakeEvent
+    useDelay: 4
+    
+- type: entity
+  id: ActionBorerReproduce
+  name: borer-abilities-reproduce-name
+  description: borer-abilities-reproduce-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_reproduce
+    event: !type:BorerReproduceEvent
+    useDelay: 30
+    
+- type: entity
+  id: ActionBorerBrainRelease
+  name: borer-abilities-restore-name
+  description: borer-abilities-restore-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_brainrelease
+    event: !type:BorerBrainReleaseEvent
+    useDelay: 4
+    
+- type: entity
+  id: ActionBorerBrainResist
+  name: borer-abilities-resist-name
+  description: borer-abilities-resist-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Mobs/Animals/borer.rsi
+      state: action_brainrelease
+    event: !type:BorerBrainResistEvent
+    useDelay: 4
