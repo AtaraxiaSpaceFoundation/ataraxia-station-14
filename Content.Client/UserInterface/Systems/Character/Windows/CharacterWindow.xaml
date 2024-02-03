@@ -8,22 +8,25 @@
     <ScrollContainer>
         <BoxContainer Orientation="Vertical">
             <BoxContainer Orientation="Horizontal">
-                <SpriteView OverrideDirection="South" Scale="2 2" Name="SpriteView" Access="Public" SetSize="64 64"/>
+                <SpriteView OverrideDirection="South" Scale="2 2" Name="SpriteView" Access="Public" SetSize="64 64" />
                 <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
-                    <Label Name="NameLabel" Access="Public"/>
-                    <Label Name="SubText" VerticalAlignment="Top" StyleClasses="LabelSubText" Access="Public"/>
+                    <Label Name="NameLabel" Access="Public" />
+                    <Label Name="SubText" VerticalAlignment="Top" StyleClasses="LabelSubText" Access="Public" />
                 </BoxContainer>
             </BoxContainer>
 
             <!-- WD EDIT -->
-            <Label Text="{Loc 'character-info-memories-label'}" HorizontalAlignment="Center"/>
-            <BoxContainer Orientation="Vertical" Name="Memories" Access="Public"/>
-            <cc:Placeholder PlaceholderText="{Loc 'character-info-memories-placeholder-text'}"/>
+            <Label Text="{Loc 'character-info-memories-label'}" HorizontalAlignment="Center" />
+            <BoxContainer Orientation="Vertical" Name="Memories" Access="Public" />
+            <cc:Placeholder Name="MemoriesPlaceholder" Access="Public"
+                            PlaceholderText="{Loc 'character-info-memories-placeholder-text'}" />
             <!-- WD EDIT END -->
 
-            <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
-            <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
-            <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
+            <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}"
+                   HorizontalAlignment="Center" />
+            <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public" />
+            <cc:Placeholder Name="RolePlaceholder" Access="Public"
+                            PlaceholderText="{Loc 'character-info-roles-antagonist-text'}" />
         </BoxContainer>
     </ScrollContainer>
 </windows:CharacterWindow>

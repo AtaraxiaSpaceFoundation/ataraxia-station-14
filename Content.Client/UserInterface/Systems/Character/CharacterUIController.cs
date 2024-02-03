@@ -112,7 +112,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
         _window.Memories.RemoveAllChildren();
-        _window.ObjectivesLabel.Visible = objectives.Any();
 
         foreach (var (groupId, conditions) in objectives)
         {
@@ -183,7 +182,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(control);
         }
 
-        _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        _window.RolePlaceholder.Visible = briefing == null && controls.Count == 0 && objectives.Count == 0;
+        _window.MemoriesPlaceholder.Visible = memories.Count == 0;
     }
 
     private void CharacterDetached(EntityUid uid)

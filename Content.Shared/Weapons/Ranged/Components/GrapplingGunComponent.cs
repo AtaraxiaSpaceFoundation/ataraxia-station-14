@@ -9,7 +9,7 @@ namespace Content.Shared.Weapons.Ranged.Components;
 public sealed partial class GrapplingGunComponent : Component
 {
     [DataField("jointId"), AutoNetworkedField]
-    public string Joint = string.Empty;
+    public EntityUid? Joint;
 
     [DataField, AutoNetworkedField]
     public EntityUid? Projectile;

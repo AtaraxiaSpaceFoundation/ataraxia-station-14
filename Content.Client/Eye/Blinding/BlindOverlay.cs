@@ -1,12 +1,8 @@
-using Content.Client.Movement.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
-using Content.Shared.Eye.Blinding;
 using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Movement.Components;
-using Content.Shared.Movement.Systems;
 
 namespace Content.Client.Eye.Blinding
 {
@@ -18,7 +14,9 @@ namespace Content.Client.Eye.Blinding
         [Dependency] private readonly ILightManager _lightManager = default!;
 
         public override bool RequestScreenTexture => true;
+
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
+
         private readonly ShaderInstance _greyscaleShader;
         private readonly ShaderInstance _circleMaskShader;
 
@@ -30,6 +28,7 @@ namespace Content.Client.Eye.Blinding
             _greyscaleShader = _prototypeManager.Index<ShaderPrototype>("GreyscaleFullscreen").InstanceUnique();
             _circleMaskShader = _prototypeManager.Index<ShaderPrototype>("CircleMask").InstanceUnique();
         }
+
         protected override bool BeforeDraw(in OverlayDrawArgs args)
         {
             if (!_entityManager.TryGetComponent(_playerManager.LocalSession?.AttachedEntity, out EyeComponent? eyeComp))
@@ -50,15 +49,13 @@ namespace Content.Client.Eye.Blinding
 
             var blind = _blindableComponent.IsBlind;
 
-            if (!blind && _blindableComponent.LightSetup) // Turn FOV back on if we can see again
-            {
-                _lightManager.Enabled = true;
-                _blindableComponent.LightSetup = false;
-                _blindableComponent.GraceFrame = true;
-                return true;
-            }
+            if (blind || !_blindableComponent.LightSetup) // Turn FOV back on if we can see again
+                return blind;
 
-            return blind;
+            _lightManager.Enabled = true;
+            _blindableComponent.LightSetup = false;
+            _blindableComponent.GraceFrame = true;
+            return true;
         }
 
         protected override void Draw(in OverlayDrawArgs args)
@@ -75,7 +72,8 @@ namespace Content.Client.Eye.Blinding
             {
                 _blindableComponent.LightSetup = true; // Ok we touched the lights
                 _lightManager.Enabled = false;
-            } else
+            }
+            else
             {
                 _blindableComponent.GraceFrame = false;
             }

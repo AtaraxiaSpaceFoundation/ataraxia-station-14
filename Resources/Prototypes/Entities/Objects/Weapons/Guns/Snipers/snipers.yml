@@ -30,6 +30,7 @@
     whitelist:
       tags:
       - CartridgeLightRifle
+    autoCycle: false
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -63,6 +64,7 @@
       - CartridgeAntiMateriel
     capacity: 5
     proto: CartridgeAntiMateriel
+    autoCycle: true
   - type: Wieldable
     wieldTime: 0
     forceTwoHanded: True

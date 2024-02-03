@@ -21,7 +21,7 @@ public sealed class BlurryVisionSystem : EntitySystem
         SubscribeLocalEvent<BlurryVisionComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<BlurryVisionComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
-        _overlay = new();
+        _overlay = new BlurryVisionOverlay();
     }
 
     private void OnPlayerAttached(EntityUid uid, BlurryVisionComponent component, LocalPlayerAttachedEvent args)
@@ -36,13 +36,13 @@ public sealed class BlurryVisionSystem : EntitySystem
 
     private void OnBlurryInit(EntityUid uid, BlurryVisionComponent component, ComponentInit args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
+        if (_player.LocalSession?.AttachedEntity == uid)
             _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnBlurryShutdown(EntityUid uid, BlurryVisionComponent component, ComponentShutdown args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
+        if (_player.LocalSession?.AttachedEntity == uid)
         {
             _overlayMan.RemoveOverlay(_overlay);
         }

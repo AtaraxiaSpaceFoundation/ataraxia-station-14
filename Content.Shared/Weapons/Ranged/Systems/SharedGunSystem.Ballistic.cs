@@ -206,6 +206,7 @@ public abstract partial class SharedGunSystem
 
         var shots = GetBallisticShots(component);
         Cycle(uid, component, coordinates);
+        component.Cycled = true;
 
         var text = Loc.GetString(shots == 0 ? "gun-ballistic-cycled-empty" : "gun-ballistic-cycled");
 
@@ -243,6 +244,9 @@ public abstract partial class SharedGunSystem
 
     private void OnBallisticTakeAmmo(EntityUid uid, BallisticAmmoProviderComponent component, TakeAmmoEvent args)
     {
+        if (!component.IsCycled)
+            return;
+
         for (var i = 0; i < args.Shots; i++)
         {
             EntityUid entity;
@@ -262,6 +266,10 @@ public abstract partial class SharedGunSystem
                 args.Ammo.Add((entity, EnsureShootable(entity)));
             }
         }
+
+        //un-cycle the firearm
+        if (!component.AutoCycle)
+            component.Cycled = false;
 
         UpdateBallisticAppearance(uid, component);
         Dirty(uid, component);

@@ -12,7 +12,10 @@ public sealed partial class GunSystem
         SubscribeLocalEvent<BallisticAmmoProviderComponent, UpdateAmmoCounterEvent>(OnBallisticAmmoCount);
     }
 
-    private void OnBallisticAmmoCount(EntityUid uid, BallisticAmmoProviderComponent component, UpdateAmmoCounterEvent args)
+    private void OnBallisticAmmoCount(
+        EntityUid uid,
+        BallisticAmmoProviderComponent component,
+        UpdateAmmoCounterEvent args)
     {
         if (args.Control is DefaultStatusControl control)
         {
@@ -23,6 +26,9 @@ public sealed partial class GunSystem
     protected override void Cycle(EntityUid uid, BallisticAmmoProviderComponent component, MapCoordinates coordinates)
     {
         if (!Timing.IsFirstTimePredicted)
+            return;
+
+        if (!component.IsCycled)
             return;
 
         EntityUid? ent = null;
@@ -48,5 +54,6 @@ public sealed partial class GunSystem
 
         var cycledEvent = new GunCycledEvent();
         RaiseLocalEvent(uid, ref cycledEvent);
+
     }
 }

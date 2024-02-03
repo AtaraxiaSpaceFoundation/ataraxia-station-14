@@ -10,7 +10,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 28
+        Piercing: 34
 
 - type: entity
   id: PelletShotgunBeanbag
@@ -40,7 +40,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 10
+        Piercing: 13
 
 - type: entity
   id: PelletShotgunIncendiary
@@ -54,7 +54,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 3
+        Blunt: 6
         Heat: 7
   - type: IgnitionSource
     ignited: true
@@ -85,8 +85,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 3
-        Slash: 3 #remember, it's metal shrapnel!
+        Piercing: 5
+        Slash: 5 #remember, it's metal shrapnel!
 
 - type: entity
   id: PelletShotgunTranquilizer
@@ -177,8 +177,8 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5
-        Piercing: 5
+        Radiation: 6
+        Piercing: 7
 
 - type: entity
   id: PelletGrapeshot #tally fucking ho

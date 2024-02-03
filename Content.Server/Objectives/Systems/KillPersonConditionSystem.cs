@@ -1,3 +1,5 @@
+using System.Linq;
+using Content.Server._White.Cult.GameRule;
 using Content.Server.Objectives.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.CCVar;
@@ -30,6 +32,8 @@ public sealed class KillPersonConditionSystem : EntitySystem
         SubscribeLocalEvent<PickRandomPersonComponent, ObjectiveAssignedEvent>(OnPersonAssigned);
 
         SubscribeLocalEvent<PickRandomHeadComponent, ObjectiveAssignedEvent>(OnHeadAssigned);
+
+        SubscribeLocalEvent<PickCultTargetComponent, ObjectiveAssignedEvent>(OnCultTargetAssigned);
     }
 
     private void OnGetProgress(EntityUid uid, KillPersonConditionComponent comp, ref ObjectiveGetProgressEvent args)
@@ -97,6 +101,28 @@ public sealed class KillPersonConditionSystem : EntitySystem
             allHeads = allHumans; // fallback to non-head target
 
         _target.SetTarget(uid, _random.Pick(allHeads), target);
+    }
+
+    private void OnCultTargetAssigned(Entity<PickCultTargetComponent> ent, ref ObjectiveAssignedEvent args)
+    {
+        // invalid prototype
+        if (!TryComp<TargetObjectiveComponent>(ent.Owner, out var target))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        // target already assigned
+        if (target.Target != null)
+            return;
+
+        var cultistRule = EntityManager.EntityQuery<CultRuleComponent>().FirstOrDefault();
+        if (cultistRule?.CultTarget is null)
+        {
+            return;
+        }
+
+        _target.SetTarget(ent.Owner, cultistRule.CultTarget.Value);
     }
 
     private float GetProgress(EntityUid target, bool requireDead)

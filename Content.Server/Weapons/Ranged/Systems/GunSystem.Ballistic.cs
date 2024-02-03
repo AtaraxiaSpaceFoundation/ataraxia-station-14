@@ -12,6 +12,9 @@ public sealed partial class GunSystem
 
     protected override void Cycle(EntityUid uid, BallisticAmmoProviderComponent component, MapCoordinates coordinates)
     {
+        if (!component.IsCycled)
+            return;
+
         EntityUid? ent = null;
 
         // TODO: Combine with TakeAmmo

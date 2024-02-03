@@ -67,6 +67,9 @@ public abstract class SharedGrapplingGunSystem : EntitySystem
             visuals.Sprite = component.RopeSprite;
             visuals.OffsetA = new Vector2(0f, 0.5f);
             visuals.Target = uid;
+
+            component.Joint = visuals.Target;
+
             Dirty(shotUid.Value, visuals);
         }
 
@@ -91,7 +94,7 @@ public abstract class SharedGrapplingGunSystem : EntitySystem
 
         if (msg.Reeling &&
             (!TryComp<CombatModeComponent>(player, out var combatMode) ||
-             !combatMode.IsInCombatMode))
+                !combatMode.IsInCombatMode))
         {
             return;
         }
@@ -132,7 +135,7 @@ public abstract class SharedGrapplingGunSystem : EntitySystem
 
         component.Projectile = null;
         SetReeling(uid, component, false, args.User);
-        _gun.ChangeBasicEntityAmmoCount(uid,  1);
+        _gun.ChangeBasicEntityAmmoCount(uid, 1);
 
         args.Handled = true;
     }

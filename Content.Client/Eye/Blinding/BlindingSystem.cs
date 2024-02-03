@@ -10,8 +10,7 @@ public sealed class BlindingSystem : EntitySystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] ILightManager _lightManager = default!;
-
+    [Dependency] private readonly ILightManager _lightManager = default!;
 
     private BlindOverlay _overlay = default!;
 
@@ -27,7 +26,7 @@ public sealed class BlindingSystem : EntitySystem
 
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(RoundRestartCleanup);
 
-        _overlay = new();
+        _overlay = new BlindOverlay();
     }
 
     private void OnPlayerAttached(EntityUid uid, BlindableComponent component, LocalPlayerAttachedEvent args)
@@ -43,13 +42,13 @@ public sealed class BlindingSystem : EntitySystem
 
     private void OnBlindInit(EntityUid uid, BlindableComponent component, ComponentInit args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
+        if (_player.LocalSession?.AttachedEntity == uid)
             _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnBlindShutdown(EntityUid uid, BlindableComponent component, ComponentShutdown args)
     {
-        if (_player.LocalPlayer?.ControlledEntity == uid)
+        if (_player.LocalSession?.AttachedEntity == uid)
         {
             _overlayMan.RemoveOverlay(_overlay);
         }

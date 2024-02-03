@@ -36,6 +36,7 @@
     proto: ShellShotgun
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
+    autoCycle: false
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

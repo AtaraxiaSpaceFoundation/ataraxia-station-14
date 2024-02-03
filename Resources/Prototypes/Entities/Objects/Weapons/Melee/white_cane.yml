@@ -18,6 +18,7 @@
   - type: StaminaDamageOnHit
     damage: 5
   - type: Wieldable
+  - type: ReduceBlindness
   - type: IncreaseDamageOnWield
     damage:
       types:

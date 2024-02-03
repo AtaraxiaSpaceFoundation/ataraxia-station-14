@@ -54,11 +54,11 @@ public sealed partial class CultRuleComponent : Component
     /// <summary>
     ///     Players who played as an cultist at some point in the round.
     /// </summary>
-    public Dictionary<string, string> CultistsList = new();
+    public Dictionary<string, string> CultistsCache = new();
 
     public EntityUid? CultTarget;
 
-    public List<CultistComponent> Cultists = new();
+    public List<CultistComponent> CurrentCultists = new();
 
     public List<ConstructComponent> Constructs = new();
 
