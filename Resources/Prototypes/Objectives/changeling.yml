@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   abstract: true
   parent: BaseObjective
   id: BaseChangelingObjective
@@ -99,6 +99,8 @@
   parent: BaseChangelingStealObjective
   id: RDHardsuitStealObjectiveCh
   components:
+    - type: NotJobRequirement
+      job: ResearchDirector
     - type: StealCondition
       stealGroup: ClothingOuterHardsuitRd
       owner: job-name-rd
@@ -108,6 +110,8 @@
   parent: BaseChangelingStealObjective
   id: HandTeleporterStealObjectiveCh
   components:
+    - type: NotJobRequirement
+      job: ResearchDirector
     - type: StealCondition
       stealGroup: HandTeleporter
       owner: job-name-rd

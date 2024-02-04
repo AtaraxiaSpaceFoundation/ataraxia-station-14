@@ -234,7 +234,7 @@
   - type: NpcFactionMember
     factions:
     - Passive
-    
+
 - type: entity
   parent: MobChicken
   id: MobChicken1
@@ -259,7 +259,7 @@
         Base: dead-1
       Dead:
         Base: dead-1
-        
+
 - type: entity
   parent: MobChicken
   id: MobChicken2
@@ -1301,7 +1301,7 @@
   - type: GhostTakeoverAvailable
   - type: Loadout
     prototypes: [SyndicateOperativeGearMonkey]
-  
+
 - type: entity
   id: MobMonkeySyndicateAgent
   parent: MobBaseSyndicateMonkey
@@ -1506,7 +1506,7 @@
     actions:
       Critical:
       - ActionCritSuccumb
-      #- ActionCritFakeDeath
+      - ActionCritFakeDeath
       - ActionCritLastWords
   - type: MobThresholds
     thresholds:
@@ -2955,7 +2955,7 @@
     actions:
       Critical:
       - ActionCritSuccumb
-      #- ActionCritFakeDeath
+      - ActionCritFakeDeath
       - ActionCritLastWords
   - type: MobThresholds
     thresholds:

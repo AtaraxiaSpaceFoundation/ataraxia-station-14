@@ -164,6 +164,8 @@
   parent: BaseTraitorStealObjective
   id: RDHardsuitStealObjective
   components:
+  - type: NotJobRequirement
+    job: ResearchDirector
   - type: StealCondition
     stealGroup: ClothingOuterHardsuitRd
     owner: job-name-rd
@@ -173,6 +175,8 @@
   parent: BaseTraitorStealObjective
   id: HandTeleporterStealObjective
   components:
+  - type: NotJobRequirement
+    job: ResearchDirector
   - type: StealCondition
     stealGroup: HandTeleporter
     owner: job-name-rd

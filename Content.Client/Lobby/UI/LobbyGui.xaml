@@ -90,6 +90,12 @@
                                 Name="OptionsButton"
                                 Access="Public"
                                 ButtonText="Options"
+                                Margin="0 10 0 10" />
+
+                            <buttons:OhioLobbyTextButton
+                                Name="QuitButton"
+                                Access="Public"
+                                ButtonText="Quit"
                                 Margin="0 10 0 0" />
 
                         </BoxContainer>

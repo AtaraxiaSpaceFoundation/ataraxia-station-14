@@ -72,7 +72,7 @@
     actions:
       Critical:
       - ActionCritSuccumb
-      #- ActionCritFakeDeath
+      - ActionCritFakeDeath
       - ActionCritLastWords
   - type: Deathgasp
   - type: HealthExaminable
