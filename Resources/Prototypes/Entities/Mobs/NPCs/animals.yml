@@ -1274,6 +1274,10 @@
         Burn: 3
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
+  - type: UserInterface
+    interfaces:
+      - key: enum.ListViewSelectorUiKeyChangeling.Key
+        type: ListViewSelectorBui
 
 - type: entity
   name: monkey
