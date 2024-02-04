@@ -43,8 +43,8 @@
     - type: Tag
       tags:
         - FootstepSound
-    - type: HitscanBatteryAmmoProvider
-      proto: RedLightLaser
+    - type: ProjectileBatteryAmmoProvider
+      proto: BulletTrailLaserLight
       fireCost: 50
     - type: BatterySelfRecharger
       autoRecharge: true
@@ -53,6 +53,7 @@
       maxCharge: 1000
       startingCharge: 1000
     - type: Gun
+      projectileSpeed: 48
       fireRate: 1
       useKey: false
       selectedMode: SemiAuto

@@ -14,8 +14,8 @@
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
-    - type: HitscanBatteryAmmoProvider
-      proto: RedLaser
+    - type: ProjectileBatteryAmmoProvider
+      proto: BulletTrailLaserMedium
       fireCost: 62.5
     - type: Battery
       maxCharge: 1000
@@ -24,6 +24,7 @@
       autoRecharge: true
       autoRechargeRate: 40
     - type: Gun
+      projectileSpeed: 48
       fireRate: 0.75
       useKey: false
       selectedMode: SemiAuto

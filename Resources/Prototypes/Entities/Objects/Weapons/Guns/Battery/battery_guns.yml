@@ -164,10 +164,7 @@
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
   - type: ProjectileBatteryAmmoProvider
     proto: BulletTrailLaser
-    fireCost: 62.5
-  - type: Battery
-    maxCharge: 500
-    startingCharge: 500
+    fireCost: 125
 
 - type: entity
   name: tesla gun
@@ -260,10 +257,7 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
-    fireCost: 200
-  - type: Battery
-    maxCharge: 2000
-    startingCharge: 2000
+    fireCost: 100
 
 - type: entity
   name: pulse carbine
@@ -291,10 +285,7 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
-    fireCost: 200
-  - type: Battery
-    maxCharge: 5000
-    startingCharge: 5000
+    fireCost: 40
 
 - type: entity
   name: pulse rifle
@@ -318,10 +309,7 @@
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
-    fireCost: 100
-  - type: Battery
-    maxCharge: 40000
-    startingCharge: 40000
+    fireCost: 2.5
 
 - type: entity
   name: laser cannon
@@ -366,6 +354,7 @@
         - state: base
           map: ["enum.GunVisualLayers.Base"]
     - type: Gun
+      projectileSpeed: 25
       fireRate: 0.5
       soundGunshot:
         path: /Audio/Weapons/emitter.ogg
@@ -373,10 +362,7 @@
           pitch: 2
     - type: ProjectileBatteryAmmoProvider
       proto: AntiParticlesProjectile
-      fireCost: 500
-    - type: Battery
-      maxCharge: 10000
-      startingCharge: 10000
+      fireCost: 50
 
 - type: entity
   name: x-ray cannon
@@ -739,8 +725,8 @@
       fireCost: 49
       laserFireCost: 99
       stunFireCost: 49
-      stunProjectileSpeed: 25
-      laserProjectileSpeed: 25
+      stunProjectileSpeed: 48
+      laserProjectileSpeed: 48
       stunSound: "/Audio/Weapons/Guns/Gunshots/taser2.ogg"
       laserSound: "/Audio/Weapons/Guns/Gunshots/laser_cannon.ogg"
     - type: MagazineVisuals

@@ -1046,6 +1046,32 @@
     reflective:
     - Energy
 
+- type: entity
+  name: laser bolt
+  id: BulletTrailLaserLight
+  parent: BulletTrailLaser
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 9
+  - type: Trail
+    scale: 0.03, 0.0
+
+- type: entity
+  name: laser bolt
+  id: BulletTrailLaserShuttle
+  parent: BulletTrailLaser
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 60
+        Structural: 15
+  - type: Trail
+    scale: 0.15, 0.0
 
 - type: entity
   name: practice laser bolt

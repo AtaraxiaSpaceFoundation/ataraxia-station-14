@@ -80,6 +80,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
+    projectileSpeed: 48
     fireRate: 5
     useKey: false
     selectedMode: SemiAuto
@@ -136,6 +137,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
+    projectileSpeed: 48
     fireRate: 1
     useKey: false
     selectedMode: SemiAuto
