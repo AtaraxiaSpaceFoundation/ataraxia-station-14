@@ -163,7 +163,7 @@ public sealed partial class StoreSystem
             }
         }
 
-        if (!IsOnStartingMap(uid, component))
+        if (!IsOnStartingMap(uid, component) || !component.Refunds) // Miracle edit
             component.RefundAllowed = false;
         else
             component.RefundAllowed = true;
@@ -331,7 +331,7 @@ public sealed partial class StoreSystem
         if (args.Session.AttachedEntity is not { Valid: true } buyer)
             return;
 
-        if (!IsOnStartingMap(uid, component))
+        if (!IsOnStartingMap(uid, component) || !component.Refunds) // Miracle edit
         {
             component.RefundAllowed = false;
             UpdateUserInterface(buyer, uid, component);
@@ -340,7 +340,7 @@ public sealed partial class StoreSystem
         if (!component.RefundAllowed || component.BoughtEntities.Count == 0)
             return;
 
-        for (var i = component.BoughtEntities.Count; i >= 0; i--)
+        for (var i = component.BoughtEntities.Count - 1; i >= 0; i--) // MIRACLE FIX CRINGE
         {
             var purchase = component.BoughtEntities[i];
 

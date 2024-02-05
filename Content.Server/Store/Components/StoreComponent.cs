@@ -84,6 +84,10 @@ public sealed partial class StoreComponent : Component
     [DataField]
     public EntityUid? StartingMap;
 
+    // Miracle
+    [DataField]
+    public bool Refunds;
+
     #region audio
     /// <summary>
     /// The sound played to the buyer when a purchase is succesfully made.
