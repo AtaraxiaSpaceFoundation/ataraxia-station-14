@@ -1,4 +1,5 @@
 using Content.Client.Wires.Visualizers;
+using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Prying.Components;
@@ -25,6 +26,16 @@ public sealed class AirlockSystem : SharedAirlockSystem
         args.Cancelled = true;
     }
 
+    protected override void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
+    {
+        base.OnBeforeDoorClosed(uid, airlock, args);
+
+        if (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var boltLights) && boltLights)
+        {
+            args.Cancel();
+        }
+    }
+
     private void OnComponentStartup(EntityUid uid, AirlockComponent comp, ComponentStartup args)
     {
         // Has to be on component startup because we don't know what order components initialize in and running this before DoorComponent inits _will_ crash.
@@ -34,9 +45,11 @@ public sealed class AirlockSystem : SharedAirlockSystem
         if (comp.OpenUnlitVisible) // Otherwise there are flashes of the fallback sprite between clicking on the door and the door closing animation starting.
         {
             door.OpenSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.OpenSpriteState));
-            door.OpenSpriteStates.Add((DoorVisualLayers.BaseBolted, "bolted_open_unlit"));
+            door.OpenSpriteStates.Add((DoorVisualLayers.BaseBolted, comp.OpenBoltedSpriteState));
+            door.OpenSpriteStates.Add((DoorVisualLayers.BaseEmergencyAccess, comp.OpenEmergencySpriteState));
             door.ClosedSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.ClosedSpriteState));
-            door.ClosedSpriteStates.Add((DoorVisualLayers.BaseBolted, "bolted_unlit"));
+            door.ClosedSpriteStates.Add((DoorVisualLayers.BaseBolted, comp.ClosedBoltedSpriteState));
+            door.ClosedSpriteStates.Add((DoorVisualLayers.BaseEmergencyAccess, comp.ClosedEmergencySpriteState));
         }
 
         ((Animation) door.OpeningAnimation).AnimationTracks.Add(new AnimationTrackSpriteFlick
@@ -98,7 +111,7 @@ public sealed class AirlockSystem : SharedAirlockSystem
         {
             boltedVisible =
                 _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var lights, args.Component)
-                && lights && state is DoorState.Closed or DoorState.Welded;
+                && lights && state is DoorState.Closed or DoorState.Welded or DoorState.Open;
 
             emergencyLightsVisible =
                 _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.EmergencyLights, out var eaLights,
@@ -123,7 +136,6 @@ public sealed class AirlockSystem : SharedAirlockSystem
             args.Sprite.LayerSetVisible(
                 DoorVisualLayers.BaseEmergencyAccess,
                 emergencyLightsVisible
-                && state != DoorState.Open
                 && state != DoorState.Opening
                 && state != DoorState.Closing
                 && !boltedVisible

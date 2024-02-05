@@ -108,7 +108,7 @@
     - type: AccessReader
       access: [ [ "Engineering" ] ]
     - type: ReflectAspectMark
-
+      
 - type: entity
   id: Firelock
   parent: BaseFirelock

@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: Airlock
   parent: BaseStructure
   name: airlock
@@ -27,7 +27,7 @@
     - state: emergency_unlit
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
       shader: unshaded
-    - state: panel_closed
+    - state: panel_open
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AnimationPlayer
   - type: Physics
@@ -64,7 +64,6 @@
   - type: Weldable
     time: 3
   - type: Airlock
-    openUnlitVisible: true
   - type: NavMapDoor
   - type: DoorBolt
   - type: Appearance
@@ -130,8 +129,12 @@
     - board
   - type: PlacementReplacement
     key: walls
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
   - type: PaintableAirlock
     group: Standard
+    department: Civilian
   - type: AccessReader
   - type: StaticPrice
     price: 150
@@ -142,7 +145,6 @@
       - Airlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
   - type: PryUnpowered
-  - type: ReflectAspectMark
   placement:
     mode: SnapgridCenter
 
