@@ -57,3 +57,7 @@
 - type: font
   id: Fifaks
   path: /Fonts/Fifaks/Fifaks.ttf
+
+- type: font
+  id: Emoji
+  path: /Fonts/NotoEmoji.ttf

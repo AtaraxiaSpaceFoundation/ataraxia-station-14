@@ -81,7 +81,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private bool _deadLoocEnabled;
     private bool _critLoocEnabled;
     private const bool AdminLoocEnabled = true;
-    private const string ChatNamePalette = "Material";
+    private const string ChatNamePalette = "ChatNames";
 
     [ValidatePrototypeId<ColorPalettePrototype>]
     private string[] _chatNameColors = default!;

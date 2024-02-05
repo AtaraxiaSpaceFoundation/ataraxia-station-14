@@ -660,6 +660,7 @@
     - JobIconSecurityCadet
     - JobIconZookeeper
     - JobIconInspector
+    - JobIconVisitor
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
     inHandsOnly: true

@@ -846,6 +846,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("slot");
 
+                    b.Property<int>("SpawnPriority")
+                        .HasColumnType("integer")
+                        .HasColumnName("spawn_priority");
+
                     b.Property<string>("Species")
                         .IsRequired()
                         .HasColumnType("text")

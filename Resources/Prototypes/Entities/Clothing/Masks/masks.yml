@@ -263,6 +263,8 @@
   - type: IngestionBlocker
   - type: Item
     storedRotation: -90
+  - type: IdentityBlocker
+    coverage: MOUTH
 
 - type: entity
   parent: ClothingMaskBase
@@ -480,6 +482,7 @@
   - type: Clothing
     sprite: Clothing/Mask/neckgaiter.rsi
   - type: IdentityBlocker
+    coverage: MOUTH
   - type: Tag
     tags:
     - WhitelistChameleon

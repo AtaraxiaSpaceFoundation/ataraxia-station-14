@@ -220,3 +220,24 @@
   chatMessages: [ "emote-deathgasp" ]
   chatTriggers:
   - задыхается
+
+- type: emote
+  id: Buzz
+  category: Vocal
+  chatMessages: [жужжит]
+  chatTriggers:
+    - жужжит
+    - жужжит.
+    - жужжит!
+    - buzzing
+    - buzzing!
+    - buzzing.
+    - buzz
+    - buzz.
+    - buzz!
+    - buzzed
+    - buzzed.
+    - buzzed!
+    - buzzes
+    - buzzes.
+    - buzzes!

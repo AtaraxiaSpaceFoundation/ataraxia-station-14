@@ -1,13 +1,10 @@
-using Content.Client._White.EntityCrimeRecords;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
-using Content.Shared.Inventory;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Overlays;
 using Content.Shared.PDA;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
-using Content.Shared._White.CriminalRecords;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;
@@ -16,11 +13,12 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
 {
     [Dependency] private readonly IPrototypeManager _prototypeMan = default!;
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    // WD EDIT START
+    /*/ WD EDIT START
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ShowCrimeRecordsSystem _parentSystem = default!;
     // WD EDIT END
+    */
 
     [ValidatePrototypeId<StatusIconPrototype>]
     private const string JobIconForNoId = "JobIconNoId";
@@ -82,7 +80,7 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
                 result.Add(icon);
         }
 
-        // WD EDIT START
+        /*/ WD EDIT START
         if (!GetRecord(uid, out var type))
             return result;
 
@@ -99,11 +97,12 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
         if (_prototypeMan.TryIndex<StatusIconPrototype>(protoId, out var recordIcon))
             result.Add(recordIcon);
         // WD EDIT END
+        */
 
         return result;
     }
 
-    // WD EDIT START
+    /*/ WD EDIT START
     private bool GetRecord(EntityUid uid, out EnumCriminalRecordType type)
     {
         if (!_entManager.TryGetComponent(uid, out MetaDataComponent? meta))
@@ -160,4 +159,5 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
         return false;
     }
     // WD EDIT END
+    */
 }
