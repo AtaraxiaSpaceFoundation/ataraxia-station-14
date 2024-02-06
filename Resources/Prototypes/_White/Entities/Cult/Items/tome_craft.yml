@@ -40,6 +40,8 @@
     - type: ClothingGrantComponent
       component:
       - type: NightVision
+        toggleAction: null
+        toggleSound: null
         color: White
       - type: ShowWhiteHealthBars
         damageContainers:

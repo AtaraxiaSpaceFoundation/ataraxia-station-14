@@ -27,3 +27,17 @@
       sprite: White/Objects/Weapons/hardlight_spear.rsi
       state: spear
     event: !type:ActivateHardlightSpearImplantEvent
+
+- type: entity
+  id: ToggleNightVision
+  name: Toggle night vision.
+  description: Toggles night vision.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: White/Clothing/Head/nightvision.rsi
+      state: icon
+    event: !type:ToggleNightVisionEvent

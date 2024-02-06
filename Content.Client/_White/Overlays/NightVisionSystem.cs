@@ -1,3 +1,4 @@
+using Content.Shared._Miracle.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared._White.Overlays;
 using Robust.Client.Graphics;
@@ -6,7 +7,7 @@ using Robust.Shared.Player;
 
 namespace Content.Client._White.Overlays;
 
-public sealed class NightVisionSystem : EntitySystem
+public sealed class NightVisionSystem : SharedNightVisionSystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
@@ -18,9 +19,6 @@ public sealed class NightVisionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NightVisionComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<NightVisionComponent, ComponentRemove>(OnRemove);
-
         SubscribeLocalEvent<NightVisionComponent, PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<NightVisionComponent, PlayerDetachedEvent>(OnPlayerDetached);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
@@ -30,38 +28,25 @@ public sealed class NightVisionSystem : EntitySystem
 
     private void OnPlayerAttached(EntityUid uid, NightVisionComponent component, PlayerAttachedEvent args)
     {
-        if (_player.LocalSession != args.Player)
-            return;
-
-        _overlayMan.AddOverlay(_overlay);
-        _lightManager.DrawLighting = false;
+        UpdateNightVision(uid, component.IsActive);
     }
 
     private void OnPlayerDetached(EntityUid uid, NightVisionComponent component, PlayerDetachedEvent args)
     {
-        if (_player.LocalSession != args.Player)
-            return;
-
-        _overlayMan.RemoveOverlay(_overlay);
-        _lightManager.DrawLighting = true;
+        UpdateNightVision(uid, false);
     }
 
-    private void OnInit(EntityUid uid, NightVisionComponent component, ComponentInit args)
+    protected override void UpdateNightVision(EntityUid uid, bool active)
     {
         if (_player.LocalSession?.AttachedEntity != uid)
             return;
 
-        _overlayMan.AddOverlay(_overlay);
-        _lightManager.DrawLighting = false;
-    }
+        if (active)
+            _overlayMan.AddOverlay(_overlay);
+        else
+            _overlayMan.RemoveOverlay(_overlay);
 
-    private void OnRemove(EntityUid uid, NightVisionComponent component, ComponentRemove args)
-    {
-        if (_player.LocalSession?.AttachedEntity != uid)
-            return;
-
-        _overlayMan.RemoveOverlay(_overlay);
-        _lightManager.DrawLighting = true;
+        _lightManager.DrawLighting = !active;
     }
 
     private void OnRestart(RoundRestartCleanupEvent ev)
