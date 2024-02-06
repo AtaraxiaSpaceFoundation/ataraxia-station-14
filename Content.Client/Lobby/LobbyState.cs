@@ -263,14 +263,19 @@ namespace Content.Client.Lobby
 
         private async void PopulateChangelog()
         {
-            _lobby!.ChangelogContainer.Children.Clear();
+            if (_lobby?.ChangelogContainer?.Children is null)
+            {
+                return;
+            }
+
+            _lobby.ChangelogContainer.Children.Clear();
 
             var changelogs = await _changelog.LoadChangelog();
             var whiteChangelog = changelogs.Find(cl => cl.Name == "ChangelogWhite");
 
             if (whiteChangelog is null)
             {
-                _lobby!.ChangelogContainer.Children.Add(
+                _lobby.ChangelogContainer.Children.Add(
                     new RichTextLabel().SetMarkup("Не удалось загрузить список изменений"));
 
                 return;
@@ -316,7 +321,12 @@ namespace Content.Client.Lobby
                     box.AddChild(container);
                 }
 
-                _lobby!.ChangelogContainer.AddChild(box);
+                if (_lobby?.ChangelogContainer is null)
+                {
+                    return;
+                }
+
+                _lobby.ChangelogContainer.AddChild(box);
             }
         }
 

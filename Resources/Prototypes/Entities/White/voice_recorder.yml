@@ -25,5 +25,3 @@
           - SurveillanceCameraMonitor
           - RadioSpeaker
       range: 5
-    - type: ActiveListener
-      range: 5
