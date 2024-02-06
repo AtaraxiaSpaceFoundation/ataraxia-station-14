@@ -44,7 +44,7 @@
   description: Inflates the changeling's body into an all-consuming chitinous mass of armor.
   productAction: ActionArmor
   cost:
-    ChangelingPoint: 4
+    ChangelingPoint: 1
   categories:
     - ChangelingAbilities
   conditions:

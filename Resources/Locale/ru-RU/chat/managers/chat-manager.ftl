@@ -85,7 +85,7 @@ chat-speech-verb-skeleton-1 = гремит
 chat-speech-verb-skeleton-2 = щелкает
 chat-speech-verb-skeleton-3 = скрежет
 
-chat-speech-verb-canine-1 = гафкает
+chat-speech-verb-canine-1 = гавкает
 chat-speech-verb-canine-2 = лает
 chat-speech-verb-canine-3 = воет
 

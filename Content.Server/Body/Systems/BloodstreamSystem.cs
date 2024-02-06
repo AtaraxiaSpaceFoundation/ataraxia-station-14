@@ -107,12 +107,6 @@ public sealed class BloodstreamSystem : EntitySystem
 
             if (!_solutionContainerSystem.ResolveSolution(uid, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
                 continue;
-            //WD-EDIT
-            if (bloodstream.IsBleeding)
-                _alertsSystem.ShowAlert(uid, AlertType.Bleeding);
-            else
-                _alertsSystem.ClearAlert(uid, AlertType.Bleeding);
-            //WD-EDIT
 
             // Adds blood to their blood level if it is below the maximum; Blood regeneration. Must be alive.
             if (bloodSolution.Volume < bloodSolution.MaxVolume && !_mobStateSystem.IsDead(uid))
@@ -390,6 +384,14 @@ public sealed class BloodstreamSystem : EntitySystem
 
         component.BleedAmount += amount;
         component.BleedAmount = Math.Clamp(component.BleedAmount, 0, component.MaxBleedAmount);
+
+        if (component.BleedAmount == 0)
+            _alertsSystem.ClearAlert(uid, AlertType.Bleed);
+        else
+        {
+            var severity = (short) Math.Clamp(Math.Round(component.BleedAmount, MidpointRounding.ToZero), 0, 10);
+            _alertsSystem.ShowAlert(uid, AlertType.Bleed, severity);
+        }
 
         return true;
     }

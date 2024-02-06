@@ -547,11 +547,17 @@ public sealed class ChatUIController : UIController
         }
 
         // WD EDIT
-        var localEnt = _player.LocalPlayer != null ? _player.LocalPlayer.ControlledEntity : null;
-        if (_entities.TryGetComponent(localEnt, out CultistComponent? comp))
+        var localEnt = _player.LocalEntity;
+        if (_entities.HasComponent<CultistComponent>(localEnt))
         {
             FilterableChannels |= ChatChannel.Cult;
             CanSendChannels |= ChatSelectChannel.Cult;
+        }
+
+        if (_entities.HasComponent<ChangelingComponent>(localEnt))
+        {
+            FilterableChannels |= ChatChannel.Changeling;
+            CanSendChannels |= ChatSelectChannel.Changeling;
         }
         // WD EDIT END
 

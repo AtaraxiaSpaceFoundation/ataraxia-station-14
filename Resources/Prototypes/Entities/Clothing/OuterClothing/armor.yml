@@ -153,7 +153,7 @@
   - type: GiftIgnore
 
 - type: entity
-  parent: ClothingOuterArmorHeavy
+  parent: ClothingOuterBaseLarge
   id: ClothingOuterChangeling
   name: chitinous armor
   description: Chitinous and flesh mass of armor.
@@ -162,6 +162,15 @@
       sprite: Clothing/OuterClothing/Armor/changeling.rsi
     - type: Clothing
       sprite: Clothing/OuterClothing/Armor/changeling.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.6
+          Heat: 0.5
+    - type: ExplosionResistance
+      damageCoefficient: 0.9
     - type: Unremoveable
       deleteOnDrop: true
 

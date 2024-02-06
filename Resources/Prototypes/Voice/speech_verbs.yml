@@ -1,4 +1,4 @@
-﻿- type: speechVerb
+- type: speechVerb
   id: Default
   speechVerbStrings:
   - chat-speech-verb-default
@@ -34,7 +34,6 @@
   id: Arachnid
   speechVerbStrings:
   - chat-speech-verb-insect-1
-  - chat-speech-verb-insect-2
   - chat-speech-verb-insect-3
   - chat-speech-verb-reptilian-1
 
@@ -58,7 +57,6 @@
   - chat-speech-verb-reptilian-1
   - chat-speech-verb-reptilian-2
   - chat-speech-verb-reptilian-3
-  - chat-speech-verb-insect-2
 
 - type: speechVerb
   id: Skeleton

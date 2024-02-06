@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using Content.Server.Administration.Systems;
+using Content.Server.Body.Components;
+using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Forensics;
 using Content.Server.Humanoid;
@@ -61,6 +63,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly ActionContainerSystem _actionContainerSystem = default!;
     [Dependency] private readonly SharedPullingSystem _pullingSystem = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
+    [Dependency] private readonly BloodstreamSystem _blood = default!;
 
 
     private void InitializeAbilities()
@@ -227,6 +230,12 @@ public sealed partial class ChangelingSystem
     {
         if (!TryComp<DamageableComponent>(uid, out var damageableComponent))
             return;
+
+        if (component.ChemicalsBalance < 15)
+        {
+            _popup.PopupEntity("We're lacking of chemicals!", uid, uid);
+            return;
+        }
 
         if (damageableComponent.TotalDamage >= 0 && !_mobStateSystem.IsDead(uid))
         {
@@ -433,8 +442,9 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 20))
             return;
 
-        _solutionContainer.TryAddReagent(injectable.Value, "Omnizine", 50);
-        _solutionContainer.TryAddReagent(injectable.Value, "TranexamicAcid", 10);
+        _solutionContainer.TryAddReagent(injectable.Value, "Omnizine", 25);
+        if (TryComp(uid, out BloodstreamComponent? bloodstream))
+            _blood.TryModifyBleedAmount(uid, -bloodstream.BleedAmount, bloodstream);
 
         args.Handled = true;
     }
