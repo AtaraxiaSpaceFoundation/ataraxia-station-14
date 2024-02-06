@@ -264,6 +264,7 @@
       - AnomalyScanner
       - AnomalyLocator
       - AnomalyLocatorWide
+      - HandheldCrewMonitor
       - Scalpel
       - Retractor
       - Cautery
@@ -839,6 +840,7 @@
       - Hemostat
       - ClothingEyesGlassesChemical
     dynamicRecipes:
+      - HandheldCrewMonitor
       - ChemicalPayload
       - CryostasisBeaker
       - BluespaceBeaker
