@@ -231,7 +231,7 @@ namespace Content.Client.Lobby
                 _lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
-            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] Green Miracle [/font]");
+            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] White Dream [/font]");
             _lobby!.Version.SetMarkup("Version: 1.0");
             _lobby!.ChangelogLabel.SetMarkup("Список изменений:");
         }
