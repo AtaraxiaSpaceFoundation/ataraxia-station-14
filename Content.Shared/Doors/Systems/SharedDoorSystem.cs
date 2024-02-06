@@ -60,6 +60,7 @@ public abstract class SharedDoorSystem : EntitySystem
 
         SubscribeLocalEvent<DoorComponent, StartCollideEvent>(HandleCollide);
         SubscribeLocalEvent<DoorComponent, PreventCollideEvent>(PreventCollision);
+        SubscribeLocalEvent<DoorComponent, BeforePryEvent>(OnBeforePry);
         SubscribeLocalEvent<DoorComponent, GetPryTimeModifierEvent>(OnPryTimeModifier);
 
     }
@@ -173,6 +174,12 @@ public abstract class SharedDoorSystem : EntitySystem
     private void OnPryTimeModifier(EntityUid uid, DoorComponent door, ref GetPryTimeModifierEvent args)
     {
         args.BaseTime = door.PryTime;
+    }
+
+    private void OnBeforePry(EntityUid uid, DoorComponent door, ref BeforePryEvent args)
+    {
+        if (door.State == DoorState.Welded || !door.CanPry)
+            args.Cancelled = true;
     }
 
     /// <summary>

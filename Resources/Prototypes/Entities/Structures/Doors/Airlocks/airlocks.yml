@@ -120,6 +120,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -278,6 +280,8 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/syndicate.rsi
+  - type: Airlock
+    openUnlitVisible: false
 
 - type: entity
   parent: AirlockCargoGlass
@@ -296,3 +300,5 @@
     sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
   - type: WiresPanelSecurity
     securityLevel: medSecurity
+  - type: Airlock
+    openUnlitVisible: false

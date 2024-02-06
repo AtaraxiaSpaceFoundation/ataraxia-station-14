@@ -64,8 +64,8 @@ public sealed class SkeletonAspect : AspectSystem<SkeletonAspectComponent>
         if (!Resolve(uid, ref humanoid, false))
             return;
 
-        _humanoidAppearance.SetSpecies(uid, "Skeleton", false, humanoid);
+        //_humanoidAppearance.SetSpecies(uid, "Skeleton", false, humanoid);
         //_humanoidAppearance.SetBodyType(uid, "SkeletonNormal", false, humanoid);
-        _polymorph.PolymorphEntity(uid, _proto);
+        //_polymorph.PolymorphEntity(uid, _proto);
     }
 }

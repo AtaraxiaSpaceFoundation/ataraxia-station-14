@@ -26,6 +26,7 @@ using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
 using Content.Shared._White.Economy;
 using Robust.Server.GameObjects;

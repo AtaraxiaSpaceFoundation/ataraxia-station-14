@@ -38,7 +38,7 @@ namespace Content.Client.VendingMachines
 
             _menu.Populate(_cachedInventory, component.PriceMultiplier, component.Credits);
 
-            _menu.OpenCentered();
+            _menu.OpenCenteredLeft();
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)

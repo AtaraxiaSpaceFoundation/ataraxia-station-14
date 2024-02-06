@@ -797,6 +797,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("slot");
 
+                    b.Property<int>("SpawnPriority")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("spawn_priority");
+
                     b.Property<string>("Species")
                         .IsRequired()
                         .HasColumnType("TEXT")

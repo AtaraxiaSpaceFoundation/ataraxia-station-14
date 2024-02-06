@@ -157,7 +157,7 @@
   - type: Store
     preset: StorePresetUplink
     balance:
-      Telecrystal: 10
+      Telecrystal: 0
   - type: UserInterface
     interfaces:
     - key: enum.StoreUiKey.Key
@@ -269,9 +269,10 @@
     - type: OnUseTimerTrigger
       delay: 7
       initialBeepDelay: 0
-      beepSound: /Audio/Machines/Nuke/general_beep.ogg
-      params:
-        volume: -2
+      beepSound:
+        path: /Audio/Machines/Nuke/general_beep.ogg
+        params:
+          volume: -2
     - type: ExplodeOnTrigger
     - type: GibOnTrigger
       deleteItems: true

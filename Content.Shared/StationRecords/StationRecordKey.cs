@@ -1,21 +1,22 @@
-using Robust.Shared.Serialization;
-
 namespace Content.Shared.StationRecords;
 
-// Station record keys. These should be stored somewhere,
-// preferably within an ID card.
-[Serializable, NetSerializable]
+/// <summary>
+/// Station record keys. These should be stored somewhere,
+/// preferably within an ID card.
+/// This refers to both the id and station. This is suitable for an access reader field etc,
+/// but when you already know the station just store the id itself.
+/// </summary>
 public readonly struct StationRecordKey : IEquatable<StationRecordKey>
 {
-    [DataField("id")]
+    [DataField]
     public readonly uint Id;
 
     [DataField("station")]
-    public readonly NetEntity OriginStation;
+    public readonly EntityUid OriginStation;
 
     public static StationRecordKey Invalid = default;
 
-    public StationRecordKey(uint id, NetEntity originStation)
+    public StationRecordKey(uint id, EntityUid originStation)
     {
         Id = id;
         OriginStation = originStation;

@@ -14,11 +14,11 @@ public abstract class SharedStationRecordsSystem : EntitySystem
 
     public StationRecordKey Convert((NetEntity, uint) input)
     {
-        return new StationRecordKey(input.Item2, input.Item1);
+        return new StationRecordKey(input.Item2, GetEntity(input.Item1));
     }
     public (NetEntity, uint) Convert(StationRecordKey input)
     {
-        return (input.OriginStation, input.Id);
+        return (GetNetEntity(input.OriginStation), input.Id);
     }
 
     public List<(NetEntity, uint)> Convert(ICollection<StationRecordKey> input)

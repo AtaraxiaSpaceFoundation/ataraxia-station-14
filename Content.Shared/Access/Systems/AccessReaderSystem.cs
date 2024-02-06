@@ -57,7 +57,7 @@ public sealed class AccessReaderSystem : EntitySystem
             if (!id.IsValid())
                 continue;
 
-            component.AccessKeys.Add(new StationRecordKey(key.Item2, GetNetEntity(id)));
+            component.AccessKeys.Add(new StationRecordKey(key.Item2, id));
         }
 
         component.AccessLists = new(state.AccessLists);

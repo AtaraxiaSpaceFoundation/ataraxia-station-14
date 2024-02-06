@@ -1,7 +1,7 @@
 using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.Radio.EntitySystems;
-using Content.Server.UserInterface;
+using Content.Shared.UserInterface;
 using Content.Shared.Access.Systems;
 using Content.Shared.MachineLinking;
 using Content.Shared.Radio;

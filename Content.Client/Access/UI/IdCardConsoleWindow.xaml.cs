@@ -68,7 +68,7 @@ namespace Content.Client.Access.UI
             List<Button> buttonsToAdd = new();
             foreach (var job in jobs)
             {
-                if (!job.SetPreference)
+                if (!job.OverrideConsoleVisibility.GetValueOrDefault(job.SetPreference))
                 {
                     continue;
                 }

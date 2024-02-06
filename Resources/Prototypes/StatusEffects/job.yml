@@ -374,3 +374,10 @@
   icon:
     sprite: Interface/Misc/job_icons.rsi
     state: Inspector
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconVisitor
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Visitor

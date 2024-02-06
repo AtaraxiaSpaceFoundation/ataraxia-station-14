@@ -31,7 +31,7 @@ namespace Content.Client.Stylesheets
                 {
                     $"/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf",
                     $"/Fonts/NotoSans/NotoSansSymbols-{sv}.ttf",
-                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf",
+                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
                 size
             );

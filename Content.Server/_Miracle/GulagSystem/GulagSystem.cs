@@ -195,13 +195,14 @@ public sealed partial class GulagSystem : SharedGulagSystem
             return;
         }
 
-        if (!TryComp<StationCargoOrderDatabaseComponent>(station.Value, out var comp))
+        if (!TryComp<StationCargoOrderDatabaseComponent>(station.Value, out var comp) ||
+            !TryComp(station.Value, out StationDataComponent? dataComp))
         {
             return;
         }
 
         _cargoSystem.AddAndApproveOrder(station.Value, "CrateGulag", 0, 1, Loc.GetString("gulag-sender"),
-            Loc.GetString("gulag-order-description"), Loc.GetString("gulag-order-destination"), comp);
+            Loc.GetString("gulag-order-description"), Loc.GetString("gulag-order-destination"), comp, dataComp);
 
         _nextShuttleFillUpdate = DateTime.Now + _shuttleFillUpdateRate;
     }

@@ -11,6 +11,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Popups;
 using Content.Server.RoundEnd;
+using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
@@ -233,21 +234,30 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     {
         var countdownTime = TimeSpan.FromSeconds(_configManager.GetCVar(CCVars.RoundRestartTime));
         var shuttle = args.Entity;
-        if (!TryComp<DeviceNetworkComponent>(shuttle, out var net))
-            return;
-
-        var payload = new NetworkPayload
+        if (TryComp<DeviceNetworkComponent>(shuttle, out var net))
         {
-            [ShuttleTimerMasks.ShuttleMap] = shuttle,
-            [ShuttleTimerMasks.SourceMap] = _roundEnd.GetCentcomm(),
-            [ShuttleTimerMasks.DestMap] = _roundEnd.GetStation(),
-            [ShuttleTimerMasks.ShuttleTime] = countdownTime,
-            [ShuttleTimerMasks.SourceTime] = countdownTime,
-            [ShuttleTimerMasks.DestTime] = countdownTime,
-            [ShuttleTimerMasks.Text] = new[] { "BYE!" }
-        };
+            var payload = new NetworkPayload
+            {
+                [ShuttleTimerMasks.ShuttleMap] = shuttle,
+                [ShuttleTimerMasks.SourceMap] = _roundEnd.GetCentcomm(),
+                [ShuttleTimerMasks.DestMap] = _roundEnd.GetStation(),
+                [ShuttleTimerMasks.ShuttleTime] = countdownTime,
+                [ShuttleTimerMasks.SourceTime] = countdownTime,
+                [ShuttleTimerMasks.DestTime] = countdownTime,
+            };
 
-        _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
+            // by popular request
+            // https://discord.com/channels/310555209753690112/770682801607278632/1189989482234126356
+            if (_random.Next(1000) == 0)
+            {
+                payload.Add(ScreenMasks.Text, ShuttleTimerMasks.Kill);
+                payload.Add(ScreenMasks.Color, Color.Red);
+            }
+            else
+                payload.Add(ScreenMasks.Text, ShuttleTimerMasks.Bye);
+
+            _deviceNetworkSystem.QueuePacket(shuttle, null, payload, net.TransmitFrequency);
+        }
     }
 
     /// <summary>
