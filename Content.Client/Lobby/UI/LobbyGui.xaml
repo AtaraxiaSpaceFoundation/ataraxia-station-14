@@ -58,7 +58,7 @@
                     <Control VerticalExpand="True" />
 
                     <RichTextLabel Name="LabelName" Access="Public" HorizontalAlignment="Left"
-                                          VerticalAlignment="Center" Margin="0 0 0 350" />
+                                          VerticalAlignment="Center" Margin="0 0 0 380" />
 
                     <!-- Ohio Container -->
                     <PanelContainer HorizontalAlignment="Left" Name="Center" VerticalAlignment="Center">

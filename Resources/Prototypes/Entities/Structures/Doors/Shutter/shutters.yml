@@ -97,10 +97,6 @@
     messagePerceivedByOthers: comp-window-knock
     interactSuccessSound:
       path: /Audio/Effects/glass_knock.ogg
-  - type: ReflectAspectMark
-  - type: Tag
-    tags:
-      - DeleteWithWindows
 
 - type: entity
   id: ShuttersNormal

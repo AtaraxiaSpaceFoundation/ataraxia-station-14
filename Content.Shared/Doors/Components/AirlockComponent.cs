@@ -118,10 +118,34 @@ public sealed partial class AirlockComponent : Component
     public string OpenSpriteState = "open_unlit";
 
     /// <summary>
+    /// The sprite state used for the open bolted airlock lights.
+    /// </summary>
+    [DataField]
+    public string OpenBoltedSpriteState = "bolted_open_unlit";
+
+    /// <summary>
+    /// The sprite state used for the open emergency access airlock lights.
+    /// </summary>
+    [DataField]
+    public string OpenEmergencySpriteState = "emergency_open_unlit";
+
+    /// <summary>
     /// The sprite state used for the closed airlock lights.
     /// </summary>
     [DataField]
     public string ClosedSpriteState = "closed_unlit";
+
+    /// <summary>
+    /// The sprite state used for the closed bolted airlock lights.
+    /// </summary>
+    [DataField]
+    public string ClosedBoltedSpriteState = "bolted_unlit";
+
+    /// <summary>
+    /// The sprite state used for the closed bolted airlock lights.
+    /// </summary>
+    [DataField]
+    public string ClosedEmergencySpriteState = "emergency_unlit";
 
     /// <summary>
     /// The sprite state used for the 'access denied' lights animation.

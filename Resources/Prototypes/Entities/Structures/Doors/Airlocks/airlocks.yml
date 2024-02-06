@@ -104,8 +104,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/syndicate.rsi
-  - type: Airlock
-    openUnlitVisible: false
 
 - type: entity
   parent: AirlockCargo
@@ -114,8 +112,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/mining.rsi
-  - type: Airlock
-    openUnlitVisible: false
 
 - type: entity
   parent: AirlockCommand # if you get centcom door somehow it counts as command, also inherit panel
@@ -134,8 +130,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch.rsi
-  - type: Airlock
-    openUnlitVisible: false
 
 - type: entity
   parent: Airlock
@@ -144,8 +138,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/hatch_maint.rsi
-  - type: Airlock
-    openUnlitVisible: false
 
 # Glass
 
@@ -298,8 +290,6 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/mining.rsi
-  - type: Airlock
-    openUnlitVisible: false
 
 - type: entity
   parent: AirlockCommandGlass # see standard
@@ -308,5 +298,7 @@
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
+  - type: WiresPanelSecurity
+    securityLevel: medSecurity
   - type: Airlock
     openUnlitVisible: false

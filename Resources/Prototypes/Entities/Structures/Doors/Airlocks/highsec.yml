@@ -23,7 +23,7 @@
     - state: emergency_unlit
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
       shader: unshaded
-    - state: panel_closed
+    - state: panel_open
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AnimationPlayer
   - type: Physics
@@ -103,4 +103,3 @@
     tags:
       - HighSecDoor
       # This tag is used to nagivate the Airlock construction graph. It's needed because this construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
-  - type: ReflectAspectMark
