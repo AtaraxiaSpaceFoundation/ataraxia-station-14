@@ -1,6 +1,7 @@
 using Content.Shared._White.Overlays;
 using Content.Shared.Actions;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Miracle.Systems;
 
@@ -8,6 +9,7 @@ public abstract class SharedNightVisionSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -34,10 +36,12 @@ public abstract class SharedNightVisionSystem : EntitySystem
 
     private void OnToggle(EntityUid uid, NightVisionComponent component, ToggleNightVisionEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         component.IsActive = !component.IsActive;
         _audio.PlayPredicted(component.ToggleSound, uid, uid);
         UpdateNightVision(uid, component.IsActive);
-        Dirty(uid, component);
 
         args.Handled = true;
     }

@@ -28,12 +28,18 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
 
     private void OnPlayerAttached(EntityUid uid, NightVisionComponent component, PlayerAttachedEvent args)
     {
-        UpdateNightVision(uid, component.IsActive);
+        if (_player.LocalSession != args.Player)
+            return;
+
+        UpdateNightVision(component.IsActive);
     }
 
     private void OnPlayerDetached(EntityUid uid, NightVisionComponent component, PlayerDetachedEvent args)
     {
-        UpdateNightVision(uid, false);
+        if (_player.LocalSession != args.Player)
+            return;
+
+        UpdateNightVision(false);
     }
 
     protected override void UpdateNightVision(EntityUid uid, bool active)
@@ -41,6 +47,11 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         if (_player.LocalSession?.AttachedEntity != uid)
             return;
 
+        UpdateNightVision(active);
+    }
+
+    private void UpdateNightVision(bool active)
+    {
         if (active)
             _overlayMan.AddOverlay(_overlay);
         else
