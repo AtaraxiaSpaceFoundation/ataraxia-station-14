@@ -11,6 +11,9 @@ criminal-records-status-none = None
 criminal-records-status-wanted = Wanted
 criminal-records-status-detained = Detained
 
+criminal-records-status-suspected = Suspected
+criminal-records-status-released = Released
+
 criminal-records-console-wanted-reason = [color=gray]Wanted Reason[/color]
 criminal-records-console-reason = Reason
 criminal-records-console-reason-placeholder = For example: {$placeholder}
@@ -31,6 +34,8 @@ criminal-records-console-wanted = {$name} is wanted by {$officer} for: {$reason}
 criminal-records-console-detained = {$name} has been detained by {$officer}.
 criminal-records-console-released = {$name} has been released by {$officer}.
 criminal-records-console-not-wanted = {$name} is no longer wanted.
+
+criminal-records-console-suspected = {$name} is suspected by {$officer} for: {$reason}.
 
 ## Filters
 

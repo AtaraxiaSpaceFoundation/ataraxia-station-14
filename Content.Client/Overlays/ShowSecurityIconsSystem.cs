@@ -1,8 +1,13 @@
+using System.Linq;
+using Content.Shared._Miracle.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Overlays;
 using Content.Shared.PDA;
+using Content.Shared.Security;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.Prototypes;
@@ -13,12 +18,11 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
 {
     [Dependency] private readonly IPrototypeManager _prototypeMan = default!;
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    /*/ WD EDIT START
+    // WD EDIT START
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly ShowCrimeRecordsSystem _parentSystem = default!;
+    [Dependency] private readonly SharedIdCardSystem _idCard = default!;
     // WD EDIT END
-    */
 
     [ValidatePrototypeId<StatusIconPrototype>]
     private const string JobIconForNoId = "JobIconNoId";
@@ -80,84 +84,65 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
                 result.Add(icon);
         }
 
-        /*/ WD EDIT START
-        if (!GetRecord(uid, out var type))
-            return result;
-
-        var protoId = type switch
+        // WD EDIT START
+        string? protoId;
+        switch (GetRecord(uid))
         {
-            EnumCriminalRecordType.Discharged => "CriminalRecordIconDischarged",
-            EnumCriminalRecordType.Incarcerated => "CriminalRecordIconIncarcerated",
-            EnumCriminalRecordType.Parolled => "CriminalRecordIconParolled",
-            EnumCriminalRecordType.Suspected => "CriminalRecordIconSuspected",
-            EnumCriminalRecordType.Wanted => "CriminalRecordIconWanted",
-            _ => "CriminalRecordIconReleased"
-        };
+            case SecurityStatus.Detained:
+                protoId = "CriminalRecordIconIncarcerated";
+                break;
+            case SecurityStatus.Released:
+                protoId = "CriminalRecordIconReleased";
+                break;
+            case SecurityStatus.Suspected:
+                protoId = "CriminalRecordIconSuspected";
+                break;
+            case SecurityStatus.Wanted:
+                protoId = "CriminalRecordIconWanted";
+                break;
+            case SecurityStatus.None:
+            default:
+                return result;
+        }
 
         if (_prototypeMan.TryIndex<StatusIconPrototype>(protoId, out var recordIcon))
             result.Add(recordIcon);
         // WD EDIT END
-        */
 
         return result;
     }
 
-    /*/ WD EDIT START
-    private bool GetRecord(EntityUid uid, out EnumCriminalRecordType type)
+    // WD EDIT START
+    private SecurityStatus GetRecord(EntityUid uid)
     {
         if (!_entManager.TryGetComponent(uid, out MetaDataComponent? meta))
+            return SecurityStatus.None;
+
+        var name = meta.EntityName;
+
+        var ev = new SeeIdentityAttemptEvent();
+        RaiseLocalEvent(uid, ev);
+
+        if (ev.Cancelled)
         {
-            type = EnumCriminalRecordType.Released;
-            return false;
+            if (_inventorySystem.TryGetSlotEntity(uid, "id", out var idUid) &&
+                _idCard.TryGetIdCard(idUid.Value, out var idCard))
+                name = idCard.Comp.FullName;
+            else
+                return SecurityStatus.None;
         }
 
-        var serverList = _entManager.EntityQuery<CriminalRecordsServerComponent>();
-        foreach (var server in serverList)
+        if (name == null)
+            return SecurityStatus.None;
+
+        var query = EntityQuery<CriminalStatusDataComponent>();
+        foreach (var data in query)
         {
-            // if all good - check avaible records
-            foreach (var (key, info) in server.Cache)
-            {
-                // Check id
-                if (_inventorySystem.TryGetSlotEntity(uid, "id", out var idUid))
-                {
-                    // PDA
-                    if (_entManager.TryGetComponent(idUid, out PdaComponent? pda) &&
-                        _entManager.TryGetComponent(pda.ContainedId, out IdCardComponent? idCard))
-                    {
-                        if (idCard.FullName == info.StationRecord.Name &&
-                            idCard.JobTitle == info.StationRecord.JobTitle)
-                        {
-                            type = info.CriminalType;
-                            return true;
-                        }
-                    }
-                    // ID Card
-                    if (_entManager.TryGetComponent(idUid, out IdCardComponent? id))
-                    {
-                        idCard = id;
-                        if (idCard.FullName == info.StationRecord.Name &&
-                            idCard.JobTitle == info.StationRecord.JobTitle)
-                        {
-                            type = info.CriminalType;
-                            return true;
-                        }
-                    }
-                }
-                // Check DNA (Dirty Nanotrasen tehnology lol)
-                // And yeah, he can't check - is pulled mask or not
-                // it's only Content.Server logic, idk hot it impl to Content.Client
-                if (_parentSystem.CanIdentityName(uid) != meta.EntityName)
-                    continue;
-                if (meta.EntityName != info.StationRecord.Name)
-                    continue;
-                type = info.CriminalType;
-                return true;
-            }
+            if (data.Statuses.TryGetValue(name, out var status))
+                return status;
         }
 
-        type = EnumCriminalRecordType.Released;
-        return false;
+        return SecurityStatus.None;
     }
     // WD EDIT END
-    */
 }

@@ -10,6 +10,8 @@
 public enum SecurityStatus : byte
 {
     None,
+    Released, // WD EDIT
+    Suspected, // WD EDIT
     Wanted,
     Detained
 }

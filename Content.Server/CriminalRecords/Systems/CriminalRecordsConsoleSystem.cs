@@ -11,6 +11,7 @@ using Content.Shared.StationRecords;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Miracle.Components;
 
 namespace Content.Server.CriminalRecords.Systems;
 
@@ -67,7 +68,7 @@ public sealed class CriminalRecordsConsoleSystem : EntitySystem
     private void OnChangeStatus(Entity<CriminalRecordsConsoleComponent> ent, ref CriminalRecordChangeStatus msg)
     {
         // prevent malf client violating wanted/reason nullability
-        if ((msg.Status == SecurityStatus.Wanted) != (msg.Reason != null))
+        if ((msg.Status is SecurityStatus.Wanted or SecurityStatus.Suspected) != (msg.Reason != null)) // WD EDIT
             return;
 
         if (!CheckSelected(ent, msg.Session, out var mob, out var key))
@@ -121,10 +122,30 @@ public sealed class CriminalRecordsConsoleSystem : EntitySystem
             (_, SecurityStatus.None) => "not-wanted",
             // going from none or detained, AOS or prisonbreak / lazy secoff never set them to released and they reoffended
             (_, SecurityStatus.Wanted) => "wanted",
+            // WD EDIT START
+            (_, SecurityStatus.Released) => "released",
+            (_, SecurityStatus.Suspected) => "suspected",
+            // WD EDIT END
             // this is impossible
             _ => "not-wanted"
         };
         _radio.SendRadioMessage(ent, Loc.GetString($"criminal-records-console-{statusString}", args), ent.Comp.SecurityChannel, ent);
+
+        // WD EDIT START
+        if (_stationRecords.TryGetRecord<GeneralStationRecord>(key.Value, out var rec))
+        {
+            var query = EntityQueryEnumerator<CriminalStatusDataComponent>();
+            if (!query.MoveNext(out var entity, out var criminalData))
+            {
+                entity = Spawn(null, Transform(ent).Coordinates);
+                criminalData = EnsureComp<CriminalStatusDataComponent>(entity);
+            }
+            criminalData.Statuses[rec.Name] = msg.Status;
+            criminalData.Statuses[rec.ClownName] = msg.Status;
+            criminalData.Statuses[rec.MimeName] = msg.Status;
+            Dirty(entity, criminalData);
+        }
+        // WD EDIT END
 
         UpdateUserInterface(ent);
     }
