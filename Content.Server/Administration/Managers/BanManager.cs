@@ -207,7 +207,26 @@ public sealed class BanManager : IBanManager, IPostInjectInit
 
         if (banDef.UserId.HasValue)
         {
-            _cachedServerBans.GetOrNew(banDef.UserId.Value).Add(banDef);
+            var banlist = await _db.GetServerBansAsync(addressRange?.Item1, target, hwid, false);
+            if (banlist.Count > 0 && banlist[^1].Id.HasValue)
+            {
+                var banDefWithId = new ServerBanDef(
+                    banlist[^1].Id,
+                    banDef.UserId,
+                    banDef.Address,
+                    banDef.HWId,
+                    banDef.BanTime,
+                    banDef.ExpirationTime,
+                    banDef.RoundId,
+                    banDef.PlaytimeAtNote,
+                    banDef.Reason,
+                    banDef.Severity,
+                    banDef.BanningAdmin,
+                    banDef.Unban,
+                    banDef.ServerName);
+
+                _cachedServerBans.GetOrNew(banDef.UserId.Value).Add(banDefWithId);
+            }
         }
 
         // If we're not banning a player we don't care about disconnecting people
@@ -240,6 +259,22 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         }
 
         return new HashSet<ServerBanDef>();
+    }
+
+    public void RemoveCachedServerBan(NetUserId userId, int? id)
+    {
+        if (_cachedServerBans.TryGetValue(userId, out var bans))
+        {
+            bans.RemoveWhere(ban => ban.Id == id);
+        }
+    }
+
+    public void AddCachedServerBan(ServerBanDef banDef)
+    {
+        if (banDef.UserId == null)
+            return;
+
+        _cachedServerBans.GetOrNew(banDef.UserId.Value).Add(banDef);
     }
     //Miracle edit end
 

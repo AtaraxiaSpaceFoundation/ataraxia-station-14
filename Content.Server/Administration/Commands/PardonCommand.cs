@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
@@ -16,6 +17,7 @@ namespace Content.Server.Administration.Commands
         {
             var player = shell.Player;
             var dbMan = IoCManager.Resolve<IServerDbManager>();
+            var banManager = IoCManager.Resolve<IBanManager>();
 
             if (args.Length != 1)
             {
@@ -36,6 +38,9 @@ namespace Content.Server.Administration.Commands
                 shell.WriteLine($"No ban found with id {banId}");
                 return;
             }
+
+            if (ban.UserId.HasValue)
+                banManager.RemoveCachedServerBan(ban.UserId.Value, banId);
 
             if (ban.Unban != null)
             {

@@ -30,6 +30,9 @@ public interface IBanManager
     public HashSet<string>? GetJobBans(NetUserId playerUserId);
 
     public HashSet<ServerBanDef> GetServerBans(NetUserId userId); // Miracle edit
+    public void RemoveCachedServerBan(NetUserId userId, int? id); // Miracle edit
+
+    public void AddCachedServerBan(ServerBanDef banDef); // Miracle edit
 
     /// <summary>
     /// Creates a job ban for the specified target, username or GUID

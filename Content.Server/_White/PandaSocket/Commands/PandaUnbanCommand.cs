@@ -2,6 +2,7 @@
 using Content.Server.Database;
 using Content.Server._White.PandaSocket.Interfaces;
 using Content.Server._White.PandaSocket.Main;
+using Content.Server.Administration.Managers;
 
 namespace Content.Server._White.PandaSocket.Commands;
 
@@ -15,6 +16,7 @@ public sealed class PandaUnbanCommand : IPandaCommand
 
         var dbMan = IoCManager.Resolve<IServerDbManager>();
         var locator = IoCManager.Resolve<IPlayerLocator>();
+        var banManager = IoCManager.Resolve<IBanManager>();
         IoCManager.InjectDependencies(this);
 
         var located = await locator.LookupIdByNameOrIdAsync(message.ACkey!);
@@ -40,6 +42,9 @@ public sealed class PandaUnbanCommand : IPandaCommand
             UtkaSendResponse(false, context);
             return;
         }
+
+        if (ban.UserId.HasValue)
+            banManager.RemoveCachedServerBan(ban.UserId.Value, banId);
 
         await dbMan.AddServerUnbanAsync(new ServerUnbanDef(banId, player, DateTimeOffset.Now));
 
