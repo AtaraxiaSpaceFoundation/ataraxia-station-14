@@ -115,7 +115,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     {
         // Clear out players that have disconnected.
         var toRemove = new List<NetUserId>();
-        foreach (var player in _cachedRoleBans.Keys)
+        foreach (var player in _cachedRoleBans.Keys.Concat(_cachedServerBans.Keys)) // Miracle edit
         {
             if (!_playerManager.TryGetSessionById(player, out _))
                 toRemove.Add(player);

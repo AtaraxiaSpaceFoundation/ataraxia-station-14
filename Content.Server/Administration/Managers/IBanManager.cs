@@ -31,7 +31,6 @@ public interface IBanManager
 
     public HashSet<ServerBanDef> GetServerBans(NetUserId userId); // Miracle edit
     public void RemoveCachedServerBan(NetUserId userId, int? id); // Miracle edit
-
     public void AddCachedServerBan(ServerBanDef banDef); // Miracle edit
 
     /// <summary>

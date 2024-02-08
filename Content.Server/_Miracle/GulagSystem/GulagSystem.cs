@@ -147,8 +147,8 @@ public sealed partial class GulagSystem : SharedGulagSystem
         }
 
         var banDef = ban.First();
-        var newExpirationTime = banDef.ExpirationTime!.Value.DateTime + TimeSpan.FromDays(1);
-        _db.EditServerBan(banDef.Id!.Value, banDef.Reason, banDef.Severity, newExpirationTime, banDef.UserId!.Value, DateTime.Now);
+        var newExpirationTime = banDef.ExpirationTime!.Value + TimeSpan.FromDays(1);
+        EditServerBan(banDef, newExpirationTime);
     }
 
     public override void Update(float frameTime)
@@ -379,22 +379,27 @@ public sealed partial class GulagSystem : SharedGulagSystem
                 continue;
             }
 
-            var newExpirationTime = banDef.ExpirationTime!.Value.DateTime - ConvertPointsToTime(points);
+            var newExpirationTime = banDef.ExpirationTime!.Value - ConvertPointsToTime(points);
 
-            _db.EditServerBan(banDef.Id!.Value, banDef.Reason, banDef.Severity, newExpirationTime, banDef.UserId!.Value, DateTime.Now);
-
-            // Update time
-            _banManager.RemoveCachedServerBan(banDef.UserId.Value, banDef.Id.Value);
-            _banManager.AddCachedServerBan(new ServerBanDef(
-                banDef.Id, banDef.UserId, banDef.Address, banDef.HWId, banDef.BanTime, newExpirationTime,
-                banDef.RoundId, banDef.PlaytimeAtNote, banDef.Reason, banDef.Severity, banDef.BanningAdmin,
-                banDef.Unban, banDef.ServerName));
+            EditServerBan(banDef, newExpirationTime);
         }
-        
+
         _pointsPerPlayer.Clear();
 
         _activeMap = null!;
         _mapEntity = null!;
+    }
+
+    private void EditServerBan(ServerBanDef banDef, DateTimeOffset newExpirationTime)
+    {
+        _db.EditServerBan(banDef.Id!.Value, banDef.Reason, banDef.Severity, newExpirationTime.UtcDateTime, banDef.UserId!.Value,
+            DateTime.UtcNow);
+
+        _banManager.RemoveCachedServerBan(banDef.UserId.Value, banDef.Id.Value);
+        _banManager.AddCachedServerBan(new ServerBanDef(
+            banDef.Id, banDef.UserId, banDef.Address, banDef.HWId, banDef.BanTime, newExpirationTime,
+            banDef.RoundId, banDef.PlaytimeAtNote, banDef.Reason, banDef.Severity, banDef.BanningAdmin,
+            banDef.Unban, banDef.ServerName));
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)
