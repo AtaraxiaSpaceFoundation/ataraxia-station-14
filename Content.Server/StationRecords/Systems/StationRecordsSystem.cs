@@ -65,7 +65,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.ClownName, profile.MimeName, profile.BorgName, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+        CreateGeneralRecord(station, idUid.Value, Name(player), profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
     }
 
 
@@ -100,9 +100,6 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         EntityUid station,
         EntityUid? idUid,
         string name,
-        string clownName,
-        string mimeName,
-        string borgName,
         int age,
         string species,
         Gender gender,
@@ -126,9 +123,6 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         var record = new GeneralStationRecord()
         {
             Name = name,
-            ClownName = clownName,
-            MimeName = mimeName,
-            BorgName = borgName,
             Age = age,
             JobTitle = jobPrototype.LocalizedName,
             JobIcon = jobPrototype.Icon,

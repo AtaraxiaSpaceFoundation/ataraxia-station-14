@@ -141,8 +141,6 @@ public sealed class CriminalRecordsConsoleSystem : EntitySystem
                 criminalData = EnsureComp<CriminalStatusDataComponent>(entity);
             }
             criminalData.Statuses[rec.Name] = msg.Status;
-            criminalData.Statuses[rec.ClownName] = msg.Status;
-            criminalData.Statuses[rec.MimeName] = msg.Status;
             Dirty(entity, criminalData);
         }
         // WD EDIT END

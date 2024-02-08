@@ -3,6 +3,7 @@ using Content.Server.GameTicking.Rules.Components;
 using Content.Server._White.AspectsSystem.Aspects.Components;
 using Content.Server._White.AspectsSystem.Base;
 using Content.Server._White.Other.RandomHumanSystem;
+using Content.Server.StationRecords.Systems;
 using Content.Shared.Humanoid;
 
 namespace Content.Server._White.AspectsSystem.Aspects;
@@ -12,7 +13,7 @@ public sealed class RandomAppearanceAspect : AspectSystem<RandomAppearanceAspect
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(HandleLateJoin);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(HandleLateJoin, after: new [] {typeof(StationRecordsSystem)});
     }
 
     protected override void Started(EntityUid uid, RandomAppearanceAspectComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
