@@ -10,6 +10,9 @@ namespace Content.Shared.Construction.Steps
 
         [DataField("doAfter")] public float DoAfter { get; private set; }
 
+        [DataField]
+        public bool CultistOnly { get; private set; } // WD
+
         public IReadOnlyList<IGraphAction> Completed => _completed;
 
         public abstract void DoExamine(ExaminedEvent examinedEvent);

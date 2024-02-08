@@ -400,7 +400,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         Dirty(weaponUid, weapon);
 
         // Do this AFTER attack so it doesn't spam every tick
-        var ev = new AttemptMeleeEvent();
+        var ev = new AttemptMeleeEvent {User = user}; // WD EDIT
         RaiseLocalEvent(weaponUid, ref ev);
 
         if (ev.Cancelled)

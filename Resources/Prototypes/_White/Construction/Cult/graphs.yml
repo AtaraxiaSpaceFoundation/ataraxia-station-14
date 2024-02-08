@@ -25,6 +25,7 @@
             - !type:EntityAnchored
           steps:
             - tool: Dagger
+              cultistOnly: true
         - to: wall
           completed:
             - !type:SnapToGrid
@@ -45,6 +46,7 @@
               amount: 1
           steps:
             - tool: Dagger
+              cultistOnly: true
 
 - type: constructionGraph
   id: AirlockGlassCult

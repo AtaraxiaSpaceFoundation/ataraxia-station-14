@@ -3,11 +3,13 @@ using Content.Server.Administration.Logs;
 using Content.Server.Construction.Components;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Components;
 using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Construction.Steps;
 using Content.Shared.DoAfter;
+using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared.Prying.Systems;
 using Content.Shared.Radio.EntitySystems;
@@ -206,6 +208,10 @@ namespace Content.Server.Construction
             // Let HandleInteraction actually handle the event for this step.
             // We can only perform the rest of our logic if it returns true.
             var handle = HandleInteraction(uid, ev, step, validation, out user, construction);
+
+            if (step.CultistOnly && !(HasComp<CultistComponent>(user) || HasComp<GhostComponent>(user))) // WD
+                return HandleResult.False;
+
             if (handle is not HandleResult.True)
                 return handle;
 
