@@ -253,6 +253,17 @@
     inventory: Transfer
 
 - type: polymorph
+  id: MobFelinid
+  configuration:
+    entity: MobFelinid
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
   id: ArtifactLuminous
   configuration:
     entity: MobLuminousPerson
