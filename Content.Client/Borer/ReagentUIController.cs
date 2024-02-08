@@ -44,6 +44,8 @@ public sealed class ReagentUIController : UIController, IOnSystemChanged<Actions
         CommandBinds.Builder
             .Bind(ContentKeyFunctions.OpenActionsMenu, InputCmdHandler.FromDelegate(_ => OpenWindow()))
             .Register<ReagentWindow>();
+
+        _reagentsLoaded = false;
     }
 
     private void UnloadGui()
@@ -55,6 +57,7 @@ public sealed class ReagentUIController : UIController, IOnSystemChanged<Actions
         }
 
         CommandBinds.Unregister<ReagentWindow>();
+        _reagentsLoaded = false;
     }
 
     private void OnInjectReagent(string protoId, int cost)
@@ -68,24 +71,28 @@ public sealed class ReagentUIController : UIController, IOnSystemChanged<Actions
         if (_window == null || _window.IsOpen || !ent.HasValue)
             return;
 
-        if (!_reagentsLoaded)
+        var entManager = IoCManager.Resolve<EntityManager>();
+        if (entManager.HasComponent<InfestedBorerComponent>(ent))
         {
-            foreach (var reagent in _borerSystem.GetReagents(ent.Value))
+            if (!_reagentsLoaded)
             {
-                var button = new Button();
-                button.Text = Loc.GetString("borer-ui-secrete-inject-label",
-                    ("reagent", Loc.GetString("reagent-name-" +
-                        reagent.Key.ToLower().Replace("spacedrugs", "space-drugs"))),
-                    ("cost", reagent.Value));
+                foreach (var reagent in _borerSystem.GetReagents(ent.Value))
+                {
+                    var button = new Button();
+                    button.Text = Loc.GetString("borer-ui-secrete-inject-label",
+                        ("reagent", Loc.GetString("reagent-name-" +
+                                                  reagent.Key.ToLower().Replace("spacedrugs", "space-drugs"))),
+                        ("cost", reagent.Value));
 
-                button.OnPressed += _ => OnInjectReagent(reagent.Key, reagent.Value);
-                _window.MainContainer.AddChild(button);
+                    button.OnPressed += _ => OnInjectReagent(reagent.Key, reagent.Value);
+                    _window.MainContainer.AddChild(button);
+                }
+
+                _reagentsLoaded = true;
             }
 
-            _reagentsLoaded = true;
+            _window.Open();
         }
-
-        _window.Open();
     }
 
     public void OnSystemLoaded(ActionsSystem system)
