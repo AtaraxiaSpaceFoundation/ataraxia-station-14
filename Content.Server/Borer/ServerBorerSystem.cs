@@ -3,6 +3,7 @@ using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Server.Damage.Systems;
 using Content.Server.Medical;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
@@ -13,6 +14,7 @@ using Content.Shared.Chat;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
@@ -55,6 +57,10 @@ public sealed class ServerBorerSystem : EntitySystem
 
     [Dependency] private readonly MetaDataSystem _metaData = default!;
 
+    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+
+    [Dependency] private readonly GodmodeSystem _godmodeSystem = default!;
+
 
     public override void Initialize()
     {
@@ -79,6 +85,7 @@ public sealed class ServerBorerSystem : EntitySystem
         SubscribeLocalEvent<BorerHostComponent, BorerReproduceEvent>(OnReproduce);
         SubscribeLocalEvent<BorerHostComponent, BorerReproduceAfterEvent>(OnReproduceAfter);
         SubscribeLocalEvent<InfestedBorerComponent, BorerBrainResistAfterEvent>(OnResistAfterControl);
+
     }
 
     private void OnReproduceAfter(EntityUid uid, BorerHostComponent component, BorerReproduceAfterEvent args)
@@ -336,6 +343,8 @@ public sealed class ServerBorerSystem : EntitySystem
         infestedComponent.Points = component.Points;
         Dirty(uid, infestedComponent);
 
+        _godmodeSystem.EnableGodmode(uid);
+
         RemComp<BorerComponent>(uid);
     }
 
@@ -500,6 +509,8 @@ public sealed class ServerBorerSystem : EntitySystem
         var borerComponent = AddComp<BorerComponent>(uid);
         borerComponent.Points = component.Points;
         Dirty(uid, borerComponent);
+
+        _godmodeSystem.DisableGodmode(uid);
 
         RemComp<InfestedBorerComponent>(uid);
         _action.SetCooldown(borerComponent.ActionStunEntity, _timing.CurTime, _timing.CurTime+TimeSpan.FromSeconds(20));

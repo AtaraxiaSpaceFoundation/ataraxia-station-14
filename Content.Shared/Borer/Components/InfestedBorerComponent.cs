@@ -73,6 +73,7 @@ public sealed partial class InfestedBorerComponent : Component
         { "Kelotane", 30 },
         { "Dylovene", 30 },
         { "Dexalin", 30 },
+        { "Ephedrine", 50 },
         { "SpaceDrugs", 75 },
         { "Leporazine", 75 }
     };
