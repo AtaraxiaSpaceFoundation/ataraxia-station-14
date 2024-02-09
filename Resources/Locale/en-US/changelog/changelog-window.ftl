@@ -12,4 +12,4 @@ changelog-button-new-entries = Changelog (new!)
 
 changelog-tab-title-Changelog = Changelog
 changelog-tab-title-Admin = Admin
-changelog-tab-title-ChangelogWhite = Green Miracle
+changelog-tab-title-ChangelogWhite = White Dream

@@ -1,6 +1,6 @@
 ### Connecting dialog when you start up the game
 
-connecting-title = Green Miracle
+connecting-title = White Dream
 
 connecting-exit = Exit
 
