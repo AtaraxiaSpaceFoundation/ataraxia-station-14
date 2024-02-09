@@ -85,14 +85,13 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             var targetAccessComponent = EntityManager.GetComponent<AccessComponent>(targetId);
 
             var jobProto = string.Empty;
-            var jobIcon = string.Empty; //WD-EDIT
+            var jobIcon = targetIdComponent.JobIcon; //WD-EDIT
 
             if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
                 && keyStorage.Key is {} key
                 && _record.TryGetRecord<GeneralStationRecord>(key, out var record))
             {
                 jobProto = record.JobPrototype;
-                jobIcon = record.JobIcon;
                 Dirty(targetId, targetIdComponent);
             }
 
@@ -135,18 +134,14 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         if (component.TargetIdSlot.Item is not { Valid: true } targetId || !PrivilegedIdIsAuthorized(uid, component))
             return;
 
-        //WD-EDIT
-        if (TryComp<IdCardComponent>(targetId, out var idCardComponent) && newJobIcon != null)
-        {
-            idCardComponent.JobIcon = newJobIcon;
-        }
-        //WD-EDIT
-
         _idCard.TryChangeFullName(targetId, newFullName, player: player);
         _idCard.TryChangeJobTitle(targetId, newJobTitle, player: player);
 
-        if (_prototype.TryIndex<JobPrototype>(newJobProto, out var job)
-            && _prototype.TryIndex<StatusIconPrototype>(job.Icon, out var jobIcon))
+        // WD EDIT START
+        if (_prototype.TryIndex<JobPrototype>(newJobProto, out var job))
+            newJobIcon ??= job.Icon;
+
+        if (newJobIcon != null && _prototype.TryIndex<StatusIconPrototype>(newJobIcon, out var jobIcon)) // WD EDIT END
         {
             _idCard.TryChangeJobIcon(targetId, jobIcon, player: player);
         }

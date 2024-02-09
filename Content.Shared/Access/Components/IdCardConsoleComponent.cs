@@ -42,7 +42,7 @@ public sealed partial class IdCardConsoleComponent : Component
             JobTitle = jobTitle;
             AccessList = accessList;
             JobPrototype = jobPrototype;
-            SelectedIcon = "JobIcon" + selectedIcon;
+            SelectedIcon = selectedIcon;
         }
     }
 
@@ -89,6 +89,7 @@ public sealed partial class IdCardConsoleComponent : Component
     {
         "AtmosphericTechnician",
         "Bartender",
+        "Borg",
         "Botanist",
         "Boxer",
         "Brigmedic",
@@ -100,10 +101,12 @@ public sealed partial class IdCardConsoleComponent : Component
         "ChiefEngineer",
         "ChiefMedicalOfficer",
         "Clown",
+        "CustomId",
         "Detective",
         "Geneticist",
         "HeadOfPersonnel",
         "HeadOfSecurity",
+        "Inspector",
         "Janitor",
         "Lawyer",
         "Librarian",
@@ -124,12 +127,14 @@ public sealed partial class IdCardConsoleComponent : Component
         "SecurityOfficer",
         "SeniorEngineer",
         "SeniorOfficer",
+        "SeniorPhysician",
         "SeniorResearcher",
         "ServiceWorker",
         "ShaftMiner",
         "StationEngineer",
         "TechnicalAssistant",
         "Virologist",
+        "Visitor",
         "Warden",
         "Zookeeper"
     };

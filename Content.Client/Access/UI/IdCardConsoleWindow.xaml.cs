@@ -127,7 +127,7 @@ namespace Content.Client.Access.UI
                 _jobIconButtons.Add(jobIcon, newButton);
                 newButton.OnPressed += _ =>
                 {
-                    _lastJobIcon = jobIcon;
+                    _lastJobIcon = "JobIcon" + jobIcon;
                     SubmitData();
                 };
 
@@ -279,7 +279,7 @@ namespace Content.Client.Access.UI
             foreach (var (jobIcon, button) in _jobIconButtons)
             {
                 button.Disabled = !interfaceEnabled;
-                button.Pressed = state.TargetIdJobIcon == jobIcon;
+                button.Pressed = state.TargetIdJobIcon?.Contains(jobIcon) ?? false;
             }
             //WD-EDIT
 

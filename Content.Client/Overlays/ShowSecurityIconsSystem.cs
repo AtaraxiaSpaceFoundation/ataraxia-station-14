@@ -76,7 +76,12 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
         if (_prototypeMan.TryIndex<StatusIconPrototype>(jobIconToGet, out var jobIcon))
             result.Add(jobIcon);
         else
-            Log.Error($"Invalid job icon prototype: {jobIcon}");
+        // WD EDIT START
+        {
+            Log.Error($"Invalid job icon prototype: {jobIconToGet}");
+            result.Add(_prototypeMan.Index<StatusIconPrototype>(JobIconForNoId));
+        }
+        // WD EDIT END
 
         if (TryComp<MindShieldComponent>(uid, out var comp))
         {

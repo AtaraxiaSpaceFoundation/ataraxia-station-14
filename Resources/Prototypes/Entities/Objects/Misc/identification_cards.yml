@@ -661,6 +661,13 @@
     - JobIconZookeeper
     - JobIconInspector
     - JobIconVisitor
+    - JobIconNoId
+    - JobIconCustomId
+    - JobIconBorg
+    - JobIconSeniorPhysician
+    - JobIconSeniorOfficer
+    - JobIconSeniorEngineer
+    - JobIconSeniorResearcher
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
     inHandsOnly: true
