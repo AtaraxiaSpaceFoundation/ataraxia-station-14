@@ -430,3 +430,10 @@
   entity: ClothingOuterWinterCoatKommenDant
   sponsorOnly: true
   whitelistJobs: [ Detective ]
+
+# qwertymen
+- type: loadout
+  id: QwertymenSecurityBelt
+  entity: ClothingBeltSecurityFilledQwertymen
+  sponsorOnly: true
+  whitelistJobs: [ HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden  ]

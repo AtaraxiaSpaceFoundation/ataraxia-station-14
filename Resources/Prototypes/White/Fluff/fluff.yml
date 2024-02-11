@@ -1102,3 +1102,33 @@
       sprite: White/Fluff/kommendant/coat.rsi
     - type: Clothing
       sprite: White/Fluff/kommendant/coat.rsi
+
+#Qwertymen
+- type: entity
+  parent: Handcuffs
+  id: HandcuffsQwertymen
+  name: пушистые наручники
+  description: Настоящие наручники, созданные для эротических игр... наверное... почему они настоящие?!
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/qwertymen/fluffy_handcuffs.rsi
+    state: handcuff
+  - type: Handcuff
+    cuffedRSI: White/Fluff/qwertymen/fluffy_handcuffs.rsi
+    bodyIconState: body-overlay
+
+- type: entity
+  id: ClothingBeltSecurityFilledQwertymen
+  parent: ClothingBeltSecurity
+  name: пушистый пояс охраны
+  description: Несмотря на свою пушистость, волос не имеет, что странно
+  suffix: Filled, Fluff
+  components:
+  - type: StorageFill
+    contents:
+    - id: GrenadeFlashBang
+    - id: TearGasGrenade
+    - id: Stunbaton
+    - id: HandcuffsQwertymen
+    - id: HandcuffsQwertymen
