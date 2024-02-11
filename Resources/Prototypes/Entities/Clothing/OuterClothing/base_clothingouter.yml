@@ -91,11 +91,11 @@
   - type: TemperatureProtection
     coefficient: 0.001 # yes it needs to be this low, fires are fucking deadly apparently!!!!
   - type: ClothingSpeedModifier
-    walkModifier: 0.4
-    sprintModifier: 0.6
+    walkModifier: 0.5
+    sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: Item
-    size: Ginormous
+    size: Huge
   - type: Armor
     modifiers:
       coefficients:

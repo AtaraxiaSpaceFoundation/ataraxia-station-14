@@ -8,7 +8,7 @@
     sprite: Objects/Materials/Sheets/metal.rsi
   - type: Item
     sprite: Objects/Materials/Sheets/metal.rsi
-    size: Normal
+    size: Small
   - type: StaticPrice
     price: 0
   - type: Tag

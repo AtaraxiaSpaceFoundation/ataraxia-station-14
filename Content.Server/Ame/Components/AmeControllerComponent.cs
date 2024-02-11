@@ -37,7 +37,7 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// </summary>
     [DataField("injectionAmount")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public int InjectionAmount = 2;
+    public int InjectionAmount = 3;
 
     /// <summary>
     /// How stable the reactor currently is.

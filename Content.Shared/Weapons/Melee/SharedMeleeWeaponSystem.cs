@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Stunnable.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
@@ -217,6 +218,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             return;
         }
 
+        // WD EDIT START
+        if (TryComp<StunbatonComponent>(weaponUid, out _))
+        {
+            return;
+        }
+        // WD EDIT END
+
         AttemptAttack(args.SenderSession.AttachedEntity.Value, weaponUid, weapon, msg, args.SenderSession);
     }
 
@@ -385,6 +393,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         // Windup time checked elsewhere.
         var fireRate = TimeSpan.FromSeconds(1f / GetAttackRate(weaponUid, user, weapon));
+
+        if (attack is LightAttackEvent _)
+        {
+            fireRate *= 0.8f;
+        }
+
         var swings = 0;
 
         // TODO: If we get autoattacks then probably need a shotcounter like guns so we can do timing properly.
@@ -561,8 +575,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var direction = targetMap.Position - userPos;
         var distance = Math.Min(component.Range, direction.Length());
 
-        var damage = GetDamage(meleeUid, user, component);
+        var damage = GetDamage(meleeUid, user, component) * 0.70f;
         var entities = GetEntityList(ev.Entities);
+
+        // WD EDIT
+        _stamina.TakeStaminaDamage(user, 7);
+        // WD EDIT END
 
         if (entities.Count == 0)
         {

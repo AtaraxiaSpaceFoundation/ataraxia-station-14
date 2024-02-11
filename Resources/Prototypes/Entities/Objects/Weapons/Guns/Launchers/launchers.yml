@@ -279,6 +279,7 @@
       proto: TentacleProjectile
       capacity: 1
       count: 1
+    - type: AmmoCounter
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.75
       playRechargeSound: false

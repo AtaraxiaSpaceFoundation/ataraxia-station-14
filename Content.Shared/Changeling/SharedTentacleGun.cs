@@ -34,8 +34,27 @@ public abstract class SharedTentacleGun : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<TentacleGunComponent, GunShotEvent>(OnTentacleShot);
+        SubscribeLocalEvent<TentacleProjectileComponent, MapInitEvent>(OnMapInit); // WD
         SubscribeLocalEvent<TentacleProjectileComponent, ProjectileEmbedEvent>(OnTentacleCollide);
     }
+
+    // WD EDIT START
+    private void OnMapInit(Entity<TentacleProjectileComponent> ent, ref MapInitEvent args)
+    {
+        if (ent.Comp.DespawnTime <= 0)
+        {
+            return;
+        }
+
+        _timerManager.AddTimer(new Timer(ent.Comp.DespawnTime, false, () =>
+        {
+            if (!ent.Comp.GrabbedUid.HasValue)
+            {
+                Del(ent.Owner);
+            }
+        }));
+    }
+    // WD EDIT END
 
     private void OnTentacleShot(EntityUid uid, TentacleGunComponent component, ref GunShotEvent args)
     {
@@ -90,6 +109,7 @@ public abstract class SharedTentacleGun : EntitySystem
                 {
                     DeleteProjectile(uid);
                 }));
+                component.GrabbedUid = args.Embedded;
                 break;
             case SelectiveFire.PullItem:
                 PullItem(args);
@@ -117,7 +137,7 @@ public abstract class SharedTentacleGun : EntitySystem
 
     private bool PullMob(ProjectileEmbedEvent args)
     {
-        var stunTime = _random.Next(TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(8));
+        var stunTime = _random.Next(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(5));
 
         if (!_stunSystem.TryParalyze(args.Embedded, stunTime, true))
             return false;

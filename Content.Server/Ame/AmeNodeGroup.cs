@@ -124,7 +124,7 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         if (fuel <= 0 || CoreCount <= 0)
             return 0;
 
-        var safeFuelLimit = CoreCount * 2;
+        var safeFuelLimit = CoreCount * 3;
 
         var powerOutput = CalculatePower(fuel, CoreCount);
         if (fuel <= safeFuelLimit)

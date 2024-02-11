@@ -4,12 +4,12 @@
   id: CrateEngineeringAMEShielding
   parent: CrateEngineeringSecure
   name: packaged antimatter reactor crate
-  description: 9 parts for the main body of an antimatter reactor, or for expanding an existing one.
+  description: 18 parts for the main body of an antimatter reactor, or for expanding an existing one.
   components:
   - type: StorageFill
     contents:
       - id: AmePart
-        amount: 9
+        amount: 18
 
 - type: entity
   id: CrateEngineeringAMEJar

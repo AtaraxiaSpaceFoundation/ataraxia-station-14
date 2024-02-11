@@ -9,6 +9,10 @@
   parent: BaseSecureWindoor
   name: secure windoor
   description: It's a sturdy window and a sliding door. Wow!
+  components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: RGlass
 
 # TODO remove these with parameterized prototypes/whatever we end up doing
 # Windoors (alphabetical)

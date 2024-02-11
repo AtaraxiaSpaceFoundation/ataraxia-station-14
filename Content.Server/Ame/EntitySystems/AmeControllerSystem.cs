@@ -234,7 +234,7 @@ public sealed class AmeControllerSystem : EntitySystem
         // Admin alert
         var safeLimit = 0;
         if (TryGetAMENodeGroup(uid, out var group))
-            safeLimit = group.CoreCount * 2;
+            safeLimit = group.CoreCount * 3;
 
         if (oldValue <= safeLimit && value > safeLimit)
         {
@@ -340,10 +340,10 @@ public sealed class AmeControllerSystem : EntitySystem
                 ToggleInjecting(uid, user: user, controller: comp);
                 break;
             case UiButton.IncreaseFuel:
-                AdjustInjectionAmount(uid, +2, user: user, controller: comp);
+                AdjustInjectionAmount(uid, +3, user: user, controller: comp);
                 break;
             case UiButton.DecreaseFuel:
-                AdjustInjectionAmount(uid, -2, user: user, controller: comp);
+                AdjustInjectionAmount(uid, -3, user: user, controller: comp);
                 break;
         }
 

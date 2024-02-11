@@ -36,6 +36,6 @@ public sealed class AmeShieldingSystem : EntitySystem
 
         _pointLightSystem.SetRadius(uid, Math.Clamp(injectionStrength, 1, 12));
         _pointLightSystem.SetEnabled(uid, true);
-        _appearanceSystem.SetData(uid, AmeShieldVisuals.CoreState, injectionStrength > 2 ? AmeCoreState.Strong : AmeCoreState.Weak);
+        _appearanceSystem.SetData(uid, AmeShieldVisuals.CoreState, injectionStrength > 3 ? AmeCoreState.Strong : AmeCoreState.Weak);
     }
 }

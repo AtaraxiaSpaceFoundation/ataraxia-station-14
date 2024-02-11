@@ -922,6 +922,7 @@
             - Impassable
             - BulletImpassable
     - type: TentacleProjectile
+      despawnTime: 450
 
 - type: entity
   name : disabler bolt smg
