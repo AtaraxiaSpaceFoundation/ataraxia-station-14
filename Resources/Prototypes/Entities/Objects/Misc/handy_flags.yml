@@ -39,12 +39,14 @@
   id: LGBTQHandyFlag
   name: LGBTQ handheld flag
   description: "The be gay do crime handy flag."
+  noSpawn: true
   components:
   - type: Sprite
     sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
     state: icon
   - type: Item
     sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
+  - type: AntiCringe
 
 - type: entity
   parent: BaseItem

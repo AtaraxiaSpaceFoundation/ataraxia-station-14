@@ -140,9 +140,11 @@
   id: ClothingNeckCloakTrans
   name: vampire cloak
   description: Worn by high ranking vampires of the transylvanian society of vampires.
+  noSpawn: true
   components:
   - type: Sprite
     sprite: Clothing/Neck/Cloaks/trans.rsi
+  - type: AntiCringe
 
 - type: entity
   parent: ClothingNeckBase

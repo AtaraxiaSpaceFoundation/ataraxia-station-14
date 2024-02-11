@@ -35,16 +35,18 @@
   components:
   - type: Sprite
     state: syndie_flag
-    
+
 - type: entity
   parent: BaseFlag
   id: LGBTQFlag
   name: LGBTQ flag
   description: "Be gay do crime flag"
+  noSpawn: true
   components:
   - type: Sprite
     state: lgbtq_flag
-    
+  - type: AntiCringe
+
 - type: entity
   parent: BaseFlag
   id: PirateFlag
