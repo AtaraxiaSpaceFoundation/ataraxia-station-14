@@ -1,3 +1,5 @@
+using Content.Server.Changeling;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Roles;
 
 namespace Content.Server.Roles;
@@ -19,6 +21,8 @@ public sealed class RoleSystem : SharedRoleSystem
         SubscribeAntagEvents<TraitorRoleComponent>();
         SubscribeAntagEvents<ZombieRoleComponent>();
         SubscribeAntagEvents<ThiefRoleComponent>();
+        SubscribeAntagEvents<ChangelingRoleComponent>(); // WD EDIT
+        SubscribeAntagEvents<CultistRoleComponent>(); // WD EDIT
     }
 
     public string? MindGetBriefing(EntityUid? mindId)

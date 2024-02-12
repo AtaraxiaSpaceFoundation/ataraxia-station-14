@@ -307,7 +307,7 @@ public sealed class RespiratorSystem : EntitySystem
 
     private void DoCPR(EntityUid target, RespiratorComponent comp, EntityUid user)
     {
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, comp.CycleDelay * 4, new CPREndedEvent(), target,
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, 1, new CPREndedEvent(), target,
             target: target)
         {
             BreakOnTargetMove = true,

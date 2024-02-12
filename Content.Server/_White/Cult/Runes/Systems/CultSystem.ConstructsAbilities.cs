@@ -17,13 +17,11 @@ namespace Content.Server._White.Cult.Runes.Systems;
 public partial class CultSystem
 {
     [Dependency] private readonly TileSystem _tileSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
 
     public void InitializeConstructsAbilities()
     {
@@ -45,10 +43,9 @@ public partial class CultSystem
 
     private void OnMapInit(EntityUid uid, ConstructComponent component, MapInitEvent args)
     {
-        var comp = EnsureComp<ActionsContainerComponent>(uid);
         foreach (var id in component.Actions)
         {
-            _actionContainer.AddAction(uid, id, comp);
+            component.ActionEntities.Add(_actionsSystem.AddAction(uid, id));
         }
     }
 
@@ -67,6 +64,11 @@ public partial class CultSystem
 
     private void OnConstructComponentRemoved(EntityUid uid, ConstructComponent component, ComponentRemove args)
     {
+        foreach (var entity in component.ActionEntities)
+        {
+            _actionsSystem.RemoveAction(uid, entity);
+        }
+
         var query = EntityQueryEnumerator<CultRuleComponent, GameRuleComponent>();
         while (query.MoveNext(out var ruleEnt, out var cultRuleComponent, out _))
         {

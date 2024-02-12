@@ -201,6 +201,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             return;
 
         if (HasComp<RevolutionaryComponent>(ev.Target) ||
+            HasComp<CommandStaffComponent>(ev.Target) ||
             HasComp<MindShieldComponent>(ev.Target) ||
             !HasComp<HumanoidAppearanceComponent>(ev.Target) &&
             !alwaysConvertible ||

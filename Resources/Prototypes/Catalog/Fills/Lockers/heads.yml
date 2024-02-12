@@ -237,14 +237,13 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingEyesHudSecurity
       - id: WeaponDisabler
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingOuterHardsuitSecurityRed
       - id: ClothingMaskGasSwat
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
-      - id: ClothingEyesGlassesSunglasses
+      - id: ClothingEyesGlassesSecurity
       - id: ClothingShoesBootsJack
       - id: CigarGoldCase
         prob: 0.50
@@ -263,7 +262,6 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingEyesHudSecurity
       - id: WeaponEgun
       - id: ClothingHeadHatBeretHoS
       - id: ClothingHeadHatHoshat
@@ -271,7 +269,7 @@
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
-      - id: ClothingEyesGlassesSunglasses
+      - id: ClothingEyesGlassesSecurity
       - id: ClothingShoesBootsJack
       - id: CigarGoldCase
         prob: 0.50

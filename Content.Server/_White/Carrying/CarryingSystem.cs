@@ -110,7 +110,7 @@ namespace Content.Server.Carrying
         /// Basically using virtual item passthrough to throw the carried person. A new age!
         /// Maybe other things besides throwing should use virt items like this...
         /// </summary>
-        private void OnThrow(EntityUid uid, CarryingComponent component, BeforeThrowEvent args)
+        private void OnThrow(EntityUid uid, CarryingComponent component, ref BeforeThrowEvent args)
         {
             if (!TryComp<VirtualItemComponent>(args.ItemUid, out var virtItem) || !HasComp<CarriableComponent>(virtItem.BlockingEntity))
                 return;

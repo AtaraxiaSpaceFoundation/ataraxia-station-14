@@ -19,7 +19,7 @@ public sealed partial class CultistComponent : Component
     public CancellationTokenSource? HolyConvertToken;
 
     [NonSerialized]
-    public List<string> SelectedEmpowers = new();
+    public List<EntityUid?> SelectedEmpowers = new();
 
     public static string SummonCultDaggerAction = "InstantActionSummonCultDagger";
 

@@ -7,4 +7,7 @@ public sealed partial class ConstructComponent : Component
 {
     [DataField("actions")]
     public List<EntProtoId> Actions = new();
+
+    [ViewVariables]
+    public List<EntityUid?> ActionEntities = new();
 }

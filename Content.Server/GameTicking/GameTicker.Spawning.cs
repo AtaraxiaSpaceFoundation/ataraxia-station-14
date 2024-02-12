@@ -20,6 +20,7 @@ using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared._White;
+using Content.Shared.NameIdentifier;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -300,9 +301,11 @@ namespace Content.Server.GameTicking
             if (jobId.Contains("Mime"))
                 if (newMind.Comp.MimeName != null)
                     _metaData.SetEntityName(mob, newMind.Comp.MimeName);
-            if (jobId.Contains("Cyborg"))
-                if (newMind.Comp.BorgName != null)
-                    _metaData.SetEntityName(mob, newMind.Comp.BorgName);
+            if (jobId.Contains("Borg"))
+                if (newMind.Comp.BorgName != null && TryComp(mob, out NameIdentifierComponent? identifier))
+                {
+                    _metaData.SetEntityName(mob, $"{newMind.Comp.BorgName} {identifier.FullIdentifier}");
+                }
 
             _mind.TransferTo(newMind, mob);
 

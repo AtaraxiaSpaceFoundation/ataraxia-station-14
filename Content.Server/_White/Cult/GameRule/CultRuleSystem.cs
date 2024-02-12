@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -41,6 +42,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly JobSystem _jobSystem = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -170,6 +172,11 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         }
 
         cultistsRule.CurrentCultists.Remove(component);
+
+        foreach (var empower in component.SelectedEmpowers)
+        {
+            _actions.RemoveAction(uid, empower);
+        }
 
         RemoveCultistAppearance(uid);
         CheckRoundShouldEnd();

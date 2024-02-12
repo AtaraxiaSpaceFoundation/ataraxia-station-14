@@ -32,6 +32,7 @@ using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Runes;
 using Content.Shared._White.Cult.UI;
+using Content.Shared.Mindshield.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -61,7 +62,6 @@ public sealed partial class CultSystem : EntitySystem
     [Dependency] private readonly GunSystem _gunSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly FlammableSystem _flammableSystem = default!;
-    [Dependency] private readonly SharedJobSystem _jobSystem = default!;
 
 
     public override void Initialize()
@@ -419,15 +419,9 @@ public sealed partial class CultSystem : EntitySystem
             // Проверка, является ли жертва целью
             _entityManager.TryGetComponent<MindContainerComponent>(target?.CurrentEntity, out var targetMind);
             var isTarget = mind!.Mind!.Value == targetMind?.Mind!.Value;
-            var jobAllowConvert = true;
-
-            if(_jobSystem.MindTryGetJob(mind.Mind!.Value, out var _, out var prototype))
-            {
-                jobAllowConvert = prototype.CanBeAntag;
-            }
 
             // Выполнение действия в зависимости от условий
-            if (canBeConverted && jobAllowConvert && !isTarget)
+            if (canBeConverted && !HasComp<MindShieldComponent>(victim.Value) && !isTarget)
             {
                 result = Convert(uid, victim.Value, args.User, args.Cultists);
             }
@@ -1123,38 +1117,27 @@ public sealed partial class CultSystem : EntitySystem
     {
         var playerEntity = args.Session.AttachedEntity;
 
-        if (!playerEntity.HasValue || !TryComp<CultistComponent>(playerEntity, out var comp) ||
-            !TryComp<ActionsComponent>(playerEntity, out var actionsComponent))
+        if (!playerEntity.HasValue || !TryComp<CultistComponent>(playerEntity, out var comp))
             return;
-
-        var cultistsActions = 0;
-
-        foreach (var userAction in actionsComponent.Actions)
-        {
-            var entityPrototypeId = MetaData(userAction).EntityPrototype?.ID;
-            if (entityPrototypeId != null && CultistComponent.CultistActions.Contains(entityPrototypeId))
-                cultistsActions++;
-        }
 
         var action = CultistComponent.CultistActions.FirstOrDefault(x => x.Equals(args.ActionType));
 
         if (action == null)
             return;
 
-        EntityUid? actionId = null;
         if (component.IsRune)
         {
-            if (cultistsActions > component.MaxAllowedCultistActions)
+            if (comp.SelectedEmpowers.Count > component.MaxAllowedCultistActions)
             {
                 _popupSystem.PopupEntity(Loc.GetString("cult-too-much-empowers"), uid);
                 return;
             }
 
-            _actionsSystem.AddAction(playerEntity.Value, ref actionId, action);
+            comp.SelectedEmpowers.Add(_actionsSystem.AddAction(playerEntity.Value, action));
         }
-        else if (cultistsActions < component.MinRequiredCultistActions)
+        else if (comp.SelectedEmpowers.Count < component.MinRequiredCultistActions)
         {
-            _actionsSystem.AddAction(playerEntity.Value, ref actionId, action);
+            comp.SelectedEmpowers.Add(_actionsSystem.AddAction(playerEntity.Value, action));
         }
     }
 

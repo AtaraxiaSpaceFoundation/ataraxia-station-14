@@ -364,6 +364,7 @@ public abstract partial class SharedGunSystem
             // No ammo returned.
             else
             {
+                CycleCartridge(uid, component, args.User); // WD EDIT
                 return;
             }
 
@@ -398,6 +399,7 @@ public abstract partial class SharedGunSystem
             }
             else
             {
+                SetBoltClosed(uid, component, false, user: args.User, appearance: appearance); // WD EDIT
                 Appearance.SetData(uid, AmmoVisuals.MagLoaded, false, appearance);
                 return;
             }

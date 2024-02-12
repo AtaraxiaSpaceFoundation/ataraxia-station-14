@@ -25,6 +25,8 @@
     - gcf
     - gc
     - gc_mode
+    - resetent
+    - resetallents
     - cvar
     - midipanic
     - replay_recording_start
@@ -50,8 +52,6 @@
     - hidemechanisms
     - showmechanisms
     - menuvis
-    - resetent
-    - resetallents
     - togglehealthoverlay
     - toggledecals
     - nodevis

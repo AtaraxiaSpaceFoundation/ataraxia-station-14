@@ -20,6 +20,7 @@ using Content.Shared.Roles.Jobs;
 using Content.Shared.Station;
 using Content.Shared.StatusIcon;
 using Content.Shared._White.CharacterExamine;
+using Content.Shared.NameIdentifier;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -215,15 +216,18 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             jobSpecial.AfterEquip(entity);
         }
 
-        if (prototype.ID.Contains("Cyborg"))
+        if (prototype.ID.Contains("Borg"))
         {
+            if (!TryComp<NameIdentifierComponent>(entity, out var identifier))
+                return;
+
             if (_randomizeCharacters || profile == null)
             {
-                _metaSystem.SetEntityName(entity, HumanoidCharacterProfile.GetBorgName());
+                _metaSystem.SetEntityName(entity, $"{HumanoidCharacterProfile.GetBorgName()} {identifier.FullIdentifier}");
             }
             else
             {
-                _metaSystem.SetEntityName(entity, profile.BorgName);
+                _metaSystem.SetEntityName(entity, $"{profile.BorgName} {identifier.FullIdentifier}");
             }
         }
 
