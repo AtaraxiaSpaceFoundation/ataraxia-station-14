@@ -340,3 +340,10 @@
   ghostName: Black Harpy
   ghostDescription: A race of harpies that have charming onyx wings. Although they are a clever race, particularly having the highest intelligence of all harpies, on the other hand, they are exceedingly belligerent and ferocious. This one specifically used to be project lead of this project - but all she saw is world on fire.
 
+- type: customGhost
+  id: aeons_torn-ghost
+  ckey: aeons_torn
+  sprite: White/Ghosts/aeons_torn-ghost.rsi
+  ghostName: Monolith
+  ghostDescription: Blast from the past
+
