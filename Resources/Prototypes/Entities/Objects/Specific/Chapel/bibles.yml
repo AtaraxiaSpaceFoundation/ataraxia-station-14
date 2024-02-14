@@ -27,11 +27,11 @@
     reactionTypes:
     - Holy
   - type: Sprite
-    sprite: Objects/Specific/Chapel/bible.rsi
+    sprite: White/Objects/Specific/Chapel/bible.rsi
     state: icon
   - type: Item
     size: Small
-    sprite: Objects/Specific/Chapel/bible.rsi
+    sprite: White/Objects/Specific/Chapel/bible.rsi
   - type: Clothing
     slots:
     - Belt
@@ -73,9 +73,9 @@
     specialItem: SpawnPointGhostCerberus
     respawnTime: 300
   - type: Sprite
-    sprite: Objects/Specific/Chapel/necronomicon.rsi
+    sprite: White/Objects/Specific/Chapel/necronomicon.rsi
   - type: Item
-    sprite: Objects/Specific/Chapel/necronomicon.rsi
+    sprite: White/Objects/Specific/Chapel/necronomicon.rsi
 
 - type: entity
   id: ActionBibleSummon

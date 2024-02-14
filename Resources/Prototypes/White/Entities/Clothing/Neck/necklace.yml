@@ -1,0 +1,35 @@
+﻿- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceGold
+  name: golden necklace
+  description: It shines
+  components:
+  - type: Sprite
+    sprite: White\Clothing\Neck\gold-cross.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceSilver
+  name: silver necklace
+  description: It shines
+  components:
+  - type: Sprite
+    sprite: White\Clothing\Neck\silver-cross.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceTech
+  name: technology necklace
+  description: It shines
+  components:
+  - type: Sprite
+    sprite: White\Clothing\Neck\tech-necklace.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceUnholy
+  name: unholy necklace
+  description: It shines
+  components:
+  - type: Sprite
+    sprite: White\Clothing\Neck\unholy-necklace.rsi

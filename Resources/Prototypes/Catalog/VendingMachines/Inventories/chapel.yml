@@ -1,6 +1,9 @@
 - type: vendingMachineInventory
   id: PietyVendInventory
   startingInventory:
+    ClothingNeckNecklaceSilver: 2
+    ClothingNeckNecklaceGold: 1
+    ClothingNeckNecklaceTech: 1
     ClothingUniformJumpsuitChaplain: 2
     ClothingUniformJumpskirtChaplain: 2
     ClothingUniformJumpsuitMonasticRobeDark: 1
@@ -23,8 +26,9 @@
   emaggedInventory:
     #ClothingOuterArmorCult: 1
     #ClothingHeadHelmetCult: 1
-    ClothingOuterRobesCult: 3
-    ClothingHeadHatHoodCulthood: 3
-    ClothingShoesCult: 4
+    #ClothingOuterRobesCult: 3
+    #ClothingHeadHatHoodCulthood: 3
+    #ClothingShoesCult: 4
     BedsheetCult: 4
     ClothingNeckScarfStripedBlack: 3
+    ClothingNeckNecklaceUnholy: 1

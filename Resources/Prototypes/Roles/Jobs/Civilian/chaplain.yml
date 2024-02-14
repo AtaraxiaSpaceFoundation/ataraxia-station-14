@@ -17,6 +17,7 @@
 - type: startingGear
   id: ChaplainGear
   equipment:
+    neck: ClothingNeckNecklaceSilver
     jumpsuit: ClothingUniformJumpsuitChaplain
     back: ClothingBackpackChaplainFilled
     shoes: ClothingShoesColorBlack
