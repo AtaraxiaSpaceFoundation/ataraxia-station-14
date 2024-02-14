@@ -98,7 +98,7 @@
                                     <Label Text="{Loc 'humanoid-profile-editor-voice-label'}" />
                                     <Control HorizontalExpand="True"/>
                                     <OptionButton Name="CVoiceButton" HorizontalAlignment="Right" />
-                                    <Button Name="CVoicePlayButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" MaxWidth="80" />
+                                    <Button Name="CVoicePlayButton" Text=">" MaxWidth="80" />
                                 </BoxContainer>
                                 <!-- Show clothing -->
                                 <BoxContainer HorizontalExpand="True">
