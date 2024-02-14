@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared._Miracle.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Mindshield.Components;
@@ -31,10 +32,10 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StatusIconComponent, GetStatusIconsEvent>(OnGetStatusIconsEvent);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, GetStatusIconsEvent>(OnGetStatusIconsEvent);
     }
 
-    private void OnGetStatusIconsEvent(EntityUid uid, StatusIconComponent _, ref GetStatusIconsEvent @event)
+    private void OnGetStatusIconsEvent(EntityUid uid, HumanoidAppearanceComponent _, ref GetStatusIconsEvent @event)
     {
         if (!IsActive || @event.InContainer)
         {

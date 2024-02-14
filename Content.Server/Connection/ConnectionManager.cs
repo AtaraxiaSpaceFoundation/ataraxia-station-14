@@ -170,7 +170,7 @@ namespace Content.Server.Connection
             }
             //WD-EDIT
 
-            var bans = await _db.GetServerBansAsync(addr, userId, hwId, includeUnbanned: false);
+            var bans = await _db.GetServerBansAsync(addr, userId, hwId, includeUnbanned: false, _cfg.GetCVar(CCVars.AdminLogsServerName));
             if (bans.Count > 0 && bans.Any(x=> x.ExpirationTime == null)) //Miracle edit
             {
                 var firstBan = bans[0];

@@ -103,7 +103,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     //Miracle edit start
     private async Task CacheDbServerBans(NetUserId userId, IPAddress? address = null, ImmutableArray<byte>? hwId = null)
     {
-        var serverBans = await _db.GetServerBansAsync(address, userId, hwId, false);
+        var serverBans = await _db.GetServerBansAsync(address, userId, hwId, false, _cfg.GetCVar(CCVars.AdminLogsServerName));
 
         var userServerBans = new HashSet<ServerBanDef>(serverBans);
 

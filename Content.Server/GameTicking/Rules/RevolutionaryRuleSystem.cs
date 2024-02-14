@@ -87,7 +87,8 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
 
             if (CheckCommandLose())
             {
-                _roundEnd.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, component.ShuttleCallTime);
+                // _roundEnd.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, component.ShuttleCallTime);
+                _roundEnd.EndRound(); // WD EDIT
                 GameTicker.EndGameRule(uid, gameRule);
             }
         }
@@ -155,6 +156,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         {
             _antagSelection.EligiblePlayers(comp.HeadRevPrototypeId, comp.MaxHeadRevs, comp.PlayersPerHeadRev, comp.HeadRevStartSound,
                 "head-rev-role-greeting", "#5e9cff", out var chosen);
+            chosen = chosen.Where(x => !HasComp<CommandStaffComponent>(x)).ToList(); // WD
             if (chosen.Any())
                 GiveHeadRev(chosen, comp.HeadRevPrototypeId, comp);
             else

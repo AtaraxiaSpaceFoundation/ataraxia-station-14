@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Content.Client.Administration.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -20,6 +21,7 @@ public sealed class JobRequirementsManager
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly IClientAdminManager _adminManager = default!; // WD
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
     private readonly List<string> _roleBans = new();
@@ -37,6 +39,7 @@ public sealed class JobRequirementsManager
         _net.RegisterNetMessage<MsgPlayTime>(RxPlayTime);
 
         _client.RunLevelChanged += ClientOnRunLevelChanged;
+        _adminManager.AdminStatusUpdated += () => Updated?.Invoke(); // WD
     }
 
     private void ClientOnRunLevelChanged(object? sender, RunLevelChangedEventArgs e)
@@ -96,6 +99,9 @@ public sealed class JobRequirementsManager
 
         var player = _playerManager.LocalPlayer?.Session;
         if (player == null)
+            return true;
+
+        if (_adminManager.IsActive()) // WD
             return true;
 
         return CheckRoleTime(job.Requirements, out reason);
