@@ -1,7 +1,7 @@
 ent-MachineAnomalyVessel = Сосуд аномалии
     .desc = Контейнер, собирающий очки исследования с подключенной сканером аномалии.
     .suffix = { "" }
-ent-MachineAPE = И.А.Ч.
+ent-MachineAPE = М.А.К.А.К.
     .desc = Излучатель частиц для взаимодействия с аномалиями.
     .suffix = { "" }
 ent-MachineAnomalyGenerator = Генератор аномалий

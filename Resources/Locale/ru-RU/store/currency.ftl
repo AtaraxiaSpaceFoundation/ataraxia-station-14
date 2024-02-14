@@ -1,4 +1,5 @@
 store-currency-inserted = { CAPITALIZE($used) } внесены в { $target }.
+store-currency-war-boost-given = { CAPITALIZE($target) } начинает жужжать
 store-currency-inserted-implant = { CAPITALIZE(THE($used)) } вставляется в ваш имплантат.
 store-currency-free = Бесплатно
 store-currency-display-debugdollar =
@@ -16,3 +17,5 @@ store-currency-display-space-cash =
         [few] { $amount } доллара
        *[other] { $amount } долларов
     }
+
+store-currency-display-changeling-point = Очки ДНК

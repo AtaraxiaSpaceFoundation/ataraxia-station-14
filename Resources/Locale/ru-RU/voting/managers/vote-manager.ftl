@@ -1,3 +1,4 @@
+# Displayed as initiator of vote when no user creates the vote
 ui-vote-initiator-server = Сервер
 
 ## Default.Votes
@@ -8,11 +9,13 @@ ui-vote-restart-failed = Голосование о перезапуске рау
 ui-vote-restart-yes = Да
 ui-vote-restart-no = Нет
 ui-vote-restart-abstain = Воздерживаюсь
+
 ui-vote-gamemode-title = Следующий режим игры
 ui-vote-gamemode-tie = Ничья в голосовании за игровой режим! Выбирается... { $picked }
 ui-vote-gamemode-win = { $winner } победил в голосовании за игровой режим!
+
 ui-vote-map-title = Следующая карта
 ui-vote-map-tie = Ничья при голосовании за карту! Выбирается... { $picked }
 ui-vote-map-win = { $winner } выиграла голосование о выборе карты!
-ui-vote-map-notlobby-time = Голосование за карты действительно только в лобби перед раундом!
 ui-vote-map-notlobby = Голосование о выборе карты действует только в предраундовом лобби!
+ui-vote-map-notlobby-time = Голосование за карты действительно только в лобби перед раундом!

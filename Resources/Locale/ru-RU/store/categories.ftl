@@ -12,5 +12,8 @@ store-category-implants = Импланты
 store-category-job = Работа
 store-category-armor = Броня
 store-category-pointless = Безделушки
-# Revenant
+
+# Revenant && Changeling
 store-category-abilities = Способности
+store-category-stings = Жала
+store-category-boosters = Усиления

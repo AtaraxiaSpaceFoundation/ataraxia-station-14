@@ -19,5 +19,3 @@ materials-wood = дерево
 materials-uranium = уран
 materials-bananium = бананиум
 materials-meat = мясо
-# Material Reclaimer
-material-reclaimer-upgrade-process-rate = скорость процесса

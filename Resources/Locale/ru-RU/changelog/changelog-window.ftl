@@ -5,6 +5,11 @@ changelog-author-changed = [color=#EEE]{ $author }[/color] изменил:
 changelog-today = Сегодня
 changelog-yesterday = Вчера
 changelog-new-changes = новые обновления
-changelog-version-tag = версия v{ $version }
+changelog-version-tag = версия v{$version}
+
 changelog-button = Обновления
-changelog-button-new-entries = Обновления (!)
+changelog-button-new-entries = Обновления (новые!)
+
+changelog-tab-title-Changelog = Changelog
+changelog-tab-title-Admin = Admin
+changelog-tab-title-ChangelogWhite = White Dream

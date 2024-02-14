@@ -112,6 +112,6 @@ ent-SurveillanceWirelessCameraAnchoredCircuitboard = беспроводная к
 ent-GasRecyclerMachineCircuitboard = переработчик газа (машинная плата)
     .desc = Печатная плата переработчика газа.
     .suffix = { "" }
-ent-APECircuitboard = И.А.Ч. (машинная плата)
+ent-APECircuitboard = М.А.К.А.К. (машинная плата)
     .desc = Печатная плата излучателя аномальных частиц
     .suffix = { "" }
