@@ -347,3 +347,12 @@
   ghostName: Monolith
   ghostDescription: Blast from the past
 
+#dageff
+- type: customGhost
+  id: dageff-ghost
+  ckey: Dageff
+  sprite: White/Ghosts/mapperian-ghost.rsi
+  alpha: 0.9
+  ghostName: Maiden
+  ghostDescription: Наблюдает за вашим поведением в кафе.
+  size: 0.9, 0.9
