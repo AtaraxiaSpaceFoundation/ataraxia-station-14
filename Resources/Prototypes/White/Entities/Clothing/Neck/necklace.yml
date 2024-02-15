@@ -5,7 +5,7 @@
   description: It shines
   components:
   - type: Sprite
-    sprite: White\Clothing\Neck\gold-cross.rsi
+    sprite: White/Clothing/Neck/gold-cross.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -14,7 +14,7 @@
   description: It shines
   components:
   - type: Sprite
-    sprite: White\Clothing\Neck\silver-cross.rsi
+    sprite: White/Clothing/Neck/silver-cross.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -23,7 +23,7 @@
   description: It shines
   components:
   - type: Sprite
-    sprite: White\Clothing\Neck\tech-necklace.rsi
+    sprite: White/Clothing/Neck/tech-necklace.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -32,4 +32,4 @@
   description: It shines
   components:
   - type: Sprite
-    sprite: White\Clothing\Neck\unholy-necklace.rsi
+    sprite: White/Clothing/Neck/unholy-necklace.rsi
