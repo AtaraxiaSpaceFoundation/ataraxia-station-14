@@ -11,7 +11,7 @@ namespace Content.Client._White.Medical.BodyScanner
     [GenerateTypedNameReferences]
     public sealed partial class GroupDamageCardComponent : Control
     {
-        public GroupDamageCardComponent(string title, string damageGroupID, IReadOnlyDictionary<string, FixedPoint2> damagePerType)
+        public GroupDamageCardComponent(string title, string damageGroupId, IReadOnlyDictionary<string, FixedPoint2> damagePerType)
         {
             RobustXamlLoader.Load(this);
 
@@ -19,28 +19,35 @@ namespace Content.Client._White.Medical.BodyScanner
 
             HashSet<string> shownTypes = new();
             var protos = IoCManager.Resolve<IPrototypeManager>();
-            var group = protos.Index<DamageGroupPrototype>(damageGroupID);
+            var group = protos.Index<DamageGroupPrototype>(damageGroupId);
 
             // Show the damage for each type in that group.
             foreach (var type in group.DamageTypes)
             {
-                if (damagePerType.TryGetValue(type, out var typeAmount))
+                if (!damagePerType.TryGetValue(type, out var typeAmount))
                 {
-                    // If damage types are allowed to belong to more than one damage group, they may appear twice here. Mark them as duplicate.
-                    if (!shownTypes.Contains(type))
-                    {
-                        shownTypes.Add(type);
-
-                        Label damagePerTypeLabel = new()
-                        {
-                            Text = Loc.GetString("health-analyzer-window-damage-type-" + type, ("amount", typeAmount)),
-                        };
-
-                        SetColorLabel(damagePerTypeLabel, typeAmount.Float());
-
-                        DamageLabelsContainer.AddChild(damagePerTypeLabel);
-                    }
+                    continue;
                 }
+
+                if (typeAmount == 0)
+                {
+                    continue;
+                }
+
+                // If damage types are allowed to belong to more than one damage group, they may appear twice here. Mark them as duplicate.
+                if (!shownTypes.Add(type))
+                {
+                    continue;
+                }
+
+                Label damagePerTypeLabel = new()
+                {
+                    Text = Loc.GetString("health-analyzer-window-damage-type-" + type, ("amount", typeAmount)),
+                };
+
+                SetColorLabel(damagePerTypeLabel, typeAmount.Float());
+
+                DamageLabelsContainer.AddChild(damagePerTypeLabel);
             }
         }
 
@@ -49,35 +56,34 @@ namespace Content.Client._White.Medical.BodyScanner
         /// </summary>
         /// <param name="label"></param>
         /// <param name="damage"></param>
-        private void SetColorLabel(Label label, float damage)
+        private static void SetColorLabel(Label label, float damage)
         {
             var startColor = Color.White;
             var critColor = Color.Yellow;
             var endColor = Color.Red;
 
-            var startDamage = 0f;
-            var critDamage = 30f;
-            var endDamage = 100f;
+            const float startDamage = 0f;
+            const float critDamage = 30f;
+            const float endDamage = 100f;
 
-            if (damage <= startDamage)
+            switch (damage)
             {
-                label.FontColorOverride = startColor;
-            }
-            else if (damage >= endDamage)
-            {
-                label.FontColorOverride = endColor;
-            }
-            else if (damage >= startDamage && damage <= critDamage)
-            {
-                // We need a number from 0 to 100.
-                damage *= 100f / (critDamage - startDamage);
-                label.FontColorOverride = GetColorLerp(startColor, critColor, damage);
-            }
-            else if (damage >= critDamage && damage <= endDamage)
-            {
-                // We need a number from 0 to 100.
-                damage *= 100f / (endDamage - critDamage);
-                label.FontColorOverride = GetColorLerp(critColor, endColor, damage);
+                case <= startDamage:
+                    label.FontColorOverride = startColor;
+                    break;
+                case >= endDamage:
+                    label.FontColorOverride = endColor;
+                    break;
+                case >= startDamage and <= critDamage:
+                    // We need a number from 0 to 100.
+                    damage *= 100f / (critDamage - startDamage);
+                    label.FontColorOverride = GetColorLerp(startColor, critColor, damage);
+                    break;
+                case >= critDamage and <= endDamage:
+                    // We need a number from 0 to 100.
+                    damage *= 100f / (endDamage - critDamage);
+                    label.FontColorOverride = GetColorLerp(critColor, endColor, damage);
+                    break;
             }
         }
 
@@ -88,7 +94,7 @@ namespace Content.Client._White.Medical.BodyScanner
         /// <param name="endColor"></param>
         /// <param name="percentage"></param>
         /// <returns></returns>
-        private Color GetColorLerp(Color startColor, Color endColor, float percentage)
+        private static Color GetColorLerp(Color startColor, Color endColor, float percentage)
         {
             var t = percentage / 100f;
             var r = MathHelper.Lerp(startColor.R, endColor.R, t);
