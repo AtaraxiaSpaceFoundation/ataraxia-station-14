@@ -13,7 +13,6 @@ using System.Numerics;
 using Content.Shared.Inventory;
 using Content.Server.Storage.EntitySystems;
 using Robust.Shared.Audio;
-using Robust.Server.GameObjects;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Roles;
@@ -27,7 +26,6 @@ using Robust.Server.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Server.Shuttles.Components;
-using Content.Server._White.Reputation;
 using Content.Shared.Players;
 
 namespace Content.Server.Antag;
@@ -48,7 +46,6 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private readonly RoleSystem _roles = default!; // WD
     [Dependency] private readonly SharedPlayerSystem _sharedPlayerSystem = default!; // WD
-    [Dependency] private readonly ReputationManager _reputationManager = default!; // WD
 
     /// <summary>
     /// Attempts to start the game rule by checking if there are enough players in lobby and readied.
@@ -135,11 +132,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             }
             else
             {
-                //chosenPlayer = _random.PickAndTake(prefList);
-                // WD EDIT START
-                chosenPlayer = _reputationManager.PickPlayerBasedOnReputation(prefList);
-                prefList.Remove(chosenPlayer);
-                // WD EDIT END
+                chosenPlayer = _random.PickAndTake(prefList);
                 playerList.Remove(chosenPlayer);
             }
 
@@ -223,12 +216,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         for (var i = 0; i < antagCount; i++)
         {
-            //results.Add(_random.PickAndTake(prefList));
-            // WD EDIT START
-            var pref = _reputationManager.PickPlayerBasedOnReputation(prefList);
-            prefList.Remove(pref);
-            results.Add(pref);
-            // WD EDIT END
+            results.Add(_random.PickAndTake(prefList));
             Log.Info("Selected a preferred antag.");
         }
         return results;

@@ -1,8 +1,8 @@
 #Changeling
 
 changeling-title = Генокрад
-changeling-description = A changeling has boarded the station!
-changeling-not-enough-ready-players = ННедостаточно игроков готовы к игре! Из { $minimumPlayers } необходимых игроков готовы { $readyPlayersCount }. Невозможно начать режим Генокрад
+changeling-description = Генокрад прокрался на станцию!
+changeling-not-enough-ready-players = Недостаточно игроков готовы к игре! Из { $minimumPlayers } необходимых игроков готовы { $readyPlayersCount }. Невозможно начать режим Генокрад
 changeling-no-one-ready = Нет готовых игроков! Не удалось начать режим Генокрад.
 
 changeling-round-end-agent-name = генокрад

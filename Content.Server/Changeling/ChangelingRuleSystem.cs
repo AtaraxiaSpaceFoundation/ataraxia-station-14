@@ -10,7 +10,6 @@ using Content.Server.Objectives;
 using Content.Server.Roles;
 using Content.Shared.Changeling;
 using Content.Shared.GameTicking;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
 using Robust.Shared.Player;
@@ -33,8 +32,8 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly ChangelingNameGenerator _nameGenerator = default!;
 
-    private const int PlayersPerChangeling = 10;
-    private const int MaxChangelings = 5;
+    private const int PlayersPerChangeling = 15;
+    private const int MaxChangelings = 4;
 
     private const float ChangelingStartDelay = 3f * 60;
     private const float ChangelingStartDelayVariance = 3f * 60;
@@ -56,11 +55,16 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         SubscribeLocalEvent<ChangelingRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
     }
 
-    protected override void ActiveTick(EntityUid uid, ChangelingRuleComponent component, GameRuleComponent gameRule, float frameTime)
+    protected override void ActiveTick(
+        EntityUid uid,
+        ChangelingRuleComponent component,
+        GameRuleComponent gameRule,
+        float frameTime)
     {
         base.ActiveTick(uid, component, gameRule, frameTime);
 
-        if (component.SelectionStatus == ChangelingRuleComponent.SelectionState.ReadyToSelect && _gameTiming.CurTime > component.AnnounceAt)
+        if (component.SelectionStatus == ChangelingRuleComponent.SelectionState.ReadyToSelect &&
+            _gameTiming.CurTime > component.AnnounceAt)
             DoChangelingStart(component);
     }
 
@@ -72,11 +76,11 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
                 continue;
 
-            var minPlayers = ChangelingMinPlayers;
-            if (!ev.Forced && ev.Players.Length < minPlayers)
+            if (!ev.Forced && ev.Players.Length < ChangelingMinPlayers)
             {
                 _chatManager.SendAdminAnnouncement(Loc.GetString("changeling-not-enough-ready-players",
-                    ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", minPlayers)));
+                    ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", ChangelingMinPlayers)));
+
                 ev.Cancel();
                 continue;
             }
@@ -88,16 +92,21 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
             }
         }
     }
+
     private void DoChangelingStart(ChangelingRuleComponent component)
     {
-        if (!component.StartCandidates.Any())
+        if (component.StartCandidates.Count == 0)
         {
             Log.Error("Tried to start Changeling mode without any candidates.");
             return;
         }
 
-        var numChangelings = MathHelper.Clamp(component.StartCandidates.Count / PlayersPerChangeling, 1, MaxChangelings);
-        var changelingPool = _antagSelection.FindPotentialAntags(component.StartCandidates, component.ChangelingPrototypeId);
+        var numChangelings =
+            MathHelper.Clamp(component.StartCandidates.Count / PlayersPerChangeling, 1, MaxChangelings);
+
+        var changelingPool =
+            _antagSelection.FindPotentialAntags(component.StartCandidates, component.ChangelingPrototypeId);
+
         var selectedChangelings = _antagSelection.PickAntag(numChangelings, changelingPool);
 
         foreach (var changeling in selectedChangelings)
@@ -115,6 +124,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         {
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
                 continue;
+
             foreach (var player in ev.Players)
             {
                 if (!ev.Profiles.ContainsKey(player.UserId))
@@ -123,7 +133,8 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
                 changeling.StartCandidates[player] = ev.Profiles[player.UserId];
             }
 
-            var delay = TimeSpan.FromSeconds(ChangelingStartDelay + _random.NextFloat(0f, ChangelingStartDelayVariance));
+            var delay = TimeSpan.FromSeconds(ChangelingStartDelay +
+                _random.NextFloat(0f, ChangelingStartDelayVariance));
 
             changeling.AnnounceAt = _gameTiming.CurTime + delay;
 
@@ -183,21 +194,18 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         readyChangeling.HiveName = _nameGenerator.GetName();
         Dirty(entity, readyChangeling);
 
+        if (!giveObjectives)
+            return true;
 
-        if (giveObjectives)
+        var difficulty = 0f;
+        for (var pick = 0; pick < ChangelingMaxPicks && ChangelingMaxDifficulty > difficulty; pick++)
         {
-            var maxDifficulty = ChangelingMaxDifficulty;
-            var maxPicks = ChangelingMaxPicks;
-            var difficulty = 0f;
-            for (var pick = 0; pick < maxPicks && maxDifficulty > difficulty; pick++)
-            {
-                var objective = _objectives.GetRandomObjective(mindId, mind, "ChangelingObjectiveGroups");
-                if (objective == null)
-                    continue;
+            var objective = _objectives.GetRandomObjective(mindId, mind, "ChangelingObjectiveGroups");
+            if (objective == null)
+                continue;
 
-                _mindSystem.AddObjective(mindId, mind, objective.Value);
-                difficulty += Comp<ObjectiveComponent>(objective.Value).Difficulty;
-            }
+            _mindSystem.AddObjective(mindId, mind, objective.Value);
+            difficulty += Comp<ObjectiveComponent>(objective.Value).Difficulty;
         }
 
         return true;
@@ -221,8 +229,10 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
 
             if (changeling.TotalChangelings >= MaxChangelings)
                 continue;
+
             if (!ev.LateJoin)
                 continue;
+
             if (!ev.Profile.AntagPreferences.Contains(changeling.ChangelingPrototypeId))
                 continue;
 
@@ -249,7 +259,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
             }
             else
             {
-                chance *= ((ev.JoinOrder + 1) - target);
+                chance *= ev.JoinOrder + 1 - target;
             }
 
             if (chance > 1)
@@ -262,7 +272,10 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         }
     }
 
-    private void OnObjectivesTextGetInfo(EntityUid uid, ChangelingRuleComponent comp, ref ObjectivesTextGetInfoEvent args)
+    private void OnObjectivesTextGetInfo(
+        EntityUid uid,
+        ChangelingRuleComponent comp,
+        ref ObjectivesTextGetInfoEvent args)
     {
         args.Minds = comp.ChangelingMinds;
         args.AgentName = Loc.GetString("changeling-round-end-agent-name");

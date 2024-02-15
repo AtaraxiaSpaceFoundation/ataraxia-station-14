@@ -18,7 +18,7 @@
   components:
   - type: EntityTargetAction
     itemIconStyle: NoItem
-    icon: Interface/Actions/ling_absorb.png
+    icon: White/Actions/changeling.rsi/absorb.png
     event: !type:AbsorbDnaActionEvent
     canTargetSelf: false
     useDelay: 10
@@ -32,7 +32,7 @@
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/transform.png
+      icon: White/Actions/changeling.rsi/transform.png
       event: !type:TransformActionEvent
       useDelay: 30
 
@@ -44,7 +44,7 @@
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/reviving_stasis.png
+      icon: White/Actions/changeling.rsi/reviving_stasis.png
       event: !type:RegenerateActionEvent
       checkCanInteract: false
       useDelay: 120
@@ -52,26 +52,40 @@
 
 - type: entity
   id: ActionChangelingLesserForm
-  name: Lesser Form
-  description: Become a lesser form of self.
+  name: changeling-ability-changeling-lesser-form
+  description: changeling-ability-changeling-lesser-form-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/lesser_form.png
+      icon: White/Actions/changeling.rsi/lesser_form.png
       event: !type:LesserFormActionEvent
       useDelay: 90
     - type: LesserFormRestricted
 
 - type: entity
+  id: ActionExtractionSting
+  name: changeling-ability-extraction-sting
+  description: changeling-ability-extraction-sting-desc
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon: White/Actions/changeling.rsi/sting_extract.png
+    event: !type:ExtractionStingActionEvent
+    canTargetSelf: false
+    useDelay: 40
+  - type: LesserFormRestricted
+
+- type: entity
   id: ActionTransformSting
-  name: Transform Sting
-  description: Injects a retrovirus that forces human victim to transform into another.
+  name: changeling-ability-transform-sting
+  description: changeling-ability-transform-sting-desc
   noSpawn: true
   components:
     - type: EntityTargetAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/sting_transform.png
+      icon: White/Actions/changeling.rsi/sting_transform.png
       event: !type:TransformStingActionEvent
       canTargetSelf: false
       useDelay: 120
@@ -79,13 +93,13 @@
 
 - type: entity
   id: ActionBlindSting
-  name: Blind Sting
-  description: Stings a human, completely blinding them for a short time.
+  name: changeling-ability-blind-sting
+  description: changeling-ability-blind-sting-desc
   noSpawn: true
   components:
     - type: EntityTargetAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/sting_blind.png
+      icon: White/Actions/changeling.rsi/sting_blind.png
       event: !type:BlindStingActionEvent
       canTargetSelf: false
       useDelay: 30
@@ -93,13 +107,13 @@
 
 - type: entity
   id: ActionMuteSting
-  name: Mute Sting
-  description: Silently stings a human, temporarily silencing them.
+  name: changeling-ability-mute-sting
+  description: changeling-ability-mute-sting-desc
   noSpawn: true
   components:
     - type: EntityTargetAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/sting_mute.png
+      icon: White/Actions/changeling.rsi/sting_mute.png
       event: !type:MuteStingActionEvent
       canTargetSelf: false
       useDelay: 30
@@ -107,13 +121,13 @@
 
 - type: entity
   id: ActionHallucinationSting
-  name: Hallucination Sting
-  description: Injects large doses of hallucinogenic chemicals into their victim.
+  name: changeling-ability-hallucination-sting
+  description: changeling-ability-hallucination-sting-desc
   noSpawn: true
   components:
     - type: EntityTargetAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/sting_hallucination.png
+      icon: White/Actions/changeling.rsi/sting_hallucination.png
       event: !type:HallucinationStingActionEvent
       canTargetSelf: false
       useDelay: 30
@@ -121,13 +135,13 @@
 
 - type: entity
   id: ActionCryoSting
-  name: Cryogenic Sting
-  description: Injects the target with a blend of chemicals that begins to turn their blood to ice.
+  name: changeling-ability-cryo-sting
+  description: changeling-ability-cryo-sting-desc
   noSpawn: true
   components:
     - type: EntityTargetAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/sting_cryo.png
+      icon: White/Actions/changeling.rsi/sting_cryo.png
       event: !type:CryoStingActionEvent
       canTargetSelf: false
       useDelay: 30
@@ -135,74 +149,91 @@
 
 - type: entity
   id: ActionAdrenalineSacs
-  name: Adrenaline Sacs
-  description: Allows to make use of additional adrenaline to instantly recover from knockdown.
+  name: changeling-ability-adrenaline-sacks
+  description: changeling-ability-adrenaline-sacks.desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/adrenaline_sacs.png
+      icon: White/Actions/changeling.rsi/adrenaline_sacs.png
       event: !type:AdrenalineSacsActionEvent
       useDelay: 60
     - type: LesserFormRestricted
 
 - type: entity
   id: ActionFleshmend
-  name: Fleshmend
-  description: Rapidly heal all type of damage.
+  name: changeling-ability-fleshmend
+  description: changeling-ability-fleshmend-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/fleshmend.png
+      icon: White/Actions/changeling.rsi/fleshmend.png
       event: !type:FleshmendActionEvent
       useDelay: 60
     - type: LesserFormRestricted
 
 - type: entity
   id: ActionArmblade
-  name: Arm Blade
-  description: Reforms one of the changeling's arms into a grotesque blade made out of bone and flesh.
+  name: changeling-ability-changeling-armblade
+  description: changeling-ability-changeling-armblade-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/arm_blade.png
+      icon: White/Actions/changeling.rsi/arm_blade.png
       event: !type:ArmbladeActionEvent
+      useDelay: 10
     - type: LesserFormRestricted
 
 - type: entity
   id: ActionShield
-  name: Organic Shield
-  description: Reforms one of the changeling's arms into a large, fleshy shield.
+  name: changeling-ability-changeling-shield
+  description: changeling-ability-changeling-shield-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/changeling_shield.png
+      icon: White/Actions/changeling.rsi/shield.png
       event: !type:OrganicShieldActionEvent
+      useDelay: 10
     - type: LesserFormRestricted
 
 - type: entity
   id: ActionArmor
-  name: Chitinous Armor
-  description: Inflates the changeling's body into an all-consuming chitinous mass of armor.
+  name: changeling-ability-changeling-armor
+  description: changeling-ability-changeling-armor-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/changeling_armor.png
+      icon: White/Actions/changeling.rsi/armor.png
       event: !type:ChitinousArmorActionEvent
+      useDelay: 10
     - type: LesserFormRestricted
 
 - type: entity
   id: ActionTentacleArm
-  name: Tentacle Arm
-  description: Reforms one of the arms into a tentacle. Can grab items or humans depending on mode.
+  name: changeling-ability-tentacle-arm
+  description: changeling-ability-tentacle-arm-desc
   noSpawn: true
   components:
     - type: InstantAction
       itemIconStyle: NoItem
-      icon: Interface/Actions/tentacle_arm.png
+      icon: White/Actions/changeling.rsi/tentacle_arm.png
       event: !type:TentacleArmActionEvent
+      useDelay: 10
     - type: LesserFormRestricted
+
+- type: entity
+  id: ActionBiodegrade
+  name: changeling-ability-biodegrade
+  description: changeling-ability-biodegrade-desc
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    icon: White/Actions/changeling.rsi/biodegrade.png
+    event: !type:BiodegradeActionEvent
+    useDelay: 120

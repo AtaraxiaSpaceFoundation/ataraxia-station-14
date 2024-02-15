@@ -1,8 +1,8 @@
 # Body Transforms
 - type: listing
   id: ChangelingLesserForm
-  name: Lesser Form
-  description: Become a lesser form of self.
+  name: changeling-ability-changeling-lesser-form
+  description: changeling-ability-changeling-lesser-form-desc
   productAction: ActionChangelingLesserForm
   cost:
     ChangelingPoint: 1
@@ -14,8 +14,8 @@
 
 - type: listing
   id: ChangelingArmblade
-  name: Arm Blade
-  description: Reforms one of the changeling's arms into a grotesque blade made out of bone and flesh.
+  name: changeling-ability-changeling-armblade
+  description: changeling-ability-changeling-armblade-desc
   productAction: ActionArmblade
   cost:
     ChangelingPoint: 3
@@ -27,8 +27,8 @@
 
 - type: listing
   id: ChangelingShield
-  name: Organic Shield
-  description: Reforms one of the changeling's arms into a large, fleshy shield.
+  name: changeling-ability-changeling-shield
+  description: changeling-ability-changeling-shield-desc
   productAction: ActionShield
   cost:
     ChangelingPoint: 3
@@ -40,8 +40,8 @@
 
 - type: listing
   id: ChangelingArmor
-  name: Chitinous Armor
-  description: Inflates the changeling's body into an all-consuming chitinous mass of armor.
+  name: changeling-ability-changeling-armor
+  description: changeling-ability-changeling-armor-desc
   productAction: ActionArmor
   cost:
     ChangelingPoint: 1
@@ -53,8 +53,8 @@
 
 - type: listing
   id: ChangelingTentacleArm
-  name: Tentacle Arm
-  description: Reforms one of the arms into a tentacle. Can grab items or humans depending on mode.
+  name: changeling-ability-tentacle-arm
+  description: changeling-ability-tentacle-arm-desc
   productAction: ActionTentacleArm
   cost:
     ChangelingPoint: 4
@@ -66,9 +66,22 @@
 
 # Stings
 - type: listing
+  id: ChangelingExtractionString
+  name: changeling-ability-extraction-sting
+  description: changeling-ability-extraction-sting-desc
+  productAction: ActionExtractionSting
+  cost:
+    ChangelingPoint: 0
+  categories:
+  - ChangelingStings
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChangelingTransformSting
-  name: Transform Sting
-  description: Injects a retrovirus that forces human victim to transform into another.
+  name: changeling-ability-transform-sting
+  description: changeling-ability-transform-sting-desc
   productAction: ActionTransformSting
   cost:
     ChangelingPoint: 3
@@ -80,8 +93,8 @@
 
 - type: listing
   id: ChangelingBlindSting
-  name: Blind Sting
-  description: Stings a human, completely blinding them for a short time.
+  name: changeling-ability-blind-sting
+  description: changeling-ability-blind-sting-desc
   productAction: ActionBlindSting
   cost:
     ChangelingPoint: 2
@@ -93,8 +106,8 @@
 
 - type: listing
   id: ChangelingMuteSting
-  name: Mute Sting
-  description: Silently stings a human, temporarily silencing them.
+  name: changeling-ability-mute-sting
+  description: changeling-ability-mute-sting-desc
   productAction: ActionMuteSting
   cost:
     ChangelingPoint: 3
@@ -106,8 +119,8 @@
 
 - type: listing
   id: ChangelingHallucinationSting
-  name: Hallucination Sting
-  description: Injects large doses of hallucinogenic chemicals into their victim.
+  name: changeling-ability-hallucination-sting
+  description: changeling-ability-hallucination-sting-desc
   productAction: ActionHallucinationSting
   cost:
     ChangelingPoint: 1
@@ -119,8 +132,8 @@
 
 - type: listing
   id: ChangelingCryogenicSting
-  name: Cryogenic Sting
-  description: Injects the target with a blend of chemicals that begins to turn their blood to ice.
+  name: changeling-ability-cryo-sting
+  description: changeling-ability-cryo-sting-desc
   productAction: ActionCryoSting
   cost:
     ChangelingPoint: 3
@@ -133,11 +146,11 @@
 # Boosters
 - type: listing
   id: ChangelingAdrenalineSacs
-  name: Adrenaline Sacs
-  description: Allows to make use of additional adrenaline to instantly recover from knockdown.
+  name: changeling-ability-adrenaline-sacks
+  description: changeling-ability-adrenaline-sacks-desc
   productAction: ActionAdrenalineSacs
   cost:
-    ChangelingPoint: 3
+    ChangelingPoint: 2
   categories:
     - ChangelingBoosters
   conditions:
@@ -146,8 +159,8 @@
 
 - type: listing
   id: ChangelingFleshmend
-  name: Fleshmend
-  description: Rapidly heal all type of damage.
+  name: changeling-ability-fleshmend
+  description: changeling-ability-fleshmend-desc
   productAction: ActionFleshmend
   cost:
     ChangelingPoint: 2
@@ -156,3 +169,16 @@
   conditions:
     - !type:ListingLimitedStockCondition
       stock: 1
+
+- type: listing
+  id: ChangelingBiodegrade
+  name: changeling-ability-biodegrade
+  description: changeling-ability-biodegrade-desc
+  productAction: ActionBiodegrade
+  cost:
+    ChangelingPoint: 2
+  categories:
+  - ChangelingBoosters
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

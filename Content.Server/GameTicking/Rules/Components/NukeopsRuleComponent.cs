@@ -90,7 +90,7 @@ public sealed partial class NukeopsRuleComponent : Component
     ///     This amount of TC will be given to each nukie
     /// </summary>
     [DataField]
-    public int WarTCAmountPerNukie = 40;
+    public int WarTCAmountPerNukie = 20;
 
     /// <summary>
     ///     Time allowed for declaration of war

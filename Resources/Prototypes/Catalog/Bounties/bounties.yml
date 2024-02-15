@@ -540,7 +540,7 @@
     amount: 6
     whitelist:
       components:
-      - HitscanBatteryAmmoProvider
+      - ProjectileBatteryAmmoProvider
 
 - type: cargoBounty
   id: BountyFood

@@ -27,7 +27,7 @@ public sealed partial class ChangelingSystem : EntitySystem
         InitializeShop();
     }
 
-    #region Handlers
+#region Handlers
 
     private void OnInit(EntityUid uid, ChangelingComponent component, ComponentInit args)
     {
@@ -41,12 +41,12 @@ public sealed partial class ChangelingSystem : EntitySystem
 
     private void OnExamine(EntityUid uid, AbsorbedComponent component, ExaminedEvent args)
     {
-        args.PushMarkup("[color=#A30000]His juices sucked up![/color]");
+        args.PushMarkup(Loc.GetString("changeling-juices-sucked-up"));
     }
 
-    #endregion
+#endregion
 
-    #region Helpers
+#region Helpers
 
     private void SetupShop(EntityUid uid, ChangelingComponent component)
     {
@@ -56,7 +56,7 @@ public sealed partial class ChangelingSystem : EntitySystem
         var coords = Transform(uid).Coordinates;
         var implant = Spawn("ChangelingShopImplant", coords);
 
-        if(!TryComp<SubdermalImplantComponent>(implant, out var implantComp))
+        if (!TryComp<SubdermalImplantComponent>(implant, out var implantComp))
             return;
 
         _implantSystem.ForceImplant(uid, implant, implantComp);
@@ -77,5 +77,5 @@ public sealed partial class ChangelingSystem : EntitySystem
         _action.AddAction(uid, ChangelingRegenerate);
     }
 
-    #endregion
+#endregion
 }
