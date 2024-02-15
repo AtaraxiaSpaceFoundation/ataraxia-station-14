@@ -221,7 +221,7 @@ public sealed class MeatyOreStoreSystem : EntitySystem
             return;
 
 
-        var fake = _roleSystem.MindIsAntagonist(targetMind.Mind.Value) || _jobSystem.CanBeAntag(mindComponent.Session);
+        var fake = _roleSystem.MindIsAntagonist(targetMind.Mind.Value) || !_jobSystem.CanBeAntag(mindComponent.Session);
 
         var ckey = userActorComponent.PlayerSession.Name;
         var grant = user == target;
