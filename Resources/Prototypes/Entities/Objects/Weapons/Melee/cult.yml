@@ -61,7 +61,7 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Normal
+    size: Huge
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     slots:

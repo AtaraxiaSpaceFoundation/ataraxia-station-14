@@ -28,9 +28,6 @@ public sealed partial class GunSystem
         if (!Timing.IsFirstTimePredicted)
             return;
 
-        if (!component.IsCycled)
-            return;
-
         EntityUid? ent = null;
 
         // TODO: Combine with TakeAmmo
@@ -39,8 +36,11 @@ public sealed partial class GunSystem
             var existing = component.Entities[^1];
             component.Entities.RemoveAt(component.Entities.Count - 1);
 
-            Containers.Remove(existing, component.Container);
-            EnsureShootable(existing);
+            if (Containers.CanRemove(existing, component.Container)) // WD EDIT
+            {
+                Containers.Remove(existing, component.Container);
+                EnsureShootable(existing);
+            }
         }
         else if (component.UnspawnedCount > 0)
         {
@@ -54,6 +54,5 @@ public sealed partial class GunSystem
 
         var cycledEvent = new GunCycledEvent();
         RaiseLocalEvent(uid, ref cycledEvent);
-
     }
 }

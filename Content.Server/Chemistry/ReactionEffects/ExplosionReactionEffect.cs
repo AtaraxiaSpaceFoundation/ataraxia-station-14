@@ -66,7 +66,8 @@ namespace Content.Server.Chemistry.ReactionEffects
                 ExplosionType,
                 intensity,
                 IntensitySlope,
-                MaxIntensity);
+                MaxIntensity,
+                canCreateVacuum: false); // WD EDIT
         }
     }
 }

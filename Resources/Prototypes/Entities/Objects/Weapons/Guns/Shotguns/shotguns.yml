@@ -118,6 +118,7 @@
     fireRate: 2
   - type: BallisticAmmoProvider
     capacity: 2
+    autoCycle: true
   - type: Construction
     graph: ShotgunSawn
     node: start
@@ -196,6 +197,7 @@
     fireRate: 4
   - type: BallisticAmmoProvider
     capacity: 2
+    autoCycle: true
   - type: Construction
     graph: ShotgunSawn
     node: shotgunsawn

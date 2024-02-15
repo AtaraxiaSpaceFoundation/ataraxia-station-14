@@ -64,7 +64,6 @@
       - CartridgeAntiMateriel
     capacity: 5
     proto: CartridgeAntiMateriel
-    autoCycle: true
   - type: Wieldable
     wieldTime: 0
     forceTwoHanded: True

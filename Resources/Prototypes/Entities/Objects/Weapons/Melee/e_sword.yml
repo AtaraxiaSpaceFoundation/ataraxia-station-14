@@ -206,11 +206,6 @@
   components:
   - type: EnergySword
   - type: ItemToggleMeleeWeapon
-    activatedDamage:
-        types:
-            Slash: 10
-            Heat: 12
-    deactivatedSecret: true
   - type: ItemToggleDisarmMalus
     activatedDisarmMalus: 0.6
   - type: Sprite

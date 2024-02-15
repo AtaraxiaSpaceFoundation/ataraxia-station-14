@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: PelletShotgunSlug
   name: pellet (.50 slug)
   noSpawn: true
@@ -85,8 +85,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 5
-        Slash: 5 #remember, it's metal shrapnel!
+        Piercing: 4
+        Slash: 4 #remember, it's metal shrapnel!
 
 - type: entity
   id: PelletShotgunTranquilizer

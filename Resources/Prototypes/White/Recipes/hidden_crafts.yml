@@ -67,7 +67,7 @@
     entity: WeaponPoweredCrossbow
 
 - type: constructionGraph
-  id: SnatcherprodGraph
+  id: StunprodGraph
   start: rod
   graph:
   - node: rod
@@ -81,14 +81,28 @@
   - node: unfinished
     entity: ProdUnfinished
     edges:
-      - to: capacitor
+      - to: Igniter
         steps:
-          - tag: CapacitorStockPart
-  - node: capacitor
+          - tag: Igniter
+      - to: rod
+        steps:
+          - tool: Cutting
+            doAfter: 5
+  - node: Igniter
     edges:
       - to: snatcherprod
         steps:
           - material: Telecrystal
+      - to: stunprod
+        steps:
+          - tag: PowerCell
+      - to: rod
+        steps:
+          - tool: Cutting
+            doAfter: 5
+        completed:
+        - !type:SpawnPrototype
+          prototype: Igniter
   - node: snatcherprod
     entity: Snatcherprod
     edges:
@@ -99,6 +113,19 @@
         completed:
         - !type:SpawnPrototype
           prototype: Telecrystal1
+        - !type:SpawnPrototype
+          prototype: Igniter
+        - !type:EmptyAllContainers
+  - node: stunprod
+    entity: Stunprod
+    edges:
+      - to: rod
+        steps:
+          - tool: Cutting
+            doAfter: 5
+        completed:
+        - !type:SpawnPrototype
+          prototype: Igniter
         - !type:EmptyAllContainers
 
 - type: constructionGraph

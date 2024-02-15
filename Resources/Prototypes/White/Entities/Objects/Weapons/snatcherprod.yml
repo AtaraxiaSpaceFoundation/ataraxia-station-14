@@ -27,6 +27,9 @@
       types:
         Blunt: 0
   - type: MeleeWeapon
+    attackRate: 1.25
+    canHeavyAttack: false
+    wideAnimationRotation: -135
     damage:
       types:
         Blunt: 9
@@ -37,9 +40,16 @@
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
     damage: 30
+    sound: /Audio/Weapons/egloves.ogg
   - type: UseDelay
   - type: Item
     size: Normal
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+  - type: DisarmMalus
+    malus: 0.225
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -48,6 +58,8 @@
           nocell: {state: snatcherprod_nocell}
           True: {state: snatcherprod_on}
           False: {state: snatcherprod_off}
+  - type: StaticPrice
+    price: 100
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: ItemSlots
@@ -58,13 +70,15 @@
     containers:
       cell_slot: !type:ContainerSlot {}
   - type: Snatcherprod
+  - type: Stunprod
+    hasHeldPrefix: false
   - type: Construction
-    deconstructionTarget: null
-    graph: SnatcherprodGraph
+    deconstructionTarget: rod
+    graph: StunprodGraph
     node: snatcherprod
 
 - type: entity
-  name: палка
+  name: обмотанный стержень
   parent: BaseItem
   id: ProdUnfinished
   description: Стержень с проводами.
@@ -75,6 +89,6 @@
   - type: Item
     size: Normal
   - type: Construction
-    deconstructionTarget: null
-    graph: SnatcherprodGraph
+    deconstructionTarget: rod
+    graph: StunprodGraph
     node: unfinished

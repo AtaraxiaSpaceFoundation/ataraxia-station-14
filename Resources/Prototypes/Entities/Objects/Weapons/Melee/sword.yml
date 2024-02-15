@@ -22,7 +22,7 @@
       path: /Audio/White/Items/handling/sabre_drop.ogg
   # WD edit sounds start
   - type: Item
-    size: Normal
+    size: Large
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: Tag
     tags:
@@ -50,7 +50,7 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Normal
+    size: Large
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: DisarmMalus
 
@@ -69,7 +69,7 @@
       types:
         Slash: 30
   - type: Item
-    size: Normal
+    size: Large
     sprite: Objects/Weapons/Melee/energykatana.rsi
   - type: EnergyKatana
   - type: DashAbility
@@ -106,7 +106,7 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Normal
+    size: Large
     sprite: Objects/Weapons/Melee/machete.rsi
   - type: DisarmMalus
   - type: Construction
@@ -129,11 +129,11 @@
     attackRate: 0.75
     damage:
       types:
-        Slash: 33
+        Slash: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Normal
+    size: Huge
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
@@ -161,11 +161,11 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Slash: 16
+        Slash: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
-    size: Normal
+    size: Large
     sprite: Objects/Weapons/Melee/cutlass.rsi
   - type: DisarmMalus
 

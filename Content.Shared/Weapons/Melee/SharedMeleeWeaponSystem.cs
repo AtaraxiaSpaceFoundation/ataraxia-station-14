@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Content.Server.Stunnable.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
@@ -217,13 +216,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         {
             return;
         }
-
-        // WD EDIT START
-        if (TryComp<StunbatonComponent>(weaponUid, out _))
-        {
-            return;
-        }
-        // WD EDIT END
 
         AttemptAttack(args.SenderSession.AttachedEntity.Value, weaponUid, weapon, msg, args.SenderSession);
     }

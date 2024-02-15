@@ -218,10 +218,6 @@
     qualities:
       - Sawing
     speed: 1.5
-  - type: Construction
-    deconstructionTarget: null
-    graph: ChainsawGraph
-    node: circular
 
 - type: entity
   name: advanced circular saw

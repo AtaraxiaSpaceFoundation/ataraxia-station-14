@@ -129,7 +129,7 @@
         friction: 0.2
   - type: Construction
     deconstructionTarget: null
-    graph: SnatcherprodGraph
+    graph: StunprodGraph
     node: rod
 
 - type: entity

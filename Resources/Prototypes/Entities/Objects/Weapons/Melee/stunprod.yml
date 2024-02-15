@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/stunprod.rsi
     layers:
-    - state: stunprod_off
+    - state: stunprod_nocell
       map: [ "enum.ToggleVisuals.Layer" ]
   - type: ItemToggle
     soundActivate:
@@ -26,24 +26,22 @@
     activatedDamage:
       types:
         Blunt: 0
-  - type: Stunbaton
-    energyPerUse: 70
+  - type: Stunprod
   - type: MeleeWeapon
+    attackRate: 1.25
+    canHeavyAttack: false
     wideAnimationRotation: -135
     damage:
       types:
         Blunt: 9
-    angle: 60
+    angle: 0
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit
-    damage: 20
+    damage: 30
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
-    damage: 20
+    damage: 30
     sound: /Audio/Weapons/egloves.ogg
-  - type: Battery
-    maxCharge: 360
-    startingCharge: 360
   - type: UseDelay
   - type: Item
     heldPrefix: off
@@ -60,10 +58,21 @@
     visuals:
       enum.ToggleVisuals.Toggled:
         enum.ToggleVisuals.Layer:
+          nocell: {state: stunprod_nocell}
           True: {state: stunprod_on}
           False: {state: stunprod_off}
   - type: StaticPrice
     price: 100
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot {}
   - type: Construction
-    graph: makeshiftstunprod
-    node: msstunprod
+    deconstructionTarget: rod
+    graph: StunprodGraph
+    node: stunprod

@@ -25,8 +25,8 @@
       params:
         volume: 1
   - type: RandomTimerTrigger
-    min: 0
-    max: 60
+    min: 3
+    max: 8
   - type: Explosive # Weak explosion in a very small radius. Doesn't break underplating.
     explosionType: Default
     totalIntensity: 20

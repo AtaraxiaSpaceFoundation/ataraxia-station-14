@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: BaseShellShotgun
   name: shell (.50)
   parent: BaseCartridge
@@ -145,7 +145,7 @@
         map: [ "enum.AmmoVisualLayers.Base" ]
   - type: CartridgeAmmo
     count: 10
-    spread: 45 #deadly if you can get up close... otherwise, good luck doing any kind of real damage
+    spread: 35 #deadly if you can get up close... otherwise, good luck doing any kind of real damage
     proto: PelletShotgunImprovised
   - type: SpentAmmoVisuals
     state: "improvised"
@@ -164,8 +164,6 @@
         - state: depleted-uranium
           map: [ "enum.AmmoVisualLayers.Base" ]
     - type: CartridgeAmmo
-      count: 5
-      spread: 6
       proto: PelletShotgunUranium
     - type: SpentAmmoVisuals
       state: "depleted-uranium"

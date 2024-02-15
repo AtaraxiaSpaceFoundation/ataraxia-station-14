@@ -256,14 +256,22 @@ public abstract partial class SharedGunSystem
                 entity = component.Entities[^1];
 
                 args.Ammo.Add((entity, EnsureShootable(entity)));
-                component.Entities.RemoveAt(component.Entities.Count - 1);
-                Containers.Remove(entity, component.Container);
+                if (component.AutoCycle && (!TryComp(entity, out CartridgeAmmoComponent? cartridge) || !cartridge.Spent)) // WD EDIT
+                {
+                    component.Entities.RemoveAt(component.Entities.Count - 1);
+                    Containers.Remove(entity, component.Container);
+                }
             }
             else if (component.UnspawnedCount > 0)
             {
                 component.UnspawnedCount--;
                 entity = Spawn(component.Proto, args.Coordinates);
                 args.Ammo.Add((entity, EnsureShootable(entity)));
+                if (!component.AutoCycle && HasComp<CartridgeAmmoComponent>(entity)) // WD EDIT
+                {
+                    component.Entities.Add(entity);
+                    Containers.Insert(entity, component.Container);
+                }
             }
         }
 
