@@ -59,6 +59,9 @@ public sealed partial class TemperatureComponent : Component
     }
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Slowdown = true;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier ColdDamage = new();
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]

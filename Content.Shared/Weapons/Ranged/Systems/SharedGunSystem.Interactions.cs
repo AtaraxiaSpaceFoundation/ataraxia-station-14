@@ -25,13 +25,13 @@ public abstract partial class SharedGunSystem
                 return;
 
             args.PushMarkup(Loc.GetString("gun-twomode-mode-examine", ("color", TwoModeExamineColor),
-                ("mode", GetLocMode(comp.CurrentMode))));
+                ("mode", GetLocMode(comp))));
         }
     }
 
-    private object GetLocMode(EnergyModes mode)
+    private object GetLocMode(TwoModeEnergyAmmoProviderComponent comp)
     {
-        return Loc.GetString($"gun-twomode-{mode.ToString()}");
+        return Loc.GetString($"gun-twomode-{comp.ModeNames[comp.CurrentMode]}");
     }
 
     private string GetLocSelector(SelectiveFire mode)

@@ -13,3 +13,17 @@ public sealed class ModifyChangedTemperatureEvent : EntityEventArgs, IInventoryR
         TemperatureDelta = temperature;
     }
 }
+
+// WD START
+public sealed class AdjustTemperatureEvent : EntityEventArgs, IInventoryRelayEvent
+{
+    public SlotFlags TargetSlots => ~SlotFlags.POCKET;
+
+    public float Temperature;
+
+    public AdjustTemperatureEvent(float temperature)
+    {
+        Temperature = temperature;
+    }
+}
+// WD END

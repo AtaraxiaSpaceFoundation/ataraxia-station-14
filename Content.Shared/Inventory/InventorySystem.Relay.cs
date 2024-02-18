@@ -26,6 +26,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, BeforeStripEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SeeIdentityAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ModifyChangedTemperatureEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, AdjustTemperatureEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, GetDefaultRadioChannelEvent>(RelayInventoryEvent);
 
         // by-ref events

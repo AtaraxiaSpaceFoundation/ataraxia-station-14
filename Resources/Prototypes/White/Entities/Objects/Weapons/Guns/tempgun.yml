@@ -1,0 +1,27 @@
+- type: entity
+  name: temperature gun
+  parent: WeaponEgun
+  id: WeaponTempGun
+  description: A gun that changes temperatures.
+  components:
+    - type: Sprite
+      sprite: White/Objects/Weapons/Guns/Battery/tempgun.rsi
+    - type: Gun
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+    - type: TwoModeEnergyAmmoProvider
+      stunPrototype: BulletCold
+      fireCost: 64
+      stunFireCost: 64
+      laserPrototype: BulletHeat
+      laserFireCost: 64
+      stunProjectileSpeed: 48
+      laserProjectileSpeed: 48
+      projSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
+      hitscanSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
+      modeNames:
+        Stun: Cool
+        Laser: Heat
+    - type: BatterySelfRecharger
+      autoRecharge: true
+      autoRechargeRate: 20

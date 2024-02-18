@@ -155,6 +155,13 @@ public sealed class TemperatureSystem : EntitySystem
         var heat = temperatureDelta * (airHeatCapacity * heatCapacity /
                                        (airHeatCapacity + heatCapacity));
         ChangeHeat(uid, heat * temperature.AtmosTemperatureTransferEfficiency, temperature: temperature);
+
+        // WD START
+        var adjEv = new AdjustTemperatureEvent(temperature.CurrentTemperature);
+        RaiseLocalEvent(uid, adjEv);
+        if (!MathHelper.CloseTo(adjEv.Temperature, temperature.CurrentTemperature))
+            ForceChangeTemperature(uid, adjEv.Temperature, temperature);
+        // WD END
     }
 
     public float GetHeatCapacity(EntityUid uid, TemperatureComponent? comp = null, PhysicsComponent? physics = null)

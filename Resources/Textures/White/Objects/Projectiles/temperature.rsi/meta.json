@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "taken from vgstation at https://github.com/vgstation-coders/vgstation13 at 6f3d7af6acf4f100cd88deec74cc750d6e90e4f3",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cold"
+    },
+    {
+      "name": "heat"
+    }
+  ]
+}

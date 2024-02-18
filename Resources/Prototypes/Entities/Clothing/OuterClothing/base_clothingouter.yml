@@ -114,6 +114,7 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
+  - type: ClothingTemperatureAdjust
 
 - type: entity
   abstract: true

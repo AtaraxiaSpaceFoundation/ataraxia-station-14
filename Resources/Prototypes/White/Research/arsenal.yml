@@ -1,0 +1,11 @@
+- type: technology
+  id: TemperatureWeaponry
+  name: research-technology-temperature-weaponry
+  icon:
+    sprite: White/Objects/Weapons/Guns/Battery/tempgun.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - WeaponTempGun

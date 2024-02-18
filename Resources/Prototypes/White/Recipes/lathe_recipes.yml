@@ -11,6 +11,7 @@
   completetime: 5
   materials:
     Steel: 1500
+
 - type: latheRecipe
   id: ClothingEyesNightVisionGoggles
   result: ClothingEyesNightVisionGoggles
@@ -21,3 +22,11 @@
     Silver: 100
     Gold: 100
 
+- type: latheRecipe
+  id: WeaponTempGun
+  result: WeaponTempGun
+  completetime: 8
+  materials:
+    Steel: 1500
+    Glass: 1000
+    Silver: 200

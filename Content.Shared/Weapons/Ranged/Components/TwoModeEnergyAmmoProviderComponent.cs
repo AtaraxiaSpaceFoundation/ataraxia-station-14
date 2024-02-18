@@ -40,6 +40,12 @@ public sealed partial class TwoModeEnergyAmmoProviderComponent : BatteryAmmoProv
     public SoundSpecifier? ToggleSound = new SoundPathSpecifier("/Audio/Weapons/Guns/Misc/egun_toggle.ogg");
 
     [ViewVariables(VVAccess.ReadOnly)] public bool InStun = true;
+
+    [DataField("modeNames")] public Dictionary<EnergyModes, string> ModeNames = new()
+    {
+        {EnergyModes.Stun, "Stun"},
+        {EnergyModes.Laser, "Laser"}
+    };
 }
 
 public enum EnergyModes

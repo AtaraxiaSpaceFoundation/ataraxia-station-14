@@ -54,3 +54,5 @@ gun-speedloader-empty = Спидлоадер пуст
 gun-twomode-mode-examine = Выбран тип огня [color={ $color }]{ $mode }[/color].
 gun-twomode-Stun = шокер
 gun-twomode-Laser = лазер
+gun-twomode-Cool = охлаждение
+gun-twomode-Heat = нагрев
