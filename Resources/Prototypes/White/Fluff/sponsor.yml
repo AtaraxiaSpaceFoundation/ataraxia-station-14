@@ -449,3 +449,9 @@
   entity: ClothingBeltSecurityFilledQwertymen
   sponsorOnly: true
   whitelistJobs: [ HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden  ]
+
+#Rector6275
+- type: loadout
+  id: Rector6275Suit
+  entity: ClothingOuterSuitRector6275
+  sponsorOnly: true

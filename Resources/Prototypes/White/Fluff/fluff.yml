@@ -1156,3 +1156,16 @@
     - id: Stunbaton
     - id: HandcuffsQwertymen
     - id: HandcuffsQwertymen
+
+#Rector6275
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterSuitRector6275
+  name: элитный бирюзовый костюм
+  description: Сшит на заказ, пахнет цветами. На воротнике лишь два символа "КК"
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Rector6275/suit.rsi
+    - type: Clothing
+      sprite: White/Fluff/Rector6275/suit.rsi
