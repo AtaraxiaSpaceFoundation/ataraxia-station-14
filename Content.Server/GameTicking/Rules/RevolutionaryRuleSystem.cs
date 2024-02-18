@@ -156,7 +156,6 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         {
             _antagSelection.EligiblePlayers(comp.HeadRevPrototypeId, comp.MaxHeadRevs, comp.PlayersPerHeadRev, comp.HeadRevStartSound,
                 "head-rev-role-greeting", "#5e9cff", out var chosen);
-            chosen = chosen.Where(x => !HasComp<CommandStaffComponent>(x)).ToList(); // WD
             if (chosen.Any())
                 GiveHeadRev(chosen, comp.HeadRevPrototypeId, comp);
             else

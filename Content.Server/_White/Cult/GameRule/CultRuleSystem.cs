@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._Miracle.Components;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -326,6 +327,11 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (!_jobSystem.CanBeAntag(player))
                 continue;
 
+            // Gulag
+            if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
+                mind.OwnedEntity is not { } ownedEntity || HasComp<GulagBoundComponent>(ownedEntity))
+                continue;
+
             // Latejoin
             if (player.AttachedEntity != null && pendingQuery.HasComponent(player.AttachedEntity.Value))
                 continue;
@@ -349,6 +355,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         {
             _sawmill.Info("Insufficient preferred cultists, picking at random.");
             prefList = list;
+            return prefList;
         }
 
         if (prefList.Count >= _minimalCultists)
@@ -375,14 +382,15 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     private List<ICommonSession> PickCultists(List<ICommonSession> prefList)
     {
         var result = new List<ICommonSession>();
-        if (prefList.Count == 0)
+
+        var minCultists = _cfg.GetCVar(WhiteCVars.CultMinPlayers);
+        var maxCultists = _cfg.GetCVar(WhiteCVars.CultMaxStartingPlayers);
+
+        if (prefList.Count < minCultists)
         {
             _sawmill.Info("Insufficient ready players to fill up with cultists, stopping the selection.");
             return result;
         }
-
-        var minCultists = _cfg.GetCVar(WhiteCVars.CultMinPlayers);
-        var maxCultists = _cfg.GetCVar(WhiteCVars.CultMaxStartingPlayers);
 
         var actualCultistCount = prefList.Count > maxCultists ? maxCultists : minCultists;
 

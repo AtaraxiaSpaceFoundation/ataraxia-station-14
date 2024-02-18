@@ -10,6 +10,9 @@
         {
             "name": "life_state"
         },
+        {
+            "name": "empty_state"
+        },
 		{
 			"name": "defib_state",
 			"delays": [[0.1, 0.1, 0.1, 0.1, 0.1, 0.1]]

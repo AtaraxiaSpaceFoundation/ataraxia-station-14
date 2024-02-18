@@ -3,5 +3,5 @@
   priority: 0
   icon:
     sprite: Interface/Misc/health_state.rsi
-    state: life_state
+    state: empty_state
   locationPreference: Right

@@ -5,6 +5,8 @@ using Content.Shared.Actions;
 using Content.Shared.Eui;
 using Content.Shared.Popups;
 using Content.Shared._White.Cult.UI;
+using Content.Shared.Pulling;
+using Content.Shared.Pulling.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
@@ -15,6 +17,7 @@ public sealed class TeleportSpellEui : BaseEui
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
     private SharedTransformSystem _transformSystem;
+    private SharedPullingSystem _pulling;
     private PopupSystem _popupSystem;
 
 
@@ -32,6 +35,7 @@ public sealed class TeleportSpellEui : BaseEui
         IoCManager.InjectDependencies(this);
 
         _transformSystem = _entityManager.System<SharedTransformSystem>();
+        _pulling = _entityManager.System<SharedPullingSystem>();
         _popupSystem = _entityManager.System<PopupSystem>();
 
         _performer = performer;
@@ -96,6 +100,19 @@ public sealed class TeleportSpellEui : BaseEui
         }
 
         _used = true;
+
+        // break pulls before portal enter so we dont break shit
+        if (_entityManager.TryGetComponent<SharedPullableComponent>(_target, out var pullable) && pullable.BeingPulled)
+        {
+            _pulling.TryStopPull(pullable);
+        }
+
+        if (_entityManager.TryGetComponent<SharedPullerComponent>(_target, out var pulling)
+            && pulling.Pulling != null &&
+            _entityManager.TryGetComponent<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+        {
+            _pulling.TryStopPull(subjectPulling);
+        }
 
         _transformSystem.SetCoordinates(_target, runeTransform.Coordinates);
         Close();

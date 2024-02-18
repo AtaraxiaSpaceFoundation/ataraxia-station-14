@@ -298,7 +298,7 @@ public sealed partial class DoorComponent : Component
     public bool ClickOpen = true;
 
     [DataField(customTypeSerializer: typeof(ConstantSerializer<DrawDepthTag>))]
-    public int OpenDrawDepth = (int) DrawDepth.DrawDepth.Doors;
+    public int OpenDrawDepth = (int) DrawDepth.DrawDepth.SmallObjects;
 
     [DataField(customTypeSerializer: typeof(ConstantSerializer<DrawDepthTag>))]
     public int ClosedDrawDepth = (int) DrawDepth.DrawDepth.Doors;

@@ -33,6 +33,7 @@ using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Runes;
 using Content.Shared._White.Cult.UI;
 using Content.Shared.Mindshield.Components;
+using Content.Shared.Pulling;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -62,6 +63,7 @@ public sealed partial class CultSystem : EntitySystem
     [Dependency] private readonly GunSystem _gunSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly FlammableSystem _flammableSystem = default!;
+    [Dependency] private readonly SharedPullingSystem _pulling = default!;
 
 
     public override void Initialize()
@@ -664,6 +666,18 @@ public sealed partial class CultSystem : EntitySystem
 
         foreach (var target in targets)
         {
+            // break pulls before portal enter so we dont break shit
+            if (TryComp<SharedPullableComponent>(target, out var pullable) && pullable.BeingPulled)
+            {
+                _pulling.TryStopPull(pullable);
+            }
+
+            if (TryComp<SharedPullerComponent>(target, out var pulling)
+                && pulling.Pulling != null && TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+            {
+                _pulling.TryStopPull(subjectPulling);
+            }
+
             _xform.SetCoordinates(target, xFormSelected.Coordinates);
         }
 

@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Linq;
+using Content.Server._Miracle.Components;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -272,6 +273,9 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         foreach (var player in allPlayers)
         {
             if (player.AttachedEntity == null || !HasComp<HumanoidAppearanceComponent>(player.AttachedEntity) || HasComp<ZombieImmuneComponent>(player.AttachedEntity))
+                continue;
+
+            if (HasComp<GulagBoundComponent>(player.AttachedEntity)) // WD
                 continue;
 
             if (HasComp<InitialInfectedExemptComponent>(player.AttachedEntity))
