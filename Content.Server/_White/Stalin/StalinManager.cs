@@ -37,7 +37,7 @@ public sealed class StalinManager
     private readonly Dictionary<string, DateTime> _nextStalinAllowedCheck = new();
     private string _stalinApiUrl = string.Empty;
     private string _stalinAuthUrl = string.Empty;
-    private float _minimalDiscordAccountAge = 0f;
+    private float _minimalDiscordAccountAge = 228f;
 
     public void Initialize()
     {
