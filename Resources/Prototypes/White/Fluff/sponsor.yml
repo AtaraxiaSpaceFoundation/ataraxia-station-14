@@ -29,6 +29,18 @@
   sponsorOnly: true
   whitelistJobs: [Chaplain]
 
+- type: loadout
+  id: DoommaxCapCloakLoadout
+  entity: DoommaxCapCloak
+  sponsorOnly: true
+  whitelistJobs: [Captain]
+
+- type: loadout
+  id: DoommaxCapCapLoadout
+  entity: DoommaxCapCap
+  sponsorOnly: true
+  whitelistJobs: [Captain]
+
 # Maury
 #- type: loadout
 #  id: ClothingUniformJumpsuitMaury #Should be ClothingUniformMauryLoadout but like i said i`m retard

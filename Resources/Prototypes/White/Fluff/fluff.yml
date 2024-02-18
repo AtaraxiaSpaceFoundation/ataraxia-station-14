@@ -107,6 +107,30 @@
     - type: Clothing
       sprite: White/Fluff/DOOMMAX/bishop_schema_hood.rsi
 
+- type: entity
+  parent: ClothingNeckBase
+  id: DoommaxCapCloak
+  name: широкая шинель капитана
+  description: Широкая капитанская шинель. Кажется, она не по размеру вам, но как накидка на плечи сойдёт.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/cap_cloak.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/cap_cloak.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: DoommaxCapCap
+  name: роскошная фуражка капитана
+  description: Комично огромная фуражка капитана. Даже клоун позавидует вашей помпезности.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/DOOMMAX/cap_cap.rsi
+    - type: Clothing
+      sprite: White/Fluff/DOOMMAX/cap_cap.rsi
+
 # Maury
 #- type: entity
 #  parent: ClothingUniformJumpsuitChemistry
