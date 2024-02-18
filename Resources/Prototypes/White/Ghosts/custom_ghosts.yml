@@ -356,3 +356,11 @@
   ghostName: Maiden
   ghostDescription: Наблюдает за вашим поведением в кафе.
   size: 0.9, 0.9
+
+#joulerk
+- type: customGhost
+  id: joulerk-ghost
+  ckey: Joulerk
+  sprite: White/Ghosts/joulerk-ghost.rsi
+  ghostName: ЛЕРК
+  ghostDescription: Летающее бирюзовое существо, напоминающее кота, с пушистым телом, грациозными движениями и глазами, сверкающими с загадочным блеском.
