@@ -27,7 +27,6 @@
       types:
         Blunt: 0
   - type: MeleeWeapon
-    attackRate: 1.25
     canHeavyAttack: false
     wideAnimationRotation: -135
     damage:

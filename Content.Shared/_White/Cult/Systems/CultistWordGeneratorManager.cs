@@ -1,3 +1,4 @@
+using System.Linq;
 using Robust.Shared.Random;
 
 namespace Content.Shared._White.Cult.Systems;
@@ -14,7 +15,7 @@ public sealed class CultistWordGeneratorManager
 
     public string GenerateText(string text)
     {
-        var content = text.Split(' ');
+        var content = text.Split(' ').Where(x => x.Length > 0).ToArray();
         var wordsAmount = content.Length;
 
         if (wordsAmount <= 0)
@@ -22,10 +23,10 @@ public sealed class CultistWordGeneratorManager
 
         for (var i = 0; i < wordsAmount; i++)
         {
-            content[i] = GenerateWord(content[i].Length) + " ";
+            content[i] = GenerateWord(content[i].Length);
         }
 
-        return string.Join("", content);
+        return string.Join(" ", content);
     }
 
     private string GenerateWord(int length)

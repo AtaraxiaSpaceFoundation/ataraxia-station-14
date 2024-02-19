@@ -100,14 +100,14 @@
   categories:
   - UplinkArmor
 
-- type: listing
-  id: UplinkBattleAxe
-  name: Энергетической боевой топор
-  description: Мощный боевой топор, способный повалить с одного удара любую незащищенную цель.
-  icon: { sprite: /Textures/White/Objects/Weapons/energy_axe.rsi, state: icon }
-  productEntity: EnergyBattleAxe
-  cost:
-    Telecrystal: 20
-  categories:
-  - UplinkWeapons
-  saleLimit: 1
+#- type: listing
+#  id: UplinkBattleAxe
+#  name: Энергетической боевой топор
+#  description: Мощный боевой топор, способный повалить с одного удара любую незащищенную цель.
+#  icon: { sprite: /Textures/White/Objects/Weapons/energy_axe.rsi, state: icon }
+#  productEntity: EnergyBattleAxe
+#  cost:
+#    Telecrystal: 20
+#  categories:
+#  - UplinkWeapons
+#  saleLimit: 1

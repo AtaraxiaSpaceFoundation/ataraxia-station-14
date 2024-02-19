@@ -21,7 +21,6 @@ using Content.Shared.Input;
 using Content.Shared.Radio;
 using Content.Shared._White;
 using Content.Shared._White.Utils;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -54,7 +53,6 @@ public sealed class ChatUIController : UIController
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly CultistWordGeneratorManager _wordGenerator = default!;
     [Dependency] private readonly IEntityManager _entities = default!;
 
     [UISystemDependency] private readonly ExamineSystem? _examine = default;
@@ -849,13 +847,6 @@ public sealed class ChatUIController : UIController
             case ChatChannel.Whisper:
                 AddSpeechBubble(msg, SpeechBubble.SpeechType.Whisper);
                 break;
-
-            // WD EDIT
-            case ChatChannel.Cult:
-                msg.Message = _wordGenerator.GenerateText(msg.Message);
-                AddSpeechBubble(msg, SpeechBubble.SpeechType.Whisper);
-                break;
-            // WD EDIT END
 
             case ChatChannel.Dead:
                 if (_ghost is not {IsGhost: true})

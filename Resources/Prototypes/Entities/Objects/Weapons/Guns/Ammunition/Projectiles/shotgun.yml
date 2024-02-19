@@ -85,8 +85,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 4
-        Slash: 4 #remember, it's metal shrapnel!
+        Piercing: 3
+        Slash: 3 #remember, it's metal shrapnel!
 
 - type: entity
   id: PelletShotgunTranquilizer

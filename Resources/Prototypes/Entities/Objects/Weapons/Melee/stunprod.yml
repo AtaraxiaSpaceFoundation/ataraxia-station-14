@@ -28,7 +28,6 @@
         Blunt: 0
   - type: Stunprod
   - type: MeleeWeapon
-    attackRate: 1.25
     canHeavyAttack: false
     wideAnimationRotation: -135
     damage:

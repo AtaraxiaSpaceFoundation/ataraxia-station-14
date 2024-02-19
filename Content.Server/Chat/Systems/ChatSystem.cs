@@ -27,6 +27,7 @@ using Content.Shared.Radio;
 using Content.Shared._White;
 using Content.Shared.Speech;
 using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -67,6 +68,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly INetConfigurationManager _netConfigurationManager = default!; // WD
     [Dependency] private readonly GameTicker _gameTicker = default!;                            // WD
+    [Dependency] private readonly CultistWordGeneratorManager _wordGenerator = default!;        // WD
 
     //WD-EDIT
     [Dependency] private readonly PandaWebManager _pandaWeb = default!;
@@ -816,6 +818,8 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         _chatManager.ChatMessageToMany(ChatChannel.Cult, message, wrappedMessage, source, hideChat, false,
             clients.ToList());
+
+        SendEntityWhisper(source, _wordGenerator.GenerateText(message), ChatTransmitRange.Normal, null, null);
     }
 
     private IEnumerable<INetChannel> GetCultChatClients()

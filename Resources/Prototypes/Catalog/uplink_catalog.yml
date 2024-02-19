@@ -1311,7 +1311,7 @@
   description: uplink-hardsuit-syndieelite-desc
   productEntity: ClothingOuterHardsuitSyndieElite
   cost:
-    Telecrystal: 10
+    Telecrystal: 12
   categories:
   - UplinkArmor
   saleLimit: 1
@@ -1322,7 +1322,7 @@
   description: uplink-clothing-outer-hardsuit-juggernaut-desc
   productEntity: ClothingOuterHardsuitJuggernaut
   cost:
-    Telecrystal: 12
+    Telecrystal: 20
   categories:
   - UplinkArmor
   saleLimit: 1

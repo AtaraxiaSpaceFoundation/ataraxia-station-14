@@ -20,7 +20,7 @@
   noSpawn: true
   components:
   - type: InstantAction
-    useDelay: 2
+    useDelay: 1.5
     itemIconStyle: BigAction
     priority: -20
     icon:
