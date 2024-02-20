@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server._Miracle.Components;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
@@ -385,16 +385,15 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     {
         var result = new List<ICommonSession>();
 
-        var minCultists = _cfg.GetCVar(WhiteCVars.CultMinPlayers);
         var maxCultists = _cfg.GetCVar(WhiteCVars.CultMaxStartingPlayers);
 
-        if (prefList.Count < minCultists)
+        if (prefList.Count < _minimalCultists)
         {
             _sawmill.Info("Insufficient ready players to fill up with cultists, stopping the selection.");
             return result;
         }
 
-        var actualCultistCount = prefList.Count > maxCultists ? maxCultists : minCultists;
+        var actualCultistCount = prefList.Count > maxCultists ? maxCultists : _minimalCultists;
 
         for (var i = 0; i < actualCultistCount; i++)
         {
