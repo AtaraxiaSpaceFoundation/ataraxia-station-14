@@ -45,6 +45,11 @@ job-name-ertmedic = медик ОБР
 job-name-ertjanitor = уборщик ОБР
 job-name-boxer = боксёр
 job-name-zookeeper = зоотехник
+job-name-senior-engineer = бригадир
+job-name-senior-researcher = ведущий исследователь
+job-name-senior-physician = медицинский офицер
+job-name-senior-officer = ветеран СБ
+job-name-senior-salvage-specialist = охотник карго
 
 # Role timers - Make these alphabetical or I cut you
 JobAtmosphericTechnician = атмосферный техник
@@ -89,6 +94,11 @@ JobScientist = учёный
 JobSecurityCadet = кадет СБ
 JobSecurityOfficer = офицер СБ
 JobServiceWorker = сервисный работник
+JobSeniorSalvageSpecialist = охотник карго
+JobSeniorEngineer = бригадир
+JobSeniorOfficer = ветеран СБ
+JobSeniorPhysician = медицинский офицер
+JobSeniorResearcher = ведущий исследователь
 JobStationEngineer = инженер
 JobTechnicalAssistant = технический ассистент
 JobWarden = смотритель

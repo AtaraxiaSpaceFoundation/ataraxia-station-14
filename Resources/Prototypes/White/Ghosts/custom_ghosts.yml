@@ -364,3 +364,13 @@
   sprite: White/Ghosts/joulerk-ghost.rsi
   ghostName: ЛЕРК
   ghostDescription: Летающее бирюзовое существо, напоминающее кота, с пушистым телом, грациозными движениями и глазами, сверкающими с загадочным блеском.
+
+#waggier
+- type: customGhost
+  id: waggier-ghost
+  ckey: waggier
+  sprite: White/Ghosts/waggier-ghost.rsi
+  alpha: 0.9
+  ghostName: Ветеранка СБ
+  ghostDescription: Вы нарушили правила действующего закона.... "перечисление статей"
+  size: 0.6, 0.6
