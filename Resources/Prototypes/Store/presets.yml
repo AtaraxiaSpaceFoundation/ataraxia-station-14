@@ -25,23 +25,6 @@
     salesCategory: UplinkSales
 
 - type: storePreset
-  id: StorePresetUplinkNukeOps
-  storeName: Uplink
-  categories:
-  - UplinkWeapons
-  - UplinkAmmo
-  - UplinkExplosives
-  - UplinkMisc
-  - UplinkBundles
-  - UplinkTools
-  - UplinkUtility
-  - UplinkImplants
-  - UplinkArmor
-  - UplinkPointless
-  currencyWhitelist:
-  - Telecrystal
-
-- type: storePreset
   id: StorePresetChangeling
   storeName: Evolution Shop
   categories:
