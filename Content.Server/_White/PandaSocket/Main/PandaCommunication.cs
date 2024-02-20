@@ -141,6 +141,9 @@ public sealed class UtkaBanRequest : PandaBaseRequestEventMessage
 
     [JsonPropertyName("global")]
     public bool? Global { get; set; }
+
+    [JsonPropertyName("severity")]
+    public string? Severity { get; set; }
 }
 
 public sealed class UtkaBanResponse : PandaBaseMessage

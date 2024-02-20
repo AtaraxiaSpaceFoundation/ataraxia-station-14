@@ -46,6 +46,12 @@ public sealed class PandaBanCommand : IPandaCommand
         var minutes = (uint) message.Duration!;
         var isGlobalBan = (bool) message.Global!;
 
+        if (Enum.TryParse(message.Severity!, ignoreCase: true, out NoteSeverity severity))
+        {
+            UtkaSendResponse(context, false);
+            return;
+        }
+
         var located = await locator.LookupIdByNameOrIdAsync(target);
         if (located == null)
         {
@@ -101,7 +107,7 @@ public sealed class PandaBanCommand : IPandaCommand
             roundId,
             playtime,
             reason,
-            NoteSeverity.High,
+            severity,
             player,
             null,
             serverName);
