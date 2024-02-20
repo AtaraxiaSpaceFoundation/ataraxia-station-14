@@ -1,0 +1,39 @@
+- type: entity
+  parent: BaseItem
+  id: ArmamentsBeacon
+  name: радиомаяк вооружения
+  description: Содержит набор вооружения для священника.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/door_remote.rsi
+    layers:
+    - state: door_remotebase
+    - state: door_remotelightscolour
+      color: lightblue
+    - state: door_remotescreencolour
+      color: lightblue
+  - type: Item
+    storedRotation: -90
+  - type: ActivatableUI
+    key: enum.SelectArmorUi.Key
+    inHandsOnly: true
+    closeOnHandDeselect: true
+  - type: UserInterface
+    interfaces:
+    - key: enum.SelectArmorUi.Key
+      type: ArmamentsBeaconBui
+  - type: ArmamentsBeacon
+    armor:
+    - ClothingOuterArmorTemplar
+    - ClothingOuterArmorClock
+    - ClothingOuterArmorStudent
+    - ClothingOuterArmorAncient
+    - ClothingOuterArmorWitchHunter
+    - ClothingOuterArmorAdept
+    helmets:
+    - ClothingHeadHelmedTemplarArmored
+    - ClothingHeadHelmetClock
+    - ClothingHeadHelmetCage
+    - ClothingHeadHelmetAncientChaplain
+    - ClothingHeadHelmetWitchHunter
+    - null

@@ -1,0 +1,77 @@
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorTemplar
+  name: доспехи крестоносца
+  description: Бог желает этого!
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/templar.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/templar.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.9
+        Heat: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+
+- type: entity
+  parent: ClothingOuterArmorTemplar
+  id: ClothingOuterArmorClock
+  name: забытая броня
+  description: Звучит как шипение пара, тиканье шестерёнок и затихание. Похоже на мёртвую машину, пытающуюся жить.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/clock.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/clock.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplar
+  id: ClothingOuterArmorStudent
+  name: студенческая мантия
+  description: Униформа древнего учебного заведения.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/student.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/student.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplar
+  id: ClothingOuterArmorAncient
+  name: древний доспех
+  description: Защити сокровище...
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/ancient.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/ancient.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplar
+  id: ClothingOuterArmorWitchHunter
+  name: одеяние Охотника на Ведьм
+  description: Это изношенное одеяние часто применялось в свое время.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/witchhunter.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/witchhunter.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplar
+  id: ClothingOuterArmorAdept
+  name: мантия адепта
+  description: Идеальный наряд для сжигания неверных.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/OuterClothing/adept.rsi
+  - type: Clothing
+    sprite: White/Clothing/OuterClothing/adept.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetAdept

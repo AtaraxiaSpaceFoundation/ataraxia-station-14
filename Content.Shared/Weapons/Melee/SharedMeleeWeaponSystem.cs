@@ -22,6 +22,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared._White;
+using Content.Shared._White.Chaplain;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -500,6 +501,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (hitEvent.Handled)
             return;
 
+        // WD START
+        var blockEvent = new MeleeBlockAttemptEvent(user);
+        RaiseLocalEvent(target.Value, ref blockEvent);
+        if (blockEvent.Blocked)
+            return;
+        // WD END
+
         var targets = new List<EntityUid>(1)
         {
             target.Value
@@ -519,7 +527,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user);
+        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, component.IgnoreResistances, origin:user); // WD EDIT
 
         if (damageResult != null && damageResult.Any())
         {
@@ -658,11 +666,18 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             if (!Blocker.CanAttack(user, entity, (weapon, component)))
                 continue;
 
+            // WD START
+            var blockEvent = new MeleeBlockAttemptEvent(user);
+            RaiseLocalEvent(entity, ref blockEvent);
+            if (blockEvent.Blocked)
+                continue;
+            // WD END
+
             var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates));
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin:user);
+            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, component.IgnoreResistances, origin:user); // WD EDIT
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {

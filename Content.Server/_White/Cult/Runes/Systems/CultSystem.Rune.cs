@@ -10,6 +10,7 @@ using Content.Server.Hands.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.Cult.Runes.Comps;
+using Content.Shared._White.Chaplain;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
@@ -423,7 +424,8 @@ public sealed partial class CultSystem : EntitySystem
             var isTarget = mind!.Mind!.Value == targetMind?.Mind!.Value;
 
             // Выполнение действия в зависимости от условий
-            if (canBeConverted && !HasComp<MindShieldComponent>(victim.Value) && !isTarget)
+            if (canBeConverted && !HasComp<HolyComponent>(victim.Value) &&
+                !HasComp<MindShieldComponent>(victim.Value) && !isTarget)
             {
                 result = Convert(uid, victim.Value, args.User, args.Cultists);
             }

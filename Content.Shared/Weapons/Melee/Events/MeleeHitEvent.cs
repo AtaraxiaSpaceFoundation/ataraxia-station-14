@@ -93,3 +93,8 @@ public record struct GetMeleeAttackRateEvent(EntityUid Weapon, float Rate, float
 /// </summary>
 [ByRefEvent]
 public record struct GetHeavyDamageModifierEvent(EntityUid Weapon, FixedPoint2 DamageModifier, float Multipliers, EntityUid User);
+
+// WD START
+[ByRefEvent]
+public record struct MeleeBlockAttemptEvent(EntityUid Attacker, bool Blocked = false);
+// WD END

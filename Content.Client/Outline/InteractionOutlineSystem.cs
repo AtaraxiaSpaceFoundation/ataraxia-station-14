@@ -141,19 +141,25 @@ public sealed class InteractionOutlineSystem : EntitySystem
         var inRange = false;
         if (localPlayer.ControlledEntity != null && !Deleted(entityToClick))
         {
-            inRange = _interactionSystem.InRangeUnobstructed(localPlayer.ControlledEntity.Value, entityToClick.Value);
-
             // WD START
             if (_combatMode.IsInCombatMode(localPlayer.ControlledEntity) &&
                 (_meleeWeapon.TryGetWeapon(localPlayer.ControlledEntity.Value, out _, out var weapon) ||
                  TryComp(localPlayer.ControlledEntity, out weapon)))
             {
+                inRange = _interactionSystem.InRangeUnobstructed(localPlayer.ControlledEntity.Value,
+                    entityToClick.Value, weapon.Range);
+
                 var mousePos = _eyeManager.ScreenToMap(_inputManager.MouseScreenPosition);
                 var userPos = Transform(localPlayer.ControlledEntity.Value).MapPosition;
 
                 if (mousePos.MapId != userPos.MapId || (userPos.Position - mousePos.Position).Length() > weapon.Range)
                     inRange = false;
-            } // WD END
+            }
+            else
+            {
+                inRange = _interactionSystem.InRangeUnobstructed(localPlayer.ControlledEntity.Value, entityToClick.Value);
+            }
+             // WD END
         }
 
         InteractionOutlineComponent? outline;

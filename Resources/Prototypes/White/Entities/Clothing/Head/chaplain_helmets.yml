@@ -1,0 +1,79 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmedTemplarArmored
+  name: шлем крестоносца
+  description: Деус Вульт!
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/templar.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/templar.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.95
+  - type: Tag
+    tags:
+    - HidesHair
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadHelmedTemplarArmored
+  id: ClothingHeadHelmetClock
+  name: забытый шлем
+  description: У него непреклонный взгляд навечно забытого бога.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/clock.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/clock.rsi
+
+- type: entity
+  parent: ClothingHeadHelmedTemplarArmored
+  id: ClothingHeadHelmetCage
+  name: клетка
+  description: Клетка, сдерживающая желания личности, позволяющая увидеть нечестивый мир таким, какой он есть.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/cage.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/cage-equipped.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadHelmedTemplarArmored
+  id: ClothingHeadHelmetAncientChaplain
+  name: древний шлем
+  description: Никто не может пройти!
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/ancient.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/ancient.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetCage
+  id: ClothingHeadHelmetWitchHunter
+  name: шляпа Охотника на Ведьм
+  description: Эта изношенная шляпа часто применялась в свое время.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/witchhunter.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/witchhunter.rsi
+
+- type: entity
+  parent: ClothingHeadHelmedTemplarArmored
+  id: ClothingHeadHelmetAdept
+  noSpawn: true
+  name: капюшон адепта
+  description: Еретично только тогда, когда это делают другие.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/adept.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/adept.rsi

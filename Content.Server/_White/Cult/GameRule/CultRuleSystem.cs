@@ -22,6 +22,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Content.Shared._White;
+using Content.Shared._White.Chaplain;
 using Content.Shared._White.Cult.Components;
 using Content.Shared.Mind;
 using Robust.Shared.Audio.Systems;
@@ -327,9 +328,10 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (!_jobSystem.CanBeAntag(player))
                 continue;
 
-            // Gulag
+            // Gulag & chaplain
             if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
-                mind.OwnedEntity is not { } ownedEntity || HasComp<GulagBoundComponent>(ownedEntity))
+                mind.OwnedEntity is not { } ownedEntity || HasComp<GulagBoundComponent>(ownedEntity) ||
+                HasComp<HolyComponent>(ownedEntity))
                 continue;
 
             // Latejoin
@@ -414,7 +416,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         if (!_mindSystem.TryGetMind(cultist, out var mindId, out var mind))
         {
-            Log.Info("Failed getting mind for picked thief.");
+            Log.Info("Failed getting mind for picked cultist.");
             return false;
         }
 

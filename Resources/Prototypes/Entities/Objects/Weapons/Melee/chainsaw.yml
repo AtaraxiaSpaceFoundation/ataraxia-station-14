@@ -47,6 +47,10 @@
         maxVol: 300
   - type: UseDelay
     delay: 1
+  - type: Tool
+    qualities:
+      - Sawing
+    speed: 0.5
   - type: Construction
     deconstructionTarget: null
     graph: ChainsawGraph

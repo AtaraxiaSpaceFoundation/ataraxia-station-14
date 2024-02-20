@@ -60,9 +60,13 @@ public sealed partial class MeleeWeaponComponent : Component
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public bool Attacking = false;
 
-    // WD
+    // WD START
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool CanHeavyAttack = true;
+
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public bool IgnoreResistances;
+    // WD END
 
     /// <summary>
     /// If true, attacks will be repeated automatically without requiring the mouse button to be lifted.
