@@ -455,3 +455,9 @@
   id: Rector6275Suit
   entity: ClothingOuterSuitRector6275
   sponsorOnly: true
+
+# Pr0fixxx
+- type: loadout
+  id: Pr0fixxxWebbing
+  entity: ClothingBeltWebbingPr0fixxx
+  sponsorOnly: true

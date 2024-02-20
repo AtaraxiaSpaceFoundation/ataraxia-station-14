@@ -1169,3 +1169,16 @@
       sprite: White/Fluff/Rector6275/suit.rsi
     - type: Clothing
       sprite: White/Fluff/Rector6275/suit.rsi
+
+#Pr0fixxx
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltWebbingPr0fixxx
+  name: боевая разгрузка
+  description: Разгрузка, которая когда-то принадлежала безымянному офицеру на 13-ой космической станции. На задней стороне виднеется огнетушитель, сшитый из красного противоударного волокна.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Pr0fixxx/webbing.rsi
+    - type: Clothing
+      sprite: White/Fluff/Pr0fixxx/webbing.rsi
