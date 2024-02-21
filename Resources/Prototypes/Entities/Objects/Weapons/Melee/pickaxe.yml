@@ -11,6 +11,7 @@
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     state: pickaxe
   - type: MeleeWeapon
+    heavyAttackStaminaCost: 0 # For mining
     attackRate: 0.7
     wideAnimationRotation: -135
     soundHit:
@@ -49,6 +50,7 @@
     sprite: Objects/Tools/handdrill.rsi
     state: handdrill
   - type: MeleeWeapon
+    heavyAttackStaminaCost: 0 # For mining
     autoAttack: true
     angle: 0
     wideAnimationRotation: -90

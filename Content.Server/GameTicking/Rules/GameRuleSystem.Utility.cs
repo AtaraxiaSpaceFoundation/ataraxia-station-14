@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Station.Components;
 using Robust.Shared.Collections;
@@ -106,6 +107,12 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         }
 
         targetGrid = RobustRandom.Pick(possibleTargets);
+
+        foreach (var target in possibleTargets.Where(HasComp<BecomesStationComponent>)) // WD
+        {
+            targetGrid = target;
+            break;
+        }
 
         if (!TryComp<MapGridComponent>(targetGrid, out var gridComp))
             return false;

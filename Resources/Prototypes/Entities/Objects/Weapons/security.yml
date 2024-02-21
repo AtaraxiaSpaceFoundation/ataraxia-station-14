@@ -38,13 +38,13 @@
         Blunt: 7
     bluntStaminaDamageFactor: 2.0
     angle: 60
-    animation: WeaponArcSlash
   - type: StaminaDamageOnHit
     damage: 40
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
     damage: 40
     sound: /Audio/Weapons/egloves.ogg
+  - type: ExaminableBattery
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000

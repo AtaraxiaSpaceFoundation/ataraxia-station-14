@@ -1,6 +1,5 @@
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
-using Content.Shared.Atmos;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._White.ChangeTemperatureOnCollide;
@@ -24,7 +23,16 @@ public sealed class ChangeTemperatureOnCollideSystem : EntitySystem
         if (!TryComp(args.OtherEntity, out TemperatureComponent? temperature))
             return;
 
-        _temperature.ForceChangeTemperature(args.OtherEntity,
-            MathF.Max(Atmospherics.TCMB, temperature.CurrentTemperature + component.Temperature), temperature);
+        var curTemp = temperature.CurrentTemperature;
+        var newTemp = curTemp + component.Temperature;
+
+        if (curTemp < component.MinTemperature)
+            newTemp = MathF.Max(curTemp, newTemp);
+        else if (curTemp > component.MaxTemperature)
+            newTemp = MathF.Min(curTemp, newTemp);
+        else
+            newTemp = Math.Clamp(newTemp, component.MinTemperature, component.MaxTemperature);
+
+        _temperature.ForceChangeTemperature(args.OtherEntity, newTemp, temperature);
     }
 }

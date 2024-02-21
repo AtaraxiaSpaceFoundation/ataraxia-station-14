@@ -13,6 +13,7 @@ using Content.Server.Revolutionary;
 using Content.Server.Revolutionary.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Server.StationEvents.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
@@ -51,6 +52,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly AudioSystem _audioSystem = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!; // WD
 
     [ValidatePrototypeId<NpcFactionPrototype>]
     public const string RevolutionaryNpcFaction = "Revolutionary";
@@ -87,8 +89,13 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
 
             if (CheckCommandLose())
             {
-                // _roundEnd.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, component.ShuttleCallTime);
-                _roundEnd.EndRound(); // WD EDIT
+                // WD EDIT START
+                // Basically check for all in once gamemode
+                if (_gameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+                    _roundEnd.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, component.ShuttleCallTime);
+                else
+                    _roundEnd.EndRound();
+                // WD EDIT END
                 GameTicker.EndGameRule(uid, gameRule);
             }
         }

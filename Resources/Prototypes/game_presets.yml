@@ -20,6 +20,9 @@
     - Revolutionary
     - Zombie
     - RampingStationEventScheduler
+    - Changeling
+    - Cult
+    - BasicRoundstartVariation
 
 - type: gamePreset
   id: Extended
@@ -102,7 +105,7 @@
     - changeling
   name: changeling-title
   description: changeling-description
-  showInVote: false
+  showInVote: true
   rules:
     - Changeling
     - BasicStationEventScheduler

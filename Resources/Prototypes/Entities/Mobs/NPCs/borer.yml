@@ -70,3 +70,21 @@
     - type: Borer
       reproduceCost: 100
       assumeControlCost: 250
+
+- type: entity
+  id: SpawnPointGhostBorer
+  name: ghost role spawn point
+  suffix: coartical borer
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-borer-name
+    description: ghost-role-information-borer-description
+  - type: GhostRoleMobSpawner
+    prototype: MobSimpleBorer
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Animals/borer.rsi
+        state: borer

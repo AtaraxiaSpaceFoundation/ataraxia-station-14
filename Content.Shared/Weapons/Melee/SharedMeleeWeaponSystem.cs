@@ -428,14 +428,14 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             switch (attack)
             {
                 case LightAttackEvent light:
-                    DoLightAttack(user, light, weaponUid, weapon, session);
-                    animation = weapon.Animation;
+                    DoLightAttack(user, light, weaponUid, weapon, session, out var anim); // WD EDIT
+                    animation = anim ?? weapon.Animation; // WD EDIT
                     break;
                 case DisarmAttackEvent disarm:
                     if (!DoDisarm(user, disarm, weaponUid, weapon, session))
                         return false;
 
-                    animation = weapon.Animation;
+                    animation = weapon.DisarmAnimation; // WD EDIT
                     break;
                 case HeavyAttackEvent heavy:
                     if (!DoHeavyAttack(user, heavy, weaponUid, weapon, session))
@@ -459,8 +459,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     protected abstract bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session);
 
-    protected virtual void DoLightAttack(EntityUid user, LightAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
+    protected virtual void DoLightAttack(EntityUid user, LightAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session, out string? animation) // WD EDIT
     {
+        animation = null; // WD EDIT
         // If I do not come back later to fix Light Attacks being Heavy Attacks you can throw me in the spider pit -Errant
         var damage = GetDamage(meleeUid, user, component) * GetHeavyDamageModifier(meleeUid, user, component);
         var target = GetEntity(ev.Target);
@@ -489,17 +490,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             var missEvent = new MeleeHitEvent(new List<EntityUid>(), user, meleeUid, damage, null);
             RaiseLocalEvent(meleeUid, missEvent);
             Audio.PlayPredicted(component.SwingSound, meleeUid, user);
+            if (component.Animation == "WeaponArcThrust") // WD EDIT
+                animation = component.MissAnimation;
             return;
         }
 
         // Sawmill.Debug($"Melee damage is {damage.Total} out of {component.Damage.Total}");
-
-        // Raise event before doing damage so we can cancel damage if the event is handled
-        var hitEvent = new MeleeHitEvent(new List<EntityUid> { target.Value }, user, meleeUid, damage, null);
-        RaiseLocalEvent(meleeUid, hitEvent);
-
-        if (hitEvent.Handled)
-            return;
 
         // WD START
         var blockEvent = new MeleeBlockAttemptEvent(user);
@@ -507,6 +503,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (blockEvent.Blocked)
             return;
         // WD END
+
+        // Raise event before doing damage so we can cancel damage if the event is handled
+        var hitEvent = new MeleeHitEvent(new List<EntityUid> { target.Value }, user, meleeUid, damage, null);
+        RaiseLocalEvent(meleeUid, hitEvent);
+
+        if (hitEvent.Handled)
+            return;
 
         var targets = new List<EntityUid>(1)
         {
@@ -579,7 +582,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var entities = GetEntityList(ev.Entities);
 
         // WD EDIT
-        _stamina.TakeStaminaDamage(user, 7);
+        if (component.HeavyAttackStaminaCost > 0)
+            _stamina.TakeStaminaDamage(user, component.HeavyAttackStaminaCost);
         // WD EDIT END
 
         if (entities.Count == 0)
@@ -634,6 +638,19 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         // Sawmill.Debug($"Melee damage is {damage.Total} out of {component.Damage.Total}");
 
+        // WD START
+        foreach (var target in new List<EntityUid>(targets))
+        {
+            var blockEvent = new MeleeBlockAttemptEvent(user);
+            RaiseLocalEvent(target, ref blockEvent);
+            if (blockEvent.Blocked)
+                targets.Remove(target);
+        }
+
+        if (targets.Count == 0)
+            return true;
+        // WD END
+
         // Raise event before doing damage so we can cancel damage if the event is handled
         var hitEvent = new MeleeHitEvent(targets, user, meleeUid, damage, direction);
         RaiseLocalEvent(meleeUid, hitEvent);
@@ -665,13 +682,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             // In that case, just continue.
             if (!Blocker.CanAttack(user, entity, (weapon, component)))
                 continue;
-
-            // WD START
-            var blockEvent = new MeleeBlockAttemptEvent(user);
-            RaiseLocalEvent(entity, ref blockEvent);
-            if (blockEvent.Blocked)
-                continue;
-            // WD END
 
             var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates));
             RaiseLocalEvent(entity, attackedEvent);

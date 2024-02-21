@@ -8,7 +8,7 @@
 - type: damageModifierSet
   id: Dwarf
   coefficients:
-    Blunt: 0.7
+    Blunt: 0.9
     Slash: 1.2
     Piercing: 1.2
 

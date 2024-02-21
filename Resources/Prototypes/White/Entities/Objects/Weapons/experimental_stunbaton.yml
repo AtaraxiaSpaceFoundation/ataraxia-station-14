@@ -9,7 +9,6 @@
   - type: Sprite
     sprite: White/Objects/Weapons/experimental_stunbaton.rsi
   - type: Stunbaton
-    energyPerUse: 100
   - type: MeleeWeapon
     damage:
       types:
@@ -17,7 +16,9 @@
     bluntStaminaDamageFactor: 2.0
     angle: 70
   - type: StaminaDamageOnHit
-    damage: 80
+    damage: 45
+  - type: StaminaDamageOnCollide
+    damage: 45
   - type: Battery
     maxCharge: 2000
     startingCharge: 2000

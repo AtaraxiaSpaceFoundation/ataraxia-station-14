@@ -373,7 +373,7 @@
     entries:
     - id: MobGiantSpiderAngry
       prob: 0.05
-      
+
 - type: entity
   id: BorerSpawn
   parent: BaseGameRule
@@ -389,9 +389,9 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
   - type: VentCrittersRule
-    entries:
-    - id: MobSimpleBorer
-      prob: 0.04
+    specialEntries:
+    - id: SpawnPointGhostBorer
+      prob: 0.03
 
 - type: entity
   id: SpiderClownSpawn
