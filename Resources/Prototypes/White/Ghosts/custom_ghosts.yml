@@ -374,3 +374,12 @@
   ghostName: Ветеранка СБ
   ghostDescription: Вы нарушили правила действующего закона.... "перечисление статей"
   size: 0.6, 0.6
+
+#krokozyabra
+- type: customGhost
+  id: krokozyabra-ghost
+  ckey: Krokozyabra
+  sprite: White/Ghosts/krokozyabra-ghost.rsi
+  alpha: 0.9
+  ghostName: Зябр
+  ghostDescription: Пусть так и будет
