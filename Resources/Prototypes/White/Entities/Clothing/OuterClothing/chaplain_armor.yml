@@ -75,3 +75,6 @@
     sprite: White/Clothing/OuterClothing/adept.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetAdept
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot

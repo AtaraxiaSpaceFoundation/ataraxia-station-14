@@ -12,6 +12,7 @@ using Content.Server.Power.Components;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -24,11 +25,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using Content.Shared.DoAfter;
-using Content.Server.Emp;
-using Content.Server.DeviceLinking.Events;
-using Content.Server.DeviceLinking.Systems;
-using Content.Shared.Inventory;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Light.EntitySystems

@@ -1,9 +1,9 @@
 objectives-round-end-result = {$count ->
     [one] Был один {$agent}.
-    *[other] Было {$count} {MAKEPLURAL($agent)}.
+    *[other] Было {$count} {$agent}.
 }
 
-objectives-round-end-result-in-custody = {$custody} из {$count} {MAKEPLURAL($agent)} попали под стражу.
+objectives-round-end-result-in-custody = {$custody} из {$count} {$agent} попали под стражу.
 
 objectives-player-user-named = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 objectives-player-user = [color=gray]{$user}[/color]

@@ -1,6 +1,6 @@
 ent-ClothingUniformJumpskirtRoboticist = юбка робототехника
    .desc = Это облегающее черное платье с усиленными швами; отлично подходит для промышленных работ.
-ent-ClothingUniformJumpskirtTacticool = тактикульая юбка
+ent-ClothingUniformJumpskirtTacticool = тактикульная юбка
    .desc = Униформа для неквалифицированных оперативников, совершающих кражу тактических изолированных перчаток в глубоком космосе.
 ent-ClothingUniformJumpskirtSyndieFormalDress = официальное платье синдиката
    .desc = Униформа синдиката выполнена в элегантном стиле, в таком даже жалко делать пакости.

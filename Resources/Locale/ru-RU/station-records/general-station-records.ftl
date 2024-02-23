@@ -11,5 +11,8 @@ general-station-record-console-record-fingerprint = Отпечаток паль�
 general-station-record-console-record-dna = ДНК: {$dna}
 
 general-station-record-for-filter-line-placeholder = Введите текст и нажмите "Enter"
+general-station-record-name-filter = Имя
+general-station-record-prints-filter = Отпечатки
+general-station-record-dna-filter = ДНК
 general-station-record-console-search-records = Поиск
 general-station-record-console-reset-filters = Сброс

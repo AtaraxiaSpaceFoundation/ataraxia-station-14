@@ -36,7 +36,7 @@ public sealed class DoAfterSystem : SharedDoAfterSystem
         // ones that depend on the target not moving, because the cancellation of those do afters should be readily
         // predictable by clients.
 
-        var playerEntity = _player.LocalPlayer?.ControlledEntity;
+        var playerEntity = _player.LocalEntity;
 
         if (!TryComp(playerEntity, out ActiveDoAfterComponent? active))
             return;
@@ -67,7 +67,7 @@ public sealed class DoAfterSystem : SharedDoAfterSystem
         out float progress)
         where T : DoAfterEvent
     {
-        var playerEntity = _player.LocalPlayer?.ControlledEntity;
+        var playerEntity = _player.LocalEntity;
 
         doAfter = null;
         @event = null;

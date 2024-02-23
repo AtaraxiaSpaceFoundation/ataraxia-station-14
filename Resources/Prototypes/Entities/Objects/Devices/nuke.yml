@@ -12,6 +12,15 @@
     layers:
     - state: nuclearbomb_base
   - type: Appearance
+  - type: HolidayVisuals
+    holidays:
+      festive:
+      - FestiveSeason
+  - type: GenericVisualizer
+    visuals:
+      enum.HolidayVisuals.Holiday:
+        christmas:
+          festive: { visible: true }
   - type: Physics
     bodyType: Static
   - type: Fixtures

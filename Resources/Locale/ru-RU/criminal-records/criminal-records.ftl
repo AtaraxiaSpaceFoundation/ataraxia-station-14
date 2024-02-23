@@ -34,6 +34,7 @@ criminal-records-console-wanted = {$name} отправлен в розыск п�
 criminal-records-console-detained = {$name} был задержан {$officer}.
 criminal-records-console-released = {$name} был задержан {$officer}.
 criminal-records-console-not-wanted = {$name} больше не в розыске.
+criminal-records-console-unknown-officer = <неизвестный офицер>
 
 criminal-records-console-suspected = {$name} подозревается по указу {$officer} по причине: {$reason}.
 

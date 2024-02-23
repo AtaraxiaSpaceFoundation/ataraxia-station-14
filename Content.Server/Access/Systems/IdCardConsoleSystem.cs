@@ -144,6 +144,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         if (newJobIcon != null && _prototype.TryIndex<StatusIconPrototype>(newJobIcon, out var jobIcon)) // WD EDIT END
         {
             _idCard.TryChangeJobIcon(targetId, jobIcon, player: player);
+            _idCard.TryChangeJobDepartment(targetId, job!);
         }
 
         if (!newAccessList.TrueForAll(x => component.AccessLevels.Contains(x)))

@@ -1,4 +1,6 @@
 using Content.Client._White.Medical.BodyScanner;
+using System.Linq;
+using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;

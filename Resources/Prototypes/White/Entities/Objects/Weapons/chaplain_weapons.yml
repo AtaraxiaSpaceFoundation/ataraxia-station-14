@@ -247,6 +247,7 @@
     allowSpeech: true
     name: Одержимый Клинок
     description: Вы - одержимый клинок. Подчиняйтесь своему владельцу.
+    rules: ghost-role-component-default-rules
   - type: GhostTakeoverAvailable
   - type: Examiner
   - type: Item

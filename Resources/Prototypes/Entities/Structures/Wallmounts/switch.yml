@@ -64,6 +64,8 @@
     - On
     - Off
     - Status
+    lastSignals:
+      Status: false
   # WD edit start
   - type: Physics
     canCollide: false

@@ -80,6 +80,7 @@
   - type: GhostRole
     name: ghost-role-information-borer-name
     description: ghost-role-information-borer-description
+    rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
     prototype: MobSimpleBorer
   - type: Sprite

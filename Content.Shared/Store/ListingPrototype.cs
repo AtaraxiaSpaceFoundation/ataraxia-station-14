@@ -132,7 +132,6 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             Description != listing.Description ||
             ProductEntity != listing.ProductEntity ||
             ProductAction != listing.ProductAction ||
-            ProductActionEntity != listing.ProductActionEntity ||
             ProductEvent != listing.ProductEvent ||
             RestockTime != listing.RestockTime)
             return false;
@@ -175,6 +174,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             ProductEntity = ProductEntity,
             ProductAction = ProductAction,
             ProductUpgradeID = ProductUpgradeID,
+            ProductActionEntity = ProductActionEntity,
             ProductEvent = ProductEvent,
             PurchaseAmount = PurchaseAmount,
             RestockTime = RestockTime,

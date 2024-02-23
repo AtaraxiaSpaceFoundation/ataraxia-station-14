@@ -188,7 +188,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
             return;
 
         UIHelper?.Dispose();
-        var ownerUserId = _playerManager.LocalPlayer!.UserId;
+        var ownerUserId = _playerManager.LocalUser!.Value;
         UIHelper = isAdmin ? new AdminAHelpUIHandler(ownerUserId) : new UserAHelpUIHandler(ownerUserId);
         UIHelper.DiscordRelayChanged(_discordRelayActive);
 
@@ -201,15 +201,15 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     public void Open()
     {
-        var localPlayer = _playerManager.LocalPlayer;
-        if (localPlayer == null)
+        var localUser = _playerManager.LocalUser;
+        if (localUser == null)
         {
             return;
         }
         EnsureUIHelper();
         if (UIHelper!.IsOpen)
             return;
-        UIHelper!.Open(localPlayer.UserId, _discordRelayActive);
+        UIHelper!.Open(localUser.Value, _discordRelayActive);
     }
 
     public void Open(NetUserId userId)

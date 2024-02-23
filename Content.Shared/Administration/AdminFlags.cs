@@ -96,6 +96,10 @@ namespace Content.Shared.Administration
 
         AdminSpecies = 1 << 16,
 
+        ///     Lets you Massban, on SS14.Admin
+        /// </summary>
+        MassBan = 1 << 17,
+
         /// <summary>
         ///     Dangerous host permissions like scsi.
         /// </summary>

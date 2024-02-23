@@ -15,6 +15,7 @@ using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server._White.PandaSocket.Main;
 using Content.Shared.Database;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.GameTicking;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;

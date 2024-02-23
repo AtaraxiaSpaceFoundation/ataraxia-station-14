@@ -15,7 +15,7 @@ execution-popup-gun-clumsy-external = {$attacker} промахивается м�
 execution-popup-gun-empty = {CAPITALIZE($weapon)} щёлкает.
 
 suicide-popup-gun-initial-internal = Вы суёте ствол {$weapon} себе в рот.
-suicide-popup-gun-initial-external = {$attacker} суёт ствол {$weapon} in {POSS-ADJ($attacker)} в рот.
+suicide-popup-gun-initial-external = {$attacker} суёт ствол {$weapon} в {POSS-ADJ($attacker)} рот.
 suicide-popup-gun-complete-internal = Вы стреляете себе в голову!
 suicide-popup-gun-complete-external = {$attacker} стреляет {REFLEXIVE($attacker)} себе в голову!
 

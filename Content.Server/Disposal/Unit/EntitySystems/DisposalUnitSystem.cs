@@ -199,7 +199,7 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
         if (args.Handled || args.Cancelled || args.Args.Target == null || args.Args.Used == null)
             return;
 
-        AfterInsert(uid, component, args.Args.Target.Value, args.Args.User);
+        AfterInsert(uid, component, args.Args.Target.Value, args.Args.User, doInsert: true);
 
         args.Handled = true;
     }
@@ -516,7 +516,7 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
 
         if (delay <= 0 || userId == null)
         {
-            AfterInsert(unitId, unit, toInsertId, userId);
+            AfterInsert(unitId, unit, toInsertId, userId, doInsert: true);
             return true;
         }
 
@@ -800,11 +800,11 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
         Dirty(component);
     }
 
-    public void AfterInsert(EntityUid uid, SharedDisposalUnitComponent component, EntityUid inserted, EntityUid? user = null)
+    public void AfterInsert(EntityUid uid, SharedDisposalUnitComponent component, EntityUid inserted, EntityUid? user = null, bool doInsert = false)
     {
         _audioSystem.PlayPvs(component.InsertSound, uid);
 
-        if (!_containerSystem.Insert(inserted, component.Container))
+        if (doInsert && !_containerSystem.Insert(inserted, component.Container))
             return;
 
         if (user != inserted && user != null)

@@ -101,23 +101,6 @@
     - cawed
 
 - type: emote
-  id: Chirp
-  category: Vocal
-  chatMessages: [чирикает]
-  chatTriggers:
-    - чирик
-    - чирик.
-    - чирикает.
-    - чирикает
-    - чик-чирикает
-    - чик-чирикает.
-    - chirps.
-    - chirp.
-    - chirp!
-    - chirping.
-    - chirped.
-
-- type: emote
   id: Rev
   category: Vocal
   chatMessages: [издает рёв]

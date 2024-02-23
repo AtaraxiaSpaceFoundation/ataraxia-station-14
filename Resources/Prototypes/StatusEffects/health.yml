@@ -2,6 +2,6 @@
   id: HealthIconFine
   priority: 0
   icon:
-    sprite: Interface/Misc/health_state.rsi
-    state: empty_state
+    sprite: Interface/Misc/health_icons.rsi
+    state: Fine
   locationPreference: Right

@@ -14,7 +14,7 @@ nuke-user-interface-eject-button = ИЗВЛЕЧЬ
 
 ## Upper status
 nuke-user-interface-first-status-device-locked = УСТРОЙСТВО ЗАБЛОКИРОВАНО
-nuke-user-interface-first-status-input-code = ВВЕДИТЕ КОЛ
+nuke-user-interface-first-status-input-code = ВВЕДИТЕ КОД
 nuke-user-interface-first-status-input-time = ВВЕДИТЕ ВРЕМЯ
 nuke-user-interface-first-status-device-ready = УСТРОЙСТВО ГОТОВО
 nuke-user-interface-first-status-device-armed = УСТРОЙСТВО ВЗВЕДЕНО

@@ -60,6 +60,7 @@ research-technology-advanced-entertainment = Продвинутые развле
 research-technology-audio-visual-communication = Т/В связь
 research-technology-faux-astro-tiles = Искусственная астроплитка
 research-technology-biochemical-stasis = Биохимический стазис
+research-technology-crew-monitoring = Отслеживание состояние экипажа
 research-technology-mechanized-treatment = Mechanized Treatment
 research-technology-robotic-cleanliness = Роботизированная уборка
 research-technology-advanced-cleaning = Продвинутая уборка

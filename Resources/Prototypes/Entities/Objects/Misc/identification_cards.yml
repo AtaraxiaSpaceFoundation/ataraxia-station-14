@@ -662,7 +662,6 @@
     - JobIconInspector
     - JobIconVisitor
     - JobIconNoId
-    - JobIconCustomId
     - JobIconBorg
     - JobIconSeniorPhysician
     - JobIconSeniorOfficer

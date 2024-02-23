@@ -37,7 +37,7 @@ jumpsuit-he = На нем
 outer-he = А так же
 back-he = На его спине
 gloves-he = На его руках
-belt-he = На нем весит
+belt-he = На нем висит
 shoes-he = На ногах у него
 
 # Она
@@ -51,7 +51,7 @@ jumpsuit-she = На ней
 outer-she = А так же
 back-she = На ее спине
 gloves-she = На ее руках
-belt-she = На ней весит
+belt-she = На ней висит
 shoes-she = На ногах у нее
 
 # Оно
@@ -79,7 +79,7 @@ jumpsuit-they = Они носят
 outer-they = А так же
 back-they = На их спинах
 gloves-they = На их руках
-belt-they = На них весит
+belt-they = На них висит
 shoes-they = На ногах у них
 
 # Character information
