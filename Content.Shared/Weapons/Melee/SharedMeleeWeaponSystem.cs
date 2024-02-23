@@ -530,7 +530,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, component.IgnoreResistances, origin:user); // WD EDIT
+        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, component.IgnoreResistances || hitEvent.PenetrateArmor, origin:user); // WD EDIT
 
         if (damageResult != null && damageResult.Any())
         {
@@ -687,7 +687,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, component.IgnoreResistances, origin:user); // WD EDIT
+            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, component.IgnoreResistances || hitEvent.PenetrateArmor, origin:user); // WD EDIT
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {

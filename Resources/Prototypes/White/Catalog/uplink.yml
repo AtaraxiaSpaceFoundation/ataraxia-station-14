@@ -113,6 +113,23 @@
 #  saleLimit: 1
 
 - type: listing
+  id: UplinkBetrayalKnife
+  name: Предательский нож
+  description: Предательский нож позволяет пользователю телепортироваться на короткое расстояние, а также наносит значительные повреждения, пробивая броню противника, при ударе в спину.
+  icon: { sprite: /Textures/White/Objects/Weapons/betrayal_knife.rsi, state: icon }
+  productEntity: BetrayalKnife
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  saleLimit: 1
+
+- type: listing
   id: UplinkMagazineShotgun
   name: uplink-magazine-bulldog-name
   description: uplink-magazine-bulldog-desc

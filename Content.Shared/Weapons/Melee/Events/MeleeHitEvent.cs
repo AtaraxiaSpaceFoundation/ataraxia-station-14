@@ -66,6 +66,8 @@ public sealed class MeleeHitEvent : HandledEntityEventArgs
     /// </remarks>
     public bool IsHit = true;
 
+    public bool PenetrateArmor = false;
+
     public MeleeHitEvent(List<EntityUid> hitEntities, EntityUid user, EntityUid weapon, DamageSpecifier baseDamage, Vector2? direction)
     {
         HitEntities = hitEntities;

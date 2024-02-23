@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Client.Gameplay;
+using Content.Shared._White.BetrayalDagger;
 using Content.Shared.CombatMode;
 using Content.Shared.Effects;
 using Content.Shared.Hands.Components;
@@ -128,6 +129,28 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 EntityManager.RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
                 return;
             }
+
+            // WD START
+            if (HasComp<BlinkComponent>(weaponUid))
+            {
+                if (!_xformQuery.TryGetComponent(entity, out var userXform) ||
+                    !Timing.IsFirstTimePredicted)
+                {
+                    return;
+                }
+
+                var targetMap = coordinates.ToMap(EntityManager, TransformSystem);
+
+                if (targetMap.MapId != userXform.MapID)
+                    return;
+
+                var userPos = TransformSystem.GetWorldPosition(userXform);
+                var direction = targetMap.Position - userPos;
+
+                RaiseNetworkEvent(new BlinkEvent(GetNetEntity(weaponUid), direction));
+                return;
+            }
+            // WD END
 
             ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
             return;
