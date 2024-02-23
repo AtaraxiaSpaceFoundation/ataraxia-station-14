@@ -24,6 +24,7 @@
 
 - type: reaction
   id: BloodToWine
+  sound: /Audio/Effects/holy.ogg
   impact: Low
   requiredMixerCategories:
   - Holy
@@ -35,6 +36,7 @@
 
 - type: reaction
   id: WatertoHolyWater
+  sound: /Audio/Effects/holy.ogg
   impact: Low
   requiredMixerCategories:
   - Holy

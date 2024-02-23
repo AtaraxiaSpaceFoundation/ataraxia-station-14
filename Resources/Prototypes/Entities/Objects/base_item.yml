@@ -8,6 +8,7 @@
   - type: Clickable
   - type: InteractionOutline
   - type: MovedByPressure
+  - type: Mixable
   # WD edit sounds start
   - type: MeleeSound
     soundGroups:

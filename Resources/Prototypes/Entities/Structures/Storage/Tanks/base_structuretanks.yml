@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: StorageTank
   parent: BaseStructureDynamic
   name: storage tank
@@ -65,3 +65,4 @@
   - type: ReagentTank
   - type: Transform
     noRot: true
+  - type: Mixable

@@ -5,6 +5,7 @@ using Content.Shared.FixedPoint;
 using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Content.Shared._White.Chemistry;
 
 namespace Content.Shared.Chemistry.EntitySystems;
 
@@ -94,7 +95,9 @@ public abstract partial class SharedSolutionContainerSystem
             return false;
         }
 
-        var tryGetSolution = EnumerateSolutions(container).FirstOrNull(x => x.Solution.Comp.Solution.CanMix);
+        var ignoreMixing = HasComp<MixableComponent>(container); // WD EDIT
+
+        var tryGetSolution = EnumerateSolutions(container).FirstOrNull(x => x.Solution.Comp.Solution.CanMix || ignoreMixing); // WD EDIT
         if (tryGetSolution.HasValue)
         {
             solution = tryGetSolution.Value.Solution;
