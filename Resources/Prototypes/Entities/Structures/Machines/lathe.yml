@@ -158,21 +158,38 @@
       - CellRechargerCircuitboard
       - BorgChargerCircuitboard
       - WeaponCapacitorRechargerCircuitboard
+      - OxygenTank
+      - PlasmaTank
   - type: EmagLatheRecipes
     emagStaticRecipes:
+       - MagazinePistol
+       - MagazinePistolSubMachineGun
+       - MagazinePistolSubMachineGunTopMounted
+       - MagazineRifle
+       - MagazineLightRifle
+       - SpeedLoaderMagnum
+       - MagazineShotgun
+       - MagazineShotgunSlug
+       - MagazineLightRifleBox
+       - MagazinePistolCaselessRifle
        - CartridgePistol
        - CartridgeMagnum
        - ShellShotgun
+       - ShellShotgunSlug
        - ShellShotgunFlare
        - ShellTranquilizer
        - CartridgeLightRifle
        - CartridgeRifle
+       - CartridgeMagnumAP
+       - CartridgeAntiMateriel
+       - CartridgeCaselessRifle
+       - MagazineBoxMagnumAP
+       - MagazineBoxAntiMateriel
+       - MagazineBoxCaselessRifle
        - MagazineBoxPistol
        - MagazineBoxMagnum
        - MagazineBoxRifle
        - MagazineBoxLightRifle
-       - OxygenTank
-       - PlasmaTank
        - GrenadeBlast
     emagDynamicRecipes:
       - CartridgePistolRubber
@@ -670,6 +687,8 @@
       - MagazineBoxRifle
       - MagazineBoxLightRifle
       - SpeedLoaderMagnum
+      - MagazineShotgun # WD EDIT
+      - MagazineShotgunSlug # WD EDIT
       - TargetHuman
       - TargetSyndicate
       - TargetClown
@@ -735,6 +754,16 @@
       - ShuttleGunPerforatorCircuitboard
       - ShuttleGunFriendshipCircuitboard
       - ShuttleGunDusterCircuitboard
+  - type: EmagLatheRecipes
+    emagStaticRecipes:
+     - MagazineLightRifleBox
+     - MagazinePistolCaselessRifle
+     - CartridgeMagnumAP
+     - CartridgeAntiMateriel
+     - CartridgeCaselessRifle
+     - MagazineBoxMagnumAP
+     - MagazineBoxAntiMateriel
+     - MagazineBoxCaselessRifle
   - type: MaterialStorage
     whitelist:
       tags:
@@ -779,6 +808,14 @@
         - MagazineBoxMagnum
         - MagazineBoxRifle
         - MagazineBoxLightRifle
+    - type: EmagLatheRecipes
+      emagStaticRecipes:
+        - CartridgeMagnumAP
+        - CartridgeAntiMateriel
+        - CartridgeCaselessRifle
+        - MagazineBoxMagnumAP
+        - MagazineBoxAntiMateriel
+        - MagazineBoxCaselessRifle
     - type: MaterialStorage
       whitelist:
         tags:

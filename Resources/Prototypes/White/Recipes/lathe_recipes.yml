@@ -30,3 +30,87 @@
     Steel: 1500
     Glass: 1000
     Silver: 200
+
+- type: latheRecipe
+  id: CartridgeCaselessRifle
+  result: CartridgeCaselessRifle
+  category: Ammo
+  completetime: 2
+  materials:
+    Steel: 15
+
+- type: latheRecipe
+  id: CartridgeAntiMateriel
+  result: CartridgeAntiMateriel
+  category: Ammo
+  completetime: 2
+  materials:
+    Steel: 40
+    Silver: 10
+
+- type: latheRecipe
+  id: CartridgeMagnumAP
+  result: CartridgeMagnumAP
+  category: Ammo
+  completetime: 2
+  materials:
+    Steel: 20
+    Silver: 5
+
+- type: latheRecipe
+  id: MagazineBoxCaselessRifle
+  result: MagazineBoxCaselessRifle
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 900
+
+- type: latheRecipe
+  id: MagazineBoxAntiMateriel
+  result: MagazineBoxAntiMateriel
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 400
+    Silver: 100
+
+- type: latheRecipe
+  id: MagazineBoxMagnumAP
+  result: MagazineBoxMagnumAP
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 1200
+    Silver: 300
+
+- type: latheRecipe
+  id: MagazineShotgun
+  result: MagazineShotgun
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 160
+
+- type: latheRecipe
+  id: MagazineShotgunSlug
+  result: MagazineShotgunSlug
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 200
+
+- type: latheRecipe
+  id: MagazinePistolCaselessRifle
+  result: MagazinePistolCaselessRifle
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 150
+
+- type: latheRecipe
+  id: MagazineLightRifleBox
+  result: MagazineLightRifleBox
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 1500
