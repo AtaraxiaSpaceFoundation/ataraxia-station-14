@@ -1,0 +1,54 @@
+- type: constructionGraph
+  id: KeyFormGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: KeyFormNode
+      steps:
+      - material: Plastic
+        amount: 1
+        doAfter: 2
+  - node: KeyFormNode
+    entity: KeyForm
+
+- type: construction
+  name: ent-KeyForm
+  id: KeyForm
+  graph: KeyFormGraph
+  startNode: start
+  targetNode: KeyFormNode
+  category: construction-category-tools
+  objectType: Item
+  description: ent-KeyForm.desc
+  icon:
+    sprite: White/Objects/Tools/form.rsi
+    state: empty
+
+
+- type: constructionGraph
+  id: KeyGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: KeyNode
+      steps:
+      - material: Steel
+        amount: 1
+        doAfter: 2
+  - node: KeyNode
+    entity: KeyMetal
+
+- type: construction
+  name: ent-KeyMetal
+  id: KeyMetal
+  graph: KeyGraph
+  startNode: start
+  targetNode: KeyNode
+  category: construction-category-tools
+  objectType: Item
+  description: ent-KeyMetal.desc
+  icon:
+    sprite: White/Objects/Tools/key.rsi
+    state: icon

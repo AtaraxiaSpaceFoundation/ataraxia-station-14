@@ -1,0 +1,38 @@
+﻿- type: entity
+  name: key
+  parent: BaseItem
+  id: KeyMetal
+  description: Makeshift sharp piece of metal
+  components:
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Object/Tools/Key/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Object/Tools/Key/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Object/Tools/Key/drop.ogg
+  - type: Sprite
+    sprite: White/Objects/Tools/key.rsi
+    state: icon
+  - type: Item
+    sprite: White/Objects/Tools/key.rsi
+    storedRotation: -180
+  - type: MeleeWeapon
+    wideAnimationRotation: -180
+    attackRate: 1
+    damage:
+      types:
+        Piercing: 1
+    soundHit:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+  - type: StaticPrice
+    price: 10
+  - type: Key
+  - type: Construction
+    graph: KeyGraph
+    node: KeyNode

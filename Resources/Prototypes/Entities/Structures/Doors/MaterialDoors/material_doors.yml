@@ -57,6 +57,7 @@
     mode: NoSprite
   - type: Occluder
   - type: ReflectAspectMark
+  - type: Keyhole
 
 - type: entity
   parent: BaseMaterialDoor
