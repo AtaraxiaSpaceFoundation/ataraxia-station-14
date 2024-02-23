@@ -1,6 +1,7 @@
 ﻿using Content.Server.Hands.Systems;
 using Content.Server.Stunnable;
 using Content.Server._White.Cult.Items.Components;
+using Content.Shared._White.Chaplain;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
 using Content.Shared._White.Cult;
@@ -30,12 +31,9 @@ public sealed class ReturnItemOnThrowSystem : EntitySystem
         if (!HasComp<MobStateComponent>(args.Target))
             return;
 
-        if (!_stun.IsParalyzed(args.Target))
+        if (!_stun.IsParalyzed(args.Target) && !isCultist && !HasComp<HolyComponent>(args.Target))
         {
-            if (!isCultist)
-            {
-                _stun.TryParalyze(args.Target, TimeSpan.FromSeconds(component.StunTime), true);
-            }
+            _stun.TryParalyze(args.Target, TimeSpan.FromSeconds(component.StunTime), true);
         }
 
         _hands.PickupOrDrop(thrower, uid);

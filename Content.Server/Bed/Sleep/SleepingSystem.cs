@@ -1,4 +1,5 @@
 using Content.Server.Popups;
+using Content.Server.Revenant.Components;
 using Content.Server.Sound.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
@@ -93,12 +94,14 @@ namespace Content.Server.Bed.Sleep
 
         private void OnSleepAction(EntityUid uid, MobStateComponent component, SleepActionEvent args)
         {
-            TrySleeping(uid);
+            if (TrySleeping(uid) && TryComp(uid, out BlightComponent? blight)) // WD EDIT
+                blight.BedSleep = true;
         }
 
         private void OnBedSleepAction(EntityUid uid, ActionsContainerComponent component, SleepActionEvent args)
         {
-            TrySleeping(args.Performer);
+            if (TrySleeping(args.Performer) && TryComp(args.Performer, out BlightComponent? blight)) // WD EDIT
+                blight.BedSleep = true;
         }
 
         private void OnWakeAction(EntityUid uid, MobStateComponent component, WakeActionEvent args)

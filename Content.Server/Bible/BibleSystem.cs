@@ -3,6 +3,7 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Popups;
 using Content.Server._White.Other.CustomFluffSystems.merkka;
+using Content.Server.Revenant.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Bible;
@@ -116,6 +117,21 @@ namespace Content.Server.Bible
 
                 return;
             }
+
+            // WD START
+            if (HasComp<BlightComponent>(args.Target.Value))
+            {
+                var othersMessage = Loc.GetString(component.LocPrefix + "-blight-success-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
+                _popupSystem.PopupEntity(othersMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.Medium);
+
+                var selfMessage = Loc.GetString(component.LocPrefix + "-blight-success-self", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
+                _popupSystem.PopupEntity(selfMessage, args.User, args.User, PopupType.Large);
+                _audio.PlayPvs(component.HealSoundPath, args.User);
+                _delay.TryResetDelay((uid, useDelay));
+                RemCompDeferred<BlightComponent>(args.Target.Value);
+                return;
+            }
+            // WD END
 
             // This only has a chance to fail if the target is not wearing anything on their head and is not a familiar.
             if (!_invSystem.TryGetSlotEntity(args.Target.Value, "head", out var _) && !HasComp<FamiliarComponent>(args.Target.Value))

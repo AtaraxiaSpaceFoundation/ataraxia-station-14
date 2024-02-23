@@ -15,6 +15,7 @@ using Content.Shared.Item;
 using Content.Shared.Bed.Sleep;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Bible.Components;
 using Content.Server.Maps;
 using Content.Server.Revenant.Components;
 using Content.Shared.DoAfter;
@@ -25,6 +26,7 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Physics;
 using Content.Shared.Revenant.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Utility;
@@ -52,7 +54,18 @@ public sealed partial class RevenantSystem
         SubscribeLocalEvent<RevenantComponent, RevenantOverloadLightsActionEvent>(OnOverloadLightsAction);
         SubscribeLocalEvent<RevenantComponent, RevenantBlightActionEvent>(OnBlightAction);
         SubscribeLocalEvent<RevenantComponent, RevenantMalfunctionActionEvent>(OnMalfunctionAction);
+
+        SubscribeLocalEvent<RevenantComponent, DoAfterAttemptEvent<HarvestEvent>>(OnHarvestAttempt); // WD
     }
+
+    // WD START
+    private void OnHarvestAttempt(Entity<RevenantComponent> ent, ref DoAfterAttemptEvent<HarvestEvent> args)
+    {
+        var target = args.DoAfter.Args.Target;
+        if (target != null && _mobState.IsAlive(target.Value) && !HasComp<SleepingComponent>(target.Value))
+            args.Cancel();
+    }
+    // WD END
 
     private void OnInteract(EntityUid uid, RevenantComponent component, InteractNoHandEvent args)
     {
@@ -137,12 +150,25 @@ public sealed partial class RevenantSystem
             return;
         }
 
+        // WD START
+        var tileref = Transform(uid).Coordinates.GetTileRef();
+        if (tileref != null)
+        {
+            if(_physics.GetEntitiesIntersectingBody(uid, (int) CollisionGroup.Impassable).Count > 0)
+            {
+                _popup.PopupEntity(Loc.GetString("revenant-in-solid"), uid, uid);
+                return;
+            }
+        }
+        // WD END
+
         var doAfter = new DoAfterArgs(EntityManager, uid, revenant.HarvestDebuffs.X, new HarvestEvent(), uid, target: target)
         {
             DistanceThreshold = 2,
             BreakOnUserMove = true,
             BreakOnDamage = true,
             RequireCanInteract = false, // stuns itself
+            AttemptFrequency = AttemptFrequency.EveryTick // WD EDIT
         };
 
         if (!_doAfter.TryStartDoAfter(doAfter))
@@ -306,6 +332,19 @@ public sealed partial class RevenantSystem
             return;
 
         args.Handled = true;
+
+        // WD START
+        var query = GetEntityQuery<BibleUserComponent>();
+        foreach (var e in _lookup.GetEntitiesInRange(uid, component.BlightRadius))
+        {
+            if (!_mobState.IsAlive(e) || query.HasComponent(e))
+                continue;
+
+            var blight = EnsureComp<BlightComponent>(e);
+            blight.Duration = 0f;
+        }
+        // WD END
+
         // TODO: When disease refactor is in.
     }
 

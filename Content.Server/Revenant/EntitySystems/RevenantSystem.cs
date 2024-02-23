@@ -3,6 +3,7 @@ using Content.Server.Actions;
 using Content.Server.GameTicking;
 using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
+using Content.Shared._White.Chaplain;
 using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -19,6 +20,8 @@ using Content.Shared.Revenant.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
+using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -62,8 +65,20 @@ public sealed partial class RevenantSystem : EntitySystem
         SubscribeLocalEvent<RevenantComponent, StatusEffectEndedEvent>(OnStatusEnded);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(_ => MakeVisible(true));
 
+        SubscribeLocalEvent<RevenantComponent, AttackedEvent>(OnAttacked); // WD EDIT
+
         InitializeAbilities();
     }
+
+    // WD START
+    private void OnAttacked(Entity<RevenantComponent> ent, ref AttackedEvent args)
+    {
+        if (!HasComp<HolyWeaponComponent>(args.Used) || !TryComp(args.Used, out MeleeWeaponComponent? weapon))
+            return;
+
+        args.BonusDamage = weapon.Damage;
+    }
+    // WD END
 
     private void OnStartup(EntityUid uid, RevenantComponent component, ComponentStartup args)
     {
