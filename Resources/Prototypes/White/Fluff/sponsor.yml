@@ -461,3 +461,9 @@
   id: Pr0fixxxWebbing
   entity: ClothingBeltWebbingPr0fixxx
   sponsorOnly: true
+
+#Joulerk
+- type: loadout
+  id: JoulerkPlushie
+  entity: PlushieLerkFluff
+  sponsorOnly: true

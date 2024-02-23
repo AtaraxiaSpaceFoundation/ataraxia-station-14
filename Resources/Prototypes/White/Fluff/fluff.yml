@@ -1182,3 +1182,27 @@
       sprite: White/Fluff/Pr0fixxx/webbing.rsi
     - type: Clothing
       sprite: White/Fluff/Pr0fixxx/webbing.rsi
+
+
+#Joulerk
+- type: entity
+  parent: BasePlushie
+  id: PlushieLerkFluff
+  name: Плюшевая Лерк
+  description: Глядя на эту игрушку, ты чувствуешь, как леденящий холод пронизывает твои кости. Ее глаза, словно две темные бездны, в которых теряются даже самые смелые души.
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/Joulerk/lerk-plushie.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/White/Fluff/Joulerk/activate.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/White/Fluff/Joulerk/activate.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/White/Fluff/Joulerk/activate.ogg
