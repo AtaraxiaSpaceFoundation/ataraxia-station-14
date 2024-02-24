@@ -9,11 +9,23 @@
             "directions": 4
         },
         {
+            "name": "female_body-slim_full",
+            "directions": 4
+        },
+        {
             "name": "female_none",
             "directions": 1
         },
         {
+            "name": "female_body-slim_none",
+            "directions": 1
+        },
+        {
             "name": "female_top",
+            "directions": 4
+        },
+        {
+            "name": "female_body-slim_top",
             "directions": 4
         },
         {

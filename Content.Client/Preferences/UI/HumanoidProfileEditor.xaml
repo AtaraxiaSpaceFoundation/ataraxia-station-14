@@ -75,6 +75,12 @@
                                     <Control HorizontalExpand="True"/>
                                     <OptionButton Name="CSpeciesButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
+                                <!-- Body Type -->
+                                <BoxContainer Orientation="Horizontal">
+                                    <Label Text="{Loc 'humanoid-profile-editor-body-type-label'}"/>
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="CBodyTypesButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
                                 <!-- Age -->
                                 <BoxContainer HorizontalExpand="True">
                                     <Label Text="{Loc 'humanoid-profile-editor-age-label'}" />

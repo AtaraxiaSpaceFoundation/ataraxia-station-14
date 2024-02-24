@@ -11,7 +11,8 @@ namespace Content.Shared.Humanoid
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance
     {
-        public HumanoidCharacterAppearance(string hairStyleId,
+        public HumanoidCharacterAppearance(
+            string hairStyleId,
             Color hairColor,
             string facialHairStyleId,
             Color facialHairColor,
@@ -91,9 +92,16 @@ namespace Content.Shared.Humanoid
             Color.Black,
             Color.Black,
             Humanoid.SkinColor.ValidHumanSkinTone,
-            new ()
+            new List<Marking>()
         )
         {
+        }
+
+        public static string DefaultWithBodyType(string species)
+        {
+            var speciesPrototype = IoCManager.Resolve<IPrototypeManager>().Index<SpeciesPrototype>(species);
+
+            return speciesPrototype.BodyTypes.First();
         }
 
         public static HumanoidCharacterAppearance DefaultWithSpecies(string species)
@@ -102,9 +110,9 @@ namespace Content.Shared.Humanoid
             var skinColor = speciesPrototype.SkinColoration switch
             {
                 HumanoidSkinColor.HumanToned => Humanoid.SkinColor.HumanSkinTone(speciesPrototype.DefaultHumanSkinTone),
-                HumanoidSkinColor.Hues => speciesPrototype.DefaultSkinTone,
+                HumanoidSkinColor.Hues       => speciesPrototype.DefaultSkinTone,
                 HumanoidSkinColor.TintedHues => Humanoid.SkinColor.TintedHues(speciesPrototype.DefaultSkinTone),
-                _ => Humanoid.SkinColor.ValidHumanSkinTone
+                _                            => Humanoid.SkinColor.ValidHumanSkinTone
             };
 
             return new(
@@ -114,7 +122,7 @@ namespace Content.Shared.Humanoid
                 Color.Black,
                 Color.Black,
                 skinColor,
-                new ()
+                new()
             );
         }
 
@@ -132,7 +140,8 @@ namespace Content.Shared.Humanoid
             var random = IoCManager.Resolve<IRobustRandom>();
             var markingManager = IoCManager.Resolve<MarkingManager>();
             var hairStyles = markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.Hair, species).Keys.ToList();
-            var facialHairStyles = markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.FacialHair, species).Keys.ToList();
+            var facialHairStyles = markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.FacialHair, species)
+                .Keys.ToList();
 
             var newHairStyle = hairStyles.Count > 0
                 ? random.Pick(hairStyles)
@@ -175,7 +184,8 @@ namespace Content.Shared.Humanoid
                 newSkinColor = Humanoid.SkinColor.ValidTintedHuesSkinTone(newSkinColor);
             }
 
-            return new HumanoidCharacterAppearance(newHairStyle, newHairColor, newFacialHairStyle, newHairColor, newEyeColor, newSkinColor, new ());
+            return new HumanoidCharacterAppearance(newHairStyle, newHairColor, newFacialHairStyle, newHairColor,
+                newEyeColor, newSkinColor, new());
 
             float RandomizeColor(float channel)
             {
@@ -188,7 +198,11 @@ namespace Content.Shared.Humanoid
             return new(color.RByte, color.GByte, color.BByte);
         }
 
-        public static HumanoidCharacterAppearance EnsureValid(HumanoidCharacterAppearance appearance, string species, string[] sponsorMarkings) //WD-EDIT
+        public static HumanoidCharacterAppearance EnsureValid(
+            HumanoidCharacterAppearance appearance,
+            string species,
+            string bodyType,
+            string[] sponsorMarkings) //WD-EDIT
         {
             var hairStyleId = appearance.HairStyleId;
             var facialHairStyleId = appearance.FacialHairStyleId;
@@ -250,7 +264,7 @@ namespace Content.Shared.Humanoid
                 skinColor = Humanoid.SkinColor.ValidSkinTone(speciesProto.SkinColoration, skinColor);
             }
 
-            markingSet.EnsureSpecies(species, skinColor, markingManager);
+            markingSet.EnsureSpecies(species, bodyType, skinColor, markingManager);
 
             // WD-EDIT
             markingSet.FilterSponsor(sponsorMarkings, markingManager);
@@ -270,19 +284,23 @@ namespace Content.Shared.Humanoid
         {
             if (maybeOther is not HumanoidCharacterAppearance other)
                 return false;
+
             if (HairStyleId != other.HairStyleId)
                 return false;
+
             if (!HairColor.Equals(other.HairColor))
                 return false;
+
             if (FacialHairStyleId != other.FacialHairStyleId)
                 return false;
+
             if (!FacialHairColor.Equals(other.FacialHairColor))
                 return false;
+
             if (!EyeColor.Equals(other.EyeColor))
                 return false;
-            if (!SkinColor.Equals(other.SkinColor))
-                return false;
-            return Markings.SequenceEqual(other.Markings);
+
+            return SkinColor.Equals(other.SkinColor) && Markings.SequenceEqual(other.Markings);
         }
     }
 }

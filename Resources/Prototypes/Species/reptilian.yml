@@ -3,7 +3,8 @@
   name: species-name-reptilian
   roundStart: true
   prototype: MobReptilian
-  sprites: MobReptilianSprites
+  bodyTypes:
+  - ReptilianNormal
   defaultSkinTone: "#34a223"
   markingLimits: MobReptilianMarkingLimits
   dollPrototype: MobReptilianDummy
@@ -12,24 +13,6 @@
   femaleFirstNames: names_reptilian_female
   naming: FirstDashFirst
 
-- type: speciesBaseSprites
-  id: MobReptilianSprites
-  sprites:
-    Head: MobReptilianHead
-    Snout: MobHumanoidAnyMarking
-    Chest: MobReptilianTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
-    LArm: MobReptilianLArm
-    RArm: MobReptilianRArm
-    LHand: MobReptilianLHand
-    RHand: MobReptilianRHand
-    LLeg: MobReptilianLLeg
-    RLeg: MobReptilianRLeg
-    LFoot: MobReptilianLFoot
-    RFoot: MobReptilianRFoot
 
 - type: markingPoints
   id: MobReptilianMarkingLimits

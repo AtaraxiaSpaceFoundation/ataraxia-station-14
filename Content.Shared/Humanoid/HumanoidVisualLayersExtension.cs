@@ -1,4 +1,3 @@
-using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 
 namespace Content.Shared.Humanoid
@@ -10,14 +9,14 @@ namespace Content.Shared.Humanoid
             return layer switch
             {
                 HumanoidVisualLayers.Chest => true,
-                HumanoidVisualLayers.Head => true,
-                _ => false
+                HumanoidVisualLayers.Head  => true,
+                _                          => false
             };
         }
 
         public static string GetSexMorph(HumanoidVisualLayers layer, Sex sex, string id)
         {
-            if (!HasSexMorph(layer) || sex == Sex.Unsexed)
+            if (!HasSexMorph(layer) || sex == Sex.Unsexed || sex == Sex.Male)
                 return id;
 
             return $"{id}{sex}";
@@ -42,26 +41,32 @@ namespace Content.Shared.Humanoid
                     yield return HumanoidVisualLayers.Hair;
                     yield return HumanoidVisualLayers.FacialHair;
                     yield return HumanoidVisualLayers.Snout;
+
                     break;
                 case HumanoidVisualLayers.LArm:
                     yield return HumanoidVisualLayers.LArm;
                     yield return HumanoidVisualLayers.LHand;
+
                     break;
                 case HumanoidVisualLayers.RArm:
                     yield return HumanoidVisualLayers.RArm;
                     yield return HumanoidVisualLayers.RHand;
+
                     break;
                 case HumanoidVisualLayers.LLeg:
                     yield return HumanoidVisualLayers.LLeg;
                     yield return HumanoidVisualLayers.LFoot;
+
                     break;
                 case HumanoidVisualLayers.RLeg:
                     yield return HumanoidVisualLayers.RLeg;
                     yield return HumanoidVisualLayers.RFoot;
+
                     break;
                 case HumanoidVisualLayers.Chest:
                     yield return HumanoidVisualLayers.Chest;
                     yield return HumanoidVisualLayers.Tail;
+
                     break;
                 default:
                     yield break;

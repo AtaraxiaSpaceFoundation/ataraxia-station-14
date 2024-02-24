@@ -5,12 +5,14 @@ using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 using static Robust.Client.GameObjects.SpriteComponent;
@@ -28,30 +30,31 @@ public sealed class ClientClothingSystem : ClothingSystem
     /// </summary>
     private static readonly Dictionary<string, string> TemporarySlotMap = new()
     {
-        {"head", "HELMET"},
-        {"eyes", "EYES"},
-        {"ears", "EARS"},
-        {"mask", "MASK"},
-        {"outerClothing", "OUTERCLOTHING"},
-        {Jumpsuit, "INNERCLOTHING"},
-        {"neck", "NECK"},
-        {"back", "BACKPACK"},
-        {"belt", "BELT"},
-        {"gloves", "HAND"},
-        {"shoes", "FEET"},
-        {"id", "IDCARD"},
-        {"pocket1", "POCKET1"},
-        {"pocket2", "POCKET2"},
-        {"suitstorage", "SUITSTORAGE"},
+        { "head", "HELMET" },
+        { "eyes", "EYES" },
+        { "ears", "EARS" },
+        { "mask", "MASK" },
+        { "outerClothing", "OUTERCLOTHING" },
+        { Jumpsuit, "INNERCLOTHING" },
+        { "neck", "NECK" },
+        { "back", "BACKPACK" },
+        { "belt", "BELT" },
+        { "gloves", "HAND" },
+        { "shoes", "FEET" },
+        { "id", "IDCARD" },
+        { "pocket1", "POCKET1" },
+        { "pocket2", "POCKET2" },
+        { "suitstorage", "SUITSTORAGE" },
         //WHITE EDIT
-        {"socks", "SOCKS"},
-        {"underweart", "UNDERWEART"},
-        {"underwearb", "UNDERWEARB"},
+        { "socks", "SOCKS" },
+        { "underweart", "UNDERWEART" },
+        { "underwearb", "UNDERWEARB" },
         // WHITE EDIT
     };
 
     [Dependency] private readonly IResourceCache _cache = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -99,8 +102,13 @@ public sealed class ClientClothingSystem : ClothingSystem
         // if that returned nothing, attempt to find generic data
         if (layers == null && !item.ClothingVisuals.TryGetValue(args.Slot, out layers))
         {
+            if (!TryComp(args.Equipee, out HumanoidAppearanceComponent? humanoid))
+            {
+                return;
+            }
+
             // No generic data either. Attempt to generate defaults from the item's RSI & item-prefixes
-            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, out layers))
+            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, humanoid, out layers))
                 return;
         }
 
@@ -126,7 +134,12 @@ public sealed class ClientClothingSystem : ClothingSystem
     /// <remarks>
     ///     Useful for lazily adding clothing sprites without modifying yaml. And for backwards compatibility.
     /// </remarks>
-    private bool TryGetDefaultVisuals(EntityUid uid, ClothingComponent clothing, string slot, string? speciesId,
+    private bool TryGetDefaultVisuals(
+        EntityUid uid,
+        ClothingComponent clothing,
+        string slot,
+        string? speciesId,
+        HumanoidAppearanceComponent humanoid,
         [NotNullWhen(true)] out List<PrototypeLayerData>? layers)
     {
         layers = null;
@@ -138,13 +151,11 @@ public sealed class ClientClothingSystem : ClothingSystem
         else if (TryComp(uid, out SpriteComponent? sprite))
             rsi = sprite.BaseRSI;
 
-        if (rsi == null || rsi.Path == null)
+        if (rsi?.Path == null)
             return false;
 
         var correctedSlot = slot;
         TemporarySlotMap.TryGetValue(correctedSlot, out correctedSlot);
-
-
 
         var state = $"equipped-{correctedSlot}";
 
@@ -153,6 +164,13 @@ public sealed class ClientClothingSystem : ClothingSystem
 
         if (clothing.EquippedState != null)
             state = $"{clothing.EquippedState}";
+
+        // body type specific
+        var bodyTypeProto = _prototypeManager.Index<BodyTypePrototype>(humanoid.BodyType);
+        if (rsi.TryGetState($"{state}-{bodyTypeProto.Name}", out _))
+        {
+            state = $"{state}-{bodyTypeProto.Name}";
+        }
 
         // species specific
         if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
@@ -164,10 +182,13 @@ public sealed class ClientClothingSystem : ClothingSystem
             return false;
         }
 
-        var layer = new PrototypeLayerData();
-        layer.RsiPath = rsi.Path.ToString();
-        layer.State = state;
-        layers = new() { layer };
+        var layer = new PrototypeLayerData
+        {
+            RsiPath = rsi.Path.ToString(),
+            State = state
+        };
+
+        layers = new List<PrototypeLayerData> { layer };
 
         return true;
     }
@@ -189,7 +210,7 @@ public sealed class ClientClothingSystem : ClothingSystem
             && TryComp(uid, out SpriteComponent? sprite)
             && sprite.LayerMapTryGet(HumanoidVisualLayers.StencilMask, out var maskLayer))
         {
-                sprite.LayerSetVisible(maskLayer, false);
+            sprite.LayerSetVisible(maskLayer, false);
         }
 
         if (!TryComp(uid, out InventorySlotsComponent? inventorySlots))
@@ -204,6 +225,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         {
             component.RemoveLayer(layer);
         }
+
         revealedLayers.Clear();
     }
 
@@ -226,12 +248,17 @@ public sealed class ClientClothingSystem : ClothingSystem
         RenderEquipment(args.Equipee, uid, args.Slot, clothingComponent: component);
     }
 
-    private void RenderEquipment(EntityUid equipee, EntityUid equipment, string slot,
-        InventoryComponent? inventory = null, SpriteComponent? sprite = null, ClothingComponent? clothingComponent = null,
+    private void RenderEquipment(
+        EntityUid equipee,
+        EntityUid equipment,
+        string slot,
+        InventoryComponent? inventory = null,
+        SpriteComponent? sprite = null,
+        ClothingComponent? clothingComponent = null,
         InventorySlotsComponent? inventorySlots = null)
     {
         if (!Resolve(equipee, ref inventory, ref sprite, ref inventorySlots) ||
-           !Resolve(equipment, ref clothingComponent, false))
+            !Resolve(equipment, ref clothingComponent, false))
         {
             return;
         }
@@ -250,11 +277,12 @@ public sealed class ClientClothingSystem : ClothingSystem
             {
                 sprite.RemoveLayer(key);
             }
+
             revealedLayers.Clear();
         }
         else
         {
-            revealedLayers = new();
+            revealedLayers = new HashSet<string>();
             inventorySlots.VisualLayerKeys[slot] = revealedLayers;
         }
 
@@ -276,7 +304,9 @@ public sealed class ClientClothingSystem : ClothingSystem
         {
             if (!revealedLayers.Add(key))
             {
-                Logger.Warning($"Duplicate key for clothing visuals: {key}. Are multiple components attempting to modify the same layer? Equipment: {ToPrettyString(equipment)}");
+                Logger.Warning(
+                    $"Duplicate key for clothing visuals: {key}. Are multiple components attempting to modify the same layer? Equipment: {ToPrettyString(equipment)}");
+
                 continue;
             }
 
@@ -315,12 +345,10 @@ public sealed class ClientClothingSystem : ClothingSystem
         RaiseLocalEvent(equipment, new EquipmentVisualsUpdatedEvent(equipee, slot, revealedLayers), true);
     }
 
-
     /// <summary>
     ///     Sets a sprite's gendered mask based on gender (obviously).
     /// </summary>
     /// <param name="sprite">Sprite to modify</param>
-    /// <param name="humanoid">Humanoid, to get gender from</param>
     /// <param name="clothing">Clothing component, to get mask sprite type</param>
     private void SetGenderedMask(EntityUid uid, SpriteComponent sprite, ClothingComponent clothing)
     {
@@ -330,7 +358,12 @@ public sealed class ClientClothingSystem : ClothingSystem
         ClothingMask mask;
         string prefix;
 
-        switch (CompOrNull<HumanoidAppearanceComponent>(uid)?.Sex)
+        if (!TryComp(uid, out HumanoidAppearanceComponent? humanoid))
+        {
+            return;
+        }
+
+        switch (humanoid.Sex)
         {
             case Sex.Male:
                 mask = clothing.MaleMask;
@@ -338,7 +371,8 @@ public sealed class ClientClothingSystem : ClothingSystem
                 break;
             case Sex.Female:
                 mask = clothing.FemaleMask;
-                prefix = "female_";
+                var bodyTypeProto = _prototypeManager.Index<BodyTypePrototype>(humanoid.BodyType!);
+                prefix = bodyTypeProto.Name != "body-normal" ? $"female_{bodyTypeProto.Name}_" : "female_";
                 break;
             default:
                 mask = clothing.UnisexMask;
@@ -348,10 +382,11 @@ public sealed class ClientClothingSystem : ClothingSystem
 
         sprite.LayerSetState(layer, mask switch
         {
-            ClothingMask.NoMask => $"{prefix}none",
+            ClothingMask.NoMask     => $"{prefix}none",
             ClothingMask.UniformTop => $"{prefix}top",
-            _ => $"{prefix}full",
+            _                       => $"{prefix}full",
         });
+
         sprite.LayerSetVisible(layer, true);
     }
 }

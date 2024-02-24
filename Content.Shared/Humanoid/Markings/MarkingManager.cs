@@ -1,6 +1,5 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
 
@@ -11,7 +10,10 @@ namespace Content.Shared.Humanoid.Markings
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
         private readonly List<MarkingPrototype> _index = new();
-        public FrozenDictionary<MarkingCategories, FrozenDictionary<string, MarkingPrototype>> CategorizedMarkings = default!;
+
+        public FrozenDictionary<MarkingCategories, FrozenDictionary<string, MarkingPrototype>> CategorizedMarkings =
+            default!;
+
         public FrozenDictionary<string, MarkingPrototype> Markings = default!;
 
         public void Initialize()
@@ -27,7 +29,7 @@ namespace Content.Shared.Humanoid.Markings
 
             foreach (var category in Enum.GetValues<MarkingCategories>())
             {
-                markingDict.Add(category, new());
+                markingDict.Add(category, new Dictionary<string, MarkingPrototype>());
             }
 
             foreach (var prototype in _prototypeManager.EnumeratePrototypes<MarkingPrototype>())
@@ -58,11 +60,14 @@ namespace Content.Shared.Humanoid.Markings
         ///     Please make a pull request if you find a use case for that behavior.
         /// </remarks>
         /// <returns></returns>
-        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSpecies(MarkingCategories category,
+        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSpecies(
+            MarkingCategories category,
             string species)
         {
             var speciesProto = _prototypeManager.Index<SpeciesPrototype>(species);
-            var onlyWhitelisted = _prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+            var onlyWhitelisted = _prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints)
+                .OnlyWhitelisted;
+
             var res = new Dictionary<string, MarkingPrototype>();
 
             foreach (var (key, marking) in MarkingsByCategory(category))
@@ -76,6 +81,7 @@ namespace Content.Shared.Humanoid.Markings
                 {
                     continue;
                 }
+
                 res.Add(key, marking);
             }
 
@@ -92,7 +98,8 @@ namespace Content.Shared.Humanoid.Markings
         ///     Please make a pull request if you find a use case for that behavior.
         /// </remarks>
         /// <returns></returns>
-        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSex(MarkingCategories category,
+        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSex(
+            MarkingCategories category,
             Sex sex)
         {
             var res = new Dictionary<string, MarkingPrototype>();
@@ -121,11 +128,15 @@ namespace Content.Shared.Humanoid.Markings
         ///     Please make a pull request if you find a use case for that behavior.
         /// </remarks>
         /// <returns></returns>
-        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSpeciesAndSex(MarkingCategories category,
-            string species, Sex sex)
+        public IReadOnlyDictionary<string, MarkingPrototype> MarkingsByCategoryAndSpeciesAndSex(
+            MarkingCategories category,
+            string species,
+            Sex sex)
         {
             var speciesProto = _prototypeManager.Index<SpeciesPrototype>(species);
-            var onlyWhitelisted = _prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+            var onlyWhitelisted = _prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints)
+                .OnlyWhitelisted;
+
             var res = new Dictionary<string, MarkingPrototype>();
 
             foreach (var (key, marking) in MarkingsByCategory(category))
@@ -178,12 +189,7 @@ namespace Content.Shared.Humanoid.Markings
                 return false;
             }
 
-            if (marking.MarkingColors.Count != proto.Sprites.Count)
-            {
-                return false;
-            }
-
-            return true;
+            return marking.MarkingColors.Count == proto.Sprites.Count;
         }
 
         private void OnPrototypeReload(PrototypesReloadedEventArgs args)
@@ -197,7 +203,8 @@ namespace Content.Shared.Humanoid.Markings
             IoCManager.Resolve(ref prototypeManager);
 
             var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-            var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+            var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints)
+                .OnlyWhitelisted;
 
             if (!TryGetMarking(marking, out var prototype))
             {
@@ -223,12 +230,17 @@ namespace Content.Shared.Humanoid.Markings
             return true;
         }
 
-        public bool CanBeApplied(string species, Sex sex, MarkingPrototype prototype, IPrototypeManager? prototypeManager = null)
+        public bool CanBeApplied(
+            string species,
+            Sex sex,
+            MarkingPrototype prototype,
+            IPrototypeManager? prototypeManager = null)
         {
             IoCManager.Resolve(ref prototypeManager);
 
             var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-            var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+            var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints)
+                .OnlyWhitelisted;
 
             if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
             {
@@ -249,16 +261,19 @@ namespace Content.Shared.Humanoid.Markings
             return true;
         }
 
-        public bool MustMatchSkin(string species, HumanoidVisualLayers layer, out float alpha, IPrototypeManager? prototypeManager = null)
+        public bool MustMatchSkin(
+            string speciesBodyType,
+            HumanoidVisualLayers layer,
+            out float alpha,
+            IPrototypeManager? prototypeManager = null)
         {
             IoCManager.Resolve(ref prototypeManager);
-            var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
+            // var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
             if (
-                !prototypeManager.TryIndex(speciesProto.SpriteSet, out HumanoidSpeciesBaseSpritesPrototype? baseSprites) ||
+                !prototypeManager.TryIndex(speciesBodyType, out BodyTypePrototype? baseSprites) ||
                 !baseSprites.Sprites.TryGetValue(layer, out var spriteName) ||
                 !prototypeManager.TryIndex(spriteName, out HumanoidSpeciesSpriteLayer? sprite) ||
-                sprite == null ||
-                !sprite.MarkingsMatchSkin
+                sprite is not { MarkingsMatchSkin: true }
             )
             {
                 alpha = 1f;

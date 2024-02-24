@@ -3,27 +3,14 @@
   name: species-name-skeleton
   roundStart: false
   prototype: MobSkeletonPerson
-  sprites: MobSkeletonSprites
+  bodyTypes:
+  - SkeletonNormal
   defaultSkinTone: "#fff9e2"
   markingLimits: MobHumanMarkingLimits
   maleFirstNames: skeletonNamesFirst
   femaleFirstNames: skeletonNamesFirst
   dollPrototype: MobSkeletonPersonDummy
   skinColoration: TintedHues
-
-- type: speciesBaseSprites
-  id: MobSkeletonSprites
-  sprites:
-    Head: MobSkeletonHead
-    Chest: MobSkeletonTorso
-    LArm: MobSkeletonLArm
-    RArm: MobSkeletonRArm
-    LHand: MobSkeletonLHand
-    RHand: MobSkeletonRHand
-    LLeg: MobSkeletonLLeg
-    RLeg: MobSkeletonRLeg
-    LFoot: MobSkeletonLFoot
-    RFoot: MobSkeletonRFoot
 
 - type: humanoidBaseSprite
   id: MobSkeletonHead

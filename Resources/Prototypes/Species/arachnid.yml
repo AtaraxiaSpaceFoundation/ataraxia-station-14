@@ -3,7 +3,8 @@
   name: species-name-arachnid
   roundStart: true
   prototype: MobArachnid
-  sprites: MobArachnidSprites
+  bodyTypes:
+    - ArachnidNormal
   defaultSkinTone: "#385878"
   markingLimits: MobArachnidMarkingLimits
   dollPrototype: MobArachnidDummy
@@ -14,25 +15,6 @@
   femaleLastNames: names_arachnid_last
   sexes:
   - Unsexed
-
-- type: speciesBaseSprites
-  id: MobArachnidSprites
-  sprites:
-    Head: MobArachnidHead
-    Snout: MobHumanoidAnyMarking
-    Chest: MobArachnidTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidAnyMarking
-    LArm: MobArachnidLArm
-    RArm: MobArachnidRArm
-    LHand: MobArachnidLHand
-    RHand: MobArachnidRHand
-    LLeg: MobArachnidLLeg
-    RLeg: MobArachnidRLeg
-    LFoot: MobArachnidLFoot
-    RFoot: MobArachnidRFoot
 
 - type: markingPoints
   id: MobArachnidMarkingLimits

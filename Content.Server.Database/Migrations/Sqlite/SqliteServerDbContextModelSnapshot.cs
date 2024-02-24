@@ -711,6 +711,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("backpack");
 
+                    b.Property<string>("BodyType")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("body_type");
+
                     b.Property<string>("BorgName")
                         .IsRequired()
                         .HasColumnType("TEXT")

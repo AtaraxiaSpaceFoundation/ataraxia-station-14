@@ -7,6 +7,7 @@ using Content.Server.Database;
 using Content.Server.Humanoid;
 using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
+using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -15,7 +16,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-
 
 namespace Content.Server.Preferences.Managers
 {
@@ -90,6 +90,7 @@ namespace Content.Server.Preferences.Managers
             {
                 Logger.WarningS("prefs",
                     $"User {userId} sent a {nameof(MsgUpdateCharacter)} with a null profile in slot {slot}.");
+
                 return;
             }
 
@@ -107,7 +108,9 @@ namespace Content.Server.Preferences.Managers
             var curPrefs = prefsData.Prefs!;
 
             // WD-EDIT
-            var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
+            var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor)
+                ? sponsor.AllowedMarkings
+                : new string[] { };
 
             bool isAdminSpecie = false;
             if (_playerManager.TryGetSessionById(message.MsgChannel.UserId, out var session))
@@ -168,7 +171,8 @@ namespace Content.Server.Preferences.Managers
             var arr = new Dictionary<int, ICharacterProfile>(curPrefs.Characters);
             arr.Remove(slot);
 
-            prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor);
+            prefsData.Prefs =
+                new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor);
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -193,7 +197,7 @@ namespace Content.Server.Preferences.Managers
                 {
                     PrefsLoaded = true,
                     Prefs = new PlayerPreferences(
-                        new[] {new KeyValuePair<int, ICharacterProfile>(0, HumanoidCharacterProfile.Random())},
+                        new[] { new KeyValuePair<int, ICharacterProfile>(0, HumanoidCharacterProfile.Random()) },
                         0, Color.Transparent)
                 };
 
@@ -214,8 +218,13 @@ namespace Content.Server.Preferences.Managers
                     // WD-EDIT
                     foreach (var (_, profile) in prefs.Characters)
                     {
-                        var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
-                        bool isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+                        var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor)
+                            ? sponsor.AllowedMarkings
+                            : new string[] { };
+
+                        bool isAdminSpecie =
+                            _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+
                         profile.EnsureValid(allowedMarkings, isAdminSpecie);
                     }
                     // WD-EDIT
@@ -229,6 +238,7 @@ namespace Content.Server.Preferences.Managers
                     {
                         MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId)
                     };
+
                     _netManager.ServerSendMessage(msg, session.Channel);
                 }
             }
@@ -257,7 +267,8 @@ namespace Content.Server.Preferences.Managers
         /// <param name="userId">User Id to get preferences for</param>
         /// <param name="playerPreferences">The user preferences if true, otherwise null</param>
         /// <returns>If preferences are not null</returns>
-        public bool TryGetCachedPreferences(NetUserId userId,
+        public bool TryGetCachedPreferences(
+            NetUserId userId,
             [NotNullWhen(true)] out PlayerPreferences? playerPreferences)
         {
             if (_cachedPlayerPrefs.TryGetValue(userId, out var prefs))
@@ -309,21 +320,27 @@ namespace Content.Server.Preferences.Managers
                     case HumanoidCharacterProfile hp:
                     {
                         var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-                        var selectedSpecies = HumanoidAppearanceSystem.DefaultSpecies;
 
-                        if (prototypeManager.TryIndex<SpeciesPrototype>(hp.Species, out var species) && species.RoundStart)
+                        if (!prototypeManager.TryIndex<SpeciesPrototype>(hp.Species, out var selectedSpecies) ||
+                            selectedSpecies.RoundStart)
                         {
-                            selectedSpecies = hp.Species;
+                            selectedSpecies = prototypeManager.Index<SpeciesPrototype>(hp.Species);
+                        }
+
+                        if (!prototypeManager.TryIndex<BodyTypePrototype>(hp.BodyType, out var selectedBodyType) ||
+                            !SharedHumanoidAppearanceSystem.IsBodyTypeValid(selectedBodyType, selectedSpecies, hp.Sex))
+                        {
+                            selectedBodyType = prototypeManager.Index<BodyTypePrototype>(
+                                SharedHumanoidAppearanceSystem.DefaultBodyType);
                         }
 
                         newProf = hp
-                            .WithJobPriorities(
-                                hp.JobPriorities.Where(job =>
-                                    _protos.HasIndex<JobPrototype>(job.Key)))
-                            .WithAntagPreferences(
-                                hp.AntagPreferences.Where(antag =>
-                                    _protos.HasIndex<AntagPrototype>(antag)))
-                            .WithSpecies(selectedSpecies);
+                            .WithJobPriorities(hp.JobPriorities.Where(job => _protos.HasIndex<JobPrototype>(job.Key)))
+                            .WithAntagPreferences(hp.AntagPreferences.Where(antag =>
+                                _protos.HasIndex<AntagPrototype>(antag)))
+                            .WithSpecies(selectedSpecies.ID)
+                            .WithBodyType(selectedBodyType.ID);
+
                         break;
                     }
                     default:

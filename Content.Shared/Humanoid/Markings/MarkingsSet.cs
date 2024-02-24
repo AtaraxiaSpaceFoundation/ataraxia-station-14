@@ -51,7 +51,8 @@ public sealed partial class MarkingSet
     public Dictionary<MarkingCategories, MarkingPoints> Points = new();
 
     public MarkingSet()
-    {}
+    {
+    }
 
     /// <summary>
     ///     Construct a MarkingSet using a list of markings, and a points
@@ -61,7 +62,11 @@ public sealed partial class MarkingSet
     /// </summary>
     /// <param name="markings">The lists of markings to use.</param>
     /// <param name="pointsPrototype">The ID of the points dictionary prototype.</param>
-    public MarkingSet(List<Marking> markings, string pointsPrototype, MarkingManager? markingManager = null, IPrototypeManager? prototypeManager = null)
+    public MarkingSet(
+        List<Marking> markings,
+        string pointsPrototype,
+        MarkingManager? markingManager = null,
+        IPrototypeManager? prototypeManager = null)
     {
         IoCManager.Resolve(ref markingManager, ref prototypeManager);
 
@@ -108,7 +113,10 @@ public sealed partial class MarkingSet
     ///     Construct a MarkingSet only with a points dictionary.
     /// </summary>
     /// <param name="pointsPrototype">The ID of the points dictionary prototype.</param>
-    public MarkingSet(string pointsPrototype, MarkingManager? markingManager = null, IPrototypeManager? prototypeManager = null)
+    public MarkingSet(
+        string pointsPrototype,
+        MarkingManager? markingManager = null,
+        IPrototypeManager? prototypeManager = null)
     {
         IoCManager.Resolve(ref markingManager, ref prototypeManager);
 
@@ -141,17 +149,24 @@ public sealed partial class MarkingSet
     ///     Filters and colors markings based on species and it's restrictions in the marking's prototype from this marking set.
     /// </summary>
     /// <param name="species">The species to filter.</param>
+    /// <param name="bodyType">Body type.</param>
     /// <param name="skinColor">The skin color for recoloring (i.e. slimes). Use null if you want only filter markings</param>
     /// <param name="markingManager">Marking manager.</param>
     /// <param name="prototypeManager">Prototype manager.</param>
-    public void EnsureSpecies(string species, Color? skinColor, MarkingManager? markingManager = null, IPrototypeManager? prototypeManager = null)
+    public void EnsureSpecies(
+        string species,
+        string bodyType,
+        Color? skinColor,
+        MarkingManager? markingManager = null,
+        IPrototypeManager? prototypeManager = null)
     {
         IoCManager.Resolve(ref markingManager);
         IoCManager.Resolve(ref prototypeManager);
 
         var toRemove = new List<(MarkingCategories category, string id)>();
         var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-        var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+        var onlyWhitelisted =
+            prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
 
         foreach (var (category, list) in Markings)
         {
@@ -182,17 +197,17 @@ public sealed partial class MarkingSet
         }
 
         // Re-color left markings them into skin color if needed (i.e. for slimes)
-        if (skinColor != null)
+        if (skinColor == null)
+            return;
+
+        foreach (var (_, list) in Markings)
         {
-            foreach (var (category, list) in Markings)
+            foreach (var marking in list)
             {
-                foreach (var marking in list)
+                if (markingManager.TryGetMarking(marking, out var prototype) &&
+                    markingManager.MustMatchSkin(bodyType, prototype.BodyPart, out var alpha, prototypeManager))
                 {
-                    if (markingManager.TryGetMarking(marking, out var prototype) &&
-                        markingManager.MustMatchSkin(species, prototype.BodyPart, out var alpha, prototypeManager))
-                    {
-                        marking.SetColor(skinColor.Value.WithAlpha(alpha));
-                    }
+                    marking.SetColor(skinColor.Value.WithAlpha(alpha));
                 }
             }
         }
@@ -265,7 +280,10 @@ public sealed partial class MarkingSet
     }
 
     // WD-EDIT
-    public void FilterSponsor(string[] sponsorMarkings, MarkingManager? markingManager = null, IPrototypeManager? prototypeManager = null)
+    public void FilterSponsor(
+        string[] sponsorMarkings,
+        MarkingManager? markingManager = null,
+        IPrototypeManager? prototypeManager = null)
     {
         IoCManager.Resolve(ref markingManager);
         IoCManager.Resolve(ref prototypeManager);
@@ -319,11 +337,12 @@ public sealed partial class MarkingSet
                 if (markingManager.Markings.TryGetValue(points.DefaultMarkings[index], out var prototype))
                 {
                     var colors = MarkingColoring.GetMarkingLayerColors(
-                            prototype,
-                            skinColor,
-                            eyeColor,
-                            this
-                        );
+                        prototype,
+                        skinColor,
+                        eyeColor,
+                        this
+                    );
+
                     var marking = new Marking(points.DefaultMarkings[index], colors);
 
                     AddBack(category, marking);
@@ -397,7 +416,6 @@ public sealed partial class MarkingSet
             markings = new();
             Markings[category] = markings;
         }
-
 
         markings.Add(marking);
     }
@@ -854,7 +872,8 @@ public sealed class MarkingsEnumerator : IEnumerator<Marking>
     }
 
     public void Dispose()
-    {}
+    {
+    }
 
     object IEnumerator.Current
     {

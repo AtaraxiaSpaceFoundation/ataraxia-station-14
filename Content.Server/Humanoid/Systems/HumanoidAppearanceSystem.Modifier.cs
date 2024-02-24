@@ -29,7 +29,7 @@ public sealed partial class HumanoidAppearanceSystem
         {
             Text = "Modify markings",
             Category = VerbCategory.Tricks,
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Mobs/Customization/reptilian_parts.rsi"), "tail_smooth"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Mobs/Customization/reptilian_parts.rsi"), "tail_smooth"),
             Act = () =>
             {
                 _uiSystem.TryOpen(uid, HumanoidMarkingModifierKey.Key, actor.PlayerSession);
@@ -37,6 +37,7 @@ public sealed partial class HumanoidAppearanceSystem
                     uid,
                     HumanoidMarkingModifierKey.Key,
                     new HumanoidMarkingModifierState(component.MarkingSet, component.Species,
+                        component.BodyType,
                         component.Sex,
                         component.SkinColor,
                         component.CustomBaseLayers
@@ -45,7 +46,9 @@ public sealed partial class HumanoidAppearanceSystem
         });
     }
 
-    private void OnBaseLayersSet(EntityUid uid, HumanoidAppearanceComponent component,
+    private void OnBaseLayersSet(
+        EntityUid uid,
+        HumanoidAppearanceComponent component,
         HumanoidMarkingModifierBaseLayersSetMessage message)
     {
         if (message.Session is not { } player
@@ -63,7 +66,7 @@ public sealed partial class HumanoidAppearanceSystem
             component.CustomBaseLayers[message.Layer] = message.Info.Value;
         }
 
-        Dirty(component);
+        Dirty(uid, component);
 
         if (message.ResendState)
         {
@@ -71,14 +74,17 @@ public sealed partial class HumanoidAppearanceSystem
                 uid,
                 HumanoidMarkingModifierKey.Key,
                 new HumanoidMarkingModifierState(component.MarkingSet, component.Species,
-                        component.Sex,
-                        component.SkinColor,
-                        component.CustomBaseLayers
-                    ));
+                    component.BodyType,
+                    component.Sex,
+                    component.SkinColor,
+                    component.CustomBaseLayers
+                ));
         }
     }
 
-    private void OnMarkingsSet(EntityUid uid, HumanoidAppearanceComponent component,
+    private void OnMarkingsSet(
+        EntityUid uid,
+        HumanoidAppearanceComponent component,
         HumanoidMarkingModifierMarkingSetMessage message)
     {
         if (message.Session is not { } player
@@ -88,7 +94,7 @@ public sealed partial class HumanoidAppearanceSystem
         }
 
         component.MarkingSet = message.MarkingSet;
-        Dirty(component);
+        Dirty(uid, component);
 
         if (message.ResendState)
         {
@@ -96,11 +102,11 @@ public sealed partial class HumanoidAppearanceSystem
                 uid,
                 HumanoidMarkingModifierKey.Key,
                 new HumanoidMarkingModifierState(component.MarkingSet, component.Species,
-                        component.Sex,
-                        component.SkinColor,
-                        component.CustomBaseLayers
-                    ));
+                    component.BodyType,
+                    component.Sex,
+                    component.SkinColor,
+                    component.CustomBaseLayers
+                ));
         }
-
     }
 }

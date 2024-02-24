@@ -42,9 +42,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         component.BaseLayers.Clear();
 
         // add default species layers
-        var speciesProto = _prototypeManager.Index(component.Species);
-        var baseSprites = _prototypeManager.Index<HumanoidSpeciesBaseSpritesPrototype>(speciesProto.SpriteSet);
-        foreach (var (key, id) in baseSprites.Sprites)
+        var bodyTypeProto = _prototypeManager.Index<BodyTypePrototype>(component.BodyType);
+        foreach (var (key, id) in bodyTypeProto.Sprites)
         {
             oldLayers.Remove(key);
             if (!component.CustomBaseLayers.ContainsKey(key))
@@ -108,13 +107,17 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     ///     This should not be used if the entity is owned by the server. The server will otherwise
     ///     override this with the appearance data it sends over.
     /// </remarks>
-    public override void LoadProfile(EntityUid uid, HumanoidCharacterProfile profile, HumanoidAppearanceComponent? humanoid = null)
+    public override void LoadProfile(
+        EntityUid uid,
+        HumanoidCharacterProfile profile,
+        HumanoidAppearanceComponent? humanoid = null)
     {
         if (!Resolve(uid, ref humanoid))
         {
             return;
         }
 
+        humanoid.BodyType = profile.BodyType;
         var customBaseLayers = new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>();
 
         var speciesPrototype = _prototypeManager.Index<SpeciesPrototype>(profile.Species);
@@ -142,15 +145,19 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         //markings.RemoveCategory(MarkingCategories.FacialHair);
 
         // We need to ensure hair before applying it or coloring can try depend on markings that can be invalid
-        var hairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.Hair, out var hairAlpha, _prototypeManager)
+        var hairColor = _markingManager.MustMatchSkin(profile.BodyType, HumanoidVisualLayers.Hair, out var hairAlpha,
+            _prototypeManager)
             ? profile.Appearance.SkinColor.WithAlpha(hairAlpha)
             : profile.Appearance.HairColor;
+
         var hair = new Marking(profile.Appearance.HairStyleId,
             new[] { hairColor });
 
-        var facialHairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.FacialHair, out var facialHairAlpha, _prototypeManager)
+        var facialHairColor = _markingManager.MustMatchSkin(profile.BodyType, HumanoidVisualLayers.FacialHair,
+            out var facialHairAlpha, _prototypeManager)
             ? profile.Appearance.SkinColor.WithAlpha(facialHairAlpha)
             : profile.Appearance.FacialHairColor;
+
         var facialHair = new Marking(profile.Appearance.FacialHairStyleId,
             new[] { facialHairColor });
 
@@ -158,6 +165,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         {
             markings.AddBack(MarkingCategories.Hair, hair);
         }
+
         if (_markingManager.CanBeApplied(profile.Species, profile.Sex, facialHair, _prototypeManager))
         {
             markings.AddBack(MarkingCategories.FacialHair, facialHair);
@@ -172,10 +180,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 profile.Appearance.EyeColor,
                 markings
             );
+
             markings.AddBack(prototype.MarkingCategory, new Marking(marking.MarkingId, markingColors));
         }
 
-        markings.EnsureSpecies(profile.Species, profile.Appearance.SkinColor, _markingManager, _prototypeManager);
+        markings.EnsureSpecies(profile.Species, profile.BodyType, profile.Appearance.SkinColor, _markingManager,
+            _prototypeManager);
+
         markings.EnsureSexes(profile.Sex, _markingManager);
         markings.EnsureDefault(
             profile.Appearance.SkinColor,
@@ -190,6 +201,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.CustomBaseLayers = customBaseLayers;
         humanoid.Sex = profile.Sex;
         humanoid.Gender = profile.Gender;
+        humanoid.BodyType = profile.BodyType;
         humanoid.Age = profile.Age;
         humanoid.Species = profile.Species;
         humanoid.SkinColor = profile.Appearance.SkinColor;
@@ -261,7 +273,9 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             spriteComp.RemoveLayer(index);
         }
     }
-    private void ApplyMarking(MarkingPrototype markingPrototype,
+
+    private void ApplyMarking(
+        MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
         bool visible,
         HumanoidAppearanceComponent humanoid,
@@ -274,7 +288,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
         visible &= !IsHidden(humanoid, markingPrototype.BodyPart);
         visible &= humanoid.BaseLayers.TryGetValue(markingPrototype.BodyPart, out var setting)
-           && setting.AllowsMarkings;
+            && setting.AllowsMarkings;
 
         for (var j = 0; j < markingPrototype.Sprites.Count; j++)
         {
@@ -315,7 +329,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         }
     }
 
-    public override void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null)
+    public override void SetSkinColor(
+        EntityUid uid,
+        Color skinColor,
+        bool sync = true,
+        bool verify = true,
+        HumanoidAppearanceComponent? humanoid = null)
     {
         if (!Resolve(uid, ref humanoid) || humanoid.SkinColor == skinColor)
             return;
@@ -366,7 +385,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         {
             foreach (var marking in markingList)
             {
-                if (_markingManager.TryGetMarking(marking, out var markingPrototype) && markingPrototype.BodyPart == layer)
+                if (_markingManager.TryGetMarking(marking, out var markingPrototype) &&
+                    markingPrototype.BodyPart == layer)
                     ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, humanoid, sprite);
             }
         }

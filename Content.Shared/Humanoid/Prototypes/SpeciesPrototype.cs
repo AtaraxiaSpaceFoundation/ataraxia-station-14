@@ -1,5 +1,6 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -17,6 +18,9 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField("name", required: true)]
     public string Name { get; private set; } = default!;
+
+    [DataField("bodyTypes", required: true, customTypeSerializer: typeof(PrototypeIdListSerializer<BodyTypePrototype>))]
+    public List<string> BodyTypes { get; } = default!;
 
     /// <summary>
     ///     Descriptor. Unused...? This is intended
@@ -41,8 +45,8 @@ public sealed partial class SpeciesPrototype : IPrototype
     // sprite layout, and leave this null. Keep in mind that this will disable
     // sprite accessories.
 
-    [DataField("sprites")]
-    public string SpriteSet { get; private set; } = default!;
+    // [DataField("sprites")]
+    // public string SpriteSet { get; private set; } = default!;
 
     /// <summary>
     ///     Default skin tone for this species. This applies for non-human skin tones.
@@ -66,13 +70,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// <summary>
     ///     Humanoid species variant used by this entity.
     /// </summary>
-    [DataField("prototype", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("prototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string Prototype { get; private set; } = default!;
 
     /// <summary>
     /// Prototype used by the species for the dress-up doll in various menus.
     /// </summary>
-    [DataField("dollPrototype", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("dollPrototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string DollPrototype { get; private set; } = default!;
 
     /// <summary>

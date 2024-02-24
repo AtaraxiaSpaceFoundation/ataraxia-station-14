@@ -3,7 +3,8 @@
   name: species-name-moth
   roundStart: true
   prototype: MobMoth
-  sprites: MobMothSprites
+  bodyTypes:
+  - MothNormal
   defaultSkinTone: "#ffda93"
   markingLimits: MobMothMarkingLimits
   dollPrototype: MobMothDummy
@@ -11,25 +12,6 @@
   maleFirstNames: names_moth_first_male
   femaleFirstNames: names_moth_first_female
   lastNames: names_moth_last
-
-- type: speciesBaseSprites
-  id: MobMothSprites
-  sprites:
-    Head: MobMothHead
-    Snout: MobHumanoidAnyMarking
-    Chest: MobMothTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobMothEyes
-    LArm: MobMothLArm
-    RArm: MobMothRArm
-    LHand: MobMothLHand
-    RHand: MobMothRHand
-    LLeg: MobMothLLeg
-    RLeg: MobMothRLeg
-    LFoot: MobMothLFoot
-    RFoot: MobMothRFoot
 
 - type: humanoidBaseSprite
   id: MobMothEyes

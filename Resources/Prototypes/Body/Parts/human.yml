@@ -21,7 +21,7 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/parts.rsi
-    state: "torso_m"
+    state: "torso"
   - type: Extractable
     juiceSolution:
       reagents:
@@ -31,13 +31,21 @@
         Quantity: 20
 
 - type: entity
+  id: TorsoHumanSlim
+  name: "human torso"
+  parent: TorsoHuman
+  components:
+  - type: Sprite
+    state: "torso_slim"
+
+- type: entity
   id: HeadHuman
   name: "human head"
   parent: [PartHuman, BaseHead]
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/parts.rsi
-    state: "head_m"
+    state: "head"
   - type: Extractable
     juiceSolution:
       reagents:
@@ -45,6 +53,13 @@
         Quantity: 5
       - ReagentId: Blood
         Quantity: 10
+
+- type: entity
+  id: HeadHumanSlim
+  parent: HeadHuman
+  components:
+  - type: Sprite
+    state: "head_slim"
 
 - type: entity
   id: LeftArmHuman

@@ -343,6 +343,7 @@ namespace Content.Server.Database
         public string Gender { get; set; } = null!;
 
         //WD-EDIT
+        public string BodyType { get; set; } = null!;
         public string Voice { get; set; } = null!;
         //WD-EDIT
 

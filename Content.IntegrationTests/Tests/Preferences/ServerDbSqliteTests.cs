@@ -11,7 +11,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Log;
 using Robust.Shared.Maths;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.UnitTesting;
 
 namespace Content.IntegrationTests.Tests.Preferences
@@ -49,6 +48,7 @@ namespace Content.IntegrationTests.Tests.Preferences
                 21,
                 Sex.Male,
                 Gender.Epicene,
+                "Normal",
                 new HumanoidCharacterAppearance(
                     "Afro",
                     Color.Aqua,

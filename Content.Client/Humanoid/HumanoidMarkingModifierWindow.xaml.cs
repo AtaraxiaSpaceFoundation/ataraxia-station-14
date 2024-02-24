@@ -59,10 +59,12 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
         string? state = _protoMan.HasIndex<HumanoidSpeciesSpriteLayer>(modifier.Text) ? modifier.Text : null;
         OnLayerInfoModified?.Invoke(layer, new CustomBaseLayerInfo(state, modifier.Color));
     }
+
     public void SetState(
         MarkingSet markings,
         string species,
         Sex sex,
+        string bodyType,
         Color skinColor,
         Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo> info
     )
@@ -84,7 +86,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
             eyesColor = eyes.Color.Value;
         }
 
-        MarkingPickerWidget.SetData(markings, species, sex, skinColor, eyesColor);
+        MarkingPickerWidget.SetData(markings, species, sex, bodyType, skinColor, eyesColor);
     }
 
     private sealed class HumanoidBaseLayerModifier : BoxContainer
@@ -95,7 +97,9 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
         private BoxContainer _infoBox;
 
         public bool Enabled => _enable.Pressed;
+
         public string Text => _lineEdit.Text;
+
         public Color Color => _colorSliders.Color;
 
         public Action? OnStateChanged;
@@ -109,6 +113,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
                 MinWidth = 250,
                 HorizontalExpand = true
             };
+
             AddChild(labelBox);
 
             labelBox.AddChild(new Label
@@ -116,6 +121,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
                 HorizontalExpand = true,
                 Text = layer.ToString()
             });
+
             _enable = new CheckBox
             {
                 Text = "Enable",
@@ -128,6 +134,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
                 Orientation = LayoutOrientation.Vertical,
                 Visible = false
             };
+
             _enable.OnToggled += args =>
             {
                 _infoBox.Visible = args.Pressed;
@@ -135,7 +142,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
             };
 
             var lineEditBox = new BoxContainer();
-            lineEditBox.AddChild(new Label { Text = "Prototype id: "});
+            lineEditBox.AddChild(new Label { Text = "Prototype id: " });
 
             // TODO: This line edit should really be an options / dropdown selector, not text.
             _lineEdit = new() { MinWidth = 200 };

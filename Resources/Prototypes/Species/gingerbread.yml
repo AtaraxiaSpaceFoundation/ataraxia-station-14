@@ -3,28 +3,12 @@
   name: species-name-human
   roundStart: false
   prototype: MobGingerbread
-  sprites: MobGingerbreadSprites
+  bodyTypes:
+  - GingerbreadNormal
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobGingerbreadDummy
   skinColoration: HumanToned
   defaultSkinTone: "#9a7c5a"
-
-- type: speciesBaseSprites
-  id: MobGingerbreadSprites
-  sprites:
-    Head: MobGingerbreadHead
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Chest: MobGingerbreadTorso
-    Eyes: MobGingerbreadEyes
-    LArm: MobGingerbreadLArm
-    RArm: MobGingerbreadRArm
-    LHand: MobGingerbreadLHand
-    RHand: MobGingerbreadRHand
-    LLeg: MobGingerbreadLLeg
-    RLeg: MobGingerbreadRLeg
-    LFoot: MobGingerbreadLFoot
-    RFoot: MobGingerbreadRFoot
 
 - type: humanoidBaseSprite
   id: MobGingerbreadEyes

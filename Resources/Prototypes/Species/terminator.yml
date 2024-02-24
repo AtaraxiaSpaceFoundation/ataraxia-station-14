@@ -3,7 +3,8 @@
   name: Terminator
   roundStart: false
   prototype: MobTerminatorEndoskeleton
-  sprites: MobTerminatorSprites
+  bodyTypes:
+  - TerminatorNormal
   defaultSkinTone: "#fff9e2"
   markingLimits: MobHumanMarkingLimits
   maleFirstNames: skeletonNamesFirst
@@ -11,19 +12,6 @@
   dollPrototype: MobSkeletonPersonDummy
   skinColoration: TintedHues
 
-- type: speciesBaseSprites
-  id: MobTerminatorSprites
-  sprites:
-    Head: MobTerminatorHead
-    Chest: MobTerminatorTorso
-    LArm: MobTerminatorLArm
-    RArm: MobTerminatorRArm
-    LHand: MobTerminatorLHand
-    RHand: MobTerminatorRHand
-    LLeg: MobTerminatorLLeg
-    RLeg: MobTerminatorRLeg
-    LFoot: MobTerminatorLFoot
-    RFoot: MobTerminatorRFoot
 
 - type: humanoidBaseSprite
   id: MobTerminatorHead

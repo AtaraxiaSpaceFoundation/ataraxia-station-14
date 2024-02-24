@@ -70,10 +70,16 @@ public sealed partial class HumanoidAppearanceComponent : Component
     [DataField, AutoNetworkedField]
     public Sex Sex = Sex.Male;
 
+    /// <summary>
+    ///     Current body type.
+    /// </summary>
+    [DataField("bodyType", customTypeSerializer: typeof(PrototypeIdSerializer<BodyTypePrototype>)), AutoNetworkedField]
+    public string BodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
+
     [DataField, AutoNetworkedField]
     public Color EyeColor = Color.Brown;
 
-    [DataField("voice", customTypeSerializer: typeof(PrototypeIdSerializer<TTSVoicePrototype>))]
+    [DataField("voice", customTypeSerializer: typeof(PrototypeIdSerializer<TTSVoicePrototype>)), AutoNetworkedField]
     public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
 
     /// <summary>

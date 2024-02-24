@@ -3,7 +3,8 @@
   name: species-name-diona
   roundStart: true
   prototype: MobDiona
-  sprites: MobDionaSprites
+  bodyTypes:
+  - DionaNormal
   defaultSkinTone: "#cdb369"
   markingLimits: MobDionaMarkingLimits
   dollPrototype: MobDionaDummy
@@ -13,23 +14,6 @@
   maleLastNames: DionaLast
   femaleLastNames: DionaLast
   naming: TheFirstofLast
-
-- type: speciesBaseSprites
-  id: MobDionaSprites
-  sprites:
-    Head: MobDionaHead
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Chest: MobDionaTorso
-    Eyes: MobDionaEyes
-    LArm: MobDionaLArm
-    RArm: MobDionaRArm
-    LHand: MobDionaLHand
-    RHand: MobDionaRHand
-    LLeg: MobDionaLLeg
-    RLeg: MobDionaRLeg
-    LFoot: MobDionaLFoot
-    RFoot: MobDionaRFoot
 
 - type: markingPoints
   id: MobDionaMarkingLimits
