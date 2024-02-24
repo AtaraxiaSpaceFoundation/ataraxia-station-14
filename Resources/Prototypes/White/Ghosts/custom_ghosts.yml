@@ -383,3 +383,13 @@
   alpha: 0.9
   ghostName: Зябр
   ghostDescription: Пусть так и будет
+
+#FjorLofgren
+- type: customGhost
+  id: fjorlofgren-ghost
+  ckey: FjorLofgren
+  sprite: White/Ghosts/fjor-ghost.rsi
+  alpha: 0.9
+  ghostName: Bun Witch
+  ghostDescription: Не бойся, маленький кролик
+  size: 0.9, 0.9
