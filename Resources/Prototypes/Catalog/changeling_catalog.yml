@@ -18,7 +18,7 @@
   description: changeling-ability-changeling-armblade-desc
   productAction: ActionArmblade
   cost:
-    ChangelingPoint: 3
+    ChangelingPoint: 2
   categories:
     - ChangelingAbilities
   conditions:
@@ -31,7 +31,7 @@
   description: changeling-ability-changeling-shield-desc
   productAction: ActionShield
   cost:
-    ChangelingPoint: 3
+    ChangelingPoint: 1
   categories:
     - ChangelingAbilities
   conditions:
@@ -57,7 +57,7 @@
   description: changeling-ability-tentacle-arm-desc
   productAction: ActionTentacleArm
   cost:
-    ChangelingPoint: 4
+    ChangelingPoint: 2
   categories:
     - ChangelingAbilities
   conditions:
@@ -97,7 +97,7 @@
   description: changeling-ability-blind-sting-desc
   productAction: ActionBlindSting
   cost:
-    ChangelingPoint: 2
+    ChangelingPoint: 1
   categories:
     - ChangelingStings
   conditions:
@@ -110,7 +110,7 @@
   description: changeling-ability-mute-sting-desc
   productAction: ActionMuteSting
   cost:
-    ChangelingPoint: 3
+    ChangelingPoint: 2
   categories:
     - ChangelingStings
   conditions:
@@ -136,7 +136,7 @@
   description: changeling-ability-cryo-sting-desc
   productAction: ActionCryoSting
   cost:
-    ChangelingPoint: 3
+    ChangelingPoint: 2
   categories:
     - ChangelingStings
   conditions:

@@ -595,6 +595,8 @@ public sealed partial class ChangelingSystem
         if (!_mindSystem.TryGetMind(uid, out var mindId, out _))
             return;
 
+        component.AbsorbedCount++;
+
         if (TryComp(uid, out SharedPullerComponent? puller) && puller.Pulling is { } pulled &&
             TryComp(pulled, out SharedPullableComponent? pullable))
         {

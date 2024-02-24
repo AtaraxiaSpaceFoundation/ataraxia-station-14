@@ -29,14 +29,18 @@
     AtmosphericTechnician: 400
     StationEngineer: 300
     TechnicalAssistant: 200
+    SeniorEngineer: 400
     Chemist: 400
     MedicalDoctor: 300
     MedicalIntern: 200
     Psychologist: 200
     Paramedic: 400
+    SeniorPhysician: 400
     SecurityCadet: 200
     SecurityOfficer: 300
     Detective: 400
     Warden: 500
+    SeniorOfficer: 400
     Scientist: 300
     ResearchAssistant: 200
+    SeniorResearcher: 400

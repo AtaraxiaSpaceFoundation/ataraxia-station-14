@@ -43,7 +43,7 @@
     energy: 2
     color: yellow
   - type: ChangeThrowForce
-    throwForce: 15
+    throwForce: 20
   - type: Fixtures
     fixtures:
       fix1:

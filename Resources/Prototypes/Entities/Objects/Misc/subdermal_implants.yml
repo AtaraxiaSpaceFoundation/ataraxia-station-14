@@ -340,7 +340,6 @@
   noSpawn: true
   components:
    - type: SubdermalImplant
-     permanent: true
    - type: Tag
      tags:
        - MindShield

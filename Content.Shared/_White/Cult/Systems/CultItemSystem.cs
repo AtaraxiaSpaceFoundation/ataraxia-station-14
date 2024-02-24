@@ -23,7 +23,7 @@ public sealed class CultItemSystem : EntitySystem
 
     private void OnEquipAttempt(EntityUid uid, CultItemComponent component, BeingEquippedAttemptEvent args)
     {
-        if (CanUse(args.Equipee))
+        if (CanUse(args.Equipee) && CanUse(args.EquipTarget))
             return;
 
         args.Cancel();

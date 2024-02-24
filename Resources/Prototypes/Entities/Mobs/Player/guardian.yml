@@ -101,6 +101,7 @@
       interactSuccessString: petting-success-holo
       interactFailureString: petting-failure-holo
       successChance: 0.7
+    - type: MovementAlwaysTouching
     - type: Tag
       tags:
         - CannotSuicide
