@@ -393,3 +393,12 @@
   ghostName: Bun Witch
   ghostDescription: Не бойся, маленький кролик
   size: 0.9, 0.9
+
+#Persikvin
+- type: customGhost
+  id: persikvin-ghost
+  ckey: Persikvin
+  sprite: White/Ghosts/persikvin-ghost.rsi
+  alpha: 0.9
+  ghostName: Gawr
+  ghostDescription: Из океана...
