@@ -10,6 +10,9 @@ using Robust.Shared.Random;
 
 namespace Content.Server._White.Keyhole;
 
+// TODO: Исправить, что дверь на замке можно разобрать через ее id: DoorGraph
+// TODO: Исправить, что при прерывании закрытия девственной двери форма замка принимает форму ключа, хотя закрытия не произошло
+
 public sealed partial class KeyholeSystem : EntitySystem
 {
 
@@ -66,12 +69,18 @@ public sealed partial class KeyholeSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, KeyholeComponent component, KeyInsertDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled)
+        if (args.Handled || args.Cancelled || IsStateChanging(uid))
             return;
 
         Lock(uid, component, args.User);
 
         args.Handled = true;
+    }
+
+    private bool IsStateChanging(EntityUid uid)
+    {
+        return TryComp<DoorComponent>(uid, out var doorComponent) &&
+               (doorComponent.State == DoorState.Closing || doorComponent.State == DoorState.Opening);
     }
 
     private void Lock(EntityUid uid, KeyholeComponent component, EntityUid user)

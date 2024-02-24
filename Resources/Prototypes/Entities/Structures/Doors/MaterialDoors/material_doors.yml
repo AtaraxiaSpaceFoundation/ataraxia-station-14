@@ -57,7 +57,6 @@
     mode: NoSprite
   - type: Occluder
   - type: ReflectAspectMark
-  - type: Keyhole
 
 - type: entity
   parent: BaseMaterialDoor
@@ -65,6 +64,7 @@
   abstract: true
   components:
   - type: NavMapDoor
+  - type: Keyhole
 
 - type: entity
   id: MetalDoor
