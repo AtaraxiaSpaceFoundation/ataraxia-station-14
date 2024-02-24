@@ -1,6 +1,5 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.Examine;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
@@ -34,13 +33,12 @@ public sealed class BackstabSystem : EntitySystem
             !TryComp(target, out TransformComponent? xform))
             return;
 
-        var rot1 = _transform.GetWorldRotation(args.User).FlipPositive();
-        var rot2 = _transform.GetWorldRotation(xform).FlipPositive();
-        var tol = ent.Comp.Tolerance;
+        var userXform = Transform(args.User);
+        var v1 = (_transform.GetWorldRotation(xform) + MathHelper.PiOver2).ToVec(); // Flipped WorldVec
+        var v2 = _transform.GetWorldPosition(userXform) - _transform.GetWorldPosition(xform);
+        var angle = Vector3.CalculateAngle(new Vector3(v1), new Vector3(v2));
 
-        if (!MathHelper.CloseTo(rot1, rot2, tol) &&
-            !MathHelper.CloseTo(rot1, rot2 + MathHelper.TwoPi, tol) &&
-            !MathHelper.CloseTo(rot1 + MathHelper.TwoPi, rot2, tol))
+        if (angle > ent.Comp.Tolerance.Theta)
             return;
 
         var damage = args.BaseDamage.GetTotal() * ent.Comp.DamageMultiplier;
