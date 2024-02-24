@@ -1036,19 +1036,27 @@ public sealed partial class CultSystem : EntitySystem
 
         _random.Shuffle(list);
 
-        var bloodCost = -120 / cultists.Count;
+        var bloodCost = 120 / cultists.Count;
 
         foreach (var cultist in cultists)
         {
-            if (!TryComp<BloodstreamComponent>(cultist, out var bloodstreamComponent))
+            if (!TryComp<BloodstreamComponent>(cultist, out var bloodstreamComponent) ||
+                bloodstreamComponent.BloodSolution is null)
+            {
                 return false;
+            }
 
-            _bloodstreamSystem.TryModifyBloodLevel(cultist, bloodCost, bloodstreamComponent);
+            if (bloodstreamComponent.BloodSolution.Value.Comp.Solution.Volume < bloodCost)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("cult-blood-boil-rune-no-blood"), user, user);
+                return false;
+            }
+
+            _bloodstreamSystem.TryModifyBloodLevel(cultist, -bloodCost, bloodstreamComponent);
         }
 
         var projectileCount =
             (int) MathF.Round(MathHelper.Lerp(component.MinProjectiles, component.MaxProjectiles, severity));
-
 
         while (projectileCount > 0)
         {
@@ -1059,7 +1067,7 @@ public sealed partial class CultSystem : EntitySystem
             if (!flammable.TryGetComponent(target, out var fl))
                 continue;
 
-            fl.FireStacks += _random.Next(1, 3);
+            fl.FireStacks += 1;
 
             _flammableSystem.Ignite(target, target);
 

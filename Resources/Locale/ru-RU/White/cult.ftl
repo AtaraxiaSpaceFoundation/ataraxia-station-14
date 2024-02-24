@@ -36,6 +36,7 @@ cult-revive-rune-no-charges = У рун воскрешения кончилис�
 cult-summon-rune-need-minimum-cultists = Необходимо минимум 2 культиста.
 cult-cultists-not-found = Культисты не обнаружены.
 cult-blood-boil-rune-need-minimum = Необходимо минимум 3 культиста.
+cult-blood-boil-rune-no-blood = Кому-то из культистов не хватает крови.
 cult-blood-boil-rune-no-targets = Нет целей.
 cult-teleport-rune-default-label = безымянная метка
 cult-narsie-summon-drawn-position = Культ закончил рисовать руну ритуала разрыва измерений! Координаты: { $posText }

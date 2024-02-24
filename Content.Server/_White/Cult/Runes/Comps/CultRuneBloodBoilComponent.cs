@@ -22,5 +22,5 @@ public sealed partial class CultRuneBloodBoilComponent : Component
     public int MaxProjectiles = 9;
 
     [DataField("projectileRange"), ViewVariables(VVAccess.ReadWrite)]
-    public float ProjectileRange = 50f;
+    public float ProjectileRange = 30f;
 }
