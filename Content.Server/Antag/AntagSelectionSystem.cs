@@ -11,6 +11,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Map;
 using System.Numerics;
 using Content.Server._Miracle.Components;
+using Content.Server._Miracle.GulagSystem;
 using Content.Shared.Inventory;
 using Content.Server.Storage.EntitySystems;
 using Robust.Shared.Audio;
@@ -48,6 +49,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private readonly RoleSystem _roles = default!; // WD
     [Dependency] private readonly SharedPlayerSystem _sharedPlayerSystem = default!; // WD
+    [Dependency] private readonly GulagSystem _gulag = default!; // WD
 
     /// <summary>
     /// Attempts to start the game rule by checking if there are enough players in lobby and readied.
@@ -102,12 +104,14 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
         chosen = new List<EntityUid>();
         foreach (var player in allPlayers)
         {
+            if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+                continue;
+
             if (includeHeads == false)
             {
                 // WD START
                 if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
-                    mind.OwnedEntity is not { } ownedEntity || HasComp<CommandStaffComponent>(ownedEntity) ||
-                    HasComp<GulagBoundComponent>(ownedEntity))
+                    mind.OwnedEntity is not { } ownedEntity || HasComp<CommandStaffComponent>(ownedEntity))
                     continue;
                 // WD END
 
@@ -175,16 +179,14 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         foreach (var player in candidates.Keys)
         {
+            if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+                continue;
+
             if (_sharedPlayerSystem.ContentData(player) is not {Mind: { } mindId} || _roles.MindIsAntagonist(mindId))
                 continue;
 
             // Role prevents antag.
             if (!_jobs.CanBeAntag(player))
-                continue;
-
-            // Gulag
-            if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
-                mind.OwnedEntity is not { } ownedEntity || HasComp<GulagBoundComponent>(ownedEntity))
                 continue;
 
             // Latejoin

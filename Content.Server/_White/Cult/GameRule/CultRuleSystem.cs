@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Miracle.Components;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -45,6 +46,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     [Dependency] private readonly JobSystem _jobSystem = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly GulagSystem _gulag = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -324,14 +326,17 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         foreach (var player in candidates.Keys)
         {
+            // Gulag
+            if (_gulag.IsUserGulaged(player.UserId, out _))
+                continue;
+
             // Role prevents antag.
             if (!_jobSystem.CanBeAntag(player))
                 continue;
 
-            // Gulag & chaplain
+            // Chaplain
             if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
-                mind.OwnedEntity is not { } ownedEntity || HasComp<GulagBoundComponent>(ownedEntity) ||
-                HasComp<HolyComponent>(ownedEntity))
+                mind.OwnedEntity is not { } ownedEntity || HasComp<HolyComponent>(ownedEntity))
                 continue;
 
             // Latejoin

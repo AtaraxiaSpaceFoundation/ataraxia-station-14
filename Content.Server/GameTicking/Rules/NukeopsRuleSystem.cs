@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Administration.Commands;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
@@ -91,6 +92,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     [Dependency] private readonly WarDeclaratorSystem _warDeclarator = default!;
     //WD EDIT
     [Dependency] private readonly ReputationManager _reputationManager = default!;
+    [Dependency] private readonly GulagSystem _gulag = default!;
     //WD EDIT
 
 
@@ -632,6 +634,9 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             // ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
             foreach (var player in everyone)
             {
+                if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+                    continue;
+
                 if (!ev.Profiles.ContainsKey(player.UserId))
                 {
                     continue;

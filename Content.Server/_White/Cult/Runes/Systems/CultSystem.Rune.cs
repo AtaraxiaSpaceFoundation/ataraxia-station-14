@@ -668,17 +668,7 @@ public sealed partial class CultSystem : EntitySystem
 
         foreach (var target in targets)
         {
-            // break pulls before portal enter so we dont break shit
-            if (TryComp<SharedPullableComponent>(target, out var pullable) && pullable.BeingPulled)
-            {
-                _pulling.TryStopPull(pullable);
-            }
-
-            if (TryComp<SharedPullerComponent>(target, out var pulling)
-                && pulling.Pulling != null && TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
-            {
-                _pulling.TryStopPull(subjectPulling);
-            }
+            StopPulling(target);
 
             _xform.SetCoordinates(target, xFormSelected.Coordinates);
         }
@@ -977,6 +967,8 @@ public sealed partial class CultSystem : EntitySystem
             _popupSystem.PopupEntity("Он в наручниках!", user.Value);
             return;
         }
+
+        StopPulling(target, false);
 
         _xform.SetCoordinates(target, xFormBase.Coordinates);
 
@@ -1317,6 +1309,22 @@ public sealed partial class CultSystem : EntitySystem
 
         _damageableSystem.TryChangeDamage(player, new DamageSpecifier(damageSpecifier, -40));
         _damageableSystem.TryChangeDamage(player, new DamageSpecifier(damageSpecifier2, -40));
+    }
+
+    private void StopPulling(EntityUid target, bool checkPullable = true)
+    {
+        // break pulls before portal enter so we dont break shit
+        if (checkPullable && TryComp<SharedPullableComponent>(target, out var pullable) && pullable.BeingPulled)
+        {
+            _pulling.TryStopPull(pullable);
+        }
+
+        if (TryComp<SharedPullerComponent>(target, out var pulling)
+            && pulling.Pulling != null &&
+            TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+        {
+            _pulling.TryStopPull(subjectPulling);
+        }
     }
 
     /*

@@ -88,7 +88,7 @@ public sealed class NonPeacefulRoundEndSystem : EntitySystem
 
         var weaponEntity = _entityManager.SpawnEntity(item, transform.Coordinates);
 
-        _handsSystem.TryDrop(player);
+        // _handsSystem.TryDrop(player);
         _handsSystem.PickupOrDrop(player, weaponEntity);
     }
 }
