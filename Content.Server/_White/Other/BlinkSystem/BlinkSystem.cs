@@ -1,21 +1,20 @@
+using System.Linq;
 using System.Numerics;
-using Content.Shared.Mobs.Components;
+using Content.Shared._White.BetrayalDagger;
 using Content.Shared.Physics;
-using Robust.Shared.Audio.Systems;
+using Robust.Server.Audio;
+using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
-namespace Content.Shared._White.BetrayalDagger;
+namespace Content.Server._White.Other.BlinkSystem;
 
 public sealed class BlinkSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     public override void Initialize()
     {
@@ -46,36 +45,22 @@ public sealed class BlinkSystem : EntitySystem
 
         var coords = _transform.GetWorldPosition(xform);
         var dir = msg.Direction.Normalized();
-        var range = blink.Distance;
+        var range = MathF.Min(blink.Distance, msg.Direction.Length());
 
-        var ray = new CollisionRay(coords, dir, (int) CollisionGroup.Opaque);
-        var rayResults = _physics.IntersectRayWithPredicate(xform.MapID, ray, range,
-            x => x == user || !HasComp<OccluderComponent>(x)).FirstOrNull();
+        var ray = new CollisionRay(coords, dir, (int) (CollisionGroup.Impassable | CollisionGroup.InteractImpassable));
+        var rayResults = _physics.IntersectRayWithPredicate(xform.MapID, ray, range, x => x == user, false).ToList();
 
         Vector2 targetPos;
-        if (rayResults != null)
+        if (rayResults.Count > 0)
         {
-            targetPos = rayResults.Value.HitPos - dir;
+            targetPos = rayResults.MinBy(x => (x.HitPos - coords).Length()).HitPos - dir;
         }
         else
         {
-            targetPos = coords + (msg.Direction.Length() > range ? dir * range : msg.Direction);
+            targetPos = coords + (msg.Direction.Length() > blink.Distance ? dir * blink.Distance : msg.Direction);
         }
 
         _transform.SetWorldPosition(user, targetPos);
         _audio.PlayPvs(blink.BlinkSound, user);
-    }
-}
-
-[Serializable, NetSerializable]
-public sealed class BlinkEvent : EntityEventArgs
-{
-    public readonly NetEntity Weapon;
-    public readonly Vector2 Direction;
-
-    public BlinkEvent(NetEntity weapon, Vector2 direction)
-    {
-        Weapon = weapon;
-        Direction = direction;
     }
 }
