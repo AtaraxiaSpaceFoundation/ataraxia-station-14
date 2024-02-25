@@ -372,7 +372,7 @@
   parent: JobIcon
   id: JobIconInspector
   icon:
-    sprite: Interface/Misc/job_icons.rsi
+    sprite: /Textures/Interface/Misc/job_icons.rsi
     state: Inspector
 
 - type: statusIcon
