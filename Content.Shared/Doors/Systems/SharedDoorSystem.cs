@@ -180,9 +180,11 @@ public abstract class SharedDoorSystem : EntitySystem
 
     private void OnBeforePry(EntityUid uid, DoorComponent door, ref BeforePryEvent args) // WD edit
     {
-        args.Cancelled = door.State == DoorState.Welded ||
-                         !door.CanPry ||
-                         TryComp<KeyholeComponent>(uid, out var keyholeComponent) && keyholeComponent.Locked;
+        if (door.State == DoorState.Welded || !door.CanPry ||
+            TryComp<KeyholeComponent>(uid, out var keyholeComponent) && keyholeComponent.Locked)
+        {
+            args.Cancelled = true;
+        }
     }
 
     /// <summary>
