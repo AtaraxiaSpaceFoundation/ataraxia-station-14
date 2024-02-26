@@ -1340,6 +1340,14 @@
   categories:
     - MeatyOreToys
 
+- type: listing
+  id: MeatyToyPlushieLerkFluff
+  productEntity: PlushieLerkFluff
+  cost:
+    MeatyOreCoin: 2
+  categories:
+    - MeatyOreToys
+
 # Special
 
 - type: listing
