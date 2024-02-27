@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Antag;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Rules.Components;
@@ -50,6 +51,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     //WD EDIT
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly GulagSystem _gulag = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -306,6 +308,9 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         while (query.MoveNext(out var uid, out var traitor, out var gameRule))
         {
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
+                continue;
+
+            if (_gulag.IsUserGulaged(ev.Player.UserId, out _)) // WD
                 continue;
 
             if (traitor.TotalTraitors >= MaxTraitors)

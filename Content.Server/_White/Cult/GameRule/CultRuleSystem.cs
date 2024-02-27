@@ -307,6 +307,9 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (entity == default)
                 continue;
 
+            if (_gulag.IsUserGulaged(actor.PlayerSession.UserId, out _))
+                continue;
+
             if (exclude?.Contains(actor.PlayerSession) is true)
             {
                 continue;

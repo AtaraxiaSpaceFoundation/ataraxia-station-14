@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Miracle.Components;
 using Content.Server._White.Cult.GameRule;
 using Content.Server.Objectives.Components;
 using Content.Server.Shuttles.Systems;
@@ -59,6 +60,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
 
         // no other humans to kill
         var allHumans = _mind.GetAliveHumansExcept(args.MindId);
+        allHumans = allHumans.Where(x => !HasComp<GulagBoundComponent>(x)).ToList(); // WD
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;
@@ -83,6 +85,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
 
         // no other humans to kill
         var allHumans = _mind.GetAliveHumansExcept(args.MindId);
+        allHumans = allHumans.Where(x => !HasComp<GulagBoundComponent>(x)).ToList(); // WD
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;

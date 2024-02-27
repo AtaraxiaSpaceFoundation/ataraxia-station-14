@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._Miracle.Components;
 using Content.Server.Changeling.Objectives.Components;
 using Content.Server.Forensics;
 using Content.Server.Mind;
@@ -184,6 +185,7 @@ public sealed class ChangelingConditionsSystem : EntitySystem
             return;
 
         var allHumans = _mind.GetAliveHumansExcept(args.MindId);
+        allHumans = allHumans.Where(x => !HasComp<GulagBoundComponent>(x)).ToList();
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;

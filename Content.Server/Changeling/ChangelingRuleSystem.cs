@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server.Antag;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -31,6 +32,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly ChangelingNameGenerator _nameGenerator = default!;
+    [Dependency] private readonly GulagSystem _gulag = default!;
 
     private const int PlayersPerChangeling = 15;
     private const int MaxChangelings = 4;
@@ -228,6 +230,9 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
                 continue;
 
             if (changeling.TotalChangelings >= MaxChangelings)
+                continue;
+
+            if (_gulag.IsUserGulaged(ev.Player.UserId, out _))
                 continue;
 
             if (!ev.LateJoin)
