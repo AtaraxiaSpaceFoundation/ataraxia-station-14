@@ -1,11 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration;
+using Content.Shared.Chemistry;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 namespace Content.Server.Administration;
+
+
 
 /// <summary>
 /// This handles the server portion of quick dialogs, including opening them.
@@ -144,6 +147,35 @@ public sealed partial class QuickDialogSystem : EntitySystem
                 output = (T?) (object?) longString;
                 return output is not null;
             }
+            case QuickDialogEntryType.Boolean:
+            {
+                switch (input)
+                {
+                    case "true":
+                        output = (T)(object)true;
+                        return true;
+                    case "false":
+                        output = (T)(object)false;
+                        return true;
+                    default:
+                        output = default;
+                        return false;
+                }
+            }
+            case QuickDialogEntryType.Hex16:
+            {
+                bool ret = int.TryParse(input, System.Globalization.NumberStyles.HexNumber, null, out var res) && input.Length <= 4 && input == input.ToUpper();
+                if (ret)
+                    output = (T?) (object?) (Hex16) res;
+                else
+                    output = default;
+                return ret;
+            }
+            case QuickDialogEntryType.Void:
+            {
+                output = default;
+                return input == "";
+            }
             default:
                 throw new ArgumentOutOfRangeException(nameof(entryType), entryType, null);
         }
@@ -151,6 +183,7 @@ public sealed partial class QuickDialogSystem : EntitySystem
 
     private QuickDialogEntryType TypeToEntryType(Type T)
     {
+        // yandere station much?
         if (T == typeof(int) || T == typeof(uint) || T == typeof(long) || T == typeof(ulong))
             return QuickDialogEntryType.Integer;
 
@@ -162,6 +195,19 @@ public sealed partial class QuickDialogSystem : EntitySystem
 
         if (T == typeof(LongString))
             return QuickDialogEntryType.LongText;
+
+        if (T == typeof(Hex16))
+            return QuickDialogEntryType.Hex16;
+
+        if (T == typeof(bool))
+            return QuickDialogEntryType.Boolean;
+
+        if (T == typeof(VoidOption))
+            return QuickDialogEntryType.Void;
+
+
+
+
 
         throw new ArgumentException($"Tried to open a dialog with unsupported type {T}.");
     }
@@ -181,4 +227,28 @@ public record struct LongString(string String)
     {
         return new(s);
     }
+}
+
+/// <summary>
+/// A type used with quick dialogs to indicate you want the user to enter a 0-65535 int as a hexadecimal value,..
+/// </summary>
+/// <param name="int">The int retrieved.</param>
+public record struct Hex16(int number)
+{
+    public static implicit operator int(Hex16 hex16)
+    {
+        return hex16.number;
+    }
+    public static explicit operator Hex16(int num)
+    {
+        return new(num);
+    }
+}
+
+/// <summary>
+/// A type used with quick dialogs for putting only a label, without any controls.
+/// </summary>
+public record struct VoidOption()
+{
+
 }
