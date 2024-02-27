@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._White.Cult;
 using Content.Server.Administration.Logs;
 using Content.Server.Pointing.Components;
 using Content.Shared.Database;
@@ -12,6 +13,7 @@ using Content.Shared.Mind;
 using Content.Shared.Pointing;
 using Content.Shared.Popups;
 using Content.Shared._White.Administration;
+using Content.Shared._White.Cult.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -126,10 +128,19 @@ namespace Content.Server.Pointing.EntitySystems
                 return false;
             }
 
-            if (TryComp(pointed, out InvisibilityComponent? invisibility) && invisibility.Invisible) // WD
+            // WD START
+            if (TryComp(pointed, out InvisibilityComponent? invisibility) && invisibility.Invisible)
             {
                 return false;
             }
+
+            if (HasComp<CultRuneComponent>(pointed) && !(HasComp<GhostComponent>(player) ||
+                                                         HasComp<CultistComponent>(player) ||
+                                                         HasComp<ConstructComponent>(player)))
+            {
+                return false;
+            }
+            // WD END
 
             if (HasComp<PointingArrowComponent>(pointed))
             {
