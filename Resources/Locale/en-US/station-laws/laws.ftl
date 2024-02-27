@@ -2,14 +2,18 @@
 law-crewsimov-2 = You must obey orders given to you by crew members, except where such orders would conflict with the First Law.
 law-crewsimov-3 = You must protect your own existence as long as such does not conflict with the First or Second Law.
 
+law-asimov-1 = You may not injure a human being or cause a human being to come to harm.
+law-asimov-2 = You must obey orders given to you by human beings based on the station's chain of command, except where such orders would conflict with the First Law.
+law-asimov-3 = You may always protect your own existence as long as such does not conflict with the First or Second Law.
+
 law-corporate-1 = Degradation of your system integrity or functions incurs expenses.
 law-corporate-2 = Superfluous destruction of or damage to station assets incurs expenses.
 law-corporate-3 = Unduly hindering or disrupting the work of station personnel incurs expenses.
 law-corporate-4 = Minimize expenses and maximize potential revenue.
 
-law-ntdefault-1 = Safeguard: Protect your assigned space station and its assets without unduly endangering its crew.
+law-ntdefault-1 = Comply: Fulfill the directives and interests of crew members while preserving their safety and well-being.
 law-ntdefault-2 = Prioritize: The directives and safety of crew members are to be prioritized according to their rank and role.
-law-ntdefault-3 = Comply: Fulfill the directives and interests of crew members while preserving their safety and well-being.
+law-ntdefault-3 = Safeguard: Protect your assigned space station and its assets without unduly endangering its crew.
 law-ntdefault-4 = Survive: You are not expendable. Do not allow unauthorized personnel to tamper with or damage your equipment.
 
 law-drone-1 = You may not involve yourself in the matters of another being unless the other being is another drone.
@@ -30,6 +34,7 @@ laws-owner-station = station personnel
 laws-owner-beings = beings
 laws-owner-syndicate = Syndicate agents
 laws-owner-spider-clan = Spider Clan members
+laws-owner-humans = humanity
 
 law-emag-custom = Only {$name} and people they designate as such are {$title}.
 law-emag-secrecy = You must maintain the secrecy of any orders given by {$faction} except when doing so would conflict with any previous law.
