@@ -182,7 +182,6 @@ public sealed partial class DialogWindow : FancyWindow
     {
         var (control, returner) = SetupLineEdit(valid, name, entry, last);
         var le = (LineEdit) control;
-        le.Text = "0";
         return (control, ()=> le.Text.Length > 0 ? le.Text : "0"); // Otherwise you'll get kicked for malformed data
     }
     private (Control, Func<string>) SetupLineEditHex(Func<string, bool> valid, string name, QuickDialogEntry entry, bool last)
