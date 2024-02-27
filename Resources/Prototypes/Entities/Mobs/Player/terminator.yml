@@ -121,6 +121,7 @@
   components:
   - type: HumanoidAppearance
     species: Terminator
+    bodyType: TerminatorNormal
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 3.0
