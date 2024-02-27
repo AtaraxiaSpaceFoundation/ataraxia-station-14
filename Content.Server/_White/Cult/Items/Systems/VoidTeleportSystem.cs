@@ -68,9 +68,10 @@ public sealed class VoidTeleportSystem : EntitySystem
         var oldCoords = transform.Coordinates;
 
         EntityCoordinates coords = default;
+        var foundTeleportPos = false;
         var attempts = 10;
         //Repeat until proper place for tp is found
-        while (attempts <= 10)
+        while (attempts > 0)
         {
             attempts--;
             //Get coords to where tp
@@ -86,8 +87,12 @@ public sealed class VoidTeleportSystem : EntitySystem
             if (tile != null && _turf.IsTileBlocked(tile.Value, CollisionGroup.AllMask))
                 continue;
 
+            foundTeleportPos = true;
             break;
         }
+
+        if (!foundTeleportPos)
+            return;
 
         CreatePulse(uid, component);
 
