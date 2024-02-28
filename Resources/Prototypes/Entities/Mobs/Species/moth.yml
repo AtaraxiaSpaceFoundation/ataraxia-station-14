@@ -127,3 +127,4 @@
   components:
   - type: HumanoidAppearance
     species: Moth
+    bodyType: MothNormal

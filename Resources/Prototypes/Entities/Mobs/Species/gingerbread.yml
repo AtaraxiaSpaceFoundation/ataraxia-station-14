@@ -49,3 +49,4 @@
   components:
   - type: HumanoidAppearance
     species: Gingerbread
+    bodyType: GingerbreadNormal

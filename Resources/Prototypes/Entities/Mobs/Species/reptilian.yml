@@ -68,5 +68,6 @@
   components:
   - type: HumanoidAppearance
     species: Reptilian
+    bodyType: ReptilianNormal
 
 #Weh

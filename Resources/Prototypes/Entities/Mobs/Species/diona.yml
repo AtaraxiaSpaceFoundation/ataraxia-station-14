@@ -112,3 +112,4 @@
     templateId: diona
   - type: HumanoidAppearance
     species: Diona
+    bodyType: DionaNormal

@@ -77,3 +77,4 @@
   components:
     - type: HumanoidAppearance
       species: SlimePerson
+      bodyType: SlimeNormal

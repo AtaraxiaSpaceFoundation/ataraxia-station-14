@@ -129,5 +129,6 @@
   components:
   - type: HumanoidAppearance
     species: Arachnid
+    bodyType: ArachnidNormal
 
 #88w88

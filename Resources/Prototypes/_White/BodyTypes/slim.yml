@@ -1,4 +1,4 @@
-﻿- type: bodyType
+- type: bodyType
   id: HumanSlim
   name: body-slim
   sexRestrictions:
@@ -19,6 +19,25 @@
     RLeg: MobHumanSlimRLeg
     LFoot: MobHumanSlimLFoot
     RFoot: MobHumanSlimRFoot
+
+- type: bodyType
+  id: SkrellSlim
+  name: body-slim
+  sexRestrictions:
+    - Male
+  sprites:
+    Head: MobSkrellSlimHead
+    Hair: MobHumanoidAnyMarking
+    Chest: MobSkrellSlimTorso
+    Eyes: MobSkrellEyes
+    LArm: MobSkrellSlimLArm
+    RArm: MobSkrellSlimRArm
+    LHand: MobSkrellSlimLHand
+    RHand: MobSkrellSlimRHand
+    LLeg: MobSkrellSlimLLeg
+    RLeg: MobSkrellSlimRLeg
+    LFoot: MobSkrellSlimLFoot
+    RFoot: MobSkrellSlimRFoot
 
 # - type: bodyType
 #   id: ReptilianSlim
