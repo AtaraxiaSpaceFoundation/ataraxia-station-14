@@ -19,6 +19,8 @@
   startingGear: SeniorOfficerGear
   icon: "JobIconSeniorOfficer"
   supervisors: job-supervisors-hos
+  whitelistedSpecies:
+  - Human
   canBeAntag: false
   access:
   - Security
