@@ -10,7 +10,7 @@
                   xmlns:buttons="clr-namespace:Content.Client._Ohio.Buttons">
 
     <!-- Background -->
-    <ui:AnimatedBackgroundControl Name="Background" VerticalExpand="True" HorizontalExpand="True"
+    <ui:AnimatedBackgroundControl Access="Public" Name="Background" VerticalExpand="True" HorizontalExpand="True"
                                   Stretch="KeepAspectCovered" />
 
     <!-- Main Container -->

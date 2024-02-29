@@ -1,7 +1,10 @@
+using System.Linq;
+using Content.Shared._White;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Graphics.RSI;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Ohio.UI;
@@ -10,8 +13,9 @@ public sealed class AnimatedBackgroundControl : TextureRect
 {
     [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IClyde _clyde = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private const string RsiPath = "/Textures/Ohio/Lobby/anim.rsi";
+    private string RsiPath = "/Textures/Ohio/Lobby/backgrounds/native.rsi";
     private const int States = 1;
 
     private IRenderTexture? _buffer;
@@ -87,5 +91,14 @@ public sealed class AnimatedBackgroundControl : TextureRect
     {
         base.Dispose(disposing);
         _buffer?.Dispose();
+    }
+
+    public void RandomizeBackground()
+    {
+        var backgroundsProto = _prototypeManager.EnumeratePrototypes<AnimatedLobbyScreenPrototype>().ToList();
+        var random = new Random();
+        int index = random.Next(backgroundsProto.Count);
+        RsiPath = $"/Textures/{backgroundsProto[index].Path}";
+        InitializeStates();
     }
 }

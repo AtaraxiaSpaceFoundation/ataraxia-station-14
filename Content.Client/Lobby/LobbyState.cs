@@ -95,6 +95,7 @@ namespace Content.Client.Lobby
             _gameTicker.LobbyLateJoinStatusUpdated += LobbyLateJoinStatusUpdated;
 
             _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
+            _lobby.Background.RandomizeBackground();
 
             //_lobby.CharacterPreview.UpdateUI();
             PopulateChangelog();
