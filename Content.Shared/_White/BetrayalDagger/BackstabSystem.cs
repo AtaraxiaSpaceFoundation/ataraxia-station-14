@@ -48,7 +48,5 @@ public sealed class BackstabSystem : EntitySystem
 
         args.PenetrateArmor = ent.Comp.PenetrateArmor;
 
-        if (_net.IsServer)
-            _popup.PopupEntity($@"Backstab! {damage}", args.User, PopupType.MediumCaution);
     }
 }

@@ -198,8 +198,6 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-remove-weeds-message",
                     ("name", Comp<MetaDataComponent>(uid).EntityName)), args.User, PopupType.Medium);
-                _popup.PopupEntity(Loc.GetString("plant-holder-component-remove-weeds-others-message",
-                    ("otherName", Comp<MetaDataComponent>(args.User).EntityName)), uid, Filter.PvsExcept(args.User), true);
                 component.WeedLevel = 0;
                 UpdateSprite(uid, component);
             }
@@ -217,8 +215,6 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-remove-plant-message",
                     ("name", Comp<MetaDataComponent>(uid).EntityName)), args.User, PopupType.Medium);
-                _popup.PopupEntity(Loc.GetString("plant-holder-component-remove-plant-others-message",
-                    ("name", Comp<MetaDataComponent>(args.User).EntityName)), uid, Filter.PvsExcept(args.User), true);
                 RemovePlant(uid, component);
             }
             else

@@ -58,7 +58,6 @@ petting-failure-cleanbot = Вы тянетесь погладить { $target },
 petting-failure-mimebot = Вы тянетесь погладить { THE($target) }, но { SUBJECT($target) } { CONJUGATE-BE($target) } занятый мимикацией!
 petting-failure-medibot = Вы тянетесь погладить { $target }, но { $target } едва не пронзает вашу руку шприцом!
 # Shown when knocking on a window
-comp-window-knock = *тук-тук*
 hugging-success-generic = Вы обнимаете { $target }.
 hugging-success-generic-others = { CAPITALIZE($user) } обнимает { $target }.
 hugging-success-generic-target = { CAPITALIZE($user) } обнимает вас.

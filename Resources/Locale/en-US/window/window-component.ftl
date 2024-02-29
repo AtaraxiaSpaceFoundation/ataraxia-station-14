@@ -11,4 +11,3 @@ comp-window-damaged-6 = It's extremely cracked and on the verge of shattering.
 ### Interaction Messages
 
 # Shown when knocking on a window
-comp-window-knock = *knock knock*

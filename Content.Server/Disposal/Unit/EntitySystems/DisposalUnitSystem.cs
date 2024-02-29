@@ -308,15 +308,9 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
     private void OnThrowCollide(EntityUid uid, SharedDisposalUnitComponent component, ThrowHitByEvent args)
     {
         var canInsert = CanInsert(uid, component, args.Thrown);
-        var randDouble = _robustRandom.NextDouble();
 
-        if (!canInsert || randDouble > 0.75)
-        {
-            _audioSystem.PlayPvs(component.MissSound, uid);
-
-            _popupSystem.PopupEntity(Loc.GetString("disposal-unit-thrown-missed"), uid);
+        if (!canInsert) // WD edit
             return;
-        }
 
         var inserted = _containerSystem.Insert(args.Thrown, component.Container);
 

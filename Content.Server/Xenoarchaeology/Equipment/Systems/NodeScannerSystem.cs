@@ -35,7 +35,8 @@ public sealed class NodeScannerSystem : EntitySystem
             && !_useDelay.TryResetDelay((uid, useDelay), true))
             return;
 
-        _popupSystem.PopupEntity(Loc.GetString("node-scan-popup",
-            ("id", $"{artifact.CurrentNodeId}")), target);
+        // WD edit
+        _popupSystem.PopupClient(Loc.GetString("node-scan-popup",
+            ("id", $"{artifact.CurrentNodeId}")), target, args.User);
     }
 }

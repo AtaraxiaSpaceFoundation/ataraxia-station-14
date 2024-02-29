@@ -390,7 +390,7 @@ public sealed class DrinkSystem : EntitySystem
                     Loc.GetString("drink-component-try-use-drink-success-slurp-taste", ("flavors", flavors)), args.User,
                     args.User);
 
-                _popup.PopupEntity($"{userName} делает глоток используя {used}", args.User, Filter.PvsExcept(args.User), true);
+                _popup.PopupEntity($"{userName} делает глоток из {used}", args.User, Filter.PvsExcept(args.User), true);
             }
 
             // log successful voluntary drinking

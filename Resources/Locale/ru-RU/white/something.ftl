@@ -1,7 +1,3 @@
-# Reflect
-
-reflect-shot = Отразил!
-
 # Carry
 
 carry-verb = Тащить на руках

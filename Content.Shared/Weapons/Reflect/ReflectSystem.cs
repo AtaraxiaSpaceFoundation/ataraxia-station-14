@@ -117,9 +117,8 @@ public sealed class ReflectSystem : EntitySystem
         var newRot = rotation.RotateVec(locRot.ToVec());
         _transform.SetLocalRotation(projectile, newRot.ToAngle());
 
-        if (_netManager.IsServer)
+        if (_netManager.IsServer) // WD edit
         {
-            _popup.PopupEntity(Loc.GetString("reflect-shot"), user);
             _audio.PlayPvs(reflect.SoundOnReflect, user, AudioHelpers.WithVariation(0.05f, _random));
         }
 
@@ -176,9 +175,8 @@ public sealed class ReflectSystem : EntitySystem
             return false;
         }
 
-        if (_netManager.IsServer)
+        if (_netManager.IsServer) // WD edit
         {
-            _popup.PopupEntity(Loc.GetString("reflect-shot"), user);
             _audio.PlayPvs(reflect.SoundOnReflect, user, AudioHelpers.WithVariation(0.05f, _random));
         }
 
