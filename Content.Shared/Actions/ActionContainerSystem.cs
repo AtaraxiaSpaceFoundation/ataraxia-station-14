@@ -174,6 +174,7 @@ public sealed class ActionContainerSystem : EntitySystem
     public void TransferAllActionsFiltered(
         EntityUid from,
         EntityUid to,
+        EntityUid newAttached,
         ActionsContainerComponent? oldContainer = null,
         ActionsContainerComponent? newContainer = null)
     {
@@ -189,7 +190,7 @@ public sealed class ActionContainerSystem : EntitySystem
             if (actions.Select(act => MetaData(act).EntityPrototype?.ID).Any(ext => toAdd == ext))
                 continue;
 
-            TransferAction(action, to, container: newContainer);
+            TransferActionWithNewAttached(action, to, newAttached, container: newContainer);
         }
     }
 

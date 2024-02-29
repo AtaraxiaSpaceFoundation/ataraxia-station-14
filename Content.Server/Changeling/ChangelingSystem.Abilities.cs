@@ -687,7 +687,7 @@ public sealed partial class ChangelingSystem
         EntityManager.AddComponent(polymorphEntity.Value, toAdd);
 
         _implantSystem.TransferImplants(uid, polymorphEntity.Value);
-        _actionContainerSystem.TransferAllActionsFiltered(uid, polymorphEntity.Value);
+        _actionContainerSystem.TransferAllActionsFiltered(uid, polymorphEntity.Value, polymorphEntity.Value);
         _action.GrantContainedActions(polymorphEntity.Value, polymorphEntity.Value);
 
         RemoveLesserFormActions(polymorphEntity.Value);
@@ -851,7 +851,7 @@ public sealed partial class ChangelingSystem
         EntityManager.AddComponent(reverted.Value, toAdd);
 
         _implantSystem.TransferImplants(uid, reverted.Value);
-        _actionContainerSystem.TransferAllActionsFiltered(uid, reverted.Value);
+        _actionContainerSystem.TransferAllActionsFiltered(uid, reverted.Value, reverted.Value);
         _action.GrantContainedActions(reverted.Value, reverted.Value);
 
         if (component.IsLesserForm)

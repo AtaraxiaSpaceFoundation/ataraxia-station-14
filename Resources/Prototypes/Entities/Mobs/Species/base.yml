@@ -201,11 +201,11 @@
         type: HumanoidMarkingModifierBoundUserInterface
       - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
+      # WD-EDIT
       - key: enum.ListViewSelectorUiKeyChangeling.Key
         type: ListViewSelectorBui
       - key: enum.TransformStingSelectorUiKey.Key
         type: TransformStingSelectorBui
-      # WD-EDIT
       - key: enum.NameSelectorUIKey.Key
         type: NameSelectorBUI
       - key: enum.RuneTeleporterUiKey.Key

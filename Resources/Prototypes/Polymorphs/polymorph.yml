@@ -264,6 +264,28 @@
     inventory: Transfer
 
 - type: polymorph
+  id: MobHarpy
+  configuration:
+    entity: MobHarpy
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobSkrell
+  configuration:
+    entity: MobSkrell
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
   id: ArtifactLuminous
   configuration:
     entity: MobLuminousPerson
