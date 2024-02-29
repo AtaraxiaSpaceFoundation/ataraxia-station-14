@@ -105,6 +105,27 @@ public sealed partial class QuickDialogSystem : EntitySystem
 
         _openDialogsByUser[session.UserId].Add(did);
     }
+    private bool TryParseQuickDialogList(List<QuickDialogEntry> entries, Dictionary<string, string> responces, out object[]? output)
+    {
+        if(entries.Count != responces.Count)
+        {
+            output = null;
+            return false;
+        }
+
+        output = new object[entries.Count];
+        for(int i = 0; i < entries.Count; i++)
+        {
+            var entryType = entries[i].Type;
+            var input = responces[(i+1).ToString()]; //starts with "1"
+            if(!TryParseQuickDialog<object>(entryType, input, out object? o))
+            {
+                return false;
+            }
+            output[i] = o;
+        }
+        return true;
+    }
 
     private bool TryParseQuickDialog<T>(QuickDialogEntryType entryType, string input, [NotNullWhen(true)] out T? output)
     {
@@ -181,7 +202,7 @@ public sealed partial class QuickDialogSystem : EntitySystem
         }
     }
 
-    private QuickDialogEntryType TypeToEntryType(Type T)
+    public QuickDialogEntryType TypeToEntryType(Type T)
     {
         // yandere station much?
         if (T == typeof(int) || T == typeof(uint) || T == typeof(long) || T == typeof(ulong))
@@ -202,7 +223,7 @@ public sealed partial class QuickDialogSystem : EntitySystem
         if (T == typeof(bool))
             return QuickDialogEntryType.Boolean;
 
-        if (T == typeof(VoidOption))
+        if (T == typeof(VoidOption) || T == null)
             return QuickDialogEntryType.Void;
 
 

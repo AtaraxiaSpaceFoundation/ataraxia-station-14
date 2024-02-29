@@ -5,6 +5,9 @@ using Robust.Shared.Player;
 namespace Content.Server.Administration;
 
 //res<IEntityManager>().System<MindSystem>().TryGetSession(new EntityUid(X), out var seks);res<IEntityManager>().System<QuickDialogSystem>().OpenDialog<string, bool, bool, int, VoidOption, VoidOption, Hex16>(seks, "Заголовок", "Серийный код твоей матери", "Селёдкой пахнет?", "Сосал?", "Сколько ванотян жрал хуёв:", "тыгыдык тыгыдык тыгыдык тыгыдык" ," ", "Вскрываем байты", (_,_,_,_,_,_,_)=>{});
+//
+//List<(Type, string, object)> entries = new();entries.Add((typeof(string), "shitass", "faggot"));entries.Add((typeof(int), "cunt", 2254))
+//res<IEntityManager>().System<MindSystem>().TryGetSession(new EntityUid(X), out var seks);res<IEntityManager>().System<QuickDialogSystem>().OpenDialog(seks, "Заголовок", entries, (_)=>{});
 public sealed partial class QuickDialogSystem
 {
     /// <summary>
@@ -540,6 +543,55 @@ public sealed partial class QuickDialogSystem
                       TryParseQuickDialog<T10>(TypeToEntryType(typeof(T10)), ev.Responses["10"], out var v10)
                    )
                     okAction.Invoke(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
+                else
+                {
+                    session.Channel.Disconnect("Replied with invalid quick dialog data.");
+                    cancelAction?.Invoke();
+                }
+            }),
+            cancelAction ?? (() => { })
+        );
+    }
+
+
+    /// <summary>
+    /// Opens a dialog for the given client, with any amount of entries, allowing them to enter in the desired data. For the truly unhinged.
+    /// </summary>
+    /// <param name="session">Client to show a dialog for.</param>
+    /// <param name="title">Title of the dialog.</param>
+    /// <param name="dialogEntries">List of tuples, not QuickDialogEntries.</param>
+    /// <param name="okAction">The action to execute upon Ok being pressed.</param>
+    /// <param name="cancelAction">The action to execute upon the dialog being cancelled.</param>
+    /// <remarks>
+    /// Tuple structure for dialogEntries argument:
+    ///     Type - int/float/string/LongString/Hex16/VoidOption/null (VoidOption)
+    ///     string - prompt text
+    ///     object - default value. No checks are performed whether or not it matches the specified type.
+    /// </remarks>
+
+    [PublicAPI]
+    public void OpenDialog(ICommonSession session, string title, List<(Type, string, object)> dialogEntries, Action<object[]> okAction, Action? cancelAction = null)
+    {
+        List<QuickDialogEntry> _dialogEntries = new();
+
+        for(int i = 0; i < dialogEntries.Count; i++)
+        {
+            var (type, prompt, defaultValue) = dialogEntries[i];
+            _dialogEntries.Add(new QuickDialogEntry((i+1).ToString(), TypeToEntryType(type), prompt??" ", null, defaultValue));
+        }                                         // ^^^ these "indexes" start with 1, for some reason
+
+
+        OpenDialogInternal(
+            session,
+            title,
+            _dialogEntries,
+            QuickDialogButtonFlag.OkButton | QuickDialogButtonFlag.CancelButton,
+            (ev =>
+            {
+                if (TryParseQuickDialogList(_dialogEntries, ev.Responses, out var results))
+                {
+                    okAction.Invoke(results!);
+                }
                 else
                 {
                     session.Channel.Disconnect("Replied with invalid quick dialog data.");

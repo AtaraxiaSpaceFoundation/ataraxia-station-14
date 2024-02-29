@@ -1,4 +1,5 @@
 using Robust.Shared.Serialization;
+using System.ComponentModel;
 
 namespace Content.Shared.Administration;
 
@@ -88,16 +89,21 @@ public sealed class QuickDialogEntry
     public string Prompt;
 
     /// <summary>
+    /// Default value in the window.
+    /// </summary>
+    public object? Value;
+    /// <summary>
     /// String to replace the type-specific placeholder with.
     /// </summary>
     public string? Placeholder;
 
-    public QuickDialogEntry(string fieldId, QuickDialogEntryType type, string prompt, string? placeholder = null)
+    public QuickDialogEntry(string fieldId, QuickDialogEntryType type, string prompt, string? placeholder = null, object? defaultValue = null) 
     {
         FieldId = fieldId;
         Type = type;
         Prompt = prompt;
         Placeholder = placeholder;
+        Value = defaultValue;
     }
 }
 
