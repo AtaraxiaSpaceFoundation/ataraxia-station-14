@@ -120,7 +120,7 @@
 
                     <!-- Changelog -->
                     <PanelContainer Name="Changelog" StyleClasses="LobbyGayBackground" HorizontalAlignment="Right"
-                                    VerticalAlignment="Top">
+                                    VerticalAlignment="Top" Visible="False">
 
                         <BoxContainer Orientation="Vertical">
 

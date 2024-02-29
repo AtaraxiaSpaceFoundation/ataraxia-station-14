@@ -1,23 +1,23 @@
 - type: animatedLobbyScreen
-  id: NativeLobbyScreen
-  path: Ohio/Lobby/backgrounds/native.rsi
-  
-- type: animatedLobbyScreen
-  id: MilkywayLobbyScreen
-  path: Ohio/Lobby/backgrounds/milkyway.rsi
-  
-- type: animatedLobbyScreen
-  id: SusLobbyScreen
-  path: Ohio/Lobby/backgrounds/sus.rsi
-  
-- type: animatedLobbyScreen
-  id: ThirdLobbyScreen
-  path: Ohio/Lobby/backgrounds/3.rsi
-  
-- type: animatedLobbyScreen
   id: FourthLobbyScreen
   path: Ohio/Lobby/backgrounds/4.rsi
-  
-- type: animatedLobbyScreen
-  id: FifthLobbyScreen
-  path: Ohio/Lobby/backgrounds/5.rsi
+
+#- type: animatedLobbyScreen
+#  id: NativeLobbyScreen
+#  path: Ohio/Lobby/backgrounds/native.rsi
+
+#- type: animatedLobbyScreen
+#  id: MilkywayLobbyScreen
+#  path: Ohio/Lobby/backgrounds/milkyway.rsi
+
+#- type: animatedLobbyScreen
+#  id: SusLobbyScreen
+#  path: Ohio/Lobby/backgrounds/sus.rsi
+
+#- type: animatedLobbyScreen
+#  id: ThirdLobbyScreen
+#  path: Ohio/Lobby/backgrounds/3.rsi
+
+#- type: animatedLobbyScreen
+#  id: FifthLobbyScreen
+#  path: Ohio/Lobby/backgrounds/5.rsi

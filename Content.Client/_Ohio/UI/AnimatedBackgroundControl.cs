@@ -15,7 +15,7 @@ public sealed class AnimatedBackgroundControl : TextureRect
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private string RsiPath = "/Textures/Ohio/Lobby/backgrounds/native.rsi";
+    private string _rsiPath = "/Textures/Ohio/Lobby/backgrounds/native.rsi";
     private const int States = 1;
 
     private IRenderTexture? _buffer;
@@ -34,7 +34,7 @@ public sealed class AnimatedBackgroundControl : TextureRect
 
     private void InitializeStates()
     {
-        var rsi = _resourceCache.GetResource<RSIResource>(RsiPath).RSI;
+        var rsi = _resourceCache.GetResource<RSIResource>(_rsiPath).RSI;
 
         for (var i = 0; i < States; i++)
         {
@@ -97,8 +97,8 @@ public sealed class AnimatedBackgroundControl : TextureRect
     {
         var backgroundsProto = _prototypeManager.EnumeratePrototypes<AnimatedLobbyScreenPrototype>().ToList();
         var random = new Random();
-        int index = random.Next(backgroundsProto.Count);
-        RsiPath = $"/Textures/{backgroundsProto[index].Path}";
+        var index = random.Next(backgroundsProto.Count);
+        _rsiPath = $"/Textures/{backgroundsProto[index].Path}";
         InitializeStates();
     }
 }
