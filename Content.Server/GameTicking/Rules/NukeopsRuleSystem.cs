@@ -1191,4 +1191,18 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         if (GameTicker.RunLevel == GameRunLevel.InRound)
             SpawnOperativesForGhostRoles(uid, component);
     }
+
+    public void TransferRole(EntityUid transferFrom, EntityUid transferTo)
+    {
+        if (!HasComp<NukeOperativeComponent>(transferFrom))
+            return;
+
+        var query = EntityQuery<NukeopsRuleComponent>();
+        foreach (var nukeOpsRule in query)
+        {
+            nukeOpsRule.OperativePlayers.Remove(Name(transferFrom));
+        }
+        EnsureComp<NukeOperativeComponent>(transferTo);
+        RemComp<NukeOperativeComponent>(transferFrom);
+    }
 }

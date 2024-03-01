@@ -493,4 +493,21 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             _bodySystem.GibBody(uid);
         }
     }
+
+    public void TransferRole(EntityUid transferFrom, EntityUid transferTo)
+    {
+        if (HasComp<PentagramComponent>(transferFrom))
+            EnsureComp<PentagramComponent>(transferTo);
+
+        if (!HasComp<CultistComponent>(transferFrom))
+            return;
+
+        var query = EntityQuery<CultRuleComponent>();
+        foreach (var cultRule in query)
+        {
+            cultRule.CultistsCache.Remove(Name(transferFrom));
+        }
+        EnsureComp<CultistComponent>(transferTo);
+        RemComp<CultistComponent>(transferFrom);
+    }
 }

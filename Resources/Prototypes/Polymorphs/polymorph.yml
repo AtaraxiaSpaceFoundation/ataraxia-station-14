@@ -286,6 +286,94 @@
     inventory: Transfer
 
 - type: polymorph
+  id: MobHumanSyndicateAgent
+  configuration:
+    entity: MobHumanSyndicateAgent
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobHumanSyndicateAgentNukeops
+  configuration:
+    entity: MobHumanSyndicateAgentNukeops
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobHumanNukeOp
+  configuration:
+    entity: MobHumanNukeOp
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobHumanLoneNuclearOperative
+  configuration:
+    entity: MobHumanLoneNuclearOperative
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobHumanSpaceNinja
+  configuration:
+    entity: MobHumanSpaceNinja
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobGingerbread
+  configuration:
+    entity: MobGingerbread
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobHumanTerminator
+  configuration:
+    entity: MobHumanTerminator
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobTerminatorEndoskeleton
+  configuration:
+    entity: MobTerminatorEndoskeleton
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
   id: ArtifactLuminous
   configuration:
     entity: MobLuminousPerson
