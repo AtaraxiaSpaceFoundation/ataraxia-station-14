@@ -69,17 +69,22 @@ chat-speech-verb-insect-3 = щелкает
 
 chat-speech-verb-winged-1 = трепещет
 chat-speech-verb-winged-2 = жужжит
+chat-speech-verb-winged-3 = похлопывает
 
 chat-speech-verb-slime-1 = бормочет
+chat-speech-verb-slime-2 = булькает
+chat-speech-verb-slime-3 = хлюпает
 
 chat-speech-verb-plant-1 = шуршит
 chat-speech-verb-plant-2 = скрипит
+chat-speech-verb-plant-3 = трещит
 
 chat-speech-verb-robotic-1 = утверждает
 chat-speech-verb-robotic-2 = бипает
 
 chat-speech-verb-reptilian-1 = шипит
 chat-speech-verb-reptilian-2 = фыркает
+chat-speech-verb-reptilian-3 = пыхтит
 
 chat-speech-verb-skeleton-1 = гремит
 chat-speech-verb-skeleton-2 = щелкает
@@ -105,6 +110,10 @@ chat-speech-verb-ghost-1 = жалуется
 chat-speech-verb-ghost-2 = дышит
 chat-speech-verb-ghost-3 = мычит
 chat-speech-verb-ghost-4 = бормочет
+
+chat-speech-verb-electricity-1 = потрескивает
+chat-speech-verb-electricity-2 = гудит
+chat-speech-verb-electricity-3 = скрипит
 
 chat-manager-cooldown-warn-message_channel = Вы сможете писать { $inChat } через: { $remainingTime } сек.
 chat-manager-cooldown-warn-message = Вы сможете писать через { $remainingTime } сек.

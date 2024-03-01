@@ -265,20 +265,23 @@ public sealed partial class ExplosionSystem
         if (!addLog)
             return;
 
+        var entPos = (posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]"); // WD EDIT
+
         if (user == null)
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(uid):entity} exploded ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(uid):entity} exploded ({typeId}) at Pos:{entPos} with intensity {totalIntensity} slope {slope}");
             _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-explosion-no-player",
-                ("entity", ToPrettyString(uid)), ("coordinates", pos), ("intensity", totalIntensity), ("slope", slope)));
+                ("entity", ToPrettyString(uid)), ("coordinates", entPos), ("intensity", totalIntensity), ("slope", slope)));
         }
         else
         {
             _adminLogger.Add(LogType.Explosion, LogImpact.High,
-                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")} with intensity {totalIntensity} slope {slope}");
+                $"{ToPrettyString(user.Value):user} caused {ToPrettyString(uid):entity} to explode ({typeId}) at Pos:{entPos} with intensity {totalIntensity} slope {slope}");
             var alertMinExplosionIntensity = _cfg.GetCVar(CCVars.AdminAlertExplosionMinIntensity);
             if (alertMinExplosionIntensity > -1 && totalIntensity >= alertMinExplosionIntensity)
-                _chat.SendAdminAlert(user.Value, $"caused {ToPrettyString(uid)} to explode ({typeId}:{totalIntensity}) at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not found]")}");
+                _chatManager.SendAdminAnnouncement(Loc.GetString("admin-chatalert-explosion-player",
+                    ("player", $"{ToPrettyString(user.Value):user}"),("entity", ToPrettyString(uid)), ("coordinates", entPos), ("intensity", totalIntensity), ("slope", slope)));
         }
     }
 

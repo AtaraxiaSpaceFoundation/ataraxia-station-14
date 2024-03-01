@@ -234,11 +234,13 @@ public sealed class RCDSystem : EntitySystem
         if (!unobstructed)
             return false;
 
+        var tileDef = (ContentTileDefinition) _tileDefMan[tile.Tile.TypeId];
         switch (comp.Mode)
         {
             //Floor mode just needs the tile to be a space tile (subFloor)
             case RcdMode.Floors:
-                if (!tile.Tile.IsEmpty)
+
+                if (!tile.Tile.IsEmpty && !tileDef.IsSubFloor)
                 {
                     _popup.PopupClient(Loc.GetString("rcd-component-cannot-build-floor-tile-not-empty-message"), uid, user);
                     return false;
@@ -260,7 +262,7 @@ public sealed class RCDSystem : EntitySystem
                         return false;
                     }
                     // the turf can't be destroyed (planet probably)
-                    var tileDef = (ContentTileDefinition) _tileDefMan[tile.Tile.TypeId];
+
                     if (tileDef.Indestructible)
                     {
                         _popup.PopupClient(Loc.GetString("rcd-component-tile-indestructible-message"), uid, user);
