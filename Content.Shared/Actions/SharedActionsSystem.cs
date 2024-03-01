@@ -15,6 +15,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Rejuvenate;
+using Robust.Shared.Network;
 
 namespace Content.Shared.Actions;
 
@@ -29,6 +30,7 @@ public abstract class SharedActionsSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly INetManager _net = default!; // WD
 
     public override void Initialize()
     {
@@ -537,6 +539,13 @@ public abstract class SharedActionsSystem : EntitySystem
             action.Charges--;
             if (action is { Charges: 0, RenewCharges: false })
                 action.Enabled = false;
+            // WD START
+            if (action is {Charges: 0, RemoveOnNoCharges: true})
+            {
+                RaiseLocalEvent(performer, new ActionGettingRemovedEvent {Action = actionId});
+                RemoveAction(performer, actionId, component, action);
+            }
+            // WD END
         }
 
         action.Cooldown = null;
@@ -816,7 +825,7 @@ public abstract class SharedActionsSystem : EntitySystem
         Dirty(actionId.Value, action);
         Dirty(performer, comp);
         ActionRemoved(performer, actionId.Value, comp, action);
-        if (action.Temporary)
+        if (action.Temporary && (!_net.IsClient || action.ClientExclusive)) // WD EDIT
             QueueDel(actionId.Value);
     }
 

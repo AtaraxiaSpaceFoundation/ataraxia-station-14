@@ -144,6 +144,11 @@ public abstract partial class BaseActionComponent : Component
     /// </summary>
     [DataField("autoPopulate")] public bool AutoPopulate = true;
 
+    // WD START
+    [DataField]
+    public bool RemoveOnNoCharges;
+    // WD END
+
     /// <summary>
     ///     Temporary actions are deleted when they get removed a <see cref="ActionsComponent"/>.
     /// </summary>

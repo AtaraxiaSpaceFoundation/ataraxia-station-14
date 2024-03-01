@@ -4,6 +4,7 @@ using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server._White.Cult.UI;
+using Content.Shared._White.Chaplain;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -15,8 +16,11 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Actions;
+using Content.Shared.Actions;
+using Content.Shared.Cuffs.Components;
+using Content.Shared.DoAfter;
+using Content.Shared.Mindshield.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
@@ -38,37 +42,70 @@ public partial class CultSystem
         SubscribeLocalEvent<CultistComponent, CultTwistedConstructionActionEvent>(OnTwistedConstructionAction);
         SubscribeLocalEvent<CultistComponent, CultSummonDaggerActionEvent>(OnSummonDaggerAction);
         SubscribeLocalEvent<CultistComponent, CultShadowShacklesTargetActionEvent>(OnShadowShackles);
-        SubscribeLocalEvent<CultistComponent, CultElectromagneticPulseTargetActionEvent>(OnElectromagneticPulse);
+        SubscribeLocalEvent<CultistComponent, CultElectromagneticPulseInstantActionEvent>(OnElectromagneticPulse);
         SubscribeLocalEvent<CultistComponent, CultSummonCombatEquipmentTargetActionEvent>(OnSummonCombatEquipment);
         SubscribeLocalEvent<CultistComponent, CultConcealPresenceWorldActionEvent>(OnConcealPresence);
         SubscribeLocalEvent<CultistComponent, CultBloodRitesInstantActionEvent>(OnBloodRites);
         SubscribeLocalEvent<CultistComponent, CultTeleportTargetActionEvent>(OnTeleport);
         SubscribeLocalEvent<CultistComponent, CultStunTargetActionEvent>(OnStunTarget);
+        SubscribeLocalEvent<CultistComponent, ActionGettingRemovedEvent>(OnActionRemoved);
+        SubscribeLocalEvent<CultistComponent, ShacklesEvent>(OnShackles);
+    }
+
+    private void OnShackles(Entity<CultistComponent> ent, ref ShacklesEvent args)
+    {
+        if (args.Cancelled || args.Target == null)
+            return;
+
+        if (!TryComp(args.Target, out CuffableComponent? cuffable) || cuffable.Container.ContainedEntities.Count > 0)
+            return;
+
+        var cuffs = Spawn("ShadowShackles", Transform(ent).Coordinates);
+        if (!_cuffable.TryAddNewCuffs(args.Target.Value, args.User, cuffs, cuffable))
+            QueueDel(cuffs);
+    }
+
+    private void OnActionRemoved(Entity<CultistComponent> ent, ref ActionGettingRemovedEvent args)
+    {
+        ent.Comp.SelectedEmpowers.Remove(GetNetEntity(args.Action));
+        Dirty(ent);
     }
 
     private void OnStunTarget(EntityUid uid, CultistComponent component, CultStunTargetActionEvent args)
     {
-        if (args.Target == uid || !HasComp<StatusEffectsComponent>(args.Target))
+        if (args.Target == uid || !TryComp<BloodstreamComponent>(args.Performer, out var bloodstream) ||
+            HasComp<HolyComponent>(args.Target) || !TryComp<StatusEffectsComponent>(args.Target, out var status))
             return;
 
-        if (_stunSystem.TryStun(args.Target, TimeSpan.FromSeconds(6), true))
+        if (HasComp<MindShieldComponent>(args.Target))
         {
-            args.Handled = true;
+            _popupSystem.PopupEntity("Он имплантирован чипом защиты разума.", args.Performer, args.Performer);
+            return;
         }
+
+        if (!_stunSystem.TryParalyze(args.Target, TimeSpan.FromSeconds(6), true, status) &
+            !_statusEffectsSystem.TryAddStatusEffect(args.Target, "Muted", TimeSpan.FromSeconds(12), true, "Muted",
+                status))
+            return;
+
+        _bloodstreamSystem.TryModifyBloodLevel(uid, -10, bloodstream, createPuddle: false);
+        args.Handled = true;
     }
 
     private void OnTeleport(EntityUid uid, CultistComponent component, CultTeleportTargetActionEvent args)
     {
-        if (!TryComp<BloodstreamComponent>(args.Performer, out _) || !TryComp<ActorComponent>(uid, out var actor))
+        if (!TryComp<BloodstreamComponent>(args.Performer, out var bloodstream) || !TryComp<ActorComponent>(uid, out var actor))
             return;
 
         if (!TryComp<CultistComponent>(args.Target, out _) &&
             !(TryComp<MobStateComponent>(args.Target, out var mobStateComponent) &&
                 mobStateComponent.CurrentState is not MobState.Alive))
         {
-            _popupSystem.PopupEntity("Цель должна быть культистом или лежать", args.Performer);
+            _popupSystem.PopupEntity("Цель должна быть культистом или лежать.", args.Performer, args.Performer);
             return;
         }
+
+        _bloodstreamSystem.TryModifyBloodLevel(uid, -5, bloodstream, createPuddle: false);
 
         var eui = new TeleportSpellEui(args.Performer, args.Target);
         _euiManager.OpenEui(eui, actor.PlayerSession);
@@ -148,10 +185,10 @@ public partial class CultSystem
         CultistComponent component,
         CultSummonCombatEquipmentTargetActionEvent args)
     {
-        if (!TryComp<BloodstreamComponent>(args.Performer, out _))
+        if (!TryComp<BloodstreamComponent>(args.Performer, out var bloodstream))
             return;
 
-        _bloodstreamSystem.TryModifyBloodLevel(uid, -20, createPuddle: false);
+        _bloodstreamSystem.TryModifyBloodLevel(uid, -20, bloodstream, createPuddle: false);
 
         var coordinates = Transform(uid).Coordinates;
         var helmet = Spawn("ClothingHeadHelmetCult", coordinates);
@@ -177,30 +214,42 @@ public partial class CultSystem
     private void OnElectromagneticPulse(
         EntityUid uid,
         CultistComponent component,
-        CultElectromagneticPulseTargetActionEvent args)
+        CultElectromagneticPulseInstantActionEvent args)
     {
-        if (!TryComp<BloodstreamComponent>(args.Performer, out _))
+        if (!TryComp<BloodstreamComponent>(args.Performer, out var bloodstream))
             return;
 
-        _bloodstreamSystem.TryModifyBloodLevel(uid, -20, createPuddle: false);
+        _bloodstreamSystem.TryModifyBloodLevel(uid, -10, bloodstream, createPuddle: false);
 
-        var xform = Transform(uid);
-
-        _empSystem.EmpPulse(xform.MapPosition, 10, 100000, 10f);
-        _bloodstreamSystem.TryModifyBloodLevel(uid, -20, createPuddle: false);
+        _empSystem.EmpPulse(_transform.GetMapCoordinates(uid), 5, 100000, 10f);
 
         args.Handled = true;
     }
 
     private void OnShadowShackles(EntityUid uid, CultistComponent component, CultShadowShacklesTargetActionEvent args)
     {
-        if (!TryComp<BloodstreamComponent>(args.Performer, out _))
+        if (args.Target == uid || !TryComp<BloodstreamComponent>(args.Performer, out var bloodstream))
             return;
 
-        _bloodstreamSystem.TryModifyBloodLevel(uid, -20, createPuddle: false);
+        _bloodstreamSystem.TryModifyBloodLevel(uid, -5, bloodstream, createPuddle: false);
 
-        var cuffs = Spawn("CultistCuffs", Transform(uid).Coordinates);
-        _handsSystem.TryPickupAnyHand(uid, cuffs);
+        if (!HasComp<HolyComponent>(args.Target) &&
+            _statusEffectsSystem.TryAddStatusEffect(args.Target, "Muted", TimeSpan.FromSeconds(10), true, "Muted"))
+        {
+            _popupSystem.PopupEntity("Цель обезмолвлена.", args.Performer, args.Performer);
+            args.Handled = true;
+        }
+
+        if (!TryComp(args.Target, out CuffableComponent? cuffs) || cuffs.Container.ContainedEntities.Count > 0)
+            return;
+
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(2),
+            new ShacklesEvent(), args.Performer, args.Target)
+        {
+            BreakOnTargetMove = true,
+            BreakOnUserMove = true,
+            BreakOnDamage = true
+        });
 
         args.Handled = true;
     }
@@ -229,14 +278,14 @@ public partial class CultSystem
 
         var material = _entityManager.SpawnEntity(RunicMetalPrototypeId, transform);
 
-        _bloodstreamSystem.TryModifyBloodLevel(args.Performer, -15, bloodstreamComponent, false);
+        _bloodstreamSystem.TryModifyBloodLevel(args.Performer, -stack.Count / 2f, bloodstreamComponent, false);
 
         if (!_entityManager.TryGetComponent<StackComponent>(material, out var stackNew))
             return;
 
         stackNew.Count = count;
 
-        _popupSystem.PopupEntity(Loc.GetString("Конвертируем сталь в руиник металл!"), args.Performer, args.Performer);
+        _popupSystem.PopupEntity("Конвертируем сталь в руинический металл!", args.Performer, args.Performer);
         args.Handled = true;
     }
 
@@ -251,7 +300,7 @@ public partial class CultSystem
         var xform = Transform(args.Performer).Coordinates;
         var dagger = _entityManager.SpawnEntity(RitualDaggerPrototypeId, xform);
 
-        _bloodstreamSystem.TryModifyBloodLevel(args.Performer, -30, bloodstreamComponent, false);
+        _bloodstreamSystem.TryModifyBloodLevel(args.Performer, -20, bloodstreamComponent, false);
         _handsSystem.TryPickupAnyHand(args.Performer, dagger);
         args.Handled = true;
     }

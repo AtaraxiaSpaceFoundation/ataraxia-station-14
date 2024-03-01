@@ -41,6 +41,9 @@ namespace Content.Shared.Verbs
         public static readonly VerbCategory MeatyOre =
             new("MeatyOre", null);
 
+        public static readonly VerbCategory Cult =
+            new("verb-categories-cult", "/Textures/White/Cult/interface.rsi/icon.png");
+
         public static readonly VerbCategory Antag =
             new("verb-categories-antag", "/Textures/Interface/VerbIcons/antag-e_sword-temp.192dpi.png", iconsOnly: true) { Columns = 5 };
 

@@ -18,7 +18,7 @@ public sealed partial class CultTeleportTargetActionEvent : EntityTargetActionEv
 {
 }
 
-public sealed partial class CultElectromagneticPulseTargetActionEvent : EntityTargetActionEvent
+public sealed partial class CultElectromagneticPulseInstantActionEvent : InstantActionEvent
 {
 }
 

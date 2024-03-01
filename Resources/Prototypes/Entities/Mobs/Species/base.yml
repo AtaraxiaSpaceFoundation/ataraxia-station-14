@@ -212,6 +212,10 @@
         type: TeleportRunesListWindowBUI
       - key: enum.SummonCultistUiKey.Key
         type: SummonCultistListWindowBUI
+      - key: enum.CultEmpowerUiKey.Key
+        type: SpellSelectorBUI
+      - key: enum.CultEmpowerRemoveUiKey.Key
+        type: SpellRemoverBUI
       # WD-EDIT END
   - type: Puller
   - type: Butcherable

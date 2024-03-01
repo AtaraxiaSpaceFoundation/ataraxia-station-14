@@ -5,13 +5,15 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
-      useDelay: 50
       canTargetSelf: false
       icon:
         sprite: /Textures/Objects/Materials/Sheets/metal.rsi
         state: steel
       event: !type:CultTwistedConstructionActionEvent
       itemIconStyle: BigAction
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true
 
 - type: entity
   id: ActionCultTeleport
@@ -20,7 +22,6 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
-      useDelay: 30
       whitelist:
         components:
           - HumanoidAppearance
@@ -33,6 +34,9 @@
         state: teleport
       event: !type:CultTeleportTargetActionEvent
       itemIconStyle: BigAction
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true
 
 - type: entity
   id: ActionCultSummonCombatEquipment
@@ -41,7 +45,6 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
-      useDelay: 300
       whitelist:
         components:
           - HumanoidAppearance
@@ -54,6 +57,53 @@
         state: armor
       event: !type:CultSummonCombatEquipmentTargetActionEvent
       itemIconStyle: BigAction
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true
+
+- type: entity
+  id: ActionCultStun
+  name: Stun
+  description: A potent spell that will stun and mute victims.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      whitelist:
+        components:
+          - HumanoidAppearance
+      canTargetSelf: false
+      deselectOnMiss: true
+      repeat: false
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: stun
+      event: !type:CultStunTargetActionEvent
+      itemIconStyle: BigAction
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true
+
+- type: entity
+  id: ActionCultShadowShackles
+  name: Shadow Shackles
+  description: A stealthy spell that will summon shadowy handcuffs on a person, and temporarily silence your victim for 10 seconds.
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      whitelist:
+        components:
+          - HumanoidAppearance
+      canTargetSelf: false
+      deselectOnMiss: true
+      repeat: false
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: shackles
+      event: !type:CultShadowShacklesTargetActionEvent
+      itemIconStyle: BigAction
+      charges: 4
+      temporary: true
+      removeOnNoCharges: true
 
 - type: entity
   id: InstantActionSummonCultDagger
@@ -66,7 +116,9 @@
         sprite: /Textures/White/Cult/interface.rsi
         state: icon
       event: !type:CultSummonDaggerActionEvent
-      useDelay: 200
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true
 
 - type: entity
   id: InstantActionBloodRites
@@ -79,4 +131,21 @@
         sprite: /Textures/White/Cult/actions_cult.rsi
         state: blood_rites
       event: !type:CultBloodRitesInstantActionEvent
-      useDelay: 35
+      charges: 4
+      temporary: true
+      removeOnNoCharges: true
+
+- type: entity
+  id: InstantActionEmpPulse
+  name: Electromagnetic Pulse
+  description: A large spell that allows a user to channel dark energy into an EMP.
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: /Textures/White/Cult/actions_cult.rsi
+        state: emp
+      event: !type:CultElectromagneticPulseInstantActionEvent
+      charges: 1
+      temporary: true
+      removeOnNoCharges: true

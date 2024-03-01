@@ -179,7 +179,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         foreach (var empower in component.SelectedEmpowers)
         {
-            _actions.RemoveAction(uid, empower);
+            _actions.RemoveAction(uid, GetEntity(empower));
         }
 
         RemoveCultistAppearance(uid);

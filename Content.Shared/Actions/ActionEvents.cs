@@ -102,6 +102,13 @@ public sealed class RequestPerformActionEvent : EntityEventArgs
     }
 }
 
+// WD START
+public sealed partial class ActionGettingRemovedEvent : EntityEventArgs
+{
+    public EntityUid Action;
+}
+// WD END
+
 /// <summary>
 ///     This is the type of event that gets raised when an <see cref="InstantAction"/> is performed. The <see
 ///     cref="Performer"/> field is automatically filled out by the <see cref="SharedActionsSystem"/>.
