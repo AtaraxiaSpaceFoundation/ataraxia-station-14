@@ -35,8 +35,8 @@ gun-chamber-bolt-closed = Затвор закрыт
 gun-chamber-bolt-opened = Затвор открыт
 gun-chamber-bolt-close = Закрыть завтор
 gun-chamber-bolt-open = Открыть затвор
-gun-chamber-bolt-closed-state = закрыт
-gun-chamber-bolt-open-state = открыт
+gun-chamber-bolt-closed-state = открыт
+gun-chamber-bolt-open-state = закрыт
 gun-chamber-rack = Разрядить
 
 # MagazineAmmoProvider

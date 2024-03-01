@@ -29,7 +29,7 @@ public sealed partial class GunSystem
     private void OnRevolverAmmoUpdate(EntityUid uid, RevolverAmmoProviderComponent component, UpdateAmmoCounterEvent args)
     {
         if (args.Control is not RevolverStatusControl control) return;
-        control.Update(component.CurrentIndex, component.Chambers);
+        control.Update(component.Chambers);
     }
 
     private void OnRevolverCounter(EntityUid uid, RevolverAmmoProviderComponent component, AmmoCounterControlEvent args)

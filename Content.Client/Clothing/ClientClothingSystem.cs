@@ -102,13 +102,8 @@ public sealed class ClientClothingSystem : ClothingSystem
         // if that returned nothing, attempt to find generic data
         if (layers == null && !item.ClothingVisuals.TryGetValue(args.Slot, out layers))
         {
-            if (!TryComp(args.Equipee, out HumanoidAppearanceComponent? humanoid))
-            {
-                return;
-            }
-
             // No generic data either. Attempt to generate defaults from the item's RSI & item-prefixes
-            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, humanoid, out layers))
+            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, args.Equipee, out layers))
                 return;
         }
 
@@ -139,7 +134,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         ClothingComponent clothing,
         string slot,
         string? speciesId,
-        HumanoidAppearanceComponent humanoid,
+        EntityUid? target,
         [NotNullWhen(true)] out List<PrototypeLayerData>? layers)
     {
         layers = null;
@@ -166,10 +161,13 @@ public sealed class ClientClothingSystem : ClothingSystem
             state = $"{clothing.EquippedState}";
 
         // body type specific
-        var bodyTypeProto = _prototypeManager.Index<BodyTypePrototype>(humanoid.BodyType);
-        if (rsi.TryGetState($"{state}-{bodyTypeProto.Name}", out _))
+        if (TryComp(target, out HumanoidAppearanceComponent? humanoid))
         {
-            state = $"{state}-{bodyTypeProto.Name}";
+            var bodyTypeProto = _prototypeManager.Index<BodyTypePrototype>(humanoid.BodyType);
+            if (rsi.TryGetState($"{state}-{bodyTypeProto.Name}", out _))
+            {
+                state = $"{state}-{bodyTypeProto.Name}";
+            }
         }
 
         // species specific
