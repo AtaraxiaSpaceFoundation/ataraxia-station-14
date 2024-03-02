@@ -12,7 +12,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
-using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
 
 namespace Content.Client.Administration.UI.Bwoink
@@ -49,39 +48,11 @@ namespace Content.Client.Administration.UI.Bwoink
             ChannelSelector.OnSelectionChanged += sel =>
             {
                 _currentPlayer = sel;
-                SwitchToChannel(sel?.SessionId);
+                SwitchToChannel(sel.SessionId);
                 ChannelSelector.PlayerListContainer.DirtyList();
             };
 
-            ChannelSelector.OverrideText += (info, text) =>
-            {
-                var sb = new StringBuilder();
-
-                if (info.Connected)
-                    sb.Append('●');
-                else
-                    sb.Append(info.ActiveThisRound ? '○' : '·');
-
-                sb.Append(' ');
-                if (AHelpHelper.TryGetChannel(info.SessionId, out var panel) && panel.Unread > 0)
-                {
-                    if (panel.Unread < 11)
-                        sb.Append(new Rune('➀' + (panel.Unread-1)));
-                    else
-                        sb.Append(new Rune(0x2639)); // ☹
-                    sb.Append(' ');
-                }
-
-                if (info.Antag && info.ActiveThisRound)
-                    sb.Append(new Rune(0x1F5E1)); // 🗡
-
-                if (info.OverallPlaytime <= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.NewPlayerThreshold)))
-                    sb.Append(new Rune(0x23F2)); // ⏲
-
-                sb.AppendFormat("\"{0}\"", text);
-
-                return sb.ToString();
-            };
+            ChannelSelector.OverrideText += (info, _) => FormatTabTitle(info);
 
             ChannelSelector.Comparison = (a, b) =>
             {
@@ -166,11 +137,10 @@ namespace Content.Client.Administration.UI.Bwoink
             ChannelSelector.PopulateList();
         }
 
-
         public void SelectChannel(NetUserId channel)
         {
             if (!ChannelSelector.PlayerInfo.TryFirstOrDefault(
-                i => i.SessionId == channel, out var info))
+                    i => i.SessionId == channel, out var info))
                 return;
 
             // clear filter if we're trying to select a channel for a player that isn't currently filtered
@@ -208,33 +178,33 @@ namespace Content.Client.Administration.UI.Bwoink
             Follow.Disabled = !Follow.Visible || disabled;
         }
 
-        private string FormatTabTitle(ItemList.Item li, PlayerInfo? pl = default)
+        private string FormatTabTitle(PlayerInfo info)
         {
-            pl ??= (PlayerInfo) li.Metadata!;
             var sb = new StringBuilder();
-            sb.Append(pl.Connected ? '●' : '○');
+            sb.Append(info.Connected ? '●' :
+                info.ActiveThisRound ? '○' : '·'
+            );
+
             sb.Append(' ');
-            if (AHelpHelper.TryGetChannel(pl.SessionId, out var panel) && panel.Unread > 0)
+            if (AHelpHelper.TryGetChannel(info.SessionId, out var panel) && panel.Unread > 0)
             {
-                if (panel.Unread < 11)
-                    sb.Append(new Rune('➀' + (panel.Unread-1)));
-                else
-                    sb.Append(new Rune(0x2639)); // ☹
+                sb.Append(panel.Unread < 11 ? new Rune('➀' + (panel.Unread - 1)) : new Rune(0x2639)); // ☹
+
                 sb.Append(' ');
             }
 
-            if (pl.Antag)
+            if (info.Antag)
                 sb.Append(new Rune(0x1F5E1)); // 🗡
 
-            if (pl.OverallPlaytime <= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.NewPlayerThreshold)))
+            if (info.OverallPlaytime <= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.NewPlayerThreshold)))
                 sb.Append(new Rune(0x23F2)); // ⏲
 
-            sb.AppendFormat("\"{0}\"", pl.CharacterName);
+            sb.Append($"\"{info.CharacterName}\"");
 
-            if (pl.IdentityName != pl.CharacterName && pl.IdentityName != string.Empty)
-                sb.Append(' ').AppendFormat("[{0}]", pl.IdentityName);
+            if (info.IdentityName != info.CharacterName && info.IdentityName != string.Empty)
+                sb.Append(' ').Append($"[{info.IdentityName}]");
 
-            sb.Append(' ').Append(pl.Username);
+            sb.Append(' ').Append(info.Username);
 
             return sb.ToString();
         }

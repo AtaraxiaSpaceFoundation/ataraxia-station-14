@@ -11,6 +11,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Replays;
@@ -30,6 +31,7 @@ namespace Content.Client.Popups
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
+        [Dependency] private readonly IClientNetManager _clientNet = default!;
 
         public IReadOnlyList<WorldPopupLabel> WorldLabels => _aliveWorldLabels;
         public IReadOnlyList<CursorPopupLabel> CursorLabels => _aliveCursorLabels;
@@ -99,12 +101,14 @@ namespace Content.Client.Popups
                 { PopupType.LargeCaution, "15" }
             };
 
-            var fontsize = fontSizeDict.ContainsKey(type) ? fontSizeDict[type] : "10";
-            var fontcolor = (type == PopupType.LargeCaution || type == PopupType.MediumCaution || type == PopupType.SmallCaution) ? "c62828" : "aeabc4";
+            var fontsize = fontSizeDict.GetValueOrDefault(type, "10");
+            var fontcolor = type is PopupType.LargeCaution or PopupType.MediumCaution or PopupType.SmallCaution ? "c62828" : "aeabc4";
 
             if (isLogging)
             {
-                _chatManager.SendMessage($"notice [font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]", ChatSelectChannel.Console);
+                var wrappedMEssage = $"[font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]";
+                var chatMsg = new ChatMessage(ChatChannel.Emotes, message, wrappedMEssage, GetNetEntity(EntityUid.Invalid), null);
+                _clientNet.DispatchLocalNetMessage(new MsgChatMessage { Message = chatMsg });
             }
         }
 

@@ -72,7 +72,7 @@ public sealed class SelfHealSystem: EntitySystem
         // Logic to determine the whether or not to repeat the healing action
         args.Repeat = (HasDamage(component, healing) && !dontRepeat);
         if (!args.Repeat && !dontRepeat)
-            _popupSystem.PopupEntity(Loc.GetString("self-heal-finished-using", ("verb", Loc.GetString("self-heal-lick")), ("name", uid)), uid, args.User);
+            _popupSystem.PopupEntity(Loc.GetString("self-heal-finished-using", ("name", uid)), uid, args.User);
 
         args.Handled = true;
 
@@ -90,8 +90,8 @@ public sealed class SelfHealSystem: EntitySystem
         var targetString = EntityManager.ToPrettyString(uid);
 
         var healMessage = uid != args.User
-            ? $"{userString:user} healed {targetString:target} for {total:damage} with {Loc.GetString("self-heal-lick")}"
-            : $"{userString:user} healed themselves for {total:damage} with {Loc.GetString("self-heal-lick")}";
+            ? $"{userString:user} healed {targetString:target} for {total:damage} by licking"
+            : $"{userString:user} healed themselves for {total:damage} by licking";
         _adminLogger.Add(LogType.Healed, $"{healMessage}");
 
         if (TryComp<SelfHealComponent>(args.User, out var selfHealComponent))
@@ -100,7 +100,7 @@ public sealed class SelfHealSystem: EntitySystem
             var audioParams = new AudioParams().WithVariation(2f).WithVolume(-5f);
 
             _audio.PlayPvs(audio, args.User, audioParams);
-            _popupSystem.PopupEntity(Loc.GetString("self-heal-using-other", ("name", uid), ("verb", Loc.GetString("self-heal-lick"))), uid);
+            _popupSystem.PopupEntity(Loc.GetString("self-heal-using-other", ("user", args.Args.User), ("target", uid)), uid);
         }
     }
 
@@ -114,8 +114,7 @@ public sealed class SelfHealSystem: EntitySystem
 
         if (!HasDamage(targetDamage, component))
         {
-            var popup = Loc.GetString("self-heal-cant-use", ("verb", Loc.GetString("self-heal-lick")),
-                ("name", target));
+            var popup = Loc.GetString("self-heal-cant-use", ("name", target));
             _popupSystem.PopupEntity(popup, user, user);
             return false;
         }
@@ -128,7 +127,7 @@ public sealed class SelfHealSystem: EntitySystem
                     EntityManager.TryGetComponent<IngestionBlockerComponent>(blockedClothing, out var blocker) &&
                     blocker.Enabled)
                 {
-                    var popup = Loc.GetString("self-heal-cant-use-clothing", ("verb", Loc.GetString("self-heal-lick")), ("clothing", blockedClothing));
+                    var popup = Loc.GetString("self-heal-cant-use-clothing", ("clothing", blockedClothing));
                     _popupSystem.PopupEntity(popup, user, user);
                     return false;
                 }
@@ -141,7 +140,7 @@ public sealed class SelfHealSystem: EntitySystem
             {
                 if (_inventorySystem.TryGetSlotEntity(target, clothing, out var blockedClothing))
                 {
-                    var popup = Loc.GetString("self-heal-cant-use-clothing-other", ("verb", Loc.GetString("self-heal-lick")), ("name", target), ("clothing", blockedClothing));
+                    var popup = Loc.GetString("self-heal-cant-use-clothing-other", ("name", target), ("clothing", blockedClothing));
                     _popupSystem.PopupEntity(popup, user, user);
                     return false;
                 }
