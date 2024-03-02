@@ -1837,3 +1837,11 @@
   id: 172
   time: '2024-03-01T08:51:17.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/148
+- author: Valtos
+  changes:
+  - message: "11 \u043D\u043E\u0432\u044B\u0445 \u0433\u043E\u043B\u043E\u0441\u043E\
+      \u0432 \u0438\u0437 Hogwarts Legacy!"
+    type: Add
+  id: 173
+  time: '2024-03-02T05:58:21.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/158
