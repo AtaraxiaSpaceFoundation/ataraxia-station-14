@@ -382,7 +382,7 @@
   sprite: White/Ghosts/krokozyabra-ghost.rsi
   alpha: 0.9
   ghostName: Зябр
-  ghostDescription: Пусть так и будет
+  ghostDescription: От него веет верностью
 
 #FjorLofgren
 - type: customGhost
