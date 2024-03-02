@@ -23,3 +23,16 @@
   components:
     - type: SubdermalImplant
       implantAction: ActivateHardlightSpearImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: MindslaveImplant
+  name: mindslave implant
+  description: Make someone a proper doll for your use.
+  noSpawn: true
+  components:
+  - type: SubdermalImplant
+  - type: Tag
+    tags:
+    - MindSlave
+

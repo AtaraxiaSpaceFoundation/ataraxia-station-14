@@ -204,3 +204,13 @@
     Telecrystal: 1
   categories:
   - UplinkAmmo
+
+- type: listing
+  id: UplinkMindSlaveImplanter
+  name: uplink-mind-slave
+  description: uplink-mind-slave-desc
+  productEntity: MindSlaveImplanter
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkImplants

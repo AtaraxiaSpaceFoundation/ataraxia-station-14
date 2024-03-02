@@ -124,24 +124,24 @@
 
 - type: entity
   id: SadTromboneImplanter
-  name: sad trombone implanter
   parent: BaseImplantOnlyImplanter
+  suffix: sad trombone
   components:
     - type: Implanter
       implant: SadTromboneImplant
 
 - type: entity
   id: LightImplanter
-  name: light implanter
   parent: BaseImplantOnlyImplanter
+  suffix: light
   components:
     - type: Implanter
       implant: LightImplant
 
 - type: entity
   id: BikeHornImplanter
-  name: bike horn implanter
   parent: BaseImplantOnlyImplanter
+  suffix: bike horn
   components:
     - type: Implanter
       implant: BikeHornImplant
@@ -150,8 +150,8 @@
 
 - type: entity
   id: TrackingImplanter
-  name: tracking implanter
   parent: BaseImplantOnlyImplanter
+  suffix: tracking
   components:
     - type: Implanter
       implant: TrackingImplant
@@ -160,24 +160,24 @@
 
 - type: entity
   id: StorageImplanter
-  name: storage implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: storage
   components:
     - type: Implanter
       implant: StorageImplant
 
 - type: entity
   id: FreedomImplanter
-  name: freedom implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: freedom
   components:
     - type: Implanter
       implant: FreedomImplant
 
 - type: entity
   id: UplinkImplanter
-  name: uplink implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: uplink
   components:
   - type: Implanter
     implant: UplinkImplant
@@ -185,24 +185,24 @@
 
 - type: entity
   id: EmpImplanter
-  name: EMP implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: EMP
   components:
     - type: Implanter
       implant: EmpImplant
 
 - type: entity
   id: ScramImplanter
-  name: scram implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: scram
   components:
     - type: Implanter
       implant: ScramImplant
 
 - type: entity
   id: DnaScramblerImplanter
-  name: DNA scrambler implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: DNA scrambler
   components:
     - type: Implanter
       implant: DnaScramblerImplant
@@ -211,32 +211,32 @@
 
 - type: entity
   id: MicroBombImplanter
-  name: micro-bomb implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: micro-bomb
   components:
     - type: Implanter
       implant: MicroBombImplant
 
 - type: entity
   id: MacroBombImplanter
-  name: macro-bomb implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: macro-bomb
   components:
     - type: Implanter
       implant: MacroBombImplant
 
 - type: entity
   id: DeathRattleImplanter
-  name: death rattle implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: death rattle
   components:
     - type: Implanter
       implant: DeathRattleImplant
 
 - type: entity
   id: DeathAcidifierImplanter
-  name: death acidifier implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: death acidifier
   components:
   - type: Implanter
     implant: DeathAcidifierImplant
@@ -245,8 +245,8 @@
 
 - type: entity
   id: MindShieldImplanter
-  name: mind-shield implanter
   parent: BaseImplantOnlyImplanter
+  suffix: mind-shield
   components:
     - type: Implanter
       implant: MindShieldImplant

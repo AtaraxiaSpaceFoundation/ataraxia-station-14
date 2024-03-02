@@ -1,15 +1,23 @@
 - type: entity
   id: SmokeImplanter
-  name: имплант дыма
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: smoke
   components:
-    - type: Implanter
-      implant: SmokeImplant
+  - type: Implanter
+    implant: SmokeImplant
 
 - type: entity
   id: HardlightSpearImplanter
-  name: hardlight spear implanter
   parent: BaseImplantOnlyImplanterSyndi
+  suffix: hardlight spear
   components:
-    - type: Implanter
-      implant: HardlightSpearImplant
+  - type: Implanter
+    implant: HardlightSpearImplant
+
+- type: entity
+  id: MindSlaveImplanter
+  parent: BaseImplantOnlyImplanterSyndi
+  suffix: mindslave
+  components:
+  - type: Implanter
+    implant: MindslaveImplant
