@@ -647,3 +647,69 @@
   sex: Male
   speaker: villager
   roundStart: false
+
+- type: ttsVoice
+  id: AmitTakkar
+  name: tts-voice-name-amitkakkar
+  sex: Male
+  speaker: amitkakkar
+
+- type: ttsVoice
+  id: EleazarFig
+  name: tts-voice-name-eleazarfig
+  sex: Male
+  speaker: eleazarfig
+
+- type: ttsVoice
+  id: ErnieLark
+  name: tts-voice-name-ernielark
+  sex: Male
+  speaker: ernielark
+
+- type: ttsVoice
+  id: IgnatiaFlootravel
+  name: tts-voice-name-ignatiaflootravel
+  sex: Female
+  speaker: ignatiaflootravel
+
+- type: ttsVoice
+  id: Lodgok
+  name: tts-voice-name-lodgok
+  sex: Male
+  speaker: lodgok
+
+- type: ttsVoice
+  id: PhineasBlack
+  name: tts-voice-name-phineasblack
+  sex: Male
+  speaker: phineasblack
+
+- type: ttsVoice
+  id: Ranrak
+  name: tts-voice-name-ranrak
+  sex: Male
+  speaker: ranrak
+
+- type: ttsVoice
+  id: VictorRookwood
+  name: tts-voice-name-victorrookwood
+  sex: Male
+  speaker: victorrookwood
+
+- type: ttsVoice
+  id: ZenobiaNoke
+  name: tts-voice-name-zenobianoke
+  sex: Female
+  speaker: zenobianoke
+
+- type: ttsVoice
+  id: GladwinMoon
+  name: tts-voice-name-gladwinmoon
+  sex: Male
+  speaker: gladwinmoon
+
+- type: ttsVoice
+  id: MatildaWeasley
+  name: tts-voice-name-matildaweasley
+  sex: Female
+  speaker: matildaweasley
