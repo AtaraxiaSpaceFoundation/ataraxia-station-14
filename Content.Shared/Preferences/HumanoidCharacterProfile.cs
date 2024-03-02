@@ -208,6 +208,7 @@ namespace Content.Shared.Preferences
             var bodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
             if (prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
             {
+                bodyType = speciesPrototype.BodyTypes[0];
                 sex = random.Pick(speciesPrototype.Sexes);
                 age = random.Next(speciesPrototype.MinAge,
                     speciesPrototype

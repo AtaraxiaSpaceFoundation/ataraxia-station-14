@@ -288,7 +288,7 @@
 - type: polymorph
   id: MobHumanSyndicateAgent
   configuration:
-    entity: MobHumanSyndicateAgent
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -299,7 +299,7 @@
 - type: polymorph
   id: MobHumanSyndicateAgentNukeops
   configuration:
-    entity: MobHumanSyndicateAgentNukeops
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -310,7 +310,7 @@
 - type: polymorph
   id: MobHumanNukeOp
   configuration:
-    entity: MobHumanNukeOp
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -321,7 +321,7 @@
 - type: polymorph
   id: MobHumanLoneNuclearOperative
   configuration:
-    entity: MobHumanLoneNuclearOperative
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -332,7 +332,7 @@
 - type: polymorph
   id: MobHumanSpaceNinja
   configuration:
-    entity: MobHumanSpaceNinja
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -354,7 +354,7 @@
 - type: polymorph
   id: MobHumanTerminator
   configuration:
-    entity: MobHumanTerminator
+    entity: MobHuman
     forced: true
     revertOnCrit: false
     revertOnDeath: false
@@ -365,7 +365,51 @@
 - type: polymorph
   id: MobTerminatorEndoskeleton
   configuration:
-    entity: MobTerminatorEndoskeleton
+    entity: MobHuman
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobSkeletonPerson
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobSkeletonPirate
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobSkeletonBiker
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
+  id: MobSkeletonCloset
+  configuration:
+    entity: MobSkeletonPerson
     forced: true
     revertOnCrit: false
     revertOnDeath: false
