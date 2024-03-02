@@ -10,6 +10,10 @@ using Content.Server.Hands.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.Cult.Runes.Comps;
+using Content.Server.Bible.Components;
+using Content.Server.Chemistry.Components;
+using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Server.Fluids.Components;
 using Content.Shared._White.Chaplain;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
@@ -64,6 +68,7 @@ public sealed partial class CultSystem : EntitySystem
     [Dependency] private readonly FlammableSystem _flammableSystem = default!;
     [Dependency] private readonly SharedPullingSystem _pulling = default!;
     [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
+    [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
 
 
     public override void Initialize()
@@ -259,6 +264,14 @@ public sealed partial class CultSystem : EntitySystem
 
     private void TryErase(EntityUid uid, CultRuneBaseComponent component, InteractUsingEvent args)
     {
+        if (TryComp<BibleComponent>(args.Used, out var bible) && HasComp<BibleUserComponent>(args.User))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("cult-erased-rune"), args.User, args.User);
+            _audio.PlayPvs(bible.HealSoundPath, args.User);
+            EntityManager.DeleteEntity(args.Target);
+            return;
+        }
+
         var entityPrototype = _entityManager.GetComponent<MetaDataComponent>(args.Used).EntityPrototype;
 
         if (entityPrototype == null)
@@ -293,7 +306,7 @@ public sealed partial class CultSystem : EntitySystem
 
         if (_doAfterSystem.TryStartDoAfter(argsDoAfterEvent))
         {
-            _popupSystem.PopupEntity(Loc.GetString("cult-started-erasing-rune"), target);
+            _popupSystem.PopupEntity(Loc.GetString("cult-started-erasing-rune"), args.User, args.User);
         }
     }
 
@@ -305,18 +318,20 @@ public sealed partial class CultSystem : EntitySystem
         var target = GetEntity(args.TargetEntityId);
 
         _entityManager.DeleteEntity(target);
-        _popupSystem.PopupEntity(Loc.GetString("cult-erased-rune"), args.User);
+        _popupSystem.PopupEntity(Loc.GetString("cult-erased-rune"), args.User, args.User);
     }
 
     private void HandleCollision(EntityUid uid, CultRuneBaseComponent component, ref StartCollideEvent args)
     {
-        if (!TryComp<SolutionContainerManagerComponent>(args.OtherEntity, out var solution) || solution.Solutions == null)
+        if (!TryComp<SolutionContainerManagerComponent>(args.OtherEntity, out var solution) ||
+            !HasComp<VaporComponent>(args.OtherEntity) && !HasComp<SprayComponent>(args.OtherEntity))
         {
             return;
         }
 
-        if (solution.Solutions.TryGetValue("vapor", out var vapor) &&
-            vapor.Contents.Any(x => x.Reagent.Prototype == CultRuleComponent.HolyWaterReagent))
+        var solutions = _solutionContainerSystem.EnumerateSolutions((args.OtherEntity, solution));
+
+        if (solutions.Any(x => x.Solution.Comp.Solution.ContainsPrototype(CultRuleComponent.HolyWaterReagent)))
         {
             Del(uid);
         }

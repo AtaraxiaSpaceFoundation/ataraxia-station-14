@@ -13,7 +13,12 @@ public sealed partial class PuddleSystem
     [ValidatePrototypeId<ReagentPrototype>]
     private const string Water = "Water";
 
-    public static string[] EvaporationReagents = new[] { Water };
+    // WD EDIT START
+    [ValidatePrototypeId<ReagentPrototype>]
+    private const string HolyWater = "Holywater";
+
+    public static string[] EvaporationReagents = new[] { Water, HolyWater };
+    // WD EDIT END
 
     private void OnEvaporationMapInit(Entity<EvaporationComponent> entity, ref MapInitEvent args)
     {

@@ -1008,12 +1008,17 @@
 - type: reagent
   id: Holywater
   name: reagent-name-holywater
+  parent: BaseDrink
   group: Medicine
   desc: reagent-desc-holywater
   physicalDesc: reagent-physical-desc-holy
   flavor: holy
   color: "#91C3F7"
   metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
     Medicine:
       effects:
       - !type:HealthChange
