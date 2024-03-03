@@ -248,6 +248,7 @@
         - !type:OrganType
           type: Slime
           shouldHave: false
+        statusLifetime: 4
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
       - !type:GenericStatusEffect
@@ -361,7 +362,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: BZ
-          min: 1
+          min: 0.1
         - !type:OrganType
           type: Slime
         type: Local
@@ -372,9 +373,10 @@
         conditions:
         - !type:ReagentThreshold
           reagent: BZ
-          min: 1
+          min: 0.5
         - !type:OrganType
           type: Slime
+        statusLifetime: 4
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
       - !type:GenericStatusEffect
@@ -384,6 +386,38 @@
           min: 1
         - !type:OrganType
           type: Slime
+        key: ForcedSleep
+        component: ForcedSleeping
+        time: 3
+        type: Add
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 0.1
+        - !type:HasComponent
+          component: Changeling
+        type: Local
+        visualType: Medium
+        messages: [ "effect-sleepy" ]
+        probability: 0.1
+      - !type:MovespeedModifier
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 0.5
+        - !type:HasComponent
+          component: Changeling
+        statusLifetime: 4
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: BZ
+          min: 1
+        - !type:HasComponent
+          component: Changeling
         key: ForcedSleep
         component: ForcedSleeping
         time: 3
@@ -456,28 +490,28 @@
         conditions:
           - !type:ReagentThreshold
             reagent: Nitrium
-            min: 3
-        statusLifetime: 0.25
+            min: 0.5
+        statusLifetime: 32
         walkSpeedModifier: 1.5
         sprintSpeedModifier: 1.5
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-            min: 6
+            min: 0.5
         key: Stun
         time: 1
         type: Remove
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-            min: 6
+            min: 0.5
         key: KnockedDown
-        time: 5
+        time: 1
         type: Remove
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-            min: 6
+            min: 0.5
         key: ForcedSleep
         component: ForcedSleeping
         time: 15
@@ -486,12 +520,12 @@
         conditions:
           - !type:ReagentThreshold
             reagent: Nitrium
-            min: 9
+            min: 10
         scaleByQuantity: true
         ignoreResistances: true
         damage:
           types:
-            Poison: 0.05
+            Poison: 0.5
 
 - type: reagent
   id: Healium
