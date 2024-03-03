@@ -123,6 +123,14 @@ public abstract partial class SharedGunSystem
 
     private void OnGunSelected(EntityUid uid, GunComponent component, HandSelectedEvent args)
     {
+        // WD EDIT START
+        if (component.FireRateModified <= 0f)
+            component.FireRateModified = component.FireRate;
+
+        if (component.FireRateModified <= 0f)
+            return;
+        // WD EDIT END
+
         var fireDelay = 1f / component.FireRateModified;
         if (fireDelay.Equals(0f))
             return;
