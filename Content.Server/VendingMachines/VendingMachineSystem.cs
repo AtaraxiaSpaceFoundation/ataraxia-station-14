@@ -323,7 +323,7 @@ namespace Content.Server.VendingMachines
             if (_accessReader.IsAllowed(sender, uid, accessReader) || HasComp<EmaggedComponent>(uid))
                 return true;
 
-            Popup.PopupClient(Loc.GetString("vending-machine-component-try-eject-access-denied"), uid, sender);
+            Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-denied"), uid, sender);
             Deny(uid, vendComponent);
             return false;
         }
@@ -352,7 +352,7 @@ namespace Content.Server.VendingMachines
             if (entry == null)
             {
                 if (sender.HasValue)
-                    Popup.PopupClient(Loc.GetString("vending-machine-component-try-eject-invalid-item"), uid, sender.Value);
+                    Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-invalid-item"), uid, sender.Value);
 
 
                 Deny(uid, vendComponent);
@@ -362,7 +362,7 @@ namespace Content.Server.VendingMachines
             if (entry.Amount <= 0)
             {
                 if (sender.HasValue)
-                    Popup.PopupClient(Loc.GetString("vending-machine-component-try-eject-out-of-stock"), uid, sender.Value);
+                    Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-out-of-stock"), uid, sender.Value);
 
                 Deny(uid, vendComponent);
                 return;

@@ -147,12 +147,12 @@ public sealed class CultistFactorySystem : EntitySystem
         if (args.IsAnchored)
         {
             _transform.Unanchor(target, xform);
-            _popup.PopupClient(Loc.GetString("anchorable-unanchored"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("anchorable-unanchored"), uid, args.User);
         }
         else
         {
             _transform.AnchorEntity(target, xform);
-            _popup.PopupClient(Loc.GetString("anchorable-anchored"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("anchorable-anchored"), uid, args.User);
         }
 
         _audio.PlayPvs("/Audio/Items/ratchet.ogg", uid);

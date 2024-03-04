@@ -120,7 +120,7 @@ public sealed class InteractionPopupSystem : EntitySystem
             _popupSystem.PopupEntity(msg, uid, user);
             _popupSystem.PopupEntity(msgOthers, uid, Filter.PvsExcept(user, entityManager: EntityManager), true);
         }
-        else
+        else if (msg != "") // WD edit
             _popupSystem.PopupEntity(msg, uid, user); //play only for the initiating entity.
 
         if (sfx is not null) //not all cases will have sound.

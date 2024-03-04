@@ -1,7 +1,7 @@
-using Content.Server.Popups;
 using Content.Server.Xenoarchaeology.Equipment.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared.Interaction;
+using Content.Shared.Popups;
 using Content.Shared.Timing;
 
 namespace Content.Server.Xenoarchaeology.Equipment.Systems;
@@ -9,7 +9,7 @@ namespace Content.Server.Xenoarchaeology.Equipment.Systems;
 public sealed class NodeScannerSystem : EntitySystem
 {
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
+    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -36,7 +36,7 @@ public sealed class NodeScannerSystem : EntitySystem
             return;
 
         // WD edit
-        _popupSystem.PopupClient(Loc.GetString("node-scan-popup",
+        _popupSystem.PopupEntity(Loc.GetString("node-scan-popup",
             ("id", $"{artifact.CurrentNodeId}")), target, args.User);
     }
 }
