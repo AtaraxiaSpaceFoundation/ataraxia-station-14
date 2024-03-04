@@ -35,10 +35,10 @@
     angle: 0
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit
-    damage: 30
+    damage: 40
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
-    damage: 30
+    damage: 40
     sound: /Audio/Weapons/egloves.ogg
   - type: UseDelay
   - type: Item
@@ -72,7 +72,7 @@
   - type: Stunprod
     hasHeldPrefix: false
   - type: Construction
-    deconstructionTarget: rod
+    deconstructionTarget: cuffs
     graph: StunprodGraph
     node: snatcherprod
 
@@ -88,6 +88,6 @@
   - type: Item
     size: Normal
   - type: Construction
-    deconstructionTarget: rod
+    deconstructionTarget: cuffs
     graph: StunprodGraph
     node: unfinished

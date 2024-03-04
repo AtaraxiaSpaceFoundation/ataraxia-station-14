@@ -177,7 +177,7 @@
     ignoreResistances: true
     damage:
       types:
-        Slash: 27
+        Slash: 24
   - type: Clothing
     sprite: White/Objects/Weapons/Chaplain/scythe.rsi
     slots:
@@ -335,7 +335,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
+        Blunt: 8
   - type: UseDelay
   - type: DisarmMalus
   - type: MeleeBlock
@@ -393,7 +393,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 10
+        Piercing: 9
   - type: UseDelay
   - type: DisarmMalus
 
@@ -433,13 +433,12 @@
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
     canHeavyAttack: false
     damage:
       types:
         Blunt: 0
   - type: StaminaDamageOnHit
-    damage: 60
+    damage: 40
   - type: Item
     size: Normal
     sprite: White/Objects/Weapons/Chaplain/hypertool.rsi

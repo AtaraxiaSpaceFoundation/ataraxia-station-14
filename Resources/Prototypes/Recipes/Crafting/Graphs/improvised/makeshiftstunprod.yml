@@ -28,4 +28,29 @@
 #              doAfter: 20
 #    - node: msstunprod
 #      entity: Stunprod
-#
+
+- type: constructionGraph
+  id: makeshiftstunprod
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: msstunprod
+          steps:
+            - material: MetalRod
+              amount: 1
+            - material: Cable
+              amount: 15
+            - tag: Igniter
+              name: Igniter
+              icon:
+                sprite: Objects/Devices/igniter.rsi
+                state: icon
+            - tag: CapacitorStockPart
+              name: Capacitor Stock Part
+              icon:
+                sprite: Objects/Misc/stock_parts.rsi
+                state: capacitor
+              doAfter: 20
+    - node: msstunprod
+      entity: Stunprod

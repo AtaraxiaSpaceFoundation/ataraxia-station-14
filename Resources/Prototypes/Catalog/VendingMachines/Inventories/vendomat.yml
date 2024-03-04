@@ -1,8 +1,8 @@
 - type: vendingMachineInventory
   id: VendomatInventory
   startingInventory:
-    RemoteSignaller: 1
-    Igniter: 2
+    RemoteSignaller: 4
+    Igniter: 5
     Wirecutter: 1
     CableApcStack: 2
     FlashlightLantern: 2

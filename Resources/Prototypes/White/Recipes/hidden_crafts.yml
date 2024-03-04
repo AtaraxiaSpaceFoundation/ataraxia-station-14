@@ -68,15 +68,14 @@
 
 - type: constructionGraph
   id: StunprodGraph
-  start: rod
+  start: cuffs
   graph:
-  - node: rod
-    entity: PartRodMetal1
+  - node: cuffs
     edges:
       - to: unfinished
         steps:
-          - material: Cable
-            amount: 15
+          - material: MetalRod
+            amount: 1
             doAfter: 1
   - node: unfinished
     entity: ProdUnfinished
@@ -84,10 +83,14 @@
       - to: Igniter
         steps:
           - tag: Igniter
-      - to: rod
+      - to: cuffs
         steps:
           - tool: Cutting
             doAfter: 5
+        completed:
+        - !type:SpawnPrototype
+          prototype: PartRodMetal1
+        - !type:DeleteEntity
   - node: Igniter
     edges:
       - to: snatcherprod
@@ -95,18 +98,21 @@
           - material: Telecrystal
       - to: stunprod
         steps:
-          - tag: PowerCell
-      - to: rod
+          - tag: CapacitorStockPart
+      - to: cuffs
         steps:
           - tool: Cutting
             doAfter: 5
         completed:
         - !type:SpawnPrototype
+          prototype: PartRodMetal1
+        - !type:SpawnPrototype
           prototype: Igniter
+        - !type:DeleteEntity
   - node: snatcherprod
     entity: Snatcherprod
     edges:
-      - to: rod
+      - to: cuffs
         steps:
           - tool: Cutting
             doAfter: 5
@@ -114,19 +120,27 @@
         - !type:SpawnPrototype
           prototype: Telecrystal1
         - !type:SpawnPrototype
+          prototype: PartRodMetal1
+        - !type:SpawnPrototype
           prototype: Igniter
         - !type:EmptyAllContainers
+        - !type:DeleteEntity
   - node: stunprod
     entity: Stunprod
     edges:
-      - to: rod
+      - to: cuffs
         steps:
           - tool: Cutting
             doAfter: 5
         completed:
         - !type:SpawnPrototype
+          prototype: CapacitorStockPart
+        - !type:SpawnPrototype
+          prototype: PartRodMetal1
+        - !type:SpawnPrototype
           prototype: Igniter
         - !type:EmptyAllContainers
+        - !type:DeleteEntity
 
 - type: constructionGraph
   id: ChainsawGraph

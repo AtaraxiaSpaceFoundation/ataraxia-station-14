@@ -21,6 +21,8 @@ public sealed class RandomDamageSystem : EntitySystem
     private void HandleHit(Entity<RandomDamageComponent> ent, ref MeleeHitEvent args)
     {
         var damage = _random.NextFloat() * ent.Comp.Max;
+        if (args.Direction != null) // Heavy attack
+            damage *= 0.7f;
         args.BonusDamage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), damage);
     }
 }
