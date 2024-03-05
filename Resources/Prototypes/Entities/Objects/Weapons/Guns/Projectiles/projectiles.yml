@@ -121,6 +121,7 @@
     soundHit:
       path: /Audio/Weapons/Guns/Hits/snap.ogg
   - type: StaminaDamageOnCollide
+    ignoreResistances: false
     damage: 22 # 5 hits to stun sounds reasonable
 
 - type: entity

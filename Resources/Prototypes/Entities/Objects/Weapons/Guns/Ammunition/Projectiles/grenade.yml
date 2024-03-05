@@ -15,7 +15,8 @@
   - type: CanPenetrate
     penetrationLayer: MobLayer
   - type: StaminaDamageOnCollide
-    damage: 55
+    ignoreResistances: false
+    damage: 70
   - type: TimedDespawn
     lifetime: 0.25
 

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.StaminaProtection;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.CombatMode;
@@ -204,7 +205,18 @@ public sealed partial class StaminaSystem : EntitySystem
         if (ev.Cancelled)
             return;
 
-        TakeStaminaDamage(target, component.Damage, source: uid, sound: component.Sound);
+        // WD EDIT START
+        var damage = component.Damage;
+
+        if (!component.IgnoreResistances)
+        {
+            var modifyEv = new StaminaDamageModifyEvent {Damage = damage};
+            RaiseLocalEvent(target, modifyEv);
+            damage = modifyEv.Damage;
+        }
+
+        TakeStaminaDamage(target, damage, source: uid, sound: component.Sound);
+        // WD EDIT END
     }
 
     private void SetStaminaAlert(EntityUid uid, StaminaComponent? component = null)
