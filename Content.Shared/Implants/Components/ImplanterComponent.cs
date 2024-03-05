@@ -57,6 +57,11 @@ public sealed partial class ImplanterComponent : Component
     [DataField, AutoNetworkedField]
     public bool ImplantOnly;
 
+    // WD START
+    [DataField]
+    public bool SingleUse = true;
+    // WD END
+
     /// <summary>
     /// The current mode of the implanter
     /// Mode is changed automatically depending if it implants or draws

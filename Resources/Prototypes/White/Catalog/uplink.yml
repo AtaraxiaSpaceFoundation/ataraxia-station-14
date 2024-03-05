@@ -214,3 +214,13 @@
     Telecrystal: 6
   categories:
   - UplinkImplants
+
+- type: listing
+  id: UplinkImplanterSyndi
+  name: Имплантер
+  description: Продвинутый имплантер, позволяющий быстро вкалывать и вытаскивать импланты.
+  productEntity: ImplanterSyndi
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkImplants

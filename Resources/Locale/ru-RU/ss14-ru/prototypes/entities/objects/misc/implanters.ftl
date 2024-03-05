@@ -52,3 +52,5 @@ ent-DeathAcidifierImplanter = { ent-BaseImplanter }
 ent-ImplanterAdmeme = { ent-BaseImplanter }
     .desc = {""}
     .suffix = адмемы
+ent-ImplanterSyndi = { ent-BaseImplanter }
+    .desc = { ent-BaseImplanter.desc }
