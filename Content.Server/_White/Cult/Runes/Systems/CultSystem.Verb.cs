@@ -57,7 +57,7 @@ public sealed partial class CultSystem
 
         if (comp.SelectedEmpowers.Count >= 1)
         {
-            _popupSystem.PopupEntity(Loc.GetString("verb-spell-create-too-much"), ent);
+            _popupSystem.PopupEntity(Loc.GetString("verb-spell-create-too-much"), ent, ent);
             return;
         }
 
@@ -106,7 +106,7 @@ public sealed partial class CultSystem
     {
         if (ent.Comp.SelectedEmpowers.Count == 0)
         {
-            _popupSystem.PopupEntity(Loc.GetString("verb-spell-remove-no-spells"), ent);
+            _popupSystem.PopupEntity(Loc.GetString("verb-spell-remove-no-spells"), ent, ent);
             return;
         }
 
