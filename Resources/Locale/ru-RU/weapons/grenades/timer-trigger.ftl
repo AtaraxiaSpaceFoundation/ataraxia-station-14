@@ -12,4 +12,4 @@ verb-toggle-start-on-stick = Переключить автоактивацию
 popup-start-on-stick-off = Устройство НЕ будет автоматически активировано после установки
 popup-start-on-stick-on = Устройство будет автоматически активировано после установки
 
-trigger-activated = Вы активируете {THE($device)}.
+trigger-activated = Вы активируете {$device}.

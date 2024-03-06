@@ -1,10 +1,10 @@
 mopping-system-tool-full = { CAPITALIZE($used) } полная!
-mopping-system-target-container-empty-water = { CAPITALIZE(THE($target)) } не имеет воды!
-mopping-system-puddle-space = { THE($used) } заполнено водой
-mopping-system-puddle-evaporate = { THE($target) } испаряется
-mopping-system-no-water = { THE($used) } не имеет воды!
-mopping-system-full = { THE($used) } полное!
-mopping-system-empty = { THE($used) } пустое!
+mopping-system-target-container-empty-water = { CAPITALIZE($target) } не имеет воды!
+mopping-system-puddle-space = { $used } заполнено водой
+mopping-system-puddle-evaporate = { $target } испаряется
+mopping-system-no-water = { $used } не имеет воды!
+mopping-system-full = { $used } полное!
+mopping-system-empty = { $used } пустое!
 mopping-system-puddle-diluted = Вы разбавляете лужу.
 mopping-system-puddle-success = Вы убираете лужу.
 mopping-system-release-to-floor = Вы выжимаете часть жидкости на пол.

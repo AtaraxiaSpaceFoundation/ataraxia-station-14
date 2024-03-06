@@ -17,9 +17,9 @@ gun-PullMob = тащить существ
 gun-ballistic-cycle = Перезарядка
 gun-ballistic-cycled = Перезаряжено
 gun-ballistic-cycled-empty = Разряжено
-gun-ballistic-transfer-invalid = {CAPITALIZE(THE($ammoEntity))} нельзя поместить в {THE($targetEntity)}!
-gun-ballistic-transfer-empty = В {CAPITALIZE(THE($entity))} пусто.
-gun-ballistic-transfer-target-full = {CAPITALIZE(THE($entity))} уже полностью заряжен.
+gun-ballistic-transfer-invalid = { CAPITALIZE($ammoEntity) } нельзя поместить в { $targetEntity }!
+gun-ballistic-transfer-empty = В { CAPITALIZE($entity) } пусто.
+gun-ballistic-transfer-target-full = { CAPITALIZE($entity) } уже полностью заряжен.
 
 # CartridgeAmmo
 gun-cartridge-spent = Он [color=red]израсходован[/color].

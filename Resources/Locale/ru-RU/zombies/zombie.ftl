@@ -1,4 +1,4 @@
-zombie-transform = {CAPITALIZE(THE($target))} превратился в зомби!
+zombie-transform = {CAPITALIZE($target)} превратился в зомби!
 zombie-infection-greeting = Вы стали зомби. Ваша цель - заражать любое живое существо на вашем пути. Работайте с другими зомби чтобы захвать всю станцию!
 
 zombie-generic = зомби

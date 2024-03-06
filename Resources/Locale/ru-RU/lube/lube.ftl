@@ -1,4 +1,4 @@
-lube-success = { THE($target) } был покрыт смазкой!
+lube-success = { $target } был покрыт смазкой!
 lubed-name-prefix = Смазал { $target }
-lube-failure = Не могу покрыть { THE($target) } в смазке!
-lube-slip = { THE($target) } выскальзывает из твоих рук!
+lube-failure = Не могу покрыть { $target } в смазке!
+lube-slip = { $target } выскальзывает из твоих рук!
