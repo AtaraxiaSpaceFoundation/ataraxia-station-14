@@ -413,6 +413,8 @@ public abstract class SharedActionsSystem : EntitySystem
                 if (worldAction.Event != null)
                 {
                     worldAction.Event.Target = entityCoordinatesTarget;
+                    if (ev.EntityTarget != null)
+                        worldAction.Event.TargetUid = GetEntity(ev.EntityTarget.Value);
                     Dirty(actionEnt, worldAction);
                     performEvent = worldAction.Event;
                 }
@@ -430,7 +432,12 @@ public abstract class SharedActionsSystem : EntitySystem
         }
 
         if (performEvent != null)
+        {
             performEvent.Performer = user;
+            performEvent.Action = actionEnt;
+            performEvent.ActionUseType = ev.ActionUseType;
+            performEvent.ChargeLevel = ev.ChargeLevel;
+        }
 
         // All checks passed. Perform the action!
         PerformAction(user, component, actionEnt, action, performEvent, curTime);
@@ -677,6 +684,8 @@ public abstract class SharedActionsSystem : EntitySystem
     /// <param name="performer">Entity to receive the actions</param>
     /// <param name="actions">The actions to add</param>
     /// <param name="container">The entity that enables these actions (e.g., flashlight). May be null (innate actions).</param>
+    /// <param name="comp">ActionsComponent.</param>
+    /// <param name="containerComp">ActionContainerComponent.</param>
     public void GrantActions(EntityUid performer, IEnumerable<EntityUid> actions, EntityUid container, ActionsComponent? comp = null, ActionsContainerComponent? containerComp = null)
     {
         if (!Resolve(container, ref containerComp))

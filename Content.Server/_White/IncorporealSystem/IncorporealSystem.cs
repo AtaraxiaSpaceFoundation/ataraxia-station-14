@@ -2,6 +2,8 @@
 using Content.Shared.Eye;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
+using Content.Shared.Stealth;
+using Content.Shared.Stealth.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -10,11 +12,10 @@ namespace Content.Server._White.IncorporealSystem;
 
 public sealed class IncorporealSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-
+    [Dependency] private readonly SharedStealthSystem _stealth = default!;
 
     public override void Initialize()
     {
@@ -41,6 +42,9 @@ public sealed class IncorporealSystem : EntitySystem
             _visibilitySystem.RefreshVisibility(uid);
         }
 
+        Spawn("EffectEmpPulse", Transform(uid).Coordinates);
+        EnsureComp<StealthComponent>(uid);
+        _stealth.SetVisibility(uid, -1);
         _movement.RefreshMovementSpeedModifiers(uid);
     }
 
@@ -50,8 +54,8 @@ public sealed class IncorporealSystem : EntitySystem
         {
             var fixture = fixtures.Fixtures.First();
 
-            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, (int) (CollisionGroup.FlyingMobMask | CollisionGroup.GhostImpassable), fixtures);
-            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, (int) CollisionGroup.FlyingMobLayer, fixtures);
+            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, (int) (CollisionGroup.MobMask | CollisionGroup.GhostImpassable), fixtures);
+            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, (int) CollisionGroup.MobLayer, fixtures);
         }
 
         if (TryComp<VisibilityComponent>(uid, out var visibility))
@@ -62,6 +66,10 @@ public sealed class IncorporealSystem : EntitySystem
         }
 
         component.MovementSpeedBuff = 1;
+
+        Spawn("EffectEmpPulse", Transform(uid).Coordinates);
+        _stealth.SetVisibility(uid, 1);
+        RemComp<StealthComponent>(uid);
         _movement.RefreshMovementSpeedModifiers(uid);
     }
 

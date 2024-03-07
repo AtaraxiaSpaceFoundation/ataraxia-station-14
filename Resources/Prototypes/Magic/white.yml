@@ -1,0 +1,253 @@
+﻿- type: entity
+  id: ActionElectricArcSpell
+  name: Electric arc
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: WorldTargetAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      checkCanAccess: false
+      range: 10
+      sound: !type:SoundPathSpecifier
+        path: /Audio/White/Magic/Arc/cast.ogg
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: thunder
+      isChargeEnabled: true
+      chargingSound:
+        path: /Audio/White/Magic/Arc/charge.ogg
+      chargeProto: MagicFollowerArcEntity
+      maxChargedSound:
+        path: /Audio/White/Magic/Arc/max.ogg
+      isAltEnabled: true
+      event: !type:ArcSpellEvent
+        speech: "KUH, ABAH'RAH"
+        prototype: ProjectileTeslaBall
+        posData: !type:TargetCasterPos
+
+- type: entity
+  id: ActionForceSpell
+  name: Force
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: WorldTargetAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      checkCanAccess: false
+      range: 10
+      sound: !type:SoundPathSpecifier
+        path: /Audio/White/Magic/Force/cast.ogg
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: push
+      isChargeEnabled: true
+      chargingSound:
+        path: /Audio/White/Magic/Force/charge.ogg
+      chargeProto: MagicFollowerForceEntity
+      maxChargedSound:
+        path: /Audio/White/Magic/Force/max.ogg
+      isAltEnabled: true
+      event: !type:ForceSpellEvent
+        speech: "EL DRITCH!"
+
+- type: entity
+  id: ActionFireballSpell
+  name: Fireball
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: WorldTargetAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      checkCanAccess: false
+      range: 45
+      isChargeEnabled: true
+      chargeProto: MagicFollowerFireEntity
+      isAltEnabled: true
+      sound: !type:SoundPathSpecifier
+        path: /Audio/Magic/fireball.ogg
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: fireball
+      event: !type:FireballSpellEvent
+        prototype: ProjectileFireball
+        posData: !type:TargetCasterPos
+        speech: action-speech-spell-fireball
+
+- type: entity
+  id: ActionCardSpell
+  name: Cards
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: WorldTargetAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      checkCanAccess: false
+      range: 45
+      isChargeEnabled: true
+      chargingSound:
+        path: /Audio/White/Magic/Cards/charge.ogg
+      chargeProto: MagicFollowerCardEntity
+      maxChargedSound:
+        path: /Audio/White/Magic/Cards/max.ogg
+      isAltEnabled: true
+      sound: !type:SoundPathSpecifier
+        path: /Audio/White/Magic/Cards/cast.ogg
+      icon:
+        sprite: Objects/Magic/card.rsi
+        state: icon
+      event: !type:CardsSpellEvent
+        prototype: ThrowingCard
+        posData: !type:TargetCasterPos
+        speech: "SHIZO NERO!"
+
+- type: entity
+  id: ActionForcewallSpell
+  name: Forcewall
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: WorldTargetAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      checkCanAccess: false
+      range: 10
+      sound: !type:SoundPathSpecifier
+        path: /Audio/White/Magic/Force/cast.ogg
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: shield
+      isChargeEnabled: true
+      chargingSound:
+        path: /Audio/White/Magic/Force/charge.ogg
+      chargeProto: MagicFollowerForceEntity
+      maxChargedSound:
+        path: /Audio/White/Magic/Force/max.ogg
+      isAltEnabled: true
+      event: !type:ForceWallSpellEvent
+        speech: "TARCOL MINTI ZHERI!"
+        prototype: WallForce
+
+- type: entity
+  id: ActionBlinkSpell
+  name: Blink
+  noSpawn: true
+  components:
+    - type: InstantAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: blink
+      event: !type:BlinkSpellEvent
+        speech: "SYCAR TYN!"
+
+- type: entity
+  id: ActionEtherealJauntSpell
+  name: Ethereal Jaunt
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: jaunt
+      event: !type:EtherealJauntSpellEvent
+        speech: "SCYAR NILA!"
+
+- type: entity
+  id: ActionEmpSpell
+  name: Emp
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      useDelay: 60
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: emp_new
+      event: !type:EmpSpellEvent
+        speech: "OCYAR TRINA!"
+
+- type: entity
+  id: ActionCluwneCurseSpell
+  name: Cluwne Curse
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: EntityTargetAction
+      canTargetSelf: false
+      range: 2
+      useDelay: 300
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: cluwne
+      event: !type:CluwneCurseSpellEvent
+        speech: "CLUWNE FOR ME!"
+
+- type: entity
+  id: ActionBananaTouchSpell
+  name: Banana Touch
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: EntityTargetAction
+      canTargetSelf: false
+      range: 2
+      useDelay: 300
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: clown
+      event: !type:BananaTouchSpellEvent
+        speech: "HONK FOR ME!"
+
+- type: entity
+  id: ActionMimeTouchSpell
+  name: Mime Touch
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: EntityTargetAction
+      canTargetSelf: false
+      range: 2
+      useDelay: 300
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: mime_curse
+      event: !type:MimeTouchSpellEvent
+        speech: "SILENCE!"
+
+- type: entity
+  id: ActionInstantRecallSpell
+  name: Instant Recall
+  noSpawn: true
+  components:
+    - type: InstantRecall
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      useDelay: 10
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: summons
+      event: !type:InstantRecallSpellEvent

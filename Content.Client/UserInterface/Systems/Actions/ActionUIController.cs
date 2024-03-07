@@ -22,6 +22,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Graphics.RSI;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
+using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Content.Client.Actions.ActionsSystem;
@@ -29,8 +30,7 @@ using static Content.Client.UserInterface.Systems.Actions.Windows.ActionsWindow;
 using static Robust.Client.UserInterface.Control;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 using static Robust.Client.UserInterface.Controls.LineEdit;
-using static Robust.Client.UserInterface.Controls.MultiselectOptionButton<
-    Content.Client.UserInterface.Systems.Actions.Windows.ActionsWindow.Filters>;
+using static Robust.Client.UserInterface.Controls.MultiselectOptionButton<Content.Client.UserInterface.Systems.Actions.Windows.ActionsWindow.Filters>;
 using static Robust.Client.UserInterface.Controls.TextureRect;
 using static Robust.Shared.Input.Binding.PointerInputCmdHandler;
 
@@ -128,25 +128,45 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         }
 
         builder
-            .Bind(ContentKeyFunctions.OpenActionsMenu,
-                InputCmdHandler.FromDelegate(_ => ToggleWindow()))
-            .BindBefore(EngineKeyFunctions.Use, new PointerInputCmdHandler(TargetingOnUse, outsidePrediction: true),
-                    typeof(ConstructionSystem), typeof(DragDropSystem))
-                .BindBefore(EngineKeyFunctions.UIRightClick, new PointerInputCmdHandler(TargetingCancel, outsidePrediction: true))
+            .Bind(ContentKeyFunctions.OpenActionsMenu, InputCmdHandler.FromDelegate(_ => ToggleWindow()))
+            .BindBefore(EngineKeyFunctions.Use, new PointerInputCmdHandler(TargetingOnUse, outsidePrediction: true), typeof(ConstructionSystem), typeof(DragDropSystem))
+            .BindBefore(ContentKeyFunctions.AltActivateItemInWorld, new PointerInputCmdHandler(AltUse, outsidePrediction: true))
             .Register<ActionUIController>();
     }
 
-    private bool TargetingCancel(in PointerInputCmdArgs args)
+    private bool AltUse(in PointerInputCmdArgs args)
     {
-        if (!_timing.IsFirstTimePredicted)
+        if (!_timing.IsFirstTimePredicted || _actionsSystem == null || SelectingTargetFor is not { } actionId)
             return false;
 
-        // only do something for actual target-based actions
-        if (SelectingTargetFor == null)
+        if (_playerManager.LocalEntity is not { } user)
             return false;
 
-        StopTargeting();
-        return true;
+        if (!EntityManager.TryGetComponent(user, out ActionsComponent? comp))
+            return false;
+
+        if (!_actionsSystem.TryGetActionData(actionId, out var baseAction) ||
+            baseAction is not BaseTargetActionComponent action || !action.IsAltEnabled)
+        {
+            return false;
+        }
+
+        // Is the action currently valid?
+        if (!action.Enabled
+            || action is { Charges: 0, RenewCharges: false }
+            || action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
+        {
+            // The user is targeting with this action, but it is not valid. Maybe mark this click as
+            // handled and prevent further interactions.
+            return !action.InteractOnMiss;
+        }
+
+        return action switch
+        {
+            WorldTargetActionComponent mapTarget => TryTargetWorld(args.Coordinates, actionId, mapTarget, user, comp,
+                ActionUseType.AltUse, target: args.EntityUid) || !mapTarget.InteractOnMiss,
+            _ => false
+        };
     }
 
     /// <summary>
@@ -179,28 +199,23 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             return !action.InteractOnMiss;
         }
 
-        switch (action)
+        return action switch
         {
-            case WorldTargetActionComponent mapTarget:
-                    return TryTargetWorld(args, actionId, mapTarget, user, comp) || !mapTarget.InteractOnMiss;
-
-            case EntityTargetActionComponent entTarget:
-                    return TryTargetEntity(args, actionId, entTarget, user, comp) || !entTarget.InteractOnMiss;
-
-            default:
-                Logger.Error($"Unknown targeting action: {actionId.GetType()}");
-                return false;
-        }
+            WorldTargetActionComponent mapTarget => TryTargetWorld(args.Coordinates, actionId, mapTarget, user, comp) ||
+                                                    !mapTarget.InteractOnMiss,
+            EntityTargetActionComponent entTarget => TryTargetEntity(args.EntityUid, actionId, entTarget, user, comp) ||
+                                                     !entTarget.InteractOnMiss,
+            _ => false
+        };
     }
 
-    private bool TryTargetWorld(in PointerInputCmdArgs args, EntityUid actionId, WorldTargetActionComponent action, EntityUid user, ActionsComponent actionComp)
+    public bool TryTargetWorld(EntityCoordinates coordinates, EntityUid actionId, WorldTargetActionComponent action,
+        EntityUid user, ActionsComponent actionComp, ActionUseType type = ActionUseType.Default, int chargeLevel = 0, EntityUid? target = default)
     {
         if (_actionsSystem == null)
             return false;
 
-        var coords = args.Coordinates;
-
-        if (!_actionsSystem.ValidateWorldTarget(user, coords, action))
+        if (!_actionsSystem.ValidateWorldTarget(user, coordinates, action))
         {
             // Invalid target.
             if (action.DeselectOnMiss)
@@ -213,14 +228,24 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         {
             if (action.Event != null)
             {
-                action.Event.Target = coords;
+                action.Event.Target = coordinates;
                 action.Event.Performer = user;
             }
 
             _actionsSystem.PerformAction(user, actionComp, actionId, action, action.Event, _timing.CurTime);
         }
         else
-            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetCoordinates(coords)));
+        {
+            var msg = new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetCoordinates(coordinates))
+            {
+                ActionUseType = type,
+                ChargeLevel = chargeLevel,
+                EntityTarget = EntityManager.GetNetEntity(target)
+            };
+
+            EntityManager.RaisePredictiveEvent(msg);
+        }
+
 
         if (!action.Repeat)
             StopTargeting();
@@ -228,14 +253,12 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         return true;
     }
 
-    private bool TryTargetEntity(in PointerInputCmdArgs args, EntityUid actionId, EntityTargetActionComponent action, EntityUid user, ActionsComponent actionComp)
+    public bool TryTargetEntity(EntityUid uid, EntityUid actionId, EntityTargetActionComponent action, EntityUid user, ActionsComponent actionComp, ActionUseType type = ActionUseType.Default)
     {
         if (_actionsSystem == null)
             return false;
 
-        var entity = args.EntityUid;
-
-        if (!_actionsSystem.ValidateEntityTarget(user, entity, action))
+        if (!_actionsSystem.ValidateEntityTarget(user, uid, action))
         {
             if (action.DeselectOnMiss)
                 StopTargeting();
@@ -247,14 +270,21 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         {
             if (action.Event != null)
             {
-                action.Event.Target = entity;
+                action.Event.Target = uid;
                 action.Event.Performer = user;
             }
 
             _actionsSystem.PerformAction(user, actionComp, actionId, action, action.Event, _timing.CurTime);
         }
         else
-            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(args.EntityUid)));
+        {
+            var msg = new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(uid))
+            {
+                ActionUseType = type
+            };
+
+            EntityManager.RaisePredictiveEvent(msg);
+        }
 
         if (!action.Repeat)
             StopTargeting();
@@ -409,12 +439,6 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         };
     }
 
-    private void ClearList()
-    {
-        if (_window?.Disposed == false)
-            _window.ResultsGrid.RemoveAllChildren();
-    }
-
     private void PopulateActions(IEnumerable<(EntityUid Id, BaseActionComponent Comp)> actions)
     {
         if (_window is not { Disposed: false, IsOpen: true })
@@ -432,7 +456,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
                 existing.Add(button);
         }
 
-        int i = 0;
+        var i = 0;
         foreach (var action in actions)
         {
             if (i < existing.Count)

@@ -27,6 +27,30 @@
     },
     {
       "name": "gib"
-    }
+    },
+      {
+          "name": "push"
+      },
+      {
+          "name": "thunder"
+      },
+      {
+          "name": "clown"
+      },
+      {
+          "name": "cluwne"
+      },
+      {
+          "name": "emp_new"
+      },
+      {
+          "name": "jaunt"
+      },
+      {
+          "name": "mime_curse"
+      },
+      {
+          "name": "summons"
+      }
   ]
 }

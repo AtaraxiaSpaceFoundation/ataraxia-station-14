@@ -57,7 +57,6 @@ public sealed class LightningSystem : SharedLightningSystem
         }
     }
 
-
     /// <summary>
     /// Looks for objects with a LightningTarget component in the radius, prioritizes them, and hits the highest priority targets with lightning.
     /// </summary>
@@ -78,9 +77,9 @@ public sealed class LightningSystem : SharedLightningSystem
         _random.Shuffle(targets);
         targets.Sort((x, y) => y.Priority.CompareTo(x.Priority));
 
-        int shootedCount = 0;
-        int count = -1;
-        while(shootedCount < boltCount)
+        var shootCount = 0;
+        var count = -1;
+        while(shootCount < boltCount)
         {
             count++;
 
@@ -95,7 +94,7 @@ public sealed class LightningSystem : SharedLightningSystem
             {
                 ShootRandomLightnings(targets[count].Owner, range, 1, lightningPrototype, arcDepth - targets[count].LightningResistance, triggerLightningEvents);
             }
-            shootedCount++;
+            shootCount++;
         }
     }
 }

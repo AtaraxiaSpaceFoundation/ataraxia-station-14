@@ -1,0 +1,119 @@
+﻿- type: entity
+  id: MagicFollowerEntity
+  name: magic
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      fixedRotation: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+      noRot: true
+      layers:
+        - state: core
+        - state: pulse
+          map: ["decay"]
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.AnomalyCoreVisuals.Decaying:
+          decay:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      radius: 1.5
+      energy: 3.5
+      color: "#00ccff"
+      castShadows: false
+
+- type: entity
+  id: MagicFollowerArcEntity
+  name: magic
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      fixedRotation: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/electric_core.rsi
+      noRot: true
+      layers:
+        - state: core
+        - state: pulse
+          map: ["decay"]
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.AnomalyCoreVisuals.Decaying:
+          decay:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      radius: 1.5
+      energy: 3.5
+      color: "#ccf404"
+      castShadows: false
+
+- type: entity
+  id: MagicFollowerForceEntity
+  name: magic
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      fixedRotation: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+      noRot: true
+      layers:
+        - state: core
+        - state: pulse
+          map: ["decay"]
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.AnomalyCoreVisuals.Decaying:
+          decay:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      radius: 1.5
+      energy: 3.5
+      color: "#00ccff"
+      castShadows: false
+
+- type: entity
+  id: MagicFollowerFireEntity
+  name: magic
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      fixedRotation: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
+      noRot: true
+      layers:
+        - state: core
+        - state: pulse
+          map: ["decay"]
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.AnomalyCoreVisuals.Decaying:
+          decay:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      radius: 1.5
+      energy: 3.5
+      color: "#ce5a25"
+      castShadows: false
+
+- type: entity
+  id: MagicFollowerCardEntity
+  name: magic
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      fixedRotation: false
+    - type: Sprite
+      sprite: Objects/Magic/card.rsi
+      layers:
+        - state: icon

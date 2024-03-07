@@ -1,0 +1,133 @@
+﻿- type: entity
+  id: BaseScroll
+  parent: BaseItem
+  name: "Magic Scroll"
+  description: "A relic of arcane lore, this ancient parchment bears witness to countless mystical incantations and forgotten spells."
+  noSpawn: true
+  components:
+    - type: Sprite
+      sprite: White/Misc/scrolls.rsi
+      layers:
+        - state: scroll
+    - type: Scroll
+      useSound:
+        path: /Audio/White/Items/scroll/use.ogg
+      afterUseSound:
+        path: /Audio/White/Items/scroll/after_use.ogg
+
+- type: entity
+  id: ScrollFireball
+  parent: BaseScroll
+  name: "Fireball scroll"
+  components:
+    - type: Scroll
+      actionId: ActionFireballSpell
+      learnPopup: fireball
+
+- type: entity
+  id: ScrollForcewall
+  parent: BaseScroll
+  name: "Forcewall scroll"
+  components:
+    - type: Scroll
+      actionId: ActionForcewallSpell
+      learnPopup: forcewall
+
+- type: entity
+  id: ScrollKnock
+  parent: BaseScroll
+  name: "Knock scroll"
+  components:
+    - type: Scroll
+      actionId: ActionKnock
+      learnPopup: knock-knock
+
+- type: entity
+  id: ScrollArc
+  parent: BaseScroll
+  name: "Electric Arc scroll"
+  components:
+    - type: Scroll
+      actionId: ActionElectricArcSpell
+      learnPopup: lightning
+
+- type: entity
+  id: ScrollForce
+  parent: BaseScroll
+  name: "Force scroll"
+  components:
+    - type: Scroll
+      actionId: ActionForceSpell
+      learnPopup: force
+
+- type: entity
+  id: ScrollCards
+  parent: BaseScroll
+  name: "Cards scroll"
+  components:
+    - type: Scroll
+      actionId: ActionCardSpell
+      learnPopup: cards
+
+- type: entity
+  id: ScrollBlink
+  parent: BaseScroll
+  name: "Blink scroll"
+  components:
+    - type: Scroll
+      actionId: ActionBlinkSpell
+      learnPopup: blink
+
+- type: entity
+  id: ScrollEtherealJaunt
+  parent: BaseScroll
+  name: "Ethereal Jaunt scroll"
+  components:
+    - type: Scroll
+      actionId: ActionEtherealJauntSpell
+      learnPopup: jaunt
+
+- type: entity
+  id: ScrollEmp
+  parent: BaseScroll
+  name: "Emp scroll"
+  components:
+    - type: Scroll
+      actionId: ActionEmpSpell
+      learnPopup: emp
+
+- type: entity
+  id: ScrollCluwneCurse
+  parent: BaseScroll
+  name: "Cluwne curse scroll"
+  components:
+    - type: Scroll
+      actionId: ActionCluwneCurseSpell
+      learnPopup: curse
+
+- type: entity
+  id: ScrollBananaTouch
+  parent: BaseScroll
+  name: "Banana touch scroll"
+  components:
+    - type: Scroll
+      actionId: ActionBananaTouchSpell
+      learnPopup: banana
+
+- type: entity
+  id: ScrollMimeTouch
+  parent: BaseScroll
+  name: "Mime touch scroll"
+  components:
+    - type: Scroll
+      actionId: ActionMimeTouchSpell
+      learnPopup: silence
+
+- type: entity
+  id: ScrollInstantRecall
+  parent: BaseScroll
+  name: "Instant recall scroll"
+  components:
+    - type: Scroll
+      actionId: ActionInstantRecallSpell
+      learnPopup: recall

@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Interaction;
+using Robust.Shared.Audio;
 
 namespace Content.Shared.Actions;
 
@@ -40,4 +41,28 @@ public abstract partial class BaseTargetActionComponent : BaseActionComponent
     ///     over lay in place of the currently held item "held item".
     /// </summary>
     [DataField("targetingIndicator")] public bool TargetingIndicator = true;
+
+    [DataField]
+    public bool IsAltEnabled;
+
+    [DataField]
+    public bool IsChargeEnabled;
+
+    [DataField]
+    public string ChargeProto = "MagicFollowerEntity";
+
+    [DataField]
+    public int MaxChargeLevel = 4;
+
+    [DataField]
+    public SoundSpecifier ChargingSound = new SoundPathSpecifier("/Audio/White/Magic/chargingfallback.ogg");
+
+    [DataField]
+    public bool LoopCharging = true;
+
+    [DataField]
+    public SoundSpecifier MaxChargedSound = new SoundPathSpecifier("/Audio/White/Magic/maxchargefallback.ogg");
+
+    [DataField]
+    public bool LoopMaxCharged;
 }

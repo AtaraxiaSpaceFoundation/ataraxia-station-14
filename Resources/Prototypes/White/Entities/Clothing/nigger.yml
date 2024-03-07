@@ -1,0 +1,35 @@
+- type: entity
+  parent: ClothingHeadHatWizard
+  id: ClothingHeadHatRealWizardBlue
+  components:
+    - type: WizardClothes
+
+- type: entity
+  parent: ClothingOuterWizard
+  id: ClothingOuterRealWizardBlue
+  components:
+    - type: WizardClothes
+
+- type: entity
+  parent: ClothingHeadHatRedwizard
+  id: ClothingHeadHatRealWizardRed
+  components:
+    - type: WizardClothes
+
+- type: entity
+  parent: ClothingOuterWizardRed
+  id: ClothingOuterRealWizardRed
+  components:
+    - type: WizardClothes
+
+- type: entity
+  parent: ClothingHeadHatVioletwizard
+  id: ClothingHeadHatRealWizardViolet
+  components:
+    - type: WizardClothes
+
+- type: entity
+  parent: ClothingOuterWizardViolet
+  id: ClothingOuterRealWizardViolet
+  components:
+    - type: WizardClothes

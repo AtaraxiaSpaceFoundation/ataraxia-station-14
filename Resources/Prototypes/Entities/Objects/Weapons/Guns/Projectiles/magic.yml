@@ -204,3 +204,34 @@
       radius: 2.0
       energy: 7.0
     - type: BloodBoilProjectile
+
+- type: entity
+  id: ProjectileTeslaBall
+  name: teslaball
+  description: You better GITTAH WEIGH.
+  parent: BulletRocket
+  noSpawn: true
+  components:
+    - type: PointLight
+      color: "#B3CEFF"
+      radius: 2.0
+      energy: 5.0
+    - type: Projectile
+      damage:
+        types:
+          Caustic: 10
+    - type: Sprite
+      sprite: Structures/Power/Generation/Tesla/energy_miniball.rsi
+      layers:
+        - state: tesla_projectile
+          shader: unshaded
+    - type: Explosive
+      explosionType: Default
+      maxIntensity: 100
+      intensitySlope: 0.1
+      totalIntensity: 0.3
+      maxTileBreak: 0
+    - type: StunOnCollide
+      stunAmount: 2
+      knockdownAmount: 2
+    - type: TeslaProjectile
