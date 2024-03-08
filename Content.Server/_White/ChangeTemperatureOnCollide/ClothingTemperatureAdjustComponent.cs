@@ -4,7 +4,7 @@ namespace Content.Server._White.ChangeTemperatureOnCollide;
 public sealed partial class ClothingTemperatureAdjustComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float Rate = 1f;
+    public float Rate = 2f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float TargetTemperature = 310.15f;

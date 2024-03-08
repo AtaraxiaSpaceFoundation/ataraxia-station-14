@@ -1,3 +1,4 @@
+using Content.Shared._White.StaminaProtection;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage;
 using Content.Shared.Electrocution;
@@ -27,6 +28,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, SeeIdentityAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ModifyChangedTemperatureEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, AdjustTemperatureEvent>(RelayInventoryEvent); // WD
+        SubscribeLocalEvent<InventoryComponent, StaminaDamageModifyEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, GetDefaultRadioChannelEvent>(RelayInventoryEvent);
 
         // by-ref events

@@ -121,6 +121,7 @@
     soundHit:
       path: /Audio/Weapons/Guns/Hits/snap.ogg
   - type: StaminaDamageOnCollide
+    ignoreResistances: false
     damage: 22 # 5 hits to stun sounds reasonable
 
 - type: entity
@@ -1350,7 +1351,8 @@
           bounds: "-0.15,-0.3,0.15,0.3"
         hard: false
         mask:
-        - Opaque
+        - Impassable
+        - BulletImpassable
       fly-by: *flybyfixture
   - type: Ammo
     muzzleFlash: null
