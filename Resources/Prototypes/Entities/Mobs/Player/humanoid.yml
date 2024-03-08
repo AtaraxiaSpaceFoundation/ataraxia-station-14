@@ -19,6 +19,21 @@
     - type: InitialInfectedExempt
 
 - type: randomHumanoidSettings
+  id: Nanotrasen
+  speciesBlacklist: 
+    - Arachnid
+    - Diona
+    - Moth
+    - Reptilian
+    - Skrell
+    - SlimePerson
+    - Vox
+    - Harpy
+    - Felinid
+    - Dwarf
+
+- type: randomHumanoidSettings
+  parent: Nanotrasen
   id: DeathSquad
   randomizeName: false
   components:
@@ -55,6 +70,7 @@
     - type: InitialInfectedExempt
 
 - type: randomHumanoidSettings
+  parent: Nanotrasen
   id: ERTLeader
   randomizeName: false
   components:
@@ -395,6 +411,7 @@
     - type: InitialInfectedExempt
 
 - type: randomHumanoidSettings
+  parent: Nanotrasen
   id: CBURNAgent
   components:
     - type: MindShield
@@ -423,6 +440,7 @@
     - type: InitialInfectedExempt
 
 - type: randomHumanoidSettings
+  parent: Nanotrasen
   id: CentcomOfficial
   components:
     - type: MindShield
