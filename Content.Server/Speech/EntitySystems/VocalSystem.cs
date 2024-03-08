@@ -1,10 +1,8 @@
-using Content.Server.Actions;
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;
 using Content.Shared.Speech;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -17,33 +15,13 @@ public sealed class VocalSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<VocalComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<VocalComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<VocalComponent, SexChangedEvent>(OnSexChanged);
         SubscribeLocalEvent<VocalComponent, EmoteEvent>(OnEmote);
-        SubscribeLocalEvent<VocalComponent, ScreamActionEvent>(OnScreamAction);
-    }
-
-    private void OnMapInit(EntityUid uid, VocalComponent component, MapInitEvent args)
-    {
-        // try to add scream action when vocal comp added
-        _actions.AddAction(uid, ref component.ScreamActionEntity, component.ScreamAction);
-        LoadSounds(uid, component);
-    }
-
-    private void OnShutdown(EntityUid uid, VocalComponent component, ComponentShutdown args)
-    {
-        // remove scream action when component removed
-        if (component.ScreamActionEntity != null)
-        {
-            _actions.RemoveAction(uid, component.ScreamActionEntity);
-        }
     }
 
     private void OnSexChanged(EntityUid uid, VocalComponent component, SexChangedEvent args)
@@ -65,15 +43,6 @@ public sealed class VocalSystem : EntitySystem
 
         // just play regular sound based on emote proto
         args.Handled = _chat.TryPlayEmoteSound(uid, component.EmoteSounds, args.Emote);
-    }
-
-    private void OnScreamAction(EntityUid uid, VocalComponent component, ScreamActionEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        _chat.TryEmoteWithChat(uid, component.ScreamId);
-        args.Handled = true;
     }
 
     private bool TryPlayScreamSound(EntityUid uid, VocalComponent component)
