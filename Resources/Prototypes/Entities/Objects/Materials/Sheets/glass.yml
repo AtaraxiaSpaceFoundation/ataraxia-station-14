@@ -9,7 +9,7 @@
     sprite: Objects/Materials/Sheets/glass.rsi
   - type: Item
     sprite: Objects/Materials/Sheets/glass.rsi
-    size: Normal
+    size: Small
   - type: StaticPrice
     price: 0
   - type: Tag

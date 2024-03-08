@@ -51,7 +51,7 @@
     - state: rods_5
       map: ["base"]
   - type: Item
-    size: Normal
+    size: Small
 #    heldPrefix: rods
   - type: Construction
     graph: MetalRod
