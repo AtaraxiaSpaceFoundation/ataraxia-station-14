@@ -179,7 +179,7 @@ flavor-complex-rocksandstones = как скалы и камни
 
 ## Basic drinks
 flavor-complex-water = как вода
-flavor-complex-water = как вода
+flavor-complex-beer = как моча
 flavor-complex-cognac = как сухой пряный алкоголь
 flavor-complex-mead = как забродивший мёд
 flavor-complex-vermouth = как виноградная мякоть

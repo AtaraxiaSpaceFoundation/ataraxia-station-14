@@ -17,6 +17,7 @@
         - Body # no chair microbomb
       blacklist:
         components:
+        - BorgChassis
         - Guardian # no holoparasite macrobomb wombo combo
         tags:
         - Unimplantable

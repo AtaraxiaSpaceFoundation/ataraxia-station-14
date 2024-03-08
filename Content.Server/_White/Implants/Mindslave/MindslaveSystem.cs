@@ -69,6 +69,11 @@ public sealed class MindslaveSystem : SharedMindslaveSystem
 
     private void OnMindslaveRemoved(Entity<SubdermalImplantComponent> ent, ref SubdermalImplantRemoved args)
     {
+        if (!Tag.HasTag(ent.Owner, MindslaveTag))
+        {
+            return;
+        }
+        
         if (!TryComp(args.Target, out MindSlaveComponent? mindslave))
         {
             return;
