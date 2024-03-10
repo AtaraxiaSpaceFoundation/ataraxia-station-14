@@ -39,14 +39,8 @@
     jumpsuit: ClothingUniformJumpsuitSeniorOfficer
     back: ClothingBackpackSecurityFilled
     shoes: ClothingShoesBootsCombatFilled
-    eyes: ClothingEyesGlassesSecurity
-    head: ClothingHeadHatBeretSecurity
-    outerClothing: ClothingOuterArmorBasic
     id: SeniorOfficerPDA
     ears: ClothingHeadsetSecurity
-    belt: ClothingBeltSeniorSecurityFilled
-    pocket1: WeaponPistolMk58Nonlethal
-    gloves: ClothingHandsGlovesCombat
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

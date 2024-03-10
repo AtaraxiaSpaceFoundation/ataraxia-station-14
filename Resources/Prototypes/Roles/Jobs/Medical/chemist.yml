@@ -21,12 +21,8 @@
     jumpsuit: ClothingUniformJumpsuitChemistry
     back: ClothingBackpackChemistryFilled
     shoes: ClothingShoesColorWhite
-    outerClothing: ClothingOuterCoatLabChem
     id: ChemistryPDA
     ears: ClothingHeadsetMedical
-    belt: ChemBag
-    pocket1: HandLabeler
-    # the purple glasses?
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

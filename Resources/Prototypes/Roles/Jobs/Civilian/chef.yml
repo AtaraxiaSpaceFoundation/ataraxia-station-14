@@ -22,14 +22,10 @@
   id: ChefGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitChef
-    head: ClothingHeadHatChef
     back: ClothingBackpackFilled
-    mask: ClothingMaskItalianMoustache
     shoes: ClothingShoesColorBlack
     id: ChefPDA
     ears: ClothingHeadsetService
-    outerClothing: ClothingOuterApronChef
-    belt: ClothingBeltChefFilled
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

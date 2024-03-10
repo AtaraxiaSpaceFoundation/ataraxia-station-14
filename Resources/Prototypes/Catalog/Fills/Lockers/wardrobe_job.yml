@@ -172,12 +172,19 @@
    - type: StorageFill
      contents:
        - id: ClothingHeadHatCargosoft
+         amount: 3
        - id: ClothingUniformJumpsuitCargo
+         amount: 3
        - id: ClothingBackpack
+         amount: 3
        - id: ClothingShoesColorBlack
+         amount: 3
        - id: ClothingUniformJumpskirtCargo
+         amount: 3
        - id: ClothingHandsGlovesFingerless
+         amount: 3
        - id: AppraisalTool
+         amount: 3
 
  - type: entity
    id: WardrobeSalvageFilled

@@ -111,6 +111,9 @@
       - id: ClothingHeadHatTrucker
         prob: 0.1
       - id: Eftpos
+      - id: HydroponicsToolSpade
+      - id: HydroponicsToolMiniHoe
+      - id: RobustHarvestChemistryBottle
 
 - type: entity
   id: LockerBotanistLoot

@@ -30,10 +30,8 @@
     jumpsuit: ClothingUniformJumpsuitColorRed
     back: ClothingBackpackSecurityFilled
     shoes: ClothingShoesBootsCombatFilled
-    outerClothing: ClothingOuterArmorBasic
     id: SecurityCadetPDA
     ears: ClothingHeadsetSecurity
-    pocket1: WeaponPistolMk58Nonlethal
     pocket2: BookSecurity
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear

@@ -42,8 +42,6 @@
     shoes: ClothingShoesColorBrown
     id: QuartermasterPDA
     ears: ClothingHeadsetQM
-    belt: BoxFolderClipboard
-    pocket1: AppraisalTool
     underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
   underweart: ClothingUnderwearTopBraQM # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear

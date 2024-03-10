@@ -22,10 +22,8 @@
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
     back: ClothingBackpackMedicalFilled
     shoes: ClothingShoesColorWhite
-    outerClothing: ClothingOuterCoatLab
     id: MedicalPDA
     ears: ClothingHeadsetMedical
-    belt: ClothingBeltMedicalFilled
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

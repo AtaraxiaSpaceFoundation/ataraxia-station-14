@@ -171,6 +171,7 @@
       - id: AccessConfigurator
       - id: RCD
       - id: RCDAmmo
+      - id: ClothingHeadHatHardhatWhite
 
 - type: entity
   id: LockerChiefMedicalOfficerFilledHardsuit
@@ -196,6 +197,7 @@
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
       - id: Eftpos
+      - id: ClothingBeltMedical
 
 - type: entity
   id: LockerChiefMedicalOfficerFilled
@@ -217,6 +219,7 @@
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
       - id: Eftpos
+      - id: ClothingBeltMedical
 
 - type: entity
   id: LockerResearchDirectorFilledHardsuit
@@ -279,6 +282,7 @@
       - id: BoxEncryptionKeySecurity
       - id: HoloprojectorSecurity
       - id: BookSecretDocuments
+      - id: WeaponPistolMk58Nonlethal
 
 - type: entity
   id: LockerHeadOfSecurityFilled
@@ -304,6 +308,8 @@
       - id: BoxEncryptionKeySecurity
       - id: HoloprojectorSecurity
       - id: BookSecretDocuments
+      - id: WeaponPistolMk58Nonlethal
+      - id: MagazinePistol
 
 - type: entity
   id: LockerFreezerVaultFilled

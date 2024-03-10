@@ -26,7 +26,6 @@
     shoes: ClothingShoesColorBlue
     id: ParamedicPDA
     ears: ClothingHeadsetMedical
-    belt: ClothingBeltMedicalEMTFilled
   innerClothingSkirt: ClothingUniformJumpskirtParamedic
   satchel: ClothingBackpackSatchelParamedicFilled
   duffelbag: ClothingBackpackDuffelParamedicFilled

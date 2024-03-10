@@ -61,11 +61,8 @@
     jumpsuit: ClothingUniformJumpsuitHoP
     back: ClothingBackpackHOPFilled
     shoes: ClothingShoesColorBrown
-    head: ClothingHeadHatHopcap
     id: HoPPDA
-    gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltCommand
-    belt: BoxFolderClipboard
     underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
   underweart: ClothingUnderwearTopBraHOP # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear

@@ -29,15 +29,11 @@
 - type: startingGear
   id: SeniorEngineerGear
   equipment:
-    head: ClothingHeadHatBeretEngineering
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
     back: ClothingBackpackEngineeringFilled
     shoes: ClothingShoesBootsMag
     id: SeniorEngineerPDA
-    eyes: ClothingEyesGlassesMeson
-    belt: ClothingBeltUtilitySeniorEngineerFilled
     ears: ClothingHeadsetEngineering
-    gloves: ClothingHandsGlovesColorYellow
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

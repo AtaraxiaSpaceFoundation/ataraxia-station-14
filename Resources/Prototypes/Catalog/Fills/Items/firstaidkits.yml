@@ -20,7 +20,7 @@
   - type: StorageFill
     contents:
       - id: Ointment
-        amount: 2
+        amount: 3
       - id: PillCanisterKelotane
       - id: PillCanisterDermaline
 
@@ -32,7 +32,7 @@
   - type: StorageFill
     contents:
       - id: Brutepack
-      - id: Gauze
+        amount: 3
       - id: PillCanisterIron
       - id: PillCanisterCopper
 
@@ -47,6 +47,7 @@
       - id: SyringeEthylredoxrazine
       - id: AntiPoisonMedipen
       - id: PillCanisterDylovene
+        amount: 2
       - id: PillCanisterCharcoal
 
 - type: entity
@@ -61,6 +62,7 @@
       - id: EmergencyMedipen
       - id: SyringeInaprovaline
       - id: PillCanisterDexalin
+      - id: Gauze
 
 - type: entity
   id: MedkitRadiationFilled
@@ -73,6 +75,7 @@
       - id: RadAutoInjector
       - id: EmergencyMedipen
       - id: PillCanisterHyronalin
+        amount: 2
 
 - type: entity
   id: MedkitAdvancedFilled

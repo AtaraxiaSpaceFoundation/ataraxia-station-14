@@ -31,12 +31,8 @@
     jumpsuit: ClothingUniformJumpsuitDetective
     back: ClothingBackpackSecurityFilledDetective
     shoes: ClothingShoesBootsCombatFilled
-    eyes: ClothingEyesGlassesSecurity
-    head: ClothingHeadHatFedoraBrown
-    outerClothing: ClothingOuterVestDetective
     id: DetectivePDA
     ears: ClothingHeadsetSecurity
-    belt: ClothingBeltHolsterFilled
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

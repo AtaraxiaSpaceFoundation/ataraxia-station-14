@@ -23,9 +23,7 @@
     jumpsuit: ClothingUniformJumpsuitAtmos
     back: ClothingBackpackAtmosphericsFilled
     shoes: ClothingShoesColorWhite
-    eyes: ClothingEyesGlassesMeson
     id: AtmosPDA
-    belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear

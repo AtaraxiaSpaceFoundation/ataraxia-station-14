@@ -1,76 +1,19 @@
 - type: department
-  id: Cargo
-  description: department-Cargo-description
-  color: "#A46106"
-  roles:
-  - CargoTechnician
-  - Quartermaster
-  - SalvageSpecialist
-
-- type: department
-  id: Civilian
-  description: department-Civilian-description
-  color: "#9FED58"
-  weight: -10
-  roles:
-  - Bartender
-  - Borg
-  - Botanist
-  - Boxer
-  - Chaplain
-  - Chef
-  - Clown
-  - HeadOfPersonnel
-  - Janitor
-  - Librarian
-  - Mime
-  - Musician
-  - Passenger
-  - Reporter
-  - Visitor
-  - Zookeeper
-  - ServiceWorker
-
-- type: department
   id: Command
   description: department-Command-description
   color: "#334E6D"
   roles:
-  - Captain
   - CentralCommandOfficial
-  - ChiefEngineer
-  - ChiefMedicalOfficer
+  - Captain
   - HeadOfPersonnel
   - HeadOfSecurity
+  - ChiefEngineer
+  - ChiefMedicalOfficer
   - ResearchDirector
   - Quartermaster
   - Inspector
   primary: false
   weight: 100
-
-- type: department
-  id: Engineering
-  description: department-Engineering-description
-  color: "#EFB341"
-  roles:
-  - AtmosphericTechnician
-  - ChiefEngineer
-  - SeniorEngineer
-  - StationEngineer
-  - TechnicalAssistant
-
-- type: department
-  id: Medical
-  description: department-Medical-description
-  color: "#52B4E9"
-  roles:
-  - Chemist
-  - ChiefMedicalOfficer
-  - MedicalDoctor
-  - MedicalIntern
-  - Psychologist
-  - Paramedic
-  - SeniorPhysician
 
 - type: department
   id: Security
@@ -79,11 +22,68 @@
   weight: 20
   roles:
   - HeadOfSecurity
-  - SecurityCadet
-  - SecurityOfficer
-  - SeniorOfficer
-  - Detective
   - Warden
+  - SeniorOfficer
+  - SecurityOfficer
+  - Detective
+  - SecurityCadet
+
+- type: department
+  id: Cargo
+  description: department-Cargo-description
+  color: "#A46106"
+  roles:
+  - Quartermaster
+  - CargoTechnician
+  - SalvageSpecialist
+
+- type: department
+  id: Civilian
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -10
+  roles:
+  - HeadOfPersonnel
+  - Borg
+  - Bartender
+  - Janitor
+  - Botanist
+  - Chaplain
+  - Chef
+  - Clown
+  - Mime
+  - Boxer
+  - ServiceWorker
+  - Librarian
+  - Musician
+  - Reporter
+  - Visitor
+  - Zookeeper
+  - Passenger
+
+- type: department
+  id: Engineering
+  description: department-Engineering-description
+  color: "#EFB341"
+  roles:
+  - ChiefEngineer
+  - SeniorEngineer
+  - AtmosphericTechnician
+  - StationEngineer
+  - TechnicalAssistant
+
+- type: department
+  id: Medical
+  description: department-Medical-description
+  color: "#52B4E9"
+  roles:
+  - ChiefMedicalOfficer
+  - SeniorPhysician
+  - MedicalDoctor
+  - Paramedic
+  - Chemist
+  - MedicalIntern
+  - Psychologist
 
 - type: department
   id: Science

@@ -20,12 +20,9 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitJanitor
     back: ClothingBackpackFilled
-    shoes: ClothingShoesGaloshes
-    head: ClothingHeadHatPurplesoft
+    shoes: ClothingShoesColorPurple
     id: JanitorPDA
-    gloves: ClothingHandsGlovesJanitor
     ears: ClothingHeadsetService
-    belt: ClothingBeltJanitorFilled
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

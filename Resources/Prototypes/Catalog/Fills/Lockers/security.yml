@@ -15,12 +15,15 @@
       - id: ClothingHandsGlovesCombat
       - id: ClothingShoesBootsJack
       - id: ClothingOuterCoatWarden
+      - id: ClothingHeadHatWarden
       - id: ClothingOuterWinterWarden
       - id: RubberStampWarden
       - id: DoorRemoteArmory
       - id: ClothingOuterHardsuitWarden
       - id: HoloprojectorSecurity
       - id: BoxBodyCamera
+      - id: WeaponPistolMk58Nonlethal
+      - id: MagazinePistol
 
 - type: entity
   id: LockerWardenFilled
@@ -45,6 +48,8 @@
       - id: DoorRemoteArmory
       - id: HoloprojectorSecurity
       - id: BoxBodyCamera
+      - id: WeaponPistolMk58Nonlethal
+      - id: MagazinePistol
 
 - type: entity
   id: LockerSecurityFilled
@@ -54,7 +59,6 @@
   - type: StorageFill
     contents:
       - id: FlashlightSeclite
-        prob: 0.8
       - id: ClothingUniformJumpsuitSecGrey
         prob: 0.3
       - id: ClothingHeadHelmetBasic
@@ -72,6 +76,9 @@
       - id: HoloprojectorSecurity
         prob: 0.6
       - id: WeaponTempGun
+      - id: WeaponPistolMk58Nonlethal
+      - id: BoxBodyCamera
+      - id: MagazinePistol
 
 - type: entity
   id: LockerBrigmedicFilled
@@ -127,6 +134,10 @@
       - id: ClothingHandsGlovesForensic
       - id: HoloprojectorSecurity
       - id: BoxEvidenceMarkers
+      - id: ClothingBeltHolsterFilled
+      - id: BoxBodyCamera
+      - id: VoiceRecorder
+      - id: ClothingEyesGlassesSecurity
 
 - type: entity
   id: ClosetBombFilled

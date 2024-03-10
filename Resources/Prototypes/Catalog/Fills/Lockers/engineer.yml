@@ -90,6 +90,8 @@
       - id: MedkitOxygenFilled
       - id: HolofanProjector
       - id: DoorRemoteFirefight
+      - id: ClothingBeltUtilityEngineering
+      - id: ClothingEyesGlassesMeson
 
 - type: entity
   id: LockerAtmosphericsFilled
@@ -105,6 +107,8 @@
       - id: MedkitOxygenFilled
       - id: HolofanProjector
       - id: DoorRemoteFirefight
+      - id: ClothingBeltUtilityEngineering
+      - id: ClothingEyesGlassesMeson
 
 - type: entity
   id: LockerEngineerFilledHardsuit
@@ -119,6 +123,8 @@
       - id: OxygenTankFilled
       - id: NitrogenTankFilled
       - id: ClothingShoesBootsMag
+      - id: ClothingBeltUtilityEngineering
+      - id: ClothingEyesGlassesMeson
 
 - type: entity
   id: LockerEngineerFilled
@@ -130,6 +136,8 @@
       - id: ClothingHandsGlovesColorYellow
       - id: ClothingMaskGas
       - id: trayScanner
+      - id: ClothingBeltUtilityEngineering
+      - id: ClothingEyesGlassesMeson
 
 - type: entity
   id: ClosetRadiationSuitFilled

@@ -23,7 +23,6 @@
     id: BotanistPDA
     ears: ClothingHeadsetService
     outerClothing: ClothingOuterApronBotanist
-    belt: ClothingBeltPlantFilled
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraWhite # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
