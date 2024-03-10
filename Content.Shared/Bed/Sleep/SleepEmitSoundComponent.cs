@@ -22,10 +22,4 @@ public sealed partial class SleepEmitSoundComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Chance = 0.33f;
-
-    /// <summary>
-    /// Popup for snore (e.g. Zzz...)
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public LocId PopUp = "sleep-onomatopoeia";
 }

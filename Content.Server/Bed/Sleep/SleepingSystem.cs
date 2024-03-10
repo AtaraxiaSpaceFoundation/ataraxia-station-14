@@ -69,7 +69,6 @@ namespace Content.Server.Bed.Sleep
                     emitSound.Sound = sleepSound.Snore;
                     emitSound.PlayChance = sleepSound.Chance;
                     emitSound.RollInterval = sleepSound.Interval;
-                    emitSound.PopUp = sleepSound.PopUp;
                 }
 
                 return;

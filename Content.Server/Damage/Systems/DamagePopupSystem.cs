@@ -30,7 +30,12 @@ public sealed class DamagePopupSystem : EntitySystem
                 DamagePopupType.Hit => "!",
                 _ => "Invalid type",
             };
-            _popupSystem.PopupEntity(msg, uid);
+
+            if (args.Origin.HasValue)
+                _popupSystem.PopupEntity(msg, uid, args.Origin.Value);
+            else
+                _popupSystem.PopupEntity(msg, uid);
+
         }
     }
 }
