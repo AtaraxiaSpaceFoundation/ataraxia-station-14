@@ -1,13 +1,13 @@
 - type: vendingMachineInventory
   id: BoozeOMatInventory
   startingInventory:
-    DrinkGlass: 20 #Kept glasses at top for ease to differentiate from booze.
+    DrinkGlass: 20
     DrinkShotGlass: 10
     DrinkGlassCoupeShaped: 10
     DrinkVacuumFlask: 5
     DrinkFlaskBar: 5
     DrinkShaker: 5
-    CustomDrinkJug: 2 #to allow for custom drinks in the soda/booze dispensers
+    CustomDrinkJug: 2
     DrinkAbsintheBottleFull: 2
     DrinkAleBottleFull: 5
     DrinkBeerBottleFull: 5
@@ -16,7 +16,7 @@
     DrinkColaBottleFull: 4
     DrinkCreamCarton: 5
     DrinkGinBottleFull: 3
-    DrinkGildlagerBottleFull: 2 #if champagne gets less because its premium, then gildlager should match this and have two
+    DrinkGildlagerBottleFull: 2
     DrinkGrenadineBottleFull: 2
     DrinkJuiceLimeCarton: 3
     DrinkJuiceOrangeCarton: 3
@@ -34,7 +34,7 @@
     DrinkVodkaBottleFull: 5
     DrinkWhiskeyBottleFull: 5
     DrinkWineBottleFull: 5
-    DrinkChampagneBottleFull: 2 #because the premium drink
+    DrinkChampagneBottleFull: 2
     Eftpos: 4
     DrinkBeerCan: 5
     DrinkWineCan: 5

@@ -6,18 +6,23 @@
     ReagentContainerSugar: 2
     ReagentContainerRice: 2
     FoodCondimentPacketSalt: 4
+    FoodCondimentPacketPepper: 4
     FoodCondimentBottleEnzyme: 2
-    FoodCondimentBottleHotsauce: 1
-    FoodCondimentBottleKetchup: 1
-    FoodCondimentBottleBBQ: 1
+    FoodCondimentBottleHotsauce: 2
+    FoodCondimentBottleKetchup: 2
+    FoodCondimentBottleBBQ: 2
     FoodCondimentBottleVinegar: 2
     ReagentContainerOliveoil: 2
+    FoodContainerEgg: 2
+    ReagentContainerMilk: 3
+    ReagentContainerMilkSoy: 3
+    MonkeyCubeBox: 1
     ReagentContainerMayo: 1
     VariantCubeBox: 1
-    FoodContainerEgg: 1
     DrinkMilkCarton: 2
     DrinkSoyMilkCarton: 1
     FoodButter: 4
     FoodCheese: 1
     FoodMeat: 6
     Eftpos: 4
+

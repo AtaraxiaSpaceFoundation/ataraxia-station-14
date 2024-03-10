@@ -4,18 +4,29 @@
     ClothingBackpackDuffelMedical: 4
     ClothingBackpackMedical: 4
     ClothingBackpackSatchelMedical: 4
+    ClothingHeadHelmetVoidParamed: 2
+    ClothingOuterHardsuitVoidParamed: 2
+    ClothingHeadHatBeretBrigmedic: 4
+    ClothingHeadNurseHat: 4
+    ClothingHeadHatParamedicsoft: 4
+    ClothingHeadsetMedical: 4
+    ClothingEyesHudMedical: 5
+    ClothingMaskSterile: 4
+    ClothingOuterWinterMed: 4
+    ClothingOuterWinterPara: 4
+    ClothingOuterCoatParamedicWB: 4
+    ClothingOuterCoatLab: 4
+    ClothingUniformJumpsuitParamedic: 4
+    ClothingUniformJumpskirtParamedic: 4
+    ClothingHandsGlovesLatex: 4
+    ClothingShoesColorWhite: 9
+    ClothingOuterHospitalGown: 5
+    UniformScrubsColorGreen: 5
+    UniformScrubsColorBlue: 5
+    UniformScrubsColorPurple: 5
     ClothingUniformJumpsuitMedicalDoctor: 4
     ClothingUniformJumpskirtMedicalDoctor: 4
     ClothingEyesEyepatchHudMedical: 1
     ClothingHeadHatBeretMedic: 4
-    ClothingHeadNurseHat: 4
-    ClothingOuterCoatLab: 4
-    ClothingShoesColorWhite: 4
-    ClothingHandsGlovesLatex: 4
-    ClothingHeadsetMedical: 4
-    ClothingOuterWinterMed: 2
-    ClothingOuterHospitalGown: 5
-    UniformScrubsColorGreen: 4
-    UniformScrubsColorBlue: 4
-    UniformScrubsColorPurple: 4
     ClothingShoesBootsWinterMed: 2
+

@@ -3,75 +3,104 @@
   startingInventory:
     ClothingBackpack: 5
     ClothingBackpackDuffel: 5
-    ClothingBackpackSatchel: 3
-    ClothingBackpackSatchelLeather: 2
-    ClothingHeadHatBeret: 4
-    ClothingHeadBandBlack: 2
-    ClothingHeadBandBlue: 2
-    ClothingHeadBandGreen: 2
-    ClothingHeadBandRed: 2
-    ClothingHeadBandSkull: 2
-    ClothingHeadHatGreyFlatcap: 3
-    ClothingHeadHatBrownFlatcap: 3
+    ClothingBackpackSatchel: 5
+    ClothingBackpackSatchelLeather: 5
+    ClothingBeltStorageWaistbag: 5
+    ClothingHeadBandBlack: 3
+    ClothingHeadBandBlue: 3
+    ClothingHeadBandGreen: 3
+    ClothingHeadBandRed: 3
+    ClothingHeadBandSkull: 3
     ClothingUniformJumpsuitColorGrey: 8
     ClothingUniformJumpskirtColorGrey: 8
     ClothingUniformJumpsuitColorWhite: 3
     ClothingUniformJumpskirtColorWhite: 3
-    ClothingUniformJumpsuitColorBlack: 3
-    ClothingUniformJumpskirtColorBlack: 3
-    ClothingUniformJumpsuitColorBlue: 2
-    ClothingUniformJumpskirtColorBlue: 2
-    ClothingUniformJumpsuitColorYellow: 2
-    ClothingUniformJumpskirtColorYellow: 2
-    ClothingUniformJumpsuitColorGreen: 2
-    ClothingUniformJumpskirtColorGreen: 2
-    ClothingUniformJumpsuitColorOrange: 2
-    ClothingUniformJumpskirtColorOrange: 2
-    ClothingUniformJumpsuitColorRed: 2
-    ClothingUniformJumpskirtColorRed: 2
-    ClothingUniformJumpsuitColorPurple: 2
-    ClothingUniformJumpskirtColorPurple: 2
-    ClothingUniformJumpsuitColorPink: 2
-    ClothingUniformJumpskirtColorPink: 2
-    ClothingUniformJumpsuitColorDarkBlue: 2
-    ClothingUniformJumpskirtColorDarkBlue: 2
-    ClothingUniformJumpsuitColorDarkGreen:  2
-    ClothingUniformJumpskirtColorDarkGreen: 2
-    ClothingUniformJumpsuitColorTeal: 2
-    ClothingUniformJumpskirtColorTeal: 2
+    ClothingUniformJumpsuitColorBlue: 3
+    ClothingUniformJumpskirtColorBlue: 3
+    ClothingUniformJumpsuitColorYellow: 3
+    ClothingUniformJumpskirtColorYellow: 3
+    ClothingUniformJumpsuitColorGreen: 3
+    ClothingUniformJumpskirtColorGreen: 3
+    ClothingUniformJumpsuitColorOrange: 3
+    ClothingUniformJumpskirtColorOrange: 3
+    ClothingUniformJumpsuitColorRed: 3
+    ClothingUniformJumpskirtColorRed: 3
+    ClothingUniformJumpsuitColorPurple: 3
+    ClothingUniformJumpskirtColorPurple: 3
+    ClothingUniformJumpsuitColorPink: 3
+    ClothingUniformJumpskirtColorPink: 3
+    ClothingUniformJumpsuitColorDarkBlue: 3
+    ClothingUniformJumpskirtColorDarkBlue: 3
+    ClothingUniformJumpsuitColorTeal: 3
+    ClothingUniformJumpskirtColorTeal: 3
+    ClothingShoesColorBlack: 8
+    ClothingShoesColorBrown: 3
+    ClothingShoesColorWhite: 3
+    ClothingShoesColorBlue: 3
+    ClothingShoesColorYellow: 3
+    ClothingShoesColorGreen: 3
+    ClothingShoesColorOrange: 3
+    ClothingShoesColorRed: 3
+    ClothingShoesColorPurple: 3
+    ClothingHeadHatGreysoft: 8
+    ClothingHeadHatMimesoft: 3
+    ClothingHeadHatBluesoft: 3
+    ClothingHeadHatYellowsoft: 3
+    ClothingHeadHatGreensoft: 3
+    ClothingHeadHatOrangesoft: 3
+    ClothingHeadHatRedsoft: 3
+    ClothingHeadHatPurplesoft: 3
+    ClothingHeadHatCorpsoft: 3
+    ClothingNeckScarfStripedLightBlue: 2
+    ClothingNeckScarfStripedBlue: 2
+    ClothingNeckScarfStripedRed: 2
+    ClothingNeckScarfStripedOrange: 2
+    ClothingNeckScarfStripedBrown: 2
+    ClothingNeckScarfStripedPurple: 2
+    ClothingNeckScarfStripedBlack: 2
+    ClothingMaskNeckGaiter: 1
     ClothingUniformJumpsuitHawaiBlack: 2
     ClothingUniformJumpsuitHawaiBlue: 2
     ClothingUniformJumpsuitHawaiRed: 2
     ClothingUniformJumpsuitHawaiYellow: 2
     ClothingUniformJumpsuitFlannel: 2
+    #WD edit start
+    ClothingUniformJumpsuitCossack: 1
+    ClothingOuterCoatBomber: 1
+    ClothingOuterWinterCoat: 1
+    ClothingOuterCoatGentle: 1
+    ClothingOuterCoatInspector: 1
+    ClothingUniformJumpsuitKimono: 1
+    ClothingOuterPonchoClassic: 1
+    ClothingOuterHoodieGrey: 1
+    ClothingOuterApron: 1
+    ClothingHeadHatHetmanHat: 1
+    ClothingHeadHatFedoraGrey: 1
+    ClothingHeadHatFedoraBrown: 1
+    ClothingHeadHatTophat: 1
+    ClothingHeadHatBeaverHat: 1
+    ClothingHeadHatUshanka: 1
+    ClothingHeadSafari: 1
+    ClothingHeadFishCap: 2
+    ClothingHeadHatCasa: 1
+    ClothingHeadHatFez: 1
+    ClothingHeadRastaHat: 1
+    ClothingEyesEyepatch: 1
+    ClothingShoesLeather: 1
+    ClothingHeadHatBeret: 4
+    ClothingHeadHatGreyFlatcap: 3
+    ClothingHeadHatBrownFlatcap: 3
+    ClothingUniformJumpsuitColorBlack: 3
+    ClothingUniformJumpskirtColorBlack: 3
+    ClothingUniformJumpsuitColorDarkGreen: 2
+    ClothingUniformJumpskirtColorDarkGreen: 2
     ClothingUniformJumpsuitCasualBlue: 2
     ClothingUniformJumpskirtCasualBlue: 2
     ClothingUniformJumpsuitCasualPurple: 2
     ClothingUniformJumpskirtCasualPurple: 2
     ClothingUniformJumpsuitCasualRed: 2
     ClothingUniformJumpskirtCasualRed: 2
-    ClothingShoesColorBlack: 8
-    ClothingShoesColorBrown: 4
-    ClothingShoesColorWhite: 3
-    ClothingShoesColorBlue: 2
-    ClothingShoesColorYellow: 2
-    ClothingShoesColorGreen: 2
-    ClothingShoesColorOrange: 2
-    ClothingShoesColorRed: 2
-    ClothingShoesColorPurple: 2
-    ClothingHeadHatGreysoft: 8
-    ClothingHeadHatMimesoft: 3
-    ClothingHeadHatBluesoft: 2
-    ClothingHeadHatYellowsoft: 2
-    ClothingHeadHatGreensoft: 2
-    ClothingHeadHatOrangesoft: 2
-    ClothingHeadHatRedsoft: 2
     ClothingHeadHatBlacksoft: 2
-    ClothingHeadHatPurplesoft: 2
-    ClothingHeadHatCorpsoft: 2
-    ClothingHeadFishCap: 2
-    ClothingHeadRastaHat: 2
-    ClothingBeltStorageWaistbag: 3
     ClothingEyesGlasses: 6
     ClothingEyesGlassesSunglasses: 2
     ClothingHandsGlovesColorBlack: 4
@@ -83,6 +112,7 @@
     ClothingHandsGlovesColorGreen: 2
     ClothingHandsGlovesColorOrange: 2
     ClothingHandsGlovesColorPurple: 2
+
     #White bra start
     ClothingUnderwearTopBraWhite: 5
     ClothingUnderwearTopBraSports: 5
@@ -150,9 +180,3 @@
     ClothingUnderwearSocksStripedThigh: 2
     ClothingUnderwearSocksThinKnee: 1
     ClothingUnderwearSocksThinThigh: 1
-    # white end
-  contrabandInventory:
-    ClothingMaskNeckGaiter: 2
-    ClothingUniformJumpsuitTacticool: 1
-    ClothingUniformJumpskirtTacticool: 1
-

@@ -5,6 +5,12 @@
     Brutepack: 5
     Ointment: 5
     Bloodpack: 5
+    Gauze: 5
     EpinephrineChemistryBottle: 3
     Syringe: 5
-    Eftpos: 2 #WD edit
+    EmergencyMedipen: 2
+    SyringeBicaridine: 1
+    SyringeDermaline: 1
+    Eftpos: 2
+  emaggedInventory:
+    SyringeEphedrine: 1

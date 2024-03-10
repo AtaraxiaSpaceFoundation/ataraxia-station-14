@@ -1,12 +1,16 @@
 - type: vendingMachineInventory
   id: GetmoreChocolateCorpInventory
   startingInventory:
-    FoodSnackRaisins: 3
-    FoodSnackChocolate: 3
+    FoodSnackRaisins: 4
+    FoodSnackChocolate: 4
+    FoodSnackPopcorn: 4
+    DrinkRamen: 4
+    DrinkHellRamen: 4
     FoodSnackCnDs: 3
     FoodSnackPistachios: 3
     FoodSnackSus: 3
     FoodSnackSemki: 3
+
   emaggedInventory:
     FoodSnackSyndi: 3
 

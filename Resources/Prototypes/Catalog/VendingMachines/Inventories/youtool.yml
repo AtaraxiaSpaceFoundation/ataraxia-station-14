@@ -3,18 +3,17 @@
   startingInventory:
     CableApcStack: 5
     Crowbar: 5
-    Welder: 2
-    Wirecutter: 3
-    Wrench: 3
-    Screwdriver: 3
-    trayScanner: 3
-    NetworkConfigurator: 3
-    GasAnalyzer: 3
+    Welder: 5
+    Wirecutter: 5
+    Wrench: 5
+    Screwdriver: 5
+    trayScanner: 5
+    NetworkConfigurator: 5
+    GasAnalyzer: 5
     FlashlightLantern: 5
-    ClothingHandsGlovesColorYellowBudget: 3
-    SprayPainter: 3
-  # Some engineer forgot to take the multitool out the youtool when working on it, happens.
+    ClothingHandsGlovesColorYellowBudget: 5
+    AirlockPainter: 5
+    Multitool: 5
+
   contrabandInventory:
-    Multitool: 1
-  emaggedInventory:
-    ClothingHandsGlovesColorYellow: 1
+    ClothingHandsGlovesColorYellow: 2

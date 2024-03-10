@@ -1,26 +1,27 @@
 - type: vendingMachineInventory
   id: SecDrobeInventory
   startingInventory:
-    ClothingBackpackSecurity: 3
-    ClothingBackpackSatchelSecurity: 3
-    ClothingBackpackDuffelSecurity: 3
-    ClothingUniformJumpsuitSec: 3
-    ClothingShoesBootsJack: 3
-    ClothingHeadHatBeretSecurity: 3
-    ClothingHeadHatSecsoft: 3
-    ClothingHeadBandRed: 3
-    ClothingHandsGlovesColorBlack: 3
-    ClothingHandsGlovesFingerless: 3
-    ClothingUniformJumpskirtSec: 3
-    ClothingUniformJumpsuitSecGrey: 3
-    ClothingUniformJumpskirtSecGrey: 3
-    ClothingUniformJumpsuitSecBlue: 3
-    ClothingHeadsetSecurity: 3
-    ClothingOuterWinterSec: 2
+    ClothingBackpackSecurity: 4
+    ClothingBackpackSatchelSecurity: 4
+    ClothingBackpackDuffelSecurity: 4
+    ClothingHeadHatBeret: 4
+    ClothingHeadHatSecsoft: 4
+    ClothingHeadBandRed: 4
+    ClothingHeadsetSecurity: 4
+    ClothingEyesGlassesSecurity: 4
+    ClothingOuterWinterSec: 4
     ClothingOuterArmorBasic: 4
+    ClothingUniformJumpsuitSec: 4
+    ClothingUniformJumpskirtSec: 4
+    ClothingUniformJumpsuitSecGrey: 4
+    ClothingUniformJumpsuitSecBlue: 4
+    ClothingHandsGlovesColorBlack: 4
+    ClothingShoesBootsJack: 4
+    ClothingShoesBootsCombat: 4
+    ClothingHeadHatBeretSecurity: 3
+    ClothingHandsGlovesFingerless: 3
+    ClothingUniformJumpskirtSecGrey: 3
     ClothingNeckScarfStripedRed: 3
-    ClothingEyesBlindfold: 1
-    ClothingShoesBootsCombat: 1
-    ClothingShoesBootsWinterSec: 2
-    ClothingShoesBootsCowboyBlack: 1
-    ClothingHeadHatCowboyBlack: 1
+    ClothingShoesBootsWinterSec: 3
+    ClothingShoesBootsCowboyBlack: 3
+    ClothingHeadHatCowboyBlack: 3

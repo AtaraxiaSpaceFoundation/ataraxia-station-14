@@ -1,8 +1,10 @@
 - type: vendingMachineInventory
   id: TankDispenserEVAInventory
   startingInventory:
-    OxygenTankFilled: 10
-    NitrogenTankFilled: 10
+    OxygenTankFilled: 7
+    EmergencyOxygenTankFilled: 10
+    ExtendedEmergencyOxygenTankFilled: 3
+    NitrogenTankFilled: 7
 
 - type: vendingMachineInventory
   id: TankDispenserEngineeringInventory
