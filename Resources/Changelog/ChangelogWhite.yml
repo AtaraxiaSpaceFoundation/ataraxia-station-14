@@ -2189,3 +2189,13 @@
   id: 190
   time: '2024-03-12T21:53:07.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/190
+- author: ThereDrD
+  changes:
+  - message: "\u0420\u0436\u0430\u0432\u044B\u0435 \u0441\u0442\u0435\u043D\u044B\
+      \ \u0442\u0435\u043F\u0435\u0440\u044C \u0441\u043E\u0447\u0435\u0442\u0430\u044E\
+      \u0442\u0441\u044F \u0441 \u043E\u0441\u0442\u0430\u043B\u044C\u043D\u044B\u043C\
+      \u0438."
+    type: Fix
+  id: 191
+  time: '2024-03-12T22:00:24.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/191
