@@ -1212,7 +1212,7 @@
   id: DoxxxomHorns
   bodyPart: HeadTop
   markingCategory: HeadTop
-  sponsorOnly: false
+  sponsorOnly: true
   sprites:
   - sprite: White/Fluff/DoxXxoM/horns.rsi
     state: m_frills_hornsdouble_ADJ
@@ -1221,7 +1221,7 @@
   id: DoxxxomTail
   bodyPart: Tail
   markingCategory: Tail
-  sponsorOnly: false
+  sponsorOnly: true
   sprites:
   - sprite: White/Fluff/DoxXxoM/tail.rsi
     state: m_tail_lizard_wagging_smooth_BEHIND
@@ -1230,7 +1230,7 @@
   id: DoxxxomHair
   bodyPart: Hair
   markingCategory: Hair
-  sponsorOnly: false
+  sponsorOnly: true
   sprites:
   - sprite: White/Fluff/DoxXxoM/hair.rsi
     state: hair_allthefuzz
