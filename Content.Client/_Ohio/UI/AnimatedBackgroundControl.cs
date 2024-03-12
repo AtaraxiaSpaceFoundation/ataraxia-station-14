@@ -57,7 +57,7 @@ public sealed class AnimatedBackgroundControl : TextureRect
             if (delays.Length == 0)
                 continue;
 
-            _timer[i] += args.DeltaSeconds * 0.20f;
+            _timer[i] += args.DeltaSeconds;
 
             var currentFrameIndex = _frameCounter[i];
 
