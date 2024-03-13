@@ -1207,6 +1207,39 @@
     sound:
       path: /Audio/White/Fluff/Joulerk/activate.ogg
 
+#Ritoka
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCloakRitoka
+  name: Плащ Затворник
+  description: От этого плаща исходит зловещая энергия. При одном только взгляде на него вам хочется закрыться в шкафчике и плакать. На нём имеется ярлык "Ritoka вернётся".
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Ritoka/cloak.rsi
+    - type: Clothing
+      sprite: White/Fluff/Ritoka/cloak.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHoodRitoka
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot
+    - type: PointLight
+      radius: 2
+      energy: 2
+      color: "#99e550"
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHoodRitoka
+  noSpawn: true
+  name: капюшон
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Ritoka/hood.rsi
+    - type: Clothing
+      sprite: White/Fluff/Ritoka/hood.rsi
+
 # DoxXxoM
 - type: marking
   id: DoxxxomHorns

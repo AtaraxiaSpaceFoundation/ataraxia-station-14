@@ -467,3 +467,9 @@
   id: JoulerkPlushie
   entity: PlushieLerkFluff
   sponsorOnly: true
+
+# Ritoka
+- type: loadout
+  id: RitokaCloak
+  entity: ClothingOuterCloakRitoka
+  sponsorOnly: true
