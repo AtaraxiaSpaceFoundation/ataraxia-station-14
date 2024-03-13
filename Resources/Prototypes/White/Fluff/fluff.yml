@@ -1084,7 +1084,7 @@
   parent: ClothingOuterStorageBase
   id: G13ClothingOuterCoat
   name: гламурное белое пальто
-  description: В таком только на показ мод.
+  description: Да в таких только звезды ходят!
   suffix: fluff
   components:
     - type: Sprite
@@ -1096,7 +1096,7 @@
   parent: ClothingEyesBase
   id: G13ClothingEyesEyepatch
   name: белая повязка на глаз
-  description: Даже когда ты пират, нужно выглядеть гламурно.
+  description: Настолько белая, что заменяет глаз.
   components:
     - type: Sprite
       sprite: White/Fluff/g13/eyepatch.rsi
@@ -1107,7 +1107,7 @@
   parent: ClothingUniformBase
   id: G13ClothingUniformSuit
   name: стильный белый адвокатский костюм
-  description: -Моего клиента на смертную казнь! -Но я же просто украл пирожок...
+  description: Протестую! Адвокат слишком красив!
   components:
     - type: Sprite
       sprite: White/Fluff/g13/jumpsuit.rsi
