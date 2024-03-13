@@ -11429,6 +11429,7 @@ entities:
     - type: LoadedMap
     - type: BecomesStation
       id: Europa
+    - type: MaterialStorage
 - proto: AccordionInstrument
   entities:
   - uid: 2598

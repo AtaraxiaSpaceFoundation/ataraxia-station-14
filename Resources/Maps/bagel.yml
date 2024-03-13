@@ -459,6 +459,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Bagel
+    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

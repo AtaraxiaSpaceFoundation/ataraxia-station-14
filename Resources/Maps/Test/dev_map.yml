@@ -376,6 +376,7 @@ entities:
     - type: GasTileOverlay
     - type: BecomesStation
       id: Dev
+    - type: MaterialStorage
     - type: SpreaderGrid
     - type: GridPathfinding
     - type: NavMap

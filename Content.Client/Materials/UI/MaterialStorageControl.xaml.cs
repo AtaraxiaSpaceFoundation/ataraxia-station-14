@@ -43,8 +43,15 @@ public sealed partial class MaterialStorageControl : BoxContainer
             return;
         }
 
+        var gridStorage = _entityManager.TryGetComponent<TransformComponent>(_owner, out var transformComponent) &&
+                          _entityManager.TryGetComponent<MaterialStorageComponent>(transformComponent.GridUid,
+                              out var materialStorageComponent) ? materialStorageComponent : null;
+
+        materialStorage = gridStorage ?? materialStorage;
+
         var canEject = materialStorage.CanEjectStoredMaterials;
         var mats = materialStorage.Storage.Select(pair => (pair.Key.Id, pair.Value)).ToDictionary();
+
         if (_currentMaterials.Equals(mats))
             return;
 

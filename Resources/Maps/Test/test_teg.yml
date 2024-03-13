@@ -241,6 +241,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: TEG
+    - type: MaterialStorage
 - proto: AirAlarm
   entities:
   - uid: 436

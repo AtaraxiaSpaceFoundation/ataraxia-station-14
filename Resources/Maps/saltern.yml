@@ -236,6 +236,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Saltern
+    - type: MaterialStorage
     - type: GridAtmosphere
       version: 2
       data:

@@ -95,6 +95,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Reach
+    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: GridPathfinding

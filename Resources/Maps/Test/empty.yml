@@ -29,6 +29,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Empty
+    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: GridPathfinding

@@ -278,6 +278,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Packed
+    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

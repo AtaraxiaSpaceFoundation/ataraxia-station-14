@@ -2546,6 +2546,7 @@ entities:
         chunkSize: 4
     - type: BecomesStation
       id: Atlas
+    - type: MaterialStorage
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle

@@ -489,6 +489,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Boxstation
+    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

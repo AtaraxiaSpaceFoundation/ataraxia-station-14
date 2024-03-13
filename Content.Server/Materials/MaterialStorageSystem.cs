@@ -78,7 +78,17 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             volume = sheetsToExtract * volumePerSheet;
         }
 
-        if (volume <= 0 || !TryChangeMaterialAmount(uid, msg.Material, -volume))
+        var gridUid = TryComp<TransformComponent>(uid, out var transformComponent)
+            ? transformComponent.GridUid
+            : null;
+
+        var gridStorage = gridUid.HasValue &&
+                          TryComp<MaterialStorageComponent>(gridUid, out var materialStorageComponent)
+            ? materialStorageComponent
+            : null;
+
+
+        if (volume <= 0 || !TryChangeMaterialAmount(uid, msg.Material, -volume, gridUid: gridUid, gridStorage: gridStorage))
             return;
 
         var mats = SpawnMultipleFromMaterial(volume, material, Transform(uid).Coordinates, out _);

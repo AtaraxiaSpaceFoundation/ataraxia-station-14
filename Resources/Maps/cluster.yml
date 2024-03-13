@@ -4423,6 +4423,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Cluster
+    - type: MaterialStorage
     - type: SpreaderGrid
     - type: GridPathfinding
   - uid: 12281

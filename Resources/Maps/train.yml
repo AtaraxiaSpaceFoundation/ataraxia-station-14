@@ -5373,6 +5373,7 @@ entities:
     - type: FTLDestination
     - type: BecomesStation
       id: Train
+    - type: MaterialStorage
 - proto: AccordionInstrument
   entities:
   - uid: 12393

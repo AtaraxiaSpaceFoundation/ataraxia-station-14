@@ -7741,6 +7741,7 @@ entities:
         chunkSize: 4
     - type: BecomesStation
       id: Marathon
+    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: RadiationGridResistance
