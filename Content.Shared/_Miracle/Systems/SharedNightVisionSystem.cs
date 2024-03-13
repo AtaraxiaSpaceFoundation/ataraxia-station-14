@@ -23,12 +23,20 @@ public abstract class SharedNightVisionSystem : EntitySystem
     private void OnRemove(EntityUid uid, NightVisionComponent component, ComponentRemove args)
     {
         _actions.RemoveAction(uid, component.ToggleActionEntity);
+
+        if (HasComp<TemporaryNightVisionComponent>(uid))
+            return;
+
         UpdateNightVision(uid, false);
     }
 
     private void OnInit(EntityUid uid, NightVisionComponent component, ComponentInit args)
     {
         _actions.AddAction(uid, ref component.ToggleActionEntity, component.ToggleAction);
+
+        if (!component.IsActive && HasComp<TemporaryNightVisionComponent>(uid))
+            return;
+
         UpdateNightVision(uid, component.IsActive);
     }
 
@@ -41,8 +49,12 @@ public abstract class SharedNightVisionSystem : EntitySystem
 
         component.IsActive = !component.IsActive;
         _audio.PlayPredicted(component.ToggleSound, uid, uid);
-        UpdateNightVision(uid, component.IsActive);
 
         args.Handled = true;
+
+        if (!component.IsActive && HasComp<TemporaryNightVisionComponent>(uid))
+            return;
+
+        UpdateNightVision(uid, component.IsActive);
     }
 }

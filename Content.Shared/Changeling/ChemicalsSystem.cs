@@ -1,4 +1,5 @@
-﻿using Content.Shared.Alert;
+using Content.Shared.Alert;
+using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Network;
 
@@ -10,24 +11,38 @@ public sealed class ChemicalsSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<ClothingModifyChemicalRegenComponent, InventoryRelayedEvent<ChemRegenModifyEvent>>(
+            OnChemRegenModify);
+        SubscribeLocalEvent<VoidAdaptationComponent, ChemRegenModifyEvent>(OnVoidAdaptationChemRegenModify);
+    }
+
+    private void OnVoidAdaptationChemRegenModify(Entity<VoidAdaptationComponent> ent, ref ChemRegenModifyEvent args)
+    {
+        args.Multiplier *= ent.Comp.ChemMultiplier;
+        ent.Comp.ChemMultiplier = 1f;
+    }
+
+    private void OnChemRegenModify(Entity<ClothingModifyChemicalRegenComponent> ent,
+        ref InventoryRelayedEvent<ChemRegenModifyEvent> args)
+    {
+        args.Args.Multiplier *= ent.Comp.Multiplier;
+    }
+
     public bool AddChemicals(EntityUid uid, ChangelingComponent component, int quantity)
     {
+        var capacity = component.ChemicalCapacity;
         if (_mobStateSystem.IsDead(uid))
+            capacity /= 2;
+
+        if (component.ChemicalsBalance >= capacity)
             return false;
 
-        var toAdd = quantity;
+        component.ChemicalsBalance = Math.Min(component.ChemicalsBalance + quantity, capacity);
 
-        if (component.ChemicalsBalance == component.ChemicalCapacity)
-            return false;
-
-        if (component.ChemicalsBalance + toAdd > component.ChemicalCapacity)
-        {
-            var overflow = component.ChemicalsBalance + toAdd - component.ChemicalCapacity;
-            toAdd -= overflow;
-            component.ChemicalsBalance += toAdd;
-        }
-
-        component.ChemicalsBalance += toAdd;
         Dirty(uid, component);
 
         UpdateAlert(uid, component);
@@ -69,11 +84,11 @@ public sealed class ChemicalsSystem : EntitySystem
             if(component.Accumulator < component.UpdateDelay)
                 continue;
 
-            if (component.IsRegenerating)
-                continue;
-
             component.Accumulator = 0;
-            AddChemicals(uid, component, component.ChemicalRegenRate);
+            var ev = new ChemRegenModifyEvent();
+            RaiseLocalEvent(uid, ev);
+            var chemicals = (int) MathF.Round(component.ChemicalRegenRate * ev.Multiplier);
+            AddChemicals(uid, component, chemicals);
         }
     }
 

@@ -31,19 +31,32 @@ namespace Content.Client._White.Overlays
 
             var handle = args.WorldHandle;
 
-            if (!_entityManager.TryGetComponent<NightVisionComponent>(_playerManager.LocalSession?.AttachedEntity,
-                    out var component))
+            Color? color = null;
+
+            if (_entityManager.TryGetComponent<NightVisionComponent>(_playerManager.LocalSession?.AttachedEntity,
+                    out var component) && component.IsActive)
             {
-                return;
+                _shader.SetParameter("tint", component.Tint);
+                _shader.SetParameter("luminance_threshold", component.Strength);
+                _shader.SetParameter("noise_amount", component.Noise);
+                color = component.Color;
+            }
+            else if (_entityManager.TryGetComponent<TemporaryNightVisionComponent>(
+                         _playerManager.LocalSession?.AttachedEntity, out var tempNvComp))
+            {
+                _shader.SetParameter("tint", tempNvComp.Tint);
+                _shader.SetParameter("luminance_threshold", tempNvComp.Strength);
+                _shader.SetParameter("noise_amount", tempNvComp.Noise);
+                color = tempNvComp.Color;
             }
 
+            if (color == null)
+                return;
+
             _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-            _shader.SetParameter("tint", component.Tint);
-            _shader.SetParameter("luminance_threshold", component.Strength);
-            _shader.SetParameter("noise_amount", component.Noise);
 
             handle.UseShader(_shader);
-            handle.DrawRect(args.WorldBounds, component.Color);
+            handle.DrawRect(args.WorldBounds, color.Value);
             handle.UseShader(null);
         }
     }

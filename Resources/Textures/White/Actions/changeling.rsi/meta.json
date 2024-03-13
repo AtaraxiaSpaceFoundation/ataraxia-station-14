@@ -1,4 +1,4 @@
-﻿{
+{
     "version": 1,
     "license": "CC-BY-SA-3.0",
     "copyright": "By SS14 White Dream",
@@ -21,6 +21,15 @@
         },
         {
             "name": "biodegrade"
+        },
+        {
+            "name": "augmented_eyesight"
+        },
+        {
+            "name": "dissonant_shriek"
+        },
+        {
+            "name": "organic_suit"
         },
         {
             "name": "fleshmend"

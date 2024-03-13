@@ -1,4 +1,4 @@
-﻿using Content.Shared.Humanoid;
+using Content.Shared.Humanoid;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -9,7 +9,7 @@ namespace Content.Shared.Changeling;
 public sealed partial class ChangelingComponent : Component
 {
     [DataField("chemRegenRate")]
-    public int ChemicalRegenRate = 2;
+    public int ChemicalRegenRate = 4;
 
     [DataField("chemicalCap")]
     public int ChemicalCapacity = 75;
@@ -24,7 +24,7 @@ public sealed partial class ChangelingComponent : Component
     public float Accumulator;
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public float UpdateDelay = 6f;
+    public float UpdateDelay = 4f;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public bool IsRegenerating;
@@ -48,13 +48,13 @@ public sealed partial class ChangelingComponent : Component
     public float AbsorbDnaDelay = 10f;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("TransformDelay")]
-    public float TransformDelay = 2f;
+    public float TransformDelay;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("RegenerateDelay")]
     public float RegenerateDelay = 60f;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("LesserFormDelay")]
-    public float LesserFormDelay = 5f;
+    public float LesserFormDelay;
 
     public bool IsInited;
 }

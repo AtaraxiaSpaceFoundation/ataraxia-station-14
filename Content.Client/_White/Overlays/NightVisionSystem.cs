@@ -23,23 +23,56 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         SubscribeLocalEvent<NightVisionComponent, PlayerDetachedEvent>(OnPlayerDetached);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
 
+        SubscribeLocalEvent<TemporaryNightVisionComponent, ComponentInit>(OnTempInit);
+        SubscribeLocalEvent<TemporaryNightVisionComponent, ComponentRemove>(OnTempRemove);
+        SubscribeLocalEvent<TemporaryNightVisionComponent, PlayerAttachedEvent>(OnTempPlayerAttached);
+        SubscribeLocalEvent<TemporaryNightVisionComponent, PlayerDetachedEvent>(OnTempPlayerDetached);
+
         _overlay = new NightVisionOverlay();
+    }
+
+    private void OnTempPlayerAttached(Entity<TemporaryNightVisionComponent> ent, ref PlayerAttachedEvent args)
+    {
+        UpdateNightVision(args.Player, true);
+    }
+
+    private void OnTempPlayerDetached(Entity<TemporaryNightVisionComponent> ent, ref PlayerDetachedEvent args)
+    {
+        UpdateNightVision(args.Player, false);
+    }
+
+    private void OnTempRemove(Entity<TemporaryNightVisionComponent> ent, ref ComponentRemove args)
+    {
+        if (TryComp(ent, out NightVisionComponent? nightVision) && nightVision.IsActive)
+            return;
+
+        UpdateNightVision(ent, false);
+    }
+
+    private void OnTempInit(Entity<TemporaryNightVisionComponent> ent, ref ComponentInit args)
+    {
+        UpdateNightVision(ent, true);
     }
 
     private void OnPlayerAttached(EntityUid uid, NightVisionComponent component, PlayerAttachedEvent args)
     {
-        if (_player.LocalSession != args.Player)
+        if (!component.IsActive && HasComp<TemporaryNightVisionComponent>(args.Entity))
             return;
 
-        UpdateNightVision(component.IsActive);
+        UpdateNightVision(args.Player, component.IsActive);
     }
 
     private void OnPlayerDetached(EntityUid uid, NightVisionComponent component, PlayerDetachedEvent args)
     {
-        if (_player.LocalSession != args.Player)
+        UpdateNightVision(args.Player, false);
+    }
+
+    private void UpdateNightVision(ICommonSession player, bool active)
+    {
+        if (_player.LocalSession != player)
             return;
 
-        UpdateNightVision(false);
+        UpdateNightVision(active);
     }
 
     protected override void UpdateNightVision(EntityUid uid, bool active)

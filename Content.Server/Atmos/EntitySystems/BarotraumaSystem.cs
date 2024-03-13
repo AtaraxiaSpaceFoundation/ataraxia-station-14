@@ -9,6 +9,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared._White.Mood;
+using Content.Shared.Changeling;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Atmos.EntitySystems
@@ -233,6 +234,12 @@ namespace Content.Server.Atmos.EntitySystems
 
                         if (pressure > Atmospherics.WarningLowPressure)
                             goto default;
+
+                        if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation)) // WD
+                        {
+                            voidAdaptation.ChemMultiplier = 0.75f;
+                            goto default;
+                        }
 
                         // Deal damage and ignore resistances. Resistance to pressure damage should be done via pressure protection gear.
                         _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * Atmospherics.LowPressureDamage, true, false);

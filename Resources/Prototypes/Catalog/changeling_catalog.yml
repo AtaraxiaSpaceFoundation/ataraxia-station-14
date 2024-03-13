@@ -64,6 +64,20 @@
     - !type:ListingLimitedStockCondition
       stock: 1
 
+- type: listing
+  id: ChangelingVoidAdaptation
+  name: changeling-ability-void-adaptation
+  description: changeling-ability-void-adaptation-desc
+  icon: { sprite: /Textures/White/Actions/changeling.rsi, state: organic_suit }
+  productEvent: !type:VoidAdaptationPurchasedEvent
+  cost:
+    ChangelingPoint: 2
+  categories:
+    - ChangelingAbilities
+  conditions:
+    - !type:ListingLimitedStockCondition
+      stock: 1
+
 # Stings
 - type: listing
   id: ChangelingExtractionString
@@ -177,6 +191,33 @@
   productAction: ActionBiodegrade
   cost:
     ChangelingPoint: 2
+  categories:
+  - ChangelingBoosters
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingAugmentedEyesight
+  name: changeling-ability-eyesight
+  description: changeling-ability-eyesight-desc
+  productAction: ActionAugmentedEyesight
+  productEvent: !type:AugmentedEyesightPurchasedEvent
+  cost:
+    ChangelingPoint: 2
+  categories:
+  - ChangelingBoosters
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingDissonantShriek
+  name: changeling-ability-dissonant-shriek
+  description: changeling-ability-dissonant-shriek-desc
+  productAction: ActionDissonantShriek
+  cost:
+    ChangelingPoint: 1
   categories:
   - ChangelingBoosters
   conditions:

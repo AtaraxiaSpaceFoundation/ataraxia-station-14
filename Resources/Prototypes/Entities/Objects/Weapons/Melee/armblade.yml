@@ -28,3 +28,4 @@
   - type: Unremoveable
     deleteOnDrop: true
   - type: ToolForcePowered
+  - type: DeleteOnChangelingRefund

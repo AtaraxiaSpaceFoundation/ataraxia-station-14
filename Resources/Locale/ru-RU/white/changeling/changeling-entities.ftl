@@ -1,8 +1,17 @@
-﻿changeling-ability-fleshmend = Восстановление тканей
+changeling-ability-fleshmend = Восстановление тканей
 changeling-ability-fleshmend-desc = Быстро вылечить большую часть повреждений
 
 changeling-ability-biodegrade = Биоразложение
 changeling-ability-biodegrade-desc = Растворяет наручники и прочие сдерживающие элементы.
+
+changeling-ability-eyesight = Аугментация зрения
+changeling-ability-eyesight-desc = Развивает переключаемое ночное зрение. Когда способность неактивна, защищает вас от флешек и яркого света, например от сварки.
+
+changeling-ability-dissonant-shriek = Диссонирующий вопль
+changeling-ability-dissonant-shriek-desc = Испускает заряд ЭМИ, который нарушает работу всего оборудования вокруг.
+
+changeling-ability-void-adaptation = Пустотная адаптация
+changeling-ability-void-adaptation-desc = Наделяет пассивной способностью, позволяющей сопротивляться холоду, низкому давлению и потребности в кислороде. При использовании замедляет регенерацию химикатов на 25%.
 
 changeling-ability-adrenaline-sacks = Мешки с адреналином
 changeling-ability-adrenaline-sacks-desc = Дает кратковременный прилив адреналина в крови.

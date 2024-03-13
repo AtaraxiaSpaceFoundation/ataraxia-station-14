@@ -137,10 +137,6 @@
   color: "#f4692e"
   recognizable: true
   metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 1.5
     # Dragon doesn't require airloss healing, so omnizine is still best for humans.
     Medicine:
       effects:

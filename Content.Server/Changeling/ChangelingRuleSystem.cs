@@ -40,7 +40,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
     private const float ChangelingStartDelay = 3f * 60;
     private const float ChangelingStartDelayVariance = 3f * 60;
 
-    private const int ChangelingMinPlayers = 10;
+    private const int ChangelingMinPlayers = 15;
 
     private const int ChangelingMaxDifficulty = 5;
     private const int ChangelingMaxPicks = 20;

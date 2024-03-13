@@ -288,10 +288,13 @@
   - type: Armor #admeme item so it should be fine being overpowered while helmets are still intentionally kneecapped.
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.9
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.85
+        Heat: 0.8
+  - type: Unremoveable
+    deleteOnDrop: true
+  - type: DeleteOnChangelingRefund
 
 #ERT HELMETS
 #ERT Leader Helmet

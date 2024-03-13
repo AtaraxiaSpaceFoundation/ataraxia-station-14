@@ -5,6 +5,7 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Stack;
 using Content.Server.Store.Components;
 using Content.Shared.Actions;
+using Content.Shared.Changeling;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
@@ -364,6 +365,7 @@ public sealed partial class StoreSystem
         // Reset store back to its original state
         RefreshAllListings(component);
         component.BalanceSpent = new();
+        RaiseLocalEvent(buyer, new ChangelingRefundEvent {Store = uid}); // WD
         UpdateUserInterface(buyer, uid, component);
     }
 

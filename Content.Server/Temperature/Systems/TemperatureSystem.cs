@@ -6,6 +6,7 @@ using Content.Server.Body.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
+using Content.Shared.Changeling;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Inventory;
@@ -279,6 +280,19 @@ public sealed class TemperatureSystem : EntitySystem
         }
         else if (temperature.CurrentTemperature <= coldDamageThreshold)
         {
+            if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation)) // WD
+            {
+                if (temperature.TakingDamage)
+                {
+                    _adminLogger.Add(LogType.Temperature,
+                        $"{ToPrettyString(uid):entity} stopped taking temperature damage");
+                    temperature.TakingDamage = false;
+                }
+
+                voidAdaptation.ChemMultiplier = 0.75f;
+                return;
+            }
+
             if (!temperature.TakingDamage)
             {
                 _adminLogger.Add(LogType.Temperature, $"{ToPrettyString(uid):entity} started taking low temperature damage");

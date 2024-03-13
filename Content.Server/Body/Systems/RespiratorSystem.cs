@@ -22,7 +22,8 @@ using Content.Shared.Mobs.Components; // WD
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups; // WD
 using Content.Shared._White.CPR.Events;
-using Content.Shared._White.Mood; // WD
+using Content.Shared._White.Mood;
+using Content.Shared.Changeling; // WD
 using JetBrains.Annotations;
 using Robust.Server.Audio; // WD
 using Robust.Shared.Audio; // WD
@@ -97,6 +98,14 @@ public sealed class RespiratorSystem : EntitySystem
 
             if (respirator.Saturation < respirator.SuffocationThreshold)
             {
+                if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation))
+                {
+                    voidAdaptation.ChemMultiplier = 0.75f;
+                    StopSuffocation(uid, respirator);
+                    respirator.SuffocationCycles = 0;
+                    continue;
+                }
+
                 if (_gameTiming.CurTime >= respirator.LastGaspPopupTime + respirator.GaspPopupCooldown)
                 {
                     respirator.LastGaspPopupTime = _gameTiming.CurTime;
