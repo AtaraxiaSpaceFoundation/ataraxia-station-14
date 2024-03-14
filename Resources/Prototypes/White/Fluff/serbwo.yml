@@ -218,7 +218,6 @@
   id: ScuffLoadoutSW
   entity: ClothingOuterScufSuitFluff
   sponsorOnly: true
-  whitelistJobs: [ Detective ]
 
 - type: loadout
   id: CapLoadoutSO

@@ -40,6 +40,9 @@ marking-SomeTailHZZ = Лисий хвост 3
 marking-SomeTailHZZ-tail = Хвост
 marking-SomeTailHZZ-tail_tip = Кончик
 
+marking-SomeTailPoebat = Пиздатый хвост
+marking-SomeTailPoebat-ebaniyhvost = Хвост
+
 marking-knifeCappyEars1 = Ушки Аксолотля
 marking-knifeCappyTail1 = Хвост Аксолотля
 marking-knifeCappyTail2 = Хвост Аксолотля
