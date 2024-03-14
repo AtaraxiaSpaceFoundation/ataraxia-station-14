@@ -78,7 +78,6 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-
   - type: IconSmooth
     key: walls
     base: brick

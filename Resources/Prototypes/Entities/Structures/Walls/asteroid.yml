@@ -11,9 +11,6 @@
   components:
   - type: PlacementReplacement
     key: walls
-  - type: IconSmooth
-    key: walls
-    mode: NoSprite
   - type: SmoothEdge
   - type: Sprite
     sprite: Structures/Walls/rock.rsi
@@ -191,7 +188,7 @@
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_asteroid_west
         - state: rock_silver
-        
+
 - type: entity
   id: AsteroidRockSilverCrab
   parent: AsteroidRockSilver
@@ -223,7 +220,7 @@
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_asteroid_west
         - state: rock_tin
-        
+
 - type: entity
   id: AsteroidRockTinCrab
   parent: AsteroidRockTin
@@ -326,9 +323,6 @@
   suffix: Low Ore Yield
   description: A rocky asteroid.
   components:
-  - type: IconSmooth
-    key: walls
-    mode: NoSprite
   - type: SmoothEdge
   - type: Sprite
     sprite: Structures/Walls/rock.rsi
@@ -393,9 +387,6 @@
             - FullTileMask
           layer:
             - WallLayer
-    - type: IconSmooth
-      key: walls
-      mode: NoSprite
     - type: SmoothEdge
     - type: Sprite
       sprite: Structures/Walls/rock.rsi
