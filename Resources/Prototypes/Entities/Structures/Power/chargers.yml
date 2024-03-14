@@ -188,6 +188,7 @@
           - HitscanBatteryAmmoProvider
           - ProjectileBatteryAmmoProvider
           - Stunbaton
+          - TwoModeEnergyAmmoProvider
           - PowerCell
         blacklist:
           tags:

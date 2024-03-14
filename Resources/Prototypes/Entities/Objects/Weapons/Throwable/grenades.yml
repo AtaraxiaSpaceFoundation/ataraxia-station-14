@@ -350,7 +350,7 @@
   parent: GrenadeBase
   id: SmokeGrenade
   name: smoke grenade
-  description: A tactical grenade that releases a large, long-lasting cloud of smoke when used.
+  description: A tactical grenade that releases a large, long-lasting cloud of smoke when used. 
   components:
   - type: Sprite
     sprite: Objects/Weapons/Grenades/smoke.rsi
