@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._White.ShitSilo;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
@@ -45,6 +46,7 @@ public abstract class SharedLatheSystem : EntitySystem
             var adjustedAmount = AdjustMaterial(needed, recipe.ApplyMaterialDiscount, component.MaterialUseMultiplier);
 
             var gridUid =
+                HasComp<BluespaceSiloComponent>(uid) &&
                 TryComp<TransformComponent>(uid, out var transformComponent)
                     ? transformComponent.GridUid
                     : null;

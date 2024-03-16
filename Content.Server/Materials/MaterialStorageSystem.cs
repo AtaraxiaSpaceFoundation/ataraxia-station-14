@@ -5,6 +5,7 @@ using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Server.Power.Components;
 using Content.Server.Stack;
+using Content.Shared._White.ShitSilo;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Database;
@@ -78,7 +79,8 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             volume = sheetsToExtract * volumePerSheet;
         }
 
-        var gridUid = TryComp<TransformComponent>(uid, out var transformComponent)
+        var gridUid = HasComp<BluespaceSiloComponent>(uid) &&
+                      TryComp<TransformComponent>(uid, out var transformComponent)
             ? transformComponent.GridUid
             : null;
 

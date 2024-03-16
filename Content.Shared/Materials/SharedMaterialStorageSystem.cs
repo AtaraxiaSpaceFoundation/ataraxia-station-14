@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.ShitSilo;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Lathe;
@@ -295,7 +296,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         var multiplier = TryComp<StackComponent>(toInsert, out var stackComponent) ? stackComponent.Count : 1;
         var totalVolume = 0;
 
-        var gridUid = HasComp<LatheComponent>(receiver) &&
+        var gridUid = HasComp<BluespaceSiloComponent>(receiver) &&
                       TryComp<TransformComponent>(receiver, out var transformComponent)
             ? transformComponent.GridUid
             : null;
