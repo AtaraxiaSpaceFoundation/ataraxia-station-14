@@ -2380,3 +2380,13 @@
   id: 199
   time: '2024-03-16T15:30:57.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/200
+- author: CaypenNow
+  changes:
+  - message: "\u041F\u0435\u0440\u0435\u0432\u043E\u0434\u044B"
+    type: Fix
+  - message: "\u0417\u0438\u043F \u043F\u0430\u043A\u0435\u0442\u044B \u0434\u043B\
+      \u044F \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u0430"
+    type: Add
+  id: 200
+  time: '2024-03-16T15:55:14.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/212
