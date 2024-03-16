@@ -8,11 +8,12 @@
     sprite: Objects/Specific/Medical/healthanalyzer.rsi
     state: icon
     layers:
-      - state: icon
-      - state: analyzer
-        shader: unshaded
+      - map: [ "analyzerLayerBody" ]
+        state: icon
         visible: true
-        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      - map: [ "analyzerLayerScreen" ]
+        state: powered
+        visible: false
   - type: Item
     storedRotation: -90
   - type: ActivatableUI
@@ -33,8 +34,8 @@
     visuals:
       enum.PowerCellSlotVisuals.Enabled:
         enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
+          True: { state: powered, visible: true, shader: unshaded }
+          False: { state: powered, visible: false }
   - type: GuideHelp
     guides:
       - Medical Doctor
@@ -46,7 +47,14 @@
   components:
   - type: PowerCellDraw
     drawRate: 1.2 #Calculated for 5 minutes on a small cell
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
   - type: ActivatableUIRequiresPowerCell
+  - type: PointLightBattery
+  - type: PointLight
+    radius: 1.2
+    energy: 0.5
+    color: "#7FB6C0"
 
 - type: entity
   id: HandheldHealthAnalyzerEmpty

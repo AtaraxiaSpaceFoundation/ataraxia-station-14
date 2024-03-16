@@ -19,6 +19,7 @@ public abstract class SharedPowerCellSystem : EntitySystem
         SubscribeLocalEvent<PowerCellSlotComponent, EntInsertedIntoContainerMessage>(OnCellInserted);
         SubscribeLocalEvent<PowerCellSlotComponent, EntRemovedFromContainerMessage>(OnCellRemoved);
         SubscribeLocalEvent<PowerCellSlotComponent, ContainerIsInsertingAttemptEvent>(OnCellInsertAttempt);
+        SubscribeLocalEvent<PowerCellSlotComponent, PowerCellChangedEvent>(OnPowerChanged);
     }
 
     private void OnRejuvenate(EntityUid uid, PowerCellSlotComponent component, RejuvenateEvent args)
@@ -28,6 +29,16 @@ public abstract class SharedPowerCellSystem : EntitySystem
 
         // charge entity batteries and remove booby traps.
         RaiseLocalEvent(itemSlot.Item.Value, args);
+    }
+
+    private void OnPowerChanged(EntityUid uid, PowerCellSlotComponent component, PowerCellChangedEvent _)
+    {
+        if (!component.Initialized)
+            return;
+
+        var charged = HasDrawCharge(uid);
+
+        _appearance.SetData(uid, PowerCellSlotVisuals.Enabled, charged);
     }
 
     private void OnCellInsertAttempt(EntityUid uid, PowerCellSlotComponent component, ContainerIsInsertingAttemptEvent args)
@@ -51,14 +62,18 @@ public abstract class SharedPowerCellSystem : EntitySystem
 
         if (args.Container.ID != component.CellSlotId)
             return;
-        _appearance.SetData(uid, PowerCellSlotVisuals.Enabled, true);
-        RaiseLocalEvent(uid, new PowerCellChangedEvent(false), false);
+
+        var charged = HasDrawCharge(uid);
+
+        _appearance.SetData(uid, PowerCellSlotVisuals.Enabled, charged);
+        RaiseLocalEvent(uid, new PowerCellChangedEvent(false));
     }
 
     protected virtual void OnCellRemoved(EntityUid uid, PowerCellSlotComponent component, EntRemovedFromContainerMessage args)
     {
         if (args.Container.ID != component.CellSlotId)
             return;
+
         _appearance.SetData(uid, PowerCellSlotVisuals.Enabled, false);
         RaiseLocalEvent(uid, new PowerCellChangedEvent(true), false);
     }
