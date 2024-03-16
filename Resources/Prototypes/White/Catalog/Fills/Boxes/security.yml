@@ -1,0 +1,31 @@
+- type: entity
+  name: body camera box
+  parent: BoxCardboard
+  id: BoxBodyCamera
+  description: A box full of body cameras.
+  components:
+    - type: StorageFill
+      contents:
+        - id: SurveillanceBodyCamera
+          amount: 3
+    - type: Sprite
+      layers:
+        - state: box_security
+        - state: bodycam
+
+- type: entity
+  name: zip lock box
+  parent: BoxCardboard
+  id: BoxZipLocks
+  description: A box full of zip locks.
+  components:
+    - type: Storage
+      maxItemSize: Normal
+    - type: StorageFill
+      contents:
+        - id: ZipLock
+          amount: 4
+    - type: Sprite
+      layers:
+        - state: box_security
+        - state: ziplock

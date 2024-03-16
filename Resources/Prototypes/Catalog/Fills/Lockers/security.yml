@@ -138,6 +138,7 @@
       - id: BoxBodyCamera
       - id: VoiceRecorder
       - id: ClothingEyesGlassesSecurity
+      - id: BoxZipLocks
 
 - type: entity
   id: ClosetBombFilled

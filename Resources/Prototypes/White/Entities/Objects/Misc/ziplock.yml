@@ -1,0 +1,25 @@
+- type: entity
+  id: ZipBase
+  parent: BaseStorageItem
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
+
+- type: entity
+  name: zip lock
+  parent: ZipBase
+  id: ZipLock
+  description: Designed for storing evidence.
+  components:
+  - type: Item
+    sprite: White/Objects/Storage/ziplocks.rsi
+    shape:
+    - 0,0,1,0
+  - type: Sprite
+    sprite: White/Objects/Storage/ziplocks.rsi
+    state: icon
