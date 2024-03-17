@@ -1,0 +1,32 @@
+- type: entity
+  id: BaseModule
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/modules.rsi
+  - type: Tag
+    tags:
+      - BaseModule
+  - type: Item
+    sprite: White/Objects/Weapons/modules.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Appearance
+
+# modules
+- type: entity
+  id: LightModule
+  name: "light module for rifle"
+  parent: BaseModule
+  components:
+  - type: Item
+  - type: Sprite
+    state: light
+  - type: Appearance

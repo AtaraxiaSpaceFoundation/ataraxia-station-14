@@ -15,6 +15,7 @@
     - Back
     - suitStorage
   - type: AmmoCounter
+  - type: WeaponModules
   - type: Gun
     fireRate: 5
     selectedMode: FullAuto
@@ -32,7 +33,7 @@
         startingItem: MagazineLightRifle
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
-        priority: 2
+        priority: 3
         whitelist:
           tags:
           - MagazineLightRifle
@@ -43,10 +44,17 @@
         whitelist:
           tags:
           - CartridgeLightRifle
+      gun_modules:
+        name: Modules
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: StaticPrice
     price: 500
 
@@ -88,10 +96,17 @@
         whitelist:
           tags:
           - CartridgeLightRifle
+      gun_modules:
+        name: Modules
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
