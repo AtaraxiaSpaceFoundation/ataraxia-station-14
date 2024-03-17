@@ -19,9 +19,14 @@ public sealed class VocalSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
+        SubscribeLocalEvent<VocalComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<VocalComponent, SexChangedEvent>(OnSexChanged);
         SubscribeLocalEvent<VocalComponent, EmoteEvent>(OnEmote);
+    }
+
+    private void OnMapInit(EntityUid uid, VocalComponent component, MapInitEvent args)
+    {
+        LoadSounds(uid, component);
     }
 
     private void OnSexChanged(EntityUid uid, VocalComponent component, SexChangedEvent args)
