@@ -58,5 +58,5 @@
   components:
   - type: Item
   - type: Sprite
-    state: flamehider
+    state: silencer
   - type: Appearance
