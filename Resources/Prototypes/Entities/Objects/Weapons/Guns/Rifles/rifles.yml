@@ -71,6 +71,8 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
+    - state: laser
+      map: [ "enum.ModuleVisualState.Laser" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
@@ -111,6 +113,7 @@
     magState: mag
     steps: 1
     zeroVisible: true
+  - type: WeaponModulesVisuals
   - type: Appearance
 
 - type: entity

@@ -1,7 +1,4 @@
 ﻿using System.Numerics;
-using Content.Server.Light.Events;
-using Content.Server.Lightning;
-using Content.Shared.Light;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
@@ -14,6 +11,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 {
     protected const string ModulesSlot = "gun_modules";
     [Dependency] private readonly PointLightSystem _lightSystem = default!;
+    [Dependency] private readonly SharedAppearanceSystem Appearance = default!;
     [Dependency] private readonly SharedGunSystem _gunSystem = default!;
 
     SoundSpecifier? oldSoundGunshot;
