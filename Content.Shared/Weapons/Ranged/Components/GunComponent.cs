@@ -180,6 +180,12 @@ public sealed partial class GunComponent : Component
     public bool ResetOnHandSelected = true;
 
     /// <summary>
+    /// For flamehider module | WD EDIT
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool canUseEffect;
+
+    /// <summary>
     /// The base value for how fast the projectile moves.
     /// </summary>
     [DataField]

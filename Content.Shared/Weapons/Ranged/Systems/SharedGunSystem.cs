@@ -475,7 +475,9 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected void MuzzleFlash(EntityUid gun, AmmoComponent component, EntityUid? user = null)
     {
-        var attemptEv = new GunMuzzleFlashAttemptEvent();
+        TryComp<GunComponent>(gun, out var gunComponent); // WD EDIT
+
+        var attemptEv = new GunMuzzleFlashAttemptEvent(gunComponent!.canUseEffect); // WD EDIT
         RaiseLocalEvent(gun, ref attemptEv);
         if (attemptEv.Cancelled)
             return;
@@ -534,8 +536,31 @@ public abstract partial class SharedGunSystem : EntitySystem
         Dirty(gun);
     }
 
-    protected abstract void CreateEffect(EntityUid uid, MuzzleFlashEvent message, EntityUid? user = null);
+    public void setProjectileSpeed(EntityUid weapon, float projectileSpeed)
+    {
+        TryComp<GunComponent>(weapon, out var gunComponent);
+        gunComponent!.ProjectileSpeed = projectileSpeed;
 
+        RefreshModifiers(weapon);
+    }
+
+    public void setSound(EntityUid weapon, SoundSpecifier sound)
+    {
+        TryComp<GunComponent>(weapon, out var gunComponent);
+        gunComponent!.SoundGunshot = sound;
+
+        RefreshModifiers(weapon);
+    }
+
+    public void setUseEffect(EntityUid weapon, bool state)
+    {
+        TryComp<GunComponent>(weapon, out var gunComponent);
+        gunComponent!.canUseEffect = state;
+
+        RefreshModifiers(weapon);
+    }
+
+    protected abstract void CreateEffect(EntityUid uid, MuzzleFlashEvent message, EntityUid? user = null);
     /// <summary>
     /// Used for animated effects on the client.
     /// </summary>

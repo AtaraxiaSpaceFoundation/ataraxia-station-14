@@ -9,6 +9,11 @@
   "states": [
     {
       "name": "light"
+    },
+    {
+      "name": "laser"
+    },    {
+      "name": "flamehider"
     }
   ]
 }

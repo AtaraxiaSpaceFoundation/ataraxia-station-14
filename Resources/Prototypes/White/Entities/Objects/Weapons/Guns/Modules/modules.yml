@@ -12,7 +12,7 @@
     sprite: White/Objects/Weapons/modules.rsi
     size: Small
     shape:
-    - 0,0,1,1
+    - 0,0,0,0
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -23,10 +23,40 @@
 # modules
 - type: entity
   id: LightModule
-  name: "light module for rifle"
+  name: "light module"
   parent: BaseModule
   components:
   - type: Item
   - type: Sprite
     state: light
+  - type: Appearance
+
+- type: entity
+  id: LaserModule
+  name: "laser module"
+  parent: BaseModule
+  components:
+  - type: Item
+  - type: Sprite
+    state: laser
+  - type: Appearance
+
+- type: entity
+  id: FlameHiderModule
+  name: "flamehider module"
+  parent: BaseModule
+  components:
+  - type: Item
+  - type: Sprite
+    state: flamehider
+  - type: Appearance
+
+- type: entity
+  id: SilencerModule
+  name: "silencer module"
+  parent: BaseModule
+  components:
+  - type: Item
+  - type: Sprite
+    state: flamehider
   - type: Appearance
