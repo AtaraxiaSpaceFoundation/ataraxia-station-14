@@ -134,7 +134,7 @@ public sealed class DoAfterOverlay : Overlay
                 }
 
                 var xProgress = (EndX - StartX) * elapsedRatio + StartX;
-                var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter,
+                var box = new Box2(new Vector2(StartX, 2f) / EyeManager.PixelsPerMeter,
                     new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
 
                 box = box.Translated(position);

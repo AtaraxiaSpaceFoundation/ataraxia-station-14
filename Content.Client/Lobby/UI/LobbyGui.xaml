@@ -108,7 +108,7 @@
 
                     </PanelContainer>
 
-                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <BoxContainer Name="VersionLabel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
 
                         <PanelContainer StyleClasses="LobbyGayBackground">
 

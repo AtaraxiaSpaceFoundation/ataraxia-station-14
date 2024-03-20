@@ -45,6 +45,7 @@
             <Button Name="ApplyButton"
                     Text="{Loc 'ui-options-apply'}"
                     TextAlign="Center"
+                    Margin="8 8"
                     HorizontalAlignment="Right" />
         </controls:StripeBack>
     </BoxContainer>

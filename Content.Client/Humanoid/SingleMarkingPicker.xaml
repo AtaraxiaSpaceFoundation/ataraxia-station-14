@@ -13,7 +13,7 @@
 
     <!-- Item list -->
     <BoxContainer Name="MarkingSelectorContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-        <ScrollContainer MinHeight="500" VerticalExpand="True" HorizontalExpand="True">
+        <ScrollContainer MinHeight="200" VerticalExpand="True" HorizontalExpand="True">
             <ItemList Name="MarkingList" VerticalExpand="True" />
         </ScrollContainer>
 

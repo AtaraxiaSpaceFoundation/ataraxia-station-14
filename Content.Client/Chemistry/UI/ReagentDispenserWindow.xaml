@@ -40,7 +40,7 @@
                             SizeFlagsStretchRatio="6"
                             MinSize="0 150">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#212723" />
+                    <gfx:StyleBoxFlat BackgroundColor="#050505" />
                 </PanelContainer.PanelOverride>
                 <BoxContainer Name="ContainerInfo"
                               Orientation="Vertical"

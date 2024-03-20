@@ -7,11 +7,7 @@
     HorizontalExpand="True"
     VerticalExpand="True"
     MinSize="465 225">
-    <PanelContainer HorizontalExpand="True" VerticalExpand="True">
-        <PanelContainer.PanelOverride>
-            <graphics:StyleBoxFlat BackgroundColor="#141414AA" />
-        </PanelContainer.PanelOverride>
-
+    <PanelContainer HorizontalExpand="True" VerticalExpand="True" StyleClasses="FuckyWuckyBackground" >
         <BoxContainer Orientation="Vertical" SeparationOverride="4" HorizontalExpand="True" VerticalExpand="True">
             <OutputPanel Name="Contents" HorizontalExpand="True" VerticalExpand="True" Margin="2 2 2 2" >
                 <OutputPanel.StyleBoxOverride>

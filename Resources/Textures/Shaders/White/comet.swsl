@@ -1,0 +1,270 @@
+﻿highp mat2 mm2(in highp float a)
+{
+    highp float c = cos(a), s = sin(a);
+    return mat2(c,s,-s,c);
+}
+
+highp vec3 objmov(highp vec3 p)
+{
+    p.xz *= mm2(-TIME*3.4 + sin(TIME*1.11));
+    p.yz *= mm2(TIME*2.7 + cos(TIME*2.5));
+    return p;
+}
+
+highp float tri(in highp float x)
+{
+    return abs(fract(x)-0.5)-0.25;
+}
+highp float trids(in highp vec3 p)
+{
+    return max(tri(p.z),min(tri(p.x),tri(p.y)));
+}
+highp float tri2(in highp float x)
+{
+    return abs(fract(x)-0.5);
+}
+highp vec3 tri3(in highp vec3 p)
+{
+    return vec3( tri(p.z+tri(p.y*1.0)), tri(p.z+tri(p.x*1.05)), tri(p.y+tri(p.x*1.1)));
+}
+
+highp float triNoise3d(in highp vec3 p, in highp float spd)
+{
+    highp float z = 1.45;
+    highp float rz = 0.0;
+    highp vec3 bp = p;
+    for (highp float i=0.0; i<4.0; i++ )
+    {
+        highp vec3 dg = tri3(bp);
+        p += (dg+TIME*spd+10.1);
+        bp *= 1.65;
+        z *= 1.5;
+        p *= 0.9;
+        p.xz*= mat2( 0.970,  0.242, -0.242,  0.970 );
+
+        rz+= (tri2(p.z+tri2(p.x+tri2(p.y))))/z;
+        bp += 0.9;
+    }
+    return rz;
+}
+
+highp float map(highp vec3 p)
+{
+    p*= 1.5;
+    p = objmov(p);
+    highp float d = length(p)-1.0;
+    d -= trids(p*1.2)*0.7;
+    return d/1.5;
+}
+
+highp float map2(highp vec3 p)
+{
+    p = objmov(p);
+    return length(p)-1.3;
+}
+
+highp float march(in highp vec3 ro, in highp vec3 rd)
+{
+    highp float precis = 0.001;
+    highp float h=precis*2.0;
+    highp float d = 0.0;
+    for( highp int i=0; i<35; i++ )
+    {
+        if( abs(h)<precis || d>15 ) break;
+        d += h;
+        highp float res = map(ro+rd*d);
+        h = res;
+    }
+    return d;
+}
+
+highp vec3 normal(in highp vec3 p)
+{
+    highp vec2 e = vec2(-1.0, 1.0)*0.04;
+    return normalize(e.yxx*map(p + e.yxx) + e.xxy*map(p + e.xxy) + e.xyx*map(p + e.xyx) + e.yyy*map(p + e.yyy) );
+}
+
+highp float gradm(in highp vec3 p)
+{
+    highp float e = 0.06;
+    highp float d = map2(vec3(p.x,p.y-e,p.z))-map2(vec3(p.x,p.y+e,p.z));
+    d += map2(vec3(p.x-e,p.y,p.z))-map2(vec3(p.x+e,p.y,p.z));
+    d += map2(vec3(p.x,p.y,p.z-e))-map2(vec3(p.x,p.y,p.z+e));
+    return d;
+}
+
+//Main fireball
+highp float mapVol(highp vec3 p, in highp float spd)
+{
+    highp float f = smoothstep(0.0, 1.25, 1.7-(p.y + dot(p.xz,p.xz)*0.62));
+    highp float g = p.y;
+    p.y *= 0.27;
+    p.z += gradm(p*0.73)*3.5;
+    p.y += TIME*6.0;
+    highp float d = triNoise3d(p*vec3(0.3,0.27,0.3) - vec3(0,TIME*0.0,0),spd*0.7)*1.4 + 0.01;
+    d += max((g-0.0)*0.3,0.0);
+    d *= f;
+
+    return clamp(d,0.0,1.0);
+}
+
+highp vec3 marchVol( in highp vec3 ro, in highp vec3 rd, in highp float t, in highp float mt )
+{
+    highp vec4 rz = vec4(0);
+    t -= (dot(rd, vec3(0,1,0))+1.0);
+    highp float tmt = t +15.0;
+    for(highp int i=0; i<25; i++)
+    {
+        if(rz.a > 0.99)break;
+
+        highp vec3 pos = ro + t*rd;
+        highp float r = mapVol( pos,0.1 );
+        highp float gr =  clamp((r - mapVol(pos+ vec3(0.0,0.7,0.0),0.1))/0.3, 0.0, 1.0 );
+        highp vec3 lg = vec3(0.72,0.28,0.0)*1.2 + 1.3*vec3(0.55, 0.77, 0.9)*gr;
+        highp vec4 col = vec4(lg,r*r*r*2.5); //Could increase this to simulate entry
+        col *= smoothstep(t-0.0,t+0.2,mt);
+
+        pos.y *= 0.7;
+        pos.zx *= ((pos.y-5.0)*0.15 - 0.4);
+        highp float z2 = length(vec3(pos.x,pos.y*0.75 - 0.5,pos.z))-0.75;
+        col.a *= smoothstep(0.4,1.2,0.7-map2(vec3(pos.x,pos.y*0.17,pos.z)));
+        col.rgb *= col.a;
+        rz = rz + col*(1.0 - rz.a);
+
+        t += abs(z2)*0.1 + 0.12;
+        if (t>mt || t > tmt)break;
+    }
+
+    rz.g *= rz.w*0.9+0.12;
+    rz.r *= rz.w*0.5+0.48;
+    return clamp(rz.rgb, 0.0, 1.0);
+}
+
+// "Particles"
+highp float mapVol2(highp vec3 p, in highp float spd)
+{
+    p *= 1.3;
+    highp float f = smoothstep(0.2, 1.0, 1.3-(p.y+length(p.xz)*0.4));
+    p.y *= 0.05;
+    p.y += TIME*1.7;
+    highp float d = triNoise3d(p*1.1,spd);
+    d = clamp(d-0.15, 0.0, 0.75);
+    d *= d*d*d*d*47.0;
+    d *= f;
+
+    return d;
+}
+
+highp vec3 marchVol2( in highp vec3 ro, in highp vec3 rd, in highp float t, in highp float mt )
+{
+
+    highp vec3 bpos = ro +rd*t;
+    t += length(vec3(bpos.x,bpos.y,bpos.z))-1.0;
+    t -= dot(rd, vec3(0,1,0));
+    highp vec4 rz = vec4(0);
+    highp float tmt = t +1.5;
+    for(highp int i=0; i<25; i++)
+    {
+        if(rz.a > 0.99)break;
+
+        highp vec3 pos = ro + t*rd;
+        highp float r = mapVol2( pos,0.01 );
+        highp vec3 lg = vec3(0.7,0.3,0.2)*1.5 + 2.0*vec3(1,1,1)*0.75;
+        highp vec4 col = vec4(lg,r*r*r*3.0);
+        col *= smoothstep(t-0.25,t+0.2,mt);
+
+        highp float z2 = length(vec3(pos.x,pos.y*0.9,pos.z))-0.9;
+        col.a *= smoothstep(0.7,1.7, 1.0-map2(vec3(pos.x*1.1,pos.y*0.4,pos.z*1.1)));
+        col.rgb *= col.a;
+        rz = rz + col*(1.0 - rz.a);
+
+        t += z2*0.015 + abs(0.35-r)*0.09;
+        if (t>mt || t > tmt)break;
+
+    }
+
+    return clamp(rz.rgb, 0.0, 1.0);
+}
+
+// MIT Licensed hash From Dave_Hoskins (https://www.shadertoy.com/view/4djSRW)
+highp vec3 hash33(highp vec3 p)
+{
+    p = fract(p * vec3(443.8975,397.2973, 491.1871));
+    p += dot(p.zxy, p.yxz+19.27);
+    return fract(vec3(p.x * p.y, p.z*p.x, p.y*p.z));
+}
+
+highp vec3 stars(in highp vec3 p)
+{
+    highp vec3 c = vec3(0.0);
+    highp float res = UV.x*0.8;
+
+    for (highp float i=0.0;i<4.0;i++)
+    {
+        vec3 q = fract(p*(0.15*res))-0.5;
+        vec3 id = floor(p*(0.15*res));
+        vec2 rn = hash33(id).xy;
+        float c2 = 1.0-smoothstep(0.0,0.6,length(q));
+        c2 *= step(rn.x,0.0005+i*i*0.001);
+        c += c2*(mix(vec3(1.0,0.49,0.1),vec3(0.75,0.9,1.0),rn.y)*0.25+0.75);
+        p *= 1.4;
+    }
+    return c*c*0.65;
+}
+
+highp float curv(in highp vec3 p, in highp float w)
+{
+    highp vec2 e = vec2(-1.0, 1.0)*w;
+    highp float t1 = map(p + e.yxx), t2 = map(p + e.xxy);
+    highp float t3 = map(p + e.xyx), t4 = map(p + e.yyy);
+    return 1.0/e.y *(t1 + t2 + t3 + t4 - 4.0 * map(p));
+}
+
+void fragment()
+{
+    highp vec2 p = 2.0 * FRAGCOORD.xy / vec2(1024) - 1.0;
+    p.x*=UV.x/UV.y;
+    highp vec2 mo = vec2(0.5,0.5) / UV.xy-0.5;
+    mo = vec2(-0.27,0.31);
+    mo.x *= UV.x/UV.y;
+    highp float roz = 7.3;
+    highp vec3 ro = vec3(-1.5,0.5,roz);
+    highp vec3 rd = normalize(vec3(p,-1.5));
+    mo.x += sin(TIME*0.3 + sin(TIME*0.05))*0.03+0.03;
+    mo.y += sin(TIME*0.4 + sin(TIME*0.06))*0.03;
+    highp mat2 mx = mm2(mo.x*6.0);
+    highp mat2 my = mm2(mo.y*6.0);
+    ro.xz *= mx;rd.xz *= mx;
+    ro.xy *= my;rd.xy *= my;
+
+    float rz = march(ro,rd); //march geometry
+    highp vec3 col = stars(rd);
+    highp float maxT = rz;
+    if (rz > 15)
+    maxT = 25.0;
+    highp vec3 mv = marchVol(ro,rd, roz-1.5,maxT);
+
+    if ( rz < 15 )
+    {
+        highp vec3 pos = ro+rz*rd;
+        highp vec3 nor= normal( pos );
+        highp float crv = clamp(curv(pos, 0.3)*0.35,0.0,1.3);
+
+        highp vec3 col2 = vec3(1,0.1,0.02)*(crv*0.8+0.2)*0.5;
+        highp float frict = dot(pos, normalize(vec3(0.0,1.0,0.0)));
+        col = col2*(frict*0.3+0.7);
+
+        col += vec3(1,0.3,0.1)*(crv*0.7+0.3)*max((frict*0.5+0.5),0.0)*1.3;
+        col += vec3(0.8,0.8,0.5)*(crv*0.9+0.1)*pow(max(frict,0.0), 1.5)*1.9;
+        pos = objmov(pos);
+
+        col *= 1.2-mv;
+        col *= triNoise3d(pos*2.8,0.0)*0.25+0.45;
+        col = pow(col, vec3(1.5,1.2,1.2))*0.9;
+    }
+    col += mv;
+    col += marchVol2(ro,rd, roz-5.5,rz);
+    col = pow(col,vec3(1.4))*1.1;
+
+    COLOR = vec4( col, 1.0 );
+}

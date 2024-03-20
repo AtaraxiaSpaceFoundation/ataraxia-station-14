@@ -1,34 +1,19 @@
 ### Connecting dialog when you start up the game
-
-connecting-title = White Dream
-
-connecting-exit = Exit
-
-connecting-retry = Retry
-
-connecting-reconnect = Reconnect
-
-connecting-redial = Relaunch
-
-connecting-redial-wait = Please wait: { TOSTRING($time, "G3") }
-
-connecting-in-progress = Connecting to server...
-
-connecting-disconnected = Disconnected from server:
-
-connecting-tip = OH FUCK!
-
-connecting-version = 1.0
-
-connecting-fail-reason = Failed to connect to server:
-                         { $reason }
-
-connecting-state-NotConnecting = Not connecting
-
-connecting-state-ResolvingHost = Resolving host
-
-connecting-state-EstablishingConnection = Establishing connection
-
+connecting-title = Space Station 14
+connecting-exit = Выйти
+connecting-retry = Повторить
+connecting-reconnect = Переподключиться
+connecting-redial = Перезапустить
+connecting-redial-wait = Пожалуйста подождите: { TOSTRING($time, "G3") }
+connecting-in-progress = Подключение к серверу...
+connecting-disconnected = Отключен от сервера:
+connecting-tip = Не умирай!
+connecting-version = версия 0.1
+connecting-fail-reason =
+    Не удалось подключиться к серверу:
+        { $reason }
+connecting-state-NotConnecting = Не подключен
+connecting-state-ResolvingHost = Определение хоста
+connecting-state-EstablishingConnection = Установка соединения
 connecting-state-Handshake = Handshake
-
-connecting-state-Connected = Connected
+connecting-state-Connected = Подключен

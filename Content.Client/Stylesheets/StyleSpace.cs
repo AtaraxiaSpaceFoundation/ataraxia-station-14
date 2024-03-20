@@ -12,10 +12,10 @@ namespace Content.Client.Stylesheets
     {
         public static readonly Color SpaceRed = Color.FromHex("#960000");
 
-        public static readonly Color ButtonColorDefault = Color.FromHex("#232323");
-        public static readonly Color ButtonColorHovered = Color.FromHex("#2d2d2d");
-        public static readonly Color ButtonColorPressed = Color.FromHex("#0f0f0f");
-        public static readonly Color ButtonColorDisabled = Color.FromHex("#0f0f0f");
+        public static readonly Color ButtonColorDefault = Color.FromHex("#333333");
+        public static readonly Color ButtonColorHovered = Color.FromHex("#444444");
+        public static readonly Color ButtonColorPressed = Color.FromHex("#3e6c45");
+        public static readonly Color ButtonColorDisabled = Color.FromHex("#30313c");
 
         public static readonly Color ButtonColorCautionDefault = Color.FromHex("#640000");
         public static readonly Color ButtonColorCautionHovered = Color.FromHex("#960000");
@@ -26,15 +26,6 @@ namespace Content.Client.Stylesheets
 
         public StyleSpace(IResourceCache resCache) : base(resCache)
         {
-            var whiteRabbit = resCache.GetFont
-            (
-                new []
-                {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf"
-                },
-                10
-            );
-
             var notoSans10 = resCache.GetFont
             (
                 new []
@@ -64,7 +55,7 @@ namespace Content.Client.Stylesheets
 
             var progressBarForeground = new StyleBoxFlat
             {
-                BackgroundColor = new Color(0.25f, 0.50f, 0.25f)
+                BackgroundColor = new Color(0.25f, 0.25f, 0.25f)
             };
             progressBarForeground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
@@ -81,11 +72,11 @@ namespace Content.Client.Stylesheets
             Stylesheet = new Stylesheet(BaseRules.Concat(new StyleRule[]
             {
                 Element<Label>().Class(StyleClassLabelHeading)
-                    .Prop(Label.StylePropertyFont, whiteRabbit)
+                    .Prop(Label.StylePropertyFont, notoSansBold16)
                     .Prop(Label.StylePropertyFontColor, SpaceRed),
 
                 Element<Label>().Class(StyleClassLabelSubText)
-                    .Prop(Label.StylePropertyFont, whiteRabbit)
+                    .Prop(Label.StylePropertyFont, notoSans10)
                     .Prop(Label.StylePropertyFontColor, Color.DarkGray),
 
                 Element<PanelContainer>().Class(ClassHighDivider)
