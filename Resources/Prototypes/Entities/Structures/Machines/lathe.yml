@@ -707,6 +707,11 @@
       - ShellShotgunPractice
       - WeaponLaserCarbinePractice
       - WeaponDisablerPractice
+      - LightModuleRecipe
+      - LaserModuleRecipe
+      - FlameHiderModuleRecipe
+      - SilencerModuleRecipe
+      - AcceleratorModuleRecipe
     dynamicRecipes:
       - CartridgeLightRifleIncendiary
       - CartridgeMagnumIncendiary

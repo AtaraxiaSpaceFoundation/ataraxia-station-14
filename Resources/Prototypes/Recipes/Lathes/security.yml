@@ -649,3 +649,45 @@
      Plastic: 100
      Glass: 20
 
+- type: latheRecipe
+  id: LightModuleRecipe
+  result: LightModule
+  completetime: 5
+  materials:
+     Steel: 700
+     Plastic: 700
+     Glass: 500
+
+- type: latheRecipe
+  id: LaserModuleRecipe
+  result: LaserModule
+  completetime: 10
+  materials:
+     Steel: 1500
+     Plastic: 1000
+     Glass: 300
+
+- type: latheRecipe
+  id: FlameHiderModuleRecipe
+  result: FlameHiderModule
+  completetime: 15
+  materials:
+     Steel: 1000
+     Plastic: 1000
+
+- type: latheRecipe
+  id: SilencerModuleRecipe
+  result: SilencerModule
+  completetime: 15
+  materials:
+     Steel: 1000
+     Plastic: 1000
+
+- type: latheRecipe
+  id: AcceleratorModuleRecipe
+  result: AcceleratorModule
+  completetime: 30
+  materials:
+     Steel: 4500
+     Plastic: 2000
+     Glass: 1000
