@@ -1,16 +1,16 @@
+using Content.Server.Popups;
 using Content.Shared.Examine;
 using Content.Shared.Coordinates.Helpers;
-using Content.Server.Power.Components;
-using Content.Server.PowerCell;
 using Content.Shared.Interaction;
-using Content.Shared.Storage;
+using Content.Shared.Interaction.Events;
+using Content.Shared.Popups;
 
 namespace Content.Server.Holosign;
 
 public sealed class HolosignSystem : EntitySystem
 {
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly PopupSystem _popupSystem = default!;
 
 
     public override void Initialize()
@@ -18,19 +18,20 @@ public sealed class HolosignSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<HolosignProjectorComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
         SubscribeLocalEvent<HolosignProjectorComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<HolosignProjectorComponent, ComponentRemove>(OnComponentRemove);
+        SubscribeLocalEvent<HolosignProjectorComponent, UseInHandEvent>(OnUse);
     }
 
     private void OnExamine(EntityUid uid, HolosignProjectorComponent component, ExaminedEvent args)
     {
-        // TODO: This should probably be using an itemstatus
-        // TODO: I'm too lazy to do this rn but it's literally copy-paste from emag.
-        _powerCell.TryGetBatteryFromSlot(uid, out var battery);
-        var charges = UsesRemaining(component, battery);
-        var maxCharges = MaxUses(component, battery);
+        var charges = UsesRemaining(component);
+        var maxCharges = component.Uses;
+        var activeholo = ActiveHolo(component);
 
         using (args.PushGroup(nameof(HolosignProjectorComponent)))
         {
             args.PushMarkup(Loc.GetString("limited-charges-charges-remaining", ("charges", charges)));
+            args.PushMarkup(Loc.GetString("holoprojector-active-holo", ("activeholo", activeholo)));
 
             if (charges > 0 && charges == maxCharges)
             {
@@ -39,39 +40,58 @@ public sealed class HolosignSystem : EntitySystem
         }
     }
 
+    private void OnUse(EntityUid uid, HolosignProjectorComponent comp, UseInHandEvent args)
+    {
+        foreach (var sign in comp.Signs)
+        {
+            comp.Signs.Remove(sign);
+            QueueDel(sign);
+        }
+        _popupSystem.PopupEntity(Loc.GetString("holoprojector-delete-signs"), args.User, args.User, PopupType.Medium);
+    }
+
     private void OnBeforeInteract(EntityUid uid, HolosignProjectorComponent component, BeforeRangedInteractEvent args)
     {
+        if (component.Signs.Contains(args.Target)) // wd edit
+        {
+            QueueDel(args.Target);
+            component.Signs.Remove(args.Target);
+            return;
+        }
 
-        if (args.Handled
-            || !args.CanReach // prevent placing out of range
-            || HasComp<StorageComponent>(args.Target) // if it's a storage component like a bag, we ignore usage so it can be stored
-            || !_powerCell.TryUseCharge(uid, component.ChargeUse) // if no battery or no charge, doesn't work
-            )
+        if (args.Handled || !args.CanReach)
             return;
 
-        // places the holographic sign at the click location, snapped to grid.
-        // overlapping of the same holo on one tile remains allowed to allow holofan refreshes
+        if (component.Signs.Count >= component.Uses) // wd edit
+        {
+            _popupSystem.PopupEntity(Loc.GetString("holoprojector-uses-limit"), args.User, args.User, PopupType.Medium);
+            return;
+        }
+
         var holoUid = EntityManager.SpawnEntity(component.SignProto, args.ClickLocation.SnapToGrid(EntityManager));
         var xform = Transform(holoUid);
         if (!xform.Anchored)
-            _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)
+            _transform.AnchorEntity(holoUid, xform);
 
         args.Handled = true;
+        component.Signs.Add(holoUid); // WD EDIT
     }
 
-    private int UsesRemaining(HolosignProjectorComponent component, BatteryComponent? battery = null)
+    private void OnComponentRemove(EntityUid uid, HolosignProjectorComponent comp, ComponentRemove args) // wd edit
     {
-        if (battery == null ||
-            component.ChargeUse == 0f) return 0;
-
-        return (int) (battery.CurrentCharge / component.ChargeUse);
+        foreach (var sign in comp.Signs)
+        {
+            QueueDel(sign);
+        }
     }
 
-    private int MaxUses(HolosignProjectorComponent component, BatteryComponent? battery = null)
+    private int UsesRemaining(HolosignProjectorComponent component)
     {
-        if (battery == null ||
-            component.ChargeUse == 0f) return 0;
+        return (component.Uses - component.Signs.Count); // wd edit
+    }
 
-        return (int) (battery.MaxCharge / component.ChargeUse);
+    private int ActiveHolo(HolosignProjectorComponent component) // wd edit
+    {
+        return (component.Signs.Count); // wd edit
     }
 }
