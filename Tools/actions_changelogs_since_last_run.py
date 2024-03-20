@@ -103,7 +103,7 @@ def diff_changelog(old: dict[str, Any], cur: dict[str, Any]) -> Iterable[Changel
     Find all new entries not present in the previous publish.
     """
     old_entry_ids = {e["id"] for e in old["Entries"]}
-    return (e for e in cur["п»їEntries"] if e["id"] not in old_entry_ids)
+    return (e for e in cur["Entries"] if e["id"] not in old_entry_ids)
 
 
 def get_discord_body(content: str):
