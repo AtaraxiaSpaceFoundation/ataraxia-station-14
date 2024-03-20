@@ -84,8 +84,8 @@
         sound:
           collection: MetalBreak
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: DamageOnHighSpeedImpact
     damage:
       types:

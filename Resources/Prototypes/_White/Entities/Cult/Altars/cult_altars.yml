@@ -30,7 +30,7 @@
   - type: PylonVisuals
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: Glass
   - type: Destructible
     thresholds:
@@ -100,8 +100,8 @@
       map: [ "enum.CultCraftStructureVisualsLayers.Activated" ]
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:
@@ -159,8 +159,8 @@
       map: [ "enum.CultCraftStructureVisualsLayers.Activated" ]
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:
@@ -217,8 +217,8 @@
       map: [ "enum.CultCraftStructureVisualsLayers.Activated" ]
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:

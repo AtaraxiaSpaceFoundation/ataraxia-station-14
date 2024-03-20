@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: DefibrillatorCabinet
   name: defibrillator cabinet
   description: A small wall mounted cabinet designed to hold a defibrillator.
@@ -35,8 +35,8 @@
       containers:
         ItemCabinet: !type:ContainerSlot
     - type: Damageable
-      damageContainer: Inorganic
-      damageModifierSet: Metallic
+      damageContainer: StructuralInorganic
+      damageModifierSet: StructuralMetallic
     - type: Destructible
       thresholds:
         - trigger:
