@@ -17,7 +17,7 @@
   id: ClothingOuterBaseLarge
   components:
   - type: Item
-    size: Huge
+    size: Large
   - type: Clothing
     slots:
     - outerClothing
@@ -155,4 +155,4 @@
   id: ClothingOuterBaseMedium
   components:
   - type: Item
-    size: Huge
+    size: Large

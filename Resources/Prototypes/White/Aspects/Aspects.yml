@@ -258,6 +258,7 @@
       weight: 3
       startAudio:
         path: /Audio/White/Aspects/accent.ogg
+      forbidden: true
     - type: WhisperAspect
 
 - type: entity

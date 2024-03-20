@@ -202,7 +202,7 @@
     slots:
     - back
   - type: Reflect
-    reflectProb: 0.4
+    reflectProb: 0.33
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
 

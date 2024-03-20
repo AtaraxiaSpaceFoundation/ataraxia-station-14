@@ -2,6 +2,7 @@ using Content.Server.Body.Systems;
 using Content.Shared.Body.Organ;
 using Content.Shared.Construction;
 using Content.Shared._White.CheapSurgery;
+using Content.Shared.Changeling;
 
 namespace Content.Server._White.Construction.Completions;
 
@@ -20,7 +21,8 @@ public sealed partial class Surgery : IGraphAction
             return;
         }
 
-        if (entityManager.TryGetComponent<OrganComponent>(surgeryComponent.OrganUid, out var organComponent))
+        if (entityManager.TryGetComponent<OrganComponent>(surgeryComponent.OrganUid, out var organComponent) &&
+            !entityManager.HasComponent<ChangelingComponent>(uid))
             bodySystem.RemoveOrgan(surgeryComponent.OrganUid, organComponent);
 
         entityManager.RemoveComponent<ActiveSurgeryComponent>(uid);

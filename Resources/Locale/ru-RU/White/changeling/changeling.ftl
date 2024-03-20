@@ -1,4 +1,4 @@
-﻿chat-manager-changeling-channel-name = УЛЕЙ
+chat-manager-changeling-channel-name = УЛЕЙ
 hud-chatbox-select-channel-Changeling = Улей
 chat-manager-send-changeling-chat-wrap-message = [bold]\[УЛЕЙ\][/bold] [font size=13][italic][bold]{ $player }[/bold] шипит, "{ $message }"[/italic][/font]
 
@@ -21,6 +21,7 @@ changeling-popup-cant-sting = Мы не можем ужалить это!
 changeling-popup-transform-no-dna = У нас нет поглощенного ДНК!
 changeling-popup-cant-transform-someone = Мы не можем превратит это!
 changeling-popup-transform-not-effective = Вирус перевоплощения не сработал!
+changeling-popup-transform-too-far = Цель слишком далеко!
 
 changeling-popup-already-lesser-form = Мы уже заняли примитивную форму жизни!
 

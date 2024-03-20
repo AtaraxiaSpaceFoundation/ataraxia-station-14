@@ -248,8 +248,6 @@
     Plastic: 15
     Steel: 10
     Glass: 5
-    Plasma: 10
-    Silver: 5
 
 - type: latheRecipe
   id: TargetHuman

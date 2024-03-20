@@ -194,7 +194,7 @@
     sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
     heldPrefix: sawn
   - type: Gun
-    fireRate: 4
+    fireRate: 2
   - type: BallisticAmmoProvider
     capacity: 2
     autoCycle: true
