@@ -31,6 +31,9 @@
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
+      - !type:GenericStatusEffect
+        key: BlurryVision
+        component: BlurryVision
       - !type:Jitter
       - !type:GenericStatusEffect
         key: Stun
@@ -72,6 +75,9 @@
             Poison: 2 # this is added to the base damage of the meth.
             Asphyxiation: 2
       - !type:Jitter
+      - !type:GenericStatusEffect
+        key: BlurryVision
+        component: BlurryVision
       - !type:GenericStatusEffect
         key: Stun
         time: 1
