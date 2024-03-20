@@ -1167,3 +1167,79 @@
             Heat: -3.0
             Shock: -3.0
             Caustic: -1.0
+
+- type: reagent
+  id: Synthflesh
+  name: reagent-name-synthflesh
+  desc: reagent-desc-synthflesh
+  flavor: metallic
+  physicalDesc: reagent-physical-desc-gelatinous
+  color: "#E0D4D3"
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          groups:
+            Brute: -2.5
+          types:
+            Heat: -2.5
+            Shock: -2.5
+            Cold: -2.5
+            Poison: 0.66
+  slippery: true
+
+- type: reagent
+  id: SilverSulfadiazine
+  name: reagent-name-silversulfadiazine
+  desc: reagent-desc-silversulfadiazine
+  flavor: medicine
+  physicalDesc: reagent-physical-desc-creamy
+  color: "#c2c22b"
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          types:
+            Heat: -1
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        conditions:
+        damage:
+          types:
+            Heat: -1.0
+            Poison: 0.5
+
+- type: reagent
+  id: StypticPowder
+  name: reagent-name-stypticpowder
+  desc: reagent-desc-stypticpowder
+  flavor: medicine
+  physicalDesc: reagent-physical-desc-powdery
+  color: "#c2485e"
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          groups:
+            Brute: -1
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        conditions:
+        damage:
+          groups:
+            Brute: -1
+          types:
+            Poison: 0.5
