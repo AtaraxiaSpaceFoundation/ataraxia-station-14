@@ -34,9 +34,12 @@
   - type: Felinid #since this just adds an action...
   - type: InteractionPopup
     successChance: 1
-    interactSuccessString: hugging-success-generic
-    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
-    messagePerceivedByOthers: hugging-success-generic-others
+    interactSuccessString: petting-success-cat
+    interactFailureString: petting-failure-generic
+    messagePerceivedByOthers: petting-success-cat-others
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/cat_meow.ogg
   - type: SelfHeal
     damageContainers:
       - Biological

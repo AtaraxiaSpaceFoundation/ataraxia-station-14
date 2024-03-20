@@ -61,3 +61,5 @@ petting-failure-medibot = Вы тянетесь погладить { $target }, 
 hugging-success-generic = Вы обнимаете { $target }.
 hugging-success-generic-others = { CAPITALIZE($user) } обнимает { $target }.
 hugging-success-generic-target = { CAPITALIZE($user) } обнимает вас.
+
+petting-success-cat-others = { CAPITALIZE($user) } гладит { $target } по { POSS-ADJ($target) } маленькой пушистой голове.
