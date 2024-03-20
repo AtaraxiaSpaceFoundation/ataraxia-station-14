@@ -60,3 +60,13 @@
   - type: Sprite
     state: silencer
   - type: Appearance
+
+- type: entity
+  id: AcceleratorModule
+  name: "accelerator module"
+  parent: BaseModule
+  components:
+  - type: Item
+  - type: Sprite
+    state: accelerator
+  - type: Appearance

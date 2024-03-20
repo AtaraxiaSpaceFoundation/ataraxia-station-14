@@ -544,6 +544,14 @@ public abstract partial class SharedGunSystem : EntitySystem
         RefreshModifiers(weapon);
     }
 
+    public void setFireRate(EntityUid weapon, float fireRate)
+    {
+        TryComp<GunComponent>(weapon, out var gunComponent);
+        gunComponent!.FireRate = fireRate;
+
+        RefreshModifiers(weapon);
+    }
+
     public void setSound(EntityUid weapon, SoundSpecifier sound)
     {
         TryComp<GunComponent>(weapon, out var gunComponent);

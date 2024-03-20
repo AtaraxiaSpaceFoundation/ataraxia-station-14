@@ -18,6 +18,9 @@
     },
     {
       "name": "silencer"
+    },
+    {
+      "name": "accelerator"
     }
   ]
 }

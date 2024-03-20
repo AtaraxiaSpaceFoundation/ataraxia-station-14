@@ -5,38 +5,34 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._White.WeaponsModules;
 
-public sealed partial class WeaponModulesVisuals : EntitySystem
+public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModulesVisualsComponent>
 {
-    private void Initialize()
+
+    [Dependency] private readonly PointLightSystem _lightSystem = default!;
+
+    protected override void OnAppearanceChange(EntityUid uid, WeaponModulesVisualsComponent component, ref AppearanceChangeEvent args)
     {
-        base.Initialize();
+        base.OnAppearanceChange(uid, component, ref args);
 
-        SubscribeLocalEvent<WeaponModulesVisualsComponent, ComponentInit>(ComponentInit);
-        SubscribeLocalEvent<WeaponModulesVisualsComponent, AppearanceChangeEvent>(onModuleVisualChange);
-    }
+        if(args.Sprite == null)
+            return;
 
-    private void ComponentInit(EntityUid uid, WeaponModulesVisualsComponent component, ComponentInit args)
-    {
-        if (!TryComp<SpriteComponent>(uid, out var sprite)) return;
+        args.Sprite.LayerSetVisible(ModuleVisualState.Module, false);
 
-        if (sprite.LayerMapTryGet(ModuleVisualState.Laser, out _))
+        if (AppearanceSystem.TryGetData<string>(uid, ModuleVisualState.Module, out var module, args.Component) && module.Length != 0 && module != "none")
         {
-            sprite.LayerSetState(ModuleVisualState.Laser, $"laser");
-            sprite.LayerSetVisible(ModuleVisualState.Laser, false);
+            args.Sprite.LayerSetState(ModuleVisualState.Module, module);
+            args.Sprite.LayerSetVisible(ModuleVisualState.Module, true);
+        }
+
+        if (AppearanceSystem.TryGetData(uid, Modules.Light, out var data, args.Component))
+        {
+            if (TryComp<PointLightComponent>(uid, out var pointLightComponent))
+            {
+                if(!pointLightComponent.Enabled)
+                    return;
+                _lightSystem.SetMask("/Textures/White/Effects/LightMasks/lightModule.png", pointLightComponent!);
+            }
         }
     }
-
-    private void onModuleVisualChange(EntityUid uid, WeaponModulesVisualsComponent component, ref AppearanceChangeEvent args)
-    {
-        var sprite = args.Sprite;
-
-        if (sprite == null) return;
-
-        if (sprite.LayerMapTryGet(ModuleVisualState.Laser, out _))
-        {
-            sprite.LayerSetVisible(ModuleVisualState.Laser, true);
-            sprite.LayerSetState(ModuleVisualState.Laser, $"laser");
-        }
-    }
-
 }

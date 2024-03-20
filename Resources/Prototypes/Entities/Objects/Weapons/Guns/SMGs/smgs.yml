@@ -117,6 +117,9 @@
           map: ["enum.GunVisualLayers.Base"]
         - state: mag-0
           map: ["enum.GunVisualLayers.Mag"]
+        - state: laser
+          sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+          map: [ "enum.ModuleVisualState.Module" ]
     - type: Clothing
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
     - type: Gun
@@ -126,6 +129,7 @@
         path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
       availableModes:
         - FullAuto
+    - type: WeaponModules
     - type: ItemSlots
       slots:
         gun_magazine:
@@ -144,10 +148,25 @@
           whitelist:
             tags:
               - CartridgePistol
+        gun_modules:
+          name: Modules
+          priority: 2
+          whitelist:
+            tags:
+            - BaseModule
+    - type: ContainerContainer
+      containers:
+        gun_magazine: !type:ContainerSlot
+        gun_chamber: !type:ContainerSlot
+        gun_modules: !type:ContainerSlot
     - type: MagazineVisuals
       magState: mag
       steps: 1
       zeroVisible: true
+    - type: WeaponModulesVisuals
+    - type: PointLight
+      enabled: false
+      autoRot: true
     - type: Appearance
 
 - type: entity
@@ -216,6 +235,9 @@
       - state: mag-unshaded-0
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
+      - state: laser
+        sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+        map: [ "enum.ModuleVisualState.Module" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
   - type: ChamberMagazineAmmoProvider
@@ -225,6 +247,7 @@
     selectedMode: FullAuto
     availableModes:
     - FullAuto
+  - type: WeaponModules
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -243,10 +266,24 @@
         whitelist:
           tags:
             - CartridgePistol
+      gun_modules:
+        name: Modules
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 6
     zeroVisible: true
+  - type: WeaponModulesVisuals
+  - type: PointLight
+    enabled: false
+    autoRot: true
   - type: Appearance
 
 # Rubber
@@ -274,6 +311,12 @@
           whitelist:
             tags:
               - CartridgePistol
+        gun_modules:
+          name: Modules
+          priority: 2
+          whitelist:
+            tags:
+            - BaseModule
 
 - type: entity
   name: Vector

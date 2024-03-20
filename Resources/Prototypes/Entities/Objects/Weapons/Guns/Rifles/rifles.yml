@@ -72,7 +72,8 @@
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
     - state: laser
-      map: [ "enum.ModuleVisualState.Laser" ]
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.Module" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
@@ -114,6 +115,9 @@
     steps: 1
     zeroVisible: true
   - type: WeaponModulesVisuals
+  - type: PointLight
+    enabled: false
+    autoRot: true
   - type: Appearance
 
 - type: entity
@@ -172,6 +176,9 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
+    - state: laser
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.Module" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
@@ -195,14 +202,25 @@
         whitelist:
           tags:
           - CartridgeRifle
+      gun_modules:
+        name: Modules
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
+  - type: WeaponModulesVisuals
+  - type: PointLight
+    enabled: false
+    autoRot: true
   - type: Appearance
 
 - type: entity
@@ -229,3 +247,9 @@
         whitelist:
           tags:
             - CartridgeRifle
+      gun_modules:
+        name: Modules
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
