@@ -535,7 +535,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         Dirty(gun);
     }
-
+    // WD EDIT
     public void setProjectileSpeed(EntityUid weapon, float projectileSpeed)
     {
         TryComp<GunComponent>(weapon, out var gunComponent);
@@ -567,7 +567,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         RefreshModifiers(weapon);
     }
-
+// WD EDIT END
     protected abstract void CreateEffect(EntityUid uid, MuzzleFlashEvent message, EntityUid? user = null);
     /// <summary>
     /// Used for animated effects on the client.
