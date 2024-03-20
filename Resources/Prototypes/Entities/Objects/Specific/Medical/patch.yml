@@ -1,0 +1,68 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BasePatch
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/patch.rsi
+    layers:
+    - state: patch
+    - state: patch1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: Item
+    sprite: Objects/Specific/Medical/patch.rsi
+  - type: SolutionContainerManager
+    solutions:
+      patch:
+        maxVol: 40
+  - type: RefillableSolution
+    solution: patch
+  - type: ExaminableSolution
+    solution: patch
+  - type: Appearance
+  - type: SolutionContainerVisuals
+  - type: Patch
+    OnlyMobs: false
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  name: patch
+  parent: BasePatch
+  description: a medicated patch that can deliver drugs directly into the bloodstream through the layers of the skin.
+  id: Patch
+  components:
+  - type: StaticPrice
+    price: 10
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: patch
+
+- type: entity
+  name: brute patch
+  parent: Patch
+  description: This innovative medical patch utilizes advanced biomimetic technology to significantly accelerate the healing of minor cuts and scrapes.
+  id: BrutePatch
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      patch:
+        maxVol: 40
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 10
+
+- type: entity
+  name: burn patch
+  parent: Patch
+  description: This type of patch contains a drug reservoir made of a substance that heals burns.
+  id: BurnPatch
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      patch:
+        maxVol: 40
+        reagents:
+        - ReagentId: Dermaline
+          Quantity: 10
