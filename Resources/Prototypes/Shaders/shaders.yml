@@ -119,3 +119,8 @@
   id: ATM
   kind: source
   path: "/Textures/Shaders/Ohio/atm.swsl"
+
+- type: shader
+  id: Cyberglitch
+  kind: source
+  path: "/Textures/Shaders/White/cyberglitch.swsl"

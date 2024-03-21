@@ -1,0 +1,10 @@
+maggloves-ready = Gloves are ready to use.
+maggloves-ready-in = Gloves will be ready in
+research-technology-lightweight-magnets = Lightweight Magnets
+research-technology-advanced-grips = Advanced Grips
+maggloves-not-ready = The gloves are not ready yet
+maggloves-already-active = The gloves are already active
+maggloves-enabled-till = The gloves are enabled for
+maggloves-cant-strip = Magnetic gloves are strongly attached to the item
+maggloves-activated = Magnetic gloves activated
+maggloves-deactivated = Magnetic gloves deactivated

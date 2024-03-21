@@ -34,7 +34,7 @@
         layer:
         - GlassLayer
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: Glass
   - type: Destructible
     thresholds:

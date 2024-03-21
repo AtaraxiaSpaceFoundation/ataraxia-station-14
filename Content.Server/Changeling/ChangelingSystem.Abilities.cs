@@ -4,6 +4,8 @@ using Content.Server.Administration.Systems;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Server.Borer;
+using Content.Server.Carrying;
 using Content.Server.Cuffs;
 using Content.Server.DoAfter;
 using Content.Server.Emp;
@@ -23,6 +25,7 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._White.Chaplain;
 using Content.Shared._White.Overlays;
 using Content.Shared.Actions;
+using Content.Shared.Borer;
 using Content.Shared.Changeling;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Cuffs.Components;
@@ -35,6 +38,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Implants.Components;
+using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Miracle.UI;
 using Content.Shared.Mobs;
@@ -85,6 +89,8 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly EmpSystem _empSystem = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly ServerBorerSystem _borer = default!;
+    [Dependency] private readonly CarryingSystem _carrying = default!;
 
     private void InitializeAbilities()
     {
@@ -376,6 +382,13 @@ public sealed partial class ChangelingSystem
         var humanData = component.AbsorbedEntities[selectedDna];
         var target = GetEntity(args.Target);
         var user = GetEntity(args.Entity);
+
+        if (!Transform(user).Coordinates.InRange(EntityManager, _transform, Transform(target).Coordinates,
+                SharedInteractionSystem.InteractionRange))
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-popup-transform-too-far"), user, user);
+            return;
+        }
 
         if (!TryComp<ActorComponent>(uid, out var actorComponent))
             return;
@@ -757,6 +770,8 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 5))
             return;
 
+        BeforeTransform(args.User);
+
         var polymorphEntity = _polymorph.PolymorphEntity(args.User, "MonkeyChangeling");
 
         if (polymorphEntity == null)
@@ -883,6 +898,8 @@ public sealed partial class ChangelingSystem
         if (!HasComp<HumanoidAppearanceComponent>(target) && !humanoidOverride)
             return null;
 
+        BeforeTransform(target);
+
         var polymorphEntity = _polymorph.PolymorphEntity(target, transformData.EntityPrototype.ID);
 
         if (polymorphEntity == null)
@@ -925,6 +942,15 @@ public sealed partial class ChangelingSystem
         _action.GrantContainedActions(polymorphEntity.Value, polymorphEntity.Value);
 
         return polymorphEntity;
+    }
+
+    private void BeforeTransform(EntityUid target)
+    {
+        if (TryComp(target, out BorerHostComponent? host) && host.BorerContainer.Count > 0)
+            _borer.GetOut(host.BorerContainer.ContainedEntities[0]);
+
+        if (TryComp(target, out BeingCarriedComponent? beingCarried))
+            _carrying.DropCarried(beingCarried.Carrier, target);
     }
 
     private void TransferComponents(EntityUid from, EntityUid to)

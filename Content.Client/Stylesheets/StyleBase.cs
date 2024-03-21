@@ -43,20 +43,11 @@ namespace Content.Client.Stylesheets
 
         protected StyleBase(IResourceCache resCache)
         {
-            var wariowareinc = resCache.GetFont
-            (
-                new []
-                {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf"
-                },
-                12
-            );
-
             var notoSans12 = resCache.GetFont
             (
                 new []
                 {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf",
+                    "/Fonts/IBMPlexSans/IBMPlexSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -66,7 +57,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Italic.ttf",
+                    "/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -168,7 +159,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(null, null, null, null),
                     new[]
                     {
-                        new StyleProperty("font", wariowareinc),
+                        new StyleProperty("font", notoSans12),
                     }),
 
                 // Default font.
@@ -176,7 +167,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(null, new[] {StyleClassItalic}, null, null),
                     new[]
                     {
-                        new StyleProperty("font", wariowareinc),
+                        new StyleProperty("font", notoSans12Italic),
                     }),
 
                 // Window close button base texture.
@@ -186,7 +177,7 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#1e1e1e")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#9e9e9e")),
                     }),
                 // Window close button hover.
                 new StyleRule(
@@ -202,7 +193,7 @@ namespace Content.Client.Stylesheets
                         new[] {TextureButton.StylePseudoClassPressed}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#050505")),
                     }),
 
                 // Scroll bars

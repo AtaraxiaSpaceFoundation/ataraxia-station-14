@@ -15,7 +15,7 @@
 
             <PanelContainer VerticalExpand="True" MinSize="0 200">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#212723" />
+                    <gfx:StyleBoxFlat BackgroundColor="#050505" />
                 </PanelContainer.PanelOverride>
                 <ScrollContainer HorizontalExpand="True" MinSize="0 200">
                     <!-- Initially empty, when server sends state data this will have container contents and fill volume.-->
@@ -39,7 +39,7 @@
             <!-- Buffer info -->
             <PanelContainer VerticalExpand="True" MinSize="0 200">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#212723" />
+                    <gfx:StyleBoxFlat BackgroundColor="#050505" />
                 </PanelContainer.PanelOverride>
 
                 <ScrollContainer HorizontalExpand="True" MinSize="0 200">
@@ -61,7 +61,7 @@
 
             <PanelContainer VerticalExpand="True" MinSize="0 200">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#212723" />
+                    <gfx:StyleBoxFlat BackgroundColor="#050505" />
                 </PanelContainer.PanelOverride>
 
                 <ScrollContainer HorizontalExpand="True" MinSize="0 200">
@@ -86,7 +86,7 @@
             <!-- Wrap the packaging info-->
             <PanelContainer>
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#212723" />
+                    <gfx:StyleBoxFlat BackgroundColor="#050505" />
                 </PanelContainer.PanelOverride>
 
                 <!-- Packaging Info -->

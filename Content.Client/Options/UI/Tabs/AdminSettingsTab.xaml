@@ -25,6 +25,7 @@
             <BoxContainer Orientation="Horizontal"
                           Align="End"
                           HorizontalExpand="True"
+                          Margin="8 8"
                           VerticalExpand="True">
                 <Button Name="ResetButton"
                         Text="{Loc 'ui-options-reset-all'}"

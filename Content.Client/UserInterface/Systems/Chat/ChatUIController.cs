@@ -302,8 +302,7 @@ public sealed class ChatUIController : UIController
 
                 chatSize = Vector2Utils.ParseVector2FromString(chatSizeRaw, ';');
 
-                //БЛЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯТЬ
-                if (chatSize.X <= 0 || chatSize.Y <= 0 || chatSize.X > 1000 || chatSize.Y > 1000)
+                if (chatSize.X <= 0 || chatSize.X > 1000 || chatSize.Y >= 0)
                 {
                     chatSize = Vector2Utils.ParseVector2FromString(WhiteCVars.DefaultChatSize.DefaultValue, ';');
                     _config.SetCVar(WhiteCVars.DefaultChatSize, WhiteCVars.DefaultChatSize.DefaultValue);

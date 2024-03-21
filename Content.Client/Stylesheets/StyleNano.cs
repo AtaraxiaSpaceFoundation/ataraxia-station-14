@@ -29,9 +29,9 @@ namespace Content.Client.Stylesheets
                 // Ew, but ok
                 new[]
                 {
-                    $"/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf",
+                    $"/Fonts/IBMPlexSans/IBMPlexSans-{variation}.ttf",
                     $"/Fonts/NotoSans/NotoSansSymbols-{sv}.ttf",
-                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
+                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf",
                 },
                 size
             );
@@ -67,6 +67,7 @@ namespace Content.Client.Stylesheets
         public const string StyleClassFuckyWuckyBackground = "FuckyWuckyBackground";
         public const string StyleClassGayShitBackground = "GayShitBackground";
         public const string StyleClassLobbyGayBackground = "LobbyGayBackground";
+        public const string StyleLobbyShadedBackground = "LobbyShadedBackground";
 
         public const string StyleClassSliderRed = "Red";
         public const string StyleClassSliderGreen = "Green";
@@ -74,6 +75,9 @@ namespace Content.Client.Stylesheets
         public const string StyleClassSliderWhite = "White";
 
         public const string StyleClassLabelHeadingBigger = "LabelHeadingBigger";
+        // WD-EDIT start
+        public const string StyleClassLabelHeadingFuckingBigger = "LabelHeadingFuckingBigger";
+        // WD-EDIT end
         public const string StyleClassLabelKeyText = "LabelKeyText";
         public const string StyleClassLabelSecondaryColor = "LabelSecondaryColor";
         public const string StyleClassLabelBig = "LabelBig";
@@ -86,28 +90,28 @@ namespace Content.Client.Stylesheets
         public const string StyleClassPopupMessageLarge = "PopupMessageLarge";
         public const string StyleClassPopupMessageLargeCaution = "PopupMessageLargeCaution";
 
-        public static readonly Color PanelDark = Color.FromHex("#0a0a0a");
+        public static readonly Color PanelDark = Color.FromHex("#1E1E22");
 
-        public static readonly Color NanoGold = Color.FromHex("#76428a");
-        public static readonly Color GoodGreenFore = Color.FromHex("#006400");
-        public static readonly Color ConcerningOrangeFore = Color.FromHex("#99461d");
-        public static readonly Color DangerousRedFore = Color.FromHex("#1e1e1e");
-        public static readonly Color DisabledFore = Color.FromHex("#5A5A5A");
+        public static readonly Color NanoGold = Color.FromHex("#c1c3c7");
+        public static readonly Color GoodGreenFore = Color.FromHex("#618e71");
+        public static readonly Color ConcerningOrangeFore = Color.FromHex("#f1b959");
+        public static readonly Color DangerousRedFore = Color.FromHex("#5C4D5B");
+        public static readonly Color DisabledFore = Color.FromHex("#26292E");
 
-        public static readonly Color ButtonColorDefault = Color.FromHex("#232323");
-        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#640000");
-        public static readonly Color ButtonColorHovered = Color.FromHex("#2d2d2d");
-        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#960000");
-        public static readonly Color ButtonColorPressed = Color.FromHex("#0f0f0f");
-        public static readonly Color ButtonColorDisabled = Color.FromHex("#0f0f0f");
+        public static readonly Color ButtonColorDefault = Color.FromHex("#29282f");
+        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#992327");
+        public static readonly Color ButtonColorHovered = Color.FromHex("#3f3d48");
+        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#4D5D53");
+        public static readonly Color ButtonColorPressed = Color.FromHex("#000000");
+        public static readonly Color ButtonColorDisabled = Color.FromHex("#000000");
 
-        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#99461d");
-        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cc5b27");
-        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#662e13");
-        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#33170a");
+        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#ab3232");
+        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cf2f2f");
+        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#3e6c45");
+        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#602a2a");
 
-        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#006400");
-        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#009600");
+        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#3E6C45");
+        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#31843E");
 
         public static readonly Color ButtonColorPurpleDefault = Color.FromHex("#4a2eab");
         public static readonly Color ButtonColorPurpleHovered = Color.FromHex("#654cbf");
@@ -118,24 +122,24 @@ namespace Content.Client.Stylesheets
         public static readonly Color PointMagenta = Color.FromHex("#FF00FF");
 
         // Context menu button colors
-        public static readonly Color ButtonColorContext = Color.FromHex("#1119");
+        public static readonly Color ButtonColorContext = Color.FromHex("#26292E99");
         public static readonly Color ButtonColorContextHover = Color.FromHex("#6E8476");
-        public static readonly Color ButtonColorContextPressed = Color.FromHex("#879B8F");
-        public static readonly Color ButtonColorContextDisabled = Color.FromHex("#262E29");
+        public static readonly Color ButtonColorContextPressed = Color.FromHex("#878F9B");
+        public static readonly Color ButtonColorContextDisabled = Color.FromHex("#26292E");
 
         // Examine button colors
         public static readonly Color ExamineButtonColorContext = Color.Transparent;
         public static readonly Color ExamineButtonColorContextHover = Color.FromHex("#6E8476");
-        public static readonly Color ExamineButtonColorContextPressed = Color.FromHex("#879B8F");
-        public static readonly Color ExamineButtonColorContextDisabled = Color.FromHex("#262E29");
+        public static readonly Color ExamineButtonColorContextPressed = Color.FromHex("#878F9B");
+        public static readonly Color ExamineButtonColorContextDisabled = Color.FromHex("#26292E");
 
         // UI Panel colors
-        public static readonly Color PanelColorDark = Color.FromHex("#0f0f0f");
+        public static readonly Color PanelColorDark = Color.FromHex("#1B1B21");
 
         // Fancy Tree elements
-        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#141414");
-        public static readonly Color FancyTreeOddRowColor = FancyTreeEvenRowColor * new Color(0.8f, 0.9f, 0.8f);
-        public static readonly Color FancyTreeSelectedRowColor = new Color(55, 80, 68);
+        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#31313B");
+        public static readonly Color FancyTreeOddRowColor = FancyTreeEvenRowColor * new Color(0.8f, 0.8f, 0.8f);
+        public static readonly Color FancyTreeSelectedRowColor = new Color(55, 55, 55);
 
         //Used by the APC and SMES menus
         public const string StyleClassPowerStateNone = "PowerStateNone";
@@ -173,22 +177,27 @@ namespace Content.Client.Stylesheets
             var notoSansBold16 = resCache.NotoStack(variation: "Bold", size: 16);
             var notoSansBold18 = resCache.NotoStack(variation: "Bold", size: 18);
             var notoSansBold20 = resCache.NotoStack(variation: "Bold", size: 20);
+
+            var awesomeBigFuckingFont = resCache.NotoStack(variation: "Regular", size: 20);
+
             var notoSansMono = resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12);
             var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Nano/window_header.png");
             var windowHeader = new StyleBoxTexture
             {
                 Texture = windowHeaderTex,
                 PatchMarginBottom = 3,
-                ExpandMarginBottom = 3,
-                ContentMarginBottomOverride = 0
+                ExpandMarginBottom = 2,
+                ContentMarginBottomOverride = 0,
+                Mode = StyleBoxTexture.StretchMode.Tile
             };
             var windowHeaderAlertTex = resCache.GetTexture("/Textures/Interface/Nano/window_header_alert.png");
             var windowHeaderAlert = new StyleBoxTexture
             {
                 Texture = windowHeaderAlertTex,
                 PatchMarginBottom = 3,
-                ExpandMarginBottom = 3,
-                ContentMarginBottomOverride = 0
+                ExpandMarginBottom = 2,
+                ContentMarginBottomOverride = 0,
+                Mode = StyleBoxTexture.StretchMode.Tile
             };
             var windowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/gay_shit.png");
             var windowBackground = new StyleBoxTexture
@@ -196,7 +205,7 @@ namespace Content.Client.Stylesheets
                 Texture = windowBackgroundTex,
                 Mode = StyleBoxTexture.StretchMode.Tile
             };
-            windowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            windowBackground.SetPatchMargin(StyleBox.Margin.All, 6);
             windowBackground.SetExpandMargin(StyleBox.Margin.All, -1);
 
             var borderedWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background_bordered.png");
@@ -204,7 +213,8 @@ namespace Content.Client.Stylesheets
             {
                 Texture = borderedWindowBackgroundTex,
             };
-            borderedWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            borderedWindowBackground.SetPatchMargin(StyleBox.Margin.All, 3);
+            borderedWindowBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             var fuckyWuckyBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/fucky_wucky.png");
             var fuckyWuckyBackground = new StyleBoxTexture
@@ -217,6 +227,16 @@ namespace Content.Client.Stylesheets
             fuckyWuckyBackground.SetExpandMargin(StyleBox.Margin.All, -4);
             fuckyWuckyBackground.SetContentMarginOverride(StyleBox.Margin.All, 8);
 
+            var lobbyShadedBackground = new StyleBoxTexture
+            {
+                Texture = resCache.GetTexture("/Textures/Interface/Nano/shaded_lobby.png"),
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            lobbyShadedBackground.SetPatchMargin(StyleBox.Margin.All, 4);
+            lobbyShadedBackground.SetExpandMargin(StyleBox.Margin.All, -4);
+            lobbyShadedBackground.SetContentMarginOverride(StyleBox.Margin.All, 4);
+
             var gayShitBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/gay_shit.png");
             var gayShitBackground = new StyleBoxTexture
             {
@@ -224,7 +244,7 @@ namespace Content.Client.Stylesheets
                 Mode = StyleBoxTexture.StretchMode.Tile
             };
 
-            gayShitBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            gayShitBackground.SetPatchMargin(StyleBox.Margin.All, 6);
             gayShitBackground.SetExpandMargin(StyleBox.Margin.All, -2);
 
             var lobbyGayBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/lobby_gay.png");
@@ -242,7 +262,8 @@ namespace Content.Client.Stylesheets
             {
                 Texture = borderedWindowBackgroundTex,
             };
-            contextMenuBackground.SetPatchMargin(StyleBox.Margin.All, ContextMenuElement.ElementMargin);
+            contextMenuBackground.SetPatchMargin(StyleBox.Margin.All, 3);
+            contextMenuBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             var invSlotBgTex = resCache.GetTexture("/Textures/Interface/Inventory/inv_slot_background.png");
             var invSlotBg = new StyleBoxTexture
@@ -264,7 +285,7 @@ namespace Content.Client.Stylesheets
             {
                 Texture = borderedTransparentWindowBackgroundTex,
             };
-            borderedTransparentWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            borderedTransparentWindowBackground.SetPatchMargin(StyleBox.Margin.All, 3);
 
             var hotbarBackground = new StyleBoxTexture
             {
@@ -286,7 +307,7 @@ namespace Content.Client.Stylesheets
             {
                 Texture = buttonRectTex
             };
-            buttonRect.SetPatchMargin(StyleBox.Margin.All, 2);
+            buttonRect.SetPatchMargin(StyleBox.Margin.All, 3);
             buttonRect.SetPadding(StyleBox.Margin.All, 2);
             buttonRect.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             buttonRect.SetContentMarginOverride(StyleBox.Margin.Horizontal, 2);
@@ -312,7 +333,7 @@ namespace Content.Client.Stylesheets
             {
                 Texture = buttonRectActionMenuItemTex
             };
-            buttonRectActionMenuItem.SetPatchMargin(StyleBox.Margin.All, 2);
+            buttonRectActionMenuItem.SetPatchMargin(StyleBox.Margin.All, 3);
             buttonRectActionMenuItem.SetPadding(StyleBox.Margin.All, 2);
             buttonRectActionMenuItem.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             buttonRectActionMenuItem.SetContentMarginOverride(StyleBox.Margin.Horizontal, 2);
@@ -387,7 +408,7 @@ namespace Content.Client.Stylesheets
             {
                 Texture = chatSubBGTex,
             };
-            chatSubBG.SetPatchMargin(StyleBox.Margin.All, 2);
+            chatSubBG.SetPatchMargin(StyleBox.Margin.All, 3);
 
             var actionSearchBoxTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_dark_thin_border.png");
             var actionSearchBox = new StyleBoxTexture
@@ -401,23 +422,44 @@ namespace Content.Client.Stylesheets
             var tabContainerPanel = new StyleBoxTexture
             {
                 Texture = tabContainerPanelTex,
+                // WD-EDIT start
+                Mode = StyleBoxTexture.StretchMode.Tile
+                // WD-EDIT end
             };
-            tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
+            tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 3);
+            // WD-EDIT start
+            tabContainerPanel.SetExpandMargin(StyleBox.Margin.All, -3);
+            // WD-EDIT end
 
-            var tabContainerBoxActive = new StyleBoxFlat {BackgroundColor = new Color(64, 80, 64)};
-            tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat {BackgroundColor = new Color(32, 40, 32)};
-            tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
+            var tabContainerBoxActive = new StyleBoxTexture
+            {
+                Texture = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png"),
+                Modulate = ButtonColorDefault
+            };
+            tabContainerBoxActive.SetPatchMargin(StyleBox.Margin.All, 10);
+            tabContainerBoxActive.SetPadding(StyleBox.Margin.All, 1);
+            tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
+            tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 14);
+
+            var tabContainerBoxInactive = new StyleBoxTexture
+            {
+                Texture = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png"),
+                Modulate = ButtonColorPressed
+            };
+            tabContainerBoxInactive.SetPatchMargin(StyleBox.Margin.All, 10);
+            tabContainerBoxInactive.SetPadding(StyleBox.Margin.All, 1);
+            tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
+            tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 14);
 
             var progressBarBackground = new StyleBoxFlat
             {
-                BackgroundColor = new Color(0.25f, 0.35f, 0.25f)
+                BackgroundColor = new Color(0.25f, 0.25f, 0.25f)
             };
             progressBarBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
             var progressBarForeground = new StyleBoxFlat
             {
-                BackgroundColor = new Color(0.25f, 0.50f, 0.25f)
+                BackgroundColor = new Color(0.25f, 0.25f, 0.25f)
             };
             progressBarForeground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
@@ -431,8 +473,8 @@ namespace Content.Client.Stylesheets
             {
                 Texture = tooltipTexture,
             };
-            tooltipBox.SetPatchMargin(StyleBox.Margin.All, 2);
-            tooltipBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
+            tooltipBox.SetPatchMargin(StyleBox.Margin.All, 3);
+            tooltipBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 3);
 
             // Whisper box
             var whisperTexture = resCache.GetTexture("/Textures/Interface/Nano/whisper.png");
@@ -440,7 +482,7 @@ namespace Content.Client.Stylesheets
             {
                 Texture = whisperTexture,
             };
-            whisperBox.SetPatchMargin(StyleBox.Margin.All, 2);
+            whisperBox.SetPatchMargin(StyleBox.Margin.All, 3);
             whisperBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
 
             // Placeholder
@@ -450,7 +492,7 @@ namespace Content.Client.Stylesheets
             placeholder.SetExpandMargin(StyleBox.Margin.All, -5);
             placeholder.Mode = StyleBoxTexture.StretchMode.Tile;
 
-            var itemListBackgroundSelected = new StyleBoxFlat {BackgroundColor = new Color(25, 25, 25)};
+            var itemListBackgroundSelected = new StyleBoxFlat {BackgroundColor = new Color(55, 55, 55)};
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
             var itemListItemBackgroundDisabled = new StyleBoxFlat {BackgroundColor = new Color(10, 10, 10)};
@@ -492,6 +534,10 @@ namespace Content.Client.Stylesheets
                 Mode = StyleBoxTexture.StretchMode.Tile
             };
 
+            stripeBack.SetPatchMargin(StyleBox.Margin.All, 2);
+            stripeBack.SetPatchMargin(StyleBox.Margin.Top, 3);
+            stripeBack.SetPatchMargin(StyleBox.Margin.Bottom, 3);
+
             // Slider
             var sliderOutlineTex = resCache.GetTexture("/Textures/Interface/Nano/slider_outline.svg.96dpi.png");
             var sliderFillTex = resCache.GetTexture("/Textures/Interface/Nano/slider_fill.svg.96dpi.png");
@@ -500,13 +546,13 @@ namespace Content.Client.Stylesheets
             var sliderFillBox = new StyleBoxTexture
             {
                 Texture = sliderFillTex,
-                Modulate = Color.FromHex("#141414")
+                Modulate = Color.FromHex("#050505")
             };
 
             var sliderBackBox = new StyleBoxTexture
             {
                 Texture = sliderFillTex,
-                Modulate = Color.FromHex("#1B211D")
+                Modulate = Color.FromHex("#1b1b1b")
             };
 
             var sliderForeBox = new StyleBoxTexture
@@ -520,10 +566,10 @@ namespace Content.Client.Stylesheets
                 Texture = sliderGrabTex
             };
 
-            sliderFillBox.SetPatchMargin(StyleBox.Margin.All, 12);
-            sliderBackBox.SetPatchMargin(StyleBox.Margin.All, 12);
-            sliderForeBox.SetPatchMargin(StyleBox.Margin.All, 12);
-            sliderGrabBox.SetPatchMargin(StyleBox.Margin.All, 12);
+            sliderFillBox.SetPatchMargin(StyleBox.Margin.All, 13);
+            sliderBackBox.SetPatchMargin(StyleBox.Margin.All, 13);
+            sliderForeBox.SetPatchMargin(StyleBox.Margin.All, 13);
+            sliderGrabBox.SetPatchMargin(StyleBox.Margin.All, 13);
 
             var sliderFillGreen = new StyleBoxTexture(sliderFillBox) {Modulate = Color.LimeGreen};
             var sliderFillRed = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Red};
@@ -588,6 +634,13 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, fuckyWuckyBackground),
+                    }),
+                // Lobby shaded background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleLobbyShadedBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, lobbyShadedBackground),
                     }),
                 // Panel background.
                 new StyleRule(
@@ -1114,6 +1167,16 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(Label.StylePropertyFontColor, NanoGold),
                     }),
 
+                // WD-EDIT start
+                // Fucking big Label
+                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeadingFuckingBigger}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(Label.StylePropertyFont, awesomeBigFuckingFont),
+                        new StyleProperty(Label.StylePropertyFontColor, NanoGold),
+                    }),
+                // WD-EDIT end
+
                 // Small Label
                 new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelSubText}, null, null), new[]
                 {
@@ -1364,17 +1427,17 @@ namespace Content.Client.Stylesheets
 
                 new StyleRule(new SelectorElement(typeof(PanelContainer), new []{ ClassHighDivider}, null, null), new []
                 {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
+                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = ButtonColorHovered, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
                 }),
 
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#050505")),
 
                 Element<PanelContainer>().Class(ClassLowDivider)
                     .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat
                     {
-                        BackgroundColor = Color.FromHex("#303530"),
+                        BackgroundColor = Color.FromHex("#303030"),
                         ContentMarginLeftOverride = 2,
                         ContentMarginBottomOverride = 2
                     }),
@@ -1398,16 +1461,16 @@ namespace Content.Client.Stylesheets
 
                 Element<PanelContainer>().Class("PanelBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#2F2F3B")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#2F2F2F")),
 
                 // Window Footer
                 Element<TextureRect>().Class("NTLogoDark")
                     .Prop(TextureRect.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/ntlogo.svg.png"))
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#7A9082")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#909090")),
 
                 Element<Label>().Class("WindowFooterText")
                     .Prop(Label.StylePropertyFont, notoSans8)
-                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#7A9082")),
+                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#909090")),
 
                 Element<PanelContainer>().Class("PanelBackgroundAngledDark")
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
@@ -1490,7 +1553,7 @@ namespace Content.Client.Stylesheets
                 //PDA - Backgrounds
                 Element<PanelContainer>().Class("PdaContentBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#141414")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#050505")),
 
                 Element<PanelContainer>().Class("PdaBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
@@ -1498,13 +1561,13 @@ namespace Content.Client.Stylesheets
 
                 Element<PanelContainer>().Class("PdaBackgroundRect")
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#7A9082")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#909090")),
 
                 Element<PanelContainer>().Class("PdaBorderRect")
                     .Prop(PanelContainer.StylePropertyPanel, AngleBorderRect),
 
                 Element<PanelContainer>().Class("BackgroundDark")
-                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#141414"))),
+                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#050505"))),
 
                 //PDA - Buttons
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassNormal)
@@ -1535,11 +1598,11 @@ namespace Content.Client.Stylesheets
                 //PDA - Text
                 Element<Label>().Class("PdaContentFooterText")
                     .Prop(Label.StylePropertyFont, notoSans10)
-                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#7A9082")),
+                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#909090")),
 
                 Element<Label>().Class("PdaWindowFooterText")
                     .Prop(Label.StylePropertyFont, notoSans10)
-                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#4D5D53")),
+                    .Prop(Label.StylePropertyFontColor, Color.FromHex("#505050")),
 
                 // Fancy Tree
                 Element<ContainerButton>().Identifier(TreeItem.StyleIdentifierTreeButton)

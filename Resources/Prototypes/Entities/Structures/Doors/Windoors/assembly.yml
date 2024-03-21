@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: WindoorAssembly
   name: windoor assembly
   description: It opens, it closes, and you can see through it!
@@ -24,8 +24,8 @@
   - type: Pullable
   - type: Rotatable
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: Destructible
     thresholds:
     - trigger:

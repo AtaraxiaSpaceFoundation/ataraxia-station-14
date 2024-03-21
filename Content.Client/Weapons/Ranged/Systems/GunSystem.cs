@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Gameplay;
 using Content.Client.Items;
 using Content.Client.Weapons.Ranged.Components;
 using Content.Shared.Camera;
@@ -12,13 +13,13 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
+using Robust.Client.State;
 using Robust.Shared.Animations;
 using Robust.Shared.Input;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
-using SharedGunSystem = Content.Shared.Weapons.Ranged.Systems.SharedGunSystem;
-using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
 
 namespace Content.Client.Weapons.Ranged.Systems;
 
@@ -31,6 +32,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly InputSystem _inputSystem = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly IStateManager _state = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     public const string HitscanProto = "HitscanEffect";
@@ -184,9 +186,15 @@ public sealed partial class GunSystem : SharedGunSystem
         // WD EDIT END
 
         Log.Debug($"Sending shoot request tick {Timing.CurTick} / {Timing.CurTime}");
+        //Set the target entity that is directly clicked on.
+        EntityUid? shootingTarget = null;
 
+        if (_state.CurrentState is GameplayStateBase screen)
+            shootingTarget = screen.GetClickedEntity(mousePos);
+        
         EntityManager.RaisePredictiveEvent(new RequestShootEvent
         {
+            Target = GetNetEntity(shootingTarget),
             Coordinates = GetNetCoordinates(coordinates),
             Gun = GetNetEntity(gunUid),
         });

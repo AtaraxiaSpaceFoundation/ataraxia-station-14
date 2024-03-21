@@ -19,7 +19,7 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab
 
         private const string ArrowUp = "↑";
         private const string ArrowDown = "↓";
-        private readonly Color _altColor = Color.FromHex("#141414");
+        private readonly Color _altColor = Color.FromHex("#050505");
         private readonly Color _defaultColor = Color.FromHex("#191919");
         private readonly AdminSystem _adminSystem;
         private IReadOnlyList<PlayerInfo> _players = new List<PlayerInfo>();

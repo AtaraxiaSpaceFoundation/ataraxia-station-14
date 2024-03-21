@@ -22,6 +22,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared._White;
+using Content.Shared._White.MagGloves;
 using Content.Shared._White.Chaplain;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;

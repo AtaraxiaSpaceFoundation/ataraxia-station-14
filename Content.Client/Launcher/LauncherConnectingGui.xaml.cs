@@ -16,7 +16,7 @@ namespace Content.Client.Launcher;
 [GenerateTypedNameReferences]
 public sealed partial class LauncherConnectingGui : Control
 {
-    private const float RedialWaitTimeSeconds = 15f;
+    private const float RedialWaitTimeSeconds = 47f;
     private readonly LauncherConnecting _state;
     private readonly IRobustRandom _random;
     private readonly IPrototypeManager _prototype;
@@ -36,10 +36,9 @@ public sealed partial class LauncherConnectingGui : Control
 
         LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
 
-        Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetSpace;
+        Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetNano;
 
         ChangeLoginTip();
-        ReconnectButton.OnPressed += _ => _state.RetryConnect();
         // Redial shouldn't fail, but if it does, try a reconnect (maybe we're being run from debug)
         RedialButton.OnPressed += _ =>
         {
@@ -76,7 +75,6 @@ public sealed partial class LauncherConnectingGui : Control
     {
         var redialFlag = args?.RedialFlag ?? false;
         RedialButton.Visible = redialFlag;
-        ReconnectButton.Visible = !redialFlag;
     }
 
     private void ChangeLoginTip()

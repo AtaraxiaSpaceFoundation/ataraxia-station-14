@@ -71,7 +71,7 @@
                             <Label Name="BloodSolutionVolume"/>
                             <PanelContainer VerticalExpand="True" MinSize="0 100">
                                 <PanelContainer.PanelOverride>
-                                    <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                                    <gfx:StyleBoxFlat BackgroundColor="#212121" />
                                 </PanelContainer.PanelOverride>
                                 <ScrollContainer HorizontalExpand="True" MinSize="0 100">
                                     <BoxContainer Name="BloodSolutionElements" Orientation="Vertical" Margin="4" HorizontalExpand="True"/>
@@ -84,7 +84,7 @@
                             <Label Name="ChemicalSolutionVolume"/>
                             <PanelContainer VerticalExpand="True" MinSize="0 100">
                                 <PanelContainer.PanelOverride>
-                                    <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                                    <gfx:StyleBoxFlat BackgroundColor="#212121" />
                                 </PanelContainer.PanelOverride>
                                 <ScrollContainer HorizontalExpand="True" MinSize="0 100">
                                     <BoxContainer Name="ChemicalSolutionElements" Orientation="Vertical" Margin="4" HorizontalExpand="True"/>

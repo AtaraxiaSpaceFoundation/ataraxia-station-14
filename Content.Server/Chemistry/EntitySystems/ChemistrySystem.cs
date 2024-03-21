@@ -22,5 +22,6 @@ public sealed partial class ChemistrySystem : EntitySystem
         // Why ChemMaster duplicates reagentdispenser nobody knows.
         InitializeHypospray();
         InitializeMixing();
+        InitializePatch();
     }
 }

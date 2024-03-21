@@ -9,3 +9,6 @@ ent-ZipLock = зип пакет
 ent-BoxZipLocks = коробка зип пакетов
   .desc = Заполнена зип пакетами. Обрадуйте детектива!
 clumsy-gun-delete-log = В следствии неуклюжести во время стрельбы от { $prettyUser }, было удалено { $prettyGun }
+holoprojector-active-holo = Активные проекции: [color=fuchsia]{ $activeholo }[/color]
+holoprojector-uses-limit = Было использовано максимальное количество проекций!
+holoprojector-delete-signs = Все проекции были удалены!

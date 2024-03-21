@@ -16,26 +16,23 @@
     Slash: 0.5
     Piercing: 0.5
     Shock: 1.2
-    Structural: 0.25
-  flatReductions:
-    Blunt: 10
-    Slash: 10
-    Piercing: 10
-    Heat: 10
-    Structural: 10
-
-- type: damageModifierSet
-  id: StructuralMetallic
-  coefficients:
-    Shock: 1.2
-    Heat: 1.2
     Structural: 0.5
   flatReductions:
     Blunt: 10
     Slash: 10
     Piercing: 10
     Heat: 10
-    Structural: 10
+
+- type: damageModifierSet
+  id: StructuralMetallic
+  coefficients:
+    Shock: 1.2
+    Heat: 1.2
+  flatReductions:
+    Blunt: 10
+    Slash: 10
+    Piercing: 10
+    Heat: 10
 
 - type: damageModifierSet
   id: Rock
@@ -113,7 +110,6 @@
     Slash: 5
     Piercing: 5
     Heat: 5
-    Structural: 5
 
 - type: damageModifierSet
   id: RGlass
@@ -123,13 +119,11 @@
     Piercing: 0.6
     Heat: 0.5
     Shock: 0
-    Structural: 0.5
   flatReductions:
     Blunt: 5
     Slash: 5
     Piercing: 5
     Heat: 5
-    Structural: 10
 
 - type: damageModifierSet
   id: Wood

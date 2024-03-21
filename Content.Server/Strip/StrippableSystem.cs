@@ -18,6 +18,7 @@ using Content.Shared.Popups;
 using Content.Shared.Strip;
 using Content.Shared.Strip.Components;
 using Content.Shared.Verbs;
+using Content.Shared._White.MagGloves;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
@@ -70,6 +71,13 @@ namespace Content.Server.Strip
             if (args.Session.AttachedEntity is not {Valid: true} user ||
                 !TryComp<HandsComponent>(user, out var userHands))
                 return;
+
+            if ((args.Slot == "gloves" || args.IsHand) && TryComp(strippable, out PreventStrippingFromHandsAndGlovesComponent? mag))
+            {
+                var message = Loc.GetString("maggloves-cant-strip");
+                _popup.PopupEntity(message, user, user);
+                return;
+            }
 
             if (args.IsHand)
             {

@@ -335,6 +335,12 @@ public sealed class ImpactEffectEvent : EntityEventArgs
 }
 
 /// <summary>
+/// Raised when an entity is just about to be hit with a projectile
+/// </summary>
+[ByRefEvent]
+public record struct ProjectileCollideAttemptEvent(EntityUid ProjUid, ProjectileComponent Component, bool Cancelled);
+
+/// <summary>
 /// Raised when an entity is just about to be hit with a projectile but can reflect it
 /// </summary>
 [ByRefEvent]

@@ -52,8 +52,8 @@
   - type: Anchorable
   - type: Pullable
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
   - type: PacifismDangerousAttack
   - type: Destructible
     thresholds:

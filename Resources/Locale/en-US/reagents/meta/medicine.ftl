@@ -129,3 +129,13 @@ reagent-desc-necrosol = A necrotic substance that seems to be able to heal froze
 
 reagent-name-aloxadone = aloxadone
 reagent-desc-aloxadone = A cryogenics chemical. Used to treat severe third degree burns via regeneration of the burnt tissue. Works regardless of the patient being alive or dead.
+
+reagent-name-synthflesh = synthflesh
+reagent-desc-synthflesh = A slightly toxic medicine capable of healing both bruises and burns.
+
+reagent-name-silversulfadiazine = silver sulfadiazine
+reagent-desc-silversulfadiazine = This compound with antibacterial properties is administered for the treatment of individuals suffering from burns.
+
+reagent-name-stypticpowder = styptic powder
+reagent-desc-stypticpowder = Aluminum sulfate styptic powder aids in managing bleeding and promoting the healing of bodily injuries.
+

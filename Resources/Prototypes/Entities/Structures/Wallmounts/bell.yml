@@ -33,7 +33,7 @@
     bodyType: Static
   - type: Fixtures
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

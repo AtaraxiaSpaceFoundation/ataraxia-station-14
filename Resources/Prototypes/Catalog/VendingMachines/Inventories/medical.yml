@@ -12,5 +12,8 @@
     SyringeBicaridine: 1
     SyringeDermaline: 1
     Eftpos: 2
+    Patch: 20
+    BrutePatch: 10
+    BurnPatch: 10
   emaggedInventory:
     SyringeEphedrine: 1

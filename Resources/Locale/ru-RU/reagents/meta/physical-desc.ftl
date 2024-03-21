@@ -96,3 +96,4 @@ reagent-physical-desc-alkaline = щелочное
 reagent-physical-desc-reflective = отражающее
 reagent-physical-desc-holy = святое
 reagent-physical-desc-slimy = слизкое
+reagent-physical-desc-gelatinous = желеобразное

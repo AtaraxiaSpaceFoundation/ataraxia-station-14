@@ -137,7 +137,7 @@ public abstract class SharedTentacleGun : EntitySystem
 
     private bool PullMob(ProjectileEmbedEvent args)
     {
-        var stunTime = _random.Next(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(5));
+        var stunTime = _random.Next(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(3));
 
         if (!_stunSystem.TryParalyze(args.Embedded, stunTime, true))
             return false;

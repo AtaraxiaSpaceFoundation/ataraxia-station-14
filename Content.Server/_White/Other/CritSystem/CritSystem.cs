@@ -67,7 +67,7 @@ public sealed class CritSystem : EntitySystem
             args.BonusDamage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"),
                 damage - args.BaseDamage.GetTotal());
 
-            _popup.PopupEntity($@"Crit! {damage}", args.User, PopupType.MediumCaution);
+            _popup.PopupEntity($"Crit! {damage}", args.User, args.User, PopupType.MediumCaution);
         }
     }
 

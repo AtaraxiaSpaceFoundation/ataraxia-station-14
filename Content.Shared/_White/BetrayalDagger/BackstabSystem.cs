@@ -52,6 +52,6 @@ public sealed class BackstabSystem : EntitySystem
             return;
 
         var message = Loc.GetString("backstab-damage-betrayal-dagger", ("damage", damage));
-        _popup.PopupClient(message, args.User, args.User, PopupType.MediumCaution);
+        _popup.PopupEntity(message, args.User, args.User, PopupType.MediumCaution);
     }
 }

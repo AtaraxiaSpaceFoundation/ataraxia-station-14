@@ -574,3 +574,45 @@
       amount: 2
   products:
       Aloxadone: 4
+
+- type: reaction
+  id: Synthflesh
+  reactants:
+    Blood:
+      amount: 1
+    Carbon:
+      amount: 1
+    Bicaridine:
+      amount: 1
+  products:
+    Synthflesh: 2
+
+- type: reaction
+  id: SilverSulfadiazine
+  reactants:
+    Ammonia:
+      amount: 1
+    Iron:
+      amount: 1
+    Sulfur:
+      amount: 1
+    Oxygen:
+      amount: 1
+    Chlorine:
+      amount: 1
+  products:
+    SilverSulfadiazine: 5
+
+- type: reaction
+  id: StypticPowder
+  reactants:
+    Aluminium:
+      amount: 1
+    Carbon:
+      amount: 1
+    SulfuricAcid:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    StypticPowder: 4

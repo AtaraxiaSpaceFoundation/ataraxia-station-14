@@ -650,6 +650,25 @@
      Glass: 20
 
 - type: latheRecipe
+  id: ClothingHandsGlovesMagnetic
+  result: ClothingHandsGlovesMagnetic
+  completetime: 3
+  materials:
+    Cloth: 200
+    Steel: 100
+    Plastic: 50
+
+- type: latheRecipe
+  id: ClothingHandsGlovesMagneticAdvanced
+  result: ClothingHandsGlovesMagneticAdvanced
+  completetime: 3
+  materials:
+    Cloth: 200
+    Steel: 100
+    Plastic: 50
+    Silver: 50
+
+- type: latheRecipe
   id: LightModuleRecipe
   result: LightModule
   completetime: 5

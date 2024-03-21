@@ -111,3 +111,33 @@
 #  cost: 15500
 #  category: Atmospherics
 #  group: market
+
+- type: cargoProduct
+  id: AtmosphericsNitrousOxide
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: redws
+  product: NitrousOxideCanister
+  cost: 1300
+  category: Atmospherics
+  group: market
+
+- type: cargoProduct
+  id: AtmosphericsBZ
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: purple
+  product: BZCanister
+  cost: 3500
+  category: Atmospherics
+  group: market
+
+- type: cargoProduct
+  id: AtmosphericsPluoxium
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: darkblue
+  product: PluoxiumCanister
+  cost: 3500
+  category: Atmospherics
+  group: market

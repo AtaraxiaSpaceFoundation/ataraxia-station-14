@@ -136,6 +136,7 @@ ui-options-function-examine-entity = Изучить
 ui-options-function-swap-hands = Поменять руки
 ui-options-function-move-stored-item = Переместить хранящийся объект
 ui-options-function-rotate-stored-item = Повернуть хранящийся объект
+ui-options-function-lie-down = Лечь/встать
 ui-options-static-storage-ui = Закрепить интерфейс хранилища на хотбаре
 
 ui-options-function-smart-equip-backpack = Умная экипировка в рюкзак
