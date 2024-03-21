@@ -46,7 +46,7 @@ public abstract class SharedLatheSystem : EntitySystem
             var adjustedAmount = AdjustMaterial(needed, recipe.ApplyMaterialDiscount, component.MaterialUseMultiplier);
 
             var gridUid =
-                HasComp<BluespaceSiloComponent>(uid) &&
+                HasComp<BluespaceStorageComponent>(uid) &&
                 TryComp<TransformComponent>(uid, out var transformComponent)
                     ? transformComponent.GridUid
                     : null;

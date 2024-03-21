@@ -1,4 +1,5 @@
 using Content.Shared.Tag;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
@@ -30,6 +31,9 @@ namespace Content.Shared.Whitelist
 
         [NonSerialized]
         private List<ComponentRegistration>? _registrations = null;
+
+        [DataField(customTypeSerializer:typeof(PrototypeIdListSerializer<EntityPrototype>))]
+        public List<string>? Entities;
 
         /// <summary>
         ///     Tags that are allowed in the whitelist.

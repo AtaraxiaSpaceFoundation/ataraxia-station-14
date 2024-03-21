@@ -16500,7 +16500,7 @@ entities:
     - type: Transform
       pos: -49.629227,-28.475441
       parent: 60
-- proto: BodyBag_Container
+- proto: BodyBagContainer
   entities:
   - uid: 2049
     components:

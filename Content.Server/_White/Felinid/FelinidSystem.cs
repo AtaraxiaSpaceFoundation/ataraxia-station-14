@@ -137,7 +137,7 @@ namespace Content.Server.Abilities.Felinid
             Del(component.PotentialTarget.Value);
             component.PotentialTarget = null;
 
-            _audio.PlayPvs("/Audio/Items/eatfood.ogg", uid, AudioParams.Default.WithVariation(0.15f));
+            _audio.PlayPvs(component.MouseEatingSound, uid, AudioParams.Default.WithVariation(0.15f));
 
             _hungerSystem.ModifyHunger(uid, 70f, hunger);
 

@@ -20,7 +20,7 @@
         layer:
         - TabletopMachineLayer
   - type: Lathe
-  - type: BluespaceSilo
+  - type: BluespaceStorage
   - type: MaterialStorage
   - type: ActivatableUI
     key: enum.LatheUiKey.Key

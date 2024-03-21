@@ -8171,7 +8171,7 @@ entities:
     - type: Transform
       pos: -26.622076,24.452543
       parent: 1
-- proto: BodyBag_Container
+- proto: BodyBagContainer
   entities:
   - uid: 8242
     components:
