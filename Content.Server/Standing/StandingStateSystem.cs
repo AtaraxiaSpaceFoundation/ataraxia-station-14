@@ -3,6 +3,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
+using Content.Shared._White.MagGloves;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 
@@ -31,8 +32,11 @@ public sealed class StandingStateSystem : EntitySystem
             if (hand.HeldEntity is not EntityUid held)
                 continue;
 
-            if (!_handsSystem.TryDrop(uid, hand, null, checkActionBlocker: false, handsComp: handsComp))
-                continue;
+            if (!HasComp<KeepItemsOnFallComponent>(uid))
+            {
+                if (!_handsSystem.TryDrop(uid, hand, null, checkActionBlocker: false, handsComp: handsComp))
+                    continue;
+            }
 
             _throwingSystem.TryThrow(held,
                 _random.NextAngle().RotateVec(direction / dropAngle + worldRotation / 50),

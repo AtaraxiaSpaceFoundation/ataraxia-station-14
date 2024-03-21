@@ -762,6 +762,8 @@
       - ShuttleGunPerforatorCircuitboard
       - ShuttleGunFriendshipCircuitboard
       - ShuttleGunDusterCircuitboard
+      - ClothingHandsGlovesMagnetic
+      - ClothingHandsGlovesMagneticAdvanced
   - type: EmagLatheRecipes
     emagStaticRecipes:
      - MagazineLightRifleBox

@@ -105,6 +105,18 @@
 # Tier 2
 
 - type: technology
+  id: LightweightMagnets
+  name: research-technology-lightweight-magnets
+  icon:
+    sprite: White/MagGloves/maggloves.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+    - ClothingHandsGlovesMagnetic
+
+- type: technology
   id: ExplosiveTechnology
   name: research-technology-explosive-technology
   icon:
@@ -149,7 +161,7 @@
 - type: technology
   id: BasicShuttleArmament
   name: research-technology-basic-shuttle-armament
-  icon: 
+  icon:
     sprite: Structures/Power/cage_recharger.rsi
     state: full
   discipline: Arsenal
@@ -168,6 +180,18 @@
   - SalvageWeapons
 
 # Tier 3
+
+- type: technology
+  id: AdvancedGrips
+  name: research-technology-advanced-grips
+  icon:
+    sprite: White/MagGloves/magglovesadvanced.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+    - ClothingHandsGlovesMagneticAdvanced
 
 - type: technology
   id: PortableMicrofusionWeaponry
@@ -192,11 +216,11 @@
   cost: 15000
   recipeUnlocks:
   - WeaponLaserSvalinn
-  
+
 - type: technology
   id: AdvancedShuttleWeapon
   name: research-technology-advanced-shuttle-weapon
-  icon: 
+  icon:
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi
     state: icon
   discipline: Arsenal
