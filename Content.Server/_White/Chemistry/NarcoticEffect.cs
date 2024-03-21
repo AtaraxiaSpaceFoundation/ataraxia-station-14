@@ -53,6 +53,20 @@ public sealed class NarcoticEffect : EntitySystem
 
         switch (component.Effects[index])
         {
+            case "TremorAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+                Timer.SpawnRepeating(timer, () => _stamina.TakeStaminaDamage(uid, 20F), token);
+                _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
+                break;
+
+            case "Shake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+                _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
+                break;
+
+            case "StunAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
+                _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
+                break;
+
             case "Stun":
                 Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 break;
