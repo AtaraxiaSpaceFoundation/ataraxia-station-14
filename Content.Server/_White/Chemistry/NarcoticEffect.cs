@@ -1,11 +1,10 @@
 ﻿using System.Threading;
+using Content.Server.Speech.EntitySystems;
+using Content.Server.Stunnable;
 using Content.Shared._White.Mood;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Drunk;
 using Content.Shared.StatusEffect;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -16,9 +15,8 @@ namespace Content.Server._White.Chemistry;
 /// </summary>
 public sealed class NarcoticEffect : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private static readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
 
@@ -45,7 +43,6 @@ public sealed class NarcoticEffect : EntitySystem
 
     private void Effects(EntityUid uid, NarcoticEffectComponent component, int index)
     {
-        var damageSpecifier = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Poison"), 5);
         RaiseLocalEvent(uid, new MoodEffectEvent("Stimulator"));
         CancellationToken token = component.cancelTokenSource.Token;
 
@@ -65,13 +62,13 @@ public sealed class NarcoticEffect : EntitySystem
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
-            case "DamageAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
-                _damageableSystem.TryChangeDamage(uid, damageSpecifier, true, false);
+            case "StunAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
-            case "Damage":
-                _damageableSystem.TryChangeDamage(uid, damageSpecifier, true, false);
+            case "Stun":
+                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 break;
 
             case "TremorAndShake":
@@ -87,8 +84,8 @@ public sealed class NarcoticEffect : EntitySystem
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
 
-            case "DamageAndShake":
-                _damageableSystem.TryChangeDamage(uid, damageSpecifier, true, false);
+            case "StunAndShake":
+                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
         }

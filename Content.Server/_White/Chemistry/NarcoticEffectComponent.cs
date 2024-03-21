@@ -9,7 +9,7 @@ namespace Content.Server._White.Chemistry;
 public sealed partial class NarcoticEffectComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float StunTime = 2f;
+    public float StunTime = 1.5f;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public CancellationTokenSource cancelTokenSource = new();
