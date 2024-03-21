@@ -1,0 +1,371 @@
+﻿#MP5
+- type: entity
+  name: MP5
+  parent: BaseWeaponSubMachineGun
+  id: WeaponSubMachineGunMP5
+  description: An excellent fully automatic Heavy SMG. Uses .45 magnum ammo.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/SMGs/vector.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/SMGs/vector.rsi
+  - type: Gun
+    fireRate: 10
+    selectedMode: FullAuto
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/smg1_fire1.ogg
+    availableModes:
+    - FullAuto
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineMagnumMP5
+        insertSound: /Audio/_HalfLife/Weapons/smg1_reload.ogg
+        ejectSound: /Audio/_HalfLife/Weapons/smg1_reload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineMagnumMP5
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMP5
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgeMP5
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+
+#SPAS-12
+- type: entity
+  name: SPAS-12
+  parent: BaseWeaponShotgun
+  id: WeaponShotgunSPAS-12
+  description: When an old Remington design meets modern materials, this is the result. A favourite weapon of militia forces throughout many worlds. Uses .50 shotgun shells.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,4,0
+    sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
+    heldPrefix: pump
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/shotgun_fire6.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - SPASShotgun
+    capacity: 8
+    proto: SPASShotgun
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
+    autoCycle: false
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+
+#Glock-17
+- type: entity
+  name: glock-17
+  parent: BaseWeaponPistol
+  id: WeaponPistolGlock-17
+  description: A cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Uses .35 auto ammo.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Pistols/mk58.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Pistols/mk58.rsi
+  - type: Gun
+    fireRate: 3
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/pistol_fire2.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolGlock-17
+        insertSound: /Audio/_HalfLife/Weapons/pistol_reload1.ogg
+        ejectSound: /Audio/_HalfLife/Weapons/pistol_reload1.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazinePistolGlock-17
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistolGlock-17
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgePistolGlock-17
+
+#Grenade
+- type: entity
+  name: Mk 2 Grenade
+  description: Grenade that creates a small but devastating explosion.
+  parent: GrenadeBase
+  id: ExGrenadeHalfLife
+  components:
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 60 # 3x3 tiles radius
+    intensitySlope: 5 # No tiles under it explosion
+    maxIntensity: 12 # ~70 damage
+    canCreateVacuum: false
+  - type: OnUseTimerTrigger
+    delay: 5
+    beepSound:
+      path: "/Audio/Effects/beep1.ogg"
+      params:
+        volume: 5
+    initialBeepDelay: 0
+    beepInterval: 1 # 2 beeps total (at 0 and 2)
+
+#Crossbow
+- type: entity
+  name: Энергетический арбалет
+  parent: WeaponPoweredCrossbow
+  id: WeaponPoweredCrossbowHalfLife
+  description: Опасная штука, страшная вещь.
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/crossbow.rsi
+    state: base
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Back
+    - SuitStorage
+  - type: Item
+    size: Huge
+    sprite: White/Objects/Weapons/crossbow.rsi
+  - type: Gun
+    forceThrowingAngle: true
+    angle: 225
+    projectileSpeed: 35
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/fire1.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - EnergyCrossbowBolt
+    capacity: 1
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+      cell_slot: !type:ContainerSlot
+      crystal_slot: !type:ContainerSlot
+  - type: Drawable
+  - type: Appearance
+  - type: ModifyDamageOnShoot
+    addEmbedding: true
+    offset: 0.1,0.1
+    damage:
+      types:
+        Piercing: 60
+  - type: Powered
+    charge: 180
+    damage:
+      types:
+        Heat: 20
+  - type: Construction
+    deconstructionTarget: null
+    graph: WeaponPoweredCrossbowGraph
+    node: crossbow
+
+#RPG
+- type: entity
+  name: RPG
+  parent: BaseWeaponLauncher
+  id: WeaponRocketLauncher
+  description: A modified ancient rocket-propelled grenade launcher.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+  - type: Gun
+    fireRate: 0.5
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/rocketfire1.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RPGRocket
+    proto: RPGRocket
+    capacity: 1
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
+#Crowbar
+- type: entity
+  name: crowbar
+  parent: BaseItem
+  id: CrowbarHalfLife
+  description: A multipurpose tool to pry open doors and fight interdimensional invaders.
+  components:
+  # WD edit sounds start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/crowbar_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+  # WD edit sounds end
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+  - type: Tag
+    tags:
+    - Crowbar
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/crowbar.rsi
+    size: Small
+    storedSprite:
+      sprite: Objects/Tools/crowbar.rsi
+      state: storage
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 20
+  - type: Tool
+    qualities:
+    - Prying
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: ToolTileCompatible
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+
+#Revolver
+- type: entity
+  name: Revolver
+  parent: BaseWeaponRevolver
+  id: WeaponRevolver
+  description: A robust revolver favoured by Syndicate agents. Uses .45 magnum ammo.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+  - type: Gun
+    selectedMode: SemiAuto
+    fireRate: 1
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_HalfLife/Weapons/357_fire2.ogg
+      params:
+        volume: 2.25
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+      - CartridgeRevolver
+    proto: CartridgeRevolver
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundEject:
+      path: /Audio/_HalfLife/Weapons/357_reload3.ogg
+    soundInsert:
+      path: /Audio/_HalfLife/Weapons/357_reload3.ogg
+
+#Turret
+- type: entity
+  parent: BaseWeaponTurret
+  id: WeaponTurretBlackMesa
+  suffix: BlackMesa
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeTurret
+    capacity: 1000
+  - type: NpcFactionMember
+    factions:
+    - BlackMesa
+
+- type: entity
+  parent: BaseWeaponTurret
+  id: WeaponTurretAggressive
+  suffix: Aggressive
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeTurret
+    capacity: 1000
+  - type: NpcFactionMember
+    factions:
+    - Aggressive
+
+#Glyoune
+- type: entity
+  name: Glyonne gun
+  parent: BaseWeaponBattery
+  id: WeaponGlyoneGun
+  description: Favoured by Nanotrasen Security for being cheap and easy to use.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+  - type: StaticPrice
+    price: 420
+  - type: Gun
+    fireRate: 50
+    projectileSpeed: 50
+    selectedMode: SemiAuto
+    availableModes:
+    - Auto
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaser
+    fireCost: 1

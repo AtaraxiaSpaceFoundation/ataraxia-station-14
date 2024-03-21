@@ -1,0 +1,26 @@
+﻿- type: Tag
+  id: MagazineMagnumMP5
+
+- type: Tag
+  id: CartridgeMP5
+
+- type: Tag
+  id: SPASShotgun
+
+- type: Tag
+  id: MagazinePistolGlock-17
+
+- type: Tag
+  id: CartridgePistolGlock-17
+
+- type: Tag
+  id: EnergyCrossbowBolt
+
+- type: Tag
+  id: RPGRocket
+
+- type: Tag
+  id: CartridgeRevolver
+
+- type: Tag
+  id: CartridgeTurret
