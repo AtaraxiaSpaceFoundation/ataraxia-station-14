@@ -215,14 +215,31 @@ public sealed partial class GunSystem : SharedGunSystem
                             var ray = new CollisionRay(from.Position, dir, hitscan.CollisionMask);
                             var rayCastResults =
                                 Physics.IntersectRay(from.MapId, ray, hitscan.MaxLength, lastUser, false).ToList();
-                            if (!rayCastResults.Any())
+                            if (rayCastResults.Count == 0)
                                 break;
 
-                            var result = rayCastResults[0];
-                            var hit = result.HitEntity;
-                            lastHit = hit;
+                            RayCastResults? result = null; 
+                            foreach (var castResults in rayCastResults)
+                            {
+                                var hitscanAttemptEv = new HitscanHitAttemptEvent(castResults.HitEntity, gun.Target);
+                                RaiseLocalEvent(castResults.HitEntity, ref hitscanAttemptEv);
+                                if (hitscanAttemptEv.Cancelled)
+                                {
+                                    continue;
+                                }
 
-                            FireEffects(fromEffect, result.Distance, dir.Normalized().ToAngle(), hitscan, hit);
+                                result = castResults;
+                                    break;
+                            }
+
+                            if (!result.HasValue)
+                            {
+                                return;
+                            }
+                            
+                            var hit = result.Value.HitEntity;
+                            lastHit = hit;
+                            FireEffects(fromEffect, result.Value.Distance, dir.Normalized().ToAngle(), hitscan, hit);
 
                             var ev = new HitScanReflectAttemptEvent(user, gunUid, hitscan.Reflective, dir, false);
                             RaiseLocalEvent(hit, ref ev);
@@ -296,25 +313,30 @@ public sealed partial class GunSystem : SharedGunSystem
     private void ShootOrThrow(EntityUid uid, Vector2 mapDirection, Vector2 gunVelocity, GunComponent gun, EntityUid gunUid, EntityUid? user)
     {
         // Do a throw
-        if (!HasComp<ProjectileComponent>(uid))
+        if (TryComp(uid, out ProjectileComponent? projectile))
         {
-            RemoveShootable(uid);
-            // TODO: Someone can probably yeet this a billion miles so need to pre-validate input somewhere up the call stack.
-            // WD EDIT START
-            var coefficient = _powered.GetPowerCoefficient(gunUid);
-            if (gun.ForceThrowingAngle)
-            {
-                var angle = EnsureComp<ThrowingAngleComponent>(uid);
-                angle.Angle = gun.Angle;
-            }
-            ThrowingSystem.TryThrow(uid, mapDirection.Normalized() * 7f * coefficient, gun.ProjectileSpeedModified, user);
-            if (gun.ForceThrowingAngle)
-                RemComp<ThrowingAngleComponent>(uid);
-            // WD EDIT END
+            projectile.Target = gun.Target;
+            ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified);
             return;
         }
 
-        ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified);
+        RemoveShootable(uid);
+        // TODO: Someone can probably yeet this a billion miles so need to pre-validate input somewhere up the call stack.
+        // WD EDIT START
+        var coefficient = _powered.GetPowerCoefficient(gunUid);
+        if (gun.ForceThrowingAngle)
+        {
+            var angle = EnsureComp<ThrowingAngleComponent>(uid);
+            angle.Angle = gun.Angle;
+        }
+
+        ThrowingSystem.TryThrow(uid, mapDirection.Normalized() * 7f * coefficient, gun.ProjectileSpeedModified,
+            user);
+
+        if (gun.ForceThrowingAngle)
+            RemComp<ThrowingAngleComponent>(uid);
+
+        // WD EDIT END
     }
 
     /// <summary>

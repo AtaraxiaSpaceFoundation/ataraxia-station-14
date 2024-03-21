@@ -42,9 +42,19 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         // This is so entities that shouldn't get a collision are ignored.
         if (args.OurFixtureId != ProjectileFixture || !args.OtherFixture.Hard
             || component.DamagedEntity || component is { Weapon: null, OnlyCollideWhenShot: true })
+        {
             return;
+        }
 
         var target = args.OtherEntity;
+
+        var collideAttemptEv = new ProjectileCollideAttemptEvent(uid, component, false);
+        RaiseLocalEvent(target, ref collideAttemptEv);
+        if (collideAttemptEv.Cancelled)
+        {
+            return;
+        }
+        
         // it's here so this check is only done once before possible hit
         var attemptEv = new ProjectileReflectAttemptEvent(uid, component, false);
         RaiseLocalEvent(target, ref attemptEv);

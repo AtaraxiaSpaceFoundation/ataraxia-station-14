@@ -229,6 +229,9 @@ public sealed partial class GunComponent : Component
     public bool ClumsyProof = false;
 
     // WD START
+
+    public EntityUid? Target;
+    
     [DataField("forceThrowingAngle")]
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ForceThrowingAngle;

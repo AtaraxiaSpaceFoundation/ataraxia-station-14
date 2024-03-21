@@ -144,6 +144,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
 
         gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        gun.Target =  GetEntity(msg.Target);
         Log.Debug($"Set shoot coordinates to {gun.ShootCoordinates}");
         AttemptShoot(user.Value, ent, gun);
     }
@@ -557,6 +558,12 @@ public abstract partial class SharedGunSystem : EntitySystem
 /// <param name="ThrowItems">Set this to true if the ammo shouldn't actually be fired, just thrown.</param>
 [ByRefEvent]
 public record struct AttemptShootEvent(EntityUid User, string? Message, bool Cancelled = false, bool ThrowItems = false);
+
+/// <summary>
+///     Raised when an entity is just about to be hit with a hitscan
+/// </summary>
+[ByRefEvent]
+public record struct HitscanHitAttemptEvent(EntityUid HitEntity, EntityUid? Target, bool Cancelled = false);
 
 /// <summary>
 ///     Raised directed on the gun after firing.

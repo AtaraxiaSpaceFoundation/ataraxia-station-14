@@ -177,6 +177,7 @@
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState
+    canLieDown: true
   - type: Fingerprint
   - type: Dna
   - type: MindContainer

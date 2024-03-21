@@ -27,6 +27,12 @@ public sealed partial class ProjectileComponent : Component
     public EntityUid? Weapon;
 
     /// <summary>
+    ///     Entity being targeted by crosshair.
+    /// </summary>
+    [AutoNetworkedField]
+    public EntityUid? Target;
+
+    /// <summary>
     ///     The projectile spawns inside the shooter most of the time, this prevents entities from shooting themselves.
     /// </summary>
     [DataField, AutoNetworkedField]

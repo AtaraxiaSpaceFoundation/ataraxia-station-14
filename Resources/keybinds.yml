@@ -527,3 +527,6 @@ binds:
 - function: Hotbar9
   type: State
   key: Num9
+- function: LieDown
+  type: State
+  key: U
