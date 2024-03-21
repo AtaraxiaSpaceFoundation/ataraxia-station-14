@@ -53,7 +53,7 @@
 
 - type: moodEffect
   id: Stimulator
-  desc: "Я ЧУВСТВУЮ ЭТО, В МОЕЙ КРОВИ НЕЧТО УСКОРЯЮЩЕЕ!!"
+  desc: "Я ЧУВСТВУЮ ЭТО, В МОЕЙ КРОВИ НАХОДИТСЯ ЧТО-ТО НЕОБЫЧНОЕ!!"
   moodChange: enum.MoodChangeLevel.Medium
   positiveEffect: true
-  timeout: 4
+  timeout: 2
