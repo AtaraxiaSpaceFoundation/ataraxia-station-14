@@ -4,6 +4,6 @@
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class FlameHiderModuleComponent : WeaponModulesComponent
+public sealed partial class FlameHiderModuleComponent : BaseModuleComponent
 {
 }

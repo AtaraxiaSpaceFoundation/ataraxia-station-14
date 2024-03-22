@@ -4,7 +4,7 @@
 /// LightModuleComponent
 /// </summary>
 [RegisterComponent]
-public sealed partial class LightModuleComponent : WeaponModulesComponent
+public sealed partial class LightModuleComponent : BaseModuleComponent
 {
     [ViewVariables(VVAccess.ReadWrite)]
     public bool Enabled;

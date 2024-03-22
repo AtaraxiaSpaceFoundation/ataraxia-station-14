@@ -4,7 +4,7 @@
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class AcceleratorModuleComponent : WeaponModulesComponent
+public sealed partial class AcceleratorModuleComponent : BaseModuleComponent
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public float OldFireRate;

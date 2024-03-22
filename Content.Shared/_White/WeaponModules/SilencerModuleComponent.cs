@@ -6,7 +6,7 @@ namespace Content.Shared._White.WeaponModules;
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class SilencerModuleComponent : WeaponModulesComponent
+public sealed partial class SilencerModuleComponent : BaseModuleComponent
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public SoundSpecifier? OldSoundGunshot;

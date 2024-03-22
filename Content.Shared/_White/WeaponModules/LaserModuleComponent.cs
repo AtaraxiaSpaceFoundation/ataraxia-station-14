@@ -4,7 +4,7 @@
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class LaserModuleComponent : WeaponModulesComponent
+public sealed partial class LaserModuleComponent : BaseModuleComponent
 {
 
 }
