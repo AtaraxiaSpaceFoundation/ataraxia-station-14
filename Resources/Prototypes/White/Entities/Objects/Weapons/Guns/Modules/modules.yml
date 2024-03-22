@@ -28,6 +28,7 @@
   parent: BaseModule
   components:
   - type: Item
+  - type: LightModule
   - type: Sprite
     state: light
   - type: Appearance
@@ -39,6 +40,7 @@
   parent: BaseModule
   components:
   - type: Item
+  - type: LaserModule
   - type: Sprite
     state: laser
   - type: Appearance
@@ -50,6 +52,7 @@
   parent: BaseModule
   components:
   - type: Item
+  - type: FlameHiderModule
   - type: Sprite
     state: flamehider
   - type: Appearance
@@ -61,6 +64,7 @@
   parent: BaseModule
   components:
   - type: Item
+  - type: SilencerModule
   - type: Sprite
     state: silencer
   - type: Appearance
@@ -72,6 +76,7 @@
   parent: BaseModule
   components:
   - type: Item
+  - type: AcceleratorModule
   - type: Sprite
     state: accelerator
   - type: Appearance

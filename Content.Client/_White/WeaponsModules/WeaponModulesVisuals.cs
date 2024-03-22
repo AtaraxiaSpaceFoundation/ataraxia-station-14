@@ -1,16 +1,17 @@
 ﻿using Content.Client.Weapons.Ranged.Components;
+using Content.Shared._White.WeaponModules;
 using Content.Shared.Rounding;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._White.WeaponsModules;
 
-public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModulesVisualsComponent>
+public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModulesComponent>
 {
 
     [Dependency] private readonly PointLightSystem _lightSystem = default!;
 
-    protected override void OnAppearanceChange(EntityUid uid, WeaponModulesVisualsComponent component, ref AppearanceChangeEvent args)
+    protected override void OnAppearanceChange(EntityUid uid, WeaponModulesComponent component, ref AppearanceChangeEvent args)
     {
         base.OnAppearanceChange(uid, component, ref args);
 

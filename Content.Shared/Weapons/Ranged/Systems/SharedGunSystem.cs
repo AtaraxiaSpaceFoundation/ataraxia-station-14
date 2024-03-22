@@ -476,9 +476,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected void MuzzleFlash(EntityUid gun, AmmoComponent component, EntityUid? user = null)
     {
-        TryComp<GunComponent>(gun, out var gunComponent); // WD EDIT
-
-        var attemptEv = new GunMuzzleFlashAttemptEvent(gunComponent!.canUseEffect); // WD EDIT
+        var attemptEv = new GunMuzzleFlashAttemptEvent();
         RaiseLocalEvent(gun, ref attemptEv);
         if (attemptEv.Cancelled)
             return;
@@ -557,14 +555,6 @@ public abstract partial class SharedGunSystem : EntitySystem
     {
         TryComp<GunComponent>(weapon, out var gunComponent);
         gunComponent!.SoundGunshot = sound;
-
-        RefreshModifiers(weapon);
-    }
-
-    public void setUseEffect(EntityUid weapon, bool state)
-    {
-        TryComp<GunComponent>(weapon, out var gunComponent);
-        gunComponent!.canUseEffect = state;
 
         RefreshModifiers(weapon);
     }

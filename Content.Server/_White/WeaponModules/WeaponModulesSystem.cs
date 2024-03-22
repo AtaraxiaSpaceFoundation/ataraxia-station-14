@@ -1,10 +1,13 @@
 ﻿using System.Linq;
-using Content.Client._White.WeaponsModules;
+using Content.Shared._White.Chemistry;
+using Content.Shared._White.WeaponModules;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._White.WeaponModules;
 
@@ -15,130 +18,200 @@ public sealed class WeaponModulesSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedGunSystem _gunSystem = default!;
 
-    SoundSpecifier? oldSoundGunshot;
-    private float oldFireRate;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<WeaponModulesComponent, EntInsertedIntoContainerMessage>(OnInsert);
-        SubscribeLocalEvent<WeaponModulesComponent, EntRemovedFromContainerMessage>(OnEject);
+        SubscribeLocalEvent<LightModuleComponent, EntGotInsertedIntoContainerMessage>(LightModuleOnInsert);
+        SubscribeLocalEvent<LightModuleComponent, EntGotRemovedFromContainerMessage>(LightModuleOnEject);
+
+        SubscribeLocalEvent<LaserModuleComponent, EntGotInsertedIntoContainerMessage>(LaserModuleOnInsert);
+        SubscribeLocalEvent<LaserModuleComponent, EntGotRemovedFromContainerMessage>(LaserModuleOnEject);
+
+        SubscribeLocalEvent<FlameHiderModuleComponent, EntGotInsertedIntoContainerMessage>(FlameHiderModuleOnInsert);
+        SubscribeLocalEvent<FlameHiderModuleComponent, EntGotRemovedFromContainerMessage>(FlameHiderModuleOnEject);
+
+        SubscribeLocalEvent<SilencerModuleComponent, EntGotInsertedIntoContainerMessage>(SilencerModuleOnInsert);
+        SubscribeLocalEvent<SilencerModuleComponent, EntGotRemovedFromContainerMessage>(SilencerModuleOnEject);
+
+        SubscribeLocalEvent<AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
+        SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
     }
 
-    private void OnInsert(EntityUid uid, WeaponModulesComponent comp, EntInsertedIntoContainerMessage args)
+    #region InsertModules
+    private void LightModuleOnInsert(EntityUid module, LightModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
 
-        EntityUid module = args.Entity;
+        if(!component.Modules.Contains(module))
+            component.Modules.Add(module);
+
         EntityUid weapon = args.Container.Owner;
 
-        if (TryComp<GunComponent>(weapon, out var gunComp))
-        {
-            oldSoundGunshot = gunComp.SoundGunshot;
-            oldFireRate = gunComp.FireRate;
-        }
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        InsertModules(module, comp);
-        ModuleEffect(module, weapon);
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "light", appearanceComponent);
+
+        _lightSystem.EnsureLight(weapon);
+
+        _lightSystem.TryGetLight(weapon, out var light);
+        _appearanceSystem.SetData(weapon, Modules.Light, "none", appearanceComponent);
+
+        _lightSystem.SetRadius(weapon, 4F, light);
+        _lightSystem.SetEnabled(weapon, true, light);
     }
 
-    private void OnEject(EntityUid uid, WeaponModulesComponent comp, EntRemovedFromContainerMessage args)
+    private void LaserModuleOnInsert(EntityUid module, LaserModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
 
-        EntityUid module = args.Entity;
+        if(!component.Modules.Contains(module))
+            component.Modules.Add(module);
+
         EntityUid weapon = args.Container.Owner;
 
-        RemoveModules(module, comp);
-        RemoveModuleEffect(module, weapon);
-    }
-
-    private void InsertModules(EntityUid module, WeaponModulesComponent comp)
-    {
-        if(!comp.Modules.Contains(module))
-            comp.Modules.Add(module);
-    }
-
-    private void ModuleEffect(EntityUid module, EntityUid weapon)
-    {
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
-        switch (module)
-        {
-            case "LightModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "light", appearanceComponent);
 
-                _lightSystem.EnsureLight(weapon);
-
-                _lightSystem.TryGetLight(weapon, out var light);
-                _appearanceSystem.SetData(weapon, Modules.Light, "none", appearanceComponent);
-
-                _lightSystem.SetRadius(weapon, 4F, light);
-                _lightSystem.SetEnabled(weapon, true, light);
-                break;
-
-            case "LaserModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "laser", appearanceComponent);
-                _gunSystem.setProjectileSpeed(weapon, 35.5F);
-                break;
-
-            case "FlameHiderModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "flamehider", appearanceComponent);
-                _gunSystem.setUseEffect(weapon, true);
-                break;
-
-            case "SilencerModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "silencer", appearanceComponent);
-                _gunSystem.setUseEffect(weapon, true);
-                _gunSystem.setSound(weapon, new SoundPathSpecifier("/Audio/White/Weapons/Modules/silence.ogg"));
-                break;
-
-            case "AcceleratorModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "accelerator", appearanceComponent);
-                _gunSystem.setFireRate(weapon, 7.5F);
-                break;
-        }
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "laser", appearanceComponent);
+        _gunSystem.setProjectileSpeed(weapon, 35.5F);
     }
 
-    private void RemoveModules(EntityUid module, WeaponModulesComponent comp)
+    private void FlameHiderModuleOnInsert(EntityUid module, FlameHiderModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if(comp.Modules.Contains(module))
-            comp.Modules.Remove(module);
-    }
+        if (ModulesSlot != args.Container.ID)
+            return;
 
-    private void RemoveModuleEffect(EntityUid module, EntityUid weapon)
-    {
+        if(!component.Modules.Contains(module))
+            component.Modules.Add(module);
+
+        EntityUid weapon = args.Container.Owner;
+
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
-        switch (module)
-        {
-            case "LightModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-                _lightSystem.TryGetLight(weapon, out var light);
-                _lightSystem.SetEnabled(weapon, false, light);
-                break;
 
-            case "LaserModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-                _gunSystem.setProjectileSpeed(weapon, 25F);
-                break;
-
-            case "FlameHiderModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-                _gunSystem.setUseEffect(weapon, false);
-                break;
-
-            case "SilencerModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-                _gunSystem.setUseEffect(weapon, false);
-                _gunSystem.setSound(weapon, oldSoundGunshot!);
-                break;
-
-            case "AcceleratorModule":
-                _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-                _gunSystem.setFireRate(weapon, oldFireRate);
-                break;
-        }
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "flamehider", appearanceComponent);
+        component.UseEffect = true;
+        Dirty(module, component);
     }
+
+    private void SilencerModuleOnInsert(EntityUid module, SilencerModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(!component.Modules.Contains(module))
+            component.Modules.Add(module);
+
+        EntityUid weapon = args.Container.Owner;
+
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+        if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
+
+        component.OldSoundGunshot = gunComp.SoundGunshot;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "silencer", appearanceComponent);
+        component.UseEffect = true;
+        _gunSystem.setSound(weapon, new SoundPathSpecifier("/Audio/White/Weapons/Modules/silence.ogg"));
+
+        Dirty(module, component);
+    }
+
+    private void AcceleratorModuleOnInsert(EntityUid module, AcceleratorModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(!component.Modules.Contains(module))
+            component.Modules.Add(module);
+
+        EntityUid weapon = args.Container.Owner;
+
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "accelerator", appearanceComponent);
+        _gunSystem.setFireRate(weapon, 7.5F);
+    }
+    #endregion
+
+    #region EjectModules
+    private void LightModuleOnEject(EntityUid module, LightModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(component.Modules.Contains(module))
+            component.Modules.Remove(module);
+
+        EntityUid weapon = args.Container.Owner;
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        _lightSystem.TryGetLight(weapon, out var light);
+        _lightSystem.SetEnabled(weapon, false, light);
+    }
+
+    private void LaserModuleOnEject(EntityUid module, LaserModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(component.Modules.Contains(module))
+            component.Modules.Remove(module);
+
+        EntityUid weapon = args.Container.Owner;
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        _gunSystem.setProjectileSpeed(weapon, 25F);
+    }
+
+    private void FlameHiderModuleOnEject(EntityUid module, FlameHiderModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(component.Modules.Contains(module))
+            component.Modules.Remove(module);
+
+        EntityUid weapon = args.Container.Owner;
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        component.UseEffect = false;
+        Dirty(module, component);
+    }
+
+    private void SilencerModuleOnEject(EntityUid module, SilencerModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(component.Modules.Contains(module))
+            component.Modules.Remove(module);
+
+        EntityUid weapon = args.Container.Owner;
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        component.UseEffect = false;
+        _gunSystem.setSound(weapon, component.OldSoundGunshot!);
+        Dirty(module, component);
+    }
+
+    private void AcceleratorModuleOnEject(EntityUid module, AcceleratorModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        if (ModulesSlot != args.Container.ID)
+            return;
+
+        if(component.Modules.Contains(module))
+            component.Modules.Remove(module);
+
+        EntityUid weapon = args.Container.Owner;
+        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
+
+        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        _gunSystem.setFireRate(weapon, component.OldFireRate);
+    }
+    #endregion
 }
