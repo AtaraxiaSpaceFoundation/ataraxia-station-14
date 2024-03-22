@@ -1,11 +1,11 @@
 ﻿namespace Content.Server._White.WeaponModules;
 
 /// <summary>
-/// This is used for...
+/// LightModuleComponent
 /// </summary>
 [RegisterComponent]
-public sealed partial class WeaponModulesComponent : Component
+public sealed partial class LightModuleComponent : WeaponModulesComponent
 {
     [ViewVariables(VVAccess.ReadWrite)]
-    public List<string?> Modules = new();
+    public bool Enabled;
 }
