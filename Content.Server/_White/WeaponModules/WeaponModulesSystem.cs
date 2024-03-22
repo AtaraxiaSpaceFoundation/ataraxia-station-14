@@ -18,24 +18,24 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<LightModuleComponent, EntGotInsertedIntoContainerMessage>(LightModuleOnInsert);
-        SubscribeLocalEvent<LightModuleComponent, EntGotRemovedFromContainerMessage>(LightModuleOnEject);
+        SubscribeLocalEvent<Shared._White.WeaponModules.LightModuleComponent, EntGotInsertedIntoContainerMessage>(LightModuleOnInsert);
+        SubscribeLocalEvent<Shared._White.WeaponModules.LightModuleComponent, EntGotRemovedFromContainerMessage>(LightModuleOnEject);
 
-        SubscribeLocalEvent<LaserModuleComponent, EntGotInsertedIntoContainerMessage>(LaserModuleOnInsert);
-        SubscribeLocalEvent<LaserModuleComponent, EntGotRemovedFromContainerMessage>(LaserModuleOnEject);
+        SubscribeLocalEvent<Shared._White.WeaponModules.LaserModuleComponent, EntGotInsertedIntoContainerMessage>(LaserModuleOnInsert);
+        SubscribeLocalEvent<Shared._White.WeaponModules.LaserModuleComponent, EntGotRemovedFromContainerMessage>(LaserModuleOnEject);
 
-        SubscribeLocalEvent<FlameHiderModuleComponent, EntGotInsertedIntoContainerMessage>(FlameHiderModuleOnInsert);
-        SubscribeLocalEvent<FlameHiderModuleComponent, EntGotRemovedFromContainerMessage>(FlameHiderModuleOnEject);
+        SubscribeLocalEvent<Shared._White.WeaponModules.FlameHiderModuleComponent, EntGotInsertedIntoContainerMessage>(FlameHiderModuleOnInsert);
+        SubscribeLocalEvent<Shared._White.WeaponModules.FlameHiderModuleComponent, EntGotRemovedFromContainerMessage>(FlameHiderModuleOnEject);
 
         SubscribeLocalEvent<SilencerModuleComponent, EntGotInsertedIntoContainerMessage>(SilencerModuleOnInsert);
         SubscribeLocalEvent<SilencerModuleComponent, EntGotRemovedFromContainerMessage>(SilencerModuleOnEject);
 
-        SubscribeLocalEvent<AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
-        SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
+        SubscribeLocalEvent<Shared._White.WeaponModules.AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
+        SubscribeLocalEvent<Shared._White.WeaponModules.AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
     }
 
     #region InsertModules
-    private void LightModuleOnInsert(EntityUid module, LightModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    private void LightModuleOnInsert(EntityUid module, Shared._White.WeaponModules.LightModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -58,7 +58,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         _lightSystem.SetEnabled(weapon, true, light);
     }
 
-    private void LaserModuleOnInsert(EntityUid module, LaserModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    private void LaserModuleOnInsert(EntityUid module, Shared._White.WeaponModules.LaserModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -74,7 +74,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         _gunSystem.setProjectileSpeed(weapon, 35.5F);
     }
 
-    private void FlameHiderModuleOnInsert(EntityUid module, FlameHiderModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    private void FlameHiderModuleOnInsert(EntityUid module, Shared._White.WeaponModules.FlameHiderModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -113,7 +113,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         Dirty(module, component);
     }
 
-    private void AcceleratorModuleOnInsert(EntityUid module, AcceleratorModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    private void AcceleratorModuleOnInsert(EntityUid module, Shared._White.WeaponModules.AcceleratorModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -131,7 +131,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     #endregion
 
     #region EjectModules
-    private void LightModuleOnEject(EntityUid module, LightModuleComponent component, EntGotRemovedFromContainerMessage args)
+    private void LightModuleOnEject(EntityUid module, Shared._White.WeaponModules.LightModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -147,7 +147,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         _lightSystem.SetEnabled(weapon, false, light);
     }
 
-    private void LaserModuleOnEject(EntityUid module, LaserModuleComponent component, EntGotRemovedFromContainerMessage args)
+    private void LaserModuleOnEject(EntityUid module, Shared._White.WeaponModules.LaserModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -162,7 +162,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         _gunSystem.setProjectileSpeed(weapon, 25F);
     }
 
-    private void FlameHiderModuleOnEject(EntityUid module, FlameHiderModuleComponent component, EntGotRemovedFromContainerMessage args)
+    private void FlameHiderModuleOnEject(EntityUid module, Shared._White.WeaponModules.FlameHiderModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;
@@ -195,7 +195,7 @@ public sealed class WeaponModulesSystem : EntitySystem
         Dirty(module, component);
     }
 
-    private void AcceleratorModuleOnEject(EntityUid module, AcceleratorModuleComponent component, EntGotRemovedFromContainerMessage args)
+    private void AcceleratorModuleOnEject(EntityUid module, Shared._White.WeaponModules.AcceleratorModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
         if (ModulesSlot != args.Container.ID)
             return;

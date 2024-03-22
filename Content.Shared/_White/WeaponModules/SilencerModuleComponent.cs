@@ -1,12 +1,12 @@
 ﻿using Robust.Shared.Audio;
 
-namespace Content.Server._White.WeaponModules;
+namespace Content.Shared._White.WeaponModules;
 
 /// <summary>
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class SilencerModuleComponent : Shared._White.WeaponModules.WeaponModulesComponent
+public sealed partial class SilencerModuleComponent : WeaponModulesComponent
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public SoundSpecifier? OldSoundGunshot;
