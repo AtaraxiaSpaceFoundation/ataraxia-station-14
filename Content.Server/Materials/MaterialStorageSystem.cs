@@ -79,7 +79,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             volume = sheetsToExtract * volumePerSheet;
         }
 
-        var gridUid = HasComp<BluespaceSiloComponent>(uid) &&
+        var gridUid = HasComp<BluespaceStorageComponent>(uid) &&
                       TryComp<TransformComponent>(uid, out var transformComponent)
             ? transformComponent.GridUid
             : null;
@@ -109,18 +109,23 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     {
         if (!Resolve(receiver, ref storage) || !Resolve(toInsert, ref material, ref composition, false))
             return false;
+
         if (TryComp<ApcPowerReceiverComponent>(receiver, out var power) && !power.Powered)
             return false;
+
         if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, material, composition))
             return false;
+
         _audio.PlayPvs(storage.InsertingSound, receiver);
         _popup.PopupEntity(Loc.GetString("machine-insert-item", ("user", user), ("machine", receiver),
             ("item", toInsert)), receiver);
+
         QueueDel(toInsert);
 
         // Logging
         TryComp<StackComponent>(toInsert, out var stack);
         var count = stack?.Count ?? 1;
+
         _adminLogger.Add(LogType.Action, LogImpact.Low,
             $"{ToPrettyString(user):player} inserted {count} {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
         return true;

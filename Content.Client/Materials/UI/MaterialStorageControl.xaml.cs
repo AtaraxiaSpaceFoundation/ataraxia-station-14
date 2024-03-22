@@ -45,7 +45,7 @@ public sealed partial class MaterialStorageControl : BoxContainer
         }
 
         var gridStorage = _entityManager.TryGetComponent<TransformComponent>(_owner, out var transformComponent) &&
-                          _entityManager.HasComponent<BluespaceSiloComponent>(_owner) &&
+                          _entityManager.HasComponent<BluespaceStorageComponent>(_owner) &&
                           _entityManager.TryGetComponent<MaterialStorageComponent>(transformComponent.GridUid,
                               out var materialStorageComponent) ? materialStorageComponent : null;
 

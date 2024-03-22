@@ -1,5 +1,5 @@
 - type: entity
-  id: BodyBag_Container
+  id: BodyBagContainer
   parent: BaseFoldable
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
@@ -42,7 +42,6 @@
         mask:
         - Impassable
   - type: EntityStorage
-    capacity: 1
     isCollidableWhenOpen: true
     closeSound:
       path: /Audio/Misc/zip.ogg
@@ -83,10 +82,10 @@
     price: 50
 
 - type: entity
-  id: BodyBag_Folded
+  id: BodyBagFolded
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
-  parent: BodyBag_Container
+  parent: BodyBagContainer
   suffix: folded
   components:
   - type: Foldable
