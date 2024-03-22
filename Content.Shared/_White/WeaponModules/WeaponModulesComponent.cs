@@ -6,7 +6,7 @@ namespace Content.Shared._White.WeaponModules;
 /// <summary>
 /// Base Module Component
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public partial class WeaponModulesComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
