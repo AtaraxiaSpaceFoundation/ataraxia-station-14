@@ -31,60 +31,60 @@ public sealed class NarcoticEffect : EntitySystem
 
     private void OnInit(EntityUid uid, NarcoticEffectComponent component, ComponentInit args)
     {
-        int index = _robustRandom.Next(0, component.Effects.Count);
+        int index = _robustRandom.Next(0, Enum.GetNames(typeof(NarcoticEffects)).Length);
 
         Effects(uid, component, index);
     }
 
     private void OnRemove(EntityUid uid, NarcoticEffectComponent component, ComponentRemove args)
     {
-        component.cancelTokenSource.Cancel();
+        component.CancelTokenSource.Cancel();
     }
 
     private void Effects(EntityUid uid, NarcoticEffectComponent component, int index)
     {
         RaiseLocalEvent(uid, new MoodEffectEvent("Stimulator"));
-        CancellationToken token = component.cancelTokenSource.Token;
+        CancellationToken token = component.CancelTokenSource.Token;
 
         TryComp<StatusEffectsComponent>(uid, out var statusEffectsComp);
 
         int timer = component.TimerInterval[_robustRandom.Next(0, component.TimerInterval.Count)];
         int slur = component.SlurTime[_robustRandom.Next(0, component.SlurTime.Count)];
 
-        switch (component.Effects[index])
+        switch (Enum.GetValues(typeof(NarcoticEffects)).GetValue(index))
         {
-            case "TremorAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+            case NarcoticEffects.TremorAndShake when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
                 Timer.SpawnRepeating(timer, () => _stamina.TakeStaminaDamage(uid, 15F), token);
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
-            case "Shake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+            case NarcoticEffects.Shake when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
-            case "StunAndShake" when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
+            case NarcoticEffects.StunAndShake when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
                 Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
-            case "Stun":
+            case NarcoticEffects.Stun:
                 Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 break;
 
-            case "TremorAndShake":
+            case NarcoticEffects.TremorAndShake:
                 Timer.SpawnRepeating(timer, () => _stamina.TakeStaminaDamage(uid, 15F), token);
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
 
-            case "Tremor":
+            case NarcoticEffects.Tremor:
                 Timer.SpawnRepeating(timer, () => _stamina.TakeStaminaDamage(uid, 15F), token);
                 break;
 
-            case "Shake":
+            case NarcoticEffects.Shake:
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
 
-            case "StunAndShake":
+            case NarcoticEffects.StunAndShake:
                 Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
