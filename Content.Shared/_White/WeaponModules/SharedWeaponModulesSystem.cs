@@ -4,7 +4,6 @@ namespace Content.Shared._White.WeaponModules;
 
 public abstract class SharedWeaponModulesSystem : EntitySystem
 {
-
     public override void Initialize()
     {
         SubscribeLocalEvent<WeaponModulesComponent, GunMuzzleFlashAttemptEvent>(OnMuzzleFlashEvent);

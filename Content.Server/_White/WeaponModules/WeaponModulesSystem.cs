@@ -1,13 +1,9 @@
-﻿using System.Linq;
-using Content.Shared._White.Chemistry;
-using Content.Shared._White.WeaponModules;
+﻿using Content.Shared._White.WeaponModules;
 using Content.Shared.Weapons.Ranged.Components;
-using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._White.WeaponModules;
 

@@ -6,13 +6,13 @@ namespace Content.Shared._White.WeaponModules;
 /// <summary>
 /// Base Module Component
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
 public partial class WeaponModulesComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public List<EntityUid> Modules = new();
 
-    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public bool UseEffect;
 }
 
