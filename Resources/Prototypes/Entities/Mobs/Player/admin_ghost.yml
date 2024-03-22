@@ -87,6 +87,7 @@
   - type: IgnoreUIRange
   - type: ShowRevIcons
   - type: ShowZombieIcons
+  - type: ShowCultHud
   - type: Inventory
     templateId: aghost
   - type: InventorySlots

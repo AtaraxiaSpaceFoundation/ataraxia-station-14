@@ -30,10 +30,23 @@ public sealed partial class CultSummonCombatEquipmentTargetActionEvent : EntityT
 {
 }
 
-public sealed partial class CultConcealPresenceWorldActionEvent : WorldTargetActionEvent
+[Virtual]
+public partial class CultConcealPresenceInstantActionEvent : InstantActionEvent
+{
+}
+
+public sealed partial class CultConcealInstantActionEvent : CultConcealPresenceInstantActionEvent
+{
+}
+
+public sealed partial class CultRevealInstantActionEvent : CultConcealPresenceInstantActionEvent
 {
 }
 
 public sealed partial class CultBloodRitesInstantActionEvent : InstantActionEvent
+{
+}
+
+public sealed partial class CultBloodSpearRecallInstantActionEvent : InstantActionEvent
 {
 }

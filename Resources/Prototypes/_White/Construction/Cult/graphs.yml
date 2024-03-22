@@ -64,6 +64,18 @@
               doAfter: 1
     - node: airlock
       entity: AirlockGlassCult
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CultRunicMetal1
+              amount: 1
+            - !type:DeleteEntity { }
+          conditions:
+            - !type:EntityAnchored
+          steps:
+            - tool: Dagger
+              cultistOnly: true
 
 - type: constructionGraph
   id: CultPylon

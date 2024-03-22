@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Structures;
+using Content.Shared._White.Cult.Systems;
 using Content.Shared._White.Cult.UI;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -28,6 +29,7 @@ public sealed class CultistFactorySystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     private const string RitualDaggerPrototypeId = "RitualDagger";
 
@@ -42,6 +44,12 @@ public sealed class CultistFactorySystem : EntitySystem
         SubscribeLocalEvent<CultistFactoryComponent, InteractUsingEvent>(TryToggleAnchor);
         SubscribeLocalEvent<CultistFactoryComponent, CultAnchorDoAfterEvent>(OnAnchorDoAfter);
         SubscribeLocalEvent<CultistFactoryComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<CultistFactoryComponent, ConcealEvent>(OnConceal);
+    }
+
+    private void OnConceal(Entity<CultistFactoryComponent> ent, ref ConcealEvent args)
+    {
+        _physics.SetCanCollide(ent, !args.Conceal);
     }
 
     public override void Update(float frameTime)

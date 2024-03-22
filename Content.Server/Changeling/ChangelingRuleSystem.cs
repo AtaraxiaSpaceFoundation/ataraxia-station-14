@@ -55,6 +55,13 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         SubscribeLocalEvent<RoundRestartCleanupEvent>(ClearUsedNames);
 
         SubscribeLocalEvent<ChangelingRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
+
+        SubscribeLocalEvent<ChangelingRoleComponent, GetBriefingEvent>(OnGetBriefing);
+    }
+
+    private void OnGetBriefing(Entity<ChangelingRoleComponent> ent, ref GetBriefingEvent args)
+    {
+        args.Append(Loc.GetString("changeling-role-briefing-short"));
     }
 
     protected override void ActiveTick(
@@ -175,13 +182,6 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         {
             PrototypeId = changelingRule.ChangelingPrototypeId
         }, mind);
-
-        var briefing = Loc.GetString("changeling-role-briefing-short");
-
-        _roleSystem.MindAddRole(mindId, new RoleBriefingComponent
-        {
-            Briefing = briefing
-        }, mind, true);
 
         _roleSystem.MindPlaySound(mindId, changelingRule.GreetSoundNotification, mind);
         SendChangelingBriefing(mindId);

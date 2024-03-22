@@ -1,12 +1,15 @@
-﻿cult-role-greeting =
+cult-role-greeting =
     Вы - член культа!
         Ваши цели перечислены в меню персонажа.
         В ваш рюкзак были добавлены предметы, которые помогут вам.
         И помните - вы не единственный.
         Слава Нар`си!
 
+cult-role-briefing-short = Используйте '^' для связи с другими членами культа.
+
 cult-cond-cultwin = Культ одержал победу
 cult-cond-cultfailure = Экипаж уничтожил культ
+cult-cond-cultdraw = Ничейный исход
 
 cultists-list-start = Культистами были:
 cultists-list-name = - [color=White]{ $name }[/color] ([color=gray]{ $user }[/color])

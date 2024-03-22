@@ -9,7 +9,7 @@
       Brute:
         collection: GlassSmash
   - type: Sprite
-    sprite: /Textures/White/Cult/Structures/cult_airlock.rsi
+    sprite: White/Cult/Structures/cult_airlock.rsi
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
@@ -18,8 +18,8 @@
   - type: Occluder
     enabled: false
   - type: Door
-    occludes: false
     bumpOpen: true
+    occludes: false
     crushDamage:
       types:
         Blunt: 15
@@ -27,8 +27,6 @@
       path: /Audio/Effects/stonedoor_openclose.ogg
     closeSound:
       path: /Audio/Effects/stonedoor_openclose.ogg
-    denySound:
-      path: /Audio/Machines/airlock_deny.ogg
   - type: Airtight
     fixVacuum: true
     noAirWhenFullyAirBlocked: false
@@ -38,7 +36,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 500
+        damage: 200
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -48,6 +46,22 @@
     node: airlock
   - type: PlacementReplacement
     key: walls
+  - type: Appearance
+  - type: Concealable
+    examinableWhileConcealed: true
+    iconSmooth: true
+    interactionOutline: true
+    concealedSprite: White/Cult/Structures/Concealed/cult_airlock.rsi
+    revealedSprite: White/Cult/Structures/cult_airlock.rsi
+    changeMeta: true
+    concealedName: обычная стена
+    concealedDesc: Удерживает воздух внутри, а ассистентов снаружи.
+    revealedName: рунический шлюз
+    revealedDesc: Странный стеклянный шлюз с руной.
+  - type: IconSmooth
+    enabled: false
+    key: walls
+    mode: NoSprite
   placement:
     mode: SnapgridCenter
 
@@ -75,7 +89,7 @@
             - GlassAirlockLayer
     - type: InteractionOutline
     - type: Sprite
-      sprite: /Textures/White/Cult/Structures/cult_girder.rsi
+      sprite: White/Cult/Structures/cult_girder.rsi
       state: cultgirder
     - type: Damageable
       damageContainer: StructuralInorganic
@@ -104,3 +118,13 @@
     - type: Construction
       graph: CultGirder
       node: girder
+    - type: Appearance
+    - type: Concealable
+      examinableWhileConcealed: true
+      concealedSprite: White/Cult/Structures/Concealed/cult_girder.rsi
+      revealedSprite: White/Cult/Structures/cult_girder.rsi
+      changeMeta: true
+      concealedName: каркас
+      concealedDesc: Большой металлический каркас; Необходимо покрыть листами металла, чтобы он считался стеной.
+      revealedName: руническая балка
+      revealedDesc: Большой конструктивный элемент, изготовленный из металла. На этом есть руна.

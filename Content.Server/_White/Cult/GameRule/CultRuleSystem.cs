@@ -1,14 +1,15 @@
 using System.Linq;
-using Content.Server._Miracle.Components;
 using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.NPC.Systems;
+using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Components;
+using Content.Server.StationEvents.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
@@ -25,6 +26,7 @@ using Robust.Shared.Random;
 using Content.Shared._White;
 using Content.Shared._White.Chaplain;
 using Content.Shared._White.Cult.Components;
+using Content.Shared._White.Cult.Systems;
 using Content.Shared.Mind;
 using Robust.Shared.Audio.Systems;
 
@@ -47,6 +49,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly GulagSystem _gulag = default!;
+    [Dependency] private readonly BloodSpearSystem _bloodSpear = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -69,6 +72,13 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         SubscribeLocalEvent<CultistComponent, ComponentInit>(OnCultistComponentInit);
         SubscribeLocalEvent<CultistComponent, ComponentRemove>(OnCultistComponentRemoved);
         SubscribeLocalEvent<CultistComponent, MobStateChangedEvent>(OnCultistsStateChanged);
+
+        SubscribeLocalEvent<CultistRoleComponent, GetBriefingEvent>(OnGetBriefing);
+    }
+
+    private void OnGetBriefing(Entity<CultistRoleComponent> ent, ref GetBriefingEvent args)
+    {
+        args.Append(Loc.GetString("cult-role-briefing-short"));
     }
 
     private void OnCultistsStateChanged(EntityUid uid, CultistComponent component, MobStateChangedEvent ev)
@@ -130,7 +140,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (!TryComp<MobStateComponent>(owner, out var mobState))
                 continue;
 
-            if (_mobStateSystem.IsAlive(owner, mobState))
+            if (!_mobStateSystem.IsDead(owner, mobState))
             {
                 aliveCultists++;
             }
@@ -140,7 +150,10 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             return;
 
         cultistsRule.WinCondition = CultWinCondition.CultFailure;
-        _roundEndSystem.EndRound();
+
+        // Check for all in once gamemode
+        if (!GameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+            _roundEndSystem.EndRound();
     }
 
     private void OnCultistComponentInit(EntityUid uid, CultistComponent component, ComponentInit args)
@@ -165,6 +178,8 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         }
 
         UpdateCultistsAppearance(cultistsRule);
+
+        component.OriginalMind = (mindComponent.Mind.Value, Comp<MindComponent>(mindComponent.Mind.Value));
     }
 
     private void OnCultistComponentRemoved(EntityUid uid, CultistComponent component, ComponentRemove args)
@@ -176,6 +191,8 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         }
 
         cultistsRule.CurrentCultists.Remove(component);
+
+        _bloodSpear.DetachSpearFromUser((uid, component));
 
         foreach (var empower in component.SelectedEmpowers)
         {
@@ -438,7 +455,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             PrototypeId = cultistRule.CultistRolePrototype
         };
 
-        _roleSystem.MindAddRole(mindId, cultistComponent);
+        _roleSystem.MindAddRole(mindId, cultistComponent, mind);
         EnsureComp<CultistComponent>(playerEntity);
 
         _factionSystem.RemoveFaction(playerEntity, "NanoTrasen", false);
@@ -478,19 +495,27 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         _roundEndSystem.EndRound();
 
-        var query = EntityQueryEnumerator<MobStateComponent, MindContainerComponent, CultistComponent>();
+        var query =
+            EntityQueryEnumerator<MobStateComponent, MindContainerComponent, CultistComponent, TransformComponent>();
 
-        while (query.MoveNext(out var uid, out _, out var mindContainer, out _))
+        List<Entity<MindContainerComponent, TransformComponent>> cultists = new();
+
+        while (query.MoveNext(out var uid, out _, out var mindContainer, out _, out var transform))
         {
-            if (!mindContainer.HasMind || mindContainer.Mind is null)
+            cultists.Add((uid, mindContainer, transform));
+        }
+
+        foreach (var ent in cultists)
+        {
+            if (ent.Comp1.Mind is null)
             {
                 continue;
             }
 
-            var reaper = Spawn(CultRuleComponent.ReaperPrototype, Transform(uid).Coordinates);
-            _mindSystem.TransferTo(mindContainer.Mind.Value, reaper);
+            var reaper = Spawn(CultRuleComponent.ReaperPrototype, ent.Comp2.Coordinates);
+            _mindSystem.TransferTo(ent.Comp1.Mind.Value, reaper);
 
-            _bodySystem.GibBody(uid);
+            _bodySystem.GibBody(ent);
         }
     }
 

@@ -17,6 +17,9 @@ public sealed class CultistFactoryProductionPrototype : IPrototype
 
     [DataField("name", required: true)]
     public string Name = default!;
+
+    [DataField]
+    public int BloodCost;
 }
 
 [Serializable, NetSerializable]

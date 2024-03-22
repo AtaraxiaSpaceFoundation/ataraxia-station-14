@@ -62,13 +62,14 @@ public sealed partial class CultRuleComponent : Component
 
     public List<ConstructComponent> Constructs = new();
 
-    public CultWinCondition WinCondition;
+    public CultWinCondition WinCondition = CultWinCondition.CultDraw;
 }
 
 public enum CultWinCondition : byte
 {
+    CultDraw,
     CultWin,
-    CultFailure
+    CultFailure,
 }
 
 public sealed class CultNarsieSummoned : EntityEventArgs
