@@ -46,6 +46,8 @@
           - CartridgeLightRifle
       gun_modules:
         name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
@@ -101,6 +103,8 @@
           - CartridgeLightRifle
       gun_modules:
         name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
@@ -204,6 +208,8 @@
           - CartridgeRifle
       gun_modules:
         name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
@@ -249,6 +255,8 @@
             - CartridgeRifle
       gun_modules:
         name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:

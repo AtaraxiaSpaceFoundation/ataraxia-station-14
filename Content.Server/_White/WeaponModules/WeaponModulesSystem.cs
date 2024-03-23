@@ -2,7 +2,6 @@
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 
 namespace Content.Server._White.WeaponModules;
@@ -112,7 +111,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "silencer", appearanceComponent);
         weaponModulesComponent.UseEffect = true;
-        _gunSystem.setSound(weapon, new SoundPathSpecifier("/Audio/White/Weapons/Modules/silence.ogg"));
+        _gunSystem.setSound(weapon, component.NewSoundGunshot);
 
         Dirty(module, weaponModulesComponent);
     }
