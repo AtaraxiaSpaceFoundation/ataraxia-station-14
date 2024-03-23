@@ -1,24 +1,20 @@
 ﻿using System.Threading;
-using Content.Server.Speech.EntitySystems;
-using Content.Server.Stunnable;
 using Content.Shared._White.Mood;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Drunk;
+using Content.Shared.Standing;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Random;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Server._White.Chemistry;
+namespace Content.Shared._White.Chemistry;
 
-/// <summary>
-/// This handles system?
-/// </summary>
 public sealed class NarcoticEffect : EntitySystem
 {
-    [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly StandingStateSystem _standingStateSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -43,6 +39,9 @@ public sealed class NarcoticEffect : EntitySystem
 
     private void Effects(EntityUid uid, NarcoticEffectComponent component, int index)
     {
+        if(!TryComp<StandingStateComponent>(uid, out var standingComp))
+            return;
+
         RaiseLocalEvent(uid, new MoodEffectEvent("Stimulator"));
         CancellationToken token = component.CancelTokenSource.Token;
 
@@ -63,12 +62,12 @@ public sealed class NarcoticEffect : EntitySystem
                 break;
 
             case NarcoticEffects.StunAndShake when _statusEffectsSystem.HasStatusEffect(uid, "Drunk", statusEffectsComp):
-                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
+                Timer.SpawnRepeating(timer, () => _standingStateSystem.TryLieDown(uid, standingComp), token);
                 _statusEffectsSystem.TryAddTime(uid, "Drunk", TimeSpan.FromSeconds(slur), statusEffectsComp);
                 break;
 
             case NarcoticEffects.Stun:
-                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
+                Timer.SpawnRepeating(timer, () => _standingStateSystem.TryLieDown(uid, standingComp), token);
                 break;
 
             case NarcoticEffects.TremorAndShake:
@@ -85,7 +84,7 @@ public sealed class NarcoticEffect : EntitySystem
                 break;
 
             case NarcoticEffects.StunAndShake:
-                Timer.SpawnRepeating(timer, () => _stun.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime), true), token);
+                Timer.SpawnRepeating(timer, () => _standingStateSystem.TryLieDown(uid, standingComp), token);
                 _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(uid, "Drunk", TimeSpan.FromSeconds(slur), true, statusEffectsComp);
                 break;
         }

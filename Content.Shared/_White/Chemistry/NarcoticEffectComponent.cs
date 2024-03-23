@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Robust.Shared.Serialization;
 
-namespace Content.Server._White.Chemistry;
+namespace Content.Shared._White.Chemistry;
 
 /// <summary>
 /// This is used for...
@@ -9,9 +9,6 @@ namespace Content.Server._White.Chemistry;
 [RegisterComponent]
 public sealed partial class NarcoticEffectComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float StunTime = 0.7f;
-
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public CancellationTokenSource CancelTokenSource = new();
 
