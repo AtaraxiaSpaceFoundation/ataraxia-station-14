@@ -1,4 +1,5 @@
-﻿using Content.Shared._White.WeaponModules;
+﻿using System.Diagnostics.CodeAnalysis;
+using Content.Shared._White.WeaponModules;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameObjects;
@@ -32,7 +33,6 @@ public sealed class WeaponModulesSystem : EntitySystem
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
     }
-
     private bool TryInsertModule(EntityUid module, EntityUid weapon, EntGotInsertedIntoContainerMessage args)
     {
         if (TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent) && ModulesSlot == args.Container.ID)
@@ -57,6 +57,11 @@ public sealed class WeaponModulesSystem : EntitySystem
         return false;
     }
 
+    private void SetAppearance(EntityUid weapon, Enum key, string value, AppearanceComponent appearanceComponent)
+    {
+        _appearanceSystem.SetData(weapon, key, value, appearanceComponent);
+    }
+
     #region InsertModules
     private void LightModuleOnInsert(EntityUid module, LightModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
@@ -67,7 +72,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "light", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
 
         _lightSystem.EnsureLight(weapon);
 
@@ -90,7 +95,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         component.OldProjectileSpeed = gunComp.ProjectileSpeed;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "laser", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
         _gunSystem.SetProjectileSpeed(weapon, component.OldProjectileSpeed + 15F);
     }
 
@@ -103,7 +108,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "flamehider", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
         weaponModulesComponent.UseEffect = true;
         Dirty(module, weaponModulesComponent);
     }
@@ -120,7 +125,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         component.OldSoundGunshot = gunComp.SoundGunshot;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "silencer", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
         weaponModulesComponent.UseEffect = true;
         _gunSystem.SetSound(weapon, component.NewSoundGunshot);
 
@@ -140,7 +145,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         component.OldFireRate = gunComp.FireRate;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "accelerator", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
         _gunSystem.SetFireRate(weapon, component.OldFireRate + 2F);
     }
     #endregion
@@ -155,7 +160,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, "none", appearanceComponent);
         _lightSystem.TryGetLight(weapon, out var light);
         _lightSystem.SetRadius(weapon, 0F, light);
         _lightSystem.SetEnabled(weapon, false, light);
@@ -170,7 +175,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, "none", appearanceComponent);
         _gunSystem.SetProjectileSpeed(weapon, component.OldProjectileSpeed);
     }
 
@@ -183,7 +188,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, "none", appearanceComponent);
         weaponModulesComponent.UseEffect = false;
         Dirty(module, weaponModulesComponent);
     }
@@ -197,7 +202,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, "none", appearanceComponent);
         weaponModulesComponent.UseEffect = false;
         _gunSystem.SetSound(weapon, component.OldSoundGunshot!);
         Dirty(module, weaponModulesComponent);
@@ -212,9 +217,8 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
-        _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
+        SetAppearance(weapon, ModuleVisualState.Module, "none", appearanceComponent);
         _gunSystem.SetFireRate(weapon, component.OldFireRate);
-
     }
     #endregion
 }

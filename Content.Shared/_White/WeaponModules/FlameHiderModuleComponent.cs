@@ -6,4 +6,6 @@
 [RegisterComponent]
 public sealed partial class FlameHiderModuleComponent : BaseModuleComponent
 {
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public string AppearanceValue = "flamehider";
 }
