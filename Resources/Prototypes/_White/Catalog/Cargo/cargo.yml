@@ -1,3 +1,13 @@
+﻿- type: cargoProduct
+  id: CratePaper
+  icon:
+    sprite: Objects/Materials/Sheets/other.rsi
+    state: paper
+  product: CratePaper
+  cost: 1000
+  category: Materials
+  group: market
+
 - type: cargoProduct
   name: ящик магазинов для ПП
   description: ящик с магазинами для пистолетов-пулеметов, заполненными патронами.
@@ -9,16 +19,6 @@
   cost: 2500
   category: Security
   group: market
-
-- type: entity
-  id: CrateSubMachineGunCrateAmmo
-  parent: CrateWeaponSecure
-  name: ящик с магазинами для ПП
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazinePistolSubMachineGun
-        amount: 2
 
 - type: cargoProduct
   name: ящик магазинов для WT-550
@@ -32,16 +32,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateWT550Magazines
-  parent: CrateWeaponSecure
-  name: ящик с магазинами для WT-550
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazinePistolSubMachineGunTopMounted
-        amount: 2
-
 - type: cargoProduct
   name: ящик магазинов для Лектера
   description: ящик с магазинами для Лектора, заполненными патронами.
@@ -53,16 +43,6 @@
   cost: 2500
   category: Security
   group: market
-
-- type: entity
-  id: CrateLecterMagazines
-  parent: CrateWeaponSecure
-  name: ящик с магазинами для Лектера
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineRifle
-        amount: 2
 
 - type: cargoProduct
   name: ящик магазинов для пистолетов
@@ -76,16 +56,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CratePistolMagazines
-  parent: CrateWeaponSecure
-  name: ящик с магазинами для пистолетов
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazinePistol
-        amount: 3
-
 - type: cargoProduct
   name: ящик магазинов для CV-47
   description: ящик с магазинами для CV-47, заполненными патронами.
@@ -97,16 +67,6 @@
   cost: 2500
   category: Security
   group: market
-
-- type: entity
-  id: CrateAKmagazines
-  parent: CrateWeaponSecure
-  name: ящик с магазинами для CV-47
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineLightRifle
-        amount: 2
 
 - type: cargoProduct
   name: ящик патронов .35 авто
@@ -120,16 +80,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: Crate35auto
-  parent: CrateWeaponSecure
-  name: ящик патронов .35 авто
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxPistol
-        amount: 2
-
 - type: cargoProduct
   name: ящик патронов .30
   description: ящик с упаковками патронов калибра .30
@@ -141,16 +91,6 @@
   cost: 2500
   category: Security
   group: market
-
-- type: entity
-  id: Crate30normal
-  parent: CrateWeaponSecure
-  name: ящик патронов .30
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxLightRifle
-        amount: 2
 
 - type: cargoProduct
   name: ящик с большой коробкой патронов .30
@@ -164,15 +104,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: crate30big
-  parent: CrateWeaponSecure
-  name: ящик с большой коробкой патронов .30
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxLightRifleBig
-        amount: 1
 
 - type: cargoProduct
   name: пачки патронов .20
@@ -186,16 +117,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: Crate20normal
-  parent: CrateWeaponSecure
-  name: ящик с пачками патронов калибра .20
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxRifle
-        amount: 2
-
 - type: cargoProduct
   name: ящик с большой коробкой патронов .20
   description: ящик с патронами калибра .20 в большой коробке
@@ -208,15 +129,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: Crate20big
-  parent: CrateWeaponSecure
-  name: ящик с большой коробкой патронов .20
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxRifleBig
-        amount: 1
 
 - type: cargoProduct
   name: ящик патронов .40 магнум
@@ -230,15 +142,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: Crate40magnum
-  parent: CrateWeaponSecure
-  name: ящик патронов .40 магнум
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineBoxMagnum
-        amount: 1
 
 - type: cargoProduct
   name: коробки с дробью для дробовика
@@ -252,16 +155,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateShotgunShell
-  parent: CrateWeaponSecure
-  name: ящик с дробью для дробовика
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineShotgun
-        amount: 3
-
 - type: cargoProduct
   name: коробки с травматическими патронами для дробовика
   description: ящик с магазинами травматических патронов для дробовика
@@ -273,16 +166,6 @@
   cost: 1000
   category: Security
   group: market
-
-- type: entity
-  id: CrateShotgunShellTrauma
-  parent: CrateWeaponSecure
-  name: ящик с травматическими патронами для дробовика
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineShotgunBeanbag
-        amount: 4
 
 - type: cargoProduct
   name: ящик с дробовиками Каммерер
@@ -296,16 +179,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateKammerer
-  parent: CrateWeaponSecure
-  name: ящик с дробовиками Каммерер
-  components:
-  - type: StorageFill
-    contents:
-      - id: WeaponShotgunKammerer
-        amount: 2
-
 - type: cargoProduct
   name: ящик с CV-47
   description: проверенная временем автоматическая винтовка.
@@ -318,17 +191,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateCV47
-  parent: CrateWeaponSecure
-  name: ящик с CV-47
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineLightRifle
-        amount: 2
-      - id: WeaponRifleAk
-        amount: 1
 
 - type: cargoProduct
   name: ящик с Лектером
@@ -342,17 +204,6 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateLecter
-  parent: CrateWeaponSecure
-  name: ящик с Лектером
-  components:
-  - type: StorageFill
-    contents:
-      - id: MagazineRifle
-        amount: 2
-      - id: WeaponRifleLecter
-        amount: 1
 
 - type: cargoProduct
   name: ящик с винтовками Мосина
@@ -366,12 +217,62 @@
   category: Security
   group: market
 
-- type: entity
-  id: CrateMosin
-  parent: CrateWeaponSecure
-  name: ящик с Лектером
-  components:
-  - type: StorageFill
-    contents:
-      - id: WeaponSniperMosin
-        amount: 2
+- type: cargoProduct
+  name: ящик нелетальных магазинов для пистолетов
+  description: ящик с с тремя нелетальными магазинами для пистолетов.
+  id: cargoPistolRubberMagazines
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi
+    state: rubber
+  product: CratePistolRubberMagazines
+  cost: 300
+  category: Security
+  group: market
+
+- type: cargoProduct
+  name: ящик нелетальных магазинов для лектора
+  description: Ящик с тремя обоймами нелетальных магазинов для лектора.
+  id: CargoLecterRubberMagazines
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    state: rubber
+  product: CrateLecterRubberMagazines
+  cost: 500
+  category: Security
+  group: market
+
+- type: cargoProduct
+  name: ящик нелетальных магазинов для ПП
+  description: Ящик с с тремя нелетальными магазинами для ПП.
+  id: cargoSubMachineGunRubberAmmo
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag.rsi
+    state: rubber
+  product: CrateSubMachineGunRubberMagazines
+  cost: 400
+  category: Security
+  group: market
+
+- type: cargoProduct
+  name: ящик нелетальных магазинов для CV-47
+  description: Ящик с с тремя нелетальными магазинами для CV-47.
+  id: cargoRifleRubberMagazines
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    state: rubber
+  product: CrateRifleRubberMagazines
+  cost: 600
+  category: Security
+  group: market
+
+- type: cargoProduct
+  name: Ящик скафандров СБ.
+  description: Ящик с двумя скафандрами СБ. Отлично подходит для прогулки в вакууме.
+  id: cargoSecurityVoidsuit
+  icon:
+    sprite: Clothing/Head/Hardsuits/security.rsi
+    state: icon-flash
+  product: CrateSecurityVoidsuit
+  cost: 4000
+  category: Security
+  group: market
