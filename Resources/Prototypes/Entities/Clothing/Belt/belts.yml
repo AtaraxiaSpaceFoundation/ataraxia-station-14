@@ -210,6 +210,21 @@
   - type: Appearance
 
 - type: entity
+  parent: ClothingBeltAssault # WD edit
+  id: ClothingBeltAssaultFilled
+  suffix: Filled
+  name: assault belt
+  description: A tactical assault belt.
+  components:
+  - type: StorageFill
+    contents:
+    - id: GrenadeFlashBang
+    - id: TearGasGrenade
+    - id: Stunbaton
+    - id: Handcuffs
+    - id: Handcuffs
+
+- type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltJanitor
   name: janibelt

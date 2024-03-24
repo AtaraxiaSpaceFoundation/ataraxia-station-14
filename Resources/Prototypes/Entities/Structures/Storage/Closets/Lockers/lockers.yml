@@ -422,6 +422,47 @@
     stateDoorOpen: clown_open
     stateDoorClosed: clown_door
 
+- type: entity
+  id: LockerClownFilled
+  name: clown locker
+  parent: LockerClown
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingUniformJumpsuitClown
+      - id: ClothingShoesClown
+      - id: ClothingMaskClown
+      - id: ClownRecorder
+      - id: RubberStampClown
+      - id: ClothingHeadsetService
+      - id: CrayonRainbow
+      - id: ClothingBackpackClown
+        prob: 0.33
+        orGroup: clownbackpack
+      - id: ClothingBackpackSatchelClown
+        prob: 0.33
+        orGroup: clownbackpack
+      - id: ClothingBackpackDuffelClown
+        prob: 0.33
+        orGroup: clownbackpack
+      - id: ClothingShoesClownLarge
+        prob: 0.66
+      - id: ClothingNeckClownmedal
+        prob: 0.33
+      - id: ClothingOuterHardsuitClown
+        prob: 0.2
+      - id: ClothingShoesClownBanana
+        prob: 0.05
+      - id: ClothingUniformJumpsuitClownBanana
+        prob: 0.05
+      - id: ClothingMaskClownBanana
+        prob: 0.05
+      - id: BananiumHorn
+        prob: 0.1
+      - id: GoldenBikeHorn
+        prob: 0.1
+
 # Mime
 - type: entity
   id: LockerMime
@@ -435,6 +476,45 @@
     stateBaseClosed: mime
     stateDoorOpen: mime_open
     stateDoorClosed: mime_door
+
+- type: entity
+  id: LockerMimeFilled
+  name: mime locker
+  parent: LockerMime
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingUniformJumpsuitMime
+    - id: ClothingUniformJumpskirtMime
+    - id: ClothingMaskMime
+      prob: 0.25
+      onGroup: mimemask
+    - id: ClothingMaskSadMime
+      prob: 0.25
+      onGroup: mimemask
+    - id: ClothingMaskScaredMime
+      prob: 0.25
+      onGroup: mimemask
+    - id: ClothingMaskSexyMime
+      prob: 0.25
+      onGroup: mimemask
+    - id: ClothingShoesColorWhite
+    - id: ClothingHeadHatBeret
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingHeadsetService
+    - id: RubberStampMime
+    - id: CrayonMime
+    - id: ClothingBackpackSatchelMime
+      prob: 0.5
+      onGroup: mimebackpack
+    - id: ClothingBackpackMime
+      prob: 0.5
+      onGroup: mimebackpack
+    - id: ClothingOuterWinterMime
+      prob: 0.5
+    - id: ClothingOuterHardsuitMime
+      prob: 0.2
 
 # Representative
 - type: entity
