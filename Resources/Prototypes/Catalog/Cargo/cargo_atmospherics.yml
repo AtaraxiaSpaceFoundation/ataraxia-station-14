@@ -138,6 +138,6 @@
     sprite: Structures/Storage/canister.rsi
     state: darkblue
   product: PluoxiumCanister
-  cost: 3500
+  cost: 12000
   category: Atmospherics
   group: market
