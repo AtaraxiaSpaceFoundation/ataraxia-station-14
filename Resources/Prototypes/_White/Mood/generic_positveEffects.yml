@@ -1,6 +1,13 @@
-﻿- type: moodEffect
+- type: moodEffect
   id: BeingHugged
   desc: "Обнимашки - круто."
+  moodChange: enum.MoodChangeLevel.Small
+  positiveEffect: true
+  timeout: 2
+
+- type: moodEffect
+  id: BeingPet
+  desc: "Меня погладили!"
   moodChange: enum.MoodChangeLevel.Small
   positiveEffect: true
   timeout: 2

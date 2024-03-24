@@ -1,4 +1,6 @@
-﻿using Content.Shared._White.Keyhole.Components;
+﻿using System.Diagnostics;
+using Content.Server._White.Cult.Structures;
+using Content.Shared._White.Keyhole.Components;
 using Content.Shared._White.Keyhole;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
@@ -10,10 +12,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._White.Keyhole;
 
-// TODO: Исправить, что дверь на замке можно разобрать через ее id: DoorGraph
-// TODO: Исправить, что при прерывании закрытия девственной двери форма замка принимает форму ключа, хотя закрытия не произошло
-
-public sealed partial class KeyholeSystem : EntitySystem
+public sealed class KeyholeSystem : EntitySystem
 {
 
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -37,50 +36,53 @@ public sealed partial class KeyholeSystem : EntitySystem
 
     private void OnKeyInsert(EntityUid uid, KeyComponent component, AfterInteractEvent ev)
     {
+        Debug.Assert(component.FormId != null);
+
         if (TryComp<KeyformComponent>(ev.Target, out var keyformComponent))
-            OnKeyInsertForm(uid, component, keyformComponent, ev);
+        {
+            OnKeyInsertForm(uid, component, keyformComponent, ev.Target.Value, ev.User);
+            return;
+        }
 
-        if (!TryComp<KeyholeComponent>(ev.Target, out var keyholeComponent))
+        if (!TryComp<KeyholeComponent>(ev.Target, out var keyholeComponent) || !CanLock(ev.Target.Value))
             return;
 
-        keyholeComponent.FormId ??= component.FormId;
-
-        if (!CanLock(keyholeComponent.Owner, keyholeComponent, component))
+        if (keyholeComponent.FormId != null && keyholeComponent.FormId != component.FormId)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("door-keyhole-different-form"), ev.Target.Value);
             return;
+        }
 
         var doAfterEventArgs =
-                new DoAfterArgs(EntityManager, ev.User, keyholeComponent.Delay, new KeyInsertDoAfterEvent(), ev.Target, ev.Used)
-                {
-                    BreakOnTargetMove = true,
-                    BreakOnUserMove = true,
-                    BreakOnDamage = true
-                };
+            new DoAfterArgs(EntityManager, ev.User, keyholeComponent.Delay,
+                new KeyInsertDoAfterEvent(component.FormId.Value), ev.Target, ev.Used)
+            {
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
+                BreakOnDamage = true
+            };
+
         _doAfter.TryStartDoAfter(doAfterEventArgs);
     }
 
-    private bool CanLock(EntityUid uid, KeyholeComponent keyholeComponent, KeyComponent keyComponent)
+    private bool CanLock(EntityUid uid)
     {
-        var can = TryComp<DoorComponent>(uid, out var doorComponent) &&
-                  keyholeComponent.FormId == keyComponent.FormId &&
-                  doorComponent.State == DoorState.Closed;
-
-        return can;
+        return !HasComp<RunicDoorComponent>(uid) && TryComp<DoorComponent>(uid, out var doorComponent) &&
+               doorComponent.State == DoorState.Closed;
     }
 
     private void OnDoAfter(EntityUid uid, KeyholeComponent component, KeyInsertDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || IsStateChanging(uid))
+        if (args.Handled || args.Cancelled || !CanLock(uid))
             return;
+
+        Debug.Assert(component.FormId == null || component.FormId == args.FormId);
+
+        component.FormId = args.FormId;
 
         Lock(uid, component, args.User);
 
         args.Handled = true;
-    }
-
-    private bool IsStateChanging(EntityUid uid)
-    {
-        return TryComp<DoorComponent>(uid, out var doorComponent) &&
-               (doorComponent.State == DoorState.Closing || doorComponent.State == DoorState.Opening);
     }
 
     private void Lock(EntityUid uid, KeyholeComponent component, EntityUid user)
@@ -96,22 +98,22 @@ public sealed partial class KeyholeSystem : EntitySystem
         component.Locked = !component.Locked;
     }
 
-    private void OnKeyInsertForm(EntityUid uid, KeyComponent keyComponent, KeyformComponent keyformComponent, AfterInteractEvent args)
+    private void OnKeyInsertForm(EntityUid uid, KeyComponent keyComponent, KeyformComponent keyformComponent, EntityUid keyform, EntityUid user)
     {
         if (!keyformComponent.IsUsed)
         {
             keyformComponent.FormId ??= keyComponent.FormId;
-            _appearance.SetData(keyformComponent.Owner, KeyformVisuals.IsUsed, true);
+            _appearance.SetData(keyform, KeyformVisuals.IsUsed, true);
 
             _audio.PlayPvs(keyformComponent.PressSound, uid);
-            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message-first", ("user", args.User), ("key", uid)), uid);
+            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message-first", ("user", user), ("key", uid)), uid);
 
             keyformComponent.IsUsed = true;
         }
         else
         {
             keyComponent.FormId = keyformComponent.FormId;
-            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message", ("user", args.User), ("key", uid)), uid);
+            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message", ("user", user), ("key", uid)), uid);
         }
 
     }

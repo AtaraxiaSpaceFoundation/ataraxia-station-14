@@ -1,5 +1,6 @@
 using Content.Shared._White.Cult.Components;
 using Content.Shared.Actions;
+using Content.Shared.Examine;
 using Content.Shared.Hands;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
@@ -23,6 +24,12 @@ public sealed class BloodSpearSystem : EntitySystem
         SubscribeLocalEvent<BloodSpearComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<BloodSpearComponent, GotEquippedHandEvent>(OnEquip);
         SubscribeLocalEvent<BloodSpearComponent, ThrowDoHitEvent>(OnThrowDoHit);
+        SubscribeLocalEvent<BloodSpearComponent, ExaminedEvent>(OnExamine);
+    }
+
+    private void OnExamine(Entity<BloodSpearComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("blood-spear-component-extra-desc"));
     }
 
     private void OnThrowDoHit(Entity<BloodSpearComponent> ent, ref ThrowDoHitEvent args)
