@@ -36,7 +36,6 @@
       - id: ClothingHeadsetAltEngineering
       - id: ClothingHeadHatHardhatWhite
       - id: ClothingHandsGlovesColorYellow
-      - id: ClothingShoesBootsMagAdv
 
 - type: entity
   id: DresserChiefMedicalOfficerFilled

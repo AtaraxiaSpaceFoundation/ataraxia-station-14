@@ -38,7 +38,6 @@
       - id: MedalCase
       - id: CommandBudgetCard
       - id: CommandBudgetPinPaper
-      - id: MedalCase
       - id: ClothingOuterHardsuitCap
       - id: OxygenTankFilled
 
@@ -64,7 +63,6 @@
     - id: MedalCase
     - id: CommandBudgetCard
     - id: CommandBudgetPinPaper
-    - id: MedalCase
 
 - type: entity
   id: LockerCaptainFilledNoLaser
@@ -88,7 +86,6 @@
     - id: MedalCase
     - id: CommandBudgetCard
     - id: CommandBudgetPinPaper
-    - id: MedalCase
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
