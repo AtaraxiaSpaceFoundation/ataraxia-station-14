@@ -130,6 +130,9 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
         print(f"No discord webhook URL found, skipping discord send")
         return
 
+    # Temporary until github publishing working to avoid spamming cl
+    return
+
     message_content = io.StringIO()
     # We need to manually split messages to avoid discord's character limit
     # With that being said this isn't entirely robust
