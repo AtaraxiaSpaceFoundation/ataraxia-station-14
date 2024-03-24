@@ -38,6 +38,7 @@ public sealed class NarcoticEffect : EntitySystem
         if (TryComp<MovespeedModifierMetabolismComponent>(uid, out var movespeedModifierComponent))
         {
             if (movespeedModifierComponent.ModifierTimer != TimeSpan.Zero)
+                Timer.Spawn(movespeedModifierComponent.ModifierTimer, () => component.CancelTokenSource.Cancel());
                 return;
         }
         component.CancelTokenSource.Cancel();
