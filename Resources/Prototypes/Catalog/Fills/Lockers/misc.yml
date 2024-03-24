@@ -63,7 +63,7 @@
         orGroup: EmergencyNitrogenOrRegularNitrogen
       - id: EmergencyNitrogenTankFilled
         prob: 0.20
-        orGroup: EmergencyNitrogenOrRegularNitrogen  
+        orGroup: EmergencyNitrogenOrRegularNitrogen
       - id: ToolboxEmergencyFilled
         prob: 0.4
       - id: MedkitOxygenFilled
@@ -191,8 +191,37 @@
           prob: 0.005
           orGroup: syndiemaintloot
         - id: WeaponSniperMosin
-          prob: 0.0010
+          prob: 0.001
           orGroup: syndiemaintloot
+        # Angry animals
+        - id: null
+          prob: 0.95
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
+        - id: MobGiantSpiderAngry
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
+        - id: MobAngryBee
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
+        - id: MobMonkeyAngry
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
+        # Animals
+        - id: null
+          prob: 0.7
+          orGroup: animalsmaintloot
+        - id: MobMouse
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse1
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse2
+          prob: 0.1
+          orGroup: animalsmaintloot
 
 - type: entity
   id: ClosetWallMaintenanceFilledRandom
@@ -284,3 +313,32 @@
         - id: WeaponSniperMosin
           prob: 0.0010
           orGroup: syndiemaintloot
+        # Angry animals
+        - id: null
+          prob: 0.95
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.005
+          orGroup: angryanimalsmaintloot
+        - id: MobGiantSpiderAngry
+          prob: 0.005
+          orGroup: angryanimalsmaintloot
+        - id: MobAngryBee
+          prob: 0.005
+          orGroup: angryanimalsmaintloot
+        - id: MobMonkeyAngry
+          prob: 0.005
+          orGroup: angryanimalsmaintloot
+        # Animals
+        - id: null
+          prob: 0.7
+          orGroup: animalsmaintloot
+        - id: MobMouse
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse1
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse2
+          prob: 0.1
+          orGroup: animalsmaintloot

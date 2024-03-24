@@ -388,18 +388,18 @@
 
 # kreses
 - type: loadout
-  id: KresesGasMaskDeath
-  entity: KresesClothingMaskGasDeath
+  id: KresesBackpackVoid
+  entity: KresesClothingBackpackVoid
   sponsorOnly: true
 
 - type: loadout
-  id: KresesJumpsuitDeath
-  entity: KresesClothingJumpsuitDeath
+  id: KresesShoesVoid
+  entity: KresesClothingShoesVoid
   sponsorOnly: true
 
 - type: loadout
-  id: KresesBackpackDeath
-  entity: KresesClothingBackpackDeath
+  id: KresesCoatVoid
+  entity: KresesClothingOuterVoid
 
 # Reider207
 - type: loadout

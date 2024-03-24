@@ -50,3 +50,10 @@
   desc: "Знаю правду, славим великого!"
   moodChange: enum.MoodChangeLevel.Big
   positiveEffect: true
+
+- type: moodEffect
+  id: Stimulator
+  desc: "Я ЧУВСТВУЮ ЭТО, В МОЕЙ КРОВИ НАХОДИТСЯ ЧТО-ТО НЕОБЫЧНОЕ!!"
+  moodChange: enum.MoodChangeLevel.Medium
+  positiveEffect: true
+  timeout: 2

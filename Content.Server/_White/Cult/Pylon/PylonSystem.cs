@@ -13,6 +13,7 @@ using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Pylon;
+using Content.Shared._White.Cult.Systems;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -40,6 +41,8 @@ public sealed class PylonSystem : EntitySystem
     [Dependency] private readonly BloodstreamSystem _blood = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     public override void Initialize()
     {
@@ -47,6 +50,15 @@ public sealed class PylonSystem : EntitySystem
 
         SubscribeLocalEvent<SharedPylonComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<SharedPylonComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<SharedPylonComponent, ConcealEvent>(OnConceal);
+    }
+
+    private void OnConceal(Entity<SharedPylonComponent> ent, ref ConcealEvent args)
+    {
+        ent.Comp.Activated = !args.Conceal;
+        UpdateAppearance(ent, ent.Comp);
+        _pointLight.SetEnabled(ent, !args.Conceal);
+        _physics.SetCanCollide(ent, !args.Conceal);
     }
 
     private void OnInit(EntityUid uid, SharedPylonComponent component, ComponentInit args)
@@ -172,7 +184,7 @@ public sealed class PylonSystem : EntitySystem
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
 
-            if (!EntityManager.TryGetComponent<CultistComponent>(playerEntity, out _))
+            if (!HasComp<CultistComponent>(playerEntity) && !HasComp<ConstructComponent>(playerEntity))
                 continue;
 
             if (_mobStateSystem.IsDead(playerEntity))
@@ -221,12 +233,7 @@ public sealed class PylonSystem : EntitySystem
 
             UpdateAppearance(uid, comp);
 
-            if (!TryComp<PointLightComponent>(uid, out var light))
-                return;
-
-#pragma warning disable RA0002
-            light.Enabled = comp.Activated;
-#pragma warning restore RA0002
+            _pointLight.SetEnabled(uid, comp.Activated);
 
             var toggleMsg = Loc.GetString(comp.Activated ? "pylon-toggle-on" : "pylon-toggle-off");
             _popupSystem.PopupEntity(toggleMsg, uid);

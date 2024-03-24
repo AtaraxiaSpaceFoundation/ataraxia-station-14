@@ -1,6 +1,7 @@
 ﻿using Content.Server.UserInterface;
 using Content.Shared._White.Cult.UI;
 using Robust.Server.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._White.Cult;
 
@@ -11,5 +12,5 @@ public sealed partial class RuneDrawerProviderComponent : Component
     public Enum UserInterfaceKey = ListViewSelectorUiKey.Key;
 
     [DataField("runePrototypes")]
-    public List<string> RunePrototypes = new();
+    public List<EntProtoId> RunePrototypes = new();
 }

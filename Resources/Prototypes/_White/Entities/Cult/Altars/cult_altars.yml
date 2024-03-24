@@ -68,6 +68,7 @@
   - type: Construction
     graph: CultPylon
     node: pylon
+  - type: Concealable
 
 - type: entity
   id: AltarTome
@@ -127,6 +128,7 @@
   - type: Construction
     graph: AltarTome
     node: tome
+  - type: Concealable
 
 - type: entity
   id: CultBloodAltar
@@ -185,6 +187,7 @@
   - type: Construction
     graph: CultBloodAltar
     node: altar
+  - type: Concealable
 
 - type: entity
   id: CultForge
@@ -247,6 +250,7 @@
   - type: Construction
     graph: CultForge
     node: forge
+  - type: Concealable
 
 - type: cultStructure
   id: CultStructureAltarTome

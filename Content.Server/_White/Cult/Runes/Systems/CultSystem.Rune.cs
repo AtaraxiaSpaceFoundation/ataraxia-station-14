@@ -10,10 +10,12 @@ using Content.Server.Hands.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.Cult.Runes.Comps;
+using Content.Server._White.Cult.UI;
 using Content.Server.Bible.Components;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Fluids.Components;
+using Content.Server.Ghost;
 using Content.Shared._White.Chaplain;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
@@ -36,10 +38,13 @@ using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Runes;
 using Content.Shared._White.Cult.UI;
 using Content.Shared.Cuffs;
+using Content.Shared.GameTicking;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Pulling;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
@@ -92,7 +97,8 @@ public sealed partial class CultSystem : EntitySystem
         SubscribeLocalEvent<CultEmpowerComponent, ActivateInWorldEvent>(OnActiveInWorld);
 
         // UI
-        SubscribeLocalEvent<RuneDrawerProviderComponent, UseInHandEvent>(OnRuneDrawerUseInHand);
+        SubscribeLocalEvent<RuneDrawerProviderComponent, ActivatableUIOpenAttemptEvent>(OnRuneDrawAttempt);
+        SubscribeLocalEvent<RuneDrawerProviderComponent, BeforeActivatableUIOpenEvent>(BeforeRuneDraw);
         SubscribeLocalEvent<RuneDrawerProviderComponent, ListViewItemSelectedMessage>(OnRuneSelected);
         SubscribeLocalEvent<CultTeleportRuneProviderComponent, TeleportRunesListWindowItemSelectedMessage>(
             OnTeleportRuneSelected);
@@ -106,6 +112,8 @@ public sealed partial class CultSystem : EntitySystem
         SubscribeLocalEvent<CultRuneBaseComponent, InteractUsingEvent>(TryErase);
         SubscribeLocalEvent<CultRuneBaseComponent, CultEraseEvent>(OnErase);
         SubscribeLocalEvent<CultRuneBaseComponent, StartCollideEvent>(HandleCollision);
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
         InitializeBuffSystem();
         InitializeNarsie();
@@ -134,30 +142,30 @@ public sealed partial class CultSystem : EntitySystem
 
     private readonly SoundPathSpecifier _magic = new("/Audio/White/Cult/magic.ogg");
 
-    private readonly SoundPathSpecifier _apocRuneStartDrawing = new("/Audio/White/Cult/startdraw.ogg");
     private readonly SoundPathSpecifier _apocRuneEndDrawing = new("/Audio/White/Cult/finisheddraw.ogg");
     private readonly SoundPathSpecifier _narsie40Sec = new("/Audio/White/Cult/40sec.ogg");
+
+    private Entity<AudioComponent>? _narsieSummonningAudio = null;
+
+    private void OnRoundRestart(RoundRestartCleanupEvent ev)
+    {
+        CultRuneReviveComponent.ChargesLeft = 3;
+    }
 
     /*
     * Rune draw start ----
      */
 
-    private void OnRuneDrawerUseInHand(EntityUid uid, RuneDrawerProviderComponent component, UseInHandEvent args)
+    private void OnRuneDrawAttempt(Entity<RuneDrawerProviderComponent> ent, ref ActivatableUIOpenAttemptEvent args)
     {
-        if (!_ui.TryGetUi(uid, component.UserInterfaceKey, out _))
-            return;
-
-        if (!TryComp<ActorComponent>(args.User, out var actorComponent))
-            return;
-
         if (!HasComp<CultistComponent>(args.User))
-            return;
+            args.Cancel();
+    }
 
-        if (_ui.TryGetUi(uid, ListViewSelectorUiKey.Key, out var bui))
-        {
-            _ui.SetUiState(bui, new ListViewBUIState(component.RunePrototypes, false));
-            _ui.OpenUi(bui, actorComponent.PlayerSession);
-        }
+    private void BeforeRuneDraw(Entity<RuneDrawerProviderComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    {
+        if (_ui.TryGetUi(ent, ListViewSelectorUiKey.Key, out var bui))
+            _ui.SetUiState(bui, new ListViewBUIState(ent.Comp.RunePrototypes, true));
     }
 
     private void OnRuneSelected(EntityUid uid, RuneDrawerProviderComponent component, ListViewItemSelectedMessage args)
@@ -185,15 +193,19 @@ public sealed partial class CultSystem : EntitySystem
         if (HasComp<CultBuffComponent>(whoCalled))
             _timeToDraw /= 2;
 
-        if (runePrototype == ApocalypseRunePrototypeId)
-        {
-            _timeToDraw = 120.0f;
-            _chat.DispatchGlobalAnnouncement(Loc.GetString("cult-started-drawing-rune-end"), "CULT", true,
-                _apocRuneStartDrawing, colorOverride: Color.DarkRed);
-        }
-
         if (!IsAllowedToDraw(whoCalled))
             return false;
+
+        if (runePrototype == ApocalypseRunePrototypeId)
+        {
+            if (!_mindSystem.TryGetMind(whoCalled, out _, out var mind) ||
+                mind.Session is not { } playerSession)
+                return false;
+
+            _euiManager.OpenEui(new ApocalypseRuneEui(whoCalled, _entityManager), playerSession);
+
+            return true;
+        }
 
         var ev = new CultDrawEvent
         {
@@ -769,7 +781,7 @@ public sealed partial class CultSystem : EntitySystem
         _chat.DispatchGlobalAnnouncement(Loc.GetString("cult-ritual-started"), "CULT", false,
             colorOverride: Color.DarkRed);
 
-        _audio.PlayGlobal(_narsie40Sec, Filter.Broadcast(), false, AudioParams.Default.WithLoop(true).WithVolume(0.15f));
+        _narsieSummonningAudio = _audio.PlayGlobal(_narsie40Sec, Filter.Broadcast(), false, AudioParams.Default.WithLoop(true).WithVolume(0.15f));
 
         return true;
     }
@@ -777,6 +789,8 @@ public sealed partial class CultSystem : EntitySystem
     private void NarsieSpawn(EntityUid uid, CultistComponent component, SummonNarsieDoAfterEvent args)
     {
         _doAfterAlreadyStarted = false;
+
+        _audio.Stop(_narsieSummonningAudio?.Owner, _narsieSummonningAudio?.Comp);
 
         if (args.Cancelled)
         {
@@ -790,13 +804,13 @@ public sealed partial class CultSystem : EntitySystem
         if (transform == null)
             return;
 
-        _entityManager.SpawnEntity(NarsiePrototypeId, transform.Value);
-
-        _chat.DispatchGlobalAnnouncement(Loc.GetString("cult-narsie-summoned"), "CULT", true, _apocRuneEndDrawing,
-            colorOverride: Color.DarkRed);
-
         var ev = new CultNarsieSummoned();
         RaiseLocalEvent(ev);
+
+        _entityManager.SpawnEntity(NarsiePrototypeId, transform.Value);
+
+        //_chat.DispatchGlobalAnnouncement(Loc.GetString("cult-narsie-summoned"), "CULT", true, _apocRuneEndDrawing,
+        //    colorOverride: Color.DarkRed);
     }
 
     /*
@@ -852,6 +866,27 @@ public sealed partial class CultSystem : EntitySystem
         CultRuneReviveComponent.ChargesLeft--;
 
         _entityManager.EventBus.RaiseLocalEvent(target, new RejuvenateEvent());
+
+        EntityUid? transferTo = null;
+
+        if (!_mindSystem.TryGetMind(target, out var mindId, out var mind))
+        {
+            if (!TryComp<CultistComponent>(target, out var cultist) || cultist.OriginalMind == null)
+                return true;
+
+            (mindId, mind) = cultist.OriginalMind.Value;
+
+            transferTo = target;
+        }
+
+        if (mind.Session is not { } playerSession)
+            return true;
+
+        // notify them they're being revived.
+        if (mind.CurrentEntity != target)
+        {
+            _euiManager.OpenEui(new ReturnToBodyEui(mind, _mindSystem, mindId, transferTo), playerSession);
+        }
         return true;
     }
 
@@ -1258,6 +1293,8 @@ public sealed partial class CultSystem : EntitySystem
             return;
         }
 
+        var damage = 10;
+
         if (rune == ApocalypseRunePrototypeId)
         {
             if (!_entityManager.TryGetComponent(uid, out TransformComponent? transComp))
@@ -1265,6 +1302,7 @@ public sealed partial class CultSystem : EntitySystem
                 return;
             }
 
+            damage = 40;
             var pos = transComp.MapPosition;
             var x = (int) pos.X;
             var y = (int) pos.Y;
@@ -1273,7 +1311,7 @@ public sealed partial class CultSystem : EntitySystem
                 "CULT", true, _apocRuneEndDrawing, colorOverride: Color.DarkRed);
         }
 
-        var damageSpecifier = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), 10);
+        var damageSpecifier = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), damage);
         _damageableSystem.TryChangeDamage(uid, damageSpecifier, true, false);
 
         _xform.AttachToGridOrMap(_entityManager.SpawnEntity(rune, transform.Value));

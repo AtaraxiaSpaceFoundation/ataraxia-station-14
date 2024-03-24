@@ -1,4 +1,4 @@
-﻿- type: tile
+- type: tile
   id: CultFloor
   name: tiles-cult-floor
   sprite: /Textures/White/Cult/Tiles/cult_tile.rsi/cult.png
@@ -6,6 +6,23 @@
   baseTurf: Plating
   isSubfloor: false
   canCrowbar: true
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: CultFloorConcealed
+  name: tiles-steel-floor
+  sprite: /Textures/White/Cult/Tiles/concealed.png
+  variants: 3
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
   itemDrop: FloorTileItemSteel

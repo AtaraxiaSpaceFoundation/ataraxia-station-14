@@ -49,6 +49,7 @@
     - type: ShowHealthIcons
       damageContainers:
       - Biological
+    - type: ShowSecurityIcons
 
 - type: entity
   name: veil shifter

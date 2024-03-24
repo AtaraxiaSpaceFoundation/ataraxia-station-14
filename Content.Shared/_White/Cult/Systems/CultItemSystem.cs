@@ -49,6 +49,15 @@ public sealed class CultItemSystem : EntitySystem
         _popupSystem.PopupClient(Loc.GetString("cult-item-component-pickup-fail", ("name", Name(uid))), uid, args.User);
     }
 
+    public bool CanThrow(EntityUid player, EntityUid throwEnt)
+    {
+        if (!HasComp<CultItemComponent>(throwEnt) || CanUse(player))
+            return true;
+
+        _popupSystem.PopupEntity(Loc.GetString("cult-item-component-throw-fail"), player, player);
+        return false;
+    }
+
     private bool CanUse(EntityUid? uid)
     {
         return HasComp<CultistComponent>(uid) || HasComp<GhostComponent>(uid);

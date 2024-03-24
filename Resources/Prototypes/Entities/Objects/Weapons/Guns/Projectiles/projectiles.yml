@@ -1379,3 +1379,19 @@
       shader: unshaded
   - type: ChangeTemperatureOnCollide
     temperature: -20
+
+- type: entity
+  name: blood bolt
+  id: BloodBolt
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: White/Cult/Entities/arcane_barrage.rsi
+    state: bullet
+  - type: Ammo
+    muzzleFlash: null
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20

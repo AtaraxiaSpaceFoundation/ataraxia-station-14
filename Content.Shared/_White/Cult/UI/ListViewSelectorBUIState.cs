@@ -12,10 +12,10 @@ public enum ListViewSelectorUiKey
 [Serializable, NetSerializable]
 public class ListViewBUIState : BoundUserInterfaceState
 {
-    public List<string> Items { get; set; }
+    public List<EntProtoId> Items { get; set; }
     public bool IsUsingPrototypes { get; set; }
 
-    public ListViewBUIState(List<string> items, bool isUsingPrototypes)
+    public ListViewBUIState(List<EntProtoId> items, bool isUsingPrototypes)
     {
         Items = items;
         IsUsingPrototypes = isUsingPrototypes;

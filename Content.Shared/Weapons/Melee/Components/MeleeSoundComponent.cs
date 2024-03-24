@@ -1,5 +1,6 @@
 using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 
 namespace Content.Shared.Weapons.Melee.Components;
@@ -8,6 +9,7 @@ namespace Content.Shared.Weapons.Melee.Components;
 /// Plays the specified sound upon receiving damage of the specified type.
 /// </summary>
 [RegisterComponent]
+[NetworkedComponent, AutoGenerateComponentState] // WD
 public sealed partial class MeleeSoundComponent : Component
 {
     /// <summary>
@@ -16,6 +18,7 @@ public sealed partial class MeleeSoundComponent : Component
     /// </summary>
     [DataField("soundGroups",
         customTypeSerializer: typeof(PrototypeIdDictionarySerializer<SoundSpecifier, DamageGroupPrototype>))]
+    [AutoNetworkedField] // WD
     public Dictionary<string, SoundSpecifier>? SoundGroups;
 
     /// <summary>
@@ -24,10 +27,12 @@ public sealed partial class MeleeSoundComponent : Component
     /// </summary>
     [DataField("soundTypes",
         customTypeSerializer: typeof(PrototypeIdDictionarySerializer<SoundSpecifier, DamageTypePrototype>))]
+    [AutoNetworkedField] // WD
     public Dictionary<string, SoundSpecifier>? SoundTypes;
 
     /// <summary>
     /// Sound that plays if no damage is done.
     /// </summary>
+    [AutoNetworkedField] // WD
     [DataField("noDamageSound")] public SoundSpecifier? NoDamageSound;
 }

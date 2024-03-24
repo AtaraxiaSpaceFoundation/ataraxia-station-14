@@ -11,11 +11,25 @@ public sealed class ReturnToBodyEui : BaseEui
 
     private readonly MindComponent _mind;
 
+    private readonly EntityUid _mindId;
+
+    private readonly EntityUid? _transferTo;
+
     public ReturnToBodyEui(MindComponent mind, SharedMindSystem mindSystem)
     {
         _mind = mind;
         _mindSystem = mindSystem;
     }
+
+    // WD START
+    public ReturnToBodyEui(MindComponent mind, SharedMindSystem mindSystem, EntityUid mindId, EntityUid? transferTo)
+    {
+        _mind = mind;
+        _mindSystem = mindSystem;
+        _mindId = mindId;
+        _transferTo = transferTo;
+    }
+    // WD END
 
     public override void HandleMessage(EuiMessageBase msg)
     {
@@ -27,6 +41,9 @@ public sealed class ReturnToBodyEui : BaseEui
             Close();
             return;
         }
+
+        if (_transferTo != null) // WD
+            _mindSystem.TransferTo(_mindId, _transferTo, mind: _mind);
 
         _mindSystem.UnVisit(_mind.Session);
 

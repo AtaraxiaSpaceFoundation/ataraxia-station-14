@@ -45,6 +45,8 @@
         type: SpellSelectorBUI
       - key: enum.CultEmpowerRemoveUiKey.Key
         type: SpellRemoverBUI
+      - key: enum.BloodRitesUi.Key
+        type: CultistFactoryBUI
       # WD-EDIT END
   - type: Sprite
     scale: 0.9, 0.9

@@ -24,6 +24,7 @@ public sealed class DoorSystem : SharedDoorSystem
     [Dependency] private readonly DoorBoltSystem _bolts = default!;
     [Dependency] private readonly AirtightSystem _airtightSystem = default!;
     [Dependency] private readonly PryingSystem _pryingSystem = default!;
+    [Dependency] private readonly RunicDoorSystem _runicDoor = default!; // WD
 
     public override void Initialize()
     {
@@ -142,6 +143,9 @@ public sealed class DoorSystem : SharedDoorSystem
 
         var otherUid = args.OtherEntity;
 
+        if (!_runicDoor.CanBumpOpen(uid, otherUid)) // WD
+            return;
+
         if (Tags.HasTag(otherUid, "DoorBumpOpener"))
             TryOpen(uid, door, otherUid, quiet: door.State == DoorState.Denying);
     }
@@ -201,6 +205,9 @@ public sealed class DoorSystem : SharedDoorSystem
         {
             foreach (var other in PhysicsSystem.GetContactingEntities(uid, physics, approximate: true))
             {
+                if (!_runicDoor.CanBumpOpen(uid, other)) // WD
+                    continue;
+
                 if (Tags.HasTag(other, "DoorBumpOpener") && TryOpen(uid, door, other, quiet: true))
                     break;
             }
