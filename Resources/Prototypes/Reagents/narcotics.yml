@@ -32,8 +32,8 @@
         key: Stutter
         component: StutteringAccent
       - !type:GenericStatusEffect
-        key: BlurryVision
-        component: BlurryVision
+        key: NarcoticEffect
+        component: NarcoticEffect
       - !type:Jitter
       - !type:GenericStatusEffect
         key: Stun
@@ -76,8 +76,8 @@
             Asphyxiation: 2
       - !type:Jitter
       - !type:GenericStatusEffect
-        key: BlurryVision
-        component: BlurryVision
+        key: NarcoticEffect
+        component: NarcoticEffect
       - !type:GenericStatusEffect
         key: Stun
         time: 1

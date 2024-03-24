@@ -4,6 +4,7 @@ using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
+using Content.Shared.Storage;
 
 namespace Content.Server.Holosign;
 
@@ -59,7 +60,7 @@ public sealed class HolosignSystem : EntitySystem
             return;
         }
 
-        if (args.Handled || !args.CanReach)
+        if (args.Handled || !args.CanReach || HasComp<StorageComponent>(args.Target))
             return;
 
         if (component.Signs.Count >= component.Uses) // wd edit
