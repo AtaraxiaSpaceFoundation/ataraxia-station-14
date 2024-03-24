@@ -9,11 +9,8 @@ namespace Content.Shared._White.Chemistry;
 [RegisterComponent]
 public sealed partial class NarcoticEffectComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public CancellationTokenSource CancelTokenSource = new();
-
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public List<int> TimerInterval = new() { 3000, 6000, 3800, 7000, 5000 };
+    public List<int> TimerInterval = new() { 8000, 12000, 10000, 12500, 10500 };
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public List<int> SlurTime = new() { 35, 60, 80, 90, 45 };
