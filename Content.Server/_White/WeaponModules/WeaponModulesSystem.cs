@@ -33,17 +33,37 @@ public sealed class WeaponModulesSystem : EntitySystem
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
     }
 
+    private bool TryInsertModule(EntityUid module, EntityUid weapon, EntGotInsertedIntoContainerMessage args)
+    {
+        if (TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent) && ModulesSlot == args.Container.ID)
+        {
+            if(!weaponModulesComponent.Modules.Contains(module))
+                weaponModulesComponent.Modules.Add(module);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryEjectModule(EntityUid module, EntityUid weapon, EntGotRemovedFromContainerMessage args)
+    {
+        if (TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent) && ModulesSlot == args.Container.ID)
+        {
+            if(weaponModulesComponent.Modules.Contains(module))
+                weaponModulesComponent.Modules.Remove(module);
+            return true;
+        }
+
+        return false;
+    }
+
     #region InsertModules
     private void LightModuleOnInsert(EntityUid module, LightModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(!weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Add(module);
+        if(!TryInsertModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -60,14 +80,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void LaserModuleOnInsert(EntityUid module, LaserModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(!weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Add(module);
+        if(!TryInsertModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
         if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
@@ -80,14 +96,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void FlameHiderModuleOnInsert(EntityUid module, FlameHiderModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(!weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Add(module);
+        if(!TryInsertModule(module, weapon, args) || !TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -98,14 +110,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void SilencerModuleOnInsert(EntityUid module, SilencerModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(!weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Add(module);
+        if(!TryInsertModule(module, weapon, args) || !TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
         if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
@@ -121,14 +129,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void AcceleratorModuleOnInsert(EntityUid module, AcceleratorModuleComponent component, EntGotInsertedIntoContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(!weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Add(module);
+        if(!TryInsertModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -144,14 +148,10 @@ public sealed class WeaponModulesSystem : EntitySystem
     #region EjectModules
     private void LightModuleOnEject(EntityUid module, LightModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Remove(module);
+        if(!TryEjectModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -163,14 +163,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void LaserModuleOnEject(EntityUid module, LaserModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Remove(module);
+        if(!TryEjectModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -180,14 +176,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void FlameHiderModuleOnEject(EntityUid module, FlameHiderModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Remove(module);
+        if(!TryEjectModule(module, weapon, args) || !TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -198,14 +190,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void SilencerModuleOnEject(EntityUid module, SilencerModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Remove(module);
+        if(!TryEjectModule(module, weapon, args) || !TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
@@ -217,14 +205,10 @@ public sealed class WeaponModulesSystem : EntitySystem
 
     private void AcceleratorModuleOnEject(EntityUid module, AcceleratorModuleComponent component, EntGotRemovedFromContainerMessage args)
     {
-        if (ModulesSlot != args.Container.ID)
-            return;
-
         EntityUid weapon = args.Container.Owner;
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponent)) return;
 
-        if(weaponModulesComponent.Modules.Contains(module))
-            weaponModulesComponent.Modules.Remove(module);
+        if(!TryEjectModule(module, weapon, args))
+            return;
 
         if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 

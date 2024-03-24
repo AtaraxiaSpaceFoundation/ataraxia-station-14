@@ -18,6 +18,8 @@ public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModule
         if(args.Sprite == null)
             return;
 
+        args.Sprite.LayerSetVisible(ModuleVisualState.Module, false);
+
         if (AppearanceSystem.TryGetData<string>(uid, ModuleVisualState.Module, out var module, args.Component) && module.Length != 0 && module != "none")
         {
             args.Sprite.LayerSetState(ModuleVisualState.Module, module);
