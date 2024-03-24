@@ -707,6 +707,7 @@
   result: AcceleratorModule
   completetime: 30
   materials:
-     Steel: 4500
-     Plastic: 2000
-     Glass: 1000
+     Steel: 3500
+     Plastic: 1000
+     Glass: 500
+     Gold: 1000
