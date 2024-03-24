@@ -1,3 +1,4 @@
+using System.Threading;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Chemistry.Components
@@ -6,6 +7,9 @@ namespace Content.Shared.Chemistry.Components
     [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
     public sealed partial class MovespeedModifierMetabolismComponent : Component
     {
+        [ViewVariables, DataField]
+        public CancellationTokenSource CancelTokenSource = new();
+
         [AutoNetworkedField, ViewVariables]
         public float WalkSpeedModifier { get; set; }
 
@@ -15,7 +19,7 @@ namespace Content.Shared.Chemistry.Components
         /// <summary>
         /// When the current modifier is expected to end.
         /// </summary>
-        [AutoNetworkedField, ViewVariables]
+        [AutoNetworkedField, ViewVariables] // WD EDIT
         public TimeSpan ModifierTimer { get; set; } = TimeSpan.Zero;
     }
 }
