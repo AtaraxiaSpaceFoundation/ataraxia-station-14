@@ -539,26 +539,32 @@ public abstract partial class SharedGunSystem : EntitySystem
         Dirty(gun);
     }
     // WD EDIT
-    public void setProjectileSpeed(EntityUid weapon, float projectileSpeed)
+    public void SetProjectileSpeed(EntityUid weapon, float projectileSpeed)
     {
-        TryComp<GunComponent>(weapon, out var gunComponent);
-        gunComponent!.ProjectileSpeed = projectileSpeed;
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
+
+        gunComponent.ProjectileSpeed = projectileSpeed;
 
         RefreshModifiers(weapon);
     }
 
-    public void setFireRate(EntityUid weapon, float fireRate)
+    public void SetFireRate(EntityUid weapon, float fireRate)
     {
-        TryComp<GunComponent>(weapon, out var gunComponent);
-        gunComponent!.FireRate = fireRate;
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
+
+        gunComponent.FireRate = fireRate;
 
         RefreshModifiers(weapon);
     }
 
-    public void setSound(EntityUid weapon, SoundSpecifier sound)
+    public void SetSound(EntityUid weapon, SoundSpecifier sound)
     {
-        TryComp<GunComponent>(weapon, out var gunComponent);
-        gunComponent!.SoundGunshot = sound;
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
+
+        gunComponent.SoundGunshot = sound;
 
         RefreshModifiers(weapon);
     }

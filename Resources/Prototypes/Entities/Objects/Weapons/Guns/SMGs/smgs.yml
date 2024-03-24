@@ -118,6 +118,7 @@
         - state: mag-0
           map: ["enum.GunVisualLayers.Mag"]
         - state: laser
+          visible: false
           sprite: White/Objects/Weapons/modulesOnWeapon.rsi
           map: [ "enum.ModuleVisualState.Module" ]
     - type: Clothing
@@ -238,6 +239,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
       - state: laser
+        visible: false
         sprite: White/Objects/Weapons/modulesOnWeapon.rsi
         map: [ "enum.ModuleVisualState.Module" ]
   - type: Clothing

@@ -6,6 +6,6 @@
 [RegisterComponent]
 public sealed partial class LightModuleComponent : BaseModuleComponent
 {
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool Enabled;
 }
