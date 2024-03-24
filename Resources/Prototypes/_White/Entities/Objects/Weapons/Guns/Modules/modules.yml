@@ -29,6 +29,7 @@
   components:
   - type: Item
   - type: LightModule
+    value: "light"
   - type: Sprite
     state: light
   - type: Appearance
@@ -41,6 +42,7 @@
   components:
   - type: Item
   - type: LaserModule
+    value: "laser"
   - type: Sprite
     state: laser
   - type: Appearance
@@ -53,6 +55,7 @@
   components:
   - type: Item
   - type: FlameHiderModule
+    value: "flamehider"
   - type: Sprite
     state: flamehider
   - type: Appearance
@@ -65,6 +68,7 @@
   components:
   - type: Item
   - type: SilencerModule
+    value: "silencer"
   - type: Sprite
     state: silencer
   - type: Appearance
@@ -77,6 +81,7 @@
   components:
   - type: Item
   - type: AcceleratorModule
+    value: "accelerator"
   - type: Sprite
     state: accelerator
   - type: Appearance

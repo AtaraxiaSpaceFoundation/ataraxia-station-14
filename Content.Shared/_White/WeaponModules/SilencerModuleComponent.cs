@@ -13,7 +13,4 @@ public sealed partial class SilencerModuleComponent : BaseModuleComponent
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public SoundSpecifier NewSoundGunshot = new SoundPathSpecifier("/Audio/White/Weapons/Modules/silence.ogg");
-
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public string AppearanceValue = "silencer";
 }

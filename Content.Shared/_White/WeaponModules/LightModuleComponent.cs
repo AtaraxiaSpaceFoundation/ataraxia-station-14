@@ -8,7 +8,4 @@ public sealed partial class LightModuleComponent : BaseModuleComponent
 {
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool Enabled;
-
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public string AppearanceValue = "light";
 }
