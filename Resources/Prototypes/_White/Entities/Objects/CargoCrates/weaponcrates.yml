@@ -1,0 +1,223 @@
+- type: entity
+  id: CrateSubMachineGunCrateAmmo
+  parent: CrateWeaponSecure
+  name: ящик с магазинами для ПП
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazinePistolSubMachineGun
+        amount: 2
+
+- type: entity
+  id: CrateWT550Magazines
+  parent: CrateWeaponSecure
+  name: ящик с магазинами для WT-550
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazinePistolSubMachineGunTopMounted
+        amount: 2
+
+- type: entity
+  id: CrateLecterMagazines
+  parent: CrateWeaponSecure
+  name: ящик с магазинами для Лектера
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineRifle
+        amount: 2
+
+- type: entity
+  id: CratePistolMagazines
+  parent: CrateWeaponSecure
+  name: ящик с магазинами для пистолетов
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazinePistol
+        amount: 3
+
+- type: entity
+  id: CrateAKmagazines
+  parent: CrateWeaponSecure
+  name: ящик с магазинами для CV-47
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineLightRifle
+        amount: 2
+
+- type: entity
+  id: Crate35auto
+  parent: CrateWeaponSecure
+  name: ящик патронов .35 авто
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxPistol
+        amount: 2
+
+- type: entity
+  id: Crate30normal
+  parent: CrateWeaponSecure
+  name: ящик патронов .30
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxLightRifle
+        amount: 2
+
+- type: entity
+  id: crate30big
+  parent: CrateWeaponSecure
+  name: ящик с большой коробкой патронов .30
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxLightRifleBig
+        amount: 1
+
+- type: entity
+  id: Crate20normal
+  parent: CrateWeaponSecure
+  name: ящик с пачками патронов калибра .20
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxRifle
+        amount: 2
+
+- type: entity
+  id: Crate20big
+  parent: CrateWeaponSecure
+  name: ящик с большой коробкой патронов .20
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxRifleBig
+        amount: 1
+
+- type: entity
+  id: Crate40magnum
+  parent: CrateWeaponSecure
+  name: ящик патронов .40 магнум
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBoxMagnum
+        amount: 1
+
+- type: entity
+  id: CrateShotgunShell
+  parent: CrateWeaponSecure
+  name: ящик с дробью для дробовика
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineShotgun
+        amount: 3
+
+- type: entity
+  id: CrateShotgunShellTrauma
+  parent: CrateWeaponSecure
+  name: ящик с травматическими патронами для дробовика
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineShotgunBeanbag
+        amount: 4
+
+- type: entity
+  id: CrateKammerer
+  parent: CrateWeaponSecure
+  name: ящик с дробовиками Каммерер
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunKammerer
+        amount: 2
+
+- type: entity
+  id: CrateCV47
+  parent: CrateWeaponSecure
+  name: ящик с CV-47
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineLightRifle
+        amount: 2
+      - id: WeaponRifleAk
+        amount: 1
+
+- type: entity
+  id: CrateLecter
+  parent: CrateWeaponSecure
+  name: ящик с Лектером
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineRifle
+        amount: 2
+      - id: WeaponRifleLecter
+        amount: 1
+
+- type: entity
+  id: CrateMosin
+  parent: CrateWeaponSecure
+  name: ящик с Лектером
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponSniperMosin
+        amount: 2
+
+- type: entity
+  id: CratePistolRubberMagazines
+  parent: CrateWeaponSecure
+  name: ящик с нелетальными магазинами для пистолетов
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMagazinePistolRubber
+        amount: 1
+
+- type: entity
+  id: CrateLecterRubberMagazines
+  parent: CrateWeaponSecure
+  name: ящик с нелетальными магазинами для лектора
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMagazineRifleRubber
+        amount: 1
+
+- type: entity
+  id: CrateSubMachineGunRubberMagazines
+  parent: CrateWeaponSecure
+  name: ящик с нелетальными магазинами для ПП
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMagazinePistolSubMachineGunRubber
+        amount: 1
+
+- type: entity
+  id: CrateRifleRubberMagazines
+  parent: CrateWeaponSecure
+  name: ящик с нелетальными магазинами для CV-47
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMagazineLightRifleRubber
+        amount: 1
+
+- type: entity
+  id: CrateSecurityVoidsuit
+  parent: CrateWeaponSecure
+  name: ящик с скафандрами СБ
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitSecurity
+      amount: 2
