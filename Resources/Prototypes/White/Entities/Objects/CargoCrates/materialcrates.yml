@@ -1,0 +1,39 @@
+- type: entity
+  id: CrateMaterialBananium
+  parent: CrateGenericSteel
+  name: ящик с бананиумом
+  components:
+  - type: StorageFill
+    contents:
+      - id: MaterialBananium
+        amount: 3
+
+- type: entity
+  id: CrateMaterialSilver
+  parent: CrateGenericSteel
+  name: ящик с серебром
+  components:
+  - type: StorageFill
+    contents:
+      - id: IngotSilver
+        amount: 1
+
+- type: entity
+  id: CrateMaterialGold
+  parent: CrateGenericSteel
+  name: ящик с золотом
+  components:
+  - type: StorageFill
+    contents:
+      - id: IngotGold
+        amount: 1
+
+- type: entity
+  id: CrateMaterialUranium
+  parent: CrateGenericSteel
+  name: ящик урана
+  components:
+  - type: StorageFill
+    contents:
+      - id: SheetUranium
+        amount: 1
