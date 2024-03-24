@@ -17,9 +17,6 @@ public sealed partial class NarcoticEffectComponent : Component
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public List<int> SlurTime = new() { 35, 60, 80, 90, 45 };
-
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public int TimerScale = 6000;
 }
 
 [Serializable, NetSerializable]
