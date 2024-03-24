@@ -96,6 +96,7 @@
       - id: ClothingEyesGlassesSecurity
       - id: ClothingHeadsetAltSecurity
       - id: ClothingMaskGasSwat
+      - id: ClothingOuterCoatHoSTrench
 
 - type: entity
   id: DresserQuarterMasterFilled
