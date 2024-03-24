@@ -106,7 +106,7 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: uranium
   product: CrateMaterialUranium
-  cost: 3000
+  cost: 23000
   category: Materials
   group: market
 
@@ -118,7 +118,7 @@
     sprite: Objects/Materials/ingots.rsi
     state: gold
   product: CrateMaterialGold
-  cost: 4000
+  cost: 17000
   category: Materials
   group: market
 
@@ -130,7 +130,7 @@
     sprite: Objects/Materials/ingots.rsi
     state: silver
   product: CrateMaterialSilver
-  cost: 3000
+  cost: 12000
   category: Materials
   group: market
 
@@ -142,6 +142,6 @@
     sprite: Objects/Materials/ore.rsi
     state: bananium
   product: CrateMaterialBananium
-  cost: 3000
+  cost: 35000
   category: Materials
   group: market

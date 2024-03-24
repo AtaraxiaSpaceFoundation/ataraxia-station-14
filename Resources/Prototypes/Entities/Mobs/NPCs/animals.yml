@@ -61,6 +61,11 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      20: Critical
+      30: Dead
 
 - type: entity
   name: bee
@@ -466,8 +471,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      40: Critical
-      60: Dead
+      20: Critical
+      30: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
     baseSprintSpeed : 4
@@ -2965,8 +2970,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      40: Critical
-      60: Dead
+      20: Critical
+      30: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed : 4
     baseSprintSpeed : 4

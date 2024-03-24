@@ -77,6 +77,12 @@
           acts: [ "Destruction" ]
     - type: Label
       originalName: jug
+    - type: MeleeWeapon
+      soundNoDamage:
+        path: "/Audio/Effects/Fluids/splat.ogg"
+      damage:
+        types:
+          Blunt: 0
 
 - type: entity
   parent: Jug

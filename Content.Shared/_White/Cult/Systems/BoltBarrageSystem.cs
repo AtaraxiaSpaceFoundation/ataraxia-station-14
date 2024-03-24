@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._White.Cult.Components;
+using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -29,6 +30,12 @@ public sealed class BoltBarrageSystem : EntitySystem
         SubscribeLocalEvent<BoltBarrageComponent, UnequippedHandEvent>(OnUnequipHand);
         SubscribeLocalEvent<BoltBarrageComponent, ContainerGettingRemovedAttemptEvent>(OnRemoveAttempt);
         SubscribeLocalEvent<BoltBarrageComponent, OnEmptyGunShotEvent>(OnEmptyShot);
+        SubscribeLocalEvent<BoltBarrageComponent, ExaminedEvent>(OnExamine);
+    }
+
+    private void OnExamine(Entity<BoltBarrageComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("bolt-barrage-component-extra-desc"));
     }
 
     private void OnUnequipHand(Entity<BoltBarrageComponent> ent, ref UnequippedHandEvent args)
@@ -51,7 +58,7 @@ public sealed class BoltBarrageSystem : EntitySystem
 
     private void OnDrop(Entity<BoltBarrageComponent> ent, ref DroppedEvent args)
     {
-        if (_net.IsServer)
+        if (_net.IsServer && ent.Comp.Unremoveable)
             QueueDel(ent);
     }
 

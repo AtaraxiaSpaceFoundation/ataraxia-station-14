@@ -1,14 +1,14 @@
 ﻿- type: entity
-  parent: ClothingHeadHatBeretSecurity
+  parent: ClothingHeadHatBeretHoS
   id: ClothingHeadHatBeretWaggier
-  name: security beret
-  description: "На нем вышито слово Waggier... Наверное это название фирмы?"
+  name: потрепанный берет
+  description: "На нем вышито слово 'Waggier'. Наверное это название фирмы?"
 
 - type: entity
-  name: experimental stun baton
+  name: встанислав шишкин
   parent: ExperimentalStunbaton
   id: ExperimentalStunbatonWaggier
-  description: "Литая сталь. Прочный пластик. Дубинка Ветерана-СБ Регины Хьюи"
+  description: "Литая сталь. Прочный пластик. Дубинка Ветерана СБ Регины Хьюи."
 
 - type: loadout
   id: WaggierBeretLoadout
@@ -43,5 +43,11 @@
 - type: loadout
   id: WaggierStunBatonLoadout
   entity: ExperimentalStunbatonWaggier
+  sponsorOnly: true
+  whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden, SeniorOfficer ]
+
+- type: loadout
+  id: WaggierOuterCoatLoadout
+  entity: ClothingOuterCoatHoSTrench
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden, SeniorOfficer ]

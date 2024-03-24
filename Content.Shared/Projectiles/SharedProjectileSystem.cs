@@ -190,6 +190,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     private void PreventCollision(EntityUid uid, ProjectileComponent component, ref PreventCollideEvent args)
     {
+        // Shoot yourself!
+        if (args.OtherEntity == component.Target) // WD
+            return;
+
         if (component.IgnoreShooter && (args.OtherEntity == component.Shooter || args.OtherEntity == component.Weapon))
         {
             args.Cancelled = true;

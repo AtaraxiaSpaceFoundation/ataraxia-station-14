@@ -172,7 +172,7 @@
         - key: enum.CultStructureCraftUiKey.Key
           type: StructureCraftBoundUserInterface
     - type: Item
-      size: Normal
+      size: Small
     - type: CultItem
 
 - type: entity
