@@ -207,6 +207,20 @@
     - type: LesserFormRestricted
 
 - type: entity
+  id: ActionHive
+  name: changeling-ability-hive
+  description: changeling-ability-hive-desc
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: White/Actions/changeling.rsi/hive_head.png
+      event: !type:HiveHeadActionEvent
+      useDelay: 1
+      checkCanInteract: false
+    - type: LesserFormRestricted
+
+- type: entity
   id: ActionTentacleArm
   name: changeling-ability-tentacle-arm
   description: changeling-ability-tentacle-arm-desc

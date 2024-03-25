@@ -1,0 +1,46 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetLingHive
+  name: hive head
+  description: A strange, waxy outer coating covering your head. Gives you tinnitus.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Head/hive.rsi
+  - type: Clothing
+    sprite: White/Clothing/Head/hive.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Unremoveable
+    deleteOnDrop: true
+  - type: DeleteOnChangelingRefund
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: HiveHead
+
+- type: entity
+  id: ActionReleaseBees
+  name: changeling-ability-bees
+  description: changeling-ability-bees-desc
+  noSpawn: true
+  components:
+    - type: InstantAction
+      itemIconStyle: NoItem
+      icon: White/Clothing/Head/hive.rsi/icon.png
+      event: !type:ReleaseBeesEvent
+      checkCanInteract: false
+      useDelay: 30
+
+- type: entity
+  parent: MobAngryBee
+  id: MobTemporaryAngryBee
+  components:
+    - type: TimedDespawn
+      lifetime: 25.0
+    - type: NpcFactionMember
+      factions:
+      - Syndicate

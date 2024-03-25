@@ -2,7 +2,7 @@ chat-manager-changeling-channel-name = УЛЕЙ
 hud-chatbox-select-channel-Changeling = Улей
 chat-manager-send-changeling-chat-wrap-message = [bold]\[УЛЕЙ\][/bold] [font size=13][italic][bold]{ $player }[/bold] шипит, "{ $message }"[/italic][/font]
 
-changeling-juices-sucked-up = [color=#A30000]Все его соки были высосаны![/color]
+changeling-juices-sucked-up = [color=#A30000]Все { POSS-ADJ($target) } соки были высосаны![/color]
 
 changeling-unknown-creature = Неизвестное существо
 

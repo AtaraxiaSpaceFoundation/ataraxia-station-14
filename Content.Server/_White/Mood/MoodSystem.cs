@@ -80,6 +80,14 @@ public sealed class MoodSystem : EntitySystem
         ApplyEffect(uid, component, prototype);
     }
 
+    public void ApplyEffect(EntityUid uid, MoodComponent component, string id)
+    {
+        if (!_prototypeManager.TryIndex<MoodEffectPrototype>(id, out var prototype))
+            return;
+
+        ApplyEffect(uid, component, prototype);
+    }
+
     private void ApplyEffect(EntityUid uid, MoodComponent component, MoodEffectPrototype prototype)
     {
         var amount = component.CurrentMoodLevel;

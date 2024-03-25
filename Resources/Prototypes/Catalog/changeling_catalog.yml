@@ -52,6 +52,19 @@
       stock: 1
 
 - type: listing
+  id: ChangelingHive
+  name: changeling-ability-hive
+  description: changeling-ability-hive-desc
+  productAction: ActionHive
+  cost:
+    ChangelingPoint: 2
+  categories:
+    - ChangelingAbilities
+  conditions:
+    - !type:ListingLimitedStockCondition
+      stock: 1
+
+- type: listing
   id: ChangelingTentacleArm
   name: changeling-ability-tentacle-arm
   description: changeling-ability-tentacle-arm-desc

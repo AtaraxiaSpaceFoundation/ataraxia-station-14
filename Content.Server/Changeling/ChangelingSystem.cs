@@ -3,6 +3,7 @@ using Content.Server.Store.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Changeling;
 using Content.Shared.Examine;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
 
@@ -41,7 +42,7 @@ public sealed partial class ChangelingSystem : EntitySystem
 
     private void OnExamine(EntityUid uid, AbsorbedComponent component, ExaminedEvent args)
     {
-        args.PushMarkup(Loc.GetString("changeling-juices-sucked-up"));
+        args.PushMarkup(Loc.GetString("changeling-juices-sucked-up", ("target", Identity.Entity(uid, EntityManager))));
     }
 
 #endregion

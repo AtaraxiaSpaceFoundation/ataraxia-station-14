@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Mood;
 using Content.Server.Administration.Systems;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
@@ -84,6 +85,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly CuffableSystem _cuffable = default!;
     [Dependency] private readonly NukeopsRuleSystem _nukeOps = default!;
     [Dependency] private readonly CultRuleSystem _cult = default!;
+    [Dependency] private readonly RevolutionaryRuleSystem _rev = default!;
     [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly EmpSystem _empSystem = default!;
@@ -91,6 +93,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly ServerBorerSystem _borer = default!;
     [Dependency] private readonly CarryingSystem _carrying = default!;
+    [Dependency] private readonly MoodSystem _mood = default!;
 
     private void InitializeAbilities()
     {
@@ -116,6 +119,7 @@ public sealed partial class ChangelingSystem
         SubscribeLocalEvent<ChangelingComponent, ArmbladeActionEvent>(OnArmBlade);
         SubscribeLocalEvent<ChangelingComponent, OrganicShieldActionEvent>(OnShield);
         SubscribeLocalEvent<ChangelingComponent, ChitinousArmorActionEvent>(OnArmor);
+        SubscribeLocalEvent<ChangelingComponent, HiveHeadActionEvent>(OnHiveHead);
         SubscribeLocalEvent<ChangelingComponent, TentacleArmActionEvent>(OnTentacleArm);
 
         SubscribeLocalEvent<ChangelingComponent, TransformDoAfterEvent>(OnTransformDoAfter);
@@ -146,6 +150,13 @@ public sealed partial class ChangelingSystem
     private const string ChangelingShield = "ActionShield";
     private const string ChangelingArmor = "ActionArmor";
     private const string ChangelingTentacleArm = "ActionTentacleArm";
+
+    private const string OuterName = "outerClothing";
+    private const string HeadName = "head";
+
+    private const string ArmorName = "ClothingOuterChangeling";
+    private const string HelmetName = "ClothingHeadHelmetLing";
+    private const string HiveHeadName = "ClothingHeadHelmetLingHive";
 
 #endregion
 
@@ -564,15 +575,10 @@ public sealed partial class ChangelingSystem
 
     private void OnArmor(EntityUid uid, ChangelingComponent component, ChitinousArmorActionEvent args)
     {
-        const string outerName = "outerClothing";
-        const string headName = "head";
-        const string armorName = "ClothingOuterChangeling";
-        const string helmetName = "ClothingHeadHelmetLing";
+        _inventorySystem.TryUnequip(uid, OuterName, out var outer, true, true);
+        _inventorySystem.TryUnequip(uid, HeadName, out var helmet, true, true);
 
-        _inventorySystem.TryUnequip(uid, outerName, out var outer, true, true);
-        _inventorySystem.TryUnequip(uid, headName, out var helmet, true, true);
-
-        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is {ID: armorName})
+        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is {ID: ArmorName})
         {
             args.Handled = true;
             return;
@@ -581,16 +587,49 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 20))
         {
             if (outer != null)
-                _inventorySystem.TryEquip(uid, outer.Value, outerName, true, true);
+                _inventorySystem.TryEquip(uid, outer.Value, OuterName, true, true);
 
             if (helmet != null)
-                _inventorySystem.TryEquip(uid, helmet.Value, headName, true, true);
+                _inventorySystem.TryEquip(uid, helmet.Value, HeadName, true, true);
 
             return;
         }
 
-        _inventorySystem.SpawnItemInSlot(uid, outerName, armorName, true, true);
-        _inventorySystem.SpawnItemInSlot(uid, headName, helmetName, true, true);
+        _inventorySystem.SpawnItemInSlot(uid, OuterName, ArmorName, true, true);
+        _inventorySystem.SpawnItemInSlot(uid, HeadName, HelmetName, true, true);
+
+        args.Handled = true;
+    }
+
+    private void OnHiveHead(EntityUid uid, ChangelingComponent component, HiveHeadActionEvent args)
+    {
+        if (!_mobStateSystem.IsAlive(uid))
+            return;
+
+        _inventorySystem.TryUnequip(uid, HeadName, out var helmet, true, true);
+
+        if (TryComp(helmet, out MetaDataComponent? metaData) && metaData.EntityPrototype != null)
+        {
+            switch (metaData.EntityPrototype.ID)
+            {
+                case HiveHeadName:
+                    args.Handled = true;
+                    return;
+                case HelmetName:
+                    _inventorySystem.TryUnequip(uid, OuterName, out _, true, true);
+                    break;
+            }
+        }
+
+        if (!TakeChemicals(uid, component, 15))
+        {
+            if (helmet != null)
+                _inventorySystem.TryEquip(uid, helmet.Value, HeadName, true, true);
+
+            return;
+        }
+
+        _inventorySystem.SpawnItemInSlot(uid, HeadName, HiveHeadName, true, true);
 
         args.Handled = true;
     }
@@ -783,6 +822,7 @@ public sealed partial class ChangelingSystem
             ChemicalsBalance = component.ChemicalsBalance,
             AbsorbedEntities = component.AbsorbedEntities,
             IsInited = component.IsInited,
+            AbsorbedCount = component.AbsorbedCount,
             IsLesserForm = true
         };
 
@@ -928,7 +968,8 @@ public sealed partial class ChangelingSystem
                 HiveName = lingComp.HiveName,
                 ChemicalsBalance = lingComp.ChemicalsBalance,
                 AbsorbedEntities = lingComp.AbsorbedEntities,
-                IsInited = lingComp.IsInited
+                IsInited = lingComp.IsInited,
+                AbsorbedCount = lingComp.AbsorbedCount
             };
 
             EntityManager.AddComponent(polymorphEntity.Value, toAdd);
@@ -955,6 +996,9 @@ public sealed partial class ChangelingSystem
 
     private void TransferComponents(EntityUid from, EntityUid to)
     {
+        if (HasComp<AbsorbedComponent>(from))
+            EnsureComp<AbsorbedComponent>(to);
+
         if (HasComp<BibleUserComponent>(from))
             EnsureComp<BibleUserComponent>(to);
 
@@ -991,6 +1035,22 @@ public sealed partial class ChangelingSystem
                 _faction.AddFaction(to, faction);
             }
         }
+
+        if (TryComp(from, out MoodComponent? mood))
+        {
+            var newMood = EnsureComp<MoodComponent>(to);
+            foreach (var effect in mood.CategorisedEffects)
+            {
+                _mood.ApplyEffect(to, newMood, effect.Value);
+            }
+
+            foreach (var effect in mood.UncategorisedEffects)
+            {
+                _mood.ApplyEffect(to, newMood, effect.Key);
+            }
+        }
+
+        _rev.TransferRole(from, to);
 
         _nukeOps.TransferRole(from, to);
 

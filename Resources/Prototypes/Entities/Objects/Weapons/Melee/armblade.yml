@@ -10,11 +10,10 @@
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: 90
-    attackRate: 0.75
     damage:
       types:
-        Slash: 17
-        Piercing: 17
+        Slash: 20
+        Piercing: 20
         Structural: 45
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg

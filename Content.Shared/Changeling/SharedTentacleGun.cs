@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
 using Content.Shared.Stunnable;
@@ -11,6 +12,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Input;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -36,6 +38,22 @@ public abstract class SharedTentacleGun : EntitySystem
         SubscribeLocalEvent<TentacleGunComponent, GunShotEvent>(OnTentacleShot);
         SubscribeLocalEvent<TentacleProjectileComponent, MapInitEvent>(OnMapInit); // WD
         SubscribeLocalEvent<TentacleProjectileComponent, ProjectileEmbedEvent>(OnTentacleCollide);
+        SubscribeLocalEvent<TentacleProjectileComponent, PreventCollideEvent>(PreventCollision);
+    }
+
+    private void PreventCollision(Entity<TentacleProjectileComponent> ent, ref PreventCollideEvent args)
+    {
+        if (HasComp<MobStateComponent>(args.OtherEntity) && !HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        if (!TryComp(ent, out ProjectileComponent? projectile))
+            return;
+
+        if (args.OtherEntity == projectile.Shooter || args.OtherEntity == projectile.Weapon)
+            args.Cancelled = true;
     }
 
     // WD EDIT START
