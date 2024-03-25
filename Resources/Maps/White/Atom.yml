@@ -156,6 +156,7 @@ entities:
     - type: Fixtures
       fixtures: {}
     - type: OccluderTree
+    - type: MaterialStorage
     - type: BecomesStation
       id: AtomStation
     - type: SpreaderGrid

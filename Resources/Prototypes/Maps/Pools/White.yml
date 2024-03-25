@@ -1,8 +1,9 @@
-#- type: gameMapPool
-#  id: WhiteMapPool
-#  maps:
-#    - WhiteBagel
-#    - WhiteBox
-#    - WhiteKettle
-#    - WhiteMeta
-#    - WonderBox
+- type: gameMapPool
+  id: WhiteMapPool
+  maps:
+  - WonderBox
+  - Polaris
+  - Scoupidia
+  - Void
+  - Triumph
+  - WhiteBox

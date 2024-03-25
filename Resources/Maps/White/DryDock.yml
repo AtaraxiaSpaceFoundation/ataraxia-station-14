@@ -7710,6 +7710,7 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: MaterialStorage
     - type: BecomesStation
       id: DryDockStation
   - uid: 14621
