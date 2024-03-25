@@ -34,36 +34,38 @@ public sealed class WeaponModulesSystem : EntitySystem
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
     }
-    private bool TryInsertModule(EntityUid module, EntityUid weapon, BaseModuleComponent component, EntGotInsertedIntoContainerMessage args, [NotNullWhen(true)] out WeaponModulesComponent? weaponModulesComponent)
+    private bool TryInsertModule(EntityUid module, EntityUid weapon, BaseModuleComponent component,
+        EntGotInsertedIntoContainerMessage args, [NotNullWhen(true)] out WeaponModulesComponent? weaponModulesComponent,
+        [NotNullWhen(true)] out AppearanceComponent? appearanceComponent)
     {
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponents) || !TryComp<AppearanceComponent>(weapon, out var appearanceComponent) || ModulesSlot != args.Container.ID)
+        if (!TryComp(weapon, out weaponModulesComponent) || !TryComp(weapon, out appearanceComponent) ||
+            ModulesSlot != args.Container.ID)
         {
             weaponModulesComponent = null;
             appearanceComponent = null;
             return false;
         }
 
-        if(!weaponModulesComponents.Modules.Contains(module))
-            weaponModulesComponents.Modules.Add(module);
+        if(!weaponModulesComponent.Modules.Contains(module))
+            weaponModulesComponent.Modules.Add(module);
         _appearanceSystem.SetData(weapon, ModuleVisualState.Module, component.AppearanceValue, appearanceComponent);
-        weaponModulesComponent = weaponModulesComponents;
 
         return true;
     }
 
-    private bool TryEjectModule(EntityUid module, EntityUid weapon, EntGotRemovedFromContainerMessage args, [NotNullWhen(true)] out WeaponModulesComponent? weaponModulesComponent)
+    private bool TryEjectModule(EntityUid module, EntityUid weapon, EntGotRemovedFromContainerMessage args, [NotNullWhen(true)] out WeaponModulesComponent? weaponModulesComponent, [NotNullWhen(true)] out AppearanceComponent? appearanceComponent)
     {
-        if (!TryComp<WeaponModulesComponent>(weapon, out var weaponModulesComponents) || !TryComp<AppearanceComponent>(weapon, out var appearanceComponent) || ModulesSlot != args.Container.ID)
+        if (!TryComp(weapon, out weaponModulesComponent) || !TryComp(weapon, out appearanceComponent) || ModulesSlot != args.Container.ID)
         {
             weaponModulesComponent = null;
             appearanceComponent = null;
             return false;
         }
 
-        if(weaponModulesComponents.Modules.Contains(module))
-            weaponModulesComponents.Modules.Remove(module);
+        if(weaponModulesComponent.Modules.Contains(module))
+            weaponModulesComponent.Modules.Remove(module);
         _appearanceSystem.SetData(weapon, ModuleVisualState.Module, "none", appearanceComponent);
-        weaponModulesComponent = weaponModulesComponents;
+
         return true;
     }
 
@@ -72,10 +74,8 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent))
+        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
-
-        if(!TryComp<AppearanceComponent>(weapon, out var appearanceComponent)) return;
 
         _lightSystem.EnsureLight(weapon);
 
@@ -90,7 +90,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent))
+        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
@@ -104,7 +104,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent))
+        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         weaponModulesComponent.UseEffect = true;
@@ -115,7 +115,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent))
+        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
@@ -132,7 +132,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent))
+        if(!TryInsertModule(module, weapon, component, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
@@ -148,7 +148,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent))
+        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         _lightSystem.TryGetLight(weapon, out var light);
@@ -160,7 +160,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent))
+        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         _gunSystem.SetProjectileSpeed(weapon, component.OldProjectileSpeed);
@@ -170,7 +170,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent))
+        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         weaponModulesComponent.UseEffect = false;
@@ -181,7 +181,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent))
+        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         weaponModulesComponent.UseEffect = false;
@@ -193,7 +193,7 @@ public sealed class WeaponModulesSystem : EntitySystem
     {
         EntityUid weapon = args.Container.Owner;
 
-        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent))
+        if(!TryEjectModule(module, weapon, args, out var weaponModulesComponent, out var appearanceComponent))
             return;
 
         _gunSystem.SetFireRate(weapon, component.OldFireRate);
