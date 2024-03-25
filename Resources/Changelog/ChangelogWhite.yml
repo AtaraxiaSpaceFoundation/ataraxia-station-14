@@ -2917,3 +2917,13 @@
   id: 223
   time: '2024-03-24T16:34:20.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/244
+- author: RinKeeper
+  changes:
+  - message: WonderBox, Polaris, Scoupidia, Void, Triumph and WhiteBox are now in
+      standard map pool
+    type: Tweak
+  - message: MaterialStorage on old maps
+    type: Tweak
+  id: 224
+  time: '2024-03-25T03:02:48.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/233
