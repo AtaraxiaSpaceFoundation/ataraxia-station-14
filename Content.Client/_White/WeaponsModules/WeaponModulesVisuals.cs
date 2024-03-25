@@ -8,9 +8,7 @@ namespace Content.Client._White.WeaponsModules;
 
 public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModulesComponent>
 {
-
     [Dependency] private readonly PointLightSystem _lightSystem = default!;
-
     protected override void OnAppearanceChange(EntityUid uid, WeaponModulesComponent component, ref AppearanceChangeEvent args)
     {
         base.OnAppearanceChange(uid, component, ref args);

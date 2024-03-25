@@ -27,7 +27,6 @@
   name: "light module"
   parent: BaseModule
   components:
-  - type: Item
   - type: LightModule
     value: "light"
   - type: Sprite
@@ -40,7 +39,6 @@
   name: "laser module"
   parent: BaseModule
   components:
-  - type: Item
   - type: LaserModule
     value: "laser"
   - type: Sprite
@@ -53,7 +51,6 @@
   name: "flamehider module"
   parent: BaseModule
   components:
-  - type: Item
   - type: FlameHiderModule
     value: "flamehider"
   - type: Sprite
@@ -66,7 +63,6 @@
   name: "silencer module"
   parent: BaseModule
   components:
-  - type: Item
   - type: SilencerModule
     value: "silencer"
   - type: Sprite
@@ -79,7 +75,6 @@
   name: "accelerator module"
   parent: BaseModule
   components:
-  - type: Item
   - type: AcceleratorModule
     value: "accelerator"
   - type: Sprite

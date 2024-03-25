@@ -477,8 +477,8 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected void MuzzleFlash(EntityUid gun, AmmoComponent component, EntityUid? user = null)
     {
-        bool cancelled = TryComp<WeaponModulesComponent>(gun, out var weaponModulesComponent) && weaponModulesComponent.UseEffect;
-        if(cancelled) return;
+        bool cancelled = TryComp<WeaponModulesComponent>(gun, out var weaponModulesComponent) && weaponModulesComponent.WeaponFireEffect; // WD EDIT
+        if(cancelled) return; // WD EDIT END
 
         var attemptEv = new GunMuzzleFlashAttemptEvent();
         RaiseLocalEvent(gun, ref attemptEv);

@@ -13,7 +13,7 @@ public partial class WeaponModulesComponent : Component
     public List<EntityUid> Modules = new();
 
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public bool UseEffect;
+    public bool WeaponFireEffect;
 }
 
 [Serializable, NetSerializable]

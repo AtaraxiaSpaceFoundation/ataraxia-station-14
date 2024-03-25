@@ -1,3 +1,4 @@
+using Content.Shared._White.WeaponModules;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Hands;
@@ -20,6 +21,20 @@ public abstract partial class SharedGunSystem
                 ("mode", GetLocSelector(component.SelectedMode))));
             args.PushMarkup(Loc.GetString("gun-fire-rate-examine", ("color", FireRateExamineColor),
                 ("fireRate", $"{component.FireRateModified:0.0}")));
+
+            if (TryComp<WeaponModulesComponent>(uid, out var weaponModulesComponent))
+            {
+                if (weaponModulesComponent.Modules.Count == 0)
+                {
+                    args.PushMarkup(Loc.GetString("gun-modules", ("modules", "Пусто")));
+                    return;
+                }
+
+                foreach (var module in weaponModulesComponent.Modules)
+                {
+                    args.PushMarkup(Loc.GetString("gun-modules", ("modules", Name(module))));
+                }
+            }
 
             if (!TryComp<TwoModeEnergyAmmoProviderComponent>(uid, out var comp))
                 return;
