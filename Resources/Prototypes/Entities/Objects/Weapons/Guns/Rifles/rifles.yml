@@ -119,7 +119,6 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: WeaponModulesVisuals
   - type: PointLight
     enabled: false
     autoRot: true
@@ -225,7 +224,6 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: WeaponModulesVisuals
   - type: PointLight
     enabled: false
     autoRot: true
