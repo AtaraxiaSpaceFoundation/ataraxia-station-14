@@ -29,6 +29,7 @@
       - id: ClothingUniformJumpsuitLawyerBlack
       - id: ClothingShoesBootsLaceup
       - id: ClothingHandsGlovesCombat # WD edit
+      - id: BarberScissors
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled

@@ -123,6 +123,17 @@ namespace Content.IntegrationTests.Tests.Preferences
             await pair.CleanReturnAsync();
         }
 
+        [Test]
+        public async Task TestNoPendingDatabaseChanges()
+        {
+            var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var db = GetDb(server);
+            Assert.That(async () => await db.HasPendingModelChanges(), Is.False,
+                "The database has pending model changes. Add a new migration to apply them. See https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations");
+            await pair.CleanReturnAsync();
+        }
+
         private static NetUserId NewUserId()
         {
             return new(Guid.NewGuid());

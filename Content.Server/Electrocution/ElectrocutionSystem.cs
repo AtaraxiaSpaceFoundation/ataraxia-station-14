@@ -19,7 +19,6 @@ using Content.Shared.Jittering;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
-using Content.Shared.Pulling.Components;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
@@ -33,6 +32,8 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
+using PullerComponent = Content.Shared.Movement.Pulling.Components.PullerComponent;
 
 namespace Content.Server.Electrocution;
 
@@ -215,6 +216,16 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
     private bool IsPanelClosed(EntityUid uid) // WD
     {
         return TryComp(uid, out WiresPanelComponent? panel) && !panel.Open;
+    }
+
+    private float CalculateElectrifiedDamageScale(float power)
+    {
+        // A logarithm allows a curve of damage that grows quickly, but slows down dramatically past a value. This keeps the damage to a reasonable range.
+        const float DamageShift = 1.67f; // Shifts the curve for an overall higher or lower damage baseline
+        const float CeilingCoefficent = 1.35f; // Adjusts the approach to maximum damage, higher = Higher top damage
+        const float LogGrowth = 0.00001f; // Adjusts the growth speed of the curve
+
+        return DamageShift + MathF.Log(power * LogGrowth) * CeilingCoefficent;
     }
 
     private float CalculateElectrifiedDamageScale(float power)
@@ -483,14 +494,14 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         all.Add((entity, depth));
         visited.Add(entity);
 
-        if (TryComp<SharedPullableComponent>(entity, out var pullable) &&
+        if (TryComp<PullableComponent>(entity, out var pullable) &&
             pullable.Puller is { Valid: true } pullerId &&
             !visited.Contains(pullerId))
         {
             GetChainedElectrocutionTargetsRecurse(pullerId, depth + 1, visited, all);
         }
 
-        if (TryComp<SharedPullerComponent>(entity, out var puller) &&
+        if (TryComp<PullerComponent>(entity, out var puller) &&
             puller.Pulling is { Valid: true } pullingId &&
             !visited.Contains(pullingId))
         {

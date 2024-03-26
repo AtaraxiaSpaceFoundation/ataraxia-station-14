@@ -20,6 +20,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
+using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
 using Content.Shared.Tag;
@@ -68,8 +69,6 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
    [Dependency] private readonly PandaWebManager _pandaWeb = default!;
     //WD-EDIT
 
-    private ISawmill _sawmill = default!;
-
     private const float ShuttleSpawnBuffer = 1f;
 
     private bool _emergencyShuttleEnabled;
@@ -79,12 +78,12 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
     public override void Initialize()
     {
-        _sawmill = Logger.GetSawmill("shuttle.emergency");
         _emergencyShuttleEnabled = _configManager.GetCVar(CCVars.EmergencyShuttleEnabled);
         // Don't immediately invoke as roundstart will just handle it.
         Subs.CVar(_configManager, CCVars.EmergencyShuttleEnabled, SetEmergencyShuttleEnabled);
 
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
         SubscribeLocalEvent<StationEmergencyShuttleComponent, ComponentStartup>(OnStationStartup);
         SubscribeLocalEvent<StationCentcommComponent, ComponentShutdown>(OnCentcommShutdown);
         SubscribeLocalEvent<StationCentcommComponent, ComponentInit>(OnCentcommInit);
@@ -97,11 +96,14 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
     private void OnRoundStart(RoundStartingEvent ev)
     {
-        // WD EDIT START
-        _roundEndCancelToken?.Cancel();
         CleanupEmergencyConsole();
-        // WD EDIT END
         _roundEndCancelToken = new CancellationTokenSource();
+    }
+
+    private void OnRoundCleanup(RoundRestartCleanupEvent ev)
+    {
+        _roundEndCancelToken?.Cancel();
+        _roundEndCancelToken = null;
     }
 
     private void OnCentcommShutdown(EntityUid uid, StationCentcommComponent component, ComponentShutdown args)
@@ -411,7 +413,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     {
         if (component.MapEntity != null || component.Entity != null)
         {
-            _sawmill.Warning("Attempted to re-add an existing centcomm map.");
+            Log.Warning("Attempted to re-add an existing centcomm map.");
             return;
         }
 
@@ -436,7 +438,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         if (string.IsNullOrEmpty(component.Map.ToString()))
         {
-            _sawmill.Warning("No CentComm map found, skipping setup.");
+            Log.Warning("No CentComm map found, skipping setup.");
             return;
         }
 
@@ -473,7 +475,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         component.MapEntity = map;
         component.Entity = grid;
-        _shuttle.AddFTLDestination(grid.Value, false);
+        _shuttle.TryAddFTLDestination(mapId, false, out _);
     }
 
     public HashSet<EntityUid> GetCentcommMaps()
@@ -512,11 +514,11 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         if (shuttle == null)
         {
-            _sawmill.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
+            Log.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
             return;
         }
 
-        centcomm.ShuttleIndex += _mapManager.GetGrid(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
+        centcomm.ShuttleIndex += Comp<MapGridComponent>(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
 
         // Update indices for all centcomm comps pointing to same map
         var query = AllEntityQuery<StationCentcommComponent>();
@@ -533,14 +535,6 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         EnsureComp<ProtectedGridComponent>(shuttle.Value);
         EnsureComp<PreventPilotComponent>(shuttle.Value);
         EnsureComp<EmergencyShuttleComponent>(shuttle.Value);
-    }
-
-    private void OnEscapeUnpaused(EntityUid uid, EscapePodComponent component, ref EntityUnpausedEvent args)
-    {
-        if (component.LaunchTime == null)
-            return;
-
-        component.LaunchTime = component.LaunchTime.Value + args.PausedTime;
     }
 
     /// <summary>

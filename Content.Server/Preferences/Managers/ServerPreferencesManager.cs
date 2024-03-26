@@ -4,13 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Database;
-using Content.Server.Humanoid;
 using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
-using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
-using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -110,15 +106,15 @@ namespace Content.Server.Preferences.Managers
             // WD-EDIT
             var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor)
                 ? sponsor.AllowedMarkings
-                : new string[] { };
+                : [];
 
-            bool isAdminSpecie = false;
+            var isAdminSpecie = false;
             if (_playerManager.TryGetSessionById(message.MsgChannel.UserId, out var session))
             {
                 isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
             }
 
-            profile.EnsureValid(allowedMarkings, isAdminSpecie);
+            profile.EnsureValid(_cfg, _protos, allowedMarkings, isAdminSpecie);
             // WD-EDIT
 
             var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
@@ -158,7 +154,7 @@ namespace Content.Server.Preferences.Managers
             if (curPrefs.SelectedCharacterIndex == slot)
             {
                 // That ! on the end is because Rider doesn't like .NET 5.
-                var (ns, profile) = curPrefs.Characters.FirstOrDefault(p => p.Key != message.Slot)!;
+                var (ns, profile) = curPrefs.Characters.FirstOrDefault(p => p.Key != message.Slot);
                 if (profile == null)
                 {
                     // Only slot left, can't delete.
@@ -174,16 +170,16 @@ namespace Content.Server.Preferences.Managers
             prefsData.Prefs =
                 new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor);
 
-            if (ShouldStorePrefs(message.MsgChannel.AuthType))
+            if (!ShouldStorePrefs(message.MsgChannel.AuthType))
+                return;
+
+            if (nextSlot != null)
             {
-                if (nextSlot != null)
-                {
-                    await _db.DeleteSlotAndSetSelectedIndex(userId, slot, nextSlot.Value);
-                }
-                else
-                {
-                    await _db.SaveCharacterSlotAsync(userId, null, slot);
-                }
+                await _db.DeleteSlotAndSetSelectedIndex(userId, slot, nextSlot.Value);
+            }
+            else
+            {
+                await _db.SaveCharacterSlotAsync(userId, null, slot);
             }
         }
 
@@ -220,23 +216,25 @@ namespace Content.Server.Preferences.Managers
                     {
                         var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor)
                             ? sponsor.AllowedMarkings
-                            : new string[] { };
+                            : [];
 
-                        bool isAdminSpecie =
+                        var isAdminSpecie =
                             _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
 
-                        profile.EnsureValid(allowedMarkings, isAdminSpecie);
+                        profile.EnsureValid(_cfg, _protos, allowedMarkings, isAdminSpecie);
                     }
                     // WD-EDIT
 
                     prefsData.Prefs = prefs;
                     prefsData.PrefsLoaded = true;
 
-                    var msg = new MsgPreferencesAndSettings();
-                    msg.Preferences = prefs;
-                    msg.Settings = new GameSettings
+                    var msg = new MsgPreferencesAndSettings
                     {
-                        MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId)
+                        Preferences = prefs,
+                        Settings = new GameSettings
+                        {
+                            MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId)
+                        }
                     };
 
                     _netManager.ServerSendMessage(msg, session.Channel);
@@ -304,51 +302,31 @@ namespace Content.Server.Preferences.Managers
                 return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.Random());
             }
 
-            return SanitizePreferences(prefs);
+            return SanitizePreferences(prefs, userId);
         }
 
-        private PlayerPreferences SanitizePreferences(PlayerPreferences prefs)
+        private PlayerPreferences SanitizePreferences(PlayerPreferences prefs, NetUserId userId)
         {
+            // WD-EDIT
+            var allowedMarkings = _sponsors.TryGetInfo(userId, out var sponsor)
+                ? sponsor.AllowedMarkings
+                : [];
+
+            var isAdminSpecie = false;
+            if (_playerManager.TryGetSessionById(userId, out var session))
+            {
+                isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+            }
+
             // Clean up preferences in case of changes to the game,
             // such as removed jobs still being selected.
-
-            return new PlayerPreferences(prefs.Characters.Select(p =>
-            {
-                ICharacterProfile newProf;
-                switch (p.Value)
-                {
-                    case HumanoidCharacterProfile hp:
-                    {
-                        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-
-                        if (!prototypeManager.TryIndex<SpeciesPrototype>(hp.Species, out var selectedSpecies) ||
-                            selectedSpecies.RoundStart)
-                        {
-                            selectedSpecies = prototypeManager.Index<SpeciesPrototype>(hp.Species);
-                        }
-
-                        if (!prototypeManager.TryIndex<BodyTypePrototype>(hp.BodyType, out var selectedBodyType) ||
-                            !SharedHumanoidAppearanceSystem.IsBodyTypeValid(selectedBodyType, selectedSpecies, hp.Sex))
-                        {
-                            selectedBodyType = prototypeManager.Index<BodyTypePrototype>(
-                                SharedHumanoidAppearanceSystem.DefaultBodyType);
-                        }
-
-                        newProf = hp
-                            .WithJobPriorities(hp.JobPriorities.Where(job => _protos.HasIndex<JobPrototype>(job.Key)))
-                            .WithAntagPreferences(hp.AntagPreferences.Where(antag =>
-                                _protos.HasIndex<AntagPrototype>(antag)))
-                            .WithSpecies(selectedSpecies.ID)
-                            .WithBodyType(selectedBodyType.ID);
-
-                        break;
-                    }
-                    default:
-                        throw new NotSupportedException();
-                }
-
-                return new KeyValuePair<int, ICharacterProfile>(p.Key, newProf);
-            }), prefs.SelectedCharacterIndex, prefs.AdminOOCColor);
+            return new PlayerPreferences(
+                prefs.Characters.Select(p => new KeyValuePair<int, ICharacterProfile>(p.Key,
+                    p.Value.Validated(_cfg, _protos, allowedMarkings, isAdminSpecie))
+                ),
+                prefs.SelectedCharacterIndex,
+                prefs.AdminOOCColor
+            );
         }
 
         public IEnumerable<KeyValuePair<NetUserId, ICharacterProfile>> GetSelectedProfilesForPlayers(

@@ -84,6 +84,10 @@
         "directions": 4
       },
       {
+        "name": "bob5",
+        "directions": 4
+      },
+      {
         "name": "bobcurl",
         "directions": 4
       },
@@ -197,6 +201,10 @@
       },
       {
         "name": "crewcut",
+        "directions": 4
+      },
+      {
+        "name": "crewcut2",
         "directions": 4
       },
       {
@@ -373,6 +381,10 @@
       },
       {
         "name": "long3",
+        "directions": 4
+      },
+      {
+        "name": "longbundled",
         "directions": 4
       },
       {

@@ -95,10 +95,12 @@ public enum LogType
     /// </summary>
     ChatRateLimited = 87,
     AtmosTemperatureChanged = 88,
+    DeviceNetwork = 89,
+    StoreRefund = 90,
 
     // WD EDIT
-    AspectAnnounced = 89,
-    AspectStarted = 90,
-    AspectStopped = 91,
+    AspectAnnounced = 91,
+    AspectStarted = 92,
+    AspectStopped = 93,
     // WD EDIT
 }

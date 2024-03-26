@@ -1,7 +1,11 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/White/Fluff/DOOMMAX/cap_cap.rsi/meta.json
   "copyright": "Made by Gargarien for DOOMMAX",
+========
+  "copyright": "Sprited by Hülle#2562 (Discord), resprite by icekot8",
+>>>>>>>> ae3d745430e3c5250d19553429e7cda2b8050d10:Resources/Textures/Clothing/Head/Hats/beret_medic.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32

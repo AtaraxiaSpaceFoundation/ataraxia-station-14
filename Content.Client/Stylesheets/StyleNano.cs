@@ -81,6 +81,7 @@ namespace Content.Client.Stylesheets
         public const string StyleClassLabelKeyText = "LabelKeyText";
         public const string StyleClassLabelSecondaryColor = "LabelSecondaryColor";
         public const string StyleClassLabelBig = "LabelBig";
+        public const string StyleClassLabelSmall = "LabelSmall";
         public const string StyleClassButtonBig = "ButtonBig";
 
         public const string StyleClassPopupMessageSmall = "PopupMessageSmall";
@@ -392,6 +393,12 @@ namespace Content.Client.Stylesheets
             };
             chatFilterButton.SetPatchMargin(StyleBox.Margin.All, 5);
             chatFilterButton.SetPadding(StyleBox.Margin.All, 2);
+
+            var smallButtonTex = resCache.GetTexture("/Textures/Interface/Nano/button_small.svg.96dpi.png");
+            var smallButtonBase = new StyleBoxTexture
+            {
+                Texture = smallButtonTex,
+            };
 
             var textureInvertedTriangle = resCache.GetTexture("/Textures/Interface/Nano/inverted_triangle.svg.png");
 
@@ -756,6 +763,23 @@ namespace Content.Client.Stylesheets
                     .Pseudo(ContainerButton.StylePseudoClassDisabled)
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDisabled),
 
+                // Colors for confirm buttons confirm states.
+                Element<ConfirmButton>()
+                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassNormal)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDefault),
+
+                Element<ConfirmButton>()
+                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassHover)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionHovered),
+
+                Element<ConfirmButton>()
+                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassPressed)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionPressed),
+
+                Element<ConfirmButton>()
+                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassDisabled)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDisabled),
+
                 new StyleRule(new SelectorChild(
                     new SelectorElement(typeof(Button), null, null, new[] {ContainerButton.StylePseudoClassDisabled}),
                     new SelectorElement(typeof(Label), null, null, null)),
@@ -1020,6 +1044,14 @@ namespace Content.Client.Stylesheets
                 }),
 
                 new StyleRule(new SelectorChild(
+                    new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "whisperBox"}, null, null),
+                    new SelectorElement(typeof(RichTextLabel), new[] {"bubbleContent"}, null, null)),
+                    new[]
+                {
+                    new StyleProperty("font", notoSansItalic12),
+                }),
+
+                new StyleRule(new SelectorChild(
                     new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "emoteBox"}, null, null),
                     new SelectorElement(typeof(RichTextLabel), null, null, null)),
                     new[]
@@ -1109,6 +1141,18 @@ namespace Content.Client.Stylesheets
                         new StyleBoxFlat {BackgroundColor = Color.Transparent}),
                     new StyleProperty(ItemList.StylePropertyItemBackground,
                         itemListItemBackgroundTransparent),
+                    new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
+                        itemListItemBackgroundDisabled),
+                    new StyleProperty(ItemList.StylePropertySelectedItemBackground,
+                        itemListBackgroundSelected)
+                }),
+
+                 new StyleRule(new SelectorElement(typeof(ItemList), new[] {"transparentBackgroundItemList"}, null, null), new[]
+                {
+                    new StyleProperty(ItemList.StylePropertyBackground,
+                        new StyleBoxFlat {BackgroundColor = Color.Transparent}),
+                    new StyleProperty(ItemList.StylePropertyItemBackground,
+                        itemListItemBackground),
                     new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
                         itemListItemBackgroundDisabled),
                     new StyleProperty(ItemList.StylePropertySelectedItemBackground,
@@ -1316,14 +1360,6 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(StripeBack.StylePropertyBackground, stripeBack),
                     }),
 
-                // StyleClassLabelBig
-                new StyleRule(
-                    SelectorElement.Class(StyleClassLabelBig),
-                    new[]
-                    {
-                        new StyleProperty("font", notoSans16),
-                    }),
-
                 // StyleClassItemStatus
                 new StyleRule(SelectorElement.Class(StyleClassItemStatus), new[]
                 {
@@ -1430,10 +1466,29 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = ButtonColorHovered, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
                 }),
 
+                // Labels ---
+                Element<Label>().Class(StyleClassLabelBig)
+                    .Prop(Label.StylePropertyFont, notoSans16),
+
+                Element<Label>().Class(StyleClassLabelSmall)
+                 .Prop(Label.StylePropertyFont, notoSans10),
+                // ---
+
+                // Different Background shapes ---
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#050505")),
 
+                Element<PanelContainer>().Class("BackgroundOpenRight")
+                    .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenRight)
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
+
+                Element<PanelContainer>().Class("BackgroundOpenLeft")
+                    .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenLeft)
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
+                // ---
+
+                // Dividers
                 Element<PanelContainer>().Class(ClassLowDivider)
                     .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat
                     {
@@ -1488,6 +1543,14 @@ namespace Content.Client.Stylesheets
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#5C4D51")),
                 // ---
 
+                // Profile Editor
+                Element<TextureButton>().Class("SpeciesInfoDefault")
+                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png")),
+
+                Element<TextureButton>().Class("SpeciesInfoWarning")
+                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/info.svg.192dpi.png"))
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#eeee11")),
+
                 // The default look of paper in UIs. Pages can have components which override this
                 Element<PanelContainer>().Class("PaperDefaultBorder")
                     .Prop(PanelContainer.StylePropertyPanel, paperBackground),
@@ -1522,6 +1585,15 @@ namespace Content.Client.Stylesheets
 
                 Element<Button>().Class("ButtonColorGreen").Pseudo(ContainerButton.StylePseudoClassHover)
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorGoodHovered),
+                // ---
+
+                // Small Button ---
+                Element<Button>().Class("ButtonSmall")
+                    .Prop(ContainerButton.StylePropertyStyleBox, smallButtonBase),
+
+                Child().Parent(Element<Button>().Class("ButtonSmall"))
+                    .Child(Element<Label>())
+                    .Prop(Label.StylePropertyFont, notoSans8),
                 // ---
 
                 // Purple Button ---
@@ -1632,7 +1704,6 @@ namespace Content.Client.Stylesheets
                     {
                         BackgroundColor = FancyTreeSelectedRowColor,
                     }),
-
             }).ToList());
         }
     }

@@ -258,3 +258,8 @@
   - chirp!
   - chirping.
   - chirped.
+
+- type: emote
+  id: Weh
+  category: Vocal
+  chatMessages: [Вех!]

@@ -84,7 +84,7 @@
         - !type:OrganType
           type: Arachnid
           shouldHave: true
-        amount: 4
+        amount: 0.4
 
 - type: reagent
   id: Fluorine
@@ -174,7 +174,7 @@
         - !type:OrganType
           type: Arachnid
           shouldHave: false
-        amount: 4
+        amount: 0.4
 
 - type: reagent
   id: Lithium

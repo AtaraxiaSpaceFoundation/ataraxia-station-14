@@ -821,8 +821,6 @@
         mask:
         - Impassable
         - BulletImpassable
-  - type: CanPenetrate
-    penetrationLayer: MobLayer
   - type: Vapor
     active: true
   - type: Appearance

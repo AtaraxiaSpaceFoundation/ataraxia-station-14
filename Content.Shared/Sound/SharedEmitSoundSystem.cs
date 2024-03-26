@@ -10,6 +10,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
@@ -26,7 +27,6 @@ public abstract class SharedEmitSoundSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefMan = default!;
     [Dependency] protected readonly IRobustRandom Random = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
@@ -43,7 +43,6 @@ public abstract class SharedEmitSoundSystem : EntitySystem
         SubscribeLocalEvent<EmitSoundOnPickupComponent, GotEquippedHandEvent>(OnEmitSoundOnPickup);
         SubscribeLocalEvent<EmitSoundOnDropComponent, DroppedEvent>(OnEmitSoundOnDrop);
 
-        SubscribeLocalEvent<EmitSoundOnCollideComponent, EntityUnpausedEvent>(OnEmitSoundUnpaused);
         SubscribeLocalEvent<EmitSoundOnCollideComponent, StartCollideEvent>(OnEmitSoundOnCollide);
     }
 
@@ -56,7 +55,7 @@ public abstract class SharedEmitSoundSystem : EntitySystem
     {
         if (!args.PlaySound ||
             !TryComp<TransformComponent>(uid, out var xform) ||
-            !_mapManager.TryGetGrid(xform.GridUid, out var grid))
+            !TryComp<MapGridComponent>(xform.GridUid, out var grid))
         {
             return;
         }
@@ -121,11 +120,6 @@ public abstract class SharedEmitSoundSystem : EntitySystem
 
         if (_netMan.IsServer)
             RaiseLocalEvent(new EmitSoundStatEvent(uid, component.Sound));
-    }
-
-    private void OnEmitSoundUnpaused(EntityUid uid, EmitSoundOnCollideComponent component, ref EntityUnpausedEvent args)
-    {
-        component.NextSound += args.PausedTime;
     }
 
     private void OnEmitSoundOnCollide(EntityUid uid, EmitSoundOnCollideComponent component, ref StartCollideEvent args)

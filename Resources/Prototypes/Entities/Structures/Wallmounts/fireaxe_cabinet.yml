@@ -5,7 +5,27 @@
   components:
   - type: Damageable # adding destructible causes the entity inside to be deleted when the cabinet is destroyed :(
     damageContainer: StructuralInorganic
+  - type: Damageable
+    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 200 #20ish crowbar hits
+        behaviors:
+        - !type:EmptyAllContainersBehaviour
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalGlassBreak
   - type: MeleeSound
     soundGroups:
       Brute:

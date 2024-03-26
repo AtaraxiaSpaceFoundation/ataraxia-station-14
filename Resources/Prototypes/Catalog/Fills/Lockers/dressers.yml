@@ -14,6 +14,7 @@
       - id: ClothingHandsGlovesCaptain
       - id: ClothingNeckMantleCap
       - id: ClothingEyesGlassesSunglasses
+      - id: ClothingOuterWinterCap
 
 - type: entity
   id: DresserChiefEngineerFilled
@@ -27,6 +28,7 @@
       - id: ClothingUniformJumpskirtChiefEngineerTurtle
       - id: ClothingNeckCloakCe
       - id: ClothingHeadHatBeretEngineering
+      - id: ClothingOuterWinterCE
 
 - type: entity
   id: DresserChiefMedicalOfficerFilled
@@ -39,6 +41,8 @@
       - id: ClothingCloakCmo
       - id: ClothingOuterCoatLabCmo
       - id: ClothingHeadHatBeretCmo
+      - id: ClothingEyesGlasses
+      - id: ClothingOuterWinterCMO
 
 - type: entity
   id: DresserHeadOfPersonnelFilled
@@ -51,6 +55,7 @@
       - id: ClothingNeckCloakHop
       - id: ClothingHeadHatHopcap
       - id: ClothingOuterWinterHoP
+      - id: ClothingEyesGlasses
       - id: ClothingHandsGlovesHop
 
 - type: entity
@@ -70,6 +75,7 @@
       - id: ClothingUniformJumpsuitHosFormal
       - id: ClothingMaskNeckGaiter
       - id: ClothingHandsGlovesCombat
+      - id: ClothingOuterWinterHoS
 
 - type: entity
   id: DresserQuarterMasterFilled
@@ -79,13 +85,14 @@
   - type: StorageFill
     contents:
       - id: ClothingNeckCloakQm
-      - id: ClothingHeadsetCargo
       - id: ClothingHeadHatBeretQM
       - id: ClothingUniformJumpsuitQMFormal
+      - id: ClothingHeadsetCargo
       - id: ClothingUniformJumpsuitQMTurtleneck
       - id: ClothingUniformJumpskirtQMTurtleneck
       - id: ClothingHandsGlovesColorBrown
       - id: ClothingNeckMantleQM
+      - id: ClothingOuterWinterQM
 
 - type: entity
   id: DresserResearchDirectorFilled
@@ -98,7 +105,8 @@
       - id: ClothingNeckCloakRd
       - id: ClothingHeadHatBeretRND
       - id: ClothingHandsGlovesColorPurple
-      - id: ClothingHeadsetAltScience
+      - id: ClothingEyesGlasses
+      - id: ClothingOuterWinterRD
 
 - type: entity
   id: DresserWardenFilled

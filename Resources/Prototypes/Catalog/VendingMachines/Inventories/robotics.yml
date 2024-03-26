@@ -6,6 +6,7 @@
     RemoteSignaller: 10
     SciFlash: 4
     ClothingEyesHudDiagnostic: 2
+    ClothingEyesEyepatchHudDiag: 2
     Igniter: 3
     HandheldHealthAnalyzer: 3
     Scalpel: 2

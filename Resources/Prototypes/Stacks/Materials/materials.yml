@@ -88,8 +88,16 @@
 
 - type: stack
   id: RunicMetalSheets
-  name: runic metal
+  name: рунический метал
   icon: { sprite: /Textures/White/Cult/Entities/runic_metal.rsi, state: runic}
   spawn: CultRunicMetal1
   maxCount: 30
+  itemSize: 1
+
+- type: stack
+  id: Gunpowder
+  name: порох
+  icon: { sprite: /Textures/Objects/Misc/reagent_fillings.rsi, state: powderpile }
+  spawn: MaterialGunpowder
+  maxCount: 60
   itemSize: 1

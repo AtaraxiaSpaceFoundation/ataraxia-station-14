@@ -15,8 +15,7 @@ public sealed partial class GameTicker
     [Dependency] private readonly IReplayRecordingManager _replays = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly ISerializationManager _serialman = default!;
-
-
+    
     private ISawmill _sawmillReplays = default!;
 
     private void InitializeReplays()
@@ -128,6 +127,7 @@ public sealed partial class GameTicker
         metadata["roundEndPlayers"] = _serialman.WriteValue(_replayRoundPlayerInfo);
         metadata["roundEndText"] = new ValueDataNode(_replayRoundText);
         metadata["server_id"] = new ValueDataNode(_configurationManager.GetCVar(CCVars.ServerId));
+        metadata["server_name"] = new ValueDataNode(_configurationManager.GetCVar(CCVars.AdminLogsServerName));
         metadata["roundId"] = new ValueDataNode(RoundId.ToString());
     }
 

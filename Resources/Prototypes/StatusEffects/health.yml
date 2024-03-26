@@ -2,6 +2,31 @@
   id: HealthIconFine
   priority: 0
   icon:
-    sprite: /Textures/Interface/Misc/health_state.rsi
-    state: empty_state
+    sprite: /Textures/Interface/Misc/health_icons.rsi
+    state: Fine
   locationPreference: Right
+
+- type: statusIcon
+  id: HealthIconCritical
+  priority: 1
+  icon:
+    sprite: /Textures/Interface/Misc/health_icons.rsi
+    state: Critical
+  locationPreference: Right
+
+- type: statusIcon
+  id: HealthIconDead
+  priority: 1
+  icon:
+    sprite: /Textures/Interface/Misc/health_icons.rsi
+    state: Dead
+  locationPreference: Right
+
+- type: statusIcon
+  id: HealthIconRotting
+  priority: 1
+  icon:
+    sprite: /Textures/Interface/Misc/health_icons.rsi
+    state: Rotting
+  locationPreference: Right
+

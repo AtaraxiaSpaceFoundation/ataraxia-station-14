@@ -1,5 +1,5 @@
-using Content.Server.Popups;
 using Content.Shared.Examine;
+using Content.Server.Popups;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -11,7 +11,6 @@ public sealed class HolosignSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
-
 
     public override void Initialize()
     {
@@ -47,6 +46,7 @@ public sealed class HolosignSystem : EntitySystem
             comp.Signs.Remove(sign);
             QueueDel(sign);
         }
+
         _popupSystem.PopupEntity(Loc.GetString("holoprojector-delete-signs"), args.User, args.User, PopupType.Medium);
     }
 
@@ -60,7 +60,9 @@ public sealed class HolosignSystem : EntitySystem
         }
 
         if (args.Handled || !args.CanReach)
+        {
             return;
+        }
 
         if (component.Signs.Count >= component.Uses) // wd edit
         {
@@ -71,7 +73,9 @@ public sealed class HolosignSystem : EntitySystem
         var holoUid = EntityManager.SpawnEntity(component.SignProto, args.ClickLocation.SnapToGrid(EntityManager));
         var xform = Transform(holoUid);
         if (!xform.Anchored)
+        {
             _transform.AnchorEntity(holoUid, xform);
+        }
 
         args.Handled = true;
         component.Signs.Add(holoUid); // WD EDIT
@@ -85,13 +89,13 @@ public sealed class HolosignSystem : EntitySystem
         }
     }
 
-    private int UsesRemaining(HolosignProjectorComponent component)
+    private static int UsesRemaining(HolosignProjectorComponent component)
     {
-        return (component.Uses - component.Signs.Count); // wd edit
+        return component.Uses - component.Signs.Count; // wd edit
     }
 
-    private int ActiveHolo(HolosignProjectorComponent component) // wd edit
+    private static int ActiveHolo(HolosignProjectorComponent component) // wd edit
     {
-        return (component.Signs.Count); // wd edit
+        return component.Signs.Count; // wd edit
     }
 }

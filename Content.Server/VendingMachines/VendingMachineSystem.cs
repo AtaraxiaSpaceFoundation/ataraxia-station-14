@@ -2,14 +2,11 @@ using System.Linq;
 using System.Numerics;
 using Content.Server.Advertise;
 using Content.Server.Cargo.Systems;
-using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
-using Content.Server.Storage.Components;
 using Content.Server.Store.Components;
-using Content.Server.UserInterface;
 using Content.Server._White.Economy;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -34,7 +31,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Server.VendingMachines
 {
@@ -55,15 +51,12 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly StackSystem _stackSystem = default!;
         // WD END
 
-        private ISawmill _sawmill = default!;
-
         private double _priceMultiplier = 1.0; // WD
 
         public override void Initialize()
         {
             base.Initialize();
 
-            _sawmill = Logger.GetSawmill("vending");
             SubscribeLocalEvent<VendingMachineComponent, MapInitEvent>(OnComponentMapInit);
             SubscribeLocalEvent<VendingMachineComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<VendingMachineComponent, BreakageEventArgs>(OnBreak);
@@ -108,7 +101,7 @@ namespace Content.Server.VendingMachines
             {
                 if (!PrototypeManager.TryIndex<EntityPrototype>(entry.ID, out var proto))
                 {
-                    _sawmill.Error($"Unable to find entity prototype {entry.ID} on {ToPrettyString(uid)} vending.");
+                    Log.Error($"Unable to find entity prototype {entry.ID} on {ToPrettyString(uid)} vending.");
                     continue;
                 }
 
@@ -219,7 +212,7 @@ namespace Content.Server.VendingMachines
 
             if (!TryComp<VendingMachineRestockComponent>(args.Args.Used, out var restockComponent))
             {
-                _sawmill.Error($"{ToPrettyString(args.Args.User)} tried to restock {ToPrettyString(uid)} with {ToPrettyString(args.Args.Used.Value)} which did not have a VendingMachineRestockComponent.");
+                Log.Error($"{ToPrettyString(args.Args.User)} tried to restock {ToPrettyString(uid)} with {ToPrettyString(args.Args.Used.Value)} which did not have a VendingMachineRestockComponent.");
                 return;
             }
 
@@ -353,7 +346,6 @@ namespace Content.Server.VendingMachines
             {
                 if (sender.HasValue)
                     Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-invalid-item"), uid, sender.Value);
-
 
                 Deny(uid, vendComponent);
                 return;

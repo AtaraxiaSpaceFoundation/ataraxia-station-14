@@ -23,8 +23,6 @@
         Blunt: 0
   - type: Spillable
     solution: drink
-  - type: FitsInDispenser
-    solution: drink
   - type: DrawableSolution
     solution: drink
   - type: RefillableSolution
@@ -35,22 +33,12 @@
     interfaces:
     - key: enum.TransferAmountUiKey.Key
       type: TransferAmountBoundUserInterface
-  - type: StaticPrice
-    price: 30
 
 - type: entity
   parent: DrinkBase
   id: DrinkGlassBase
   abstract: true
   components:
-  # WD edit sounds start
-  - type: EmitSoundOnPickup
-    sound:
-      path: /Audio/White/Items/handling/drinkglass_pickup.ogg
-  - type: EmitSoundOnDrop
-    sound:
-      path: /Audio/White/Items/handling/drinkglass_drop.ogg
-  # WD edit sounds end
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
@@ -85,6 +73,8 @@
     materialComposition:
       Glass: 25
   - type: ExaminableSolution
+    solution: drink
+  - type: FitsInDispenser
     solution: drink
 
 # Transformable container - normal glass
@@ -379,6 +369,9 @@
   - type: Icon
     sprite: Objects/Consumable/Drinks/beerglass.rsi
     state: icon
+  - type: Tag
+    tags:
+    - Beer
 
 - type: entity
   parent: DrinkGlass
@@ -953,6 +946,9 @@
   - type: Icon
     sprite: Objects/Consumable/Drinks/iced_beerglass.rsi
     state: icon
+  - type: Tag
+    tags:
+    - Beer
 
 - type: entity
   parent: DrinkGlass
@@ -2130,19 +2126,3 @@
     - type: Icon
       sprite: Objects/Consumable/Drinks/bloodglass.rsi
       state: icon
-
-- type: entity
-  parent: DrinkGlassBase
-  id: DrinkKvassGlass
-  name: kvass glass
-  description: A cool refreshing drink with a taste of socialism.
-  components:
-    - type: SolutionContainerManager
-      solutions:
-        drink:
-          maxVol: 30
-          reagents:
-            - ReagentId: Kvass
-              Quantity: 30
-    - type: Sprite
-      sprite: Objects/Consumable/Drinks/kvass.rsi

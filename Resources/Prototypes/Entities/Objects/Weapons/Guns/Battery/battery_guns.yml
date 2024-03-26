@@ -85,6 +85,7 @@
     quickEquip: false
     slots:
     - Belt
+    - suitStorage
 
 - type: entity
   id: BaseWeaponPowerCellSmall

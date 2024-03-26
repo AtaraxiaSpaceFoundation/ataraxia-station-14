@@ -17,10 +17,8 @@ using Content.Shared.Changeling;
 using Content.Shared.Chat;
 using Content.Shared.Decals;
 using Content.Shared.Damage.ForceSay;
-using Content.Shared.Examine;
 using Content.Shared.Input;
 using Content.Shared.Radio;
-using Robust.Client.GameObjects;
 using Content.Shared._White;
 using Content.Shared._White.Utils;
 using Content.Shared._White.Cult.Systems;
@@ -530,11 +528,12 @@ public sealed class ChatUIController : UIController
 
         if (_state.CurrentState is GameplayStateBase)
         {
-            // can always hear local / radio / emote when in the game
+            // can always hear local / radio / emote / notifications when in the game
             FilterableChannels |= ChatChannel.Local;
             FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
+            FilterableChannels |= ChatChannel.Notifications;
 
             // Can only send local / radio / emote when attached to a non-ghost entity.
             // TODO: this logic is iffy (checking if controlling something that's NOT a ghost), is there a better way to check this?
@@ -670,7 +669,7 @@ public sealed class ChatUIController : UIController
 
             var otherPos = EntityManager.GetComponent<TransformComponent>(ent).MapPosition;
 
-            if (occluded && !ExamineSystemShared.InRangeUnOccluded(
+            if (occluded && !_examine.InRangeUnOccluded(
                     playerPos,
                     otherPos, 0f,
                     (ent, player), predicate))
@@ -702,7 +701,7 @@ public sealed class ChatUIController : UIController
     private bool TryGetRadioChannel(string text, out RadioChannelPrototype? radioChannel)
     {
         radioChannel = null;
-        return _player.LocalEntity is EntityUid { Valid: true } uid
+        return _player.LocalEntity is { Valid: true } uid
            && _chatSys != null
            && _chatSys.TryProccessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
     }
@@ -727,23 +726,20 @@ public sealed class ChatUIController : UIController
         // because ????????
 
         ChatSelectChannel chatChannel;
-        if (TryGetRadioChannel(text, out var radioChannel))
-            chatChannel = ChatSelectChannel.Radio;
-        else
-            chatChannel = PrefixToChannel.GetValueOrDefault(text[0]);
+        chatChannel = TryGetRadioChannel(text, out var radioChannel) ? ChatSelectChannel.Radio : PrefixToChannel.GetValueOrDefault(text[0]);
 
         if ((CanSendChannels & chatChannel) == 0)
             return (ChatSelectChannel.None, text, null);
 
-        if (chatChannel == ChatSelectChannel.Radio)
-            return (chatChannel, text, radioChannel);
-
-        if (chatChannel == ChatSelectChannel.Local)
+        switch (chatChannel)
         {
-            if (_ghost?.IsGhost != true)
+            case ChatSelectChannel.Radio:
+                return (chatChannel, text, radioChannel);
+            case ChatSelectChannel.Local when _ghost?.IsGhost != true:
                 return (chatChannel, text, null);
-            else
+            case ChatSelectChannel.Local:
                 chatChannel = ChatSelectChannel.Dead;
+                break;
         }
 
         return (chatChannel, text[1..].TrimStart(), null);
@@ -836,7 +832,7 @@ public sealed class ChatUIController : UIController
     public void ProcessChatMessage(ChatMessage msg, bool speechBubble = true)
     {
         // color the name unless it's something like "the old man"
-        if ((msg.Channel == ChatChannel.Local || msg.Channel == ChatChannel.Whisper) && _chatNameColorsEnabled)
+        if (msg.Channel is ChatChannel.Local or ChatChannel.Whisper && _chatNameColorsEnabled)
         {
             var grammar = _ent.GetComponentOrNull<GrammarComponent>(_ent.GetEntity(msg.SenderEntity));
             if (grammar != null && grammar.ProperNoun == true)
@@ -852,8 +848,7 @@ public sealed class ChatUIController : UIController
             if (!msg.Read)
             {
                 _sawmill.Debug($"Message filtered: {msg.Channel}: {msg.Message}");
-                if (!_unreadMessages.TryGetValue(msg.Channel, out var count))
-                    count = 0;
+                var count = _unreadMessages.GetValueOrDefault(msg.Channel, 0);
 
                 count += 1;
                 _unreadMessages[msg.Channel] = count;

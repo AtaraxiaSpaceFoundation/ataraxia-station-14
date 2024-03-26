@@ -91,27 +91,19 @@ public sealed class JobRequirementsManager
             return false;
         }
 
-        if (job.Requirements == null ||
-            !_cfg.GetCVar(CCVars.GameRoleTimers))
-        {
-            return true;
-        }
-
         var player = _playerManager.LocalSession;
         if (player == null)
             return true;
 
-        if (_adminManager.IsActive()) // WD
-            return true;
-
-        return CheckRoleTime(job.Requirements, out reason);
+        return _adminManager.IsActive() || // WD
+            CheckRoleTime(job.Requirements, out reason);
     }
 
     public bool CheckRoleTime(HashSet<JobRequirement>? requirements, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = null;
 
-        if (requirements == null)
+        if (requirements == null || !_cfg.GetCVar(CCVars.GameRoleTimers))
             return true;
 
         var reasons = new List<string>();

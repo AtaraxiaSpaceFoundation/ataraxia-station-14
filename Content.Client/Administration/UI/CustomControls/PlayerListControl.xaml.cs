@@ -35,6 +35,8 @@ namespace Content.Client.Administration.UI.CustomControls
 
         private readonly Font _fontOverride;
 
+        private PlayerInfo? _selectedPlayer;
+
         public PlayerListControl()
         {
             _entManager = IoCManager.Resolve<IEntityManager>();

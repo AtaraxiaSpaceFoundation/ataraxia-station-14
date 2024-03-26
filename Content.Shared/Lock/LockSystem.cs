@@ -111,13 +111,16 @@ public sealed class LockSystem : EntitySystem
             return _doAfter.TryStartDoAfter(
                 new DoAfterArgs(EntityManager, user, lockComp.LockTime, new LockDoAfter(), uid, uid)
                 {
-                    BreakOnDamage = true, BreakOnTargetMove = true, BreakOnUserMove = true, RequireCanInteract = true,
+                    BreakOnDamage = true,
+                    BreakOnMove = true,
+                    RequireCanInteract = true,
                     NeedHand = true
                 });
         }
 
         _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-do-lock-success",
-                ("entityName", Identity.Name(uid, EntityManager))), uid, user);
+            ("entityName", Identity.Name(uid, EntityManager))), uid, user);
+
         _audio.PlayPredicted(lockComp.LockSound, uid, user);
 
         lockComp.Locked = true;
@@ -159,7 +162,6 @@ public sealed class LockSystem : EntitySystem
         RaiseLocalEvent(uid, ref ev, true);
     }
 
-
     /// <summary>
     /// Attmempts to unlock a given entity
     /// </summary>
@@ -187,7 +189,9 @@ public sealed class LockSystem : EntitySystem
             return _doAfter.TryStartDoAfter(
                 new DoAfterArgs(EntityManager, user, lockComp.LockTime, new UnlockDoAfter(), uid, uid)
                 {
-                    BreakOnDamage = true, BreakOnTargetMove = true, BreakOnUserMove = true, RequireCanInteract = true,
+                    BreakOnDamage = true,
+                    BreakOnMove = true,
+                    RequireCanInteract = true,
                     NeedHand = true
                 });
         }
@@ -221,6 +225,7 @@ public sealed class LockSystem : EntitySystem
 
         if (!quiet)
             _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-has-user-access-fail"), uid, user);
+
         return false;
     }
 
@@ -231,14 +236,15 @@ public sealed class LockSystem : EntitySystem
 
         AlternativeVerb verb = new()
         {
-            Act = component.Locked ?
-                () => TryUnlock(uid, args.User, component) :
-                () => TryLock(uid, args.User, component),
+            Act = component.Locked
+                ? () => TryUnlock(uid, args.User, component)
+                : () => TryLock(uid, args.User, component),
             Text = Loc.GetString(component.Locked ? "toggle-lock-verb-unlock" : "toggle-lock-verb-lock"),
-            Icon = component.Locked ?
-                new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/unlock.svg.192dpi.png")) :
-                new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/lock.svg.192dpi.png")),
+            Icon = component.Locked
+                ? new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/unlock.svg.192dpi.png"))
+                : new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/lock.svg.192dpi.png")),
         };
+
         args.Verbs.Add(verb);
     }
 
@@ -246,8 +252,16 @@ public sealed class LockSystem : EntitySystem
     {
         if (!component.Locked || !component.BreakOnEmag)
             return;
-        _audio.PlayPredicted(component.UnlockSound, uid, null);
+
+        _audio.PlayPredicted(component.UnlockSound, uid, args.UserUid);
+
+        component.Locked = false;
         _appearanceSystem.SetData(uid, LockVisuals.Locked, false);
+        Dirty(uid, component);
+
+        var ev = new LockToggledEvent(false);
+        RaiseLocalEvent(uid, ref ev, true);
+
         RemComp<LockComponent>(uid); //Literally destroys the lock as a tell it was emagged
         args.Handled = true;
     }
@@ -268,4 +282,3 @@ public sealed class LockSystem : EntitySystem
         TryUnlock(uid, args.User, skipDoAfter: true);
     }
 }
-

@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Server.GameTicking;
@@ -85,7 +86,11 @@ namespace Content.Server.Connection
                 if (banHits is { Count: > 0 })
                     await _db.AddServerBanHitsAsync(id, banHits);
 
-                e.Deny(msg);
+                var properties = new Dictionary<string, object>();
+                if (reason == ConnectionDenyReason.Full)
+                    properties["delay"] = _cfg.GetCVar(CCVars.GameServerFullReconnectDelay);
+
+                e.Deny(new NetDenyReason(msg, properties));
             }
             else
             {
@@ -114,7 +119,7 @@ namespace Content.Server.Connection
 
             var adminData = await _dbManager.GetAdminDataForAsync(e.UserId);
 
-            if (_cfg.GetCVar(CCVars.PanicBunkerEnabled))
+            if (_cfg.GetCVar(CCVars.PanicBunkerEnabled) && adminData == null)
             {
                 var showReason = _cfg.GetCVar(CCVars.PanicBunkerShowReason);
                 var customReason = _cfg.GetCVar(CCVars.PanicBunkerCustomReason);
