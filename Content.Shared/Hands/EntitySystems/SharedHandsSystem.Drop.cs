@@ -3,7 +3,6 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Tag;
-using Content.Shared.Pulling.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 
