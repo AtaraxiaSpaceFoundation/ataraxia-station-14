@@ -115,10 +115,10 @@ public sealed class ExecutionSystem : EntitySystem
         args.Verbs.Add(verb);
     }
 
-    private bool CanExecuteWithAny(EntityUid weapon, EntityUid victim, EntityUid attacker)
+    private bool CanExecuteWithAny(EntityUid victim, EntityUid attacker)
     {
         // No point executing someone if they can't take damage
-        if (!TryComp<DamageableComponent>(victim, out var damage))
+        if (!TryComp<DamageableComponent>(victim, out _))
             return false;
 
         // You can't execute something that cannot die
@@ -143,7 +143,7 @@ public sealed class ExecutionSystem : EntitySystem
 
     private bool CanExecuteWithMelee(EntityUid weapon, EntityUid victim, EntityUid user)
     {
-        if (!CanExecuteWithAny(weapon, victim, user)) return false;
+        if (!CanExecuteWithAny(victim, user)) return false;
 
         // We must be able to actually hurt people with the weapon
         if (!TryComp<MeleeWeaponComponent>(weapon, out var melee) && melee!.Damage.GetTotal() > 0.0f)
@@ -154,7 +154,7 @@ public sealed class ExecutionSystem : EntitySystem
 
     private bool CanExecuteWithGun(EntityUid weapon, EntityUid victim, EntityUid user)
     {
-        if (!CanExecuteWithAny(weapon, victim, user)) return false;
+        if (!CanExecuteWithAny(victim, user)) return false;
 
         // We must be able to actually fire the gun
         if (!TryComp<GunComponent>(weapon, out var gun) && _gunSystem.CanShoot(gun!))
@@ -172,23 +172,28 @@ public sealed class ExecutionSystem : EntitySystem
 
         if (attacker == victim)
         {
-            ShowExecutionPopup("suicide-popup-melee-initial-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("suicide-popup-melee-initial-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("suicide-popup-melee-initial-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("suicide-popup-melee-initial-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
         else
         {
-            ShowExecutionPopup("execution-popup-melee-initial-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("execution-popup-melee-initial-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("execution-popup-melee-initial-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("execution-popup-melee-initial-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
 
-        var doAfter =
-            new DoAfterArgs(EntityManager, attacker, executionTime, new ExecutionDoAfterEvent(), weapon, target: victim, used: weapon)
-            {
-                BreakOnTargetMove = true,
-                BreakOnUserMove = true,
-                BreakOnDamage = true,
-                NeedHand = true
-            };
+        var doAfter = new DoAfterArgs(EntityManager, attacker, executionTime, new ExecutionDoAfterEvent(), weapon,
+            target: victim, used: weapon)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true
+        };
 
         _doAfterSystem.TryStartDoAfter(doAfter);
     }
@@ -200,37 +205,29 @@ public sealed class ExecutionSystem : EntitySystem
 
         if (attacker == victim)
         {
-            ShowExecutionPopup("suicide-popup-gun-initial-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("suicide-popup-gun-initial-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("suicide-popup-gun-initial-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("suicide-popup-gun-initial-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
         else
         {
-            ShowExecutionPopup("execution-popup-gun-initial-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("execution-popup-gun-initial-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("execution-popup-gun-initial-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("execution-popup-gun-initial-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
 
-        var doAfter =
-            new DoAfterArgs(EntityManager, attacker, GunExecutionTime, new ExecutionDoAfterEvent(), weapon, target: victim, used: weapon)
-            {
-                BreakOnTargetMove = true,
-                BreakOnUserMove = true,
-                BreakOnDamage = true,
-                NeedHand = true
-            };
+        var doAfter = new DoAfterArgs(EntityManager, attacker, GunExecutionTime, new ExecutionDoAfterEvent(), weapon,
+            target: victim, used: weapon)
+        {
+            BreakOnDamage = true,
+            NeedHand = true
+        };
 
         _doAfterSystem.TryStartDoAfter(doAfter);
-    }
-
-    private bool OnDoafterChecks(EntityUid uid, DoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Used == null || args.Target == null)
-            return false;
-
-        if (!CanExecuteWithAny(args.Used.Value, args.Target.Value, uid))
-            return false;
-
-        // All checks passed
-        return true;
     }
 
     private void OnDoafterMelee(EntityUid uid, SharpComponent component, DoAfterEvent args)
@@ -252,13 +249,19 @@ public sealed class ExecutionSystem : EntitySystem
 
         if (attacker == victim)
         {
-            ShowExecutionPopup("suicide-popup-melee-complete-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("suicide-popup-melee-complete-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("suicide-popup-melee-complete-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("suicide-popup-melee-complete-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
         else
         {
-            ShowExecutionPopup("execution-popup-melee-complete-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("execution-popup-melee-complete-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+            ShowExecutionPopup("execution-popup-melee-complete-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("execution-popup-melee-complete-external", Filter.PvsExcept(attacker),
+                PopupType.MediumCaution, attacker, victim, weapon);
         }
     }
 
@@ -311,7 +314,9 @@ public sealed class ExecutionSystem : EntitySystem
         if (ev.Ammo.Count <= 0)
         {
             _audioSystem.PlayEntity(component.SoundEmpty, Filter.Pvs(weapon), weapon, true, AudioParams.Default);
-            ShowExecutionPopup("execution-popup-gun-empty", Filter.Pvs(weapon), PopupType.Medium, attacker, victim, weapon);
+            ShowExecutionPopup("execution-popup-gun-empty", Filter.Pvs(weapon), PopupType.Medium, attacker, victim,
+                weapon);
+
             return;
         }
 
@@ -325,7 +330,9 @@ public sealed class ExecutionSystem : EntitySystem
             case CartridgeAmmoComponent cartridge:
                 // Get the damage value
                 var prototype = _prototypeManager.Index<EntityPrototype>(cartridge.Prototype);
-                prototype.TryGetComponent<ProjectileComponent>(out var projectileA, _componentFactory); // sloth forgive me
+                prototype.TryGetComponent<ProjectileComponent>(out var projectileA,
+                    _componentFactory); // sloth forgive me
+
                 if (projectileA != null)
                 {
                     damage = projectileA.Damage * cartridge.Count;
@@ -344,6 +351,7 @@ public sealed class ExecutionSystem : EntitySystem
                 {
                     damage = projectileB.Damage;
                 }
+
                 Del(ammoUid);
                 break;
 
@@ -360,8 +368,11 @@ public sealed class ExecutionSystem : EntitySystem
         {
             if (_interactionSystem.TryRollClumsy(attacker, 0.33333333f, clumsy))
             {
-                ShowExecutionPopup("execution-popup-gun-clumsy-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-                ShowExecutionPopup("execution-popup-gun-clumsy-external", Filter.PvsExcept(attacker), PopupType.MediumCaution, attacker, victim, weapon);
+                ShowExecutionPopup("execution-popup-gun-clumsy-internal", Filter.Entities(attacker), PopupType.Medium,
+                    attacker, victim, weapon);
+
+                ShowExecutionPopup("execution-popup-gun-clumsy-external", Filter.PvsExcept(attacker),
+                    PopupType.MediumCaution, attacker, victim, weapon);
 
                 // You shoot yourself with the gun (no damage multiplier)
                 _damageableSystem.TryChangeDamage(attacker, damage, origin: attacker);
@@ -377,18 +388,29 @@ public sealed class ExecutionSystem : EntitySystem
         // Popups
         if (attacker != victim)
         {
-            ShowExecutionPopup("execution-popup-gun-complete-internal", Filter.Entities(attacker), PopupType.Medium, attacker, victim, weapon);
-            ShowExecutionPopup("execution-popup-gun-complete-external", Filter.PvsExcept(attacker), PopupType.LargeCaution, attacker, victim, weapon);
+            ShowExecutionPopup("execution-popup-gun-complete-internal", Filter.Entities(attacker), PopupType.Medium,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("execution-popup-gun-complete-external", Filter.PvsExcept(attacker),
+                PopupType.LargeCaution, attacker, victim, weapon);
         }
         else
         {
-            ShowExecutionPopup("suicide-popup-gun-complete-internal", Filter.Entities(attacker), PopupType.LargeCaution, attacker, victim, weapon);
-            ShowExecutionPopup("suicide-popup-gun-complete-external", Filter.PvsExcept(attacker), PopupType.LargeCaution, attacker, victim, weapon);
+            ShowExecutionPopup("suicide-popup-gun-complete-internal", Filter.Entities(attacker), PopupType.LargeCaution,
+                attacker, victim, weapon);
+
+            ShowExecutionPopup("suicide-popup-gun-complete-external", Filter.PvsExcept(attacker),
+                PopupType.LargeCaution, attacker, victim, weapon);
         }
     }
 
-    private void ShowExecutionPopup(string locString, Filter filter, PopupType type,
-        EntityUid attacker, EntityUid victim, EntityUid weapon)
+    private void ShowExecutionPopup(
+        string locString,
+        Filter filter,
+        PopupType type,
+        EntityUid attacker,
+        EntityUid victim,
+        EntityUid weapon)
     {
         _popupSystem.PopupEntity(Loc.GetString(
                 locString, ("attacker", attacker), ("victim", victim), ("weapon", weapon)),
