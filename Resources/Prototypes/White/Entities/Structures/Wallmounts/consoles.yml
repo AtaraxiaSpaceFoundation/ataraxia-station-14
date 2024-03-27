@@ -280,7 +280,7 @@
   - type: Computer
     board: MediaConsoleWallMountCircuitboard
   - type: DeviceNetworkRequiresPower
-  - type: NewsWrite
+  - type: NewsWriter
   - type: AccessReader
     access: [ [ "Command" ] ]
   - type: ActivatableUI

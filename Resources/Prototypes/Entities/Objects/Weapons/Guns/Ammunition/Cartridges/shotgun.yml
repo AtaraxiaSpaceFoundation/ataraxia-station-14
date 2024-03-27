@@ -150,10 +150,6 @@
     proto: PelletShotgunImprovised
   - type: SpentAmmoVisuals
     state: "improvised"
-  - type: Construction
-    deconstructionTarget: null
-    graph: ImprovisedShellGraph
-    node: shell
 
 - type: entity
   id: ShellShotgunUranium
