@@ -19,9 +19,7 @@ public sealed partial class NarcoticEffectComponent : Component
 [Serializable, NetSerializable]
 public enum NarcoticEffects
 {
-    Stun,
-    Tremor,
+    LieDown,
     Shake,
-    TremorAndShake,
-    StunAndShake
+    LieDownAndShake
 }
