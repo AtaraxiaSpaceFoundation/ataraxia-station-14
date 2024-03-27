@@ -11,6 +11,7 @@
     size: Normal
   - type: Tag
     tags:
+      - DroneUsable
       - RawMaterial
       - NoPaint
   - type: Damageable
@@ -128,6 +129,7 @@
   - type: Tag
     tags:
       - ClothMade
+      - DroneUsable
       - Gauze
       - RawMaterial
   - type: Construction
@@ -195,6 +197,7 @@
   - type: Tag
     tags:
       - ClothMade
+      - DroneUsable
       - RawMaterial
 
 - type: entity
@@ -242,6 +245,7 @@
   - type: Tag
     tags:
     - Wooden
+    - DroneUsable
     - RawMaterial
   - type: Extractable
     grindableSolutionName: wood
@@ -411,6 +415,7 @@
   - type: Tag
     tags:
       - ClothMade
+      - DroneUsable
       - RawMaterial
 
 - type: entity
@@ -521,6 +526,7 @@
   - type: Tag
     tags:
       - ClothMade
+      - DroneUsable
       - RawMaterial
 
 - type: entity

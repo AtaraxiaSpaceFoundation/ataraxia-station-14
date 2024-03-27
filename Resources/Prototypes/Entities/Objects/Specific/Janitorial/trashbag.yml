@@ -25,6 +25,7 @@
   - type: Tag
     tags:
     - TrashBag
+    - DroneUsable
   - type: Appearance
   - type: StorageFillVisualizer
     maxFillLevels: 4

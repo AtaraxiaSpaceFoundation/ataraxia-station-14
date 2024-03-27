@@ -878,6 +878,7 @@
     sprite: Clothing/Head/Hats/party_red.rsi
   - type: Tag
     tags:
+      - DroneUsable
       - WhitelistChameleon
       - HamsterWearable
 

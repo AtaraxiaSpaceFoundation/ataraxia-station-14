@@ -352,6 +352,7 @@
   - type: Tag
     tags:
     - Trash
+    - DroneUsable
     - WhitelistChameleon
   - type: TrashOnSolutionEmpty
     solution: drink
