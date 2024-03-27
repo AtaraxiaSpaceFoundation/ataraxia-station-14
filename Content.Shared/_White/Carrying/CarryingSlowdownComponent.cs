@@ -1,28 +1,13 @@
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
-namespace Content.Shared.Carrying
+namespace Content.Shared._White.Carrying;
+
+[RegisterComponent, NetworkedComponent, Access(typeof(CarryingSlowdownSystem)), AutoGenerateComponentState]
+public sealed partial class CarryingSlowdownComponent : Component
 {
-    [RegisterComponent, NetworkedComponent, Access(typeof(CarryingSlowdownSystem))]
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public float WalkModifier = 0.7f;
 
-    public sealed partial class CarryingSlowdownComponent : Component
-    {
-        [DataField("walkModifier", required: true)] [ViewVariables(VVAccess.ReadWrite)]
-        public float WalkModifier = 1.0f;
-
-        [DataField("sprintModifier", required: true)] [ViewVariables(VVAccess.ReadWrite)]
-        public float SprintModifier = 1.0f;
-    }
-
-    [Serializable, NetSerializable]
-    public sealed class CarryingSlowdownComponentState : ComponentState
-    {
-        public float WalkModifier;
-        public float SprintModifier;
-        public CarryingSlowdownComponentState(float walkModifier, float sprintModifier)
-        {
-            WalkModifier = walkModifier;
-            SprintModifier = sprintModifier;
-        }
-    }
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public float SprintModifier = 0.7f;
 }
