@@ -30,7 +30,7 @@ public sealed class VoidTeleportSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly RobustRandom _random = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {

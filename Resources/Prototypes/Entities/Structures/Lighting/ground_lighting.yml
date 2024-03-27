@@ -13,9 +13,6 @@
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
       state: base
-    - map: ["enum.PoweredLightLayers.Glow"]
-      state: glow
-      shader: unshaded
     state: base
   - type: Fixtures
     fixtures:

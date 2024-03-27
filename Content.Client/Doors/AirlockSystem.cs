@@ -14,20 +14,10 @@ public sealed class AirlockSystem : SharedAirlockSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<AirlockComponent, BeforeDoorClosedEvent>(OnBeforeDoorClosed);
         SubscribeLocalEvent<AirlockComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<AirlockComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
-
-    // А нужен ли ты блять
-    private void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
-    {
-        if (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var boltLights) && boltLights)
-        {
-            args.Cancel();
-        }
-    }
-
+    
     private void OnComponentStartup(EntityUid uid, AirlockComponent comp, ComponentStartup args)
     {
         // Has to be on component startup because we don't know what order components initialize in and running this before DoorComponent inits _will_ crash.

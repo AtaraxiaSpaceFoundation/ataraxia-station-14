@@ -27,7 +27,6 @@ namespace Content.Server.Bed.Sleep
             SubscribeLocalEvent<SleepingComponent, CanSeeAttemptEvent>(OnSeeAttempt);
             SubscribeLocalEvent<SleepingComponent, PointAttemptEvent>(OnPointAttempt);
             SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnTryEmote); // WD
-            SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnTryEmote); // WD
         }
 
         private void OnTryEmote(EntityUid uid, SleepingComponent component, EmoteAttemptEvent args) // WD

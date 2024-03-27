@@ -19,21 +19,21 @@ body-scanner-console-window-damage-group-text = {$damageGroup}: {$amount}
 body-scanner-console-window-damage-type-text = {$damageType}: {$amount}
 body-scanner-console-window-damage-type-duplicate-text = {$damageType}: {$amount} (дубликат)
 
-body-scanner-console-window-damage-group-Brute = Механические: {$amount}
-body-scanner-console-window-damage-type-Blunt = Удары: {$amount}
-body-scanner-console-window-damage-type-Slash = Разрезы: {$amount}
-body-scanner-console-window-damage-type-Piercing = Уколы: {$amount}
+body-scanner-console-window-damage-group-Brute = Механические
+body-scanner-console-window-damage-type-Blunt = Удары
+body-scanner-console-window-damage-type-Slash = Разрезы
+body-scanner-console-window-damage-type-Piercing = Уколы
 
-body-scanner-console-window-damage-group-Burn = Ожоги: {$amount}
-body-scanner-console-window-damage-type-Heat = Термические: {$amount}
-body-scanner-console-window-damage-type-Laser = Лазерный: {$amount}
-body-scanner-console-window-damage-type-Shock = Электрические: {$amount}
-body-scanner-console-window-damage-type-Cold = Обморожение: {$amount}
-body-scanner-console-window-damage-type-Caustic = Кислотные: {$amount}
+body-scanner-console-window-damage-group-Burn = Ожоги
+body-scanner-console-window-damage-type-Heat = Термические
+body-scanner-console-window-damage-type-Laser = Лазерный
+body-scanner-console-window-damage-type-Shock = Электрические
+body-scanner-console-window-damage-type-Cold = Обморожение
+body-scanner-console-window-damage-type-Caustic = Кислотные
 
-body-scanner-console-window-damage-group-Airloss = Нехватка воздуха: {$amount}
-body-scanner-console-window-damage-type-Asphyxiation = Удушение: {$amount}
-body-scanner-console-window-damage-type-Bloodloss = Кровопотеря: {$amount}
+body-scanner-console-window-damage-group-Airloss = Нехватка воздуха
+body-scanner-console-window-damage-type-Asphyxiation = Удушение
+body-scanner-console-window-damage-type-Bloodloss = Кровопотеря
 
 body-scanner-console-window-damage-group-Toxin = Токсины: {$amount}
 body-scanner-console-window-damage-type-Poison = Яды: {$amount}
