@@ -11,11 +11,7 @@
       "name": "icon"
     },
     {
-<<<<<<<< HEAD:Resources/Textures/White/Fluff/HSKveez/hardsuit.rsi/meta.json
       "name": "equipped-OUTERCLOTHING",
-========
-      "name": "equipped-INNERCLOTHING",
->>>>>>>> ae3d745430e3c5250d19553429e7cda2b8050d10:Resources/Textures/Clothing/Uniforms/Jumpsuit/qmformal.rsi/meta.json
       "directions": 4
     },
     {

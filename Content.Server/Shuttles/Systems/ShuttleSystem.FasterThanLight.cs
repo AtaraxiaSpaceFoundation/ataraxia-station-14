@@ -70,8 +70,8 @@ public sealed partial class ShuttleSystem
     /// </summary>
     private const int FTLProximityIterations = 3;
 
-    private readonly HashSet<EntityUid> _lookupEnts = [];
-    private readonly HashSet<EntityUid> _immuneEnts = [];
+    private readonly HashSet<EntityUid> _lookupEnts = new() { };
+    private readonly HashSet<EntityUid> _immuneEnts = new() { };
 
     private EntityQuery<BodyComponent> _bodyQuery;
     private EntityQuery<BuckleComponent> _buckleQuery;

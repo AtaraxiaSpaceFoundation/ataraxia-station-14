@@ -186,7 +186,7 @@ public sealed class ClientClothingSystem : ClothingSystem
             State = state
         };
 
-        layers = [layer];
+        layers = new List<PrototypeLayerData> { layer };
 
         return true;
     }

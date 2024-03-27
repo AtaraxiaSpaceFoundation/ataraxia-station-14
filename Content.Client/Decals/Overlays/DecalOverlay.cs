@@ -15,7 +15,7 @@ namespace Content.Client.Decals.Overlays
     {
         private readonly Dictionary<string, (Texture Texture, bool SnapCardinals)> _cachedTextures = new(64);
 
-        private readonly List<(uint Id, Decal Decal)> _decals = [];
+        private readonly List<(uint Id, Decal Decal)> _decals = new();
 
         protected override void Draw(in OverlayDrawArgs args)
         {

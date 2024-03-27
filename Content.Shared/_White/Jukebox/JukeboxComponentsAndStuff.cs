@@ -29,7 +29,7 @@ public sealed partial class JukeboxComponent : Component
     public Container TapeContainer = default!;
 
     [DataField]
-    public List<string> DefaultTapes = [];
+    public List<string> DefaultTapes = new() { };
 
     [ViewVariables(VVAccess.ReadOnly)]
     public Container DefaultSongsContainer = default!;
@@ -104,7 +104,7 @@ public sealed class JukeboxStopPlaying : EntityEventArgs
 public sealed class JukeboxSongUploadRequest : EntityEventArgs
 {
     public string SongName = string.Empty;
-    public List<byte> SongBytes = [];
+    public List<byte> SongBytes = new() { };
     public NetEntity TapeCreatorUid = default!;
 }
 

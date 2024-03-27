@@ -14,14 +14,14 @@ public sealed class AirlockSystem : SharedAirlockSystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<AirlockComponent, BeforeDoorClosedEvent>(OnBeforeDoorClosed);
         SubscribeLocalEvent<AirlockComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<AirlockComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
 
-    protected override void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
+    // А нужен ли ты блять
+    private void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
     {
-        base.OnBeforeDoorClosed(uid, airlock, args);
-
         if (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var boltLights) && boltLights)
         {
             args.Cancel();

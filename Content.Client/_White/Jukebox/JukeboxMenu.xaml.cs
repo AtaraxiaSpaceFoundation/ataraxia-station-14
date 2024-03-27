@@ -17,8 +17,8 @@ public sealed partial class JukeboxMenu : DefaultWindow
     private readonly EntityUid _jukeboxEntity;
     private readonly JukeboxComponent _component;
 
-    private readonly List<JukeboxSongEntry> _defaultSongsEntries = [];
-    private readonly List<JukeboxSongEntry> _tapeSongsEntries = [];
+    private readonly List<JukeboxSongEntry> _defaultSongsEntries = new() { };
+    private readonly List<JukeboxSongEntry> _tapeSongsEntries = new() { };
 
     public JukeboxMenu(EntityUid jukeboxEntity, JukeboxComponent component)
     {

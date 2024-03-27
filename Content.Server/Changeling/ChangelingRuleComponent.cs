@@ -7,7 +7,7 @@ namespace Content.Server.Changeling;
 [RegisterComponent, Access(typeof(ChangelingRuleSystem))]
 public sealed partial class ChangelingRuleComponent : Component
 {
-    public readonly List<EntityUid> ChangelingMinds = [];
+    public readonly List<EntityUid> ChangelingMinds = new() { };
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
     public string ChangelingPrototypeId = "Changeling";

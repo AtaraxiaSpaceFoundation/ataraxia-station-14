@@ -192,7 +192,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         UIHelper = isAdmin ? new AdminAHelpUIHandler(ownerUserId) : new UserAHelpUIHandler(ownerUserId);
         UIHelper.DiscordRelayChanged(_discordRelayActive);
 
-        UIHelper.SendMessageAction = (userId, textMessage, playSound) => _bwoinkSystem?.Send(userId, textMessage, playSound);
+        UIHelper.SendMessageAction = (userId, textMessage, playSound) => 
+            _bwoinkSystem?.Send(userId, textMessage, isAdmin, playSound);
         UIHelper.InputTextChanged += (channel, text) => _bwoinkSystem?.SendInputTextUpdated(channel, text.Length > 0);
         UIHelper.OnClose += () => { SetAHelpPressed(false); };
         UIHelper.OnOpen +=  () => { SetAHelpPressed(true); };

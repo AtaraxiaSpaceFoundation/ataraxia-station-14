@@ -31,7 +31,7 @@ public sealed class SpreaderSystem : EntitySystem
     /// Remaining number of updates per grid & prototype.
     /// </summary>
     // TODO PERFORMANCE Assign each prototype to an index and convert dictionary to array
-    private readonly Dictionary<EntityUid, Dictionary<string, int>> _gridUpdates = [];
+    private readonly Dictionary<EntityUid, Dictionary<string, int>> _gridUpdates = new() { };
 
     public const float SpreadCooldownSeconds = 1;
 
@@ -57,7 +57,7 @@ public sealed class SpreaderSystem : EntitySystem
 
     private void SetupPrototypes()
     {
-        _prototypeUpdates = [];
+        _prototypeUpdates = new Dictionary<string, int> { };
         foreach (var proto in _prototype.EnumeratePrototypes<EdgeSpreaderPrototype>())
         {
             _prototypeUpdates.Add(proto.ID, proto.UpdatesPerSecond);
@@ -185,9 +185,9 @@ public sealed class SpreaderSystem : EntitySystem
     {
         // TODO remove occupiedTiles -- its currently unused and just slows this method down.
         DebugTools.Assert(_prototype.HasIndex(prototype));
-        freeTiles = [];
-        occupiedTiles = [];
-        neighbors = [];
+        freeTiles = new ValueList<(MapGridComponent, TileRef)> { };
+        occupiedTiles = new ValueList<Vector2i> { };
+        neighbors = new ValueList<EntityUid> { };
 
         if (!TryComp<MapGridComponent>(comp.GridUid, out var grid))
             return;

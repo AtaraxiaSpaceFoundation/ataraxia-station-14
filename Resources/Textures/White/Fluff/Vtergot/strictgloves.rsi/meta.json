@@ -11,11 +11,7 @@
       "name": "icon"
     },
     {
-<<<<<<<< HEAD:Resources/Textures/White/Fluff/Vtergot/strictgloves.rsi/meta.json
       "name": "equipped-HAND",
-========
-      "name": "equipped-BELT",
->>>>>>>> ae3d745430e3c5250d19553429e7cda2b8050d10:Resources/Textures/Clothing/Belt/emt.rsi/meta.json
       "directions": 4
     },
     {

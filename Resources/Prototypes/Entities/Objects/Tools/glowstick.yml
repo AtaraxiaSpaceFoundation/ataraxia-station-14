@@ -20,14 +20,14 @@
     - type: Sprite
       sprite: Objects/Misc/glowstick.rsi
       layers:
-      - map: [ enum.ExpendableLightVisualLayers.Base ]
-        state: glowstick_base
-      - map: [ enum.ExpendableLightVisualLayers.Glow ]
-        state: glowstick_glow
-        visible: false
-        shader: unshaded
-      - map: [ enum.ExpendableLightVisualLayers.Overlay ]
-        state: glowstick_unlit
+        - map: [ enum.ExpendableLightVisualLayers.Base ]
+          state: glowstick_base
+        - map: [ enum.ExpendableLightVisualLayers.Glow ]
+          state: glowstick_glow
+          visible: false
+          shader: unshaded
+        - map: [ enum.ExpendableLightVisualLayers.Overlay ]
+          state: glowstick_unlit
     - type: Item
       sprite: Objects/Misc/glowstick.rsi
       heldPrefix: unlit
@@ -62,7 +62,7 @@
           endValue: 1.5
     - type: Tag
       tags:
-      - Trash
+        - Trash
 
 - type: entity
   name: red glowstick

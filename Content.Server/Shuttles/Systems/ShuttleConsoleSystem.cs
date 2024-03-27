@@ -39,7 +39,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
-    private readonly HashSet<Entity<ShuttleConsoleComponent>> _consoles = [];
+    private readonly HashSet<Entity<ShuttleConsoleComponent>> _consoles = new() { };
 
     public override void Initialize()
     {

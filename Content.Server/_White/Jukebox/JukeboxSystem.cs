@@ -16,7 +16,7 @@ public sealed class JukeboxSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverrideSystem = default!;
 
-    private readonly List<JukeboxComponent> _playingJukeboxes = [];
+    private readonly List<JukeboxComponent> _playingJukeboxes = new() { };
 
     private const float UpdateTimerDefaultTime = 1f;
     private float _updateTimer;

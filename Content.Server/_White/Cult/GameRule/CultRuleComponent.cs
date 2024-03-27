@@ -44,7 +44,7 @@ public sealed partial class CultRuleComponent : Component
     public int PentagramThreshold = 8;
 
     [DataField(customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
-    public List<string> StartingItems = [];
+    public List<string> StartingItems = new() { };
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
     public string CultistRolePrototype = "Cultist";
@@ -56,9 +56,9 @@ public sealed partial class CultRuleComponent : Component
 
     public EntityUid? CultTarget;
 
-    public List<CultistComponent> CurrentCultists = [];
+    public List<CultistComponent> CurrentCultists = new() { };
 
-    public List<ConstructComponent> Constructs = [];
+    public List<ConstructComponent> Constructs = new() { };
 
     public CultWinCondition WinCondition;
 }

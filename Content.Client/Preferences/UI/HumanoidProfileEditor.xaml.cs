@@ -107,7 +107,7 @@ namespace Content.Client.Preferences.UI
         private readonly List<SpeciesPrototype> _speciesList;
         private readonly List<AntagPreferenceSelector> _antagPreferences;
         private readonly List<TraitPreferenceSelector> _traitPreferences;
-        private List<BodyTypePrototype> _bodyTypesList = [];
+        private List<BodyTypePrototype> _bodyTypesList = new();
 
         private SpriteView _previewSpriteView => CSpriteView;
         private Button _previewRotateLeftButton => CSpriteRotateLeft;
@@ -439,7 +439,7 @@ namespace Content.Client.Preferences.UI
                 IsDirty = true;
             };
 
-            _jobPriorities = [];
+            _jobPriorities = new List<JobPrioritySelector>();
             _jobCategories = new Dictionary<string, BoxContainer>();
             _requirements = IoCManager.Resolve<JobRequirementsManager>();
             _requirements.Updated += UpdateRoleRequirements;
@@ -451,7 +451,7 @@ namespace Content.Client.Preferences.UI
 
             _tabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
-            _antagPreferences = [];
+            _antagPreferences = new List<AntagPreferenceSelector>();
 
             foreach (var antag in prototypeManager.EnumeratePrototypes<AntagPrototype>().OrderBy(a => Loc.GetString(a.Name)))
             {
@@ -479,7 +479,7 @@ namespace Content.Client.Preferences.UI
             #region Traits
 
             var traits = prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            _traitPreferences = [];
+            _traitPreferences = new List<TraitPreferenceSelector>();
             _tabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
 
             if (traits.Count > 0)
