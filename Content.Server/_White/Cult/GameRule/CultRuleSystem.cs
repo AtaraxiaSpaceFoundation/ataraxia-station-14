@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
 using Content.Server.Antag;
@@ -321,6 +322,21 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         return potentialTargets;
     }
 
+    public void AdminMakeCultist(EntityUid entity)
+    {
+        var cultistRule = EntityQuery<CultRuleComponent>().FirstOrDefault();
+        if (cultistRule == null)
+        {
+            GameTicker.StartGameRule("Cult", out var ruleEntity);
+            cultistRule = Comp<CultRuleComponent>(ruleEntity);
+        }
+
+        if (HasComp<CultistComponent>(entity))
+            return;
+
+        MakeCultist(entity, cultistRule);
+    }
+    
     public bool MakeCultist(EntityUid cultist, CultRuleComponent rule)
     {
         if (!_mindSystem.TryGetMind(cultist, out var mindId, out var mind))

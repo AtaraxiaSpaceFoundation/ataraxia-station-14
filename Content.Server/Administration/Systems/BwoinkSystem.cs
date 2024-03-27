@@ -481,12 +481,12 @@ namespace Content.Server.Administration.Systems
                     str = str[..(DescriptionMax - _maxAdditionalChars - unameLength)];
                 }
                 var nonAfkAdmins = GetNonAfkAdmins();
-                _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(senderSession.Name, str, !personalChannel, _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"), _gameTicker.RunLevel, playedSound: playSound, noReceivers: nonAfkAdmins.Count == 0));
+                _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(senderSession.Name, str, !personalChannel, _gameTicker.RoundDuration().ToString(@"hh\:mm\:ss"), _gameTicker.RunLevel, playedSound: playSound, noReceivers: nonAfkAdmins.Count == 0));
             }
 
             // WD start
-            var utkaCkey = _playerManager.GetSessionByUserId(message.UserId).ConnectedClient.UserName;
-            var utkaSender = _playerManager.GetSessionByUserId(senderSession.UserId).ConnectedClient.UserName;
+            var utkaCkey = _playerManager.GetSessionById(message.UserId).Channel.UserName;
+            var utkaSender = _playerManager.GetSessionById(senderSession.UserId).Channel.UserName;
             UtkaSendAhelpPm(message.Text, utkaCkey, utkaSender);
             // WD end
 
@@ -624,8 +624,8 @@ namespace Content.Server.Administration.Systems
             // Notify player
             if (_playerManager.TryGetSessionById(receiver, out var session))
             {
-                if (!admins.Contains(session.ConnectedClient))
-                    RaiseNetworkEvent(msg, session.ConnectedClient);
+                if (!admins.Contains(session.Channel))
+                    RaiseNetworkEvent(msg, session.Channel);
             }
 
             var sendsWebhook = _webhookUrl != string.Empty;
@@ -642,10 +642,10 @@ namespace Content.Server.Administration.Systems
                     str = str[..(DescriptionMax - _maxAdditionalChars - unameLength)];
                 }
                 _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(sender, str, true,
-                    _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"), _gameTicker.RunLevel));
+                    _gameTicker.RoundDuration().ToString(@"hh\:mm\:ss"), _gameTicker.RunLevel, false));
             }
 
-            var utkaCkey = _playerManager.GetSessionByUserId(receiver).ConnectedClient.UserName;
+            var utkaCkey = _playerManager.GetSessionById(receiver).Channel.UserName;
             UtkaSendAhelpPm(text, utkaCkey, sender);
         }
 
@@ -665,12 +665,12 @@ namespace Content.Server.Administration.Systems
                 entity = meta.EntityName;
             }
 
-            var utkaAhelpEvent = new UtkaAhelpPmEvent()
+            var utkaAhelpEvent = new UtkaAhelpPmEvent
             {
                 Message = message,
                 Ckey = ckey,
                 Sender = sender,
-                Rid = Get<GameTicker>().RoundId,
+                Rid = _gameTicker.RoundId,
                 NoAdmins = !admins,
                 Entity = entity
             };

@@ -31,7 +31,7 @@ public sealed class ServerJukeboxSongsSyncManager : JukeboxSongsSyncManager
         }
     }
 
-    public (string songName, ResPath path) SyncSongData(string songName, List<byte> bytes)
+    public (string SongName, ResPath Path) SyncSongData(string songName, List<byte> bytes)
     {
         if (ContentRoot.TryGetFile(new ResPath(songName + ".ogg"), out _))
         {

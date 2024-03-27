@@ -301,26 +301,21 @@ public sealed class RespiratorSystem : EntitySystem
             return false;
         }
 
-        if (_inventorySystem.TryGetSlotEntity(target, "mask", out var maskUidTarget) &&
-            EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUidTarget, out var blockerTarget) &&
-            blockerTarget.Enabled)
-        {
-            _popupSystem.PopupEntity(
-                Loc.GetString("cpr-mask-block-target", ("target", Identity.Entity(target, EntityManager))), target,
-                user);
-            return false;
-        }
+        if (!_inventorySystem.TryGetSlotEntity(target, "mask", out var maskUidTarget) ||
+            !EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUidTarget, out var blockerTarget) ||
+            !blockerTarget.Enabled)
+            return true;
 
-        return true;
+        _popupSystem.PopupEntity(
+            Loc.GetString("cpr-mask-block-target", ("target", Identity.Entity(target, EntityManager))), target, user);
+        return false;
     }
 
     private void DoCPR(EntityUid target, RespiratorComponent comp, EntityUid user)
     {
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, 1, new CPREndedEvent(), target,
-            target: target)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, 1, new CPREndedEvent(), target, target: target)
         {
-            BreakOnTargetMove = true,
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             BreakOnDamage = true,
             NeedHand = true,
             BreakOnHandChange = true
@@ -334,12 +329,11 @@ public sealed class RespiratorSystem : EntitySystem
 
         comp.CPRPerformedBy = user;
 
-        _popupSystem.PopupEntity(
-            Loc.GetString("cpr-started", ("target", Identity.Entity(target, EntityManager)),
+        _popupSystem.PopupEntity(Loc.GetString("cpr-started", ("target", Identity.Entity(target, EntityManager)),
                 ("user", Identity.Entity(user, EntityManager))), target, PopupType.Medium);
+
         comp.CPRPlayingStream =
-            _audio.PlayPvs(comp.CPRSound, target, audioParams: AudioParams.Default.WithVolume(-3f).WithLoop(true)).Value
-                .Entity;
+            _audio.PlayPvs(comp.CPRSound, target, AudioParams.Default.WithVolume(-3f).WithLoop(true)).Value.Entity;
 
         _adminLogger.Add(LogType.Action, LogImpact.High,
             $"{ToPrettyString(user):entity} начал произовдить СЛР на {ToPrettyString(target):entity}");
@@ -351,7 +345,7 @@ public sealed class RespiratorSystem : EntitySystem
             return;
 
         if (args.Cancelled || !TryComp<MobStateComponent>(args.Target, out var targetState) ||
-            targetState!.CurrentState != MobState.Critical)
+            targetState.CurrentState != MobState.Critical)
         {
             _audio.Stop(component.CPRPlayingStream);
             component.CPRPerformedBy = null;
@@ -365,15 +359,16 @@ public sealed class RespiratorSystem : EntitySystem
 
         _damageable.TryChangeDamage(uid, -component.Damage * 2, true, false);
 
-        _popupSystem.PopupEntity(
-            Loc.GetString("cpr-cycle-ended", ("target", Identity.Entity(uid, EntityManager)),
+        _popupSystem.PopupEntity(Loc.GetString("cpr-cycle-ended", ("target", Identity.Entity(uid, EntityManager)),
                 ("user", Identity.Entity(args.User, EntityManager))), uid);
 
         _adminLogger.Add(LogType.Action, LogImpact.High,
             $"{ToPrettyString(args.User):entity} произвёл СЛР на {ToPrettyString(args.Target):entity}");
 
         if (args.Target != null && CanCPR(args.Target.Value, component, args.User))
+        {
             args.Repeat = true;
+        }
         else
         {
             component.CPRPerformedBy = null;

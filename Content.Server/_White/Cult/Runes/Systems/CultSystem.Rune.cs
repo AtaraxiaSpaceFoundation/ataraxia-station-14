@@ -112,10 +112,8 @@ public sealed partial class CultSystem : EntitySystem
         InitializeConstructs();
         InitializeBarrierSystem();
         InitializeConstructsAbilities();
-        InitializeCultists();
         InitializeActions();
         InitializeVerb();
-        
     }
 
     private float _timeToDraw;
@@ -325,9 +323,15 @@ public sealed partial class CultSystem : EntitySystem
             return;
         }
 
+        var cultRule = EntityManager.EntityQuery<CultRuleComponent>().FirstOrDefault();
+        if (cultRule is null)
+        {
+            return;
+        }
+
         var solutions = _solutionContainerSystem.EnumerateSolutions((args.OtherEntity, solution));
 
-        if (solutions.Any(x => x.Solution.Comp.Solution.ContainsPrototype(CultRuleComponent.HolyWaterReagent)))
+        if (solutions.Any(x => x.Solution.Comp.Solution.ContainsPrototype(cultRule.HolyWaterReagent)))
         {
             Del(uid);
         }
@@ -522,10 +526,7 @@ public sealed partial class CultSystem : EntitySystem
             return false;
         }
 
-        if (!_entityManager.TryGetComponent<ActorComponent>(target, out var actorComponent))
-            return false;
-
-        _ruleSystem.MakeCultist(actorComponent.PlayerSession);
+        _ruleSystem.AdminMakeCultist(target);
         _stunSystem.TryStun(target, TimeSpan.FromSeconds(2f), false);
         HealCultist(target);
 

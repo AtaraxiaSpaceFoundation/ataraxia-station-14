@@ -94,7 +94,8 @@ public partial class CultSystem
 
     private void OnTeleport(EntityUid uid, CultistComponent component, CultTeleportTargetActionEvent args)
     {
-        if (!TryComp<BloodstreamComponent>(args.Performer, out var bloodstream) || !TryComp<ActorComponent>(uid, out var actor))
+        if (!TryComp<BloodstreamComponent>(args.Performer, out var bloodstream) ||
+            !TryComp<ActorComponent>(uid, out var actor))
             return;
 
         if (!TryComp<CultistComponent>(args.Target, out _) &&
@@ -246,8 +247,7 @@ public partial class CultSystem
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(2),
             new ShacklesEvent(), args.Performer, args.Target)
         {
-            BreakOnTargetMove = true,
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             BreakOnDamage = true
         });
 

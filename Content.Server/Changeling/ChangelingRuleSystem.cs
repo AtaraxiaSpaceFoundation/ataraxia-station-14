@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -160,6 +161,21 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         }
     }
 
+    public void AdminMakeChangeling(EntityUid entity)
+    {
+        var changelingRule = EntityQuery<ChangelingRuleComponent>().FirstOrDefault();
+        if (changelingRule == null)
+        {
+            GameTicker.StartGameRule("Changeling", out var ruleEntity);
+            changelingRule = Comp<ChangelingRuleComponent>(ruleEntity);
+        }
+
+        if (HasComp<ChangelingRuleComponent>(entity))
+            return;
+
+        MakeChangeling(entity, changelingRule);
+    }
+    
     public bool MakeChangeling(EntityUid changeling, ChangelingRuleComponent rule, bool giveObjectives = true)
     {
         if (!_mindSystem.TryGetMind(changeling, out var mindId, out var mind))

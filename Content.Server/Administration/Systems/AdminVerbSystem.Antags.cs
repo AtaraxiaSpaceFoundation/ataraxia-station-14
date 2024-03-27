@@ -133,7 +133,7 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/interface.rsi"), "icon"),
             Act = () =>
             {
-                _cultRule.MakeCultist(args.Target);
+                _cultRule.AdminMakeCultist(args.Target);
             }
         };
         args.Verbs.Add(cultist);
@@ -142,12 +142,10 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-changeling"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(new ("/Textures/White/Actions/changeling.rsi/absorb.png")),
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/White/Actions/changeling.rsi/absorb.png")),
             Act = () =>
             {
-                
-                var isHuman = HasComp<HumanoidAppearanceComponent>(args.Target);
-                _changelingRule.MakeChangeling(args.Target);
+                _changelingRule.AdminMakeChangeling(args.Target);
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-changeling"),

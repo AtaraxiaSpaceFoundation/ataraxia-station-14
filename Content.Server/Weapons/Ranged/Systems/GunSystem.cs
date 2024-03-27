@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Administration.Logs;
 using Content.Server.Cargo.Systems;
 using Content.Server.Interaction;
 using Content.Server.Power.EntitySystems;
@@ -161,7 +160,7 @@ public sealed partial class GunSystem : SharedGunSystem
                         {
                             if (dmg.Any())
                             {
-                                _color.RaiseEffect(Color.Red, new List<EntityUid>() { hitEntity }, Filter.Pvs(hitEntity, entityManager: EntityManager));
+                                _color.RaiseEffect(Color.Red, [hitEntity], Filter.Pvs(hitEntity, entityManager: EntityManager));
                             }
 
                             // TODO get fallback position for playing hit sound.
@@ -223,7 +222,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     Audio.PlayPvs(clumsy.ClumsySound, gunUid);
 
                     PopupSystem.PopupEntity(Loc.GetString("gun-clumsy"), user.Value);
-                    _adminLogger.Add(LogType.EntityDelete, LogImpact.Medium, $"{Loc.GetString("clumsy-gun-delete-log", ("prettyUser", ToPrettyString(user.Value)), ("prettyGun", ToPrettyString(gunUid)))}");
+                    Logs.Add(LogType.EntityDelete, LogImpact.Medium, $"{Loc.GetString("clumsy-gun-delete-log", ("prettyUser", ToPrettyString(user.Value)), ("prettyGun", ToPrettyString(gunUid)))}");
                     Del(gunUid);
                     userImpulse = false;
                     return;
@@ -240,7 +239,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var angle = GetRecoilAngle(Timing.CurTime, gun, mapDirection.ToAngle());
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
-        var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out var grid)
             ? fromCoordinates.WithEntityId(gridUid, EntityManager)
             : new EntityCoordinates(MapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
 

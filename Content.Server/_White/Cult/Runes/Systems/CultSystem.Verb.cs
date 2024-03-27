@@ -67,7 +67,7 @@ public sealed partial class CultSystem
             new DoAfterArgs(_entityManager, ent, creationTime, new SpellCreatedEvent {Spell = action}, ent)
             {
                 BreakOnDamage = true,
-                BreakOnUserMove = true
+                BreakOnMove = true
             });
     }
 

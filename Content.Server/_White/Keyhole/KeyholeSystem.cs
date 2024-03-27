@@ -15,7 +15,6 @@ namespace Content.Server._White.Keyhole;
 
 public sealed partial class KeyholeSystem : EntitySystem
 {
-
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -37,6 +36,11 @@ public sealed partial class KeyholeSystem : EntitySystem
 
     private void OnKeyInsert(EntityUid uid, KeyComponent component, AfterInteractEvent ev)
     {
+        if (!ev.Target.HasValue)
+        {
+            return;
+        }
+        
         if (TryComp<KeyformComponent>(ev.Target, out var keyformComponent))
             OnKeyInsertForm(uid, component, keyformComponent, ev);
 
@@ -45,24 +49,24 @@ public sealed partial class KeyholeSystem : EntitySystem
 
         keyholeComponent.FormId ??= component.FormId;
 
-        if (!CanLock(keyholeComponent.Owner, keyholeComponent, component))
+        if (!CanLock(ev.Target.Value, keyholeComponent, component))
             return;
 
-        var doAfterEventArgs =
-                new DoAfterArgs(EntityManager, ev.User, keyholeComponent.Delay, new KeyInsertDoAfterEvent(), ev.Target, ev.Used)
-                {
-                    BreakOnTargetMove = true,
-                    BreakOnUserMove = true,
-                    BreakOnDamage = true
-                };
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, ev.User, keyholeComponent.Delay,
+            new KeyInsertDoAfterEvent(), ev.Target, ev.Used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true
+        };
+
         _doAfter.TryStartDoAfter(doAfterEventArgs);
     }
 
     private bool CanLock(EntityUid uid, KeyholeComponent keyholeComponent, KeyComponent keyComponent)
     {
         var can = TryComp<DoorComponent>(uid, out var doorComponent) &&
-                  keyholeComponent.FormId == keyComponent.FormId &&
-                  doorComponent.State == DoorState.Closed;
+            keyholeComponent.FormId == keyComponent.FormId &&
+            doorComponent.State == DoorState.Closed;
 
         return can;
     }
@@ -80,13 +84,14 @@ public sealed partial class KeyholeSystem : EntitySystem
     private bool IsStateChanging(EntityUid uid)
     {
         return TryComp<DoorComponent>(uid, out var doorComponent) &&
-               (doorComponent.State == DoorState.Closing || doorComponent.State == DoorState.Opening);
+            (doorComponent.State == DoorState.Closing || doorComponent.State == DoorState.Opening);
     }
 
     private void Lock(EntityUid uid, KeyholeComponent component, EntityUid user)
     {
         var sound = component.Locked ? component.UnlockSound : component.LockSound;
-        var message = Loc.GetString(component.Locked ? "key-unlock-message" : "key-lock-message", ("name", user), ("door", uid));
+        var message = Loc.GetString(component.Locked ? "key-unlock-message" : "key-lock-message", ("name", user),
+            ("door", uid));
 
         var audioParams = new AudioParams().WithVolume(-5f);
 
@@ -96,7 +101,11 @@ public sealed partial class KeyholeSystem : EntitySystem
         component.Locked = !component.Locked;
     }
 
-    private void OnKeyInsertForm(EntityUid uid, KeyComponent keyComponent, KeyformComponent keyformComponent, AfterInteractEvent args)
+    private void OnKeyInsertForm(
+        EntityUid uid,
+        KeyComponent keyComponent,
+        KeyformComponent keyformComponent,
+        AfterInteractEvent args)
     {
         if (!keyformComponent.IsUsed)
         {
@@ -104,16 +113,16 @@ public sealed partial class KeyholeSystem : EntitySystem
             _appearance.SetData(keyformComponent.Owner, KeyformVisuals.IsUsed, true);
 
             _audio.PlayPvs(keyformComponent.PressSound, uid);
-            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message-first", ("user", args.User), ("key", uid)), uid);
+            _popupSystem.PopupEntity(
+                Loc.GetString("key-pressed-in-keyform-message-first", ("user", args.User), ("key", uid)), uid);
 
             keyformComponent.IsUsed = true;
         }
         else
         {
             keyComponent.FormId = keyformComponent.FormId;
-            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message", ("user", args.User), ("key", uid)), uid);
+            _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message", ("user", args.User), ("key", uid)),
+                uid);
         }
-
     }
-
 }
