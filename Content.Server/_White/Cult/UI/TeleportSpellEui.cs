@@ -1,14 +1,11 @@
 ﻿using Content.Server.EUI;
 using Content.Server.Popups;
 using Content.Server._White.Cult.Runes.Comps;
-using Content.Shared.Actions;
 using Content.Shared.Eui;
 using Content.Shared.Popups;
 using Content.Shared._White.Cult.UI;
-using Content.Shared.Pulling;
-using Content.Shared.Pulling.Components;
-using Robust.Server.GameObjects;
-using Robust.Shared.Map;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server._White.Cult.UI;
@@ -16,45 +13,37 @@ namespace Content.Server._White.Cult.UI;
 public sealed class TeleportSpellEui : BaseEui
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
-    private SharedTransformSystem _transformSystem;
-    private SharedPullingSystem _pulling;
-    private PopupSystem _popupSystem;
+    private readonly SharedTransformSystem _transformSystem;
+    private readonly PullingSystem _pulling;
+    private readonly PopupSystem _popupSystem;
 
-
-    private EntityUid _performer;
-    private EntityUid _target;
-
-    private EntityCoordinates _initialOwnerCoords;
-    private EntityCoordinates _initialTargetCoords;
+    private readonly EntityUid _performer;
+    private readonly EntityUid _target;
 
     private bool _used;
-
 
     public TeleportSpellEui(EntityUid performer, EntityUid target)
     {
         IoCManager.InjectDependencies(this);
 
         _transformSystem = _entityManager.System<SharedTransformSystem>();
-        _pulling = _entityManager.System<SharedPullingSystem>();
+        _pulling = _entityManager.System<PullingSystem>();
         _popupSystem = _entityManager.System<PopupSystem>();
 
         _performer = performer;
         _target = target;
 
-        _initialOwnerCoords = _entityManager.GetComponent<TransformComponent>(_performer).Coordinates;
-        _initialTargetCoords = _entityManager.GetComponent<TransformComponent>(_target).Coordinates;
-
-        Timer.Spawn(TimeSpan.FromSeconds(10), Close );
+        Timer.Spawn(TimeSpan.FromSeconds(10), Close);
     }
 
     public override EuiStateBase GetNewState()
     {
-        var runes = _entityManager.EntityQuery<CultRuneTeleportComponent>();
+        var runesQuery = _entityManager.EntityQueryEnumerator<CultRuneTeleportComponent>();
         var state = new TeleportSpellEuiState();
 
-        foreach (var rune in runes)
+        while (runesQuery.MoveNext(out var runeUid, out var rune))
         {
-            state.Runes.Add((int)rune.Owner, rune.Label!);
+            state.Runes.Add((int) runeUid, rune.Label!);
         }
 
         return state;
@@ -64,7 +53,10 @@ public sealed class TeleportSpellEui : BaseEui
     {
         base.HandleMessage(msg);
 
-        if(_used) return;
+        if (_used)
+        {
+            return;
+        }
 
         if (msg is not TeleportSpellTargetRuneSelected cast)
         {
@@ -72,23 +64,24 @@ public sealed class TeleportSpellEui : BaseEui
         }
 
         var performerPosition = _entityManager.GetComponent<TransformComponent>(_performer).Coordinates;
-        var targetPosition = _entityManager.GetComponent<TransformComponent>(_target).Coordinates;;
+        var targetPosition = _entityManager.GetComponent<TransformComponent>(_target).Coordinates;
 
         performerPosition.TryDistance(_entityManager, targetPosition, out var distance);
 
-        if(distance > 1.5f)
+        if (distance > 1.5f)
         {
             _popupSystem.PopupEntity("Too far", _performer, PopupType.Medium);
             return;
         }
 
-        TransformComponent? runeTransform = null!;
+        TransformComponent? runeTransform = null;
 
-        foreach (var runeComponent in _entityManager.EntityQuery<CultRuneTeleportComponent>())
+        var teleportRuneQuery = _entityManager.EntityQueryEnumerator<CultRuneTeleportComponent, TransformComponent>();
+        while (teleportRuneQuery.MoveNext(out var runeUid, out _, out var transformComponent))
         {
-            if (runeComponent.Owner == new EntityUid(cast.RuneUid))
+            if (runeUid == new EntityUid(cast.RuneUid))
             {
-                runeTransform = _entityManager.GetComponent<TransformComponent>(runeComponent.Owner);
+                runeTransform = transformComponent;
             }
         }
 
@@ -102,16 +95,16 @@ public sealed class TeleportSpellEui : BaseEui
         _used = true;
 
         // break pulls before portal enter so we dont break shit
-        if (_entityManager.TryGetComponent<SharedPullableComponent>(_target, out var pullable) && pullable.BeingPulled)
+        if (_entityManager.TryGetComponent<PullableComponent>(_target, out var pullable) && pullable.BeingPulled)
         {
-            _pulling.TryStopPull(pullable);
+            _pulling.TryStopPull(_target, pullable);
         }
 
-        if (_entityManager.TryGetComponent<SharedPullerComponent>(_target, out var pulling)
-            && pulling.Pulling != null &&
-            _entityManager.TryGetComponent<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+        if (_entityManager.TryGetComponent<PullerComponent>(_target, out var pulling)
+            && pulling.Pulling != null
+            && _entityManager.TryGetComponent<PullableComponent>(pulling.Pulling.Value, out var subjectPulling))
         {
-            _pulling.TryStopPull(subjectPulling);
+            _pulling.TryStopPull(pulling.Pulling.Value, subjectPulling);
         }
 
         _transformSystem.SetCoordinates(_target, runeTransform.Coordinates);

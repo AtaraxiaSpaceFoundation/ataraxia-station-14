@@ -18,37 +18,35 @@ namespace Content.Server._White.Cult.GameRule;
 [RegisterComponent]
 public sealed partial class CultRuleComponent : Component
 {
-    public readonly SoundSpecifier GreatingsSound = new SoundPathSpecifier("/Audio/White/Cult/blood_cult_greeting.ogg");
+    public readonly SoundSpecifier GreetingsSound = new SoundPathSpecifier("/Audio/White/Cult/blood_cult_greeting.ogg");
 
-    [DataField("cultPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<GamePresetPrototype>))]
-    public static string CultGamePresetPrototype = "Cult";
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<GamePresetPrototype>))]
+    public string CultGamePresetPrototype = "Cult";
 
-    [DataField("cultistPrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
-    public static string CultistPrototypeId = "Cultist";
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
+    public string CultistPrototypeId = "Cultist";
 
-    [DataField("reaperPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public static string ReaperPrototype = "ReaperConstruct";
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string ReaperPrototype = "ReaperConstruct";
 
     [ViewVariables(VVAccess.ReadOnly), DataField("tileId")]
-    public static string CultFloor = "CultFloor";
+    public string CultFloor = "CultFloor";
 
-    [DataField("eyeColor")]
-    public static Color EyeColor = Color.FromHex("#f80000");
+    [DataField]
+    public Color EyeColor = Color.FromHex("#f80000");
 
-    public static string HolyWaterReagent = "Holywater";
+    public string HolyWaterReagent = "Holywater";
 
-    [DataField("redEyeThreshold")]
-    public static int ReadEyeThreshold = 5;
+    [DataField]
+    public int ReadEyeThreshold = 5;
 
-    [DataField("pentagramThreshold")]
-    public static int PentagramThreshold = 8;
+    [DataField]
+    public int PentagramThreshold = 8;
 
-    public Dictionary<ICommonSession, HumanoidCharacterProfile> StarCandidates = new();
+    [DataField(customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
+    public List<string> StartingItems = [];
 
-    [DataField("cultistStartingItems", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
-    public List<string> StartingItems = new();
-
-    [DataField("cultistRolePrototype", customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
     public string CultistRolePrototype = "Cultist";
 
     /// <summary>
@@ -58,19 +56,17 @@ public sealed partial class CultRuleComponent : Component
 
     public EntityUid? CultTarget;
 
-    public List<CultistComponent> CurrentCultists = new();
+    public List<CultistComponent> CurrentCultists = [];
 
-    public List<ConstructComponent> Constructs = new();
+    public List<ConstructComponent> Constructs = [];
 
     public CultWinCondition WinCondition;
 }
 
 public enum CultWinCondition : byte
 {
-    CultWin,
-    CultFailure
+    Win,
+    Failure
 }
 
-public sealed class CultNarsieSummoned : EntityEventArgs
-{
-}
+public sealed class CultNarsieSummoned : EntityEventArgs;

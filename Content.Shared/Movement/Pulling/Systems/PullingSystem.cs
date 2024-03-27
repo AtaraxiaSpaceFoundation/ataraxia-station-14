@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
@@ -272,6 +273,23 @@ public sealed class PullingSystem : EntitySystem
         _throwing.TryThrow(pulled.Value, fromUserCoords, user: player, strength: 4f, animated: false, recoil: false, playSound: false);
         return false;
     }
+
+    // WD ADDED
+    public bool TryGetPulledEntity(
+        EntityUid puller,
+        [NotNullWhen(true)] out EntityUid? pulled,
+        PullerComponent? component = null)
+    {
+        pulled = null;
+        if (!Resolve(puller, ref component))
+        {
+            return false;
+        }
+
+        pulled = component.Pulling;
+        return pulled is not null;
+    }
+    // WD ADDED END
 
     public bool IsPulling(EntityUid puller, PullerComponent? component = null)
     {

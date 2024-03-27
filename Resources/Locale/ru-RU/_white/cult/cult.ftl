@@ -1,18 +1,10 @@
-﻿cult-role-greeting =
-    Вы - член культа!
-        Ваши цели перечислены в меню персонажа.
-        В ваш рюкзак были добавлены предметы, которые помогут вам.
-        И помните - вы не единственный.
-        Слава Нар`си!
-
-cult-cond-cultwin = Культ одержал победу
-cult-cond-cultfailure = Экипаж уничтожил культ
-
-cultists-list-start = Культистами были:
-cultists-list-name = - [color=White]{ $name }[/color] ([color=gray]{ $user }[/color])
-soul-shard-name = Душа { $soul }
+﻿soul-shard-name = Душа { $soul }
 soul-shard-description = В этом камне заключена душа { $soul }
 cult-too-much-empowers = Слишком много способностей
+
+ghost-role-information-soul-shard-name = Осколок Души
+ghost-role-information-soul-shard-description = Станьте слугой кровавого культа!
+ghost-role-information-soul-shard-rules = Примите форму одной из конструкций культа и помогите вашим Хозяевам вернуть Нар'Си в этот мир!
 
 cult-started-drawing-rune-end = Культ начал рисовать руну призыва!
 cult-started-erasing-rune = Вы начали стирать руну.
@@ -42,17 +34,7 @@ cult-teleport-rune-default-label = безымянная метка
 cult-narsie-summon-drawn-position = Культ закончил рисовать руну ритуала разрыва измерений! Координаты: { $posText }
 cult-cant-draw-rune = Нельзя рисовать руну в космосе.
 
-ent-SoulShard = камень душ
-    .desc = Мистический светящийся осколок.
-
-ent-SoulShardGhost = камень душ
-    .desc = Мистический светящийся осколок.
-
-ent-WetStone = точильный камень
-    .desc =  Используется для заточки кромок стальных инструментов.
-
-ent-CultSharpener = древний точильный камень
-    .desc = Используется для заточки кромок стальных инструментов.
+runes-window-title = Руны
 
 chat-manager-cult-channel-name = Культ
 chat-manager-send-cult-chat-wrap-message = [bold]\[{ $channelName }\] [BubbleHeader]{ $player }[/BubbleHeader]:[/bold] [BubbleContent]{ $message }[/BubbleContent]

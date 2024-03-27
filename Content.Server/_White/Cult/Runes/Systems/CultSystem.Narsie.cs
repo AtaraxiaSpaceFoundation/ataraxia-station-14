@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Content.Shared._White.Cult;
+﻿using Content.Shared._White.Cult;
 using Robust.Server.GameObjects;
 using Timer = Robust.Shared.Timing.Timer;
 

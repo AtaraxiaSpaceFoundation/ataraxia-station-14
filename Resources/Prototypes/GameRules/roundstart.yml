@@ -146,7 +146,7 @@
   noSpawn: true
   components:
     - type: CultRule
-      cultistStartingItems:
+      startingItems:
         - RitualDagger
         - CultRunicMetal20
 

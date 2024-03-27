@@ -1,20 +1,17 @@
-using System.Linq;
-using Content.Server._Miracle.GulagSystem;
 using Content.Server.Antag;
-using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
-using Content.Server.NPC.Systems;
 using Content.Server.Objectives;
 using Content.Server.Roles;
+using Content.Shared._White.Mood;
 using Content.Shared.Changeling;
 using Content.Shared.GameTicking;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
+using Robust.Server.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -23,24 +20,20 @@ namespace Content.Server.Changeling;
 public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antagSelection = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly ChangelingNameGenerator _nameGenerator = default!;
-    [Dependency] private readonly GulagSystem _gulag = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private const int PlayersPerChangeling = 15;
     private const int MaxChangelings = 4;
 
     private const float ChangelingStartDelay = 3f * 60;
     private const float ChangelingStartDelayVariance = 3f * 60;
-
-    private const int ChangelingMinPlayers = 15;
 
     private const int ChangelingMaxDifficulty = 5;
     private const int ChangelingMaxPicks = 20;
@@ -65,197 +58,52 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
     {
         base.ActiveTick(uid, component, gameRule, frameTime);
 
-        if (component.SelectionStatus == ChangelingRuleComponent.SelectionState.ReadyToSelect &&
-            _gameTiming.CurTime > component.AnnounceAt)
+        if (component.SelectionStatus < ChangelingRuleComponent.SelectionState.Started &&
+            component.AnnounceAt < _gameTiming.CurTime)
+        {
             DoChangelingStart(component);
+            component.SelectionStatus = ChangelingRuleComponent.SelectionState.Started;
+        }
     }
 
     private void OnStartAttempt(RoundStartAttemptEvent ev)
     {
-        var query = EntityQueryEnumerator<ChangelingRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out _, out var gameRule))
-        {
-            if (!GameTicker.IsGameRuleAdded(uid, gameRule))
-                continue;
-
-            if (!ev.Forced && ev.Players.Length < ChangelingMinPlayers)
-            {
-                _chatManager.SendAdminAnnouncement(Loc.GetString("changeling-not-enough-ready-players",
-                    ("readyPlayersCount", ev.Players.Length), ("minimumPlayers", ChangelingMinPlayers)));
-
-                ev.Cancel();
-                continue;
-            }
-
-            if (ev.Players.Length == 0)
-            {
-                _chatManager.DispatchServerAnnouncement(Loc.GetString("changeling-no-one-ready"));
-                ev.Cancel();
-            }
-        }
-    }
-
-    private void DoChangelingStart(ChangelingRuleComponent component)
-    {
-        if (component.StartCandidates.Count == 0)
-        {
-            Log.Error("Tried to start Changeling mode without any candidates.");
-            return;
-        }
-
-        var numChangelings =
-            MathHelper.Clamp(component.StartCandidates.Count / PlayersPerChangeling, 1, MaxChangelings);
-
-        var changelingPool =
-            _antagSelection.FindPotentialAntags(component.StartCandidates, component.ChangelingPrototypeId);
-
-        var selectedChangelings = _antagSelection.PickAntag(numChangelings, changelingPool);
-
-        foreach (var changeling in selectedChangelings)
-        {
-            MakeChangeling(changeling);
-        }
-
-        component.SelectionStatus = ChangelingRuleComponent.SelectionState.SelectionMade;
+        TryRoundStartAttempt(ev, Loc.GetString("changeling-title"));
     }
 
     private void OnPlayersSpawned(RulePlayerJobsAssignedEvent ev)
     {
-        var query = EntityQueryEnumerator<ChangelingRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var changeling, out var gameRule))
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out var changeling, out _))
         {
-            if (!GameTicker.IsGameRuleAdded(uid, gameRule))
-                continue;
-
-            foreach (var player in ev.Players)
-            {
-                if (!ev.Profiles.ContainsKey(player.UserId))
-                    continue;
-
-                changeling.StartCandidates[player] = ev.Profiles[player.UserId];
-            }
-
             var delay = TimeSpan.FromSeconds(ChangelingStartDelay +
                 _random.NextFloat(0f, ChangelingStartDelayVariance));
 
             changeling.AnnounceAt = _gameTiming.CurTime + delay;
 
-            changeling.SelectionStatus = ChangelingRuleComponent.SelectionState.ReadyToSelect;
+            changeling.SelectionStatus = ChangelingRuleComponent.SelectionState.ReadyToStart;
         }
-    }
-
-    public bool MakeChangeling(ICommonSession changeling, bool giveObjectives = true)
-    {
-        var changelingRule = EntityQuery<ChangelingRuleComponent>().FirstOrDefault();
-        if (changelingRule == null)
-        {
-            GameTicker.StartGameRule("Changeling", out var ruleEntity);
-            changelingRule = Comp<ChangelingRuleComponent>(ruleEntity);
-        }
-
-        if (!_mindSystem.TryGetMind(changeling, out var mindId, out var mind))
-        {
-            Log.Info("Failed getting mind for picked changeling.");
-            return false;
-        }
-
-        if (HasComp<ChangelingRoleComponent>(mindId))
-        {
-            Log.Error($"Player {changeling.Name} is already a changeling.");
-            return false;
-        }
-
-        if (mind.OwnedEntity is not { } entity)
-        {
-            Log.Error("Mind picked for changeling did not have an attached entity.");
-            return false;
-        }
-
-        _roleSystem.MindAddRole(mindId, new ChangelingRoleComponent
-        {
-            PrototypeId = changelingRule.ChangelingPrototypeId
-        }, mind);
-
-        var briefing = Loc.GetString("changeling-role-briefing-short");
-
-        _roleSystem.MindAddRole(mindId, new RoleBriefingComponent
-        {
-            Briefing = briefing
-        }, mind, true);
-
-        _roleSystem.MindPlaySound(mindId, changelingRule.GreetSoundNotification, mind);
-        SendChangelingBriefing(mindId);
-        changelingRule.ChangelingMinds.Add(mindId);
-
-        // Change the faction
-        _npcFaction.RemoveFaction(entity, "NanoTrasen", false);
-        _npcFaction.AddFaction(entity, "Syndicate");
-
-        EnsureComp<ChangelingComponent>(entity, out var readyChangeling);
-
-        readyChangeling.HiveName = _nameGenerator.GetName();
-        Dirty(entity, readyChangeling);
-
-        if (!giveObjectives)
-            return true;
-
-        var difficulty = 0f;
-        for (var pick = 0; pick < ChangelingMaxPicks && ChangelingMaxDifficulty > difficulty; pick++)
-        {
-            var objective = _objectives.GetRandomObjective(mindId, mind, "ChangelingObjectiveGroups");
-            if (objective == null)
-                continue;
-
-            _mindSystem.AddObjective(mindId, mind, objective.Value);
-            difficulty += Comp<ObjectiveComponent>(objective.Value).Difficulty;
-        }
-
-        return true;
-    }
-
-    private void SendChangelingBriefing(EntityUid mind)
-    {
-        if (!_mindSystem.TryGetSession(mind, out var session))
-            return;
-
-        _chatManager.DispatchServerMessage(session, Loc.GetString("changeling-role-greeting"));
     }
 
     private void HandleLatejoin(PlayerSpawnCompleteEvent ev)
     {
-        var query = EntityQueryEnumerator<ChangelingRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var changeling, out var gameRule))
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out var changeling, out _))
         {
-            if (!GameTicker.IsGameRuleAdded(uid, gameRule))
-                continue;
-
             if (changeling.TotalChangelings >= MaxChangelings)
-                continue;
-
-            if (_gulag.IsUserGulaged(ev.Player.UserId, out _))
                 continue;
 
             if (!ev.LateJoin)
                 continue;
 
-            if (!ev.Profile.AntagPreferences.Contains(changeling.ChangelingPrototypeId))
-                continue;
-
-            if (ev.JobId == null || !_prototypeManager.TryIndex<JobPrototype>(ev.JobId, out var job))
-                continue;
-
-            if (!job.CanBeAntag)
+            if (!_antagSelection.IsPlayerEligible(ev.Player, changeling.ChangelingPrototypeId))
                 continue;
 
             // Before the announcement is made, late-joiners are considered the same as players who readied.
-            if (changeling.SelectionStatus < ChangelingRuleComponent.SelectionState.SelectionMade)
-            {
-                changeling.StartCandidates[ev.Player] = ev.Profile;
+            if (changeling.SelectionStatus < ChangelingRuleComponent.SelectionState.Started)
                 continue;
-            }
 
             var target = PlayersPerChangeling * changeling.TotalChangelings + 1;
-
             var chance = 1f / PlayersPerChangeling;
 
             if (ev.JoinOrder < target)
@@ -272,9 +120,14 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
 
             if (_random.Prob(chance))
             {
-                MakeChangeling(ev.Player);
+                MakeChangeling(ev.Mob, changeling);
             }
         }
+    }
+
+    private void ClearUsedNames(RoundRestartCleanupEvent ev)
+    {
+        _nameGenerator.ClearUsed();
     }
 
     private void OnObjectivesTextGetInfo(
@@ -286,8 +139,82 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         args.AgentName = Loc.GetString("changeling-round-end-agent-name");
     }
 
-    private void ClearUsedNames(RoundRestartCleanupEvent ev)
+    private void DoChangelingStart(ChangelingRuleComponent component)
     {
-        _nameGenerator.ClearUsed();
+        var eligiblePlayers =
+            _antagSelection.GetEligiblePlayers(_playerManager.Sessions, component.ChangelingPrototypeId);
+
+        if (eligiblePlayers.Count == 0)
+        {
+            return;
+        }
+
+        var changelingsToSelect =
+            _antagSelection.CalculateAntagCount(_playerManager.PlayerCount, PlayersPerChangeling, MaxChangelings);
+
+        var selectedChangelings = _antagSelection.ChooseAntags(changelingsToSelect, eligiblePlayers);
+
+        foreach (var changeling in selectedChangelings)
+        {
+            MakeChangeling(changeling, component);
+        }
+    }
+
+    public bool MakeChangeling(EntityUid changeling, ChangelingRuleComponent rule, bool giveObjectives = true)
+    {
+        if (!_mindSystem.TryGetMind(changeling, out var mindId, out var mind))
+        {
+            return false;
+        }
+
+        if (HasComp<ChangelingRoleComponent>(mindId))
+        {
+            Log.Error($"Player {mind.CharacterName} is already a changeling.");
+            return false;
+        }
+
+        var briefing = Loc.GetString("changeling-role-briefing-short");
+        _antagSelection.SendBriefing(changeling, briefing, null, rule.GreetSoundNotification);
+
+        rule.ChangelingMinds.Add(mindId);
+
+        _roleSystem.MindAddRole(mindId, new ChangelingRoleComponent
+        {
+            PrototypeId = rule.ChangelingPrototypeId
+        }, mind);
+
+        _roleSystem.MindAddRole(mindId, new RoleBriefingComponent
+        {
+            Briefing = briefing
+        }, mind, true);
+
+        // Change the faction
+        _npcFaction.RemoveFaction(changeling, "NanoTrasen", false);
+        _npcFaction.AddFaction(changeling, "Syndicate");
+
+        EnsureComp<ChangelingComponent>(changeling, out var readyChangeling);
+
+        readyChangeling.HiveName = _nameGenerator.GetName();
+        Dirty(changeling, readyChangeling);
+
+        RaiseLocalEvent(mindId, new MoodEffectEvent("TraitorFocused")); // WD edit
+
+        if (!giveObjectives)
+            return true;
+
+        var difficulty = 0f;
+        for (var pick = 0; pick < ChangelingMaxPicks && ChangelingMaxDifficulty > difficulty; pick++)
+        {
+            var objective = _objectives.GetRandomObjective(mindId, mind, "ChangelingObjectiveGroups");
+            if (objective == null)
+                continue;
+
+            _mindSystem.AddObjective(mindId, mind, objective.Value);
+            var adding = Comp<ObjectiveComponent>(objective.Value).Difficulty;
+            difficulty += adding;
+            Log.Debug($"Added objective {ToPrettyString(objective):objective} with {adding} difficulty");
+        }
+
+        return true;
     }
 }

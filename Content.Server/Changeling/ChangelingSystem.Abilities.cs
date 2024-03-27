@@ -41,7 +41,11 @@ using Content.Shared.Inventory;
 using Content.Shared.Miracle.UI;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Ninja.Components;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Standing;
 using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
@@ -74,7 +78,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainerSystem = default!;
-    [Dependency] private readonly SharedPullingSystem _pullingSystem = default!;
+    [Dependency] private readonly PullingSystem _pullingSystem = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly BloodstreamSystem _blood = default!;
     [Dependency] private readonly CuffableSystem _cuffable = default!;
@@ -174,7 +178,7 @@ public sealed partial class ChangelingSystem
             return;
         }
 
-        if (!TryComp<SharedPullableComponent>(args.Target, out var pulled))
+        if (!TryComp<PullableComponent>(args.Target, out var pulled))
         {
             _popup.PopupEntity(Loc.GetString("changeling-popup-absorb-pull"), args.Performer, args.Performer);
             return;
@@ -189,8 +193,7 @@ public sealed partial class ChangelingSystem
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, component.AbsorbDnaDelay,
                 new AbsorbDnaDoAfterEvent(), uid, args.Target, uid)
             {
-                BreakOnTargetMove = true,
-                BreakOnUserMove = true
+                BreakOnMove = true
             }
         );
     }
@@ -233,11 +236,10 @@ public sealed partial class ChangelingSystem
         var selectedDna = args.SelectedItem;
         var user = GetEntity(args.Entity);
 
-        _doAfterSystem.TryStartDoAfter(
-            new DoAfterArgs(EntityManager, user, component.TransformDelay,
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.TransformDelay,
                 new TransformDoAfterEvent { SelectedDna = selectedDna }, user, user, user)
             {
-                BreakOnUserMove = true
+                BreakOnMove = true
             }
         );
 
@@ -268,14 +270,12 @@ public sealed partial class ChangelingSystem
 
         _popup.PopupEntity(Loc.GetString("changeling-popup-start-regeneration"), uid, uid);
 
-        _doAfterSystem.TryStartDoAfter(
-            new DoAfterArgs(EntityManager, args.Performer, component.RegenerateDelay,
-                new RegenerateDoAfterEvent(), args.Performer,
-                args.Performer, args.Performer)
-            {
-                RequireCanInteract = false,
-                Hidden = true
-            });
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, component.RegenerateDelay,
+            new RegenerateDoAfterEvent(), args.Performer, args.Performer, args.Performer)
+        {
+            RequireCanInteract = false,
+            Hidden = true
+        });
 
         component.IsRegenerating = true;
     }
@@ -297,7 +297,7 @@ public sealed partial class ChangelingSystem
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, component.LesserFormDelay,
             new LesserFormDoAfterEvent(), args.Performer, args.Performer)
         {
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             RequireCanInteract = false
         });
     }
@@ -402,10 +402,10 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 50))
             return;
 
-        if (TryComp(target, out SharedPullerComponent? puller) && puller.Pulling is { } pulled &&
-            TryComp(pulled, out SharedPullableComponent? pullable))
+        if (TryComp(target, out PullerComponent? puller) && puller.Pulling is { } pulled
+            && TryComp(pulled, out PullableComponent? pullable))
         {
-            _pullingSystem.TryStopPull(pullable);
+            _pullingSystem.TryStopPull(pulled, pullable);
         }
 
         TransformPerson(target, humanData);
@@ -568,7 +568,7 @@ public sealed partial class ChangelingSystem
         _inventorySystem.TryUnequip(uid, outerName, out var outer, true, true);
         _inventorySystem.TryUnequip(uid, headName, out var helmet, true, true);
 
-        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is {ID: armorName})
+        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is { ID: armorName })
         {
             args.Handled = true;
             return;
@@ -654,9 +654,11 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 5))
             return;
 
-        if (TryComp(uid, out SharedPullerComponent? puller) && puller.Pulling is { } pulled &&
-            TryComp(pulled, out SharedPullableComponent? pullable))
-            _pullingSystem.TryStopPull(pullable);
+        if (TryComp(uid, out PullerComponent? puller) && puller.Pulling is { } pulled
+            && TryComp(pulled, out PullableComponent? pullable))
+        {
+            _pullingSystem.TryStopPull(pulled, pullable);
+        }
 
         TryTransformChangeling(args.User, args.SelectedDna, component);
 
@@ -689,10 +691,10 @@ public sealed partial class ChangelingSystem
             }
         }
 
-        if (TryComp(uid, out SharedPullerComponent? puller) && puller.Pulling is { } pulled &&
-            TryComp(pulled, out SharedPullableComponent? pullable))
+        if (TryComp(uid, out PullerComponent? puller) && puller.Pulling is { } pulled
+            && TryComp(pulled, out PullableComponent? pullable))
         {
-            _pullingSystem.TryStopPull(pullable);
+            _pullingSystem.TryStopPull(pulled, pullable);
         }
 
         if (TryComp<ChangelingComponent>(args.Target.Value, out var changelingComponent))

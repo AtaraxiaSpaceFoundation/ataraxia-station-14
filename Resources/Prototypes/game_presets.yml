@@ -174,9 +174,10 @@
   id: Cult
   alias:
     - cult
-  name: CULT
-  description: CULT
+  name: cult-title
+  description: cult-description
   showInVote: true
+  minPlayers: 20
   rules:
     - Cult
     - SubGamemodesRule
@@ -190,6 +191,7 @@
   name: changeling-title
   description: changeling-description
   showInVote: true
+  minPlayers: 15
   rules:
     - Changeling
     - SubGamemodesRule

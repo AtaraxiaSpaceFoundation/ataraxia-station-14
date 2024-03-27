@@ -20,6 +20,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.Reagent;
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -106,8 +107,11 @@ namespace Content.Server.Chemistry.EntitySystems
                 RecheckConnections(uid, component);
         }
 
-        public void UpdateConnection(EntityUid dispenser, EntityUid chemMaster,
-            ReagentDispenserComponent? dispenserComp = null, ChemMasterComponent? chemMasterComp = null)
+        public void UpdateConnection(
+            EntityUid dispenser, 
+            EntityUid chemMaster,
+            ReagentDispenserComponent? dispenserComp = null, 
+            ChemMasterComponent? chemMasterComp = null)
         {
             if (!Resolve(dispenser, ref dispenserComp) || !Resolve(chemMaster, ref chemMasterComp))
                 return;
@@ -224,7 +228,8 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
             if (outputContainer is not { Valid: true } || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
-            { // WD EDIT START
+            { 
+                // WD EDIT START
                 var chemMasterUid = reagentDispenser.Comp.ChemMaster;
                 if (!reagentDispenser.Comp.ChemMasterInRange ||
                     !TryComp(chemMasterUid, out ChemMasterComponent? chemMaster) ||
