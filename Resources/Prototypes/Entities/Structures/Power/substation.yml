@@ -53,7 +53,7 @@
     supplyRampRate: 1000
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
   - type: PacifismDangerousAttack
   - type: Destructible
     thresholds:
@@ -186,7 +186,7 @@
     supplyRampRate: 1000
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: PacifismDangerousAttack
   - type: Destructible
     thresholds:

@@ -26,7 +26,7 @@
     layoutId: SurveillanceCamera
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: Sprite
     drawdepth: WallMountedItems
     sprite: Structures/Wallmounts/camera.rsi
@@ -211,7 +211,7 @@
       anchored: true
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallic
+      damageModifierSet: Metallic
     - type: Sprite
       drawdepth: WallMountedItems
       sprite: Structures/Wallmounts/camera.rsi

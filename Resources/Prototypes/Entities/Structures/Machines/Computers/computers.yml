@@ -557,7 +557,7 @@
         type: BodyScannerConsoleBoundUserInterface
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
 # WD end
 
 - type: entity
@@ -596,7 +596,7 @@
     color: "#3c5eb5"
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
 
 - type: entity
   parent: ComputerComms
@@ -848,7 +848,7 @@
     speechSounds: Pai
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
   - type: GuideHelp
     guides:
     - Cloning

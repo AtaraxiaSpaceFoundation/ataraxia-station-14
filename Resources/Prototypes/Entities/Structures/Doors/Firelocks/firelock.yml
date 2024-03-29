@@ -18,7 +18,7 @@
     - type: InteractionOutline
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallic
+      damageModifierSet: Metallic
     - type: Destructible
       thresholds:
       - trigger:
@@ -108,7 +108,7 @@
     - type: AccessReader
       access: [ [ "Engineering" ] ]
     - type: ReflectAspectMark
-
+      
 - type: entity
   id: Firelock
   parent: BaseFirelock

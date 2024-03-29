@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: FirelockFrame
   parent: BaseStructureDynamic
   name: firelock frame
@@ -24,7 +24,7 @@
   - type: InteractionOutline
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
     - trigger:

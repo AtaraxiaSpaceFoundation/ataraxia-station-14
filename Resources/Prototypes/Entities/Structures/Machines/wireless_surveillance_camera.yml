@@ -11,7 +11,7 @@
       range: 200
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallic
+      damageModifierSet: Metallic
     - type: Rotatable
       rotateWhileAnchored: true
     - type: Fixtures

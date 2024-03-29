@@ -81,7 +81,7 @@
      - entity_storage
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
   - type: Destructible
     thresholds:
     - trigger:

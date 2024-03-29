@@ -82,7 +82,7 @@
       mediumVoltageNode: output
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallicStrong
+      damageModifierSet: StrongMetallic
     - type: BatterySensor
     - type: DeviceNetwork
       deviceNetId: AtmosDevices

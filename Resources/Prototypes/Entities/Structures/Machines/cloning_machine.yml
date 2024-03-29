@@ -32,7 +32,7 @@
       - clonepod-bodyContainer
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
   - type: Destructible
     thresholds:
     - trigger:
