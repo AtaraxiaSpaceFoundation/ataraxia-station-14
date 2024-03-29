@@ -413,6 +413,10 @@
       types:
         Blunt: 24
         Structural: 80
+    soundHit:
+      collection: HammerHit
+    soundSwing:
+      collection: HammerMiss
   - type: Item
     size: Huge
     sprite: White/Objects/Weapons/Chaplain/hammer.rsi

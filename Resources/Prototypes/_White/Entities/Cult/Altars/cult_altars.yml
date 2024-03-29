@@ -69,6 +69,11 @@
     graph: CultPylon
     node: pylon
   - type: Concealable
+  - type: AtmosDevice
+  - type: GasMiner
+    maxExternalPressure: 100
+    spawnAmount: 10
+    spawnGas: Oxygen
 
 - type: entity
   id: AltarTome

@@ -12,6 +12,10 @@
       types:
         Blunt: 10
         Structural: 10
+    soundHit:
+      collection: HammerHit
+    soundSwing:
+      collection: HammerMiss
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

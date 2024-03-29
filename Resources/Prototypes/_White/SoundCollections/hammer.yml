@@ -1,0 +1,16 @@
+- type: soundCollection
+  id: HammerHit
+  files:
+    - /Audio/White/Cult/Hammer/plspnch1.ogg
+    - /Audio/White/Cult/Hammer/plspnch2.ogg
+    - /Audio/White/Cult/Hammer/plspnch3.ogg
+    - /Audio/White/Cult/Hammer/plspnch4.ogg
+    - /Audio/White/Cult/Hammer/plspnch5.ogg
+    - /Audio/White/Cult/Hammer/plspnch6.ogg
+
+- type: soundCollection
+  id: HammerMiss
+  files:
+    - /Audio/White/Cult/Hammer/fstatk1.ogg
+    - /Audio/White/Cult/Hammer/fstatk2.ogg
+    - /Audio/White/Cult/Hammer/fstatk3.ogg

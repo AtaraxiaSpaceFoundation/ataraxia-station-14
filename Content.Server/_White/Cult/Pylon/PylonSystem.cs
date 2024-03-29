@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Numerics;
+using Content.Server.Atmos.Piping.Other.Components;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Server.Maps;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction;
@@ -11,7 +11,6 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Pylon;
 using Content.Shared._White.Cult.Systems;
 using Robust.Server.GameObjects;
@@ -55,9 +54,7 @@ public sealed class PylonSystem : EntitySystem
 
     private void OnConceal(Entity<SharedPylonComponent> ent, ref ConcealEvent args)
     {
-        ent.Comp.Activated = !args.Conceal;
-        UpdateAppearance(ent, ent.Comp);
-        _pointLight.SetEnabled(ent, !args.Conceal);
+        SetActivated(ent, ent.Comp, !args.Conceal);
         _physics.SetCanCollide(ent, !args.Conceal);
     }
 
@@ -229,12 +226,7 @@ public sealed class PylonSystem : EntitySystem
 
         if (HasComp<CultistComponent>(user))
         {
-            comp.Activated = !comp.Activated;
-
-            UpdateAppearance(uid, comp);
-
-            _pointLight.SetEnabled(uid, comp.Activated);
-
+            SetActivated(uid, comp, !comp.Activated);
             var toggleMsg = Loc.GetString(comp.Activated ? "pylon-toggle-on" : "pylon-toggle-off");
             _popupSystem.PopupEntity(toggleMsg, uid);
             return;
@@ -271,5 +263,17 @@ public sealed class PylonSystem : EntitySystem
             return;
 
         _appearance.SetData(uid, PylonVisuals.Activated, comp.Activated, appearance);
+    }
+
+    private void SetActivated(EntityUid uid, SharedPylonComponent comp, bool activated)
+    {
+        comp.Activated = activated;
+
+        if (TryComp(uid, out GasMinerComponent? miner))
+            miner.Enabled = activated;
+
+        UpdateAppearance(uid, comp);
+
+        _pointLight.SetEnabled(uid, activated);
     }
 }

@@ -1,6 +1,9 @@
-﻿using Content.Shared.Containers.ItemSlots;
+﻿using System.Linq;
+using Content.Shared._White.Cult.Components;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Mind.Components;
 using Content.Shared._White.Cult.UI;
+using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -19,6 +22,13 @@ public partial class CultSystem
         SubscribeLocalEvent<ConstructShellComponent, ComponentInit>(OnShellInit);
         SubscribeLocalEvent<ConstructShellComponent, ComponentRemove>(OnShellRemove);
         SubscribeLocalEvent<ConstructShellComponent, ConstructFormSelectedEvent>(OnShellSelected);
+        SubscribeLocalEvent<ConstructComponent, MeleeHitEvent>(OnMeleeHit);
+    }
+
+    private void OnMeleeHit(Entity<ConstructComponent> ent, ref MeleeHitEvent args)
+    {
+        if (args.HitEntities.Any(e => HasComp<CultistComponent>(e) || HasComp<ConstructComponent>(e)))
+            args.BonusDamage = -args.BaseDamage;
     }
 
     private void OnShellSelected(EntityUid uid, ConstructShellComponent component, ConstructFormSelectedEvent args)

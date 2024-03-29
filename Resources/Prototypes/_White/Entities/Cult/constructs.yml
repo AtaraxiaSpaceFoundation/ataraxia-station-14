@@ -76,6 +76,8 @@
       tags:
         - CannotSuicide
         - DoorBumpOpener
+    - type: NameIdentifier
+      group: Construct
 
 - type: entity
   id: JuggernautConstruct
@@ -102,6 +104,10 @@
         types:
           Structural: 90
           Blunt: 25
+      soundHit:
+        collection: HammerHit
+      soundSwing:
+        collection: HammerMiss
 
 - type: entity
   id: ArtificerConstruct
@@ -170,9 +176,11 @@
       attackRate: 1
       damage:
         types:
-          Blunt: 10
+          Piercing: 10
           Slash: 10
           Structural: 40
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
 
 - type: entity
   id: ReaperConstruct
@@ -200,9 +208,11 @@
       attackRate: 1
       damage:
         types:
-          Blunt: 20
+          Piercing: 20
           Slash: 20
           Structural: 80
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
 
 - type: entity
   id: ConstructShell
@@ -229,3 +239,7 @@
       containers:
         Shard: !type:ContainerSlot
     - type: CultItem
+
+- type: nameIdentifierGroup
+  id: Construct
+  prefix: CO

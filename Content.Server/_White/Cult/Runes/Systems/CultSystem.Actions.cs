@@ -332,7 +332,7 @@ public partial class CultSystem
         if (success)
         {
             _audio.PlayPvs(conceal ? "/Audio/White/Cult/smoke.ogg" : "/Audio/White/Cult/enter_blood.ogg", uid,
-                AudioParams.Default.WithMaxDistance(2f));
+                AudioParams.Default.WithMaxDistance(5f));
             _bloodstreamSystem.TryModifyBloodLevel(uid, -2, bloodstream, createPuddle: false);
             args.Handled = true;
         }

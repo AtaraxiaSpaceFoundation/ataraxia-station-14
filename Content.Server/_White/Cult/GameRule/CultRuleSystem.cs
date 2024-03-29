@@ -79,6 +79,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     private void OnGetBriefing(Entity<CultistRoleComponent> ent, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("cult-role-briefing-short"));
+        args.Append(Loc.GetString("cult-role-briefing-hint"));
     }
 
     private void OnCultistsStateChanged(EntityUid uid, CultistComponent component, MobStateChangedEvent ev)

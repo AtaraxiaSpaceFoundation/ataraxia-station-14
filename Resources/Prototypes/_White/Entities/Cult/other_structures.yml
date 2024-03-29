@@ -128,3 +128,16 @@
       concealedDesc: Большой металлический каркас; Необходимо покрыть листами металла, чтобы он считался стеной.
       revealedName: руническая балка
       revealedDesc: Большой конструктивный элемент, изготовленный из металла. На этом есть руна.
+
+- type: entity
+  id: WallForceCult
+  parent: WallForce
+  name: glowing wall
+  description: An unholy shield that blocks all attacks.
+  components:
+    - type: Sprite
+      sprite: White/Cult/Structures/cult_shield.rsi
+      state: icon
+    - type: Icon
+      sprite: White/Cult/Structures/cult_shield.rsi
+      state: icon
