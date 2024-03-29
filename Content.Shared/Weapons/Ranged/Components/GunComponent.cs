@@ -231,7 +231,7 @@ public sealed partial class GunComponent : Component
     // WD START
 
     public EntityUid? Target;
-    
+
     [DataField("forceThrowingAngle")]
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ForceThrowingAngle;

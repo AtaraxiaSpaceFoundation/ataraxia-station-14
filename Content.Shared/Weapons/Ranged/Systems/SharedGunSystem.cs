@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._White.WeaponModules;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -476,6 +477,9 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     protected void MuzzleFlash(EntityUid gun, AmmoComponent component, EntityUid? user = null)
     {
+        bool cancelled = TryComp<WeaponModulesComponent>(gun, out var weaponModulesComponent) && weaponModulesComponent.WeaponFireEffect; // WD EDIT
+        if(cancelled) return; // WD EDIT END
+
         var attemptEv = new GunMuzzleFlashAttemptEvent();
         RaiseLocalEvent(gun, ref attemptEv);
         if (attemptEv.Cancelled)
@@ -534,9 +538,38 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         Dirty(gun);
     }
+    // WD EDIT
+    public void SetProjectileSpeed(EntityUid weapon, float projectileSpeed)
+    {
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
 
+        gunComponent.ProjectileSpeed = projectileSpeed;
+
+        RefreshModifiers(weapon);
+    }
+
+    public void SetFireRate(EntityUid weapon, float fireRate)
+    {
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
+
+        gunComponent.FireRate = fireRate;
+
+        RefreshModifiers(weapon);
+    }
+
+    public void SetSound(EntityUid weapon, SoundSpecifier sound)
+    {
+        if(!TryComp<GunComponent>(weapon, out var gunComponent))
+            return;
+
+        gunComponent.SoundGunshot = sound;
+
+        RefreshModifiers(weapon);
+    }
+// WD EDIT END
     protected abstract void CreateEffect(EntityUid uid, MuzzleFlashEvent message, EntityUid? user = null);
-
     /// <summary>
     /// Used for animated effects on the client.
     /// </summary>

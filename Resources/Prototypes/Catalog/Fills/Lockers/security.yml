@@ -18,6 +18,7 @@
       - id: BoxMindshield
       - id: ClothingOuterHardsuitWarden
       - id: OxygenTankFilled
+      - id: LightModule
 
 - type: entity
   id: LockerWardenFilled
@@ -37,6 +38,7 @@
       - id: WeaponPistolMk58Nonlethal
       - id: MagazinePistol
       - id: BoxMindshield
+      - id: LightModule
 
 - type: entity
   id: LockerSecurityFilled
@@ -66,6 +68,7 @@
       - id: WeaponPistolMk58Nonlethal
       - id: SurveillanceBodyCamera
       - id: MagazinePistol
+      - id: LightModule
 
 - type: entity
   id: LockerBrigmedicFilled
@@ -126,6 +129,7 @@
       - id: VoiceRecorder
       - id: ClothingEyesGlassesSecurity
       - id: BoxZipLocks
+      - id: LightModule
 
 - type: entity
   id: ClosetBombFilled

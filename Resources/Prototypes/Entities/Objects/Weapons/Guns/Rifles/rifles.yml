@@ -15,6 +15,7 @@
     - Back
     - suitStorage
   - type: AmmoCounter
+  - type: WeaponModules
   - type: Gun
     fireRate: 5
     selectedMode: FullAuto
@@ -32,7 +33,7 @@
         startingItem: MagazineLightRifle
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
-        priority: 2
+        priority: 3
         whitelist:
           tags:
           - MagazineLightRifle
@@ -43,10 +44,19 @@
         whitelist:
           tags:
           - CartridgeLightRifle
+      gun_modules:
+        name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: StaticPrice
     price: 500
 
@@ -63,6 +73,10 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
+    - state: laser
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.Module" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
@@ -88,14 +102,26 @@
         whitelist:
           tags:
           - CartridgeLightRifle
+      gun_modules:
+        name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
+  - type: PointLight
+    enabled: false
+    autoRot: true
   - type: Appearance
 
 - type: entity
@@ -154,6 +180,10 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
+    - state: laser
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.Module" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
@@ -177,14 +207,26 @@
         whitelist:
           tags:
           - CartridgeRifle
+      gun_modules:
+        name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_modules: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
+  - type: PointLight
+    enabled: false
+    autoRot: true
   - type: Appearance
 
 - type: entity
@@ -211,3 +253,11 @@
         whitelist:
           tags:
             - CartridgeRifle
+      gun_modules:
+        name: Modules
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - BaseModule

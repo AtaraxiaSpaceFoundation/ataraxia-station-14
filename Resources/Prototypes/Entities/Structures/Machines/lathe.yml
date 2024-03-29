@@ -197,6 +197,11 @@
        - MagazineBoxRifle
        - MagazineBoxLightRifle
        - GrenadeBlast
+       - LightModuleRecipe
+       - LaserModuleRecipe
+       - FlameHiderModuleRecipe
+       - SilencerModuleRecipe
+       - AcceleratorModuleRecipe
     emagDynamicRecipes:
       - CartridgePistolRubber
       - CartridgeMagnumRubber
@@ -705,6 +710,11 @@
       - ShellShotgunPractice
       - WeaponLaserCarbinePractice
       - WeaponDisablerPractice
+      - LightModuleRecipe
+      - LaserModuleRecipe
+      - FlameHiderModuleRecipe
+      - SilencerModuleRecipe
+      - AcceleratorModuleRecipe
     dynamicRecipes:
       - CartridgeLightRifleIncendiary
       - CartridgeMagnumIncendiary
