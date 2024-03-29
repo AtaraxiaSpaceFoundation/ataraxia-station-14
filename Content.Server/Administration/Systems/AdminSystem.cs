@@ -46,7 +46,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly MindSystem _minds = default!;
         [Dependency] private readonly PopupSystem _popup = default!;
         [Dependency] private readonly PhysicsSystem _physics = default!;
-        [Dependency] private readonly PlayTimeTrackingManager _playTime = default!;
+        [Dependency] private readonly IPlayTimeTrackingManager _playTime = default!;
         [Dependency] private readonly SharedRoleSystem _role = default!;
         [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;

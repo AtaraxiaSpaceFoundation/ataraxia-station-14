@@ -47,7 +47,7 @@ namespace Content.Server.Entry
         private EuiManager _euiManager = default!;
         private IVoteManager _voteManager = default!;
         private ServerUpdateManager _updateManager = default!;
-        private PlayTimeTrackingManager? _playTimeTracking;
+        private IPlayTimeTrackingManager? _playTimeTracking;
         private IServerDbManager? _dbManager;
 
         /// <inheritdoc />
@@ -94,7 +94,7 @@ namespace Content.Server.Entry
             _euiManager = IoCManager.Resolve<EuiManager>();
             _voteManager = IoCManager.Resolve<IVoteManager>();
             _updateManager = IoCManager.Resolve<ServerUpdateManager>();
-            _playTimeTracking = IoCManager.Resolve<PlayTimeTrackingManager>();
+            _playTimeTracking = IoCManager.Resolve<IPlayTimeTrackingManager>();
             IoCManager.Resolve<IEntitySystemManager>();
             _dbManager = IoCManager.Resolve<IServerDbManager>();
 

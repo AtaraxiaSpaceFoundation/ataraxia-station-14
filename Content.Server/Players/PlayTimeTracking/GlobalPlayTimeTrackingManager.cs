@@ -1,8 +1,14 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Runtime.InteropServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;
+using Content.Shared._White;
 using Content.Shared.CCVar;
 using Content.Shared.Players.PlayTimeTracking;
 using Robust.Shared.Asynchronous;
@@ -16,45 +22,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Players.PlayTimeTracking;
 
-public delegate void CalcPlayTimeTrackersCallback(ICommonSession player, HashSet<string> trackers);
-
-/// <summary>
-/// Tracks play time for players, across all roles.
-/// </summary>
-/// <remarks>
-/// <para>
-/// Play time is tracked in distinct "trackers" (defined in <see cref="PlayTimeTrackerPrototype"/>).
-/// Most jobs correspond to one such tracker, but there are also more trackers like <c>"Overall"</c> which tracks cumulative playtime across all roles.
-/// </para>
-/// <para>
-/// To actually figure out what trackers are active, <see cref="CalcTrackers"/> is invoked in a "refresh".
-/// The next time the trackers are refreshed, these trackers all get the time since the last refresh added.
-/// Refreshes are triggered by <see cref="QueueRefreshTrackers"/>, and should be raised through events such as players' roles changing.
-/// </para>
-/// <para>
-/// Because the calculation system does not persistently keep ticking timers,
-/// APIs like <see cref="GetPlayTimeForTracker"/> will not see live-updating information.
-/// A light-weight form of refresh is a "flush" through <see cref="FlushTracker"/>.
-/// This will not cause active trackers to be re-calculated like a refresh,
-/// but it will ensure stored play time info is up to date.
-/// </para>
-/// <para>
-/// Trackers are auto-saved to DB on a cvar-configured interval. This interval is independent of refreshes,
-/// but does do a flush to get the latest info.
-/// Some things like round restarts and player disconnects cause immediate saving of one or all sessions.
-/// </para>
-/// <para>
-/// Tracker data is loaded from the database when the client connects as part of <see cref="UserDbDataManager"/>.
-/// </para>
-/// <para>
-/// Timing logic in this manager is ran **out** of simulation.
-/// This means that we use real time, not simulation time, for timing everything here.
-/// </para>
-/// <para>
-/// Operations like refreshing and sending play time info to clients are deferred until the next frame (note: not tick).
-/// </para>
-/// </remarks>
-public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
+public sealed class GlobalPlayTimeTrackingManager : IPlayTimeTrackingManager
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IServerNetManager _net = default!;
@@ -72,6 +40,11 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
     private TimeSpan _saveInterval;
     private TimeSpan _lastSave;
 
+    private HttpClient _httpClient =  new();
+
+    private string _apiUrl = string.Empty;
+    private string _apiKey = string.Empty;
+
     // List of pending DB save operations.
     // We must block server shutdown on these to avoid losing data.
     private readonly List<Task> _pendingSaveTasks = new();
@@ -87,7 +60,11 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         _net.RegisterNetMessage<MsgPlayTime>();
 
         _cfg.OnValueChanged(CCVars.PlayTimeSaveInterval, f => _saveInterval = TimeSpan.FromSeconds(f), true);
-        _sawmill.Info("Using default PlayTimeTracker");
+
+        _cfg.OnValueChanged(WhiteCVars.TimeTrackerApiUrl, newValue => _apiUrl = newValue, true);
+        _cfg.OnValueChanged(WhiteCVars.TimeTrackerApiKey, newValue => _apiKey = newValue, true);
+
+        _sawmill.Info("Using global PlayTimeTracker");
     }
 
     public void Shutdown()
@@ -274,9 +251,19 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         // NOTE: we do replace updates here, not incremental additions.
         // This means that if you're playing on two servers at the same time, they'll step on each other's feet.
         // This is considered fine.
-        await _db.UpdatePlayTimes(log);
+        await UpdatePlayTimes(log);
 
         _sawmill.Debug($"Saved {log.Count} trackers");
+    }
+
+    private async Task UpdatePlayTimes(List<PlayTimeUpdate> update)
+    {
+        foreach (var playTimeUpdate in update)
+        {
+            var query = $"{_apiUrl}set/?uid={playTimeUpdate.User}&key={_apiKey}&tracker={playTimeUpdate.Tracker}&newtime={playTimeUpdate.Time}";
+
+            await _httpClient.GetAsync(query);
+        }
     }
 
     private async Task DoSaveSessionAsync(ICommonSession session)
@@ -295,9 +282,18 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         // NOTE: we do replace updates here, not incremental additions.
         // This means that if you're playing on two servers at the same time, they'll step on each other's feet.
         // This is considered fine.
-        await _db.UpdatePlayTimes(log);
+        await UpdatePlayTimes(log);
 
         _sawmill.Debug($"Saved {log.Count} trackers for {session.Name}");
+    }
+
+    private sealed class PlayTimeDto
+    {
+        [JsonPropertyName("tracker")]
+        public string Tracker { get; set; } = default!;
+
+        [JsonPropertyName("time_spent")]
+        public TimeSpan TimeSpent { get; set; } = default!;
     }
 
     public async Task LoadData(ICommonSession session, CancellationToken cancel)
@@ -305,12 +301,35 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         var data = new PlayTimeData();
         _playTimeData.Add(session, data);
 
-        var playTimes = await _db.GetPlayTimes(session.UserId);
+        var query = $"{_apiUrl}get/?uid={session.UserId}&key={_apiKey}";
+        query = WebUtility.UrlDecode(query);
+
+        var response = await _httpClient.GetAsync(query, cancel);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception("Play time tracker api shits itself");
+        }
+
+        List<PlayTimeDto>? playTimes = null!;
+
+        try
+        {
+            playTimes = await response.Content.ReadFromJsonAsync<List<PlayTimeDto>>();
+        }
+        catch (JsonException)
+        {
+            // Ignore
+        }
+
         cancel.ThrowIfCancellationRequested();
 
-        foreach (var timer in playTimes)
+        if (playTimes != null)
         {
-            data.TrackerTimes.Add(timer.Tracker, timer.TimeSpent);
+            foreach (var timer in playTimes)
+            {
+                data.TrackerTimes.Add(timer.Tracker, timer.TimeSpent);
+            }
         }
 
         data.Initialized = true;

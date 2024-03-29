@@ -31,6 +31,7 @@ using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
+using Robust.Server.Player;
 
 namespace Content.Server.IoC
 {
@@ -61,7 +62,13 @@ namespace Content.Server.IoC
             IoCManager.Register<GhostKickManager>();
             IoCManager.Register<ISharedAdminLogManager, AdminLogManager>();
             IoCManager.Register<IAdminLogManager, AdminLogManager>();
-            IoCManager.Register<PlayTimeTrackingManager>();
+
+            #if FULL_RELEASE
+            IoCManager.Register<IPlayTimeTrackingManager, GlobalPlayTimeTrackingManager>();
+            #else
+            IoCManager.Register<IPlayTimeTrackingManager, PlayTimeTrackingManager>();
+            #endif
+
             IoCManager.Register<UserDbDataManager>();
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
