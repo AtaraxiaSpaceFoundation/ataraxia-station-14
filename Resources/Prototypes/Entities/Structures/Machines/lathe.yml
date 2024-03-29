@@ -197,6 +197,11 @@
        - MagazineBoxRifle
        - MagazineBoxLightRifle
        - GrenadeBlast
+       - LightModuleRecipe
+       - LaserModuleRecipe
+       - FlameHiderModuleRecipe
+       - SilencerModuleRecipe
+       - AcceleratorModuleRecipe
     emagDynamicRecipes:
       - CartridgePistolRubber
       - CartridgeMagnumRubber
