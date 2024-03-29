@@ -1053,6 +1053,18 @@
     - type: Clothing
       sprite: White/Fluff/Reider207/jacket.rsi
 
+- type: entity
+  parent: ClothingShoesSkates
+  id: ClothingShoesSkatesReider207
+  name: Спортивные ролики
+  description: Сделанные на заказ красно-чёрные спортивные ролики.
+  suffix: fluff
+  components:
+    - type: Sprite
+      sprite: White/Fluff/Reider207/skates.rsi
+    - type: Clothing
+      sprite: White/Fluff/Reider207/skates.rsi
+
 # egoruch17
 - type: entity
   parent: ClothingMaskMime
