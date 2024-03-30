@@ -64,6 +64,17 @@
   - UplinkAmmo
 
 - type: listing
+  id: UplinkTimeBeacon
+  name: uplink-time-beacon
+  description: uplink-time-beacon-desc
+  productEntity: TimeBeacon
+  icon: { sprite: Objects/Devices/door_remote.rsi, state: door_remotebase_white }
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkUtility
+
+- type: listing
   id: UplinkSmokeImplanter
   name: Имплант дыма
   description: Выпускает облако дыма при активации.
