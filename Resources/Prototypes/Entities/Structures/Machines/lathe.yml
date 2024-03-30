@@ -341,7 +341,10 @@
       - WelderExperimental
       - JawsOfLife
       - FauxTileAstroGrass
+      - FauxTileMowedAstroGrass
+      - FauxTileJungleAstroGrass
       - FauxTileAstroIce
+      - FauxTileAstroSnow
       - OreBagOfHolding
       - ClothingEyesNightVisionGoggles # WD EDIT
       - KitchenKnife # WD EDIT
@@ -685,6 +688,7 @@
       - ForensicPad
       - RiotShield
       - ShellShotgun
+      - ShellShotgunBeanbag
       - ShellShotgunSlug
       - ShellShotgunFlare
       - ShellTranquilizer

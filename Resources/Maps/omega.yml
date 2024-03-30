@@ -4186,7 +4186,6 @@ entities:
         chunkSize: 4
     - type: BecomesStation
       id: Omega
-    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: RadiationGridResistance

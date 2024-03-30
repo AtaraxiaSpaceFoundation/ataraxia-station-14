@@ -8197,7 +8197,6 @@ entities:
         chunkSize: 4
     - type: BecomesStation
       id: Meta
-    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: GasTileOverlay
@@ -15186,7 +15185,7 @@ entities:
     - type: Transform
       pos: -42.538452,-53.54715
       parent: 5350
-- proto: BodyBagFolded
+- proto: BodyBag_Folded
   entities:
   - uid: 23085
     components:

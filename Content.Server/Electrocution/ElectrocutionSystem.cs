@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Light.Components;
 using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
+using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -23,7 +24,6 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Wires;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -96,33 +96,17 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
     private void UpdateElectrocutions(float frameTime)
     {
         var query = EntityQueryEnumerator<ElectrocutionComponent, PowerConsumerComponent>();
-        while (query.MoveNext(out var uid, out var electrocution, out var consumer))
+        while (query.MoveNext(out var uid, out var electrocution, out _))
         {
             var timePassed = Math.Min(frameTime, electrocution.TimeLeft);
 
             electrocution.TimeLeft -= timePassed;
-            electrocution.AccumulatedDamage +=
-                electrocution.BaseDamage * (consumer.ReceivedPower / consumer.DrawRate) * timePassed;
 
             if (!MathHelper.CloseTo(electrocution.TimeLeft, 0))
                 continue;
 
-            if (EntityManager.EntityExists(electrocution.Electrocuting))
-            {
-                // TODO: damage should be scaled by shock damage multiplier
-                // TODO: better paralyze/jitter timing
-                var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>(DamageType),
-                    (int) electrocution.AccumulatedDamage);
-
-                var actual =
-                    _damageable.TryChangeDamage(electrocution.Electrocuting, damage, origin: electrocution.Source);
-
-                if (actual != null)
-                {
-                    _adminLogger.Add(LogType.Electrocution,
-                        $"{ToPrettyString(electrocution.Electrocuting):entity} received {actual.GetTotal():damage} powered electrocution damage from {ToPrettyString(electrocution.Source):source}");
-                }
-            }
+            // We tried damage scaling based on power in the past and it really wasn't good.
+            // Various scaling types didn't fix tiders and HV grilles instantly critting players.
 
             QueueDel(uid);
         }
@@ -219,24 +203,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         TryDoElectrifiedAct(uid, args.User, siemens, electrified);
     }
 
-    private bool IsPanelClosed(EntityUid uid) // WD
-    {
-        return TryComp(uid, out WiresPanelComponent? panel) && !panel.Open;
-    }
-
-    private float CalculateElectrifiedDamageScale(float power)
-    {
-        // A logarithm allows a curve of damage that grows quickly, but slows down dramatically past a value. This keeps the damage to a reasonable range.
-        const float damageShift = 1.67f;       // Shifts the curve for an overall higher or lower damage baseline
-        const float ceilingCoefficent = 1.35f; // Adjusts the approach to maximum damage, higher = Higher top damage
-        const float logGrowth = 0.00001f;      // Adjusts the growth speed of the curve
-
-        return damageShift + MathF.Log(power * logGrowth) * ceilingCoefficent;
-    }
-
-    public bool TryDoElectrifiedAct(
-        EntityUid uid,
-        EntityUid targetUid,
+    public bool TryDoElectrifiedAct(EntityUid uid, EntityUid targetUid,
         float siemens = 1,
         ElectrifiedComponent? electrified = null,
         NodeContainerComponent? nodeContainer = null,
@@ -246,9 +213,6 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
             return false;
 
         if (!IsPowered(uid, electrified, transform))
-            return false;
-
-        if (IsPanelClosed(uid)) // WD
             return false;
 
         EnsureComp<ActivatedElectrifiedComponent>(uid);
@@ -280,19 +244,15 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         }
 
         var node = PoweredNode(uid, electrified, nodeContainer);
-        if (node?.NodeGroup is not IBasePowerNet powerNet)
+        if (node?.NodeGroup is not IBasePowerNet)
             return false;
 
-        var net = powerNet.NetworkNode;
-        var supp = net.LastCombinedMaxSupply;
-
-        if (supp <= 0f)
-            return false;
-
-        // Initial damage scales off of the available supply on the principle that the victim has shorted the entire powernet through their body.
-        var damageScale = CalculateElectrifiedDamageScale(supp);
-        if (damageScale <= 0f)
-            return false;
+        var (damageScalar, timeScalar) = node.NodeGroupID switch
+        {
+            NodeGroupID.HVPower => (electrified.HighVoltageDamageMultiplier, electrified.HighVoltageTimeMultiplier),
+            NodeGroupID.MVPower => (electrified.MediumVoltageDamageMultiplier, electrified.MediumVoltageTimeMultiplier),
+            _ => (1f, 1f)
+        };
 
         {
             var lastRet = true;
@@ -303,10 +263,8 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
                     entity,
                     uid,
                     node,
-                    (int) MathF.Ceiling(electrified.ShockDamage * damageScale *
-                        MathF.Pow(RecursiveDamageMultiplier, depth)),
-                    TimeSpan.FromSeconds(electrified.ShockTime * MathF.Min(1f + MathF.Log2(1f + damageScale), 3f) *
-                        MathF.Pow(RecursiveTimeMultiplier, depth)),
+                    (int) (electrified.ShockDamage * MathF.Pow(RecursiveDamageMultiplier, depth) * damageScalar),
+                    TimeSpan.FromSeconds(electrified.ShockTime * MathF.Pow(RecursiveTimeMultiplier, depth) * timeScalar),
                     true,
                     electrified.SiemensCoefficient);
             }

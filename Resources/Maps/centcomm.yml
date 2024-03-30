@@ -162,7 +162,6 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: centcomm
-    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

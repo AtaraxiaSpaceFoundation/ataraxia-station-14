@@ -1,4 +1,3 @@
-using Content.Server.Administration.Logs;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.DeviceLinking.Systems;
@@ -19,6 +18,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 
@@ -36,10 +36,10 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!; // WD
         [Dependency] private readonly ChemMasterSystem _chemMasterSystem = default!; // WD
-
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        
         public override void Initialize()
         {
             base.Initialize();

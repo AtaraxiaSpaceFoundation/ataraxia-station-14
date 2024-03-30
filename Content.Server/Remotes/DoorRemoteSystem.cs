@@ -9,92 +9,88 @@ using Content.Shared.Examine;
 using Content.Shared.Remotes.EntitySystems;
 using Content.Shared.Remotes.Components;
 
-namespace Content.Shared.Remotes;
-
-public sealed class DoorRemoteSystem : SharedDoorRemoteSystem
+namespace Content.Shared.Remotes
 {
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly AirlockSystem _airlock = default!;
-    [Dependency] private readonly DoorSystem _doorSystem = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-
-    public override void Initialize()
+    public sealed class DoorRemoteSystem : SharedDoorRemoteSystem
     {
-        base.Initialize();
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly AirlockSystem _airlock = default!;
+        [Dependency] private readonly DoorSystem _doorSystem = default!;
+        [Dependency] private readonly ExamineSystemShared _examine = default!;
 
-        SubscribeLocalEvent<DoorRemoteComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
-    }
-
-    private void OnBeforeInteract(Entity<DoorRemoteComponent> entity, ref BeforeRangedInteractEvent args)
-    {
-        var isAirlock = TryComp<AirlockComponent>(args.Target, out var airlockComp);
-
-        if (args.Handled
-            || args.Target == null
-            || !TryComp<DoorComponent>(args.Target, out var doorComp)
-            // If it isn't a door we don't use it
-            // Only able to control doors if they are within your vision and within your max range.
-            // Not affected by mobs or machines anymore.
-            || !_examine.InRangeUnOccluded(args.User, args.Target.Value, SharedInteractionSystem.MaxRaycastRange,
-                null))
-
+        public override void Initialize()
         {
-            return;
+            base.Initialize();
+
+            SubscribeLocalEvent<DoorRemoteComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
         }
 
-        args.Handled = true;
-
-        if (!this.IsPowered(args.Target.Value, EntityManager))
+        private void OnBeforeInteract(Entity<DoorRemoteComponent> entity, ref BeforeRangedInteractEvent args)
         {
-            Popup.PopupEntity(Loc.GetString("door-remote-no-power"), args.User, args.User);
-            return;
-        }
+            var isAirlock = TryComp<AirlockComponent>(args.Target, out var airlockComp);
 
-        // Holding the door remote grants you access to the relevant doors IN ADDITION to what ever access you had.
-        // This access is enforced in _doorSystem.HasAccess when it calls _accessReaderSystem.IsAllowed
-        if (TryComp<AccessReaderComponent>(args.Target, out var accessComponent)
-            && !_doorSystem.HasAccess(args.Target.Value, args.User, doorComp, accessComponent))
-        {
-            _doorSystem.Deny(args.Target.Value, doorComp, args.User);
-            Popup.PopupEntity(Loc.GetString("door-remote-denied"), args.User, args.User);
-            return;
-        }
+            if (args.Handled
+                || args.Target == null
+                || !TryComp<DoorComponent>(args.Target, out var doorComp)
+                // If it isn't a door we don't use it
+                // Only able to control doors if they are within your vision and within your max range.
+                // Not affected by mobs or machines anymore.
+                || !_examine.InRangeUnOccluded(args.User, args.Target.Value, SharedInteractionSystem.MaxRaycastRange,
+                    null))
 
-        switch (entity.Comp.Mode)
-        {
-            case OperatingMode.OpenClose:
-                // Note we provide args.User here to TryToggleDoor as the "user"
-                // This means that the door will look at all access items carryed by the player for access, including
-                // this remote, but also including anything else they are carrying such as a PDA or ID card.
-                if (_doorSystem.TryToggleDoor(args.Target.Value, doorComp, args.User))
-                    _adminLogger.Add(LogType.Action, LogImpact.Medium,
-                        $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)}: {doorComp.State}");
+            {
+                return;
+            }
 
-                break;
-            case OperatingMode.ToggleBolts:
-                if (TryComp<DoorBoltComponent>(args.Target, out var boltsComp))
-                {
-                    if (!boltsComp.BoltWireCut)
-                    {
-                        _doorSystem.SetBoltsDown((args.Target.Value, boltsComp), !boltsComp.BoltsDown, args.User);
+            args.Handled = true;
+
+            if (!this.IsPowered(args.Target.Value, EntityManager))
+            {
+                Popup.PopupEntity(Loc.GetString("door-remote-no-power"), args.User, args.User);
+                return;
+            }
+
+            if (TryComp<AccessReaderComponent>(args.Target, out var accessComponent)
+                && !_doorSystem.HasAccess(args.Target.Value, args.Used, doorComp, accessComponent))
+            {
+                _doorSystem.Deny(args.Target.Value, doorComp, args.User);
+                Popup.PopupEntity(Loc.GetString("door-remote-denied"), args.User, args.User);
+                return;
+            }
+
+            switch (entity.Comp.Mode)
+            {
+                case OperatingMode.OpenClose:
+                    if (_doorSystem.TryToggleDoor(args.Target.Value, doorComp, args.Used))
                         _adminLogger.Add(LogType.Action, LogImpact.Medium,
-                            $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to {(boltsComp.BoltsDown ? "" : "un")}bolt it");
+                            $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)}: {doorComp.State}");
+
+                    break;
+                case OperatingMode.ToggleBolts:
+                    if (TryComp<DoorBoltComponent>(args.Target, out var boltsComp))
+                    {
+                        if (!boltsComp.BoltWireCut)
+                        {
+                            _doorSystem.SetBoltsDown((args.Target.Value, boltsComp), !boltsComp.BoltsDown, args.Used);
+                            _adminLogger.Add(LogType.Action, LogImpact.Medium,
+                                $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to {(boltsComp.BoltsDown ? "" : "un")}bolt it");
+                        }
                     }
-                }
 
-                break;
-            case OperatingMode.ToggleEmergencyAccess:
-                if (airlockComp != null)
-                {
-                    _airlock.ToggleEmergencyAccess(args.Target.Value, airlockComp);
-                    _adminLogger.Add(LogType.Action, LogImpact.Medium,
-                        $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to set emergency access {(airlockComp.EmergencyAccess ? "on" : "off")}");
-                }
+                    break;
+                case OperatingMode.ToggleEmergencyAccess:
+                    if (airlockComp != null)
+                    {
+                        _airlock.ToggleEmergencyAccess(args.Target.Value, airlockComp);
+                        _adminLogger.Add(LogType.Action, LogImpact.Medium,
+                            $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to set emergency access {(airlockComp.EmergencyAccess ? "on" : "off")}");
+                    }
 
-                break;
-            default:
-                throw new InvalidOperationException(
-                    $"{nameof(DoorRemoteComponent)} had invalid mode {entity.Comp.Mode}");
+                    break;
+                default:
+                    throw new InvalidOperationException(
+                        $"{nameof(DoorRemoteComponent)} had invalid mode {entity.Comp.Mode}");
+            }
         }
     }
 }

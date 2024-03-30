@@ -489,7 +489,6 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Boxstation
-    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
@@ -16606,7 +16605,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -9.5,47.5
       parent: 8364
-- proto: BodyBagFolded
+- proto: BodyBag_Folded
   entities:
   - uid: 27686
     components:

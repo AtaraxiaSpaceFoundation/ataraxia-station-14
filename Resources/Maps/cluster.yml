@@ -4423,7 +4423,6 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Cluster
-    - type: MaterialStorage
     - type: SpreaderGrid
     - type: GridPathfinding
   - uid: 12281
@@ -8171,7 +8170,7 @@ entities:
     - type: Transform
       pos: -26.622076,24.452543
       parent: 1
-- proto: BodyBagContainer
+- proto: BodyBag_Container
   entities:
   - uid: 8242
     components:
