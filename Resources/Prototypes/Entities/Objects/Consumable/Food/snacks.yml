@@ -362,7 +362,7 @@
   description: A carefully synthesized brick designed to contain the highest ratio of nutriment to volume. Tastes like shit.
   components:
   - type: Item
-    size: Small
+    size: Tiny
   - type: Tag
     tags:
       - FoodSnack
