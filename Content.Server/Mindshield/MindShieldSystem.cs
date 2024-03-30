@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server.Roles;
+using Content.Shared._White.Implants.NeuroControl;
 using Content.Shared.Database;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
@@ -41,6 +42,13 @@ public sealed class MindShieldSystem : EntitySystem
             EnsureComp<MindShieldComponent>(ev.Implanted.Value);
             MindShieldRemovalCheck(ev.Implanted.Value, ev.Implant);
         }
+
+        // WD START
+        if (_tag.HasTag(ev.Implant, NeuroControlComponent.NeuroControlTag) && ev.Implanted != null)
+        {
+            EnsureComp<NeuroControlComponent>(ev.Implanted.Value);
+        }
+        // WD END
     }
 
     /// <summary>

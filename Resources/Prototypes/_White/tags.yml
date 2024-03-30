@@ -57,3 +57,6 @@
 
 - type: Tag
   id: BaseModule
+
+- type: Tag
+  id: NeuroControl

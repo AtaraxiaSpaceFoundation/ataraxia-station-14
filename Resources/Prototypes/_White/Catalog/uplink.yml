@@ -232,6 +232,16 @@
   - UplinkImplants
 
 - type: listing
+  id: NeuroControlImplanter
+  name: uplink-neuro-control
+  description: uplink-neuro-control-desc
+  productEntity: NeuroControlImplanter
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkImplants
+
+- type: listing
   id: UplinkImplanterSyndi
   name: Имплантер
   description: Продвинутый имплантер, позволяющий быстро вкалывать и вытаскивать импланты.

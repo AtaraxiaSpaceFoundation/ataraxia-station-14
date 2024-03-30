@@ -27,7 +27,7 @@
         Blunt: 10
   - type: StaminaDamageOnCollide
     ignoreResistances: false
-    damage: 70
+    damage: 60
 
 - type: entity
   id: PelletShotgun

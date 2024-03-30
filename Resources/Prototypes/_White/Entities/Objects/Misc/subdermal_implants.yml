@@ -36,3 +36,16 @@
     tags:
     - MindSlave
 
+- type: entity
+  parent: BaseSubdermalImplant
+  id: NeuroControlImplant
+  name: neuro control implant
+  description: Blocks all incoming stamina damage at a cost of shock.
+  noSpawn: true
+  components:
+  - type: SubdermalImplant
+    permanent: true
+  - type: Tag
+    tags:
+    - NeuroControl
+

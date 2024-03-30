@@ -23,6 +23,14 @@
     implant: MindslaveImplant
 
 - type: entity
+  id: NeuroControlImplanter
+  parent: BaseImplantOnlyImplanterSyndi
+  suffix: neuro control
+  components:
+  - type: Implanter
+    implant: NeuroControlImplant
+
+- type: entity
   id: ImplanterSyndi
   parent: Implanter
   description: A compact disposable syringe exclusively designed for the injection and extraction of subdermal implants.
