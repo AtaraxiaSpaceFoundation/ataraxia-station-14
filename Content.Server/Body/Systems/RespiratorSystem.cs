@@ -111,7 +111,7 @@ public sealed class RespiratorSystem : EntitySystem
                 if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation))
                 {
                     voidAdaptation.ChemMultiplier = 0.75f;
-                    StopSuffocation(uid, respirator);
+                    StopSuffocation((uid, respirator));
                     respirator.SuffocationCycles = 0;
                     continue;
                 }

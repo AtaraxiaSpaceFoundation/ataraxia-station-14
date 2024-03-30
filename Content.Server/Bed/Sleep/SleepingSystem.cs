@@ -75,7 +75,6 @@ namespace Content.Server.Bed.Sleep
                     }
                     emitSound.MinInterval = sleepSound.Interval;
                     emitSound.MaxInterval = sleepSound.MaxInterval;
-                    emitSound.PopUp = sleepSound.PopUp;
                 }
 
                 return;

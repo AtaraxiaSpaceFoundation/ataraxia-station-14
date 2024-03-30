@@ -28,7 +28,7 @@ namespace Content.Server.Chat.Managers
         bool TrySendNewMessage(ICommonSession session, string newMessage, bool checkLength = false);
         // WD-EDIT
 
-        void SendAdminAnnouncement(string message, AdminFlags? flagBlacklist = null, AdminFlags? flagWhitelist = null);
+        void SendAdminAnnouncement(string message);
         void SendAdminAlert(string message);
         void SendAdminAlert(EntityUid player, string message);
 

@@ -39,7 +39,7 @@ public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
             return;
         }
 
-        _window.UpdateState(cast.Name, cast.Verb);
+        _window.UpdateState(cast.Name, cast.Voice, cast.Verb);
     }
 
     protected override void Dispose(bool disposing)

@@ -122,8 +122,7 @@ namespace Content.Server.Administration.Managers
             else
             {
                 _chat.DispatchServerMessage(session, Loc.GetString("admin-manager-stealthed-message"));
-                _chat.SendAdminAnnouncement(Loc.GetString("admin-manager-self-re-admin-message",
-                    ("newAdminName", session.Name)), flagWhitelist: AdminFlags.Stealth);
+                _chat.SendAdminAnnouncement(Loc.GetString("admin-manager-self-re-admin-message", ("newAdminName", session.Name)));
             }
 
             SendPermsChangedEvent(session);

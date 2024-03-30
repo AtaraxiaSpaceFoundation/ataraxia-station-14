@@ -190,8 +190,8 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
         var ownerTransform = Transform(args.User);
 
         if (_station.GetStationInMap(ownerTransform.MapID) is not { } station ||
-            !TryComp<StationDataComponent>(station, out var data) ||
-            _station.GetLargestGrid(data) is not { } grid)
+            !TryComp<StationDataComponent>(station, out var stationData) ||
+            _station.GetLargestGrid(stationData) is not { } grid)
         {
             if (ownerTransform.GridUid == null)
                 return;
@@ -199,13 +199,13 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             grid = ownerTransform.GridUid.Value;
         }
 
-        if (!TryComp<MapGridComponent>(grid, out var gridComp))
+        if (!TryComp<MapGridComponent>(grid, out var mapGrid))
         {
             return;
         }
 
         var gridTransform = Transform(grid);
-        var gridBounds = gridComp.LocalAABB.Scale(0.7f); // чтобы не заспавнить на самом краю станции
+        var gridBounds = mapGrid.LocalAABB.Scale(0.7f); // чтобы не заспавнить на самом краю станции
 
         var targetCoords = gridTransform.Coordinates;
 
@@ -217,8 +217,8 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             var tile = new Vector2i(randomX, randomY);
 
             // no air-blocked areas.
-            if (_atmosphere.IsTileSpace(grid, gridTransform.MapUid, tile, mapGridComp: gridComp) ||
-                _atmosphere.IsTileAirBlocked(grid, tile, mapGridComp: gridComp))
+            if (_atmosphere.IsTileSpace(grid, gridTransform.MapUid, tile) ||
+                _atmosphere.IsTileAirBlocked(grid, tile, mapGridComp: mapGrid))
             {
                 continue;
             }
@@ -226,7 +226,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             // don't spawn inside of solid objects
             var physQuery = GetEntityQuery<PhysicsComponent>();
             var valid = true;
-            foreach (var ent in _map.GetAnchoredEntities(grid, gridComp, tile))
+            foreach (var ent in _map.GetAnchoredEntities(grid, mapGrid, tile))
             {
                 if (!physQuery.TryGetComponent(ent, out var body))
                     continue;
@@ -243,7 +243,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             if (!valid)
                 continue;
 
-            targetCoords = _map.GridTileToLocal(grid, gridComp, tile);
+            targetCoords = _map.GridTileToLocal(grid, mapGrid, tile);
             break;
         }
 
