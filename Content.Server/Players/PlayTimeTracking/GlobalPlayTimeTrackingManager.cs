@@ -313,13 +313,15 @@ public sealed class GlobalPlayTimeTrackingManager : IPlayTimeTrackingManager
 
         List<PlayTimeDto>? playTimes = null!;
 
+        var content = await response.Content.ReadAsStringAsync(cancel);
+
         try
         {
-            playTimes = await response.Content.ReadFromJsonAsync<List<PlayTimeDto>>();
+            playTimes = JsonSerializer.Deserialize<List<PlayTimeDto>>(content);
         }
         catch (JsonException)
         {
-            _sawmill.Error($"Can't load data for user {session.Name} with UserId {session.UserId}");
+            _sawmill.Error($"Can't load data for user {session.Name} with UserId {session.UserId} \n Data: {content}");
         }
 
         cancel.ThrowIfCancellationRequested();
