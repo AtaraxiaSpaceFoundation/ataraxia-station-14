@@ -51,6 +51,9 @@ public sealed class GlobalPlayTimeTrackingManager : IPlayTimeTrackingManager
 
     private readonly Dictionary<ICommonSession, PlayTimeData> _playTimeData = new();
 
+    private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
+
+
     public event CalcPlayTimeTrackersCallback? CalcTrackers;
 
     public void Initialize()
@@ -317,7 +320,7 @@ public sealed class GlobalPlayTimeTrackingManager : IPlayTimeTrackingManager
 
         try
         {
-            playTimes = JsonSerializer.Deserialize<List<PlayTimeDto>>(content);
+            playTimes = JsonSerializer.Deserialize<List<PlayTimeDto>>(content, SerializerOptions );
         }
         catch (JsonException)
         {
