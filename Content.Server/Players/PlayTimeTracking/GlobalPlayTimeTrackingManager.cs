@@ -319,7 +319,7 @@ public sealed class GlobalPlayTimeTrackingManager : IPlayTimeTrackingManager
         }
         catch (JsonException)
         {
-            // Ignore
+            _sawmill.Error($"Can't load data for user {session.Name} with UserId {session.UserId}");
         }
 
         cancel.ThrowIfCancellationRequested();
