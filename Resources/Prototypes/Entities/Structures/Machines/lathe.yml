@@ -488,6 +488,7 @@
       - ArtifactCrusherMachineCircuitboard
       - TelecomServerCircuitboard
       - MassMediaCircuitboard
+      - ReagentGrinderIndustrialMachineCircuitboard
   - type: BluespaceStorage
   - type: MaterialStorage
     whitelist:
