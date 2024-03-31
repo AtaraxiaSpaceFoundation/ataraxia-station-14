@@ -12,5 +12,5 @@ public sealed partial class ERTMapComponent : Component
     public EntityUid? Shuttle;
 
     public static ResPath OutpostMap = new("/Maps/ERT/ERTStation.yml");
-    public static ResPath ShuttleMap = new("/Maps/ERT/ERTShuttle.yml");
+    //public static ResPath ShuttleMap = new("/Maps/ERT/ERTShuttle.yml");
 }

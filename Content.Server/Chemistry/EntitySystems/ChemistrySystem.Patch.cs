@@ -11,6 +11,9 @@ using Content.Shared.Mobs.Components;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Chemistry;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
+using System.Threading;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -25,6 +28,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<PatchComponent, AfterInteractEvent>(OnAfterInteract);
             SubscribeLocalEvent<PatchComponent, UseInHandEvent>(OnUseInHand);
             SubscribeLocalEvent<PatchComponent, SolutionContainerChangedEvent>(OnSolutionChange);
+
         }
 
         private void OnPatchDoAfter(Entity<PatchComponent> entity, ref PatchDoAfterEvent args)
@@ -151,11 +155,7 @@ namespace Content.Server.Chemistry.EntitySystems
             if (!targetSolution.CanAddSolution(removedSolution))
                 return true;
 
-            _reactive.DoEntityReaction(target.Value, removedSolution, ReactionMethod.Touch);
-            // Transfering only half of the solution via Injection method
-            removedSolution.ScaleSolution(0.5f);
-            _reactive.DoEntityReaction(target.Value, removedSolution, ReactionMethod.Injection);
-            _solutionContainers.TryAddSolution(targetSoln.Value, removedSolution);
+            ApplyOnSkin(patch,target, targetSoln, removedSolution);
             QueueDel(patch);
 
             _adminLogger.Add(LogType.ForceFeed, $"{_entMan.ToPrettyString(user):user} put a patch on {_entMan.ToPrettyString(target.Value):target} with a solution {SolutionContainerSystem.ToPrettyString(removedSolution):removedSolution} using a {_entMan.ToPrettyString(uid):using}");
@@ -163,7 +163,82 @@ namespace Content.Server.Chemistry.EntitySystems
             return true;
         }
 
-        static bool EligibleEntity([NotNullWhen(true)] EntityUid? entity, IEntityManager entMan, PatchComponent component)
+        /// <summary>
+        /// Applies solution via ReactionMethod.Touch
+        /// Applies until CancellationToken is not cancelled
+        /// if CancellationToken is cancelled starts ApplyIntoBloodStream
+        /// </summary>
+        private void ApplyOnSkin(Entity<PatchComponent> entity, EntityUid? target, Entity<SolutionComponent>? targetSoln, Solution solution)
+        {
+            CancellationToken token = entity.Comp.CancelTokenSourceSkin.Token;
+            Double applicationTime = (double) (entity.Comp.BaseApplicationTime + 2 * (solution.Volume / 5));
+            FixedPoint2 ups = 1 / applicationTime; // ups - units per second
+            var currentSolution = solution;
+
+            currentSolution.ScaleSolution((float)ups);
+
+            if (target.HasValue)
+            {
+                Timer.SpawnRepeating(TimeSpan.FromSeconds(1), () =>
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+                    _reactive.DoEntityReaction(target.Value, currentSolution, ReactionMethod.Touch);
+                }, token);
+            }
+
+            Timer.Spawn(TimeSpan.FromSeconds(applicationTime), () =>
+            {
+                        OnRemoveSkin(entity);
+                        ApplyIntoBloodStream(entity, target, targetSoln, solution);
+            });
+        }
+
+
+        /// <summary>
+        /// Almost similar to the ApplyOnSkin.
+        /// Applies solution into bloodstream.
+        /// </summary>
+        private void ApplyIntoBloodStream(Entity<PatchComponent> entity, EntityUid? target, Entity<SolutionComponent>? targetSoln, Solution solution)
+        {
+            CancellationToken token = entity.Comp.CancelTokenSourceBlood.Token;
+            Double applicationTime = (double) (entity.Comp.BaseApplicationTime + 2 * (solution.Volume / 5));
+            FixedPoint2 ups = (1 / applicationTime) / 2; // ups - units per second
+            var currentSolution = solution;
+
+            currentSolution.ScaleSolution((float)ups);
+
+            if (targetSoln.HasValue)
+            {
+                Timer.SpawnRepeating(TimeSpan.FromSeconds(1), () =>
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+                    _solutionContainers.TryAddSolution(targetSoln.Value, solution);
+
+                    if (target.HasValue)
+                    {
+                        _reactive.DoEntityReaction(target.Value, solution, ReactionMethod.Touch);
+                    }
+                }, token);
+
+                Timer.Spawn(TimeSpan.FromSeconds(applicationTime / 2), () => OnRemoveBlood(entity));
+            }
+
+        }
+
+        // Stops Timer, otherwise ApplyOnSkin and ApplyIntoTheBloodstream will last forever
+        private static void OnRemoveSkin(Entity<PatchComponent> entity)
+        {
+            entity.Comp.CancelTokenSourceSkin.Cancel();
+        }
+
+        private static void OnRemoveBlood(Entity<PatchComponent> entity)
+        {
+            entity.Comp.CancelTokenSourceBlood.Cancel();
+        }
+
+        private static bool EligibleEntity([NotNullWhen(true)] EntityUid? entity, IEntityManager entMan, PatchComponent component)
         {
             // Using patch only on mobs
             return component.OnlyMobs

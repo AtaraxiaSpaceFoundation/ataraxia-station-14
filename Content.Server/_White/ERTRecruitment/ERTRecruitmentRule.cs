@@ -65,7 +65,7 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
         if (query.MoveNext(out uid, out var ertMapComponent))
         {
             component.Outpost = uid;
-            component.Shuttle = ertMapComponent.Shuttle;
+            //component.Shuttle = ertMapComponent.Shuttle;
             component.MapId = ertMapComponent.MapId;
         }
     }
@@ -93,10 +93,12 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
 
         _chatSystem.DispatchStationAnnouncement(component.TargetStation.Value,Loc.GetString("ert-wait-message"),colorOverride: Color.Gold);
 
+        /*
         if (TryComp<ShuttleComponent>(component.Shuttle, out var shuttle) && component.Outpost != null)
         {
             _shuttle.TryFTLDock(component.Shuttle.Value, shuttle, component.Outpost.Value);
         }
+        */
 
         _recruitment.StartRecruitment(ERTRecruitmentRuleComponent.EventName);
     }
@@ -167,6 +169,10 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
         var outpost = outpostGrids[0];
 
         // Listen I just don't want it to overlap.
+
+        // RinKeeper
+        // Now Shuttle is already on Outpost grid, so we dont need that.
+        /*
         if (!_map.TryLoad(mapId, ERTMapComponent.ShuttleMap.ToString(), out var grids, new MapLoadOptions {Offset = Vector2.One * 1000f}) || !grids.Any())
         {
             _logger.Error( $"Error loading grid {ERTMapComponent.ShuttleMap}!");
@@ -183,10 +189,11 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
             _mapManager.DeleteMap(mapId);
             return false;
         }
-
+        */
+        
         var ERTMap = EnsureComp<ERTMapComponent>(outpost);
         ERTMap.MapId = mapId;
-        ERTMap.Shuttle = shuttleId;
+        //ERTMap.Shuttle = shuttleId;
 
         return true;
     }

@@ -268,15 +268,13 @@
   meltingPoint: 700.0
   boilingPoint: 1737.0
   reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
+  metabolisms:
+    Poison:
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         damage:
           types:
-            Heat: 0.5
-            Cellular: 1
+            Heat: 1
 
 - type: reagent
   id: Silicon

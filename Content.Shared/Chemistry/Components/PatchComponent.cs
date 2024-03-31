@@ -1,4 +1,5 @@
-﻿using Content.Shared.DoAfter;
+﻿using System.Threading;
+using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -22,6 +23,9 @@ public sealed partial class PatchDoAfterEvent : SimpleDoAfterEvent
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PatchComponent : Component
 {
+    //[ViewVariables, DataField]
+    public CancellationTokenSource CancelTokenSourceSkin = new();
+    public CancellationTokenSource CancelTokenSourceBlood = new();
 
     [ViewVariables, AutoNetworkedField]
     public FixedPoint2 CurrentVolume;
@@ -32,9 +36,15 @@ public sealed partial class PatchComponent : Component
     [DataField("solutionName")]
     public string SolutionName = "patch";
 
+    // Application only on mobs
     [DataField("onlyMobs")]
     public bool OnlyMobs = true;
 
+    // Application time used in calculation final time
+    [DataField("applicationTime")]
+    public FixedPoint2 BaseApplicationTime = 10;
+
+    // Delay used in calculation final delay time
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("delay")]
     public TimeSpan Delay = TimeSpan.FromSeconds(5);

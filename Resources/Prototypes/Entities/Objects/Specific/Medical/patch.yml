@@ -50,8 +50,8 @@
       patch:
         maxVol: 40
         reagents:
-        - ReagentId: Bicaridine
-          Quantity: 10
+        - ReagentId: StypticPowder
+          Quantity: 20
 
 - type: entity
   name: burn patch
@@ -64,5 +64,5 @@
       patch:
         maxVol: 40
         reagents:
-        - ReagentId: Dermaline
-          Quantity: 10
+        - ReagentId: SilverSulfadiazine
+          Quantity: 20
