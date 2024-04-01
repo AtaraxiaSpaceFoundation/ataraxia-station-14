@@ -439,26 +439,20 @@ public sealed partial class CultSystem : EntitySystem
 
         bool result;
 
-        var target = _ruleSystem.GetTarget();
-
         if (state.CurrentState != MobState.Dead)
         {
             var canBeConverted = _entityManager.TryGetComponent<MindContainerComponent>(victim.Value, out var mind) &&
-                                 mind is {Mind: { }};
-
-            // Проверка, является ли жертва целью
-            _entityManager.TryGetComponent<MindContainerComponent>(target?.CurrentEntity, out var targetMind);
-            var isTarget = mind!.Mind!.Value == targetMind?.Mind!.Value;
+                                 mind.Mind != null && !IsTarget(mind.Mind.Value);
 
             // Выполнение действия в зависимости от условий
             if (canBeConverted && !HasComp<HolyComponent>(victim.Value) &&
-                !HasComp<MindShieldComponent>(victim.Value) && !isTarget)
+                !HasComp<MindShieldComponent>(victim.Value))
             {
                 result = Convert(uid, victim.Value, args.User, args.Cultists);
             }
             else
             {
-                result = Sacrifice(uid, victim.Value, args.User, args.Cultists, isTarget);
+                result = Sacrifice(uid, victim.Value, args.User, args.Cultists);
             }
         }
         else
@@ -470,12 +464,20 @@ public sealed partial class CultSystem : EntitySystem
         args.Result = result;
     }
 
+    private bool IsTarget(EntityUid mindId)
+    {
+        var target = _ruleSystem.GetTarget();
+        if (target == null)
+            return false;
+
+        return mindId == target.Value.Owner;
+    }
+
     private bool Sacrifice(
         EntityUid rune,
         EntityUid target,
         EntityUid user,
-        HashSet<EntityUid> cultists,
-        bool isTarget = false)
+        HashSet<EntityUid> cultists)
     {
         if (!_entityManager.TryGetComponent<CultRuneOfferingComponent>(rune, out var offering))
             return false;
@@ -484,14 +486,6 @@ public sealed partial class CultSystem : EntitySystem
         {
             _popupSystem.PopupEntity(Loc.GetString("cult-sacrifice-not-enough-cultists"), user, user);
             return false;
-        }
-
-        if (isTarget)
-        {
-            _bodySystem.GibBody(target);
-            AddChargesToReviveRune();
-
-            return true;
         }
 
         if (!SpawnShard(target))
@@ -541,8 +535,8 @@ public sealed partial class CultSystem : EntitySystem
         if (!_entityManager.TryGetComponent<ActorComponent>(target, out var actorComponent))
             return false;
 
-        _ruleSystem.MakeCultist(actorComponent.PlayerSession);
         _stunSystem.TryStun(target, TimeSpan.FromSeconds(2f), false);
+        _ruleSystem.MakeCultist(actorComponent.PlayerSession);
         HealCultist(target);
 
         if (TryComp(target, out CuffableComponent? cuffs) && cuffs.Container.ContainedEntities.Count >= 1)

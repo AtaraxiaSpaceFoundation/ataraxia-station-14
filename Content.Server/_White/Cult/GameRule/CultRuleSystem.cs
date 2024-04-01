@@ -90,7 +90,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         }
     }
 
-    public MindComponent? GetTarget()
+    public Entity<MindComponent>? GetTarget()
     {
         var cultistsRule = EntityQuery<CultRuleComponent>().FirstOrDefault();
 
@@ -99,7 +99,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             return null;
         }
 
-        return mind;
+        return (cultistsRule.CultTarget.Value, mind);
     }
 
     public bool CanSummonNarsie()
