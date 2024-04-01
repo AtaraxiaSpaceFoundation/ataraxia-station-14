@@ -1,0 +1,51 @@
+- type: entity
+  id: ExperimentalSyndicateTeleporter
+  parent: BaseItem
+  name: Experimental Syndicate Teleporter
+  description: Syndicate teleporter, when used, moves 3-8 meters forward. In case of teleportation into a wall, uses emergency teleportation. Has 4 charge.
+  components:
+  - type: Sprite
+    sprite: /Textures/White/Objects/Devices/experimentalsyndicateteleporter.rsi
+    layers:
+    - state: icon
+  - type: ExperimentalSyndicateTeleporter
+
+- type: entity
+  id: ExpSyndicateTeleporterInEffect
+  name: Experimental Syndicate Teleporter In Effect
+  components:
+    - type: TimedDespawn
+      lifetime: 0.6
+    - type: EvaporationSparkle
+    - type: Transform
+      noRot: true
+      anchored: true
+    - type: Sprite
+      layers:
+        - sprite: White/Objects/Devices/experimentalsyndicateteleporter.rsi
+          state: in
+          shader: unshaded
+      netsync: false
+      drawdepth: Effects
+    - type: PointLight
+      color: "#008DFE"
+
+- type: entity
+  id: ExpSyndicateTeleporterOutEffect
+  name: Experimental Syndicate Teleporter Out Effect
+  components:
+    - type: TimedDespawn
+      lifetime: 0.6
+    - type: EvaporationSparkle
+    - type: Transform
+      noRot: true
+      anchored: true
+    - type: Sprite
+      layers:
+        - sprite: White/Objects/Devices/experimentalsyndicateteleporter.rsi
+          state: out
+          shader: unshaded
+      netsync: false
+      drawdepth: Effects
+    - type: PointLight
+      color: "#008DFE"

@@ -250,3 +250,15 @@
     Telecrystal: 1
   categories:
   - UplinkImplants
+
+- type: listing
+  id: UplinkExperimentalSyndicateTeleporter
+  name: uplink-experimentalsyndicateteleporter
+  description: uplink-experimentalsyndicateteleporter-desc
+  icon: { sprite: /Textures/White/Objects/Devices/experimentalsyndicateteleporter.rsi, state: icon }
+  productEntity: ExperimentalSyndicateTeleporter
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkUtility
+  saleLimit: 2
