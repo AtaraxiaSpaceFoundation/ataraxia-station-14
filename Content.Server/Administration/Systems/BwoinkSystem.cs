@@ -385,7 +385,7 @@ namespace Content.Server.Administration.Systems
             var senderSession = eventArgs.SenderSession;
 
             //No bwoink for banned
-            if (_gulagSystem.IsUserGulaged(senderSession.UserId, out _))
+            if (_gulagSystem.IsUserGulagged(senderSession.UserId, out _))
             {
                 return;
             }

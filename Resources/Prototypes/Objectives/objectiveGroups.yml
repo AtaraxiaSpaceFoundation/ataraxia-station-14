@@ -133,17 +133,18 @@
   weights:
     ChangelingObjectiveGroupSteal: 1
     ChangelingObjectiveGroupKill: 1
+    ChangelingObjectiveGroupEscape: 1
 
 - type: weightedRandom
   id: ChangelingObjectiveGroupSteal
   weights:
-    CaptainIDStealObjectiveCh: 0.5
-    CMOHyposprayStealObjectiveCh: 0.5
-    RDHardsuitStealObjectiveCh: 0.5
-    NukeDiskStealObjectiveCh: 0.5
-    MagbootsStealObjectiveCh: 0.5
-    CorgiMeatStealObjectiveCh: 0.5
-    ClipboardStealObjectiveCh: 0.5
+    CaptainIDStealObjectiveCh: 1
+    CMOHyposprayStealObjectiveCh: 1
+    RDHardsuitStealObjectiveCh: 1
+    NukeDiskStealObjectiveCh: 1
+    MagbootsStealObjectiveCh: 1
+    CorgiMeatStealObjectiveCh: 1
+    ClipboardStealObjectiveCh: 1
     CaptainGunStealObjectiveCh: 0.5
     CaptainJetpackStealObjectiveCh: 0.5
     HandTeleporterStealObjectiveCh: 0.5
@@ -154,5 +155,12 @@
   weights:
     AbsorbDnaObjective: 1
     AbsorbMoreDnaObjective: 0.75
-    AbsorbChangelingObjective: 0.25
-    EscapeWithIdentityObjective: 0.75
+    #AbsorbChangelingObjective: 0.25
+    KillRandomPersonObjectiveCh: 1
+    KillRandomHeadObjectiveCh: 0.25
+
+- type: weightedRandom
+  id: ChangelingObjectiveGroupEscape
+  weights:
+    EscapeShuttleObjectiveCh: 1
+    EscapeWithIdentityObjective: 0.5

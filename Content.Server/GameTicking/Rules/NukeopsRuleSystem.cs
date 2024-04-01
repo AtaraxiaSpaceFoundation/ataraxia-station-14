@@ -634,7 +634,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             // ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
             foreach (var player in everyone)
             {
-                if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+                if (_gulag.IsUserGulagged(player.UserId, out _)) // WD
                     continue;
 
                 if (!ev.Profiles.ContainsKey(player.UserId))

@@ -310,7 +310,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             if (!GameTicker.IsGameRuleAdded(uid, gameRule))
                 continue;
 
-            if (_gulag.IsUserGulaged(ev.Player.UserId, out _)) // WD
+            if (_gulag.IsUserGulagged(ev.Player.UserId, out _)) // WD
                 continue;
 
             if (traitor.TotalTraitors >= MaxTraitors)

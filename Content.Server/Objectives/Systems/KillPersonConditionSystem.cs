@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Miracle.Components;
+using Content.Server._Miracle.GulagSystem;
 using Content.Server._White.Cult.GameRule;
 using Content.Server.Objectives.Components;
 using Content.Server.Shuttles.Systems;
@@ -23,6 +24,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
     [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly TargetObjectiveSystem _target = default!;
+    [Dependency] private readonly GulagSystem _gulag = default!; // WD
 
     public override void Initialize()
     {
@@ -60,7 +62,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
 
         // no other humans to kill
         var allHumans = _mind.GetAliveHumansExcept(args.MindId);
-        allHumans = allHumans.Where(x => !HasComp<GulagBoundComponent>(x)).ToList(); // WD
+        allHumans = allHumans.Where(x => !_gulag.IsMindGulagged(x)).ToList();
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;
@@ -85,7 +87,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
 
         // no other humans to kill
         var allHumans = _mind.GetAliveHumansExcept(args.MindId);
-        allHumans = allHumans.Where(x => !HasComp<GulagBoundComponent>(x)).ToList(); // WD
+        allHumans = allHumans.Where(x => !_gulag.IsMindGulagged(x)).ToList();
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;

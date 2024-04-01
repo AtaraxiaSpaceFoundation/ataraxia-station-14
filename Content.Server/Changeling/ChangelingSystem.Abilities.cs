@@ -819,6 +819,7 @@ public sealed partial class ChangelingSystem
         var toAdd = new ChangelingComponent
         {
             HiveName = component.HiveName,
+            ChemicalCapacity = component.ChemicalCapacity,
             ChemicalsBalance = component.ChemicalsBalance,
             AbsorbedEntities = component.AbsorbedEntities,
             IsInited = component.IsInited,
@@ -902,10 +903,10 @@ public sealed partial class ChangelingSystem
         if (component.AbsorbedEntities.ContainsKey(targetDna.DNA))
             return;
 
-        if (component.AbsorbedEntities.Count == 7)
+        /*if (component.AbsorbedEntities.Count == 7)
         {
             component.AbsorbedEntities.Remove(component.AbsorbedEntities.ElementAt(2).Key);
-        }
+        }*/
 
         var appearance = _serializationManager.CreateCopy(targetAppearance, notNullableOverride: true);
         var meta = _serializationManager.CreateCopy(targetMeta, notNullableOverride: true);
@@ -966,6 +967,7 @@ public sealed partial class ChangelingSystem
             var toAdd = new ChangelingComponent
             {
                 HiveName = lingComp.HiveName,
+                ChemicalCapacity = lingComp.ChemicalCapacity,
                 ChemicalsBalance = lingComp.ChemicalsBalance,
                 AbsorbedEntities = lingComp.AbsorbedEntities,
                 IsInited = lingComp.IsInited,
@@ -1104,7 +1106,8 @@ public sealed partial class ChangelingSystem
         targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
         targetHumanoid.Age = sourceHumanoid.Age;
         _humanoidAppearance.SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
-        _humanoidAppearance.SetSpecies(target, sourceHumanoid.Species);
+        _humanoidAppearance.SetBodyType(target, sourceHumanoid.BodyType, false, targetHumanoid);
+        _humanoidAppearance.SetSpecies(target, sourceHumanoid.Species, true, targetHumanoid);
         targetHumanoid.CustomBaseLayers = new Dictionary<HumanoidVisualLayers,
             CustomBaseLayerInfo>(sourceHumanoid.CustomBaseLayers);
 

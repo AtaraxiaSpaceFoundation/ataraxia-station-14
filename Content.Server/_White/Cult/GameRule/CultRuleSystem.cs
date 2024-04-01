@@ -325,7 +325,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (entity == default)
                 continue;
 
-            if (_gulag.IsUserGulaged(actor.PlayerSession.UserId, out _))
+            if (_gulag.IsUserGulagged(actor.PlayerSession.UserId, out _))
                 continue;
 
             if (exclude?.Contains(actor.PlayerSession) is true)
@@ -348,7 +348,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         foreach (var player in candidates.Keys)
         {
             // Gulag
-            if (_gulag.IsUserGulaged(player.UserId, out _))
+            if (_gulag.IsUserGulagged(player.UserId, out _))
                 continue;
 
             // Role prevents antag.

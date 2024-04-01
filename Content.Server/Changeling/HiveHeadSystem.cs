@@ -2,6 +2,7 @@ using Content.Server.Actions;
 using Content.Shared.Actions;
 using Content.Shared.Changeling;
 using Content.Shared.Inventory;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server.Changeling;
 
@@ -9,6 +10,7 @@ public sealed class HiveHeadSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -22,6 +24,9 @@ public sealed class HiveHeadSystem : EntitySystem
 
     private void OnReleaseBees(Entity<HiveHeadComponent> ent, ref ReleaseBeesEvent args)
     {
+        if (!_mobState.IsAlive(args.Performer))
+            return;
+
         args.Handled = true;
 
         var coords = Transform(args.Performer).Coordinates;
@@ -34,8 +39,11 @@ public sealed class HiveHeadSystem : EntitySystem
 
     private void OnGetActions(Entity<HiveHeadComponent> ent, ref GetItemActionsEvent args)
     {
-        if (args.SlotFlags == SlotFlags.HEAD)
-            args.AddAction(ref ent.Comp.ActionEntity, ent.Comp.Action);
+        if (args.SlotFlags != SlotFlags.HEAD)
+            return;
+
+        args.AddAction(ref ent.Comp.ActionEntity, ent.Comp.Action);
+        _actions.SetCooldown(ent.Comp.ActionEntity, TimeSpan.FromSeconds(5));
     }
 
     private void OnShutdown(Entity<HiveHeadComponent> ent, ref ComponentShutdown args)

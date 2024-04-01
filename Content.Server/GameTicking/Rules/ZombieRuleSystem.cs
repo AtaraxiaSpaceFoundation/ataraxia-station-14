@@ -274,7 +274,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         var prefList = new List<ICommonSession>();
         foreach (var player in allPlayers)
         {
-            if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+            if (_gulag.IsUserGulagged(player.UserId, out _)) // WD
                 continue;
 
             if (player.AttachedEntity == null || !HasComp<HumanoidAppearanceComponent>(player.AttachedEntity) || HasComp<ZombieImmuneComponent>(player.AttachedEntity))

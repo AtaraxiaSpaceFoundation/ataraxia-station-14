@@ -204,7 +204,7 @@ namespace Content.Server.Ghost.Roles
             if (!_ghostRoles.TryGetValue(identifier, out var role))
                 return;
 
-            if (_gulagSystem.IsUserGulaged(player.UserId, out _))
+            if (_gulagSystem.IsUserGulagged(player.UserId, out _))
             {
                 return;
             }

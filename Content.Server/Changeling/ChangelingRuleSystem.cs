@@ -235,7 +235,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
             if (changeling.TotalChangelings >= MaxChangelings)
                 continue;
 
-            if (_gulag.IsUserGulaged(ev.Player.UserId, out _))
+            if (_gulag.IsUserGulagged(ev.Player.UserId, out _))
                 continue;
 
             if (!ev.LateJoin)

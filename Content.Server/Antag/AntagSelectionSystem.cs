@@ -104,7 +104,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
         chosen = new List<EntityUid>();
         foreach (var player in allPlayers)
         {
-            if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+            if (_gulag.IsUserGulagged(player.UserId, out _)) // WD
                 continue;
 
             if (includeHeads == false)
@@ -179,7 +179,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         foreach (var player in candidates.Keys)
         {
-            if (_gulag.IsUserGulaged(player.UserId, out _)) // WD
+            if (_gulag.IsUserGulagged(player.UserId, out _)) // WD
                 continue;
 
             if (_sharedPlayerSystem.ContentData(player) is not {Mind: { } mindId} || _roles.MindIsAntagonist(mindId))

@@ -172,6 +172,9 @@
     - type: ExplosionResistance
       damageCoefficient: 0.5
     - type: GroupExamine
+    - type: ClothingSpeedModifier
+      walkModifier: 0.85
+      sprintModifier: 0.85
     - type: Unremoveable
       deleteOnDrop: true
     - type: ClothingModifyChemicalRegen
