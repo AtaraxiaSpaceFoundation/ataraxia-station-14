@@ -17,7 +17,7 @@ public sealed partial class ExperimentalSyndicateTeleporterComponent : Component
     public int MaxTeleportRange = 8;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int EmergencyLength = 3;
+    public int EmergencyLength = 4;
 
     [ViewVariables(VVAccess.ReadWrite)]
     public List<int> RandomRotations = new() {90, -90};
@@ -41,5 +41,5 @@ public sealed partial class ExperimentalSyndicateTeleporterComponent : Component
     public TimeSpan NextRechargeAttempt = TimeSpan.FromSeconds(1);
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public TimeSpan ChargeCooldown = TimeSpan.Zero;
+    public float ChargeCooldown = 0F;
 }

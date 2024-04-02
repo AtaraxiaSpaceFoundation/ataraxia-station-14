@@ -279,6 +279,7 @@
   - type: Spillable
     solution: injector
   - type: Item
+    size: Tiny
     sprite: Objects/Specific/Chemistry/dropper.rsi
   - type: Appearance
   - type: SolutionContainerVisuals

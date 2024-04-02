@@ -47,16 +47,15 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
             if (component.Uses >= 4)
                 continue;
 
-            component.ChargeCooldown += _timing.FrameTime;
+            component.ChargeCooldown += frameTime;
 
-            if (component.ChargeCooldown <= component.NextRechargeAttempt)
+            if (component.ChargeCooldown <= component.NextRechargeAttempt.TotalSeconds)
                 continue;
 
-            if (_random.Next(0, 10) != 0)
-            {
-                component.ChargeCooldown = TimeSpan.Zero;
+            component.ChargeCooldown = 0F;
+
+            if (!_random.Prob(0.1F))
                 continue;
-            }
 
             component.Uses++;
         }
@@ -102,7 +101,7 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
 
         if (TryCheckWall(coords))
         {
-            EmergencyTeleportation(args.User, xform, component, oldCoords);
+            EmergencyTeleportation(args.User, xform, component, oldCoords, newOffset);
             return;
         }
 
@@ -119,9 +118,8 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
         args.PushMarkup(Loc.GetString("experimental-syndicate-teleporter-examine", ("uses", component.Uses)));
     }
 
-    private void EmergencyTeleportation(EntityUid uid, TransformComponent xform, ExperimentalSyndicateTeleporterComponent component, EntityCoordinates oldCoords)
+    private void EmergencyTeleportation(EntityUid uid, TransformComponent xform, ExperimentalSyndicateTeleporterComponent component, EntityCoordinates oldCoords, Vector2 offset)
     {
-        var offset = xform.LocalRotation.ToWorldVec().Normalized();
         var newOffset = offset + VectorRandomDirection(component, offset, component.EmergencyLength);
 
         var coords = xform.Coordinates.Offset(newOffset).SnapToGrid(EntityManager);

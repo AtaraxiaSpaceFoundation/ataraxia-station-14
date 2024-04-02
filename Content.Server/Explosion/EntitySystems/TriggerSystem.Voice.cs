@@ -3,6 +3,7 @@ using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Content.Shared.Database;
 using Content.Shared.Examine;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Verbs;
 
 namespace Content.Server.Explosion.EntitySystems
@@ -15,6 +16,7 @@ namespace Content.Server.Explosion.EntitySystems
             SubscribeLocalEvent<TriggerOnVoiceComponent, ExaminedEvent>(OnVoiceExamine);
             SubscribeLocalEvent<TriggerOnVoiceComponent, GetVerbsEvent<AlternativeVerb>>(OnVoiceGetAltVerbs);
             SubscribeLocalEvent<TriggerOnVoiceComponent, ListenEvent>(OnListen);
+            SubscribeLocalEvent<TriggerOnVoiceComponent, UseInHandEvent>(OnUseInHand);
         }
 
         private void OnVoiceInit(EntityUid uid, TriggerOnVoiceComponent component, ComponentInit args)
@@ -79,6 +81,21 @@ namespace Content.Server.Explosion.EntitySystems
                     RemComp<ActiveListenerComponent>(ent);
                 }
             });
+        }
+
+        public void OnUseInHand(Entity<TriggerOnVoiceComponent> ent, ref UseInHandEvent args)
+        {
+            if(args.Handled)
+                return;
+
+            if (ent.Comp.IsRecording)
+            {
+                StopRecording(ent);
+            }
+            else
+            {
+                StartRecording(ent, args.User);
+            }
         }
 
         public void StartRecording(Entity<TriggerOnVoiceComponent> ent, EntityUid user)
