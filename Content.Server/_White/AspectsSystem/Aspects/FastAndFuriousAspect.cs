@@ -3,6 +3,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server._White.AspectsSystem.Aspects.Components;
 using Content.Server._White.AspectsSystem.Base;
+using Content.Server._White.Other.FastAndFuriousSystem;
 using Content.Shared.Cloning;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -11,8 +12,6 @@ namespace Content.Server._White.AspectsSystem.Aspects;
 
 public sealed class FastAndFuriousAspect : AspectSystem<FastAndFuriousAspectComponent>
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSystem = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -25,10 +24,9 @@ public sealed class FastAndFuriousAspect : AspectSystem<FastAndFuriousAspectComp
     {
         base.Started(uid, component, gameRule, args);
         var query = EntityQueryEnumerator<MovementSpeedModifierComponent>();
-        while (query.MoveNext(out var ent, out var speedModifierComponent))
+        while (query.MoveNext(out var ent, out _))
         {
-            _movementSystem.ChangeBaseSpeed(ent, speedModifierComponent.BaseWalkSpeed,
-                speedModifierComponent.BaseSprintSpeed + 3, speedModifierComponent.Acceleration);
+            EnsureComp<FastAndFuriousComponent>(ent);
         }
     }
 
@@ -37,10 +35,9 @@ public sealed class FastAndFuriousAspect : AspectSystem<FastAndFuriousAspectComp
     {
         base.Ended(uid, component, gameRule, args);
         var query = EntityQueryEnumerator<MovementSpeedModifierComponent>();
-        while (query.MoveNext(out var ent, out var speedModifierComponent))
+        while (query.MoveNext(out var ent, out _))
         {
-            _movementSystem.ChangeBaseSpeed(ent, speedModifierComponent.BaseWalkSpeed,
-                speedModifierComponent.BaseSprintSpeed, speedModifierComponent.Acceleration);
+            EnsureComp<FastAndFuriousComponent>(ent);
         }
     }
 
@@ -65,11 +62,10 @@ public sealed class FastAndFuriousAspect : AspectSystem<FastAndFuriousAspectComp
             if (!GameTicker.IsGameRuleAdded(ruleEntity, gameRule))
                 continue;
 
-            if (!TryComp<MovementSpeedModifierComponent>(mob, out var speedModifierComponent))
+            if (!HasComp<MovementSpeedModifierComponent>(mob))
                 return;
 
-            _movementSystem.ChangeBaseSpeed(mob, speedModifierComponent.BaseWalkSpeed,
-                speedModifierComponent.BaseSprintSpeed + 3, speedModifierComponent.Acceleration);
+            EnsureComp<FastAndFuriousComponent>(mob);
         }
     }
 }

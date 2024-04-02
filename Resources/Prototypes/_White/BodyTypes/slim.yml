@@ -38,6 +38,8 @@
     RLeg: MobSkrellSlimRLeg
     LFoot: MobSkrellSlimLFoot
     RFoot: MobSkrellSlimRFoot
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
 
 # - type: bodyType
 #   id: ReptilianSlim

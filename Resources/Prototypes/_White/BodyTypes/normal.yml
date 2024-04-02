@@ -70,6 +70,8 @@
     RLeg: MobSlimeRLeg
     LFoot: MobSlimeLFoot
     RFoot: MobSlimeRFoot
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
 
 - type: bodyType
   id: VoxNormal
@@ -88,6 +90,8 @@
     RLeg: MobVoxRLeg
     LFoot: MobVoxLFoot
     RFoot: MobVoxRFoot
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
 
 - type: bodyType
   id: SkrellNormal
@@ -105,6 +109,8 @@
     RLeg: MobSkrellRLeg
     LFoot: MobSkrellLFoot
     RFoot: MobSkrellRFoot
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
 
 - type: bodyType
   id: DionaNormal
@@ -122,6 +128,7 @@
     RLeg: MobDionaRLeg
     LFoot: MobDionaLFoot
     RFoot: MobDionaRFoot
+    Tail: MobHumanoidAnyMarking
 
 - type: bodyType
   id: ArachnidNormal

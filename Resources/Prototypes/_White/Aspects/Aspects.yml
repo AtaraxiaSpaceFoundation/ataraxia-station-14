@@ -11,19 +11,18 @@
         path: /Audio/White/Aspects/accent.ogg
     - type: RandomAccentAspect
 
-# Disabled this cause movement speed increase isn't predicted and it feels awful due to this
-#- type: entity
-#  id: FastAndFuriousAspect
-#  parent: BaseGameRule
-#  noSpawn: true
-#  components:
-#    - type: Aspect
-#      name: "Fast and Furious"
-#      description: "Люди спешат и не важно куда."
-#      weight: 3
-#      startAudio:
-#        path: /Audio/White/Aspects/accent.ogg
-#    - type: FastAndFuriousAspect
+- type: entity
+  id: FastAndFuriousAspect
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+    - type: Aspect
+      name: "Fast and Furious"
+      description: "Люди спешат и не важно куда."
+      weight: 3
+      startAudio:
+        path: /Audio/White/Aspects/accent.ogg
+    - type: FastAndFuriousAspect
 
 - type: entity
   id: RandomAppearanceAspect
@@ -307,7 +306,7 @@
   components:
     - type: Aspect
       name: "Cat Ears And Tail"
-      description: "Мяукайте."
+      description: "Из-за ошибки в системе клонирования на ЦК все члены экипажа стали походить на фелинидов."
       weight: 3
       startAudio:
         path: /Audio/White/Aspects/accent.ogg
@@ -322,11 +321,22 @@
       name: "Nothing"
       description: "Ничего."
       weight: 3
-      startAudio:
-        path: /Audio/White/Aspects/accent.ogg
       forbidden: true
       hidden: true
     - type: NothingAspect
+
+- type: entity
+  id: RandomItemAspect
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+    - type: Aspect
+      name: "Random item"
+      description: "ЦК выдало каждому члену экипажа определённый предмет."
+      weight: 3
+      startAudio:
+        path: /Audio/White/Aspects/accent.ogg
+    - type: RandomItemAspect
 
 # Disabled this cause polymorph breaks stuff
 #- type: entity

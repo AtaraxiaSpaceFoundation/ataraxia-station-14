@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.Mood;
+using Content.Server._White.Other.FastAndFuriousSystem;
 using Content.Server.Administration.Systems;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
@@ -998,6 +999,9 @@ public sealed partial class ChangelingSystem
 
     private void TransferComponents(EntityUid from, EntityUid to)
     {
+        if (HasComp<FastAndFuriousComponent>(from))
+            EnsureComp<FastAndFuriousComponent>(to);
+
         if (HasComp<AbsorbedComponent>(from))
             EnsureComp<AbsorbedComponent>(to);
 
