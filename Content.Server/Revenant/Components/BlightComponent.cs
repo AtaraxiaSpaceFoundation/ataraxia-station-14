@@ -16,7 +16,7 @@ public sealed partial class BlightComponent : Component
     public float Delay;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan SleepingCureTime = TimeSpan.FromSeconds(25);
+    public TimeSpan SleepingCureTime = TimeSpan.FromSeconds(15);
 
     [ViewVariables(VVAccess.ReadWrite)]
     public float SleepDelay;

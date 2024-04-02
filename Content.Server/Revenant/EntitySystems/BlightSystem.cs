@@ -92,6 +92,6 @@ public sealed class BlightSystem : EntitySystem
 
     private void SetDelay(BlightComponent comp)
     {
-        comp.MaxDelay = TimeSpan.FromSeconds(_random.Next(10, 30));
+        comp.MaxDelay = TimeSpan.FromSeconds(_random.Next(20, 50));
     }
 }
