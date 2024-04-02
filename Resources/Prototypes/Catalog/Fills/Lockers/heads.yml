@@ -107,6 +107,8 @@
       - id: BoxEncryptionKeyPassenger
       - id: BoxEncryptionKeyService
       - id: BoxFolderClipboard
+      - id: InteractiveBoard
+      - id: InteractivePen
 
 - type: entity
   id: LockerHeadOfPersonnelFilledHardsuit
