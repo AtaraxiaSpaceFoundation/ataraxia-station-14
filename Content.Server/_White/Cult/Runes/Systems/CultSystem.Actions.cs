@@ -6,27 +6,25 @@ using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server._White.Cult.UI;
 using Content.Shared._White.Chaplain;
-using Content.Shared._White.Cult;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Inventory;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared._White.Cult.Actions;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
-using Content.Shared._White.Cult.UI;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Maps;
 using Content.Shared.Mindshield.Components;
+using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map.Components;
@@ -49,6 +47,8 @@ public partial class CultSystem
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly BloodSpearSystem _bloodSpear = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly HolyWeaponSystem _holyWeapon = default!;
+    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
 
     private const string TileId = "CultFloor";
     private const string ConcealedTileId = "CultFloorConcealed";
@@ -95,15 +95,17 @@ public partial class CultSystem
             !TryComp<StatusEffectsComponent>(args.Target, out var status))
             return;
 
-        if (HasComp<HolyComponent>(args.Target))
+        if (_holyWeapon.IsHoldingHolyWeapon(args.Target))
         {
-            _popupSystem.PopupEntity("Священная сила препятствует магии.", args.Performer, args.Performer);
+            _popupSystem.PopupEntity("Сила священного оружия препятствует магии.", args.Performer, args.Performer,
+                PopupType.MediumCaution);
             return;
         }
 
         if (HasComp<MindShieldComponent>(args.Target))
         {
-            _popupSystem.PopupEntity("Он имплантирован чипом защиты разума.", args.Performer, args.Performer);
+            _popupSystem.PopupEntity("Он имплантирован чипом защиты разума.", args.Performer, args.Performer,
+                PopupType.MediumCaution);
             return;
         }
 
@@ -122,19 +124,18 @@ public partial class CultSystem
             !TryComp<ActorComponent>(uid, out var actor))
             return;
 
-        if (HasComp<HolyComponent>(args.Target))
+        if (_holyWeapon.IsHoldingHolyWeapon(args.Target))
         {
-            _popupSystem.PopupEntity("Священная сила препятствует магии.", args.Performer, args.Performer);
+            _popupSystem.PopupEntity("Сила священного оружия препятствует магии.", args.Performer, args.Performer,
+                PopupType.MediumCaution);
             return;
         }
 
         if (!HasComp<CultistComponent>(args.Target) && !HasComp<ConstructComponent>(args.Target) &&
-            (!TryComp<MobStateComponent>(args.Target, out var mobStateComponent) ||
-             mobStateComponent.CurrentState is MobState.Alive) &&
-            (!TryComp<CuffableComponent>(args.Target, out var cuffable) || cuffable.Container.Count == 0))
+            _actionBlocker.CanInteract(args.Target, null))
         {
-            _popupSystem.PopupEntity("Цель должна быть культистом, быть связанной или лежать.", args.Performer,
-                args.Performer);
+            _popupSystem.PopupEntity("Цель должна быть культистом, быть скованной или парализованной.", args.Performer,
+                args.Performer, PopupType.MediumCaution);
             return;
         }
 
@@ -422,7 +423,7 @@ public partial class CultSystem
 
         _bloodstreamSystem.TryModifyBloodLevel(uid, -5, bloodstream, createPuddle: false);
 
-        if (!HasComp<HolyComponent>(args.Target) &&
+        if (!_holyWeapon.IsHoldingHolyWeapon(args.Target) &&
             _statusEffectsSystem.TryAddStatusEffect(args.Target, "Muted", TimeSpan.FromSeconds(10), true, "Muted"))
         {
             _popupSystem.PopupEntity("Цель обезмолвлена.", args.Performer, args.Performer);

@@ -71,6 +71,7 @@
     sprite: White/Objects/Weapons/Chaplain/godhand.rsi
   - type: Unremoveable
     deleteOnDrop: true
+  - type: HolyWeapon
 
 - type: entity
   name: священный клеймор
@@ -89,8 +90,10 @@
     slots:
     - back
     - belt
+    - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/claymore.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: цепной меч
@@ -111,6 +114,7 @@
     qualities:
       - Sawing
     speed: 0.5
+  - type: HolyWeapon
 
 - type: entity
   name: силовой меч
@@ -128,6 +132,7 @@
     color: lightblue
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/forceweapon.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: лезвие ханзо
@@ -142,8 +147,10 @@
     slots:
     - back
     - belt
+    - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/katana.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: внепространственный клинок
@@ -161,9 +168,11 @@
     sprite: White/Objects/Weapons/Chaplain/multiverse.rsi
     slots:
     - back
+    - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/multiverse.rsi
   - type: RandomDamage
+  - type: HolyWeapon
 
 - type: entity
   name: коса жнеца
@@ -182,8 +191,10 @@
     sprite: White/Objects/Weapons/Chaplain/scythe.rsi
     slots:
     - back
+    - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/scythe-inhands.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: высокочастотный клинок
@@ -201,10 +212,12 @@
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
     slots:
     - back
+    - suitStorage
   - type: Reflect
     reflectProb: 0.33
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: клинок заклинаний
@@ -223,11 +236,13 @@
     sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
     slots:
     - back
+    - suitStorage
   - type: Crit
     critChance: 20
     critMultiplier: 2.5
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: одержимый клинок
@@ -243,6 +258,7 @@
     sprite: White/Objects/Weapons/Chaplain/possessed.rsi
     slots:
     - back
+    - suitStorage
   - type: GhostRole
     allowSpeech: true
     name: Одержимый Клинок
@@ -252,6 +268,7 @@
   - type: Examiner
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/possessed.rsi
+  - type: HolyWeapon
 
 - type: entity
   name: рука-бензопила
@@ -284,6 +301,7 @@
     qualities:
       - Sawing
     speed: 0.5
+  - type: HolyWeapon
 
 - type: entity
   name: священная плеть
@@ -309,6 +327,7 @@
     slots:
     - belt
   - type: DisarmMalus
+  - type: HolyWeapon
 
 - type: entity
   name: посох монаха
@@ -331,6 +350,7 @@
     sprite: White/Objects/Weapons/Chaplain/staff.rsi
     slots:
     - back
+    - suitStorage
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -339,6 +359,7 @@
   - type: UseDelay
   - type: DisarmMalus
   - type: MeleeBlock
+  - type: HolyWeapon
 
 - type: entity
   name: нечестивые вилы
@@ -389,6 +410,7 @@
     sprite: White/Objects/Weapons/Chaplain/pitchfork.rsi
     slots:
     - back
+    - suitStorage
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
@@ -396,6 +418,7 @@
         Piercing: 9
   - type: UseDelay
   - type: DisarmMalus
+  - type: HolyWeapon
 
 - type: entity
   name: реликтовый боевой молот
@@ -424,7 +447,10 @@
     sprite: White/Objects/Weapons/Chaplain/hammer.rsi
     slots:
     - belt
+    - back
+    - suitStorage
   - type: DisarmMalus
+  - type: HolyWeapon
 
 - type: entity
   name: гиперинструмент
@@ -451,3 +477,4 @@
     slots:
     - belt
   - type: DisarmMalus
+  - type: HolyWeapon

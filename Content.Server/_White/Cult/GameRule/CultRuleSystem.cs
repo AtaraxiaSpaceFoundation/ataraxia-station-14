@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
+using Content.Server.Bible.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -24,7 +25,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Content.Shared._White;
-using Content.Shared._White.Chaplain;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
 using Content.Shared.Mind;
@@ -357,7 +357,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
             // Chaplain
             if (!_mindSystem.TryGetMind(player, out _, out var mind) ||
-                mind.OwnedEntity is not { } ownedEntity || HasComp<HolyComponent>(ownedEntity))
+                mind.OwnedEntity is not { } ownedEntity || HasComp<BibleUserComponent>(ownedEntity))
                 continue;
 
             // Latejoin

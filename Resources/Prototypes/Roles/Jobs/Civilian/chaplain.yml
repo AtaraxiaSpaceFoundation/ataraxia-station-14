@@ -16,7 +16,6 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
-    - type: Holy
 
 - type: startingGear
   id: ChaplainGear

@@ -52,6 +52,12 @@
   - type: Item
     size: Huge
     sprite: Objects/Weapons/Melee/katana.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/katana.rsi
+    slots:
+    - Back
+    - Belt
+    - SuitStorage
   - type: DisarmMalus
 
 - type: entity
@@ -83,6 +89,7 @@
     slots:
     - Back
     - Belt
+    - SuitStorage
   - type: Reflect
 
 - type: entity
@@ -108,6 +115,11 @@
   - type: Item
     size: Large
     sprite: Objects/Weapons/Melee/machete.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/machete.rsi
+    slots:
+    - Belt
+    - SuitStorage
   - type: DisarmMalus
   - type: Construction
     deconstructionTarget: null
@@ -138,6 +150,8 @@
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
     - back
+    - belt
+    - suitStorage
   - type: DisarmMalus
   - type: Construction
     deconstructionTarget: null

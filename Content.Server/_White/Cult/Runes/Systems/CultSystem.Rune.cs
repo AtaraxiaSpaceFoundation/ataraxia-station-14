@@ -17,7 +17,6 @@ using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Fluids.Components;
 using Content.Server.Ghost;
 using Content.Server.Revenant.Components;
-using Content.Shared._White.Chaplain;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
@@ -446,7 +445,7 @@ public sealed partial class CultSystem : EntitySystem
                                  mind.Mind != null && !IsTarget(mind.Mind.Value);
 
             // Выполнение действия в зависимости от условий
-            if (canBeConverted && !HasComp<HolyComponent>(victim.Value) &&
+            if (canBeConverted && !HasComp<BibleUserComponent>(victim.Value) &&
                 !HasComp<MindShieldComponent>(victim.Value))
             {
                 result = Convert(uid, victim.Value, args.User, args.Cultists);

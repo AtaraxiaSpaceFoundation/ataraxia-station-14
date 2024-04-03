@@ -1008,9 +1008,6 @@ public sealed partial class ChangelingSystem
         if (HasComp<BibleUserComponent>(from))
             EnsureComp<BibleUserComponent>(to);
 
-        if (HasComp<HolyComponent>(from))
-            EnsureComp<HolyComponent>(to);
-
         if (HasComp<FlashImmunityComponent>(from))
             EnsureComp<FlashImmunityComponent>(to);
 
