@@ -44,19 +44,10 @@
         whitelist:
           tags:
           - CartridgeLightRifle
-      gun_modules:
-        name: Modules
-        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
-        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
-        priority: 2
-        whitelist:
-          tags:
-          - BaseModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
-      gun_modules: !type:ContainerSlot
   - type: StaticPrice
     price: 500
 
@@ -73,10 +64,14 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
-    - state: laser
+    - state: barrel_module
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
-      map: [ "enum.ModuleVisualState.Module" ]
+      map: [ "enum.ModuleVisualState.BarrelModule" ]
+    - state: handguard_module
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.HandGuardModule" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
@@ -91,7 +86,7 @@
         startingItem: MagazineLightRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
-        priority: 2
+        priority: 4
         whitelist:
           tags:
           - MagazineLightRifle
@@ -102,19 +97,28 @@
         whitelist:
           tags:
           - CartridgeLightRifle
-      gun_modules:
-        name: Modules
+      handguard_module:
+        name: Handguard Module
         insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
         ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
-          - BaseModule
+          - BaseHandGuardModule
+      barrel_module:
+        name: Barrel Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseBarrelModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
-      gun_modules: !type:ContainerSlot
+      handguard_module: !type:ContainerSlot
+      barrel_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -180,10 +184,14 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
-    - state: laser
+    - state: barrel_module
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
-      map: [ "enum.ModuleVisualState.Module" ]
+      map: [ "enum.ModuleVisualState.BarrelModule" ]
+    - state: handguard_module
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.HandGuardModule" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
@@ -196,7 +204,7 @@
         startingItem: MagazineRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
-        priority: 2
+        priority: 4
         whitelist:
           tags:
           - MagazineRifle
@@ -207,19 +215,28 @@
         whitelist:
           tags:
           - CartridgeRifle
-      gun_modules:
-        name: Modules
+      handguard_module:
+        name: Handguard Module
         insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
         ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
-          - BaseModule
+          - BaseHandGuardModule
+      barrel_module:
+        name: Barrel Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseBarrelModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
-      gun_modules: !type:ContainerSlot
+      handguard_module: !type:ContainerSlot
+      barrel_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -242,7 +259,7 @@
         startingItem: MagazineRifleRubber
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
-        priority: 2
+        priority: 4
         whitelist:
           tags:
             - MagazineRifle
@@ -253,11 +270,19 @@
         whitelist:
           tags:
             - CartridgeRifle
-      gun_modules:
-        name: Modules
+      handguard_module:
+        name: Handguard Module
         insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
         ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
         priority: 2
         whitelist:
           tags:
-          - BaseModule
+          - BaseHandGuardModule
+      barrel_module:
+        name: Barrel Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseBarrelModule

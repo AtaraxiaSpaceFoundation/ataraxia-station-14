@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._White.WeaponModules;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
@@ -30,10 +31,9 @@ public abstract partial class SharedGunSystem
                     return;
                 }
 
-                foreach (var module in weaponModulesComponent.Modules)
-                {
-                    args.PushMarkup(Loc.GetString("gun-modules", ("modules", Name(module))));
-                }
+                var moduleNames = weaponModulesComponent.Modules.Select(module => Name(module)).ToArray();
+
+                args.PushMarkup(Loc.GetString("gun-modules", ("modules", string.Join(", ", moduleNames))));
             }
 
             if (!TryComp<TwoModeEnergyAmmoProviderComponent>(uid, out var comp))

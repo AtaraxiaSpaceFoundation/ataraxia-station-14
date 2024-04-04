@@ -19,7 +19,8 @@ public partial class WeaponModulesComponent : Component
 [Serializable, NetSerializable]
 public enum ModuleVisualState : byte
 {
-    Module
+    BarrelModule,
+    HandGuardModule
 }
 
 [Serializable, NetSerializable]

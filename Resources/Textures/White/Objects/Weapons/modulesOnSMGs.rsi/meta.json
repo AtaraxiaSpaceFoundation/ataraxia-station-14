@@ -8,16 +8,16 @@
     },
     "states": [
         {
-            "name": "laser"
+            "name": "flamehider"
+        },
+        {
+            "name": "silencer"
         },
         {
             "name": "light"
         },
         {
-            "name": "flamehider"
-        },
-        {
-            "name": "silencer"
+            "name": "laser"
         },
         {
             "name": "accelerator"

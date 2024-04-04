@@ -1,5 +1,5 @@
 - type: entity
-  id: BaseModule
+  id: BaseHandGuardModule
   parent: BaseItem
   abstract: true
   components:
@@ -7,17 +7,29 @@
     sprite: White/Objects/Weapons/modules.rsi
   - type: Tag
     tags:
-      - BaseModule
+      - BaseHandGuardModule
   - type: Item
     sprite: White/Objects/Weapons/modules.rsi
     size: Small
     shape:
     - 0,0,0,0
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
+  - type: Appearance
+
+- type: entity
+  id: BaseBarrelModule
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/modules.rsi
+  - type: Tag
+    tags:
+      - BaseBarrelModule
+  - type: Item
+    sprite: White/Objects/Weapons/modules.rsi
+    size: Small
+    shape:
+    - 0,0,0,0
   - type: Appearance
 
 # modules
@@ -25,10 +37,11 @@
   id: LightModule
   description: Light module for rifles (lecter, CV, drozd, WT).
   name: "light module"
-  parent: BaseModule
+  parent: BaseHandGuardModule
   components:
   - type: LightModule
     value: "light"
+    module_type: "handguard_module"
   - type: Sprite
     state: light
   - type: Appearance
@@ -37,10 +50,11 @@
   id: LaserModule
   description: Laser module for rifles (lecter, CV, drozd, WT).
   name: "laser module"
-  parent: BaseModule
+  parent: BaseHandGuardModule
   components:
   - type: LaserModule
     value: "laser"
+    module_type: "handguard_module"
   - type: Sprite
     state: laser
   - type: Appearance
@@ -49,10 +63,11 @@
   id: FlameHiderModule
   description: Flame Hider module for rifles (lecter, CV, drozd, WT).
   name: "flamehider module"
-  parent: BaseModule
+  parent: BaseBarrelModule
   components:
   - type: FlameHiderModule
     value: "flamehider"
+    module_type: "barrel_module"
   - type: Sprite
     state: flamehider
   - type: Appearance
@@ -61,10 +76,11 @@
   id: SilencerModule
   description: Silencer module for rifles (lecter, CV, drozd, WT).
   name: "silencer module"
-  parent: BaseModule
+  parent: BaseBarrelModule
   components:
   - type: SilencerModule
     value: "silencer"
+    module_type: "barrel_module"
   - type: Sprite
     state: silencer
   - type: Appearance
@@ -73,10 +89,11 @@
   id: AcceleratorModule
   description: Accelerator module for rifles (lecter, CV, drozd, WT).
   name: "accelerator module"
-  parent: BaseModule
+  parent: BaseHandGuardModule
   components:
   - type: AcceleratorModule
     value: "accelerator"
+    module_type: "handguard_module"
   - type: Sprite
     state: accelerator
   - type: Appearance
