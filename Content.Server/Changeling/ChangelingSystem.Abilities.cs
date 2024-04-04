@@ -424,7 +424,19 @@ public sealed partial class ChangelingSystem
             _pullingSystem.TryStopPull(pullable);
         }
 
-        TransformPerson(target, humanData);
+        var oldData = CompOrNull<TransformStungComponent>(target)?.OriginalHumanoidData;
+
+        var transformed = TransformPerson(target, humanData);
+
+        if (transformed != null)
+        {
+            oldData ??= GetHumanoidData(target);
+            if (oldData != null)
+            {
+                var transformStung = EnsureComp<TransformStungComponent>(transformed.Value);
+                transformStung.OriginalHumanoidData = oldData.Value;
+            }
+        }
 
         _ui.CloseUi(bui, actorComponent.PlayerSession);
 
@@ -889,25 +901,37 @@ public sealed partial class ChangelingSystem
 
     private void CopyHumanoidData(EntityUid uid, EntityUid target, ChangelingComponent component)
     {
-        if (!TryComp<MetaDataComponent>(target, out var targetMeta))
-            return;
+        var data = GetHumanoidData(target, component);
 
-        if (!TryComp<HumanoidAppearanceComponent>(target, out var targetAppearance))
-            return;
-
-        if (!TryComp<DnaComponent>(target, out var targetDna))
-            return;
-
-        if (!TryPrototype(target, out var prototype, targetMeta))
-            return;
-
-        if (component.AbsorbedEntities.ContainsKey(targetDna.DNA))
+        if (data == null)
             return;
 
         /*if (component.AbsorbedEntities.Count == 7)
         {
             component.AbsorbedEntities.Remove(component.AbsorbedEntities.ElementAt(2).Key);
         }*/
+
+        component.AbsorbedEntities.Add(data.Value.Dna, data.Value);
+
+        Dirty(uid, component);
+    }
+
+    public HumanoidData? GetHumanoidData(EntityUid target, ChangelingComponent? absorberComponent = null)
+    {
+        if (!TryComp<MetaDataComponent>(target, out var targetMeta))
+            return null;
+
+        if (!TryComp<HumanoidAppearanceComponent>(target, out var targetAppearance))
+            return null;
+
+        if (!TryComp<DnaComponent>(target, out var targetDna))
+            return null;
+
+        if (!TryPrototype(target, out var prototype, targetMeta))
+            return null;
+
+        if (absorberComponent != null && absorberComponent.AbsorbedEntities.ContainsKey(targetDna.DNA))
+            return null;
 
         var appearance = _serializationManager.CreateCopy(targetAppearance, notNullableOverride: true);
         var meta = _serializationManager.CreateCopy(targetMeta, notNullableOverride: true);
@@ -916,16 +940,14 @@ public sealed partial class ChangelingSystem
             ? Loc.GetString("changeling-unknown-creature")
             : meta.EntityName;
 
-        component.AbsorbedEntities.Add(targetDna.DNA, new HumanoidData
+        return new HumanoidData
         {
             EntityPrototype = prototype,
             MetaDataComponent = meta,
             AppearanceComponent = appearance,
             Name = name,
             Dna = targetDna.DNA
-        });
-
-        Dirty(uid, component);
+        };
     }
 
     /// <summary>
@@ -935,7 +957,7 @@ public sealed partial class ChangelingSystem
     /// <param name="transformData">Transform data</param>
     /// <param name="humanoidOverride">Override first check on HumanoidAppearanceComponent</param>
     /// <returns>Id of the transformed entity</returns>
-    private EntityUid? TransformPerson(EntityUid target, HumanoidData transformData, bool humanoidOverride = false)
+    public EntityUid? TransformPerson(EntityUid target, HumanoidData transformData, bool humanoidOverride = false)
     {
         if (!HasComp<HumanoidAppearanceComponent>(target) && !humanoidOverride)
             return null;
@@ -1004,6 +1026,9 @@ public sealed partial class ChangelingSystem
 
         if (HasComp<AbsorbedComponent>(from))
             EnsureComp<AbsorbedComponent>(to);
+
+        if (HasComp<UncloneableComponent>(from))
+            EnsureComp<UncloneableComponent>(to);
 
         if (HasComp<BibleUserComponent>(from))
             EnsureComp<BibleUserComponent>(to);

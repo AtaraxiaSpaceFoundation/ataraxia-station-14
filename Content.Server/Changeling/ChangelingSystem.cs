@@ -6,6 +6,7 @@ using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
+using Content.Shared.Rejuvenate;
 
 namespace Content.Server.Changeling;
 
@@ -23,6 +24,7 @@ public sealed partial class ChangelingSystem : EntitySystem
         SubscribeLocalEvent<ChangelingComponent, ComponentInit>(OnInit);
 
         SubscribeLocalEvent<AbsorbedComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<AbsorbedComponent, RejuvenateEvent>(OnRejuvenate);
 
         InitializeAbilities();
         InitializeShop();
@@ -43,6 +45,12 @@ public sealed partial class ChangelingSystem : EntitySystem
     private void OnExamine(EntityUid uid, AbsorbedComponent component, ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("changeling-juices-sucked-up", ("target", Identity.Entity(uid, EntityManager))));
+    }
+
+    private void OnRejuvenate(Entity<AbsorbedComponent> ent, ref RejuvenateEvent args)
+    {
+        RemCompDeferred<AbsorbedComponent>(ent);
+        RemCompDeferred<UncloneableComponent>(ent);
     }
 
 #endregion
