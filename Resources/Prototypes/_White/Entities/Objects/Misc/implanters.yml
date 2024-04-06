@@ -23,12 +23,12 @@
     implant: MindslaveImplant
 
 - type: entity
-  id: NeuroControlImplanter
+  id: NeuroStabilizationImplanter
   parent: BaseImplantOnlyImplanterSyndi
-  suffix: neuro control
+  suffix: neuro stabilization
   components:
   - type: Implanter
-    implant: NeuroControlImplant
+    implant: NeuroStabilizationImplant
 
 - type: entity
   id: ImplanterSyndi

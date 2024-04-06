@@ -98,8 +98,8 @@
   - type: ToggleClothingSpeed
     toggleAction: ActionToggleSpeedBoots
   - type: ClothingSpeedModifier
-    walkModifier: 1.5
-    sprintModifier: 1.5
+    walkModifier: 1.3
+    sprintModifier: 1.3
     enabled: false
   - type: Appearance
   - type: GenericVisualizer

@@ -4,8 +4,11 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -31,6 +34,14 @@ public sealed class HardlightSpearSystem : EntitySystem
         SubscribeLocalEvent<HardlightSpearComponent, GettingPickedUpAttemptEvent>(OnPickupAttempt);
         SubscribeLocalEvent<HardlightSpearComponent, PreventCollideEvent>(OnPreventCollision);
         SubscribeLocalEvent<SubdermalImplantComponent, ActivateHardlightSpearImplantEvent>(OnImplantActivate);
+        SubscribeLocalEvent<MobStateComponent, PreventCollideEvent>(OnMobStatePreventCollision);
+    }
+
+    private void OnMobStatePreventCollision(Entity<MobStateComponent> ent, ref PreventCollideEvent args)
+    {
+        if (ent.Comp.CurrentState == MobState.Dead && HasComp<EmbeddableProjectileComponent>(args.OtherEntity) &&
+            HasComp<ThrownItemComponent>(args.OtherEntity))
+            args.Cancelled = true;
     }
 
     private void OnPreventCollision(EntityUid uid, HardlightSpearComponent component, ref PreventCollideEvent args)

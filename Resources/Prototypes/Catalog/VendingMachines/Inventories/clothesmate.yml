@@ -180,3 +180,9 @@
     ClothingUnderwearSocksStripedThigh: 2
     ClothingUnderwearSocksThinKnee: 1
     ClothingUnderwearSocksThinThigh: 1
+  emaggedInventory:
+    ClothingHandsGlovesCombat: 1
+    ClothingMaskGasSyndicate: 1
+    ClothingBeltMilitaryWebbing: 1
+    ClothingUniformJumpsuitOperative: 1
+    ClothingUniformJumpskirtOperative: 1

@@ -45,7 +45,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 10
+        Blunt: 15
 
 - type: entity
   name: syndicate jaws of life
@@ -84,4 +84,4 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 14
+        Blunt: 20

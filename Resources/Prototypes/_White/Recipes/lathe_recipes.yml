@@ -75,6 +75,15 @@
     Silver: 100
 
 - type: latheRecipe
+  id: MagazineBoxAntiMaterielBig
+  result: MagazineBoxAntiMaterielBig
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 1200
+    Silver: 300
+
+- type: latheRecipe
   id: MagazineBoxMagnumAP
   result: MagazineBoxMagnumAP
   category: Ammo

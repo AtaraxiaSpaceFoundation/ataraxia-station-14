@@ -24,6 +24,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared._White;
 using Content.Shared._White.MagGloves;
 using Content.Shared._White.Chaplain;
+using Content.Shared._White.Implants.NeuroControl;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -541,7 +542,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (damageResult != null && damageResult.Any())
         {
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
-            if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
+            if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage) && !HasComp<NeuroStabilizationComponent>(target.Value)) // WD EDIT
             {
                 _stamina.TakeStaminaDamage(target.Value, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
             }

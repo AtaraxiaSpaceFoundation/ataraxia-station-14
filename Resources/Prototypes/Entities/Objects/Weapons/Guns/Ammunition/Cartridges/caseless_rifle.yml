@@ -10,6 +10,7 @@
       - CartridgeCaselessRifle
   - type: CartridgeAmmo
     deleteOnSpawn: true
+    muzzleFlash: null
   - type: Sprite
     noRot: false
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi

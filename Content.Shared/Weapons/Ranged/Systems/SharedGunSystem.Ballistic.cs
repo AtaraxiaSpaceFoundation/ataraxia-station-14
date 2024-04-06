@@ -100,6 +100,9 @@ public abstract partial class SharedGunSystem
             target.Whitelist == null)
             return;
 
+        if (args.Cancelled || args.Handled) // WD
+            return;
+
         if (target.Entities.Count + target.UnspawnedCount == target.Capacity)
         {
             Popup(

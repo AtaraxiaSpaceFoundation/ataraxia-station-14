@@ -244,6 +244,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
             _inventorySystem.TryUnequip(user, parent, component.Slot, force: true);
         else if (_inventorySystem.TryGetSlotEntity(parent, component.Slot, out var existing))
         {
+            if (_inventorySystem.TryUnequip(user, parent, component.Slot)) // WD
+            {
+                _inventorySystem.TryEquip(user, parent, component.ClothingUid.Value, component.Slot);
+                return;
+            }
             _popupSystem.PopupClient(Loc.GetString("toggleable-clothing-remove-first", ("entity", existing)),
                 user, user);
         }

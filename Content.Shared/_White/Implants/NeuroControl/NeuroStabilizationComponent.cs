@@ -4,8 +4,8 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._White.Implants.NeuroControl;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class NeuroControlComponent : Component
+public sealed partial class NeuroStabilizationComponent : Component
 {
     [ValidatePrototypeId<TagPrototype>]
-    public const string NeuroControlTag = "NeuroControl";
+    public const string NeuroStabilizationTag = "NeuroStabilization";
 }

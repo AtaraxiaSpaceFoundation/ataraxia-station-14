@@ -59,7 +59,7 @@
   id: BaseModule
 
 - type: Tag
-  id: NeuroControl
+  id: NeuroStabilization
 
 - type: Tag
   id: InteractivePen

@@ -190,7 +190,7 @@
        - CartridgeAntiMateriel
        - CartridgeCaselessRifle
        - MagazineBoxMagnumAP
-       - MagazineBoxAntiMateriel
+       - MagazineBoxAntiMaterielBig
        - MagazineBoxCaselessRifle
        - MagazineBoxPistol
        - MagazineBoxMagnum
@@ -356,6 +356,24 @@
       - WeaponAdvancedLaser
       - WeaponLaserCannon
       - WeaponXrayCannon
+      - WeaponDisablerSMG
+      - ClothingHandsGlovesMagnetic
+      - ClothingHandsGlovesMagneticAdvanced
+      - ClothingEyesGlassesSecurity
+      - ExplosivePayload
+      - FlashPayload
+      - PowerCageSmall
+      - PowerCageMedium
+      - PowerCageHigh
+      - ShuttleGunSvalinnMachineGunCircuitboard
+      - ShuttleGunPerforatorCircuitboard
+      - ShuttleGunFriendshipCircuitboard
+      - ShuttleGunDusterCircuitboard
+      - TelescopicShield
+      - Truncheon
+      - MagazineGrenadeEmpty
+      - GrenadeEMP
+      - GrenadeFlash
   - type: BluespaceStorage
 
 - type: entity
@@ -780,7 +798,7 @@
      - CartridgeAntiMateriel
      - CartridgeCaselessRifle
      - MagazineBoxMagnumAP
-     - MagazineBoxAntiMateriel
+     - MagazineBoxAntiMaterielBig
      - MagazineBoxCaselessRifle
   - type: BluespaceStorage
 
@@ -827,7 +845,7 @@
         - CartridgeAntiMateriel
         - CartridgeCaselessRifle
         - MagazineBoxMagnumAP
-        - MagazineBoxAntiMateriel
+        - MagazineBoxAntiMaterielBig
         - MagazineBoxCaselessRifle
     - type: BluespaceStorage
 

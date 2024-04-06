@@ -20,5 +20,6 @@
   id: TimeBeaconAnchor
   name: time beacon anchor
   description: Fuck!
+  noSpawn: true
   components:
   - type: TimeBeaconAnchor

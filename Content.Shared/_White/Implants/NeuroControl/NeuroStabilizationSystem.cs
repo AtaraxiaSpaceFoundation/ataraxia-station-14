@@ -4,7 +4,7 @@ using Content.Shared.StatusEffect;
 
 namespace Content.Shared._White.Implants.NeuroControl;
 
-public sealed class NeuroControlSystem : EntitySystem
+public sealed class NeuroStabilizationSystem : EntitySystem
 {
     [Dependency] private readonly SharedElectrocutionSystem _electrocution = default!;
 
@@ -12,13 +12,13 @@ public sealed class NeuroControlSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NeuroControlComponent, BeforeStaminaDamageEvent>(BeforeStaminaDamage);
+        SubscribeLocalEvent<NeuroStabilizationComponent, BeforeStaminaDamageEvent>(BeforeStaminaDamage);
     }
 
-    private void BeforeStaminaDamage(Entity<NeuroControlComponent> ent, ref BeforeStaminaDamageEvent args)
+    private void BeforeStaminaDamage(Entity<NeuroStabilizationComponent> ent, ref BeforeStaminaDamageEvent args)
     {
         args.Cancelled = true;
-        Electrocute(ent, (int) MathF.Round(args.Value * 2f / 3f));
+        Electrocute(ent, (int) MathF.Round(args.Value * 2f / 4f));
     }
 
     public void Electrocute(EntityUid uid, int damage, StatusEffectsComponent? status = null)

@@ -38,8 +38,8 @@
 
 - type: entity
   parent: BaseSubdermalImplant
-  id: NeuroControlImplant
-  name: neuro control implant
+  id: NeuroStabilizationImplant
+  name: neuro stabilization implant
   description: Blocks all incoming stamina damage at a cost of shock.
   noSpawn: true
   components:
@@ -47,5 +47,5 @@
     permanent: true
   - type: Tag
     tags:
-    - NeuroControl
+    - NeuroStabilization
 

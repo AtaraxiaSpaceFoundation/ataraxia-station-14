@@ -232,10 +232,10 @@
   - UplinkImplants
 
 - type: listing
-  id: NeuroControlImplanter
-  name: uplink-neuro-control
-  description: uplink-neuro-control-desc
-  productEntity: NeuroControlImplanter
+  id: NeuroStabilizationImplanter
+  name: uplink-neuro-stabilization
+  description: uplink-neuro-stabilization-desc
+  productEntity: NeuroStabilizationImplanter
   cost:
     Telecrystal: 2
   categories:

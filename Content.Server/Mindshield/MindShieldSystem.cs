@@ -44,9 +44,9 @@ public sealed class MindShieldSystem : EntitySystem
         }
 
         // WD START
-        if (_tag.HasTag(ev.Implant, NeuroControlComponent.NeuroControlTag) && ev.Implanted != null)
+        if (_tag.HasTag(ev.Implant, NeuroStabilizationComponent.NeuroStabilizationTag) && ev.Implanted != null)
         {
-            EnsureComp<NeuroControlComponent>(ev.Implanted.Value);
+            EnsureComp<NeuroStabilizationComponent>(ev.Implanted.Value);
         }
         // WD END
     }
