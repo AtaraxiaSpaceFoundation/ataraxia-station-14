@@ -20,6 +20,7 @@ gun-ballistic-cycled-empty = Разряжено
 gun-ballistic-transfer-invalid = { CAPITALIZE($ammoEntity) } нельзя поместить в { $targetEntity }!
 gun-ballistic-transfer-empty = В { CAPITALIZE($entity) } пусто.
 gun-ballistic-transfer-target-full = { CAPITALIZE($entity) } уже полностью заряжен.
+gun-ballistic-not-cycled = Не перезаряжено
 
 # CartridgeAmmo
 gun-cartridge-spent = Он [color=red]израсходован[/color].

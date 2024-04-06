@@ -209,7 +209,6 @@ public abstract partial class SharedGunSystem
 
         var shots = GetBallisticShots(component);
         Cycle(uid, component, coordinates);
-        component.Cycled = true;
 
         var text = Loc.GetString(shots == 0 ? "gun-ballistic-cycled-empty" : "gun-ballistic-cycled");
 
@@ -247,9 +246,6 @@ public abstract partial class SharedGunSystem
 
     private void OnBallisticTakeAmmo(EntityUid uid, BallisticAmmoProviderComponent component, TakeAmmoEvent args)
     {
-        if (!component.IsCycled)
-            return;
-
         for (var i = 0; i < args.Shots; i++)
         {
             EntityUid entity;
@@ -258,12 +254,21 @@ public abstract partial class SharedGunSystem
             {
                 entity = component.Entities[^1];
 
+                if (TryComp(entity, out CartridgeAmmoComponent? cartridge) && cartridge.Spent) // WD EDIT
+                {
+                    args.Reason = Loc.GetString("gun-ballistic-not-cycled");
+                    break;
+                }
+
                 args.Ammo.Add((entity, EnsureShootable(entity)));
-                if (component.AutoCycle && (!TryComp(entity, out CartridgeAmmoComponent? cartridge) || !cartridge.Spent)) // WD EDIT
+
+                if (component.AutoCycle) // WD EDIT
                 {
                     component.Entities.RemoveAt(component.Entities.Count - 1);
                     Containers.Remove(entity, component.Container);
                 }
+                else
+                    break;
             }
             else if (component.UnspawnedCount > 0)
             {
@@ -274,13 +279,10 @@ public abstract partial class SharedGunSystem
                 {
                     component.Entities.Add(entity);
                     Containers.Insert(entity, component.Container);
+                    break;
                 }
             }
         }
-
-        //un-cycle the firearm
-        if (!component.AutoCycle)
-            component.Cycled = false;
 
         UpdateBallisticAppearance(uid, component);
         Dirty(uid, component);
