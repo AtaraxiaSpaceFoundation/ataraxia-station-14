@@ -602,7 +602,7 @@
   suffix: Agent
   components:
   - type: PresetIdCard
-    job: ассистент
+    job: Passenger
   - type: Access
     tags:
     - Maintenance

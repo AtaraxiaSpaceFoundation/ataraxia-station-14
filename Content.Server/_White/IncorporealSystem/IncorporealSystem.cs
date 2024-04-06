@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared.Eye;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
@@ -16,13 +16,13 @@ public sealed class IncorporealSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<IncorporealComponent, ComponentStartup>(OnComponentInit);
         SubscribeLocalEvent<IncorporealComponent, ComponentShutdown>(OnComponentRemoved);
         SubscribeLocalEvent<IncorporealComponent, RefreshMovementSpeedModifiersEvent>(OnRefresh);
-
     }
 
     private void OnComponentInit(EntityUid uid, IncorporealComponent component, ComponentStartup args)
@@ -37,8 +37,8 @@ public sealed class IncorporealSystem : EntitySystem
 
         if (TryComp<VisibilityComponent>(uid, out var visibility))
         {
-            _visibilitySystem.AddLayer(uid, visibility, (int) VisibilityFlags.Ghost, false);
-            _visibilitySystem.RemoveLayer(uid, visibility, (int) VisibilityFlags.Normal, false);
+            _visibilitySystem.AddLayer((uid, visibility), (int) VisibilityFlags.Ghost, false);
+            _visibilitySystem.RemoveLayer((uid, visibility), (int) VisibilityFlags.Normal, false);
             _visibilitySystem.RefreshVisibility(uid);
         }
 
@@ -60,14 +60,13 @@ public sealed class IncorporealSystem : EntitySystem
 
         if (TryComp<VisibilityComponent>(uid, out var visibility))
         {
-            _visibilitySystem.RemoveLayer(uid, visibility, (int) VisibilityFlags.Ghost, false);
-            _visibilitySystem.AddLayer(uid, visibility, (int) VisibilityFlags.Normal, false);
+            _visibilitySystem.RemoveLayer((uid, visibility), (int) VisibilityFlags.Ghost, false);
+            _visibilitySystem.AddLayer((uid, visibility), (int) VisibilityFlags.Normal, false);
             _visibilitySystem.RefreshVisibility(uid);
         }
 
         component.MovementSpeedBuff = 1;
-
-        Spawn("EffectEmpPulse", Transform(uid).Coordinates);
+        Spawn("EffectEmpPulse", _transform.GetMapCoordinates(uid));
         _stealth.SetVisibility(uid, 1);
         RemComp<StealthComponent>(uid);
         _movement.RefreshMovementSpeedModifiers(uid);

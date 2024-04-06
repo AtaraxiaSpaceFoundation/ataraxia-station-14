@@ -177,19 +177,6 @@
     state: icon
 
 - type: construction
-  name: improvised explosive device
-  id: improvisedexplosive
-  graph: ImprovisedExplosive
-  startNode: start
-  targetNode: ied
-  category: construction-category-weapons
-  objectType: Item
-  description: A weak, improvised incendiary device.
-  icon:
-    sprite: Objects/Weapons/Bombs/ied.rsi
-    state: icon
-
-- type: construction
   name: cotton woven cloth
   id: CottonWovenCloth
   graph: CottonObjects
