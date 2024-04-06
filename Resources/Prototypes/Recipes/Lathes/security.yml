@@ -315,6 +315,15 @@
     Plastic: 300
 
 - type: latheRecipe
+  id: MagazineBoxPistolRubber
+  result: MagazineBoxPistolRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 350
+    Plastic: 300
+
+- type: latheRecipe
   id: MagazineBoxMagnum
   result: MagazineBoxMagnum
   category: Ammo
@@ -330,6 +339,15 @@
   materials:
     Steel: 500
     Plastic: 700
+
+- type: latheRecipe
+  id: MagazineBoxMagnumRubber
+  result: MagazineBoxMagnumRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 350
+    Plastic: 300
 
 - type: latheRecipe
   id: MagazineRifle
@@ -365,6 +383,15 @@
     Plastic: 550
 
 - type: latheRecipe
+  id: MagazineBoxRifleRubber
+  result: MagazineBoxRifleRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 350
+    Plastic: 600
+
+- type: latheRecipe
   id: MagazineBoxLightRifle
   result: MagazineBoxLightRifle
   category: Ammo
@@ -380,6 +407,15 @@
   materials:
     Steel: 350
     Plastic: 550
+
+- type: latheRecipe
+  id: MagazineBoxLightRifleRubber
+  result: MagazineBoxLightRifleRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 350
+    Plastic: 600
 
 - type: latheRecipe
   id: SpeedLoaderMagnum
