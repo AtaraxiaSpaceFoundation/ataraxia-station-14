@@ -67,6 +67,7 @@
   - type: Wieldable
     wieldTime: 0
     forceTwoHanded: True
+  - type: Telescope
 
 - type: entity
   name: musket
