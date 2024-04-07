@@ -175,7 +175,9 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         if (TryComp<ActorComponent>(uid, out var actor))
         {
-            cultistsRule.CultistsCache.Add(MetaData(uid).EntityName, actor.PlayerSession.Name);
+            var name = MetaData(uid).EntityName;
+            if (!cultistsRule.CultistsCache.ContainsKey(name))
+                cultistsRule.CultistsCache.Add(name, actor.PlayerSession.Name);
         }
 
         UpdateCultistsAppearance(cultistsRule);
@@ -451,12 +453,15 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             return false;
         }
 
-        var cultistComponent = new CultistRoleComponent
+        if (!_roleSystem.MindHasRole<CultistRoleComponent>(mindId))
         {
-            PrototypeId = cultistRule.CultistRolePrototype
-        };
+            var cultistComponent = new CultistRoleComponent
+            {
+                PrototypeId = cultistRule.CultistRolePrototype
+            };
 
-        _roleSystem.MindAddRole(mindId, cultistComponent, mind);
+            _roleSystem.MindAddRole(mindId, cultistComponent, mind);
+        }
         EnsureComp<CultistComponent>(playerEntity);
 
         _factionSystem.RemoveFaction(playerEntity, "NanoTrasen", false);

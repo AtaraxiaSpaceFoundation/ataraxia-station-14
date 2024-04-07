@@ -1,11 +1,13 @@
 using System.Threading;
+using Content.Server.Objectives.Components;
 using Content.Server.Popups;
+using Content.Server.Roles;
 using Content.Server.Stunnable;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
+using Content.Shared.Mind;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Shared.Prototypes;
@@ -69,5 +71,20 @@ public sealed partial class DeconvertCultist : ReagentEffect
 
         entityManager.RemoveComponent<CultistComponent>(uid);
         entityManager.RemoveComponent<PentagramComponent>(uid);
+
+        var mindSystem = entityManager.System<SharedMindSystem>();
+        var roleSystem = entityManager.System<RoleSystem>();
+
+        if (!mindSystem.TryGetMind(uid, out var mindId, out var mind))
+            return;
+
+        var objectives = mind.Objectives.FindAll(entityManager.HasComponent<PickCultTargetComponent>);
+        foreach (var obj in objectives)
+        {
+            mindSystem.TryRemoveObjective(mindId, mind, mind.Objectives.IndexOf(obj));
+        }
+
+        if (roleSystem.MindHasRole<CultistRoleComponent>(mindId))
+            roleSystem.MindRemoveRole<CultistRoleComponent>(mindId);
     }
 }
