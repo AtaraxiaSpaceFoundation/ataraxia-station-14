@@ -17,6 +17,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly IClyde _displayManager = default!;
 
     public override void Update(float frameTime)
     {
@@ -29,7 +30,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
 
         if (!TryComp<HandsComponent>(player, out var hands) ||
             !TryComp<TelescopeComponent>(hands.ActiveHandEntity, out var telescope) ||
-            !TryComp<EyeComponent>(player.Value, out var eye) || !TryComp(player.Value, out TransformComponent? xform))
+            !TryComp<EyeComponent>(player.Value, out var eye))
             return;
 
         var offset = Vector2.Zero;
@@ -44,21 +45,26 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
         }
 
         var mousePos = _input.MouseScreenPosition.Position;
-        var playerPos = _eyeManager.CoordinatesToScreen(xform.Coordinates).Position;
+        var centerPos = _eyeManager.WorldToScreen(eye.Eye.Position.Position + eye.Offset);
 
-        var diff = mousePos - playerPos;
+        var diff = mousePos - centerPos;
         var len = diff.Length();
 
-        if (len > telescope.MaxLength)
+        var maxLength = _displayManager.ScreenSize.Y / 2.5f;
+        var minLength = maxLength / 5f;
+
+        if (len > maxLength)
         {
-            diff *= telescope.MaxLength / len;
-            len = telescope.MaxLength;
+            diff *= maxLength / len;
+            len = maxLength;
         }
 
-        if (len > telescope.MinLength)
+        var divisor = maxLength / 10f * telescope.Divisor;
+
+        if (len > minLength)
         {
-            diff -= diff * telescope.MinLength / len;
-            offset = new Vector2(diff.X / telescope.Divisor, -diff.Y / telescope.Divisor);
+            diff -= diff * minLength / len;
+            offset = new Vector2(diff.X / divisor, -diff.Y / divisor);
             offset = new Angle(-eye.Rotation.Theta).RotateVec(offset);
         }
 
