@@ -1,3 +1,4 @@
 ent-Bola = бола
     .desc = Скрепленные с металлом кабельные стяжки.
-    .suffix = { "" }
+ent-CultBola = { ent-Bola }
+    .desc = { ent-Bola.desc }

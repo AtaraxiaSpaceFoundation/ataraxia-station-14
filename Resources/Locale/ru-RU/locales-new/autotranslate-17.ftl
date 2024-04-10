@@ -1,5 +1,3 @@
-ent-TrashBananaPeelExplosive = банановая кожура
-   .desc = ""
 ent-FoodCabbage = капуста
    .desc = Фууууууууу. Капуста.
 ent-FoodGarlic = чеснок
