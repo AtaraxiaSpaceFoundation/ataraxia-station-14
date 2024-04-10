@@ -46,7 +46,8 @@
     wideAnimationRotation: 90
     damage:
       types:
-        Blunt: 10
+        Blunt: 15
+        Structural: 40
     soundHit:
       collection: MetalThud
 
@@ -87,4 +88,5 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 14
+        Blunt: 20
+        Structural: 60
