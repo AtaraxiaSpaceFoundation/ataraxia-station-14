@@ -8197,6 +8197,7 @@ entities:
         chunkSize: 4
     - type: BecomesStation
       id: Meta
+    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: GasTileOverlay
@@ -138854,6 +138855,34 @@ entities:
     components:
     - type: Transform
       pos: -0.5,44.5
+      parent: 5350
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 10421
+    components:
+    - type: Transform
+      pos: 56.5,15.5
+      parent: 5350
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 10497
+    components:
+    - type: Transform
+      pos: 0.5,44.5
+      parent: 5350
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 2686
+    components:
+    - type: Transform
+      pos: -33.5,-34.5
+      parent: 5350
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 10420
+    components:
+    - type: Transform
+      pos: 28.5,-55.5
       parent: 5350
 - proto: SpawnPointServiceWorker
   entities:

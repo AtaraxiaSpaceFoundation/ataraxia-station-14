@@ -10929,6 +10929,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Core
+    - type: MaterialStorage
   - uid: 17546
     components:
     - type: MetaData
@@ -115424,6 +115425,34 @@ entities:
     components:
     - type: Transform
       pos: -7.5,33.5
+      parent: 2
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 21550
+    components:
+    - type: Transform
+      pos: -6.5,-16.5
+      parent: 2
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 21551
+    components:
+    - type: Transform
+      pos: -6.5,31.5
+      parent: 2
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 21552
+    components:
+    - type: Transform
+      pos: 54.5,2.5
+      parent: 2
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 21553
+    components:
+    - type: Transform
+      pos: 68.5,-12.5
       parent: 2
 - proto: SpawnPointServiceWorker
   entities:

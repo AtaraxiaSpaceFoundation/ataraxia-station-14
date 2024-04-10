@@ -278,6 +278,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Packed
+    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
@@ -68847,6 +68848,34 @@ entities:
     components:
     - type: Transform
       pos: 37.5,18.5
+      parent: 2
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 6872
+    components:
+    - type: Transform
+      pos: 22.5,-30.5
+      parent: 2
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 5652
+    components:
+    - type: Transform
+      pos: 36.5,18.5
+      parent: 2
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 6871
+    components:
+    - type: Transform
+      pos: 72.5,7.5
+      parent: 2
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 5653
+    components:
+    - type: Transform
+      pos: 55.5,23.5
       parent: 2
 - proto: SpawnPointServiceWorker
   entities:

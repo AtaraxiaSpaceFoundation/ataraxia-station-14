@@ -158,6 +158,7 @@ entities:
     - type: OccluderTree
     - type: BecomesStation
       id: AtomStation
+    - type: MaterialStorage
     - type: SpreaderGrid
     - type: Shuttle
     - type: GridPathfinding

@@ -5466,6 +5466,7 @@ entities:
     - type: FTLDestination
     - type: BecomesStation
       id: Train
+    - type: MaterialStorage
 - proto: AccordionInstrument
   entities:
   - uid: 12393
@@ -88154,6 +88155,34 @@ entities:
     components:
     - type: Transform
       pos: -0.5,-346.5
+      parent: 2
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 14788
+    components:
+    - type: Transform
+      pos: 5.5,-249.5
+      parent: 2
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 15091
+    components:
+    - type: Transform
+      pos: -4.5,-339.5
+      parent: 2
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 14690
+    components:
+    - type: Transform
+      pos: 5.5,-172.5
+      parent: 2
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 15090
+    components:
+    - type: Transform
+      pos: -4.5,-301.5
       parent: 2
 - proto: SpawnPointServiceWorker
   entities:

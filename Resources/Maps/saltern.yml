@@ -236,6 +236,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Saltern
+    - type: MaterialStorage
     - type: GridAtmosphere
       version: 2
       data:
@@ -58564,6 +58565,34 @@ entities:
     components:
     - type: Transform
       pos: -11.5,14.5
+      parent: 31
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 11439
+    components:
+    - type: Transform
+      pos: 34.5,-1.5
+      parent: 31
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 11437
+    components:
+    - type: Transform
+      pos: -11.5,15.5
+      parent: 31
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 9206
+    components:
+    - type: Transform
+      pos: 21.5,-5.5
+      parent: 31
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 11438
+    components:
+    - type: Transform
+      pos: -15.5,-26.5
       parent: 31
 - proto: SpawnPointServiceWorker
   entities:

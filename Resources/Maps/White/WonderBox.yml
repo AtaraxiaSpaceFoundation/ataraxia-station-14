@@ -13461,6 +13461,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: WonderBoxStation
+    - type: MaterialStorage
     - type: SpreaderGrid
     - type: GridPathfinding
 - proto: AccordionInstrument

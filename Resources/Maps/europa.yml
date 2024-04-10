@@ -12813,6 +12813,7 @@ entities:
     - type: LoadedMap
     - type: BecomesStation
       id: Europa
+    - type: MaterialStorage
 - proto: AccordionInstrument
   entities:
   - uid: 2598
@@ -74023,6 +74024,34 @@ entities:
     components:
     - type: Transform
       pos: -18.5,9.5
+      parent: 1
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 13637
+    components:
+    - type: Transform
+      pos: -15.5,-11.5
+      parent: 1
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 13638
+    components:
+    - type: Transform
+      pos: -24.5,11.5
+      parent: 1
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 13636
+    components:
+    - type: Transform
+      pos: 14.5,51.5
+      parent: 1
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 13634
+    components:
+    - type: Transform
+      pos: 12.5,13.5
       parent: 1
 - proto: SpawnPointServiceWorker
   entities:

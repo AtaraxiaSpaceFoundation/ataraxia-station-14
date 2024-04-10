@@ -459,6 +459,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Bagel
+    - type: MaterialStorage
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
@@ -129825,6 +129826,34 @@ entities:
     components:
     - type: Transform
       pos: -33.5,-16.5
+      parent: 60
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 7668
+    components:
+    - type: Transform
+      pos: -0.5,21.5
+      parent: 60
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 7229
+    components:
+    - type: Transform
+      pos: -33.5,-20.5
+      parent: 60
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 8211
+    components:
+    - type: Transform
+      pos: 41.5,-19.5
+      parent: 60
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 7230
+    components:
+    - type: Transform
+      pos: -43.5,-7.5
       parent: 60
 - proto: SpawnPointServiceWorker
   entities:

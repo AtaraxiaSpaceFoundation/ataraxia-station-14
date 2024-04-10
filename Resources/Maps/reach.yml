@@ -99,6 +99,7 @@ entities:
       fixtures: {}
     - type: BecomesStation
       id: Reach
+    - type: MaterialStorage
     - type: OccluderTree
     - type: Shuttle
     - type: GridPathfinding
@@ -11939,6 +11940,34 @@ entities:
     components:
     - type: Transform
       pos: 17.5,-3.5
+      parent: 407
+- proto: SpawnPointSeniorEngineer
+  entities:
+  - uid: 2279
+    components:
+    - type: Transform
+      pos: -17.5,3.5
+      parent: 407
+- proto: SpawnPointSeniorOfficer
+  entities:
+  - uid: 2211
+    components:
+    - type: Transform
+      pos: 15.5,-4.5
+      parent: 407
+- proto: SpawnPointSeniorPhysician
+  entities:
+  - uid: 2210
+    components:
+    - type: Transform
+      pos: 11.5,-1.5
+      parent: 407
+- proto: SpawnPointSeniorResearcher
+  entities:
+  - uid: 2278
+    components:
+    - type: Transform
+      pos: -2.5,11.5
       parent: 407
 - proto: SpawnPointStationEngineer
   entities:
