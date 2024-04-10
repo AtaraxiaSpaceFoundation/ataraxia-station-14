@@ -31,7 +31,7 @@ public sealed partial class KeyholeSystem : EntitySystem
 
     private void OnKeyInit(EntityUid uid, KeyComponent component, ComponentInit ev)
     {
-        component.FormId = _random.Next(1000);
+        component.FormId ??= _random.Next(1000);
     }
 
     private void OnKeyInsert(EntityUid uid, KeyComponent component, AfterInteractEvent ev)
@@ -40,7 +40,7 @@ public sealed partial class KeyholeSystem : EntitySystem
         {
             return;
         }
-        
+
         if (TryComp<KeyformComponent>(ev.Target, out var keyformComponent))
             OnKeyInsertForm(uid, component, keyformComponent, ev);
 

@@ -19,18 +19,15 @@
           - MachineLayer
   - type: Lathe
   - type: MaterialStorage
-    whitelist:
-      tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
-      entities:
-      - Steel
-      - Glass
-      - Gold
-      - Plasma
-      - Uranium
-      - Plastic
+    materialWhiteList:
+    - Steel
+    - Glass
+    - Gold
+    - Plasma
+    - Uranium
+    - Gold
+    - Silver
+    - Plastic
   - type: Destructible
     thresholds:
     - trigger:
@@ -207,7 +204,6 @@
       - ShellShotgunBeanbag
       - CartridgeRifleRubber
       - CartridgeLightRifleRubber
-      - MagazineBoxPistolRubber
       - MagazineBoxMagnumRubber
       - MagazineBoxRifleRubber
       - MagazineBoxLightRifleRubber

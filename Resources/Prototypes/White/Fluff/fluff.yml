@@ -1224,6 +1224,7 @@
     - type: ContainerContainer
       containers:
         toggleable-clothing: !type:ContainerSlot
+        storagebase: !type:Container
     - type: PointLight
       radius: 2
       energy: 2

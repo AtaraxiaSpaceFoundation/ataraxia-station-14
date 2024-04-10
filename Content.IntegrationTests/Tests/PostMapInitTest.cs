@@ -63,7 +63,14 @@ namespace Content.IntegrationTests.Tests
             "MeteorArena",
             "Atlas",
             "Reach",
-            "Train"
+            "Train",
+            "Atom", 
+            "DryDock",
+            "Polaris",
+            "Scoupidia",
+            "Triumph",
+            "Void",
+            "WonderBox"
         };
 
         /// <summary>
@@ -105,6 +112,7 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to delete map {mapFile}", ex);
                 }
             });
+
             await server.WaitRunTicks(1);
 
             await pair.CleanReturnAsync();
@@ -120,7 +128,8 @@ namespace Content.IntegrationTests.Tests
             var mapFolder = new ResPath("/Maps");
             var maps = resourceManager
                 .ContentFindFiles(mapFolder)
-                .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
+                .Where(filePath =>
+                    filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
                 .ToArray();
 
             foreach (var map in maps)
@@ -149,6 +158,7 @@ namespace Content.IntegrationTests.Tests
 
                 Assert.That(postMapInit, Is.False, $"Map {map.Filename} was saved postmapinit");
             }
+
             await pair.CleanReturnAsync();
         }
 
@@ -214,9 +224,10 @@ namespace Content.IntegrationTests.Tests
                     Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
                     EntityUid shuttle = default!;
                     Assert.DoesNotThrow(() =>
-                    {
-                        shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
-                    }, $"Failed to load {shuttlePath}");
+                        {
+                            shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
+                        }, $"Failed to load {shuttlePath}");
+
                     Assert.That(
                         shuttleSystem.TryFTLDock(shuttle,
                             entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
@@ -244,10 +255,12 @@ namespace Content.IntegrationTests.Tests
                     var jobList = entManager.GetComponent<StationJobsComponent>(station).RoundStartJobList
                         .Where(x => x.Value != 0)
                         .Select(x => x.Key);
+
                     var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
                         .Where(spawnpoint => spawnpoint.SpawnType == SpawnPointType.Job)
                         .Select(spawnpoint => spawnpoint.Job.ID)
                         .Distinct();
+
                     List<string> missingSpawnPoints = new();
                     foreach (var spawnpoint in jobList.Except(spawnPoints))
                     {
@@ -268,12 +281,11 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to delete map {mapProto}", ex);
                 }
             });
+
             await server.WaitRunTicks(1);
 
             await pair.CleanReturnAsync();
         }
-
-
 
         private static int GetCountLateSpawn<T>(List<EntityUid> gridUids, IEntityManager entManager)
             where T : ISpawnPoint, IComponent
@@ -286,8 +298,8 @@ namespace Content.IntegrationTests.Tests
                 var spawner = (ISpawnPoint) comp;
 
                 if (spawner.SpawnType is not SpawnPointType.LateJoin
-                || xform.GridUid == null
-                || !gridUids.Contains(xform.GridUid.Value))
+                    || xform.GridUid == null
+                    || !gridUids.Contains(xform.GridUid.Value))
                 {
                     continue;
                 }
@@ -336,7 +348,8 @@ namespace Content.IntegrationTests.Tests
             var mapFolder = new ResPath("/Maps");
             var maps = resourceManager
                 .ContentFindFiles(mapFolder)
-                .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
+                .Where(filePath =>
+                    filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
                 .ToArray();
 
             var mapNames = new List<string>();
@@ -350,6 +363,7 @@ namespace Content.IntegrationTests.Tests
                 {
                     continue;
                 }
+
                 mapNames.Add(rootedPath.ToString());
             }
 

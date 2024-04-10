@@ -4,8 +4,8 @@
   description: There is a small label that reads "For Emergency use only" along with details for safe use of the axe. As if.
   components:
   - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: StructuralInorganic
+    damageContainer: StructuralInorganic
+    damageModifierSet: RGlass
   - type: Destructible
     thresholds:
       - trigger:

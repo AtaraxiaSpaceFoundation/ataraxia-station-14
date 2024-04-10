@@ -6,7 +6,7 @@
   cost:
     Telecrystal: 2
   categories:
-    - UplinkArmor
+    - UplinkWearables
 
 - type: listing
   id: UplinkMiniEbow
@@ -17,7 +17,7 @@
   cost:
     Telecrystal: 10
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -34,7 +34,7 @@
   cost:
     Telecrystal: 6
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -50,7 +50,7 @@
   cost:
     Telecrystal: 16
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   saleLimit: 1
 
 - type: listing
@@ -103,7 +103,7 @@
   cost:
     Telecrystal: 3
   categories:
-  - UplinkArmor
+  - UplinkWearables
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -119,7 +119,7 @@
   cost:
     Telecrystal: 3
   categories:
-  - UplinkArmor
+  - UplinkWearables
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
@@ -135,7 +135,7 @@
 #  cost:
 #    Telecrystal: 20
 #  categories:
-#  - UplinkWeapons
+#  - UplinkWeaponry
 #  saleLimit: 1
 
 - type: listing
@@ -147,7 +147,7 @@
   cost:
     Telecrystal: 10
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:

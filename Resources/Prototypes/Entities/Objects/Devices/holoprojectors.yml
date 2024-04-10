@@ -8,6 +8,9 @@
     storedRotation: -90
   - type: HolosignProjector
   - type: UseDelay
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
   - type: Sprite
     sprite: Objects/Devices/Holoprojectors/custodial.rsi
     state: icon
