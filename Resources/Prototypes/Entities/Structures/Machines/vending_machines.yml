@@ -384,7 +384,6 @@
     ejectDelay: 5
     soundVend: /Audio/Machines/machine_vend_hot_drink.ogg
     priceMultiplier: 1.0
-    initialStockQuality: 0.33
   - type: Advertise
     pack: HotDrinksMachineAds
   - type: SpeakOnUIClosed
@@ -425,7 +424,6 @@
     denyState: deny-unshaded
     ejectDelay: 1.9
     priceMultiplier: 1.0
-    initialStockQuality: 0.33
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
@@ -575,7 +573,6 @@
     denyState: deny-unshaded
     ejectDelay: 1.9
     priceMultiplier: 1.0
-    initialStockQuality: 0.33
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: Speech
@@ -611,7 +608,6 @@
     denyState: deny-unshaded
     ejectDelay: 1.9
     priceMultiplier: 1.0
-    initialStockQuality: 0.33
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
@@ -648,7 +644,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
-    initialStockQuality: 0.33
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
@@ -745,7 +740,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    initialStockQuality: 0.33
     priceMultiplier: 1.0
   - type: Advertise
     pack: DiscountDansAds
@@ -962,7 +956,6 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
-    initialStockQuality: 0.33
     priceMultiplier: 1.0
   - type: Advertise
     pack: GetmoreChocolateCorpAds
@@ -1111,7 +1104,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     priceMultiplier: 1.0
-    initialStockQuality: 0.33
   - type: Advertise
     pack: BodaAds
   - type: SpeakOnUIClosed
@@ -1320,7 +1312,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    initialStockQuality: 0.33
     priceMultiplier: 1.0
   - type: Advertise
     pack: ChangAds
@@ -1387,7 +1378,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    initialStockQuality: 0.33
     priceMultiplier: 1.0
   - type: Advertise
     pack: DonutAds
@@ -2058,7 +2048,6 @@
     ejectDelay: 1.9
     soundVend: /Audio/Items/bikehorn.ogg
     priceMultiplier: 1.0
-    initialStockQuality: 1.0 # Nobody knows how Honk does it, but their vending machines always seem well-stocked...
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/happyhonk.rsi
     layers:

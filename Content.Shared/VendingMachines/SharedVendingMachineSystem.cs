@@ -6,7 +6,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
-using Robust.Shared.Random;
 
 namespace Content.Shared.VendingMachines;
 
@@ -17,7 +16,6 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] protected readonly IRobustRandom Randomizer = default!;
 
     public override void Initialize()
     {
@@ -28,13 +26,10 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
     protected virtual void OnComponentInit(EntityUid uid, VendingMachineComponent component, ComponentInit args)
     {
-        RestockInventoryFromPrototype(uid, component, component.InitialStockQuality);
+        RestockInventoryFromPrototype(uid, component);
     }
 
-    public void RestockInventoryFromPrototype(
-        EntityUid uid,
-        VendingMachineComponent? component = null,
-        float restockQuality = 1f)
+    public void RestockInventoryFromPrototype(EntityUid uid, VendingMachineComponent? component = null)
     {
         if (!Resolve(uid, ref component))
         {
@@ -44,9 +39,9 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         if (!PrototypeManager.TryIndex(component.PackPrototypeId, out VendingMachineInventoryPrototype? packPrototype))
             return;
 
-        AddInventoryFromPrototype(uid, packPrototype.StartingInventory, InventoryType.Regular, component, restockQuality);
-        AddInventoryFromPrototype(uid, packPrototype.EmaggedInventory, InventoryType.Emagged, component, restockQuality);
-        AddInventoryFromPrototype(uid, packPrototype.ContrabandInventory, InventoryType.Contraband, component, restockQuality);
+        AddInventoryFromPrototype(uid, packPrototype.StartingInventory, InventoryType.Regular, component);
+        AddInventoryFromPrototype(uid, packPrototype.EmaggedInventory, InventoryType.Emagged, component);
+        AddInventoryFromPrototype(uid, packPrototype.ContrabandInventory, InventoryType.Contraband, component);
     }
 
     /// <summary>
@@ -76,7 +71,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     public List<VendingMachineInventoryEntry> GetAvailableInventory(EntityUid uid, VendingMachineComponent? component = null)
     {
         if (!Resolve(uid, ref component))
-            return [];
+            return new();
 
         return GetAllInventory(uid, component).Where(inventoryEntry => inventoryEntry.Amount > 0).ToList();
     }
@@ -85,8 +80,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         EntityUid uid,
         Dictionary<string, uint>? entries,
         InventoryType type,
-        VendingMachineComponent? component = null,
-        float restockQuality = 1.0f)
+        VendingMachineComponent? component = null)
     {
         if (!Resolve(uid, ref component) || entries == null)
         {
@@ -113,15 +107,6 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         {
             if (PrototypeManager.TryIndex<EntityPrototype>(id, out var proto)) // WD EDIT
             {
-                var restock = amount;
-                var chanceOfMissingStock = 1 - restockQuality;
-
-                var result = Randomizer.NextFloat(0, 1);
-                if (result < chanceOfMissingStock)
-                {
-                    restock = (uint) Math.Floor(amount * result / chanceOfMissingStock);
-                }
-
                 if (inventory.TryGetValue(id, out var entry))
                     // Prevent a machine's stock from going over three times
                     // the prototype's normal amount. This is an arbitrary
@@ -129,11 +114,11 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                     // restocking a machine who doesn't want to force vend out
                     // all the items just to restock one empty slot without
                     // losing the rest of the restock.
-                    entry.Amount = Math.Min(entry.Amount + amount, 3 * restock);
+                    entry.Amount = Math.Min(entry.Amount + amount, 3 * amount);
                 else // WD EDIT START
                 {
                     var price = GetEntryPrice(proto);
-                    inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock, price));
+                    inventory.Add(id, new VendingMachineInventoryEntry(type, id, amount, price));
                 } // WD EDIT END
             }
         }
