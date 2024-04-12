@@ -24,7 +24,7 @@
         - back
     - type: DisarmMalus
     - type: Crit
-      critChance: 40
+      critChance: 50
       critMultiplier: 2
       isBloodDagger: true
 
