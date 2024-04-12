@@ -11,6 +11,7 @@ using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Components;
 using Robust.Server.Audio;
+using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -28,6 +29,7 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly PullingSystem _pullingSystem = default!;
+    [Dependency] private readonly ContainerSystem _containerSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
@@ -88,6 +90,12 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
             TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
         {
             _pullingSystem.TryStopPull(subjectPulling);
+        }
+
+        if (_containerSystem.IsEntityInContainer(args.User))
+        {
+            if(!_containerSystem.TryRemoveFromContainer(args.User))
+                return;
         }
 
         var oldCoords = xform.Coordinates;
