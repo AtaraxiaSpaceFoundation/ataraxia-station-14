@@ -1,9 +1,6 @@
-using Content.Shared.Examine;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Preferences;
 using Content.Shared.Verbs;
 using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Prototypes;
@@ -18,20 +15,10 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<HumanoidAppearanceComponent, HumanoidMarkingModifierMarkingSetMessage>(OnMarkingsSet);
         SubscribeLocalEvent<HumanoidAppearanceComponent, HumanoidMarkingModifierBaseLayersSetMessage>(OnBaseLayersSet);
         SubscribeLocalEvent<HumanoidAppearanceComponent, GetVerbsEvent<Verb>>(OnVerbsRequest);
-        SubscribeLocalEvent<HumanoidAppearanceComponent, ExaminedEvent>(OnExamined);
-    }
-
-    private void OnExamined(EntityUid uid, HumanoidAppearanceComponent component, ExaminedEvent args)
-    {
-        var identity = Identity.Entity(uid, EntityManager);
-        var species = GetSpeciesRepresentation(component.Species).ToLower();
-        var age = GetAgeRepresentation(component.Species, component.Age);
-
-        args.PushText(Loc.GetString("humanoid-appearance-component-examine", ("user", identity), ("age", age),
-            ("species", species)));
     }
 
     // this was done enough times that it only made sense to do it here
@@ -212,30 +199,5 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         }
 
         Dirty(uid, humanoid);
-    }
-
-    /// <summary>
-    /// Takes ID of the species prototype, returns UI-friendly name of the species.
-    /// </summary>
-    public string GetSpeciesRepresentation(string speciesId)
-    {
-        return Loc.GetString(_prototypeManager.TryIndex<SpeciesPrototype>(speciesId, out var species)
-            ? species.Name
-            : "humanoid-appearance-component-unknown-species");
-    }
-
-    public string GetAgeRepresentation(string species, int age)
-    {
-        _prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype);
-
-        if (speciesPrototype != null)
-        {
-            return age < speciesPrototype.YoungAge
-                ? Loc.GetString("identity-age-young")
-                : Loc.GetString(age < speciesPrototype.OldAge ? "identity-age-middle-aged" : "identity-age-old");
-        }
-
-        Log.Error("Tried to get age representation of species that couldn't be indexed: " + species);
-        return Loc.GetString("identity-age-young");
     }
 }

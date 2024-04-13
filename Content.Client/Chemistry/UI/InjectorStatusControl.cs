@@ -15,9 +15,10 @@ public sealed class InjectorStatusControl : Control
     private readonly SharedSolutionContainerSystem _solutionContainers;
     private readonly RichTextLabel _label;
 
-    private FixedPoint2 _prevVolume;
-    private FixedPoint2 _prevMaxVolume;
-    private InjectorToggleMode _prevToggleState;
+    private FixedPoint2 PrevVolume;
+    private FixedPoint2 PrevMaxVolume;
+    private FixedPoint2 PrevTransferAmount;
+    private InjectorToggleMode PrevToggleState;
 
     public InjectorStatusControl(Entity<InjectorComponent> parent, SharedSolutionContainerSystem solutionContainers)
     {
@@ -35,14 +36,16 @@ public sealed class InjectorStatusControl : Control
             return;
 
         // only updates the UI if any of the details are different than they previously were
-        if (_prevVolume == solution.Volume
-            && _prevMaxVolume == solution.MaxVolume
-            && _prevToggleState == _parent.Comp.ToggleState)
+        if (PrevVolume == solution.Volume
+            && PrevMaxVolume == solution.MaxVolume
+            && PrevTransferAmount == _parent.Comp.TransferAmount
+            && PrevToggleState == _parent.Comp.ToggleState)
             return;
 
-        _prevVolume = solution.Volume;
-        _prevMaxVolume = solution.MaxVolume;
-        _prevToggleState = _parent.Comp.ToggleState;
+        PrevVolume = solution.Volume;
+        PrevMaxVolume = solution.MaxVolume;
+        PrevTransferAmount = _parent.Comp.TransferAmount;
+        PrevToggleState = _parent.Comp.ToggleState;
 
         // Update current volume and injector state
         var modeStringLocalized = Loc.GetString(_parent.Comp.ToggleState switch

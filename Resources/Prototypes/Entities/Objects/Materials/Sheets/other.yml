@@ -12,7 +12,6 @@
   - type: Tag
     tags:
     - Sheet
-    - NoPaint
     - DroneUsable
   - type: Damageable
     damageContainer: Inorganic
@@ -112,7 +111,6 @@
   - type: Tag
     tags:
     - Sheet
-    - NoPaint
 
 - type: entity
   parent: SheetPlasma
@@ -135,7 +133,6 @@
     tags:
     - Plastic
     - Sheet
-    - NoPaint
     - DroneUsable
   - type: Material
   - type: PhysicalComposition

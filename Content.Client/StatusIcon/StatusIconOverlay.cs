@@ -4,6 +4,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using System.Numerics;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client.StatusIcon;
@@ -11,11 +12,13 @@ namespace Content.Client.StatusIcon;
 public sealed class StatusIconOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly SpriteSystem _sprite;
     private readonly TransformSystem _transform;
     private readonly StatusIconSystem _statusIcon;
+    private readonly ShaderInstance _unshadedShader;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
@@ -26,6 +29,7 @@ public sealed class StatusIconOverlay : Overlay
         _sprite = _entity.System<SpriteSystem>();
         _transform = _entity.System<TransformSystem>();
         _statusIcon = _entity.System<StatusIconSystem>();
+        _unshadedShader = _prototype.Index<ShaderPrototype>("unshaded").Instance();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -103,9 +107,16 @@ public sealed class StatusIconOverlay : Overlay
 
                 }
 
+                if (proto.IsShaded)
+                    handle.UseShader(null);
+                else
+                    handle.UseShader(_unshadedShader);
+
                 var position = new Vector2(xOffset, yOffset);
                 handle.DrawTexture(texture, position);
             }
+
+            handle.UseShader(null);
         }
     }
 }

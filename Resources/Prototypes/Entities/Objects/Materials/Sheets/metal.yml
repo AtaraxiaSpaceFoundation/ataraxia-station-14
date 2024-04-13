@@ -15,7 +15,6 @@
     tags:
     - Sheet
     - Metal
-    - NoPaint
     - DroneUsable
   - type: Damageable
     damageContainer: Inorganic

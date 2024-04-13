@@ -30,11 +30,7 @@
             <Label Text="{Loc 'id-card-console-window-job-selection-label'}" />
             <OptionButton Name="JobPresetOptionButton" />
         </GridContainer>
-        <GridContainer Name="AccessLevelGrid" Columns="5" HorizontalAlignment="Center">
-
-            <!-- Access level buttons are added here by the C# code -->
-
-        </GridContainer>
+        <Control Name="AccessLevelControlContainer" />
         <!-- WD EDIT -->
         <GridContainer Name="CurrentJobIcon" Columns="2">
             <Label Text="Текущая выбранная иконка для роли: " />

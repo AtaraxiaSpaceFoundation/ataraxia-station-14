@@ -1,5 +1,5 @@
 - type: entity
-  id: BodyBagContainer
+  id: BodyBag
   parent: BaseFoldable
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
@@ -85,7 +85,7 @@
   id: BodyBagFolded
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
-  parent: BodyBagContainer
+  parent: BodyBag
   suffix: folded
   components:
   - type: Foldable
@@ -120,6 +120,8 @@
   - type: SolutionSpiker
     sourceSolution: food
     ignoreEmpty: true
+  - type: ScoopableSolution
+    solution: food
   - type: Extractable
     grindableSolutionName: food
 

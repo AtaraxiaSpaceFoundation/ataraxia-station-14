@@ -15,7 +15,6 @@
   - type: Tag
     tags:
     - Sheet
-    - NoPaint
     - DroneUsable
   - type: Material
   - type: Damageable

@@ -9,9 +9,12 @@
         Brute:
           path:
             "/Audio/Weapons/grille_hit.ogg"
+    - type: RCDDeconstructable
+      cost: 6
+      delay: 4
+      fx: EffectRCDDeconstruct4  
     - type: Tag
       tags:
-        - RCDDeconstructWhitelist
         - DeleteWithWindows
     - type: CanBuildWindowOnTop
     - type: Sprite
@@ -123,8 +126,11 @@
       state: grille_broken
     - type: Tag
       tags:
-        - RCDDeconstructWhitelist
         - DeleteWithWindows
+    - type: RCDDeconstructable
+      cost: 6
+      delay: 4
+      fx: EffectRCDDeconstruct4
     - type: Construction
       graph: Grille
       node: grilleBroken

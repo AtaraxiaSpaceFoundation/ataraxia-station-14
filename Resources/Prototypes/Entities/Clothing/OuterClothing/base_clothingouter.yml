@@ -64,6 +64,8 @@
     sound:
       path: /Audio/White/Items/handling/cloth_drop.ogg
   # WD edit sounds end
+  - type: StaticPrice
+    price: 70
 
 - type: entity
   abstract: true

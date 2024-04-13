@@ -1,6 +1,6 @@
 using Content.Server._White.Carrying;
 using Content.Server.Popups;
-using Content.Server.Storage.Components;
+using Content.Shared.Storage.Components;
 using Content.Shared.Storage;
 using Content.Shared.Inventory;
 using Content.Shared.Hands.EntitySystems;

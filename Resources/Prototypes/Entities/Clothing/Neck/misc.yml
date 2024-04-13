@@ -82,20 +82,6 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothingNeckFlowerWreath
-  name: flower wreath
-  description: A wreath of colourful flowers.
-  components:
-  - type: Sprite
-    sprite: Clothing/Neck/Misc/flower-wreath.rsi
-  - type: Clothing
-    sprite: Clothing/Neck/Misc/flower-wreath.rsi
-  - type: Construction
-    graph: flowerwreath
-    node: flowerwreath
-
-- type: entity
-  parent: ClothingNeckBase
   id: ClothingNeckInspectorbadge
   name: inspector badge
   description: Golden inspector badge with NanoTrasen seal. Worn with pride!
