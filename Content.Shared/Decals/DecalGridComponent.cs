@@ -12,8 +12,7 @@ namespace Content.Shared.Decals
     [NetworkedComponent]
     public sealed partial class DecalGridComponent : Component
     {
-        [Access(Other = AccessPermissions.ReadExecute)]
-        [DataField(serverOnly: true)]
+        [DataField("chunkCollection", serverOnly: true)]
         public DecalGridChunkCollection ChunkCollection = new(new ());
 
         /// <summary>
@@ -25,6 +24,10 @@ namespace Content.Shared.Decals
         ///     Tick at which PVS was last toggled. Ensures that all players receive a full update when toggling PVS.
         /// </summary>
         public GameTick ForceTick { get; set; }
+
+        // client-side data. I CBF creating a separate client-side comp for this. The server can survive with some empty dictionaries.
+        public readonly Dictionary<uint, int> DecalZIndexIndex = new();
+        public readonly SortedDictionary<int, SortedDictionary<uint, Decal>> DecalRenderIndex = new();
 
         [DataDefinition]
         [Serializable, NetSerializable]

@@ -75,6 +75,19 @@
     - banged.
 
 - type: emote
+  id: Beep
+  category: Vocal
+  chatMessages: [пищит]
+  chatTriggers:
+    - писк
+    - пищит
+    - beeps.
+    - beep.
+    - beep!
+    - beeping.
+    - beeped.
+
+- type: emote
   id: Caw
   category: Vocal
   chatMessages: [воркует]

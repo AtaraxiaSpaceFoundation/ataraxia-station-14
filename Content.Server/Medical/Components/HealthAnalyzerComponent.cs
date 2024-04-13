@@ -1,5 +1,5 @@
-using Robust.Shared.Audio;
 using Content.Server._White.Items.Tricorder;
+using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Medical.Components;
@@ -7,15 +7,14 @@ namespace Content.Server.Medical.Components;
 /// <summary>
 /// After scanning, retrieves the target Uid to use with its related UI.
 /// </summary>
-[RegisterComponent, AutoGenerateComponentPause]
-[Access(typeof(HealthAnalyzerSystem), typeof(TricorderSystem), typeof(CryoPodSystem))]
+[RegisterComponent]
+[Access(typeof(HealthAnalyzerSystem), typeof(TricorderSystem))]
 public sealed partial class HealthAnalyzerComponent : Component
 {
     /// <summary>
     /// When should the next update be sent for the patient
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
-    [AutoPausedField]
     public TimeSpan NextUpdate = TimeSpan.Zero;
 
     /// <summary>

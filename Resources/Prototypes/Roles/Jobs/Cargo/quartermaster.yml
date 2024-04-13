@@ -28,7 +28,6 @@
   - Maintenance
   - Command
   - Brig
-  - Cryogenics
   special:
   - !type:AddComponentSpecial
     components:

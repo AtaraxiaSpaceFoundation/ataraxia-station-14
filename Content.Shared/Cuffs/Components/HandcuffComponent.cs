@@ -25,7 +25,7 @@ public sealed partial class HandcuffComponent : Component
     ///     The time it takes for a cuffed entity to uncuff itself.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float BreakoutTime = 15f;
+    public float BreakoutTime = 30f;
 
     /// <summary>
     ///     If an entity being cuffed is stunned, this amount of time is subtracted from the time it takes to add/remove their cuffs.
@@ -52,13 +52,14 @@ public sealed partial class HandcuffComponent : Component
     [DataField]
     public bool Removing;
 
-    /// <summary>
-    /// Whether the cuffs are currently being used to cuff someone.
-    /// We need the extra information for when the virtual item is deleted because that can happen when you simply stop
-    /// pulling them on the ground.
-    /// </summary>
-    [DataField]
-    public bool Used;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public DamageSpecifier DamageOnResist = new()
+    {
+        DamageDict = new()
+             {
+                 { "Blunt", 3.0 },
+             }
+    };
 
     /// <summary>
     ///     The path of the RSI file used for the player cuffed overlay.
@@ -95,7 +96,7 @@ public sealed partial class HandcuffComponent : Component
 }
 
 /// <summary>
-/// Event fired on the User when the User attempts to uncuff the Target.
+/// Event fired on the User when the User attempts to cuff the Target.
 /// Should generate popups on the User.
 /// </summary>
 [ByRefEvent]

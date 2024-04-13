@@ -6,7 +6,6 @@ using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared._White;
 using Content.Shared._White.Mood;
-using Content.Shared.Throwing;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -25,9 +24,7 @@ public sealed class SlipperySystem : EntitySystem
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
-
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-
     // WD START
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
@@ -39,17 +36,15 @@ public sealed class SlipperySystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SlipperyComponent, StepTriggerAttemptEvent>(HandleAttemptCollide);
-        SubscribeLocalEvent<SlipperyComponent, StepTriggeredOffEvent>(HandleStepTrigger);
+        SubscribeLocalEvent<SlipperyComponent, StepTriggeredEvent>(HandleStepTrigger);
         SubscribeLocalEvent<NoSlipComponent, SlipAttemptEvent>(OnNoSlipAttempt);
-        SubscribeLocalEvent<ThrownItemComponent, SlipCausingAttemptEvent>(OnThrownSlipAttempt);
         // as long as slip-resistant mice are never added, this should be fine (otherwise a mouse-hat will transfer it's power to the wearer).
-        SubscribeLocalEvent<NoSlipComponent, InventoryRelayedEvent<SlipAttemptEvent>>((e, c, ev) =>
-            OnNoSlipAttempt(e, c, ev.Args));
+        SubscribeLocalEvent<NoSlipComponent, InventoryRelayedEvent<SlipAttemptEvent>>((e, c, ev) => OnNoSlipAttempt(e, c, ev.Args));
 
         _cfg.OnValueChanged(WhiteCVars.SlipPowerModifier, x => SlipPowerModifier = x, true); // WD
     }
 
-    private void HandleStepTrigger(EntityUid uid, SlipperyComponent component, ref StepTriggeredOffEvent args)
+    private void HandleStepTrigger(EntityUid uid, SlipperyComponent component, ref StepTriggeredEvent args)
     {
         TrySlip(uid, component, args.Tripper);
     }
@@ -67,15 +62,10 @@ public sealed class SlipperySystem : EntitySystem
         args.Cancel();
     }
 
-    private void OnThrownSlipAttempt(EntityUid uid, ThrownItemComponent comp, ref SlipCausingAttemptEvent args)
-    {
-        args.Cancelled = true;
-    }
-
     private bool CanSlip(EntityUid uid, EntityUid toSlip)
     {
         return !_container.IsEntityInContainer(uid)
-            && _statusEffects.CanApplyEffect(toSlip, "Stun"); //Should be KnockedDown instead?
+                && _statusEffects.CanApplyEffect(toSlip, "Stun"); //Should be KnockedDown instead?
     }
 
     private void TrySlip(EntityUid uid, SlipperyComponent component, EntityUid other)
@@ -88,18 +78,12 @@ public sealed class SlipperySystem : EntitySystem
         if (attemptEv.Cancelled)
             return;
 
-        var attemptCausingEv = new SlipCausingAttemptEvent();
-        RaiseLocalEvent(uid, ref attemptCausingEv);
-        if (attemptCausingEv.Cancelled)
-            return;
-
         var ev = new SlipEvent(other);
         RaiseLocalEvent(uid, ref ev);
 
         if (TryComp(other, out PhysicsComponent? physics) && !HasComp<SlidingComponent>(other))
         {
-            _physics.SetLinearVelocity(other,
-                physics.LinearVelocity * component.LaunchForwardsMultiplier * SlipPowerModifier, body: physics);
+            _physics.SetLinearVelocity(other, physics.LinearVelocity * component.LaunchForwardsMultiplier * SlipPowerModifier, body: physics);
 
             if (component.SuperSlippery)
             {
@@ -131,17 +115,11 @@ public sealed class SlipperySystem : EntitySystem
 /// </summary>
 public sealed class SlipAttemptEvent : CancellableEntityEventArgs, IInventoryRelayEvent
 {
-    public SlotFlags TargetSlots => SlotFlags.FEET;
+    public SlotFlags TargetSlots { get; } = SlotFlags.FEET;
 }
 
 /// <summary>
-/// Raised on an entity that is causing the slip event (e.g, the banana peel), to determine if the slip attempt should be cancelled.
+///     This event is raised directed at an entity that CAUSED some other entity to slip (e.g., the banana peel).
 /// </summary>
-/// <param name="Cancelled">If the slip should be cancelled</param>
-[ByRefEvent]
-public record struct SlipCausingAttemptEvent(bool Cancelled);
-
-/// Raised on an entity that CAUSED some other entity to slip (e.g., the banana peel).
-/// <param name="Slipped">The entity being slipped</param>
 [ByRefEvent]
 public readonly record struct SlipEvent(EntityUid Slipped);

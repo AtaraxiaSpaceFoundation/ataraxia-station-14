@@ -42,6 +42,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
         SubscribeLocalEvent<GhostComponent, EventHorizonAttemptConsumeEntityEvent>(PreventConsume);
         SubscribeLocalEvent<StationDataComponent, EventHorizonAttemptConsumeEntityEvent>(PreventConsume);
         SubscribeLocalEvent<EventHorizonComponent, MapInitEvent>(OnHorizonMapInit);
+        SubscribeLocalEvent<EventHorizonComponent, EntityUnpausedEvent>(OnHorizonUnpaused);
         SubscribeLocalEvent<EventHorizonComponent, StartCollideEvent>(OnStartCollide);
         SubscribeLocalEvent<EventHorizonComponent, EntGotInsertedIntoContainerMessage>(OnEventHorizonContained);
         SubscribeLocalEvent<EventHorizonContainedEvent>(OnEventHorizonContained);
@@ -56,6 +57,11 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     private void OnHorizonMapInit(EntityUid uid, EventHorizonComponent component, MapInitEvent args)
     {
         component.NextConsumeWaveTime = _timing.CurTime;
+    }
+
+    private void OnHorizonUnpaused(EntityUid uid, EventHorizonComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextConsumeWaveTime += args.PausedTime;
     }
 
     public override void Shutdown()
@@ -239,7 +245,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     /// </summary>
     public void ConsumeTile(EntityUid hungry, TileRef tile, EventHorizonComponent eventHorizon)
     {
-        ConsumeTiles(hungry, new List<(Vector2i, Tile)>(new[] { (tile.GridIndices, Tile.Empty) }), tile.GridUid, Comp<MapGridComponent>(tile.GridUid), eventHorizon);
+        ConsumeTiles(hungry, new List<(Vector2i, Tile)>(new[] { (tile.GridIndices, Tile.Empty) }), tile.GridUid, _mapMan.GetGrid(tile.GridUid), eventHorizon);
     }
 
     /// <summary>
@@ -247,7 +253,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     /// </summary>
     public void AttemptConsumeTile(EntityUid hungry, TileRef tile, EventHorizonComponent eventHorizon)
     {
-        AttemptConsumeTiles(hungry, new TileRef[1] { tile }, tile.GridUid, Comp<MapGridComponent>(tile.GridUid), eventHorizon);
+        AttemptConsumeTiles(hungry, new TileRef[1] { tile }, tile.GridUid, _mapMan.GetGrid(tile.GridUid), eventHorizon);
     }
 
     /// <summary>

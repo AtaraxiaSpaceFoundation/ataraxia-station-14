@@ -31,8 +31,7 @@ namespace Content.Server.Database
             _opsLog = opsLog;
         }
 
-#region Preferences
-
+        #region Preferences
         public async Task<PlayerPreferences?> GetPlayerPreferencesAsync(NetUserId userId)
         {
             await using var db = await GetDb();
@@ -139,8 +138,7 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
-            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0,
-                Color.FromHex(prefs.AdminOOCColor));
+            return new PlayerPreferences(new[] {new KeyValuePair<int, ICharacterProfile>(0, defaultProfile)}, 0, Color.FromHex(prefs.AdminOOCColor));
         }
 
         public async Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
@@ -160,10 +158,10 @@ namespace Content.Server.Database
                 .Preference
                 .Include(p => p.Profiles)
                 .SingleAsync(p => p.UserId == userId.UserId);
-
             prefs.AdminOOCColor = color.ToHex();
 
             await db.DbContext.SaveChangesAsync();
+
         }
 
         private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
@@ -258,7 +256,6 @@ namespace Content.Server.Database
             {
                 markingStrings.Add(marking.ToString());
             }
-
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 
             profile.CharacterName = humanoid.Name;
@@ -289,28 +286,26 @@ namespace Content.Server.Database
             profile.Jobs.AddRange(
                 humanoid.JobPriorities
                     .Where(j => j.Value != JobPriority.Never)
-                    .Select(j => new Job { JobName = j.Key, Priority = (DbJobPriority) j.Value })
+                    .Select(j => new Job {JobName = j.Key, Priority = (DbJobPriority) j.Value})
             );
 
             profile.Antags.Clear();
             profile.Antags.AddRange(
                 humanoid.AntagPreferences
-                    .Select(a => new Antag { AntagName = a })
+                    .Select(a => new Antag {AntagName = a})
             );
 
             profile.Traits.Clear();
             profile.Traits.AddRange(
                 humanoid.TraitPreferences
-                    .Select(t => new Trait { TraitName = t })
+                        .Select(t => new Trait {TraitName = t})
             );
 
             return profile;
         }
+        #endregion
 
-#endregion
-
-#region User Ids
-
+        #region User Ids
         public async Task<NetUserId?> GetAssignedUserIdAsync(string name)
         {
             await using var db = await GetDb();
@@ -331,11 +326,9 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
         }
+        #endregion
 
-#endregion
-
-#region Bans
-
+        #region Bans
         /*
          * BAN STUFF
          */
@@ -380,23 +373,15 @@ namespace Content.Server.Database
             string serverName = GlobalServerName);
 
         public abstract Task AddServerBanAsync(ServerBanDef serverBan);
-
         public abstract Task AddServerUnbanAsync(ServerUnbanDef serverUnban);
 
-        public async Task EditServerBan(
-            int id,
-            string reason,
-            NoteSeverity severity,
-            DateTimeOffset? expiration,
-            Guid editedBy,
-            DateTimeOffset editedAt)
+        public async Task EditServerBan(int id, string reason, NoteSeverity severity, DateTimeOffset? expiration, Guid editedBy, DateTimeOffset editedAt)
         {
             await using var db = await GetDb();
 
             var ban = await db.DbContext.Ban.SingleOrDefaultAsync(b => b.Id == id);
             if (ban is null)
                 return;
-
             ban.Severity = severity;
             ban.Reason = reason;
             ban.ExpirationTime = expiration?.UtcDateTime;
@@ -450,10 +435,9 @@ namespace Content.Server.Database
             return flags ?? ServerBanExemptFlags.None;
         }
 
-#endregion
+        #endregion
 
-#region Role Bans
-
+        #region Role Bans
         /*
          * ROLE BANS
          */
@@ -475,31 +459,22 @@ namespace Content.Server.Database
         /// <param name="hwId">The Hardware Id of the user.</param>
         /// <param name="includeUnbanned">Whether expired and pardoned bans are included.</param>
         /// <returns>The user's role ban history.</returns>
-        public abstract Task<List<ServerRoleBanDef>> GetServerRoleBansAsync(
-            IPAddress? address,
+        public abstract Task<List<ServerRoleBanDef>> GetServerRoleBansAsync(IPAddress? address,
             NetUserId? userId,
             ImmutableArray<byte>? hwId,
             bool includeUnbanned,
             string serverName = GlobalServerName);
 
         public abstract Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan);
-
         public abstract Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban);
 
-        public async Task EditServerRoleBan(
-            int id,
-            string reason,
-            NoteSeverity severity,
-            DateTimeOffset? expiration,
-            Guid editedBy,
-            DateTimeOffset editedAt)
+        public async Task EditServerRoleBan(int id, string reason, NoteSeverity severity, DateTimeOffset? expiration, Guid editedBy, DateTimeOffset editedAt)
         {
             await using var db = await GetDb();
 
             var ban = await db.DbContext.RoleBan.SingleOrDefaultAsync(b => b.Id == id);
             if (ban is null)
                 return;
-
             ban.Severity = severity;
             ban.Reason = reason;
             ban.ExpirationTime = expiration?.UtcDateTime;
@@ -507,11 +482,9 @@ namespace Content.Server.Database
             ban.LastEditedAt = editedAt.UtcDateTime;
             await db.DbContext.SaveChangesAsync();
         }
+        #endregion
 
-#endregion
-
-#region Playtime
-
+        #region Playtime
         public async Task<List<PlayTime>> GetPlayTimes(Guid player)
         {
             await using var db = await GetDb();
@@ -562,10 +535,9 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-#endregion
+        #endregion
 
-#region Player Records
-
+        #region Player Records
         /*
          * PLAYER RECORDS
          */
@@ -634,10 +606,9 @@ namespace Content.Server.Database
                 player.LastSeenHWId?.ToImmutableArray());
         }
 
-#endregion
+        #endregion
 
-#region Connection Logs
-
+        #region Connection Logs
         /*
          * CONNECTION LOG
          */
@@ -664,10 +635,9 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-#endregion
+        #endregion
 
-#region Admin Ranks
-
+        #region Admin Ranks
         /*
          * ADMIN RANKS
          */
@@ -718,9 +688,7 @@ namespace Content.Server.Database
         {
             await using var db = await GetDb();
 
-            var existing = await db.DbContext.Admin.Include(a => a.Flags)
-                .SingleAsync(a => a.UserId == admin.UserId, cancel);
-
+            var existing = await db.DbContext.Admin.Include(a => a.Flags).SingleAsync(a => a.UserId == admin.UserId, cancel);
             existing.Flags = admin.Flags;
             existing.Title = admin.Title;
             existing.AdminRankId = admin.AdminRankId;
@@ -793,8 +761,8 @@ namespace Content.Server.Database
             foreach (var player in playerIds)
             {
                 await db.DbContext.Database.ExecuteSqlAsync($"""
-                    INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}) ON CONFLICT DO NOTHING
-                    """);
+INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}) ON CONFLICT DO NOTHING
+""");
             }
 
             await db.DbContext.SaveChangesAsync();
@@ -825,10 +793,9 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync(cancel);
         }
+        #endregion
 
-#endregion
-
-#region Admin Logs
+        #region Admin Logs
 
         public async Task<(Server, bool existed)> AddOrGetServer(string serverName)
         {
@@ -931,7 +898,7 @@ namespace Content.Server.Database
             {
                 query = filter.DateOrder switch
                 {
-                    DateOrder.Ascending  => query.Where(log => log.Id > filter.LastLogId),
+                    DateOrder.Ascending => query.Where(log => log.Id > filter.LastLogId),
                     DateOrder.Descending => query.Where(log => log.Id < filter.LastLogId),
                     _ => throw new ArgumentOutOfRangeException(nameof(filter),
                         $"Unknown {nameof(DateOrder)} value {filter.DateOrder}")
@@ -940,14 +907,21 @@ namespace Content.Server.Database
 
             query = filter.DateOrder switch
             {
-                DateOrder.Ascending  => query.OrderBy(log => log.Date),
+                DateOrder.Ascending => query.OrderBy(log => log.Date),
                 DateOrder.Descending => query.OrderByDescending(log => log.Date),
                 _ => throw new ArgumentOutOfRangeException(nameof(filter),
                     $"Unknown {nameof(DateOrder)} value {filter.DateOrder}")
             };
 
             const int hardLogLimit = 500_000;
-            query = query.Take(filter.Limit != null ? Math.Min(filter.Limit.Value, hardLogLimit) : hardLogLimit);
+            if (filter.Limit != null)
+            {
+                query = query.Take(Math.Min(filter.Limit.Value, hardLogLimit));
+            }
+            else
+            {
+                query = query.Take(hardLogLimit);
+            }
 
             return query;
         }
@@ -998,9 +972,9 @@ namespace Content.Server.Database
             return await db.DbContext.AdminLog.CountAsync(log => log.RoundId == round);
         }
 
-#endregion
+        #endregion
 
-#region Whitelist
+        #region Whitelist
 
         public async Task<bool> GetWhitelistStatusAsync(NetUserId player)
         {
@@ -1039,9 +1013,7 @@ namespace Content.Server.Database
         {
             await using var db = await GetDb();
 
-            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == player)
-                .SingleOrDefaultAsync();
-
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == player).SingleOrDefaultAsync();
             if (dbPlayer == null)
             {
                 return;
@@ -1051,17 +1023,15 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-#endregion
+        #endregion
 
-#region Uploaded Resources Logs
+        #region Uploaded Resources Logs
 
         public async Task AddUploadedResourceLogAsync(NetUserId user, DateTimeOffset date, string path, byte[] data)
         {
             await using var db = await GetDb();
 
-            db.DbContext.UploadedResourceLog.Add(new UploadedResourceLog()
-                { UserId = user, Date = date.UtcDateTime, Path = path, Data = data });
-
+            db.DbContext.UploadedResourceLog.Add(new UploadedResourceLog() { UserId = user, Date = date.UtcDateTime, Path = path, Data = data });
             await db.DbContext.SaveChangesAsync();
         }
 
@@ -1081,9 +1051,9 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-#endregion
+        #endregion
 
-#region Admin Notes
+        #region Admin Notes
 
         public virtual async Task<int> AddAdminNote(AdminNote note)
         {
@@ -1193,8 +1163,7 @@ namespace Content.Server.Database
                 entity.Deleted,
                 MakePlayerRecord(entity.DeletedBy),
                 NormalizeDatabaseTime(entity.DeletedAt),
-                entity.Seen,
-                entity.Dismissed);
+                entity.Seen);
         }
 
         public async Task<ServerBanNoteRecord?> GetServerBanAsNoteAsync(int id)
@@ -1253,8 +1222,8 @@ namespace Content.Server.Database
             var player = await db.DbContext.Player.SingleOrDefaultAsync(p => p.UserId == ban.PlayerUserId);
             var unbanningAdmin =
                 ban.Unban is null
-                    ? null
-                    : await db.DbContext.Player.SingleOrDefaultAsync(b => b.UserId == ban.Unban.UnbanningAdmin);
+                ? null
+                : await db.DbContext.Player.SingleOrDefaultAsync(b => b.UserId == ban.Unban.UnbanningAdmin);
 
             return new ServerRoleBanNoteRecord(
                 ban.Id,
@@ -1269,7 +1238,7 @@ namespace Content.Server.Database
                 ban.LastEditedAt,
                 ban.ExpirationTime,
                 ban.Hidden,
-                new[] { ban.RoleId.Replace(BanManager.JobPrefix, null) },
+                new [] { ban.RoleId.Replace(BanManager.JobPrefix, null) },
                 MakePlayerRecord(unbanningAdmin),
                 ban.Unban?.UnbanTime);
         }
@@ -1281,8 +1250,8 @@ namespace Content.Server.Database
             notes.AddRange(
                 (await (from note in db.DbContext.AdminNotes
                         where note.PlayerUserId == player &&
-                            !note.Deleted &&
-                            (note.ExpirationTime == null || DateTime.UtcNow < note.ExpirationTime)
+                              !note.Deleted &&
+                              (note.ExpirationTime == null || DateTime.UtcNow < note.ExpirationTime)
                         select note)
                     .Include(note => note.Round)
                     .ThenInclude(r => r!.Server)
@@ -1290,22 +1259,13 @@ namespace Content.Server.Database
                     .Include(note => note.LastEditedBy)
                     .Include(note => note.Player)
                     .ToListAsync()).Select(MakeAdminNoteRecord));
-
             notes.AddRange(await GetActiveWatchlistsImpl(db, player));
             notes.AddRange(await GetMessagesImpl(db, player));
             notes.AddRange(await GetServerBansAsNotesForUser(db, player));
             notes.AddRange(await GetGroupedServerRoleBansAsNotesForUser(db, player));
             return notes;
         }
-
-        public async Task EditAdminNote(
-            int id,
-            string message,
-            NoteSeverity severity,
-            bool secret,
-            Guid editedBy,
-            DateTimeOffset editedAt,
-            DateTimeOffset? expiryTime)
+        public async Task EditAdminNote(int id, string message, NoteSeverity severity, bool secret, Guid editedBy, DateTimeOffset editedAt, DateTimeOffset? expiryTime)
         {
             await using var db = await GetDb();
 
@@ -1320,12 +1280,7 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-        public async Task EditAdminWatchlist(
-            int id,
-            string message,
-            Guid editedBy,
-            DateTimeOffset editedAt,
-            DateTimeOffset? expiryTime)
+        public async Task EditAdminWatchlist(int id, string message, Guid editedBy, DateTimeOffset editedAt, DateTimeOffset? expiryTime)
         {
             await using var db = await GetDb();
 
@@ -1338,12 +1293,7 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-        public async Task EditAdminMessage(
-            int id,
-            string message,
-            Guid editedBy,
-            DateTimeOffset editedAt,
-            DateTimeOffset? expiryTime)
+        public async Task EditAdminMessage(int id, string message, Guid editedBy, DateTimeOffset editedAt, DateTimeOffset? expiryTime)
         {
             await using var db = await GetDb();
 
@@ -1428,19 +1378,16 @@ namespace Content.Server.Database
             notesCol.AddRange(
                 (await (from note in db.DbContext.AdminNotes
                         where note.PlayerUserId == player &&
-                            !note.Secret &&
-                            !note.Deleted &&
-                            (note.ExpirationTime == null || DateTime.UtcNow < note.ExpirationTime)
+                              !note.Secret &&
+                              !note.Deleted &&
+                              (note.ExpirationTime == null || DateTime.UtcNow < note.ExpirationTime)
                         select note)
                     .Include(note => note.Round)
                     .ThenInclude(r => r!.Server)
                     .Include(note => note.CreatedBy)
                     .Include(note => note.Player)
                     .ToListAsync()).Select(MakeAdminNoteRecord));
-
             notesCol.AddRange(await GetMessagesImpl(db, player));
-            notesCol.AddRange(await GetServerBansAsNotesForUser(db, player));
-            notesCol.AddRange(await GetGroupedServerRoleBansAsNotesForUser(db, player));
             return notesCol;
         }
 
@@ -1453,10 +1400,10 @@ namespace Content.Server.Database
         protected async Task<List<AdminWatchlistRecord>> GetActiveWatchlistsImpl(DbGuard db, Guid player)
         {
             var entities = await (from watchlist in db.DbContext.AdminWatchlists
-                                  where watchlist.PlayerUserId == player &&
-                                      !watchlist.Deleted &&
-                                      (watchlist.ExpirationTime == null || DateTime.UtcNow < watchlist.ExpirationTime)
-                                  select watchlist)
+                          where watchlist.PlayerUserId == player &&
+                                !watchlist.Deleted &&
+                                (watchlist.ExpirationTime == null || DateTime.UtcNow < watchlist.ExpirationTime)
+                          select watchlist)
                 .Include(note => note.Round)
                 .ThenInclude(r => r!.Server)
                 .Include(note => note.CreatedBy)
@@ -1469,11 +1416,7 @@ namespace Content.Server.Database
 
         private AdminWatchlistRecord MakeAdminWatchlistRecord(AdminWatchlist entity)
         {
-            return new AdminWatchlistRecord(entity.Id, MakeRoundRecord(entity.Round), MakePlayerRecord(entity.Player),
-                entity.PlaytimeAtNote, entity.Message, MakePlayerRecord(entity.CreatedBy),
-                NormalizeDatabaseTime(entity.CreatedAt), MakePlayerRecord(entity.LastEditedBy),
-                NormalizeDatabaseTime(entity.LastEditedAt), NormalizeDatabaseTime(entity.ExpirationTime),
-                entity.Deleted, MakePlayerRecord(entity.DeletedBy), NormalizeDatabaseTime(entity.DeletedAt));
+            return new AdminWatchlistRecord(entity.Id, MakeRoundRecord(entity.Round), MakePlayerRecord(entity.Player), entity.PlaytimeAtNote, entity.Message, MakePlayerRecord(entity.CreatedBy), NormalizeDatabaseTime(entity.CreatedAt), MakePlayerRecord(entity.LastEditedBy), NormalizeDatabaseTime(entity.LastEditedAt), NormalizeDatabaseTime(entity.ExpirationTime), entity.Deleted, MakePlayerRecord(entity.DeletedBy), NormalizeDatabaseTime(entity.DeletedAt));
         }
 
         public async Task<List<AdminMessageRecord>> GetMessages(Guid player)
@@ -1485,26 +1428,23 @@ namespace Content.Server.Database
         protected async Task<List<AdminMessageRecord>> GetMessagesImpl(DbGuard db, Guid player)
         {
             var entities = await (from message in db.DbContext.AdminMessages
-                                  where message.PlayerUserId == player && !message.Deleted &&
-                                      (message.ExpirationTime == null || DateTime.UtcNow < message.ExpirationTime)
-                                  select message).Include(note => note.Round)
-                .ThenInclude(r => r!.Server)
-                .Include(note => note.CreatedBy)
-                .Include(note => note.LastEditedBy)
-                .Include(note => note.Player)
-                .ToListAsync();
+                        where message.PlayerUserId == player && !message.Deleted &&
+                              (message.ExpirationTime == null || DateTime.UtcNow < message.ExpirationTime)
+                        select message).Include(note => note.Round)
+                    .ThenInclude(r => r!.Server)
+                    .Include(note => note.CreatedBy)
+                    .Include(note => note.LastEditedBy)
+                    .Include(note => note.Player)
+                    .ToListAsync();
 
             return entities.Select(MakeAdminMessageRecord).ToList();
         }
 
-        public async Task MarkMessageAsSeen(int id, bool dismissedToo)
+        public async Task MarkMessageAsSeen(int id)
         {
             await using var db = await GetDb();
             var message = await db.DbContext.AdminMessages.SingleAsync(m => m.Id == id);
             message.Seen = true;
-            if (dismissedToo)
-                message.Dismissed = true;
-
             await db.DbContext.SaveChangesAsync();
         }
 
@@ -1552,9 +1492,7 @@ namespace Content.Server.Database
             return banNotes;
         }
 
-        protected async Task<List<ServerRoleBanNoteRecord>> GetGroupedServerRoleBansAsNotesForUser(
-            DbGuard db,
-            Guid user)
+        protected async Task<List<ServerRoleBanNoteRecord>> GetGroupedServerRoleBansAsNotesForUser(DbGuard db, Guid user)
         {
             // Server side query
             var bansQuery = await db.DbContext.RoleBan
@@ -1569,9 +1507,9 @@ namespace Content.Server.Database
 
             // Client side query, as EF can't do groups yet
             var bansEnumerable = bansQuery
-                .GroupBy(ban => new { ban.BanTime, ban.CreatedBy, ban.Reason, Unbanned = ban.Unban == null })
-                .Select(banGroup => banGroup)
-                .ToArray();
+                    .GroupBy(ban => new { ban.BanTime, ban.CreatedBy, ban.Reason, Unbanned = ban.Unban == null })
+                    .Select(banGroup => banGroup)
+                    .ToArray();
 
             List<ServerRoleBanNoteRecord> bans = new();
             var player = await db.DbContext.Player.SingleOrDefaultAsync(p => p.UserId == user);
@@ -1581,11 +1519,7 @@ namespace Content.Server.Database
                 Player? unbanningAdmin = null;
 
                 if (firstBan.Unban?.UnbanningAdmin is not null)
-                {
-                    unbanningAdmin =
-                        await db.DbContext.Player.SingleOrDefaultAsync(p =>
-                            p.UserId == firstBan.Unban.UnbanningAdmin.Value);
-                }
+                    unbanningAdmin = await db.DbContext.Player.SingleOrDefaultAsync(p => p.UserId == firstBan.Unban.UnbanningAdmin.Value);
 
                 bans.Add(new ServerRoleBanNoteRecord(
                     firstBan.Id,
@@ -1608,9 +1542,9 @@ namespace Content.Server.Database
             return bans;
         }
 
-#endregion
+        #endregion
 
-#region Player Reputation (WD edit)
+        #region Player Reputation (WD edit)
 
         public async Task SetPlayerReputation(Guid player, float value)
         {
@@ -1626,7 +1560,6 @@ namespace Content.Server.Database
                     UserId = player,
                     Reputation = value
                 };
-
                 db.DbContext.PlayerReputations.Add(reputation);
             }
             else
@@ -1651,7 +1584,6 @@ namespace Content.Server.Database
                     UserId = player,
                     Reputation = 0f + value
                 };
-
                 db.DbContext.PlayerReputations.Add(reputation);
             }
             else
@@ -1672,7 +1604,7 @@ namespace Content.Server.Database
             return reputation?.Reputation ?? 0f;
         }
 
-#endregion
+        #endregion
 
         // SQLite returns DateTime as Kind=Unspecified, Npgsql actually knows for sure it's Kind=Utc.
         // Normalize DateTimes here so they're always Utc. Thanks.
@@ -1682,12 +1614,6 @@ namespace Content.Server.Database
         protected DateTime? NormalizeDatabaseTime(DateTime? time)
         {
             return time != null ? NormalizeDatabaseTime(time.Value) : time;
-        }
-
-        public async Task<bool> HasPendingModelChanges()
-        {
-            await using var db = await GetDb();
-            return db.DbContext.Database.HasPendingModelChanges();
         }
 
         protected abstract Task<DbGuard> GetDb([CallerMemberName] string? name = null);

@@ -1,16 +1,17 @@
 using System.Threading;
 
-namespace Content.Server._White.Carrying;
-
-[RegisterComponent]
-public sealed partial class CarriableComponent : Component
+namespace Content.Server.Carrying
 {
-    /// <summary>
-    ///     Number of free hands required
-    ///     to carry the entity
-    /// </summary>
-    [DataField]
-    public int FreeHandsRequired = 2;
+    [RegisterComponent]
+    public sealed partial class CarriableComponent : Component
+    {
+        /// <summary>
+        ///     Number of free hands required
+        ///     to carry the entity
+        /// </summary>
+        [DataField("freeHandsRequired")]
+        public int FreeHandsRequired = 2;
 
-    public CancellationTokenSource? CancelToken;
+        public CancellationTokenSource? CancelToken;
+    }
 }

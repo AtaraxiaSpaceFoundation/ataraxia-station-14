@@ -45,21 +45,15 @@ public sealed class BurialSystem : EntitySystem
         {
             var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.DigDelay / shovel.SpeedModifier, new GraveDiggingDoAfterEvent(), uid, target: args.Target, used: uid)
             {
-                BreakOnMove = true,
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
                 BreakOnDamage = true,
                 NeedHand = true,
                 BreakOnHandChange = true
             };
 
-            if (component.Stream == null)
-                component.Stream = _audioSystem.PlayPredicted(component.DigSound, uid, args.User)?.Entity;
-
             if (!_doAfterSystem.TryStartDoAfter(doAfterEventArgs))
-            {
-                _audioSystem.Stop(component.Stream);
                 return;
-            }
-
 
             StartDigging(uid, args.User, args.Used, component);
         }
@@ -118,6 +112,8 @@ public sealed class BurialSystem : EntitySystem
         {
             _popupSystem.PopupClient(Loc.GetString("grave-start-digging-user", ("grave", uid), ("tool", used)), user, user);
             _popupSystem.PopupEntity(Loc.GetString("grave-start-digging-others", ("user", user), ("grave", uid), ("tool", used)), user, Filter.PvsExcept(user), true);
+            if (component.Stream == null)
+                component.Stream = _audioSystem.PlayPredicted(component.DigSound, uid, user)?.Entity;
             component.ActiveShovelDigging = true;
             Dirty(uid, component);
         }
@@ -163,20 +159,14 @@ public sealed class BurialSystem : EntitySystem
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Entity, component.DigDelay / component.DigOutByHandModifier, new GraveDiggingDoAfterEvent(), uid, target: uid)
         {
             NeedHand = false,
-            BreakOnMove = true,
+            BreakOnUserMove = true,
+            BreakOnTargetMove = false,
             BreakOnHandChange = false,
             BreakOnDamage = false
         };
 
-
-        if (component.Stream == null)
-            component.Stream = _audioSystem.PlayPredicted(component.DigSound, uid, args.Entity)?.Entity;
-
-        if (!_doAfterSystem.TryStartDoAfter(doAfterEventArgs))
-        {
-            _audioSystem.Stop(component.Stream);
+        if (!_doAfterSystem.TryStartDoAfter(doAfterEventArgs, out component.HandDiggingDoAfter))
             return;
-        }
 
         StartDigging(uid, args.Entity, null, component);
     }

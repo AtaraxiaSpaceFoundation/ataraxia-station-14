@@ -134,13 +134,6 @@
         damage:
           types:
             Poison: 1
-      - !type:AdjustReagent
-        conditions:
-        - !type:ReagentThreshold
-          reagent: ChloralHydrate
-          min: 1
-        reagent: ChloralHydrate
-        amount: -10
       - !type:GenericStatusEffect
         key: Stun
         time: 3
@@ -154,10 +147,6 @@
         component: StaminaModifier
         time: 3
         type: Add
-      - !type:GenericStatusEffect
-        key: ForcedSleep
-        time: 3
-        type: Remove
     Medicine:
       metabolismRate: 0.2
       effects:

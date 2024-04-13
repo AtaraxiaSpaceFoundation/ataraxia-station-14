@@ -12,7 +12,6 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Client.UserInterface.Systems.Storage.Controls;
 
@@ -250,7 +249,7 @@ public sealed class StorageContainer : BaseWindow
 
         var boundingGrid = storageComp.Grid.GetBoundingBox();
         var size = _emptyTexture!.Size * 2;
-        var containedEntities = storageComp.Container.ContainedEntities.Reverse().ToArray();
+        var lastEntity = storageComp.Container.ContainedEntities.LastOrDefault();
 
         //todo. at some point, we may want to only rebuild the pieces that have actually received new data.
 
@@ -278,12 +277,7 @@ public sealed class StorageContainer : BaseWindow
                         var gridPiece = new ItemGridPiece((itemEnt, itemEntComponent), itemPos, _entity)
                         {
                             MinSize = size,
-                            Marked = Array.IndexOf(containedEntities, itemEnt) switch
-                            {
-                                0 => ItemGridPieceMarks.First,
-                                1 => ItemGridPieceMarks.Second,
-                                _ => null,
-                            }
+                            Marked = itemEnt == lastEntity
                         };
                         gridPiece.OnPiecePressed += OnPiecePressed;
                         gridPiece.OnPieceUnpressed += OnPieceUnpressed;
@@ -355,40 +349,6 @@ public sealed class StorageContainer : BaseWindow
             (StorageEntity.Value, storageComponent),
             origin,
             currentLocation.Rotation);
-
-        foreach (var locations in storageComponent.SavedLocations)
-        {
-            if (!_entity.TryGetComponent<MetaDataComponent>(currentEnt, out var meta) || meta.EntityName != locations.Key)
-                continue;
-
-            float spot = 0;
-            var marked = new List<Control>();
-
-            foreach (var location in locations.Value)
-            {
-                var shape = itemSystem.GetAdjustedItemShape(currentEnt, location);
-                var bound = shape.GetBoundingBox();
-
-                var spotFree = storageSystem.ItemFitsInGridLocation(currentEnt, StorageEntity.Value, location);
-
-                if (spotFree)
-                    spot++;
-
-                for (var y = bound.Bottom; y <= bound.Top; y++)
-                {
-                    for (var x = bound.Left; x <= bound.Right; x++)
-                    {
-                        if (TryGetBackgroundCell(x, y, out var cell) && shape.Contains(x, y) && !marked.Contains(cell))
-                        {
-                            marked.Add(cell);
-                            cell.ModulateSelfOverride = spotFree
-                                ? Color.FromHsv((0.18f, 1 / spot, 0.5f / spot + 0.5f, 1f))
-                                : Color.FromHex("#2222CC");
-                        }
-                    }
-                }
-            }
-        }
 
         var validColor = usingInHand ? Color.Goldenrod : Color.FromHex("#1E8000");
 

@@ -1,6 +1,7 @@
 ent-BaseWeaponRifle = BaseWeaponRifle
     .desc = Дерзай — налетай, целься и стреляй.
-ent-WeaponRifleAk = АКМС
+    .suffix = { "" }
+ent-WeaponRifleAk = CV-47
     .desc = Культовое оружие всех войн. Использует патроны калибра .30 винтовочный.
     .suffix = Автомат
 ent-WeaponRifleM90GrenadeLauncher = М-90gl
@@ -9,6 +10,3 @@ ent-WeaponRifleM90GrenadeLauncher = М-90gl
 ent-WeaponRifleLecter = Лектер
     .desc = Первоклассная армейская штурмовая винтовка. Использует патроны калибра .20 винтовочный.
     .suffix = Автомат
-ent-WeaponRifleLecterRubber = Лектер
-    .suffix = Травматический
-    .desc = { ent-WeaponRifleLecter.desc }

@@ -4,12 +4,17 @@ using System.Numerics;
 using Content.Server.Administration.Managers;
 using System.Text;
 using Content.Server.Ghost;
+using Content.Server.Mind;
+using Content.Server.Players;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Players;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -215,12 +220,16 @@ namespace Content.Server.GameTicking
                         : Loc.GetString("ghost-respawn-same-character");
                     var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
                     _chatManager.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage,
-                        default, false, player.Channel, Color.Red);
+                        default, false, player.ConnectedClient, Color.Red);
 
                     return;
                 }
             }
             //WD end
+
+            // Automatically de-admin players who are joining.
+            if (_cfg.GetCVar(CCVars.AdminDeadminOnJoin) && _adminManager.IsAdmin(player))
+                _adminManager.DeAdmin(player);
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);
@@ -287,24 +296,16 @@ namespace Content.Server.GameTicking
             var mob = mobMaybe!.Value;
 
             if (jobId.Contains("Clown"))
-            {
                 if (newMind.Comp.ClownName != null)
                     _metaData.SetEntityName(mob, newMind.Comp.ClownName);
-            }
-
             if (jobId.Contains("Mime"))
-            {
                 if (newMind.Comp.MimeName != null)
                     _metaData.SetEntityName(mob, newMind.Comp.MimeName);
-            }
-
             if (jobId.Contains("Borg"))
-            {
                 if (newMind.Comp.BorgName != null && TryComp(mob, out NameIdentifierComponent? identifier))
                 {
                     _metaData.SetEntityName(mob, $"{newMind.Comp.BorgName} {identifier.FullIdentifier}");
                 }
-            }
 
             _mind.TransferTo(newMind, mob);
 
@@ -415,7 +416,7 @@ namespace Content.Server.GameTicking
                 var availableSpeciesLoc = new StringBuilder();
                 foreach (var specie in whitelistedSpecies)
                 {
-                    availableSpeciesLoc.AppendLine("- " + Loc.GetString($"species-name-{specie.ToString().ToLower()}"));
+                    availableSpeciesLoc.AppendLine("- " + Loc.GetString($"species-name-{specie.ToLower()}"));
                 }
 
                 _chatManager.DispatchServerMessage(player, $"Доступные виды:\n{availableSpeciesLoc}");
@@ -499,7 +500,6 @@ namespace Content.Server.GameTicking
             _metaData.SetEntityName(ghost, name);
             _ghost.SetCanReturnToBody(ghost, false);
             _mind.TransferTo(mind.Value, ghost);
-            _adminLogger.Add(LogType.LateJoin, LogImpact.Low, $"{player.Name} late joined the round as an Observer with {ToPrettyString(ghost):entity}.");
         }
 
         #region Mob Spawning Helpers
@@ -547,7 +547,7 @@ namespace Content.Server.GameTicking
                 // Ideally engine would just spawn them on grid directly I guess? Right now grid traversal is handling it during
                 // update which means we need to add a hack somewhere around it.
                 var spawn = _robustRandom.Pick(_possiblePositions);
-                var toMap = spawn.ToMap(EntityManager, _transform);
+                var toMap = spawn.ToMap(EntityManager);
 
                 if (_mapManager.TryFindGridAt(toMap, out var gridUid, out _))
                 {

@@ -46,15 +46,6 @@ public abstract class SharedItemSystem : EntitySystem
         Dirty(uid, component);
     }
 
-    public void SetShape(EntityUid uid, List<Box2i>? shape, ItemComponent? component = null)
-    {
-        if (!Resolve(uid, ref component, false))
-            return;
-
-        component.Shape = shape;
-        Dirty(uid, component);
-    }
-
     public void SetHeldPrefix(EntityUid uid, string? heldPrefix, bool force = false, ItemComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
@@ -218,13 +209,6 @@ public abstract class SharedItemSystem : EntitySystem
 
         if (args.Activated)
         {
-            if (itemToggleSize.ActivatedShape != null)
-            {
-                // Set the deactivated shape to the default item's shape before it gets changed.
-                itemToggleSize.DeactivatedShape ??= new List<Box2i>(GetItemShape(item));
-                SetShape(uid, itemToggleSize.ActivatedShape, item);
-            }
-
             if (itemToggleSize.ActivatedSize != null)
             {
                 // Set the deactivated size to the default item's size before it gets changed.
@@ -234,11 +218,6 @@ public abstract class SharedItemSystem : EntitySystem
         }
         else
         {
-            if (itemToggleSize.DeactivatedShape != null)
-            {
-                SetShape(uid, itemToggleSize.DeactivatedShape, item);
-            }
-
             if (itemToggleSize.DeactivatedSize != null)
             {
                 SetSize(uid, (ProtoId<ItemSizePrototype>) itemToggleSize.DeactivatedSize, item);

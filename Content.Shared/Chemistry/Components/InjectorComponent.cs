@@ -7,7 +7,9 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Chemistry.Components;
 
 [Serializable, NetSerializable]
-public sealed partial class InjectorDoAfterEvent : SimpleDoAfterEvent;
+public sealed partial class InjectorDoAfterEvent : SimpleDoAfterEvent
+{
+}
 
 /// <summary>
 /// Implements draw/inject behavior for droppers and syringes.
@@ -28,7 +30,7 @@ public sealed partial class InjectorComponent : Component
     /// Whether or not the injector is able to draw from containers or if it's a single use
     /// device that can only inject.
     /// </summary>
-    [DataField]
+    [DataField("injectOnly")]
     public bool InjectOnly;
 
     /// <summary>
@@ -37,26 +39,30 @@ public sealed partial class InjectorComponent : Component
     /// <remarks>
     ///     for example: droppers would ignore mobs
     /// </remarks>
-    [DataField]
+    [DataField("ignoreMobs")]
     public bool IgnoreMobs;
 
     /// <summary>
     ///     The minimum amount of solution that can be transferred at once from this solution.
     /// </summary>
-    [DataField("minTransferAmount"), ViewVariables(VVAccess.ReadWrite)]
+    [DataField("minTransferAmount")]
+    [ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2 MinimumTransferAmount = FixedPoint2.New(5);
 
     /// <summary>
     ///     The maximum amount of solution that can be transferred at once from this solution.
     /// </summary>
-    [DataField("maxTransferAmount"), ViewVariables(VVAccess.ReadWrite)]
-    public FixedPoint2 MaximumTransferAmount = FixedPoint2.New(15);
+    [DataField("maxTransferAmount")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public FixedPoint2 MaximumTransferAmount = FixedPoint2.New(50);
 
     /// <summary>
     /// Amount to inject or draw on each usage. If the injector is inject only, it will
     /// attempt to inject it's entire contents upon use.
     /// </summary>
-    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("transferAmount")]
+    [AutoNetworkedField]
     public FixedPoint2 TransferAmount = FixedPoint2.New(5);
 
     /// <summary>
@@ -66,7 +72,8 @@ public sealed partial class InjectorComponent : Component
     /// The base delay has a minimum of 1 second, but this will still be modified if the target is incapacitated or
     /// in combat mode.
     /// </remarks>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("delay")]
     public TimeSpan Delay = TimeSpan.FromSeconds(5);
 
     /// <summary>
@@ -74,7 +81,9 @@ public sealed partial class InjectorComponent : Component
     /// right SolutionCaps to support injection/drawing. For InjectOnly injectors this should
     /// only ever be set to Inject
     /// </summary>
-    [AutoNetworkedField, DataField, ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [AutoNetworkedField]
+    [DataField]
     public InjectorToggleMode ToggleState = InjectorToggleMode.Draw;
 }
 

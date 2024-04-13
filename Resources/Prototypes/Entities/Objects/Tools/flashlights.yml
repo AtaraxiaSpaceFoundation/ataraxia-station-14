@@ -108,12 +108,9 @@
         visible: false
         map: [ "light" ]
   - type: MeleeWeapon
-    wideAnimationRotation: 90
     damage:
       types:
         Blunt: 10
-    soundHit:
-      collection: MetalThud
   - type: Item
     sprite: Objects/Tools/seclite.rsi
   - type: PointLight

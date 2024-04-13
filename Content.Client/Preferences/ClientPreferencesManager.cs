@@ -4,9 +4,8 @@ using Content.Client.Administration.Managers;
 using Content.Shared.Administration;
 using Content.Shared.Preferences;
 using Robust.Client;
-using Robust.Shared.Configuration;
+using Robust.Client.Player;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Preferences
@@ -20,11 +19,10 @@ namespace Content.Client.Preferences
     {
         [Dependency] private readonly IClientNetManager _netManager = default!;
         [Dependency] private readonly IBaseClient _baseClient = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IPrototypeManager _prototypes = default!;
 
         //WD-EDIT
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IClientAdminManager _adminManager = default!;
         //WD-EDIT
 
@@ -71,8 +69,7 @@ namespace Content.Client.Preferences
         {
             //WD-EDIT
             var allowedMarkings = _sponsorsManager.TryGetInfo(out var sponsor) ? sponsor.AllowedMarkings : new string[]{};
-            var isAdminSpecies = _adminManager.HasFlag(AdminFlags.AdminSpecies);
-            profile.EnsureValid(_cfg, _prototypes, allowedMarkings, isAdminSpecies);
+            profile.EnsureValid(allowedMarkings, _adminManager.HasFlag(AdminFlags.AdminSpecies));
             //WD-EDIT
             var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) {[slot] = profile};
             Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor);

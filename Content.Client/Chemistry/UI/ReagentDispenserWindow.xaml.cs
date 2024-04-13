@@ -19,8 +19,6 @@ namespace Content.Client.Chemistry.UI
     public sealed partial class ReagentDispenserWindow : DefaultWindow
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
-
         public event Action<BaseButton.ButtonEventArgs, DispenseReagentButton>? OnDispenseReagentButtonPressed;
         public event Action<GUIMouseHoverEventArgs, DispenseReagentButton>? OnDispenseReagentButtonMouseEntered;
         public event Action<GUIMouseHoverEventArgs, DispenseReagentButton>? OnDispenseReagentButtonMouseExited;
@@ -57,11 +55,8 @@ namespace Content.Client.Chemistry.UI
 
             ChemicalList.Children.Clear();
 
-            foreach (var entry in inventory.OrderBy(r =>
-                     {
-                         _prototypeManager.TryIndex(r.Prototype, out ReagentPrototype? p);
-                         return p?.LocalizedName;
-                     }))
+            foreach (var entry in inventory
+                .OrderBy(r => {_prototypeManager.TryIndex(r.Prototype, out ReagentPrototype? p); return p?.LocalizedName;}))
             {
                 var localizedName = _prototypeManager.TryIndex(entry.Prototype, out ReagentPrototype? p)
                     ? p.LocalizedName
@@ -84,9 +79,6 @@ namespace Content.Client.Chemistry.UI
             var castState = (ReagentDispenserBoundUserInterfaceState) state;
             UpdateContainerInfo(castState);
             UpdateReagentsList(castState.Inventory);
-
-            _entityManager.TryGetEntity(castState.OutputContainerEntity, out var outputContainerEnt);
-            View.SetEntity(outputContainerEnt);
 
             // Disable the Clear & Eject button if no beaker
             ClearButton.Disabled = castState.OutputContainer is null;
@@ -137,7 +129,7 @@ namespace Content.Client.Chemistry.UI
 
             if (state.OutputContainer is null)
             {
-                ContainerInfo.Children.Add(new Label { Text = Loc.GetString("reagent-dispenser-window-no-container-loaded-text") });
+                ContainerInfo.Children.Add(new Label {Text = Loc.GetString("reagent-dispenser-window-no-container-loaded-text") });
                 return;
             }
 
@@ -162,11 +154,11 @@ namespace Content.Client.Chemistry.UI
                     ? p.LocalizedName
                     : Loc.GetString("reagent-dispenser-window-reagent-name-not-found-text");
 
-                var nameLabel = new Label { Text = $"{localizedName}: " };
+                var nameLabel = new Label {Text = $"{localizedName}: "};
                 var quantityLabel = new Label
                 {
                     Text = Loc.GetString("reagent-dispenser-window-quantity-label-text", ("quantity", quantity)),
-                    StyleClasses = { StyleNano.StyleClassLabelSecondaryColor },
+                    StyleClasses = {StyleNano.StyleClassLabelSecondaryColor},
                 };
 
                 // Check if the reagent is being moused over. If so, color it green.

@@ -40,6 +40,7 @@ public abstract partial class SharedFultonSystem : EntitySystem
 
         SubscribeLocalEvent<FultonedDoAfterEvent>(OnFultonDoAfter);
 
+        SubscribeLocalEvent<FultonedComponent, EntityUnpausedEvent>(OnFultonUnpaused);
         SubscribeLocalEvent<FultonedComponent, GetVerbsEvent<InteractionVerb>>(OnFultonedGetVerbs);
         SubscribeLocalEvent<FultonedComponent, ExaminedEvent>(OnFultonedExamine);
         SubscribeLocalEvent<FultonedComponent, EntGotInsertedIntoContainerMessage>(OnFultonContainerInserted);
@@ -105,6 +106,11 @@ public abstract partial class SharedFultonSystem : EntitySystem
         Audio.PlayPredicted(fulton.FultonSound, args.Target.Value, args.User);
     }
 
+    private void OnFultonUnpaused(EntityUid uid, FultonedComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextFulton += args.PausedTime;
+    }
+
     private void OnFultonInteract(EntityUid uid, FultonComponent component, AfterInteractEvent args)
     {
         if (args.Target == null || args.Handled || !args.CanReach)
@@ -153,7 +159,8 @@ public abstract partial class SharedFultonSystem : EntitySystem
             {
                 CancelDuplicate = true,
                 MovementThreshold = 0.5f,
-                BreakOnMove = true,
+                BreakOnUserMove = true,
+                BreakOnTargetMove = true,
                 Broadcast = true,
                 NeedHand = true,
             });

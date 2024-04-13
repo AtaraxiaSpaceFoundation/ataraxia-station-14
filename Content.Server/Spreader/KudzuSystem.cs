@@ -10,7 +10,6 @@ public sealed class KudzuSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
 
@@ -22,6 +21,7 @@ public sealed class KudzuSystem : EntitySystem
     {
         SubscribeLocalEvent<KudzuComponent, ComponentStartup>(SetupKudzu);
         SubscribeLocalEvent<KudzuComponent, SpreadNeighborsEvent>(OnKudzuSpread);
+        SubscribeLocalEvent<GrowingKudzuComponent, EntityUnpausedEvent>(OnKudzuUnpaused);
         SubscribeLocalEvent<KudzuComponent, DamageChangedEvent>(OnDamageChanged);
     }
 
@@ -29,12 +29,15 @@ public sealed class KudzuSystem : EntitySystem
     {
         // Every time we take any damage, we reduce growth depending on all damage over the growth impact
         //   So the kudzu gets slower growing the more it is hurt.
-        var growthDamage = (int) (args.Damageable.TotalDamage / component.GrowthHealth);
+        int growthDamage = (int) (args.Damageable.TotalDamage / component.GrowthHealth);
         if (growthDamage > 0)
         {
-            if (!EnsureComp<GrowingKudzuComponent>(uid, out _))
+            GrowingKudzuComponent? growing;
+            if (!TryComp(uid, out growing))
+            {
+                growing = AddComp<GrowingKudzuComponent>(uid);
                 component.GrowthLevel = 3;
-
+            }
             component.GrowthLevel = Math.Max(1, component.GrowthLevel - growthDamage);
             if (EntityManager.TryGetComponent<AppearanceComponent>(uid, out var appearance))
             {
@@ -67,7 +70,7 @@ public sealed class KudzuSystem : EntitySystem
 
         foreach (var neighbor in args.NeighborFreeTiles)
         {
-            var neighborUid = Spawn(prototype, _map.GridTileToLocal(neighbor.Tile.GridUid, neighbor.Grid, neighbor.Tile.GridIndices));
+            var neighborUid = Spawn(prototype, neighbor.Grid.GridTileToLocal(neighbor.Tile));
             DebugTools.Assert(HasComp<EdgeSpreaderComponent>(neighborUid));
             DebugTools.Assert(HasComp<ActiveEdgeSpreaderComponent>(neighborUid));
             DebugTools.Assert(Comp<EdgeSpreaderComponent>(neighborUid).Id == KudzuGroup);
@@ -75,6 +78,11 @@ public sealed class KudzuSystem : EntitySystem
             if (args.Updates <= 0)
                 return;
         }
+    }
+
+    private void OnKudzuUnpaused(EntityUid uid, GrowingKudzuComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextTick += args.PausedTime;
     }
 
     private void SetupKudzu(EntityUid uid, KudzuComponent component, ComponentStartup args)

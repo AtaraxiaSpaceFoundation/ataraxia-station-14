@@ -13,11 +13,9 @@ public sealed class PuddleDebugDebugOverlaySystem : SharedPuddleDebugOverlaySyst
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
 
-    private readonly HashSet<ICommonSession> _playerObservers = new() { };
-    private List<Entity<MapGridComponent>> _grids = new() { };
+    private readonly HashSet<ICommonSession> _playerObservers = new();
+    private List<Entity<MapGridComponent>> _grids = new();
 
     public bool ToggleObserver(ICommonSession observer)
     {
@@ -57,8 +55,7 @@ public sealed class PuddleDebugDebugOverlaySystem : SharedPuddleDebugOverlaySyst
 
             var transform = EntityManager.GetComponent<TransformComponent>(entity);
 
-
-            var worldBounds = Box2.CenteredAround(_transform.GetWorldPosition(transform),
+            var worldBounds = Box2.CenteredAround(transform.WorldPosition,
                 new Vector2(LocalViewRange, LocalViewRange));
 
             _grids.Clear();
@@ -72,14 +69,14 @@ public sealed class PuddleDebugDebugOverlaySystem : SharedPuddleDebugOverlaySyst
                 if (!Exists(gridUid))
                     continue;
 
-                foreach (var uid in _map.GetAnchoredEntities(gridUid, grid, worldBounds))
+                foreach (var uid in grid.Comp.GetAnchoredEntities(worldBounds))
                 {
                     PuddleComponent? puddle = null;
                     TransformComponent? xform = null;
                     if (!Resolve(uid, ref puddle, ref xform, false))
                         continue;
 
-                    var pos = xform.Coordinates.ToVector2i(EntityManager, _mapManager, _transform);
+                    var pos = xform.Coordinates.ToVector2i(EntityManager, _mapManager);
                     var vol = _puddle.CurrentVolume(uid, puddle);
                     data.Add(new PuddleDebugOverlayData(pos, vol));
                 }

@@ -4,6 +4,7 @@ using System.Linq;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 
@@ -29,7 +30,8 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         RestockInventoryFromPrototype(uid, component);
     }
 
-    public void RestockInventoryFromPrototype(EntityUid uid, VendingMachineComponent? component = null)
+    public void RestockInventoryFromPrototype(EntityUid uid,
+        VendingMachineComponent? component = null)
     {
         if (!Resolve(uid, ref component))
         {
@@ -73,12 +75,10 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return new();
 
-        return GetAllInventory(uid, component).Where(inventoryEntry => inventoryEntry.Amount > 0).ToList();
+        return GetAllInventory(uid, component).Where(_ => _.Amount > 0).ToList();
     }
 
-    private void AddInventoryFromPrototype(
-        EntityUid uid,
-        Dictionary<string, uint>? entries,
+    private void AddInventoryFromPrototype(EntityUid uid, Dictionary<string, uint>? entries,
         InventoryType type,
         VendingMachineComponent? component = null)
     {
@@ -124,8 +124,5 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         }
     }
 
-    protected virtual int GetEntryPrice(EntityPrototype proto)
-    {
-        return 0;
-    } // WD
+    protected virtual int GetEntryPrice(EntityPrototype proto) { return 0; } // WD
 }

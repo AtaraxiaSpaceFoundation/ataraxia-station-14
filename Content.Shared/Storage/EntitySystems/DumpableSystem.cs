@@ -2,13 +2,11 @@ using System.Linq;
 using Content.Shared.Disposal;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
-using Content.Shared.Item;
 using Content.Shared.Placeable;
 using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -16,19 +14,19 @@ namespace Content.Shared.Storage.EntitySystems;
 
 public sealed class DumpableSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDisposalUnitSystem _disposalUnitSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
-    private EntityQuery<ItemComponent> _itemQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
     public override void Initialize()
     {
         base.Initialize();
-        _itemQuery = GetEntityQuery<ItemComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
         SubscribeLocalEvent<DumpableComponent, AfterInteractEvent>(OnAfterInteract, after: new[]{ typeof(SharedEntityStorageSystem) });
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<AlternativeVerb>>(AddDumpVerb);
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<UtilityVerb>>(AddUtilityVerbs);
@@ -110,43 +108,48 @@ public sealed class DumpableSystem : EntitySystem
         }
     }
 
-    private void StartDoAfter(EntityUid storageUid, EntityUid targetUid, EntityUid userUid, DumpableComponent dumpable)
+    private void StartDoAfter(EntityUid storageUid, EntityUid? targetUid, EntityUid userUid, DumpableComponent dumpable)
     {
         if (!TryComp<StorageComponent>(storageUid, out var storage))
             return;
 
-        var delay = 0f;
-
-        foreach (var entity in storage.Container.ContainedEntities)
-        {
-            if (!_itemQuery.TryGetComponent(entity, out var itemComp) ||
-                !_prototypeManager.TryIndex(itemComp.Size, out var itemSize))
-            {
-                continue;
-            }
-
-            delay += itemSize.Weight;
-        }
-
-        delay *= (float) dumpable.DelayPerItem.TotalSeconds * dumpable.Multiplier;
+        var delay = storage.Container.ContainedEntities.Count * (float) dumpable.DelayPerItem.TotalSeconds * dumpable.Multiplier;
 
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, userUid, delay, new DumpableDoAfterEvent(), storageUid, target: targetUid, used: storageUid)
         {
-            BreakOnMove = true,
+            BreakOnTargetMove = true,
+            BreakOnUserMove = true,
             NeedHand = true
         });
     }
 
-    private void OnDoAfter(EntityUid uid, DumpableComponent component, DumpableDoAfterEvent args)
+    private void OnDoAfter(EntityUid uid, DumpableComponent component, DoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage) || storage.Container.ContainedEntities.Count == 0)
+        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage))
             return;
 
-        var dumpQueue = new Queue<EntityUid>(storage.Container.ContainedEntities);
+        Queue<EntityUid> dumpQueue = new();
+        foreach (var entity in storage.Container.ContainedEntities)
+        {
+            dumpQueue.Enqueue(entity);
+        }
+
+        if (dumpQueue.Count == 0)
+            return;
+
+        foreach (var entity in dumpQueue)
+        {
+            var transform = Transform(entity);
+            _container.AttachParentToContainerOrGrid((entity, transform));
+            _transformSystem.SetLocalPositionRotation(entity, transform.LocalPosition + _random.NextVector2Box() / 2, _random.NextAngle(), transform);
+        }
+
+        if (args.Args.Target == null)
+            return;
 
         var dumped = false;
 
-        if (_disposalUnitSystem.HasDisposals(args.Args.Target))
+        if (_disposalUnitSystem.HasDisposals(args.Args.Target.Value))
         {
             dumped = true;
 
@@ -155,31 +158,22 @@ public sealed class DumpableSystem : EntitySystem
                 _disposalUnitSystem.DoInsertDisposalUnit(args.Args.Target.Value, entity, args.Args.User);
             }
         }
-        else if (HasComp<PlaceableSurfaceComponent>(args.Args.Target))
+        else if (HasComp<PlaceableSurfaceComponent>(args.Args.Target.Value))
         {
             dumped = true;
 
-            var (targetPos, targetRot) = _transformSystem.GetWorldPositionRotation(args.Args.Target.Value);
+            var targetPos = _xformQuery.GetComponent(args.Args.Target.Value).LocalPosition;
 
             foreach (var entity in dumpQueue)
             {
-                _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, targetRot);
-            }
-        }
-        else
-        {
-            var targetPos = _transformSystem.GetWorldPosition(uid);
-
-            foreach (var entity in dumpQueue)
-            {
-                var transform = Transform(entity);
-                _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, _random.NextAngle(), transform);
+                _transformSystem.SetLocalPosition(entity, targetPos + _random.NextVector2Box() / 4);
             }
         }
 
         if (dumped)
         {
-            _audio.PlayPredicted(component.DumpSound, uid, args.User);
+            // TODO: Predicted when above predicted
+            _audio.PlayPvs(component.DumpSound, uid);
         }
     }
 }

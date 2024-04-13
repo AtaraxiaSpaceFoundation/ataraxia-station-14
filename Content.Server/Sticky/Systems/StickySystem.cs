@@ -93,7 +93,8 @@ public sealed class StickySystem : EntitySystem
             // start sticking object to target
             _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, delay, new StickyDoAfterEvent(), uid, target: target, used: uid)
             {
-                BreakOnMove = true,
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
                 NeedHand = true
             });
         }
@@ -147,7 +148,8 @@ public sealed class StickySystem : EntitySystem
             // start unsticking object
             _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, delay, new StickyDoAfterEvent(), uid, target: uid)
             {
-                BreakOnMove = true,
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
                 NeedHand = true
             });
         }

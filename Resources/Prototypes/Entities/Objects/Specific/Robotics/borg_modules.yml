@@ -5,8 +5,6 @@
   description: A piece of tech that gives cyborgs new abilities.
   abstract: true
   components:
-  - type: Item
-    storedRotation: -90
   - type: Sprite
     sprite: Objects/Specific/Robotics/borgmodule.rsi
   - type: BorgModule
@@ -145,7 +143,6 @@
   - type: ItemBorgModule
     items:
     - HandheldGPSBasic
-    - HandHeldMassScannerBorg
     - HandheldStationMapUnpowered
 
 - type: entity
@@ -177,7 +174,7 @@
     - Screwdriver
     - Wirecutter
     - Multitool
-    - WelderIndustrial
+    - Welder
 
 # cargo modules
 - type: entity
@@ -240,9 +237,6 @@
     - Omnitool
     - WelderExperimental
     - NetworkConfigurator
-    - RemoteSignaller
-    - GasAnalyzer
-    - GeigerCounter
     - RemoteSignaller
     - GasAnalyzer   
     - GeigerCounter
@@ -520,28 +514,28 @@
   components:
     - type: Sprite
       layers:
-      - state: syndicate
-      - state: icon-syndicate
+        - state: syndicate
+        - state: icon-tools
     - type: ItemBorgModule
       items:
-      - Crowbar
-      - Emag
-      - PinpointerSyndicateNuclear
+        - Crowbar
+        - Emag
+        - PinpointerSyndicateNuclear
 
 - type: entity
   id: BorgModuleEsword
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule ]
   name: energy sword cyborg module
-  description: A module that comes with a double energy sword.
+  description: A module that comes with an energy sword.
   components:
     - type: Sprite
       layers:
-      - state: syndicate
-      - state: icon-syndicate
+        - state: syndicate
+        - state: icon-tools
     - type: ItemBorgModule
       items:
-      - EnergySwordDouble
-      - PinpointerSyndicateNuclear
+        - EnergySword
+        - PinpointerSyndicateNuclear
 
 - type: entity
   id: BorgModuleL6C
@@ -551,9 +545,9 @@
   components:
     - type: Sprite
       layers:
-      - state: syndicate
-      - state: icon-syndicate
+        - state: syndicate
+        - state: icon-tools
     - type: ItemBorgModule
       items:
-      - WeaponLightMachineGunL6C
-      - PinpointerSyndicateNuclear
+        - WeaponLightMachineGunL6C
+        - PinpointerSyndicateNuclear

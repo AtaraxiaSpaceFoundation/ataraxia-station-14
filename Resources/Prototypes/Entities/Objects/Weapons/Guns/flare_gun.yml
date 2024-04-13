@@ -36,5 +36,3 @@
     quickEquip: false
     slots:
     - Belt
-    - suitStorage
-  - type: Execution

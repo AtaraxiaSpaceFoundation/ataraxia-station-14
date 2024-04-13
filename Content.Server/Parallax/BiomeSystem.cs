@@ -29,7 +29,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Threading;
 using Robust.Shared.Utility;
-using ChunkIndicesEnumerator = Robust.Shared.Map.Enumerators.ChunkIndicesEnumerator;
 
 namespace Content.Server.Parallax;
 
@@ -1001,13 +1000,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         light.AmbientLightColor = Color.FromHex("#D8B059");
         Dirty(mapUid, light, metadata);
 
+        // Atmos
+        var atmos = EnsureComp<MapAtmosphereComponent>(mapUid);
+
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
         moles[(int) Gas.Oxygen] = 21.824779f;
         moles[(int) Gas.Nitrogen] = 82.10312f;
 
-        var mixture = new GasMixture(moles, Atmospherics.T20C);
+        var mixture = new GasMixture(2500)
+        {
+            Temperature = 293.15f,
+            Moles = moles,
+        };
 
-        _atmos.SetMapAtmosphere(mapUid, false, mixture);
+        _atmos.SetMapAtmosphere(mapUid, false, mixture, atmos);
     }
 
     /// <summary>

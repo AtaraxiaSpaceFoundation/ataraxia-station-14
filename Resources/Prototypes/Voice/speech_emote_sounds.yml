@@ -26,14 +26,6 @@
       collection: Snores
     Honk:
       collection: BikeHorn
-    Sigh:
-      collection: MaleSigh
-    Crying:
-      collection: MaleCry
-    Whistle:
-      collection: Whistles
-    Weh:
-      collection: Weh
 
 - type: emoteSounds
   id: FemaleHuman
@@ -122,8 +114,6 @@
       collection: FemaleCry
     Whistle:
       collection: Whistles
-    Weh:
-      collection: Weh
     Hiss:
       collection: FelinidHisses
     Meow:
@@ -201,12 +191,6 @@
       path: /Audio/Animals/lizard_happy.ogg
     Honk:
       collection: BikeHorn
-    Whistle:
-      collection: Whistles
-    Crying:
-      collection: MaleCry
-    Weh:
-      collection: Weh
 
 - type: emoteSounds
   id: MaleSlime
@@ -241,8 +225,6 @@
       collection: MaleCry
     Whistle:
       collection: Whistles
-    Weh:
-      collection: Weh
   params:
     variation: 0.125
 
@@ -279,8 +261,6 @@
       collection: FemaleCry
     Whistle:
       collection: Whistles
-    Weh:
-      collection: Weh
   params:
     variation: 0.125
 
@@ -304,10 +284,9 @@
       collection: DionaLaugh
     Honk:
       collection: BikeHorn
-    Weh:
-      collection: Weh
   params:
     variation: 0.125
+
 
 - type: emoteSounds
   id: UnisexArachnid
@@ -322,8 +301,6 @@
       path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
     Click:
       path: /Audio/Voice/Arachnid/arachnid_click.ogg
-    Weh:
-      collection: Weh
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -352,12 +329,6 @@
       collection: MaleSigh
     Honk:
       collection: BikeHorn
-    Crying:
-      collection: MaleCry
-    Whistle:
-      collection: Whistles
-    Weh:
-      collection: Weh
   params:
     variation: 0.125
     pitch: 0.75
@@ -389,12 +360,6 @@
       collection: FemaleSigh
     Honk:
       collection: BikeHorn
-    Crying:
-      collection: FemaleCry
-    Whistle:
-      collection: Whistles
-    Weh:
-      collection: Weh
   params:
     variation: 0.125
     pitch: 0.75
@@ -414,26 +379,6 @@
       path: /Audio/Voice/Moth/moth_chitter.ogg
     Squeak:
       path: /Audio/Voice/Moth/moth_squeak.ogg
-    Weh:
-      collection: Weh
-
-- type: emoteSounds
-  id: UnisexSilicon
-  params:
-    variation: 0.05
-  sounds:
-    Beep:
-      path: /Audio/Machines/twobeep.ogg
-    Chime:
-      path: /Audio/Machines/chime.ogg
-    Buzz:
-      path: /Audio/Machines/buzz-sigh.ogg
-    Buzz-Two:
-      path: /Audio/Machines/buzz-two.ogg
-    Honk:
-      path: /Audio/Items/bikehorn.ogg
-    Ping:
-      path: /Audio/Effects/Cargo/ping.ogg
 
 # body emotes
 - type: emoteSounds
@@ -445,8 +390,6 @@
       collection: Snaps
       params:
         volume: -6
-    Salute:
-      collection: Salutes
 
 - type: emoteSounds
   id: DionaBodyEmotes
@@ -517,10 +460,3 @@
   sounds:
     Chirp:
       path: /Audio/Animals/nymph_chirp.ogg
-
-- type: emoteSounds
-  id: Parrot
-  sound:
-    path: /Audio/Animals/parrot_raught.ogg
-    params:
-      variation: 0.125

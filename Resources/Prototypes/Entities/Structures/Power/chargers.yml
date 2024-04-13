@@ -83,6 +83,9 @@
       visible: false
   - type: Machine
     board: CellRechargerCircuitboard
+  - type: Wires
+    boardName: wires-board-name-recharger
+    layoutId: Recharger
   - type: WiresPanel
   - type: GenericVisualizer
     visuals:
@@ -253,6 +256,8 @@
     - machine_parts
     - machine_board
     - entity_storage
+  - type: Wires
+    layoutId: borgcharger
   - type: WiresPanel
   - type: WiresVisuals
   - type: Machine

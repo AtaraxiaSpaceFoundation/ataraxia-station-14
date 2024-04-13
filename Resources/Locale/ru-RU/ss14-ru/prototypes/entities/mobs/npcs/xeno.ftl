@@ -31,3 +31,6 @@ ent-MobSmallPurpleSnake = пурпурная змея
 ent-XenoWardingTower = Охранающая башня ксено
     .desc = Очевидно оно защищает гнездо.
     .suffix = { "" }
+ent-WeaponTurretXeno = Ксено-турель
+    .desc = Стреляет 9мм кислотными снарядами.
+    .suffix = Ксено

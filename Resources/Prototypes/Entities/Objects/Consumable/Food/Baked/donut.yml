@@ -184,14 +184,14 @@
 # Tastes like donut, bitterness.
 
 - type: entity
-  name: blorbo donut
+  name: blumpkin donut
   parent: FoodDonutBase
   id: FoodDonutBlumpkin
-  description: Goes great with a mug of BLORBO.
+  description: Goes great with a mug of soothing drunken blumpkin.
   components:
   - type: Sprite
     state: blue
-# Tastes like donut, blorbo.
+# Tastes like donut, blumpkin.
 
 - type: entity
   name: bungo donut

@@ -420,6 +420,7 @@
     makeSentient: true
     allowSpeech: true
     allowMovement: true
+    whitelistRequired: false
     name: ghost-role-information-mothroach-name
     description: ghost-role-information-mothroach-description
   - type: Fixtures
@@ -530,13 +531,6 @@
         damage: 60
       behaviors:
       - !type:GibBehavior { }
-  - type: FireVisuals
-    sprite: Mobs/Effects/onfire.rsi
-    normalState: Mouse_burning
-
-
-# Note that the mallard duck is actually a male drake mallard, with the brown duck being the female variant of the same species, however ss14 lacks sex specific textures
-# The white duck is more akin to a pekin or call duck.
 
 - type: entity
   name: mallard duck #Quack
@@ -755,8 +749,9 @@
           Quantity: 30
   - type: Udder
     reagentId: Milk
-    quantityPerUpdate: 25
-    growthDelay: 30
+    targetSolution: udder
+    quantity: 25
+    updateRate: 30
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -907,8 +902,9 @@
         maxVol: 250
   - type: Udder
     reagentId: MilkGoat
-    quantityPerUpdate: 25
-    growthDelay: 20
+    targetSolution: udder
+    quantity: 25
+    updateRate: 20
   - type: Wooly
   - type: Food
     solution: wool
@@ -1028,8 +1024,6 @@
     bloodMaxVolume: 300
     # if you fuck with the gorilla he will harambe you
   - type: MeleeWeapon
-    soundHit:
-      collection: Punch
     damage:
       types:
         Blunt: 20
@@ -1222,15 +1216,6 @@
       path: /Audio/Animals/ferret_happy.ogg
     interactFailureSound:
       path: /Audio/Items/wirecutter.ogg
-  - type: MeleeWeapon
-    soundHit:
-      path: /Audio/Effects/bite.ogg
-    angle: 30
-    animation: WeaponArcBite
-    damage:
-      types:
-        Blunt: 3
-        Piercing: 3
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -1366,20 +1351,19 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      60: Critical
-      125: Dead
+      40: Critical
+      80: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.5
     baseSprintSpeed: 5
   - type: MeleeWeapon
     soundHit:
-      collection: AlienClaw
+      path: /Audio/Weapons/pierce.ogg
     angle: 30
-    animation: WeaponArcClaw
+    animation: WeaponArcPunch
     damage:
       types:
-        Slash: 5
-        Piercing: 4
+        Piercing: 9
   - type: Temperature
     heatDamageThreshold: 360
     coldDamageThreshold: 285
@@ -1608,9 +1592,6 @@
   - type: BadFood
   - type: NonSpreaderZombie
   - type: PreventSpiller
-  - type: FireVisuals
-    sprite: Mobs/Effects/onfire.rsi
-    normalState: Mouse_burning
 
 - type: entity
   parent: MobMouse
@@ -1884,13 +1865,6 @@
     spawned:
     - id: FoodMeat
       amount: 1
-  - type: Speech
-    speechSounds: Parrot
-    speechVerb: Parrot
-  - type: Vocal
-    sounds:
-      Unsexed: Parrot
-  - type: ParrotAccent
   - type: InteractionPopup
     successChance: 0.6
     interactSuccessString: petting-success-bird
@@ -2473,22 +2447,6 @@
       gender: epicene
   - type: Bloodstream
     bloodMaxVolume: 100
-  - type: MeleeWeapon
-    angle: 0
-    animation: WeaponArcBite
-    soundHit:
-      path: /Audio/Effects/bite.ogg
-    damage:
-      types:
-        Piercing: 8
-  - type: NpcFactionMember
-    factions:
-    - Passive
-  - type: NPCRetaliation
-    attackMemoryLength: 10
-  - type: HTN
-    rootTask:
-      task: RuminantHostileCompound
   - type: Tag
     tags:
     - VimPilot
@@ -3091,13 +3049,10 @@
   - type: Bloodstream
     bloodMaxVolume: 60
   - type: CanEscapeInventory
-    baseResistTime: 3
+    BaseResistTime: 3
   - type: MobPrice
     price: 60
   - type: NonSpreaderZombie
-  - type: FireVisuals
-    sprite: Mobs/Effects/onfire.rsi
-    normalState: Mouse_burning
 
 - type: entity
   name: pig
@@ -3213,7 +3168,7 @@
   - type: InventorySlots
   - type: Strippable
   - type: Bloodstream
-    bloodReagent: Sap
+    bloodReagent: Water
     bloodMaxVolume: 60
   - type: UserInterface
     interfaces:

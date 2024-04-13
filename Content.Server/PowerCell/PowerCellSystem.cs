@@ -35,6 +35,7 @@ public sealed partial class PowerCellSystem : SharedPowerCellSystem
         SubscribeLocalEvent<PowerCellComponent, ExaminedEvent>(OnCellExamined);
         SubscribeLocalEvent<PowerCellComponent, EmpAttemptEvent>(OnCellEmpAttempt);
 
+        SubscribeLocalEvent<PowerCellDrawComponent, EntityUnpausedEvent>(OnUnpaused);
         SubscribeLocalEvent<PowerCellDrawComponent, ChargeChangedEvent>(OnDrawChargeChanged);
         SubscribeLocalEvent<PowerCellDrawComponent, PowerCellChangedEvent>(OnDrawCellChanged);
 
@@ -179,7 +180,7 @@ public sealed partial class PowerCellSystem : SharedPowerCellSystem
             return false;
         }
 
-        _sharedAppearanceSystem.SetData(uid, PowerCellSlotVisuals.Enabled, battery.CurrentCharge > 0);
+        _sharedAppearanceSystem.SetData(uid, PowerCellSlotVisuals.Enabled, battery.Charge > 0);
         return true;
     }
 

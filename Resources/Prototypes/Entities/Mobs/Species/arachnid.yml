@@ -39,10 +39,6 @@
       - !type:WearableReaction
         slot: head
         prototypeID: WaterDropletHat
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
-      effects:
-      - !type:WashCreamPieReaction
   # Damage (Self)
   - type: Bloodstream
     bloodReagent: CopperBlood
@@ -50,7 +46,7 @@
   - type: MeleeWeapon
     animation: WeaponArcBite
     soundHit:
-      path: /Audio/Effects/bite.ogg
+      collection: AlienClaw
     damage:
       types:
         Piercing: 5

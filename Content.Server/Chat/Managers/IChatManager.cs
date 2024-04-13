@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Robust.Shared.Network;
 using Robust.Shared.Player;

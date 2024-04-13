@@ -68,12 +68,6 @@
         orGroup: GiftPool
       - id: PlushieCarp
         orGroup: GiftPool
-      - id: PlushieMagicarp
-        orGroup: GiftPool
-      - id: PlushieHolocarp
-        orGroup: GiftPool
-      - id: PlushieRainbowCarp
-        orGroup: GiftPool
       - id: PlushieSlime
         orGroup: GiftPool
       - id: PlushieSnake
@@ -192,8 +186,6 @@
         orGroup: GiftPool
       - id: ViolaInstrument
         orGroup: GiftPool
-      - id: ClothingNeckCloakTrans
-        orGroup: GiftPool
       - id: ClothingNeckCloakAdmin
         orGroup: GiftPool
       - id: ToySkeleton
@@ -270,8 +262,6 @@
         orGroup: GiftPool
       - id: FoodBoxDonkpocketCarp
         orGroup: GiftPool
-      - id: FoodBoxDonkpocketGondola
-        orGroup: GiftPool
       - id: FoodBoxDonkpocketBerry
         orGroup: GiftPool
       - id: FoodBoxDonkpocketHonk
@@ -294,9 +284,9 @@
         orGroup: GiftPool
       - id: ClothingHeadHatBunny
         orGroup: GiftPool
-      - id: ClothingHeadHatFlowerWreath
+      - id: ClothingHeadHatFlowerCrown
         orGroup: GiftPool
-      - id: FoodPoppy
+      - id: ClothingHeadHatHairflower
         orGroup: GiftPool
       - id: ClothingMaskClown
         orGroup: GiftPool

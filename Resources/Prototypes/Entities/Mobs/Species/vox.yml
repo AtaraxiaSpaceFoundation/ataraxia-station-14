@@ -15,8 +15,6 @@
     species: Vox
     bodyType: VoxNormal
     #- type: VoxAccent # Not yet coded
-  - type: Inventory
-    speciesId: vox
   - type: Speech
     speechVerb: Vox
     speechSounds: Vox
@@ -44,7 +42,7 @@
     bloodReagent: AmmoniaBlood
   - type: MeleeWeapon
     soundHit:
-      collection: AlienClaw
+      path: /Audio/Weapons/pierce.ogg
     angle: 30
     animation: WeaponArcClaw
     damage:

@@ -21,8 +21,17 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<RechargeBasicEntityAmmoComponent, EntityUnpausedEvent>(OnUnpaused);
         SubscribeLocalEvent<RechargeBasicEntityAmmoComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<RechargeBasicEntityAmmoComponent, ExaminedEvent>(OnExamined);
+    }
+
+    private void OnUnpaused(EntityUid uid, RechargeBasicEntityAmmoComponent component, ref EntityUnpausedEvent args)
+    {
+        if (component.NextCharge == null)
+            return;
+
+        component.NextCharge = component.NextCharge.Value + args.PausedTime;
     }
 
     public override void Update(float frameTime)
@@ -50,19 +59,19 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
             if (ammo.Count == ammo.Capacity)
             {
                 recharge.NextCharge = null;
-                Dirty(uid, recharge);
+                Dirty(recharge);
                 continue;
             }
 
             recharge.NextCharge = recharge.NextCharge.Value + TimeSpan.FromSeconds(recharge.RechargeCooldown);
-            Dirty(uid, recharge);
+            Dirty(recharge);
         }
     }
 
     private void OnInit(EntityUid uid, RechargeBasicEntityAmmoComponent component, MapInitEvent args)
     {
         component.NextCharge = _timing.CurTime;
-        Dirty(uid, component);
+        Dirty(component);
     }
 
     private void OnExamined(EntityUid uid, RechargeBasicEntityAmmoComponent component, ExaminedEvent args)
@@ -87,7 +96,7 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
         if (recharge.NextCharge == null || recharge.NextCharge < _timing.CurTime)
         {
             recharge.NextCharge = _timing.CurTime + TimeSpan.FromSeconds(recharge.RechargeCooldown);
-            Dirty(uid, recharge);
+            Dirty(recharge);
         }
     }
 }

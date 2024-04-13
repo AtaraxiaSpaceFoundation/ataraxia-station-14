@@ -28,6 +28,7 @@ namespace Content.Client.Access.UI
             if (EntMan.TryGetComponent<IdCardConsoleComponent>(Owner, out var idCard))
             {
                 accessLevels = idCard.AccessLevels;
+                accessLevels.Sort();
             }
             else
             {
@@ -69,7 +70,7 @@ namespace Content.Client.Access.UI
         public void SubmitData(
             string newFullName,
             string newJobTitle,
-            List<ProtoId<AccessLevelPrototype>> newAccessList,
+            List<string> newAccessList,
             string newJobPrototype,
             string? newJobIcon)
         {

@@ -4,5 +4,6 @@
 public partial class KeyBaseComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public int? FormId;
 }

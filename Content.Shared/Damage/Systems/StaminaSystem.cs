@@ -47,6 +47,7 @@ public sealed partial class StaminaSystem : EntitySystem
 
         InitializeModifier();
 
+        SubscribeLocalEvent<StaminaComponent, EntityUnpausedEvent>(OnStamUnpaused);
         SubscribeLocalEvent<StaminaComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<StaminaComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<StaminaComponent, AfterAutoHandleStateEvent>(OnStamHandleState);
@@ -59,6 +60,11 @@ public sealed partial class StaminaSystem : EntitySystem
         SubscribeLocalEvent<StaminaDamageOnCollideComponent, ThrowDoHitEvent>(OnThrowHit);
 
         SubscribeLocalEvent<StaminaDamageOnHitComponent, MeleeHitEvent>(OnMeleeHit);
+    }
+
+    private void OnStamUnpaused(EntityUid uid, StaminaComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextUpdate += args.PausedTime;
     }
 
     private void OnStamHandleState(EntityUid uid, StaminaComponent component, ref AfterAutoHandleStateEvent args)
@@ -297,7 +303,7 @@ public sealed partial class StaminaSystem : EntitySystem
         }
 
         EnsureComp<ActiveStaminaComponent>(uid);
-        Dirty(uid, component);
+        Dirty(component);
 
         if (value <= 0)
             return;
@@ -357,7 +363,7 @@ public sealed partial class StaminaSystem : EntitySystem
 
             comp.NextUpdate += TimeSpan.FromSeconds(1f);
             TakeStaminaDamage(uid, -comp.Decay, comp);
-            Dirty(uid, comp);
+            Dirty(comp);
         }
     }
 
@@ -380,7 +386,7 @@ public sealed partial class StaminaSystem : EntitySystem
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = _timing.CurTime + component.StunTime + StamCritBufferTime;
         EnsureComp<ActiveStaminaComponent>(uid);
-        Dirty(uid, component);
+        Dirty(component);
         _adminLogger.Add(LogType.Stamina, LogImpact.Medium, $"{ToPrettyString(uid):user} entered stamina crit");
     }
 
@@ -397,7 +403,7 @@ public sealed partial class StaminaSystem : EntitySystem
         component.NextUpdate = _timing.CurTime;
         SetStaminaAlert(uid, component);
         RemComp<ActiveStaminaComponent>(uid);
-        Dirty(uid, component);
+        Dirty(component);
         _adminLogger.Add(LogType.Stamina, LogImpact.Low, $"{ToPrettyString(uid):user} recovered from stamina crit");
     }
 }
