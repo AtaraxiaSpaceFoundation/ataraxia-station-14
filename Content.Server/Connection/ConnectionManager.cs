@@ -55,7 +55,6 @@ namespace Content.Server.Connection
         private ISawmill _sawmill = default!;
 
         //WD-EDIT
-        [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly SponsorsManager _sponsorsManager = default!;
         //WD-EDIT
 
@@ -268,8 +267,9 @@ namespace Content.Server.Connection
             var adminData = await _dbManager.GetAdminDataForAsync(userId);
 
             var havePriorityJoin = _sponsorsManager.TryGetInfo(userId, out var sponsorData) && sponsorData.HavePriorityJoin;
-            var wasInGame = _gameTicker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
-                            status == PlayerGameStatus.JoinedGame;
+            var wasInGame = EntitySystem.TryGet<GameTicker>(out var gameTicker) && 
+                gameTicker.PlayerGameStatuses.TryGetValue(userId, out var status) && 
+                status == PlayerGameStatus.JoinedGame;
             return adminData != null ||
                    havePriorityJoin ||
                    wasInGame;
