@@ -1,13 +1,15 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Advertise;
-using Content.Server.Advertise.Components;
 using Content.Server.Cargo.Systems;
+using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
+using Content.Server.Storage.Components;
 using Content.Server.Store.Components;
+using Content.Server.UserInterface;
 using Content.Server._White.Economy;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -32,6 +34,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.VendingMachines
 {
@@ -45,12 +48,14 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly SpeakOnUIClosedSystem _speakOnUIClosed = default!;
+        [Dependency] private readonly AdvertiseSystem _advertise = default!;
         // WD START
         [Dependency] private readonly BankCardSystem _bankCard = default!;
         [Dependency] private readonly TagSystem _tag = default!;
         [Dependency] private readonly StackSystem _stackSystem = default!;
         // WD END
+
+        private ISawmill _sawmill = default!;
 
         private double _priceMultiplier = 1.0; // WD
 
@@ -58,6 +63,7 @@ namespace Content.Server.VendingMachines
         {
             base.Initialize();
 
+            _sawmill = Logger.GetSawmill("vending");
             SubscribeLocalEvent<VendingMachineComponent, MapInitEvent>(OnComponentMapInit);
             SubscribeLocalEvent<VendingMachineComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<VendingMachineComponent, BreakageEventArgs>(OnBreak);
@@ -71,6 +77,7 @@ namespace Content.Server.VendingMachines
             Subs.BuiEvents<VendingMachineComponent>(VendingMachineUiKey.Key, subs =>
             {
                 subs.Event<BoundUIOpenedEvent>(OnBoundUIOpened);
+                subs.Event<BoundUIClosedEvent>(OnBoundUIClosed);
                 subs.Event<VendingMachineEjectMessage>(OnInventoryEjectMessage);
             });
 
@@ -101,7 +108,7 @@ namespace Content.Server.VendingMachines
             {
                 if (!PrototypeManager.TryIndex<EntityPrototype>(entry.ID, out var proto))
                 {
-                    Log.Error($"Unable to find entity prototype {entry.ID} on {ToPrettyString(uid)} vending.");
+                    _sawmill.Error($"Unable to find entity prototype {entry.ID} on {ToPrettyString(uid)} vending.");
                     continue;
                 }
 
@@ -130,6 +137,16 @@ namespace Content.Server.VendingMachines
         private void OnBoundUIOpened(EntityUid uid, VendingMachineComponent component, BoundUIOpenedEvent args)
         {
             UpdateVendingMachineInterfaceState(uid, component);
+        }
+
+        private void OnBoundUIClosed(EntityUid uid, VendingMachineComponent component, BoundUIClosedEvent args)
+        {
+            // Only vendors that advertise will send message after dispensing
+            if (component.ShouldSayThankYou && TryComp<AdvertiseComponent>(uid, out var advertise))
+            {
+                _advertise.SayThankYou(uid, advertise);
+                component.ShouldSayThankYou = false;
+            }
         }
 
         private void UpdateVendingMachineInterfaceState(EntityUid uid, VendingMachineComponent component)
@@ -202,7 +219,7 @@ namespace Content.Server.VendingMachines
 
             if (!TryComp<VendingMachineRestockComponent>(args.Args.Used, out var restockComponent))
             {
-                Log.Error($"{ToPrettyString(args.Args.User)} tried to restock {ToPrettyString(uid)} with {ToPrettyString(args.Args.Used.Value)} which did not have a VendingMachineRestockComponent.");
+                _sawmill.Error($"{ToPrettyString(args.Args.User)} tried to restock {ToPrettyString(uid)} with {ToPrettyString(args.Args.Used.Value)} which did not have a VendingMachineRestockComponent.");
                 return;
             }
 
@@ -337,6 +354,7 @@ namespace Content.Server.VendingMachines
                 if (sender.HasValue)
                     Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-invalid-item"), uid, sender.Value);
 
+
                 Deny(uid, vendComponent);
                 return;
             }
@@ -396,10 +414,7 @@ namespace Content.Server.VendingMachines
             vendComponent.Ejecting = true;
             vendComponent.NextItemToEject = entry.ID;
             vendComponent.ThrowNextItem = throwItem;
-
-            if (TryComp(uid, out SpeakOnUIClosedComponent? speakComponent))
-                _speakOnUIClosed.TrySetFlag((uid, speakComponent));
-
+            vendComponent.ShouldSayThankYou = true;
             entry.Amount--;
             UpdateVendingMachineInterfaceState(uid, vendComponent);
             TryUpdateVisualState(uid, vendComponent);

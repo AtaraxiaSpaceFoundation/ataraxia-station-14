@@ -134,12 +134,13 @@
     #Copies ClothingHeadHardsuitBase behavior
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
+    quickEquip: false
+    slots: [ HEAD ]
   - type: Tag
     tags:
     - HidesHair
     - WhitelistChameleon
     - HelmetEVA
-    - HidesNose
   - type: IdentityBlocker
 
 - type: entity
@@ -178,7 +179,6 @@
     tags:
     - HidesHair
     - WhitelistChameleon
-    - HidesNose
   - type: IdentityBlocker
 
 - type: entity

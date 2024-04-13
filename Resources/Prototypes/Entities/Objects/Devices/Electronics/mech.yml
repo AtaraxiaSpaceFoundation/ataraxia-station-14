@@ -6,8 +6,6 @@
   name: ripley central control module
   description: The electrical control center for the ripley mech.
   components:
-    - type: Item
-      storedRotation: 0
     - type: Sprite
       sprite: Objects/Misc/module.rsi
       state: mainboard
@@ -42,8 +40,6 @@
   name: H.O.N.K. central control module
   description: The electrical control center for the H.O.N.K. mech.
   components:
-    - type: Item
-      storedRotation: 0
     - type: Sprite
       sprite: Objects/Misc/module.rsi
       state: mainboard
@@ -94,8 +90,6 @@
   name: HAMTR central control module
   description: The electrical control center for the HAMTR mech.
   components:
-    - type: Item
-      storedRotation: 0
     - type: Sprite
       sprite: Objects/Misc/module.rsi
       state: mainboard

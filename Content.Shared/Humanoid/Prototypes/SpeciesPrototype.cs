@@ -16,7 +16,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// <summary>
     /// User visible name of the species.
     /// </summary>
-    [DataField(required: true)]
+    [DataField("name", required: true)]
     public string Name { get; private set; } = default!;
 
     [DataField("bodyTypes", required: true, customTypeSerializer: typeof(PrototypeIdListSerializer<BodyTypePrototype>))]
@@ -27,14 +27,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     ///     for an eventual integration into IdentitySystem
     ///     (i.e., young human person, young lizard person, etc.)
     /// </summary>
-    [DataField]
+    [DataField("descriptor")]
     public string Descriptor { get; private set; } = "humanoid";
 
     /// <summary>
     /// Whether the species is available "at round start" (In the character editor)
     /// </summary>
-    [DataField(required: true)]
-    public bool RoundStart { get; private set; }
+    [DataField("roundStart", required: true)]
+    public bool RoundStart { get; private set; } = false;
 
     // The below two are to avoid fetching information about the species from the entity
     // prototype.
@@ -51,14 +51,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// <summary>
     ///     Default skin tone for this species. This applies for non-human skin tones.
     /// </summary>
-    [DataField]
+    [DataField("defaultSkinTone")]
     public Color DefaultSkinTone { get; private set; } = Color.White;
 
     /// <summary>
     ///     Default human skin tone for this species. This applies for human skin tones.
     ///     See <see cref="SkinColor.HumanSkinTone"/> for the valid range of skin tones.
     /// </summary>
-    [DataField]
+    [DataField("defaultHumanSkinTone")]
     public int DefaultHumanSkinTone { get; private set; } = 20;
 
     /// <summary>
@@ -70,80 +70,71 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// <summary>
     ///     Humanoid species variant used by this entity.
     /// </summary>
-    [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("prototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string Prototype { get; private set; } = default!;
 
     /// <summary>
     /// Prototype used by the species for the dress-up doll in various menus.
     /// </summary>
-    [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    [DataField("dollPrototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string DollPrototype { get; private set; } = default!;
 
     /// <summary>
     /// Method of skin coloration used by the species.
     /// </summary>
-    [DataField(required: true)]
+    [DataField("skinColoration", required: true)]
     public HumanoidSkinColor SkinColoration { get; private set; }
 
-    [DataField]
+    [DataField("maleFirstNames")]
     public string MaleFirstNames { get; private set; } = "names_first_male";
 
-    [DataField]
+    [DataField("femaleFirstNames")]
     public string FemaleFirstNames { get; private set; } = "names_first_female";
 
-    [DataField]
-    public string LastNames { get; private set; } = "names_last";
-
     // WD-EDIT
-    [DataField]
+    [DataField("maleLastNames")]
     public string MaleLastNames { get; } = "names_last_male";
 
-    [DataField]
+    [DataField("femaleLastNames")]
     public string FemaleLastNames { get; } = "names_last_female";
     // WD-EDIT
 
-    [DataField]
+    [DataField("naming")]
     public SpeciesNaming Naming { get; private set; } = SpeciesNaming.FirstLast;
 
-    [DataField]
+    [DataField("sexes")]
     public List<Sex> Sexes { get; private set; } = new() { Sex.Male, Sex.Female };
 
     /// <summary>
     ///     Characters younger than this are too young to be hired by Nanotrasen.
     /// </summary>
-    [DataField]
+    [DataField("minAge")]
     public int MinAge = 18;
 
     /// <summary>
     ///     Characters younger than this appear young.
     /// </summary>
-    [DataField]
+    [DataField("youngAge")]
     public int YoungAge = 30;
 
     /// <summary>
     ///     Characters older than this appear old. Characters in between young and old age appear middle aged.
     /// </summary>
-    [DataField]
+    [DataField("oldAge")]
     public int OldAge = 60;
 
     /// <summary>
     ///     Characters cannot be older than this. Only used for restrictions...
     ///     although imagine if ghosts could age people WYCI...
     /// </summary>
-    [DataField]
+    [DataField("maxAge")]
     public int MaxAge = 120;
 
-    /// <summary>
-    ///     The Style used for the guidebook info link in the character profile editor
-    /// </summary>
-    [DataField]
-    public string GuideBookIcon = "SpeciesInfoDefault";
+    [DataField("sponsorOnly")]
+    public bool SponsorOnly { get; } = false;
 
-    [DataField]
-    public bool SponsorOnly { get; }
-
-    [DataField]
-    public bool ForAdmins { get; }
+    [DataField("forAmins")]
+    public bool ForAdmins { get; } = false;
 }
 
 public enum SpeciesNaming : byte

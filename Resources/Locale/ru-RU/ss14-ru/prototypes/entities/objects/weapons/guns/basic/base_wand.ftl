@@ -1,2 +1,3 @@
-ent-WeaponStaffBase = { ent-BaseItem }
+ent-WeaponWandBase = { ent-BaseItem }
     .desc = { ent-BaseItem.desc }
+    .suffix = { "" }

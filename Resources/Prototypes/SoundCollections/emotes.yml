@@ -74,8 +74,3 @@
   id: Squishes
   files:
     - /Audio/Voice/Slime/slime_squish.ogg
-
-- type: soundCollection
-  id: Weh
-  files:
-  - /Audio/Items/Toys/weh.ogg

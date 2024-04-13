@@ -40,7 +40,8 @@ public abstract class SharedScrollSystem : EntitySystem
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.LearnTime, new ScrollDoAfterEvent(), uid, target: uid)
         {
-            BreakOnMove = true,
+            BreakOnTargetMove = true,
+            BreakOnUserMove = true,
             BreakOnDamage = true,
             NeedHand = true
         };

@@ -6,8 +6,6 @@
   description: A flying leviathan, loosely related to space carps.
   abstract: true
   components:
-  - type: Bloodstream
-    bloodMaxVolume: 650
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -87,7 +85,7 @@
       500: Dead
   - type: Metabolizer
     solutionOnBody: false
-    updateInterval: 0.25
+    updateFrequency: 0.25
     metabolizerTypes: [ Dragon ]
     groups:
     - id: Medicine
@@ -125,13 +123,14 @@
   - type: Tag
     tags:
     - CannotSuicide
-    - DoorBumpOpener
 
 - type: entity
   parent: BaseMobDragon
   id: MobDragon
   components:
   - type: Dragon
+    spawnsLeft: 2
+    spawnsProto: MobCarpDragon
     spawnRiftAction: ActionSpawnRift
   - type: GenericAntag
     rule: Dragon

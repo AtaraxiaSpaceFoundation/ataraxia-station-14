@@ -14,34 +14,48 @@ using Robust.Shared.Utility;
 namespace Content.Shared.Implants;
 
 //WD EDIT START
-public sealed class SubdermalImplantInserted(EntityUid user, EntityUid target, SubdermalImplantComponent component)
+public sealed class SubdermalImplantInserted
 {
     /// <summary>
     ///     Entity who implants
     /// </summary>
-    public EntityUid User = user;
+    public EntityUid User;
 
     /// <summary>
     ///     Entity being implanted
     /// </summary>
-    public EntityUid Target = target;
+    public EntityUid Target;
 
-    public SubdermalImplantComponent Component = component;
+    public SubdermalImplantComponent Component;
+
+    public SubdermalImplantInserted(EntityUid user, EntityUid target, SubdermalImplantComponent component)
+    {
+        User = user;
+        Target = target;
+        Component = component;
+    }
 }
 
-public sealed class SubdermalImplantRemoved(EntityUid user, EntityUid target, SubdermalImplantComponent component)
+public sealed class SubdermalImplantRemoved
 {
     /// <summary>
     ///     Entity who removes implant
     /// </summary>
-    public EntityUid User = user;
+    public EntityUid User;
 
     /// <summary>
     ///     Entity which implant is removing
     /// </summary>
-    public EntityUid Target = target;
+    public EntityUid Target;
 
-    public SubdermalImplantComponent Component = component;
+    public SubdermalImplantComponent Component;
+
+    public SubdermalImplantRemoved(EntityUid user, EntityUid target, SubdermalImplantComponent component)
+    {
+        User = user;
+        Target = target;
+        Component = component;
+    }
 }
 
 //WD EDIT END
@@ -240,16 +254,27 @@ public abstract class SharedImplanterSystem : EntitySystem
 }
 
 [Serializable, NetSerializable]
-public sealed partial class ImplantEvent : SimpleDoAfterEvent;
+public sealed partial class ImplantEvent : SimpleDoAfterEvent
+{
+}
 
 [Serializable, NetSerializable]
-public sealed partial class DrawEvent : SimpleDoAfterEvent;
-
-public sealed class AddImplantAttemptEvent(EntityUid user, EntityUid target, EntityUid implant, EntityUid implanter)
-    : CancellableEntityEventArgs
+public sealed partial class DrawEvent : SimpleDoAfterEvent
 {
-    public readonly EntityUid User = user;
-    public readonly EntityUid Target = target;
-    public readonly EntityUid Implant = implant;
-    public readonly EntityUid Implanter = implanter;
+}
+
+public sealed class AddImplantAttemptEvent : CancellableEntityEventArgs
+{
+    public readonly EntityUid User;
+    public readonly EntityUid Target;
+    public readonly EntityUid Implant;
+    public readonly EntityUid Implanter;
+
+    public AddImplantAttemptEvent(EntityUid user, EntityUid target, EntityUid implant, EntityUid implanter)
+    {
+        User = user;
+        Target = target;
+        Implant = implant;
+        Implanter = implanter;
+    }
 }

@@ -1,14 +1,21 @@
-using Content.Server.GameTicking.Rules;
 using Content.Server.Changeling;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
+using Content.Server.StationEvents.Events;
 using Content.Server.Zombies;
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Verbs;
-using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using Robust.Shared.Player;
+using Content.Server.GameTicking.Rules.Components;
+using System.Linq;
+using Content.Server.Players;
 using Content.Server._White.Cult.GameRule;
+using Robust.Server.Player;
 
 namespace Content.Server.Administration.Systems;
 
@@ -21,6 +28,8 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly NukeopsRuleSystem _nukeopsRule = default!;
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
     [Dependency] private readonly RevolutionaryRuleSystem _revolutionaryRule = default!;
+    [Dependency] private readonly SharedMindSystem _minds = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly CultRuleSystem _cultRule = default!;
 
     // All antag verbs have names so invokeverb works.
@@ -34,7 +43,7 @@ public sealed partial class AdminVerbSystem
         if (!_adminManager.HasAdminFlag(player, AdminFlags.Fun))
             return;
 
-        if (!HasComp<MindContainerComponent>(args.Target))
+        if (!TryComp<MindContainerComponent>(args.Target, out var targetMindComp))
             return;
 
         Verb traitor = new()
@@ -44,20 +53,42 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/posters.rsi"), "poster5_contraband"),
             Act = () =>
             {
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
                 // if its a monkey or mouse or something dont give uplink or objectives
                 var isHuman = HasComp<HumanoidAppearanceComponent>(args.Target);
-                _traitorRule.MakeTraitorAdmin(args.Target, giveUplink: isHuman, giveObjectives: isHuman);
+                _traitorRule.MakeTraitor(session, giveUplink: isHuman, giveObjectives: isHuman);
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-traitor"),
         };
         args.Verbs.Add(traitor);
 
+        Verb changeling = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-changeling"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Texture(new ("/Textures/White/Actions/changeling.rsi/absorb.png")),
+            Act = () =>
+            {
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
+                var isHuman = HasComp<HumanoidAppearanceComponent>(args.Target);
+                _changelingRule.MakeChangeling(session);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-changeling"),
+        };
+
+        args.Verbs.Add(changeling);
+
         Verb zombie = new()
         {
             Text = Loc.GetString("admin-verb-text-make-zombie"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Actions/zombie-turn.png")),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/Actions/zombie-turn.png")),
             Act = () =>
             {
                 _zombie.ZombifyEntity(args.Target);
@@ -72,10 +103,13 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-nuclear-operative"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/signs.rsi"), "radiation"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Structures/Wallmounts/signs.rsi"), "radiation"),
             Act = () =>
             {
-                _nukeopsRule.MakeLoneNukie(args.Target);
+                if (!_minds.TryGetMind(args.Target, out var mindId, out var mind))
+                    return;
+
+                _nukeopsRule.MakeLoneNukie(mindId, mind);
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-nuclear-operative"),
@@ -86,10 +120,13 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-pirate"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Clothing/Head/Hats/pirate.rsi"), "icon"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Clothing/Head/Hats/pirate.rsi"), "icon"),
             Act = () =>
             {
-                _piratesRule.MakePirate(args.Target);
+                if (!_minds.TryGetMind(args.Target, out var mindId, out var mind))
+                    return;
+
+                _piratesRule.MakePirate(mindId, mind);
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-pirate"),
@@ -101,10 +138,12 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-head-rev"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/job_icons.rsi"), "HeadRevolutionary"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "HeadRevolutionary"),
             Act = () =>
             {
-                _revolutionaryRule.OnHeadRevAdmin(args.Target);
+                if (!_minds.TryGetMind(args.Target, out var mindId, out var mind))
+                    return;
+                _revolutionaryRule.OnHeadRevAdmin(mindId, mind);
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-head-rev"),
@@ -118,7 +157,10 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Clothing/Hands/Gloves/ihscombat.rsi"), "icon"),
             Act = () =>
             {
-                _thief.AdminMakeThief(args.Target, false); //Midround add pacified is bad
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
+                _thief.AdminMakeThief(session); //Midround add pacific is bad
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-thief"),
@@ -133,25 +175,13 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/White/Cult/interface.rsi"), "icon"),
             Act = () =>
             {
-                _cultRule.AdminMakeCultist(args.Target);
+                if (!_minds.TryGetSession(targetMindComp.Mind, out var session))
+                    return;
+
+                _cultRule.MakeCultist(session);
             }
         };
         args.Verbs.Add(cultist);
-
-        Verb changeling = new()
-        {
-            Text = Loc.GetString("admin-verb-text-make-changeling"),
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/White/Actions/changeling.rsi/absorb.png")),
-            Act = () =>
-            {
-                _changelingRule.AdminMakeChangeling(args.Target);
-            },
-            Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-changeling"),
-        };
-
-        args.Verbs.Add(changeling);
         //WD edit end
     }
 }

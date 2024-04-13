@@ -135,7 +135,7 @@ public sealed class StandingStateSystem : EntitySystem
         var doargs = new DoAfterArgs(EntityManager, uid, standingState.StandingUpTime,
             new StandingUpDoAfterEvent(), uid)
         {
-            BreakOnMove = false,
+            BreakOnUserMove = false,
             BreakOnDamage = false,
             BreakOnHandChange = false
         };
@@ -285,28 +285,40 @@ public sealed class StandingStateSystem : EntitySystem
     }
 }
 
-public sealed class DropHandItemsEvent : EventArgs;
+public sealed class DropHandItemsEvent : EventArgs
+{
+}
 
 /// <summary>
 /// Subscribe if you can potentially block a down attempt.
 /// </summary>
-public sealed class DownAttemptEvent : CancellableEntityEventArgs;
+public sealed class DownAttemptEvent : CancellableEntityEventArgs
+{
+}
 
 /// <summary>
 /// Subscribe if you can potentially block a stand attempt.
 /// </summary>
-public sealed class StandAttemptEvent : CancellableEntityEventArgs;
+public sealed class StandAttemptEvent : CancellableEntityEventArgs
+{
+}
 
 /// <summary>
 /// Raised when an entity becomes standing
 /// </summary>
-public sealed class StoodEvent : EntityEventArgs;
+public sealed class StoodEvent : EntityEventArgs
+{
+}
 
 /// <summary>
 /// Raised when an entity is not standing
 /// </summary>
-public sealed class DownedEvent : EntityEventArgs;
+public sealed class DownedEvent : EntityEventArgs
+{
+}
 
 // WD EDIT
 [Serializable, NetSerializable]
-public sealed partial class StandingUpDoAfterEvent : SimpleDoAfterEvent;
+public sealed partial class StandingUpDoAfterEvent : SimpleDoAfterEvent
+{
+}

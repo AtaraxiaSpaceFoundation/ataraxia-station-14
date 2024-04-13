@@ -59,6 +59,7 @@
         board: !type:Container
     - type: ApcPowerReceiver
       powerLoad: 200
+      priority: Low
     - type: WallMount
       arc: 360
     - type: ExtensionCableReceiver

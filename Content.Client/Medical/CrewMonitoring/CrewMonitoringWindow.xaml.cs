@@ -23,6 +23,7 @@ namespace Content.Client.Medical.CrewMonitoring;
 [GenerateTypedNameReferences]
 public sealed partial class CrewMonitoringWindow : FancyWindow
 {
+    private List<Control> _rowsContent = new();
     private readonly IEntityManager _entManager;
     private readonly IPrototypeManager _prototypeManager;
     private readonly SpriteSystem _spriteSystem;
@@ -99,6 +100,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 };
 
                 SensorsTable.AddChild(spacer);
+                _rowsContent.Add(spacer);
             }
 
             var deparmentLabel = new RichTextLabel()
@@ -111,6 +113,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             deparmentLabel.StyleClasses.Add(StyleNano.StyleClassTooltipActionDescription);
 
             SensorsTable.AddChild(deparmentLabel);
+            _rowsContent.Add(deparmentLabel);
 
             PopulateDepartmentList(departmentSensors);
         }
@@ -126,6 +129,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             };
 
             SensorsTable.AddChild(spacer);
+            _rowsContent.Add(spacer);
 
             var deparmentLabel = new RichTextLabel()
             {
@@ -137,6 +141,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             deparmentLabel.StyleClasses.Add(StyleNano.StyleClassTooltipActionDescription);
 
             SensorsTable.AddChild(deparmentLabel);
+            _rowsContent.Add(deparmentLabel);
 
             PopulateDepartmentList(remainingSensors);
         }
@@ -170,6 +175,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 sensorButton.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
 
             SensorsTable.AddChild(sensorButton);
+            _rowsContent.Add(sensorButton);
 
             // Primary container to hold the button UI elements
             var mainContainer = new BoxContainer()
@@ -210,9 +216,9 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "dead");
             }
 
-            else if (sensor.DamagePercentage != null)
+            else if (sensor.TotalDamage != null)
             {
-                var index = MathF.Round(4f * sensor.DamagePercentage.Value);
+                var index = MathF.Round(4f * (sensor.TotalDamage.Value / 100f));
 
                 if (index >= 5)
                     specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "critical");
@@ -259,7 +265,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 var jobIcon = new TextureRect()
                 {
                     TextureScale = new Vector2(2f, 2f),
-                    VerticalAlignment = VAlignment.Center,
+                    Stretch = TextureRect.StretchMode.KeepCentered,
                     Texture = _spriteSystem.Frame0(proto.Icon),
                     Margin = new Thickness(5, 0, 5, 0),
                 };
@@ -416,6 +422,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
     private void ClearOutDatedData()
     {
         SensorsTable.RemoveAllChildren();
+        _rowsContent.Clear();
         NavMap.TrackedCoordinates.Clear();
         NavMap.TrackedEntities.Clear();
         NavMap.LocalizedNames.Clear();

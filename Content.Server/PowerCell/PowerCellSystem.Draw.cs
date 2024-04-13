@@ -39,6 +39,11 @@ public sealed partial class PowerCellSystem
         }
     }
 
+    private void OnUnpaused(EntityUid uid, PowerCellDrawComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextUpdateTime += args.PausedTime;
+    }
+
     private void OnDrawChargeChanged(EntityUid uid, PowerCellDrawComponent component, ref ChargeChangedEvent args)
     {
         // Update the bools for client prediction.
@@ -67,7 +72,7 @@ public sealed partial class PowerCellSystem
         {
             component.CanDraw = canDraw;
             component.CanUse = canUse;
-            Dirty(uid, component);
+            Dirty(component);
         }
     }
 
@@ -80,7 +85,7 @@ public sealed partial class PowerCellSystem
         {
             component.CanDraw = canDraw;
             component.CanUse = canUse;
-            Dirty(uid, component);
+            Dirty(component);
         }
     }
 }

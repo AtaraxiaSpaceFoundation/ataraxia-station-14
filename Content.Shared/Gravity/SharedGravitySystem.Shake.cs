@@ -5,6 +5,16 @@ public abstract partial class SharedGravitySystem
     protected const float GravityKick = 100.0f;
     protected const float ShakeCooldown = 0.2f;
 
+    private void InitializeShake()
+    {
+        SubscribeLocalEvent<GravityShakeComponent, EntityUnpausedEvent>(OnShakeUnpaused);
+    }
+
+    private void OnShakeUnpaused(EntityUid uid, GravityShakeComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextShake += args.PausedTime;
+    }
+
     private void UpdateShake()
     {
         var curTime = Timing.CurTime;
@@ -24,7 +34,7 @@ public abstract partial class SharedGravitySystem
                 ShakeGrid(uid, gravity);
                 comp.ShakeTimes--;
                 comp.NextShake += TimeSpan.FromSeconds(ShakeCooldown);
-                Dirty(uid, comp);
+                Dirty(comp);
             }
         }
     }
@@ -44,7 +54,7 @@ public abstract partial class SharedGravitySystem
         }
 
         shake.ShakeTimes = 10;
-        Dirty(uid, shake);
+        Dirty(shake);
     }
 
     protected virtual void ShakeGrid(EntityUid uid, GravityComponent? comp = null) {}

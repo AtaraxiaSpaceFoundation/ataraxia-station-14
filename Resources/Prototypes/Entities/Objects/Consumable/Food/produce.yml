@@ -54,7 +54,7 @@
     seedId: wheat
   - type: Tag
     tags:
-    - Wheat
+    - Wheat 
 
 - type: entity
   name: oat bushel
@@ -112,9 +112,9 @@
         - ReagentId: Nutriment
           Quantity: 3
         - ReagentId: Sugar
-          Quantity: 5
+          Quantity: 2
         - ReagentId: Laughter
-          Quantity: 5
+          Quantity: 2
   - type: Extractable
     juiceSolution:
       reagents:
@@ -124,9 +124,6 @@
     sprite: Objects/Specific/Hydroponics/laughin_pea.rsi
   - type: Produce
     seedId: laughinPea
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: tower-cap log
@@ -185,11 +182,11 @@
       food:
         reagents:
         - ReagentId: Histamine
-          Quantity: 3
+          Quantity: 25
   - type: Produce
     seedId: nettle
   - type: MeleeChemicalInjector
-    transferAmount: 3 #To OD someone you would need 2 nettles and about 6-7 hits, the DOT is likely to crit them if they are running away with almost no health
+    transferAmount: 6 #To OD someone you would need 2 nettles and about 6-7 hits, the DOT is likely to crit them if they are running away with almost no health
     solution: food
     pierceArmor: false
   - type: Extractable
@@ -225,7 +222,6 @@
   - type: MeleeChemicalInjector
     transferAmount: 2
     solution: food
-    pierceArmor: false
   - type: Extractable
     grindableSolutionName: food
 
@@ -261,7 +257,6 @@
   - type: Tag
     tags:
     - Fruit
-    - Banana
 
 - type: entity
   name: mimana
@@ -417,7 +412,6 @@
   - type: Tag
     tags:
     - Carrot
-    - Vegetable
   - type: SolutionContainerManager
     solutions:
       food:
@@ -463,9 +457,6 @@
     sprite: Objects/Specific/Hydroponics/cabbage.rsi
   - type: Produce
     seedId: cabbage
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: garlic
@@ -491,9 +482,6 @@
     sprite: Objects/Specific/Hydroponics/garlic.rsi
   - type: Produce
     seedId: garlic
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: lemon
@@ -669,8 +657,6 @@
   - type: Tag
     tags:
     - Potato
-    - Vegetable
-
 
 - type: entity
   name: tomato
@@ -725,7 +711,6 @@
   - type: Tag
     tags:
     - Fruit
-    - Vegetable
 
 - type: entity
   name: blue tomato
@@ -770,7 +755,6 @@
   - type: Tag
     tags:
     - Fruit
-    - Vegetable
 
 - type: entity
   name: blood tomato
@@ -813,7 +797,6 @@
   - type: Tag
     tags:
     - Fruit # Fuck you they're a fruit
-    - Vegetable
 
 - type: entity
   name: eggplant
@@ -840,7 +823,6 @@
   - type: Tag
     tags:
     - Fruit
-    - Vegetable
 
 - type: entity
   name: apple
@@ -929,7 +911,6 @@
   - type: Tag
     tags:
     - Corn
-    - Vegetable
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/corn.rsi
   - type: Produce
@@ -992,9 +973,6 @@
   - type: SliceableFood
     count: 5
     slice: FoodOnionSlice
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: red onion
@@ -1008,7 +986,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 18
+        maxVol: 14
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
@@ -1021,11 +999,8 @@
   - type: Produce
     seedId: onionred
   - type: SliceableFood
-    count: 5
+    count: 4
     slice: FoodOnionRedSlice
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: chanterelle cluster
@@ -1043,9 +1018,6 @@
     sprite: Objects/Specific/Hydroponics/chanterelle.rsi
   - type: Produce
     seedId: chanterelle
-  - type: Tag
-    tags:
-    - Vegetable
 
 # Slices
 
@@ -1100,7 +1072,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 5
+        maxVol: 3
         reagents:
         - ReagentId: Nutriment
           Quantity: 2
@@ -1123,7 +1095,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 5
+        maxVol: 3
         reagents:
         - ReagentId: Nutriment
           Quantity: 2
@@ -1156,9 +1128,6 @@
       sprite: Objects/Specific/Hydroponics/chili.rsi
     - type: Produce
       seedId: chili
-    - type: Tag
-      tags:
-      - Vegetable
 
 - type: entity
   name: chilly pepper
@@ -1210,9 +1179,6 @@
     seedId: aloe
   - type: Extractable
     grindableSolutionName: food
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: poppy
@@ -1220,10 +1186,6 @@
   id: FoodPoppy
   description: A flower with extracts often used in the production of medicine
   components:
-  - type: Clothing
-    slots:
-    - HEAD
-    quickEquip: false
   - type: FlavorProfile
     flavors:
       - medicine
@@ -1245,34 +1207,6 @@
   - type: Tag
     tags:
     - Flower # TODO add "RedFlower" or "Poppy" tag, when other color flowers will be
-
-- type: entity
-  name: lily
-  parent: FoodPoppy
-  id: FoodLily
-  description: A beautiful orange flower.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - medicine
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 22
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Bicaridine
-          Quantity: 20
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/lily.rsi
-  - type: Produce
-    seedId: lily
-  - type: Extractable
-    grindableSolutionName: food
-  - type: Tag
-    tags:
-    - Flower
 
 - type: entity
   name: lingzhi
@@ -1496,37 +1430,6 @@
       reagents:
       - ReagentId: MilkSoy
         Quantity: 5
-  - type: Tag
-    tags:
-    - Vegetable
-
-- type: entity
-  name: spaceman's trumpet
-  description: A vivid flower that smells faintly of freshly cut grass. Touching the flower seems to stain the skin some time after contact, yet most other surfaces seem to be unaffected by this phenomenon.
-  id: FoodSpacemansTrumpet
-  parent: FoodProduceBase
-  components:
-  - type: FlavorProfile
-    flavors:
-      - violets
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/spacemans_trumpet.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 4
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 1
-        - ReagentId: PolypyryliumOligomers
-          Quantity: 3
-  - type: Produce
-    seedId: spacemansTrumpet
-  - type: Tag
-    tags:
-    - Flower
-  - type: Instrument #hehe trumpet
-    program: 56
 
 - type: entity
   name: koibean
@@ -1552,9 +1455,6 @@
       reagents:
       - ReagentId: CarpoToxin
         Quantity: 2
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: watermelon
@@ -1647,6 +1547,9 @@
       reagents:
       - ReagentId: JuiceWatermelon
         Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
 
 - type: entity
   name: grapes
@@ -1675,9 +1578,6 @@
       reagents:
       - ReagentId: JuiceGrape
         Quantity: 10
-  - type: Tag
-    tags:
-    - Fruit
 
 - type: entity
   name: berries
@@ -1750,6 +1650,7 @@
     tags:
     - Recyclable
     - Trash
+    - Fruit
   - type: SolutionContainerManager
     solutions:
       food:
@@ -1788,9 +1689,6 @@
     sprite: Objects/Specific/Hydroponics/pea.rsi
   - type: Produce
     seedId: pea
-  - type: Tag
-    tags:
-    - Vegetable
 
 - type: entity
   name: pumpkin
@@ -1839,7 +1737,6 @@
   - type: Tag
     tags:
     - Fruit
-    - Vegetable
 
 - type: entity
   name: cotton boll
@@ -1868,4 +1765,3 @@
   - type: Tag
     tags:
     - ClothMade
-    - CottonBoll

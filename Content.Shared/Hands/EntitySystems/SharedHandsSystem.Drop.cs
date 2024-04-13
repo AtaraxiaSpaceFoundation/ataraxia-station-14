@@ -3,6 +3,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Tag;
+using Content.Shared.Pulling.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 
@@ -134,10 +135,8 @@ public abstract partial class SharedHandsSystem
             return true;
         }
 
-        var (itemPos, itemRot) = TransformSystem.GetWorldPositionRotation(entity);
-        var origin = new MapCoordinates(itemPos, itemXform.MapID);
         var target = targetDropLocation.Value.ToMap(EntityManager, TransformSystem);
-        TransformSystem.SetWorldPositionRotation(entity, GetFinalDropCoordinates(uid, origin, target), itemRot);
+        TransformSystem.SetWorldPosition(itemXform, GetFinalDropCoordinates(uid, userXform.MapPosition, target));
         return true;
     }
 

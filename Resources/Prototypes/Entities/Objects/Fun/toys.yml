@@ -29,7 +29,6 @@
   - type: UseDelay
     delay: 1.0
   - type: MeleeWeapon
-    wideAnimationRotation: 180
     soundHit:
       collection: ToySqueak
     damage:
@@ -52,7 +51,7 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
-
+    
 - type: entity
   parent: BasePlushie
   id: PlushieGhost
@@ -274,20 +273,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Items/Toys/weh.ogg
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceThatMakesYouWeh
-        Quantity: 30
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-        - ReagentId: JuiceThatMakesYouWeh
-          Quantity: 10
 
 - type: entity
   parent: PlushieLizard
@@ -326,20 +311,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Items/Toys/muffled_weh.ogg
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceThatMakesYouWeh
-        Quantity: 30
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-        - ReagentId: JuiceThatMakesYouWeh
-          Quantity: 10
 
 - type: entity
   parent: BasePlushie
@@ -427,7 +398,6 @@
     state: blue
   - type: Item
     heldPrefix: blue
-    storedRotation: -90
   - type: Tag
     tags:
       - PlushieSharkBlue
@@ -497,7 +467,6 @@
     state: carpplush
   - type: Item
     heldPrefix: carpplush
-    storedRotation: -90
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Effects/bite.ogg
@@ -520,38 +489,6 @@
       path: /Audio/Effects/bite.ogg
     angle: 0
     animation: WeaponArcBite # Rrrr!
-
-- type: entity
-  parent: PlushieCarp
-  id: PlushieMagicarp
-  name: magicarp plushie
-  description: An adorable stuffed toy resembling the exceedingly rare magicarp.
-  components:
-  - type: Sprite
-    state: magicplush
-
-- type: entity
-  parent: PlushieCarp
-  id: PlushieRainbowCarp
-  name: rainbow carp plushie
-  description: An adorable stuffed toy resembling the legendary rainbow carp.
-  components:
-  - type: Sprite
-    state: rainbowcarpplush
-  - type: PointLight
-    radius: 1.5
-    energy: 2
-  - type: RgbLightController
-    layers: [ 0 ]
-
-- type: entity
-  parent: PlushieCarp
-  id: PlushieHolocarp
-  name: holocarp plushie
-  description: A holographic stuffed toy resembling science's nemesis - the holocarp.
-  components:
-  - type: Sprite
-    state: holoplush
 
 - type: entity
   parent: BasePlushie
@@ -640,9 +577,6 @@
     requiresSpecialDigestion: true
     useSound:
       path: /Audio/Items/Toys/mousesqueek.ogg
-  - type: Tag
-    tags:
-    - ToyRubberDuck
 
 - type: entity
   parent: BasePlushie
@@ -709,7 +643,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Weapons/Xeno/alien_spitacid.ogg
-
 - type: entity
   parent: BasePlushie
   id: PlushiePenguin
@@ -746,7 +679,7 @@
   - type: EmitSoundOnTrigger
     sound:
       path: /Audio/Voice/Human/malescream_5.ogg
-
+  
 - type: entity
   parent: BasePlushie
   id: PlushieMoth
@@ -929,7 +862,6 @@
   - type: Tag
     tags:
     - Sidearm
-    - ToySidearm
   - type: Gun
     selectedMode: SemiAuto
     availableModes:
@@ -962,14 +894,14 @@
   suffix: Fake
   description: Looks almost like the real thing! Ages 8 and up.
   components:
-  - type: RevolverAmmoProvider
-    whitelist:
-      tags:
-        - CartridgeCap
-        - SpeedLoaderCap
-        - CartridgeMagnum
-        - SpeedLoaderMagnum
-    proto: CartridgeMagnumAP
+    - type: RevolverAmmoProvider
+      whitelist:
+        tags:
+          - CartridgeCap
+          - SpeedLoaderCap
+          - CartridgeMagnum
+          - SpeedLoaderMagnum
+      proto: CartridgeMagnumAP
 
 - type: entity
   parent: BaseItem
@@ -984,7 +916,6 @@
     attackRate: 1.5
     angle: 0
     animation: WeaponArcThrust
-    wideAnimationRotation: 90
     damage:
       types:
         Blunt: 0
@@ -1061,25 +992,6 @@
     size: Small
     sprite: Objects/Fun/toys.rsi
     heldPrefix: synb
-  - type: Damageable
-    damageContainer: Inorganic
-  - type: Tag
-    tags:
-    - Balloon
-
-- type: entity
-  parent: BaseItem
-  id: BalloonNT
-  name: nanotrasen balloon
-  description: Specially designed to inflict maximum psychological damage to Syndicate operatives.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/toys.rsi
-    state: ntb
-  - type: Item
-    size: Small
-    sprite: Objects/Fun/toys.rsi
-    heldPrefix: ntb
   - type: Damageable
     damageContainer: Inorganic
   - type: Tag
@@ -1178,6 +1090,7 @@
   description: New Sandy-Cat plastic sword! Comes with realistic sound and full color! Looks almost like the real thing!
   components:
     - type: EnergySword
+      isSharp: false
       colorOptions:
         - DodgerBlue
     - type: ItemToggle
@@ -1243,7 +1156,7 @@
 - type: entity
   parent: BasePlushie
   id: ToyAmongPequeno
-  name: among pequeño
+  name: among pequeno
   description: sus!
   components:
   - type: Sprite
@@ -1425,9 +1338,6 @@
         reagents:
         - ReagentId: Nothing
           Quantity: 100
-  - type: Tag
-    tags:
-    - Banana
 
 - type: entity
   parent: DrinkBase
@@ -1464,9 +1374,6 @@
           Quantity: 100
   - type: TrashOnSolutionEmpty
     solution: drink
-  - type: Tag
-    tags:
-      - DrinkSpaceGlue
 
 - type: entity
   parent: BaseItem

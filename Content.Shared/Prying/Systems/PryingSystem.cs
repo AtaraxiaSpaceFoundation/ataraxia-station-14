@@ -74,8 +74,8 @@ public sealed class PryingSystem : EntitySystem
 
         if (!CanPry(target, user, out var message, comp))
         {
-            if (!string.IsNullOrWhiteSpace(message))
-                Popup.PopupClient(Loc.GetString(message), target, user);
+            if (message != null)
+                Popup.PopupEntity(Loc.GetString(message), target, user);
             // If we have reached this point we want the event that caused this
             // to be marked as handled.
             return true;
@@ -136,7 +136,8 @@ public sealed class PryingSystem : EntitySystem
         var doAfterArgs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(modEv.BaseTime * modEv.PryTimeModifier / toolModifier), new DoorPryDoAfterEvent(), target, target, tool)
         {
             BreakOnDamage = true,
-            BreakOnMove = true,
+            BreakOnUserMove = true,
+            BreakOnWeightlessMove = true,
         };
 
         if (tool != null)
@@ -161,14 +162,23 @@ public sealed class PryingSystem : EntitySystem
 
         if (!CanPry(uid, args.User, out var message, comp))
         {
-            if (!string.IsNullOrWhiteSpace(message))
-                Popup.PopupClient(Loc.GetString(message), uid, args.User);
+            if (message != null)
+                Popup.PopupEntity(Loc.GetString(message), uid, args.User);
             return;
         }
 
+        // TODO: When we get airlock prediction make this fully predicted.
+        // When that happens also fix the checking function in the Client AirlockSystem.
         if (args.Used != null && comp != null)
         {
-            _audioSystem.PlayPredicted(comp.UseSound, args.Used.Value, args.User);
+            if (HasComp<AirlockComponent>(uid))
+            {
+                _audioSystem.PlayPvs(comp.UseSound, args.Used.Value);
+            }
+            else
+            {
+                _audioSystem.PlayPredicted(comp.UseSound, args.Used.Value, args.User);
+            }
         }
 
         var ev = new PriedEvent(args.User);

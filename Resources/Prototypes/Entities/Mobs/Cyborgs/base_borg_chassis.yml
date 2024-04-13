@@ -83,7 +83,6 @@
     templateId: borg
   - type: Hands
     showInHands: false
-    disableExplosionRecursion: true
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
@@ -102,6 +101,8 @@
   - type: BorgChassis
   - type: WiresPanel
   - type: ActivatableUIRequiresPanel
+  - type: Wires
+    layoutId: Borg
   - type: NameIdentifier
     group: Silicon
   - type: ContainerContainer
@@ -130,9 +131,6 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
-  - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
   - type: UnblockableSpeech
   - type: Construction
     graph: Cyborg
@@ -142,7 +140,6 @@
   - type: Lock
     locked: true
   - type: ActivatableUIRequiresLock
-  - type: LockedWiresPanel
   - type: Flashable
   - type: Damageable
     damageContainer: Silicon

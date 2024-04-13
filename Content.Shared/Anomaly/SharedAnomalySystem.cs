@@ -1,6 +1,5 @@
 using Content.Shared.Administration.Logs;
 using Content.Shared.Anomaly.Components;
-using Content.Shared.Anomaly.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
@@ -15,7 +14,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -35,8 +33,9 @@ public abstract class SharedAnomalySystem : EntitySystem
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+
+    private ISawmill _sawmill = default!;
 
     public override void Initialize()
     {
@@ -46,6 +45,12 @@ public abstract class SharedAnomalySystem : EntitySystem
         SubscribeLocalEvent<AnomalyComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<AnomalyComponent, MeleeThrowOnHitStartEvent>(OnAnomalyThrowStart);
         SubscribeLocalEvent<AnomalyComponent, MeleeThrowOnHitEndEvent>(OnAnomalyThrowEnd);
+
+        SubscribeLocalEvent<AnomalyComponent, EntityUnpausedEvent>(OnAnomalyUnpause);
+        SubscribeLocalEvent<AnomalyPulsingComponent, EntityUnpausedEvent>(OnPulsingUnpause);
+        SubscribeLocalEvent<AnomalySupercriticalComponent, EntityUnpausedEvent>(OnSupercriticalUnpause);
+
+        _sawmill = Logger.GetSawmill("anomaly");
     }
 
     private void OnInteractHand(EntityUid uid, AnomalyComponent component, InteractHandEvent args)
@@ -64,13 +69,10 @@ public abstract class SharedAnomalySystem : EntitySystem
 
     private void OnAnomalyThrowStart(Entity<AnomalyComponent> ent, ref MeleeThrowOnHitStartEvent args)
     {
-        if (!TryComp<CorePoweredThrowerComponent>(args.Used, out var corePowered) ||
-            !TryComp<PhysicsComponent>(ent, out var body))
+        if (!TryComp<CorePoweredThrowerComponent>(args.Used, out var corePowered) || !TryComp<PhysicsComponent>(ent, out var body))
             return;
-
         _physics.SetBodyType(ent, BodyType.Dynamic, body: body);
-        ChangeAnomalyStability(ent, Random.NextFloat(corePowered.StabilityPerThrow.X, corePowered.StabilityPerThrow.Y),
-            ent.Comp);
+        ChangeAnomalyStability(ent, Random.NextFloat(corePowered.StabilityPerThrow.X, corePowered.StabilityPerThrow.Y), ent.Comp);
     }
 
     private void OnAnomalyThrowEnd(Entity<AnomalyComponent> ent, ref MeleeThrowOnHitEndEvent args)
@@ -83,9 +85,25 @@ public abstract class SharedAnomalySystem : EntitySystem
         _damageable.TryChangeDamage(target, component.AnomalyContactDamage, true);
         if (!Timing.IsFirstTimePredicted || _net.IsServer)
             return;
-
         Audio.PlayPvs(component.AnomalyContactDamageSound, source);
         Popup.PopupEntity(Loc.GetString("anomaly-component-contact-damage"), target, target);
+    }
+
+    private void OnAnomalyUnpause(EntityUid uid, AnomalyComponent component, ref EntityUnpausedEvent args)
+    {
+        component.NextPulseTime += args.PausedTime;
+        Dirty(uid, component);
+    }
+
+    private void OnPulsingUnpause(EntityUid uid, AnomalyPulsingComponent component, ref EntityUnpausedEvent args)
+    {
+        component.EndTime += args.PausedTime;
+    }
+
+    private void OnSupercriticalUnpause(EntityUid uid, AnomalySupercriticalComponent component, ref EntityUnpausedEvent args)
+    {
+        component.EndTime += args.PausedTime;
+        Dirty(uid, component);
     }
 
     public void DoAnomalyPulse(EntityUid uid, AnomalyComponent? component = null)
@@ -97,10 +115,11 @@ public abstract class SharedAnomalySystem : EntitySystem
             return;
 
         DebugTools.Assert(component.MinPulseLength > TimeSpan.FromSeconds(3)); // this is just to prevent lagspikes mispredicting pulses
-        RefreshPulseTimer(uid, component);
+        var variation = Random.NextFloat(-component.PulseVariation, component.PulseVariation) + 1;
+        component.NextPulseTime = Timing.CurTime + GetPulseLength(component) * variation;
 
         if (_net.IsServer)
-            Log.Info($"Performing anomaly pulse. Entity: {ToPrettyString(uid)}");
+            _sawmill.Info($"Performing anomaly pulse. Entity: {ToPrettyString(uid)}");
 
         // if we are above the growth threshold, then grow before the pulse
         if (component.Stability > component.GrowthThreshold)
@@ -113,33 +132,16 @@ public abstract class SharedAnomalySystem : EntitySystem
         var stability = Random.NextFloat(minStability, maxStability);
         ChangeAnomalyStability(uid, stability, component);
 
-        AdminLog.Add(LogType.Anomaly, LogImpact.Medium,
-            $"Anomaly {ToPrettyString(uid)} pulsed with severity {component.Severity}.");
-
+        AdminLog.Add(LogType.Anomaly, LogImpact.Medium, $"Anomaly {ToPrettyString(uid)} pulsed with severity {component.Severity}.");
         if (_net.IsServer)
             Audio.PlayPvs(component.PulseSound, uid);
 
         var pulse = EnsureComp<AnomalyPulsingComponent>(uid);
-        pulse.EndTime = Timing.CurTime + pulse.PulseDuration;
+        pulse.EndTime  = Timing.CurTime + pulse.PulseDuration;
         Appearance.SetData(uid, AnomalyVisuals.IsPulsing, true);
 
-        var powerMod = 1f;
-        if (component.CurrentBehavior != null)
-        {
-            var beh = _prototype.Index<AnomalyBehaviorPrototype>(component.CurrentBehavior);
-            powerMod = beh.PulsePowerModifier;
-        }
-        var ev = new AnomalyPulseEvent(uid, component.Stability, component.Severity, powerMod);
+        var ev = new AnomalyPulseEvent(uid, component.Stability, component.Severity);
         RaiseLocalEvent(uid, ref ev, true);
-    }
-
-    public void RefreshPulseTimer(EntityUid uid, AnomalyComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        var variation = Random.NextFloat(-component.PulseVariation, component.PulseVariation) + 1;
-        component.NextPulseTime = Timing.CurTime + GetPulseLength(component) * variation;
     }
 
     /// <summary>
@@ -152,9 +154,9 @@ public abstract class SharedAnomalySystem : EntitySystem
         if (HasComp<AnomalySupercriticalComponent>(uid))
             return;
 
-        AdminLog.Add(LogType.Anomaly, LogImpact.Extreme, $"Anomaly {ToPrettyString(uid)} began to go supercritical.");
+        AdminLog.Add(LogType.Anomaly, LogImpact.High, $"Anomaly {ToPrettyString(uid)} began to go supercritical.");
         if (_net.IsServer)
-            Log.Info($"Anomaly is going supercritical. Entity: {ToPrettyString(uid)}");
+            _sawmill.Info($"Anomaly is going supercritical. Entity: {ToPrettyString(uid)}");
 
         var super = AddComp<AnomalySupercriticalComponent>(uid);
         super.EndTime = Timing.CurTime + super.SupercriticalDuration;
@@ -180,16 +182,9 @@ public abstract class SharedAnomalySystem : EntitySystem
         Audio.PlayPvs(component.SupercriticalSound, uid);
 
         if (_net.IsServer)
-            Log.Info($"Raising supercritical event. Entity: {ToPrettyString(uid)}");
+            _sawmill.Info($"Raising supercritical event. Entity: {ToPrettyString(uid)}");
 
-        var powerMod = 1f;
-        if (component.CurrentBehavior != null)
-        {
-            var beh = _prototype.Index<AnomalyBehaviorPrototype>(component.CurrentBehavior);
-            powerMod = beh.PulsePowerModifier;
-        }
-
-        var ev = new AnomalySupercriticalEvent(uid, powerMod);
+        var ev = new AnomalySupercriticalEvent(uid);
         RaiseLocalEvent(uid, ref ev, true);
 
         EndAnomaly(uid, component, true);
@@ -205,10 +200,8 @@ public abstract class SharedAnomalySystem : EntitySystem
     {
         // Logging before resolve, in case the anomaly has deleted itself.
         if (_net.IsServer)
-            Log.Info($"Ending anomaly. Entity: {ToPrettyString(uid)}");
-
-        AdminLog.Add(LogType.Anomaly, supercritical ? LogImpact.High : LogImpact.Low,
-            $"Anomaly {ToPrettyString(uid)} {(supercritical ? "went supercritical" : "decayed")}.");
+            _sawmill.Info($"Ending anomaly. Entity: {ToPrettyString(uid)}");
+        AdminLog.Add(LogType.Anomaly, LogImpact.Extreme, $"Anomaly {ToPrettyString(uid)} went supercritical.");
 
         if (!Resolve(uid, ref component))
             return;
@@ -307,17 +300,8 @@ public abstract class SharedAnomalySystem : EntitySystem
     public TimeSpan GetPulseLength(AnomalyComponent component)
     {
         DebugTools.Assert(component.MaxPulseLength > component.MinPulseLength);
-        var modifier = Math.Clamp((component.Stability - component.GrowthThreshold) / component.GrowthThreshold, 0, 1);
-
-        var lenght = (component.MaxPulseLength - component.MinPulseLength) * modifier + component.MinPulseLength;
-
-        //Apply behavior modifier
-        if (component.CurrentBehavior != null)
-        {
-            var behavior = _prototype.Index(component.CurrentBehavior.Value);
-            lenght *= behavior.PulseFrequencyModifier;
-        }
-        return lenght;
+        var modifier = Math.Clamp((component.Stability - component.GrowthThreshold) /  component.GrowthThreshold, 0, 1);
+        return (component.MaxPulseLength - component.MinPulseLength) * modifier + component.MinPulseLength;
     }
 
     /// <summary>
@@ -367,7 +351,6 @@ public abstract class SharedAnomalySystem : EntitySystem
         {
             if (Timing.CurTime <= super.EndTime)
                 continue;
-
             DoAnomalySupercriticalEvent(ent, anom);
             RemComp(ent, super);
         }
@@ -376,19 +359,18 @@ public abstract class SharedAnomalySystem : EntitySystem
     /// <summary>
     /// Gets random points around the anomaly based on the given parameters.
     /// </summary>
-    public List<TileRef>? GetSpawningPoints(EntityUid uid, float stability, float severity, AnomalySpawnSettings settings, float powerModifier = 1f)
+    public List<TileRef>? GetSpawningPoints(EntityUid uid, float stability, float severity, AnomalySpawnSettings settings)
     {
         var xform = Transform(uid);
 
         if (!TryComp<MapGridComponent>(xform.GridUid, out var grid))
             return null;
 
-        var amount = (int) (MathHelper.Lerp(settings.MinAmount, settings.MaxAmount, severity * stability * powerModifier) + 0.5f);
+        var amount = (int) (MathHelper.Lerp(settings.MinAmount, settings.MaxAmount, severity * stability) + 0.5f);
 
         var localpos = xform.Coordinates.Position;
         var tilerefs = grid.GetLocalTilesIntersecting(
-            new Box2(localpos + new Vector2(-settings.MaxRange, -settings.MaxRange),
-                localpos + new Vector2(settings.MaxRange, settings.MaxRange))).ToList();
+            new Box2(localpos + new Vector2(-settings.MaxRange, -settings.MaxRange), localpos + new Vector2(settings.MaxRange, settings.MaxRange))).ToList();
 
         if (tilerefs.Count == 0)
             return null;
@@ -401,8 +383,7 @@ public abstract class SharedAnomalySystem : EntitySystem
                 break;
 
             var tileref = _random.Pick(tilerefs);
-            var distance = MathF.Sqrt(MathF.Pow(tileref.X - xform.LocalPosition.X, 2) +
-                MathF.Pow(tileref.Y - xform.LocalPosition.Y, 2));
+            var distance = MathF.Sqrt(MathF.Pow(tileref.X - xform.LocalPosition.X, 2) + MathF.Pow(tileref.Y - xform.LocalPosition.Y, 2));
 
             //cut outer & inner circle
             if (distance > settings.MaxRange || distance < settings.MinRange)
@@ -427,7 +408,6 @@ public abstract class SharedAnomalySystem : EntitySystem
                     valid = false;
                     break;
                 }
-
                 if (!valid)
                 {
                     tilerefs.Remove(tileref);
@@ -437,7 +417,6 @@ public abstract class SharedAnomalySystem : EntitySystem
 
             resultList.Add(tileref);
         }
-
         return resultList;
     }
 }

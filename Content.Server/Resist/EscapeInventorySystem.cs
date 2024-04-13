@@ -1,14 +1,19 @@
-using Content.Server._White.Carrying;
+using Content.Server.Contests;
 using Content.Server.Popups;
-using Content.Shared.Storage.Components;
+using Content.Server.Storage.Components;
+using Content.Server.Carrying;
 using Content.Shared.Storage;
 using Content.Shared.Inventory;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.DoAfter;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Resist;
+using Content.Shared.Storage;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Resist;
@@ -20,6 +25,7 @@ public sealed class EscapeInventorySystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly ContestsSystem _contests = default!;
     [Dependency] private readonly CarryingSystem _carryingSystem = default!;
 
     /// <summary>
@@ -41,8 +47,7 @@ public sealed class EscapeInventorySystem : EntitySystem
         if (!args.HasDirectionalMovement)
             return;
 
-        if (!_containerSystem.TryGetContainingContainer(uid, out var container) ||
-            !_actionBlockerSystem.CanInteract(uid, container.Owner))
+        if (!_containerSystem.TryGetContainingContainer(uid, out var container) || !_actionBlockerSystem.CanInteract(uid, container.Owner))
             return;
 
         // Make sure there's nothing stopped the removal (like being glued)
@@ -53,31 +58,40 @@ public sealed class EscapeInventorySystem : EntitySystem
         }
 
         // Contested
-        if (_handsSystem.IsHolding(container.Owner, uid, out _))
+        if (_handsSystem.IsHolding(container.Owner, uid, out var inHand))
         {
-            AttemptEscape(uid, container.Owner, component);
+            var contestResults = _contests.MassContest(uid, container.Owner);
+
+            // Inverse if we aren't going to divide by 0, otherwise just use a default multiplier of 1.
+            if (contestResults != 0)
+                contestResults = 1 / contestResults;
+            else
+                contestResults = 1;
+
+            if (contestResults >= MaximumMassDisadvantage)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("escape-inventory-component-failed-resisting"), uid, uid);
+                return;
+            }
+
+            AttemptEscape(uid, container.Owner, component, contestResults);
             return;
         }
 
         // Uncontested
-        if (HasComp<StorageComponent>(container.Owner) || HasComp<InventoryComponent>(container.Owner) ||
-            HasComp<SecretStashComponent>(container.Owner))
+        if (HasComp<StorageComponent>(container.Owner) || HasComp<InventoryComponent>(container.Owner) || HasComp<SecretStashComponent>(container.Owner))
             AttemptEscape(uid, container.Owner, component);
     }
 
-    public void AttemptEscape(
-        EntityUid user,
-        EntityUid container,
-        CanEscapeInventoryComponent component,
-        float multiplier = 1f)
+    public void AttemptEscape(EntityUid user, EntityUid container, CanEscapeInventoryComponent component, float multiplier = 1f)
     {
         if (component.IsEscaping)
             return;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, component.BaseResistTime * multiplier,
-            new EscapeInventoryEvent(), user, target: container)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, component.BaseResistTime * multiplier, new EscapeInventoryEvent(), user, target: container)
         {
-            BreakOnMove = true,
+            BreakOnTargetMove = false,
+            BreakOnUserMove = true,
             BreakOnDamage = true,
             NeedHand = false
         };
@@ -86,8 +100,7 @@ public sealed class EscapeInventorySystem : EntitySystem
             return;
 
         _popupSystem.PopupEntity(Loc.GetString("escape-inventory-component-start-resisting"), user, user);
-        _popupSystem.PopupEntity(Loc.GetString("escape-inventory-component-start-resisting-target"), container,
-            container);
+        _popupSystem.PopupEntity(Loc.GetString("escape-inventory-component-start-resisting-target"), container, container);
     }
 
     private void OnEscape(EntityUid uid, CanEscapeInventoryComponent component, EscapeInventoryEvent args)

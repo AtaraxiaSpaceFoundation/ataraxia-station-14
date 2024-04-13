@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
@@ -37,8 +38,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     /// <summary>
     /// The categories that this listing applies to. Used for filtering a listing for a store.
     /// </summary>
-    [DataField("categories", required: true,
-        customTypeSerializer: typeof(PrototypeIdListSerializer<StoreCategoryPrototype>))]
+    [DataField("categories", required: true, customTypeSerializer: typeof(PrototypeIdListSerializer<StoreCategoryPrototype>))]
     public List<string> Categories = new();
 
     /// <summary>
@@ -64,7 +64,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     /// The priority for what order the listings will show up in on the menu.
     /// </summary>
     [DataField("priority")]
-    public int Priority;
+    public int Priority = 0;
 
     /// <summary>
     /// The entity that is given when the listing is purchased.
@@ -97,9 +97,6 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     /// </summary>
     [DataField("productEvent")]
     public object? ProductEvent;
-
-    [DataField]
-    public bool RaiseProductEventOnUser;
 
     /// <summary>
     /// used internally for tracking how many times an item was purchased.
@@ -135,7 +132,6 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             Description != listing.Description ||
             ProductEntity != listing.ProductEntity ||
             ProductAction != listing.ProductAction ||
-            ProductEvent?.GetType() != listing.ProductEvent?.GetType() ||
             RestockTime != listing.RestockTime)
             return false;
 
@@ -195,5 +191,10 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
 /// <summary>
 ///     Defines a set item listing that is available in a store
 /// </summary>
-[Prototype("listing"), Serializable, NetSerializable, DataDefinition]
-public sealed partial class ListingPrototype : ListingData, IPrototype;
+[Prototype("listing")]
+[Serializable, NetSerializable]
+[DataDefinition]
+public sealed partial class ListingPrototype : ListingData, IPrototype
+{
+
+}

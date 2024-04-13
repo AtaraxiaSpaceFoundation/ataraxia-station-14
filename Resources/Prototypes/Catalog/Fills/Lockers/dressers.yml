@@ -68,7 +68,6 @@
       - id: ClothingNeckCloakHop
       - id: ClothingHeadHatHopcap
       - id: ClothingOuterWinterHoP
-      - id: ClothingEyesGlasses
       - id: ClothingHandsGlovesHop
       - id: ClothingNeckGoldmedal
       - id: ClothingShoesLeather
@@ -90,6 +89,7 @@
       - id: ClothingUniformJumpsuitHoSAlt
       - id: ClothingUniformJumpskirtHosFormal
       - id: ClothingUniformJumpsuitHosFormal
+      - id: ClothingMaskNeckGaiter
       - id: ClothingHandsGlovesCombat
       - id: ClothingShoesBootsJack
       - id: ClothingEyesGlassesSecurity
@@ -105,9 +105,9 @@
   - type: StorageFill
     contents:
       - id: ClothingNeckCloakQm
+      - id: ClothingHeadsetCargo
       - id: ClothingHeadHatBeretQM
       - id: ClothingUniformJumpsuitQMFormal
-      - id: ClothingHeadsetCargo
       - id: ClothingUniformJumpsuitQMTurtleneck
       - id: ClothingUniformJumpskirtQMTurtleneck
       - id: ClothingHandsGlovesColorBrown

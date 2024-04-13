@@ -41,7 +41,7 @@ public sealed class ApocalypseRuneEui : BaseEui
 
         var argsDoAfterEvent = new DoAfterArgs(_entityManager, _whoCalled, 120f, ev, _whoCalled)
         {
-            BreakOnMove = true,
+            BreakOnUserMove = true,
             NeedHand = true
         };
 

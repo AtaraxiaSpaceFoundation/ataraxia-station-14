@@ -52,6 +52,7 @@
   description: Locates salvage.
   components:
   - type: SalvageMagnet
+    offsetRadiusMax: 32
   - type: ApcPowerReceiver
     powerLoad: 1000
 

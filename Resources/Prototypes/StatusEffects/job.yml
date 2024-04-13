@@ -3,7 +3,6 @@
   abstract: true
   priority: 1
   locationPreference: Right
-  isShaded: true
 
 - type: statusIcon
   parent: JobIcon

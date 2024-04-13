@@ -20,24 +20,22 @@ public abstract partial class SharedBuckleSystem
     {
         SubscribeLocalEvent<StrapComponent, ComponentStartup>(OnStrapStartup);
         SubscribeLocalEvent<StrapComponent, ComponentShutdown>(OnStrapShutdown);
-        SubscribeLocalEvent<StrapComponent, ComponentRemove>((e, c, _) => StrapRemoveAll(e, c));
+        SubscribeLocalEvent<StrapComponent, ComponentRemove>((_, c, _) => StrapRemoveAll(c));
 
         SubscribeLocalEvent<StrapComponent, EntInsertedIntoContainerMessage>(OnStrapEntModifiedFromContainer);
         SubscribeLocalEvent<StrapComponent, EntRemovedFromContainerMessage>(OnStrapEntModifiedFromContainer);
         SubscribeLocalEvent<StrapComponent, GetVerbsEvent<InteractionVerb>>(AddStrapVerbs);
-        SubscribeLocalEvent<StrapComponent, ContainerGettingInsertedAttemptEvent>(
-            OnStrapContainerGettingInsertedAttempt);
-
+        SubscribeLocalEvent<StrapComponent, ContainerGettingInsertedAttemptEvent>(OnStrapContainerGettingInsertedAttempt);
         SubscribeLocalEvent<StrapComponent, InteractHandEvent>(OnStrapInteractHand);
-        SubscribeLocalEvent<StrapComponent, DestructionEventArgs>((e, c, _) => StrapRemoveAll(e, c));
-        SubscribeLocalEvent<StrapComponent, BreakageEventArgs>((e, c, _) => StrapRemoveAll(e, c));
+        SubscribeLocalEvent<StrapComponent, DestructionEventArgs>((_,c,_) => StrapRemoveAll(c));
+        SubscribeLocalEvent<StrapComponent, BreakageEventArgs>((_, c, _) => StrapRemoveAll(c));
 
         SubscribeLocalEvent<StrapComponent, DragDropTargetEvent>(OnStrapDragDropTarget);
         SubscribeLocalEvent<StrapComponent, CanDropTargetEvent>(OnCanDropTarget);
         SubscribeLocalEvent<StrapComponent, FoldAttemptEvent>(OnAttemptFold);
 
         SubscribeLocalEvent<StrapComponent, MoveEvent>(OnStrapMoveEvent);
-        SubscribeLocalEvent<StrapComponent, MachineDeconstructedEvent>((e, c, _) => StrapRemoveAll(e, c));
+        SubscribeLocalEvent<StrapComponent, MachineDeconstructedEvent>((_, c, _) => StrapRemoveAll(c));
     }
 
     private void OnStrapStartup(EntityUid uid, StrapComponent component, ComponentStartup args)
@@ -50,13 +48,10 @@ public abstract partial class SharedBuckleSystem
         if (LifeStage(uid) > EntityLifeStage.MapInitialized)
             return;
 
-        StrapRemoveAll(uid, component);
+        StrapRemoveAll(component);
     }
 
-    private void OnStrapEntModifiedFromContainer(
-        EntityUid uid,
-        StrapComponent component,
-        ContainerModifiedMessage message)
+    private void OnStrapEntModifiedFromContainer(EntityUid uid, StrapComponent component, ContainerModifiedMessage message)
     {
         if (_gameTiming.ApplyingState)
             return;
@@ -72,11 +67,7 @@ public abstract partial class SharedBuckleSystem
         }
     }
 
-    private void ContainerModifiedReAttach(
-        EntityUid buckleUid,
-        EntityUid strapUid,
-        BuckleComponent? buckleComp = null,
-        StrapComponent? strapComp = null)
+    private void ContainerModifiedReAttach(EntityUid buckleUid, EntityUid strapUid, BuckleComponent? buckleComp = null, StrapComponent? strapComp = null)
     {
         if (!Resolve(buckleUid, ref buckleComp, false) ||
             !Resolve(strapUid, ref strapComp, false))
@@ -97,10 +88,7 @@ public abstract partial class SharedBuckleSystem
         }
     }
 
-    private void OnStrapContainerGettingInsertedAttempt(
-        EntityUid uid,
-        StrapComponent component,
-        ContainerGettingInsertedAttemptEvent args)
+    private void OnStrapContainerGettingInsertedAttempt(EntityUid uid, StrapComponent component, ContainerGettingInsertedAttemptEvent args)
     {
         // If someone is attempting to put this item inside of a backpack, ensure that it has no entities strapped to it.
         if (HasComp<StorageComponent>(args.Container.Owner) && component.BuckledEntities.Count != 0)
@@ -161,19 +149,17 @@ public abstract partial class SharedBuckleSystem
                 Category = VerbCategory.Buckle,
                 Text = Loc.GetString("verb-self-target-pronoun")
             };
-
             args.Verbs.Add(verb);
         }
 
         // If the user is currently holding/pulling an entity that can be buckled, add a verb for that.
-        if (args.Using is { Valid: true } @using &&
+        if (args.Using is {Valid: true} @using &&
             TryComp<BuckleComponent>(@using, out var usingBuckle) &&
             StrapHasSpace(uid, usingBuckle, component) &&
             _interaction.InRangeUnobstructed(@using, args.Target, range: usingBuckle.Range))
         {
             // Check that the entity is unobstructed from the target (ignoring the user).
             bool Ignored(EntityUid entity) => entity == args.User || entity == args.Target || entity == @using;
-
             if (!_interaction.InRangeUnobstructed(@using, args.Target, usingBuckle.Range, predicate: Ignored))
                 return;
 
@@ -241,14 +227,12 @@ public abstract partial class SharedBuckleSystem
 
             if (!buckled.Buckled || buckled.LastEntityBuckledTo != uid)
             {
-                Log.Error(
-                    $"A moving strap entity {ToPrettyString(uid)} attempted to re-parent an entity that does not 'belong' to it {ToPrettyString(buckledEntity)}");
-
+                Log.Error($"A moving strap entity {ToPrettyString(uid)} attempted to re-parent an entity that does not 'belong' to it {ToPrettyString(buckledEntity)}");
                 continue;
             }
 
             ReAttach(buckledEntity, uid, buckled, component);
-            Dirty(buckledEntity, buckled);
+            Dirty(buckled);
         }
     }
 
@@ -274,7 +258,7 @@ public abstract partial class SharedBuckleSystem
     /// <summary>
     /// Remove everything attached to the strap
     /// </summary>
-    public void StrapRemoveAll(EntityUid uid, StrapComponent strapComp)
+    public void StrapRemoveAll(StrapComponent strapComp) // WD EDIT
     {
         foreach (var entity in strapComp.BuckledEntities.ToArray())
         {
@@ -283,7 +267,7 @@ public abstract partial class SharedBuckleSystem
 
         strapComp.BuckledEntities.Clear();
         strapComp.OccupiedSize = 0;
-        Dirty(uid, strapComp);
+        Dirty(strapComp);
     }
 
     private bool StrapHasSpace(EntityUid strapUid, BuckleComponent buckleComp, StrapComponent? strapComp = null)
@@ -297,12 +281,7 @@ public abstract partial class SharedBuckleSystem
     /// <summary>
     /// Try to add an entity to the strap
     /// </summary>
-    private bool StrapTryAdd(
-        EntityUid strapUid,
-        EntityUid buckleUid,
-        BuckleComponent buckleComp,
-        bool force = false,
-        StrapComponent? strapComp = null)
+    private bool StrapTryAdd(EntityUid strapUid, EntityUid buckleUid, BuckleComponent buckleComp, bool force = false, StrapComponent? strapComp = null)
     {
         if (!Resolve(strapUid, ref strapComp, false) ||
             !strapComp.Enabled)
@@ -334,6 +313,6 @@ public abstract partial class SharedBuckleSystem
         strapComp.Enabled = enabled;
 
         if (!enabled)
-            StrapRemoveAll(strapUid, strapComp);
+            StrapRemoveAll(strapComp);
     }
 }

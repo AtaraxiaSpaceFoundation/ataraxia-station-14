@@ -12,6 +12,7 @@ namespace Content.Server.DeviceLinking.Systems
     [UsedImplicitly]
     public sealed class DoorSignalControlSystem : EntitySystem
     {
+        [Dependency] private readonly DoorBoltSystem _bolts = default!;
         [Dependency] private readonly DoorSystem _doorSystem = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
 
@@ -78,7 +79,7 @@ namespace Content.Server.DeviceLinking.Systems
                     bolt = state == SignalState.High;
                 }
 
-                _doorSystem.SetBoltsDown((uid, bolts), bolt);
+                _bolts.SetBoltsWithAudio(uid, bolts, bolt);
             }
         }
 

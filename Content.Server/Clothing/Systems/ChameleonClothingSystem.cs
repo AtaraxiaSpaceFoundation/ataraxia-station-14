@@ -33,13 +33,13 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
 
     private void OnVerb(EntityUid uid, ChameleonClothingComponent component, GetVerbsEvent<InteractionVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || component.User != args.User)
+        if (!args.CanAccess || !args.CanInteract)
             return;
 
         args.Verbs.Add(new InteractionVerb()
         {
             Text = Loc.GetString("chameleon-component-verb-text"),
-            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
+            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
             Act = () => TryOpenUi(uid, args.User, component)
         });
     }
@@ -91,7 +91,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
         UpdateIdentityBlocker(uid, component, proto);
         UpdateVisuals(uid, component);
         UpdateUi(uid, component);
-        Dirty(uid, component);
+        Dirty(component);
     }
 
     private void UpdateIdentityBlocker(EntityUid uid, ChameleonClothingComponent component, EntityPrototype proto)

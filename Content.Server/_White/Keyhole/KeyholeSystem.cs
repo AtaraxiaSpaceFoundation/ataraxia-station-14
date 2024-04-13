@@ -14,6 +14,7 @@ namespace Content.Server._White.Keyhole;
 
 public sealed class KeyholeSystem : EntitySystem
 {
+
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -30,16 +31,11 @@ public sealed class KeyholeSystem : EntitySystem
 
     private void OnKeyInit(EntityUid uid, KeyComponent component, ComponentInit ev)
     {
-        component.FormId ??= _random.Next(1000);
+        component.FormId = _random.Next(1000);
     }
 
     private void OnKeyInsert(EntityUid uid, KeyComponent component, AfterInteractEvent ev)
     {
-        if (!ev.Target.HasValue)
-        {
-            return;
-        }
-
         Debug.Assert(component.FormId != null);
 
         if (TryComp<KeyformComponent>(ev.Target, out var keyformComponent))
@@ -61,7 +57,8 @@ public sealed class KeyholeSystem : EntitySystem
             new DoAfterArgs(EntityManager, ev.User, keyholeComponent.Delay,
                 new KeyInsertDoAfterEvent(component.FormId.Value), ev.Target, ev.Used)
             {
-                BreakOnMove = true,
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
                 BreakOnDamage = true
             };
 
@@ -91,8 +88,7 @@ public sealed class KeyholeSystem : EntitySystem
     private void Lock(EntityUid uid, KeyholeComponent component, EntityUid user)
     {
         var sound = component.Locked ? component.UnlockSound : component.LockSound;
-        var message = Loc.GetString(component.Locked ? "key-unlock-message" : "key-lock-message", ("name", user),
-            ("door", uid));
+        var message = Loc.GetString(component.Locked ? "key-unlock-message" : "key-lock-message", ("name", user), ("door", uid));
 
         var audioParams = new AudioParams().WithVolume(-5f);
 
@@ -119,5 +115,7 @@ public sealed class KeyholeSystem : EntitySystem
             keyComponent.FormId = keyformComponent.FormId;
             _popupSystem.PopupEntity(Loc.GetString("key-pressed-in-keyform-message", ("user", user), ("key", uid)), uid);
         }
+
     }
+
 }

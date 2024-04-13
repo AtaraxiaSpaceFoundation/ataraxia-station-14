@@ -1,18 +1,18 @@
 ﻿using System.Threading;
-using Content.Shared._White.Cult.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Pulling.Components;
+using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Items;
-using Content.Shared.Movement.Pulling.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._White.Cult.Items.Systems;
@@ -27,10 +27,6 @@ public sealed class VoidTeleportSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
-    [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -79,7 +75,7 @@ public sealed class VoidTeleportSystem : EntitySystem
         {
             attempts--;
             //Get coords to where tp
-            var random = _random.Next(component.MinRange, component.MaxRange);
+            var random = new Random().Next(component.MinRange, component.MaxRange);
             var offset = transform.LocalRotation.ToWorldVec().Normalized();
             var direction = transform.LocalRotation.GetDir().ToVec();
             var newOffset = offset + direction * random;
@@ -101,17 +97,20 @@ public sealed class VoidTeleportSystem : EntitySystem
         CreatePulse(uid, component);
 
         _xform.SetCoordinates(args.User, coords);
-        _transform.AttachToGridOrMap(args.User, transform);
+        transform.AttachToGridOrMap();
 
-        if (_pulling.TryGetPulledEntity(args.User, out var pulled))
+        var pulled = GetPulledEntity(args.User);
+        if (pulled != null)
         {
             _xform.SetCoordinates(pulled.Value, coords);
-            _transform.AttachToGridOrMap(pulled.Value);
+
+            if (TryComp<TransformComponent>(pulled.Value, out var pulledTransform))
+                pulledTransform.AttachToGridOrMap();
         }
 
         //Play tp sound
         _audio.PlayPvs(component.TeleportInSound, coords);
-        _audio.PlayPvs(component.TeleportOutSound, oldCoords);
+        _audio.PlayPvs(component.TeleportOutSound,oldCoords);
 
         //Create tp effect
         _entMan.SpawnEntity(component.TeleportInEffect, coords);
@@ -130,31 +129,45 @@ public sealed class VoidTeleportSystem : EntitySystem
         _appearance.SetData(uid, VeilVisuals.Activated, comp.Active, appearance);
     }
 
+    private EntityUid? GetPulledEntity(EntityUid user)
+    {
+        EntityUid? pulled = null;
+
+        if (TryComp<SharedPullerComponent>(user, out var puller))
+            pulled = puller.Pulling;
+
+        return pulled;
+    }
+
     private void CreatePulse(EntityUid uid, VoidTeleportComponent component)
     {
-        if (_pointLight.TryGetLight(uid, out var light))
-        {
-            _pointLight.SetEnergy(uid, 5f, light);
-        }
+        if (TryComp<PointLightComponent>(uid, out var light))
+#pragma warning disable RA0002
+            light.Energy = 5f;
+#pragma warning restore RA0002
 
         Timer.Spawn(component.TimerDelay, () => TurnOffPulse(uid, component), component.Token.Token);
     }
 
-    private void TurnOffPulse(EntityUid uid, VoidTeleportComponent comp)
+    private void TurnOffPulse(EntityUid uid ,VoidTeleportComponent comp)
     {
-        if (!_pointLight.TryGetLight(uid, out var light))
+        if (!TryComp<PointLightComponent>(uid, out var light))
             return;
 
-        _pointLight.SetEnergy(uid, 1f, light);
+#pragma warning disable RA0002
+        light.Energy = 1f;
+#pragma warning restore RA0002
 
         comp.Token = new CancellationTokenSource();
 
         if (comp.UsesLeft <= 0)
         {
             comp.Active = false;
-            _pointLight.SetEnabled(uid, false);
-
             UpdateAppearance(uid, comp);
+
+#pragma warning disable RA0002
+            light.Enabled = false;
+#pragma warning restore RA0002
         }
     }
 }

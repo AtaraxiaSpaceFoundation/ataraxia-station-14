@@ -1,5 +1,4 @@
 using Robust.Shared.Collections;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Spreader;
@@ -11,7 +10,7 @@ namespace Content.Server.Spreader;
 [ByRefEvent]
 public record struct SpreadNeighborsEvent
 {
-    public ValueList<(MapGridComponent Grid, TileRef Tile)> NeighborFreeTiles;
+    public ValueList<(MapGridComponent Grid, Vector2i Tile)> NeighborFreeTiles;
     public ValueList<EntityUid> Neighbors;
 
     /// <summary>

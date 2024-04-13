@@ -24,14 +24,12 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Systems;
-using Content.Shared.NPC.Components;
-using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.AnimalHusbandry;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Roles;
+using Content.Shared.Pulling.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Zombies;
 using Content.Shared.Prying.Components;
@@ -59,6 +57,7 @@ namespace Content.Server.Zombies
         [Dependency] private readonly IChatManager _chatMan = default!;
         [Dependency] private readonly MindSystem _mind = default!;
         [Dependency] private readonly SharedRoleSystem _roles = default!;
+        [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
 
         /// <summary>
@@ -126,10 +125,7 @@ namespace Content.Server.Zombies
             var melee = EnsureComp<MeleeWeaponComponent>(target);
             melee.Animation = zombiecomp.AttackAnimation;
             melee.WideAnimation = zombiecomp.AttackAnimation;
-            melee.AltDisarm = false;
             melee.Range = 1.2f;
-            melee.Angle = 0.0f;
-            melee.HitSound = zombiecomp.BiteSound;
 
             if (mobState.CurrentState == MobState.Alive)
             {
@@ -185,7 +181,7 @@ namespace Content.Server.Zombies
                 Dirty(target, pryComp);
             }
 
-            Dirty(target, melee);
+            Dirty(melee);
 
             //The zombie gets the assigned damage weaknesses and strengths
             _damageable.SetDamageModifierSetId(target, "Zombie");
@@ -216,7 +212,11 @@ namespace Content.Server.Zombies
                 _damageable.SetAllDamage(target, damageablecomp, 0);
             _mobState.ChangeMobState(target, MobState.Alive);
 
-            _faction.ClearFactions(target, dirty: false);
+            var factionComp = EnsureComp<NpcFactionMemberComponent>(target);
+            foreach (var id in new List<string>(factionComp.Factions))
+            {
+                _faction.RemoveFaction(target, id);
+            }
             _faction.AddFaction(target, "Zombie");
 
             //gives it the funny "Zombie ___" name.
@@ -263,9 +263,7 @@ namespace Content.Server.Zombies
                 RemComp(target, handsComp);
             }
 
-            // Sloth: What the fuck?
-            // How long until compregistry lmao.
-            RemComp<PullerComponent>(target);
+            RemComp<SharedPullerComponent>(target);
 
             // No longer waiting to become a zombie:
             // Requires deferral because this is (probably) the event which called ZombifyEntity in the first place.

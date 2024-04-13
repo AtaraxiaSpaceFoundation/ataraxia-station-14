@@ -73,8 +73,9 @@ namespace Content.Server.Chemistry.EntitySystems
 
             _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, actualDelay, new PatchDoAfterEvent(), patch.Owner, target: target, used: patch.Owner)
             {
-                BreakOnMove = true,
+                BreakOnUserMove = true,
                 BreakOnDamage = true,
+                BreakOnTargetMove = true
             });
         }
 

@@ -52,7 +52,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Blunt: 5
+        Brute: 5
         Slash: 10
   - type: Tag
     tags:

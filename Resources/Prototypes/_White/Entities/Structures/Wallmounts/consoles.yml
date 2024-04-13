@@ -280,18 +280,18 @@
   - type: Computer
     board: MediaConsoleWallMountCircuitboard
   - type: DeviceNetworkRequiresPower
-  - type: NewsWriter
+  - type: NewsWrite
   - type: AccessReader
     access: [ [ "Command" ] ]
   - type: ActivatableUI
-    key: enum.NewsWriterUiKey.Key
+    key: enum.NewsWriteUiKey.Key
   - type: ActivatableUIRequiresVision
   - type: Transform
     anchored: true
   - type: UserInterface
     interfaces:
-    - key: enum.NewsWriterUiKey.Key
-      type: NewsWriterBoundUserInterface
+    - key: enum.NewsWriteUiKey.Key
+      type: NewsWriteBoundUserInterface
 
 # Radar console
 - type: entity

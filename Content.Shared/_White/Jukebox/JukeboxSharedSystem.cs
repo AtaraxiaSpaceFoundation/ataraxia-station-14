@@ -3,10 +3,11 @@ using Robust.Shared.Network;
 
 namespace Content.Shared._White.Jukebox;
 
-public sealed class JukeboxSharedSystem : EntitySystem
+public class JukeboxSharedSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly INetManager _netManager = default!;
+
 
     public override void Initialize()
     {
@@ -16,11 +17,8 @@ public sealed class JukeboxSharedSystem : EntitySystem
 
     public void OnJukeboxInit(EntityUid uid, JukeboxComponent component, ComponentStartup args)
     {
-        component.TapeContainer =
-            _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxContainerName);
-
-        component.DefaultSongsContainer =
-            _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxDefaultSongsName);
+        component.TapeContainer = _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxContainerName);
+        component.DefaultSongsContainer = _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxDefaultSongsName);
 
         if (_netManager.IsServer)
         {
@@ -30,10 +28,9 @@ public sealed class JukeboxSharedSystem : EntitySystem
             {
                 var tapeUid = EntityManager.SpawnEntity(tapePrototype, transform.MapPosition);
 
-                if (!TryComp<TapeComponent>(tapeUid, out _)) 
-                    continue;
+                if(!TryComp<TapeComponent>(tapeUid, out _)) continue;
 
-                _containerSystem.Insert(tapeUid, component.DefaultSongsContainer);
+                component.DefaultSongsContainer.Insert(tapeUid);
             }
         }
     }

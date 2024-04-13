@@ -14,9 +14,6 @@
     - 0,0,2,2
   - type: Sprite
     state: box
-  - type: Tag
-    tags:
-    - BoxCardboard
   # WD edit sounds start
   - type: EmitSoundOnPickup
     sound:
@@ -199,14 +196,24 @@
       - state: writing
 
 - type: entity
-  parent: BoxHug
+  name: box of hugs
+  parent: BoxCardboard
   id: BoxHugHealing
-  suffix: Medical
+  description: A special box for sensitive people.
   components:
+  - type: Sprite
+    layers:
+      - state: box_hug
+      - state: heart
+  - type: Item
+    heldPrefix: hug
   - type: StorageFill
     contents:
       - id: Brutepack
         amount: 3
+  - type: Tag
+    tags:
+      - BoxHug
 
 - type: entity
   name: inflatable wall box
@@ -270,7 +277,7 @@
   - type: Storage
     grid:
     - 0,0,5,3
-    maxItemSize: Large
+    maxItemSize: Normal
     whitelist:
       tags:
         - TrashBag

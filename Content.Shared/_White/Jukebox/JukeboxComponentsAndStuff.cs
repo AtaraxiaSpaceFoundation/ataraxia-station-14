@@ -1,7 +1,9 @@
-﻿using Lidgren.Network;
+﻿using System.Linq;
+using Lidgren.Network;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -19,46 +21,45 @@ public enum TapeCreatorUIKey : byte
     Key
 }
 
-[NetworkedComponent, RegisterComponent, AutoGenerateComponentState]
+[NetworkedComponent, RegisterComponent]
 public sealed partial class JukeboxComponent : Component
 {
+
     public static string JukeboxContainerName = "jukebox_tapes";
     public static string JukeboxDefaultSongsName = "jukebox_default_tapes";
 
     [ViewVariables(VVAccess.ReadOnly)]
     public Container TapeContainer = default!;
 
-    [DataField]
-    public List<string> DefaultTapes = new() { };
-
+    [DataField("defaultTapes")]
+    public List<string> DefaultTapes = new();
     [ViewVariables(VVAccess.ReadOnly)]
     public Container DefaultSongsContainer = default!;
 
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
-    public bool Playing { get; set; } = true;
 
-    [DataField, ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
+    public bool Repeating { get; set; } = true;
+
+    [DataField("volume") ,ViewVariables(VVAccess.ReadOnly)]
     public float Volume { get; set; }
 
-    [DataField]
+    [DataField("maxAudioRange")]
     public float MaxAudioRange { get; set; } = 20f;
 
-    [DataField]
+    [DataField("rolloffFactor")]
     public float RolloffFactor { get; set; } = 0.3f;
 
-    [AutoNetworkedField]
     public PlayingSongData? PlayingSongData { get; set; }
 }
 
 public sealed partial class TapeContainerComponent : Component
 {
     public int MaxTapeCount = 1;
-
     public Container TapeContainer { get; set; } = new();
 }
 
 [Serializable, NetSerializable]
-public sealed class PlayingSongData
+public class PlayingSongData
 {
     public ResPath? SongPath;
     public string? SongName;
@@ -66,56 +67,59 @@ public sealed class PlayingSongData
     public float ActualSongLengthSeconds;
 }
 
+[Serializable, NetSerializable]
+public class JukeboxComponentState : ComponentState
+{
+    public bool Playing { get; set; }
+
+    public PlayingSongData? SongData { get; set; }
+    public float Volume { get; set; }
+}
+
 [Serializable, NetSerializable, DataDefinition]
 public sealed partial class JukeboxSong
 {
-    [DataField]
+    [DataField("songName")]
     public string? SongName;
-
     [DataField("path")]
     public ResPath? SongPath;
 }
 
 [Serializable, NetSerializable]
-public sealed class JukeboxRequestSongPlay : EntityEventArgs
+public class JukeboxRequestSongPlay : EntityEventArgs
 {
     public string? SongName { get; set; }
-
     public ResPath? SongPath { get; set; }
-
     public NetEntity? Jukebox { get; set; }
-
     public float SongDuration { get; set; }
 }
 
 [Serializable, NetSerializable]
-public sealed class JukeboxRequestStop : EntityEventArgs
+public class JukeboxRequestStop : EntityEventArgs
 {
     public NetEntity? JukeboxUid { get; set; }
 }
 
 [Serializable, NetSerializable]
-public sealed class JukeboxStopPlaying : EntityEventArgs
+public class JukeboxStopPlaying : EntityEventArgs
 {
     public NetEntity? JukeboxUid { get; set; }
 }
 
 [Serializable, NetSerializable]
-public sealed class JukeboxSongUploadRequest : EntityEventArgs
+public class JukeboxSongUploadRequest : EntityEventArgs
 {
     public string SongName = string.Empty;
-    public List<byte> SongBytes = new() { };
+    public List<byte> SongBytes = new();
     public NetEntity TapeCreatorUid = default!;
 }
 
-public sealed class JukeboxSongUploadNetMessage : NetMessage
+public class JukeboxSongUploadNetMessage : NetMessage
 {
     public override NetDeliveryMethod DeliveryMethod => NetDeliveryMethod.ReliableUnordered;
-
     public override MsgGroups MsgGroup => MsgGroups.Command;
 
     public ResPath RelativePath { get; set; } = ResPath.Self;
-
     public byte[] Data { get; set; } = Array.Empty<byte>();
 
     public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)

@@ -125,7 +125,7 @@ public abstract class SharedActionsSystem : EntitySystem
             return true;
 
         if (logError)
-            Log.Error($"Failed to get action from action entity: {ToPrettyString(uid.Value)}. Trace: {Environment.StackTrace}");
+            Log.Error($"Failed to get action from action entity: {ToPrettyString(uid.Value)}");
 
         return false;
     }
@@ -354,13 +354,6 @@ public abstract class SharedActionsSystem : EntitySystem
         if (!action.Enabled)
             return;
 
-        // check for action use prevention
-        // TODO: make code below use this event with a dedicated component
-        var attemptEv = new ActionAttemptEvent(user);
-        RaiseLocalEvent(actionEnt, ref attemptEv);
-        if (attemptEv.Cancelled)
-            return;
-
         var curTime = GameTiming.CurTime;
         // TODO: Check for charge recovery timer
         if (action.Cooldown.HasValue && action.Cooldown.Value.End > curTime)
@@ -371,9 +364,6 @@ public abstract class SharedActionsSystem : EntitySystem
             ResetCharges(actionEnt);
 
         BaseActionEvent? performEvent = null;
-
-        if (action.CheckConsciousness && !_actionBlockerSystem.CanConsciouslyPerformAction(user))
-            return;
 
         // Validate request by checking action blockers and the like:
         switch (action)
@@ -555,10 +545,7 @@ public abstract class SharedActionsSystem : EntitySystem
             dirty = true;
             action.Charges--;
             if (action is { Charges: 0, RenewCharges: false })
-            {
                 action.Enabled = false;
-            }
-
             // WD START
             if (action is {Charges: 0, RemoveOnNoCharges: true})
             {
@@ -584,8 +571,7 @@ public abstract class SharedActionsSystem : EntitySystem
 
     #region AddRemoveActions
 
-    public EntityUid? AddAction(
-        EntityUid performer,
+    public EntityUid? AddAction(EntityUid performer,
         string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
@@ -604,8 +590,7 @@ public abstract class SharedActionsSystem : EntitySystem
     /// <param name="component">The <see cref="performer"/>'s action component of </param>
     /// <param name="actionPrototypeId">The action entity prototype id to use if <see cref="actionId"/> is invalid.</param>
     /// <param name="container">The entity that contains/enables this action (e.g., flashlight).</param>
-    public bool AddAction(
-        EntityUid performer,
+    public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
         string? actionPrototypeId,
         EntityUid container = default,
@@ -615,8 +600,7 @@ public abstract class SharedActionsSystem : EntitySystem
     }
 
     /// <inheritdoc cref="AddAction(Robust.Shared.GameObjects.EntityUid,ref System.Nullable{Robust.Shared.GameObjects.EntityUid},string?,Robust.Shared.GameObjects.EntityUid,Content.Shared.Actions.ActionsComponent?)"/>
-    public bool AddAction(
-        EntityUid performer,
+    public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
         [NotNullWhen(true)] out BaseActionComponent? action,
         string? actionPrototypeId,
@@ -635,8 +619,7 @@ public abstract class SharedActionsSystem : EntitySystem
     /// <summary>
     ///     Adds a pre-existing action.
     /// </summary>
-    public bool AddAction(
-        EntityUid performer,
+    public bool AddAction(EntityUid performer,
         EntityUid actionId,
         EntityUid container,
         ActionsComponent? comp = null,
@@ -662,8 +645,7 @@ public abstract class SharedActionsSystem : EntitySystem
     ///     Adds a pre-existing action. This also bypasses the requirement that the given action must be stored in a
     ///     valid action container.
     /// </summary>
-    public bool AddActionDirect(
-        EntityUid performer,
+    public bool AddActionDirect(EntityUid performer,
         EntityUid actionId,
         ActionsComponent? comp = null,
         BaseActionComponent? action = null)
@@ -829,7 +811,7 @@ public abstract class SharedActionsSystem : EntitySystem
                               || !comp.Actions.Contains(actionId.Value));
 
             if (!GameTiming.ApplyingState)
-                Log.Error($"Attempted to remove an action {ToPrettyString(actionId)} from an entity that it was never attached to: {ToPrettyString(performer)}. Trace: {Environment.StackTrace}");
+                Log.Error($"Attempted to remove an action {ToPrettyString(actionId)} from an entity that it was never attached to: {ToPrettyString(performer)}");
             return;
         }
 

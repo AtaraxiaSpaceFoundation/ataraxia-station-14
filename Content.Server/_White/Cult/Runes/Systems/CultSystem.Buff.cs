@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Cult.Runes.Comps;
 using Content.Shared.Alert;
 using Content.Shared.Maps;
+using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Runes.Systems;
@@ -16,7 +16,6 @@ public partial class CultSystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinition = default!;
-    [Dependency] private readonly MapSystem _map = default!;
 
     public void InitializeBuffSystem()
     {
@@ -33,10 +32,12 @@ public partial class CultSystem
 
     private void AnyCultistNearTile()
     {
-        var cultistsQuery = EntityQueryEnumerator<CultistComponent>();
+        var cultists = EntityQuery<CultistComponent>();
 
-        while (cultistsQuery.MoveNext(out var uid, out _))
+        foreach (var cultist in cultists)
         {
+            var uid = cultist.Owner;
+
             if (HasComp<CultBuffComponent>(uid))
                 continue;
 
@@ -55,15 +56,16 @@ public partial class CultSystem
 
     private void UpdateBuffTimers(float frameTime)
     {
-        var buffsQuery = EntityQueryEnumerator<CultBuffComponent>();
+        var buffs = EntityQuery<CultBuffComponent>();
 
-        while (buffsQuery.MoveNext(out var uid, out var buff))
+        foreach (var buff in buffs)
         {
+            var uid = buff.Owner;
             var remainingTime = buff.BuffTime;
 
             remainingTime -= TimeSpan.FromSeconds(frameTime);
 
-            if (HasComp<CultistComponent>(uid))
+            if (TryComp<CultistComponent>(uid, out var cultist))
             {
                 if (remainingTime < CultBuffComponent.CultTileBuffTime && AnyCultTilesNearby(uid))
                     remainingTime = CultBuffComponent.CultTileBuffTime;
@@ -73,35 +75,21 @@ public partial class CultSystem
         }
     }
 
+
     private bool AnyCultTilesNearby(EntityUid uid)
     {
         var localpos = Transform(uid).Coordinates.Position;
 
-        if (!TryComp<CultistComponent>(uid, out _))
+        if (!TryComp<CultistComponent>(uid, out var cultist))
             return false;
 
         var radius = CultBuffComponent.NearbyTilesBuffRadius;
 
-        var gridUid = Transform(uid).GridUid;
-        if (!gridUid.HasValue)
-        {
-            return false;
-        }
-
-        if (!TryComp(gridUid, out MapGridComponent? grid))
+        if (!_mapManager.TryGetGrid(Transform(uid).GridUid, out var grid))
             return false;
 
-        var tilesRefs = _map.GetLocalTilesIntersecting(gridUid.Value, grid, new Box2(
-            localpos + new Vector2(-radius, -radius),
-            localpos + new Vector2(radius, radius)));
-
-        var cultRule = EntityManager.EntityQuery<CultRuleComponent>().FirstOrDefault();
-        if (cultRule is null)
-        {
-            return false;
-        }
-
-        var cultTileDef = (ContentTileDefinition) _tileDefinition[$"{cultRule.CultFloor}"];
+        var tilesRefs = grid.GetLocalTilesIntersecting(new Box2(localpos + new Vector2(-radius, -radius), localpos + new Vector2(radius, radius)));
+        var cultTileDef = (ContentTileDefinition) _tileDefinition[$"{CultRuleComponent.CultFloor}"];
         var cultTile = new Tile(cultTileDef.TileId);
 
         return tilesRefs.Any(tileRef => tileRef.Tile.TypeId == cultTile.TypeId);
@@ -109,10 +97,11 @@ public partial class CultSystem
 
     private void RemoveExpiredBuffs()
     {
-        var buffsQuery = EntityQueryEnumerator<CultBuffComponent>();
+        var buffs = EntityQuery<CultBuffComponent>();
 
-        while (buffsQuery.MoveNext(out var uid, out var buff))
+        foreach (var buff in buffs)
         {
+            var uid = buff.Owner;
             var remainingTime = buff.BuffTime;
 
             if (remainingTime <= TimeSpan.Zero)

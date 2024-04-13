@@ -97,6 +97,9 @@
     supplyRampRate: 500
   - type: WallMount
   - type: WiresPanel
+  - type: Wires
+    boardName: wires-board-name-apc
+    layoutId: APC
   - type: WiresVisuals
   - type: Damageable
     damageContainer: StructuralInorganic

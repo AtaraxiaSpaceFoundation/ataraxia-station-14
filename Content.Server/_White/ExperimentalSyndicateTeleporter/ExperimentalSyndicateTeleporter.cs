@@ -3,13 +3,13 @@ using System.Numerics;
 using Content.Server._White.Other;
 using Content.Server.Body.Systems;
 using Content.Server.Popups;
+using Content.Server.Pulling;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Maps;
-using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Pulling.Components;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
@@ -80,16 +80,16 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
         if (!TryComp<TransformComponent>(args.User, out var xform))
             return;
 
-        if (TryComp<PullableComponent>(args.User, out var pullable) && pullable.BeingPulled)
+        if (TryComp<SharedPullableComponent>(args.User, out var pullable) && pullable.BeingPulled)
         {
-            _pullingSystem.TryStopPull(args.User, pullable);
+            _pullingSystem.TryStopPull(pullable);
         }
 
-        if (TryComp<PullerComponent>(args.User, out var pulling)
+        if (TryComp<SharedPullerComponent>(args.User, out var pulling)
             && pulling.Pulling != null &&
-            TryComp<PullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+            TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
         {
-            _pullingSystem.TryStopPull(pulling.Pulling.Value, subjectPulling);
+            _pullingSystem.TryStopPull(subjectPulling);
         }
 
         if (_containerSystem.IsEntityInContainer(args.User))

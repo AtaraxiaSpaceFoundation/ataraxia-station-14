@@ -7,7 +7,7 @@
     ///     Maps to <see cref="ChatChannel"/>, giving better names.
     /// </remarks>
     [Flags]
-    public enum ChatSelectChannel : uint
+    public enum ChatSelectChannel : ushort
     {
         None = 0,
 

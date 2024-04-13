@@ -73,8 +73,8 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// <summary>
     ///     Current body type.
     /// </summary>
-    [DataField("bodyType"), AutoNetworkedField]
-    public ProtoId<BodyTypePrototype> BodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
+    [DataField("bodyType", customTypeSerializer: typeof(PrototypeIdSerializer<BodyTypePrototype>)), AutoNetworkedField]
+    public string BodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
 
     [DataField, AutoNetworkedField]
     public Color EyeColor = Color.Brown;
@@ -101,9 +101,7 @@ public readonly partial struct CustomBaseLayerInfo
 {
     public CustomBaseLayerInfo(string? id, Color? color = null)
     {
-        DebugTools.Assert(
-            id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
-
+        DebugTools.Assert(id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
         Id = id;
         Color = color;
     }

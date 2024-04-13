@@ -3,27 +3,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared.Nuke
 {
-    public enum NukeVisualLayers
-    {
-        Base,
-        Unlit
-    }
-
-    [NetSerializable, Serializable]
-    public enum NukeVisuals
-    {
-        Deployed,
-        State,
-    }
-
-    [NetSerializable, Serializable]
-    public enum NukeVisualState
-    {
-        Idle,
-        Armed,
-        YoureFucked
-    }
-
     [Serializable, NetSerializable]
     public enum NukeUiKey : byte
     {

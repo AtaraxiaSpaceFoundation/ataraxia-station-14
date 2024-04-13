@@ -1,5 +1,7 @@
-﻿using Content.Shared.Roles;
+﻿using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using Robust.Shared.Audio;
+using Robust.Shared.Player;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Changeling;
@@ -7,9 +9,9 @@ namespace Content.Server.Changeling;
 [RegisterComponent, Access(typeof(ChangelingRuleSystem))]
 public sealed partial class ChangelingRuleComponent : Component
 {
-    public readonly List<EntityUid> ChangelingMinds = new() { };
+    public readonly List<EntityUid> ChangelingMinds = new();
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
+    [DataField("changelingPrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
     public string ChangelingPrototypeId = "Changeling";
 
     public int TotalChangelings => ChangelingMinds.Count;
@@ -17,12 +19,13 @@ public sealed partial class ChangelingRuleComponent : Component
     public enum SelectionState
     {
         WaitingForSpawn = 0,
-        ReadyToStart = 1,
-        Started = 2,
+        ReadyToSelect = 1,
+        SelectionMade = 2,
     }
 
     public SelectionState SelectionStatus = SelectionState.WaitingForSpawn;
     public TimeSpan AnnounceAt = TimeSpan.Zero;
+    public Dictionary<ICommonSession, HumanoidCharacterProfile> StartCandidates = new();
 
     /// <summary>
     ///     Path to antagonist alert sound.
