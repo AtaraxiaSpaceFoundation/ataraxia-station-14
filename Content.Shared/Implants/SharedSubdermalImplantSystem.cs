@@ -5,10 +5,12 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Store;
 using Content.Shared.Tag;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 
 namespace Content.Shared.Implants;
 
@@ -18,6 +20,7 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!; // WD
 
     public const string BaseStorageId = "storagebase";
 
@@ -225,6 +228,9 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
 
             // Insert the implant into the recipient's implant container
             ForceImplant(recipient, donorImplant, subdermal, true);
+
+            if (TryComp(recipient, out ActorComponent? actor))
+                _ui.TryClose(donorImplant, StoreUiKey.Key, actor.PlayerSession);
         }
     }
 

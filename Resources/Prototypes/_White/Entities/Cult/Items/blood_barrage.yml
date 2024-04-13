@@ -1,0 +1,34 @@
+- type: entity
+  name: blood bolt barrage
+  parent: BaseItem
+  id: BloodBarrage
+  description: Blood for blood.
+  components:
+  - type: Sprite
+    sprite: White/Cult/Entities/arcane_barrage.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: White/Cult/Entities/arcane_barrage.rsi
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 4
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundEmpty: null
+    soundGunshot:
+      path: /Audio/White/Cult/wand_teleport.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BloodBolt
+    capacity: 25
+  - type: BoltBarrage
+  - type: GiftIgnore
+
+- type: cultistFactoryProduction
+  id: FactoryCultBloodBarrage
+  name: Залп Кровавых Снарядов (300 крови)
+  icon: "/Textures/White/Cult/Entities/arcane_barrage.rsi/icon.png"
+  bloodCost: 300
+  item:
+    - BloodBarrage

@@ -32,13 +32,16 @@ changeling-ability-transform-sting = Жало трансформации
 changeling-ability-transform-sting-desc = Вводит в кровь цели вирус, заставляющий её превратиться в другое существо. Стоит 50 химикатов.
 
 changeling-ability-extraction-sting = Жало извлечения
-changeling-ability-extraction-sting-desc = Безшумно и безопасно извлекает ДНК из цели. Стоит 25 химикатов.
+changeling-ability-extraction-sting-desc = Бесшумно и безопасно извлекает ДНК из цели. Стоит 25 химикатов.
 
 changeling-ability-tentacle-arm = Рука-щупальце
 changeling-ability-tentacle-arm-desc = Превращает одну из рук в щупальце, способное притягивать людей или забирать вещи из их рук. Стоит 10 химикатов.
 
 changeling-ability-changeling-armor = Хитиновая броня
 changeling-ability-changeling-armor-desc = Надувает тело, превращая его в крепкую хитиновую броню. При использовании замедляет регенерацию химикатов на 25%. Стоит 20 химикатов.
+
+changeling-ability-hive = Голова улья
+changeling-ability-hive-desc = Хотя голова улья не предоставляет особых возможностей для защиты, она позволяет отправлять пчёл в атаку на цели. Также защищает от вспышек и яркого света. Несовместимо с хитиновой бронёй. Стоит 15 химикатов.
 
 changeling-ability-changeling-shield = Органический щит
 changeling-ability-changeling-shield-desc = Превращает одну из рук в крепкий органический щит. Стоит 20 химикатов.
@@ -48,6 +51,9 @@ changeling-ability-changeling-armblade-desc = Превращает одну из
 
 changeling-ability-changeling-lesser-form = Примитивная форма
 changeling-ability-changeling-lesser-form-desc = Превращает в самую примитивную форму. Полезно для побега из наручников. Стоит 5 химикатов.
+
+changeling-ability-bees = Выпустить пчёл
+changeling-ability-bees-desc = Выпускает 4 агрессивных пчелы из улья.
 
 ent-ActionChangelingShop = Эволюции
     .desc = Эволюционируйте и развивайтесь.
@@ -66,6 +72,9 @@ ent-OrganicShield = органический щит
 
 ent-ClothingOuterChangeling = хитиновая броня
     .desc = Броня из хитина и плоти.
+
+ent-ClothingHeadHelmetLingHive = голова улья
+    .desc = Странное восковое образование, покрывающее голову. Вызывает шум в ушах.
 
 ent-TentacleArmGun = рука-щупальце
     .desc = Огромное щупальце, способное притягивать людей и вырывать предметы из их рук.

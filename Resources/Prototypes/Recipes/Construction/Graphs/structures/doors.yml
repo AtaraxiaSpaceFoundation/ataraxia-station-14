@@ -11,35 +11,35 @@
             - !type:SnapToGrid { }
           steps:
             - material: Steel
-              amount: 20
+              amount: 5
               doAfter: 15
         - to: woodDoor
           completed:
             - !type:SnapToGrid { }
           steps:
             - material: WoodPlank
-              amount: 20
+              amount: 5
               doAfter: 15
         - to: plasmaDoor
           completed:
             - !type:SnapToGrid { }
           steps:
             - material: Plasma
-              amount: 20
+              amount: 5
               doAfter: 15
         - to: goldDoor
           completed:
             - !type:SnapToGrid { }
           steps:
             - material: Gold
-              amount: 20
+              amount: 5
               doAfter: 15
         - to: silverDoor
           completed:
             - !type:SnapToGrid { }
           steps:
             - material: Silver
-              amount: 20
+              amount: 5
               doAfter: 15
         - to: bananiumDoor
           completed:
@@ -53,7 +53,7 @@
             - !type:SnapToGrid { }
           steps:
             - material: Paper
-              amount: 20
+              amount: 5
               doAfter: 15
     - node: metalDoor
       entity: MetalDoor
@@ -62,7 +62,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -73,7 +75,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -84,7 +88,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetPlasma
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -95,7 +101,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: IngotGold1
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -106,7 +114,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: IngotSilver1
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -117,7 +127,9 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetPaper1
-              amount: 20
+              amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15
@@ -129,6 +141,8 @@
             - !type:SpawnPrototype
               prototype: MaterialBananium1
               amount: 5
+          conditions:
+            - !type:DoorUnlocked
           steps:
             - tool: Anchoring
               doAfter: 15

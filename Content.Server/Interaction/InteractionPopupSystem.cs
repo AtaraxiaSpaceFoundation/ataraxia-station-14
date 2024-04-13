@@ -91,6 +91,7 @@ public sealed class InteractionPopupSystem : EntitySystem
                 {
                     var ev = new MoodEffectEvent("PetAnimal");
                     RaiseLocalEvent(user, ev);
+                    RaiseLocalEvent(uid, new MoodEffectEvent("BeingPet"));
                 }
                 //WD end
             }

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
@@ -7,12 +8,15 @@ using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Localizations;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 namespace Content.Shared.Hands.EntitySystems;
 
 public abstract partial class SharedHandsSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _net = default!; // WD
+
     private void InitializeInteractions()
     {
         SubscribeAllEvent<RequestSetHandEvent>(HandleSetHand);
@@ -95,7 +99,17 @@ public abstract partial class SharedHandsSystem : EntitySystem
     private bool DropPressed(ICommonSession? session, EntityCoordinates coords, EntityUid netEntity)
     {
         if (TryComp(session?.AttachedEntity, out HandsComponent? hands) && hands.ActiveHand != null)
+        // WD EDIT START
+        {
+            if (HasComp<BoltBarrageComponent>(hands.ActiveHandEntity))
+            {
+                if (_net.IsServer)
+                    QueueDel(hands.ActiveHandEntity.Value);
+                return false;
+            }
             TryDrop(session.AttachedEntity.Value, hands.ActiveHand, coords, handsComp: hands);
+        }
+        // WD EDIT END
 
         // always send to server.
         return false;

@@ -100,7 +100,7 @@
   - type: WiresVisuals
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StrongMetallic
   - type: Destructible
     thresholds:
     - trigger:
@@ -169,7 +169,7 @@
   - type: WallMount
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
     - trigger:

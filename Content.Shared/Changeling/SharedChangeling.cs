@@ -86,6 +86,14 @@ public sealed partial class ChitinousArmorActionEvent : InstantActionEvent
 {
 }
 
+public sealed partial class HiveHeadActionEvent : InstantActionEvent
+{
+}
+
+public sealed partial class ReleaseBeesEvent : InstantActionEvent
+{
+}
+
 public sealed partial class TentacleArmActionEvent : InstantActionEvent
 {
 }

@@ -45,17 +45,6 @@ public sealed partial class BallisticAmmoProviderComponent : Component
     public bool Cycleable = true;
 
     /// <summary>
-    /// Is the firearm currently cycled?
-    /// It cannot fire if is it not cycled.
-    /// Must be manually cycled if it is not cycled.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    [AutoNetworkedField]
-    public bool? Cycled = true;
-
-    public bool IsCycled => Cycled is true or null;
-
-    /// <summary>
     /// Automatically cycles the firearm after firing a round
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
@@ -72,5 +61,5 @@ public sealed partial class BallisticAmmoProviderComponent : Component
     /// DoAfter delay for filling a bullet into another ballistic ammo provider.
     /// </summary>
     [DataField]
-    public TimeSpan FillDelay = TimeSpan.FromSeconds(0.5);
+    public TimeSpan FillDelay = TimeSpan.FromSeconds(0.1); // WD EDIT
 }

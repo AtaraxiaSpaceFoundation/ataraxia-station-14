@@ -74,13 +74,22 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
         var isGunBolted = true;
         if (_entMan.TryGetComponent(handEntity, out ChamberMagazineAmmoProviderComponent? chamber))
             isGunBolted = chamber.BoltClosed ?? true;
-
+        // WD EDIT START
+        var isGunCycled = true;
+        if (_entMan.TryGetComponent(handEntity, out BallisticAmmoProviderComponent? ballistic) &&
+            ballistic.Entities.Count > 0)
+        {
+            var ent = ballistic.Entities[^1];
+            if (_entMan.TryGetComponent(ent, out CartridgeAmmoComponent? cartridge))
+                isGunCycled = !cartridge.Spent;
+        }
+        // WD EDIT END
 
         var mousePos = mouseScreenPosition.Position;
         var uiScale = (args.ViewportControl as Control)?.UIScale ?? 1f;
         var limitedScale = uiScale > 1.25f ? 1.25f : uiScale;
 
-        var sight = isHandGunItem ? (isGunBolted ? _gunSight : _gunBoltSight) : _meleeSight;
+        var sight = isHandGunItem ? (isGunBolted && isGunCycled ? _gunSight : _gunBoltSight) : _meleeSight; // WD EDIT
         DrawSight(sight, args.ScreenHandle, mousePos, limitedScale * Scale);
     }
 

@@ -15,7 +15,6 @@ using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Throwing;
-using Robust.Shared.Physics.Components;
 
 namespace Content.Shared.Mobs.Systems;
 
@@ -56,12 +55,7 @@ public partial class MobStateSystem
                 _standing.Stand(target);
                 break;
             case MobState.Dead:
-                RemComp<CollisionWakeComponent>(target);
                 _standing.Stand(target);
-                if (!_standing.IsDown(target) && TryComp<PhysicsComponent>(target, out var physics))
-                {
-                    _physics.SetCanCollide(target, true, body: physics);
-                }
 
                 break;
             case MobState.Invalid:
@@ -91,13 +85,7 @@ public partial class MobStateSystem
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
                 break;
             case MobState.Dead:
-                EnsureComp<CollisionWakeComponent>(target);
                 _standing.Down(target);
-
-                if (_standing.IsDown(target) && TryComp<PhysicsComponent>(target, out var physics))
-                {
-                    _physics.SetCanCollide(target, false, body: physics);
-                }
 
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Dead);
                 break;

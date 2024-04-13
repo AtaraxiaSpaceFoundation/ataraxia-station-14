@@ -3,5 +3,6 @@
 [RegisterComponent]
 public sealed partial class PickRandomIdentityComponent : Component
 {
-
+    [ViewVariables]
+    public string DNA = string.Empty;
 }

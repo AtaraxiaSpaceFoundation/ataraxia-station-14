@@ -2,9 +2,16 @@ using System.Linq;
 using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
 using Content.Server.Antag;
+using Content.Server.Bible.Components;
+using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.NPC.Systems;
+using Content.Server.Roles;
+using Content.Server.Roles.Jobs;
 using Content.Server.RoundEnd;
+using Content.Server.Shuttles.Components;
+using Content.Server.StationEvents.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
@@ -18,8 +25,8 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Content.Shared._White;
-using Content.Shared._White.Chaplain;
 using Content.Shared._White.Cult.Components;
+using Content.Shared._White.Cult.Systems;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Systems;
 using Robust.Server.Player;
@@ -42,6 +49,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antagSelection = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly GulagSystem _gulag = default!;
+    [Dependency] private readonly BloodSpearSystem _bloodSpear = default!;
 
     private const int PlayerPerCultist = 10;
     private int _minStartingCultists;
@@ -62,6 +70,14 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         SubscribeLocalEvent<CultistComponent, ComponentInit>(OnCultistComponentInit);
         SubscribeLocalEvent<CultistComponent, ComponentRemove>(OnCultistComponentRemoved);
         SubscribeLocalEvent<CultistComponent, MobStateChangedEvent>(OnCultistsStateChanged);
+
+        SubscribeLocalEvent<CultistRoleComponent, GetBriefingEvent>(OnGetBriefing);
+    }
+
+    private void OnGetBriefing(Entity<CultistRoleComponent> ent, ref GetBriefingEvent args)
+    {
+        args.Append(Loc.GetString("cult-role-briefing-short"));
+        args.Append(Loc.GetString("cult-role-briefing-hint"));
     }
 
     private void OnStartAttempt(RoundStartAttemptEvent ev)
@@ -149,6 +165,8 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         {
             cult.CurrentCultists.Remove(component);
 
+            _bloodSpear.DetachSpearFromUser((uid, component));
+
             foreach (var empower in component.SelectedEmpowers)
             {
                 _actions.RemoveAction(uid, GetEntity(empower));
@@ -172,7 +190,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         var eligiblePlayers =
             _antagSelection.GetEligiblePlayers(_playerManager.Sessions, rule.CultistRolePrototype);
 
-        eligiblePlayers.RemoveAll(HasComp<HolyComponent>);
+        eligiblePlayers.RemoveAll(HasComp<BibleUserComponent>);
 
         if (eligiblePlayers.Count == 0)
         {
@@ -245,17 +263,20 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
                 if (!TryComp<MobStateComponent>(owner, out var mobState))
                     continue;
 
-                if (_mobStateSystem.IsAlive(owner, mobState))
-                {
-                    aliveCultists++;
-                }
+            if (!_mobStateSystem.IsDead(owner, mobState))
+            {
+                aliveCultists++;
             }
+        }
 
             if (aliveCultists != 0)
                 return;
 
             cult.WinCondition = CultWinCondition.Failure;
-            _roundEndSystem.EndRound();
+
+            // Check for all in once gamemode
+            if (!GameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+                _roundEndSystem.EndRound();
         }
     }
 
@@ -308,7 +329,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
             if (entity == default)
                 continue;
 
-            if (_gulag.IsUserGulaged(actor.PlayerSession.UserId, out _))
+            if (_gulag.IsUserGulagged(actor.PlayerSession.UserId, out _))
                 continue;
 
             if (exclude?.Contains(uid) is true)

@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Server._White.Carrying;
 using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Mood;
+using Content.Server._White.Other.FastAndFuriousSystem;
 using Content.Server.Administration.Systems;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
@@ -20,7 +22,6 @@ using Content.Server.Popups;
 using Content.Server.Store.Components;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
-using Content.Shared._White.Chaplain;
 using Content.Shared._White.Overlays;
 using Content.Shared.Actions;
 using Content.Shared.Borer;
@@ -84,6 +85,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly CuffableSystem _cuffable = default!;
     [Dependency] private readonly NukeopsRuleSystem _nukeOps = default!;
     [Dependency] private readonly CultRuleSystem _cult = default!;
+    [Dependency] private readonly RevolutionaryRuleSystem _rev = default!;
     [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly EmpSystem _empSystem = default!;
@@ -91,6 +93,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly ServerBorerSystem _borer = default!;
     [Dependency] private readonly CarryingSystem _carrying = default!;
+    [Dependency] private readonly MoodSystem _mood = default!;
 
     private void InitializeAbilities()
     {
@@ -116,6 +119,7 @@ public sealed partial class ChangelingSystem
         SubscribeLocalEvent<ChangelingComponent, ArmbladeActionEvent>(OnArmBlade);
         SubscribeLocalEvent<ChangelingComponent, OrganicShieldActionEvent>(OnShield);
         SubscribeLocalEvent<ChangelingComponent, ChitinousArmorActionEvent>(OnArmor);
+        SubscribeLocalEvent<ChangelingComponent, HiveHeadActionEvent>(OnHiveHead);
         SubscribeLocalEvent<ChangelingComponent, TentacleArmActionEvent>(OnTentacleArm);
 
         SubscribeLocalEvent<ChangelingComponent, TransformDoAfterEvent>(OnTransformDoAfter);
@@ -146,6 +150,13 @@ public sealed partial class ChangelingSystem
     private const string ChangelingShield = "ActionShield";
     private const string ChangelingArmor = "ActionArmor";
     private const string ChangelingTentacleArm = "ActionTentacleArm";
+
+    private const string OuterName = "outerClothing";
+    private const string HeadName = "head";
+
+    private const string ArmorName = "ClothingOuterChangeling";
+    private const string HelmetName = "ClothingHeadHelmetLing";
+    private const string HiveHeadName = "ClothingHeadHelmetLingHive";
 
 #endregion
 
@@ -408,7 +419,19 @@ public sealed partial class ChangelingSystem
             _pullingSystem.TryStopPull(pulled, pullable);
         }
 
-        TransformPerson(target, humanData);
+        var oldData = CompOrNull<TransformStungComponent>(target)?.OriginalHumanoidData;
+
+        var transformed = TransformPerson(target, humanData);
+
+        if (transformed != null)
+        {
+            oldData ??= GetHumanoidData(target);
+            if (oldData != null)
+            {
+                var transformStung = EnsureComp<TransformStungComponent>(transformed.Value);
+                transformStung.OriginalHumanoidData = oldData.Value;
+            }
+        }
 
         _ui.CloseUi(bui, actorComponent.PlayerSession);
 
@@ -560,15 +583,10 @@ public sealed partial class ChangelingSystem
 
     private void OnArmor(EntityUid uid, ChangelingComponent component, ChitinousArmorActionEvent args)
     {
-        const string outerName = "outerClothing";
-        const string headName = "head";
-        const string armorName = "ClothingOuterChangeling";
-        const string helmetName = "ClothingHeadHelmetLing";
+        _inventorySystem.TryUnequip(uid, OuterName, out var outer, true, true);
+        _inventorySystem.TryUnequip(uid, HeadName, out var helmet, true, true);
 
-        _inventorySystem.TryUnequip(uid, outerName, out var outer, true, true);
-        _inventorySystem.TryUnequip(uid, headName, out var helmet, true, true);
-
-        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is { ID: armorName })
+        if (TryComp(outer, out MetaDataComponent? metaData) && metaData.EntityPrototype is {ID: ArmorName})
         {
             args.Handled = true;
             return;
@@ -577,16 +595,49 @@ public sealed partial class ChangelingSystem
         if (!TakeChemicals(uid, component, 20))
         {
             if (outer != null)
-                _inventorySystem.TryEquip(uid, outer.Value, outerName, true, true);
+                _inventorySystem.TryEquip(uid, outer.Value, OuterName, true, true);
 
             if (helmet != null)
-                _inventorySystem.TryEquip(uid, helmet.Value, headName, true, true);
+                _inventorySystem.TryEquip(uid, helmet.Value, HeadName, true, true);
 
             return;
         }
 
-        _inventorySystem.SpawnItemInSlot(uid, outerName, armorName, true, true);
-        _inventorySystem.SpawnItemInSlot(uid, headName, helmetName, true, true);
+        _inventorySystem.SpawnItemInSlot(uid, OuterName, ArmorName, true, true);
+        _inventorySystem.SpawnItemInSlot(uid, HeadName, HelmetName, true, true);
+
+        args.Handled = true;
+    }
+
+    private void OnHiveHead(EntityUid uid, ChangelingComponent component, HiveHeadActionEvent args)
+    {
+        if (!_mobStateSystem.IsAlive(uid))
+            return;
+
+        _inventorySystem.TryUnequip(uid, HeadName, out var helmet, true, true);
+
+        if (TryComp(helmet, out MetaDataComponent? metaData) && metaData.EntityPrototype != null)
+        {
+            switch (metaData.EntityPrototype.ID)
+            {
+                case HiveHeadName:
+                    args.Handled = true;
+                    return;
+                case HelmetName:
+                    _inventorySystem.TryUnequip(uid, OuterName, out _, true, true);
+                    break;
+            }
+        }
+
+        if (!TakeChemicals(uid, component, 15))
+        {
+            if (helmet != null)
+                _inventorySystem.TryEquip(uid, helmet.Value, HeadName, true, true);
+
+            return;
+        }
+
+        _inventorySystem.SpawnItemInSlot(uid, HeadName, HiveHeadName, true, true);
 
         args.Handled = true;
     }
@@ -778,9 +829,11 @@ public sealed partial class ChangelingSystem
         var toAdd = new ChangelingComponent
         {
             HiveName = component.HiveName,
+            ChemicalCapacity = component.ChemicalCapacity,
             ChemicalsBalance = component.ChemicalsBalance,
             AbsorbedEntities = component.AbsorbedEntities,
             IsInited = component.IsInited,
+            AbsorbedCount = component.AbsorbedCount,
             IsLesserForm = true
         };
 
@@ -845,25 +898,37 @@ public sealed partial class ChangelingSystem
 
     private void CopyHumanoidData(EntityUid uid, EntityUid target, ChangelingComponent component)
     {
-        if (!TryComp<MetaDataComponent>(target, out var targetMeta))
+        var data = GetHumanoidData(target, component);
+
+        if (data == null)
             return;
 
-        if (!TryComp<HumanoidAppearanceComponent>(target, out var targetAppearance))
-            return;
-
-        if (!TryComp<DnaComponent>(target, out var targetDna))
-            return;
-
-        if (!TryPrototype(target, out var prototype, targetMeta))
-            return;
-
-        if (component.AbsorbedEntities.ContainsKey(targetDna.DNA))
-            return;
-
-        if (component.AbsorbedEntities.Count == 7)
+        /*if (component.AbsorbedEntities.Count == 7)
         {
             component.AbsorbedEntities.Remove(component.AbsorbedEntities.ElementAt(2).Key);
-        }
+        }*/
+
+        component.AbsorbedEntities.Add(data.Value.Dna, data.Value);
+
+        Dirty(uid, component);
+    }
+
+    public HumanoidData? GetHumanoidData(EntityUid target, ChangelingComponent? absorberComponent = null)
+    {
+        if (!TryComp<MetaDataComponent>(target, out var targetMeta))
+            return null;
+
+        if (!TryComp<HumanoidAppearanceComponent>(target, out var targetAppearance))
+            return null;
+
+        if (!TryComp<DnaComponent>(target, out var targetDna))
+            return null;
+
+        if (!TryPrototype(target, out var prototype, targetMeta))
+            return null;
+
+        if (absorberComponent != null && absorberComponent.AbsorbedEntities.ContainsKey(targetDna.DNA))
+            return null;
 
         var appearance = _serializationManager.CreateCopy(targetAppearance, notNullableOverride: true);
         var meta = _serializationManager.CreateCopy(targetMeta, notNullableOverride: true);
@@ -872,16 +937,14 @@ public sealed partial class ChangelingSystem
             ? Loc.GetString("changeling-unknown-creature")
             : meta.EntityName;
 
-        component.AbsorbedEntities.Add(targetDna.DNA, new HumanoidData
+        return new HumanoidData
         {
             EntityPrototype = prototype,
             MetaDataComponent = meta,
             AppearanceComponent = appearance,
             Name = name,
             Dna = targetDna.DNA
-        });
-
-        Dirty(uid, component);
+        };
     }
 
     /// <summary>
@@ -891,7 +954,7 @@ public sealed partial class ChangelingSystem
     /// <param name="transformData">Transform data</param>
     /// <param name="humanoidOverride">Override first check on HumanoidAppearanceComponent</param>
     /// <returns>Id of the transformed entity</returns>
-    private EntityUid? TransformPerson(EntityUid target, HumanoidData transformData, bool humanoidOverride = false)
+    public EntityUid? TransformPerson(EntityUid target, HumanoidData transformData, bool humanoidOverride = false)
     {
         if (!HasComp<HumanoidAppearanceComponent>(target) && !humanoidOverride)
             return null;
@@ -924,9 +987,11 @@ public sealed partial class ChangelingSystem
             var toAdd = new ChangelingComponent
             {
                 HiveName = lingComp.HiveName,
+                ChemicalCapacity = lingComp.ChemicalCapacity,
                 ChemicalsBalance = lingComp.ChemicalsBalance,
                 AbsorbedEntities = lingComp.AbsorbedEntities,
-                IsInited = lingComp.IsInited
+                IsInited = lingComp.IsInited,
+                AbsorbedCount = lingComp.AbsorbedCount
             };
 
             EntityManager.AddComponent(polymorphEntity.Value, toAdd);
@@ -953,11 +1018,17 @@ public sealed partial class ChangelingSystem
 
     private void TransferComponents(EntityUid from, EntityUid to)
     {
+        if (HasComp<FastAndFuriousComponent>(from))
+            EnsureComp<FastAndFuriousComponent>(to);
+
+        if (HasComp<AbsorbedComponent>(from))
+            EnsureComp<AbsorbedComponent>(to);
+
+        if (HasComp<UncloneableComponent>(from))
+            EnsureComp<UncloneableComponent>(to);
+
         if (HasComp<BibleUserComponent>(from))
             EnsureComp<BibleUserComponent>(to);
-
-        if (HasComp<HolyComponent>(from))
-            EnsureComp<HolyComponent>(to);
 
         if (HasComp<FlashImmunityComponent>(from))
             EnsureComp<FlashImmunityComponent>(to);
@@ -989,6 +1060,22 @@ public sealed partial class ChangelingSystem
                 _faction.AddFaction(to, faction);
             }
         }
+
+        if (TryComp(from, out MoodComponent? mood))
+        {
+            var newMood = EnsureComp<MoodComponent>(to);
+            foreach (var effect in mood.CategorisedEffects)
+            {
+                _mood.ApplyEffect(to, newMood, effect.Value);
+            }
+
+            foreach (var effect in mood.UncategorisedEffects)
+            {
+                _mood.ApplyEffect(to, newMood, effect.Key);
+            }
+        }
+
+        _rev.TransferRole(from, to);
 
         _nukeOps.TransferRole(from, to);
 
@@ -1042,7 +1129,8 @@ public sealed partial class ChangelingSystem
         targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
         targetHumanoid.Age = sourceHumanoid.Age;
         _humanoidAppearance.SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
-        _humanoidAppearance.SetSpecies(target, sourceHumanoid.Species);
+        _humanoidAppearance.SetBodyType(target, sourceHumanoid.BodyType, false, targetHumanoid);
+        _humanoidAppearance.SetSpecies(target, sourceHumanoid.Species, true, targetHumanoid);
         targetHumanoid.CustomBaseLayers = new Dictionary<HumanoidVisualLayers,
             CustomBaseLayerInfo>(sourceHumanoid.CustomBaseLayers);
 

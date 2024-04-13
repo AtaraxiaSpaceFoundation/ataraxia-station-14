@@ -18,7 +18,7 @@
     - type: InteractionOutline
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallic
+      damageModifierSet: Metallic
     - type: RCDDeconstructable
       cost: 4
       delay: 6
@@ -108,7 +108,7 @@
     - type: AccessReader
       access: [ [ "Engineering" ] ]
     - type: ReflectAspectMark
-
+      
 - type: entity
   id: Firelock
   parent: BaseFirelock

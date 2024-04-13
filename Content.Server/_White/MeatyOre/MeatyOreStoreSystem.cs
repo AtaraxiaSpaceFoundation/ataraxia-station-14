@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server.Chat.Managers;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -9,6 +10,8 @@ using Content.Server.Roles;
 using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
 using Content.Server._White.Sponsors;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -41,6 +44,7 @@ public sealed class MeatyOreStoreSystem : EntitySystem
     [Dependency] private readonly RoleSystem _roleSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     private HttpClient _httpClient = default!;
     private string _apiUrl = default!;
@@ -217,7 +221,12 @@ public sealed class MeatyOreStoreSystem : EntitySystem
         if (currency - 10 < 0)
             return;
 
-        var fake = _roleSystem.MindIsAntagonist(targetMind.Mind.Value) || !_jobSystem.CanBeAntag(mindComponent.Session);
+
+        var fake = _roleSystem.MindIsAntagonist(targetMind.Mind.Value)
+                   || !_jobSystem.CanBeAntag(mindComponent.Session)
+                   // If nukeops declared war
+                   || _gameTicker.GetActiveGameRules().Any(x =>
+                       TryComp(x, out NukeopsRuleComponent? nukeops) && nukeops.WarDeclaredTime != null);
 
         var ckey = userActorComponent.PlayerSession.Name;
         var grant = user == target;

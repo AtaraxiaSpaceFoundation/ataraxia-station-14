@@ -27,7 +27,7 @@
         shader: unshaded
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: Physics
     bodyType: Static
   - type: Fixtures

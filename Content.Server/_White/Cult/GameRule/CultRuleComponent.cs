@@ -1,17 +1,9 @@
 ﻿using Content.Server.GameTicking.Presets;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
-using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Content.Shared._White.Cult;
-using Robust.Server.Player;
 using Robust.Shared.Audio;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
-using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.GameRule;
 
@@ -20,14 +12,11 @@ public sealed partial class CultRuleComponent : Component
 {
     public readonly SoundSpecifier GreetingsSound = new SoundPathSpecifier("/Audio/White/Cult/blood_cult_greeting.ogg");
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<GamePresetPrototype>))]
-    public string CultGamePresetPrototype = "Cult";
+    [DataField]
+    public ProtoId<GamePresetPrototype> CultGamePresetPrototype = "Cult";
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
-    public string CultistPrototypeId = "Cultist";
-
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string ReaperPrototype = "ReaperConstruct";
+    [DataField]
+    public ProtoId<EntityPrototype> ReaperPrototype = "ReaperConstruct";
 
     [ViewVariables(VVAccess.ReadOnly), DataField("tileId")]
     public string CultFloor = "CultFloor";
@@ -35,7 +24,7 @@ public sealed partial class CultRuleComponent : Component
     [DataField]
     public Color EyeColor = Color.FromHex("#f80000");
 
-    public string HolyWaterReagent = "Holywater";
+    public ProtoId<ReagentPrototype> HolyWaterReagent = "Holywater";
 
     [DataField]
     public int ReadEyeThreshold = 5;
@@ -43,11 +32,11 @@ public sealed partial class CultRuleComponent : Component
     [DataField]
     public int PentagramThreshold = 8;
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
-    public List<string> StartingItems = new() { };
+    [DataField]
+    public List<ProtoId<EntityPrototype>> StartingItems = new();
 
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<AntagPrototype>))]
-    public string CultistRolePrototype = "Cultist";
+    [DataField]
+    public ProtoId<AntagPrototype> CultistRolePrototype = "Cultist";
 
     /// <summary>
     ///     Players who played as an cultist at some point in the round.
@@ -56,17 +45,18 @@ public sealed partial class CultRuleComponent : Component
 
     public EntityUid? CultTarget;
 
-    public List<CultistComponent> CurrentCultists = new() { };
+    public List<CultistComponent> CurrentCultists = new();
 
-    public List<ConstructComponent> Constructs = new() { };
+    public List<ConstructComponent> Constructs = new();
 
-    public CultWinCondition WinCondition;
+    public CultWinCondition WinCondition = CultWinCondition.Draw;
 }
 
 public enum CultWinCondition : byte
 {
+    Draw,
     Win,
-    Failure
+    Failure,
 }
 
 public sealed class CultNarsieSummoned : EntityEventArgs;

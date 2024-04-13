@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Numerics;
+using Content.Server.Atmos.Piping.Other.Components;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Server.Maps;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction;
@@ -11,8 +11,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Pylon;
+using Content.Shared._White.Cult.Systems;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -40,6 +40,8 @@ public sealed class PylonSystem : EntitySystem
     [Dependency] private readonly BloodstreamSystem _blood = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     public override void Initialize()
     {
@@ -47,6 +49,13 @@ public sealed class PylonSystem : EntitySystem
 
         SubscribeLocalEvent<SharedPylonComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<SharedPylonComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<SharedPylonComponent, ConcealEvent>(OnConceal);
+    }
+
+    private void OnConceal(Entity<SharedPylonComponent> ent, ref ConcealEvent args)
+    {
+        SetActivated(ent, ent.Comp, !args.Conceal);
+        _physics.SetCanCollide(ent, !args.Conceal);
     }
 
     private void OnInit(EntityUid uid, SharedPylonComponent component, ComponentInit args)
@@ -172,7 +181,7 @@ public sealed class PylonSystem : EntitySystem
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
 
-            if (!EntityManager.TryGetComponent<CultistComponent>(playerEntity, out _))
+            if (!HasComp<CultistComponent>(playerEntity) && !HasComp<ConstructComponent>(playerEntity))
                 continue;
 
             if (_mobStateSystem.IsDead(playerEntity))
@@ -217,17 +226,7 @@ public sealed class PylonSystem : EntitySystem
 
         if (HasComp<CultistComponent>(user))
         {
-            comp.Activated = !comp.Activated;
-
-            UpdateAppearance(uid, comp);
-
-            if (!TryComp<PointLightComponent>(uid, out var light))
-                return;
-
-#pragma warning disable RA0002
-            light.Enabled = comp.Activated;
-#pragma warning restore RA0002
-
+            SetActivated(uid, comp, !comp.Activated);
             var toggleMsg = Loc.GetString(comp.Activated ? "pylon-toggle-on" : "pylon-toggle-off");
             _popupSystem.PopupEntity(toggleMsg, uid);
             return;
@@ -264,5 +263,17 @@ public sealed class PylonSystem : EntitySystem
             return;
 
         _appearance.SetData(uid, PylonVisuals.Activated, comp.Activated, appearance);
+    }
+
+    private void SetActivated(EntityUid uid, SharedPylonComponent comp, bool activated)
+    {
+        comp.Activated = activated;
+
+        if (TryComp(uid, out GasMinerComponent? miner))
+            miner.Enabled = activated;
+
+        UpdateAppearance(uid, comp);
+
+        _pointLight.SetEnabled(uid, activated);
     }
 }

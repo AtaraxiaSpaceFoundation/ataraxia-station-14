@@ -1,8 +1,6 @@
 using Content.Server.Stunnable.Components;
-using Content.Shared.Standing;
 using Content.Shared.StatusEffect;
 using JetBrains.Annotations;
-using Robust.Shared.Physics.Dynamics;
 using Content.Shared.Throwing;
 using Robust.Shared.Physics.Events;
 
@@ -22,13 +20,11 @@ namespace Content.Server.Stunnable
 
         private void TryDoCollideStun(EntityUid uid, StunOnCollideComponent component, EntityUid target)
         {
-
             if (EntityManager.TryGetComponent<StatusEffectsComponent>(target, out var status))
             {
                 _stunSystem.TryStun(target, TimeSpan.FromSeconds(component.StunAmount), true, status);
 
-                _stunSystem.TryKnockdown(target, TimeSpan.FromSeconds(component.KnockdownAmount), true,
-                    status);
+                _stunSystem.TryKnockdown(target, TimeSpan.FromSeconds(component.KnockdownAmount), true, status);
 
                 _stunSystem.TrySlowdown(target, TimeSpan.FromSeconds(component.SlowdownAmount), true,
                     component.WalkSpeedMultiplier, component.RunSpeedMultiplier, status);

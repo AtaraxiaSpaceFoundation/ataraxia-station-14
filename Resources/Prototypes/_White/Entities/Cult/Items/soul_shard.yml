@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   name: soul shard
   description: Mysterious glowing shard.
   parent: BaseItem
@@ -25,6 +25,7 @@
             True: { state: "soulstone2" }
             False: { state: "soulstone" }
     - type: Speech
+    - type: IsDeadIC
 
 - type: entity
   parent: SoulShard

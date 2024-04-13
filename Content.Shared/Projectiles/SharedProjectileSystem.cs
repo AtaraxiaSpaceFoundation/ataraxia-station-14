@@ -13,6 +13,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
@@ -187,6 +188,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     private void PreventCollision(EntityUid uid, ProjectileComponent component, ref PreventCollideEvent args)
     {
+        // Shoot yourself!
+        if (args.OtherEntity == component.Target) // WD
+            return;
+
         if (component.IgnoreShooter && (args.OtherEntity == component.Shooter || args.OtherEntity == component.Weapon))
         {
             args.Cancelled = true;
@@ -308,4 +313,4 @@ public record struct ProjectileHitEvent(DamageSpecifier Damage, EntityUid Target
 /// Raised after a projectile has dealt it's damage.
 /// </summary>
 [ByRefEvent]
-public record struct AfterProjectileHitEvent(DamageSpecifier Damage, EntityUid Target);
+public record struct AfterProjectileHitEvent(DamageSpecifier Damage, EntityUid Target, Fixture Fixture);

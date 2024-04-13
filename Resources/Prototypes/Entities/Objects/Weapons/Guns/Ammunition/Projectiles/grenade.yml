@@ -14,7 +14,7 @@
         Blunt: 4
   - type: StaminaDamageOnCollide
     ignoreResistances: false
-    damage: 70
+    damage: 60
   - type: TimedDespawn
     lifetime: 0.25
 

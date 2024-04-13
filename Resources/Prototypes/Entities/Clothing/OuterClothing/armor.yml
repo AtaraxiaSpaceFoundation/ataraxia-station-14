@@ -165,10 +165,10 @@
     - type: Armor
       modifiers:
         coefficients:
-          Blunt: 0.4
-          Slash: 0.4
-          Piercing: 0.5
-          Heat: 0.4
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.6
+          Heat: 0.5
     - type: ExplosionResistance
       damageCoefficient: 0.5
     - type: GroupExamine
@@ -224,10 +224,10 @@
 
 
 - type: entity
-  parent: ClothingOuterBaseLarge
+  parent: ClothingOuterBaseMedium
   id: ClothingOuterArmorCaptainCarapace
-  name: "captain's carapace"
-  description: "An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest."
+  name: captain's carapace
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
@@ -236,14 +236,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
+        Blunt: 0.6
+        Slash: 0.6
         Piercing: 0.6
-        Heat: 0.5
+        Heat: 0.6
         Caustic: 0.9
-  - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
   - type: HeldSpeedModifier
   - type: ExplosionResistance
     damageCoefficient: 0.65

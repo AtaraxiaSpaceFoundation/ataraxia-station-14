@@ -1,8 +1,10 @@
 using System.Numerics;
 using Content.Server._White.Other.ChangeThrowForceSystem;
+using Content.Server.Damage.Components;
 using Content.Server.Inventory;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
+using Content.Shared._White.Cult.Systems;
 using Content.Shared._White.MagGloves;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Part;
@@ -37,6 +39,7 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
+        [Dependency] private readonly CultItemSystem _cultItem = default!;
 
         public override void Initialize()
         {
@@ -188,6 +191,11 @@ namespace Content.Server.Hands.Systems
                 hands.ActiveHandEntity is not { } throwEnt ||
                 !_actionBlockerSystem.CanThrow(player, throwEnt))
                 return false;
+
+            // WD EDIT START
+            if (HasComp<DamageOtherOnHitComponent>(throwEnt) && !_cultItem.CanThrow(player, throwEnt))
+                return false;
+            // WD EDIT END
 
             if (_timing.CurTime < hands.NextThrowTime)
                 return false;

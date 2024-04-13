@@ -1059,6 +1059,7 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
+      - !type:CureBlight
       - !type:DeconvertCultist
         conditions:
           - !type:ReagentThreshold
@@ -1210,12 +1211,19 @@
         scaleByQuantity: true
         damage:
           groups:
-            Brute: -2.5
+            Brute: -1.25
           types:
-            Heat: -2.5
-            Shock: -2.5
-            Cold: -2.5
-            Poison: 0.66
+            Heat: -1.25
+            Shock: -1.25
+            Cold: -1.25
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        conditions:
+        damage:
+          types:
+            Poison: 1
   slippery: true
 
 - type: reagent
@@ -1233,7 +1241,7 @@
         scaleByQuantity: true
         damage:
           types:
-            Heat: -1
+            Heat: -2
   metabolisms:
     Medicine:
       effects:
@@ -1241,7 +1249,7 @@
         conditions:
         damage:
           types:
-            Heat: -1.0
+            Heat: -2.0
             Poison: 0.5
 
 - type: reagent
@@ -1259,7 +1267,7 @@
         scaleByQuantity: true
         damage:
           groups:
-            Brute: -1
+            Brute: -2
   metabolisms:
     Medicine:
       effects:
@@ -1267,6 +1275,6 @@
         conditions:
         damage:
           groups:
-            Brute: -1
+            Brute: -2
           types:
             Poison: 0.5

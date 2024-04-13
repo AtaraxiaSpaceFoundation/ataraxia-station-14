@@ -1,13 +1,19 @@
-﻿using Content.Server.Doors.Systems;
+﻿using Content.Server.Cuffs;
+using Content.Server.Doors.Systems;
 using Content.Shared._White.Chaplain;
 using Content.Shared.Doors;
 using Content.Shared.Humanoid;
 using Content.Shared.Stunnable;
-using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Components;
+using Content.Shared._White.Cult.Systems;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Doors.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
@@ -19,6 +25,10 @@ public sealed class RunicDoorSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly OccluderSystem _occluder = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly CuffableSystem _cuffable = default!;
+    [Dependency] private readonly HolyWeaponSystem _holyWeapon = default!;
 
     public override void Initialize()
     {
@@ -26,7 +36,32 @@ public sealed class RunicDoorSystem : EntitySystem
 
         SubscribeLocalEvent<RunicDoorComponent, BeforeDoorOpenedEvent>(OnBeforeDoorOpened);
         SubscribeLocalEvent<RunicDoorComponent, BeforeDoorClosedEvent>(OnBeforeDoorClosed);
-        SubscribeLocalEvent<RunicDoorComponent, AttackedEvent>(OnGetAttacked);
+        // SubscribeLocalEvent<RunicDoorComponent, AttackedEvent>(OnGetAttacked);
+        SubscribeLocalEvent<RunicDoorComponent, ConcealEvent>(OnConceal);
+    }
+
+    private void OnConceal(Entity<RunicDoorComponent> ent, ref ConcealEvent args)
+    {
+        if (!TryComp(ent, out MetaDataComponent? meta))
+            return;
+
+        if (TryComp(ent, out PhysicsComponent? physics))
+            _occluder.SetEnabled(ent, args.Conceal && physics.CanCollide, meta: meta);
+
+        if (TryComp(ent, out DoorComponent? door))
+        {
+            door.Occludes = args.Conceal;
+            Dirty(ent, door, meta);
+        }
+
+        if (!TryComp(ent, out MeleeSoundComponent? meleeSound) || meleeSound.SoundGroups == null)
+            return;
+
+        meleeSound.SoundGroups["Brute"] = args.Conceal
+            ? new SoundPathSpecifier("/Audio/Weapons/smash.ogg")
+            : new SoundCollectionSpecifier("GlassSmash");
+
+        Dirty(ent, meleeSound, meta);
     }
 
     private void OnGetAttacked(Entity<RunicDoorComponent> ent, ref AttackedEvent args)
@@ -79,7 +114,8 @@ public sealed class RunicDoorSystem : EntitySystem
 
         _doorSystem.Deny(airlock);
 
-        if (!HasComp<HumanoidAppearanceComponent>(user) || HasComp<HolyComponent>(user))
+        if (!HasComp<HumanoidAppearanceComponent>(user) || _holyWeapon.IsHoldingHolyWeapon(user) ||
+            TryComp(airlock, out ConcealableComponent? concealable) && concealable.Concealed)
             return false;
 
         var direction = Transform(user).MapPosition.Position - Transform(airlock).MapPosition.Position;
@@ -89,5 +125,12 @@ public sealed class RunicDoorSystem : EntitySystem
 
         _stunSystem.TryParalyze(user, TimeSpan.FromSeconds(3), true);
         return false;
+    }
+
+    public bool CanBumpOpen(EntityUid uid, EntityUid otherUid)
+    {
+        return !HasComp<RunicDoorComponent>(uid) || !HasComp<ConstructComponent>(otherUid) &&
+            (!HasComp<CultistComponent>(otherUid) || !_mobState.IsAlive(otherUid) ||
+             TryComp(otherUid, out CuffableComponent? cuffable) && _cuffable.GetAllCuffs(cuffable).Count > 0);
     }
 }

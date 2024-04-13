@@ -192,8 +192,37 @@
           prob: 0.005
           orGroup: syndiemaintloot
         - id: WeaponSniperMosin
-          prob: 0.0010
+          prob: 0.001
           orGroup: syndiemaintloot
+        # Angry animals
+        - id: null
+          prob: 0.99
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.001
+          orGroup: angryanimalsmaintloot
+        - id: MobGiantSpiderAngry
+          prob: 0.002
+          orGroup: angryanimalsmaintloot
+        - id: MobMonkeyAngry
+          prob: 0.003
+          orGroup: angryanimalsmaintloot
+        - id: MobAngryBee
+          prob: 0.004
+          orGroup: angryanimalsmaintloot
+        # Animals
+        - id: null
+          prob: 0.7
+          orGroup: animalsmaintloot
+        - id: MobMouse
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse1
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse2
+          prob: 0.1
+          orGroup: animalsmaintloot
 
 - type: entity
   id: ClosetWallMaintenanceFilledRandom
@@ -298,3 +327,32 @@
         - id: WeaponSniperMosin
           prob: 0.0010
           orGroup: syndiemaintloot
+        # Angry animals
+        - id: null
+          prob: 0.99
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.001
+          orGroup: angryanimalsmaintloot
+        - id: MobGiantSpiderAngry
+          prob: 0.002
+          orGroup: angryanimalsmaintloot
+        - id: MobMonkeyAngry 
+          prob: 0.003
+          orGroup: angryanimalsmaintloot
+        - id: MobAngryBee
+          prob: 0.004
+          orGroup: angryanimalsmaintloot
+        # Animals
+        - id: null
+          prob: 0.7
+          orGroup: animalsmaintloot
+        - id: MobMouse
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse1
+          prob: 0.1
+          orGroup: animalsmaintloot
+        - id: MobMouse2
+          prob: 0.1
+          orGroup: animalsmaintloot

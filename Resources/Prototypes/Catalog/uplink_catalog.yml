@@ -17,7 +17,7 @@
   description: uplink-revolver-python-desc
   productEntity: WeaponRevolverPythonAP
   cost:
-    Telecrystal: 8 # Originally was 13 TC but was not used due to high cost
+    Telecrystal: 6 # Originally was 13 TC but was not used due to high cost
   categories:
   - UplinkWeaponry
   saleLimit: 1
@@ -469,9 +469,9 @@
   id: UplinkHristovAmmo
   name: uplink-sniper-ammo-name
   description: uplink-sniper-ammo-desc
-  productEntity: MagazineBoxAntiMateriel
+  productEntity: MagazineBoxAntiMaterielBig
   cost:
-    Telecrystal: 3
+    Telecrystal: 6
   categories:
   - UplinkAmmo
 
@@ -640,7 +640,7 @@
   description: uplink-agent-id-card-desc
   productEntity: AgentIDCard
   cost:
-    Telecrystal: 3
+    Telecrystal: 2
   categories:
   - UplinkDeception
   
@@ -1474,9 +1474,12 @@
   description: uplink-operative-suit-desc
   productEntity: ClothingUniformJumpsuitOperative
   cost:
-    Telecrystal: 1
+    Telecrystal: 0
   categories:
   - UplinkPointless
+  conditions:
+    - !type:ListingLimitedStockCondition
+      stock: 1
 
 - type: listing
   id: UplinkOperativeSkirt
@@ -1484,9 +1487,12 @@
   description: uplink-operative-skirt-desc
   productEntity: ClothingUniformJumpskirtOperative
   cost:
-    Telecrystal: 1
+    Telecrystal: 0
   categories:
   - UplinkPointless
+  conditions:
+    - !type:ListingLimitedStockCondition
+      stock: 1
 
 - type: listing
   id: UplinkBalloon

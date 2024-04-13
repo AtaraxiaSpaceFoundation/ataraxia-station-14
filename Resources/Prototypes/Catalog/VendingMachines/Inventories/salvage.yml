@@ -1,4 +1,4 @@
-﻿- type: vendingMachineInventory
+- type: vendingMachineInventory
   id: SalvageEquipmentInventory
   startingInventory:
     WeaponProtoKineticAccelerator: 4
@@ -21,4 +21,5 @@
     SeismicCharge: 3
     FultonBeacon: 2
     Fulton: 3
-
+  emaggedInventory:
+    JetpackBlackFilled: 1

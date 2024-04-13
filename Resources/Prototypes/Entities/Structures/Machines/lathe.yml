@@ -188,13 +188,18 @@
        - CartridgeAntiMateriel
        - CartridgeCaselessRifle
        - MagazineBoxMagnumAP
-       - MagazineBoxAntiMateriel
+       - MagazineBoxAntiMaterielBig
        - MagazineBoxCaselessRifle
        - MagazineBoxPistol
        - MagazineBoxMagnum
        - MagazineBoxRifle
        - MagazineBoxLightRifle
        - GrenadeBlast
+       - LightModuleRecipe
+       - LaserModuleRecipe
+       - FlameHiderModuleRecipe
+       - SilencerModuleRecipe
+       - AcceleratorModuleRecipe
     emagDynamicRecipes:
       - CartridgePistolRubber
       - CartridgeMagnumRubber
@@ -348,6 +353,24 @@
       - WeaponAdvancedLaser
       - WeaponLaserCannon
       - WeaponXrayCannon
+      - WeaponDisablerSMG
+      - ClothingHandsGlovesMagnetic
+      - ClothingHandsGlovesMagneticAdvanced
+      - ClothingEyesGlassesSecurity
+      - ExplosivePayload
+      - FlashPayload
+      - PowerCageSmall
+      - PowerCageMedium
+      - PowerCageHigh
+      - ShuttleGunSvalinnMachineGunCircuitboard
+      - ShuttleGunPerforatorCircuitboard
+      - ShuttleGunFriendshipCircuitboard
+      - ShuttleGunDusterCircuitboard
+      - TelescopicShield
+      - Truncheon
+      - MagazineGrenadeEmpty
+      - GrenadeEMP
+      - GrenadeFlash
   - type: BluespaceStorage
 
 - type: entity
@@ -704,6 +727,11 @@
       - ShellShotgunPractice
       - WeaponLaserCarbinePractice
       - WeaponDisablerPractice
+      - LightModuleRecipe
+      - LaserModuleRecipe
+      - FlameHiderModuleRecipe
+      - SilencerModuleRecipe
+      - AcceleratorModuleRecipe
     dynamicRecipes:
       - CartridgeLightRifleIncendiary
       - CartridgeMagnumIncendiary
@@ -769,7 +797,7 @@
      - CartridgeAntiMateriel
      - CartridgeCaselessRifle
      - MagazineBoxMagnumAP
-     - MagazineBoxAntiMateriel
+     - MagazineBoxAntiMaterielBig
      - MagazineBoxCaselessRifle
   - type: BluespaceStorage
 
@@ -816,7 +844,7 @@
         - CartridgeAntiMateriel
         - CartridgeCaselessRifle
         - MagazineBoxMagnumAP
-        - MagazineBoxAntiMateriel
+        - MagazineBoxAntiMaterielBig
         - MagazineBoxCaselessRifle
     - type: BluespaceStorage
 

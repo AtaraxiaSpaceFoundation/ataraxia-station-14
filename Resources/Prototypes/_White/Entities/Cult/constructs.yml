@@ -60,10 +60,24 @@
     - type: Pullable
     - type: ContentEye
     - type: Actions
+    - type: Hands
+    - type: ShowCultHud
+    - type: IsDeadIC
+    - type: NightVision
+      toggleSound: null
+      color: White
+    - type: ShowWhiteHealthBars
+      damageContainers:
+      - Biological
+    - type: ShowHealthIcons
+      damageContainers:
+      - Biological
     - type: Tag
       tags:
         - CannotSuicide
         - DoorBumpOpener
+    - type: NameIdentifier
+      group: Construct
 
 - type: entity
   id: JuggernautConstruct
@@ -77,21 +91,23 @@
       thresholds:
         0: Alive
         150: Dead
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 2
-      baseSprintSpeed: 2
     - type: Construct
       actions:
       - InstantActionJuggernautCreateWall
     - type: MeleeWeapon
+      canHeavyAttack: false
       hidden: true
       angle: 30
-      animation: WeaponArcFist
-      attackRate: 0.25
+      animation: WeaponArcSmash
+      attackRate: 1
       damage:
         types:
           Structural: 90
           Blunt: 25
+      soundHit:
+        collection: HammerHit
+      soundSwing:
+        collection: HammerMiss
 
 - type: entity
   id: ArtificerConstruct
@@ -114,13 +130,18 @@
           InstantActionArtificerCreateCultistWall,
           InstantActionArtificerCreateCultistAirlock,
         ]
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 3
+    - type: MovementIgnoreGravity
     - type: Puller
       needsHands: false
     - type: MeleeWeapon
+      canHeavyAttack: false
       hidden: true
       angle: 30
-      animation: WeaponArcFist
-      attackRate: 0.85
+      animation: WeaponArcPunch
+      attackRate: 1
       damage:
         types:
           Blunt: 5
@@ -133,8 +154,8 @@
   description: run...
   components:
     - type: MovementSpeedModifier
-      baseWalkSpeed: 3.0
-      baseSprintSpeed: 3.0
+      baseWalkSpeed: 4.0
+      baseSprintSpeed: 4.0
     - type: MobThresholds
       thresholds:
         0: Alive
@@ -148,14 +169,18 @@
       actions: [InstantActionWraithPhase]
     - type: MovementIgnoreGravity
     - type: MeleeWeapon
+      canHeavyAttack: false
       hidden: true
       angle: 30
-      animation: WeaponArcFist
-      attackRate: 0.5
+      animation: WeaponArcPunch
+      attackRate: 1
       damage:
         types:
-          Blunt: 10
+          Piercing: 10
           Slash: 10
+          Structural: 40
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
 
 - type: entity
   id: ReaperConstruct
@@ -165,8 +190,8 @@
   components:
     - type: MovementIgnoreGravity
     - type: MovementSpeedModifier
-      baseWalkSpeed: 3.0
-      baseSprintSpeed: 3.0
+      baseWalkSpeed: 5.0
+      baseSprintSpeed: 5.0
     - type: MobThresholds
       thresholds:
         0: Alive
@@ -176,15 +201,18 @@
     - type: Puller
       needsHands: false
     - type: MeleeWeapon
+      canHeavyAttack: false
       hidden: true
       angle: 30
-      animation: WeaponArcFist
-      attackRate: 0.9
+      animation: WeaponArcPunch
+      attackRate: 1
       damage:
         types:
-          Blunt: 20
+          Piercing: 20
           Slash: 20
           Structural: 80
+      soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
 
 - type: entity
   id: ConstructShell
@@ -211,3 +239,7 @@
       containers:
         Shard: !type:ContainerSlot
     - type: CultItem
+
+- type: nameIdentifierGroup
+  id: Construct
+  prefix: CO

@@ -85,7 +85,7 @@
           collection: MetalBreak
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: DamageOnHighSpeedImpact
     damage:
       types:

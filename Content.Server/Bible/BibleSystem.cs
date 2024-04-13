@@ -119,7 +119,7 @@ namespace Content.Server.Bible
             }
 
             // WD START
-            if (HasComp<BlightComponent>(args.Target.Value))
+            /*if (HasComp<BlightComponent>(args.Target.Value))
             {
                 var othersMessage = Loc.GetString(component.LocPrefix + "-blight-success-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
                 _popupSystem.PopupEntity(othersMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.Medium);
@@ -130,7 +130,7 @@ namespace Content.Server.Bible
                 _delay.TryResetDelay((uid, useDelay));
                 RemCompDeferred<BlightComponent>(args.Target.Value);
                 return;
-            }
+            }*/
             // WD END
 
             // This only has a chance to fail if the target is not wearing anything on their head and is not a familiar.

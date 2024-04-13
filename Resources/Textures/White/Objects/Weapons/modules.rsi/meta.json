@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Maked by CaypenNow",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "light"
+    },
+    {
+      "name": "laser"
+    },    
+    {
+      "name": "flamehider"
+    },
+    {
+      "name": "silencer"
+    },
+    {
+      "name": "accelerator"
+    },
+    {
+      "name": "barrel_module"
+    },
+    {
+      "name": "handguard_module"
+    }
+  ]
+}

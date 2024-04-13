@@ -96,16 +96,6 @@ supermatter-delamination-overmass = The Supermatter has Reached Critical Mass Fa
 supermatter-delamination-default = The Supermatter has Reached Critical Integrity Falure. Emergency Causality Destabilization Field has been Activated.
 supermatter-seconds-before-delam = { $Seconds } Seconds Remain Before Delamination.
 
-# Cult
-
-cult-role-greeting =
-    Вы - член культа!
-    Ваши цели перечислены в меню персонажа.
-    В ваш рюкзак были добавлены предметы, которые помогут вам.
-    И помните - вы не единственный.
-    Слава Нар`си!
-
-
 # MobStateShit
 
 action-name-crit-succumb = Succumb

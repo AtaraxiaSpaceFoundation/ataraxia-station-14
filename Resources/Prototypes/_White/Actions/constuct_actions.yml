@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: InstantActionArtificerCreateSoulStone
   name: artificer-create-soul-stone-action-name
   description: artificer-create-soul-stone-action-description
@@ -98,5 +98,10 @@
       icon:
         sprite: /Textures/White/Cult/actions_cult.rsi
         state: cultforcewall
-      useDelay: 35
-      event: !type:JuggernautCreateWallActionEvent
+      sound: !type:SoundPathSpecifier
+        path: /Audio/Magic/forcewall.ogg
+      useDelay: 40
+      event: !type:InstantSpawnSpellEvent
+        prototype: WallForceCult
+        posData: !type:TargetInFront
+        preventCollide: false

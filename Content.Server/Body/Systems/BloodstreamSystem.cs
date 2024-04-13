@@ -6,6 +6,7 @@ using Content.Server.Forensics;
 using Content.Server.HealthExaminable;
 using Content.Server.Popups;
 using Content.Server._White.EndOfRoundStats.BloodLost;
+using Content.Server._White.Other.CritSystem;
 using Content.Shared.Alert;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -15,6 +16,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Drunk;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Speech.EntitySystems;
@@ -40,6 +42,7 @@ public sealed class BloodstreamSystem : EntitySystem
     [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly ForensicsSystem _forensicsSystem = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!; // WD
 
     public override void Initialize()
     {
@@ -395,6 +398,14 @@ public sealed class BloodstreamSystem : EntitySystem
 
         component.BleedAmount += amount;
         component.BleedAmount = Math.Clamp(component.BleedAmount, 0, component.MaxBleedAmount);
+
+        if (HasComp<BloodLustComponent>(uid)) // WD
+        {
+            if (component.BleedAmount == 0f)
+                RemComp<BloodLustComponent>(uid);
+
+            _speed.RefreshMovementSpeedModifiers(uid);
+        }
 
         if (component.BleedAmount == 0)
             _alertsSystem.ClearAlert(uid, AlertType.Bleed);

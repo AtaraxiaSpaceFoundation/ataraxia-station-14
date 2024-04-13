@@ -1,4 +1,3 @@
-using Content.Server.Implants;
 using Robust.Shared.Audio;
 
 namespace Content.Server.Implants.Components;

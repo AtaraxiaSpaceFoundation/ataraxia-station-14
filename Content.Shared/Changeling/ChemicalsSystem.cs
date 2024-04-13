@@ -97,7 +97,7 @@ public sealed class ChemicalsSystem : EntitySystem
         if(_net.IsServer)
         {
             _alertsSystem.ShowAlert(uid, AlertType.Chemicals,
-                (short) Math.Clamp(Math.Round(component.ChemicalsBalance / 10f), 0, 7));
+                (short) Math.Clamp(Math.Round(component.ChemicalsBalance / 10f), 0, 16));
         }
     }
 }

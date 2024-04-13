@@ -1,0 +1,25 @@
+- type: entity
+  parent: BaseItem
+  id: TimeBeacon
+  name: time beacon
+  description: Rewind!
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/door_remote.rsi
+    layers:
+    - state: door_remotebase_white
+    - state: door_remotelightscolour
+      color: "#00FFF7"
+    - state: door_remotescreencolour
+      color: "#00FFF7"
+  - type: Item
+    storedRotation: -90
+  - type: TimeBeacon
+
+- type: entity
+  id: TimeBeaconAnchor
+  name: time beacon anchor
+  description: Fuck!
+  noSpawn: true
+  components:
+  - type: TimeBeaconAnchor

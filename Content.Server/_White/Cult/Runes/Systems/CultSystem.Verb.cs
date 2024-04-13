@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Body.Components;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
+using Content.Shared._White.Cult.UI;
 using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
 using Robust.Shared.Player;
@@ -16,6 +17,7 @@ public sealed partial class CultSystem
         SubscribeLocalEvent<CultistComponent, CultEmpowerSelectedBuiMessage>(OnCultistEmpowerSelected);
         SubscribeLocalEvent<CultistComponent, CultEmpowerRemoveBuiMessage>(OnCultistEmpowerRemove);
         SubscribeLocalEvent<CultistComponent, SpellCreatedEvent>(OnSpellCreated);
+        SubscribeLocalEvent<CultistComponent, CultistFactoryItemSelectedMessage>(OnBloodRitesSelected);
     }
 
     private void OnCultistEmpowerRemove(Entity<CultistComponent> ent, ref CultEmpowerRemoveBuiMessage args)
@@ -28,7 +30,7 @@ public sealed partial class CultSystem
 
     private void OnSpellCreated(EntityUid ent, CultistComponent comp, SpellCreatedEvent args)
     {
-        if (args.Cancelled || comp.SelectedEmpowers.Count >= 1)
+        if (args.Cancelled || comp.SelectedEmpowers.Count >= 2)
             return;
 
         var action = CultistComponent.CultistActions.FirstOrDefault(x => x.Equals(args.Spell));
@@ -55,7 +57,7 @@ public sealed partial class CultSystem
         if (action == null)
             return;
 
-        if (comp.SelectedEmpowers.Count >= 1)
+        if (comp.SelectedEmpowers.Count >= 2)
         {
             _popupSystem.PopupEntity(Loc.GetString("verb-spell-create-too-much"), ent, ent);
             return;
@@ -98,8 +100,24 @@ public sealed partial class CultSystem
             }
         };
 
+        var bloodRitesVerb = new Verb
+        {
+            Text = Loc.GetString("verb-blood-rites-text"),
+            Message = Loc.GetString("verb-blood-rites-message", ("blood", ent.Comp.RitesBloodAmount)),
+            Category = VerbCategory.Cult,
+            Act = () =>
+            {
+                if (!_ui.TryGetUi(ent, BloodRitesUi.Key, out var bui))
+                    return;
+
+                _ui.SetUiState(bui, new CultistFactoryBUIState(ent.Comp.BloodRites));
+                _ui.OpenUi(bui, actor.PlayerSession);
+            }
+        };
+
         args.Verbs.Add(createSpellVerb);
         args.Verbs.Add(removeSpellVerb);
+        args.Verbs.Add(bloodRitesVerb);
     }
 
     private void RemoveSpell(Entity<CultistComponent> ent, ICommonSession session)
@@ -111,5 +129,37 @@ public sealed partial class CultSystem
         }
 
         _ui.TryOpen(ent, CultEmpowerRemoveUiKey.Key, session);
+    }
+
+    private void OnBloodRitesSelected(Entity<CultistComponent> ent, ref CultistFactoryItemSelectedMessage args)
+    {
+        if (!_prototypeManager.TryIndex<CultistFactoryProductionPrototype>(args.Item, out var prototype))
+            return;
+
+        if (ent.Comp.RitesBloodAmount < prototype.BloodCost)
+        {
+            var message = Loc.GetString("verb-blood-rites-no-blood", ("required", prototype.BloodCost),
+                ("blood", ent.Comp.RitesBloodAmount));
+            _popupSystem.PopupEntity(message, ent, ent);
+            return;
+        }
+
+        var success = false;
+        foreach (var item in prototype.Item)
+        {
+            var entity = Spawn(item, Transform(ent).Coordinates);
+            if (_handsSystem.TryPickupAnyHand(ent, entity))
+            {
+                success = true;
+                continue;
+            }
+
+            _popupSystem.PopupEntity(Loc.GetString("verb-blood-rites-no-hand"), ent, ent);
+            QueueDel(entity);
+            break;
+        }
+
+        if (success)
+            ent.Comp.RitesBloodAmount -= prototype.BloodCost;
     }
 }

@@ -288,7 +288,7 @@
       ballistic-ammo: !type:Container
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
     - trigger:

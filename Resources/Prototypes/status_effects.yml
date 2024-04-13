@@ -64,6 +64,10 @@
   id: BlurryVision
   alwaysAllowed: true
 
+- type: statusEffect
+  id: NarcoticEffect
+  alwaysAllowed: true
+
 #WD EDIT
 - type: statusEffect
   id: Incorporeal

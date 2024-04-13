@@ -1,0 +1,49 @@
+- type: entity
+  name: interactive board
+  parent: BaseItem
+  id: InteractiveBoard
+  description: 'Have field for edit. Created special for burocracy!'
+  components:
+  - type: Sprite
+    sprite: /Textures/White/Objects/Devices/interactiveboard.rsi
+    layers:
+    - state: interactiveboard
+    - state: interactiveboard_with_words
+      map: ["enum.InteractiveBoardVisualLayers.Writing"]
+      visible: false
+  - type: Item
+    size: Huge
+  - type: InteractiveBoard
+  - type: Tag
+    tags:
+    - InteractiveBoard
+  - type: ActivatableUI
+    key: enum.InteractiveBoardUiKey.Key
+  - type: UserInterface
+    interfaces:
+    - key: enum.InteractiveBoardUiKey.Key
+      type: InteractiveBoardBoundUserInterface
+  - type: Appearance
+  - type: InteractiveBoardVisuals
+  - type: AccessReader
+    access: [ [ "Command" ] ]
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+
+- type: entity
+  name: interactive pen
+  parent: BaseItem
+  id: InteractivePen
+  description: 'Edit interactive board!'
+  components:
+  - type: Sprite
+    sprite: /Textures/White/Objects/Devices/interactiveboard.rsi
+    state: pen
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - InteractivePen

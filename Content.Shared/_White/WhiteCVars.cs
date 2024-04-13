@@ -369,4 +369,14 @@ public sealed class WhiteCVars
 
     public static readonly CVarDef<string> UtkaClientBind =
         CVarDef.Create("white.utka_client_bind", "", CVar.SERVERONLY);
+
+    /*
+     * PlayTime Tracker
+     */
+
+    public static readonly CVarDef<string> TimeTrackerApiUrl =
+        CVarDef.Create("white.time_tracker_api", "https://ss14.su/api/jobs/", CVar.SERVERONLY | CVar.CONFIDENTIAL | CVar.ARCHIVE);
+
+    public static readonly CVarDef<string> TimeTrackerApiKey =
+        CVarDef.Create("white.time_tracker_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL | CVar.ARCHIVE);
 }

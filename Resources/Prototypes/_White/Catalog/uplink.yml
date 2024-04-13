@@ -1,0 +1,264 @@
+- type: listing
+  id: UplinkHelmetSwat
+  name: Шлем спецназа
+  description: Чрезвычайно прочный шлем, обычно используемый военизированными формированиями. Он украшен гнусным рисунком в красную и черную полоску.
+  productEntity: ClothingHeadHelmetSwatSyndicate
+  cost:
+    Telecrystal: 2
+  categories:
+    - UplinkWearables
+
+- type: listing
+  id: UplinkMiniEbow
+  name: Маленький энергетический арбалет
+  description: Довольно тихое оружие, которое автоматически перезаряжается и оглушает. Хорошо сочетается с другими видами оружия.
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Battery/mini-ebow.rsi, state: icon }
+  productEntity: EnergyCrossbowMini
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  saleLimit: 1
+
+- type: listing
+  id: UplinkBloodDagger
+  name: Кинжал жажды
+  description: "Критическая жажда: Кинжал Жажды обладает смертоносной точностью. Его владелец имеет 50% шанс нанести критический урон, поражая врага в его самые уязвимые места. При ударе по себе кинжал наделит пользователя временным усилением скорости атаки и передвижения ценой обильного кровотечения. Кровавый абсорб: При каждом успешном критическом ударе, кинжал извлекает кровь из цели, восстанавливая здоровье владельцу пропорционально количеству высосанной крови."
+  icon: { sprite: /Textures/Objects/Weapons/Melee/blood_dagger.rsi, state: icon }
+  productEntity: BloodSuckerDagger
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  saleLimit: 1
+
+- type: listing
+  id: UplinkRifleAk
+  name: uplink-rifle-ak-name
+  description: uplink-rifle-ak-description
+  productEntity: WeaponRifleAk
+  cost:
+    Telecrystal: 16
+  categories:
+  - UplinkWeaponry
+  saleLimit: 1
+
+- type: listing
+  id: UplinkAkAmmo
+  name: uplink-ak-ammo-name
+  description: uplink-ak-ammo-desc
+  productEntity: MagazineLightRifle
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkTimeBeacon
+  name: uplink-time-beacon
+  description: uplink-time-beacon-desc
+  productEntity: TimeBeacon
+  icon: { sprite: Objects/Devices/door_remote.rsi, state: door_remotebase_white }
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkUtility
+
+- type: listing
+  id: UplinkSmokeImplanter
+  name: Имплант дыма
+  description: Выпускает облако дыма при активации.
+  icon: { sprite: /Textures/Objects/Weapons/Grenades/smoke.rsi, state: icon }
+  productEntity: SmokeImplanter
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkImplants
+  conditions:
+  - !type:ListingLimitedStockCondition # To prevent infinitely cheinsmoking using multiple implants
+    stock: 1
+
+- type: listing
+  id: UplinkHardlightSpearImplanter
+  name: uplink-hardlight-spear-implant-name
+  description: uplink-hardlight-spear-implant-desc
+  icon: { sprite: /Textures/White/Objects/Weapons/hardlight_spear.rsi, state: spear }
+  productEntity: HardlightSpearImplanter
+  cost:
+    Telecrystal: 12
+  categories:
+  - UplinkImplants
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+# Night Vision
+- type: listing
+  id: UplinkNightGoggles
+  name: ПНВ [Хамелеон]
+  description: Теперь ты видишь во тьме!
+  productEntity: ClothingEyesNightVisionGogglesSyndie
+  icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkNightGogglesNukie
+  name: ПНВ [Хамелеон]
+  description: Теперь ты видишь во тьме!
+  productEntity: ClothingEyesNightVisionGogglesNukie
+  icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+#- type: listing
+#  id: UplinkBattleAxe
+#  name: Энергетической боевой топор
+#  description: Мощный боевой топор, способный повалить с одного удара любую незащищенную цель.
+#  icon: { sprite: /Textures/White/Objects/Weapons/energy_axe.rsi, state: icon }
+#  productEntity: EnergyBattleAxe
+#  cost:
+#    Telecrystal: 20
+#  categories:
+#  - UplinkWeaponry
+#  saleLimit: 1
+
+- type: listing
+  id: UplinkBetrayalKnife
+  name: Предательский нож
+  description: Предательский нож позволяет пользователю телепортироваться на короткое расстояние, а также наносит значительные повреждения, пробивая броню противника, при ударе в спину.
+  icon: { sprite: /Textures/White/Objects/Weapons/betrayal_knife.rsi, state: icon }
+  productEntity: BetrayalKnife
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  saleLimit: 1
+
+- type: listing
+  id: UplinkMagazineShotgun
+  name: uplink-magazine-bulldog-name
+  description: uplink-magazine-bulldog-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi, state: pellets }
+  productEntity: MagazineShotgun
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkMagazineShotgunSlug
+  name: uplink-magazine-slug-bulldog-name
+  description: uplink-magazine-slug-bulldog-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi, state: slug }
+  productEntity: MagazineShotgunSlug
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkMagazineLightRifleBox
+  name: uplink-magazine-l6-name
+  description: uplink-magazine-l6-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_box.rsi, state: base }
+  productEntity: MagazineLightRifleBox
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkBoxMagazinePistol
+  name: uplink-pistol-box-name
+  description: uplink-pistol-box-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi, state: red-icon }
+  productEntity: BoxMagazinePistol
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkBoxMagazinePistolCaselessRifle
+  name: uplink-pistol-box-caseless-name
+  description: uplink-pistol-box-caseless-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi, state: red-icon }
+  productEntity: BoxMagazinePistolCaselessRifle
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkMindSlaveImplanter
+  name: uplink-mind-slave
+  description: uplink-mind-slave-desc
+  productEntity: MindSlaveImplanter
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkImplants
+
+- type: listing
+  id: NeuroStabilizationImplanter
+  name: uplink-neuro-stabilization
+  description: uplink-neuro-stabilization-desc
+  productEntity: NeuroStabilizationImplanter
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkImplants
+
+- type: listing
+  id: UplinkImplanterSyndi
+  name: Имплантер
+  description: Продвинутый имплантер, позволяющий быстро вкалывать и вытаскивать импланты.
+  productEntity: ImplanterSyndi
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkImplants
+
+- type: listing
+  id: UplinkExperimentalSyndicateTeleporter
+  name: uplink-experimentalsyndicateteleporter
+  description: uplink-experimentalsyndicateteleporter-desc
+  icon: { sprite: /Textures/White/Objects/Devices/experimentalsyndicateteleporter.rsi, state: icon }
+  productEntity: ExperimentalSyndicateTeleporter
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkUtility
+  saleLimit: 2

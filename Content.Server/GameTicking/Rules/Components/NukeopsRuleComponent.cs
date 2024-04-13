@@ -84,7 +84,7 @@ public sealed partial class NukeopsRuleComponent : Component
     ///     This amount of TC will be given to each nukie
     /// </summary>
     [DataField]
-    public int WarTCAmountPerNukie = 30;
+    public int WarTCAmountPerNukie = 50;
 
     /// <summary>
     ///     Delay between war declaration and nuke ops arrival on station map. Gives crew time to prepare
@@ -96,7 +96,7 @@ public sealed partial class NukeopsRuleComponent : Component
     ///     Minimal operatives count for war declaration
     /// </summary>
     [DataField]
-    public int WarDeclarationMinOps = 4;
+    public int WarDeclarationMinOps = 2;
 
     [DataField]
     public EntProtoId SpawnPointProto = "SpawnPointNukies";

@@ -21,8 +21,8 @@ public sealed partial class ERTRecruitmentRuleComponent : Component
 
     [ViewVariables]
     public EntityUid? Outpost;
-    [ViewVariables]
-    public EntityUid? Shuttle;
+   //[ViewVariables]
+   // public EntityUid? Shuttle;
     [ViewVariables]
     public EntityUid? TargetStation;
 }

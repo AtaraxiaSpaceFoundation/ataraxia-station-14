@@ -86,43 +86,23 @@ public sealed class StructureCraftBoundUserInterface : BoundUserInterface
         if (construct == null)
             return;
 
-        var player = _player.LocalPlayer?.ControlledEntity;
+        var player = _player.LocalEntity;
 
         if (player == null)
             return;
 
-        if (construct.ID == "CultPylon" && CheckForStructure(player, id))
-        {
-            var popup = _entMan.System<SharedPopupSystem>();
-            popup.PopupClient(Loc.GetString("cult-structure-craft-another-structure-nearby"), player.Value, player.Value);
-            return;
-        }
+        PlacementHijack hijack;
 
-        var constructSystem = _systemManager.GetEntitySystem<ConstructionSystem>();
-        var hijack = new ConstructionPlacementHijack(constructSystem, construct);
+        if (construct.ID == "CultPylon")
+        {
+            hijack = new CultPylonPlacementHijack(construct, _entMan, player.Value);
+        }
+        else
+        {
+            var constructSystem = _systemManager.GetEntitySystem<ConstructionSystem>();
+            hijack = new ConstructionPlacementHijack(constructSystem, construct);
+        }
 
         _placement.BeginPlacing(newObj, hijack);
-    }
-
-    private bool CheckForStructure(EntityUid? uid, string id)
-    {
-        if (uid == null)
-            return false;
-
-        if (!_entMan.TryGetComponent<TransformComponent>(uid, out var transform))
-            return false;
-
-        var lookupSystem = _entMan.System<EntityLookupSystem>();
-        var entities = lookupSystem.GetEntitiesInRange(transform.Coordinates, 15f);
-        foreach (var ent in entities)
-        {
-            if (!_entMan.TryGetComponent<MetaDataComponent>(ent, out var metadata))
-                continue;
-
-            if (metadata.EntityPrototype?.ID == id)
-                return true;
-        }
-
-        return false;
     }
 }

@@ -21,7 +21,7 @@ namespace Content.Server.Chat.Commands
             }
 
             var gulag = EntitySystem.Get<GulagSystem>();
-            if (gulag.IsUserGulaged(shell.Player.UserId, out var _))
+            if (gulag.IsUserGulagged(shell.Player.UserId, out var _))
             {
                 return;
             }

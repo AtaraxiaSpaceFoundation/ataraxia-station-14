@@ -9,6 +9,10 @@ cult-role-greeting =
 
 cult-condition-win = Культ одержал победу
 cult-condition-failure = Экипаж уничтожил культ
+cult-condition-draw = Ничейный исход
+
+cult-role-briefing-short = Используйте '^' для связи с другими членами культа.
+cult-role-briefing-hint = Нажмите правой кнопкой мыши по своему персонажу и выберите меню 'Культ' для действий, связанных с культом.
 
 cultists-list-start = Культистами были:
 cultists-list-name = - [color=White]{ $name }[/color] ([color=gray]{ $user }[/color])

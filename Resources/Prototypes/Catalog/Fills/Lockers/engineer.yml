@@ -90,6 +90,8 @@
       - id: DoorRemoteFirefight
       - id: ClothingBeltUtilityEngineering
       - id: ClothingEyesGlassesMeson
+      - id: ClothingShoesBootsMag
+      - id: ClothingHandsGlovesColorYellow
 
 - type: entity
   id: LockerAtmosphericsFilled
@@ -107,6 +109,8 @@
       - id: DoorRemoteFirefight
       - id: ClothingBeltUtilityEngineering
       - id: ClothingEyesGlassesMeson
+      - id: ClothingShoesBootsMag
+      - id: ClothingHandsGlovesColorYellow
 
 - type: entity
   id: LockerEngineerFilledHardsuit

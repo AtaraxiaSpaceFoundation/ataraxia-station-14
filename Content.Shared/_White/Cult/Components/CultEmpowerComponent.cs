@@ -9,8 +9,8 @@ public sealed partial class CultEmpowerComponent : Component
     [DataField("isRune")]
     public bool IsRune;
 
-    public int MaxAllowedCultistActions = 4;
-    public int MinRequiredCultistActions = 1;
+    public int MaxAllowedCultistActions = 5;
+    public int MinRequiredCultistActions = 2;
 }
 
 [Serializable, NetSerializable]

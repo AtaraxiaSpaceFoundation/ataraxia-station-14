@@ -49,6 +49,13 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         SubscribeLocalEvent<RoundRestartCleanupEvent>(ClearUsedNames);
 
         SubscribeLocalEvent<ChangelingRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
+
+        SubscribeLocalEvent<ChangelingRoleComponent, GetBriefingEvent>(OnGetBriefing);
+    }
+
+    private void OnGetBriefing(Entity<ChangelingRoleComponent> ent, ref GetBriefingEvent args)
+    {
+        args.Append(Loc.GetString("changeling-role-briefing-short"));
     }
 
     protected override void ActiveTick(

@@ -12,3 +12,6 @@
     GeigerCounter: 5
     InflatableWallStack1: 24
     InflatableDoorStack1: 8
+  emaggedInventory:
+    RCD: 1
+    RCDAmmo: 3

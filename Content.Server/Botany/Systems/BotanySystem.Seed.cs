@@ -104,12 +104,11 @@ public sealed partial class BotanySystem : EntitySystem
     /// <summary>
     /// Spawns a new seed packet on the floor at a position, then tries to put it in the user's hands if possible.
     /// </summary>
-    public EntityUid SpawnSeedPacket(SeedData proto, EntityCoordinates coords, EntityUid user, float? healthOverride = null)
+    public EntityUid SpawnSeedPacket(SeedData proto, EntityCoordinates coords, EntityUid user)
     {
         var seed = Spawn(proto.PacketPrototype, coords);
         var seedComp = EnsureComp<SeedComponent>(seed);
         seedComp.Seed = proto;
-        seedComp.HealthOverride = healthOverride;
 
         var name = Loc.GetString(proto.Name);
         var noun = Loc.GetString(proto.Noun);

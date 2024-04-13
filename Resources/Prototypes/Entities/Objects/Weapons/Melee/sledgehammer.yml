@@ -14,7 +14,9 @@
         Blunt: 10
         Structural: 10
     soundHit:
-      collection: MetalThud
+      collection: HammerHit
+    soundSwing:
+      collection: HammerMiss
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

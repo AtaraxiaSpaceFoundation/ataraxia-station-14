@@ -208,7 +208,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
+        Heat: 0
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/taser_hit.ogg"
     forceSound: true
@@ -1427,3 +1427,19 @@
       shader: unshaded
   - type: ChangeTemperatureOnCollide
     temperature: -20
+
+- type: entity
+  name: blood bolt
+  id: BloodBolt
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: White/Cult/Entities/arcane_barrage.rsi
+    state: bullet
+  - type: Ammo
+    muzzleFlash: null
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20

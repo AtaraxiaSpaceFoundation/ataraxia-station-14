@@ -58,7 +58,10 @@ public sealed class RandomAccentAspect : AspectSystem<RandomAccentAspectComponen
         Russian,
         Anime,
         Lizard,
-        Backwards
+        Backwards,
+        Bark,
+        Anxiety,
+        Moth
     }
 
     private void ApplyRandomAccent(EntityUid uid)
@@ -99,6 +102,19 @@ public sealed class RandomAccentAspect : AspectSystem<RandomAccentAspectComponen
                 break;
             case AccentType.Backwards:
                 EntityManager.EnsureComponent<BackwardsAccentComponent>(uid);
+                break;
+            case AccentType.Bark:
+                EntityManager.EnsureComponent<BarkAccentComponent>(uid);
+                break;
+            case AccentType.Anxiety:
+                var stutter = EntityManager.EnsureComponent<StutteringAccentComponent>(uid);
+                stutter.MatchRandomProb = 0.2f;
+                stutter.FourRandomProb = 0f;
+                stutter.ThreeRandomProb = 0.3f;
+                stutter.CutRandomProb = 0f;
+                break;
+            case AccentType.Moth:
+                EntityManager.EnsureComponent<MothAccentComponent>(uid);
                 break;
         }
     }

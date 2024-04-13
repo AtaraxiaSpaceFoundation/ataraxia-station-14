@@ -16,11 +16,11 @@
       anchored: true
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StructuralMetallic
+      damageModifierSet: Metallic
     - type: RCDDeconstructable
       cost: 2
       delay: 2
-      fx: EffectRCDDeconstruct2  
+      fx: EffectRCDDeconstruct2
     - type: Destructible
       thresholds:
         - trigger:

@@ -25,6 +25,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Materials;
+using Content.Shared.Mind;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
@@ -121,7 +122,7 @@ public sealed partial class GulagSystem : SharedGulagSystem
 
     private void OnJoinedLobby(PlayerJoinedLobbyEvent ev)
     {
-        if(IsUserGulaged(ev.PlayerSession.UserId, out _))
+        if(IsUserGulagged(ev.PlayerSession.UserId, out _))
         {
             _chatManager.DispatchServerMessage(ev.PlayerSession, Loc.GetString("gulag-chat-join-message"));
         }
@@ -141,7 +142,7 @@ public sealed partial class GulagSystem : SharedGulagSystem
 
         var player = source.PlayerId;
 
-        if (!IsUserGulaged(player, out var ban))
+        if (!IsUserGulagged(player, out var ban))
         {
             return;
         }
@@ -289,11 +290,19 @@ public sealed partial class GulagSystem : SharedGulagSystem
         _popupSystem.PopupEntity(Loc.GetString("gulag-ban-time-changed", ("Time", $"{time.TotalSeconds}")), uid, PopupType.Medium);
     }
 
-    public bool IsUserGulaged(NetUserId playerId, out HashSet<ServerBanDef> bans)
+    public bool IsUserGulagged(NetUserId playerId, out HashSet<ServerBanDef> bans)
     {
         bans = _banManager.GetServerBans(playerId);
 
         return bans.Count != 0;
+    }
+
+    public bool IsMindGulagged(EntityUid mindId)
+    {
+        if (!TryComp(mindId, out MindComponent? mind) || mind.UserId == null)
+            return false;
+
+        return IsUserGulagged(mind.UserId.Value, out _);
     }
 
     private void SendToGulag(EntityUid playerEntity)

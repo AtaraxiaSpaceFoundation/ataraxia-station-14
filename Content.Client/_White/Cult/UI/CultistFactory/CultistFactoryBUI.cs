@@ -32,6 +32,8 @@ public sealed class CultistFactoryBUI : BoundUserInterface
 
         _radialContainer = new RadialContainer();
 
+        _radialContainer.Closed += Close;
+
         if (State != null)
             UpdateState(State);
     }

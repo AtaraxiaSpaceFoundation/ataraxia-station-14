@@ -14,6 +14,7 @@
     invokePhrase: "Mah'weyh pleggh at e'ntrath!"
   - type: CultRuneOffering
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -31,6 +32,7 @@
     invokePhrase: "Qu'laris ver'don, thal'sorin mik'thar!"
   - type: CultRuneBuff
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -52,6 +54,8 @@
     - key: enum.CultEmpowerUiKey.Key
       type: SpellSelectorBUI
   - type: CultRune
+  - type: Concealable
+    examinableWhileConcealed: true
 
 - type: entity
   parent: CollideRune
@@ -71,6 +75,7 @@
   - type: CultRuneTeleport
     label: "безымянная метка"
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -89,6 +94,7 @@
     gatherInvokers: true
   - type: CultRuneSummoning
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -106,6 +112,7 @@
     invokePhrase: "Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!"
   - type: CultRuneRevive
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -123,6 +130,7 @@
     invokePhrase: "Khari'd! Eske'te tannin!"
   - type: CultRuneBarrier
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: CollideRune
@@ -141,6 +149,7 @@
   - type: CultRuneBloodBoil
     projectilePrototype: ProjectileCult
   - type: CultRune
+  - type: Concealable
 
 - type: entity
   parent: BaseRune
@@ -155,4 +164,5 @@
   - type: Appearance
   - type: CultRuneBase
     invokePhrase: "TOK-LYR RQA-NAP G'OLT-ULOFT!"
+    cultistGatheringRange: 1.5
   - type: CultRuneApocalypse

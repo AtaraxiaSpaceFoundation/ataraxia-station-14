@@ -114,4 +114,11 @@ public sealed class RandomGiftSystem : EntitySystem
             _possibleGiftsSafe.Add(proto.ID);
         }
     }
+
+    // WD START
+    public string? PickRandomItem()
+    {
+        return _possibleGiftsSafe.Count == 0 ? null : _random.Pick(_possibleGiftsSafe);
+    }
+    // WD END
 }
