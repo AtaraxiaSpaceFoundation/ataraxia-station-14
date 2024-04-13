@@ -268,8 +268,10 @@
 - type: emote
   id: Beep
   category: Vocal
-  chatMessages: [beeps.]
+  chatMessages: [пищит]
   chatTriggers:
+    - писк
+    - пищит
     - beep
     - beep!
     - beep.
