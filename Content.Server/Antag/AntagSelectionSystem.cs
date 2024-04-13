@@ -109,7 +109,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
         if (!IsSessionEligible(session, antagPrototype, ignorePreferences))
             return false;
 
-        if (_gulag.IsUserGulaged(session.UserId, out _)) // WD
+        if (_gulag.IsUserGulagged(session.UserId, out _)) // WD
             return false;
 
         //Ensure the player has a mind
@@ -178,7 +178,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             return false;
 
         // No antag roles for gulaged users
-        if (_gulag.IsUserGulaged(session.UserId, out _))
+        if (_gulag.IsUserGulagged(session.UserId, out _))
         {
             return false;
         }

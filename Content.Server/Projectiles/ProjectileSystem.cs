@@ -7,6 +7,7 @@ using Content.Shared.Database;
 using Content.Shared.Projectiles;
 using Content.Shared._White;
 using Robust.Shared.Configuration;
+using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Player;
 using Robust.Shared.Physics.Events;
 
@@ -61,7 +62,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             return;
         }
 
-        if (TryHandleProjectile(target, (uid, component)))
+        if (TryHandleProjectile(target, (uid, component), args.OtherFixture))
         {
             var direction = args.OurBody.LinearVelocity.Normalized();
             _sharedCameraRecoil.KickCamera(target, direction);
@@ -72,7 +73,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
     /// Tries to handle a projectile interacting with the target.
     /// </summary>
     /// <returns>True if the target isn't deleted.</returns>
-    public bool TryHandleProjectile(EntityUid target, Entity<ProjectileComponent> projectile)
+    public bool TryHandleProjectile(EntityUid target, Entity<ProjectileComponent> projectile, Fixture? otherFixture)
     {
         var uid = projectile.Owner;
         var component = projectile.Comp;
@@ -103,7 +104,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         component.DamagedEntity = true;
 
-        var afterProjectileHitEvent = new AfterProjectileHitEvent(component.Damage, target);
+        var afterProjectileHitEvent = new AfterProjectileHitEvent(component.Damage, target, otherFixture);
         RaiseLocalEvent(uid, ref afterProjectileHitEvent);
 
         if (component.DeleteOnCollide)

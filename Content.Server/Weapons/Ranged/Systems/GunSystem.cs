@@ -187,7 +187,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 continue;
             }
 
-            _projectile.TryHandleProjectile(target, (ammoUid, projectileComponent));
+            _projectile.TryHandleProjectile(target, (ammoUid, projectileComponent), null);
             // Even this deletion handling is mega sussy.
             Del(ammoUid);
         }
