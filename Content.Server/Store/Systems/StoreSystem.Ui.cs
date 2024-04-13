@@ -15,6 +15,7 @@ using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Store.Systems;
 
@@ -29,6 +30,7 @@ public sealed partial class StoreSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private void InitializeUi()
     {
@@ -82,7 +84,11 @@ public sealed partial class StoreSystem
     /// <param name="store">The store entity itself</param>
     /// <param name="component">The store component being refreshed.</param>
     /// <param name="ui"></param>
-    public void UpdateUserInterface(EntityUid? user, EntityUid store, StoreComponent? component = null, PlayerBoundUserInterface? ui = null)
+    public void UpdateUserInterface(
+        EntityUid? user,
+        EntityUid store,
+        StoreComponent? component = null,
+        PlayerBoundUserInterface? ui = null)
     {
         if (!Resolve(store, ref component))
             return;
@@ -93,7 +99,8 @@ public sealed partial class StoreSystem
         //this is the person who will be passed into logic for all listing filtering.
         if (user != null) //if we have no "buyer" for this update, then don't update the listings
         {
-            component.LastAvailableListings = GetAvailableListings(component.AccountOwner ?? user.Value, store, component).ToHashSet();
+            component.LastAvailableListings =
+                GetAvailableListings(component.AccountOwner ?? user.Value, store, component).ToHashSet();
         }
 
         //dictionary for all currencies, including 0 values for currencies on the whitelist
@@ -102,8 +109,8 @@ public sealed partial class StoreSystem
         {
             allCurrency.Add(supported, FixedPoint2.Zero);
 
-            if (component.Balance.ContainsKey(supported))
-                allCurrency[supported] = component.Balance[supported];
+            if (component.Balance.TryGetValue(supported, out var value))
+                allCurrency[supported] = value;
         }
 
         // TODO: if multiple users are supposed to be able to interact with a single BUI & see different
@@ -111,7 +118,9 @@ public sealed partial class StoreSystem
 
         // only tell operatives to lock their uplink if it can be locked
         var showFooter = HasComp<RingerUplinkComponent>(store);
-        var state = new StoreUpdateState(component.LastAvailableListings, allCurrency, showFooter, component.RefundAllowed);
+        var state = new StoreUpdateState(component.LastAvailableListings, allCurrency, showFooter,
+            component.RefundAllowed);
+
         _ui.SetUiState(ui, state);
     }
 
@@ -166,8 +175,6 @@ public sealed partial class StoreSystem
 
         if (!IsOnStartingMap(uid, component) || !component.Refunds) // Miracle edit
             component.RefundAllowed = false;
-        else
-            component.RefundAllowed = true;
 
         //subtract the cash
         foreach (var (currency, value) in listing.Cost)
@@ -202,13 +209,11 @@ public sealed partial class StoreSystem
         //give action
         if (!string.IsNullOrWhiteSpace(listing.ProductAction))
         {
-            EntityUid? actionId;
             // I guess we just allow duplicate actions?
             // Allow duplicate actions and just have a single list buy for the buy-once ones.
-            if (!_mind.TryGetMind(buyer, out var mind, out _))
-                actionId = _actions.AddAction(buyer, listing.ProductAction);
-            else
-                actionId = _actionContainer.AddAction(mind, listing.ProductAction);
+            var actionId = !_mind.TryGetMind(buyer, out var mind, out _)
+                ? _actions.AddAction(buyer, listing.ProductAction)
+                : _actionContainer.AddAction(mind, listing.ProductAction);
 
             // Add the newly bought action entity to the list of bought entities
             // And then add that action entity to the relevant product upgrade listing, if applicable
@@ -251,15 +256,17 @@ public sealed partial class StoreSystem
                 HandleRefundComp(uid, component, upgradeActionId.Value);
         }
 
-        //broadcast event
         if (listing.ProductEvent != null)
         {
-            RaiseLocalEvent(buyer, listing.ProductEvent);
+            if (!listing.RaiseProductEventOnUser)
+                RaiseLocalEvent(listing.ProductEvent);
+            else
+                RaiseLocalEvent(buyer, listing.ProductEvent);
         }
 
         //log dat shit.
         _admin.Add(LogType.StorePurchase, LogImpact.Low,
-            $"{ToPrettyString(buyer):player} purchased listing \"{Loc.GetString(listing.Name)}\" from {ToPrettyString(uid)}");
+            $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _prototypeManager)}\" from {ToPrettyString(uid)}");
 
         listing.PurchaseAmount++; //track how many times something has been purchased
         _audio.PlayEntity(component.BuySuccessSound, msg.Session, uid); //cha-ching!
@@ -316,7 +323,6 @@ public sealed partial class StoreSystem
         UpdateUserInterface(buyer, uid, component);
     }
 
-
     public void CloseUi(EntityUid user, StoreComponent component)
     {
         if (!TryComp<ActorComponent>(user, out var actor))
@@ -328,7 +334,6 @@ public sealed partial class StoreSystem
     private void OnRequestRefund(EntityUid uid, StoreComponent component, StoreRequestRefundMessage args)
     {
         // TODO: Remove guardian/holopara
-
         if (args.Session.AttachedEntity is not { Valid: true } buyer)
             return;
 
@@ -341,7 +346,10 @@ public sealed partial class StoreSystem
         if (!component.RefundAllowed || component.BoughtEntities.Count == 0)
             return;
 
-        for (var i = component.BoughtEntities.Count - 1; i >= 0; i--) // MIRACLE FIX CRINGE
+        _admin.Add(LogType.StoreRefund, LogImpact.Low,
+            $"{ToPrettyString(buyer):player} has refunded their purchases from {ToPrettyString(uid):store}");
+
+        for (var i = component.BoughtEntities.Count - 1; i >= 0; i--)
         {
             var purchase = component.BoughtEntities[i];
 
@@ -350,7 +358,7 @@ public sealed partial class StoreSystem
 
             component.BoughtEntities.RemoveAt(i);
 
-            if (_actions.TryGetActionData(purchase, out var actionComponent))
+            if (_actions.TryGetActionData(purchase, out var actionComponent, logError: false))
             {
                 _actionContainer.RemoveAction(purchase, actionComponent);
             }
@@ -358,14 +366,17 @@ public sealed partial class StoreSystem
             EntityManager.DeleteEntity(purchase);
         }
 
+        component.BoughtEntities.Clear();
+
         foreach (var (currency, value) in component.BalanceSpent)
         {
             component.Balance[currency] += value;
         }
+
         // Reset store back to its original state
         RefreshAllListings(component);
-        component.BalanceSpent = new();
-        RaiseLocalEvent(buyer, new ChangelingRefundEvent {Store = uid}); // WD
+        component.BalanceSpent = new Dictionary<string, FixedPoint2>();
+        RaiseLocalEvent(buyer, new ChangelingRefundEvent { Store = uid }); // WD
         UpdateUserInterface(buyer, uid, component);
     }
 

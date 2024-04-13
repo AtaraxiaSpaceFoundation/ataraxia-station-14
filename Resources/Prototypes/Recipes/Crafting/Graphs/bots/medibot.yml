@@ -14,7 +14,7 @@
       - tag: DiscreteHealthAnalyzer
         icon:
           sprite: Objects/Specific/Medical/healthanalyzer.rsi
-          state: analyzer
+          state: icon
         name: анализатор здоровья
         doAfter: 2
       - tag: ProximitySensor

@@ -8,7 +8,7 @@
 <Box>Необходимо:</Box>
 <Box>
 <GuideEntityEmbed Entity="AmeController"/>
-<GuideEntityEmbed Entity="AmePart"/>
+<GuideEntityEmbed Entity="AmePartFlatpack"/>
 <GuideEntityEmbed Entity="AmeJar"/>
 </Box>
 

@@ -19,7 +19,7 @@ public sealed class ChairLeakAspect : AspectSystem<ChairLeakAspectComponent>
         while (query.MoveNext(out var ent, out _))
         {
             if (TryComp(ent, out StrapComponent? strap))
-                _buckle.StrapRemoveAll(strap);
+                _buckle.StrapRemoveAll(ent, strap);
 
             EntityManager.DeleteEntity(ent);
         }

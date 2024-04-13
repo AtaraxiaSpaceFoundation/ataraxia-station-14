@@ -30,7 +30,7 @@ emergency-shuttle-docked =
        *[other] _
     }. Он улетит через { $time } секунд.
 emergency-shuttle-good-luck = Эвакуационный шаттл не может найти станцию. Удачи.
-emergency-shuttle-nearby = Эвакуационный шаттл не может найти подходящий стыковочный шлюз. Он дрейфует около станции, сторона: { $direction }.
+emergency-shuttle-nearby = Эвакуационный шаттл не может найти подходящий стыковочный шлюз. Он дрейфует { $direction }.
 emergency_shuttle_meteor_available = Установлена связь с эвакуационным шаттлом. Он может быть вызван.
 emergency_shuttle-announce-toggle =
     "Внимание! { $admin } { $value ->

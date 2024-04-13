@@ -3,7 +3,6 @@ using System.Numerics;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.Doors.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Body.Components;
@@ -37,7 +36,6 @@ public sealed class MagicSystem : EntitySystem
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly DoorBoltSystem _boltsSystem = default!;
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
@@ -173,7 +171,7 @@ public sealed class MagicSystem : EntitySystem
         foreach (var entity in _lookup.GetEntitiesInRange(coords, args.Range))
         {
             if (TryComp<DoorBoltComponent>(entity, out var bolts))
-                _boltsSystem.SetBoltsDown(entity, bolts, false);
+                _doorSystem.SetBoltsDown((entity, bolts), false);
 
             if (TryComp<DoorComponent>(entity, out var doorComp) && doorComp.State is not DoorState.Open)
                 _doorSystem.StartOpening(entity);
@@ -236,7 +234,7 @@ public sealed class MagicSystem : EntitySystem
 
     public List<EntityCoordinates> GetCasterPosition(TransformComponent casterXform)
     {
-        return new List<EntityCoordinates>(1) { casterXform.Coordinates };
+        return [casterXform.Coordinates];
     }
 
     public List<EntityCoordinates> GetPositionsInFront(TransformComponent casterXform)

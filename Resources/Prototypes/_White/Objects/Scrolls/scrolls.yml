@@ -4,6 +4,7 @@
   name: "Magic Scroll"
   description: "A relic of arcane lore, this ancient parchment bears witness to countless mystical incantations and forgotten spells."
   noSpawn: true
+  abstract: true
   components:
     - type: Sprite
       sprite: White/Misc/scrolls.rsi

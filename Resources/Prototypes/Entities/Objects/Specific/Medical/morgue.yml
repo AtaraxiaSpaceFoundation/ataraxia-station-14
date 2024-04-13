@@ -1,5 +1,5 @@
 - type: entity
-  id: BodyBagContainer
+  id: BodyBag
   parent: BaseFoldable
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
@@ -40,7 +40,7 @@
           bounds: "-0.25,-0.4,0.25,0.1"
         density: 20
         mask:
-        - Impassable
+        - ItemMask
   - type: EntityStorage
     isCollidableWhenOpen: true
     closeSound:
@@ -85,7 +85,7 @@
   id: BodyBagFolded
   name: body bag
   description: A plastic bag designed for the storage and transportation of cadavers to stop body decomposition.
-  parent: BodyBagContainer
+  parent: BodyBag
   suffix: folded
   components:
   - type: Foldable
@@ -101,6 +101,8 @@
   name: ash
   description: This used to be something, but now it's not.
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Materials/materials.rsi
     state: ash
@@ -118,6 +120,8 @@
   - type: SolutionSpiker
     sourceSolution: food
     ignoreEmpty: true
+  - type: ScoopableSolution
+    solution: food
   - type: Extractable
     grindableSolutionName: food
 

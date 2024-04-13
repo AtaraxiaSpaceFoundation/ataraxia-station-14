@@ -1,9 +1,8 @@
 ent-BulletImpactEffect = { "" }
     .desc = { "" }
-    .suffix = { "" }
 ent-BulletImpactEffectDisabler = { "" }
     .desc = { "" }
-    .suffix = { "" }
+ent-BulletImpactEffectOrangeDisabler = { "" }
+    .desc = { "" }
 ent-BulletImpactEffectKinetic = { "" }
     .desc = { "" }
-    .suffix = { "" }

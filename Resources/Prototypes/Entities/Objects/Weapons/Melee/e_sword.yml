@@ -82,6 +82,8 @@
     enabled: false
     reflects:
       - Energy
+  - type: IgnitionSource
+    temperature: 700
 
 - type: entity
   name: energy sword
@@ -234,7 +236,7 @@
   name: double energy sword
   parent: EnergySwordBase
   id: EnergySwordDouble
-  description: A very dangerous doubled energy sword. Can be stored in pockets when turned off. Makes a lot of noise when used or turned on.
+  description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
     - type: Sprite
       sprite: Objects/Weapons/Melee/double_esword.rsi

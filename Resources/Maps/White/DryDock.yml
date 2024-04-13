@@ -7713,6 +7713,7 @@ entities:
     - type: MaterialStorage
     - type: BecomesStation
       id: DryDockStation
+    - type: MaterialStorage
   - uid: 14621
     components:
     - type: MetaData

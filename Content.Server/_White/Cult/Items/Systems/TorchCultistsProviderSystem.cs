@@ -1,16 +1,16 @@
 ﻿using Content.Server.Atmos.EntitySystems;
 using Content.Server.Popups;
-using Content.Server.Pulling;
 using Content.Server.Station.Systems;
 using Content.Server.Station.Components;
 using Content.Server._White.Cult.Items.Components;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Mind.Components;
 using Content.Shared.Physics;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Items;
+using Content.Shared.Movement.Pulling.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -18,7 +18,6 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
 namespace Content.Server._White.Cult.Items.Systems;
 
@@ -36,6 +35,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private readonly MapSystem _map = default!;
 
     public override void Initialize()
     {
@@ -104,18 +104,18 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
 
         provider.ItemSelected = args.Target;
 
-        var cultists = EntityQuery<CultistComponent>();
+        var cultistsQuery = EntityQueryEnumerator<CultistComponent>();
         var list = new Dictionary<string, string>();
 
-        foreach (var cultist in cultists)
+        while (cultistsQuery.MoveNext(out var cultistUid, out _))
         {
-            if (!TryComp<MetaDataComponent>(cultist.Owner, out var meta))
+            if (!TryComp<MetaDataComponent>(cultistUid, out var meta))
                 return;
 
-            if (cultist.Owner == args.User)
+            if (cultistUid == args.User)
                 continue;
 
-            list.Add(meta.Owner.ToString(), meta.EntityName);
+            list.Add(cultistUid.ToString(), meta.EntityName);
         }
 
         if (list.Count == 0)
@@ -138,12 +138,12 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
         TorchWindowItemSelectedMessage args)
     {
         var entityUid = args.Session.AttachedEntity;
-        var cultists = EntityQuery<CultistComponent>();
+        var cultistsQuery = EntityQueryEnumerator<CultistComponent>();
 
-        foreach (var cultist in cultists)
+        while (cultistsQuery.MoveNext(out var cultistUid, out _))
         {
-            if (cultist.Owner.ToString() == args.EntUid)
-                entityUid = cultist.Owner;
+            if (cultistUid.ToString() == args.EntUid)
+                entityUid = cultistUid;
         }
 
         if (entityUid == args.Session.AttachedEntity && entityUid != null)
@@ -182,7 +182,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             return;
         }
 
-        if (_pulling.GetPulled(args.User) != args.Target.Value)
+        if (_pulling.TryGetPulledEntity(args.User, out var pulled) || pulled != args.Target.Value)
         {
             return;
         }
@@ -190,8 +190,8 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
         var ownerTransform = Transform(args.User);
 
         if (_station.GetStationInMap(ownerTransform.MapID) is not { } station ||
-            !TryComp<StationDataComponent>(station, out var data) ||
-            _station.GetLargestGrid(data) is not { } grid)
+            !TryComp<StationDataComponent>(station, out var stationData) ||
+            _station.GetLargestGrid(stationData) is not { } grid)
         {
             if (ownerTransform.GridUid == null)
                 return;
@@ -199,13 +199,13 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             grid = ownerTransform.GridUid.Value;
         }
 
-        if (!TryComp<MapGridComponent>(grid, out var gridComp))
+        if (!TryComp<MapGridComponent>(grid, out var mapGrid))
         {
             return;
         }
 
         var gridTransform = Transform(grid);
-        var gridBounds = gridComp.LocalAABB.Scale(0.7f); // чтобы не заспавнить на самом краю станции
+        var gridBounds = mapGrid.LocalAABB.Scale(0.7f); // чтобы не заспавнить на самом краю станции
 
         var targetCoords = gridTransform.Coordinates;
 
@@ -217,8 +217,8 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             var tile = new Vector2i(randomX, randomY);
 
             // no air-blocked areas.
-            if (_atmosphere.IsTileSpace(grid, gridTransform.MapUid, tile, mapGridComp: gridComp) ||
-                _atmosphere.IsTileAirBlocked(grid, tile, mapGridComp: gridComp))
+            if (_atmosphere.IsTileSpace(grid, gridTransform.MapUid, tile) ||
+                _atmosphere.IsTileAirBlocked(grid, tile, mapGridComp: mapGrid))
             {
                 continue;
             }
@@ -226,7 +226,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             // don't spawn inside of solid objects
             var physQuery = GetEntityQuery<PhysicsComponent>();
             var valid = true;
-            foreach (var ent in gridComp.GetAnchoredEntities(tile))
+            foreach (var ent in _map.GetAnchoredEntities(grid, mapGrid, tile))
             {
                 if (!physQuery.TryGetComponent(ent, out var body))
                     continue;
@@ -243,7 +243,7 @@ public sealed class TorchCultistsProviderSystem : EntitySystem
             if (!valid)
                 continue;
 
-            targetCoords = gridComp.GridTileToLocal(tile);
+            targetCoords = _map.GridTileToLocal(grid, mapGrid, tile);
             break;
         }
 

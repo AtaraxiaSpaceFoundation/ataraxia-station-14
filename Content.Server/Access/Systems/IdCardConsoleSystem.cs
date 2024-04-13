@@ -12,6 +12,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using static Content.Shared.Access.Components.IdCardConsoleComponent;
+using Content.Shared.Access;
 
 namespace Content.Server.Access.Systems;
 
@@ -55,11 +56,11 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             return;
 
         var privilegedIdName = string.Empty;
-        string[]? possibleAccess = null;
+        List<ProtoId<AccessLevelPrototype>>? possibleAccess = null;
         if (component.PrivilegedIdSlot.Item is { Valid: true } item)
         {
             privilegedIdName = EntityManager.GetComponent<MetaDataComponent>(item).EntityName;
-            possibleAccess = _accessReader.FindAccessTags(item).ToArray();
+            possibleAccess = _accessReader.FindAccessTags(item).ToList();
         }
 
         IdCardConsoleBoundUserInterfaceState newState;
@@ -84,7 +85,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             var targetIdComponent = EntityManager.GetComponent<IdCardComponent>(targetId);
             var targetAccessComponent = EntityManager.GetComponent<AccessComponent>(targetId);
 
-            var jobProto = string.Empty;
+            var jobProto = new ProtoId<AccessLevelPrototype>(string.Empty);
             var jobIcon = targetIdComponent.JobIcon; //WD-EDIT
 
             if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
@@ -101,7 +102,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 true,
                 targetIdComponent.FullName,
                 targetIdComponent.JobTitle,
-                targetAccessComponent.Tags.ToArray(),
+                targetAccessComponent.Tags.ToList(),
                 possibleAccess,
                 jobProto,
                 privilegedIdName,
@@ -122,8 +123,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         EntityUid uid,
         string newFullName,
         string newJobTitle,
-        List<string> newAccessList,
-        string newJobProto,
+        List<ProtoId<AccessLevelPrototype>> newAccessList,
+        ProtoId<AccessLevelPrototype> newJobProto,
         string? newJobIcon,
         EntityUid player,
         IdCardConsoleComponent? component = null)
@@ -153,7 +154,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             return;
         }
 
-        var oldTags = _access.TryGetTags(targetId) ?? new List<string>();
+        var oldTags = _access.TryGetTags(targetId) ?? new List<ProtoId<AccessLevelPrototype>>();
         oldTags = oldTags.ToList();
 
         var privilegedId = component.PrivilegedIdSlot.Item;
@@ -209,7 +210,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         EntityUid uid,
         EntityUid targetId,
         string newFullName,
-        string newJobTitle,
+        ProtoId<AccessLevelPrototype> newJobTitle,
         JobPrototype? newJobProto,
         string? newJobIcon) // WD EDIT
     {

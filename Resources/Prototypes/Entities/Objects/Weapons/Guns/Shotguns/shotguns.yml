@@ -43,6 +43,7 @@
         ents: []
   - type: StaticPrice
     price: 500
+  - type: Execution
 
 - type: entity
   name: Bulldog
@@ -99,6 +100,7 @@
   - type: Appearance
   - type: StaticPrice
     price: 500
+  - type: Execution
 
 - type: entity
   name: double-barreled shotgun

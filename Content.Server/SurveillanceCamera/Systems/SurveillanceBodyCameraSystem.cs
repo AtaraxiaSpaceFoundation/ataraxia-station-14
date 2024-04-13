@@ -1,4 +1,5 @@
 using Content.Server.Popups;
+using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Examine;
@@ -7,7 +8,7 @@ using Content.Shared.Item;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Toggleable;
 
-namespace Content.Server.SurveillanceCamera;
+namespace Content.Server.SurveillanceCamera.Systems;
 
 /// <summary>
 /// This handles the bodycamera all itself. Activation, examine,init, powercell stuff.
@@ -20,6 +21,7 @@ public sealed class SurveillanceBodyCameraSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly ClothingSystem _clothing = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
 
     public override void Initialize()
     {
@@ -55,7 +57,7 @@ public sealed class SurveillanceBodyCameraSystem : EntitySystem
             if (!surComp.Active)
                 continue;
 
-            if (!battery.TryUseCharge(cam.Wattage * frameTime))
+            if (!_battery.TryUseCharge(uid, cam.Wattage * frameTime))
             {
                 _surveillanceCameras.SetActive(uid, false, surComp);
                 AppearanceChange(uid, surComp.Active);

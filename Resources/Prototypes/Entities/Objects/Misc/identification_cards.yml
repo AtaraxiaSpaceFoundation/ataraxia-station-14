@@ -601,8 +601,8 @@
   id: AgentIDCard
   suffix: Agent
   components:
-  - type: IdCard
-    jobTitle: ассистент
+  - type: PresetIdCard
+    job: Passenger
   - type: Access
     tags:
     - Maintenance

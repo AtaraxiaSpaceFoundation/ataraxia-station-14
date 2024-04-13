@@ -436,8 +436,7 @@ public partial class CultSystem
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(2),
             new ShacklesEvent(), args.Performer, args.Target)
         {
-            BreakOnTargetMove = true,
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             BreakOnDamage = true
         });
 

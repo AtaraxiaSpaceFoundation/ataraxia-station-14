@@ -6,10 +6,6 @@ using Content.Shared.Rejuvenate;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Movement.Components;
-using Content.Shared.Alert;
-using Content.Shared.Movement.Systems;
-using Content.Shared.Rejuvenate;
 using Content.Shared._White.Mood;
 
 namespace Content.Shared.Nutrition.EntitySystems;
@@ -23,18 +19,13 @@ public sealed class ThirstSystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
 
-    private ISawmill _sawmill = default!;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        _sawmill = Logger.GetSawmill("thirst");
-
-        //SubscribeLocalEvent<ThirstComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed); WD-edit
+        SubscribeLocalEvent<ThirstComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
         SubscribeLocalEvent<ThirstComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ThirstComponent, RejuvenateEvent>(OnRejuvenate);
-        SubscribeLocalEvent<ThirstComponent, EntityUnpausedEvent>(OnUnpaused);
     }
 
     private void OnMapInit(EntityUid uid, ThirstComponent component, MapInitEvent args)
@@ -73,7 +64,7 @@ public sealed class ThirstSystem : EntitySystem
 
     private ThirstThreshold GetThirstThreshold(ThirstComponent component, float amount)
     {
-        ThirstThreshold result = ThirstThreshold.Dead;
+        var result = ThirstThreshold.Dead;
         var value = component.ThirstThresholds[ThirstThreshold.OverHydrated];
         foreach (var threshold in component.ThirstThresholds)
         {
@@ -99,22 +90,6 @@ public sealed class ThirstSystem : EntitySystem
             component.ThirstThresholds[ThirstThreshold.OverHydrated]
         );
         Dirty(uid, component);
-    }
-
-    private bool IsMovementThreshold(ThirstThreshold threshold)
-    {
-        switch (threshold)
-        {
-            case ThirstThreshold.Dead:
-            case ThirstThreshold.Parched:
-                return true;
-            case ThirstThreshold.Thirsty:
-            case ThirstThreshold.Okay:
-            case ThirstThreshold.OverHydrated:
-                return false;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(threshold), threshold, null);
-        }
     }
 
     private void UpdateEffects(EntityUid uid, ThirstComponent component)
@@ -169,7 +144,7 @@ public sealed class ThirstSystem : EntitySystem
                 return;
 
             default:
-                _sawmill.Error($"No thirst threshold found for {component.CurrentThirstThreshold}");
+                Log.Error($"No thirst threshold found for {component.CurrentThirstThreshold}");
                 throw new ArgumentOutOfRangeException($"No thirst threshold found for {component.CurrentThirstThreshold}");
         }
     }
@@ -195,10 +170,5 @@ public sealed class ThirstSystem : EntitySystem
             thirst.CurrentThirstThreshold = calculatedThirstThreshold;
             UpdateEffects(uid, thirst);
         }
-    }
-
-    private void OnUnpaused(EntityUid uid, ThirstComponent component, ref EntityUnpausedEvent args)
-    {
-        component.NextUpdateTime += args.PausedTime;
     }
 }

@@ -31,7 +31,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
-using Content.Shared.Pulling.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
@@ -40,7 +39,8 @@ using Content.Shared._White.Cult.UI;
 using Content.Shared.Cuffs;
 using Content.Shared.GameTicking;
 using Content.Shared.Mindshield.Components;
-using Content.Shared.Pulling;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -71,10 +71,9 @@ public sealed partial class CultSystem : EntitySystem
     [Dependency] private readonly GunSystem _gunSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly FlammableSystem _flammableSystem = default!;
-    [Dependency] private readonly SharedPullingSystem _pulling = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
-
 
     public override void Initialize()
     {
@@ -145,7 +144,7 @@ public sealed partial class CultSystem : EntitySystem
     private readonly SoundPathSpecifier _apocRuneEndDrawing = new("/Audio/White/Cult/finisheddraw.ogg");
     private readonly SoundPathSpecifier _narsie40Sec = new("/Audio/White/Cult/40sec.ogg");
 
-    private Entity<AudioComponent>? _narsieSummonningAudio = null;
+    private Entity<AudioComponent>? _narsieSummonningAudio;
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
     {
@@ -153,7 +152,7 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Rune draw start ----
+     * Rune draw start ----
      */
 
     private void OnRuneDrawAttempt(Entity<RuneDrawerProviderComponent> ent, ref ActivatableUIOpenAttemptEvent args)
@@ -176,17 +175,13 @@ public sealed partial class CultSystem : EntitySystem
         var runePrototype = args.SelectedItem;
         var whoCalled = args.Session.AttachedEntity.Value;
 
-        if (!TryComp<ActorComponent>(whoCalled, out var actorComponent))
+        if (!TryComp<ActorComponent>(whoCalled, out _))
             return;
 
-        if (!TryDraw(whoCalled, runePrototype))
-            return;
-
-        /*if (component.UserInterface != null)
-            _ui.CloseUi(component.UserInterface, actorComponent.PlayerSession);*/
+        TryDraw(whoCalled, runePrototype);
     }
 
-    private bool TryDraw(EntityUid whoCalled, string runePrototype)
+    private void TryDraw(EntityUid whoCalled, string runePrototype)
     {
         _timeToDraw = 4f;
 
@@ -194,17 +189,17 @@ public sealed partial class CultSystem : EntitySystem
             _timeToDraw /= 2;
 
         if (!IsAllowedToDraw(whoCalled))
-            return false;
+            return;
 
         if (runePrototype == ApocalypseRunePrototypeId)
         {
             if (!_mindSystem.TryGetMind(whoCalled, out _, out var mind) ||
                 mind.Session is not { } playerSession)
-                return false;
+                return;
 
             _euiManager.OpenEui(new ApocalypseRuneEui(whoCalled, _entityManager), playerSession);
 
-            return true;
+            return;
         }
 
         var ev = new CultDrawEvent
@@ -214,15 +209,14 @@ public sealed partial class CultSystem : EntitySystem
 
         var argsDoAfterEvent = new DoAfterArgs(_entityManager, whoCalled, _timeToDraw, ev, whoCalled)
         {
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             NeedHand = true
         };
 
         if (!_doAfterSystem.TryStartDoAfter(argsDoAfterEvent))
-            return false;
+            return;
 
         _audio.PlayPvs("/Audio/White/Cult/butcher.ogg", whoCalled, AudioParams.Default.WithMaxDistance(2f));
-        return true;
     }
 
     private void OnDraw(EntityUid uid, CultistComponent comp, CultDrawEvent args)
@@ -284,7 +278,7 @@ public sealed partial class CultSystem : EntitySystem
             return;
         }
 
-        var entityPrototype = _entityManager.GetComponent<MetaDataComponent>(args.Used).EntityPrototype;
+        var entityPrototype = MetaData(args.Used).EntityPrototype;
 
         if (entityPrototype == null)
             return;
@@ -312,7 +306,7 @@ public sealed partial class CultSystem : EntitySystem
 
         var argsDoAfterEvent = new DoAfterArgs(_entityManager, user, time, ev, target)
         {
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             NeedHand = true
         };
 
@@ -341,9 +335,15 @@ public sealed partial class CultSystem : EntitySystem
             return;
         }
 
+        var cultRule = EntityManager.EntityQuery<CultRuleComponent>().FirstOrDefault();
+        if (cultRule is null)
+        {
+            return;
+        }
+
         var solutions = _solutionContainerSystem.EnumerateSolutions((args.OtherEntity, solution));
 
-        if (solutions.Any(x => x.Solution.Comp.Solution.ContainsPrototype(CultRuleComponent.HolyWaterReagent)))
+        if (solutions.Any(x => x.Solution.Comp.Solution.ContainsPrototype(cultRule.HolyWaterReagent)))
         {
             Del(uid);
         }
@@ -352,7 +352,7 @@ public sealed partial class CultSystem : EntitySystem
     //Erasing end
 
     /*
-    * Rune draw end ----
+     * Rune draw end ----
      */
 
     //------------------------------------------//
@@ -407,8 +407,8 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Base End ----
-    */
+     * Base End ----
+     */
 
     //------------------------------------------//
 
@@ -470,7 +470,7 @@ public sealed partial class CultSystem : EntitySystem
         if (target == null)
             return false;
 
-        return mindId == target.Value.Owner;
+        return mindId == target.Owner;
     }
 
     private bool Sacrifice(
@@ -536,7 +536,7 @@ public sealed partial class CultSystem : EntitySystem
             return false;
 
         _stunSystem.TryStun(target, TimeSpan.FromSeconds(2f), false);
-        _ruleSystem.MakeCultist(actorComponent.PlayerSession);
+        _ruleSystem.AdminMakeCultist(target);
         HealCultist(target);
 
         if (TryComp(target, out CuffableComponent? cuffs) && cuffs.Container.ContainedEntities.Count >= 1)
@@ -559,7 +559,7 @@ public sealed partial class CultSystem : EntitySystem
     //------------------------------------------//
 
     /*
-    * Buff Rune Start ----
+     * Buff Rune Start ----
      */
 
     private void OnInvokeBuff(EntityUid uid, CultRuneBuffComponent component, CultRuneInvokeEvent args)
@@ -604,13 +604,13 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Empower Rune End ----
+     * Empower Rune End ----
      */
 
     //------------------------------------------//
 
     /*
-    * Teleport rune start ----
+     * Teleport rune start ----
      */
 
     private void OnInvokeTeleport(EntityUid uid, CultRuneTeleportComponent component, CultRuneInvokeEvent args)
@@ -628,22 +628,19 @@ public sealed partial class CultSystem : EntitySystem
 
     private bool Teleport(EntityUid rune, EntityUid user, List<EntityUid>? victims = null)
     {
-        var runes = EntityQuery<CultRuneTeleportComponent>();
+        var runesQuery = EntityQueryEnumerator<CultRuneTeleportComponent>();
         var list = new List<int>();
         var labels = new List<string>();
 
-        foreach (var teleportRune in runes)
+        while (runesQuery.MoveNext(out var runeUid, out var teleportComponent))
         {
-            if (!TryComp<CultRuneTeleportComponent>(teleportRune.Owner, out var teleportComponent))
-                continue;
-
             if (teleportComponent.Label == null)
                 continue;
 
-            if (teleportRune.Owner == rune)
+            if (runeUid == rune)
                 continue;
 
-            if (!int.TryParse(teleportRune.Owner.ToString(), out var intValue))
+            if (!int.TryParse(runeUid.ToString(), out var intValue))
                 continue;
 
             list.Add(intValue);
@@ -715,13 +712,13 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Teleport rune end ----
+     * Teleport rune end ----
      */
 
     //------------------------------------------//
 
     /*
-    * Apocalypse rune start ----
+     * Apocalypse rune start ----
      */
 
     private void OnInvokeApocalypse(EntityUid uid, CultRuneApocalypseComponent component, CultRuneInvokeEvent args)
@@ -764,7 +761,7 @@ public sealed partial class CultSystem : EntitySystem
 
         var argsDoAfterEvent = new DoAfterArgs(_entityManager, user, TimeSpan.FromSeconds(40), ev, user)
         {
-            BreakOnUserMove = true
+            BreakOnMove = true
         };
 
         if (!_doAfterSystem.TryStartDoAfter(argsDoAfterEvent))
@@ -810,14 +807,14 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Apocalypse rune end ----
+     * Apocalypse rune end ----
      */
 
     //------------------------------------------//
 
     /*
-   * Revive rune start ----
-       */
+     * Revive rune start ----
+     */
 
     private void OnInvokeRevive(EntityUid uid, CultRuneReviveComponent component, CultRuneInvokeEvent args)
     {
@@ -887,13 +884,13 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-* Revive rune end ----
-    */
+     * Revive rune end ----
+     */
 
     //------------------------------------------//
 
     /*
-    * Barrier rune start ----
+     * Barrier rune start ----
      */
 
     private void OnInvokeBarrier(EntityUid uid, CultRuneBarrierComponent component, CultRuneInvokeEvent args)
@@ -915,14 +912,14 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Barrier rune end ----
-    */
+     * Barrier rune end ----
+     */
 
     //------------------------------------------//
 
     /*
-   * Summoning rune start ----
-    */
+     * Summoning rune start ----
+     */
 
     private void OnInvokeSummoning(EntityUid uid, CultRuneSummoningComponent component, CultRuneInvokeEvent args)
     {
@@ -935,7 +932,7 @@ public sealed partial class CultSystem : EntitySystem
         HashSet<EntityUid> cultistHashSet,
         CultRuneSummoningComponent component)
     {
-        var cultists = EntityQuery<CultistComponent>();
+        var cultistsQuery = EntityQueryEnumerator<CultistComponent>();
         var list = new List<int>();
         var labels = new List<string>();
 
@@ -945,15 +942,13 @@ public sealed partial class CultSystem : EntitySystem
             return false;
         }
 
-        foreach (var cultist in cultists)
+        while (cultistsQuery.MoveNext(out var cultistUid, out _))
         {
-            if (!TryComp<MetaDataComponent>(cultist.Owner, out var meta))
+            var meta = MetaData(cultistUid);
+            if (cultistHashSet.Contains(cultistUid))
                 continue;
 
-            if (cultistHashSet.Contains(cultist.Owner))
-                continue;
-
-            if (!int.TryParse(cultist.Owner.ToString(), out var intValue))
+            if (!int.TryParse(cultistUid.ToString(), out var intValue))
                 continue;
 
             list.Add(intValue);
@@ -995,7 +990,7 @@ public sealed partial class CultSystem : EntitySystem
         var target = new EntityUid(args.SelectedItem);
         var baseRune = component.BaseRune;
 
-        if (!TryComp<SharedPullableComponent>(target, out var pullableComponent))
+        if (!TryComp<PullableComponent>(target, out var pullableComponent))
             return;
 
         if (!TryComp<CuffableComponent>(target, out var cuffableComponent))
@@ -1035,14 +1030,14 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-   * Summoning rune end ----
-    */
+     * Summoning rune end ----
+     */
 
     //------------------------------------------//
 
     /*
-   * BloodBoil rune start ----
-    */
+     * BloodBoil rune start ----
+     */
 
     private void OnInvokeBloodBoil(EntityUid uid, CultRuneBloodBoilComponent component, CultRuneInvokeEvent args)
     {
@@ -1157,14 +1152,14 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-   * BloodBoil rune end ----
-    */
+     * BloodBoil rune end ----
+     */
 
     //------------------------------------------//
 
     /*
-    * Empower rune start ----
-    */
+     * Empower rune start ----
+     */
 
     private void OnActiveInWorld(EntityUid uid, CultEmpowerComponent component, ActivateInWorldEvent args)
     {
@@ -1214,13 +1209,13 @@ public sealed partial class CultSystem : EntitySystem
     }
 
     /*
-    * Empower rune end ----
-    */
+     * Empower rune end ----
+     */
 
     //------------------------------------------//
 
     /*
-    * Helpers Start ----
+     * Helpers Start ----
      */
 
     private EntityUid? FindNearestTarget(EntityUid uid, List<EntityUid> targets)
@@ -1299,7 +1294,7 @@ public sealed partial class CultSystem : EntitySystem
             }
 
             damage = 40;
-            var pos = transComp.MapPosition;
+            var pos = _transform.GetMapCoordinates(uid, transComp);
             var x = (int) pos.X;
             var y = (int) pos.Y;
             var posText = $"(x = {x}, y = {y})";
@@ -1373,20 +1368,19 @@ public sealed partial class CultSystem : EntitySystem
     private void StopPulling(EntityUid target, bool checkPullable = true)
     {
         // break pulls before portal enter so we dont break shit
-        if (checkPullable && TryComp<SharedPullableComponent>(target, out var pullable) && pullable.BeingPulled)
+        if (checkPullable && TryComp<PullableComponent>(target, out var pullable) && pullable.BeingPulled)
         {
-            _pulling.TryStopPull(pullable);
+            _pulling.TryStopPull(target, pullable);
         }
 
-        if (TryComp<SharedPullerComponent>(target, out var pulling)
-            && pulling.Pulling != null &&
-            TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+        if (_pulling.TryGetPulledEntity(target, out var pulledEntity)
+            && TryComp(pulledEntity, out PullableComponent? subjectPulling))
         {
-            _pulling.TryStopPull(subjectPulling);
+            _pulling.TryStopPull(pulledEntity.Value, subjectPulling);
         }
     }
 
     /*
-    * Helpers End ----
+     * Helpers End ----
      */
 }

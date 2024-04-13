@@ -96,18 +96,7 @@
   showInVote: false
   rules:
     - Traitor
-    - BasicStationEventScheduler
-    - BasicRoundstartVariation
-
-- type: gamePreset
-  id: Changeling
-  alias:
-    - changeling
-  name: changeling-title
-  description: changeling-description
-  showInVote: true
-  rules:
-    - Changeling
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -133,6 +122,7 @@
   showInVote: true
   rules:
     - Nukeops
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -147,6 +137,7 @@
   showInVote: false
   rules:
     - Revolutionary
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 
@@ -183,11 +174,27 @@
   id: Cult
   alias:
     - cult
-  name: CULT
-  description: CULT
+  name: cult-title
+  description: cult-description
   showInVote: true
+  minPlayers: 20
   rules:
     - Cult
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Changeling
+  alias:
+    - changeling
+  name: changeling-title
+  description: changeling-description
+  showInVote: true
+  minPlayers: 15
+  rules:
+    - Changeling
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
 #WD EDIT END

@@ -8,7 +8,6 @@ using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio.Sources;
 using Robust.Shared.Configuration;
-using Robust.Shared.GameStates;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
@@ -17,12 +16,14 @@ namespace Content.Client._White.Jukebox;
 
 public sealed class JukeboxSystem : EntitySystem
 {
-
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IResourceCache _resource = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IAudioManager _clydeAudio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+
+    private const CollisionGroup CollisionMask = CollisionGroup.Impassable;
 
     private readonly Dictionary<JukeboxComponent, JukeboxAudio> _playingJukeboxes = new();
 
@@ -34,7 +35,6 @@ public sealed class JukeboxSystem : EntitySystem
 
         _cfg.OnValueChanged(WhiteCVars.JukeboxVolume, JukeboxVolumeChanged, true);
 
-        SubscribeLocalEvent<JukeboxComponent, ComponentHandleState>(OnStateChanged);
         SubscribeLocalEvent<JukeboxComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeNetworkEvent<TickerJoinLobbyEvent>(JoinLobby);
@@ -60,6 +60,7 @@ public sealed class JukeboxSystem : EntitySystem
     private void OnComponentRemoved(EntityUid uid, JukeboxComponent component, ComponentRemove args)
     {
         if (!_playingJukeboxes.TryGetValue(component, out var playingData)) return;
+
         playingData.PlayingStream.StopPlaying();
         _playingJukeboxes.Remove(component);
     }
@@ -67,36 +68,35 @@ public sealed class JukeboxSystem : EntitySystem
     private void OnStopPlaying(JukeboxStopPlaying ev)
     {
         if (!ev.JukeboxUid.HasValue) return;
-        if(!TryComp<JukeboxComponent>(GetEntity(ev.JukeboxUid), out var jukeboxComponent)) return;
+        if (!TryComp<JukeboxComponent>(GetEntity(ev.JukeboxUid), out var jukeboxComponent)) return;
 
-        if(!_playingJukeboxes.TryGetValue(jukeboxComponent, out var jukeboxAudio)) return;
+        if (!_playingJukeboxes.TryGetValue(jukeboxComponent, out var jukeboxAudio)) return;
 
         jukeboxAudio.PlayingStream.StopPlaying();
         _playingJukeboxes.Remove(jukeboxComponent);
     }
 
-    public void RequestSongToPlay(JukeboxComponent component, JukeboxSong jukeboxSong)
+    public void RequestSongToPlay(EntityUid jukebox, JukeboxComponent component, JukeboxSong jukeboxSong)
     {
         if (!_resource.TryGetResource<AudioResource>((ResPath) jukeboxSong.SongPath!, out var songResource))
         {
             return;
         }
 
-        RaiseNetworkEvent(new JukeboxRequestSongPlay()
+        RaiseNetworkEvent(new JukeboxRequestSongPlay
         {
-            Jukebox = GetNetEntity(component.Owner),
+            Jukebox = GetNetEntity(jukebox),
             SongName = jukeboxSong.SongName,
             SongPath = jukeboxSong.SongPath,
-            SongDuration = (float)songResource.AudioStream.Length.TotalSeconds
+            SongDuration = (float) songResource.AudioStream.Length.TotalSeconds
         });
-
     }
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
-        var localPlayerEntity = _playerManager.LocalPlayer!.ControlledEntity;
+        var localPlayerEntity = _playerManager.LocalEntity;
         if (!localPlayerEntity.HasValue)
         {
             CleanUp();
@@ -108,18 +108,18 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void ProcessJukeboxes()
     {
-        var jukeboxes = EntityQuery<JukeboxComponent, TransformComponent>();
-        var playerXform = Comp<TransformComponent>(_playerManager.LocalPlayer!.ControlledEntity!.Value);
+        var jukeboxes = EntityQueryEnumerator<JukeboxComponent, TransformComponent>();
+        var player = _playerManager.LocalEntity!.Value;
+        var playerXform = Comp<TransformComponent>(player);
 
-        foreach (var (jukeboxComponent, jukeboxXform) in jukeboxes)
+        while (jukeboxes.MoveNext(out var jukebox, out var jukeboxComponent, out var jukeboxXform))
         {
-
-            if (jukeboxXform.MapID != playerXform.MapID || (jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() > jukeboxComponent.MaxAudioRange)
+            if (jukeboxXform.MapID != playerXform.MapID ||
+                (_transform.GetWorldPosition(jukebox) - _transform.GetWorldPosition(player)).Length() >
+                jukeboxComponent.MaxAudioRange)
             {
-                if (_playingJukeboxes.TryGetValue(jukeboxComponent, out var stream))
+                if (_playingJukeboxes.Remove(jukeboxComponent, out var stream))
                 {
-                    _playingJukeboxes.Remove(jukeboxComponent);
-
                     stream.PlayingStream.StopPlaying();
                     stream.PlayingStream.Dispose();
                 }
@@ -131,28 +131,28 @@ public sealed class JukeboxSystem : EntitySystem
             {
                 if (!jukeboxAudio.PlayingStream.Playing)
                 {
-                    HandleDoneStream(jukeboxAudio, jukeboxComponent, jukeboxXform, playerXform);
+                    HandleDoneStream(jukebox, player, jukeboxAudio, jukeboxComponent);
                     continue;
                 }
 
                 if (jukeboxAudio.SongData.SongPath != jukeboxComponent.PlayingSongData?.SongPath)
                 {
-                    HandleSongChanged(jukeboxAudio, jukeboxComponent, jukeboxXform, playerXform);
+                    HandleSongChanged(jukebox, player, jukeboxAudio, jukeboxComponent);
                     continue;
                 }
 
-                SetRolloffAndOcclusion(jukeboxComponent, playerXform, jukeboxXform, jukeboxAudio);
-                SetPosition(jukeboxXform, jukeboxAudio);
+                SetRolloffAndOcclusion(jukebox, player, jukeboxComponent, jukeboxAudio);
+                SetPosition(jukebox, jukeboxAudio);
             }
             else
             {
                 if (jukeboxComponent.PlayingSongData == null)
                 {
-                    SetBarsLayerVisible(jukeboxComponent, false);
+                    SetBarsLayerVisible(jukebox, false);
                     continue;
                 }
 
-                var stream = TryCreateStream(jukeboxComponent, jukeboxXform, playerXform);
+                var stream = TryCreateStream(jukebox, player, jukeboxComponent);
 
                 if (stream == null)
                 {
@@ -160,141 +160,139 @@ public sealed class JukeboxSystem : EntitySystem
                 }
 
                 _playingJukeboxes.Add(jukeboxComponent, stream);
-                SetBarsLayerVisible(jukeboxComponent, true);
+                SetBarsLayerVisible(jukebox, true);
             }
         }
     }
 
-    private void SetPosition(TransformComponent jukeboxXform, JukeboxAudio jukeboxAudio)
+    private void SetPosition(EntityUid jukebox, JukeboxAudio jukeboxAudio)
     {
-        jukeboxAudio.PlayingStream.Position = jukeboxXform.MapPosition.Position;
+        jukeboxAudio.PlayingStream.Position = _transform.GetWorldPosition(jukebox);
     }
 
-    private void SetRolloffAndOcclusion(JukeboxComponent jukeboxComponent, TransformComponent playerXform, TransformComponent jukeboxXform, JukeboxAudio jukeboxAudio)
+    private void SetRolloffAndOcclusion(
+        EntityUid player,
+        EntityUid jukebox,
+        JukeboxComponent jukeboxComponent,
+        JukeboxAudio jukeboxAudio)
     {
-        var collisionMask = CollisionGroup.Impassable;
-        var sourceRelative = playerXform.MapPosition.Position - jukeboxXform.MapPosition.Position;
+        var jukeboxWorldPosition = _transform.GetWorldPosition(jukebox);
+        var playerWorldPosition = _transform.GetWorldPosition(player);
+        var sourceRelative = playerWorldPosition - jukeboxWorldPosition;
         var occlusion = 0f;
 
         if (sourceRelative.Length() > 0)
         {
-            occlusion = _physicsSystem.IntersectRayPenetration(jukeboxXform.MapID,
-                new CollisionRay(jukeboxXform.MapPosition.Position, sourceRelative.Normalized(), (int)collisionMask),
-                sourceRelative.Length(), jukeboxXform.Owner) * 3f;
+            occlusion = _physicsSystem.IntersectRayPenetration(_transform.GetMapCoordinates(jukebox).MapId,
+                new CollisionRay(jukeboxWorldPosition, sourceRelative.Normalized(), (int) CollisionMask),
+                sourceRelative.Length(), jukebox) * 3f;
         }
 
         jukeboxAudio.PlayingStream.Occlusion = occlusion;
-        jukeboxAudio.PlayingStream.RolloffFactor = (jukeboxXform.MapPosition.Position - playerXform.MapPosition.Position).Length() * jukeboxComponent.RolloffFactor;
+        jukeboxAudio.PlayingStream.RolloffFactor =
+            (jukeboxWorldPosition - playerWorldPosition).Length() * jukeboxComponent.RolloffFactor;
     }
 
-    private void HandleSongChanged(JukeboxAudio jukeboxAudio, JukeboxComponent jukeboxComponent, TransformComponent jukeboxXform, TransformComponent playerXform)
+    private void HandleSongChanged(
+        EntityUid jukebox,
+        EntityUid player,
+        JukeboxAudio jukeboxAudio,
+        JukeboxComponent jukeboxComponent)
     {
         jukeboxAudio.PlayingStream.StopPlaying();
 
-        if (jukeboxComponent.PlayingSongData != null && jukeboxComponent.PlayingSongData.SongPath == jukeboxAudio.SongData.SongPath)
+        if (jukeboxComponent.PlayingSongData != null &&
+            jukeboxComponent.PlayingSongData.SongPath == jukeboxAudio.SongData.SongPath)
         {
-            var newStream = TryCreateStream(jukeboxComponent, jukeboxXform, playerXform);
-            if(newStream == null) return;
+            var newStream = TryCreateStream(jukebox, player, jukeboxComponent);
+            if (newStream == null) return;
 
             _playingJukeboxes[jukeboxComponent] = newStream;
-            SetBarsLayerVisible(jukeboxComponent, true);
+            SetBarsLayerVisible(jukebox, true);
         }
         else
         {
             _playingJukeboxes.Remove(jukeboxComponent);
-            SetBarsLayerVisible(jukeboxComponent, false);
+            SetBarsLayerVisible(jukebox, false);
         }
     }
 
-    private void HandleDoneStream(JukeboxAudio jukeboxAudio, JukeboxComponent jukeboxComponent, TransformComponent jukeboxXform, TransformComponent playerXform)
+    private void HandleDoneStream(
+        EntityUid jukebox,
+        EntityUid player,
+        JukeboxAudio jukeboxAudio,
+        JukeboxComponent jukeboxComponent)
     {
-        if (!jukeboxComponent.Repeating)
+        if (!jukeboxComponent.Playing)
         {
             jukeboxAudio.PlayingStream.StopPlaying();
             _playingJukeboxes.Remove(jukeboxComponent);
-            SetBarsLayerVisible(jukeboxComponent, false);
+            SetBarsLayerVisible(jukebox, false);
             return;
         }
 
-        if(jukeboxComponent.PlayingSongData == null) return;
+        if (jukeboxComponent.PlayingSongData == null) return;
 
-
-        var newStream = TryCreateStream(jukeboxComponent, jukeboxXform, playerXform);
+        var newStream = TryCreateStream(jukebox, player, jukeboxComponent);
 
         if (newStream == null)
         {
             _playingJukeboxes.Remove(jukeboxComponent);
-            SetBarsLayerVisible(jukeboxComponent, false);
+            SetBarsLayerVisible(jukebox, false);
         }
         else
         {
-
             _playingJukeboxes[jukeboxComponent] = newStream;
-            SetBarsLayerVisible(jukeboxComponent, true);
+            SetBarsLayerVisible(jukebox, true);
         }
     }
 
-    private JukeboxAudio? TryCreateStream(JukeboxComponent jukeboxComponent, TransformComponent jukeboxXform, TransformComponent playerXform)
+    private JukeboxAudio? TryCreateStream(EntityUid jukebox, EntityUid player, JukeboxComponent jukeboxComponent)
     {
         if (jukeboxComponent.PlayingSongData == null) return null!;
 
         var resourcePath = jukeboxComponent.PlayingSongData.SongPath!;
 
-        if(!_resource.TryGetResource<AudioResource>((ResPath) resourcePath, out var audio))
-            return null!;
+        if (!_resource.TryGetResource<AudioResource>((ResPath) resourcePath, out var audio))
+            return null;
 
         if (audio.AudioStream.Length.TotalSeconds < jukeboxComponent.PlayingSongData!.PlaybackPosition)
         {
-            return null!;
+            return null;
         }
 
         var playingStream = _clydeAudio.CreateAudioSource(audio.AudioStream);
 
         if (playingStream == null)
-            return null!;
+            return null;
 
         playingStream.Volume = _jukeboxVolume;
         playingStream.PlaybackPosition = jukeboxComponent.PlayingSongData.PlaybackPosition;
 
-        playingStream.Position = jukeboxXform.MapPosition.Position;
+        playingStream.Position = _transform.GetWorldPosition(jukebox);
 
-        var jukeboxAudio = new JukeboxAudio(playingStream!, audio, jukeboxComponent.PlayingSongData);
+        var jukeboxAudio = new JukeboxAudio(playingStream, audio, jukeboxComponent.PlayingSongData);
 
-        SetRolloffAndOcclusion(jukeboxComponent, playerXform, jukeboxXform, jukeboxAudio);
+        SetRolloffAndOcclusion(jukebox, player, jukeboxComponent, jukeboxAudio);
         playingStream.StartPlaying();
 
         return jukeboxAudio;
     }
 
-    private void SetBarsLayerVisible(JukeboxComponent jukeboxComponent, bool visible)
+    private void SetBarsLayerVisible(EntityUid jukebox, bool visible)
     {
-        var spriteComponent = Comp<SpriteComponent>(jukeboxComponent.Owner);
+        var spriteComponent = Comp<SpriteComponent>(jukebox);
         spriteComponent.LayerMapTryGet("bars", out var layer);
         spriteComponent.LayerSetVisible(layer, visible);
     }
 
-    private void OnStateChanged(EntityUid uid, JukeboxComponent component, ref ComponentHandleState args)
+    private sealed class JukeboxAudio(IAudioSource playingStream, AudioResource audioStream, PlayingSongData songData)
     {
-        if (args.Current is JukeboxComponentState state)
-        {
-            component.Repeating = state.Playing;
-            component.Volume = state.Volume;
-            component.PlayingSongData = state.SongData;
-        }
-    }
+        public PlayingSongData SongData { get; } = songData;
 
-    private class JukeboxAudio
-    {
-        public PlayingSongData SongData { get; }
-        public IAudioSource PlayingStream { get; }
-        public AudioResource AudioStream { get; }
+        public IAudioSource PlayingStream { get; } = playingStream;
 
-        public JukeboxAudio(IAudioSource playingStream, AudioResource audioStream, PlayingSongData songData)
-        {
-            PlayingStream = playingStream;
-            AudioStream = audioStream;
-            SongData = songData;
-        }
+        public AudioResource AudioStream { get; } = audioStream;
     }
 
     private void CleanUp()

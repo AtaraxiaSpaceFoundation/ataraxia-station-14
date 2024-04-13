@@ -366,6 +366,13 @@
     - Trash
 
 - type: entity
+  parent: BaseSyringe
+  id: PrefilledSyringe
+  components:
+  - type: Injector
+    toggleState: Inject
+
+- type: entity
   id: SyringeBluespace
   parent: BaseSyringe
   name: bluespace syringe
@@ -469,7 +476,6 @@
       behaviors:
       - !type:SpillBehavior
         solution: food
-        transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Tag

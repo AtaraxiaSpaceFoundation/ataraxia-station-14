@@ -172,6 +172,9 @@
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
+  - type: Storage
+    grid:
+    - 0,0,8,4
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicate

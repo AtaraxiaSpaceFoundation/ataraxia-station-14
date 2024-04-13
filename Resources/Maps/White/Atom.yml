@@ -159,6 +159,7 @@ entities:
     - type: MaterialStorage
     - type: BecomesStation
       id: AtomStation
+    - type: MaterialStorage
     - type: SpreaderGrid
     - type: Shuttle
     - type: GridPathfinding

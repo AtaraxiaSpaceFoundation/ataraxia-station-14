@@ -1,17 +1,6 @@
-ent-CultBola = { ent-Bola }
-   .desc = { ent-Bola.desc }
-ent-GrenadeBase = { ent-BaseGrenade }
-   .desc = { ent-BaseGrenade.desc }
-ent-GrenadeFlashEffect = ""
-   .desc = ""
-ent-EmpGrenade = ЭМИ-граната
-   .desc = Граната, предназначенная для разрушения электронных систем.
-ent-HolyHandGrenade = святая ручная граната
-   .desc = Господи, благослови эту Твою ручную гранату, чтобы с ее помощью Ты мог разнести твоих врагов на мелкие кусочки, по Твоей милости.
+
 ent-GrenadeBees = пчелоната
    .desc = Граната, которая взрывается облаком пчел... Кошмар.
-ent-SmokeGrenade = дымовая шашка
-   .desc = { ent-BaseGrenade.desc }
 ent-TearSmokeGrenade = слезоточивая дымовая граната
    .desc = { ent-BaseGrenade.desc }
 ent-BaseStation = ""

@@ -2,7 +2,6 @@ using Content.Client.Wires.Visualizers;
 using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
-using Content.Shared.Prying.Components;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 
@@ -17,25 +16,8 @@ public sealed class AirlockSystem : SharedAirlockSystem
         base.Initialize();
         SubscribeLocalEvent<AirlockComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<AirlockComponent, AppearanceChangeEvent>(OnAppearanceChange);
-        SubscribeLocalEvent<AirlockComponent, BeforePryEvent>(OnAirlockPryAttempt);
     }
-
-    private void OnAirlockPryAttempt(EntityUid uid, AirlockComponent component, ref BeforePryEvent args)
-    {
-        // TODO: Temporary until airlocks predicted.
-        args.Cancelled = true;
-    }
-
-    protected override void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
-    {
-        base.OnBeforeDoorClosed(uid, airlock, args);
-
-        if (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.BoltLights, out var boltLights) && boltLights)
-        {
-            args.Cancel();
-        }
-    }
-
+    
     private void OnComponentStartup(EntityUid uid, AirlockComponent comp, ComponentStartup args)
     {
         // Has to be on component startup because we don't know what order components initialize in and running this before DoorComponent inits _will_ crash.
@@ -140,6 +122,18 @@ public sealed class AirlockSystem : SharedAirlockSystem
                 && state != DoorState.Closing
                 && !boltedVisible
             );
+        }
+
+        switch (state)
+        {
+            case DoorState.Open:
+                args.Sprite.LayerSetState(DoorVisualLayers.BaseUnlit, comp.ClosingSpriteState);
+                args.Sprite.LayerSetAnimationTime(DoorVisualLayers.BaseUnlit, 0);
+                break;
+            case DoorState.Closed:
+                args.Sprite.LayerSetState(DoorVisualLayers.BaseUnlit, comp.OpeningSpriteState);
+                args.Sprite.LayerSetAnimationTime(DoorVisualLayers.BaseUnlit, 0);
+                break;
         }
     }
 }

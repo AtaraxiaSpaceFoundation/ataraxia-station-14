@@ -1,17 +1,16 @@
-using Content.Server.Administration.Logs;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.DeviceLinking.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Dispenser;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
+using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -19,8 +18,9 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.FixedPoint;
+using Content.Shared.Chemistry.Reagent;
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -36,10 +36,10 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!; // WD
         [Dependency] private readonly ChemMasterSystem _chemMasterSystem = default!; // WD
-
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        
         public override void Initialize()
         {
             base.Initialize();
@@ -107,8 +107,11 @@ namespace Content.Server.Chemistry.EntitySystems
                 RecheckConnections(uid, component);
         }
 
-        public void UpdateConnection(EntityUid dispenser, EntityUid chemMaster,
-            ReagentDispenserComponent? dispenserComp = null, ChemMasterComponent? chemMasterComp = null)
+        public void UpdateConnection(
+            EntityUid dispenser, 
+            EntityUid chemMaster,
+            ReagentDispenserComponent? dispenserComp = null, 
+            ChemMasterComponent? chemMasterComp = null)
         {
             if (!Resolve(dispenser, ref dispenserComp) || !Resolve(chemMaster, ref chemMasterComp))
                 return;
@@ -161,7 +164,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var inventory = GetInventory(reagentDispenser);
 
-            var state = new ReagentDispenserBoundUserInterfaceState(outputContainerInfo, inventory, reagentDispenser.Comp.DispenseAmount);
+            var state = new ReagentDispenserBoundUserInterfaceState(outputContainerInfo, GetNetEntity(outputContainer), inventory, reagentDispenser.Comp.DispenseAmount);
             _userInterfaceSystem.TrySetUiState(reagentDispenser, ReagentDispenserUiKey.Key, state);
         }
 
@@ -225,7 +228,8 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
             if (outputContainer is not { Valid: true } || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
-            { // WD EDIT START
+            { 
+                // WD EDIT START
                 var chemMasterUid = reagentDispenser.Comp.ChemMaster;
                 if (!reagentDispenser.Comp.ChemMasterInRange ||
                     !TryComp(chemMasterUid, out ChemMasterComponent? chemMaster) ||

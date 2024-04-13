@@ -30,6 +30,7 @@
   - ChiefEngineer
   - Atmospherics
   - Brig
+  - Cryogenics
   special:
   - !type:AddComponentSpecial
     components:

@@ -44,7 +44,7 @@
             - !type:EntityAnchored
               anchored: true
           steps:
-            - tag: DoorElectronics
+            - component: DoorElectronics
               name: микросхема шлюза
               icon:
                 sprite: "Objects/Misc/module.rsi"

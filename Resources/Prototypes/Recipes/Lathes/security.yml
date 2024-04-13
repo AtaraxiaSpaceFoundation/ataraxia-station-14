@@ -88,14 +88,6 @@
     Plastic: 100
 
 - type: latheRecipe
-  id: ClothingEyesGlassesSecurity
-  result: ClothingEyesGlassesSecurity
-  completetime: 2
-  materials:
-    Steel: 300
-    Glass: 200
-
-- type: latheRecipe
   id: ClothingEyesHudSecurity
   result: ClothingEyesHudSecurity
   completetime: 2
@@ -362,7 +354,7 @@
   completetime: 5
   materials:
     Steel: 350
-    Plastic: 550
+    Plastic: 600
 
 - type: latheRecipe
   id: MagazineBoxLightRifle
@@ -379,7 +371,7 @@
   completetime: 5
   materials:
     Steel: 350
-    Plastic: 550
+    Plastic: 600
 
 - type: latheRecipe
   id: SpeedLoaderMagnum

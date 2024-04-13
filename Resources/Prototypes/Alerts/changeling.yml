@@ -1,41 +1,9 @@
 - type: alert
   id: Chemicals
+  category: Health #it's like ghostie health
   icons:
   - sprite: /Textures/Interface/Alerts/essence_counter.rsi
     state: essence0
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence1
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence2
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence3
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence4
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence5
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence6
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence7
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence8
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence9
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence10
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence11
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence12
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence13
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence14
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence15
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence16
+  alertViewEntity: AlertEssenceSpriteView
   name: alerts-changeling-chemicals-name
   description: alerts-changeling-chemicals-desc
-  minSeverity: 0
-  maxSeverity: 16

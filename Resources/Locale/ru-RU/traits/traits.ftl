@@ -32,3 +32,6 @@ trait-frontal-lisp-desc = Вы шепелявите при рашговоре
 
 trait-socialanxiety-name = Социальная тревожность
 trait-socialanxiety-desc = Вы очень сильно волнуетесь при разговоре и заикаетесь.
+
+trait-snoring-name = Храп
+trait-snoring-desc = Вы храпите во сне.

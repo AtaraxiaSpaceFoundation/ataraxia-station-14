@@ -12,20 +12,22 @@ namespace Content.Client._White.Jukebox;
 public sealed partial class JukeboxMenu : DefaultWindow
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    private readonly JukeboxSystem _jukeboxSystem = default!;
+    private readonly JukeboxSystem _jukeboxSystem;
 
+    private readonly EntityUid _jukeboxEntity;
     private readonly JukeboxComponent _component;
 
-    private List<JukeboxSongEntry> _defaultSongsEntries = new();
-    private List<JukeboxSongEntry> _tapeSongsEntries = new();
+    private readonly List<JukeboxSongEntry> _defaultSongsEntries = new() { };
+    private readonly List<JukeboxSongEntry> _tapeSongsEntries = new() { };
 
-    public JukeboxMenu(JukeboxComponent component)
+    public JukeboxMenu(EntityUid jukeboxEntity, JukeboxComponent component)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
         _jukeboxSystem = _entityManager.System<JukeboxSystem>();
 
+        _jukeboxEntity = jukeboxEntity;
         _component = component;
 
         /*TabContainer.SetTabTitle(DefaultSongsTab, "Прямо с завода");*/
@@ -39,7 +41,7 @@ public sealed partial class JukeboxMenu : DefaultWindow
     {
         CurrenSongLabel.Text = _component.PlayingSongData == null ? "..." : _component.PlayingSongData.SongName!;
 
-        RepeatButton.Pressed = _component.Repeating;
+        RepeatButton.Pressed = _component.Playing;
 
         base.FrameUpdate(args);
     }
@@ -94,6 +96,6 @@ public sealed partial class JukeboxMenu : DefaultWindow
 
     private void RequestSongPlay(JukeboxSong song)
     {
-        _jukeboxSystem.RequestSongToPlay(_component, song);
+        _jukeboxSystem.RequestSongToPlay(_jukeboxEntity, _component, song);
     }
 }

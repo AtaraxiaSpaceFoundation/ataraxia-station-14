@@ -14,7 +14,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._White.SelfHeal;
 
-public sealed class SelfHealSystem: EntitySystem
+public sealed class SelfHealSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
@@ -49,7 +49,6 @@ public sealed class SelfHealSystem: EntitySystem
 
     private void OnDoAfter(EntityUid uid, DamageableComponent component, SelfHealDoAfterEvent args)
     {
-        var dontRepeat = false;
 
         if (!TryComp(args.User, out SelfHealComponent? healing) || args.Target == null)
             return;
@@ -57,9 +56,9 @@ public sealed class SelfHealSystem: EntitySystem
         if (args.Handled || args.Cancelled)
             return;
 
-        if (healing.DamageContainers is not null &&
-            component.DamageContainerID is not null &&
-            !healing.DamageContainers.Contains(component.DamageContainerID))
+        if (healing.DamageContainers is not null 
+            && component.DamageContainerID is not null 
+            && !healing.DamageContainers.Contains(component.DamageContainerID))
         {
             return;
         }
@@ -70,12 +69,11 @@ public sealed class SelfHealSystem: EntitySystem
         Heal(args.Target.Value, healing, args);
 
         // Logic to determine the whether or not to repeat the healing action
-        args.Repeat = (HasDamage(component, healing) && !dontRepeat);
-        if (!args.Repeat && !dontRepeat)
+        args.Repeat = HasDamage(component, healing);
+        if (!args.Repeat)
             _popupSystem.PopupEntity(Loc.GetString("self-heal-finished-using", ("name", uid)), uid, args.User);
 
         args.Handled = true;
-
     }
 
     private void Heal(EntityUid uid, SelfHealComponent component, SelfHealDoAfterEvent args)
@@ -92,6 +90,7 @@ public sealed class SelfHealSystem: EntitySystem
         var healMessage = uid != args.User
             ? $"{userString:user} healed {targetString:target} for {total:damage} by licking"
             : $"{userString:user} healed themselves for {total:damage} by licking";
+
         _adminLogger.Add(LogType.Healed, $"{healMessage}");
 
         if (TryComp<SelfHealComponent>(args.User, out var selfHealComponent))
@@ -100,13 +99,15 @@ public sealed class SelfHealSystem: EntitySystem
             var audioParams = new AudioParams().WithVariation(2f).WithVolume(-5f);
 
             _audio.PlayPvs(audio, args.User, audioParams);
-            _popupSystem.PopupEntity(Loc.GetString("self-heal-using-other", ("user", args.Args.User), ("target", uid)), uid);
+            _popupSystem.PopupEntity(Loc.GetString("self-heal-using-other", ("user", args.Args.User), ("target", uid)),
+                uid);
         }
     }
 
     private bool CanHeal(EntityUid user, EntityUid target, SelfHealComponent component)
     {
-        if (!TryComp<DamageableComponent>(target, out var targetDamage) || !HasComp<HumanoidAppearanceComponent>(target))
+        if (!TryComp<DamageableComponent>(target, out var targetDamage) ||
+            !HasComp<HumanoidAppearanceComponent>(target))
             return false;
 
         if (user != target && !_interactionSystem.InRangeUnobstructed(user, target, popup: true))
@@ -140,7 +141,9 @@ public sealed class SelfHealSystem: EntitySystem
             {
                 if (_inventorySystem.TryGetSlotEntity(target, clothing, out var blockedClothing))
                 {
-                    var popup = Loc.GetString("self-heal-cant-use-clothing-other", ("name", target), ("clothing", blockedClothing));
+                    var popup = Loc.GetString("self-heal-cant-use-clothing-other", ("name", target),
+                        ("clothing", blockedClothing));
+
                     _popupSystem.PopupEntity(popup, user, user);
                     return false;
                 }
@@ -158,10 +161,10 @@ public sealed class SelfHealSystem: EntitySystem
         var doAfterEventArgs =
             new DoAfterArgs(EntityManager, user, component.Delay, new SelfHealDoAfterEvent(), target, target)
             {
-                BreakOnTargetMove = true,
-                BreakOnUserMove = true,
+                BreakOnMove = true,
                 BreakOnDamage = true,
             };
+
         _doAfter.TryStartDoAfter(doAfterEventArgs);
     }
 

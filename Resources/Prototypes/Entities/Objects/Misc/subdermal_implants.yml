@@ -206,7 +206,6 @@
       implantAction: ActionActivateScramImplant
     - type: TriggerImplantAction
     - type: ScramImplant
-      teleportAttempts: 6 # small amount of risk of being teleported into space and lets you teleport off shuttles
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -227,7 +226,7 @@
   parent: BaseSubdermalImplant
   id: MicroBombImplant
   name: micro-bomb implant
-  description: This implant detonates the user upon death.
+  description: This implant detonates the user upon activation or upon death.
   noSpawn: true
   components:
     - type: SubdermalImplant
