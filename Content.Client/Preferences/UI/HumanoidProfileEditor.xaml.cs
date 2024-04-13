@@ -947,7 +947,7 @@ namespace Content.Client.Preferences.UI
             }
 
             // If current body type is not valid.
-            if (!_bodyTypesList.Select(proto => proto.ID).Contains(Profile.BodyType))
+            if (!_bodyTypesList.Select(proto => proto.ID).Contains(Profile.BodyType.Id))
             {
                 // Then replace it with a first valid body type.
                 SetBodyType(_bodyTypesList.First().ID);

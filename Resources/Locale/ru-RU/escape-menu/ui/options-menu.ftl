@@ -265,9 +265,6 @@ ui-options-net-pvs-leave-tooltip =
     уменьшить "захлебывания" при ходьбе, но иногда может
     привести к неправильным предугадываниям и другим проблемам.
 
-ui-options-hud-type-default = Компактный
-ui-options-hud-type-separated = Обычный
-
 ## Toggle window console command
 cmd-options-desc = Открывает меню опций, опционально с конкретно выбранной вкладкой.
 cmd-options-help = Использование: options [tab]

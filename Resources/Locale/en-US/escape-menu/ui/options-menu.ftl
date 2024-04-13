@@ -260,9 +260,6 @@ ui-options-net-pvs-leave-tooltip = This limits the rate at which the client will
                                        stuttering when walking around, but could occasionally
                                        lead to mispredicts and other issues.
 
-ui-options-hud-type-default = Default
-ui-options-hud-type-separated = Separated
-
 ## Toggle window console command
 cmd-options-desc = Opens options menu, optionally with a specific tab selected.
 cmd-options-help = Usage: options [tab]

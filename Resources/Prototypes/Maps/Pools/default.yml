@@ -3,7 +3,6 @@
   maps:
   - Atlas
   - Bagel
-  - Box
   - Cluster
   - Core
   - Fland
@@ -13,5 +12,8 @@
   - Origin
   - Saltern
   - Packed
-  - Reach
+  - WonderBox
+  - Scoupidia
+  - Triumph
+  - WhiteBox
   #- Train <- return after station anchoring PR is finished and merged

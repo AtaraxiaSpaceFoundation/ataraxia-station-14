@@ -10,7 +10,6 @@ namespace Content.Server.Humanoid;
 public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 {
     [Dependency] private readonly MarkingManager _markingManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -58,32 +57,6 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         }
 
         Dirty(target, targetHumanoid);
-    }
-
-    /// <summary>
-    ///     Set a humanoid mob's body yupe. This will change their base sprites.
-    /// </summary>
-    /// <param name="uid">The humanoid mob's UID.</param>
-    /// <param name="bodyType">The body type to set the mob to. Will return if the body type prototype was invalid.</param>
-    /// <param name="sync">Whether to immediately synchronize this to the humanoid mob, or not.</param>
-    /// <param name="humanoid">Humanoid component of the entity</param>
-    public void SetBodyType(
-        EntityUid uid,
-        string bodyType,
-        bool sync = true,
-        HumanoidAppearanceComponent? humanoid = null)
-    {
-        if (!Resolve(uid, ref humanoid) || !_prototypeManager.TryIndex<BodyTypePrototype>(bodyType, out _))
-        {
-            return;
-        }
-
-        humanoid.BodyType = bodyType;
-
-        if (sync)
-        {
-            Dirty(uid, humanoid);
-        }
     }
 
     /// <summary>

@@ -41,7 +41,7 @@ namespace Content.Shared.Preferences
             Sex sex,
             string voice,
             Gender gender,
-            string bodyType,
+            ProtoId<BodyTypePrototype> bodyType,
             HumanoidCharacterAppearance appearance,
             ClothingPreference clothing,
             BackpackPreference backpack,
@@ -270,7 +270,7 @@ namespace Content.Shared.Preferences
         public Gender Gender { get; private set; }
 
         [DataField]
-        public string BodyType { get; private set; }
+        public ProtoId<BodyTypePrototype> BodyType { get; private set; }
 
         public ICharacterAppearance CharacterAppearance => Appearance;
 

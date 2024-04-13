@@ -42,7 +42,7 @@ namespace Content.Client.Options.UI.Tabs
             var id = 0;
             foreach (var layout in Enum.GetValues(typeof(ScreenType)))
             {
-                var name = Loc.GetString($"ui-options-hud-type-{layout!.ToString()!.ToLower()}");
+                var name = layout.ToString()!;
                 HudLayoutOption.AddItem(name, id);
                 if (name == hudLayout)
                 {
