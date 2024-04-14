@@ -4,13 +4,13 @@ store-category-debug2 = debug category 2
 store-category-weapons = Вооружение
 store-category-ammo = Боеприпасы
 store-category-explosives = Взрывчатка
-store-category-misc = Разное
-store-category-bundles = Наборы
-store-category-tools = Инструменты
-store-category-utility = Утилиты
+store-category-chemicals = Химия
+store-category-deception = Обман
+store-category-disruption = Саботаж
 store-category-implants = Импланты
-store-category-job = Работа
-store-category-armor = Броня
+store-category-allies = Подкрепления
+store-category-job = Уникальное
+store-category-wearables = Надеваемое
 store-category-pointless = Безделушки
 
 # Revenant && Changeling

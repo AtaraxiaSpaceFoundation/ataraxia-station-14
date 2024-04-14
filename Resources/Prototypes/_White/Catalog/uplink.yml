@@ -72,12 +72,12 @@
   cost:
     Telecrystal: 2
   categories:
-  - UplinkUtility
+  - UplinkDeception
 
 - type: listing
   id: UplinkSmokeImplanter
-  name: Имплант дыма
-  description: Выпускает облако дыма при активации.
+  name: uplink-smoke-implant-name
+  description: uplink-smoke-implant-desc
   icon: { sprite: /Textures/Objects/Weapons/Grenades/smoke.rsi, state: icon }
   productEntity: SmokeImplanter
   cost:
@@ -260,5 +260,5 @@
   cost:
     Telecrystal: 8
   categories:
-  - UplinkUtility
+  - UplinkDisruption
   saleLimit: 2

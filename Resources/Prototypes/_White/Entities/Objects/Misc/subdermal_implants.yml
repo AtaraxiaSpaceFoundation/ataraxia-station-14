@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: SmokeImplant
-  name: имплант дыма
-  description: Этот имплант выпускает облако дыма при активации.
+  name: smoke implant
+  description: This implant releases smoke cloud on activation.
   noSpawn: true
   components:
     - type: SubdermalImplant

@@ -1,7 +1,7 @@
 hardlight-spear-pickup-failed = Вы не можете подобрать световое копьё.
 use-hardlight-spear-implant-action-name = Создать световое копьё.
 use-hardlight-spear-implant-action-description = Создает световое копьё в ваших руках.
-uplink-hardlight-spear-implant-name = Имплантер световое копьё
+uplink-hardlight-spear-implant-name = Имплант светового копья
 uplink-hardlight-spear-implant-desc = Имплант, вводимый в тело и активируемый по желанию пользователя. Он вызывает копье из твердого света, с помощью которого пользователь может сеять хаос.
 
 ent-SpearHardlight = световое копьё
@@ -14,6 +14,3 @@ ent-HardlightSpearImplanter = { ent-BaseImplanter }
 ent-HardlightSpearImplant = имплант световое копьё
     .desc = Этот имплант создаёт световое копьё в ваших руках.
 
-ent-SmokeImplanter =  { ent-BaseImplanter }
-    .desc = {""}
-    .suffix = дым

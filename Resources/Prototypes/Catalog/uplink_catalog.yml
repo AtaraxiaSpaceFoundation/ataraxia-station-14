@@ -129,11 +129,6 @@
     Telecrystal: 8
   categories:
   - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
   saleLimit: 1
 
 - type: listing
@@ -1541,20 +1536,6 @@
     - Botanist
 
 - type: listing
-  id: uplinkRiggedBoxingGlovesPassenger
-  name: uplink-rigged-boxing-gloves-name
-  description: uplink-rigged-boxing-gloves-desc
-  productEntity: ClothingHandsGlovesBoxingRigged
-  cost:
-    Telecrystal: 6
-  categories:
-    - UplinkJob
-  conditions:
-    - !type:BuyerJobCondition
-      whitelist:
-        - Passenger
-
-- type: listing
   id: uplinkRiggedBoxingGlovesBoxer
   name: uplink-rigged-boxing-gloves-name
   description: uplink-rigged-boxing-gloves-desc
@@ -1646,6 +1627,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+  saleLimit: 1
 
 - type: listing
   id: UplinkHoloclownKit
