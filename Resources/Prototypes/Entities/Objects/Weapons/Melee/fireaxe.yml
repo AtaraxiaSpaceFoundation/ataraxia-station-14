@@ -22,7 +22,7 @@
         Slash: 13
         Structural: 10
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

@@ -139,7 +139,7 @@
       types:
         Blunt: 4.5
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Tool
     qualities:
       - Anchoring
@@ -186,7 +186,7 @@
       types:
         Blunt: 8
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Tool
     qualities:
       - Prying
@@ -588,7 +588,7 @@
       types:
         Blunt: 14
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Item
     size: Normal
     sprite: Objects/Tools/shovel.rsi
@@ -623,7 +623,7 @@
       types:
         Blunt: 7
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Tool
     qualities:
     - Rolling

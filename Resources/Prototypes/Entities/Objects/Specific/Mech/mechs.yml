@@ -49,7 +49,7 @@
         Blunt: 25 #thwack
         Structural: 20
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Puller
     needsHands: false
   - type: InputMover

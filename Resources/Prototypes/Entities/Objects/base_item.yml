@@ -29,7 +29,7 @@
       types:
         Blunt: 5
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: CollisionWake
   - type: Physics
     bodyType: Dynamic

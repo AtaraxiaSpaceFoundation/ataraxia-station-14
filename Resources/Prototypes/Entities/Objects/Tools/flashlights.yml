@@ -113,7 +113,7 @@
       types:
         Blunt: 10
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Item
     sprite: Objects/Tools/seclite.rsi
   - type: PointLight

@@ -49,7 +49,7 @@
         Blunt: 15
         Structural: 40
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
 
 - type: entity
   name: syndicate jaws of life

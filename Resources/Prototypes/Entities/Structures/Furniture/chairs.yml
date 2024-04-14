@@ -359,7 +359,7 @@
       types:
         Blunt: 8
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Construction
     graph: Seat
     node: chairFolding

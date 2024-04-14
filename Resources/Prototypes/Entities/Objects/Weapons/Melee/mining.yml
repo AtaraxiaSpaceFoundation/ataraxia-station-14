@@ -50,7 +50,7 @@
         Blunt: 10
         Slash: 5
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
