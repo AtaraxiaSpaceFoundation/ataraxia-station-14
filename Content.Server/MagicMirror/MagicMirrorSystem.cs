@@ -7,6 +7,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Interaction;
 using Content.Shared.MagicMirror;
+using Content.Shared.Physics;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -62,7 +63,7 @@ public sealed class MagicMirrorSystem : EntitySystem
     {
         component.Target ??= args.Player.AttachedEntity;
 
-        if (!component.Target.HasValue || !_interaction.InRangeUnobstructed(uid, component.Target!.Value))
+        if (!component.Target.HasValue || !_interaction.InRangeUnobstructed(uid, component.Target!.Value, range: 2f, CollisionGroup.None))
         {
             args.Result = BoundUserInterfaceRangeResult.Fail;
         }
