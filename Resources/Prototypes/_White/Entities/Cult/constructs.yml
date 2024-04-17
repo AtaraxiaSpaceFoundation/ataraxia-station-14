@@ -240,6 +240,15 @@
         Shard: !type:ContainerSlot
     - type: CultItem
 
+- type: entity
+  id: NekoWraithConstruct
+  parent: WraithConstruct
+  name: neko wraith
+  description: what the... nya?!
+  components:
+    - type: Sprite
+      state: envoy_of_death_neko
+  
 - type: nameIdentifierGroup
   id: Construct
   prefix: CO
