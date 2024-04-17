@@ -7,17 +7,14 @@ using System.Net.Mime;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Content.Server._White.PandaSocket.Interfaces;
 using Content.Shared._White;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
-using Robust.Server.Player;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Configuration;
-using Robust.Shared.Network;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Content.Server._White.PandaSocket.Main;
@@ -25,9 +22,6 @@ namespace Content.Server._White.PandaSocket.Main;
 public sealed partial class PandaStatusHost : IDisposable
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IDependencyCollection _deps = default!;
     [Dependency] private readonly ILogManager _logMan = default!;
     [Dependency] private readonly ITaskManager _taskManager = default!;
 

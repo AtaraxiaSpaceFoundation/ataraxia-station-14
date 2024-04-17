@@ -7,7 +7,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared._White.Other;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._White.Halt
@@ -17,7 +16,6 @@ namespace Content.Server._White.Halt
         [Dependency] private readonly ChatSystem _chat = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
         public override void Initialize()
         {

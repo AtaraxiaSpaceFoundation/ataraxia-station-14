@@ -1,29 +1,29 @@
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Humanoid;
-using Content.Server.Polymorph.Systems;
+// using Content.Server.Humanoid;
+// using Content.Server.Polymorph.Systems;
 using Content.Server._White.AspectsSystem.Aspects.Components;
 using Content.Server._White.AspectsSystem.Base;
 using Content.Shared.Humanoid;
-using Content.Shared.Polymorph;
-using Robust.Shared.Prototypes;
+// using Content.Shared.Polymorph;
+// using Robust.Shared.Prototypes;
 
 namespace Content.Server._White.AspectsSystem.Aspects;
 
 public sealed class SkeletonAspect : AspectSystem<SkeletonAspectComponent>
 {
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidAppearance = default!;
-
-    private PolymorphPrototype _proto = default!;
+    // [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    // [Dependency] private readonly PolymorphSystem _polymorph = default!;
+    // [Dependency] private readonly HumanoidAppearanceSystem _humanoidAppearance = default!;
+    //
+    // private PolymorphPrototype _proto = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(HandleLateJoin);
 
-        _proto = _protoMan.Index<PolymorphPrototype>("AspectForcedSkeleton");
+        // _proto = _protoMan.Index<PolymorphPrototype>("AspectForcedSkeleton");
     }
 
     protected override void Started(EntityUid uid, SkeletonAspectComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)

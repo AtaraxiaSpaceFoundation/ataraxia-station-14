@@ -1,14 +1,10 @@
 using System.Linq;
-using System.Numerics;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Shuttles.Components;
-using Content.Server.Shuttles.Systems;
 using Content.Server.StationEvents.Events;
 using Content.Server._White.GhostRecruitment;
-using Content.Shared.CCVar;
 using Content.Shared._White;
 using Content.Shared._White.GhostRecruitment;
 using JetBrains.Annotations;
@@ -20,13 +16,13 @@ using Robust.Shared.Map;
 namespace Content.Server._White.ERTRecruitment;
 
 [UsedImplicitly]
+// ReSharper disable once InconsistentNaming
 public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleComponent>
 {
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly GhostRecruitmentSystem _recruitment = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly MapLoaderSystem _map = default!;
-    [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
 
@@ -191,8 +187,8 @@ public sealed class ERTRecruitmentRule : StationEventSystem<ERTRecruitmentRuleCo
         }
         */
         
-        var ERTMap = EnsureComp<ERTMapComponent>(outpost);
-        ERTMap.MapId = mapId;
+        var ertMap = EnsureComp<ERTMapComponent>(outpost);
+        ertMap.MapId = mapId;
         //ERTMap.Shuttle = shuttleId;
 
         return true;
