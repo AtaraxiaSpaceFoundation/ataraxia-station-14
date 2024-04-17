@@ -1288,6 +1288,10 @@
     interfaces:
       - key: enum.ListViewSelectorUiKeyChangeling.Key
         type: ListViewSelectorBui
+      - key: enum.StrippingUiKey.Key
+        type: StrippableBoundUserInterface
+      - key: enum.ListViewSelectorUiKey.Key
+        type: ListViewSelectorBui
 
 - type: entity
   name: monkey
