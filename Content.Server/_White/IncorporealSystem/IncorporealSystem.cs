@@ -31,8 +31,11 @@ public sealed class IncorporealSystem : EntitySystem
         {
             var fixture = fixtures.Fixtures.First();
 
-            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, (int) CollisionGroup.GhostImpassable, fixtures);
-            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, 0, fixtures);
+            component.StoredMask = fixture.Value.CollisionMask;
+            component.StoredLayer = fixture.Value.CollisionLayer;
+
+            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, component.CollisionMask, fixtures);
+            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, component.CollisionLayer, fixtures);
         }
 
         if (TryComp<VisibilityComponent>(uid, out var visibility))
@@ -54,8 +57,8 @@ public sealed class IncorporealSystem : EntitySystem
         {
             var fixture = fixtures.Fixtures.First();
 
-            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, (int) (CollisionGroup.MobMask | CollisionGroup.GhostImpassable), fixtures);
-            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, (int) CollisionGroup.MobLayer, fixtures);
+            _physics.SetCollisionMask(uid, fixture.Key, fixture.Value, component.StoredMask, fixtures);
+            _physics.SetCollisionLayer(uid, fixture.Key, fixture.Value, component.StoredLayer, fixtures);
         }
 
         if (TryComp<VisibilityComponent>(uid, out var visibility))
