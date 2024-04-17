@@ -5,7 +5,6 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Content.Shared.CCVar;
 using Content.Shared._White;
 using Prometheus;
 using Robust.Shared.Configuration;
@@ -18,9 +17,9 @@ public sealed class TTSManager
     private static readonly Histogram RequestTimings = Metrics.CreateHistogram(
         "tts_req_timings",
         "Timings of TTS API requests",
-        new HistogramConfiguration()
+        new HistogramConfiguration
         {
-            LabelNames = new[] {"type"},
+            LabelNames = new[] { "type" },
             Buckets = Histogram.ExponentialBuckets(.1, 1.5, 10),
         });
 
@@ -55,7 +54,12 @@ public sealed class TTSManager
     /// <param name="text">SSML formatted text</param>
     /// <returns>OGG audio bytes</returns>
     /// <exception cref="Exception">Throws if url or token CCVar not set or http request failed</exception>
-    public async Task<byte[]?> ConvertTextToSpeech(string speaker, string text, string pitch, string rate, string? effect = null)
+    public async Task<byte[]?> ConvertTextToSpeech(
+        string speaker,
+        string text,
+        string pitch,
+        string rate,
+        string? effect = null)
     {
         var url = _cfg.GetCVar(WhiteCVars.TtsApiUrl);
         var maxCacheSize = _cfg.GetCVar(WhiteCVars.TtsMaxCacheSize);
@@ -96,7 +100,7 @@ public sealed class TTSManager
 
             var soundData = await response.Content.ReadAsByteArrayAsync(cts.Token);
 
-            if(_cache.Count > maxCacheSize)
+            if (_cache.Count > maxCacheSize)
             {
                 _cache.Remove(_cache.Last().Key);
             }
@@ -104,7 +108,9 @@ public sealed class TTSManager
             _cache.Add(cacheKey, soundData);
             CachedCount.Inc();
 
-            _sawmill.Debug($"Generated new sound for '{text}' speech by '{speaker}' speaker ({soundData.Length} bytes)");
+            _sawmill.Debug(
+                $"Generated new sound for '{text}' speech by '{speaker}' speaker ({soundData.Length} bytes)");
+
             RequestTimings.WithLabels("Success").Observe((DateTime.UtcNow - reqTime).TotalSeconds);
 
             return soundData;
@@ -149,7 +155,7 @@ public sealed class TTSManager
     private string GenerateCacheKey(string speaker, string text)
     {
         var key = $"{speaker}/{text}";
-        byte[] keyData = Encoding.UTF8.GetBytes(key);
+        var keyData = Encoding.UTF8.GetBytes(key);
         var sha256 = System.Security.Cryptography.SHA256.Create();
         var bytes = sha256.ComputeHash(keyData);
         return Convert.ToHexString(bytes);

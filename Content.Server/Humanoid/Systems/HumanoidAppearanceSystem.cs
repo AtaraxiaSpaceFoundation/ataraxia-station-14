@@ -40,15 +40,15 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
             return;
         }
 
-        targetHumanoid.Species = sourceHumanoid.Species;
-        targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
+        SetSpecies(target, sourceHumanoid.Species, false, targetHumanoid);
+        SetSkinColor(target, sourceHumanoid.SkinColor, false, true, targetHumanoid);
         targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
         targetHumanoid.Age = sourceHumanoid.Age;
-        SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
         targetHumanoid.CustomBaseLayers = new(sourceHumanoid.CustomBaseLayers);
         targetHumanoid.MarkingSet = new(sourceHumanoid.MarkingSet);
-        targetHumanoid.BodyType = sourceHumanoid.BodyType;
-        SetTTSVoice(target, sourceHumanoid.Voice, targetHumanoid);
+        SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
+        SetBodyType(target, sourceHumanoid.BodyType, false, targetHumanoid);
+        SetTTSVoice(target, sourceHumanoid.Voice, false, targetHumanoid);
 
         targetHumanoid.Gender = sourceHumanoid.Gender;
         if (TryComp<GrammarComponent>(target, out var grammar))

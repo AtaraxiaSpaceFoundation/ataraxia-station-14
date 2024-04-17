@@ -8,7 +8,6 @@ using Content.Server.Station.Systems;
 using Content.Shared._White.TTS;
 using Content.Shared.GameTicking;
 using Content.Shared._White;
-using Robust.Server.Audio;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -31,7 +30,6 @@ public sealed partial class TTSSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly TTSPitchRateSystem _ttsPitchRateSystem = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     private const int MaxMessageChars = 100 * 2; // same as SingleBubbleCharLimit * 2
@@ -44,7 +42,7 @@ public sealed partial class TTSSystem : EntitySystem
         _cfg.OnValueChanged(WhiteCVars.TtsApiUrl, url => _apiUrl = url, true);
 
         SubscribeLocalEvent<TransformSpeechEvent>(OnTransformSpeech);
-        SubscribeLocalEvent<TTSComponent, EntitySpokeEvent>(OnEntitySpoke);
+        SubscribeLocalEvent<SharedTTSComponent, EntitySpokeEvent>(OnEntitySpoke);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
         SubscribeLocalEvent<TTSAnnouncementEvent>(OnAnnounceRequest);
@@ -80,37 +78,37 @@ public sealed partial class TTSSystem : EntitySystem
 
         foreach (var player in filter.Recipients)
         {
-            if (player.AttachedEntity != null)
+            if (player.AttachedEntity == null)
+                continue;
+
+            // Get emergency lights in range to broadcast from
+            var entities = _lookup.GetEntitiesInRange(player.AttachedEntity.Value, 30f)
+                .Where(HasComp<EmergencyLightComponent>)
+                .ToList();
+
+            if (entities.Count == 0)
+                return;
+
+            // Get closest emergency light
+            var entity = entities.First();
+            var range = new Vector2(100f);
+
+            foreach (var item in entities)
             {
-                // Get emergency lights in range to broadcast from
-                var entities = _lookup.GetEntitiesInRange(player.AttachedEntity.Value, 30f)
-                    .Where(HasComp<EmergencyLightComponent>)
-                    .ToList();
+                var itemSource = _xforms.GetWorldPosition(Transform(item));
+                var playerSource = _xforms.GetWorldPosition(Transform(player.AttachedEntity.Value));
 
-                if (entities.Count == 0)
-                    return;
+                var distance = playerSource - itemSource;
 
-                // Get closest emergency light
-                var entity = entities.First();
-                var range = new Vector2(100f);
-
-                foreach (var item in entities)
+                if (range.Length() > distance.Length())
                 {
-                    var itemSource = _xforms.GetWorldPosition(Transform(item));
-                    var playerSource = _xforms.GetWorldPosition(Transform(player.AttachedEntity.Value));
-
-                    var distance = playerSource - itemSource;
-
-                    if (range.Length() > distance.Length())
-                    {
-                        range = distance;
-                        entity = item;
-                    }
+                    range = distance;
+                    entity = item;
                 }
-
-                RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(entity), soundData, true), Filter.SinglePlayer(player),
-                    false);
             }
+
+            RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(entity), soundData, true), Filter.SinglePlayer(player),
+                false);
         }
     }
 
@@ -121,7 +119,7 @@ public sealed partial class TTSSystem : EntitySystem
             return;
 
         if (!_playerManager.TryGetSessionByChannel(ev.MsgChannel, out var session) ||
-            !_prototypeManager.TryIndex<TTSVoicePrototype>(ev.VoiceId, out var protoVoice))
+            !_prototypeManager.TryIndex(ev.VoiceId, out var protoVoice))
             return;
 
         var soundData = await GenerateTTS(ev.Uid, ev.Text, protoVoice.Speaker);
@@ -129,7 +127,7 @@ public sealed partial class TTSSystem : EntitySystem
             RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(ev.Uid), soundData, false), Filter.SinglePlayer(session), false);
     }
 
-    private async void OnEntitySpoke(EntityUid uid, TTSComponent component, EntitySpokeEvent args)
+    private async void OnEntitySpoke(EntityUid uid, SharedTTSComponent component, EntitySpokeEvent args)
     {
         if (!_isEnabled ||
             args.Message.Length > MaxMessageChars)
@@ -145,7 +143,7 @@ public sealed partial class TTSSystem : EntitySystem
         RaiseLocalEvent(uid, voiceEv);
         voiceId = voiceEv.VoiceId;
 
-        if (!_prototypeManager.TryIndex<TTSVoicePrototype>(voiceId, out var protoVoice))
+        if (!_prototypeManager.TryIndex(voiceId, out var protoVoice))
             return;
 
         var message = FormattedMessage.RemoveMarkup(args.Message);

@@ -1,8 +1,8 @@
 ﻿using Content.Shared.Humanoid;
-using Content.Shared.Preferences;
 
 namespace Content.Shared._White.TTS;
 
+// ReSharper disable once InconsistentNaming
 public sealed class TTSPitchRateSystem : EntitySystem
 {
 

@@ -3,12 +3,7 @@
 namespace Content.Shared.VoiceMask;
 
 [Serializable, NetSerializable]
-public sealed class VoiceMaskChangeVoiceMessage : BoundUserInterfaceMessage
+public sealed class VoiceMaskChangeVoiceMessage(string voice) : BoundUserInterfaceMessage
 {
-    public string Voice { get; }
-
-    public VoiceMaskChangeVoiceMessage(string voice)
-    {
-        Voice = voice;
-    }
+    public string Voice { get; } = voice;
 }

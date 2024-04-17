@@ -972,7 +972,8 @@ public sealed partial class ChangelingSystem
         ClonePerson(polymorphEntity.Value, transformData.AppearanceComponent, polyAppearance);
         TransferDna(polymorphEntity.Value, transformData.Dna);
 
-        _humanoidAppearance.SetTTSVoice(polymorphEntity.Value, transformData.AppearanceComponent.Voice, polyAppearance);
+        _humanoidAppearance.SetTTSVoice(polymorphEntity.Value, transformData.AppearanceComponent.Voice, 
+            humanoid: polyAppearance);
 
         if (!TryComp<MetaDataComponent>(polymorphEntity.Value, out var meta))
             return null;

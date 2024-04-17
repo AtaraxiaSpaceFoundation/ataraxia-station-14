@@ -1,5 +1,6 @@
 ﻿using Lidgren.Network;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._White.TTS;
@@ -10,8 +11,8 @@ public sealed class MsgRequestTTS : NetMessage
     public override MsgGroups MsgGroup => MsgGroups.Command;
 
     public EntityUid Uid { get; set; } = EntityUid.Invalid;
-    public string Text { get; set; } = String.Empty;
-    public string VoiceId { get; set; } = String.Empty;
+    public string Text { get; set; } = string.Empty;
+    public ProtoId<TTSVoicePrototype> VoiceId { get; set; } = string.Empty;
 
     public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
     {

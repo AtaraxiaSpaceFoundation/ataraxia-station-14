@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.TTS;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -28,10 +29,13 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [ValidatePrototypeId<SpeciesPrototype>]
     public const string DefaultSpecies = "Human";
 
+    [ValidatePrototypeId<BodyTypePrototype>]
     public const string DefaultBodyType = "HumanNormal";
+
+    [ValidatePrototypeId<TTSVoicePrototype>]
     public const string DefaultVoice = "Eugene";
 
-    public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
+    public static readonly Dictionary<Sex, ProtoId<TTSVoicePrototype>> DefaultSexVoice = new()
     {
         { Sex.Male, "Eugene" },
         { Sex.Female, "Kseniya" },
@@ -75,7 +79,8 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         var species = GetSpeciesRepresentation(component.Species).ToLower();
         var age = GetAgeRepresentation(component.Species, component.Age);
 
-        args.PushText(Loc.GetString("humanoid-appearance-component-examine", ("user", identity), ("age", age), ("species", species)));
+        args.PushText(Loc.GetString("humanoid-appearance-component-examine", ("user", identity), ("age", age),
+            ("species", species)));
     }
 
     /// <summary>
@@ -245,6 +250,36 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     }
 
     /// <summary>
+    ///     Set a humanoid mob's body yupe. This will change their base sprites.
+    /// </summary>
+    /// <param name="uid">The humanoid mob's UID.</param>
+    /// <param name="voiceId">The tts voice to set the mob to.</param>
+    /// <param name="sync">Whether to immediately synchronize this to the humanoid mob, or not.</param>
+    /// <param name="humanoid">Humanoid component of the entity</param>
+    // ReSharper disable once InconsistentNaming
+    public void SetTTSVoice(
+        EntityUid uid,
+        ProtoId<TTSVoicePrototype> voiceId,
+        bool sync = true,
+        HumanoidAppearanceComponent? humanoid = null)
+    {
+        if (!TryComp<SharedTTSComponent>(uid, out var comp))
+            return;
+
+        if (!Resolve(uid, ref humanoid))
+        {
+            return;
+        }
+
+        humanoid.Voice = voiceId;
+        comp.VoicePrototypeId = voiceId;
+        if (sync)
+        {
+            Dirty(uid, humanoid);
+        }
+    }
+
+    /// <summary>
     ///     Sets the base layer ID of this humanoid mob. A humanoid mob's 'base layer' is
     ///     the skin sprite that is applied to the mob's sprite upon appearance refresh.
     /// </summary>
@@ -353,7 +388,8 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         humanoid.EyeColor = profile.Appearance.EyeColor;
 
         SetSkinColor(uid, profile.Appearance.SkinColor, false);
-        SetBodyType(uid, profile.BodyType, false);
+        SetBodyType(uid, profile.BodyType, false, humanoid);
+        SetTTSVoice(uid, profile.Voice, false, humanoid);
 
         humanoid.MarkingSet.Clear();
 
