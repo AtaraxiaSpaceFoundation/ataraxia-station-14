@@ -165,7 +165,7 @@
 - type: entity
   id: CrateMosin
   parent: CrateWeaponSecure
-  name: ящик с Лектером
+  name: ящик с внтовками Мосина
   components:
   - type: StorageFill
     contents:
@@ -185,7 +185,7 @@
 - type: entity
   id: CrateLecterRubberMagazines
   parent: CrateWeaponSecure
-  name: ящик с нелетальными магазинами для лектора
+  name: ящик с нелетальными магазинами для Лектора
   components:
   - type: StorageFill
     contents:
