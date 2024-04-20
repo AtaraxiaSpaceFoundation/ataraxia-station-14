@@ -1109,7 +1109,11 @@ namespace Content.Client.Preferences.UI
                 return;
             }
 
-            var species = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>();
+            if (!_speciesList.Exists(x => x.ID == Profile.Species))
+            {
+                CSpeciesButton.Select(0);
+                return;
+            }
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
@@ -1321,20 +1325,19 @@ namespace Content.Client.Preferences.UI
         {
             var allowedSpecies = new List<SpeciesPrototype>();
 
-            var rawSpecieList = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>()
-                .Where((specie) =>
+            var rawSpecieList = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(specie =>
+            {
+                switch (specie.RoundStart)
                 {
-                    if (specie.RoundStart && (specie.SponsorOnly || specie.ForAdmins))
-                    {
+                    case true when specie.SponsorOnly || specie.ForAdmins:
                         return true;
-                    }
-                    else if (specie.RoundStart)
-                    {
+                    case true:
                         allowedSpecies.Add(specie);
                         return false;
-                    }
-                    return false;
-                }).ToList();
+                    default:
+                        return false;
+                }
+            }).ToList();
 
             if (_sponsorsManager.TryGetInfo(out var sponsor))
             {
