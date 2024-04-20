@@ -46,7 +46,9 @@ ui-options-show-looc-on-head = Показывать LOOC-чат над голо�
 ui-options-fancy-speech = Показывать имена в облачках с текстом
 ui-options-fancy-name-background = Добавить фон облачкам с текстом
 ui-options-enable-color-name = Окрашивать имена в чате
+ui-options-colorblind-friendly = Режим для дальтоников
 ui-options-reduced-motion = Снижение интенсивности визуальных эффектов
+ui-options-chat-window-opacity = Полупрозрачность окна чата
 ui-options-screen-shake-intensity = Интенсивность дрожания экрана
 ui-options-screen-shake-percent = { TOSTRING($intensity, "P0") }
 ui-options-vsync = Вертикальная синхронизация
@@ -137,6 +139,7 @@ ui-options-function-swap-hands = Поменять руки
 ui-options-function-move-stored-item = Переместить хранящийся объект
 ui-options-function-rotate-stored-item = Повернуть хранящийся объект
 ui-options-function-lie-down = Лечь/встать
+ui-options-function-save-item-location = Сохранить позицию предмета
 ui-options-static-storage-ui = Закрепить интерфейс хранилища на хотбаре
 
 ui-options-function-smart-equip-backpack = Умная экипировка в рюкзак

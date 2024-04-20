@@ -56,7 +56,7 @@
       gender: female
   - type: Bloodstream
     bloodMaxVolume: 150
-    bloodReagent: SpiderBlood
+    bloodReagent: InsectBlood
   - type: Pacified
   - type: Tag
     tags:

@@ -20,6 +20,9 @@
   - Security
   - Brig
   - Maintenance
+  - Service
+  - External
+  - Cryogenics
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -32,7 +35,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: SecurityCadetPDA
     ears: ClothingHeadsetSecurity
-    pocket2: BookSecurity
+    pocket1: BookSecurity
     underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
   underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear

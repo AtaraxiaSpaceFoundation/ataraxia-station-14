@@ -29,10 +29,8 @@
       types:
         Blunt: 5
     soundHit:
-      collection: MetalThud
+      path: "/Audio/Weapons/smash.ogg"
   - type: CollisionWake
-  - type: TileFrictionModifier
-    modifier: 0.5
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false

@@ -1,39 +1,31 @@
 using Content.Shared.Decals;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Enumerators;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Decals.Overlays
 {
-    public sealed class DecalOverlay : GridOverlay
+    public sealed class DecalOverlay(
+        SpriteSystem sprites,
+        IEntityManager entManager,
+        IPrototypeManager prototypeManager)
+        : GridOverlay
     {
-        private readonly SpriteSystem _sprites;
-        private readonly IEntityManager _entManager;
-        private readonly IPrototypeManager _prototypeManager;
-
         private readonly Dictionary<string, (Texture Texture, bool SnapCardinals)> _cachedTextures = new(64);
 
-        public DecalOverlay(
-            SpriteSystem sprites,
-            IEntityManager entManager,
-            IPrototypeManager prototypeManager)
-        {
-            _sprites = sprites;
-            _entManager = entManager;
-            _prototypeManager = prototypeManager;
-        }
+        private readonly List<(uint Id, Decal Decal)> _decals = new();
 
         protected override void Draw(in OverlayDrawArgs args)
         {
             if (args.MapId == MapId.Nullspace)
                 return;
 
-            var grid = Grid;
+            var owner = Grid.Owner;
 
-            if (!_entManager.TryGetComponent(grid, out DecalGridComponent? decalGrid) ||
-                !_entManager.TryGetComponent(grid, out TransformComponent? xform))
+            if (!entManager.TryGetComponent(owner, out DecalGridComponent? decalGrid) ||
+                !entManager.TryGetComponent(owner, out TransformComponent? xform))
             {
                 return;
             }
@@ -43,49 +35,71 @@ namespace Content.Client.Decals.Overlays
 
             // Shouldn't need to clear cached textures unless the prototypes get reloaded.
             var handle = args.WorldHandle;
-            var xformSystem = _entManager.System<TransformSystem>();
+            var xformSystem = entManager.System<TransformSystem>();
             var eyeAngle = args.Viewport.Eye?.Rotation ?? Angle.Zero;
 
-            var zIndexDictionary = decalGrid.DecalRenderIndex;
+            var gridAABB = xformSystem.GetInvWorldMatrix(xform).TransformBox(args.WorldBounds.Enlarged(1f));
+            var chunkEnumerator = new ChunkIndicesEnumerator(gridAABB, SharedDecalSystem.ChunkSize);
+            _decals.Clear();
 
-            if (zIndexDictionary.Count == 0)
+            while (chunkEnumerator.MoveNext(out var index))
+            {
+                if (!decalGrid.ChunkCollection.ChunkCollection.TryGetValue(index.Value, out var chunk))
+                    continue;
+
+                foreach (var (id, decal) in chunk.Decals)
+                {
+                    if (!gridAABB.Contains(decal.Coordinates))
+                        continue;
+
+                    _decals.Add((id, decal));
+                }
+            }
+
+            if (_decals.Count == 0)
                 return;
 
-            var (_, worldRot, worldMatrix) = xformSystem.GetWorldPositionRotationMatrix(xform);
+            _decals.Sort((x, y) =>
+            {
+                var zComp = x.Decal.ZIndex.CompareTo(y.Decal.ZIndex);
 
+                if (zComp != 0)
+                    return zComp;
+
+                return x.Id.CompareTo(y.Id);
+            });
+
+            var (_, worldRot, worldMatrix) = xformSystem.GetWorldPositionRotationMatrix(xform);
             handle.SetTransform(worldMatrix);
 
-            foreach (var decals in zIndexDictionary.Values)
+            foreach (var (_, decal) in _decals)
             {
-                foreach (var decal in decals.Values)
+                if (!_cachedTextures.TryGetValue(decal.Id, out var cache))
                 {
-                    if (!_cachedTextures.TryGetValue(decal.Id, out var cache))
+                    // Nothing to cache someone messed up
+                    if (!prototypeManager.TryIndex<DecalPrototype>(decal.Id, out var decalProto))
                     {
-                        // Nothing to cache someone messed up
-                        if (!_prototypeManager.TryIndex<DecalPrototype>(decal.Id, out var decalProto))
-                        {
-                            continue;
-                        }
-
-                        cache = (_sprites.Frame0(decalProto.Sprite), decalProto.SnapCardinals);
-                        _cachedTextures[decal.Id] = cache;
+                        continue;
                     }
 
-                    var cardinal = Angle.Zero;
-
-                    if (cache.SnapCardinals)
-                    {
-                        var worldAngle = eyeAngle + worldRot;
-                        cardinal = worldAngle.GetCardinalDir().ToAngle();
-                    }
-
-                    var angle = decal.Angle - cardinal;
-
-                    if (angle.Equals(Angle.Zero))
-                        handle.DrawTexture(cache.Texture, decal.Coordinates, decal.Color);
-                    else
-                        handle.DrawTexture(cache.Texture, decal.Coordinates, angle, decal.Color);
+                    cache = (sprites.Frame0(decalProto.Sprite), decalProto.SnapCardinals);
+                    _cachedTextures[decal.Id] = cache;
                 }
+
+                var cardinal = Angle.Zero;
+
+                if (cache.SnapCardinals)
+                {
+                    var worldAngle = eyeAngle + worldRot;
+                    cardinal = worldAngle.GetCardinalDir().ToAngle();
+                }
+
+                var angle = decal.Angle - cardinal;
+
+                if (angle.Equals(Angle.Zero))
+                    handle.DrawTexture(cache.Texture, decal.Coordinates, decal.Color);
+                else
+                    handle.DrawTexture(cache.Texture, decal.Coordinates, angle, decal.Color);
             }
 
             handle.SetTransform(Matrix3.Identity);

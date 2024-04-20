@@ -60,7 +60,6 @@
   - type: NameIdentifier
     group: GenericNumber
   - type: Repairable
-    fuelcost: 15
     doAfterDelay: 8
   - type: Pullable
   - type: Tag
@@ -280,10 +279,10 @@
     interactFailureString: petting-failure-medibot
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: ShowHealthIcons
+  - type: ShowHealthBars
     damageContainers:
     - Biological
-  - type: ShowWhiteHealthBars
+  - type: ShowHealthIcons
     damageContainers:
     - Biological
 

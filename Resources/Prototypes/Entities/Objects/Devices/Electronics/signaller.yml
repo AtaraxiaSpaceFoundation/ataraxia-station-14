@@ -34,7 +34,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
   - type: WirelessNetworkConnection
-    range: 15
+    range: 30
 
 - type: entity
   parent: RemoteSignaller
@@ -45,6 +45,6 @@
   - type: Sprite
     state: signaller2
   - type: WirelessNetworkConnection
-    range: 50
+    range: 60
   - type: StaticPrice
     price: 30

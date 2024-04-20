@@ -4,11 +4,11 @@
     Handcuffs: 8
     Zipties: 12
     GrenadeFlashBang: 4
-    TearSmokeGrenade: 4
     SmokeGrenade: 6
     GrenadeStinger: 4
     Flash: 7
     Bola: 7
+    Tourniquet: 7
     FlashlightSeclite: 5
     ClothingEyesGlassesSunglasses: 2
     ClothingBeltSecurityWebbing: 5
@@ -18,7 +18,6 @@
     SecurityWhistle: 5
     TearGasGrenade: 4
     ClusterBangFull: 2
-    Tourniquet: 5
 
   contrabandInventory:
     FoodDonutHomer: 12

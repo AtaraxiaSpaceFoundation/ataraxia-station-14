@@ -1,3 +1,14 @@
+# base actions
+
+- type: entity
+  id: BaseSuicideAction
+  abstract: true
+  components:
+  - type: ConfirmableAction
+    popup: suicide-action-popup
+
+# actions
+
 - type: entity
   id: ActionTurnUndead
   name: Turn Undead
@@ -6,6 +17,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     icon: Interface/Actions/zombie-turn.png
     event: !type:ZombifySelfActionEvent
 
@@ -17,7 +29,7 @@
   components:
   - type: InstantAction
     icon: { sprite: Objects/Tools/flashlight.rsi, state: flashlight }
-    iconOn: Objects/Tools/flashlight.rsi/flashlight-on.png
+    iconOn: { sprite: Objects/Tools/flashlight.rsi, state: flashlight-on }
     event: !type:ToggleActionEvent
 
 - type: entity
@@ -45,6 +57,7 @@
     event: !type:OpenStorageImplantEvent
 
 - type: entity
+  parent: BaseSuicideAction
   id: ActionActivateMicroBomb
   name: Activate Microbomb
   description: Activates your internal microbomb, completely destroying you and your equipment
@@ -52,6 +65,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     itemIconStyle: BigAction
     priority: -20
     icon:
@@ -60,6 +74,7 @@
     event: !type:ActivateImplantEvent
 
 - type: entity
+  parent: BaseSuicideAction
   id: ActionActivateDeathAcidifier
   name: Activate Death-Acidifier
   description: Activates your death-acidifier, completely melting you and your equipment
@@ -67,6 +82,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     itemIconStyle: BigAction
     priority: -20
     icon:
@@ -169,6 +185,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     icon: Interface/Actions/harmOff.png
     iconOn: Interface/Actions/harm.png
     event: !type:ToggleCombatActionEvent
@@ -239,6 +256,7 @@
   - type: InstantAction
     clientExclusive: true
     checkCanInteract: false
+    checkConsciousness: false
     temporary: true
     icon: { sprite: Objects/Tools/multitool.rsi, state: icon }
     event: !type:ClearAllOverlaysEvent
@@ -262,6 +280,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     icon: { sprite: Clothing/Head/Hats/pyjamasyndicatered.rsi, state: icon }
     event: !type:SleepActionEvent
 
@@ -274,6 +293,7 @@
   - type: InstantAction
     icon: { sprite: Clothing/Head/Hats/pyjamasyndicatered.rsi, state: icon }
     checkCanInteract: false
+    checkConsciousness: false
     event: !type:WakeActionEvent
 
 - type: entity
@@ -311,6 +331,7 @@
     event: !type:ToggleEyesActionEvent
     useDelay: 1 # so u cant give yourself and observers eyestrain by rapidly spamming the action
     checkCanInteract: false
+    checkConsciousness: false
 
 - type: entity
   id: Halt

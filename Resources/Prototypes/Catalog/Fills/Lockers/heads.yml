@@ -217,13 +217,13 @@
       - id: ResearchComputerCircuitboard
       - id: ProtolatheMachineCircuitboard
       - id: CircuitImprinterMachineCircuitboard
-      - id: ClothingHeadsetMedicalScience
       - id: ClothingOuterHardsuitRd
       - id: HandTeleporter
       - id: DoorRemoteResearch
       - id: ClothingBeltUtilityFilled
       - id: RubberStampRd
       - id: BoxEncryptionKeyScience
+      - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
 
 - type: entity
@@ -236,12 +236,12 @@
       - id: ResearchComputerCircuitboard
       - id: ProtolatheMachineCircuitboard
       - id: CircuitImprinterMachineCircuitboard
-      - id: ClothingHeadsetMedicalScience
       - id: HandTeleporter
       - id: DoorRemoteResearch
       - id: ClothingBeltUtilityFilled
       - id: RubberStampRd
       - id: BoxEncryptionKeyScience
+      - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
 
 - type: entity
@@ -324,5 +324,4 @@
         - id: ClothingUniformJumpskirtInspectorFormal
         - id: ClothingHandsGlovesInspector
         - id: ClothingHeadsetAltSecurity
-        - id: BookSpaceLaws
         - id: RubberStampInspector

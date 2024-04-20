@@ -385,6 +385,35 @@
           1
         ]
       ]
+    },    {
+      "name": "envoy_of_death_neko",
+      "directions": 4,
+      "delays": [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
     },
     {
       "name": "shadowstep_out",

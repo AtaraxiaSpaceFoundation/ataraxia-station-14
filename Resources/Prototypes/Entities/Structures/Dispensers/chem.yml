@@ -28,9 +28,6 @@
         acts: ["Destruction"]
   - type: Machine
     board: ChemDispenserMachineCircuitboard
-  - type: Wires
-    boardName: wires-board-name-chemdispenser
-    layoutId: ChemDispenser
   - type: GuideHelp
     guides:
     - Chemicals

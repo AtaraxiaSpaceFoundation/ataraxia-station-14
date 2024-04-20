@@ -125,7 +125,9 @@
                                     <prefUi:HighlightedContainer>
                                         <BoxContainer Orientation="Horizontal">
                                             <Label Text="{Loc 'humanoid-profile-editor-species-label'}" />
+                                            <Control HorizontalExpand="True"/>
                                             <OptionButton Name="CSpeciesButton" />
+                                            <TextureButton Name="SpeciesInfoButton" Scale="0.5 0.5" VerticalAlignment="Center"></TextureButton>
                                         </BoxContainer>
                                     </prefUi:HighlightedContainer>
                                     <!-- Show clothing -->

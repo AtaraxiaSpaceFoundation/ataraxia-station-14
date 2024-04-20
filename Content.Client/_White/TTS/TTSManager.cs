@@ -7,6 +7,7 @@ namespace Content.Client._White.TTS;
 public sealed class TTSManager
 {
     [Dependency] private readonly IClientNetManager _netMgr = default!;
+    [Dependency] private readonly EntityManager _entityManager = default!;
 
     public void Initialize()
     {
@@ -16,7 +17,8 @@ public sealed class TTSManager
     // ReSharper disable once InconsistentNaming
     public void RequestTTS(EntityUid uid, string text, string voiceId)
     {
-        var msg = new MsgRequestTTS() { Text = text, Uid = uid, VoiceId = voiceId };
+        var netEntity = _entityManager.GetNetEntity(uid);
+        var msg = new MsgRequestTTS() { Text = text, Uid = netEntity, VoiceId = voiceId };
         _netMgr.ClientSendMessage(msg);
     }
 }

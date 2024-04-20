@@ -4,16 +4,11 @@ namespace Content.Shared._White.TTS;
 
 [Serializable, NetSerializable]
 // ReSharper disable once InconsistentNaming
-public sealed class PlayTTSEvent : EntityEventArgs
+public sealed class PlayTTSEvent(NetEntity uid, byte[] data, bool boostVolume) : EntityEventArgs
 {
-    public NetEntity Uid { get; }
-    public byte[] Data { get; }
-    public bool BoostVolume { get; }
+    public NetEntity Uid { get; } = uid;
 
-    public PlayTTSEvent(NetEntity uid, byte[] data, bool boostVolume)
-    {
-        Uid = uid;
-        Data = data;
-        BoostVolume = boostVolume;
-    }
+    public byte[] Data { get; } = data;
+
+    public bool BoostVolume { get; } = boostVolume;
 }

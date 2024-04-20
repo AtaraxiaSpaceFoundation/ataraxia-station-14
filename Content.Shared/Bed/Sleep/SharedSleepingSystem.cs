@@ -5,7 +5,6 @@ using Content.Shared.Emoting;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Pointing;
 using Content.Shared.Speech;
-using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -27,19 +26,12 @@ namespace Content.Server.Bed.Sleep
             SubscribeLocalEvent<SleepingComponent, SpeakAttemptEvent>(OnSpeakAttempt);
             SubscribeLocalEvent<SleepingComponent, CanSeeAttemptEvent>(OnSeeAttempt);
             SubscribeLocalEvent<SleepingComponent, PointAttemptEvent>(OnPointAttempt);
-            SubscribeLocalEvent<SleepingComponent, EntityUnpausedEvent>(OnSleepUnpaused);
             SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnTryEmote); // WD
         }
 
         private void OnTryEmote(EntityUid uid, SleepingComponent component, EmoteAttemptEvent args) // WD
         {
             args.Cancel();
-        }
-
-        private void OnSleepUnpaused(EntityUid uid, SleepingComponent component, ref EntityUnpausedEvent args)
-        {
-            component.CoolDownEnd += args.PausedTime;
-            Dirty(uid, component);
         }
 
         private void OnMapInit(EntityUid uid, SleepingComponent component, MapInitEvent args)
@@ -50,7 +42,7 @@ namespace Content.Server.Bed.Sleep
             _actionsSystem.AddAction(uid, ref component.WakeAction, WakeActionId, uid);
 
             // TODO remove hardcoded time.
-            _actionsSystem.SetCooldown(component.WakeAction, _gameTiming.CurTime, _gameTiming.CurTime + TimeSpan.FromSeconds(15));
+            _actionsSystem.SetCooldown(component.WakeAction, _gameTiming.CurTime, _gameTiming.CurTime + TimeSpan.FromSeconds(2f));
         }
 
         private void OnShutdown(EntityUid uid, SleepingComponent component, ComponentShutdown args)
@@ -86,20 +78,14 @@ namespace Content.Server.Bed.Sleep
     }
 }
 
+public sealed partial class SleepActionEvent : InstantActionEvent;
 
-public sealed partial class SleepActionEvent : InstantActionEvent {}
-
-public sealed partial class WakeActionEvent : InstantActionEvent {}
+public sealed partial class WakeActionEvent : InstantActionEvent;
 
 /// <summary>
 /// Raised on an entity when they fall asleep or wake up.
 /// </summary>
-public sealed class SleepStateChangedEvent : EntityEventArgs
+public sealed class SleepStateChangedEvent(bool fellAsleep) : EntityEventArgs
 {
-    public bool FellAsleep = false;
-
-    public SleepStateChangedEvent(bool fellAsleep)
-    {
-        FellAsleep = fellAsleep;
-    }
+    public bool FellAsleep = fellAsleep;
 }

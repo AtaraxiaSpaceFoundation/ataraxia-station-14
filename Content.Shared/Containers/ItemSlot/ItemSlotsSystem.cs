@@ -10,7 +10,6 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Verbs;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -23,16 +22,20 @@ namespace Content.Shared.Containers.ItemSlots
     /// <summary>
     ///     A class that handles interactions related to inserting/ejecting items into/from an item slot.
     /// </summary>
+    /// <remarks>
+    ///     Note when using popups on entities with many slots with InsertOnInteract, EjectOnInteract or EjectOnUse:
+    ///     A single use will try to insert to/eject from every slot and generate a popup for each that fails.
+    /// </remarks>
     public sealed class ItemSlotsSystem : EntitySystem
     {
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly INetManager _netManager = default!;
         [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
         [Dependency] private readonly SharedContainerSystem _containers = default!;
         [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
         [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
         [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+        [Dependency] private readonly INetManager _netManager = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
 
         public override void Initialize()
         {
@@ -91,7 +94,7 @@ namespace Content.Shared.Containers.ItemSlots
         /// </summary>
         public void AddItemSlot(EntityUid uid, string id, ItemSlot slot, ItemSlotsComponent? itemSlots = null)
         {
-            itemSlots ??= EntityManager.EnsureComponent<ItemSlotsComponent>(uid);
+            itemSlots ??= EnsureComp<ItemSlotsComponent>(uid);
             DebugTools.AssertOwner(uid, itemSlots);
 
             if (itemSlots.Slots.TryGetValue(id, out var existing))
@@ -105,7 +108,7 @@ namespace Content.Shared.Containers.ItemSlots
 
             slot.ContainerSlot = _containers.EnsureContainer<ContainerSlot>(uid, id);
             itemSlots.Slots[id] = slot;
-            Dirty(itemSlots);
+            Dirty(uid, itemSlots);
         }
 
         /// <summary>
@@ -129,7 +132,7 @@ namespace Content.Shared.Containers.ItemSlots
             if (itemSlots.Slots.Count == 0)
                 EntityManager.RemoveComponent(uid, itemSlots);
             else
-                Dirty(itemSlots);
+                Dirty(uid, itemSlots);
         }
 
         public bool TryGetSlot(EntityUid uid, string slotId, [NotNullWhen(true)] out ItemSlot? itemSlot, ItemSlotsComponent? component = null)
@@ -154,7 +157,7 @@ namespace Content.Shared.Containers.ItemSlots
 
             foreach (var slot in itemSlots.Slots.Values)
             {
-                if (slot.Locked || !slot.EjectOnInteract || slot.Item == null)
+                if (!slot.EjectOnInteract || slot.Item == null || !CanEject(uid, args.User, slot, popup: args.User))
                     continue;
 
                 args.Handled = true;
@@ -173,7 +176,7 @@ namespace Content.Shared.Containers.ItemSlots
 
             foreach (var slot in itemSlots.Slots.Values)
             {
-                if (slot.Locked || !slot.EjectOnUse || slot.Item == null)
+                if (!slot.EjectOnUse || slot.Item == null || !CanEject(uid, args.User, slot, popup: args.User))
                     continue;
 
                 args.Handled = true;
@@ -229,6 +232,10 @@ namespace Content.Shared.Containers.ItemSlots
                     _handsSystem.TryPickupAnyHand(args.User, slot.Item.Value, handsComp: hands);
 
                 Insert(uid, slot, args.Used, args.User, excludeUserAudio: true);
+
+                if (slot.InsertSuccessPopup.HasValue)
+                    _popupSystem.PopupClient(Loc.GetString(slot.InsertSuccessPopup), uid, args.User);
+
                 args.Handled = true;
                 return;
             }
@@ -260,27 +267,29 @@ namespace Content.Shared.Containers.ItemSlots
         /// </summary>
         /// <remarks>
         ///     If a popup entity is given, and if the item slot is set to generate a popup message when it fails to
-        ///     pass the whitelist, then this will generate a popup.
+        ///     pass the whitelist or due to slot being locked, then this will generate an appropriate popup.
         /// </remarks>
         public bool CanInsert(EntityUid uid, EntityUid usedUid, EntityUid? user, ItemSlot slot, bool swap = false, EntityUid? popup = null)
         {
             if (slot.ContainerSlot == null)
                 return false;
 
-            if (slot.Locked)
-                return false;
-
-            if (!swap && slot.HasItem)
-                return false;
-
-            if ((slot.Whitelist != null && !slot.Whitelist.IsValid(usedUid)) || (slot.Blacklist != null && slot.Blacklist.IsValid(usedUid)))
+            if ((!slot.Whitelist?.IsValid(usedUid) ?? false) ||
+                (slot.Blacklist?.IsValid(usedUid) ?? false))
             {
-                if (_netManager.IsClient && _timing.IsFirstTimePredicted && popup.HasValue && !string.IsNullOrWhiteSpace(slot.WhitelistFailPopup))
-                    _popupSystem.PopupEntity(Loc.GetString(slot.WhitelistFailPopup), uid, popup.Value);
+                if (popup.HasValue && slot.WhitelistFailPopup.HasValue)
+                    _popupSystem.PopupClient(Loc.GetString(slot.WhitelistFailPopup), uid, popup.Value);
                 return false;
             }
 
-            if (swap && slot.HasItem && !CanEject(uid, user, slot))
+            if (slot.Locked)
+            {
+                if (popup.HasValue && slot.LockedFailPopup.HasValue)
+                    _popupSystem.PopupClient(Loc.GetString(slot.LockedFailPopup), uid, popup.Value);
+                return false;
+            }
+
+            if (slot.HasItem && (!swap || (swap && !CanEject(uid, user, slot))))
                 return false;
 
             var ev = new ItemSlotInsertAttemptEvent(uid, usedUid, user, slot);
@@ -289,7 +298,7 @@ namespace Content.Shared.Containers.ItemSlots
             if (ev.Cancelled)
                 return false;
 
-            return _containers.CanInsert(usedUid, slot.ContainerSlot, assumeEmpty: true);
+            return _containers.CanInsert(usedUid, slot.ContainerSlot, assumeEmpty: swap);
         }
 
         /// <summary>
@@ -347,9 +356,22 @@ namespace Content.Shared.Containers.ItemSlots
 
         #region Eject
 
-        public bool CanEject(EntityUid uid, EntityUid? user, ItemSlot slot)
+        /// <summary>
+        ///     Check whether an ejection from a given slot may happen.
+        /// </summary>
+        /// <remarks>
+        ///     If a popup entity is given, this will generate a popup message if any are configured on the the item slot.
+        /// </remarks>
+        public bool CanEject(EntityUid uid, EntityUid? user, ItemSlot slot, EntityUid? popup = null)
         {
-            if (slot.Locked || slot.ContainerSlot?.ContainedEntity is not {} item)
+            if (slot.Locked)
+            {
+                if (popup.HasValue && slot.LockedFailPopup.HasValue)
+                    _popupSystem.PopupClient(Loc.GetString(slot.LockedFailPopup), uid, popup.Value);
+                return false;
+            }
+
+            if (slot.ContainerSlot?.ContainedEntity is not {} item)
                 return false;
 
             var ev = new ItemSlotEjectAttemptEvent(uid, item, user, slot);
@@ -362,7 +384,7 @@ namespace Content.Shared.Containers.ItemSlots
         }
 
         /// <summary>
-        ///     Eject an item into a slot. This does not perform checks (e.g., is the slot locked?), so you should
+        ///     Eject an item from a slot. This does not perform checks (e.g., is the slot locked?), so you should
         ///     probably just use <see cref="TryEject"/> instead.
         /// </summary>
         /// <param name="excludeUserAudio">If true, will exclude the user when playing sound. Does nothing client-side.

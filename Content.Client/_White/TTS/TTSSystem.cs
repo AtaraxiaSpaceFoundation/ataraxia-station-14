@@ -5,6 +5,7 @@ using Content.Shared.Physics;
 using Content.Shared._White;
 using Content.Shared._White.TTS;
 using Robust.Client.Audio;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Audio.Sources;
 using Robust.Shared.Configuration;
@@ -25,16 +26,16 @@ public sealed class TTSSystem : EntitySystem
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly SharedPhysicsSystem _broadPhase = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
-    private ISawmill _sawmill = default!;
-    private float _volume = 0.0f;
+    private float _volume;
+    private const int TTSCollisionMask = (int)CollisionGroup.Impassable;
 
     private readonly HashSet<AudioStream> _currentStreams = new();
     private readonly Dictionary<EntityUid, Queue<AudioStream>> _entityQueues = new();
 
     public override void Initialize()
     {
-        _sawmill = Logger.GetSawmill("tts");
         _cfg.OnValueChanged(WhiteCVars.TtsVolume, OnTtsVolumeChanged, true);
         SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
     }
@@ -64,26 +65,27 @@ public sealed class TTSSystem : EntitySystem
                 continue;
             }
 
-            var mapPos = xform.MapPosition;
+            var mapPos = _transform.GetMapCoordinates(xform);
             if (mapPos.MapId != MapId.Nullspace)
             {
                 stream.Source.Position = mapPos.Position;
             }
 
-            if (mapPos.MapId == _eye.CurrentMap)
+            if (mapPos.MapId != _eye.CurrentMap)
             {
-                var collisionMask = (int) CollisionGroup.Impassable;
-                var sourceRelative = ourPos - mapPos.Position;
-                var occlusion = 0f;
-                if (sourceRelative.Length() > 0)
-                {
-                    occlusion = _broadPhase.IntersectRayPenetration(mapPos.MapId,
-                        new CollisionRay(mapPos.Position, sourceRelative.Normalized(), collisionMask),
-                        sourceRelative.Length(), stream.Uid);
-                }
-
-                stream.Source.Occlusion = occlusion;
+                continue;
             }
+
+            var sourceRelative = ourPos - mapPos.Position;
+            var occlusion = 0f;
+            if (sourceRelative.Length() > 0)
+            {
+                occlusion = _broadPhase.IntersectRayPenetration(mapPos.MapId,
+                    new CollisionRay(mapPos.Position, sourceRelative.Normalized(), TTSCollisionMask),
+                    sourceRelative.Length(), stream.Uid);
+            }
+
+            stream.Source.Occlusion = occlusion;
         }
 
         foreach (var audioStream in streamToRemove)
@@ -178,7 +180,7 @@ public sealed class TTSSystem : EntitySystem
         if (!_entity.TryGetComponent<TransformComponent>(stream.Uid, out var xform))
             return;
 
-        stream.Source.Position = xform.WorldPosition;
+        stream.Source.Position = _transform.GetWorldPosition(xform);
         stream.Source.StartPlaying();
         _currentStreams.Add(stream);
     }
@@ -204,16 +206,10 @@ public sealed class TTSSystem : EntitySystem
     }
 
     // ReSharper disable once InconsistentNaming
-    private sealed class AudioStream
+    private sealed class AudioStream(EntityUid uid, IAudioSource source)
     {
-        public EntityUid Uid { get; }
+        public EntityUid Uid { get; } = uid;
 
-        public IAudioSource Source { get; }
-
-        public AudioStream(EntityUid uid, IAudioSource source)
-        {
-            Uid = uid;
-            Source = source;
-        }
+        public IAudioSource Source { get; } = source;
     }
 }

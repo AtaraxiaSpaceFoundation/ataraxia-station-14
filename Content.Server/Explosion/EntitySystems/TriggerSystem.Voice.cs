@@ -34,8 +34,19 @@ namespace Content.Server.Explosion.EntitySystems
 
             if (component.IsRecording)
             {
-                if (message.Length >= component.MinLength || message.Length <= component.MaxLength)
+                var ev = new ListenAttemptEvent(args.Source);
+                RaiseLocalEvent(ent, ev);
+
+                if (ev.Cancelled)
+                    return;
+
+                if (message.Length >= component.MinLength && message.Length <= component.MaxLength)
                     FinishRecording(ent, args.Source, args.Message);
+                else if (message.Length > component.MaxLength)
+                    _popupSystem.PopupEntity(Loc.GetString("popup-trigger-voice-record-failed-too-long"), ent);
+                else if (message.Length < component.MinLength)
+                    _popupSystem.PopupEntity(Loc.GetString("popup-trigger-voice-record-failed-too-short"), ent);
+
                 return;
             }
 
@@ -57,7 +68,7 @@ namespace Content.Server.Explosion.EntitySystems
             var @event = args;
             args.Verbs.Add(new AlternativeVerb()
             {
-                Text = Loc.GetString(component.IsRecording ? "verb-trigger-voice-record-stop" : "verb-trigger-voice-record"),
+                Text = Loc.GetString(component.IsRecording ? "verb-trigger-voice-stop" : "verb-trigger-voice-record"),
                 Act = () =>
                 {
                     if (component.IsRecording)

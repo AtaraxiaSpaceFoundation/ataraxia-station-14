@@ -321,9 +321,10 @@ namespace Content.Server._White.Supermatter.Systems
 
                 //if there are space tiles next to SM
                 //TODO: change moles out for checking if adjacent tiles exist
-                foreach (var ind in _atmosphere.GetAdjacentTileMixtures(xform.GridUid.Value, indices))
+                var query = _atmosphere.GetAdjacentTileMixtures(xform.GridUid.Value, indices);
+                while(query.MoveNext(out var mix))
                 {
-                    if (ind.TotalMoles != 0)
+                    if (mix.TotalMoles != 0)
                         continue;
 
                     var integrity = GetIntegrity(sMcomponent.Damage, sMcomponent.ExplosionPoint);

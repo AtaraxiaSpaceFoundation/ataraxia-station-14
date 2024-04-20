@@ -25,7 +25,6 @@ using Content.Shared.Players;
 using Content.Shared.Radio;
 using Content.Shared._White;
 using Content.Shared.Speech;
-using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -80,8 +79,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
     private bool _critLoocEnabled;
-    private const bool AdminLoocEnabled = true;
-    private const string ChatNamePalette = "ChatNames";
+    private readonly bool _adminLoocEnabled = true;
 
     public override void Initialize()
     {
@@ -721,7 +719,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (_adminManager.HasAdminFlag(player, AdminFlags.Admin))
         {
-            if (!AdminLoocEnabled)
+            if (!_adminLoocEnabled)
                 return;
         }
         else if (!_loocEnabled)
@@ -1123,102 +1121,64 @@ public record ExpandICChatRecipientstEvent(
     float VoiceRange,
     Dictionary<ICommonSession, ChatSystem.ICChatRecipientData> Recipients);
 
-public sealed class TransformSpeakerNameEvent : EntityEventArgs
+public sealed class TransformSpeakerNameEvent(EntityUid sender, string name, string? speechVerb = null)
+    : EntityEventArgs
 {
-    public EntityUid Sender;
-    public string Name;
-    public string? SpeechVerb;
-
-    public TransformSpeakerNameEvent(EntityUid sender, string name, string? speechVerb = null)
-    {
-        Sender = sender;
-        Name = name;
-        SpeechVerb = speechVerb;
-    }
+    public EntityUid Sender = sender;
+    public string Name = name;
+    public string? SpeechVerb = speechVerb;
 }
 
 /// <summary>
 ///     Raised broadcast in order to transform speech.transmit
 /// </summary>
-public sealed class TransformSpeechEvent : EntityEventArgs
+public sealed class TransformSpeechEvent(EntityUid sender, string message) : EntityEventArgs
 {
-    public EntityUid Sender;
-    public string Message;
-
-    public TransformSpeechEvent(EntityUid sender, string message)
-    {
-        Sender = sender;
-        Message = message;
-    }
+    public EntityUid Sender = sender;
+    public string Message = message;
 }
 
-public sealed class CheckIgnoreSpeechBlockerEvent : EntityEventArgs
+public sealed class CheckIgnoreSpeechBlockerEvent(EntityUid sender, bool ignoreBlocker) : EntityEventArgs
 {
-    public EntityUid Sender;
-    public bool IgnoreBlocker;
-
-    public CheckIgnoreSpeechBlockerEvent(EntityUid sender, bool ignoreBlocker)
-    {
-        Sender = sender;
-        IgnoreBlocker = ignoreBlocker;
-    }
+    public EntityUid Sender = sender;
+    public bool IgnoreBlocker = ignoreBlocker;
 }
 
 /// <summary>
 ///     Raised on an entity when it speaks, either through 'say' or 'whisper'.
 /// </summary>
-public sealed class EntitySpokeEvent : EntityEventArgs
+public sealed class EntitySpokeEvent(
+    EntityUid source,
+    string message,
+    string originalMessage,
+    RadioChannelPrototype? channel,
+    string? obfuscatedMessage)
+    : EntityEventArgs
 {
-    public readonly EntityUid Source;
-    public readonly string Message;
-    public readonly string OriginalMessage;
-    public readonly string? ObfuscatedMessage; // not null if this was a whisper
+    public readonly EntityUid Source = source;
+    public readonly string Message = message;
+    public readonly string OriginalMessage = originalMessage;
+    public readonly string? ObfuscatedMessage = obfuscatedMessage; // not null if this was a whisper
 
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
     ///     message gets sent on this channel, this should be set to null to prevent duplicate messages.
     /// </summary>
-    public RadioChannelPrototype? Channel;
-
-    public EntitySpokeEvent(
-        EntityUid source,
-        string message,
-        string originalMessage,
-        RadioChannelPrototype? channel,
-        string? obfuscatedMessage)
-    {
-        Source = source;
-        Message = message;
-        OriginalMessage = originalMessage;
-        Channel = channel;
-        ObfuscatedMessage = obfuscatedMessage;
-    }
+    public RadioChannelPrototype? Channel = channel;
 }
 
 //WD-EDIT
-public sealed class SetSpeakerColorEvent
+public sealed class SetSpeakerColorEvent(EntityUid sender, string name)
 {
-    public EntityUid Sender { get; set; }
+    public EntityUid Sender { get; set; } = sender;
 
-    public string Name { get; set; }
-
-    public SetSpeakerColorEvent(EntityUid sender, string name)
-    {
-        Sender = sender;
-        Name = name;
-    }
+    public string Name { get; set; } = name;
 }
 
-public sealed class SpeechTransformedEvent : EntityEventArgs
+public sealed class SpeechTransformedEvent(EntityUid sender, string message) : EntityEventArgs
 {
-    public EntityUid Sender;
-    public string Message;
-
-    public SpeechTransformedEvent(EntityUid sender, string message)
-    {
-        Sender = sender;
-        Message = message;
-    }
+    public EntityUid Sender = sender;
+    public string Message = message;
 }
 
 //WD-EDIT

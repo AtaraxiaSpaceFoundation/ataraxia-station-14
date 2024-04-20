@@ -28,6 +28,14 @@
     {
       "name": "open-equipped-OUTERCLOTHING-body-slim",
       "directions": 4
+    },
+    {
+      "name": "open-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "open-inhand-right",
+      "directions": 4
     }
   ]
 }

@@ -31,6 +31,7 @@ namespace Content.IntegrationTests.Tests
         {
             "CentComm",
             "Dart",
+            "NukieOutpost"
         };
 
         private static readonly string[] Grids =
@@ -38,7 +39,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/centcomm.yml",
             "/Maps/Shuttles/cargo.yml",
             "/Maps/Shuttles/emergency.yml",
-            "/Maps/infiltrator.yml",
+            "/Maps/Shuttles/infiltrator.yml",
         };
 
         private static readonly string[] GameMaps =
@@ -53,6 +54,7 @@ namespace Content.IntegrationTests.Tests
             "Bagel",
             "Origin",
             "CentComm",
+            "NukieOutpost",
             "Box",
             "Europa",
             "Saltern",
@@ -61,7 +63,14 @@ namespace Content.IntegrationTests.Tests
             "MeteorArena",
             "Atlas",
             "Reach",
-            "Train"
+            "Train",
+            "Atom", 
+            "DryDock",
+            "Polaris",
+            "Scoupidia",
+            "Triumph",
+            "Void",
+            "WonderBox"
         };
 
         /// <summary>
@@ -103,6 +112,7 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to delete map {mapFile}", ex);
                 }
             });
+
             await server.WaitRunTicks(1);
 
             await pair.CleanReturnAsync();
@@ -118,7 +128,8 @@ namespace Content.IntegrationTests.Tests
             var mapFolder = new ResPath("/Maps");
             var maps = resourceManager
                 .ContentFindFiles(mapFolder)
-                .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
+                .Where(filePath =>
+                    filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
                 .ToArray();
 
             foreach (var map in maps)
@@ -147,6 +158,7 @@ namespace Content.IntegrationTests.Tests
 
                 Assert.That(postMapInit, Is.False, $"Map {map.Filename} was saved postmapinit");
             }
+
             await pair.CleanReturnAsync();
         }
 
@@ -212,9 +224,10 @@ namespace Content.IntegrationTests.Tests
                     Assert.That(mapLoader.TryLoad(shuttleMap, shuttlePath.ToString(), out var roots));
                     EntityUid shuttle = default!;
                     Assert.DoesNotThrow(() =>
-                    {
-                        shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
-                    }, $"Failed to load {shuttlePath}");
+                        {
+                            shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
+                        }, $"Failed to load {shuttlePath}");
+
                     Assert.That(
                         shuttleSystem.TryFTLDock(shuttle,
                             entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
@@ -226,25 +239,13 @@ namespace Content.IntegrationTests.Tests
 
                 if (entManager.HasComponent<StationJobsComponent>(station))
                 {
-                    // Test that the map has valid latejoin spawn points
+                    // Test that the map has valid latejoin spawn points or container spawn points
                     if (!NoSpawnMaps.Contains(mapProto))
                     {
                         var lateSpawns = 0;
 
-                        var query = entManager.AllEntityQueryEnumerator<SpawnPointComponent>();
-                        while (query.MoveNext(out var uid, out var comp))
-                        {
-                            if (comp.SpawnType != SpawnPointType.LateJoin
-                            || !xformQuery.TryGetComponent(uid, out var xform)
-                            || xform.GridUid == null
-                            || !gridUids.Contains(xform.GridUid.Value))
-                            {
-                                continue;
-                            }
-
-                            lateSpawns++;
-                            break;
-                        }
+                        lateSpawns += GetCountLateSpawn<SpawnPointComponent>(gridUids, entManager);
+                        lateSpawns += GetCountLateSpawn<ContainerSpawnPointComponent>(gridUids, entManager);
 
                         Assert.That(lateSpawns, Is.GreaterThan(0), $"Found no latejoin spawn points on {mapProto}");
                     }
@@ -254,10 +255,12 @@ namespace Content.IntegrationTests.Tests
                     var jobList = entManager.GetComponent<StationJobsComponent>(station).RoundStartJobList
                         .Where(x => x.Value != 0)
                         .Select(x => x.Key);
+
                     var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
                         .Where(spawnpoint => spawnpoint.SpawnType == SpawnPointType.Job)
                         .Select(spawnpoint => spawnpoint.Job.ID)
                         .Distinct();
+
                     List<string> missingSpawnPoints = new();
                     foreach (var spawnpoint in jobList.Except(spawnPoints))
                     {
@@ -278,9 +281,34 @@ namespace Content.IntegrationTests.Tests
                     throw new Exception($"Failed to delete map {mapProto}", ex);
                 }
             });
+
             await server.WaitRunTicks(1);
 
             await pair.CleanReturnAsync();
+        }
+
+        private static int GetCountLateSpawn<T>(List<EntityUid> gridUids, IEntityManager entManager)
+            where T : ISpawnPoint, IComponent
+        {
+            var resultCount = 0;
+            var queryPoint = entManager.AllEntityQueryEnumerator<T, TransformComponent>();
+#nullable enable
+            while (queryPoint.MoveNext(out T? comp, out var xform))
+            {
+                var spawner = (ISpawnPoint) comp;
+
+                if (spawner.SpawnType is not SpawnPointType.LateJoin
+                    || xform.GridUid == null
+                    || !gridUids.Contains(xform.GridUid.Value))
+                {
+                    continue;
+                }
+#nullable disable
+                resultCount++;
+                break;
+            }
+
+            return resultCount;
         }
 
         [Test]
@@ -320,7 +348,8 @@ namespace Content.IntegrationTests.Tests
             var mapFolder = new ResPath("/Maps");
             var maps = resourceManager
                 .ContentFindFiles(mapFolder)
-                .Where(filePath => filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
+                .Where(filePath =>
+                    filePath.Extension == "yml" && !filePath.Filename.StartsWith(".", StringComparison.Ordinal))
                 .ToArray();
 
             var mapNames = new List<string>();
@@ -334,6 +363,7 @@ namespace Content.IntegrationTests.Tests
                 {
                     continue;
                 }
+
                 mapNames.Add(rootedPath.ToString());
             }
 

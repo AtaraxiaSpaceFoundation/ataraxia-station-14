@@ -18,6 +18,7 @@ public sealed class StatusIconOverlay : Overlay
     private readonly SpriteSystem _sprite;
     private readonly TransformSystem _transform;
     private readonly StatusIconSystem _statusIcon;
+    private readonly ShaderInstance _unshadedShader;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
@@ -28,6 +29,7 @@ public sealed class StatusIconOverlay : Overlay
         _sprite = _entity.System<SpriteSystem>();
         _transform = _entity.System<TransformSystem>();
         _statusIcon = _entity.System<StatusIconSystem>();
+        _unshadedShader = _prototype.Index<ShaderPrototype>("unshaded").Instance();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -70,7 +72,6 @@ public sealed class StatusIconOverlay : Overlay
 
             foreach (var proto in icons)
             {
-
                 var curTime = _timing.RealTime;
                 var texture = _sprite.GetFrame(proto.Icon, curTime);
 
@@ -89,9 +90,8 @@ public sealed class StatusIconOverlay : Overlay
                         accOffsetL += texture.Height;
                         countL++;
                     }
-                    yOffset = (bounds.Height + sprite.Offset.Y) / 2f - (float) accOffsetL / EyeManager.PixelsPerMeter;
+                    yOffset = (bounds.Height + sprite.Offset.Y) / 2f - (float) (accOffsetL - proto.Offset) / EyeManager.PixelsPerMeter;
                     xOffset = -(bounds.Width + sprite.Offset.X) / 2f;
-
                 }
                 else
                 {
@@ -102,14 +102,21 @@ public sealed class StatusIconOverlay : Overlay
                         accOffsetR += texture.Height;
                         countR++;
                     }
-                    yOffset = (bounds.Height + sprite.Offset.Y) / 2f - (float) accOffsetR / EyeManager.PixelsPerMeter;
+                    yOffset = (bounds.Height + sprite.Offset.Y) / 2f - (float) (accOffsetR - proto.Offset) / EyeManager.PixelsPerMeter;
                     xOffset = (bounds.Width + sprite.Offset.X) / 2f - (float) texture.Width / EyeManager.PixelsPerMeter;
 
                 }
 
+                if (proto.IsShaded)
+                    handle.UseShader(null);
+                else
+                    handle.UseShader(_unshadedShader);
+
                 var position = new Vector2(xOffset, yOffset);
                 handle.DrawTexture(texture, position);
             }
+
+            handle.UseShader(null);
         }
     }
 }

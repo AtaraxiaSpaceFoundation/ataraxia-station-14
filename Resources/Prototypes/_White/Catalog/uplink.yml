@@ -1,23 +1,23 @@
 - type: listing
   id: UplinkHelmetSwat
-  name: Шлем спецназа
-  description: Чрезвычайно прочный шлем, обычно используемый военизированными формированиями. Он украшен гнусным рисунком в красную и черную полоску.
+  name: uplink-helmet-name
+  description: uplink-helmet-desc
   productEntity: ClothingHeadHelmetSwatSyndicate
   cost:
     Telecrystal: 2
   categories:
-    - UplinkArmor
+    - UplinkWearables
 
 - type: listing
   id: UplinkMiniEbow
-  name: Маленький энергетический арбалет
-  description: Довольно тихое оружие, которое автоматически перезаряжается и оглушает. Хорошо сочетается с другими видами оружия.
+  name: uplink-ebow-name
+  description: uplink-ebow-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/Battery/mini-ebow.rsi, state: icon }
   productEntity: EnergyCrossbowMini
   cost:
     Telecrystal: 10
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -27,14 +27,14 @@
 
 - type: listing
   id: UplinkBloodDagger
-  name: Кинжал жажды
-  description: "Критическая жажда: Кинжал Жажды обладает смертоносной точностью. Его владелец имеет 50% шанс нанести критический урон, поражая врага в его самые уязвимые места. При ударе по себе кинжал наделит пользователя временным усилением скорости атаки и передвижения ценой обильного кровотечения. Кровавый абсорб: При каждом успешном критическом ударе, кинжал извлекает кровь из цели, восстанавливая здоровье владельцу пропорционально количеству высосанной крови."
+  name: uplink-blood-dagger-name
+  description: uplink-blood-dagger-desc
   icon: { sprite: /Textures/Objects/Weapons/Melee/blood_dagger.rsi, state: icon }
   productEntity: BloodSuckerDagger
   cost:
     Telecrystal: 6
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -50,7 +50,7 @@
   cost:
     Telecrystal: 16
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   saleLimit: 1
 
 - type: listing
@@ -72,21 +72,18 @@
   cost:
     Telecrystal: 2
   categories:
-  - UplinkUtility
+  - UplinkDeception
 
 - type: listing
   id: UplinkSmokeImplanter
-  name: Имплант дыма
-  description: Выпускает облако дыма при активации.
+  name: uplink-smoke-implant-name
+  description: uplink-smoke-implant-desc
   icon: { sprite: /Textures/Objects/Weapons/Grenades/smoke.rsi, state: icon }
   productEntity: SmokeImplanter
   cost:
     Telecrystal: 2
   categories:
   - UplinkImplants
-  conditions:
-  - !type:ListingLimitedStockCondition # To prevent infinitely cheinsmoking using multiple implants
-    stock: 1
 
 - type: listing
   id: UplinkHardlightSpearImplanter
@@ -107,14 +104,14 @@
 # Night Vision
 - type: listing
   id: UplinkNightGoggles
-  name: ПНВ [Хамелеон]
-  description: Теперь ты видишь во тьме!
+  name: uplink-night-vision-name
+  description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesSyndie
   icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:
-  - UplinkArmor
+  - UplinkWearables
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -123,14 +120,14 @@
 
 - type: listing
   id: UplinkNightGogglesNukie
-  name: ПНВ [Хамелеон]
-  description: Теперь ты видишь во тьме!
+  name: uplink-night-vision-name
+  description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesNukie
   icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:
-  - UplinkArmor
+  - UplinkWearables
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
@@ -146,19 +143,19 @@
 #  cost:
 #    Telecrystal: 20
 #  categories:
-#  - UplinkWeapons
+#  - UplinkWeaponry
 #  saleLimit: 1
 
 - type: listing
   id: UplinkBetrayalKnife
-  name: Предательский нож
-  description: Предательский нож позволяет пользователю телепортироваться на короткое расстояние, а также наносит значительные повреждения, пробивая броню противника, при ударе в спину.
+  name: uplink-betrayal-knife-name
+  description: uplink-betrayal-knife-desc
   icon: { sprite: /Textures/White/Objects/Weapons/betrayal_knife.rsi, state: icon }
   productEntity: BetrayalKnife
   cost:
     Telecrystal: 10
   categories:
-  - UplinkWeapons
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -243,8 +240,8 @@
 
 - type: listing
   id: UplinkImplanterSyndi
-  name: Имплантер
-  description: Продвинутый имплантер, позволяющий быстро вкалывать и вытаскивать импланты.
+  name: uplink-implanter-name
+  description: uplink-implanter-desc
   productEntity: ImplanterSyndi
   cost:
     Telecrystal: 1
@@ -260,5 +257,5 @@
   cost:
     Telecrystal: 8
   categories:
-  - UplinkUtility
+  - UplinkDisruption
   saleLimit: 2

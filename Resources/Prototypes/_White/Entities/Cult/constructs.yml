@@ -66,9 +66,10 @@
     - type: NightVision
       toggleSound: null
       color: White
-    - type: ShowWhiteHealthBars
+    - type: ShowHealthBars
       damageContainers:
       - Biological
+      - Inorganic
     - type: ShowHealthIcons
       damageContainers:
       - Biological
@@ -239,6 +240,15 @@
       containers:
         Shard: !type:ContainerSlot
     - type: CultItem
+
+- type: entity
+  id: NekoWraithConstruct
+  parent: WraithConstruct
+  name: neko wraith
+  description: what the... nya?!
+  components:
+    - type: Sprite
+      state: envoy_of_death_neko
 
 - type: nameIdentifierGroup
   id: Construct

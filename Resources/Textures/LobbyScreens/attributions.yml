@@ -27,3 +27,18 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "brainfood1183 github"
   source: "https://github.com/space-wizards/space-station-14"
+
+- files: ["blueprint.webp"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "data_redacted on discord"
+  source: "https://github.com/space-wizards/space-station-14"
+
+- files: ["behonker.webp"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "InCrah on twitter / @in_crah"
+  source: "https://twitter.com/in_crah"
+
+- files: ["terminalstation.webp"]
+  license: "CC-BY-SA-3.0"
+  copyright: "aserovich on discord"
+  source: "https://github.com/space-wizards/space-station-14"

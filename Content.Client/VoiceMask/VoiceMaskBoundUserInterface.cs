@@ -1,10 +1,12 @@
 using Content.Shared.VoiceMask;
-using Robust.Client.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.VoiceMask;
 
 public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+
     [ViewVariables]
     private VoiceMaskNameChangeWindow? _window;
 
@@ -16,11 +18,12 @@ public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _window = new();
+        _window = new VoiceMaskNameChangeWindow(_proto);
 
         _window.OpenCentered();
         _window.OnNameChange += OnNameSelected;
         _window.OnVoiceChange += (value) => SendMessage(new VoiceMaskChangeVoiceMessage(value));
+        _window.OnVerbChange += verb => SendMessage(new VoiceMaskChangeVerbMessage(verb));
         _window.OnClose += Close;
     }
 
@@ -36,8 +39,7 @@ public sealed class VoiceMaskBoundUserInterface : BoundUserInterface
             return;
         }
 
-        _window.UpdateState(cast.Name, cast.Voice);
-
+        _window.UpdateState(cast.Name, cast.Voice, cast.Verb);
     }
 
     protected override void Dispose(bool disposing)

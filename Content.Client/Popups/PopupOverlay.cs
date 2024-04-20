@@ -1,13 +1,11 @@
-using System.Numerics;
 using Content.Shared.Examine;
-using Content.Shared.Popups;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Popups;
@@ -15,37 +13,21 @@ namespace Content.Client.Popups;
 /// <summary>
 /// Draws popup text, either in world or on screen.
 /// </summary>
-public sealed class PopupOverlay : Overlay
+public sealed class PopupOverlay(
+    IConfigurationManager configManager,
+    IEntityManager entManager,
+    ISharedPlayerManager playerMgr,
+    IPrototypeManager protoManager,
+    IUserInterfaceManager uiManager,
+    PopupUIController controller,
+    ExamineSystemShared examine,
+    SharedTransformSystem transform,
+    PopupSystem popup)
+    : Overlay
 {
-    private readonly IConfigurationManager _configManager;
-    private readonly IEntityManager _entManager;
-    private readonly IPlayerManager _playerMgr;
-    private readonly IUserInterfaceManager _uiManager;
-    private readonly PopupSystem _popup;
-    private readonly PopupUIController _controller;
-
-    private readonly ShaderInstance _shader;
+    private readonly ShaderInstance _shader = protoManager.Index<ShaderPrototype>("unshaded").Instance();
 
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
-
-    public PopupOverlay(
-        IConfigurationManager configManager,
-        IEntityManager entManager,
-        IPlayerManager playerMgr,
-        IPrototypeManager protoManager,
-        IUserInterfaceManager uiManager,
-        PopupUIController controller,
-        PopupSystem popup)
-    {
-        _configManager = configManager;
-        _entManager = entManager;
-        _playerMgr = playerMgr;
-        _uiManager = uiManager;
-        _popup = popup;
-        _controller = controller;
-
-        _shader = protoManager.Index<ShaderPrototype>("unshaded").Instance();
-    }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
@@ -54,10 +36,10 @@ public sealed class PopupOverlay : Overlay
 
         args.DrawingHandle.SetTransform(Matrix3.Identity);
         args.DrawingHandle.UseShader(_shader);
-        var scale = _configManager.GetCVar(CVars.DisplayUIScale);
+        var scale = configManager.GetCVar(CVars.DisplayUIScale);
 
         if (scale == 0f)
-            scale = _uiManager.DefaultUIScale;
+            scale = uiManager.DefaultUIScale;
 
         DrawWorld(args.ScreenHandle, args, scale);
 
@@ -66,16 +48,16 @@ public sealed class PopupOverlay : Overlay
 
     private void DrawWorld(DrawingHandleScreen worldHandle, OverlayDrawArgs args, float scale)
     {
-        if (_popup.WorldLabels.Count == 0 || args.ViewportControl == null)
+        if (popup.WorldLabels.Count == 0 || args.ViewportControl == null)
             return;
 
         var matrix = args.ViewportControl.GetWorldToScreenMatrix();
         var viewPos = new MapCoordinates(args.WorldAABB.Center, args.MapId);
-        var ourEntity = _playerMgr.LocalEntity;
+        var ourEntity = playerMgr.LocalEntity;
 
-        foreach (var popup in _popup.WorldLabels)
+        foreach (var popup1 in popup.WorldLabels)
         {
-            var mapPos = popup.InitialPos.ToMap(_entManager);
+            var mapPos = popup1.InitialPos.ToMap(entManager, transform);
 
             if (mapPos.MapId != args.MapId)
                 continue;
@@ -83,12 +65,12 @@ public sealed class PopupOverlay : Overlay
             var distance = (mapPos.Position - args.WorldBounds.Center).Length();
 
             // Should handle fade here too wyci.
-            if (!args.WorldBounds.Contains(mapPos.Position) || !ExamineSystemShared.InRangeUnOccluded(viewPos, mapPos, distance,
-                    e => e == popup.InitialPos.EntityId || e == ourEntity, entMan: _entManager))
+            if (!args.WorldBounds.Contains(mapPos.Position) || !examine.InRangeUnOccluded(viewPos, mapPos, distance,
+                    e => e == popup1.InitialPos.EntityId || e == ourEntity, entMan: entManager))
                 continue;
 
             var pos = matrix.Transform(mapPos.Position);
-            _controller.DrawPopup(popup, worldHandle, pos, scale);
+            controller.DrawPopup(popup1, worldHandle, pos, scale);
         }
     }
 }

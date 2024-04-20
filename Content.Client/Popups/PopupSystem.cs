@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Client.Chat.Managers;
+using Content.Shared.Examine;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
@@ -7,7 +7,6 @@ using Content.Shared._White;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
-using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -30,7 +29,8 @@ namespace Content.Client.Popups
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
-        [Dependency] private readonly IChatManager _chatManager = default!;
+        [Dependency] private readonly ExamineSystemShared _examine = default!;
+        [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly IClientNetManager _clientNet = default!;
 
         public IReadOnlyList<WorldPopupLabel> WorldLabels => _aliveWorldLabels;
@@ -43,7 +43,7 @@ namespace Content.Client.Popups
         public const float MaximumPopupLifetime = 5f;
         public const float PopupLifetimePerCharacter = 0.04f;
 
-        private bool isLogging;
+        private bool _isLogging;
 
         public override void Initialize()
         {
@@ -59,17 +59,18 @@ namespace Content.Client.Popups
                     _prototype,
                     _uiManager,
                     _uiManager.GetUIController<PopupUIController>(),
+                    _examine,
+                    _transform,
                     this));
 
-            isLogging = _configManager.GetCVar(WhiteCVars.LogChatActions);
-            _configManager.OnValueChanged(WhiteCVars.LogChatActions, (log) => { isLogging = log; });
+            _isLogging = _configManager.GetCVar(WhiteCVars.LogChatActions);
+            _configManager.OnValueChanged(WhiteCVars.LogChatActions, (log) => { _isLogging = log; });
         }
 
         public override void Shutdown()
         {
             base.Shutdown();
-            _overlay
-                .RemoveOverlay<PopupOverlay>();
+            _overlay.RemoveOverlay<PopupOverlay>();
         }
 
         private void PopupMessage(string? message, PopupType type, EntityCoordinates coordinates, EntityUid? entity, bool recordReplay)
@@ -104,7 +105,7 @@ namespace Content.Client.Popups
             var fontsize = fontSizeDict.GetValueOrDefault(type, "10");
             var fontcolor = type is PopupType.LargeCaution or PopupType.MediumCaution or PopupType.SmallCaution ? "c62828" : "aeabc4";
 
-            if (isLogging)
+            if (_isLogging)
             {
                 var wrappedMEssage = $"[font size={fontsize}][color=#{fontcolor}]{message}[/color][/font]";
                 var chatMsg = new ChatMessage(ChatChannel.Emotes, message, wrappedMEssage, GetNetEntity(EntityUid.Invalid), null);
@@ -179,7 +180,7 @@ namespace Content.Client.Popups
                 PopupEntity(message, uid, type);
         }
 
-        public override void PopupEntity(string? message, EntityUid uid, Filter filter, bool recordReplay, PopupType type=PopupType.Small)
+        public override void PopupEntity(string? message, EntityUid uid, Filter filter, bool recordReplay, PopupType type = PopupType.Small)
         {
             if (!filter.Recipients.Contains(_playerManager.LocalSession))
                 return;
@@ -187,16 +188,25 @@ namespace Content.Client.Popups
             PopupEntity(message, uid, type);
         }
 
-        public override void PopupClient(string? message, EntityUid uid, EntityUid recipient, PopupType type = PopupType.Small)
+        public override void PopupClient(string? message, EntityUid uid, EntityUid? recipient, PopupType type = PopupType.Small)
         {
+            if (recipient == null)
+                return;
+
             if (_timing.IsFirstTimePredicted)
-                PopupEntity(message, uid, recipient, type);
+                PopupEntity(message, uid, recipient.Value, type);
         }
 
         public override void PopupEntity(string? message, EntityUid uid, PopupType type = PopupType.Small)
         {
             if (TryComp(uid, out TransformComponent? transform))
                 PopupMessage(message, type, transform.Coordinates, uid, true);
+        }
+
+        public override void PopupPredicted(string? message, EntityUid uid, EntityUid? recipient, PopupType type = PopupType.Small)
+        {
+            if (recipient != null && _timing.IsFirstTimePredicted)
+                PopupEntity(message, uid, recipient.Value, type);
         }
 
         #endregion
@@ -273,27 +283,17 @@ namespace Content.Client.Popups
             public float TotalTime { get; set; }
         }
 
-        public sealed class CursorPopupLabel : PopupLabel
+        public sealed class CursorPopupLabel(ScreenCoordinates screenCoords) : PopupLabel
         {
-            public ScreenCoordinates InitialPos;
-
-            public CursorPopupLabel(ScreenCoordinates screenCoords)
-            {
-                InitialPos = screenCoords;
-            }
+            public ScreenCoordinates InitialPos = screenCoords;
         }
 
-        public sealed class WorldPopupLabel : PopupLabel
+        public sealed class WorldPopupLabel(EntityCoordinates coordinates) : PopupLabel
         {
             /// <summary>
             /// The original EntityCoordinates of the label.
             /// </summary>
-            public EntityCoordinates InitialPos;
-
-            public WorldPopupLabel(EntityCoordinates coordinates)
-            {
-                InitialPos = coordinates;
-            }
+            public EntityCoordinates InitialPos = coordinates;
         }
     }
 }

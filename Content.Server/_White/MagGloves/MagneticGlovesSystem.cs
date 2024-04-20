@@ -1,10 +1,8 @@
 using Content.Server.Emp;
-using Content.Server.Power.Components;
 using Content.Shared.Examine;
 using Content.Shared.Inventory.Events;
 using Content.Shared._White.MagGloves;
 using Content.Shared.Popups;
-using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._White.MagGloves;
@@ -14,10 +12,9 @@ namespace Content.Server._White.MagGloves;
 /// </summary>
 public sealed class MagneticGlovesSystem : EntitySystem
 {
-
-    [Dependency] private readonly SharedContainerSystem _sharedContainer = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -36,7 +33,6 @@ public sealed class MagneticGlovesSystem : EntitySystem
             {
                 RaiseLocalEvent(uid, new ToggleMagneticGlovesEvent());
             }
-
         }
     }
 
@@ -75,7 +71,7 @@ public sealed class MagneticGlovesSystem : EntitySystem
         if (!active)
         {
             RemComp<KeepItemsOnFallComponent>(owner);
-            if (TryComp<MagneticGlovesAdvancedComponent>(uid, out var adv))
+            if (TryComp<MagneticGlovesAdvancedComponent>(uid, out _))
             {
                 RemComp<PreventDisarmComponent>(owner);
                 RemComp<PreventStrippingFromHandsAndGlovesComponent>(owner);
@@ -84,7 +80,7 @@ public sealed class MagneticGlovesSystem : EntitySystem
         else if (component.Enabled)
         {
             EnsureComp<KeepItemsOnFallComponent>(owner);
-            if (TryComp<MagneticGlovesAdvancedComponent>(uid, out var adv))
+            if (TryComp<MagneticGlovesAdvancedComponent>(uid, out _))
             {
                 EnsureComp<PreventDisarmComponent>(owner);
                 EnsureComp<PreventStrippingFromHandsAndGlovesComponent>(owner);
@@ -94,11 +90,11 @@ public sealed class MagneticGlovesSystem : EntitySystem
 
     public void OnExamined(EntityUid uid, MagneticGlovesComponent component, ExaminedEvent args)
     {
-
         if (!args.IsInDetailsRange)
             return;
 
-        var message = Loc.GetString("maggloves-ready-in") + " " + component.GlovesReadyAt.Subtract(_gameTiming.CurTime).TotalSeconds.ToString("0");
+        var message = Loc.GetString("maggloves-ready-in") + " " +
+            component.GlovesReadyAt.Subtract(_gameTiming.CurTime).TotalSeconds.ToString("0");
 
         if (component.GlovesReadyAt < _gameTiming.CurTime)
         {

@@ -4,39 +4,28 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Content.Shared._White.Jukebox;
-using Robust.Server.Audio;
-using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
 using Robust.Shared.Containers;
-using Robust.Shared.ContentPack;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._White.Jukebox;
 
 public sealed class JukeboxSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audioSystem = default!;
-    [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverrideSystem = default!;
 
+    private readonly List<JukeboxComponent> _playingJukeboxes = new() { };
 
-    private readonly List<JukeboxComponent> _playingJukeboxes = new();
-
-    private float _updateTimerDefaultTime = 1f;
+    private const float UpdateTimerDefaultTime = 1f;
     private float _updateTimer;
-
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeNetworkEvent<JukeboxRequestSongPlay>(OnSongRequestPlay);
         SubscribeLocalEvent<JukeboxComponent, InteractUsingEvent>(OnInteract);
-        SubscribeLocalEvent<JukeboxComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<JukeboxComponent, JukeboxStopRequest>(OnRequestStop);
         SubscribeLocalEvent<JukeboxComponent, JukeboxRepeatToggled>(OnRepeatToggled);
         SubscribeLocalEvent<JukeboxComponent, JukeboxEjectRequest>(OnEjectRequest);
@@ -57,13 +46,13 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void OnEjectRequest(EntityUid uid, JukeboxComponent component, JukeboxEjectRequest args)
     {
-        if(component.PlayingSongData != null) return;
+        if (component.PlayingSongData != null) return;
 
         var containedEntities = component.TapeContainer.ContainedEntities;
 
         if (containedEntities.Count > 0)
         {
-            _containerSystem.EmptyContainer(component.TapeContainer, true).ToList();
+            _containerSystem.EmptyContainer(component.TapeContainer, true);
         }
     }
 
@@ -73,7 +62,7 @@ public sealed class JukeboxSystem : EntitySystem
         if (jukeboxComponent.PlayingSongData != null) return;
         if (jukeboxComponent.TapeContainer.ContainedEntities.Count == 0) return;
 
-        var removeTapeVerb = new Verb()
+        var removeTapeVerb = new Verb
         {
             Text = "Вытащить касету",
             Priority = 10000,
@@ -95,77 +84,78 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void OnRepeatToggled(EntityUid uid, JukeboxComponent component, JukeboxRepeatToggled args)
     {
-        component.Repeating = args.NewState;
-        Dirty(component);
+        component.Playing = args.NewState;
+        Dirty(uid, component);
     }
 
     private void OnRequestStop(EntityUid uid, JukeboxComponent component, JukeboxStopRequest args)
     {
         component.PlayingSongData = null;
-        Dirty(component);
+        Dirty(uid, component);
     }
-
 
     private void OnInteract(EntityUid uid, JukeboxComponent component, InteractUsingEvent args)
     {
-        if(component.PlayingSongData != null) return;
+        if (component.PlayingSongData != null) return;
 
-        if (TryComp<TapeComponent>(args.Used, out var tape))
+        if (!HasComp<TapeComponent>(args.Used))
+            return;
+
+        var containedEntities = component.TapeContainer.ContainedEntities;
+
+        if (containedEntities.Count >= 1)
         {
-            var containedEntities = component.TapeContainer.ContainedEntities;
+            var removedTapes = _containerSystem.EmptyContainer(component.TapeContainer, true).ToList();
+            _containerSystem.Insert(args.Used, component.TapeContainer);
 
-            if (containedEntities.Count >= 1)
+            foreach (var tapeUid in removedTapes)
             {
-                var removedTapes = _containerSystem.EmptyContainer(component.TapeContainer, true).ToList();
-                component.TapeContainer.Insert(args.Used);
-
-                foreach (var tapeUid in removedTapes)
-                {
-                    _handsSystem.PickupOrDrop(args.User, tapeUid);
-                }
+                _handsSystem.PickupOrDrop(args.User, tapeUid);
             }
-            else
-            {
-                component.TapeContainer.Insert(args.Used);
-            }
+        }
+        else
+        {
+            _containerSystem.Insert(args.Used, component.TapeContainer);
         }
     }
 
     private void OnSongRequestPlay(JukeboxRequestSongPlay msg, EntitySessionEventArgs args)
     {
-        var jukebox = Comp<JukeboxComponent>(GetEntity(msg.Jukebox!.Value));
-        jukebox.Repeating = true;
+        var entity = GetEntity(msg.Jukebox!.Value);
+        var jukebox = Comp<JukeboxComponent>(entity);
+        jukebox.Playing = true;
 
-        var songData = new PlayingSongData()
+        var songData = new PlayingSongData
         {
             SongName = msg.SongName,
             SongPath = msg.SongPath,
             ActualSongLengthSeconds = msg.SongDuration,
             PlaybackPosition = 0f
         };
+
         jukebox.PlayingSongData = songData;
 
         _playingJukeboxes.Add(jukebox);
 
-        Dirty(jukebox);
+        Dirty(entity, jukebox);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        if (_updateTimer <= _updateTimerDefaultTime)
+        if (_updateTimer <= UpdateTimerDefaultTime)
         {
             _updateTimer += frameTime;
             return;
         }
 
-        ProcessPlayingJukeboxes(frameTime);
+        ProcessPlayingJukeboxes();
     }
 
-    private void ProcessPlayingJukeboxes(float frameTime)
+    private void ProcessPlayingJukeboxes()
     {
-        for (int i = _playingJukeboxes.Count - 1; i >= 0; i--)
+        for (var i = _playingJukeboxes.Count - 1; i >= 0; i--)
         {
             var playingJukeboxData = _playingJukeboxes[i];
 
@@ -177,9 +167,10 @@ public sealed class JukeboxSystem : EntitySystem
 
             playingJukeboxData.PlayingSongData.PlaybackPosition += _updateTimer;
 
-            if (playingJukeboxData.PlayingSongData.PlaybackPosition >= playingJukeboxData.PlayingSongData.ActualSongLengthSeconds)
+            if (playingJukeboxData.PlayingSongData.PlaybackPosition >=
+                playingJukeboxData.PlayingSongData.ActualSongLengthSeconds)
             {
-                if (playingJukeboxData.Repeating)
+                if (playingJukeboxData.Playing)
                 {
                     playingJukeboxData.PlayingSongData.PlaybackPosition = 0;
                 }
@@ -194,15 +185,5 @@ public sealed class JukeboxSystem : EntitySystem
         }
 
         _updateTimer = 0;
-    }
-
-    private void OnGetState(EntityUid uid, JukeboxComponent component, ref ComponentGetState args)
-    {
-        args.State = new JukeboxComponentState()
-        {
-            SongData = component.PlayingSongData,
-            Playing = component.Repeating,
-            Volume = component.Volume
-        };
     }
 }

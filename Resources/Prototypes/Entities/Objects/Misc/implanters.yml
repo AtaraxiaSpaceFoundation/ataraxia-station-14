@@ -125,6 +125,8 @@
     - type: Implanter
       implantTime: 2
       drawTime: 2
+    - type: Tag
+      tags: []
 
 #Fun implanters
 

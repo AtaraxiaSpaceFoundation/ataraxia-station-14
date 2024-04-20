@@ -1,9 +1,9 @@
 using Content.Server.Popups;
-using Content.Server.Pulling;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Pulling.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
@@ -46,16 +46,16 @@ public sealed class TimeBeaconSystem : EntitySystem
                 return;
 
             // break pulls before portal enter so we dont break shit
-            if (TryComp<SharedPullableComponent>(entity, out var pullable) && pullable.BeingPulled)
+            if (TryComp<PullableComponent>(entity, out var pullable) && pullable.BeingPulled)
             {
-                _pulling.TryStopPull(pullable);
+                _pulling.TryStopPull(entity, pullable);
             }
 
-            if (TryComp<SharedPullerComponent>(entity, out var pulling)
+            if (TryComp<PullerComponent>(entity, out var pulling)
                 && pulling.Pulling != null &&
-                TryComp<SharedPullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+                TryComp<PullableComponent>(pulling.Pulling.Value, out var subjectPulling))
             {
-                _pulling.TryStopPull(subjectPulling);
+                _pulling.TryStopPull(pulling.Pulling.Value, subjectPulling);
             }
 
             _transform.SetCoordinates(entity, entXform, xform.Coordinates);

@@ -2,12 +2,14 @@ using System.Linq;
 using System.Numerics;
 using Content.Client._White.Sponsors;
 using Content.Client.Administration.Managers;
+using Content.Client.Guidebook;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
+using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
@@ -74,7 +76,7 @@ namespace Content.Client.Preferences.UI
         private Button _nameRandomButton => CNameRandomize;
         private Button _nameClownRandomButton => CClownNameRandomize;
         private Button _nameMimeRandomButton => CMimeNameRandomize;
-       private Button _nameBorgRandomButton => CBorgNameRandomize;
+        private Button _nameBorgRandomButton => CBorgNameRandomize;
         private Button _randomizeEverythingButton => CRandomizeEverything;
         private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
@@ -136,11 +138,9 @@ namespace Content.Client.Preferences.UI
             _configurationManager = configurationManager;
             _markingManager = IoCManager.Resolve<MarkingManager>();
 
+            SpeciesInfoButton.ToolTip = Loc.GetString("humanoid-profile-editor-guidebook-button-tooltip");
+
             #region Left
-
-            #region Randomize
-
-            #endregion Randomize
 
             #region Name
 
@@ -570,8 +570,27 @@ namespace Content.Client.Preferences.UI
 
             preferencesManager.OnServerDataLoaded += LoadServerData;
 
+            SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
+
+            UpdateSpeciesGuidebookIcon();
 
             IsDirty = false;
+        }
+
+        private void OnSpeciesInfoButtonPressed(BaseButton.ButtonEventArgs args)
+        {
+            var guidebookController = UserInterfaceManager.GetUIController<GuidebookUIController>();
+            var species = Profile?.Species ?? SharedHumanoidAppearanceSystem.DefaultSpecies;
+            var page = "Species";
+            if (_prototypeManager.HasIndex<GuideEntryPrototype>(species))
+                page = species;
+
+            if (_prototypeManager.TryIndex<GuideEntryPrototype>("Species", out var guideRoot))
+            {
+                var dict = new Dictionary<string, GuideEntry> { { "Species", guideRoot } };
+                //TODO: Don't close the guidebook if its already open, just go to the correct page
+                guidebookController.ToggleGuidebook(dict, includeChildren:true, selected: page);
+            }
         }
 
         private void ToggleClothes(BaseButton.ButtonEventArgs obj)
@@ -586,10 +605,8 @@ namespace Content.Client.Preferences.UI
             _jobCategories.Clear();
             var firstCategory = true;
 
-            var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>()
-                .OrderByDescending(department => department.Weight)
-                .ThenBy(department => Loc.GetString($"department-{department.ID}"))
-                .ToList();
+            var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToArray();
+            Array.Sort(departments, DepartmentUIComparer.Instance);
 
             foreach (var department in departments)
             {
@@ -637,9 +654,8 @@ namespace Content.Client.Preferences.UI
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
                     .Where(job => job.SetPreference)
-                    .OrderByDescending(job => job.Weight)
-                    .ThenBy(job => job.LocalizedName)
-                    .ToList();
+                    .ToArray();
+                Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
@@ -849,6 +865,7 @@ namespace Content.Client.Preferences.UI
             CMarkings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
             UpdateSexControls(); // update sex for new species
             RebuildSpriteView(); // they might have different inv so we need a new dummy
+            UpdateSpeciesGuidebookIcon();
             UpdateBodyTypes();
             IsDirty = true;
             _needUpdatePreview = true;
@@ -930,7 +947,7 @@ namespace Content.Client.Preferences.UI
             }
 
             // If current body type is not valid.
-            if (!_bodyTypesList.Select(proto => proto.ID).Contains(Profile.BodyType))
+            if (!_bodyTypesList.Select(proto => proto.ID).Contains(Profile.BodyType.Id))
             {
                 // Then replace it with a first valid body type.
                 SetBodyType(_bodyTypesList.First().ID);
@@ -1054,6 +1071,25 @@ namespace Content.Client.Preferences.UI
 
         }
 
+        public void UpdateSpeciesGuidebookIcon()
+        {
+            SpeciesInfoButton.StyleClasses.Clear();
+
+            var species = Profile?.Species;
+            if (species is null)
+                return;
+
+            if (!_prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesProto))
+                return;
+
+            // Don't display the info button if no guide entry is found
+            if (!_prototypeManager.HasIndex<GuideEntryPrototype>(species))
+                return;
+
+            var style = speciesProto.GuideBookIcon;
+            SpeciesInfoButton.StyleClasses.Add(style);
+        }
+
         private void UpdateMarkings()
         {
             if (Profile == null)
@@ -1127,23 +1163,17 @@ namespace Content.Client.Preferences.UI
             var hairMarking = Profile.Appearance.HairStyleId switch
             {
                 HairStyles.DefaultHairStyle => new List<Marking>(),
-                _ => new() { new(Profile.Appearance.HairStyleId, new List<Color> { Profile.Appearance.HairColor }) },
+                _ => new List<Marking> { new(Profile.Appearance.HairStyleId, new List<Color> { Profile.Appearance.HairColor }) },
             };
 
             var facialHairMarking = Profile.Appearance.FacialHairStyleId switch
             {
                 HairStyles.DefaultFacialHairStyle => new List<Marking>(),
-                _ => new() { new(Profile.Appearance.FacialHairStyleId, new List<Color> { Profile.Appearance.FacialHairColor }) },
+                _ => new List<Marking> { new(Profile.Appearance.FacialHairStyleId, new List<Color> { Profile.Appearance.FacialHairColor }) },
             };
 
-            _hairPicker.UpdateData(
-                hairMarking,
-                Profile.Species,
-                1);
-            _facialHairPicker.UpdateData(
-                facialHairMarking,
-                Profile.Species,
-                1);
+            _hairPicker.UpdateData(hairMarking, Profile.Species, 1);
+            _facialHairPicker.UpdateData(facialHairMarking, Profile.Species, 1);
         }
 
         private void UpdateCMarkingsHair()
@@ -1161,14 +1191,9 @@ namespace Content.Client.Preferences.UI
             {
                 if (_markingManager.CanBeApplied(Profile.Species, Profile.Sex, hairProto, _prototypeManager))
                 {
-                    if (_markingManager.MustMatchSkin(Profile.BodyType, HumanoidVisualLayers.Hair, out _, _prototypeManager))
-                    {
-                        hairColor = Profile.Appearance.SkinColor;
-                    }
-                    else
-                    {
-                        hairColor = Profile.Appearance.HairColor;
-                    }
+                    hairColor = _markingManager.MustMatchSkin(Profile.BodyType, HumanoidVisualLayers.Hair, out _, _prototypeManager) 
+                        ? Profile.Appearance.SkinColor 
+                        : Profile.Appearance.HairColor;
                 }
             }
             if (hairColor != null)
@@ -1490,7 +1515,7 @@ namespace Content.Client.Preferences.UI
                 var icon = new TextureRect
                 {
                     TextureScale = new Vector2(2, 2),
-                    Stretch = TextureRect.StretchMode.KeepCentered
+                    VerticalAlignment = VAlignment.Center
                 };
                 var jobIcon = protoMan.Index<StatusIconPrototype>(proto.Icon);
                 icon.Texture = jobIcon.Icon.Frame0();

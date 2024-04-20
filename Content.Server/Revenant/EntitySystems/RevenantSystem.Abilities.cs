@@ -2,7 +2,6 @@ using Content.Shared.Popups;
 using Content.Shared.Damage;
 using Content.Shared.Revenant;
 using Robust.Shared.Random;
-using Robust.Shared.Map;
 using Content.Shared.Tag;
 using Content.Server.Storage.Components;
 using Content.Server.Light.Components;
@@ -15,6 +14,7 @@ using Content.Shared.Item;
 using Content.Shared.Bed.Sleep;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Bible.Components;
 using Content.Server.Maps;
 using Content.Server.Revenant.Components;
 using Content.Shared._White.Cult.Components;
@@ -30,12 +30,12 @@ using Content.Shared.Physics;
 using Content.Shared.Revenant.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Utility;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Revenant.EntitySystems;
 
 public sealed partial class RevenantSystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
@@ -98,7 +98,7 @@ public sealed partial class RevenantSystem
     {
         var searchDoAfter = new DoAfterArgs(EntityManager, uid, revenant.SoulSearchDuration, new SoulEvent(), uid, target: target)
         {
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             BreakOnDamage = true,
             DistanceThreshold = 2
         };
@@ -165,7 +165,7 @@ public sealed partial class RevenantSystem
         var doAfter = new DoAfterArgs(EntityManager, uid, revenant.HarvestDebuffs.X, new HarvestEvent(), uid, target: target)
         {
             DistanceThreshold = 2,
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             BreakOnDamage = true,
             RequireCanInteract = false, // stuns itself
             AttemptFrequency = AttemptFrequency.EveryTick // WD EDIT
@@ -239,7 +239,7 @@ public sealed partial class RevenantSystem
         //var coords = Transform(uid).Coordinates;
         //var gridId = coords.GetGridUid(EntityManager);
         var xform = Transform(uid);
-        if (!_mapManager.TryGetGrid(xform.GridUid, out var map))
+        if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
             return;
         var tiles = map.GetTilesIntersecting(Box2.CenteredAround(xform.WorldPosition,
             new Vector2(component.DefileRadius * 2, component.DefileRadius))).ToArray();

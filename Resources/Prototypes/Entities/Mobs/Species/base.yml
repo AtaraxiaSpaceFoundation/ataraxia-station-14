@@ -29,10 +29,10 @@
       visible: false
     - map: [ "underwearb" ] #White
     - map: [ "underweart" ] #White
+    - map: ["jumpsuit"]
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
     - map: [ "socks" ] #White
-    - map: ["jumpsuit"]
     - map: ["enum.HumanoidVisualLayers.LHand"]
     - map: ["enum.HumanoidVisualLayers.RHand"]
     - map: [ "gloves" ]
@@ -272,7 +272,8 @@
   - type: Barotrauma
     damage:
       types:
-        Blunt: 0.35 #per second, scales with pressure and other constants.
+        Blunt: 0.50 #per second, scales with pressure and other constants.
+        Heat: 0.1
   - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.
     allowedStates:
     - Alive

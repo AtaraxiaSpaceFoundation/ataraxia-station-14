@@ -112,3 +112,8 @@
   id: ChemMasterReceiver
   name: ХимМастер
   description: Приёмник сигнала ХимМастера
+
+- type: sinkPort
+  id: SetParticleSigma
+  name: signal-port-name-set-particle-sigma
+  description: signal-port-description-set-particle-sigma

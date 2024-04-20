@@ -5,7 +5,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid;
@@ -73,14 +72,17 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// <summary>
     ///     Current body type.
     /// </summary>
-    [DataField("bodyType", customTypeSerializer: typeof(PrototypeIdSerializer<BodyTypePrototype>)), AutoNetworkedField]
-    public string BodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
+    [DataField, AutoNetworkedField]
+    public ProtoId<BodyTypePrototype> BodyType = SharedHumanoidAppearanceSystem.DefaultBodyType;
 
     [DataField, AutoNetworkedField]
     public Color EyeColor = Color.Brown;
 
-    [DataField("voice", customTypeSerializer: typeof(PrototypeIdSerializer<TTSVoicePrototype>)), AutoNetworkedField]
-    public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
+    /// <summary>
+    ///     Current TTS voice.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public ProtoId<TTSVoicePrototype> Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
 
     /// <summary>
     ///     Hair color of this humanoid. Used to avoid looping through all markings
@@ -101,7 +103,9 @@ public readonly partial struct CustomBaseLayerInfo
 {
     public CustomBaseLayerInfo(string? id, Color? color = null)
     {
-        DebugTools.Assert(id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
+        DebugTools.Assert(
+            id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
+
         Id = id;
         Color = color;
     }

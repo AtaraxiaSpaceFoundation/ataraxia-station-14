@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Content.Shared.CCVar;
+using Content.Server.Popups;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Content.Shared._White.Jukebox;
-using Robust.Shared.Configuration;
+using Content.Shared.Popups;
+using Robust.Server.Containers;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
@@ -16,16 +16,15 @@ namespace Content.Server._White.Jukebox;
 
 public sealed class TapeCreatorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly ServerJukeboxSongsSyncManager _songsSyncManager = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
+    private const int RecordTime = 25;
 
-    private readonly int _recordTime = 25;
-
-    private static string TapeCreatorContainerName = "tape_creator_container";
+    private const string TapeCreatorContainerName = "tape_creator_container";
 
     public override void Initialize()
     {
@@ -44,7 +43,7 @@ public sealed class TapeCreatorSystem : EntitySystem
         if (ev.Hands == null) return;
         if (component.TapeContainer.ContainedEntities.Count == 0) return;
 
-        var removeTapeVerb = new Verb()
+        var removeTapeVerb = new Verb
         {
             Text = "Вытащить касету",
             Priority = 10000,
@@ -52,15 +51,15 @@ public sealed class TapeCreatorSystem : EntitySystem
             Act = () =>
             {
                 var tapes = component.TapeContainer.ContainedEntities.ToList();
-                _containerSystem.EmptyContainer(component.TapeContainer, true);
+                _container.EmptyContainer(component.TapeContainer, true);
 
                 foreach (var tape in tapes)
                 {
-                    _handsSystem.PickupOrDrop(ev.User, tape);
+                    _hands.PickupOrDrop(ev.User, tape);
                 }
 
                 component.InsertedTape = null;
-                Dirty(component);
+                Dirty(uid, component);
             }
         };
 
@@ -69,7 +68,7 @@ public sealed class TapeCreatorSystem : EntitySystem
 
     private void OnTapeStateChanged(EntityUid uid, TapeComponent component, ref ComponentGetState args)
     {
-        args.State = new TapeComponentState()
+        args.State = new TapeComponentState
         {
             Songs = component.Songs
         };
@@ -87,95 +86,105 @@ public sealed class TapeCreatorSystem : EntitySystem
 
     private void OnComponentInit(EntityUid uid, TapeCreatorComponent component, ComponentInit args)
     {
-        component.TapeContainer = _containerSystem.EnsureContainer<Container>(uid, TapeCreatorContainerName);
+        component.TapeContainer = _container.EnsureContainer<Container>(uid, TapeCreatorContainerName);
     }
 
     private void OnInteract(EntityUid uid, TapeCreatorComponent component, InteractUsingEvent args)
     {
-        if(component.Recording) return;
+        if (component.Recording)
+        {
+            return;
+        }
 
-        if (TryComp<TapeComponent>(args.Used, out var tape))
+        if (HasComp<TapeComponent>(args.Used))
         {
             var containedEntities = component.TapeContainer.ContainedEntities;
 
             if (containedEntities.Count > 1)
             {
-                var removedTapes = _containerSystem.EmptyContainer(component.TapeContainer, true).ToList();
-                component.TapeContainer.Insert(args.Used);
+                var removedTapes = _container.EmptyContainer(component.TapeContainer, true).ToList();
+                _container.Insert(args.Used, component.TapeContainer);
 
                 foreach (var tapes in removedTapes)
                 {
-                    _handsSystem.PickupOrDrop(args.User, tapes);
+                    _hands.PickupOrDrop(args.User, tapes);
                 }
             }
             else
             {
-                component.TapeContainer.Insert(args.Used);
+                _container.Insert(args.Used, component.TapeContainer);
             }
 
-            component.InsertedTape = GetNetEntity(tape.Owner);
-            Dirty(component);
+            component.InsertedTape = GetNetEntity(args.Used);
+            Dirty(uid, component);
             return;
         }
 
-        if (_tagSystem.HasTag(args.Used, "TapeRecorderCoin"))
+        if (_tag.HasTag(args.Used, "TapeRecorderCoin"))
         {
             Del(args.Used);
             component.CoinBalance += 1;
-            Dirty(component);
-
-            return;
+            Dirty(uid, component);
         }
     }
 
     private void OnSongUploaded(JukeboxSongUploadRequest ev)
     {
-        if(!TryComp<TapeCreatorComponent>(GetEntity(ev.TapeCreatorUid), out var tapeCreatorComponent)) return;
+        var tapeCreator = GetEntity(ev.TapeCreatorUid);
+        if (!TryComp<TapeCreatorComponent>(tapeCreator, out var tapeCreatorComponent))
+        {
+            return;
+        }
 
         if (!tapeCreatorComponent.InsertedTape.HasValue || tapeCreatorComponent.CoinBalance <= 0)
         {
-            _popupSystem.PopupEntity("Т# %ак@ э*^о сdf{ал б2я~b? Запись была прервана.", tapeCreatorComponent.Owner);
+            _popup.PopupEntity("Т# %ак@ э*^о сdf{ал б2я~b? Запись была прервана.", tapeCreator);
             return;
         }
 
         tapeCreatorComponent.CoinBalance -= 1;
         tapeCreatorComponent.Recording = true;
 
-        var tapeComponent = Comp<TapeComponent>(GetEntity(tapeCreatorComponent.InsertedTape.Value));
+        var insertedTape = GetEntity(tapeCreatorComponent.InsertedTape.Value);
+        var tapeComponent = Comp<TapeComponent>(insertedTape);
         var songData = _songsSyncManager.SyncSongData(ev.SongName, ev.SongBytes);
 
-        var song = new JukeboxSong()
+        var song = new JukeboxSong
         {
-            SongName = songData.songName,
-            SongPath = songData.path
+            SongName = songData.SongName,
+            SongPath = songData.Path
         };
 
         tapeComponent.Songs.Add(song);
-        _popupSystem.PopupEntity($"Запись началась, примерное время ожидания: {_recordTime} секунд", tapeCreatorComponent.Owner);
+        _popup.PopupEntity($"Запись началась, примерное время ожидания: {RecordTime} секунд", tapeCreator);
+
         DirtyEntity(GetEntity(ev.TapeCreatorUid));
-        Dirty(tapeComponent);
-        StartRecordDelayAsync(tapeCreatorComponent, _popupSystem, _containerSystem);
+        Dirty(insertedTape, tapeComponent);
+        StartRecordDelayAsync(tapeCreator, tapeCreatorComponent, _popup, _container);
     }
 
-    private async void StartRecordDelayAsync(TapeCreatorComponent component, SharedPopupSystem popupSystem, SharedContainerSystem containerSystem)
+    private async void StartRecordDelayAsync(
+        EntityUid uid,
+        TapeCreatorComponent component,
+        SharedPopupSystem popupSystem,
+        SharedContainerSystem containerSystem)
     {
-        var recordTimeDelay = _recordTime * 1000 / 10;
+        const int recordTimeDelay = RecordTime * 1000 / 10;
 
         await Task.Delay(1000);
 
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
-            popupSystem.PopupEntity($"Запись мозговой активности выполнена на {i * 10}%", component.Owner);
+            popupSystem.PopupEntity($"Запись мозговой активности выполнена на {i * 10}%", uid);
             await Task.Delay(recordTimeDelay);
         }
 
-
-        containerSystem.EmptyContainer(component.TapeContainer, force: true).ToList();
+        containerSystem.EmptyContainer(component.TapeContainer, force: true);
 
         component.Recording = false;
         component.InsertedTape = null;
 
-        popupSystem.PopupEntity($"Запись мозговой активности завершена", component.Owner);
-        Dirty(component);
+        popupSystem.PopupEntity("Запись мозговой активности завершена", uid);
+        Dirty(uid, component);
     }
 }

@@ -1,17 +1,11 @@
 ﻿namespace Content.Server._White.TTS;
 
-public sealed class TTSAnnouncementEvent : EntityEventArgs
+// ReSharper disable once InconsistentNaming
+public sealed class TTSAnnouncementEvent(string message, string voiceId, EntityUid source, bool global)
+    : EntityEventArgs
 {
-    public readonly string Message;
-    public readonly bool Global;
-    public readonly string VoiceId;
-    public readonly EntityUid Source;
-
-    public TTSAnnouncementEvent(string message, string voiceId, EntityUid source , bool global)
-    {
-        Message = message;
-        Global = global;
-        VoiceId = voiceId;
-        Source = source;
-    }
+    public readonly string Message = message;
+    public readonly bool Global = global;
+    public readonly string VoiceId = voiceId;
+    public readonly EntityUid Source = source;
 }

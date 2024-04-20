@@ -1,4 +1,3 @@
-using Content.Server.Implants;
 using Robust.Shared.Audio;
 
 namespace Content.Server.Implants.Components;
@@ -14,12 +13,6 @@ public sealed partial class ScramImplantComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float TeleportRadius = 100f;
-
-    /// <summary>
-    /// How many times to check for a valid tile to teleport to
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadOnly)]
-    public int TeleportAttempts = 20;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/Effects/teleport_arrival.ogg");

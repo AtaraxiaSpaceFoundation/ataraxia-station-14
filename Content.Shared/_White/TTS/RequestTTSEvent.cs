@@ -4,12 +4,7 @@ namespace Content.Shared._White.TTS;
 
 [Serializable, NetSerializable]
 // ReSharper disable once InconsistentNaming
-public sealed class RequestTTSEvent : EntityEventArgs
+public sealed class RequestTTSEvent(string text) : EntityEventArgs
 {
-    public string Text { get; }
-
-    public RequestTTSEvent(string text)
-    {
-        Text = text;
-    }
+    public string Text { get; } = text;
 }

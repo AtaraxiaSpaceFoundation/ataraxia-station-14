@@ -17,6 +17,9 @@
     sprite: Clothing/Head/Hardsuits/basic.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/basic.rsi
+  - type: Tag
+    tags:
+    - HidesNose
 
 #Atmospherics Hardsuit
 - type: entity
@@ -618,6 +621,21 @@
   - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
 
+#ERT Chaplain Hardsuit
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSyndie
+  id: ClothingHeadHelmetHardsuitERTChaplain
+  name: ERT chaplain hardsuit helmet
+  description: A special hardsuit helmet worn by members of an emergency response team.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Clothing/Head/Hardsuits/ERThelmets/ertchaplain.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hardsuits/ERThelmets/ertchaplain.rsi
+  - type: PointLight
+    color: "#ffffff"
+
 #ERT Engineer Hardsuit
 - type: entity
   parent: ClothingHeadHelmetHardsuitSyndie
@@ -767,13 +785,16 @@
         Caustic: 0.95
   - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
   - type: ShowHealthIcons
     damageContainers:
     - Biological
   - type: ClothingGrantComponent
     component:
     - type: NightVision
-    - type: ShowWhiteHealthBars
 
 #MISC. HARDSUITS
 #Clown Hardsuit

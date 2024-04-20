@@ -54,9 +54,9 @@ namespace Content.Shared.Administration
         /// </summary>
         Mapping = 1 << 8,
 
-        /// <summary>
-        ///     Makes you british.
-        /// </summary>
+        // /// <summary>
+        // ///     Makes you british.
+        // /// </summary>
         //Piss = 1 << 9,
 
         /// <summary>
@@ -94,8 +94,12 @@ namespace Content.Shared.Administration
         /// </summary>
         MeatyOre = 1 << 15,
 
+        /// <summary>
+        ///     Provides access to sponsor only species
+        /// </summary>
         AdminSpecies = 1 << 16,
 
+        /// <summary>
         ///     Lets you Massban, on SS14.Admin
         /// </summary>
         MassBan = 1 << 17,

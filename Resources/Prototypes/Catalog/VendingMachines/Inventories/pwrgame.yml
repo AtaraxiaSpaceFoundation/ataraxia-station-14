@@ -6,8 +6,9 @@
     DrinkGrapeCan: 5
     DrinkRootBeerCan: 5
     DrinkIcedTeaCan: 5
+    DrinkSolDryCan: 5
     DrinkLemonLimeCan: 5
-    DrinkDrGibbCan: 5
     DrinkFourteenLokoCan: 5
   emaggedInventory:
     DrinkNukieCan: 2
+    DrinkChangelingStingCan: 2

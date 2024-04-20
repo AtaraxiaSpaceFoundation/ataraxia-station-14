@@ -34,7 +34,6 @@
       Steel: 50 #Half of a regular steel sheet to reflect the crafting recipe
   - type: Tag
     tags:
-    - DroneUsable
     - CrossbowBolt
   - type: Stack
     stackType: MetalRod
@@ -85,8 +84,8 @@
   - type: Tag
     tags:
     - RodMetal1
-    - DroneUsable
     - CrossbowBolt
+    - DroneUsable
   - type: Sprite
     state: rods
   - type: Stack

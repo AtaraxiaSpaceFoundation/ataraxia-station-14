@@ -9,9 +9,6 @@ using Content.Shared._White;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Physics.Events;
-using Content.Shared.Mobs.Components;
-using Robust.Shared.Physics.Events;
-using Robust.Shared.Player;
 
 namespace Content.Server.Projectiles;
 
@@ -91,9 +88,6 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         }
 
         component.DamagedEntity = true;
-
-        var afterProjectileHitEvent = new AfterProjectileHitEvent(component.Damage, target, args.OtherFixture);
-        RaiseLocalEvent(uid, ref afterProjectileHitEvent);
 
         if (component.DeleteOnCollide)
             QueueDel(uid);

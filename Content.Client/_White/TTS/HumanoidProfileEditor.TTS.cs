@@ -5,6 +5,8 @@ using Content.Shared.Preferences;
 using Content.Shared._White.TTS;
 using Robust.Shared.Random;
 
+// ReSharper disable InconsistentNaming
+
 namespace Content.Client.Preferences.UI;
 
 public sealed partial class HumanoidProfileEditor
@@ -12,6 +14,7 @@ public sealed partial class HumanoidProfileEditor
     private TTSManager _ttsMgr = default!;
     private TTSSystem _ttsSys = default!;
     private List<TTSVoicePrototype> _voiceList = default!;
+
     private readonly List<string> _sampleText = new()
     {
         "Помогите, клоун насилует в технических тоннелях!",
@@ -35,7 +38,6 @@ public sealed partial class HumanoidProfileEditor
         };
 
         _voicePlayButton.OnPressed += _ => { PlayTTS(); };
-
     }
 
     private void UpdateTTSVoicesControls()
