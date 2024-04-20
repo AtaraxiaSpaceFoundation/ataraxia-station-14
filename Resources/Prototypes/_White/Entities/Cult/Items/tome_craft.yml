@@ -43,9 +43,10 @@
         toggleAction: null
         toggleSound: null
         color: White
-      - type: ShowWhiteHealthBars
-        damageContainers:
-        - Biological
+    - type: ShowHealthBars
+      damageContainers:
+      - Biological
+      - Inorganic
     - type: ShowHealthIcons
       damageContainers:
       - Biological

@@ -96,7 +96,10 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
-  - type: ShowWhiteHealthBars
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
   - type: Invisibility
 
 - type: entity

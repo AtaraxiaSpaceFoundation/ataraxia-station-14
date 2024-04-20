@@ -66,9 +66,10 @@
     - type: NightVision
       toggleSound: null
       color: White
-    - type: ShowWhiteHealthBars
+    - type: ShowHealthBars
       damageContainers:
       - Biological
+      - Inorganic
     - type: ShowHealthIcons
       damageContainers:
       - Biological
@@ -248,7 +249,7 @@
   components:
     - type: Sprite
       state: envoy_of_death_neko
-  
+
 - type: nameIdentifierGroup
   id: Construct
   prefix: CO

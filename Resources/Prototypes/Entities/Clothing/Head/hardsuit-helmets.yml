@@ -785,13 +785,16 @@
         Caustic: 0.95
   - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
   - type: ShowHealthIcons
     damageContainers:
     - Biological
   - type: ClothingGrantComponent
     component:
     - type: NightVision
-    - type: ShowWhiteHealthBars
 
 #MISC. HARDSUITS
 #Clown Hardsuit
