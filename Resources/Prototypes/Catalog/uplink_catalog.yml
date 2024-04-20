@@ -118,7 +118,7 @@
         tags:
           - NukeOpsUplink
   saleLimit: 2
-  
+
 - type: listing
   id: UplinkEshield
   name: uplink-eshield-name
@@ -126,7 +126,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_shield.rsi, state: eshield-on }
   productEntity: EnergyShield
   cost:
-    Telecrystal: 8
+    Telecrystal: 3
   categories:
   - UplinkWeaponry
   saleLimit: 1
@@ -470,25 +470,25 @@
   categories:
   - UplinkAmmo
 
-- type: listing
-  id: UplinkAmmoBundle
-  name: uplink-ammo-bundle-name
-  description: uplink-ammo-bundle-desc
-  productEntity: ClothingBackpackDuffelSyndicateAmmoFilled
-  cost:
-    Telecrystal: 15
-  categories:
-  - UplinkAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - NukeOpsUplink
-    - !type:BuyerWhitelistCondition
-      blacklist:
-        components:
-          - SurplusBundle
-  saleLimit: 1
+#- type: listing
+#  id: UplinkAmmoBundle
+#  name: uplink-ammo-bundle-name
+#  description: uplink-ammo-bundle-desc
+#  productEntity: ClothingBackpackDuffelSyndicateAmmoFilled
+#  cost:
+#    Telecrystal: 15
+#  categories:
+#  - UplinkAmmo
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      whitelist:
+#        tags:
+#          - NukeOpsUplink
+#    - !type:BuyerWhitelistCondition
+#      blacklist:
+#        components:
+#          - SurplusBundle
+#  saleLimit: 1
 
 #Chemicals
 
@@ -502,7 +502,7 @@
     Telecrystal: 6
   categories:
   - UplinkChemicals
-  
+
 - type: listing
   id: UplinkHypoDart
   name: uplink-hypodart-name
@@ -524,7 +524,7 @@
     Telecrystal: 4
   categories:
   - UplinkChemicals
-  
+
 - type: listing
   id: UplinkZombieBundle
   name: uplink-zombie-bundle-name
@@ -582,7 +582,7 @@
   description: uplink-stimpack-desc
   productEntity: Stimpack
   cost:
-    Telecrystal: 4
+    Telecrystal: 8
   categories:
   - UplinkChemicals
 
@@ -596,7 +596,7 @@
   categories:
   - UplinkChemicals
   saleLimit: 1
-  
+
 - type: listing
   id: UplinkCigarettes
   name: uplink-cigarettes-name
@@ -628,7 +628,7 @@
   saleLimit: 1
 
 # Deception
-  
+
 - type: listing
   id: UplinkAgentIDCard
   name: uplink-agent-id-card-name
@@ -638,7 +638,7 @@
     Telecrystal: 2
   categories:
   - UplinkDeception
-  
+
 - type: listing
   id: UplinkStealthBox
   name: uplink-stealth-box-name
@@ -666,11 +666,11 @@
   description: uplink-binary-translator-key-desc
   icon: { sprite: /Textures/Objects/Devices/encryption_keys.rsi, state: rd_label }
   productEntity: EncryptionKeyBinary
-  cost: 
+  cost:
     Telecrystal: 1
   categories:
   - UplinkDeception
-  
+
 - type: listing
   id: UplinkCyberpen
   name: uplink-cyberpen-name
@@ -690,7 +690,7 @@
     Telecrystal: 1
   categories:
   - UplinkDeception
-  
+
 - type: listing
   id: UplinkUltrabrightLantern
   name: uplink-ultrabright-lantern-name
@@ -753,14 +753,14 @@
     Telecrystal: 6
   categories:
   - UplinkDisruption
-  
+
 - type: listing
   id: UplinkRadioJammer
   name: uplink-radio-jammer-name
   description: uplink-radio-jammer-desc
   productEntity: RadioJammer
   cost:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
   - UplinkDisruption
 
@@ -793,7 +793,7 @@
     Telecrystal: 3
   categories:
   - UplinkDisruption
-  
+
 - type: listing
   id: UplinkToolbox
   name: uplink-toolbox-name
@@ -1151,7 +1151,7 @@
     Telecrystal: 4
   categories:
     - UplinkImplants
- 
+
 - type: listing
   id: UplinkUplinkImplanter # uplink uplink real
   name: uplink-uplink-implanter-name
@@ -1310,7 +1310,7 @@
   icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndieelite.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateEliteHardsuitBundle
   cost:
-    Telecrystal: 10
+    Telecrystal: 12
   categories:
   - UplinkWearables
 
@@ -1321,7 +1321,7 @@
   icon: { sprite: /Textures/Structures/Storage/Crates/syndicate.rsi, state: icon }
   productEntity: CrateCybersunJuggernautBundle
   cost:
-    Telecrystal: 12
+    Telecrystal: 16
   categories:
   - UplinkWearables
 
@@ -1333,7 +1333,7 @@
   cost:
     Telecrystal: 2
   categories:
-    - UplinkWearables  
+    - UplinkWearables
   saleLimit: 1
   conditions:
     - !type:StoreWhitelistCondition
@@ -1589,7 +1589,7 @@
   description: uplink-revolver-cap-gun-fake-desc
   productEntity: RevolverCapGunFake
   cost:
-    Telecrystal: 9
+    Telecrystal: 7
   categories:
   - UplinkJob
   conditions:
