@@ -176,7 +176,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var comp, out _))
         {
-            var eligiblePlayers = _antagSelection.GetEligiblePlayers(ev.Players, comp.HeadRevPrototypeId);
+            var eligiblePlayers = _antagSelection.GetEligiblePlayers(ev.Players, comp.HeadRevPrototypeId, customExcludeCondition: HasComp<CommandStaffComponent>);
 
             if (eligiblePlayers.Count == 0)
                 continue;
@@ -408,7 +408,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         // revs lost and heads died
         "rev-stalemate"
     ];
-    
+
     public void TransferRole(EntityUid transferFrom, EntityUid transferTo)
     {
         if (HasComp<CommandStaffComponent>(transferFrom))

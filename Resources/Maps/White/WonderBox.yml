@@ -124843,13 +124843,6 @@ entities:
     - type: Transform
       pos: 4.6548524,-9.473162
       parent: 2
-- proto: NewsReadCartridge
-  entities:
-  - uid: 11237
-    components:
-    - type: Transform
-      pos: -60.486717,8.594372
-      parent: 2
 - proto: NitrogenCanister
   entities:
   - uid: 16232
