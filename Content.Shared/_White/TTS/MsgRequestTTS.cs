@@ -10,13 +10,13 @@ public sealed class MsgRequestTTS : NetMessage
 {
     public override MsgGroups MsgGroup => MsgGroups.Command;
 
-    public EntityUid Uid { get; set; } = EntityUid.Invalid;
+    public NetEntity Uid { get; set; } = NetEntity.Invalid;
     public string Text { get; set; } = string.Empty;
     public ProtoId<TTSVoicePrototype> VoiceId { get; set; } = string.Empty;
 
     public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
     {
-        Uid = new EntityUid(buffer.ReadInt32());
+        Uid = new NetEntity(buffer.ReadInt32());
         Text = buffer.ReadString();
         VoiceId = buffer.ReadString();
     }

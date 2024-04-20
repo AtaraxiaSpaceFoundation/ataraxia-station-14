@@ -33,7 +33,7 @@ public sealed partial class TTSSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     private const int MaxMessageChars = 100 * 2; // same as SingleBubbleCharLimit * 2
-    private bool _isEnabled = false;
+    private bool _isEnabled;
     private string _apiUrl = string.Empty;
 
     public override void Initialize()
@@ -122,9 +122,12 @@ public sealed partial class TTSSystem : EntitySystem
             !_prototypeManager.TryIndex(ev.VoiceId, out var protoVoice))
             return;
 
-        var soundData = await GenerateTTS(ev.Uid, ev.Text, protoVoice.Speaker);
+        var soundData = await GenerateTTS(GetEntity(ev.Uid), ev.Text, protoVoice.Speaker);
         if (soundData != null)
-            RaiseNetworkEvent(new PlayTTSEvent(GetNetEntity(ev.Uid), soundData, false), Filter.SinglePlayer(session), false);
+        {
+            RaiseNetworkEvent(new PlayTTSEvent(ev.Uid, soundData, false), Filter.SinglePlayer(session),
+                false);
+        }
     }
 
     private async void OnEntitySpoke(EntityUid uid, SharedTTSComponent component, EntitySpokeEvent args)
@@ -189,16 +192,9 @@ public sealed partial class TTSSystem : EntitySystem
             if (distance > (ChatSystem.VoiceRange * ChatSystem.VoiceRange))
                 continue;
 
-            EntityEventArgs actualEvent;
-
-            if (distance > ChatSystem.WhisperClearRange)
-            {
-                actualEvent = obfTtsEvent;
-            }
-            else
-            {
-                actualEvent = ttsEvent;
-            }
+            EntityEventArgs actualEvent = distance > ChatSystem.WhisperClearRange
+                ? obfTtsEvent
+                : ttsEvent;
 
             RaiseNetworkEvent(actualEvent, Filter.SinglePlayer(session), false);
         }
@@ -209,7 +205,9 @@ public sealed partial class TTSSystem : EntitySystem
         _ttsManager.ResetCache();
     }
 
-    private async Task<byte[]?> GenerateTTS(EntityUid? uid, string text, string speaker, string? speechPitch = null, string? speechRate = null, string? effect = null)
+    // ReSharper disable once InconsistentNaming
+    private async Task<byte[]?> GenerateTTS(EntityUid? uid, string text, string speaker, string? speechPitch = null,
+        string? speechRate = null, string? effect = null)
     {
         var textSanitized = Sanitize(text);
         if (textSanitized == "")
@@ -240,14 +238,8 @@ public sealed partial class TTSSystem : EntitySystem
     }
 }
 
-public sealed class TransformSpeakerVoiceEvent : EntityEventArgs
+public sealed class TransformSpeakerVoiceEvent(EntityUid sender, string voiceId) : EntityEventArgs
 {
-    public EntityUid Sender;
-    public string VoiceId;
-
-    public TransformSpeakerVoiceEvent(EntityUid sender, string voiceId)
-    {
-        Sender = sender;
-        VoiceId = voiceId;
-    }
+    public EntityUid Sender = sender;
+    public string VoiceId = voiceId;
 }

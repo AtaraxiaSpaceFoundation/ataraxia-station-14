@@ -76,7 +76,7 @@ namespace Content.Client.Preferences.UI
         private Button _nameRandomButton => CNameRandomize;
         private Button _nameClownRandomButton => CClownNameRandomize;
         private Button _nameMimeRandomButton => CMimeNameRandomize;
-       private Button _nameBorgRandomButton => CBorgNameRandomize;
+        private Button _nameBorgRandomButton => CBorgNameRandomize;
         private Button _randomizeEverythingButton => CRandomizeEverything;
         private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
