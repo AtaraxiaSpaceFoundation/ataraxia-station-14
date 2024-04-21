@@ -119,10 +119,7 @@ public sealed class RespiratorSystem : EntitySystem
                 if (_gameTiming.CurTime >= respirator.LastGaspPopupTime + respirator.GaspPopupCooldown)
                 {
                     respirator.LastGaspPopupTime = _gameTiming.CurTime;
-                    if (TryComp<MetaDataComponent>(uid, out var metaDataComponent))
-                    {
-                        _popupSystem.PopupEntity($"{metaDataComponent.EntityName} задыхается!", uid);
-                    }
+                    _popupSystem.PopupEntity($"{Name(Identity.Entity(uid, EntityManager))} задыхается!", uid);
                 }
 
                 TakeSuffocationDamage((uid, respirator));

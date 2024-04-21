@@ -20,6 +20,7 @@ using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
+using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Maps;
@@ -79,8 +80,14 @@ public partial class CultSystem
             return;
 
         var cuffs = Spawn("ShadowShackles", Transform(ent).Coordinates);
-        if (!_cuffable.TryAddNewCuffs(args.Target.Value, args.User, cuffs, cuffable))
-            QueueDel(cuffs);
+        var handcuffComponent = EnsureComp<HandcuffComponent>(cuffs);
+        if (_cuffable.TryAddNewCuffs(args.Target.Value, args.User, cuffs, cuffable, handcuffComponent))
+        {
+            SharedCuffableSystem.SetUsed(handcuffComponent, true);
+            return;
+        }
+
+        QueueDel(cuffs);
     }
 
     private void OnActionRemoved(Entity<CultistComponent> ent, ref ActionGettingRemovedEvent args)

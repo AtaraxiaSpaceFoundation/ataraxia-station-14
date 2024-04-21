@@ -7,6 +7,7 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared._White.Cult.Components;
+using Content.Shared._White.Mood;
 using Content.Shared.Mind;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
@@ -86,5 +87,7 @@ public sealed partial class DeconvertCultist : ReagentEffect
 
         if (roleSystem.MindHasRole<CultistRoleComponent>(mindId))
             roleSystem.MindRemoveRole<CultistRoleComponent>(mindId);
+
+        entityManager.EventBus.RaiseLocalEvent(uid, new MoodRemoveEffectEvent("CultFocused"));
     }
 }

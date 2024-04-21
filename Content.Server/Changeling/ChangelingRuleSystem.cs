@@ -53,6 +53,13 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         SubscribeLocalEvent<ChangelingRoleComponent, GetBriefingEvent>(OnGetBriefing);
     }
 
+    protected override void Added(EntityUid uid, ChangelingRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    {
+        base.Added(uid, component, gameRule, args);
+
+        gameRule.MinPlayers = PlayersPerChangeling;
+    }
+
     private void OnGetBriefing(Entity<ChangelingRoleComponent> ent, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("changeling-role-briefing-short"));
@@ -182,7 +189,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
 
         MakeChangeling(entity, changelingRule);
     }
-    
+
     public bool MakeChangeling(EntityUid changeling, ChangelingRuleComponent rule, bool giveObjectives = true)
     {
         if (!_mindSystem.TryGetMind(changeling, out var mindId, out var mind))
@@ -196,7 +203,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
             return false;
         }
 
-        var briefing = Loc.GetString("changeling-role-briefing-short");
+        var briefing = Loc.GetString("changeling-role-greeting");
         _antagSelection.SendBriefing(changeling, briefing, null, rule.GreetSoundNotification);
 
         rule.ChangelingMinds.Add(mindId);
@@ -205,11 +212,6 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         {
             PrototypeId = rule.ChangelingPrototypeId
         }, mind);
-
-        _roleSystem.MindAddRole(mindId, new RoleBriefingComponent
-        {
-            Briefing = briefing
-        }, mind, true);
 
         // Change the faction
         _npcFaction.RemoveFaction(changeling, "NanoTrasen", false);
@@ -220,7 +222,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         readyChangeling.HiveName = _nameGenerator.GetName();
         Dirty(changeling, readyChangeling);
 
-        RaiseLocalEvent(mindId, new MoodEffectEvent("TraitorFocused")); // WD edit
+        RaiseLocalEvent(changeling, new MoodEffectEvent("TraitorFocused"));
 
         if (!giveObjectives)
             return true;

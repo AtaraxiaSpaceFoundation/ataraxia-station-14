@@ -39,7 +39,6 @@ public sealed partial class ChangelingSystem
         if (!TryComp(args.Store, out StoreComponent? storeComponent))
             return;
 
-        storeComponent.Refunds = false;
         _storeSystem.DisableRefund(args.Store, storeComponent);
     }
 

@@ -776,6 +776,13 @@ namespace Content.Shared.Cuffs
             cuff.Removing = false;
         }
 
+        // WD START
+        public static void SetUsed(HandcuffComponent cuffs, bool used)
+        {
+            cuffs.Used = used;
+        }
+        // WD END
+
 #region ActionBlocker
 
         private void CheckAct(EntityUid uid, CuffableComponent component, CancellableEntityEventArgs args)

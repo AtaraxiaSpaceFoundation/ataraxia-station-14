@@ -161,11 +161,11 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             Log.Error($"Player {mind.CharacterName} is already a traitor.");
             return false;
         }
-        
+
         // WD START
         var richAspect = _gameTicker.GetActiveGameRules().Where(HasComp<TraitorRichAspectComponent>).Any();
         // WD END
-        
+
         var briefing = Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", component.Codewords)));
         Note[]? code = null;
         if (giveUplink)
@@ -179,7 +179,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             {
                 startingBalance += 10;
             }
-            
+
             // creadth: we need to create uplink for the antag.
             // PDA should be in place already
             var pda = _uplink.FindUplinkTarget(traitor);
@@ -214,7 +214,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         _npcFaction.RemoveFaction(traitor, component.NanoTrasenFaction, false);
         _npcFaction.AddFaction(traitor, component.SyndicateFaction);
 
-        RaiseLocalEvent(mindId, new MoodEffectEvent("TraitorFocused")); // WD edit
+        RaiseLocalEvent(traitor, new MoodEffectEvent("TraitorFocused")); // WD edit
 
         // Give traitors their objectives
         if (giveObjectives)

@@ -2782,6 +2782,7 @@
   - type: Temperature
     heatDamageThreshold: 423
     coldDamageThreshold: 0
+    slowdown: false
   - type: PressureImmunity
   - type: InteractionPopup
     successChance: 0.7

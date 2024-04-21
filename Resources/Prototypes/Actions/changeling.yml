@@ -47,6 +47,7 @@
       icon: White/Actions/changeling.rsi/reviving_stasis.png
       event: !type:RegenerateActionEvent
       checkCanInteract: false
+      checkConsciousness: false
       useDelay: 1
 
 - type: entity

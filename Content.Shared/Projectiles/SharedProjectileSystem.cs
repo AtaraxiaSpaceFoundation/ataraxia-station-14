@@ -8,6 +8,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.Throwing;
 using Content.Shared._White.Crossbow;
+using Content.Shared.Item;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -47,6 +48,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, LandEvent>(OnLand); // WD
         SubscribeLocalEvent<EmbeddableProjectileComponent, ComponentRemove>(OnRemove); // WD
         SubscribeLocalEvent<EmbeddableProjectileComponent, EntityTerminatingEvent>(OnEntityTerminating); // WD
+        SubscribeLocalEvent<EmbeddableProjectileComponent, GettingPickedUpAttemptEvent>(OnTryPickUp); // WD
     }
 
     private void OnEmbedActivate(EntityUid uid, EmbeddableProjectileComponent component, ActivateInWorldEvent args)
@@ -233,6 +235,12 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     {
         if (!_netManager.IsClient)
             FreePenetrated(component);
+    }
+
+    private void OnTryPickUp(Entity<EmbeddableProjectileComponent> ent, ref GettingPickedUpAttemptEvent args)
+    {
+        if (ent.Comp.PenetratedUid != null)
+            args.Cancel();
     }
 
     private void FreePenetrated(EmbeddableProjectileComponent component)

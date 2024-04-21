@@ -173,7 +173,7 @@ public sealed partial class StoreSystem
             }
         }
 
-        if (!IsOnStartingMap(uid, component) || !component.Refunds) // Miracle edit
+        if (!IsOnStartingMap(uid, component))
             component.RefundAllowed = false;
 
         //subtract the cash
@@ -337,7 +337,7 @@ public sealed partial class StoreSystem
         if (args.Session.AttachedEntity is not { Valid: true } buyer)
             return;
 
-        if (!IsOnStartingMap(uid, component) || !component.Refunds) // Miracle edit
+        if (!IsOnStartingMap(uid, component))
         {
             component.RefundAllowed = false;
             UpdateUserInterface(buyer, uid, component);

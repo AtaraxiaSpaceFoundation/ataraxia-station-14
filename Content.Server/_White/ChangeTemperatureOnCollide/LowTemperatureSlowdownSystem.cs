@@ -1,6 +1,7 @@
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared.Changeling;
+using Content.Shared.Damage.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 
@@ -21,7 +22,7 @@ public sealed class LowTemperatureSlowdownSystem : EntitySystem
     private void OnMoveSpeedRefresh(EntityUid uid, TemperatureComponent component,
         RefreshMovementSpeedModifiersEvent args)
     {
-        var modifier = HasComp<VoidAdaptationComponent>(uid) || !component.Slowdown
+        var modifier = HasComp<GodmodeComponent>(uid) || HasComp<VoidAdaptationComponent>(uid) || !component.Slowdown
             ? 1f
             : GetSpeedModifier(component.CurrentTemperature);
         args.ModifySpeed(modifier, modifier);

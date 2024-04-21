@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Changeling;
 
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ChangelingComponent : Component
 {
     [DataField("chemRegenRate")]
@@ -14,7 +14,7 @@ public sealed partial class ChangelingComponent : Component
     [DataField("chemicalCap")]
     public int ChemicalCapacity = 75;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("chemicalsBalance")]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public int ChemicalsBalance = 20;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("pointsBalance")]

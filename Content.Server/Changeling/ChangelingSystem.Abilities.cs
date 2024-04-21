@@ -737,7 +737,6 @@ public sealed partial class ChangelingSystem
                 if (!TryComp<StoreComponent>(implant, out var store) || store.Preset != "StorePresetChangeling")
                     continue;
 
-                store.Refunds = true;
                 store.RefundAllowed = true;
             }
         }
@@ -972,7 +971,7 @@ public sealed partial class ChangelingSystem
         ClonePerson(polymorphEntity.Value, transformData.AppearanceComponent, polyAppearance);
         TransferDna(polymorphEntity.Value, transformData.Dna);
 
-        _humanoidAppearance.SetTTSVoice(polymorphEntity.Value, transformData.AppearanceComponent.Voice, 
+        _humanoidAppearance.SetTTSVoice(polymorphEntity.Value, transformData.AppearanceComponent.Voice,
             humanoid: polyAppearance);
 
         if (!TryComp<MetaDataComponent>(polymorphEntity.Value, out var meta))

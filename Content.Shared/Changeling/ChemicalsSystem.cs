@@ -75,6 +75,9 @@ public sealed class ChemicalsSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        if (_net.IsClient)
+            return;
+
         var query = EntityQueryEnumerator<ChangelingComponent>();
 
         while (query.MoveNext(out var uid, out var component))
@@ -96,8 +99,7 @@ public sealed class ChemicalsSystem : EntitySystem
     {
         if(_net.IsServer)
         {
-            _alertsSystem.ShowAlert(uid, AlertType.Chemicals,
-                (short) Math.Clamp(Math.Round(component.ChemicalsBalance / 10f), 0, 16));
+            _alertsSystem.ShowAlert(uid, AlertType.Chemicals);
         }
     }
 }
