@@ -2,6 +2,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Doors.Systems;
 using Content.Server.Parallax;
 using Content.Server.Shuttles.Components;
+using Content.Server.Standing;
 using Content.Server.Station.Systems;
 using Content.Server.Stunnable;
 using Content.Shared.GameTicking;
@@ -50,6 +51,7 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
     [Dependency] private readonly ThrusterSystem _thruster = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly InventorySystem _inventory = default!; // WD
+    [Dependency] private readonly StandingStateSystem _standing = default!; // WD
 
     public const float TileMassMultiplier = 0.5f;
 

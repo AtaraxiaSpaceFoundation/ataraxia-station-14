@@ -1,10 +1,11 @@
+using Content.Shared.Standing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Standing
 {
-    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(StandingStateSystem))]
+    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedStandingStateSystem))]
     public sealed partial class StandingStateComponent : Component
     {
         [ViewVariables(VVAccess.ReadWrite), DataField]

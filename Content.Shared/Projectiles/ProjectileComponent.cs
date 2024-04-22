@@ -32,6 +32,9 @@ public sealed partial class ProjectileComponent : Component
     [AutoNetworkedField]
     public EntityUid? Target;
 
+    [DataField, AutoNetworkedField]
+    public bool IgnoreTarget;
+
     /// <summary>
     ///     The projectile spawns inside the shooter most of the time, this prevents entities from shooting themselves.
     /// </summary>

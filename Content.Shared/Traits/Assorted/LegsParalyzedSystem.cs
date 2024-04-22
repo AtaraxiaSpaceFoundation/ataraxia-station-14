@@ -3,6 +3,7 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Standing;
+using Content.Shared.Standing.Systems;
 using Content.Shared.Throwing;
 
 namespace Content.Shared.Traits.Assorted;
@@ -10,7 +11,7 @@ namespace Content.Shared.Traits.Assorted;
 public sealed class LegsParalyzedSystem : EntitySystem
 {
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifierSystem = default!;
-    [Dependency] private readonly StandingStateSystem _standingSystem = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standingSystem = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
 
     public override void Initialize()

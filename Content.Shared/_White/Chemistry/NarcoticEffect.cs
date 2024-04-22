@@ -5,6 +5,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Drugs;
 using Content.Shared.Drunk;
 using Content.Shared.Standing;
+using Content.Shared.Standing.Systems;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Random;
 using Timer = Robust.Shared.Timing.Timer;
@@ -16,7 +17,7 @@ public sealed class NarcoticEffect : EntitySystem
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
-    [Dependency] private readonly StandingStateSystem _standingStateSystem = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standingStateSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

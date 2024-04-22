@@ -10,6 +10,7 @@ using Content.Shared.Mind;
 using Content.Shared.Morgue;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
+using Content.Shared.Standing.Systems;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
@@ -28,7 +29,7 @@ public sealed class CrematoriumSystem : EntitySystem
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standing = default!;
     [Dependency] private readonly SharedMindSystem _minds = default!;
     [Dependency] private readonly SharedContainerSystem _containers = default!;
 

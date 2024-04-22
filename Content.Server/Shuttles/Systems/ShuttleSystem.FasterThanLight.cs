@@ -586,10 +586,11 @@ public sealed partial class ShuttleSystem
         {
             foreach (var child in toKnock)
             {
-                if (!_statusQuery.TryGetComponent(child, out var status))
+                /*if (!_statusQuery.TryGetComponent(child, out var status))
                     continue;
 
-                _stuns.TryParalyze(child, _hyperspaceKnockdownTime, true, status);
+                _stuns.TryParalyze(child, _hyperspaceKnockdownTime, true, status);*/
+                _standing.TryLieDown(child, dropHeldItems: true);
 
                 // If the guy we knocked down is on a spaced tile, throw them too
                 if (grid != null)
@@ -791,8 +792,8 @@ public sealed partial class ShuttleSystem
             spawnPos = _transform.GetWorldPosition(targetXform, xformQuery);
         }
 
-        angle = !HasComp<MapComponent>(targetXform.GridUid) 
-            ? _random.NextAngle() 
+        angle = !HasComp<MapComponent>(targetXform.GridUid)
+            ? _random.NextAngle()
             : Angle.Zero;
 
         coordinates = new EntityCoordinates(targetXform.MapUid.Value, spawnPos);

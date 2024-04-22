@@ -48,6 +48,7 @@ using Content.Shared.Ninja.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Standing;
+using Content.Shared.Standing.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Robust.Server.Containers;
@@ -65,7 +66,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly StandingStateSystem _stateSystem = default!;
+    [Dependency] private readonly SharedStandingStateSystem _stateSystem = default!;
     [Dependency] private readonly HumanoidAppearanceSystem _humanoidAppearance = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IdentitySystem _identity = default!;

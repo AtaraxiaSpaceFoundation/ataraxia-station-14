@@ -8,6 +8,7 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     state: buckshot
   - type: Projectile
+    ignoreTarget: true
     deleteOnCollide: false
     damage:
       types:
@@ -28,6 +29,7 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     state: buckshot
   - type: Projectile
+    ignoreTarget: true
     deleteOnCollide: false
     damage:
       types:
@@ -45,6 +47,7 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     state: buckshot-flare
   - type: Projectile
+    ignoreTarget: true
     deleteOnCollide: false
     damage:
       types:

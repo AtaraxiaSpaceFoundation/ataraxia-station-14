@@ -20,7 +20,7 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Standing;
+using Content.Shared.Standing.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
@@ -34,7 +34,6 @@ public sealed class CarryingSystem : EntitySystem
     [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
     [Dependency] private readonly CarryingSlowdownSystem _slowdown = default!;
     [Dependency] private readonly DoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly StandingStateSystem _standingState = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
     [Dependency] private readonly PullingSystem _pullingSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -272,7 +271,6 @@ public sealed class CarryingSystem : EntitySystem
         _actionBlockerSystem.UpdateCanMove(carried);
         _virtualItemSystem.DeleteInHandsMatching(carrier, carried);
         _transform.AttachToGridOrMap(carried);
-        _standingState.Stand(carried);
         _movementSpeed.RefreshMovementSpeedModifiers(carrier);
     }
 

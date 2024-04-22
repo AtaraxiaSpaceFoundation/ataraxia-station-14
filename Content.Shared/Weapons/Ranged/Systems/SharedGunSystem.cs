@@ -562,6 +562,11 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         RefreshModifiers(weapon);
     }
+
+    public static void SetTarget(GunComponent gun, EntityUid? target)
+    {
+        gun.Target = target;
+    }
 // WD EDIT END
     protected abstract void CreateEffect(EntityUid uid, MuzzleFlashEvent message, EntityUid? user = null);
     /// <summary>

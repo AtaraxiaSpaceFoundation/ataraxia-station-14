@@ -191,7 +191,7 @@ public sealed partial class GunSystem : SharedGunSystem
 
         if (_state.CurrentState is GameplayStateBase screen)
             shootingTarget = screen.GetClickedEntity(mousePos);
-        
+
         EntityManager.RaisePredictiveEvent(new RequestShootEvent
         {
             Target = GetNetEntity(shootingTarget),
@@ -264,10 +264,11 @@ public sealed partial class GunSystem : SharedGunSystem
 
     private void Recoil(EntityUid? user, Vector2 recoil, float recoilScalar)
     {
-        if (!Timing.IsFirstTimePredicted || user == null || recoil == Vector2.Zero || recoilScalar == 0)
+        /*if (!Timing.IsFirstTimePredicted || user == null || recoil == Vector2.Zero || recoilScalar == 0)
             return;
 
-        _recoil.KickCamera(user.Value, recoil.Normalized() * 0.5f * recoilScalar);
+        _recoil.KickCamera(user.Value, recoil.Normalized() * 0.5f * recoilScalar);*/
+        // WD EDIT, disabled this due to lying problems
     }
 
     protected override void Popup(string message, EntityUid? uid, EntityUid? user)

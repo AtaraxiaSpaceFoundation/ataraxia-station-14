@@ -1,11 +1,12 @@
 using Content.Shared.DoAfter;
+using Content.Shared.Gravity;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
-using Content.Shared.Projectiles;
 using Content.Shared.Rotation;
-using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Slippery;
+using Content.Shared.Stunnable;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Physics;
@@ -13,81 +14,41 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Standing;
+namespace Content.Shared.Standing.Systems;
 
-public sealed class StandingStateSystem : EntitySystem
+public abstract partial class SharedStandingStateSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; // WD EDIT
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!; // WD EDIT
+    [Dependency] private readonly SharedStunSystem _stun = default!; // WD EDIT
 
     // If StandingCollisionLayer value is ever changed to more than one layer, the logic needs to be edited.
-    private const int StandingCollisionLayer = (int) CollisionGroup.MidImpassable;
+    private const int StandingCollisionLayer = (int)CollisionGroup.MidImpassable;
 
     // WD EDIT START
-    
+
     /// <inheritdoc />
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StandingStateComponent, StandingUpDoAfterEvent>(OnStandingUpDoAfter);
-        SubscribeLocalEvent<StandingStateComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeed);
-        SubscribeLocalEvent<StandingStateComponent, ProjectileCollideAttemptEvent>(OnProjectileCollideAttempt);
-        SubscribeLocalEvent<StandingStateComponent, HitscanHitAttemptEvent>(OnHitscanHitAttempt);
+        CommandBinds.Builder
+            .Bind(ContentKeyFunctions.LieDown, InputCmdHandler.FromDelegate(ChangeLyingState))
+            .Register<SharedStandingStateSystem>();
 
         SubscribeNetworkEvent<ChangeStandingStateEvent>(OnChangeState);
 
-        CommandBinds.Builder
-            .Bind(ContentKeyFunctions.LieDown, InputCmdHandler.FromDelegate(ChangeLyingState))
-            .Register<StandingStateSystem>();
+        SubscribeLocalEvent<StandingStateComponent, StandingUpDoAfterEvent>(OnStandingUpDoAfter);
+        SubscribeLocalEvent<StandingStateComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeed);
+        SubscribeLocalEvent<StandingStateComponent, SlipAttemptEvent>(OnSlipAttempt);
+
+        InitializeColliding();
     }
 
-
-    private void OnRefreshMovementSpeed(
-        EntityUid uid,
-        StandingStateComponent component,
-        RefreshMovementSpeedModifiersEvent args)
-    {
-        if (IsDown(uid))
-            args.ModifySpeed(0.4f, 0.4f);
-        else
-            args.ModifySpeed(1f, 1f);
-    }
-
-    private void OnProjectileCollideAttempt(EntityUid uid, StandingStateComponent component, ref ProjectileCollideAttemptEvent args)
-    {
-        if (component.CurrentState is StandingState.Standing)
-        {
-            return;
-        }
-        
-        if (!args.Component.Target.HasValue || args.Component.Target != uid)
-        {
-            args.Cancelled = true;
-        }
-    }
-    
-    private void OnHitscanHitAttempt(EntityUid uid, StandingStateComponent component, ref HitscanHitAttemptEvent args)
-    {
-        if (component.CurrentState is StandingState.Standing)
-        {
-            return;
-        }
-        
-        if (!args.Target.HasValue || args.Target != uid)
-        {
-            args.Cancelled = true;
-        }
-    }
-
-    private void OnStandingUpDoAfter(EntityUid uid, StandingStateComponent component, StandingUpDoAfterEvent args)
-    {
-        Stand(uid);
-        _movement.RefreshMovementSpeedModifiers(uid);
-    }
+    #region Events
 
     private void OnChangeState(ChangeStandingStateEvent ev, EntitySessionEventArgs args)
     {
@@ -97,6 +58,11 @@ public sealed class StandingStateSystem : EntitySystem
         }
 
         var uid = args.SenderSession.AttachedEntity.Value;
+
+        if (_stun.IsParalyzed(uid))
+        {
+            return;
+        }
 
         if (IsDown(uid))
         {
@@ -108,12 +74,38 @@ public sealed class StandingStateSystem : EntitySystem
         }
     }
 
+    private void OnStandingUpDoAfter(EntityUid uid, StandingStateComponent component, StandingUpDoAfterEvent args)
+    {
+        Stand(uid);
+    }
+
+    private void OnRefreshMovementSpeed(EntityUid uid, StandingStateComponent component,
+        RefreshMovementSpeedModifiersEvent args)
+    {
+        if (IsDown(uid))
+            args.ModifySpeed(0.4f, 0.4f);
+        else
+            args.ModifySpeed(1f, 1f);
+    }
+
+    private void OnSlipAttempt(EntityUid uid, StandingStateComponent component, SlipAttemptEvent args)
+    {
+        if (IsDown(uid))
+        {
+            args.Cancel();
+        }
+    }
+
+    #endregion
+
+    #region Methods
+
     /// <summary>
     ///     Send an update event when player pressed keybind.
     /// </summary>
     private void ChangeLyingState(ICommonSession? session)
     {
-        if (session?.AttachedEntity == null || 
+        if (session?.AttachedEntity == null ||
             !TryComp(session.AttachedEntity, out StandingStateComponent? standing) ||
             !standing.CanLieDown)
         {
@@ -122,7 +114,7 @@ public sealed class StandingStateSystem : EntitySystem
 
         RaiseNetworkEvent(new ChangeStandingStateEvent());
     }
-    
+
     public bool TryStandUp(EntityUid uid, StandingStateComponent? standingState = null)
     {
         if (!Resolve(uid, ref standingState, false))
@@ -140,11 +132,14 @@ public sealed class StandingStateSystem : EntitySystem
             BreakOnHandChange = false
         };
 
-        _doAfter.TryStartDoAfter(doargs);
+        if (!_doAfter.TryStartDoAfter(doargs))
+            return false;
+
+        standingState.CurrentState = StandingState.GettingUp;
         return true;
     }
 
-    public bool TryLieDown(EntityUid uid, StandingStateComponent? standingState = null)
+    public bool TryLieDown(EntityUid uid, StandingStateComponent? standingState = null, bool dropHeldItems = false)
     {
         if (!Resolve(uid, ref standingState, false))
             return false;
@@ -154,13 +149,11 @@ public sealed class StandingStateSystem : EntitySystem
             return false;
         }
 
-        Down(uid, true, false, standingState);
-        _movement.RefreshMovementSpeedModifiers(uid);
+        Down(uid, true, dropHeldItems, standingState);
         return true;
     }
-   
     // WD EDIT END
-    
+
     public bool IsDown(EntityUid uid, StandingStateComponent? standingState = null)
     {
         if (!Resolve(uid, ref standingState, false))
@@ -177,14 +170,13 @@ public sealed class StandingStateSystem : EntitySystem
         AppearanceComponent? appearance = null,
         HandsComponent? hands = null)
     {
-        // TODO: This should actually log missing comps...
         if (!Resolve(uid, ref standingState, false))
             return false;
 
         // Optional component.
         Resolve(uid, ref appearance, ref hands, false);
 
-        if (standingState.CurrentState is StandingState.Lying or StandingState.GettingUp) 
+        if (standingState.CurrentState is StandingState.Lying or StandingState.GettingUp)
             return true;
 
         // This is just to avoid most callers doing this manually saving boilerplate
@@ -230,9 +222,10 @@ public sealed class StandingStateSystem : EntitySystem
 
         if (playSound)
         {
-            _audio.PlayPredicted(standingState.DownSound, uid, uid);
+            _audio.PlayPredicted(standingState.DownSound, uid, null);
         }
 
+        _movement.RefreshMovementSpeedModifiers(uid);
         return true;
     }
 
@@ -242,7 +235,6 @@ public sealed class StandingStateSystem : EntitySystem
         AppearanceComponent? appearance = null,
         bool force = false)
     {
-        // TODO: This should actually log missing comps...
         if (!Resolve(uid, ref standingState, false))
             return false;
 
@@ -280,9 +272,12 @@ public sealed class StandingStateSystem : EntitySystem
         }
 
         standingState.ChangedFixtures.Clear();
+        _movement.RefreshMovementSpeedModifiers(uid);
 
         return true;
     }
+
+    #endregion
 }
 
 public sealed class DropHandItemsEvent : EventArgs;
