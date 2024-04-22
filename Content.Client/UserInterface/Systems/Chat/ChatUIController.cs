@@ -8,7 +8,6 @@ using Content.Client.Chat.UI;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
 using Content.Client.Ghost;
-using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Client.UserInterface.Systems.Gameplay;
@@ -251,9 +250,6 @@ public sealed class ChatUIController : UIController
         {
             _chatNameColors[i] = nameColors[i].ToHex();
         }
-
-        _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
-
     }
 
     private void OnUpdateChangelingChat(ChangelingUserStart ev)
@@ -274,41 +270,11 @@ public sealed class ChatUIController : UIController
 
         var viewportContainer = UIManager.ActiveScreen!.FindControl<LayoutContainer>("ViewportContainer");
         SetSpeechBubbleRoot(viewportContainer);
-
-        SetChatWindowOpacity(_config.GetCVar(CCVars.ChatWindowOpacity));
     }
 
     public void OnScreenUnload()
     {
         SetMainChat(false);
-    }
-
-    private void OnChatWindowOpacityChanged(float opacity)
-    {
-        SetChatWindowOpacity(opacity);
-    }
-
-    private void SetChatWindowOpacity(float opacity)
-    {
-        var chatBox = UIManager.ActiveScreen?.GetWidget<ChatBox>() ?? UIManager.ActiveScreen?.GetWidget<ResizableChatBox>();
-
-        var panel = chatBox?.ChatWindowPanel;
-        if (panel is null)
-            return;
-
-        Color color;
-        if (panel.PanelOverride is StyleBoxFlat styleBoxFlat)
-            color = styleBoxFlat.BackgroundColor;
-        else if (panel.TryGetStyleProperty<StyleBox>(PanelContainer.StylePropertyPanel, out var style)
-                 && style is StyleBoxFlat propStyleBoxFlat)
-            color = propStyleBoxFlat.BackgroundColor;
-        else
-            color = StyleNano.ChatBackgroundColor;
-
-        panel.PanelOverride = new StyleBoxFlat
-        {
-            BackgroundColor = color.WithAlpha(opacity)
-        };
     }
 
     public void SetMainChat(bool setting)
