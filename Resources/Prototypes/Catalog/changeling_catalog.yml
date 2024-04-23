@@ -82,7 +82,8 @@
   name: changeling-ability-void-adaptation
   description: changeling-ability-void-adaptation-desc
   icon: { sprite: /Textures/White/Actions/changeling.rsi, state: organic_suit }
-  productEvent: !type:VoidAdaptationPurchasedEvent
+  components:
+    - VoidAdaptation
   cost:
     ChangelingPoint: 2
   categories:
@@ -215,7 +216,9 @@
   name: changeling-ability-eyesight
   description: changeling-ability-eyesight-desc
   productAction: ActionAugmentedEyesight
-  productEvent: !type:AugmentedEyesightPurchasedEvent
+  components:
+    - FlashImmunity
+    - EyeProtection
   cost:
     ChangelingPoint: 2
   categories:

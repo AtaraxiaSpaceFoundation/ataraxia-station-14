@@ -11,7 +11,10 @@ public abstract partial class SharedPuddleSystem
     [ValidatePrototypeId<ReagentPrototype>]
     private const string HolyWater = "Holywater";
 
-    public static readonly string[] EvaporationReagents = { Water, HolyWater };
+    [ValidatePrototypeId<ReagentPrototype>]
+    private const string SpaceCleaner = "SpaceCleaner";
+
+    public static readonly string[] EvaporationReagents = { Water, HolyWater, SpaceCleaner };
 
 public bool CanFullyEvaporate(Solution solution)
     {

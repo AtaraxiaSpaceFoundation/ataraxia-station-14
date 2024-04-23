@@ -37,6 +37,7 @@ public abstract class SharedStunSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<KnockedDownComponent, ComponentInit>(OnKnockInit);
+        SubscribeLocalEvent<KnockedDownComponent, ComponentShutdown>(OnKnockShutdown);
         SubscribeLocalEvent<KnockedDownComponent, StandAttemptEvent>(OnStandAttempt);
 
         SubscribeLocalEvent<SlowedDownComponent, ComponentInit>(OnSlowInit);
@@ -104,6 +105,17 @@ public abstract class SharedStunSystem : EntitySystem
     private void OnKnockInit(EntityUid uid, KnockedDownComponent component, ComponentInit args)
     {
         _standingState.Down(uid);
+    }
+
+    private void OnKnockShutdown(EntityUid uid, KnockedDownComponent component, ComponentShutdown args)
+    {
+        // WD EDIT START
+        // Don't stand up if we can lie down via keybind
+        if (!TryComp(uid, out StandingStateComponent? standing) || standing.CanLieDown)
+            return;
+
+        _standingState.Stand(uid, standing);
+        // WD EDIT END
     }
 
     private void OnStandAttempt(EntityUid uid, KnockedDownComponent component, StandAttemptEvent args)

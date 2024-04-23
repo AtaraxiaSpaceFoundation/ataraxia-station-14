@@ -95,25 +95,41 @@ public sealed class CritSystem : EntitySystem
             return;
 
         var ohio = 0;
+        var absorbed = 0;
 
         if (component.IsBloodDagger)
         {
             var bruteGroup = _prototypeManager.Index<DamageGroupPrototype>("Brute");
             var burnGroup = _prototypeManager.Index<DamageGroupPrototype>("Burn");
+            var airlossGroup = _prototypeManager.Index<DamageGroupPrototype>("Airloss");
 
             ohio = _random.Next(1, 21);
+
+            if (args.Direction != null) // Heavy attack
+                ohio = (int) MathF.Round(ohio * 0.7f);
 
             foreach (var target in args.HitEntities)
             {
                 if (!TryComp(target, out BloodstreamComponent? bloodstream))
                     continue;
 
+                var blood = bloodstream.BloodSolution;
+
+                if (blood == null)
+                    continue;
+
+                var bloodLevel = blood.Value.Comp.Solution.Volume.Int();
+
                 if (!_bloodstream.TryModifyBloodLevel(target, -ohio, bloodstream, false))
                     continue;
 
-                _bloodstream.TryModifyBloodLevel(args.User, ohio);
-                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(bruteGroup, -ohio));
-                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(burnGroup, -ohio));
+                var toHeal = Math.Min(ohio, bloodLevel);
+
+                absorbed += toHeal;
+                _bloodstream.TryModifyBloodLevel(args.User, toHeal);
+                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(bruteGroup, -toHeal));
+                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(burnGroup, -toHeal));
+                _damageableSystem.TryChangeDamage(args.User, new DamageSpecifier(airlossGroup, -toHeal));
             }
         }
 
@@ -122,7 +138,9 @@ public sealed class CritSystem : EntitySystem
         args.BonusDamage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"),
             damage - args.BaseDamage.GetTotal());
 
-        _popup.PopupEntity($"Crit! {damage}", args.User, args.User, PopupType.MediumCaution);
+        var extra = component.IsBloodDagger ? $" Высосано крови: {absorbed}" : "";
+
+        _popup.PopupEntity($"Crit! {damage}" + extra, args.User, args.User, PopupType.MediumCaution);
     }
 
     private bool IsCriticalHit(CritComponent component)

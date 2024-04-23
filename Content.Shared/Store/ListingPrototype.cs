@@ -122,6 +122,9 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
     public int SaleAmount;
 
     public Dictionary<string, FixedPoint2> OldCost = new();
+
+    [DataField]
+    public List<string> Components = new();
     // WD END
 
     public bool Equals(ListingData? listing)
@@ -186,6 +189,7 @@ public partial class ListingData : IEquatable<ListingData>, ICloneable
             SaleBlacklist = SaleBlacklist,
             SaleAmount = SaleAmount,
             OldCost = OldCost,
+            Components = Components,
             // WD END
         };
     }

@@ -264,6 +264,17 @@ public sealed partial class StoreSystem
                 RaiseLocalEvent(buyer, listing.ProductEvent);
         }
 
+        // WD START
+        foreach (var name in listing.Components)
+        {
+            if (EntityManager.HasComponent(buyer, EntityManager.ComponentFactory.GetRegistration(name).Type))
+                continue;
+
+            var newComp = (Component) EntityManager.ComponentFactory.GetComponent(name);
+            EntityManager.AddComponent(buyer, newComp);
+        }
+        // WD END
+
         //log dat shit.
         _admin.Add(LogType.StorePurchase, LogImpact.Low,
             $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _prototypeManager)}\" from {ToPrettyString(uid)}");

@@ -18,7 +18,7 @@ public sealed class NeuroStabilizationSystem : EntitySystem
     private void BeforeStaminaDamage(Entity<NeuroStabilizationComponent> ent, ref BeforeStaminaDamageEvent args)
     {
         args.Cancelled = true;
-        Electrocute(ent, (int) MathF.Round(args.Value * 2f / 4f));
+        Electrocute(ent, (int) MathF.Round(args.Value * 2f / 3f));
     }
 
     public void Electrocute(EntityUid uid, int damage, StatusEffectsComponent? status = null)
