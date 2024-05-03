@@ -1,0 +1,61 @@
+- type: entity
+  parent: ClothingOuterBioVirology
+  id: BioVirologyPurpleMabFluff
+  name: "Костюм Химзащиты СМПО"
+  description: "Костюм Химзащиты Старшего медицинского полевого офицера для удобной работы в полевых условиях."
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/purplemab/lunar_cmo_bio.rsi
+  - type: Clothing
+    sprite: White/Fluff/purplemab/lunar_cmo_bio.rsi
+
+- type: entity
+  parent: ClothingHeadHatParamedicsoft
+  id: HatPurpleMabFluff
+  name: "Кепка СМПО"
+  description: "Кепка Старшего медицинского полевого офицера созданная для удобной работы в полевых условиях."
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/purplemab/lunar_cmo_soft.rsi
+  - type: Clothing
+    sprite: White/Fluff/purplemab/lunar_cmo_soft.rsi
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltWebbingPurpleMab
+  name: "РПС СМПО"
+  description: "РПС Старшего медицинского полевого офицера для удобной работы в полевых условиях."
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/purplemab/lunar_cmo_webbing.rsi
+  - type: Clothing
+    sprite: White/Fluff/purplemab/lunar_cmo_webbing.rsi
+
+- type: loadout
+  id: BioVirologyPurpleMabFluffLoadout
+  entity: BioVirologyPurpleMabFluff
+  sponsorOnly: true
+
+- type: loadout
+  id: HatPurpleMabFluffLoadout
+  entity: HatPurpleMabFluff
+  sponsorOnly: true
+
+- type: loadout
+  id: ClothingBeltWebbingPurpleMabLoadout
+  entity: ClothingBeltWebbingPurpleMab
+  sponsorOnly: true
+
+- type: loadout
+  id: ClothingShoesBootsJackPurpleMabLoadout
+  entity: ClothingShoesBootsJack
+  sponsorOnly: true
+
+- type: loadout
+  id: ClothingHeadsetAltCommandPurpleMabLoadout
+  entity: ClothingHeadsetAltCommand
+  sponsorOnly: true
+  whitelistJobs: [ ChiefMedicalOfficer ]
