@@ -1,0 +1,1443 @@
+- type: Tag
+  id: Card
+
+
+
+- type: entity
+  parent: BaseItem
+  id: BaseCard
+  name: Карта
+  description: Игральная карта
+  abstract: true
+  components:
+    - type: Item
+      size: Small
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown1
+      sound:
+        path: /Audio/Effects/unwrap.ogg
+    - type: Tag
+      tags:
+        - Card
+  
+
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_2
+  name: Карта Бубны 2
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_2
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown1
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_2
+  name: Карта Черви 2
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_2
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown2
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_2
+  name: Карта Крести 2
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_2
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown3
+- type: entity
+  parent: BaseCard
+  id: Cardspades_2
+  name: Карта Пики 2
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_2
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown4
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_3
+  name: Карта Бубны 3
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_3
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown5
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_3
+  name: Карта Черви 3
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_3
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown6
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_3
+  name: Карта Крести 3
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_3
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown7
+- type: entity
+  parent: BaseCard
+  id: Cardspades_3
+  name: Карта Пики 3
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_3
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown8
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_4
+  name: Карта Бубны 4
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_4
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown9
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_4
+  name: Карта Черви 4
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_4
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown10
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_4
+  name: Карта Крести 4
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_4
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown11
+- type: entity
+  parent: BaseCard
+  id: Cardspades_4
+  name: Карта Пики 4
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_4
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown12
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_5
+  name: Карта Бубны 5
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_5
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown13
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_5
+  name: Карта Черви 5
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_5
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown14
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_5
+  name: Карта Крести 5
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_5
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown15
+- type: entity
+  parent: BaseCard
+  id: Cardspades_5
+  name: Карта Пики 5
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_5
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown16
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_6
+  name: Карта Бубны 6
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_6
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown17
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_6
+  name: Карта Черви 6
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_6
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown18
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_6
+  name: Карта Крести 6
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_6
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown19
+- type: entity
+  parent: BaseCard
+  id: Cardspades_6
+  name: Карта Пики 6
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_6
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown20
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_7
+  name: Карта Бубны 7
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_7
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown21
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_7
+  name: Карта Черви 7
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_7
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown22
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_7
+  name: Карта Крести 7
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_7
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown23
+- type: entity
+  parent: BaseCard
+  id: Cardspades_7
+  name: Карта Пики 7
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_7
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown24
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_8
+  name: Карта Бубны 8
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_8
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown25
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_8
+  name: Карта Черви 8
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_8
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown26
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_8
+  name: Карта Крести 8
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_8
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown27
+- type: entity
+  parent: BaseCard
+  id: Cardspades_8
+  name: Карта Пики 8
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_8
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown28
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_9
+  name: Карта Бубны 9
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_9
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown29
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_9
+  name: Карта Черви 9
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_9
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown30
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_9
+  name: Карта Крести 9
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_9
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown31
+- type: entity
+  parent: BaseCard
+  id: Cardspades_9
+  name: Карта Пики 9
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_9
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown32
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_10
+  name: Карта Бубны 10
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_10
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown33
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_10
+  name: Карта Черви 10
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_10
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown34
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_10
+  name: Карта Крести 10
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_10
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown35
+- type: entity
+  parent: BaseCard
+  id: Cardspades_10
+  name: Карта Пики 10
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_10
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown36
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_j
+  name: Карта Бубны Валет
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_j
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown37
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_j
+  name: Карта Черви Валет
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_j
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown38
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_j
+  name: Карта Крести Валет
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_j
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown39
+- type: entity
+  parent: BaseCard
+  id: Cardspades_j
+  name: Карта Пики Валет
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_j
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown40
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_q
+  name: Карта Бубны Королева
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_q
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown41
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_q
+  name: Карта Черви Королева
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_q
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown42
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_q
+  name: Карта Крести Королева
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_q
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown43
+- type: entity
+  parent: BaseCard
+  id: Cardspades_q
+  name: Карта Пики Королева
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_q
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown44
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_k
+  name: Карта Бубны Король
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_k
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown45
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_k
+  name: Карта Черви Король
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_k
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown46
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_k
+  name: Карта Крести Король
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_k
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown47
+- type: entity
+  parent: BaseCard
+  id: Cardspades_k
+  name: Карта Пики Король
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_k
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown48
+- type: entity
+  parent: BaseCard
+  id: Carddiamonds_a
+  name: Карта Бубны Туз
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/diamonds.rsi
+      state: diamonds_a
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown49
+- type: entity
+  parent: BaseCard
+  id: Cardhearts_a
+  name: Карта Черви Туз
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/hearts.rsi
+      state: hearts_a
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown50
+- type: entity
+  parent: BaseCard
+  id: Cardclubs_a
+  name: Карта Крести Туз
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/clubs.rsi
+      state: clubs_a
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown51
+- type: entity
+  parent: BaseCard
+  id: Cardspades_a
+  name: Карта Пики Туз
+  description: Игральная карта
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/spades.rsi
+      state: spades_a
+    - type: SpawnItemsOnUse
+      items:
+        - id: CardUnknown52
+
+
+
+
+
+- type: entity
+  name: Неизвестная карта
+  parent: BaseItem
+  id: BaseCardUnknown
+  description: Там неизвестная карта
+  noSpawn: true
+  components:
+    - type: Sprite
+      sprite: Objects/Fun/Cards/Other.rsi
+      state: Unknown
+      sound:
+        path: /Audio/Effects/unwrap.ogg
+    - type: Item
+      size: Small
+    - type: Tag
+      tags:
+        - Card
+
+
+
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown1
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_2
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown2
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_2
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown3
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_2
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown4
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_2
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown5
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_3
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown6
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_3
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown7
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_3
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown8
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_3
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown9
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_4
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown10
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_4
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown11
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_4
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown12
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_4
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown13
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_5
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown14
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_5
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown15
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_5
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown16
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_5
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown17
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_6
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown18
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_6
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown19
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_6
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown20
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_6
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown21
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_7
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown22
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_7
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown23
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_7
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown24
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_7
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown25
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_8
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown26
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_8
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown27
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_8
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown28
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_8
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown29
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_9
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown30
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_9
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown31
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_9
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown32
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_9
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown33
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_10
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown34
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_10
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown35
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_10
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown36
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_10
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown37
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_j
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown38
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_j
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown39
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_j
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown40
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_j
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown41
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_q
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown42
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_q
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown43
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_q
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown44
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_q
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown45
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_k
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown46
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_k
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown47
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_k
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown48
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_k
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown49
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Carddiamonds_a
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown50
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardhearts_a
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown51
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardclubs_a
+- type: entity
+  name: Неизвестная карта
+  parent: BaseCardUnknown
+  id: CardUnknown52
+  description: Там неизвестная карта
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: Cardspades_a
+
+
+# Cards 36
+
+
+- type: entity
+  parent: BaseStorageItem
+  id: CardBag36
+  name: Колода Карт 36
+  suffix: 36
+  description: Новейшая колода карт
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Cards/Other.rsi
+    state: deck
+  - type: Item
+    size: Huge
+  - type: Storage
+    maxItemSize: Small
+    grid:
+      - 0,0,8,7
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - Card
+  - type: Tag
+    tags:
+    - TrashBag
+  - type: Appearance
+  - type: Dumpable
+  - type: StorageFill
+    contents:
+      - id: CardUnknown47
+      - id: CardUnknown50
+      - id: CardUnknown51
+      - id: CardUnknown20
+      - id: CardUnknown26
+      - id: CardUnknown30
+      - id: CardUnknown52
+      - id: CardUnknown36
+      - id: CardUnknown41
+      - id: CardUnknown23
+      - id: CardUnknown48
+      - id: CardUnknown27
+      - id: CardUnknown33
+      - id: CardUnknown17
+      - id: CardUnknown28
+      - id: CardUnknown22
+      - id: CardUnknown29
+      - id: CardUnknown32
+      - id: CardUnknown21
+      - id: CardUnknown43
+      - id: CardUnknown42
+      - id: CardUnknown24
+      - id: CardUnknown45
+      - id: CardUnknown34
+      - id: CardUnknown18
+      - id: CardUnknown49
+      - id: CardUnknown25
+      - id: CardUnknown46
+      - id: CardUnknown35
+      - id: CardUnknown19
+      - id: CardUnknown38
+      - id: CardUnknown40
+      - id: CardUnknown31
+      - id: CardUnknown39
+      - id: CardUnknown37
+      - id: CardUnknown44
+
+
+# Cards 52
+
+
+- type: entity
+  parent: BaseStorageItem
+  id: CardBag52
+  name: Колода Карт 52
+  suffix: 52
+  description: Новейшая колода карт
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Cards/Other.rsi
+    state: deck
+  - type: Item
+    size: Huge
+  - type: Storage
+    maxItemSize: Small
+    grid:
+      - 0,0,10,9
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - Card
+  - type: Tag
+    tags:
+    - TrashBag
+  - type: Appearance
+  - type: Dumpable
+  - type: StorageFill
+    contents:
+      - id: CardUnknown25
+      - id: CardUnknown52
+      - id: CardUnknown3
+      - id: CardUnknown4
+      - id: CardUnknown37
+      - id: CardUnknown49
+      - id: CardUnknown27
+      - id: CardUnknown29
+      - id: CardUnknown17
+      - id: CardUnknown8
+      - id: CardUnknown11
+      - id: CardUnknown39
+      - id: CardUnknown42
+      - id: CardUnknown9
+      - id: CardUnknown26
+      - id: CardUnknown38
+      - id: CardUnknown44
+      - id: CardUnknown32
+      - id: CardUnknown36
+      - id: CardUnknown45
+      - id: CardUnknown30
+      - id: CardUnknown50
+      - id: CardUnknown2
+      - id: CardUnknown43
+      - id: CardUnknown20
+      - id: CardUnknown47
+      - id: CardUnknown22
+      - id: CardUnknown51
+      - id: CardUnknown31
+      - id: CardUnknown18
+      - id: CardUnknown34
+      - id: CardUnknown19
+      - id: CardUnknown28
+      - id: CardUnknown33
+      - id: CardUnknown41
+      - id: CardUnknown24
+      - id: CardUnknown1
+      - id: CardUnknown48
+      - id: CardUnknown15
+      - id: CardUnknown5
+      - id: CardUnknown13
+      - id: CardUnknown7
+      - id: CardUnknown16
+      - id: CardUnknown40
+      - id: CardUnknown14
+      - id: CardUnknown46
+      - id: CardUnknown6
+      - id: CardUnknown21
+      - id: CardUnknown23
+      - id: CardUnknown35
+      - id: CardUnknown10
+      - id: CardUnknown12
+
+
+# Cards crate commented
+
+#- type: entity
+#  parent: CrateBaseWeldable
+#  id: CardCrate1
+#  suffix: 36
+#  name: Сундук с картами
+#  components:
+#  - type: Icon
+#    sprite: Structures/Storage/Crates/generic.rsi
+#  - type: Sprite
+#    sprite: Structures/Storage/Crates/generic.rsi
+#  - type: StorageFill
+#    contents:
+#      - id: CardUnknown47
+#      - id: CardUnknown50
+#      - id: CardUnknown51
+#      - id: CardUnknown20
+#      - id: CardUnknown26
+#      - id: CardUnknown30
+#      - id: CardUnknown52
+#      - id: CardUnknown36
+#      - id: CardUnknown41
+#      - id: CardUnknown23
+#      - id: CardUnknown48
+#      - id: CardUnknown27
+#      - id: CardUnknown33
+#      - id: CardUnknown17
+#      - id: CardUnknown28
+#      - id: CardUnknown22
+#      - id: CardUnknown29
+#      - id: CardUnknown32
+#      - id: CardUnknown21
+#      - id: CardUnknown43
+#      - id: CardUnknown42
+#      - id: CardUnknown24
+#      - id: CardUnknown45
+#      - id: CardUnknown34
+#      - id: CardUnknown18
+#      - id: CardUnknown49
+#      - id: CardUnknown25
+#      - id: CardUnknown46
+#      - id: CardUnknown35
+#      - id: CardUnknown19
+#      - id: CardUnknown38
+#      - id: CardUnknown40
+#      - id: CardUnknown31
+#      - id: CardUnknown39
+#      - id: CardUnknown37
+#      - id: CardUnknown44
+#
+#
+#
+#- type: entity
+#  parent: CrateBaseWeldable
+#  id: CardCrate2
+#  suffix: 52
+#  name: Сундук с картами
+#  components:
+#  - type: Icon
+#    sprite: Structures/Storage/Crates/generic.rsi
+#  - type: Sprite
+#    sprite: Structures/Storage/Crates/generic.rsi
+#  - type: StorageFill
+#    contents:
+#      - id: CardUnknown25
+#      - id: CardUnknown52
+#      - id: CardUnknown3
+#      - id: CardUnknown4
+#      - id: CardUnknown37
+#      - id: CardUnknown49
+#      - id: CardUnknown27
+#      - id: CardUnknown29
+#      - id: CardUnknown17
+#      - id: CardUnknown8
+#      - id: CardUnknown11
+#      - id: CardUnknown39
+#      - id: CardUnknown42
+#      - id: CardUnknown9
+#      - id: CardUnknown26
+#      - id: CardUnknown38
+#      - id: CardUnknown44
+#      - id: CardUnknown32
+#      - id: CardUnknown36
+#      - id: CardUnknown45
+#      - id: CardUnknown30
+#      - id: CardUnknown50
+#      - id: CardUnknown2
+#      - id: CardUnknown43
+#      - id: CardUnknown20
+#      - id: CardUnknown47
+#      - id: CardUnknown22
+#      - id: CardUnknown51
+#      - id: CardUnknown31
+#      - id: CardUnknown18
+#      - id: CardUnknown34
+#      - id: CardUnknown19
+#      - id: CardUnknown28
+#      - id: CardUnknown33
+#      - id: CardUnknown41
+#      - id: CardUnknown24
+#      - id: CardUnknown1
+#      - id: CardUnknown48
+#      - id: CardUnknown15
+#      - id: CardUnknown5
+#      - id: CardUnknown13
+#      - id: CardUnknown7
+#      - id: CardUnknown16
+#      - id: CardUnknown40
+#      - id: CardUnknown14
+#      - id: CardUnknown46
+#      - id: CardUnknown6
+#      - id: CardUnknown21
+#      - id: CardUnknown23
+#      - id: CardUnknown35
+#      - id: CardUnknown10
+#      - id: CardUnknown12
+
+
+# Players Cards
+
+- type: entity
+  parent: BaseStorageItem
+  id: PlayerCardBag
+  name: Карты игрока
+  description: Новейшая колода карт
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Cards/Other.rsi
+    state: fan
+  - type: Item
+    size: Normal
+  - type: Storage
+    maxItemSize: Small
+    grid:
+      - 0,0,5,5
+    quickInsert: true
+    areaInsert: false
+    whitelist:
+      tags:
+        - Card
+  - type: Tag
+    tags:
+      - TrashBag
+  - type: Appearance
+  - type: Dumpable

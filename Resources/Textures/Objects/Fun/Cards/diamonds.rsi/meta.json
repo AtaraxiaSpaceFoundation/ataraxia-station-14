@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Moln1kas",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "diamonds_a"
+        },
+        {
+            "name": "diamonds_2"
+        },
+        {
+            "name": "diamonds_3"
+        },
+        {
+            "name": "diamonds_4"
+        },
+        {
+            "name": "diamonds_5"
+        },
+        {
+            "name": "diamonds_6"
+        },
+        {
+            "name": "diamonds_7"
+        },
+        {
+            "name": "diamonds_8"
+        },
+        {
+            "name": "diamonds_9"
+        },
+        {
+            "name": "diamonds_10"
+        },
+        {
+            "name": "diamonds_j"
+        },
+        {
+            "name": "diamonds_q"
+        },
+        {
+            "name": "diamonds_k"
+        }
+    ]
+}

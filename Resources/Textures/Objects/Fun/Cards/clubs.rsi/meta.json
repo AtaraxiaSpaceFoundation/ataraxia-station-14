@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Moln1kas",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "clubs_a"
+        },
+        {
+            "name": "clubs_2"
+        },
+        {
+            "name": "clubs_3"
+        },
+        {
+            "name": "clubs_4"
+        },
+        {
+            "name": "clubs_5"
+        },
+        {
+            "name": "clubs_6"
+        },
+        {
+            "name": "clubs_7"
+        },
+        {
+            "name": "clubs_8"
+        },
+        {
+            "name": "clubs_9"
+        },
+        {
+            "name": "clubs_10"
+        },
+        {
+            "name": "clubs_j"
+        },
+        {
+            "name": "clubs_q"
+        },
+        {
+            "name": "clubs_k"
+        }
+    ]
+}

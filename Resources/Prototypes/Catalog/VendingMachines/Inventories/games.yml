@@ -1,6 +1,9 @@
 - type: vendingMachineInventory
   id: GoodCleanFunInventory
   startingInventory:
+    PlayerCardBag: 20
+    CardBag36: 4
+    CardBag52: 4
     DiceBag: 6
     Paper: 8
     d6Dice: 8
