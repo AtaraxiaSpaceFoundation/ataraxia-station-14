@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Moln1kas",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "hearts_a"
+        },
+        {
+            "name": "hearts_2"
+        },
+        {
+            "name": "hearts_3"
+        },
+        {
+            "name": "hearts_4"
+        },
+        {
+            "name": "hearts_5"
+        },
+        {
+            "name": "hearts_6"
+        },
+        {
+            "name": "hearts_7"
+        },
+        {
+            "name": "hearts_8"
+        },
+        {
+            "name": "hearts_9"
+        },
+        {
+            "name": "hearts_10"
+        },
+        {
+            "name": "hearts_j"
+        },
+        {
+            "name": "hearts_q"
+        },
+        {
+            "name": "hearts_k"
+        }
+    ]
+}
