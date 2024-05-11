@@ -1,15 +1,15 @@
 - type: vendingMachineInventory
   id: EngiVendInventory
   startingInventory:
-    ClothingEyesGlassesMeson: 4
-    ClothingHeadHatWelding: 6
-    Multitool: 4
-    NetworkConfigurator: 5
+    ClothingEyesGlassesMeson: 2
+    ClothingHeadHatWelding: 3
+    Multitool: 2
+    NetworkConfigurator: 3
     PowerCellMedium: 5
-    ClothingHandsGlovesColorYellow: 6
-    HolofanProjector: 5
-    trayScanner: 5
-    GeigerCounter: 5
+    ClothingHandsGlovesColorYellow: 2
+    HolofanProjector: 2
+    trayScanner: 3
+    GeigerCounter: 3
     InflatableWallStack1: 24
     InflatableDoorStack1: 8
   emaggedInventory:

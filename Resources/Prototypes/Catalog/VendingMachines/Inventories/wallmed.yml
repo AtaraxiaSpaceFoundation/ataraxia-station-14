@@ -1,13 +1,13 @@
 - type: vendingMachineInventory
   id: NanoMedInventory
   startingInventory:
-    HandheldHealthAnalyzer: 3
-    Brutepack: 5
-    Ointment: 5
-    Bloodpack: 5
-    Gauze: 5
-    EpinephrineChemistryBottle: 3
-    Syringe: 5
+    HandheldHealthAnalyzer: 2
+    Brutepack: 2
+    Ointment: 2
+    Bloodpack: 2
+    Gauze: 2
+    EpinephrineChemistryBottle: 1
+    Syringe: 2
     EmergencyMedipen: 2
-    SyringeBicaridine: 1
-    SyringeDermaline: 1
+    SyringeBicaridine: 2
+    SyringeDermaline: 2

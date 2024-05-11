@@ -2,21 +2,21 @@
   id: YouToolInventory
   startingInventory:
     CableApcStack: 5
-    Crowbar: 5
-    Welder: 5
-    Wirecutter: 5
-    Wrench: 5
-    Screwdriver: 5
-    trayScanner: 5
-    NetworkConfigurator: 5
-    GasAnalyzer: 5
+    Crowbar: 2
+    Welder: 2
+    Wirecutter: 2
+    Wrench: 2
+    Screwdriver: 2
+    trayScanner: 3
+    NetworkConfigurator: 3
+    GasAnalyzer: 3
     FlashlightLantern: 5
-    ClothingHandsGlovesColorYellowBudget: 5
-    SprayPainter: 5
-    Multitool: 5
+    ClothingHandsGlovesColorYellowBudget: 3
+    SprayPainter: 3
+    Multitool: 2
 
   contrabandInventory:
-    ClothingHandsGlovesColorYellow: 2
+    ClothingHandsGlovesColorYellow: 1
 
   emaggedInventory:
     SyndicateJawsOfLife: 1

@@ -1,8 +1,8 @@
 ﻿- type: vendingMachineInventory
   id: DinnerwareInventory
   startingInventory:
-    ButchCleaver: 2
-    KitchenKnife: 5
+    ButchCleaver: 1
+    KitchenKnife: 3
     RollingPin: 4
     Spoon: 4
     Fork: 4

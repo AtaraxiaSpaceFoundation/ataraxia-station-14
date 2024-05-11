@@ -1,26 +1,26 @@
 - type: vendingMachineInventory
   id: ChemVendInventory
   startingInventory:
-    Jug: 4
-    JugAluminium: 2
-    JugCarbon: 4
+    Jug: 2
+    JugAluminium: 1
+    JugCarbon: 1
     JugChlorine: 1
-    JugCopper: 2
-    JugEthanol: 2
+    JugCopper: 1
+    JugEthanol: 1
     JugFluorine: 1
-    JugHydrogen: 3
+    JugHydrogen: 1
     JugIodine: 1
-    JugIron: 2
-    JugLithium: 2
+    JugIron: 1
+    JugLithium: 1
     JugMercury: 1
-    JugNitrogen: 3
-    JugOxygen: 3
+    JugNitrogen: 1
+    JugOxygen: 1
     JugPhosphorus: 1
-    JugPotassium: 2
+    JugPotassium: 1
     JugRadium: 1
-    JugSilicon: 2
-    JugSodium: 2
-    JugSugar: 3
+    JugSilicon: 1
+    JugSodium: 1
+    JugSugar: 1
     JugSulfur: 1
   emaggedInventory:
     ToxinChemistryBottle: 1
@@ -55,4 +55,4 @@
     MuteToxinChemistryBottle: 3
     LeadChemistryBottle: 2
     ToxinChemistryBottle: 1
-    
+

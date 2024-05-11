@@ -3,63 +3,75 @@
   suffix: Filled
   parent: LockerSyndicatePersonal
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingBeltMilitaryWebbing
-      - id: ClothingHandsGlovesCombat
-      - id: JetpackBlackFilled
-      - id: ClothingUniformJumpsuitOperative
-      - id: ClothingUniformJumpskirtOperative
-      - id: ClothingHeadsetAltSyndicate
-      - id: ClothingEyesHudSyndicate
+    - type: StorageFill
+      contents:
+        - id: ClothingBeltMilitaryWebbing
+        - id: ClothingHandsGlovesCombat
+        - id: JetpackBlackFilled
+        - id: ClothingUniformJumpsuitOperative
+        - id: ClothingUniformJumpskirtOperative
+        - id: ClothingHeadsetAltSyndicate
+        - id: ClothingEyesHudSyndicate
 
 - type: entity
   id: ClosetEmergencyFilledRandom
   parent: ClosetEmergency
   suffix: Filled, Random
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingOuterSuitEmergency
-      - id: ClothingMaskBreath
-      - id: EmergencyOxygenTankFilled
-        prob: 0.80
-        orGroup: EmergencyTankOrRegularTank
-      - id: OxygenTankFilled
-        prob: 0.20
-        orGroup: EmergencyTankOrRegularTank
-      - id: ToolboxEmergencyFilled
-        prob: 0.4
-      - id: MedkitOxygenFilled
-        prob: 0.2
-      - id: WeaponFlareGun
-        prob: 0.05
-      - id: BoxMRE
-        prob: 0.1
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterSuitEmergency
+        - id: ClothingMaskBreath
+        - id: EmergencyOxygenTankFilled
+          prob: 0.20
+          orGroup: EmergencyTankOrRegularTank
+        - id: OxygenTankFilled
+          prob: 0.05
+          orGroup: EmergencyTankOrRegularTank
+        - id: EmergencyNitrogenTankFilled
+          prob: 0.20
+          orGroup: EmergencyNitrogenOrRegularNitrogen
+        - id: NitrogenTankFilled
+          prob: 0.05
+          orGroup: EmergencyNitrogenOrRegularNitrogen
+        - id: ToolboxEmergencyFilled
+          prob: 0.1
+        - id: MedkitOxygenFilled
+          prob: 0.1
+        - id: WeaponFlareGun
+          prob: 0.05
+        - id: BoxMRE
+          prob: 0.1
 
 - type: entity
   id: ClosetWallEmergencyFilledRandom
   parent: ClosetWallEmergency
   suffix: Filled, Random
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingOuterSuitEmergency
-      - id: ClothingMaskBreath
-      - id: EmergencyOxygenTankFilled
-        prob: 0.80
-        orGroup: EmergencyTankOrRegularTank
-      - id: OxygenTankFilled
-        prob: 0.20
-        orGroup: EmergencyTankOrRegularTank
-      - id: ToolboxEmergencyFilled
-        prob: 0.4
-      - id: MedkitOxygenFilled
-        prob: 0.2
-      - id: WeaponFlareGun
-        prob: 0.05
-      - id: BoxMRE
-        prob: 0.1
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterSuitEmergency
+        - id: ClothingMaskBreath
+        - id: EmergencyOxygenTankFilled
+          prob: 0.20
+          orGroup: EmergencyTankOrRegularTank
+        - id: OxygenTankFilled
+          prob: 0.05
+          orGroup: EmergencyTankOrRegularTank
+        - id: EmergencyNitrogenTankFilled
+          prob: 0.20
+          orGroup: EmergencyNitrogenOrRegularNitrogen
+        - id: NitrogenTankFilled
+          prob: 0.05
+          orGroup: EmergencyNitrogenOrRegularNitrogen
+        - id: ToolboxEmergencyFilled
+          prob: 0.1
+        - id: MedkitOxygenFilled
+          prob: 0.1
+        - id: WeaponFlareGun
+          prob: 0.05
+        - id: BoxMRE
+          prob: 0.1
 
 - type: entity
   id: ClosetFireFilled
@@ -72,8 +84,9 @@
         - id: ClothingHeadHelmetFire
         - id: ClothingMaskGas
         - id: OxygenTankFilled
+        - id: NitrogenTankFilled
         - id: FireExtinguisher
-          prob: 0.25
+          prob: 0.15
 - type: entity
   id: ClosetWallFireFilledRandom
   parent: ClosetWallFire
@@ -85,8 +98,9 @@
         - id: ClothingHeadHelmetFire
         - id: ClothingMaskGas
         - id: OxygenTankFilled
+        - id: NitrogenTankFilled
         - id: FireExtinguisher
-          prob: 0.25
+          prob: 0.15
 - type: entity
   id: ClosetMaintenanceFilledRandom
   suffix: Filled, Random
@@ -95,68 +109,53 @@
     - type: StorageFill
       contents:
         - id: Lantern
-          prob: 0.50
+          prob: 0.20
         - id: Wirecutter
-          prob: 0.33
-        - id: Screwdriver
-          prob: 0.33
-        - id: Wrench
-          prob: 0.33
-        - id: Crowbar
-          prob: 0.50
-        - id: Welder
-          prob: 0.33
-        - id: Multitool
           prob: 0.10
+        - id: Screwdriver
+          prob: 0.15
+        - id: Wrench
+          prob: 0.20
+        - id: Crowbar
+          prob: 0.10
+        - id: Welder
+          prob: 0.10
+        - id: Multitool
+          prob: 0.05
         - id: Soap
-          prob: 0.44
-        - id: null
-          prob: 0.67
-          orGroup: carp
+          prob: 0.10
         - id: PlushieCarp
-          prob: 0.2
-          orGroup: carp
-        - id: PlushieHolocarp
-          prob: 0.05
-          orGroup: carp
-        - id: PlushieMagicarp
-          prob: 0.05
-          orGroup: carp
-        - id: PlushieRainbowCarp
-          prob: 0.03
-          orGroup: carp
-        - id: PlushieSlime
-          prob: 0.2
-        - id: PlushieSnake
-          prob: 0.2
-        - id: ClothingShoesSkates
           prob: 0.1
+        - id: PlushieSlime
+          prob: 0.1
+        - id: PlushieSnake
+          prob: 0.1
+        - id: ClothingShoesSkates
+          prob: 0.05
         - id: ClothingHandsGlovesColorYellow
           prob: 0.05
         - id: ClothingHandsGlovesFingerlessInsulated
           prob: 0.07
         - id: ClothingBeltUtility
-          prob: 0.10
+          prob: 0.05
         - id: ClothingHeadHatCone
-          prob: 0.2
-        - id: WeaponFlareGun
           prob: 0.1
+        - id: WeaponFlareGun
+          prob: 0.05
         - id: ClothingHandsGlovesColorYellowBudget
-          prob: 0.25
+          prob: 0.15
         - id: StrangePill
           prob: 0.20
         - id: DrinkMopwataBottleRandom
-          prob: 0.20
+          prob: 0.05
         - id: ModularReceiver
-          prob: 0.1
+          prob: 0.05
         - id: DrinkSpaceGlue
-          prob: 0.20
+          prob: 0.10
         - id: DrinkSpaceLube
-          prob: 0.20
+          prob: 0.10
         - id: BarberScissors
           prob: 0.05
-        - id: BookRandomStory
-          prob: 0.1
         # Syndicate loot
         - id: null
           prob: 0.95
@@ -171,139 +170,6 @@
           prob: 0.005
           orGroup: syndiemaintloot
         - id: CyberPen
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: CigPackSyndicate
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingBackpackDuffelSyndicatePyjamaBundle
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingBeltMilitaryWebbing
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingShoesBootsCombatFilled
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ToolboxSyndicateFilled
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: BalloonSyn
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: WeaponSniperMosin
-          prob: 0.001
-          orGroup: syndiemaintloot
-        # Angry animals
-        - id: null
-          prob: 0.99
-          orGroup: angryanimalsmaintloot
-        - id: MobCarp
-          prob: 0.001
-          orGroup: angryanimalsmaintloot
-        - id: MobGiantSpiderAngry
-          prob: 0.002
-          orGroup: angryanimalsmaintloot
-        - id: MobMonkeyAngry
-          prob: 0.003
-          orGroup: angryanimalsmaintloot
-        - id: MobAngryBee
-          prob: 0.004
-          orGroup: angryanimalsmaintloot
-        # Animals
-        - id: null
-          prob: 0.7
-          orGroup: animalsmaintloot
-        - id: MobMouse
-          prob: 0.1
-          orGroup: animalsmaintloot
-        - id: MobMouse1
-          prob: 0.1
-          orGroup: animalsmaintloot
-        - id: MobMouse2
-          prob: 0.1
-          orGroup: animalsmaintloot
-
-- type: entity
-  id: ClosetWallMaintenanceFilledRandom
-  parent: ClosetWall
-  suffix: Filled, Random
-  components:
-  - type: StorageFill
-    contents:
-        - id: Lantern
-          prob: 0.50
-        - id: Wirecutter
-          prob: 0.33
-        - id: Screwdriver
-          prob: 0.33
-        - id: Wrench
-          prob: 0.33
-        - id: Crowbar
-          prob: 0.50
-        - id: Welder
-          prob: 0.33
-        - id: Multitool
-          prob: 0.10
-        - id: Soap
-          prob: 0.44
-        - id: null
-          prob: 0.67
-          orGroup: carp
-        - id: PlushieCarp
-          prob: 0.2
-          orGroup: carp
-        - id: PlushieHolocarp
-          prob: 0.05
-          orGroup: carp
-        - id: PlushieMagicarp
-          prob: 0.05
-          orGroup: carp
-        - id: PlushieRainbowCarp
-          prob: 0.03
-          orGroup: carp
-        - id: PlushieSlime
-          prob: 0.2
-        - id: PlushieSnake
-          prob: 0.2
-        - id: ClothingHandsGlovesColorYellow
-          prob: 0.05
-        - id: ClothingBeltQuiver
-          prob: 0.02
-        - id: ClothingBeltUtility
-          prob: 0.10
-        - id: ClothingHeadHatCone
-          prob: 0.2
-        - id: WeaponFlareGun
-          prob: 0.1
-        - id: ClothingHandsGlovesColorYellowBudget
-          prob: 0.25
-        - id: StrangePill
-          prob: 0.20
-        - id: DrinkSpaceGlue
-          prob: 0.20
-        - id: ModularReceiver
-          prob: 0.1
-        # Syndicate loot
-        - id: null
-          prob: 0.95
-          orGroup: syndiemaintloot
-        - id: ClothingUniformJumpskirtOperative
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingUniformJumpsuitOperative
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingBackpackDuffelSyndicate
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: CyberPen
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingHeadHatOutlawHat
-          prob: 0.005
-          orGroup: syndiemaintloot
-        - id: ClothingEyesGlassesOutlawGlasses
           prob: 0.005
           orGroup: syndiemaintloot
         - id: CigPackSyndicate
@@ -327,32 +193,700 @@
         - id: WeaponSniperMosin
           prob: 0.0010
           orGroup: syndiemaintloot
-        # Angry animals
+        # Materials - WD Edit
+        - id: null
+          prob: 0.88
+          orGroup: materialmaintloot
+        - id: MaterialWoodPlank
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetPlasteel
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetPlastic
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetSteel
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetGlass
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialBananium1
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetUranium
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: SheetPlasma
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: IngotGold
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: IngotSilver
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: MaterialCloth
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialDurathread
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialBiomass
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialWebSilk
+          prob: 0.01
+          orGroup: materialmaintloot
+        # Medical - WD Edit
+        - id: null
+          prob: 0.90
+          orGroup: medicalmaintloot
+        - id: Gauze
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: Ointment
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: Brutepack
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: MedicatedSuture
+          prob: 0.005
+          orGroup: medicalmaintloot
+        - id: RegenerativeMesh
+          prob: 0.005
+          orGroup: medicalmaintloot
+        - id: EmergencyMedipen
+          prob: 0.03
+          orGroup: medicalmaintloot
+        - id: CombatMedipen
+          prob: 0.0005
+          orGroup: medicalmaintloot
+        - id: AntiPoisonMedipen
+          prob: 0.0005
+          orGroup: medicalmaintloot
+        - id: ChemicalSynthesisKit
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        - id: MedkitCombatFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitToxinFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitRadiationFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        - id: MedkitAdvancedFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitBurnFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        # Security - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorRiot
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorBasic
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorBulletproof
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingHeadHelmetBasic
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: FlashlightSeclite
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: Flash
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: ClothingEyesGlassesSecurity
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: Handcuffs
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: GrenadeFlashBang
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: TearGasGrenade
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: WeaponShotgunEnforcerRubber
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: WeaponPistolMk58Nonlethal
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: WeaponDisabler
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: Stunbaton
+          prob: 0.00005
+          orGroup: securitymaintloot
+        # Encryption Keys - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyService
+          prob: 0.0003
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyCargo
+          prob: 0.0002
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyMedical
+          prob: 0.0002
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyScience
+          prob: 0.0001
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyEngineering
+          prob: 0.0001
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeySecurity
+          prob: 0.00005
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyCommand
+          prob: 0.00005
+          orGroup: encryptionkeymaintloot
+        # Implanters - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: implantermaintloot
+        - id: BikeHornImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: SadTromboneImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: MindShieldImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: TrackingImplanter
+          prob: 0.0001
+          orGroup: implantermaintloot
+        - id: LightImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: EmpImplanter
+          prob: 0.00002
+          orGroup: implantermaintloot
+        - id: SmokeImplanter
+          prob: 0.00002
+          orGroup: implantermaintloot
+        - id: MindSlaveImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: ScramImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: DnaScramblerImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: StorageImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: HardlightSpearImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: FreedomImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        # Melee Weapons - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: meleeweaponsmaintloot
+        - id: CombatKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: KitchenKnife
+          prob: 0.0002
+          orGroup: meleeweaponsmaintloot
+        - id: SurvivalKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: KukriKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: BaseBallBat
+          prob: 0.0002
+          orGroup: meleeweaponsmaintloot
+        - id: Pickaxe
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: ScalpelShiv
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: FireAxe
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: FireAxeFlaming
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: ThrowingKnife
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: UraniumShiv
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: Sledgehammer
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: MiningDrill
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: EnergyBattleAxe
+          prob: 0.000005
+          orGroup: meleeweaponsmaintloot
+        - id: BetrayalKnife
+          prob: 0.000005
+          orGroup: meleeweaponsmaintloot
+        - id: ThrowingKnife
+          prob: 0.00003
+          orGroup: meleeweaponsmaintloot
+        # Hardsuits - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitBasic
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitEVA
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitEVAPrisoner
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitSyndie
+          prob: 0.00005
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitSyndicate
+          prob: 0.00005
+          orGroup: hardsuitmaintloot
+        # Cash - WD Edit
         - id: null
           prob: 0.99
-          orGroup: angryanimalsmaintloot
-        - id: MobCarp
-          prob: 0.001
-          orGroup: angryanimalsmaintloot
-        - id: MobGiantSpiderAngry
-          prob: 0.002
-          orGroup: angryanimalsmaintloot
-        - id: MobMonkeyAngry 
+          orGroup: cashmaintloot
+        - id: SpaceCash100
+          prob: 0.005
+          orGroup: cashmaintloot
+        - id: SpaceCash500
           prob: 0.003
-          orGroup: angryanimalsmaintloot
-        - id: MobAngryBee
-          prob: 0.004
-          orGroup: angryanimalsmaintloot
-        # Animals
+          orGroup: cashmaintloot
+        - id: SpaceCash1000
+          prob: 0.001
+          orGroup: cashmaintloot
+        - id: SpaceCash2500
+          prob: 0.0006
+          orGroup: cashmaintloot
+        - id: SpaceCash5000
+          prob: 0.0003
+          orGroup: cashmaintloot
+        - id: SpaceCash10000
+          prob: 0.0001
+          orGroup: cashmaintloot
+
+- type: entity
+  id: ClosetWallMaintenanceFilledRandom
+  parent: ClosetWall
+  suffix: Filled, Random
+  components:
+    - type: StorageFill
+      contents:
+        - id: Lantern
+          prob: 0.20
+        - id: Wirecutter
+          prob: 0.10
+        - id: Screwdriver
+          prob: 0.15
+        - id: Wrench
+          prob: 0.20
+        - id: Crowbar
+          prob: 0.10
+        - id: Welder
+          prob: 0.10
+        - id: Multitool
+          prob: 0.05
+        - id: Soap
+          prob: 0.10
+        - id: PlushieCarp
+          prob: 0.1
+        - id: PlushieSlime
+          prob: 0.1
+        - id: PlushieSnake
+          prob: 0.1
+        - id: ClothingShoesSkates
+          prob: 0.05
+        - id: ClothingHandsGlovesColorYellow
+          prob: 0.05
+        - id: ClothingHandsGlovesFingerlessInsulated
+          prob: 0.07
+        - id: ClothingBeltUtility
+          prob: 0.05
+        - id: ClothingHeadHatCone
+          prob: 0.1
+        - id: WeaponFlareGun
+          prob: 0.05
+        - id: ClothingHandsGlovesColorYellowBudget
+          prob: 0.15
+        - id: StrangePill
+          prob: 0.20
+        - id: DrinkMopwataBottleRandom
+          prob: 0.05
+        - id: ModularReceiver
+          prob: 0.05
+        - id: DrinkSpaceGlue
+          prob: 0.10
+        - id: DrinkSpaceLube
+          prob: 0.10
+        - id: BarberScissors
+          prob: 0.05
+        # Syndicate loot
         - id: null
-          prob: 0.7
-          orGroup: animalsmaintloot
-        - id: MobMouse
-          prob: 0.1
-          orGroup: animalsmaintloot
-        - id: MobMouse1
-          prob: 0.1
-          orGroup: animalsmaintloot
-        - id: MobMouse2
-          prob: 0.1
-          orGroup: animalsmaintloot
+          prob: 0.95
+          orGroup: syndiemaintloot
+        - id: ClothingUniformJumpskirtOperative
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ClothingUniformJumpsuitOperative
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackDuffelSyndicate
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: CyberPen
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: CigPackSyndicate
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackDuffelSyndicatePyjamaBundle
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ClothingBeltMilitaryWebbing
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ClothingShoesBootsCombatFilled
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: ToolboxSyndicateFilled
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: BalloonSyn
+          prob: 0.005
+          orGroup: syndiemaintloot
+        - id: WeaponSniperMosin
+          prob: 0.0010
+          orGroup: syndiemaintloot
+        # Materials - WD Edit
+        - id: null
+          prob: 0.88
+          orGroup: materialmaintloot
+        - id: MaterialWoodPlank
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetPlasteel
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetPlastic
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetSteel
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetGlass
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialBananium1
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: SheetUranium
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: SheetPlasma
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: IngotGold
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: IngotSilver
+          prob: 0.005
+          orGroup: materialmaintloot
+        - id: MaterialCloth
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialDurathread
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialBiomass
+          prob: 0.01
+          orGroup: materialmaintloot
+        - id: MaterialWebSilk
+          prob: 0.01
+          orGroup: materialmaintloot
+        # Medical - WD Edit
+        - id: null
+          prob: 0.90
+          orGroup: medicalmaintloot
+        - id: Gauze
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: Ointment
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: Brutepack
+          prob: 0.01
+          orGroup: medicalmaintloot
+        - id: MedicatedSuture
+          prob: 0.005
+          orGroup: medicalmaintloot
+        - id: RegenerativeMesh
+          prob: 0.005
+          orGroup: medicalmaintloot
+        - id: EmergencyMedipen
+          prob: 0.03
+          orGroup: medicalmaintloot
+        - id: CombatMedipen
+          prob: 0.0005
+          orGroup: medicalmaintloot
+        - id: AntiPoisonMedipen
+          prob: 0.0005
+          orGroup: medicalmaintloot
+        - id: ChemicalSynthesisKit
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        - id: MedkitCombatFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitToxinFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitRadiationFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        - id: MedkitAdvancedFilled
+          prob: 0.001
+          orGroup: medicalmaintloot
+        - id: MedkitBurnFilled
+          prob: 0.002
+          orGroup: medicalmaintloot
+        # Security - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorRiot
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorBasic
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingOuterArmorBulletproof
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: ClothingHeadHelmetBasic
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: FlashlightSeclite
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: Flash
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: ClothingEyesGlassesSecurity
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: Handcuffs
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: GrenadeFlashBang
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: TearGasGrenade
+          prob: 0.0001
+          orGroup: securitymaintloot
+        - id: WeaponShotgunEnforcerRubber
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: WeaponPistolMk58Nonlethal
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: WeaponDisabler
+          prob: 0.00005
+          orGroup: securitymaintloot
+        - id: Stunbaton
+          prob: 0.00005
+          orGroup: securitymaintloot
+        # Encryption Keys - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyService
+          prob: 0.0003
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyCargo
+          prob: 0.0002
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyMedical
+          prob: 0.0002
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyScience
+          prob: 0.0001
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyEngineering
+          prob: 0.0001
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeySecurity
+          prob: 0.00005
+          orGroup: encryptionkeymaintloot
+        - id: EncryptionKeyCommand
+          prob: 0.00005
+          orGroup: encryptionkeymaintloot
+        # Implanters - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: implantermaintloot
+        - id: BikeHornImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: SadTromboneImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: MindShieldImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: TrackingImplanter
+          prob: 0.0001
+          orGroup: implantermaintloot
+        - id: LightImplanter
+          prob: 0.0002
+          orGroup: implantermaintloot
+        - id: EmpImplanter
+          prob: 0.00002
+          orGroup: implantermaintloot
+        - id: SmokeImplanter
+          prob: 0.00002
+          orGroup: implantermaintloot
+        - id: MindSlaveImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: ScramImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: DnaScramblerImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: StorageImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: HardlightSpearImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        - id: FreedomImplanter
+          prob: 0.00001
+          orGroup: implantermaintloot
+        # Melee Weapons - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: meleeweaponsmaintloot
+        - id: CombatKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: KitchenKnife
+          prob: 0.0002
+          orGroup: meleeweaponsmaintloot
+        - id: SurvivalKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: KukriKnife
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: BaseBallBat
+          prob: 0.0002
+          orGroup: meleeweaponsmaintloot
+        - id: Pickaxe
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: ScalpelShiv
+          prob: 0.0001
+          orGroup: meleeweaponsmaintloot
+        - id: FireAxe
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: FireAxeFlaming
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: ThrowingKnife
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: UraniumShiv
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: Sledgehammer
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: MiningDrill
+          prob: 0.00001
+          orGroup: meleeweaponsmaintloot
+        - id: EnergyBattleAxe
+          prob: 0.000005
+          orGroup: meleeweaponsmaintloot
+        - id: BetrayalKnife
+          prob: 0.000005
+          orGroup: meleeweaponsmaintloot
+        - id: ThrowingKnife
+          prob: 0.00003
+          orGroup: meleeweaponsmaintloot
+        # Hardsuits - WD Edit
+        - id: null
+          prob: 0.999
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitBasic
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitEVA
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitEVAPrisoner
+          prob: 0.0003
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitSyndie
+          prob: 0.00005
+          orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitSyndicate
+          prob: 0.00005
+          orGroup: hardsuitmaintloot
+        # Cash - WD Edit
+        - id: null
+          prob: 0.99
+          orGroup: cashmaintloot
+        - id: SpaceCash100
+          prob: 0.005
+          orGroup: cashmaintloot
+        - id: SpaceCash500
+          prob: 0.003
+          orGroup: cashmaintloot
+        - id: SpaceCash1000
+          prob: 0.001
+          orGroup: cashmaintloot
+        - id: SpaceCash2500
+          prob: 0.0006
+          orGroup: cashmaintloot
+        - id: SpaceCash5000
+          prob: 0.0003
+          orGroup: cashmaintloot
+        - id: SpaceCash10000
+          prob: 0.0001
+          orGroup: cashmaintloot
