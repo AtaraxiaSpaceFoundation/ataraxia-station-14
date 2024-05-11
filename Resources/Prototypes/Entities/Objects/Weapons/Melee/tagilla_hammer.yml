@@ -1,0 +1,43 @@
+- type: entity
+  name: Dead blow
+  parent: BaseItem
+  id: TagillaHammer
+  description: At the sight of a felinid holding that huge sledgehammer, you get the thought in your head - “Ha ha, running nail!”
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/hammer_tagilla2.rsi
+      state: icon
+      scale: 0.8, 0.8 # needed
+    - type: MeleeWeapon
+      swingLeft: true
+      wideAnimationRotation: 135
+      attackRate: 0.75
+      damage:
+        types:
+          Blunt: 5
+          Slash: 5
+          Structural: 10
+      soundHit:
+        path: "/Audio/Weapons/sledgehammer_hit_1.ogg"
+    - type: Wieldable
+    - type: IncreaseDamageOnWield
+      damage:
+        types:
+          Blunt: 10
+          Slash: 5
+          Structural: 40
+    - type: Item
+      size: Ginormous
+      sprite: Objects/Weapons/Melee/hammer_tagilla.rsi
+    - type: Clothing
+      sprite: Objects/Weapons/Melee/hammer_tagilla.rsi
+      quickEquip: false
+      slots:
+        - back
+    - type: DisarmMalus
+    - type: Crit
+      critChance: 30
+      critMultiplier: 1.2
+      isBloodDagger: false
+    - type: UseDelay
+      delay: 1
