@@ -337,7 +337,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
                 Audio.PlayPvs(keyholeComponent.DoorLockedSound, uid, AudioParams.Default.WithVolume(-3));
             }
 
-            Popup.PopupEntity(Loc.GetString("door-locked-via-key", ("door", uid)), uid);
+            if (user.HasValue)
+                Popup.PopupEntity(Loc.GetString("door-locked-via-key", ("door", uid)), uid, user.Value);
+
             return false;
         }
         // WD edit end
