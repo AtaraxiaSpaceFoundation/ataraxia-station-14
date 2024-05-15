@@ -890,6 +890,32 @@
       sprite: White/Fluff/Geraldiy/stamp.rsi
       state: stamp-geraldiy
 
+- type: entity
+  parent: BaseItem
+  id: GeraldiyAncientBlade
+  name: клинок древних
+  description: Большой клинок, заменяющий руку. Состоит из материала, похожего на пласталь. Клинок покрыт экзотическими частицами, непонятными человеческому разуму. Кто в здравом уме пойдет против обладателя этого клинка?..
+  suffix: fluff
+  components:
+  - type: Sprite
+    sprite: White/Fluff/Geraldiy/blade.rsi
+    state: icon
+  - type: Item
+    sprite: White/Fluff/Geraldiy/blade.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Slash: 24
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: HolyWeapon
+  - type: Unremoveable
+    deleteOnDrop: true
+  - type: Sharp
+  - type: DisarmMalus
+
 # KnifeCappy
 - type: entity
   parent: ClothingOuterStorageBase

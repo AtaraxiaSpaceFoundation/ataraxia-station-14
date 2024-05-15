@@ -325,6 +325,11 @@
   entity: GeraldiyRubberStamp
   sponsorOnly: true
 
+- type: loadout
+  id: GeraldiyArmblade
+  entity: GeraldiyAncientBlade
+  sponsorOnly: true
+  whitelistJobs: [Chaplain]
 # KnifeCappy
 
 - type: loadout
