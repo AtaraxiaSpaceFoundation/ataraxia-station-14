@@ -713,3 +713,52 @@
   name: tts-voice-name-matildaweasley
   sex: Female
   speaker: matildaweasley
+
+- type: ttsVoice
+  id: Romka
+  name: tts-voice-name-romka
+  sex: Male
+  speaker: romka
+
+- type: ttsVoice
+  id: Myron
+  name: tts-voice-name-myron
+  sex: Male
+  speaker: myron
+
+- type: ttsVoice
+  id: NatsaiOnai
+  name: tts-voice-name-natsaionai
+  sex: Female
+  speaker: natsaionai
+
+- type: ttsVoice
+  id: OminisGaunt
+  name: tts-voice-name-ominisgaunt
+  sex: Male
+  speaker: ominisgaunt
+
+- type: ttsVoice
+  id: PoppySweeting
+  name: tts-voice-name-poppysweeting
+  sex: Female
+  speaker: poppysweeting
+
+- type: ttsVoice
+  id: NarratorD3
+  name: tts-voice-name-narrator_d3
+  sex: Male
+  speaker: narrator_d3
+
+- type: ttsVoice
+  id: Tosh
+  name: tts-voice-name-tosh
+  sex: Male
+  speaker: tosh
+
+- type: ttsVoice
+  id: Tychus
+  name: tts-voice-name-tychus
+  sex: Male
+  speaker: tychus
+
