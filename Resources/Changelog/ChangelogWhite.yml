@@ -3761,3 +3761,11 @@
   id: 264
   time: '2024-05-15T22:47:35.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/308
+- author: Valtos
+  changes:
+  - message: "8 \u043D\u043E\u0432\u044B\u0445 \u0433\u043E\u043B\u043E\u0441\u043E\
+      \u0432 TTS"
+    type: Add
+  id: 265
+  time: '2024-05-16T05:38:10.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/309
