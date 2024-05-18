@@ -22,15 +22,15 @@ jobs:
       with:
         dotnet-version: '8.0.205'
 
-    - name: Update Directory.Packages.props
-      run: |
-        dotnet --list-sdks
-        cp -f global.json RobustToolbox/
-
     - name: Get Engine Tag
       run: |
         cd RobustToolbox
         git fetch --depth=1
+
+    - name: Update Directory.Packages.props
+      run: |
+        dotnet --list-sdks
+        cp -f global.json RobustToolbox/
 
     - name: Install dependencies
       run: dotnet restore
