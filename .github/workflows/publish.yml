@@ -22,6 +22,11 @@ jobs:
       with:
         dotnet-version: 8.0.100
 
+    - name: Update Directory.Packages.props
+      run: |
+        dotnet --list-sdks
+        cp -f global.json RobustToolbox/
+
     - name: Get Engine Tag
       run: |
         cd RobustToolbox
