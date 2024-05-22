@@ -46,3 +46,6 @@ ent-ClothingHeadsetService = сервисная гарнитура
 ent-ClothingHeadsetGrey = гарнитура пассажира
     .desc = Модифицированный модульный интерком, надеваемый на голову. Принимает ключи шифрования.
     .suffix = { "" }
+ent-ClothingHeadsetFreelance = гарнитура наемника
+    .desc = Это используется группой наемников.
+    .suffix = { "" }

@@ -10,3 +10,5 @@ ent-EnergyCutlass = абордажная энергосабля
     .desc = Экзотическое энергетическое оружие.
 ent-EnergySwordDouble = двойной энергетический меч
     .desc = Стажеры из командования Синдиката решили, что одного клинка на энергетическом мече недостаточно. Его можно хранить в кармане.
+ent-EnergySwordBorg = { ent-EnergySword }
+    .desc = { ent-EnergySword.desc }

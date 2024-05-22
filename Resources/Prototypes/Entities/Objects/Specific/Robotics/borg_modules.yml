@@ -244,7 +244,7 @@
     - GasAnalyzer
     - GeigerCounter
     - RemoteSignaller
-    - GasAnalyzer   
+    - GasAnalyzer
     - GeigerCounter
 
 - type: entity
@@ -540,7 +540,7 @@
       - state: icon-syndicate
     - type: ItemBorgModule
       items:
-      - EnergySwordDouble
+      - EnergySwordBorg
       - PinpointerSyndicateNuclear
 
 - type: entity

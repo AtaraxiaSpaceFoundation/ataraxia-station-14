@@ -39,3 +39,5 @@ chat-radio-security = Безопасность
 chat-radio-service = Сервисный
 chat-radio-supply = Снабжение
 chat-radio-syndicate = Синдикат
+chat-radio-binary = Бинарный
+chat-radio-freelance = Наемный

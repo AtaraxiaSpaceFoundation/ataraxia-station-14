@@ -300,6 +300,8 @@
       noMindState: synd_sec
     - type: Construction
       node: syndicateassault
+    - type: Damageable
+      damageModifierSet: AssaultBorg
 
 - type: entity
   id: BorgChassisSyndicateMedical
