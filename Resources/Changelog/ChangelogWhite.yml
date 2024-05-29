@@ -3815,3 +3815,12 @@
   id: 268
   time: '2024-05-28T14:13:17.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/313
+- author: ThereDrD
+  changes:
+  - message: "\u041D\u0430 \u0412\u0430\u043D\u0434\u0435\u0440\u0431\u043E\u043A\u0441\
+      \ \u0438 \u0412\u0430\u0439\u0442\u0431\u043E\u043A\u0441 \u0434\u043E\u0431\
+      \u0430\u0432\u043B\u0435\u043D\u044B \u0431\u043E\u0440\u0433\u0438"
+    type: Add
+  id: 269
+  time: '2024-05-29T20:40:05.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/315
