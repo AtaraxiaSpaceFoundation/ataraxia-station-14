@@ -34,10 +34,12 @@
             1: { state: can-o1, shader: "unshaded" }
             2: { state: can-o2, shader: "unshaded" }
             3: { state: can-o3, shader: "unshaded" }
-    - type: UserInterface
+    - type: UserInterface # WhiteDream - Added PolymorphableCanisterUiKey
       interfaces:
         - key: enum.GasCanisterUiKey.Key
           type: GasCanisterBoundUserInterface
+        - key: enum.PolymorphableCanisterUiKey.Key
+          type: PolymorphableCanisterBUI
     - type: Destructible
       thresholds:
         - trigger:
@@ -104,6 +106,7 @@
       access: [["Atmospherics"], ["Engineering"], ["Research"]]
     - type: Lock
       locked: false
+    - type: PolymorphableCanister # WhiteDream
 
 - type: entity
   parent: GasCanister
