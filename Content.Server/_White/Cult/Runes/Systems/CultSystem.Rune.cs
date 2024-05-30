@@ -37,8 +37,10 @@ using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Runes;
 using Content.Shared._White.Cult.UI;
 using Content.Shared.Cuffs;
+using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Mindshield.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.UserInterface;
@@ -74,6 +76,8 @@ public sealed partial class CultSystem : EntitySystem
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly MobThresholdSystem _thresholdSystem = default!;
 
     public override void Initialize()
     {
@@ -821,8 +825,7 @@ public sealed partial class CultSystem : EntitySystem
         var targets =
             _lookup.GetEntitiesInRange(uid, component.RangeTarget, LookupFlags.Dynamic | LookupFlags.Sundries);
 
-        targets.RemoveWhere(x =>
-            !_entityManager.HasComponent<HumanoidAppearanceComponent>(x) || !HasComp<CultistComponent>(x));
+        targets.RemoveWhere(x => !_entityManager.HasComponent<HumanoidAppearanceComponent>(x));
 
         if (targets.Count == 0)
             return;
@@ -832,12 +835,7 @@ public sealed partial class CultSystem : EntitySystem
         if (victim == null)
             return;
 
-        _entityManager.TryGetComponent<MobStateComponent>(victim.Value, out var state);
-
-        if (state == null)
-            return;
-
-        if (state.CurrentState != MobState.Dead && state.CurrentState != MobState.Critical)
+        if (_mobState.IsAlive(victim.Value))
         {
             _popupSystem.PopupEntity(Loc.GetString("cult-revive-rune-already-alive"), args.User, args.User);
             return;
@@ -850,15 +848,56 @@ public sealed partial class CultSystem : EntitySystem
 
     private bool Revive(EntityUid target, EntityUid user)
     {
-        if (CultRuneReviveComponent.ChargesLeft == 0)
+        if (HasComp<CultistComponent>(target))
         {
-            _popupSystem.PopupEntity(Loc.GetString("cult-revive-rune-no-charges"), user, user);
-            return false;
+            if (CultRuneReviveComponent.ChargesLeft == 0)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("cult-revive-rune-no-charges"), user, user);
+                return false;
+            }
+
+            CultRuneReviveComponent.ChargesLeft--;
+
+            _entityManager.EventBus.RaiseLocalEvent(target, new RejuvenateEvent());
         }
+        else
+        {
+            if (!TryComp(target, out DamageableComponent? damageable) ||
+                !TryComp(target, out MobThresholdsComponent? threshold) ||
+                !TryComp(target, out MobStateComponent? mobState))
+                return false;
 
-        CultRuneReviveComponent.ChargesLeft--;
+            if (!_mobState.IsDead(target, mobState))
+                return false;
 
-        _entityManager.EventBus.RaiseLocalEvent(target, new RejuvenateEvent());
+            var airlossGroup = _prototypeManager.Index<DamageGroupPrototype>("Airloss");
+
+            var deadThreshold = _thresholdSystem.GetThresholdForState(target, MobState.Dead, threshold);
+
+            if (damageable.Damage.TryGetDamageInGroup(airlossGroup, out var toHeal))
+            {
+                var afterHeal = damageable.TotalDamage - toHeal;
+                if (deadThreshold <= afterHeal)
+                    return false;
+
+                var asphyxType = _prototypeManager.Index<DamageTypePrototype>("Asphyxiation");
+                var bloodlossType = _prototypeManager.Index<DamageTypePrototype>("Bloodloss");
+
+                var heal = new Action<DamageTypePrototype>(type =>
+                {
+                    if (!damageable.Damage.DamageDict.TryGetValue(type.ID, out var damage))
+                        return;
+
+                    _damageableSystem.TryChangeDamage(target, new DamageSpecifier(type, -damage));
+                });
+
+                heal(asphyxType);
+                heal(bloodlossType);
+            }
+
+            if (damageable.TotalDamage < deadThreshold)
+                _mobState.ChangeMobState(target, MobState.Critical, mobState, user);
+        }
 
         EntityUid? transferTo = null;
 
