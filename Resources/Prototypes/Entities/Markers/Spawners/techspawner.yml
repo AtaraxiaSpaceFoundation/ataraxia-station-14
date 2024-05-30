@@ -1,0 +1,620 @@
+# random book spawner
+- type: entity
+  id: RandomBook
+  name: random book spawner
+  parent: MarkerBase
+  suffix: 85%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: book
+  - type: RandomSpawner
+    prototypes:
+      - BookBase
+      - BookSpaceEncyclopedia
+      - BookTheBookOfControl
+      - BookBartendersManual
+      - BookChefGaming
+      - BookLeafLoversSecret
+      - BookEngineersHandbook
+      - BookScientistsGuidebook
+      - BookSecurity
+      - BookHowToKeepStationClean
+      - BookHowToRockAndStone
+      - BookMedicalReferenceBook
+      - BookHowToSurvive
+      - BookChemicalCompendium
+      - BookEscalation
+      - BookEscalationSecurity
+      - BookAtmosDistro
+      - BookAtmosWaste
+      - BookAtmosAirAlarms
+      - BookAtmosVentsMore
+    chance: 0.85
+
+# random barricade spawner
+- type: entity
+  id: Random...
+  name: random barricade spawner
+  parent: MarkerBase
+  suffix: 55%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: barricade
+  - type: RandomSpawner
+    prototypes:
+      - Barricade
+    chance: 0.55
+
+# random box spawner
+- type: entity
+  id: RandomBox
+  name: random box spawner
+  parent: MarkerBase
+  suffix: 65%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: box
+  - type: RandomSpawner
+    prototypes:
+      - BigBox
+    chance: 0.65
+
+# random cash spawner
+- type: entity
+  id: RandomCash
+  name: random cash spawner
+  parent: MarkerBase
+  suffix: 95%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: cash
+  - type: RandomSpawner
+    prototypes:
+      - SpaceCash10
+      - SpaceCash100
+      - SpaceCash500
+    chance: 0.95
+    rarePrototypes:
+      - SpaceCash1000
+    rareChance: 0.05
+
+# random circuit spawner
+- type: entity
+  id: RandomCircuit
+  name: random circuit spawner
+  parent: MarkerBase
+  suffix: 85%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: circuit
+  - type: RandomSpawner
+    prototypes:
+      - StationMapCircuitboard
+      - AlertsComputerCircuitboard
+      - PowerComputerCircuitboard
+      - MedicalRecordsComputerCircuitboard
+      - StationRecordsComputerCircuitboard
+      - SurveillanceCameraMonitorCircuitboard
+      - SurveillanceWirelessCameraMonitorCircuitboard
+      - ComputerTelevisionCircuitboard
+      - ResearchComputerCircuitboard
+      - CrewMonitoringComputerCircuitboard
+      - AnalysisComputerCircuitboard
+      - BodyScannerComputerCircuitboard
+      - RadarConsoleCircuitboard
+      - SolarControlComputerCircuitboard
+      - SpaceVillainArcadeComputerCircuitboard
+      - BlockGameArcadeComputerCircuitboard
+      - ComputerMassMediaCircuitboard
+      - SensorConsoleCircuitboard
+      - AutolatheMachineCircuitboard
+      - VaccinatorMachineCircuitboard
+      - DiagnoserMachineCircuitboard
+      - ArtifactAnalyzerMachineCircuitboard
+      - ThermomachineFreezerMachineCircuitBoard
+      - ThermomachineHeaterMachineCircuitBoard
+      - PortableScrubberMachineCircuitBoard
+      - HydroponicsTrayMachineCircuitboard
+      - SMESMachineCircuitboard
+      - SubstationMachineCircuitboard
+      - StasisBedMachineCircuitboard
+    chance: 0.85
+    rarePrototypes:
+      - ShuttleConsoleCircuitboard
+      - ProtolatheMachineCircuitboard
+      - CloningPodMachineCircuitboard
+      - MedicalScannerMachineCircuitboard
+      - CrewMonitoringServerMachineCircuitboard
+      - BiomassReclaimerMachineCircuitboard
+      - GyroscopeMachineCircuitboard
+      - MicrowaveMachineCircuitboard
+    rareChance: 0.15
+
+# random disabler spawner
+- type: entity
+  id: RandomDisabler
+  name: random disabler spawner
+  parent: MarkerBase
+  suffix: 40%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: disabler
+  - type: RandomSpawner
+    prototypes:
+      - WeaponDisablerPractice
+    chance: 0.40
+    rarePrototypes:
+      - WeaponDisabler
+    rareChance: 0.20
+
+# random egun spawner
+- type: entity
+  id: RandomEGun
+  name: random egun spawner
+  parent: MarkerBase
+  suffix: 10%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: e_gun
+  - type: RandomSpawner
+    prototypes:
+      - WeaponEgun
+    chance: 0.10
+
+# random flashlight spawner
+- type: entity
+  id: RandomFlashlight
+  name: random flashlight spawner
+  parent: MarkerBase
+  suffix: 90%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: flashlight
+  - type: RandomSpawner
+    prototypes:
+      - FlashlightLantern
+      - EmptyFlashlightLantern
+      - FlashlightSeclite
+      - Lamp
+      - LampGold
+      - Lantern
+    chance: 0.90
+    rarePrototypes:
+      - LanternFlash
+    rareChance: 0.01
+
+# random girder spawner
+- type: entity
+  id: RandomGirder
+  name: random girder spawner
+  parent: MarkerBase
+  suffix: 70%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: girder
+  - type: RandomSpawner
+    prototypes:
+      - Girder
+      - ReinforcedGirder
+    chance: 0.70
+
+# random handcuffs spawner
+- type: entity
+  id: RandomHandcuffs
+  name: random handcuffs spawner
+  parent: MarkerBase
+  suffix: 50%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: handcuffs
+  - type: RandomSpawner
+    prototypes:
+      - Handcuffs
+      - Zipties
+    chance: 0.50
+
+# random closed spawner
+- type: entity
+  id: RandomCloset
+  name: random closet spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: locker
+  - type: RandomSpawner
+    prototypes:
+      - ClosetEmergencyFilledRandom
+      - ClosetFireFilled
+      - ClosetMaintenanceFilledRandom
+      - ClosetToolFilled
+      - LockerWeldingSuppliesFilled
+      - LockerElectricalSuppliesFilled
+    chance: 0.80
+    rarePrototypes:
+      - ClosetEmergency
+      - ClosetFire
+      - ClosetMaintenance
+      - ClosetTool
+      - LockerWeldingSupplies
+      - LockerElectricalSupplies
+    rareChance: 0.20
+
+# random medkit spawner
+- type: entity
+  id: RandomMedkit
+  name: random medkit spawner
+  parent: MarkerBase
+  suffix: 70%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: medkit
+  - type: RandomSpawner
+    prototypes:
+      - MedkitFilled
+      - MedkitCombat
+      - MedkitRadiationFilled
+      - MedkilOxygenFilled
+      - MedkitBruteFilled
+      - MedkitToxinFilled
+      - MedkitBurnFilled
+      - MedkitAdvanced
+    chance: 0.70
+    rarePrototypes:
+      - Medkit
+      - MedkitCombatFilled
+      - MedkitRadiation
+      - MedkilOxygen
+      - MedkitBrute
+      - MedkitToxin
+      - MedkitBurn
+      - MedkitAdvancedFilled
+    rareChance: 0.20
+
+# random material spawner
+- type: entity
+  id: RandomMaterial
+  name: random material spawner
+  parent: MarkerBase
+  suffix: 70%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: metal
+  - type: RandomSpawner
+    prototypes:
+      - SheetPlastic
+      - SheetGlass
+      - SheetRGlass
+      - SheetSteel
+      - SheetPaper
+      - SheetPlasteel
+    chance: 0.70
+    rarePrototypes:
+      - SheetPlasma
+      - SheetUranium
+      - SheetPGlass
+      - SheetUGlass
+      - SheetRPGlass
+      - SheetRUGlass
+    rareChance: 0.15
+
+# random peel spawner
+- type: entity
+  id: RandomPeel
+  name: random peel spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: peel
+  - type: RandomSpawner
+    prototypes:
+      - TrashBananaPeel
+      - TrashBananiumPeel
+      - TrashMimanaPeel
+      - TrashBakedBananaPeel
+    chance: 0.80
+    rarePrototypes:
+      - TrashBananaPeelExplosive
+    rareChance: 0.01
+
+# random P.A.C.M.A.N spawner
+- type: entity
+  id: RandomPower
+  name: random P.A.C.M.A.N spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: power
+  - type: RandomSpawner
+    prototypes:
+      - PortableGeneratorJrPacman
+      - PortableGeneratorPacman
+      - PortableGeneratorSuperPacman
+    chance: 0.80
+
+# random rod spawner
+- type: entity
+  id: RandomRods
+  name: random rod spawner
+  parent: MarkerBase
+  suffix: 90%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: rods
+  - type: RandomSpawner
+    prototypes:
+      - PartRodMetal1
+      - PartRodMetal10
+      - PartRodMetal
+    chance: 0.90
+
+# random rollerbed spawner
+- type: entity
+  id: RandomRollerBed
+  name: random rollerbed spawner
+  parent: MarkerBase
+  suffix: 60%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: rollerbed
+  - type: RandomSpawner
+    prototypes:
+      - RollerBed
+      - EmergencyRollerBed
+      - CheapRollerBed
+    chance: 0.60
+    rarePrototypes:
+      - RollerBedSpawnFolded
+      - EmergencyRollerBedSpawnFolded
+      - CheapRollerBedSpawnFolded
+    rareChance: 0.20
+
+# random shard spawner
+- type: entity
+  id: RandomShard
+  name: random shard spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: shard
+  - type: RandomSpawner
+    prototypes:
+      - ShardGlass
+      - ShardGlassReinforced
+    chance: 0.80
+    rarePrototypes:
+      - ShardGlassPlasma
+      - ShardGlassUranium
+    rareChance: 0.5
+
+# random shiv spawner
+- type: entity
+  id: RandomShiv
+  name: random shiv spawner
+  parent: MarkerBase
+  suffix: 50%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: shiv
+  - type: RandomSpawner
+    prototypes:
+      - Shiv
+      - ScalpelShiv
+      - ReinforcedShiv
+    chance: 0.50
+    rarePrototypes:
+      - PlasmaShiv
+      - UraniumShiv
+    rareChance: 0.10
+
+# random tank spawner
+- type: entity
+  id: RandomTank
+  name: random tank spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: tank
+  - type: RandomSpawner
+    prototypes:
+      - WaterTank
+      - WaterTankFull
+      - WeldingFuelTank
+      - WeldingFuelTankFull
+    chance: 0.80
+    rarePrototypes:
+      - WaterTankHighCapacity
+      - WeldingFuelTankHighCapacity
+    rareChance: 0.10
+
+# random toolbox spawner
+- type: entity
+  id: RandomToolbox
+  name: random toolbox spawner
+  parent: MarkerBase
+  suffix: 70%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: toolbox
+  - type: RandomSpawner
+    prototypes:
+      - ToolboxArtisticFilled
+      - ToolboxArtistic
+      - ToolboxEmergencyFilled
+      - ToolboxEmergency
+      - ToolboxMechanicalFilled
+      - ToolboxMechanical
+      - ToolboxElectricalFilled
+      - ToolboxElectrical
+    chance: 0.70
+    rarePrototypes:
+      - CowToolboxFilled
+      - CowToolbox
+      - ToolboxGoldFilled
+      - ToolboxGold
+    rareChance: 0.5
+
+# random vomit spawner
+- type: entity
+  id: RandomVomit
+  name: random vomit spawner
+  parent: MarkerBase
+  suffix: 60%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: vomit
+  - type: RandomSpawner
+    prototypes:
+      - PuddleVomit
+    chance: 0.60
+
+# random wood spawner
+- type: entity
+  id: RandomWood
+  name: random wood spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: wood
+  - type: RandomSpawner
+    prototypes:
+      - MaterialWoodPlank
+      - MaterialWoodPlank1
+      - MaterialWoodPlank10
+    chance: 0.80
+
+# random utility spawner
+- type: entity
+  id: RandomUtility
+  name: random utility spawner
+  parent: MarkerBase
+  suffix: 80%
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: /Textures/White/Specific/spawner.rsi
+        state: wrench
+  - type: RandomSpawner
+    prototypes:
+      - Crowbar
+      - Wrench
+      - Wirecutter
+      - Screwdriver
+      - Welder
+      - NetworkConfigurator
+    chance: 0.80
+    rarePrototypes:
+      - Multitool
+    rareChance: 0.10
+
+# random syndie loot spawner
+- type: entity
+  id: RandomSyndie
+  name: random syndie spawner
+  parent: MarkerBase
+  suffix: 1%
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: /Textures/White/Specific/spawner.rsi
+          state: pistol
+    - type: RandomSpawner
+      prototypes:
+        - WeaponSniperMosin
+        - WeaponPistolViper
+        - WeaponPistolCobra
+        - C4
+        - ExGrenade
+        - SyndieMiniBomb
+        - ClothingEyesNightVisionGogglesSyndie
+        - ClothingOuterVestWeb
+        - ClothingBackpackChameleonFill
+        - CigPackSyndicate
+        - ToolboxSyndicateFilled
+      chance: 0.01
+      rarePrototypes:
+        - WeaponRevolverPythonAP
+        - EnergyCrossbowMini
+        - BetrayalKnife
+        - HypopenBox
+        - AgentIDCard
+        - Emag
+        - ExperimentalSyndicateTeleporter
+        - ClothingHandsGlovesNorthStar
+      rareChance: 0.001

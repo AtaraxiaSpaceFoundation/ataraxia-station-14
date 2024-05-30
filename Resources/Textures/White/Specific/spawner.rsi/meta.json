@@ -1,0 +1,95 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/tgstation/tgstation/blob/master/icons/effects/random_spawners.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "barricade"
+        },
+		{
+            "name": "book"
+        },
+		{
+            "name": "power"
+        },
+		{
+            "name": "box"
+        },
+        {
+            "name": "briefcase"
+        },
+		{
+            "name": "cash"
+        },
+		{
+            "name": "caution"
+        },
+		{
+            "name": "circuit"
+        },
+		{
+            "name": "disabler"
+        },
+		{
+            "name": "e_gun"
+        },
+		{
+            "name": "flashlight"
+        },
+		{
+            "name": "girder"
+        },
+		{
+            "name": "grille"
+        },
+		{
+            "name": "handcuffs"
+        },
+		{
+            "name": "locker"
+        },
+		{
+            "name": "medkit"
+        },
+		{
+            "name": "metal"
+        },
+		{
+            "name": "peel"
+        },
+		{
+            "name": "pistol"
+        },
+		{
+            "name": "rods"
+        },
+		{
+            "name": "rollerbed"
+        },
+		{
+            "name": "shard"
+        },
+		{
+            "name": "shiv"
+        },
+		{
+            "name": "tank"
+        },
+		{
+            "name": "toolbox"
+        },
+		{
+            "name": "vomit"
+        },
+		{
+            "name": "wood"
+        },
+		{
+            "name": "wrench"
+        }
+    ]
+}
