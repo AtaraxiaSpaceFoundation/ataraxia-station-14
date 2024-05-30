@@ -11,7 +11,6 @@ namespace Content.Shared.Standing.Systems;
 public abstract partial class SharedStandingStateSystem
 {
     [Dependency] protected readonly IRobustRandom Random = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private void InitializeColliding()
     {

@@ -19,6 +19,7 @@
     soundEmpty: null
     soundGunshot:
       path: /Audio/White/Cult/wand_teleport.ogg
+    clumsyProof: true
   - type: BasicEntityAmmoProvider
     proto: BloodBolt
     capacity: 25

@@ -1253,6 +1253,8 @@
     tags:
     - VimPilot
     - DoorBumpOpener
+  - type: StandingState
+    canLieDown: true
 
 - type: entity
   name: monkey

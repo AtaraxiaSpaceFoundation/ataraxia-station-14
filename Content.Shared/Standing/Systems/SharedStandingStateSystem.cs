@@ -2,6 +2,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Gravity;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Rotation;
@@ -24,6 +25,7 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; // WD EDIT
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!; // WD EDIT
     [Dependency] private readonly SharedStunSystem _stun = default!; // WD EDIT
+    [Dependency] private readonly MobStateSystem _mobState = default!; // WD EDIT
 
     // If StandingCollisionLayer value is ever changed to more than one layer, the logic needs to be edited.
     private const int StandingCollisionLayer = (int)CollisionGroup.MidImpassable;
@@ -60,6 +62,11 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
         var uid = args.SenderSession.AttachedEntity.Value;
 
         if (_stun.IsParalyzed(uid))
+        {
+            return;
+        }
+
+        if (!_mobState.IsAlive(uid))
         {
             return;
         }
@@ -123,13 +130,13 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
         if (standingState.CurrentState is not StandingState.Lying)
             return false;
 
-        standingState.CurrentState = StandingState.GettingUp;
         var doargs = new DoAfterArgs(EntityManager, uid, standingState.StandingUpTime,
             new StandingUpDoAfterEvent(), uid)
         {
             BreakOnMove = false,
             BreakOnDamage = false,
-            BreakOnHandChange = false
+            BreakOnHandChange = false,
+            RequireCanInteract = false
         };
 
         if (!_doAfter.TryStartDoAfter(doargs))
@@ -141,7 +148,7 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
 
     public bool TryLieDown(EntityUid uid, StandingStateComponent? standingState = null, bool dropHeldItems = false)
     {
-        if (!Resolve(uid, ref standingState, false))
+        if (!Resolve(uid, ref standingState, false) || !standingState.CanLieDown)
             return false;
 
         if (standingState.CurrentState is not StandingState.Standing)
