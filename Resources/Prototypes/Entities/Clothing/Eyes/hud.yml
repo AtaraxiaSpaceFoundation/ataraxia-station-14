@@ -44,19 +44,6 @@
   - type: Clothing
     sprite: Clothing/Eyes/Hud/sec.rsi
   - type: ShowSecurityIcons
-  - type: AccessReader
-    access: [["Security"]]
-  - type: SecurityHud
-    criminalrecords:
-    - SecurityIconDischarged
-    - SecurityIconSuspected
-    - SecurityIconWanted
-    - SecurityIconIncarcerated
-    - CriminalRecordIconRemove
-  - type: UserInterface
-    interfaces:
-    - key: enum.SecurityHudUiKey.Key
-      type: SecurityHudBUI
   - type: Tag
     tags:
     - HudSecurity

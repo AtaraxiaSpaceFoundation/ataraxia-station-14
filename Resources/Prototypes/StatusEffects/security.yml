@@ -40,7 +40,3 @@
   icon:
     sprite: /Textures/Interface/Misc/security_icons.rsi
     state: hud_wanted
-
-- type: statusIcon
-  parent: SecurityIcon
-  id: CriminalRecordIconRemove
