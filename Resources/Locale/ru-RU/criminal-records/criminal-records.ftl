@@ -10,11 +10,12 @@ criminal-records-console-status = Статус
 criminal-records-status-none = Нет
 criminal-records-status-wanted = В розыске
 criminal-records-status-detained = В заключении
-
 criminal-records-status-suspected = Подозреваемый
-criminal-records-status-released = Отпущен
+criminal-records-status-discharged = Освобождён
+criminal-records-status-paroled = Досрочно освобождён
 
 criminal-records-console-wanted-reason = [color=gray]Причина розыска[/color]
+criminal-records-console-suspected-reason = [color=gray]Причина подозрения[/color]
 criminal-records-console-reason = Причина
 criminal-records-console-reason-placeholder = Например: {$placeholder}
 
@@ -31,12 +32,15 @@ criminal-records-permission-denied = Доступ воспрещен
 ## Security channel notifications
 
 criminal-records-console-wanted = {$name} отправлен в розыск по указу {$officer} по причине: {$reason}.
+criminal-records-console-suspected = {$name} подозревается по указу {$officer} по причине: {$reason}.
+criminal-records-console-not-suspected = {$name} больше не под подозрением.
 criminal-records-console-detained = {$name} был задержан {$officer}.
-criminal-records-console-released = {$name} был задержан {$officer}.
+criminal-records-console-released = {$name} был освобожден {$officer}.
 criminal-records-console-not-wanted = {$name} больше не в розыске.
+criminal-records-console-paroled = {$name} был отпущен условно-досрочно {$officer}.
+criminal-records-console-not-parole = {$name} больше не условно-досрочно освобождённый.
 criminal-records-console-unknown-officer = <неизвестный офицер>
 
-criminal-records-console-suspected = {$name} подозревается по указу {$officer} по причине: {$reason}.
 
 ## Filters
 
