@@ -64,7 +64,6 @@
       - id: WeaponDisabler
       - id: HoloprojectorSecurity
         prob: 0.6
-      - id: WeaponTempGun
       - id: WeaponPistolMk58Nonlethal
       - id: SurveillanceBodyCamera
       - id: MagazinePistol
