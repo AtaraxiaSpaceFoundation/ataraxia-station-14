@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "omsoyk",
+    "copyright": "omsoyk",
+    "size": {
+        "x": 28,
+        "y": 41
+    },
+    "states": [
+        {
+            "name": "cardback"
+        },
+        {
+            "name": "specialcolor"
+        },
+        {
+            "name": "specialfour"
+        },
+        {
+            "name": "unobluecolor"
+        },
+        {
+            "name": "unobluefour"
+        },
+        {
+            "name": "unogreencolor"
+        },
+        {
+            "name": "unogreenfour"
+        },
+        {
+            "name": "unoredcolor"
+        },
+        {
+            "name": "unoredfour"
+        },
+        {
+            "name": "unoyellowcolor"
+        },
+        {
+            "name": "unoyellowfour"
+        },
+        {
+            "name": "deck"
+        },
+        {
+            "name": "box"
+        }
+    ]
+}

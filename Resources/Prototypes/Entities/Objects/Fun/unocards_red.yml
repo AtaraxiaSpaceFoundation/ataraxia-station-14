@@ -1,0 +1,314 @@
+
+# Red Cards
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed0
+  name: Красная карта UNO 0
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored0
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed0
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed1
+  name: Красная карта UNO 1
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored1
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed1
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed2
+  name: Красная карта UNO 2
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored2
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed2
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed3
+  name: Красная карта UNO 3
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored3
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed3
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed4
+  name: Красная карта UNO 4
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored4
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed4
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed5
+  name: Красная карта UNO 5
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored5
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed5
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed6
+  name: Красная карта UNO 6
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored6
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed6
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed7
+  name: Красная карта UNO 7
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored7
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed7
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed8
+  name: Красная карта UNO 8
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored8
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed8
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRed9
+  name: Красная карта UNO 9
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unored9
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRed9
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRedPlus
+  name: Красная карта UNO плюс 2
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unoredplus
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRedPlus
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRedReverse
+  name: Красная карта UNO реверс
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unoredreverse
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRedReverse
+
+- type: entity
+  parent: BaseUnoCard
+  id: UnoCardRedStop
+  name: Красная карта UNO стоп
+  description: Игральная карта UNO
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/UnoCards/uno_red.rsi
+    state: unoredstop
+    scale: 0.5, 0.5
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardUnknownRedStop
+
+# Red Cards Unknown
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed0
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed0
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed1
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed1
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed2
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed2
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed3
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed3
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed4
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed4
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed5
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed5
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed6
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed6
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed7
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed7
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed8
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed8
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRed9
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRed9
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRedPlus
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRedPlus
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRedReverse
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRedReverse
+
+- type: entity
+  parent: BaseUnoUnknownCard
+  id: UnoCardUnknownRedStop
+  name: Неизвестная карта
+  description: Игральная карта UNO
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: UnoCardRedStop

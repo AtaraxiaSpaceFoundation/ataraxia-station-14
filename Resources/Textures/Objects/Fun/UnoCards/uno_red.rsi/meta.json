@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "omsoyk",
+    "copyright": "omsoyk",
+    "size": {
+        "x": 28,
+        "y": 41
+    },
+    "states": [
+        {
+            "name": "unored0"
+        },
+        {
+            "name": "unored1"
+        },
+        {
+            "name": "unored2"
+        },
+        {
+            "name": "unored3"
+        },
+        {
+            "name": "unored4"
+        },
+        {
+            "name": "unored5"
+        },
+        {
+            "name": "unored6"
+        },
+        {
+            "name": "unored7"
+        },
+        {
+            "name": "unored8"
+        },
+        {
+            "name": "unored9"
+        },
+        {
+            "name": "unoredplus"
+        },
+        {
+            "name": "unoredreverse"
+        },
+        {
+            "name": "unoredstop"
+        }
+    ]
+}

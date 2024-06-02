@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "omsoyk",
+    "copyright": "omsoyk",
+    "size": {
+        "x": 28,
+        "y": 41
+    },
+    "states": [
+        {
+            "name": "unoyellow0"
+        },
+        {
+            "name": "unoyellow1"
+        },
+        {
+            "name": "unoyellow2"
+        },
+        {
+            "name": "unoyellow3"
+        },
+        {
+            "name": "unoyellow4"
+        },
+        {
+            "name": "unoyellow5"
+        },
+        {
+            "name": "unoyellow6"
+        },
+        {
+            "name": "unoyellow7"
+        },
+        {
+            "name": "unoyellow8"
+        },
+        {
+            "name": "unoyellow9"
+        },
+        {
+            "name": "unoyellowplus"
+        },
+        {
+            "name": "unoyellowreverse"
+        },
+        {
+            "name": "unoyellowstop"
+        }
+    ]
+}
