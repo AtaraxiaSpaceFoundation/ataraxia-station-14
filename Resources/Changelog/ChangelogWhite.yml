@@ -3932,3 +3932,16 @@
   id: 278
   time: '2024-06-02T17:50:04.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/325
+- author: S_k_R_i_M_e_X
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043A\u043E\u043B\
+      \u043E\u0434\u0430 \u043A\u0430\u0440\u0442 \u0434\u043B\u044F \u0438\u0433\u0440\
+      \u044B \u0432 Uno"
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043A\u043E\u043B\
+      \u043E\u0434\u0430 \u0438\u0433\u0440\u043E\u043A\u0430 \u0434\u043B\u044F \u0438\
+      \u0433\u0440\u044B \u0432 Uno"
+    type: Add
+  id: 279
+  time: '2024-06-02T17:51:31.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/326
