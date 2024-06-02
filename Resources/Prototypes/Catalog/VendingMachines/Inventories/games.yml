@@ -2,10 +2,10 @@
   id: GoodCleanFunInventory
   startingInventory:
     PlayerCardBag: 20
-    UnoCardBagЭт п
-    UnoPlayerCardBag: 6
     CardBag36: 4
     CardBag52: 4
+    UnoCardBag: 1
+    UnoPlayerCardBag: 6
     DiceBag: 6
     Paper: 8
     d6Dice: 8
