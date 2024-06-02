@@ -1,10 +1,12 @@
 using System.Numerics;
+using Content.Client.Viewport;
 using Content.Shared._White.Telescope;
 using Content.Shared.Hands.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
+using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
 
@@ -17,7 +19,9 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IClyde _displayManager = default!;
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+
+    private ScalingViewport? _viewport;
 
     public override void Update(float frameTime)
     {
@@ -44,14 +48,23 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
             return;
         }
 
-        var mousePos = _input.MouseScreenPosition.Position;
+        var mousePos = _input.MouseScreenPosition;
+
+        if (_uiManager.MouseGetControl(mousePos) as ScalingViewport is { } viewport)
+            _viewport = viewport;
+
+        if (_viewport == null)
+            return;
+
         var centerPos = _eyeManager.WorldToScreen(eye.Eye.Position.Position + eye.Offset);
 
-        var diff = mousePos - centerPos;
+        var diff = mousePos.Position - centerPos;
         var len = diff.Length();
 
-        var maxLength = _displayManager.ScreenSize.Y / 2.5f;
-        var minLength = maxLength / 5f;
+        var size = _viewport.PixelSize;
+
+        var maxLength = Math.Min(size.X, size.Y) * 0.4f;
+        var minLength = maxLength * 0.2f;
 
         if (len > maxLength)
         {
@@ -59,7 +72,7 @@ public sealed class TelescopeSystem : SharedTelescopeSystem
             len = maxLength;
         }
 
-        var divisor = maxLength / 10f * telescope.Divisor;
+        var divisor = maxLength * telescope.Divisor;
 
         if (len > minLength)
         {

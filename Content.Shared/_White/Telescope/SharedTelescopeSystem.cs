@@ -54,7 +54,9 @@ public abstract class SharedTelescopeSystem : EntitySystem
             !TryComp(ent, out EyeComponent? eye))
             return;
 
-        SetOffset((ent, eye), msg.Offset, telescope);
+        var offset = Vector2.Lerp(eye.Offset, msg.Offset, telescope.LerpAmount);
+
+        SetOffset((ent, eye), offset, telescope);
     }
 
     private void SetOffset(Entity<EyeComponent> ent, Vector2 offset, TelescopeComponent telescope)
