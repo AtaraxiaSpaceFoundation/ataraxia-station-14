@@ -411,3 +411,12 @@
   alpha: 0.9
   ghostName: Дракон сингулярности
   ghostDescription: Владыка сингулярности
+
+#runamius
+- type: customGhost
+  id: runamius-ghost
+  ckey: runamius
+  sprite: White/Ghosts/runamius-ghost.rsi
+  alpha: 0.9
+  ghostName: Никотиноед
+  ghostDescription: Поедает никотин в любом виде
