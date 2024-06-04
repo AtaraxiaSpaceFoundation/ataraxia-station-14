@@ -3945,3 +3945,13 @@
   id: 279
   time: '2024-06-02T17:51:31.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/326
+- author: Aviu
+  changes:
+  - message: "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u044B \u0442\u0440\
+      \u0435\u0439\u043B\u044B \u043E\u0442 \u043F\u0443\u043B\u044C, \u043E\u0442\
+      \u043A\u043B\u044E\u0447\u0430\u044E\u0442\u0441\u044F \u0432 \u043D\u0430\u0441\
+      \u0442\u0440\u043E\u0439\u043A\u0430\u0445."
+    type: Add
+  id: 280
+  time: '2024-06-04T11:00:48.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/270
