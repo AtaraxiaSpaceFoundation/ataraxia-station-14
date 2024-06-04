@@ -5,7 +5,6 @@
   description: Гарантирует быструю смерть.
   components:
   - type: Wieldable
-    wieldTime: 0
   - type: ItemToggle
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg

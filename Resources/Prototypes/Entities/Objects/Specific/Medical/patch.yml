@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseItem
   id: BasePatch
   abstract: true
@@ -23,7 +23,7 @@
   - type: Appearance
   - type: SolutionContainerVisuals
   - type: Patch
-    OnlyMobs: false
+    onlyMobs: false
   - type: StaticPrice
     price: 30
 

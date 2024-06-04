@@ -17,8 +17,8 @@
       laserFireCost: 64
       stunProjectileSpeed: 48
       laserProjectileSpeed: 48
-      projSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
-      hitscanSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
+      stunSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
+      laserSound: "/Audio/Weapons/Guns/Gunshots/laser.ogg"
       modeNames:
         Stun: Cool
         Laser: Heat

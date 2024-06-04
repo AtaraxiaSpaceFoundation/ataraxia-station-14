@@ -1,16 +1,16 @@
-﻿using Robust.Shared.GameStates;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared._White.Economy;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BankCardComponent : Component
 {
-    [ViewVariables(VVAccess.ReadOnly)]
+    [DataField]
     public int? AccountId;
 
-    [DataField("startingBalance")]
+    [DataField]
     public int StartingBalance;
 
-    [DataField("commandBudgetCard")]
+    [DataField]
     public bool CommandBudgetCard;
 }

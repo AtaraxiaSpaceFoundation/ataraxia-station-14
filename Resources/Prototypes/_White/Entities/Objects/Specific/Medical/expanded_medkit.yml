@@ -3,9 +3,6 @@
   parent: Medkit
   id: ExpandedMedkit
   components:
-    - type: Storage
-      capacity: 40
-      sprite: White/Specific/expmedkit.rsi
     - type: Sprite
       sprite: White/Specific/expmedkit.rsi
       state: icon

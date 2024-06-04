@@ -1,4 +1,4 @@
-﻿- type: gameMap
+- type: gameMap
   id: WhiteBox
   mapName: 'Box Station'
   mapPath: /Maps/White/Whitebox.yml
@@ -56,5 +56,4 @@
             SeniorResearcher: [ 1, 1 ]
             SeniorPhysician: [ 1, 1 ]
             SeniorEngineer: [ 1, 1 ]
-            SeniorSalvageSpecialist: [ 1, 1 ]
             Borg: [ 2, 2 ]

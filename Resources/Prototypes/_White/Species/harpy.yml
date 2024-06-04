@@ -6,7 +6,6 @@
   markingLimits: MobHarpyMarkingLimits
   dollPrototype: MobHarpyDummy
   skinColoration: HumanToned
-  sprites: MobHumanSprites
   bodyTypes:
     - HumanNormal
 

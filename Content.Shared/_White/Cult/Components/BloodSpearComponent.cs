@@ -9,7 +9,7 @@ public sealed partial class BloodSpearComponent : Component
     [ViewVariables]
     public Entity<CultistComponent>? User;
 
-    [DataField]
+    [DataField(required: true)]
     public EntProtoId Action;
 
     [DataField]

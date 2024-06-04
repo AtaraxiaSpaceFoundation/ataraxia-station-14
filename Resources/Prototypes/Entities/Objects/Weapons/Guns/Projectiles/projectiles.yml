@@ -1412,7 +1412,6 @@
         Heat: 0
     soundHit:
       collection: WeakHit
-    soundForce: true
 
 - type: entity
   name: cold beam

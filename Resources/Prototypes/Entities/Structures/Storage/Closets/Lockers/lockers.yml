@@ -501,16 +501,16 @@
     - id: ClothingUniformJumpskirtMime
     - id: ClothingMaskMime
       prob: 0.25
-      onGroup: mimemask
+      orGroup: mimemask
     - id: ClothingMaskSadMime
       prob: 0.25
-      onGroup: mimemask
+      orGroup: mimemask
     - id: ClothingMaskScaredMime
       prob: 0.25
-      onGroup: mimemask
+      orGroup: mimemask
     - id: ClothingMaskSexyMime
       prob: 0.25
-      onGroup: mimemask
+      orGroup: mimemask
     - id: ClothingShoesColorWhite
     - id: ClothingHeadHatBeret
     - id: ClothingHandsGlovesLatex
@@ -519,10 +519,10 @@
     - id: CrayonMime
     - id: ClothingBackpackSatchelMime
       prob: 0.5
-      onGroup: mimebackpack
+      orGroup: mimebackpack
     - id: ClothingBackpackMime
       prob: 0.5
-      onGroup: mimebackpack
+      orGroup: mimebackpack
     - id: ClothingOuterWinterMime
       prob: 0.5
     - id: ClothingOuterHardsuitMime

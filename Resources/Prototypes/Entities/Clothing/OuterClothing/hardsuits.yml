@@ -692,8 +692,6 @@
           tags:
             - PowerCell
             - PowerCellSmall
-            - PowerCellHyper
-            - PowerCellMicroreactor
   - type: EnergyDomeGenerator
     damageEnergyDraw: 3
     domePrototype: EnergyDomeSmallPink

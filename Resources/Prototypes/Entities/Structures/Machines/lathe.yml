@@ -356,7 +356,6 @@
       - WeaponDisablerSMG
       - ClothingHandsGlovesMagnetic
       - ClothingHandsGlovesMagneticAdvanced
-      - ClothingEyesGlassesSecurity
       - ExplosivePayload
       - FlashPayload
       - PowerCageSmall
@@ -745,7 +744,6 @@
       - CartridgeMagnumRubber
       - CartridgePistolRubber
       - CartridgeRifleRubber
-      - ClothingEyesGlassesSecurity
       - ExplosivePayload
       - FlashPayload
       - HoloprojectorSecurity

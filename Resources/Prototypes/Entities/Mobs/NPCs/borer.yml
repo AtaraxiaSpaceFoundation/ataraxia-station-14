@@ -38,7 +38,6 @@
   - type: Tag
     tags:
     - CannotSuicide
-    maxSaturation: 15
   - type: Bloodstream
     bloodReagent: Slime
     bloodlossDamage:
@@ -67,9 +66,7 @@
   parent: MobBorerBase
   id: MobSimpleBorer
   components:
-    - type: Borer
-      reproduceCost: 100
-      assumeControlCost: 250
+  - type: Borer
 
 - type: entity
   id: SpawnPointGhostBorer

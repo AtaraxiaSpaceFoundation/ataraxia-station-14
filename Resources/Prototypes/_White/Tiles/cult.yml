@@ -5,7 +5,7 @@
   variants: 1
   baseTurf: Plating
   isSubfloor: false
-  canCrowbar: true
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
   itemDrop: FloorTileItemSteel

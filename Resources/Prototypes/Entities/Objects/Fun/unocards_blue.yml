@@ -10,8 +10,11 @@
   components:
   - type: Item
     size: Small
+  - type: SpawnItemsOnUse
     sound:
       path: /Audio/Effects/unwrap.ogg
+    items:
+    - id: UnoCardUnknownBlue0
   - type: Tag
     tags:
     - UnoCard
@@ -29,8 +32,11 @@
     scale: 0.5, 0.5
   - type: Item
     size: Small
+  - type: SpawnItemsOnUse
     sound:
       path: /Audio/Effects/unwrap.ogg
+    items:
+    - id: UnoCardBlue0
   - type: Tag
     tags:
     - UnoCard

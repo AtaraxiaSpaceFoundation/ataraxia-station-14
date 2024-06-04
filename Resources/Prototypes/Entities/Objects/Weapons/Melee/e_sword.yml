@@ -251,7 +251,6 @@
       size: Small
       sprite: Objects/Weapons/Melee/double_esword.rsi
     - type: Wieldable
-      wieldTime: 0
     - type: IncreaseDamageOnWield
       damage:
         types:
