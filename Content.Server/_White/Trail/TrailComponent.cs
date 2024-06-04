@@ -21,6 +21,7 @@ public sealed partial class TrailComponent : SharedTrailComponent
         TexurePath = defaultTrail.TexurePath;
         Gradient = defaultTrail.Gradient;
         GradientIteratorType = defaultTrail.GradientIteratorType;
+        OptionsConcealable = defaultTrail.OptionsConcealable;
     }
 
     public override Vector2 Gravity { get; set; }
@@ -48,4 +49,6 @@ public sealed partial class TrailComponent : SharedTrailComponent
     public override TrailSplineRendererType SplineRendererType { get; set; }
 
     public override Spline4DType GradientIteratorType { get; set; }
+
+    public override bool OptionsConcealable { get; set; }
 }

@@ -13,6 +13,13 @@ namespace Content.Shared._White;
 public sealed class WhiteCVars
 {
     /*
+ * Bullet trails
+    */
+
+    public static readonly CVarDef<bool> ShowTrails =
+        CVarDef.Create("white.show_trails", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /*
  * Wiki rules
     */
 

@@ -37,6 +37,8 @@ public sealed partial class TrailSettings : ITrailSettings
 
     public TrailSplineRendererType SplineRendererType { get; set; }
 
+    public bool OptionsConcealable { get; set; }
+
     public static void Inject(ITrailSettings into, ITrailSettings from)
     {
         into.Scale = from.Scale;
@@ -51,6 +53,7 @@ public sealed partial class TrailSettings : ITrailSettings
         into.Gradient = from.Gradient;
         into.SplineIteratorType = from.SplineIteratorType;
         into.SplineRendererType = from.SplineRendererType;
+        into.OptionsConcealable = from.OptionsConcealable;
     }
 }
 
@@ -81,6 +84,8 @@ public interface ITrailSettings
     Spline2DType SplineIteratorType { get; set; }
 
     TrailSplineRendererType SplineRendererType { get; set; }
+
+    bool OptionsConcealable { get; set; }
 }
 
 public enum SegmentCreationMethod : byte

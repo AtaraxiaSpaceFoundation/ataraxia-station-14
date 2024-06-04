@@ -1,6 +1,8 @@
 using Content.Client._White.Trail.Line.Manager;
+using Content.Shared._White;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
@@ -11,6 +13,9 @@ public sealed class TrailOverlay : Overlay
     private readonly IPrototypeManager _protoManager;
     private readonly IResourceCache _cache;
     private readonly ITrailLineManager _lineManager;
+    private readonly IConfigurationManager _cfg;
+
+    private bool _showTrails;
 
     private readonly Dictionary<string, ShaderInstance?> _shaderDict;
     private readonly Dictionary<string, Texture?> _textureDict;
@@ -20,12 +25,16 @@ public sealed class TrailOverlay : Overlay
     public TrailOverlay(
         IPrototypeManager protoManager,
         IResourceCache cache,
+        IConfigurationManager cfg,
         ITrailLineManager lineManager
     )
     {
         _protoManager = protoManager;
         _cache = cache;
+        _cfg = cfg;
         _lineManager = lineManager;
+
+        _cfg.OnValueChanged(WhiteCVars.ShowTrails, val => _showTrails = val, true);
 
         _shaderDict = new Dictionary<string, ShaderInstance?>();
         _textureDict = new Dictionary<string, Texture?>();
@@ -38,6 +47,9 @@ public sealed class TrailOverlay : Overlay
         var handle = args.WorldHandle;
         foreach (var item in _lineManager.Lines)
         {
+            if (!_showTrails && item.Settings.OptionsConcealable)
+                continue;
+
             item.Render(handle, GetCachedTexture(item.Settings.TexurePath ?? ""));
         }
     }

@@ -40,6 +40,7 @@
             <CheckBox Name="ParallaxLowQualityCheckBox" Text="{Loc 'ui-options-parallax-low-quality'}" />
             <CheckBox Name="FpsCounterCheckBox" Text="{Loc 'ui-options-fps-counter'}" />
             <CheckBox Name="LogInChatCheckBox" Text="Логировать действия в чат" />
+            <CheckBox Name="ShowTrailsCheckBox" Text="Отображать трейлы от пуль" />
         </BoxContainer>
         <controls:StripeBack HasBottomEdge="False" HasMargins="False">
             <Button Name="ApplyButton"

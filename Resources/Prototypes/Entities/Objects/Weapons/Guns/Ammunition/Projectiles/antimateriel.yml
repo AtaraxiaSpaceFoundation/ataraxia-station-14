@@ -1,6 +1,6 @@
 - type: entity
   noSpawn: true
-  parent: BaseBullet
+  parent: [BaseBullet, BaseBulletTrail]
   id: BulletAntiMateriel
   name: bullet (.60 anti-materiel)
   components:

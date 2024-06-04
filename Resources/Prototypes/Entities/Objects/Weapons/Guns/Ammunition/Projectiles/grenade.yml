@@ -2,7 +2,7 @@
   id: PelletClusterRubber
   name: pellet (ball, Rubber)
   noSpawn: true
-  parent: BaseBullet
+  parent: [BaseBullet, BaseBulletTrail]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
@@ -23,7 +23,7 @@
   id: PelletClusterLethal
   name: pellet (ball, Lethal)
   noSpawn: true
-  parent: BaseBullet
+  parent: [BaseBullet, BaseBulletTrail]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
@@ -41,7 +41,7 @@
   id: PelletClusterIncendiary
   name: pellet (ball, incendiary)
   noSpawn: true
-  parent: BaseBulletIncendiary
+  parent: [BaseBulletIncendiary, BaseBulletTrail]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi

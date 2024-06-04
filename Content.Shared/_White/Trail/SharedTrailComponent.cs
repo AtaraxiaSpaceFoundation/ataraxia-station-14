@@ -60,6 +60,9 @@ public abstract partial class SharedTrailComponent : Component, ITrailSettings
     [DataField("splineRendererType")]
     [ViewVariables(VVAccess.ReadWrite)]
     public virtual TrailSplineRendererType SplineRendererType { get; set; }
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public virtual bool OptionsConcealable { get; set; }
 }
 
 [Serializable, NetSerializable]

@@ -74,6 +74,7 @@ namespace Content.Client.Options.UI.Tabs
             ParallaxLowQualityCheckBox.OnToggled += OnCheckBoxToggled;
             FpsCounterCheckBox.OnToggled += OnCheckBoxToggled;
             LogInChatCheckBox.OnToggled += OnCheckBoxToggled;
+            ShowTrailsCheckBox.OnToggled += OnCheckBoxToggled;
             ApplyButton.OnPressed += OnApplyButtonPressed;
             VSyncCheckBox.Pressed = _cfg.GetCVar(CVars.DisplayVSync);
             FullscreenCheckBox.Pressed = ConfigIsFullscreen;
@@ -86,6 +87,7 @@ namespace Content.Client.Options.UI.Tabs
             ParallaxLowQualityCheckBox.Pressed = _cfg.GetCVar(CCVars.ParallaxLowQuality);
             FpsCounterCheckBox.Pressed = _cfg.GetCVar(CCVars.HudFpsCounterVisible);
             LogInChatCheckBox.Pressed = _cfg.GetCVar(WhiteCVars.LogChatActions);
+            ShowTrailsCheckBox.Pressed = _cfg.GetCVar(WhiteCVars.ShowTrails);
             ViewportWidthSlider.Value = _cfg.GetCVar(CCVars.ViewportWidth);
 
             _cfg.OnValueChanged(CCVars.ViewportMinimumWidth, _ => UpdateViewportWidthRange());
@@ -119,6 +121,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.ParallaxLowQuality, ParallaxLowQualityCheckBox.Pressed);
             _cfg.SetCVar(CCVars.HudFpsCounterVisible, FpsCounterCheckBox.Pressed);
             _cfg.SetCVar(WhiteCVars.LogChatActions, LogInChatCheckBox.Pressed);
+            _cfg.SetCVar(WhiteCVars.ShowTrails, ShowTrailsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ViewportWidth, (int) ViewportWidthSlider.Value);
 
             _cfg.SaveToFile();
@@ -149,6 +152,7 @@ namespace Content.Client.Options.UI.Tabs
             var isPLQSame = ParallaxLowQualityCheckBox.Pressed == _cfg.GetCVar(CCVars.ParallaxLowQuality);
             var isFpsCounterVisibleSame = FpsCounterCheckBox.Pressed == _cfg.GetCVar(CCVars.HudFpsCounterVisible);
             var isLogInChatSame = LogInChatCheckBox.Pressed == _cfg.GetCVar(WhiteCVars.LogChatActions);
+            var isShowTrailsSame = ShowTrailsCheckBox.Pressed == _cfg.GetCVar(WhiteCVars.ShowTrails);
             var isWidthSame = (int) ViewportWidthSlider.Value == _cfg.GetCVar(CCVars.ViewportWidth);
 
             ApplyButton.Disabled = isVSyncSame &&
@@ -162,7 +166,8 @@ namespace Content.Client.Options.UI.Tabs
                                    isPLQSame &&
                                    isFpsCounterVisibleSame &&
                                    isWidthSame &&
-                                   isLogInChatSame;
+                                   isLogInChatSame &&
+                                   isShowTrailsSame;
         }
 
         private bool ConfigIsFullscreen =>

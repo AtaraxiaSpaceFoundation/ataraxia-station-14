@@ -1,7 +1,7 @@
 - type: entity
   id: BulletCaselessRifle
   name: bullet (.25 caseless)
-  parent: BaseBullet
+  parent: [BaseBullet, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile
@@ -12,7 +12,7 @@
 - type: entity
   id: BulletCaselessRiflePractice
   name: bullet (.25 caseless practice)
-  parent: BaseBulletPractice
+  parent: [BaseBulletPractice, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile
@@ -23,7 +23,7 @@
 - type: entity
   id: BulletCaselessRifleRubber
   name: bullet (.25 caseless rubber)
-  parent: BaseBulletRubber
+  parent: [BaseBulletRubber, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile

@@ -1,7 +1,7 @@
 - type: entity
   id: BulletLightRifle
   name: bullet (.20 rifle)
-  parent: BaseBullet
+  parent: [BaseBullet, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile
@@ -12,7 +12,7 @@
 - type: entity
   id: BulletLightRiflePractice
   name: bullet (.20 rifle practice)
-  parent: BaseBulletPractice
+  parent: [BaseBulletPractice, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile
@@ -23,7 +23,7 @@
 - type: entity
   id: BulletLightRifleRubber
   name: bullet (.20 rifle rubber)
-  parent: BaseBulletRubber
+  parent: [BaseBulletRubber, BaseBulletTrail]
   noSpawn: true
   components:
   - type: Projectile
@@ -33,7 +33,7 @@
 
 - type: entity
   id: BulletLightRifleIncendiary
-  parent: BaseBulletIncendiary
+  parent: [BaseBulletIncendiary, BaseBulletTrail]
   name: bullet (.20 rifle incendiary)
   noSpawn: true
   components:
@@ -45,7 +45,7 @@
 
 - type: entity
   id: BulletLightRifleUranium
-  parent: BaseBulletUranium
+  parent: [BaseBulletUranium, BaseBulletTrail]
   name: bullet (.20 rifle uranium)
   noSpawn: true
   components:

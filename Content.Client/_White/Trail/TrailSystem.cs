@@ -2,6 +2,7 @@ using Content.Client._White.Trail.Line.Manager;
 using Content.Shared._White.Trail;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Configuration;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -23,6 +24,7 @@ public sealed class TrailSystem : EntitySystem
             new TrailOverlay(
                 IoCManager.Resolve<IPrototypeManager>(),
                 IoCManager.Resolve<IResourceCache>(),
+                IoCManager.Resolve<IConfigurationManager>(),
                 _lineManager
             ));
 
