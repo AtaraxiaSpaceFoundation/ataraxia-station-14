@@ -1173,13 +1173,14 @@
 
 - type: entity
   parent: BaseItem
-  id: ToySword
+  id: ToySwordBase
   name: toy sword
   description: New Sandy-Cat plastic sword! Comes with realistic sound and full color! Looks almost like the real thing!
+  abstract: true
   components:
     - type: EnergySword
-      colorOptions:
-        - DodgerBlue
+      #colorOptions:
+      #   - DodgerBlue
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/ebladeon.ogg
@@ -1189,7 +1190,8 @@
       activeSound:
         path: /Audio/Weapons/ebladehum.ogg
     - type: Sprite
-      sprite: Objects/Fun/toy_sword.rsi
+      #sprite: Objects/Fun/toy_sword.rsi
+      sprite: Objects/Weapons/Melee/e_sword.rsi
       layers:
         - state: e_sword
         - state: e_sword_blade
@@ -1199,7 +1201,8 @@
           map: [ "blade" ]
     - type: Item
       size: Small
-      sprite: Objects/Fun/toy_sword.rsi
+      #sprite: Objects/Fun/toy_sword.rsi
+      sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
     - type: UseDelay
       delay: 1.0
     - type: PointLight
@@ -1223,6 +1226,7 @@
     - type: StaminaDamageOnHit
       damage: 8
     - type: MeleeWeapon
+      wideAnimationRotation: -135
       damage:
         types:
           Blunt: 0
@@ -1235,10 +1239,55 @@
         path: /Audio/Weapons/eblade1.ogg
         params:
           variation: 0.250
+        volume: -10
       activatedSoundOnSwing:
         path: /Audio/Weapons/eblademiss.ogg
         params:
           variation: 0.125
+    - type: ItemToggleSize
+      activatedSize: Huge
+
+- type: entity
+  name: toy sword
+  description: New Sandy-Cat plastic sword! Comes with realistic sound and full color! Looks almost like the real thing!
+  parent: ToySwordBase
+  id: ToySword
+  components:
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyDoubleSwordGraph
+    node: esword
+  - type: Tag
+    tags:
+    - ToySword
+
+- type: entity
+  name: double toy sword
+  description: New Sandy-Cat plastic sword! Comes with realistic sound and full color! Looks almost like the real thing!
+  parent: ToySwordBase
+  id: ToySwordDouble
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/double_esword.rsi
+      layers:
+        - state: e_sword_double
+        - state: e_sword_double_blade
+          color: "#FFFFFF"
+          visible: false
+          shader: unshaded
+          map: [ "blade" ]
+    - type: Item
+      size: Small
+      sprite: Objects/Weapons/Melee/double_esword.rsi
+    - type: Wieldable
+    - type: ToggleableWielded
+    - type: StaminaDamageOnHit
+      damage: 16
+    - type: FlipOnHit
+    - type: Construction
+      deconstructionTarget: null
+      graph: ToyDoubleSwordGraph
+      node: desword
 
 - type: entity
   parent: BasePlushie

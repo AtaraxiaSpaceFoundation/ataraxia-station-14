@@ -53,7 +53,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword.rsi, state: icon }
   productEntity: EnergySword
   cost:
-    Telecrystal: 8
+    Telecrystal: 7
   categories:
   - UplinkWeaponry
   saleLimit: 2

@@ -14,7 +14,7 @@ public sealed class EmoteAnimationSystem : EntitySystem
 
     private readonly Dictionary<string, Action<EntityUid>> _emoteList = new();
 
-    private const string AnimationKey = "emoteAnimationKeyId";
+    public const string AnimationKey = "emoteAnimationKeyId";
     private const string AnimationKeyTurn = "emoteAnimationKeyId_rotate";
 
     //OnVerbsResponse?.Invoke(msg);

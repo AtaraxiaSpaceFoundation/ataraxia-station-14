@@ -11,6 +11,18 @@
     entity: EnergySwordDouble
 
 - type: constructionGraph
+  id: ToyDoubleSwordGraph
+  start: esword
+  graph:
+  - node: esword
+    edges:
+      - to: desword
+        steps:
+          - tag: ToySword
+  - node: desword
+    entity: ToySwordDouble
+
+- type: constructionGraph
   id: WeaponFlamethrowerGraph
   start: welder
   graph:

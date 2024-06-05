@@ -5,6 +5,9 @@
   id: EnergySword
 
 - type: Tag
+  id: ToySword
+
+- type: Tag
   id: CrossbowBolt
 
 - type: Tag

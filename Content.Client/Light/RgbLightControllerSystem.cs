@@ -207,6 +207,8 @@ namespace Content.Client.Light
 
         public static Color GetCurrentRgbColor(TimeSpan curTime, TimeSpan offset, Entity<RgbLightControllerComponent> rgb)
         {
+            offset = TimeSpan.Zero; // WD EDIT, Fix black RGB
+
             return Color.FromHsv(new Vector4(
                 (float) (((curTime.TotalSeconds - offset.TotalSeconds) * rgb.Comp.CycleRate + Math.Abs(rgb.Owner.Id * 0.1)) % 1),
                 1.0f,
