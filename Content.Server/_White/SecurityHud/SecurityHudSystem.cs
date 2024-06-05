@@ -66,7 +66,7 @@ public sealed class SecurityHudSystem : EntitySystem
                 SetWanted(args.User, args.Target, ent.Value, component);
             },
             Disabled = false,
-            Priority = 0,
+            Priority = 3,
             Text = Loc.GetString("security-hud-verb"),
         };
 
