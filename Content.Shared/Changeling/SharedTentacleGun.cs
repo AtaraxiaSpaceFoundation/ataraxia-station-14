@@ -143,8 +143,8 @@ public abstract class SharedTentacleGun : EntitySystem
             if(!TryComp<PhysicsComponent>(activeItem, out var physicsComponent))
                 continue;
 
-            var coords = Transform(args.Embedded).Coordinates;
-            _handsSystem.TryDrop(args.Embedded, activeItem, coords);
+            if (!_handsSystem.TryDrop(args.Embedded, activeItem))
+                continue;
 
             var force = physicsComponent.Mass * 2.5f / 2;
 

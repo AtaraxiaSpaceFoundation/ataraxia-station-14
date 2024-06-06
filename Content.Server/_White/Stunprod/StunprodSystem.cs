@@ -33,16 +33,20 @@ public sealed class StunprodSystem : EntitySystem
         SubscribeLocalEvent<StunprodComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<StunprodComponent, ItemToggleActivateAttemptEvent>(TryTurnOn);
         SubscribeLocalEvent<StunprodComponent, ItemToggledEvent>(ToggleDone);
+        SubscribeLocalEvent<StunprodComponent, ComponentStartup>(OnStartup,
+            after: new[] {typeof(SharedItemToggleSystem)});
+    }
+
+    private void OnStartup(Entity<StunprodComponent> ent, ref ComponentStartup args)
+    {
+        _appearance.SetData(ent, ToggleVisuals.Toggled, "nocell");
     }
 
     private void OnEntInserted(EntityUid uid, StunprodComponent component, EntInsertedIntoContainerMessage args)
     {
         _itemToggle.TryDeactivate(uid, predicted: false);
 
-        if (TryComp<AppearanceComponent>(uid, out var appearance))
-        {
-            _appearance.SetData(uid, ToggleVisuals.Toggled, false, appearance);
-        }
+        _appearance.SetData(uid, ToggleVisuals.Toggled, false);
     }
 
     private void OnEntRemoved(EntityUid uid, StunprodComponent component, EntRemovedFromContainerMessage args)
@@ -50,15 +54,9 @@ public sealed class StunprodSystem : EntitySystem
         if (TerminatingOrDeleted(uid))
             return;
 
-        if (!_itemToggle.IsActivated(uid))
-        {
-            if (TryComp<AppearanceComponent>(uid, out var appearance))
-            {
-                _appearance.SetData(uid, ToggleVisuals.Toggled, "nocell", appearance);
-            }
-        }
-        else
-            _itemToggle.TryDeactivate(uid, predicted: false);
+        _itemToggle.TryDeactivate(uid, predicted: false);
+
+        _appearance.SetData(uid, ToggleVisuals.Toggled, "nocell");
     }
 
     private void OnStaminaHitAttempt(EntityUid uid, StunprodComponent component,
@@ -72,9 +70,7 @@ public sealed class StunprodSystem : EntitySystem
         }
 
         if (battery.CurrentCharge < component.EnergyPerUse)
-        {
             _itemToggle.TryDeactivate(uid, predicted: false);
-        }
     }
 
     private void OnExamined(EntityUid uid, StunprodComponent comp, ExaminedEvent args)
@@ -90,10 +86,8 @@ public sealed class StunprodSystem : EntitySystem
         if (entity.Comp.HasHeldPrefix && TryComp<ItemComponent>(entity, out var item))
             _item.SetHeldPrefix(entity.Owner, args.Activated ? "on" : "off", component: item);
 
-        if (TryGetBatteryComponent(entity, out _, out _) || !TryComp<AppearanceComponent>(entity, out var appearance))
-            return;
-
-        _appearance.SetData(entity, ToggleVisuals.Toggled, "nocell", appearance);
+        if (!TryGetBatteryComponent(entity, out _, out _))
+            _appearance.SetData(entity, ToggleVisuals.Toggled, "nocell");
     }
 
     private void TryTurnOn(Entity<StunprodComponent> entity, ref ItemToggleActivateAttemptEvent args)
@@ -104,10 +98,7 @@ public sealed class StunprodSystem : EntitySystem
 
         args.Cancelled = true;
 
-        if (TryComp<AppearanceComponent>(entity, out var appearance))
-        {
-            _appearance.SetData(entity, ToggleVisuals.Toggled, battery == null ? "nocell" : false, appearance);
-        }
+        _appearance.SetData(entity, ToggleVisuals.Toggled, battery == null ? "nocell" : false);
 
         if (args.User != null)
         {

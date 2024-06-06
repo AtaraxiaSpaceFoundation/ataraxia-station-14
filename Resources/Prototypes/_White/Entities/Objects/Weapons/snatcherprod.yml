@@ -42,6 +42,7 @@
     sound: /Audio/Weapons/egloves.ogg
   - type: UseDelay
   - type: Item
+    heldPrefix: off
     size: Normal
   - type: Clothing
     quickEquip: false
@@ -70,7 +71,6 @@
       cell_slot: !type:ContainerSlot {}
   - type: Snatcherprod
   - type: Stunprod
-    hasHeldPrefix: false
   - type: Construction
     deconstructionTarget: cuffs
     graph: StunprodGraph

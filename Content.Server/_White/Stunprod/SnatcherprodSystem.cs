@@ -10,6 +10,7 @@ public sealed class SnatcherprodSystem : EntitySystem
 {
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedItemToggleSystem _itemToggle = default!;
+    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
 
     public override void Initialize()
     {
@@ -17,7 +18,6 @@ public sealed class SnatcherprodSystem : EntitySystem
 
         SubscribeLocalEvent<SnatcherprodComponent, StaminaMeleeHitEvent>(OnHit);
     }
-
 
     private void OnHit(EntityUid uid, SnatcherprodComponent component, StaminaMeleeHitEvent args)
     {
@@ -29,28 +29,13 @@ public sealed class SnatcherprodSystem : EntitySystem
         if (entity == uid || !TryComp(entity, out HandsComponent? hands))
             return;
 
-        EntityUid? heldEntity = null;
-
-        if (hands.ActiveHandEntity != null)
-            heldEntity = hands.ActiveHandEntity;
-        else
+        foreach (var heldEntity in _handsSystem.EnumerateHeld(entity, hands))
         {
-            foreach (var hand in hands.Hands)
-            {
-                if (hand.Value.HeldEntity == null)
-                    continue;
+            if (!_hands.TryDrop(entity, heldEntity, null, false, false, handsComp: hands))
+                continue;
 
-                heldEntity = hand.Value.HeldEntity;
-                break;
-            }
-
-            if (heldEntity == null)
-                return;
+            _hands.PickupOrDrop(args.User, heldEntity, false);
+            break;
         }
-
-        if (!_hands.TryDrop(entity, heldEntity.Value, null, false, false, handsComp: hands))
-            return;
-
-        _hands.PickupOrDrop(args.User, heldEntity.Value, false);
     }
 }
