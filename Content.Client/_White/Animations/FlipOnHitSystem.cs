@@ -1,6 +1,4 @@
 using Content.Shared._White.Animations;
-using Content.Shared.Item.ItemToggle.Components;
-using Content.Shared.Weapons.Melee.Events;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
@@ -8,7 +6,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._White.Animations;
 
-public sealed class FlipOnHitSystem : EntitySystem
+public sealed class FlipOnHitSystem : SharedFlipOnHitSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animationSystem = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -17,8 +15,8 @@ public sealed class FlipOnHitSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<FlipOnHitComponent, MeleeHitEvent>(OnHit);
         SubscribeLocalEvent<FlippingComponent, AnimationCompletedEvent>(OnAnimationComplete);
+        SubscribeAllEvent<FlipOnHitEvent>(ev => PlayAnimation(GetEntity(ev.User)));
     }
 
     private void OnAnimationComplete(Entity<FlippingComponent> ent, ref AnimationCompletedEvent args)
@@ -29,28 +27,17 @@ public sealed class FlipOnHitSystem : EntitySystem
         PlayAnimation(ent);
     }
 
-    private void OnHit(Entity<FlipOnHitComponent> ent, ref MeleeHitEvent args)
+    protected override void PlayAnimation(EntityUid user)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (args.HitEntities.Count == 0)
-            return;
-
-        if (TryComp(ent, out ItemToggleComponent? itemToggle) && !itemToggle.Activated)
-            return;
-
-        if (_animationSystem.HasRunningAnimation(args.User, EmoteAnimationSystem.AnimationKey))
+        if (_animationSystem.HasRunningAnimation(user, EmoteAnimationSystem.AnimationKey))
         {
-            EnsureComp<FlippingComponent>(args.User);
+            EnsureComp<FlippingComponent>(user);
             return;
         }
 
-        PlayAnimation(args.User);
-    }
-
-    private void PlayAnimation(EntityUid user)
-    {
         RemComp<FlippingComponent>(user);
 
         var baseAngle = Angle.Zero;

@@ -123,25 +123,34 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
     private void OnNarsieSummon(CultNarsieSummoned ev)
     {
-        var query = EntityQueryEnumerator<MobStateComponent, MindContainerComponent, CultistComponent>();
+        var query =
+            EntityQueryEnumerator<MobStateComponent, MindContainerComponent, CultistComponent, TransformComponent>();
+
+        List<Entity<MindContainerComponent, TransformComponent>> cultists = new();
+
+        while (query.MoveNext(out var uid, out _, out var mindContainer, out _, out var transform))
+        {
+            cultists.Add((uid, mindContainer, transform));
+        }
+
         var rulesQuery = QueryActiveRules();
         while (rulesQuery.MoveNext(out _, out var cult, out _))
         {
             cult.WinCondition = CultWinCondition.Win;
             _roundEndSystem.EndRound();
 
-            while (query.MoveNext(out var uid, out _, out var mindContainer, out _))
+            foreach (var ent in cultists)
             {
-                if (!mindContainer.HasMind || mindContainer.Mind is null)
-                {
+                if (ent.Comp1.Mind is null)
                     continue;
-                }
 
-                var reaper = Spawn(cult.ReaperPrototype, Transform(uid).Coordinates);
-                _mindSystem.TransferTo(mindContainer.Mind.Value, reaper);
+                var reaper = Spawn(cult.ReaperPrototype, ent.Comp2.Coordinates);
+                _mindSystem.TransferTo(ent.Comp1.Mind.Value, reaper);
 
-                _bodySystem.GibBody(uid);
+                _bodySystem.GibBody(ent);
             }
+
+            return;
         }
     }
 
@@ -211,13 +220,13 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
         var selectedCultists = _antagSelection.ChooseAntags(cultistsToSelect, eligiblePlayers);
 
+        var potentialTargets = FindPotentialTargets(selectedCultists);
+        rule.CultTarget = _random.PickAndTake(potentialTargets).Mind;
+
         foreach (var cultist in selectedCultists)
         {
             MakeCultist(cultist, rule);
         }
-
-        var potentialTargets = FindPotentialTargets(selectedCultists);
-        rule.CultTarget = _random.PickAndTake(potentialTargets).Mind;
     }
 
     public MindComponent? GetTarget()

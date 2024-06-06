@@ -574,7 +574,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var direction = targetMap.Position - userPos;
         var distance = Math.Min(component.Range, direction.Length());
 
-        var damage = GetDamage(meleeUid, user, component) * 0.70f;
+        var damage = GetDamage(meleeUid, user, component) * 0.5f;
         var entities = GetEntityList(ev.Entities);
 
         // WD EDIT
