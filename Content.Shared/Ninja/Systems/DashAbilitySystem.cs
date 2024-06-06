@@ -1,3 +1,4 @@
+using Content.Shared._White.BetrayalDagger;
 using Content.Shared.Actions;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -24,6 +25,7 @@ public sealed class DashAbilitySystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly TelefragSystem _telefrag = default!; // WD
 
     public override void Initialize()
     {
@@ -90,6 +92,7 @@ public sealed class DashAbilitySystem : EntitySystem
             return;
         }
 
+        _telefrag.Telefrag(args.Target, user);
         _transform.SetCoordinates(user, args.Target);
         _transform.AttachToGridOrMap(user);
         _audio.PlayPredicted(comp.BlinkSound, user, user);

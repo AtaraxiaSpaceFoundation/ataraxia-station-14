@@ -15,6 +15,7 @@ public sealed class BlinkSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly TelefragSystem _telefrag = default!;
 
     public override void Initialize()
     {
@@ -61,6 +62,7 @@ public sealed class BlinkSystem : EntitySystem
         }
 
         _transform.SetWorldPosition(user, targetPos);
+        _telefrag.Telefrag(xform.Coordinates, user);
         _audio.PlayPvs(blink.BlinkSound, user);
     }
 }

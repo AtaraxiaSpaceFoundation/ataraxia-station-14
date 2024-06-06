@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Server._White.Other;
 using Content.Server.Body.Systems;
 using Content.Server.Popups;
+using Content.Shared._White.BetrayalDagger;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
@@ -31,6 +32,7 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
     [Dependency] private readonly PullingSystem _pullingSystem = default!;
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly TelefragSystem _telefrag = default!;
 
     public override void Initialize()
     {
@@ -113,12 +115,7 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
             return;
         }
 
-        SoundAndEffects(component, coords, oldCoords);
-
-        _transform.SetCoordinates(args.User, coords);
-
-        component.Uses--;
-        component.NextUse = _timing.CurTime + component.Cooldown;
+        Teleport(args.User, component, coords, oldCoords);
     }
 
     private void OnExamine(EntityUid uid, ExperimentalSyndicateTeleporterComponent component, ExaminedEvent args)
@@ -132,17 +129,24 @@ public sealed class ExperimentalSyndicateTeleporter : EntitySystem
 
         var coords = xform.Coordinates.Offset(newOffset).SnapToGrid(EntityManager);
 
-        SoundAndEffects(component, coords, oldCoords);
-
-        _transform.SetCoordinates(uid, coords);
-
-        component.Uses--;
-        component.NextUse = _timing.CurTime + component.Cooldown;
+        Teleport(uid, component, coords, oldCoords);
 
         if (TryCheckWall(coords))
         {
             _bodySystem.GibBody(uid, true, splatModifier: 3F);
         }
+    }
+
+    private void Teleport(EntityUid uid, ExperimentalSyndicateTeleporterComponent component, EntityCoordinates coords,
+        EntityCoordinates oldCoords)
+    {
+        SoundAndEffects(component, coords, oldCoords);
+
+        _telefrag.Telefrag(coords, uid);
+        _transform.SetCoordinates(uid, coords);
+
+        component.Uses--;
+        component.NextUse = _timing.CurTime + component.Cooldown;
     }
 
     private void SoundAndEffects(ExperimentalSyndicateTeleporterComponent component, EntityCoordinates coords, EntityCoordinates oldCoords)
