@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Shared.Eye;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Stealth;
@@ -17,6 +19,7 @@ public sealed class IncorporealSystem : EntitySystem
     [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!;
 
     public override void Initialize()
     {
@@ -48,6 +51,8 @@ public sealed class IncorporealSystem : EntitySystem
         Spawn("EffectEmpPulse", Transform(uid).Coordinates);
         EnsureComp<StealthComponent>(uid);
         _stealth.SetVisibility(uid, -1);
+        if (TryComp(uid, out PullableComponent? pullable))
+            _pulling.TryStopPull(uid, pullable);
         _movement.RefreshMovementSpeedModifiers(uid);
     }
 

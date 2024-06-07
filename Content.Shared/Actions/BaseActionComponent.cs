@@ -154,6 +154,9 @@ public abstract partial class BaseActionComponent : Component
     // WD START
     [DataField]
     public bool RemoveOnNoCharges;
+
+    [DataField]
+    public bool AlwaysPlaySound = true;
     // WD END
 
     /// <summary>

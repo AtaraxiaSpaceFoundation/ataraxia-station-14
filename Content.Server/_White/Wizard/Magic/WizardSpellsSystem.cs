@@ -61,6 +61,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly EmpSystem _empSystem = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     #endregion
 
@@ -148,7 +149,8 @@ public sealed class WizardSpellsSystem : EntitySystem
         }
 
         SetOutfitCommand.SetOutfit(msg.Target, "MimeGear", EntityManager);
-        EnsureComp<MimePowersComponent>(msg.Target);
+        var powers = EnsureComp<MimePowersComponent>(msg.Target);
+        powers.CanBreakVow = false;
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
@@ -195,7 +197,8 @@ public sealed class WizardSpellsSystem : EntitySystem
             return;
         }
 
-        EnsureComp<CluwneComponent>(msg.Target);
+        var cluwne = EnsureComp<CluwneComponent>(msg.Target);
+        cluwne.KnockChance = 0.2f;
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
@@ -317,6 +320,7 @@ public sealed class WizardSpellsSystem : EntitySystem
                 break;
         }
 
+        SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
@@ -338,7 +342,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         var xform = Transform(msg.Performer);
 
-        var positions = GetArenaPositions(xform, msg.ChargeLevel);
+        var positions = GetArenaPositions(xform.Coordinates, msg.ChargeLevel);
 
         foreach (var position in positions)
         {
@@ -351,9 +355,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void ForcewallSpellAlt(ForceWallSpellEvent msg)
     {
-        var xform = Transform(msg.TargetUid);
-
-        var positions = GetArenaPositions(xform, 2);
+        var positions = GetArenaPositions(msg.Target, 2);
 
         foreach (var direction in positions)
         {
@@ -373,6 +375,8 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
             return;
 
+        var result = true;
+
         switch (msg.ActionUseType)
         {
             case ActionUseType.Default:
@@ -382,10 +386,14 @@ public sealed class WizardSpellsSystem : EntitySystem
                 CardsSpellCharge(msg);
                 break;
             case ActionUseType.AltUse:
-                CardsSpellAlt(msg);
+                result = CardsSpellAlt(msg);
                 break;
         }
 
+        if (!result)
+            return;
+
+        SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
@@ -417,7 +425,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         var xform = Transform(msg.Performer);
 
-        var count = 5 * msg.ChargeLevel;
+        var count = 10 * msg.ChargeLevel;
         var angleStep = 360f / count;
 
         for (var i = 0; i < count; i++)
@@ -441,14 +449,19 @@ public sealed class WizardSpellsSystem : EntitySystem
         }
     }
 
-    private void CardsSpellAlt(CardsSpellEvent msg)
+    private bool CardsSpellAlt(CardsSpellEvent msg)
     {
         if (!HasComp<ItemComponent>(msg.TargetUid))
-            return;
+        {
+            _popupSystem.PopupEntity("Работает только на предметах.", msg.Performer, msg.Performer);
+            return false;
+        }
 
         Del(msg.TargetUid);
         var item = Spawn(msg.Prototype);
         _handsSystem.TryPickupAnyHand(msg.Performer, item);
+
+        return true;
     }
 
     #endregion
@@ -460,6 +473,8 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
             return;
 
+        var result = true;
+
         switch (msg.ActionUseType)
         {
             case ActionUseType.Default:
@@ -469,10 +484,14 @@ public sealed class WizardSpellsSystem : EntitySystem
                 FireballSpellCharge(msg);
                 break;
             case ActionUseType.AltUse:
-                FireballSpellAlt(msg);
+                result = FireballSpellAlt(msg);
                 break;
         }
 
+        if (!result)
+            return;
+
+        SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
@@ -507,21 +526,26 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         foreach (var target in targets.Where(target => target.Owner != msg.Performer))
         {
-            target.Comp.FireStacks += 3;
+            target.Comp.FireStacks += 2 + msg.ChargeLevel * 2;
             _flammableSystem.Ignite(target, msg.Performer);
         }
     }
 
-    private void FireballSpellAlt(FireballSpellEvent msg)
+    private bool FireballSpellAlt(FireballSpellEvent msg)
     {
         if (!TryComp<FlammableComponent>(msg.TargetUid, out var flammableComponent))
-            return;
+        {
+            _popupSystem.PopupEntity("Это нельзя поджечь!", msg.Performer, msg.Performer);
+            return false;
+        }
 
         flammableComponent.FireStacks += 4;
 
         _flammableSystem.Ignite(msg.TargetUid, msg.Performer);
 
         EnsureComp<AmaterasuComponent>(msg.TargetUid);
+
+        return true;
     }
 
     #endregion
@@ -546,6 +570,7 @@ public sealed class WizardSpellsSystem : EntitySystem
                 break;
         }
 
+        SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
@@ -574,10 +599,12 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
             return;
 
+        var result = true;
+
         switch (msg.ActionUseType)
         {
             case ActionUseType.Default:
-                ArcSpellDefault(msg);
+                result = ArcSpellDefault(msg);
                 break;
             case ActionUseType.Charge:
                 ArcSpellCharge(msg);
@@ -587,21 +614,28 @@ public sealed class WizardSpellsSystem : EntitySystem
                 break;
         }
 
+        if (!result)
+            return;
+
+        SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
 
-    private void ArcSpellDefault(ArcSpellEvent msg)
+    private bool ArcSpellDefault(ArcSpellEvent msg)
     {
         const int possibleEntitiesCount = 2;
 
         var entitiesInRange = _lookup.GetEntitiesInRange(msg.Target, 1);
         var entitiesToHit = entitiesInRange.Where(HasComp<MobStateComponent>).Take(possibleEntitiesCount);
 
-        foreach (var entity in entitiesToHit)
+        var entityUids = entitiesToHit.ToList();
+        foreach (var entity in entityUids)
         {
             _lightning.ShootLightning(msg.Performer, entity);
         }
+
+        return entityUids.Count != 0;
     }
 
     private void ArcSpellCharge(ArcSpellEvent msg)
@@ -644,7 +678,23 @@ public sealed class WizardSpellsSystem : EntitySystem
             InGameICChatType.Speak, false);
     }
 
-    private List<EntityCoordinates> GetArenaPositions(TransformComponent casterXform, int arenaSize)
+    private void SetCooldown(EntityUid action, ActionUseType useType)
+    {
+        if (!TryComp(action, out VariableUseDelayComponent? variableUseDelayComponent))
+            return;
+
+        var cooldown = useType switch
+        {
+            ActionUseType.Default => variableUseDelayComponent.UseDelay,
+            ActionUseType.AltUse => variableUseDelayComponent.AltUseDelay,
+            ActionUseType.Charge => variableUseDelayComponent.ChargeUseDelay,
+            _ => TimeSpan.FromSeconds(60)
+        };
+
+        _actions.SetUseDelay(action, cooldown);
+    }
+
+    private List<EntityCoordinates> GetArenaPositions(EntityCoordinates coords, int arenaSize)
     {
         var positions = new List<EntityCoordinates>();
 
@@ -655,7 +705,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             for (var j = -arenaSize; j <= arenaSize; j++)
             {
                 var position = new Vector2(i, j);
-                var coordinates = casterXform.Coordinates.Offset(position);
+                var coordinates = coords.Offset(position);
                 positions.Add(coordinates);
             }
         }

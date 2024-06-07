@@ -22,6 +22,7 @@
     - RampingStationEventScheduler
     - Changeling
     - Cult
+    - Wizard
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -194,6 +195,21 @@
   minPlayers: 15
   rules:
     - Changeling
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Wizard
+  alias:
+    - wizard
+    - wiz
+  name: wizard-title
+  description: wizard-description
+  showInVote: true
+  minPlayers: 20
+  rules:
+    - Wizard
     - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation

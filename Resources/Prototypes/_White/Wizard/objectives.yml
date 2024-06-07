@@ -1,0 +1,219 @@
+#survive
+
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseWizardObjective
+  components:
+  - type: Objective
+    issuer: wizards
+  - type: RoleRequirement
+    roles:
+      components:
+      - WizardRole
+
+- type: entity
+  noSpawn: true
+  parent: [BaseWizardObjective, BaseSurviveObjective]
+  id: WizardSurviveObjective
+  name: Survive the shift, causing as much chaos as possible.
+  description: Space Wizards Federation sent you to the Nanotrasen station to wreak havoc. Don't disappoint them.
+  components:
+  - type: Objective
+    difficulty: 2
+    icon:
+      sprite: Objects/Fun/figurines.rsi
+      state: wizard
+
+#steal
+
+- type: entity
+  abstract: true
+  parent: [BaseWizardObjective, BaseStealObjective]
+  id: BaseWizardStealObjective
+  components:
+    - type: StealCondition
+      verifyMapExistence: false
+    - type: Objective
+      difficulty: 2.75
+
+## cmo
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: CMOHyposprayStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: ChiefMedicalOfficer
+    - type: StealCondition
+      stealGroup: Hypospray
+      owner: job-name-cmo
+
+## rd
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: RDHardsuitStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: ResearchDirector
+    - type: StealCondition
+      stealGroup: ClothingOuterHardsuitRd
+      owner: job-name-rd
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: HandTeleporterStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: ResearchDirector
+    - type: StealCondition
+      stealGroup: HandTeleporter
+      owner: job-name-rd
+
+## hos
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: SecretDocumentsStealObjectiveWiz
+  components:
+    - type: Objective
+      # hos has a gun ce does not, higher difficulty than most
+      difficulty: 3
+    - type: NotJobRequirement
+      job: HeadOfSecurity
+    - type: StealCondition
+      stealGroup: BookSecretDocuments
+      owner: job-name-hos
+
+## ce
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: MagbootsStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: ChiefEngineer
+    - type: StealCondition
+      stealGroup: ClothingShoesBootsMagAdv
+      owner: job-name-ce
+
+## qm
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: ClipboardStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: Quartermaster
+    - type: StealCondition
+      stealGroup: BoxFolderQmClipboard
+      owner: job-name-qm
+
+## hop
+
+- type: entity
+  noSpawn: true
+  parent: BaseWizardStealObjective
+  id: CorgiMeatStealObjectiveWiz
+  components:
+    - type: NotJobRequirement
+      job: HeadOfPersonnel
+    - type: ObjectiveLimit
+      limit: 3 # ian only has 2 slices, 3 obj for drama
+    - type: StealCondition
+      stealGroup: FoodMeatCorgi
+      owner: objective-condition-steal-Ian
+
+## cap
+
+- type: entity
+  abstract: true
+  parent: BaseWizardStealObjective
+  id: BaseCaptainObjectiveWiz
+  components:
+    - type: Objective
+      # sorry ce but your jordans are not as high security as the caps gear
+      difficulty: 3.5
+    - type: NotJobRequirement
+      job: Captain
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveWiz
+  id: CaptainIDStealObjectiveWiz
+  components:
+    - type: StealCondition
+      stealGroup: CaptainIDCard
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveWiz
+  id: CaptainJetpackStealObjectiveWiz
+  components:
+    - type: StealCondition
+      stealGroup: JetpackCaptainFilled
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveWiz
+  id: CaptainGunStealObjectiveWiz
+  components:
+    - type: StealCondition
+      stealGroup: WeaponAntiqueLaser
+      owner: job-name-captain
+
+- type: entity
+  noSpawn: true
+  parent: BaseCaptainObjectiveWiz
+  id: NukeDiskStealObjectiveWiz
+  components:
+    - type: Objective
+      # high difficulty since the hardest item both to steal, and to not get caught down the road,
+      # since anyone with a pinpointer can track you down and kill you
+      # it's close to being a stealth loneop
+      difficulty: 4
+    - type: NotCommandRequirement
+    - type: StealCondition
+      stealGroup: NukeDisk
+      owner: objective-condition-steal-station
+
+# kill
+
+- type: entity
+  noSpawn: true
+  parent: [BaseWizardObjective, BaseKillObjective]
+  id: KillRandomPersonObjectiveWiz
+  description: Do it however you like, just make sure they don't make it to centcom.
+  components:
+  - type: Objective
+    difficulty: 1.75
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-kill-person-title
+  - type: PickRandomPerson
+
+- type: entity
+  noSpawn: true
+  parent: [BaseWizardObjective, BaseKillObjective]
+  id: KillRandomHeadObjectiveWiz
+  description: We need this head gone and you probably know why. Good luck, agent.
+  components:
+  - type: Objective
+    # technically its still possible for KillRandomPersonObjective to roll a head but this is guaranteed, so higher difficulty
+    difficulty: 3.0
+    # killing 1 head is enough
+    unique: true
+  - type: TargetObjective
+    title: objective-condition-kill-head-title
+  - type: PickRandomHead
+  - type: KillPersonCondition
+    # don't count missing evac as killing as heads are higher profile, so you really need to do the dirty work
+    # if ce flies a shittle to centcom you better find a way onto it
+    requireDead: true

@@ -540,11 +540,17 @@ public abstract class SharedActionsSystem : EntitySystem
             handled = actionEvent.Handled;
         }
 
-        _audio.PlayPredicted(action.Sound, performer,predicted ? performer : null);
-        handled |= action.Sound != null;
+        if (action.AlwaysPlaySound) // WD EDIT
+        {
+            _audio.PlayPredicted(action.Sound, performer,predicted ? performer : null);
+            handled |= action.Sound != null;
+        }
 
         if (!handled)
             return; // no interaction occurred.
+
+        if (!action.AlwaysPlaySound) // WD
+            _audio.PlayPvs(action.Sound, performer);
 
         // reduce charges, start cooldown, and mark as dirty (if required).
 

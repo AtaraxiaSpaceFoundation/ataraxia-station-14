@@ -150,6 +150,13 @@
         - RitualDagger
         - CultRunicMetal20
 
+- type: entity
+  id: Wizard
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: WizardRule
+
 # variation passes
 - type: entity
   id: BasicRoundstartVariation

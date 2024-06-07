@@ -46,6 +46,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.FixedPoint;
+using Content.Shared.Mind;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -215,12 +216,9 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 
         ev.AddLine(Loc.GetString("nukeops-list-start"));
 
-        var nukiesQuery = EntityQueryEnumerator<NukeopsRoleComponent, MindContainerComponent>();
-        while (nukiesQuery.MoveNext(out var nukeopsUid, out _, out var mindContainer))
+        var nukiesQuery = EntityQueryEnumerator<NukeopsRoleComponent, MindComponent>();
+        while (nukiesQuery.MoveNext(out var nukeopsUid, out _, out var mind))
         {
-            if (!_mind.TryGetMind(nukeopsUid, out _, out var mind, mindContainer))
-                continue;
-
             ev.AddLine(mind.Session != null
                 ? Loc.GetString("nukeops-list-name-user", ("name", Name(nukeopsUid)), ("user", mind.Session.Name))
                 : Loc.GetString("nukeops-list-name", ("name", Name(nukeopsUid))));

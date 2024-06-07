@@ -47,5 +47,8 @@ namespace Content.Server.Abilities.Mime
         /// </summary>
         [DataField("vowCooldown")]
         public TimeSpan VowCooldown = TimeSpan.FromMinutes(5);
+
+        [DataField] // WD
+        public bool CanBreakVow = true;
     }
 }

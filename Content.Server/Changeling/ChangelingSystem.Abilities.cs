@@ -3,6 +3,7 @@ using Content.Server._White.Carrying;
 using Content.Server._White.Cult.GameRule;
 using Content.Server._White.Mood;
 using Content.Server._White.Other.FastAndFuriousSystem;
+using Content.Server._White.Wizard;
 using Content.Server.Administration.Systems;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
@@ -404,7 +405,7 @@ public sealed partial class ChangelingSystem
         if (!_ui.TryGetUi(user, TransformStingSelectorUiKey.Key, out var bui))
             return;
 
-        if (HasComp<ChangelingComponent>(target) || HasComp<SpaceNinjaComponent>(target) ||
+        if (HasComp<ChangelingComponent>(target) || HasComp<SpaceNinjaComponent>(target) || HasComp<WizardComponent>(target) ||
             _tag.HasTag(target, "Unimplantable")) // Terminator check
         {
             _popup.PopupEntity(Loc.GetString("changeling-popup-transform-not-effective"), user, user);

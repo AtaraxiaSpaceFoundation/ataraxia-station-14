@@ -341,6 +341,17 @@
     inventory: Transfer
 
 - type: polymorph
+  id: MobHumanSpaceWiz
+  configuration:
+    entity: MobHuman
+    forced: true
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+    allowRepeatedMorphs: true
+    inventory: Transfer
+
+- type: polymorph
   id: MobHumanGhost
   configuration:
     entity: MobHuman

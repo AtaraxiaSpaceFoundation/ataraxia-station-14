@@ -16,6 +16,7 @@
   - Xeno
   - Zombie
   - Revolutionary
+  - Wizard
 
 - type: npcFaction
   id: Mouse
@@ -54,6 +55,7 @@
   - Xeno
   - PetsNT
   - Zombie
+  - Wizard
 
 - type: npcFaction
   id: Xeno
@@ -75,6 +77,7 @@
   - Passive
   - PetsNT
   - Revolutionary
+  - Wizard
 
 - type: npcFaction
   id: Revolutionary
@@ -83,6 +86,7 @@
   - Zombie
   - SimpleHostile
   - Dragon
+  - Wizard
 
 # WD EDIT STARt
 - type: npcFaction
@@ -93,4 +97,14 @@
     - Xeno
     - PetsNT
     - Syndicate
+    - Wizard
+
+- type: npcFaction
+  id: Wizard
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Cultist
+  - Revolutionary
+  - Zombie
 # WD EDIT END

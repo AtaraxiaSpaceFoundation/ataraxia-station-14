@@ -1,0 +1,26 @@
+- type: weightedRandom
+  id: WizardObjectiveGroups
+  weights:
+    WizardObjectiveGroupSteal: 1
+    WizardObjectiveGroupKill: 1
+
+- type: weightedRandom
+  id: WizardObjectiveGroupSteal
+  weights:
+    CaptainIDStealObjectiveWiz: 1
+    CMOHyposprayStealObjectiveWiz: 1
+    RDHardsuitStealObjectiveWiz: 1
+    NukeDiskStealObjectiveWiz: 1
+    MagbootsStealObjectiveWiz: 1
+    CorgiMeatStealObjectiveWiz: 1
+    ClipboardStealObjectiveWiz: 1
+    CaptainGunStealObjectiveWiz: 0.5
+    CaptainJetpackStealObjectiveWiz: 0.5
+    HandTeleporterStealObjectiveWiz: 0.5
+    SecretDocumentsStealObjectiveWiz: 0.5
+
+- type: weightedRandom
+  id: WizardObjectiveGroupKill
+  weights:
+    KillRandomPersonObjectiveWiz: 1
+    KillRandomHeadObjectiveWiz: 0.25

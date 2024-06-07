@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: ActionKnock
   name: Knock
   description: This spell opens nearby doors.
@@ -7,6 +7,7 @@
   - type: InstantAction
     useDelay: 10
     itemIconStyle: BigAction
+    checkCanInteract: false
     icon:
       sprite: Objects/Magic/magicactions.rsi
       state: knock
