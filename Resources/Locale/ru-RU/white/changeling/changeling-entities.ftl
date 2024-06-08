@@ -53,7 +53,7 @@ changeling-ability-changeling-lesser-form = Примитивная форма
 changeling-ability-changeling-lesser-form-desc = Превращает в самую примитивную форму. Полезно для побега из наручников. Стоит 5 химикатов.
 
 changeling-ability-bees = Выпустить пчёл
-changeling-ability-bees-desc = Выпускает 4 агрессивных пчелы из улья.
+changeling-ability-bees-desc = Выпускает 6 агрессивных пчёл из улья.
 
 ent-ActionChangelingShop = Эволюции
     .desc = Эволюционируйте и развивайтесь.

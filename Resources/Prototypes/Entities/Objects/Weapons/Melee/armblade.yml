@@ -10,6 +10,7 @@
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: 90
+    attackRate: 0.75
     damage:
       types:
         Slash: 20

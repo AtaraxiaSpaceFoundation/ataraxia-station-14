@@ -215,7 +215,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
 
         // Change the faction
         _npcFaction.RemoveFaction(changeling, "NanoTrasen", false);
-        _npcFaction.AddFaction(changeling, "Syndicate");
+        _npcFaction.AddFaction(changeling, "Changeling");
 
         EnsureComp<ChangelingComponent>(changeling, out var readyChangeling);
 
