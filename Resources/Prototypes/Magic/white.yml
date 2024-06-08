@@ -38,8 +38,6 @@
   name: Force
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: WorldTargetAction
       itemIconStyle: BigAction
       useDelay: 60
@@ -63,8 +61,8 @@
         speech: "EL DRITCH!"
     - type: VariableUseDelay
       useDelay: 6
-      altUseDelay: 12
-      chargeUseDelay: 40
+      altUseDelay: 2
+      chargeUseDelay: 20
 
 - type: entity
   id: ActionFireballSpell
@@ -93,8 +91,8 @@
         posData: !type:TargetCasterPos
         speech: action-speech-spell-fireball
     - type: VariableUseDelay
-      useDelay: 6
-      altUseDelay: 12
+      useDelay: 5
+      altUseDelay: 10
       chargeUseDelay: 40
 
 - type: entity
@@ -102,8 +100,6 @@
   name: Cards
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: WorldTargetAction
       itemIconStyle: BigAction
       useDelay: 60
@@ -128,7 +124,7 @@
         posData: !type:TargetCasterPos
         speech: "SHIZO NERO!"
     - type: VariableUseDelay
-      useDelay: 6
+      useDelay: 4
       altUseDelay: 1
       chargeUseDelay: 40
 
@@ -220,12 +216,10 @@
   name: Cluwne Curse
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: EntityTargetAction
       canTargetSelf: false
-      range: 2
-      useDelay: 400
+      range: 3
+      useDelay: 60
       itemIconStyle: BigAction
       icon:
         sprite: Objects/Magic/magicactions.rsi
@@ -238,12 +232,10 @@
   name: Banana Touch
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: EntityTargetAction
       canTargetSelf: false
-      range: 2
-      useDelay: 200
+      range: 3
+      useDelay: 30
       itemIconStyle: BigAction
       icon:
         sprite: Objects/Magic/magicactions.rsi
@@ -256,12 +248,10 @@
   name: Mime Touch
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: EntityTargetAction
       canTargetSelf: false
-      range: 2
-      useDelay: 200
+      range: 3
+      useDelay: 30
       itemIconStyle: BigAction
       icon:
         sprite: Objects/Magic/magicactions.rsi
@@ -275,8 +265,6 @@
   noSpawn: true
   components:
     - type: InstantRecall
-    - type: Magic
-      requiresClothes: true
     - type: InstantAction
       useDelay: 10
       itemIconStyle: BigAction

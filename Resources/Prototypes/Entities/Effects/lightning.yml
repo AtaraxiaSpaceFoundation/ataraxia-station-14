@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   name: lightning
   id: BaseLightning
   abstract: true
@@ -60,6 +60,9 @@
       castShadows: false
     - type: Lightning
       canArc: false
+    - type: Electrified
+      requirePower: false
+      ignoreInsulation: true
       shockDamage: 30
 
 - type: entity
@@ -159,3 +162,17 @@
       softness: 1
       autoRot: true
       castShadows: false
+
+- type: entity
+  name: wizard lightning
+  id: WizardLightning
+  parent: BaseLightning
+  noSpawn: true
+  components:
+    - type: Electrified
+      requirePower: false
+      ignoreInsulation: true
+      shockDamage: 40
+    - type: Lightning
+      canArc: true
+      lightningPrototype: WizardLightning

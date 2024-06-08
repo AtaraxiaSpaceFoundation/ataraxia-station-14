@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: BaseScroll
   parent: BaseItem
   name: "Magic Scroll"
@@ -11,6 +11,7 @@
       layers:
         - state: scroll
     - type: Scroll
+      learnTime: 1
       useSound:
         path: /Audio/White/Items/scroll/use.ogg
       afterUseSound:

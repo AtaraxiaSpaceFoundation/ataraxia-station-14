@@ -4,8 +4,10 @@
   description: This spell opens nearby doors.
   noSpawn: true
   components:
+  - type: Magic
+    requiresClothes: false
   - type: InstantAction
-    useDelay: 10
+    useDelay: 8
     itemIconStyle: BigAction
     checkCanInteract: false
     icon:

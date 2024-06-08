@@ -1,5 +1,6 @@
 using Content.Server.Atmos.Components;
 using Content.Server.Singularity.Components;
+using Content.Server.Stunnable;
 using Content.Shared.Ghost;
 using Content.Shared.Singularity.EntitySystems;
 using Robust.Shared.Map;
@@ -24,6 +25,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly StunSystem _stun = default!; // WD EDIT
     #endregion Dependencies
 
     /// <summary>
@@ -141,10 +143,10 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="baseRadialDeltaV">The base radial velocity that will be added to entities within range towards the center of the gravitational pulse.</param>
     /// <param name="baseTangentialDeltaV">The base tangential velocity that will be added to entities within countrclockwise around the center of the gravitational pulse.</param>
     /// <param name="xform">(optional) The transform of the entity at the epicenter of the gravitational pulse.</param>
-    public void GravPulse(EntityUid uid, float maxRange, float minRange, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f, TransformComponent? xform = null)
+    public void GravPulse(EntityUid uid, float maxRange, float minRange, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f, TransformComponent? xform = null, float stunTime = 0f, List<EntityUid>? ignore = null)
     {
         if (Resolve(uid, ref xform))
-            GravPulse(xform.Coordinates, maxRange, minRange, baseRadialDeltaV, baseTangentialDeltaV);
+            GravPulse(xform.Coordinates, maxRange, minRange, baseRadialDeltaV, baseTangentialDeltaV, stunTime, ignore);
     }
 
     /// <summary>
@@ -165,8 +167,8 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="minRange">The minimum distance at which entities can be affected by the gravity pulse.</param>
     /// <param name="baseRadialDeltaV">The base radial velocity that will be added to entities within range towards the center of the gravitational pulse.</param>
     /// <param name="baseTangentialDeltaV">The base tangential velocity that will be added to entities within countrclockwise around the center of the gravitational pulse.</param>
-    public void GravPulse(EntityCoordinates entityPos, float maxRange, float minRange, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f)
-        => GravPulse(entityPos.ToMap(EntityManager, _transform), maxRange, minRange, baseRadialDeltaV, baseTangentialDeltaV);
+    public void GravPulse(EntityCoordinates entityPos, float maxRange, float minRange, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f, float stunTime = 0f, List<EntityUid>? ignore = null)
+        => GravPulse(entityPos.ToMap(EntityManager, _transform), maxRange, minRange, baseRadialDeltaV, baseTangentialDeltaV, stunTime, ignore);
 
     /// <summary>
     /// Causes a gravitational pulse, shoving around all entities within some distance of an epicenter.
@@ -175,7 +177,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="maxRange">The maximum distance at which entities can be affected by the gravity pulse.</param>
     /// <param name="minRange">The minimum distance at which entities can be affected by the gravity pulse. Exists to prevent div/0 errors.</param>
     /// <param name="baseMatrixDeltaV">The base velocity added to any entities within affected by the gravity pulse scaled by the displacement of those entities from the epicenter.</param>
-    public void GravPulse(MapCoordinates mapPos, float maxRange, float minRange, in Matrix3 baseMatrixDeltaV)
+    public void GravPulse(MapCoordinates mapPos, float maxRange, float minRange, in Matrix3 baseMatrixDeltaV, float stunTime = 0f, List<EntityUid>? ignore = null)
     {
         if (mapPos == MapCoordinates.Nullspace)
             return; // No gravpulses in nullspace please.
@@ -187,6 +189,9 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
 
         foreach(var entity in _lookup.GetEntitiesInRange(mapPos.MapId, epicenter, maxRange, flags: LookupFlags.Dynamic | LookupFlags.Sundries))
         {
+            if (ignore?.Contains(entity) is true)
+                continue;
+
             if (!bodyQuery.TryGetComponent(entity, out var physics)
                 || physics.BodyType == BodyType.Static)
             {
@@ -206,6 +211,8 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
 
             var scaling = (1f / distance2) * physics.Mass; // TODO: Variable falloff gradiants.
             _physics.ApplyLinearImpulse(entity, (displacement * baseMatrixDeltaV) * scaling, body: physics);
+            if (stunTime > 0f)
+                _stun.TryParalyze(entity, TimeSpan.FromSeconds(stunTime), true);
         }
     }
 
@@ -217,12 +224,12 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="minRange">The minimum distance at which entities can be affected by the gravity pulse. Exists to prevent div/0 errors.</param>
     /// <param name="baseRadialDeltaV">The base amount of velocity that will be added to entities in range towards the epicenter of the pulse.</param>
     /// <param name="baseTangentialDeltaV">The base amount of velocity that will be added to entities in range counterclockwise relative to the epicenter of the pulse.</param>
-    public void GravPulse(MapCoordinates mapPos, float maxRange, float minRange = 0.0f, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f)
+    public void GravPulse(MapCoordinates mapPos, float maxRange, float minRange = 0.0f, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f, float stunTime = 0f, List<EntityUid>? ignore = null)
         => GravPulse(mapPos, maxRange, minRange, new Matrix3(
             baseRadialDeltaV, +baseTangentialDeltaV, 0.0f,
             -baseTangentialDeltaV, baseRadialDeltaV, 0.0f,
             0.0f, 0.0f, 1.0f
-        ));
+        ), stunTime, ignore);
 
     #endregion GravPulse
 

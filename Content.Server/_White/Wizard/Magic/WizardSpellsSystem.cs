@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Server._White.IncorporealSystem;
 using Content.Server._White.Wizard.Magic.Amaterasu;
@@ -12,6 +12,7 @@ using Content.Server.Emp;
 using Content.Server.Lightning;
 using Content.Server.Magic;
 using Content.Server.Singularity.EntitySystems;
+using Content.Server.Standing;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Magic;
@@ -62,6 +63,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly EmpSystem _empSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
 
     #endregion
 
@@ -89,7 +91,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnInstantRecallSpell(InstantRecallSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         if (!TryComp<HandsComponent>(msg.Performer, out var handsComponent))
@@ -110,11 +112,13 @@ public sealed class WizardSpellsSystem : EntitySystem
             }
 
             recallComponent.Item = handsComponent.ActiveHandEntity.Value;
-            _popupSystem.PopupEntity($"Сопряжено с {MetaData(handsComponent.ActiveHandEntity.Value).EntityName}", msg.Performer, msg.Performer);
+            _popupSystem.PopupEntity($"Сопряжено с {MetaData(handsComponent.ActiveHandEntity.Value).EntityName}",
+                msg.Performer, msg.Performer);
             return;
         }
 
-        if (handsComponent.ActiveHandEntity == null && recallComponent.Item != null)
+        if (handsComponent.ActiveHandEntity == null && recallComponent.Item != null &&
+            Exists(recallComponent.Item.Value))
         {
             var coordsItem = Transform(recallComponent.Item.Value).Coordinates;
             var coordsPerformer = Transform(msg.Performer).Coordinates;
@@ -139,12 +143,12 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnMimeTouchSpell(MimeTouchSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         if (!HasComp<HumanoidAppearanceComponent>(msg.Target))
         {
-           _popupSystem.PopupEntity("Работает только на людях!", msg.Performer, msg.Performer);
+            _popupSystem.PopupEntity("Работает только на людях!", msg.Performer, msg.Performer);
             return;
         }
 
@@ -164,7 +168,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnBananaTouchSpell(BananaTouchSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         if (!HasComp<HumanoidAppearanceComponent>(msg.Target))
@@ -188,7 +192,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnCluwneCurseSpell(CluwneCurseSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         if (!HasComp<HumanoidAppearanceComponent>(msg.Target))
@@ -197,8 +201,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             return;
         }
 
-        var cluwne = EnsureComp<CluwneComponent>(msg.Target);
-        cluwne.KnockChance = 0.2f;
+        EnsureComp<CluwneComponent>(msg.Target);
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
@@ -212,7 +215,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnEmpSpell(EmpSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         var coords = _transformSystem.ToMapCoordinates(Transform(msg.Performer).Coordinates);
@@ -229,7 +232,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnJauntSpell(EtherealJauntSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         if (_statusEffectsSystem.HasStatusEffect(msg.Performer, "Incorporeal"))
@@ -240,7 +243,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         Spawn("AdminInstantEffectSmoke10", Transform(msg.Performer).Coordinates);
 
-        _statusEffectsSystem.TryAddStatusEffect<IncorporealComponent>(msg.Performer, "Incorporeal", TimeSpan.FromSeconds(10), false);
+        _statusEffectsSystem.TryAddStatusEffect<IncorporealComponent>(msg.Performer, "Incorporeal",
+            TimeSpan.FromSeconds(10), false);
 
         msg.Handled = true;
         Speak(msg);
@@ -252,7 +256,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnBlinkSpell(BlinkSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         var transform = Transform(msg.Performer);
@@ -291,8 +295,8 @@ public sealed class WizardSpellsSystem : EntitySystem
         _audio.PlayPvs("/Audio/White/Cult/veilin.ogg", coords);
         _audio.PlayPvs("/Audio/White/Cult/veilout.ogg", oldCoords);
 
-        Spawn("AdminInstantEffectSmoke10", oldCoords);
-        Spawn("AdminInstantEffectSmoke10", coords);
+        Spawn("AdminInstantEffectSmoke3", oldCoords);
+        Spawn("AdminInstantEffectSmoke3", coords);
 
         msg.Handled = true;
         Speak(msg);
@@ -304,7 +308,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnForcewallSpell(ForceWallSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         switch (msg.ActionUseType)
@@ -372,7 +376,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnCardsSpell(CardsSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         var result = true;
@@ -413,7 +417,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
                 var ent = Spawn(msg.Prototype, spawnCoords);
 
-                var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) - spawnCoords.ToMapPos(EntityManager, _transformSystem);
+                var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) -
+                                spawnCoords.ToMapPos(EntityManager, _transformSystem);
                 var randomizedDirection = direction + new Vector2(_random.Next(-2, 2), _random.Next(-2, 2));
 
                 _throwingSystem.TryThrow(ent, randomizedDirection, 60, msg.Performer);
@@ -425,14 +430,15 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         var xform = Transform(msg.Performer);
 
-        var count = 10 * msg.ChargeLevel;
+        var count = 10 + 10 * msg.ChargeLevel;
         var angleStep = 360f / count;
 
         for (var i = 0; i < count; i++)
         {
             var angle = i * angleStep;
 
-            var direction = new Vector2(MathF.Cos(MathHelper.DegreesToRadians(angle)), MathF.Sin(MathHelper.DegreesToRadians(angle)));
+            var direction = new Vector2(MathF.Cos(MathHelper.DegreesToRadians(angle)),
+                MathF.Sin(MathHelper.DegreesToRadians(angle)));
 
             foreach (var pos in _magicSystem.GetSpawnPositions(xform, msg.Pos))
             {
@@ -453,7 +459,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         if (!HasComp<ItemComponent>(msg.TargetUid))
         {
-            _popupSystem.PopupEntity("Работает только на предметах.", msg.Performer, msg.Performer);
+            _popupSystem.PopupEntity("В карту можно превратить только предметы.", msg.Performer, msg.Performer);
             return false;
         }
 
@@ -470,7 +476,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnFireballSpell(FireballSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         var result = true;
@@ -513,7 +519,8 @@ public sealed class WizardSpellsSystem : EntitySystem
                 userVelocity = physics.LinearVelocity;
 
             var ent = Spawn(msg.Prototype, spawnCoords);
-            var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) - spawnCoords.ToMapPos(EntityManager, _transformSystem);
+            var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) -
+                            spawnCoords.ToMapPos(EntityManager, _transformSystem);
             _gunSystem.ShootProjectile(ent, direction, userVelocity, msg.Performer, msg.Performer);
         }
     }
@@ -554,8 +561,10 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnForceSpell(ForceSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
+
+        var result = true;
 
         switch (msg.ActionUseType)
         {
@@ -566,28 +575,41 @@ public sealed class WizardSpellsSystem : EntitySystem
                 ForceSpellCharge(msg);
                 break;
             case ActionUseType.AltUse:
-                ForceSpellAlt(msg);
+                result = ForceSpellAlt(msg);
                 break;
         }
+
+        if (!result)
+            return;
 
         SetCooldown(msg.Action, msg.ActionUseType);
         msg.Handled = true;
         Speak(msg);
     }
 
-    private void ForceSpellDefault(ForceSpellEvent msg)
+    private bool ForceSpellAlt(ForceSpellEvent msg)
     {
-        Spawn("AdminInstantEffectMinusGravityWell", msg.Target);
+        if (!HasComp<TransformComponent>(msg.TargetUid) || !HasComp<PhysicsComponent>(msg.TargetUid))
+        {
+            _popupSystem.PopupEntity("Невозможно это притянуть!", msg.Performer, msg.Performer);
+            return false;
+        }
+
+        _throwingSystem.TryThrow(msg.TargetUid, Transform(msg.Performer).Coordinates, 5f);
+        _standing.TryLieDown(msg.TargetUid);
+
+        return true;
     }
 
     private void ForceSpellCharge(ForceSpellEvent msg)
     {
-        _gravityWell.GravPulse(msg.Performer, 15, 0, -80 * msg.ChargeLevel, -2 * msg.ChargeLevel);
+        _gravityWell.GravPulse(msg.Performer, 15, 0, -80 * msg.ChargeLevel, -2 * msg.ChargeLevel, null, msg.ChargeLevel,
+            new() {msg.Performer});
     }
 
-    private void ForceSpellAlt(ForceSpellEvent msg)
+    private void ForceSpellDefault(ForceSpellEvent msg)
     {
-        _gravityWell.GravPulse(msg.Target, 10, 0, 200, 10);
+        _gravityWell.GravPulse(msg.Target, 10, 0, 200, 10, 2f, new() {msg.Performer});
     }
 
     #endregion
@@ -596,7 +618,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void OnArcSpell(ArcSpellEvent msg)
     {
-        if (msg.Handled || !CheckRequirements(msg.Action, msg.Performer))
+        if (!CanCast(msg))
             return;
 
         var result = true;
@@ -632,7 +654,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         var entityUids = entitiesToHit.ToList();
         foreach (var entity in entityUids)
         {
-            _lightning.ShootLightning(msg.Performer, entity);
+            _lightning.ShootLightning(msg.Performer, entity, "WizardLightning", true, msg.Performer);
         }
 
         return entityUids.Count != 0;
@@ -640,7 +662,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void ArcSpellCharge(ArcSpellEvent msg)
     {
-        _lightning.ShootRandomLightnings(msg.Performer, 2 * msg.ChargeLevel, msg.ChargeLevel * 2, arcDepth: 2);
+        _lightning.ShootRandomLightnings(msg.Performer, 2f * msg.ChargeLevel, msg.ChargeLevel * 2, "WizardLightning", 1,
+            caster: msg.Performer);
     }
 
     private void ArcSpellAlt(ArcSpellEvent msg)
@@ -660,7 +683,8 @@ public sealed class WizardSpellsSystem : EntitySystem
                 userVelocity = physics.LinearVelocity;
 
             var ent = Spawn(msg.Prototype, spawnCoords);
-            var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) - spawnCoords.ToMapPos(EntityManager, _transformSystem);
+            var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) -
+                            spawnCoords.ToMapPos(EntityManager, _transformSystem);
             _gunSystem.ShootProjectile(ent, direction, userVelocity, msg.Performer, msg.Performer);
         }
     }
@@ -668,6 +692,12 @@ public sealed class WizardSpellsSystem : EntitySystem
     #endregion
 
     #region Helpers
+
+    private bool CanCast(BaseActionEvent msg)
+    {
+        return !msg.Handled && CheckRequirements(msg.Action, msg.Performer) &&
+               !_statusEffectsSystem.HasStatusEffect(msg.Performer, "Incorporeal");
+    }
 
     private void Speak(BaseActionEvent args)
     {
@@ -743,7 +773,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!hasReqs)
         {
             args.Cancelled = true;
-            _popupSystem.PopupEntity("Missing Requirements! You need to wear your robe and hat!", args.Performer, args.Performer);
+            _popupSystem.PopupEntity(Loc.GetString("magic-component-missing-req"), args.Performer, args.Performer);
         }
     }
 

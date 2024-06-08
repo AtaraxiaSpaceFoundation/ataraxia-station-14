@@ -2,6 +2,8 @@
 using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Charging;
 using Content.Shared.Actions;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.StatusEffect;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -24,6 +26,8 @@ public sealed class ChargeActionSystem : SharedChargingSystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
 
     private ActionUIController? _controller;
 
@@ -53,6 +57,9 @@ public sealed class ChargeActionSystem : SharedChargingSystem
         base.Update(frameTime);
 
         if (_playerManager.LocalEntity is not { } user)
+            return;
+
+        if (!_mobState.IsAlive(user) || _statusEffects.HasStatusEffect(user, "Incorporeal"))
             return;
 
         if (!_timing.IsFirstTimePredicted || _controller == null || _controller.SelectingTargetFor is not { } actionId)
