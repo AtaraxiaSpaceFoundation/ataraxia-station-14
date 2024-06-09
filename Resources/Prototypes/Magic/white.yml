@@ -31,7 +31,7 @@
     - type: VariableUseDelay
       useDelay: 6
       altUseDelay: 12
-      chargeUseDelay: 40
+      chargeUseDelay: 30
 
 - type: entity
   id: ActionForceSpell
@@ -62,7 +62,7 @@
     - type: VariableUseDelay
       useDelay: 6
       altUseDelay: 2
-      chargeUseDelay: 20
+      chargeUseDelay: 30
 
 - type: entity
   id: ActionFireballSpell
@@ -93,7 +93,7 @@
     - type: VariableUseDelay
       useDelay: 5
       altUseDelay: 10
-      chargeUseDelay: 40
+      chargeUseDelay: 30
 
 - type: entity
   id: ActionCardSpell
@@ -126,7 +126,7 @@
     - type: VariableUseDelay
       useDelay: 4
       altUseDelay: 1
-      chargeUseDelay: 40
+      chargeUseDelay: 30
 
 - type: entity
   id: ActionForcewallSpell
@@ -160,7 +160,7 @@
     - type: VariableUseDelay
       useDelay: 10
       altUseDelay: 20
-      chargeUseDelay: 60
+      chargeUseDelay: 50
 
 - type: entity
   id: ActionBlinkSpell
@@ -272,3 +272,20 @@
         sprite: Objects/Magic/magicactions.rsi
         state: summons
       event: !type:InstantRecallSpellEvent
+
+- type: entity
+  id: ActionTeleportSpell
+  name: Teleport
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      checkCanInteract: false
+      useDelay: 60
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: teleport
+      event: !type:TeleportSpellEvent
+        speech: "SCYAR FIDE!"

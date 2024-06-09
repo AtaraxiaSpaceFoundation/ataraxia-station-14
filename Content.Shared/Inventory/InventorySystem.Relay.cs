@@ -1,3 +1,4 @@
+using Content.Shared._White.Events;
 using Content.Shared._White.StaminaProtection;
 using Content.Shared.Changeling;
 using Content.Shared.Chemistry;
@@ -32,6 +33,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, StaminaDamageModifyEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, ChemRegenModifyEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, ChangelingRefundEvent>(RelayInventoryEvent); // WD
+        SubscribeLocalEvent<InventoryComponent, EnergyDomeClothesTurnOffEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, GetDefaultRadioChannelEvent>(RelayInventoryEvent);
 
         // by-ref events

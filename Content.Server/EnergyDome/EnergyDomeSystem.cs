@@ -3,10 +3,12 @@ using Content.Server.DeviceLinking.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
+using Content.Shared._White.Events;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
@@ -53,8 +55,17 @@ public sealed partial class EnergyDomeSystem : EntitySystem
 
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, ComponentRemove>(OnComponentRemove);
 
+        SubscribeLocalEvent<EnergyDomeGeneratorComponent, InventoryRelayedEvent<EnergyDomeClothesTurnOffEvent>>(
+            OnClothesTurnOff);
+
         //Dome events
         SubscribeLocalEvent<EnergyDomeComponent, DamageChangedEvent>(OnDomeDamaged);
+    }
+
+    private void OnClothesTurnOff(Entity<EnergyDomeGeneratorComponent> ent,
+        ref InventoryRelayedEvent<EnergyDomeClothesTurnOffEvent> args)
+    {
+        TurnOff(ent, false);
     }
 
     private void OnInit(Entity<EnergyDomeGeneratorComponent> generator, ref MapInitEvent args)
@@ -179,12 +190,11 @@ public sealed partial class EnergyDomeSystem : EntitySystem
 
         if (HasComp<PowerCellDrawComponent>(generatorUid))
         {
-            _powerCell.TryGetBatteryFromSlot(generatorUid, out var cell);
-            if (cell != null)
+            if (_powerCell.TryGetBatteryFromSlot(generatorUid, out var cell, out var batteryComp))
             {
-                _battery.UseCharge(generatorUid, energyLeak);
+                _battery.UseCharge(cell.Value, energyLeak, batteryComp);
 
-                if (cell.CurrentCharge == 0)
+                if (batteryComp.CurrentCharge == 0)
                     TurnOff((generatorUid, generatorComp), true);
             }
         }
@@ -298,7 +308,7 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             return;
 
         generator.Comp.Enabled = false;
-        QueueDel(generator.Comp.SpawnedDome);
+        Del(generator.Comp.SpawnedDome);
 
         _powerCell.SetPowerCellDrawEnabled(generator, false);
         if (TryComp<BatterySelfRechargerComponent>(generator, out var recharger))

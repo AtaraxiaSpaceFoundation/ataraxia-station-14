@@ -172,4 +172,10 @@ public sealed partial class InstantRecallSpellEvent : InstantActionEvent, ISpeak
     public string? Speech { get; private set; }
 }
 
+public sealed partial class TeleportSpellEvent : InstantActionEvent, ISpeakSpell
+{
+    [DataField("speech")]
+    public string? Speech { get; private set; }
+}
+
 #endregion

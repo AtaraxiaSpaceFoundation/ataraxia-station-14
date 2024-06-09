@@ -4,6 +4,7 @@
   name: warp point
   components:
   - type: WarpPoint
+  - type: SpawnTeleportLocation
   - type: Sprite
     state: pink
 

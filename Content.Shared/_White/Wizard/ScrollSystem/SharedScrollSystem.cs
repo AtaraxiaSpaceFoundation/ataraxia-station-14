@@ -38,7 +38,8 @@ public abstract class SharedScrollSystem : EntitySystem
         if (args.Handled)
             return;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.LearnTime, new ScrollDoAfterEvent(), uid, target: uid)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.LearnTime, new ScrollDoAfterEvent(),
+            uid, target: uid)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -50,7 +51,9 @@ public abstract class SharedScrollSystem : EntitySystem
             _audioSystem.PlayPvs(component.UseSound, args.User);
         }
 
-        _popupSystem.PopupClient($"You start learning about {component.LearnPopup}.", args.User, args.User, PopupType.Medium);
+        _popupSystem.PopupClient(
+            Loc.GetString("scroll-component-start", ("subject", Loc.GetString(component.LearnPopup))), args.User,
+            args.User, PopupType.Medium);
 
         _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
 
@@ -69,7 +72,9 @@ public abstract class SharedScrollSystem : EntitySystem
             _audioSystem.PlayEntity(component.AfterUseSound, args.User, args.User);
         }
 
-        _popupSystem.PopupClient($"You learned much about {component.LearnPopup}. The scroll is slowly burning in your hands.", args.User, args.User, PopupType.Medium);
+        _popupSystem.PopupClient(
+            Loc.GetString("scroll-component-end", ("subject", Loc.GetString(component.LearnPopup))), args.User,
+            args.User, PopupType.Medium);
 
         BurnScroll(uid);
 
@@ -80,7 +85,7 @@ public abstract class SharedScrollSystem : EntitySystem
 
     #region Helpers
 
-    protected virtual void BurnScroll(EntityUid uid) {}
+    protected virtual void BurnScroll(EntityUid uid) { }
 
     #endregion
 }

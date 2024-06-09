@@ -671,10 +671,10 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.4
-        Heat: 0.25
+        Piercing: 0.6
+        Heat: 0.6
         Radiation: 0.25
-        Caustic: 0.75
+        Caustic: 0.25
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitWizard
   - type: ContainerContainer
@@ -693,11 +693,11 @@
             - PowerCell
             - PowerCellSmall
   - type: EnergyDomeGenerator
-    damageEnergyDraw: 3
+    damageEnergyDraw: 5
     domePrototype: EnergyDomeSmallPink
   - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 1
+    walkModifier: 0.9
+    sprintModifier: 0.9
   - type: PowerCellDraw
     drawRate: 8
     useRate: 0

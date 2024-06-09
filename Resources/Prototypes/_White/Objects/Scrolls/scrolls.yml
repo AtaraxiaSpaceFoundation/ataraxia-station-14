@@ -24,7 +24,7 @@
   components:
     - type: Scroll
       actionId: ActionFireballSpell
-      learnPopup: fireball
+      learnPopup: scroll-component-fireball
 
 - type: entity
   id: ScrollForcewall
@@ -33,7 +33,7 @@
   components:
     - type: Scroll
       actionId: ActionForcewallSpell
-      learnPopup: forcewall
+      learnPopup: scroll-component-forcewall
 
 - type: entity
   id: ScrollKnock
@@ -42,7 +42,7 @@
   components:
     - type: Scroll
       actionId: ActionKnock
-      learnPopup: knock-knock
+      learnPopup: scroll-component-knock
 
 - type: entity
   id: ScrollArc
@@ -51,7 +51,7 @@
   components:
     - type: Scroll
       actionId: ActionElectricArcSpell
-      learnPopup: lightning
+      learnPopup: scroll-component-lightning
 
 - type: entity
   id: ScrollForce
@@ -60,7 +60,7 @@
   components:
     - type: Scroll
       actionId: ActionForceSpell
-      learnPopup: force
+      learnPopup: scroll-component-force
 
 - type: entity
   id: ScrollCards
@@ -69,7 +69,7 @@
   components:
     - type: Scroll
       actionId: ActionCardSpell
-      learnPopup: cards
+      learnPopup: scroll-component-cards
 
 - type: entity
   id: ScrollBlink
@@ -78,7 +78,7 @@
   components:
     - type: Scroll
       actionId: ActionBlinkSpell
-      learnPopup: blink
+      learnPopup: scroll-component-blink
 
 - type: entity
   id: ScrollEtherealJaunt
@@ -87,7 +87,7 @@
   components:
     - type: Scroll
       actionId: ActionEtherealJauntSpell
-      learnPopup: jaunt
+      learnPopup: scroll-component-jaunt
 
 - type: entity
   id: ScrollEmp
@@ -96,7 +96,7 @@
   components:
     - type: Scroll
       actionId: ActionEmpSpell
-      learnPopup: emp
+      learnPopup: scroll-component-emp
 
 - type: entity
   id: ScrollCluwneCurse
@@ -105,7 +105,7 @@
   components:
     - type: Scroll
       actionId: ActionCluwneCurseSpell
-      learnPopup: curse
+      learnPopup: scroll-component-cluwne
 
 - type: entity
   id: ScrollBananaTouch
@@ -114,7 +114,7 @@
   components:
     - type: Scroll
       actionId: ActionBananaTouchSpell
-      learnPopup: banana
+      learnPopup: scroll-component-clown
 
 - type: entity
   id: ScrollMimeTouch
@@ -123,7 +123,7 @@
   components:
     - type: Scroll
       actionId: ActionMimeTouchSpell
-      learnPopup: silence
+      learnPopup: scroll-component-silence
 
 - type: entity
   id: ScrollInstantRecall
@@ -132,4 +132,13 @@
   components:
     - type: Scroll
       actionId: ActionInstantRecallSpell
-      learnPopup: recall
+      learnPopup: scroll-component-recall
+
+- type: entity
+  id: ScrollTeleport
+  parent: BaseScroll
+  name: "Teleport scroll"
+  components:
+    - type: Scroll
+      actionId: ActionTeleportSpell
+      learnPopup: scroll-component-teleport

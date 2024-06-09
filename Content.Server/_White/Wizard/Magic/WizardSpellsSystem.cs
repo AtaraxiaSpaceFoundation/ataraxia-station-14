@@ -3,17 +3,21 @@ using System.Numerics;
 using Content.Server._White.IncorporealSystem;
 using Content.Server._White.Wizard.Magic.Amaterasu;
 using Content.Server._White.Wizard.Magic.Other;
+using Content.Server._White.Wizard.Teleport;
 using Content.Server.Abilities.Mime;
 using Content.Server.Administration.Commands;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
+using Content.Server.EUI;
 using Content.Server.Lightning;
 using Content.Server.Magic;
 using Content.Server.Singularity.EntitySystems;
 using Content.Server.Standing;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared._White.BetrayalDagger;
+using Content.Shared._White.Events;
 using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Magic;
 using Content.Shared.Actions;
@@ -36,6 +40,7 @@ using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server._White.Wizard.Magic;
@@ -64,6 +69,8 @@ public sealed class WizardSpellsSystem : EntitySystem
     [Dependency] private readonly EmpSystem _empSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly TelefragSystem _telefrag = default!;
+    [Dependency] private readonly EuiManager _euiManager = default!;
 
     #endregion
 
@@ -71,6 +78,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<TeleportSpellEvent>(OnTeleportSpell);
         SubscribeLocalEvent<InstantRecallSpellEvent>(OnInstantRecallSpell);
         SubscribeLocalEvent<MimeTouchSpellEvent>(OnMimeTouchSpell);
         SubscribeLocalEvent<BananaTouchSpellEvent>(OnBananaTouchSpell);
@@ -86,6 +94,26 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         SubscribeLocalEvent<MagicComponent, BeforeCastSpellEvent>(OnBeforeCastSpell);
     }
+
+    #region Teleport
+
+    private void OnTeleportSpell(TeleportSpellEvent msg)
+    {
+        if (!CanCast(msg))
+            return;
+
+        if (!TryComp(msg.Performer, out ActorComponent? actor))
+            return;
+
+        var eui = new TeleportSpellEui(msg.Performer);
+        _euiManager.OpenEui(eui, actor.PlayerSession);
+        eui.StateDirty();
+
+        msg.Handled = true;
+        Speak(msg);
+    }
+
+    #endregion
 
     #region Instant Recall
 
@@ -289,6 +317,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!foundTeleportPos)
             return;
 
+        _telefrag.Telefrag(coords, msg.Performer);
         _transformSystem.SetCoordinates(msg.Performer, coords);
         _transformSystem.AttachToGridOrMap(msg.Performer);
 
@@ -404,6 +433,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void CardsSpellDefault(CardsSpellEvent msg)
     {
+        TurnOffShield(msg.Performer);
+
         var xform = Transform(msg.Performer);
 
         for (var i = 0; i < 10; i++)
@@ -428,6 +459,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void CardsSpellCharge(CardsSpellEvent msg)
     {
+        TurnOffShield(msg.Performer);
+
         var xform = Transform(msg.Performer);
 
         var count = 10 + 10 * msg.ChargeLevel;
@@ -466,6 +499,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         Del(msg.TargetUid);
         var item = Spawn(msg.Prototype);
         _handsSystem.TryPickupAnyHand(msg.Performer, item);
+        TurnOffShield(msg.Performer);
 
         return true;
     }
@@ -504,6 +538,8 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void FireballSpellDefault(FireballSpellEvent msg)
     {
+        TurnOffShield(msg.Performer);
+
         var xform = Transform(msg.Performer);
 
         foreach (var pos in _magicSystem.GetSpawnPositions(xform, msg.Pos))
@@ -662,12 +698,14 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     private void ArcSpellCharge(ArcSpellEvent msg)
     {
-        _lightning.ShootRandomLightnings(msg.Performer, 2f * msg.ChargeLevel, msg.ChargeLevel * 2, "WizardLightning", 1,
+        _lightning.ShootRandomLightnings(msg.Performer, 1.5f * msg.ChargeLevel, msg.ChargeLevel * 2, "WizardLightning", 2,
             caster: msg.Performer);
     }
 
     private void ArcSpellAlt(ArcSpellEvent msg)
     {
+        TurnOffShield(msg.Performer);
+
         var xform = Transform(msg.Performer);
 
         foreach (var pos in _magicSystem.GetSpawnPositions(xform, msg.Pos))
@@ -692,6 +730,11 @@ public sealed class WizardSpellsSystem : EntitySystem
     #endregion
 
     #region Helpers
+
+    private void TurnOffShield(EntityUid uid)
+    {
+        RaiseLocalEvent(uid, new EnergyDomeClothesTurnOffEvent());
+    }
 
     private bool CanCast(BaseActionEvent msg)
     {

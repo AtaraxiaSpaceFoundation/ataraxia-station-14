@@ -14,6 +14,7 @@ public sealed partial class WizardRuleComponent : Component
 {
     public readonly List<EntityUid> WizardMinds = new();
 
+    [ViewVariables(VVAccess.ReadWrite)]
     public EntityUid? TargetStation;
 
     [DataField("minPlayers")]

@@ -39,8 +39,8 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorDarkBlue
     back: ClothingBackpackFilled
-    head: ClothingHeadHatRealWizardBlue
-    outerClothing: ClothingOuterRealWizardBlue
+    head: ClothingHeadHatRealWizardFancy
+    outerClothing: ClothingOuterRealWizardFancy
     shoes: ClothingShoesWizard
   innerClothingSkirt: ClothingUniformJumpskirtColorDarkBlue
   satchel: ClothingBackpackSatchelFilled
