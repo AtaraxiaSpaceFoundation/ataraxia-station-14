@@ -762,3 +762,80 @@
   sex: Male
   speaker: tychus
 
+- type: ttsVoice
+  name: tts-voice-name-boris-petrov
+  sex: Male
+  speaker: boris_petrov_father_tb
+  id: BorisPetrovFatherTb
+
+- type: ttsVoice
+  name: tts-voice-name-karina-petrova
+  sex: Female
+  speaker: karina_petrova_tb
+  id: KarinaPetrovaTb
+
+- type: ttsVoice
+  name: tts-voice-name-kate-smirnova
+  sex: Female
+  speaker: kate_smirnova_tb
+  id: KateSmirnovaTb
+
+- type: ttsVoice
+  name: tts-voice-name-semen-baburin
+  sex: Male
+  speaker: semen_baburin_tb
+  id: SemenBaburinTb
+
+- type: ttsVoice
+  name: tts-voice-name-tihonov
+  sex: Male
+  speaker: tihonov_tb
+  id: TihonovTb
+
+- type: ttsVoice
+  name: tts-voice-name-uther
+  sex: Male
+  speaker: uther_hs
+  id: UtherHs
+
+- type: ttsVoice
+  name: tts-voice-name-female-commander
+  sex: Female
+  speaker: female_commander
+  id: FemaleCommander
+
+- type: ttsVoice
+  name: tts-voice-name-lord-harkon
+  sex: Male
+  speaker: lord_harkon
+  id: LordHarkon
+
+- type: ttsVoice
+  name: tts-voice-name-serana
+  sex: Female
+  speaker: serana
+  id: Serana
+
+- type: ttsVoice
+  name: tts-voice-name-moira-brown
+  sex: Female
+  speaker: moira_brown
+  id: MoiraBrown
+
+- type: ttsVoice
+  name: tts-voice-name-robert-maccready
+  sex: Male
+  speaker: robert_maccready
+  id: RobertMaccready
+
+- type: ttsVoice
+  name: tts-voice-name-threedog
+  sex: Male
+  speaker: threedog
+  id: Threedog
+
+- type: ttsVoice
+  name: tts-voice-name-threedog-radio
+  sex: Male
+  speaker: threedog_radio
+  id: ThreedogRadio
