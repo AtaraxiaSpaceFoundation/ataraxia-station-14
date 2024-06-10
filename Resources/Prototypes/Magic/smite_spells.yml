@@ -1,9 +1,11 @@
-﻿- type: entity
+- type: entity
   id: ActionSmite
   name: Smite
   description: Instantly gibs a target.
   noSpawn: true
   components:
+  - type: Magic
+    requiresClothes: true
   - type: EntityTargetAction
     useDelay: 60
     itemIconStyle: BigAction
@@ -12,6 +14,7 @@
       - Body
     canTargetSelf: false
     interactOnMiss: false
+    alwaysPlaySound: false
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/disintegrate.ogg
     icon:

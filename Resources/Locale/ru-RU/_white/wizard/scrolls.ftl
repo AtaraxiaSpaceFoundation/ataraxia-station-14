@@ -15,6 +15,7 @@ scroll-component-clown = бананы
 scroll-component-silence = тишину
 scroll-component-recall = призыв
 scroll-component-teleport = телепортацию
+scroll-component-smite = кару
 
 ent-BaseScroll = магический свиток
     .desc = Этот древний пергамент, ставший реликвией в арканных преданиях, хранит в себе бесчисленные мистические заклятия и забытые заклинания.
@@ -45,4 +46,6 @@ ent-ScrollMimeTouch = свиток касания мима
 ent-ScrollInstantRecall = свиток мгновенного призыва
     .desc = { ent-BaseScroll.desc }
 ent-ScrollTeleport = свиток телепортации
+    .desc = { ent-BaseScroll.desc }
+ent-ScrollSmite = свиток кары
     .desc = { ent-BaseScroll.desc }

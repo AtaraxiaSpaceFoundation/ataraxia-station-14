@@ -36,7 +36,6 @@
     - HolyKatana
     - MultiverseBlade
     - VorpalScythe
-    - HighFrequencyBlade
     - SpellBlade
     - PossessedBlade
     - ChainsawHand
@@ -194,29 +193,6 @@
     - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/scythe-inhands.rsi
-  - type: HolyWeapon
-
-- type: entity
-  name: высокочастотный клинок
-  parent: HolyKatana
-  id: HighFrequencyBlade
-  description: Клинок, способный отражать выстрелы.
-  components:
-  - type: Sprite
-    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
-  - type: MeleeWeapon
-    damage:
-      types:
-        Slash: 18
-  - type: Clothing
-    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
-    slots:
-    - back
-    - suitStorage
-  - type: Reflect
-    reflectProb: 0.33
-  - type: Item
-    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
   - type: HolyWeapon
 
 - type: entity

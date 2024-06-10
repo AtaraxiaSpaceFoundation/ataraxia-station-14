@@ -310,7 +310,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             if (meta.EntityPrototype?.ID != component.SpawnPointProto.Id)
                 continue;
 
-            if (xform.ParentUid != component.ShuttleMap)
+            if (xform.MapUid != component.ShuttleMap)
                 continue;
 
             spawn = xform.Coordinates;

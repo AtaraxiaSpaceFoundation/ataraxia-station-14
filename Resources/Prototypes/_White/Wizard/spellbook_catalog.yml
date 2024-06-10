@@ -1,0 +1,249 @@
+- type: listing
+  id: SpellBookFireball
+  name: spellbook-fireball-name
+  description: spellbook-fireball-desc
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: fireball
+  productEntity: ScrollFireball
+  cost:
+    SpellPoint: 2
+  categories:
+  - AttackSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookForcewall
+  name: spellbook-forcewall-name
+  description: spellbook-forcewall-desc
+  productEntity: ScrollForcewall
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: shield
+  cost:
+    SpellPoint: 1
+  categories:
+  - DefenceSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookKnock
+  name: spellbook-knock-name
+  description: spellbook-knock-desc
+  productEntity: ScrollKnock
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: knock
+  cost:
+    SpellPoint: 1
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookArc
+  name: spellbook-arc-name
+  description: spellbook-arc-desc
+  productEntity: ScrollArc
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: thunder
+  cost:
+    SpellPoint: 2
+  categories:
+  - AttackSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookForce
+  name: spellbook-force-name
+  description: spellbook-force-desc
+  productEntity: ScrollForce
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: push
+  cost:
+    SpellPoint: 2
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookCards
+  name: spellbook-cards-name
+  description: spellbook-cards-desc
+  productEntity: ScrollCards
+  icon:
+    sprite: Objects/Magic/card.rsi
+    state: icon
+  cost:
+    SpellPoint: 2
+  categories:
+  - AttackSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookBlink
+  name: spellbook-blink-name
+  description: spellbook-blink-desc
+  productEntity: ScrollBlink
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: blink
+  cost:
+    SpellPoint: 1
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookEtherealJaunt
+  name: spellbook-jaunt-name
+  description: spellbook-jaunt-desc
+  productEntity: ScrollEtherealJaunt
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: jaunt
+  cost:
+    SpellPoint: 2
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookEmp
+  name: spellbook-emp-name
+  description: spellbook-emp-desc
+  productEntity: ScrollEmp
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: emp_new
+  cost:
+    SpellPoint: 1
+  categories:
+  - DefenceSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookCluwneCurse
+  name: spellbook-cluwne-name
+  description: spellbook-cluwne-desc
+  productEntity: ScrollCluwneCurse
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: cluwne
+  cost:
+    SpellPoint: 2
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookBananaTouch
+  name: spellbook-clown-name
+  description: spellbook-clown-desc
+  productEntity: ScrollBananaTouch
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: clown
+  cost:
+    SpellPoint: 1
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookMimeTouch
+  name: spellbook-mime-name
+  description: spellbook-mime-desc
+  productEntity: ScrollMimeTouch
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: mime_curse
+  cost:
+    SpellPoint: 1
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookInstantRecall
+  name: spellbook-recall-name
+  description: spellbook-recall-desc
+  productEntity: ScrollInstantRecall
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: summons
+  cost:
+    SpellPoint: 1
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookSmite
+  name: spellbook-smite-name
+  description: spellbook-smite-desc
+  productEntity: ScrollSmite
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: gib
+  cost:
+    SpellPoint: 2
+  categories:
+  - AttackSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookHardsuit
+  name: spellbook-hardsuit-name
+  description: spellbook-hardsuit-desc
+  productEntity: ClothingOuterHardsuitWizard
+  cost:
+    SpellPoint: 4
+  categories:
+  - MagicItems
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellBookHighFrequencyBlade
+  name: spellbook-hfrequency-name
+  description: spellbook-hfrequency-desc
+  productEntity: HighFrequencyBlade
+  cost:
+    SpellPoint: 2
+  categories:
+  - MagicItems
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

@@ -1,0 +1,23 @@
+- type: entity
+  name: высокочастотный клинок
+  parent: Katana
+  id: HighFrequencyBlade
+  description: Клинок, атакующий с невероятной быстротой, а также способный отражать выстрелы.
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 4
+    damage:
+      types:
+        Slash: 10
+  - type: Clothing
+    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
+    slots:
+    - back
+    - suitStorage
+  - type: Reflect
+    reflectProb: 0.4
+  - type: Item
+    sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi

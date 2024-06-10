@@ -142,3 +142,12 @@
     - type: Scroll
       actionId: ActionTeleportSpell
       learnPopup: scroll-component-teleport
+
+- type: entity
+  id: ScrollSmite
+  parent: BaseScroll
+  name: "Smite scroll"
+  components:
+    - type: Scroll
+      actionId: ActionSmite
+      learnPopup: scroll-component-smite

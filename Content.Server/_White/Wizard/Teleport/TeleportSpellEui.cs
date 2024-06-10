@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.EUI;
 using Content.Server.Popups;
-using Content.Server.Station.Systems;
 using Content.Shared._White.Wizard.Teleport;
 using Content.Shared.Eui;
 using Robust.Shared.Timing;
@@ -13,7 +12,7 @@ public sealed class TeleportSpellEui : BaseEui
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
     private readonly SharedTransformSystem _transformSystem;
-    private readonly StationSystem _station;
+    private readonly TeleportLocationSystem _teleportLocation;
     private readonly PopupSystem _popupSystem;
 
     private readonly EntityUid _performer;
@@ -25,7 +24,7 @@ public sealed class TeleportSpellEui : BaseEui
         IoCManager.InjectDependencies(this);
 
         _transformSystem = _entityManager.System<SharedTransformSystem>();
-        _station = _entityManager.System<StationSystem>();
+        _teleportLocation = _entityManager.System<TeleportLocationSystem>();
         _popupSystem = _entityManager.System<PopupSystem>();
 
         _performer = performer;
@@ -40,12 +39,8 @@ public sealed class TeleportSpellEui : BaseEui
 
         while (locationQuery.MoveNext(out var locationUid, out var locationComponent, out var transformComponent))
         {
-            var station = _station.GetOwningStation(locationUid, transformComponent);
-            if (_entityManager.EntityQuery<WizardRuleComponent>(true)
-                .Any(wizardRule => wizardRule.TargetStation == station))
-            {
+            if (_teleportLocation.CanTeleport(locationUid, transformComponent))
                 state.Locations.Add((int) locationUid, locationComponent.Location);
-            }
         }
 
         return state;

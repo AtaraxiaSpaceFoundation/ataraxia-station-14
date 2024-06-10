@@ -217,6 +217,9 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
+      whitelist:
+        components:
+        - HumanoidAppearance
       canTargetSelf: false
       range: 3
       useDelay: 60
@@ -233,6 +236,9 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
+      whitelist:
+        components:
+        - HumanoidAppearance
       canTargetSelf: false
       range: 3
       useDelay: 30
@@ -249,6 +255,9 @@
   noSpawn: true
   components:
     - type: EntityTargetAction
+      whitelist:
+        components:
+        - HumanoidAppearance
       canTargetSelf: false
       range: 3
       useDelay: 30
@@ -278,8 +287,6 @@
   name: Teleport
   noSpawn: true
   components:
-    - type: Magic
-      requiresClothes: true
     - type: InstantAction
       checkCanInteract: false
       useDelay: 60

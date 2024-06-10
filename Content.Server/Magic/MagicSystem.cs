@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._White.Wizard.Magic;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
@@ -44,6 +45,7 @@ public sealed class MagicSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly WizardSpellsSystem _wizardSpells = default!;
 
     public override void Initialize()
     {
@@ -157,7 +159,7 @@ public sealed class MagicSystem : EntitySystem
 
     private void OnKnockSpell(KnockSpellEvent args)
     {
-        if (args.Handled)
+        if (!_wizardSpells.CanCast(args)) // WD EDIT
             return;
 
         args.Handled = true;
@@ -180,7 +182,7 @@ public sealed class MagicSystem : EntitySystem
 
     private void OnSmiteSpell(SmiteSpellEvent ev)
     {
-        if (ev.Handled)
+        if (!_wizardSpells.CanCast(ev)) // WD EDIT
             return;
 
         ev.Handled = true;

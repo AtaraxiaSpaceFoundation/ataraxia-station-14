@@ -1,0 +1,63 @@
+- type: entity
+  id: SpellBook
+  parent: BaseItem
+  name: spell book
+  description: An unearthly tome that glows with power.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_old
+      color: "#473F40"
+    - state: decor_wingette
+      color: "#352D2F"
+    - state: icon_stars
+      color: gold
+  - type: UserInterface
+    interfaces:
+    - key: enum.StoreUiKey.Key
+      type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    preset: StorePresetSpellBook
+    balance:
+      SpellPoint: 10
+  - type: GiftIgnore
+
+- type: storePreset
+  id: StorePresetSpellBook
+  storeName: Spell Book
+  categories:
+  - AttackSpells
+  - DefenceSpells
+  - UtilitySpells
+  - MagicItems
+  currencyWhitelist:
+  - SpellPoint
+
+- type: currency
+  id: SpellPoint
+  displayName: store-currency-display-spell-point
+  canWithdraw: false
+
+- type: storeCategory
+  id: AttackSpells
+  name: store-category-spells-attack
+  priority: 0
+
+- type: storeCategory
+  id: DefenceSpells
+  name: store-category-spells-defence
+  priority: 1
+
+- type: storeCategory
+  id: UtilitySpells
+  name: store-category-spells-utility
+  priority: 2
+
+- type: storeCategory
+  id: MagicItems
+  name: store-category-magic-items
+  priority: 3
