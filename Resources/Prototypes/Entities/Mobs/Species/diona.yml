@@ -109,6 +109,13 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: LanguageSpeaker
+    speaks:
+    - GalacticCommon
+    - RootSpeak
+    understands:
+    - GalacticCommon
+    - RootSpeak
 
 - type: entity
   parent: BaseSpeciesDummy

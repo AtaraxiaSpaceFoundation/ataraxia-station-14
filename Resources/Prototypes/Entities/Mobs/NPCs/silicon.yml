@@ -110,6 +110,13 @@
   - type: StepTriggerImmune
   - type: NoSlip
   - type: Insulated
+  - type: LanguageSpeaker
+    speaks:
+    - GalacticCommon
+    - RobotTalk
+    understands:
+    - GalacticCommon
+    - RobotTalk
 
 - type: entity
   parent: MobSiliconBase

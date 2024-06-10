@@ -121,6 +121,13 @@
   - type: Grammar
     attributes:
       gender: male
+  - type: LanguageSpeaker
+    speaks:
+    - GalacticCommon
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
 
 - type: entity
   id: MobRatKingBuff
@@ -291,6 +298,15 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
+  - type: Food
+  - type: Item
+    size: Tiny # Delta V - Make them eatable and pickable.
+  - type: LanguageSpeaker
+    speaks:
+    - Mouse
+    understands:
+    - GalacticCommon
+    - Mouse
 
 - type: weightedRandomEntity
   id: RatKingLoot

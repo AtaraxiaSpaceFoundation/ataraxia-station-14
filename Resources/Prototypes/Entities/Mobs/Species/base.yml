@@ -135,6 +135,9 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: Reflect
+    enabled: false
+    reflectProb: 0
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -206,6 +209,11 @@
   - type: MobPrice
     price: 1500 # Kidnapping a living person and selling them for cred is a good move.
     deathPenalty: 0.01 # However they really ought to be living and intact, otherwise they're worth 100x less.
+  - type: LanguageSpeaker # This is here so all with no LanguageSpeaker at least spawn with the default languages.
+    speaks:
+    - GalacticCommon
+    understands:
+    - GalacticCommon
   - type: Tag
     tags:
     - CanPilot
