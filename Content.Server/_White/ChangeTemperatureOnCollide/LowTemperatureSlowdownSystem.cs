@@ -1,3 +1,4 @@
+using Content.Server._White.Wizard.SpellBlade;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared.Changeling;
@@ -10,6 +11,7 @@ namespace Content.Server._White.ChangeTemperatureOnCollide;
 public sealed class LowTemperatureSlowdownSystem : EntitySystem
 {
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifierSystem = default!;
+    [Dependency] private readonly SpellBladeSystem _spellBlade = default!;
 
     public override void Initialize()
     {
@@ -22,7 +24,8 @@ public sealed class LowTemperatureSlowdownSystem : EntitySystem
     private void OnMoveSpeedRefresh(EntityUid uid, TemperatureComponent component,
         RefreshMovementSpeedModifiersEvent args)
     {
-        var modifier = HasComp<GodmodeComponent>(uid) || HasComp<VoidAdaptationComponent>(uid) || !component.Slowdown
+        var modifier = _spellBlade.IsHoldingItemWithComponent<FrostAspectComponent>(uid) ||
+                       HasComp<GodmodeComponent>(uid) || HasComp<VoidAdaptationComponent>(uid) || !component.Slowdown
             ? 1f
             : GetSpeedModifier(component.CurrentTemperature);
         args.ModifySpeed(modifier, modifier);
@@ -32,7 +35,7 @@ public sealed class LowTemperatureSlowdownSystem : EntitySystem
         OnTemperatureChangeEvent args)
     {
         // ReSharper disable once CompareOfFloatsByEqualityOperator
-        if(GetSpeedModifier(args.LastTemperature) == GetSpeedModifier(args.CurrentTemperature))
+        if (GetSpeedModifier(args.LastTemperature) == GetSpeedModifier(args.CurrentTemperature))
             return;
 
         _movementSpeedModifierSystem.RefreshMovementSpeedModifiers(uid, component);

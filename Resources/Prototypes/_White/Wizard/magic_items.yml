@@ -21,3 +21,33 @@
     reflectProb: 0.4
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
+
+- type: entity
+  name: клинок заклинаний
+  parent: Katana
+  id: SpellBlade
+  description: Магический клинок, наделяемый силой одного из пяти аспектов.
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    damage:
+      types:
+        Slash: 30
+  - type: Clothing
+    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
+    slots:
+    - back
+    - suitStorage
+  - type: Item
+    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
+  - type: UserInterface
+    interfaces:
+    - key: enum.SpellBladeUiKey.Key
+      type: SpellBladeBUI
+  - type: ActivatableUI
+    key: enum.SpellBladeUiKey.Key
+    inHandsOnly: true
+    closeOnHandDeselect: true
+  - type: SpellBlade

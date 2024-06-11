@@ -632,6 +632,18 @@ public sealed partial class CultSystem : EntitySystem
 
     private bool Teleport(EntityUid rune, EntityUid user, List<EntityUid>? victims = null)
     {
+        if (!OpenTeleportUi(user, rune))
+            return false;
+
+        _entityManager.EnsureComponent<CultTeleportRuneProviderComponent>(user, out var providerComponent);
+        providerComponent.Targets = victims;
+        providerComponent.BaseRune = rune;
+
+        return true;
+    }
+
+    private bool OpenTeleportUi(EntityUid user, EntityUid? exceptRune = null)
+    {
         var runesQuery = EntityQueryEnumerator<CultRuneTeleportComponent>();
         var list = new List<int>();
         var labels = new List<string>();
@@ -641,7 +653,7 @@ public sealed partial class CultSystem : EntitySystem
             if (teleportComponent.Label == null)
                 continue;
 
-            if (runeUid == rune)
+            if (runeUid == exceptRune)
                 continue;
 
             if (!int.TryParse(runeUid.ToString(), out var intValue))
@@ -664,10 +676,6 @@ public sealed partial class CultSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("cult-teleport-rune-not-found"), user, user);
             return false;
         }
-
-        _entityManager.EnsureComponent<CultTeleportRuneProviderComponent>(user, out var providerComponent);
-        providerComponent.Targets = victims;
-        providerComponent.BaseRune = rune;
 
         _ui.SetUiState(ui, new TeleportRunesListWindowBUIState(list, labels));
 

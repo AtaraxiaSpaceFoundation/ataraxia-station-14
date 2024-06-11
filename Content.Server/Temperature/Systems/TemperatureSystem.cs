@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._White.Wizard.SpellBlade;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
@@ -22,6 +23,7 @@ public sealed class TemperatureSystem : EntitySystem
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly SpellBladeSystem _spellBlade = default!; // WD
 
     /// <summary>
     ///     All the components that will have their damage updated at the end of the tick.
@@ -266,6 +268,17 @@ public sealed class TemperatureSystem : EntitySystem
 
         if (temperature.CurrentTemperature >= heatDamageThreshold)
         {
+            // WD START
+            if (_spellBlade.IsHoldingItemWithComponent<FireAspectComponent>(uid))
+            {
+                if (!temperature.TakingDamage)
+                    return;
+                _adminLogger.Add(LogType.Temperature,
+                    $"{ToPrettyString(uid):entity} stopped taking temperature damage");
+                temperature.TakingDamage = false;
+                return;
+            }
+            // WD END
             if (!temperature.TakingDamage)
             {
                 _adminLogger.Add(LogType.Temperature, $"{ToPrettyString(uid):entity} started taking high temperature damage");
@@ -278,7 +291,8 @@ public sealed class TemperatureSystem : EntitySystem
         }
         else if (temperature.CurrentTemperature <= coldDamageThreshold)
         {
-            if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation)) // WD
+            // WD START
+            if (TryComp(uid, out VoidAdaptationComponent? voidAdaptation))
             {
                 if (temperature.TakingDamage)
                 {
@@ -290,6 +304,17 @@ public sealed class TemperatureSystem : EntitySystem
                 voidAdaptation.ChemMultiplier = 0.75f;
                 return;
             }
+
+            if (_spellBlade.IsHoldingItemWithComponent<FrostAspectComponent>(uid))
+            {
+                if (!temperature.TakingDamage)
+                    return;
+                _adminLogger.Add(LogType.Temperature,
+                    $"{ToPrettyString(uid):entity} stopped taking temperature damage");
+                temperature.TakingDamage = false;
+                return;
+            }
+            // WD END
 
             if (!temperature.TakingDamage)
             {

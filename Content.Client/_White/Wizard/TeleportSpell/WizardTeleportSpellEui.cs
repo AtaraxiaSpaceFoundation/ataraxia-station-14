@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 namespace Content.Client._White.Wizard.TeleportSpell;
 
 [UsedImplicitly]
-public sealed class TeleportSpellEui : BaseEui
+public sealed class WizardTeleportSpellEui : BaseEui
 {
     private readonly TeleportRunesListWindow _window = new();
 
@@ -30,7 +30,7 @@ public sealed class TeleportSpellEui : BaseEui
 
     public override void HandleState(EuiStateBase state)
     {
-        if (state is not TeleportSpellEuiState cast)
+        if (state is not WizardTeleportSpellEuiState cast)
             return;
 
         _window.Clear();

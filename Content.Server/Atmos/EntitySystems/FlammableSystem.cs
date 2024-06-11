@@ -1,3 +1,4 @@
+using Content.Server._White.Wizard.SpellBlade;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.IgnitionSource;
@@ -49,6 +50,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly UseDelaySystem _useDelay = default!;
         [Dependency] private readonly AudioSystem _audio = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly SpellBladeSystem _spellBlade = default!; // WD
 
         public const float MinimumFireStacks = -10f;
         public const float MaximumFireStacks = 20f;
@@ -84,13 +86,19 @@ namespace Content.Server.Atmos.EntitySystems
 
         private void OnMeleeHit(EntityUid uid, IgniteOnMeleeHitComponent component, MeleeHitEvent args)
         {
+            // WD START
+            var fireStacks = component.FireStacks;
+            if (args.Direction != null) // Heavy attack
+                fireStacks *= 0.5f;
+            // WD END
+
             foreach (var entity in args.HitEntities)
             {
                 if (!TryComp<FlammableComponent>(entity, out var flammable))
                     continue;
 
-                AdjustFireStacks(entity, component.FireStacks, flammable);
-                if (component.FireStacks >= 0)
+                AdjustFireStacks(entity, fireStacks, flammable); // WD EDIT
+                if (fireStacks >= 0) // WD EDIT
                     Ignite(entity, args.Weapon, flammable, args.User);
             }
         }
@@ -203,8 +211,15 @@ namespace Content.Server.Atmos.EntitySystems
             if (!flammable.OnFire && !otherFlammable.OnFire)
                 return; // Neither are on fire
 
+            // WD START
+            var weHold = _spellBlade.IsHoldingItemWithComponent<FireAspectComponent>(uid);
+            var theyHold = _spellBlade.IsHoldingItemWithComponent<FireAspectComponent>(otherUid);
+            // WD END
+
             if (flammable.OnFire && otherFlammable.OnFire)
             {
+                if (weHold && !theyHold || theyHold && !weHold) // WD
+                    return;
                 // Both are on fire -> equalize fire stacks.
                 var avg = (flammable.FireStacks + otherFlammable.FireStacks) / 2;
                 flammable.FireStacks = flammable.CanExtinguish ? avg : Math.Max(flammable.FireStacks, avg);
@@ -217,6 +232,8 @@ namespace Content.Server.Atmos.EntitySystems
             // Only one is on fire -> attempt to spread the fire.
             if (flammable.OnFire)
             {
+                if (theyHold) // WD
+                    return;
                 otherFlammable.FireStacks += flammable.FireStacks / 2;
                 Ignite(otherUid, uid, otherFlammable);
                 if (flammable.CanExtinguish)
@@ -227,6 +244,8 @@ namespace Content.Server.Atmos.EntitySystems
             }
             else
             {
+                if (weHold) // WD
+                    return;
                 flammable.FireStacks += otherFlammable.FireStacks / 2;
                 Ignite(uid, otherUid, flammable);
                 if (otherFlammable.CanExtinguish)
@@ -436,7 +455,8 @@ namespace Content.Server.Atmos.EntitySystems
                     if (TryComp(uid, out TemperatureComponent? temp))
                         _temperatureSystem.ChangeHeat(uid, 12500 * damageScale, false, temp);
 
-                    _damageableSystem.TryChangeDamage(uid, flammable.Damage * damageScale, interruptsDoAfters: false);
+                    if (!_spellBlade.IsHoldingItemWithComponent<FireAspectComponent>(uid)) // WD EDIT
+                        _damageableSystem.TryChangeDamage(uid, flammable.Damage * damageScale, interruptsDoAfters: false);
 
                     AdjustFireStacks(uid, flammable.FirestackFade * (flammable.Resisting ? 10f : 1f), flammable);
                 }

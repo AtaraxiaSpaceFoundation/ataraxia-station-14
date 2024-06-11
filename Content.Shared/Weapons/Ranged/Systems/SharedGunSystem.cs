@@ -533,6 +533,11 @@ public abstract partial class SharedGunSystem : EntitySystem
         Dirty(gun);
     }
     // WD EDIT
+    public void SetUseKey(GunComponent gun, bool useKey)
+    {
+        gun.UseKey = useKey;
+    }
+
     public void SetProjectileSpeed(EntityUid weapon, float projectileSpeed)
     {
         if(!TryComp<GunComponent>(weapon, out var gunComponent))

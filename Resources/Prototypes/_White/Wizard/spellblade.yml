@@ -1,0 +1,49 @@
+- type: entity
+  name: Огонь
+  description: Клинок заклинаний наделяется способностью поджигать врагов. И тот, кто удерживает клинок в руках, становится неуязвимым к огню и высокой температуре.
+  id: AspectFire
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    state: fireball
+
+- type: entity
+  name: Холод
+  description: Клинок заклинаний наделяется замораживать врагов. И тот, кто удерживает клинок в руках, становится неуязвимым к низкой температуре.
+  id: AspectFrost
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    state: icebeam_active
+
+- type: entity
+  name: Молния
+  description: Клинок заклинаний наделяется способностью каждые 10 секунд при ударе излучать шоковый заряд, поражающий ближайшие цели.
+  id: AspectLightning
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    state: thunder
+
+- type: entity
+  name: Блюспейс
+  description: Клинок заклинаний наделяется способностью телепортации на далёкое расстояние.
+  id: AspectBluespace
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    state: blink
+
+- type: entity
+  name: Магическая Стрела
+  description: Клинок заклинаний наделяется способностью стрелять оглушающей магической стрелой.
+  id: AspectMagicMissile
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    state: magicmissile

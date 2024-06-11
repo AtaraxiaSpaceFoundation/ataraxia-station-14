@@ -1,14 +1,12 @@
-﻿using System.Linq;
-using Content.Server.EUI;
+﻿using Content.Server.EUI;
 using Content.Server.Popups;
 using Content.Shared._White.Wizard.Teleport;
 using Content.Shared.Eui;
 using Robust.Shared.Timing;
-using TeleportSpellEuiState = Content.Shared._White.Wizard.Teleport.TeleportSpellEuiState;
 
 namespace Content.Server._White.Wizard.Teleport;
 
-public sealed class TeleportSpellEui : BaseEui
+public sealed class WizardTeleportSpellEui : BaseEui
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
     private readonly SharedTransformSystem _transformSystem;
@@ -19,7 +17,7 @@ public sealed class TeleportSpellEui : BaseEui
 
     private bool _used;
 
-    public TeleportSpellEui(EntityUid performer)
+    public WizardTeleportSpellEui(EntityUid performer)
     {
         IoCManager.InjectDependencies(this);
 
@@ -29,13 +27,13 @@ public sealed class TeleportSpellEui : BaseEui
 
         _performer = performer;
 
-        Timer.Spawn(TimeSpan.FromSeconds(10), Close);
+        Timer.Spawn(TimeSpan.FromSeconds(60), Close);
     }
 
     public override EuiStateBase GetNewState()
     {
         var locationQuery = _entityManager.EntityQueryEnumerator<TeleportLocationComponent, TransformComponent>();
-        var state = new TeleportSpellEuiState();
+        var state = new WizardTeleportSpellEuiState();
 
         while (locationQuery.MoveNext(out var locationUid, out var locationComponent, out var transformComponent))
         {

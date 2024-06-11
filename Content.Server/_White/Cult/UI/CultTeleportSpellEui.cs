@@ -10,7 +10,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._White.Cult.UI;
 
-public sealed class TeleportSpellEui : BaseEui
+public sealed class CultTeleportSpellEui : BaseEui
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
     private readonly SharedTransformSystem _transformSystem;
@@ -22,7 +22,7 @@ public sealed class TeleportSpellEui : BaseEui
 
     private bool _used;
 
-    public TeleportSpellEui(EntityUid performer, EntityUid target)
+    public CultTeleportSpellEui(EntityUid performer, EntityUid target)
     {
         IoCManager.InjectDependencies(this);
 
@@ -39,7 +39,7 @@ public sealed class TeleportSpellEui : BaseEui
     public override EuiStateBase GetNewState()
     {
         var runesQuery = _entityManager.EntityQueryEnumerator<CultRuneTeleportComponent>();
-        var state = new TeleportSpellEuiState();
+        var state = new CultTeleportSpellEuiState();
 
         while (runesQuery.MoveNext(out var runeUid, out var rune))
         {

@@ -105,7 +105,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!TryComp(msg.Performer, out ActorComponent? actor))
             return;
 
-        var eui = new TeleportSpellEui(msg.Performer);
+        var eui = new WizardTeleportSpellEui(msg.Performer);
         _euiManager.OpenEui(eui, actor.PlayerSession);
         eui.StateDirty();
 

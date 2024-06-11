@@ -36,7 +36,6 @@
     - HolyKatana
     - MultiverseBlade
     - VorpalScythe
-    - SpellBlade
     - PossessedBlade
     - ChainsawHand
     - HolyWhip
@@ -193,31 +192,6 @@
     - suitStorage
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/scythe-inhands.rsi
-  - type: HolyWeapon
-
-- type: entity
-  name: клинок заклинаний
-  parent: HolyKatana
-  id: SpellBlade
-  description: Клинок, с шансом 20% наносящий критический удар.
-  components:
-  - type: Sprite
-    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
-  - type: MeleeWeapon
-    wideAnimationRotation: 135
-    damage:
-      types:
-        Slash: 18
-  - type: Clothing
-    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
-    slots:
-    - back
-    - suitStorage
-  - type: Crit
-    critChance: 20
-    critMultiplier: 2.5
-  - type: Item
-    sprite: White/Objects/Weapons/Chaplain/spellblade.rsi
   - type: HolyWeapon
 
 - type: entity

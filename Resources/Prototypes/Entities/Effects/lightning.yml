@@ -176,3 +176,16 @@
     - type: Lightning
       canArc: true
       lightningPrototype: WizardLightning
+
+- type: entity
+  name: wizard lightning
+  id: WeakWizardLightning
+  parent: BaseLightning
+  noSpawn: true
+  components:
+    - type: Electrified
+      requirePower: false
+      ignoreInsulation: true
+    - type: Lightning
+      canArc: true
+      lightningPrototype: WeakWizardLightning

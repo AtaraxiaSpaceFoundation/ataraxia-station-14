@@ -148,7 +148,7 @@ public partial class CultSystem
 
         _bloodstreamSystem.TryModifyBloodLevel(uid, -5, bloodstream, createPuddle: false);
 
-        var eui = new TeleportSpellEui(args.Performer, args.Target);
+        var eui = new CultTeleportSpellEui(args.Performer, args.Target);
         _euiManager.OpenEui(eui, actor.PlayerSession);
         eui.StateDirty();
 

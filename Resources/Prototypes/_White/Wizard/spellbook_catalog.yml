@@ -247,3 +247,16 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: SpellBookSpellBlade
+  name: spellbook-spellblade-name
+  description: spellbook-spellblade-desc
+  productEntity: SpellBlade
+  cost:
+    SpellPoint: 2
+  categories:
+  - MagicItems
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
