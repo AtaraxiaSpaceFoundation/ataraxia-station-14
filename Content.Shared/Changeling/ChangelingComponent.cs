@@ -24,7 +24,7 @@ public sealed partial class ChangelingComponent : Component
     public float Accumulator;
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public float UpdateDelay = 8f;
+    public float UpdateDelay = 6f;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public bool IsRegenerating;

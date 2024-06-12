@@ -21,7 +21,6 @@
   - type: FlashImmunity
   - type: EyeProtection
   - type: HiveHead
-    beesAmount: 6
 
 - type: entity
   id: ActionReleaseBees

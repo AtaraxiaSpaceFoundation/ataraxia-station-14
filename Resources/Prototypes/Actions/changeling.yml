@@ -76,6 +76,9 @@
     event: !type:ExtractionStingActionEvent
     canTargetSelf: false
     useDelay: 1
+    whitelist:
+      components:
+      - HumanoidAppearance
 
 - type: entity
   id: ActionTransformSting
@@ -89,6 +92,9 @@
       event: !type:TransformStingActionEvent
       canTargetSelf: false
       useDelay: 1
+      whitelist:
+        components:
+        - HumanoidAppearance
 
 - type: entity
   id: ActionBlindSting
@@ -102,6 +108,10 @@
       event: !type:BlindStingActionEvent
       canTargetSelf: false
       useDelay: 1
+      whitelist:
+        components:
+        - HumanoidAppearance
+        - Blindable
 
 - type: entity
   id: ActionMuteSting
@@ -115,6 +125,9 @@
       event: !type:MuteStingActionEvent
       canTargetSelf: false
       useDelay: 1
+      whitelist:
+        components:
+        - HumanoidAppearance
 
 - type: entity
   id: ActionHallucinationSting
@@ -128,6 +141,9 @@
       event: !type:HallucinationStingActionEvent
       canTargetSelf: false
       useDelay: 1
+      whitelist:
+        components:
+        - HumanoidAppearance
 
 - type: entity
   id: ActionCryoSting
@@ -141,11 +157,15 @@
       event: !type:CryoStingActionEvent
       canTargetSelf: false
       useDelay: 1
+      whitelist:
+        components:
+        - HumanoidAppearance
+        - Temperature
 
 - type: entity
   id: ActionAdrenalineSacs
   name: changeling-ability-adrenaline-sacks
-  description: changeling-ability-adrenaline-sacks.desc
+  description: changeling-ability-adrenaline-sacks-desc
   noSpawn: true
   components:
     - type: InstantAction
@@ -153,6 +173,8 @@
       icon: White/Actions/changeling.rsi/adrenaline_sacs.png
       event: !type:AdrenalineSacsActionEvent
       useDelay: 1
+      checkConsciousness: false
+      checkCanInteract: false
     - type: LesserFormRestricted
 
 - type: entity
@@ -166,6 +188,8 @@
       icon: White/Actions/changeling.rsi/fleshmend.png
       event: !type:FleshmendActionEvent
       useDelay: 1
+      checkConsciousness: false
+      checkCanInteract: false
     - type: LesserFormRestricted
 
 - type: entity

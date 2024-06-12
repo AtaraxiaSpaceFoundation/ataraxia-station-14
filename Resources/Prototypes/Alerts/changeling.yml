@@ -1,6 +1,5 @@
 - type: alert
   id: Chemicals
-  category: Health #it's like ghostie health
   icons:
   - sprite: /Textures/Interface/Alerts/essence_counter.rsi
     state: essence0
