@@ -154,7 +154,7 @@ ghost-role-information-onestar-mecha-description = Вы - эксперимент
 ghost-role-information-onestar-mecha-rules = Используйте свое оружие, чтобы сеять хаос. Вы - антагонист.
 
 ghost-role-information-remilia-name = Ремилия, фамильяр священника
-ghost-role-information-remilia-description = Повинуйтесь своему хозяину. Ешь хаос.
+ghost-role-information-remilia-description = Повинуйтесь своему хозяину. Ешьте фрукты.
 ghost-role-information-remilia-rules = Вы - умная фруктовая летучая мышь. Следуйте за священником повсюду. Не создавайте никаких проблем, если только священник не прикажет вам это сделать.
 
 ghost-role-information-cerberus-name = Цербер, злой фамильяр

@@ -33,12 +33,12 @@
     prototypes:
       - PosterContrabandFreeTonto
       - PosterContrabandAtmosiaDeclarationIndependence
-      - PosterContrabandFunPolice
+      #- PosterContrabandFunPolice
       - PosterContrabandLustyExomorph
       - PosterContrabandSyndicateRecruitment
       - PosterContrabandClown
       - PosterContrabandSmoke
-      - PosterContrabandGreyTide
+      #- PosterContrabandGreyTide
       - PosterContrabandMissingGloves
       - PosterContrabandHackingGuide
       - PosterContrabandRIPBadger
@@ -91,7 +91,7 @@
       - PosterContrabandEnlistGorlex
       - PosterContrabandInterdyne
       - PosterContrabandWaffleCorp
-      - PosterContrabandMissingSpacepen
+      #- PosterContrabandMissingSpacepen # HAHAHAHAHAAH
     chance: 1
 
 - type: entity
@@ -135,12 +135,12 @@
       - PosterLegit50thAnniversaryVintageReprint
       - PosterLegitFruitBowl
       - PosterLegitPDAAd
-      - PosterLegitEnlist
+      #- PosterLegitEnlist
       - PosterLegitNanomichiAd
       - PosterLegit12Gauge
       - PosterLegitHighClassMartini
       - PosterLegitTheOwl
-      - PosterLegitNoERP
+      #- PosterLegitNoERP
       - PosterLegitCarbonDioxide
       - PosterLegitDickGumshue
       - PosterLegitThereIsNoGasGiant

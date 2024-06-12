@@ -49,3 +49,15 @@ ent-ClothingBeltSuspenders = подтяжки
 ent-ClothingBeltWand = пояс для палочек
     .desc = Пояс, предназначенный для хранения различных волшебных палочек. Поясная сумка, полная экзотической магии.
     .suffix = { "" }
+ent-ClothingBeltChef = пояс шеф повара
+    .desc = Пояс, для хранения кухонных ножей и приправ для быстрого доступа.
+    .suffix = { "" }
+ent-ClothingBeltMedicalEMT = пояс парамедика
+    .desc = Пояс, идеально подходит для хранения различного оборудования для экстренной медицинской помощи.
+    .suffix = { "" }
+ent-ClothingBeltMedicalEMTFilled = { ent-ClothingBeltMedicalEMT }
+    .desc = { ClothingBeltMedicalEMT.desc }
+ent-ClothingBeltQuiver = колчан
+    .desc = Вмещает до 15 стрел и плотно прилегает к талии.
+    .suffix = { "" }
+
