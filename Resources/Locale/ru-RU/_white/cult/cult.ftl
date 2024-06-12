@@ -1,4 +1,4 @@
-﻿soul-shard-name = Душа { $soul }
+soul-shard-name = Душа { $soul }
 soul-shard-description = В этом камне заключена душа { $soul }
 cult-too-much-empowers = Слишком много способностей
 
@@ -25,6 +25,7 @@ cult-ritual-prevented = Кто-то прервал ритуал.
 cult-narsie-summoned = НАР'СИ ВОССТАЛ!
 cult-revive-rune-already-alive = Он уже живой.
 cult-revive-rune-no-charges = У рун воскрешения кончились заряды.
+cult-revive-rune-too-damaged = Его ранения несовместимы с жизнью.
 cult-summon-rune-need-minimum-cultists = Необходимо минимум 2 культиста.
 cult-cultists-not-found = Культисты не обнаружены.
 cult-blood-boil-rune-need-minimum = Необходимо минимум 3 культиста.

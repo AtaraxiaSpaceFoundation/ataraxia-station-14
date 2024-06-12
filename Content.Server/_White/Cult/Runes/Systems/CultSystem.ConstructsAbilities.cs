@@ -11,6 +11,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.StatusEffect;
 using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Components;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 

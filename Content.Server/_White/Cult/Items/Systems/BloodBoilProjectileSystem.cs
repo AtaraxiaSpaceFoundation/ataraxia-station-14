@@ -1,6 +1,6 @@
 using Content.Server._White.Cult.Items.Components;
 using Content.Server._White.Cult.TimedProduction;
-using Content.Shared._White.Cult;
+using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Pylon;
 using Robust.Shared.Physics.Events;
 using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;

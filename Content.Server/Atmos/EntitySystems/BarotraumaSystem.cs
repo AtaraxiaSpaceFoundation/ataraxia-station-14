@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
+using Content.Shared._White.Cult.Components;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Damage;
@@ -262,7 +263,7 @@ public sealed class BarotraumaSystem : EntitySystem
                     voidAdaptation.ChemMultiplier = 0.75f;
                     ActNormalPressure(uid, barotrauma, pressure);
                     break;
-                case <= Atmospherics.HazardLowPressure:
+                case <= Atmospherics.HazardLowPressure when !HasComp<CultBuffComponent>(uid): // WD EDIT
                     ActLowPressure(uid, barotrauma);
                     break;
                 case >= Atmospherics.HazardHighPressure:

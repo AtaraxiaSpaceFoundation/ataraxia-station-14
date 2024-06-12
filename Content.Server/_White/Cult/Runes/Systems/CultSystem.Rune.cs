@@ -37,7 +37,6 @@ using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Runes;
 using Content.Shared._White.Cult.UI;
 using Content.Shared.Cuffs;
-using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs.Systems;
@@ -597,13 +596,14 @@ public sealed partial class CultSystem : EntitySystem
 
     private bool AddCultistBuff(EntityUid target, EntityUid user)
     {
-        if (HasComp<CultBuffComponent>(target))
+        if (TryComp<CultBuffComponent>(target, out var buff) && buff.BuffTime > buff.BuffLimit)
         {
             _popupSystem.PopupEntity(Loc.GetString("cult-buff-already-buffed"), user, user);
             return false;
         }
 
-        EnsureComp<CultBuffComponent>(target);
+        buff = EnsureComp<CultBuffComponent>(target);
+        buff.BuffTime = buff.StartingBuffTime;
         return true;
     }
 
@@ -876,7 +876,10 @@ public sealed partial class CultSystem : EntitySystem
                 return false;
 
             if (!_mobState.IsDead(target, mobState))
+            {
+                _popupSystem.PopupEntity(Loc.GetString("cult-revive-rune-already-alive"), user, user);
                 return false;
+            }
 
             var airlossGroup = _prototypeManager.Index<DamageGroupPrototype>("Airloss");
 
@@ -886,7 +889,10 @@ public sealed partial class CultSystem : EntitySystem
             {
                 var afterHeal = damageable.TotalDamage - toHeal;
                 if (deadThreshold <= afterHeal)
+                {
+                    _popupSystem.PopupEntity(Loc.GetString("cult-revive-rune-too-damaged"), user, user);
                     return false;
+                }
 
                 var asphyxType = _prototypeManager.Index<DamageTypePrototype>("Asphyxiation");
                 var bloodlossType = _prototypeManager.Index<DamageTypePrototype>("Bloodloss");

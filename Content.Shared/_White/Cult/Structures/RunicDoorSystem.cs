@@ -1,13 +1,13 @@
-﻿using Content.Server.Cuffs;
-using Content.Server.Doors.Systems;
-using Content.Shared._White.Chaplain;
+﻿using Content.Shared._White.Chaplain;
 using Content.Shared.Doors;
 using Content.Shared.Humanoid;
 using Content.Shared.Stunnable;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
+using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Doors.Components;
+using Content.Shared.Doors.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Prying.Components;
 using Content.Shared.Weapons.Melee.Components;
@@ -18,17 +18,18 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 
-namespace Content.Server._White.Cult.Structures;
+namespace Content.Shared._White.Cult.Structures;
 
 public sealed class RunicDoorSystem : EntitySystem
 {
-    [Dependency] private readonly DoorSystem _doorSystem = default!;
+    [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly OccluderSystem _occluder = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly CuffableSystem _cuffable = default!;
+    [Dependency] private readonly SharedCuffableSystem _cuffable = default!;
     [Dependency] private readonly HolyWeaponSystem _holyWeapon = default!;
 
     public override void Initialize()
@@ -125,7 +126,7 @@ public sealed class RunicDoorSystem : EntitySystem
             TryComp(airlock, out ConcealableComponent? concealable) && concealable.Concealed)
             return false;
 
-        var direction = Transform(user).MapPosition.Position - Transform(airlock).MapPosition.Position;
+        var direction = _transform.GetMapCoordinates(user).Position - _transform.GetMapCoordinates(airlock).Position;
         var impulseVector = direction * 2000;
 
         _physics.ApplyLinearImpulse(user, impulseVector);

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Content.Server._White.Cult.Structures;
+using Content.Shared._White.Cult.Structures;
 using Content.Shared._White.Keyhole.Components;
 using Content.Shared._White.Keyhole;
 using Content.Shared.DoAfter;

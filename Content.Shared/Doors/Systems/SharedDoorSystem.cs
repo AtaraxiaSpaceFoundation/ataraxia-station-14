@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.Cult.Structures;
 using Content.Shared._White.Keyhole.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -41,6 +42,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
     [Dependency] private readonly PryingSystem _pryingSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] private readonly RunicDoorSystem _runicDoor = default!; // WD
 
     [ValidatePrototypeId<TagPrototype>]
     public const string DoorBumpTag = "DoorBumpOpener";
@@ -649,6 +651,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
         var otherUid = args.OtherEntity;
 
+        if (!_runicDoor.CanBumpOpen(uid, otherUid)) // WD
+            return;
+
         if (Tags.HasTag(otherUid, DoorBumpTag))
             TryOpen(uid, door, otherUid, quiet: door.State == DoorState.Denying);
     }
@@ -762,6 +767,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
         {
             foreach (var other in PhysicsSystem.GetContactingEntities(uid, physics, approximate: true))
             {
+                if (!_runicDoor.CanBumpOpen(uid, other)) // WD
+                    continue;
+
                 if (Tags.HasTag(other, DoorBumpTag) && TryOpen(uid, door, other, quiet: true))
                     break;
             }

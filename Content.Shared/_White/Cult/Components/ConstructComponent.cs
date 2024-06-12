@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.Prototypes;
 
-namespace Content.Server._White.Cult;
+namespace Content.Shared._White.Cult.Components;
 
 [RegisterComponent]
 public sealed partial class ConstructComponent : Component
