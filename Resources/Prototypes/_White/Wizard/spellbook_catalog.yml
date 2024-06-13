@@ -260,3 +260,16 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: SpellBookMjolnir
+  name: spellbook-mjolnir-name
+  description: spellbook-mjolnir-desc
+  productEntity: Mjolnir
+  cost:
+    SpellPoint: 2
+  categories:
+  - MagicItems
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

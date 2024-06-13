@@ -11,6 +11,7 @@ using Content.Shared.Effects;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
+using Content.Shared.Weapons.Melee;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 
@@ -28,7 +29,8 @@ namespace Content.Server.Damage.Systems
 
         public override void Initialize()
         {
-            SubscribeLocalEvent<DamageOtherOnHitComponent, ThrowDoHitEvent>(OnDoHit);
+            SubscribeLocalEvent<DamageOtherOnHitComponent, ThrowDoHitEvent>(OnDoHit,
+                before: new[] {typeof(MeleeThrowOnHitSystem)}); // WD EDIT
             SubscribeLocalEvent<DamageOtherOnHitComponent, DamageExamineEvent>(OnDamageExamine);
         }
 
@@ -55,7 +57,7 @@ namespace Content.Server.Damage.Systems
                 _color.RaiseEffect(Color.Red, new List<EntityUid>() { args.Target }, Filter.Pvs(args.Target, entityManager: EntityManager));
             }
 
-            _guns.PlayImpactSound(args.Target, dmg, null, false);
+            _guns.PlayImpactSound(args.Target, dmg, component.Sound, component.Sound != null); // WD EDIT
             if (TryComp<PhysicsComponent>(uid, out var body) && body.LinearVelocity.LengthSquared() > 0f)
             {
                 var direction = body.LinearVelocity.Normalized();

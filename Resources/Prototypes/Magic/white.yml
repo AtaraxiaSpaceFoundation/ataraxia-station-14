@@ -281,6 +281,7 @@
         sprite: Objects/Magic/magicactions.rsi
         state: summons
       event: !type:InstantRecallSpellEvent
+        speech: "GAR YOK!"
 
 - type: entity
   id: ActionTeleportSpell

@@ -159,6 +159,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             _handsSystem.TryForcePickupAnyHand(msg.Performer, recallComponent.Item.Value);
 
             msg.Handled = true;
+            Speak(msg);
             return;
         }
 
