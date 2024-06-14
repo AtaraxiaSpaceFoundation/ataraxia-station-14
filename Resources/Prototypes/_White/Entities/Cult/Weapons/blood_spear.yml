@@ -46,6 +46,7 @@
   - type: Clothing
     slots:
     - back
+    - suitStorage
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

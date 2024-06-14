@@ -44,6 +44,8 @@
   - type: Construction
     graph: AirlockGlassCult
     node: airlock
+  - type: RCDDeconstructable
+    deconstructable: false
   - type: PlacementReplacement
     key: walls
   - type: Appearance

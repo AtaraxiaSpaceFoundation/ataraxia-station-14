@@ -1,4 +1,5 @@
 using System.Threading;
+using Content.Server._White.Cult.GameRule;
 using Content.Server.Objectives.Components;
 using Content.Server.Popups;
 using Content.Server.Roles;
@@ -8,6 +9,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Mood;
+using Content.Shared.Jittering;
 using Content.Shared.Mind;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
@@ -40,6 +42,8 @@ public sealed partial class DeconvertCultist : ReagentEffect
 
         args.EntityManager.System<StunSystem>()
             .TryParalyze(uid, TimeSpan.FromSeconds(component.HolyConvertTime + 5f), true);
+        args.EntityManager.System<SharedJitteringSystem>()
+            .DoJitter(uid, TimeSpan.FromSeconds(component.HolyConvertTime + 5f), true);
         var target = Identity.Name(uid, args.EntityManager);
         args.EntityManager.System<PopupSystem>()
             .PopupEntity(Loc.GetString("holy-water-started-converting", ("target", target)), uid);
@@ -73,20 +77,8 @@ public sealed partial class DeconvertCultist : ReagentEffect
         entityManager.RemoveComponent<CultistComponent>(uid);
         entityManager.RemoveComponent<PentagramComponent>(uid);
 
-        var mindSystem = entityManager.System<SharedMindSystem>();
-        var roleSystem = entityManager.System<RoleSystem>();
-
-        if (!mindSystem.TryGetMind(uid, out var mindId, out var mind))
-            return;
-
-        var objectives = mind.Objectives.FindAll(entityManager.HasComponent<PickCultTargetComponent>);
-        foreach (var obj in objectives)
-        {
-            mindSystem.TryRemoveObjective(mindId, mind, mind.Objectives.IndexOf(obj));
-        }
-
-        if (roleSystem.MindHasRole<CultistRoleComponent>(mindId))
-            roleSystem.MindRemoveRole<CultistRoleComponent>(mindId);
+        var cultRuleSystem = entityManager.System<CultRuleSystem>();
+        cultRuleSystem.RemoveObjectiveAndRole(uid);
 
         entityManager.EventBus.RaiseLocalEvent(uid, new MoodRemoveEffectEvent("CultFocused"));
     }

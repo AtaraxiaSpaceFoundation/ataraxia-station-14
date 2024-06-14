@@ -47,7 +47,7 @@
     damage:
       types:
         Blunt: 15
-        Structural: 40
+        Structural: 10
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
 
@@ -89,4 +89,4 @@
     damage:
       types:
         Blunt: 20
-        Structural: 60
+        Structural: 20

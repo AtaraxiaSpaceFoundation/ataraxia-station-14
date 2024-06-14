@@ -3,15 +3,12 @@ using Content.Server._Miracle.GulagSystem;
 using Content.Server.Actions;
 using Content.Server.Antag;
 using Content.Server.Bible.Components;
-using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.NPC.Systems;
+using Content.Server.Objectives.Components;
 using Content.Server.Roles;
-using Content.Server.Roles.Jobs;
 using Content.Server.RoundEnd;
-using Content.Server.Shuttles.Components;
 using Content.Server.StationEvents.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Body.Systems;
@@ -29,6 +26,7 @@ using Content.Shared._White;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
 using Content.Shared._White.Mood;
+using Content.Shared.Cloning;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Systems;
 using Robust.Server.Player;
@@ -72,8 +70,14 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         SubscribeLocalEvent<CultistComponent, ComponentInit>(OnCultistComponentInit);
         SubscribeLocalEvent<CultistComponent, ComponentRemove>(OnCultistComponentRemoved);
         SubscribeLocalEvent<CultistComponent, MobStateChangedEvent>(OnCultistsStateChanged);
+        SubscribeLocalEvent<CultistComponent, CloningEvent>(OnClone);
 
         SubscribeLocalEvent<CultistRoleComponent, GetBriefingEvent>(OnGetBriefing);
+    }
+
+    private void OnClone(Entity<CultistComponent> ent, ref CloningEvent args)
+    {
+        RemoveObjectiveAndRole(ent);
     }
 
     protected override void Added(EntityUid uid, CultRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
@@ -176,6 +180,21 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
             UpdateCultistsAppearance(cult);
         }
+    }
+
+    public void RemoveObjectiveAndRole(EntityUid uid)
+    {
+        if (!_mindSystem.TryGetMind(uid, out var mindId, out var mind))
+            return;
+
+        var objectives = mind.Objectives.FindAll(HasComp<PickCultTargetComponent>);
+        foreach (var obj in objectives)
+        {
+            _mindSystem.TryRemoveObjective(mindId, mind, mind.Objectives.IndexOf(obj));
+        }
+
+        if (_roleSystem.MindHasRole<CultistRoleComponent>(mindId))
+            _roleSystem.MindRemoveRole<CultistRoleComponent>(mindId);
     }
 
     private void OnCultistComponentRemoved(EntityUid uid, CultistComponent component, ComponentRemove args)

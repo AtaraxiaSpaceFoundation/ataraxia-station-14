@@ -1,8 +1,8 @@
 - type: vendingMachineInventory
   id: SalvageEquipmentInventory
   startingInventory:
-    WeaponProtoKineticAccelerator: 4
-    WeaponCrusher: 4
+    WeaponProtoKineticAccelerator: 2
+    WeaponCrusher: 2
     WeaponCrusherDagger: 4
     WeaponGrapplingGun: 3
     HandheldGPSBasic: 10
