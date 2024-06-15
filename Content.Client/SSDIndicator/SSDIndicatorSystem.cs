@@ -1,4 +1,6 @@
 ﻿using Content.Shared.CCVar;
+using Content.Shared.Ghost;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
@@ -34,9 +36,18 @@ public sealed class SSDIndicatorSystem : EntitySystem
             !_mobState.IsDead(uid) &&
             !HasComp<ActiveNPCComponent>(uid) &&
             TryComp<MindContainerComponent>(uid, out var mindContainer) &&
-            mindContainer.ShowExamineInfo)
+            mindContainer.ShowExamineInfo &&
+            !IsAghosted(mindContainer)) // WD EDIT
         {
             args.StatusIcons.Add(_prototype.Index<StatusIconPrototype>(component.Icon));
         }
+    }
+
+    private bool IsAghosted(MindContainerComponent mindContainer) // WD
+    {
+        if (!TryComp(mindContainer.Mind, out MindComponent? mindComp))
+            return false;
+
+        return TryComp(mindComp.VisitingEntity, out GhostComponent? ghost) && ghost.CanGhostInteract;
     }
 }

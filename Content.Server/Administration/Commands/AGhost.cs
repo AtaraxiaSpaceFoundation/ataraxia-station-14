@@ -85,6 +85,8 @@ public sealed class AGhost : LocalizedCommands
             return;
         }
 
+        _entities.Dirty(mindId, mind); // WD
+
         if (mind.VisitingEntity != default && _entities.TryGetComponent<GhostComponent>(mind.VisitingEntity, out var oldGhostComponent))
         {
             mindSystem.UnVisit(mindId, mind);

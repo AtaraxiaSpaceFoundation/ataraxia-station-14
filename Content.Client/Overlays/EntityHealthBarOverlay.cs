@@ -7,6 +7,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using System.Numerics;
+using Content.Client.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Client.UserInterface.Systems;
 using Robust.Shared.Prototypes;
@@ -24,6 +25,7 @@ public sealed class EntityHealthBarOverlay : Overlay
     private readonly MobStateSystem _mobStateSystem;
     private readonly MobThresholdSystem _mobThresholdSystem;
     private readonly ProgressColorSystem _progressColor;
+    private readonly StatusIconSystem _statusIcon;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
     public HashSet<string> DamageContainers = new();
 
@@ -34,6 +36,7 @@ public sealed class EntityHealthBarOverlay : Overlay
         _mobStateSystem = _entManager.System<MobStateSystem>();
         _mobThresholdSystem = _entManager.System<MobThresholdSystem>();
         _progressColor = _entManager.System<ProgressColorSystem>();
+        _statusIcon = entManager.System<StatusIconSystem>();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -69,6 +72,9 @@ public sealed class EntityHealthBarOverlay : Overlay
             {
                 continue;
             }
+
+            if (!_statusIcon.IsVisible(uid))
+                continue;
 
             // we use the status icon component bounds if specified otherwise use sprite
             var bounds = _entManager.GetComponentOrNull<StatusIconComponent>(uid)?.Bounds ?? spriteComponent.Bounds;
