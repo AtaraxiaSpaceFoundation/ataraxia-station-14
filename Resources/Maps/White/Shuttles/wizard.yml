@@ -2050,12 +2050,38 @@ entities:
     - type: Transform
       pos: -5.52865,-9.359842
       parent: 2
+- proto: ClothingHeadHelmetWizardHelmArmored
+  entities:
+  - uid: 772
+    components:
+    - type: Transform
+      pos: -2.5,-1.5
+      parent: 2
+  - uid: 773
+    components:
+    - type: Transform
+      pos: 1.5,-1.5
+      parent: 2
 - proto: ClothingMaskGasChameleon
   entities:
   - uid: 275
     components:
     - type: Transform
       pos: -9.537922,-3.3987489
+      parent: 2
+- proto: ClothingOuterArmorMagusblue
+  entities:
+  - uid: 771
+    components:
+    - type: Transform
+      pos: -2.505693,-1.8391577
+      parent: 2
+- proto: ClothingOuterArmorMagusred
+  entities:
+  - uid: 770
+    components:
+    - type: Transform
+      pos: 1.4998147,-1.8497881
       parent: 2
 - proto: ClothingUniformJumpskirtColorBlack
   entities:

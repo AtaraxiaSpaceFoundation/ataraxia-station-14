@@ -136,7 +136,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -284,7 +284,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8   
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -320,7 +320,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8  
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -441,7 +441,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -686,7 +686,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -722,7 +722,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -893,7 +893,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -1244,7 +1244,7 @@
   name: force wall
   components:
     - type: TimedDespawn
-      lifetime: 20
+      lifetime: 9
     - type: Tag
       tags:
         - Wall
@@ -1284,7 +1284,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:

@@ -203,6 +203,18 @@
   - type: IngestionBlocker
   - type: IdentityBlocker
 
+- type: entity
+  parent: ClothingHeadHelmetWizardHelm
+  id: ClothingHeadHelmetWizardHelmArmored
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.85
+        Heat: 0.8
+
 #Fire Helmet
 - type: entity
   parent: ClothingHeadLightBase
