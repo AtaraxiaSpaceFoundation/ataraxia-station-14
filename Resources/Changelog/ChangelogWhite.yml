@@ -4408,3 +4408,22 @@
   id: 306
   time: '2024-06-15T13:37:17.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/358
+- author: Aviu
+  changes:
+  - message: "\u0420\u0435\u0432\u043E\u0440\u043A \u044D\u043A\u0441\u043F\u0435\u0434\
+      \u0438\u0446\u0438\u0439."
+    type: Add
+  - message: "\u041D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043C\u043E\u0431\
+      \u044B \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 \u043F\u0435\u0440\u0435\
+      \u043A\u043B\u044E\u0447\u0430\u0435\u043C\u043E\u0435 \u043D\u043E\u0447\u043D\
+      \u043E\u0435 \u0437\u0440\u0435\u043D\u0438\u0435."
+    type: Add
+  - message: "\u0422\u0435\u043F\u0435\u0440\u044C \u043B\u0435\u0447\u0435\u043D\u0438\
+      \u0435 \u043E\u0442 \u043C\u0435\u0442\u043A\u0438 \u043A\u0440\u0443\u0448\u0438\
+      \u0442\u0435\u043B\u044F \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\
+      \u0442 \u043D\u0430 \u043C\u0435\u0440\u0442\u0432\u044B\u0445 \u0446\u0435\u043B\
+      \u0435\u0439."
+    type: Fix
+  id: 307
+  time: '2024-06-16T15:33:26.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/360
