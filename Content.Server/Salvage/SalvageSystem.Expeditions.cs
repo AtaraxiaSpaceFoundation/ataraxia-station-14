@@ -18,7 +18,9 @@ public sealed partial class SalvageSystem
      * Handles setup / teardown of salvage expeditions.
      */
 
-    private const int MissionLimit = 3;
+    private const int MissionLimit = 5;
+
+    private static readonly string[] Difficulties = {"Minimal", "Minor", "Moderate", "Hazardous", "Extreme"};
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
@@ -136,7 +138,7 @@ public sealed partial class SalvageSystem
             {
                 Index = component.NextIndex,
                 Seed = _random.Next(),
-                Difficulty = "Moderate",
+                Difficulty = Difficulties[i],
             };
 
             component.Missions[component.NextIndex++] = mission;

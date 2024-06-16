@@ -105,6 +105,100 @@
         - proto: WeaponTeslaGun
           prob: 0.1
           cost: 2
+        - proto: EnergyBattleAxe
+          prob: 0.1
+          cost: 8
+        - proto: WeaponRifleAk
+          cost: 5
+        - proto: TimeBeacon
+          cost: 2
+          prob: 0.5
+        - proto: ClothingBackpackDuffelSyndicateFilledSMG
+          cost: 6
+          prob: 0.5
+        - proto: ClothingBackpackDuffelSyndicateFilledShotgun
+          cost: 8
+          prob: 0.5
+        - proto: BriefcaseSyndieSniperBundleFilled
+          cost: 10
+          prob: 0.5
+        - proto: ClothingBackpackDuffelSyndicateFilledLMG
+          cost: 12
+          prob: 0.5
+        - proto: WeaponRevolverMateba
+          cost: 5
+        - proto: WeaponRevolverDeckard
+          cost: 4
+        - proto: ExGrenade
+          cost: 3
+        - proto: SupermatterGrenade
+          cost: 5
+        - proto: WhiteholeGrenade
+          cost: 3
+        - proto: ClothingOuterHardsuitMaxim
+          cost: 5
+        - proto: GrenadeIncendiary
+          cost: 4
+        - proto: ExperimentalSyndicateTeleporter
+          cost: 8
+          prob: 0.5
+        - proto: ClothingHeadHelmetSwat
+          cost: 4
+        - proto: ClothingBeltMilitaryWebbing
+          cost: 2
+        - proto: ClothingOuterVestWeb
+          cost: 5
+        - proto: ClothingEyesNightVisionGoggles
+          cost: 5
+        - proto: ClothingHandsGlovesCombat
+          cost: 3
+        - proto: Katana
+          cost: 3
+        - proto: WeaponMakeshiftLaser
+          cost: 4
+        - proto: WeaponLaserGun
+          cost: 5
+        - proto: WeaponEgun
+          cost: 5
+        - proto: WeaponXrayCannon
+          cost: 6
+        - proto: WeaponLaserCannon
+          cost: 6
+        - proto: WeaponTempGun
+          cost: 4
+        - proto: WeaponAdvancedLaser
+          cost: 10
+          prob: 0.5
+        - proto: Stimpack
+          cost: 6
+        - proto: StimkitFilled
+          cost: 8
+          prob: 0.5
+        - proto: CrateSecurityRiot
+          cost: 5
+          prob: 0.5
+        - proto: CrateSecurityNonlethal
+          cost: 4
+          prob: 0.5
+        - proto: ClothingShoesBootsMagSyndie
+          cost: 5
+        - proto: JetpackBlackFilled
+          cost: 3
+        - proto: WeaponLauncherRocket
+          cost: 8
+        - proto: WeaponLauncherPirateCannon
+          cost: 5
+        - proto: LightModule
+          cost: 2
+        - proto: LaserModule
+          cost: 4
+        - proto: FlameHiderModule
+          cost: 2
+        - proto: SilencerModule
+          cost: 3
+        - proto: AcceleratorModule
+          cost: 5
+
 
 # Mob loot table
 

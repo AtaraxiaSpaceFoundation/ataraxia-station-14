@@ -118,6 +118,9 @@
   - type: Grammar
     attributes:
       gender: male
+  - type: NightVision
+    toggleSound: null
+    color: "#404040"
 
 - type: entity
   id: MobRatKingBuff

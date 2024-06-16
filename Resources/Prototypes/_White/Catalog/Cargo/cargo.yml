@@ -1,4 +1,4 @@
-﻿- type: cargoProduct
+- type: cargoProduct
   id: CratePaper
   icon:
     sprite: Objects/Materials/Sheets/other.rsi
@@ -273,6 +273,6 @@
     sprite: Clothing/Head/Hardsuits/security.rsi
     state: icon-flash
   product: CrateSecurityVoidsuit
-  cost: 4000
+  cost: 10000
   category: Security
   group: market

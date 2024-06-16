@@ -12,10 +12,13 @@
       prob: 0.02
     - proto: MobXenoRavager
       cost: 5
+    - proto: MobXenoRunner
+      cost: 2
     - proto: MobXenoRouny
       cost: 3
       prob: 0.02
     - proto: MobXenoSpitter
+      cost: 3
     - proto: WeaponTurretXeno
       prob: 0.1
   configs:
@@ -27,17 +30,20 @@
   entries:
     - proto: MobCarpDungeon
     # These do too much damage for salvage, need nerfs
-    #- proto: MobCarpHolo
-    #  cost: 5
-    #  prob: 0.1
-    #- proto: MobCarpMagic
-    #  cost: 5
-    #  prob: 0.1
-    - proto: MobCarpRainbow # carp version of rouny...
-      cost: 3
+    - proto: MobCarpHolo
+      cost: 5
       prob: 0.05
+    - proto: MobCarpMagic
+      cost: 4
+      prob: 0.1
+    - proto: MobCarpRainbow # carp version of rouny...
+      cost: 6
+      prob: 0.05
+    - proto: MobShark
+      cost: 8
+      prob: 0.035
     - proto: MobDragonDungeon
-      cost: 10
+      cost: 12
       prob: 0.02
   configs:
     DefenseStructure: CarpStatue

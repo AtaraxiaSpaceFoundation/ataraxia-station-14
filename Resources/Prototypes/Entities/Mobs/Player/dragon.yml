@@ -14,6 +14,9 @@
     makeSentient: true
     name: ghost-role-information-space-dragon-name
     description: ghost-role-information-space-dragon-description
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      270: 0.7
   - type: GhostTakeoverAvailable
   - type: HTN
     rootTask:
@@ -108,9 +111,8 @@
     soundHit:
       path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
     damage:
-      types:
-        Piercing: 15
-        Slash: 15
+      groups:
+        Brute: 30
   - type: Devourer
     foodPreference: Humanoid
     shouldStoreDevoured: true
@@ -126,6 +128,9 @@
     tags:
     - CannotSuicide
     - DoorBumpOpener
+  - type: NightVision
+    toggleSound: null
+    color: "#404040"
 
 - type: entity
   parent: BaseMobDragon
@@ -146,18 +151,16 @@
   components:
   - type: GhostRole
     description: ghost-role-information-space-dragon-dungeon-description
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      100: 0.7
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      200: Dead
   # less meat spawned since it's a lot easier to kill
   - type: Butcherable
     spawned:
     - id: FoodMeatDragon
       amount: 1
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 20
+  - type: ExpeditionGhostRole
 
 - type: entity
   id: ActionSpawnRift

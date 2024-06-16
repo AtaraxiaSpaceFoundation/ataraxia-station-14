@@ -60,60 +60,60 @@
   id: RoomTemp
   cost: 0
 
-- type: salvageTemperatureMod
-  id: Hot
-  cost: 1
-  temperature: 323.15 # 50C
-  biomes:
-    - Caves
-    #- LowDesert
-    - Grasslands
-    - Lava
-
-- type: salvageTemperatureMod
-  id: Burning
-  desc: High temperature
-  cost: 2
-  temperature: 423.15 # 200C
-  biomes:
-    - Caves
-    #- LowDesert
-    - Lava
-
-- type: salvageTemperatureMod
-  id: Melting
-  desc: Extreme heat
-  cost: 4
-  temperature: 1273.15 # 1000C hot hot hot
-  biomes:
-    - Lava
-
-- type: salvageTemperatureMod
-  id: Cold
-  cost: 1
-  temperature: 275.15 # 2C
-  biomes:
-    - Caves
-    #- LowDesert
-    - Grasslands
-    - Snow
-
-- type: salvageTemperatureMod
-  id: Tundra
-  desc: Low temperature
-  cost: 2
-  temperature: 263.15 # -40C
-  biomes:
-    - Caves
-    - Snow
-
-- type: salvageTemperatureMod
-  id: Frozen
-  desc: Extreme cold
-  cost: 4
-  temperature: 123.15 # -150C
-  biomes:
-    - Snow
+#- type: salvageTemperatureMod
+#  id: Hot
+#  cost: 1
+#  temperature: 323.15 # 50C
+#  biomes:
+#    - Caves
+#    #- LowDesert
+#    - Grasslands
+#    - Lava
+#
+#- type: salvageTemperatureMod
+#  id: Burning
+#  desc: High temperature
+#  cost: 2
+#  temperature: 423.15 # 200C
+#  biomes:
+#    - Caves
+#    #- LowDesert
+#    - Lava
+#
+#- type: salvageTemperatureMod
+#  id: Melting
+#  desc: Extreme heat
+#  cost: 4
+#  temperature: 1273.15 # 1000C hot hot hot
+#  biomes:
+#    - Lava
+#
+#- type: salvageTemperatureMod
+#  id: Cold
+#  cost: 1
+#  temperature: 275.15 # 2C
+#  biomes:
+#    - Caves
+#    #- LowDesert
+#    - Grasslands
+#    - Snow
+#
+#- type: salvageTemperatureMod
+#  id: Tundra
+#  desc: Low temperature
+#  cost: 2
+#  temperature: 263.15 # -40C
+#  biomes:
+#    - Caves
+#    - Snow
+#
+#- type: salvageTemperatureMod
+#  id: Frozen
+#  desc: Extreme cold
+#  cost: 4
+#  temperature: 123.15 # -150C
+#  biomes:
+#    - Snow
 
 # Air mixtures
 - type: salvageAirMod
@@ -242,7 +242,7 @@
   proto: SnowyLabs
   biomes:
     - Snow
-    
+
 - type: salvageDungeonMod
   id: Haunted
   proto: Haunted

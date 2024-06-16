@@ -43,7 +43,6 @@
     capacity: 1
     count: 1
   - type: MeleeWeapon
-    attackRate: 1.5
     wideAnimationRotation: -135
     damage:
       types:
@@ -55,8 +54,8 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 2.5
-        Slash: 2.5
+        Blunt: 5
+        Slash: 5
         Structural: 30
   - type: GunRequiresWield
   - type: Item

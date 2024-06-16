@@ -85,7 +85,7 @@ public sealed record SalvageMissionParams
 
     [ViewVariables(VVAccess.ReadWrite)] public int Seed;
 
-    public string Difficulty = string.Empty;
+    public string Difficulty = "Moderate";
 }
 
 /// <summary>

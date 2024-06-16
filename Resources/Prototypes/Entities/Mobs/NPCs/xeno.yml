@@ -67,7 +67,7 @@
       50: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      25: 0.5
+      40: 0.7
   - type: Stamina
     critThreshold: 200
   - type: Bloodstream
@@ -81,7 +81,7 @@
     animation: WeaponArcBite
     damage:
       groups:
-        Brute: 6
+        Brute: 10
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -121,6 +121,9 @@
     molsPerSecondPerUnitMass: 0.0005
   - type: Speech
     speechVerb: LargeMob
+  - type: NightVision
+    toggleSound: null
+    color: "#404040"
 
 - type: entity
   name: Praetorian
@@ -137,12 +140,12 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      150: Dead
   - type: Stamina
     critThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
-      50: 0.7
+      130: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -154,6 +157,11 @@
         - MobMask
         layer:
         - MobLayer
+  - type: MeleeWeapon
+    animation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 20
 
 - type: entity
   name: Drone
@@ -170,16 +178,17 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      80: Dead
+      150: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      40: 0.7
+      130: 0.7
   - type: MeleeWeapon
     damage:
       groups:
-        Brute: 6
+        Brute: 15
   - type: MovementSpeedModifier
-    baseSprintSpeed: 4
+    baseWalkSpeed: 2.0
+    baseSprintSpeed: 2.5
   - type: Fixtures
     fixtures:
       fix1:
@@ -210,12 +219,12 @@
       300: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      150: 0.7
+      270: 0.7
   - type: MovementSpeedModifier
   - type: MeleeWeapon
     damage:
      groups:
-       Brute: 12
+       Brute: 25
   - type: Fixtures
     fixtures:
       fix1:
@@ -230,6 +239,7 @@
   - type: Tag
     tags:
     - CannotSuicide
+  - type: ExpeditionGhostRole
 
 - type: entity
   name: Ravager
@@ -252,10 +262,10 @@
   - type: MeleeWeapon
     damage:
      groups:
-       Brute: 10
+       Brute: 20
   - type: SlowOnDamage
     speedModifierThresholds:
-      50: 0.7
+      80: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -285,7 +295,7 @@
   - type: MeleeWeapon
     damage:
      groups:
-       Brute: 5
+       Brute: 8
   - type: Fixtures
     fixtures:
       fix1:
@@ -331,7 +341,7 @@
       50: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      25: 0.7
+      40: 0.7
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound

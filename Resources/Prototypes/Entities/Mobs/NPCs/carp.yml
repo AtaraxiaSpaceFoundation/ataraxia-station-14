@@ -61,9 +61,8 @@
       soundHit:
         path: /Audio/Effects/bite.ogg
       damage:
-        types:
-          Piercing: 5
-          Slash: 10
+        groups:
+          Brute: 15
     - type: TypingIndicator
       proto: alien
     - type: Tag
@@ -80,6 +79,9 @@
       interactFailureSound:
         path: /Audio/Effects/bite.ogg
     - type: Penetrated
+    - type: NightVision
+      toggleSound: null
+      color: "#404040"
 
 - type: entity
   parent: BaseMobCarp
@@ -98,6 +100,8 @@
         alive: Rainbow
       enum.DamageStateVisualLayers.BaseUnshaded:
         mouth: ""
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
 
 - type: entity
   name: magicarp
@@ -178,13 +182,10 @@
     thresholds:
       0: Alive
       50: Dead
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      25: 0.7
   - type: MeleeWeapon
     damage:
-      types:
-        Slash: 6
+      groups:
+        Brute: 7.5
 
 - type: entity
   name: sharkminnow
@@ -234,8 +235,9 @@
           amount: 4
     - type: MeleeWeapon
       damage:
+        groups:
+          Brute: 15
         types:
-          Slash: 12
           Bloodloss: 5
 
 - type: entity

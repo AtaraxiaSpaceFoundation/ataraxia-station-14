@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server._White.Other;
 using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
@@ -118,7 +119,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 
         // Setup mission configs
         // As we go through the config the rating will deplete so we'll go for most important to least important.
-        var difficultyId = "Moderate";
+        var difficultyId = _missionParams.Difficulty;
         var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(difficultyId);
 
         var mission = _entManager.System<SharedSalvageSystem>()
@@ -304,6 +305,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 }
 
                 var uid = _entManager.SpawnAtPosition(entry.Proto, grid.GridTileToLocal(tile));
+                if (_entManager.HasComponent<ExpeditionGhostRoleComponent>(uid))
+                    return;
                 _entManager.RemoveComponent<GhostRoleComponent>(uid);
                 _entManager.RemoveComponent<GhostTakeoverAvailableComponent>(uid);
                 return;
