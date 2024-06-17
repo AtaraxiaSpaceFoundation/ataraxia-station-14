@@ -10,7 +10,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 28
+        Piercing: 40
 
 - type: entity
   id: PelletShotgunBeanbag
@@ -87,7 +87,7 @@
     damage:
       types:
         Piercing: 3
-        Slash: 3 
+        Slash: 3
 
 - type: entity
   id: PelletShotgunTranquilizer

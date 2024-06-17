@@ -26,10 +26,7 @@
         hard: false
         mask:
         - Opaque
-  - type: StunOnCollide
-    stunAmount: 1
-    knockdownAmount: 1
-    slowdownAmount: 5
-    walkSpeedModifier: 0.5
-    runSpeedModifier: 0.3
-
+  - type: KnockdownOnCollide
+  - type: StaminaDamageOnCollide
+    ignoreResistances: false
+    damage: 60
