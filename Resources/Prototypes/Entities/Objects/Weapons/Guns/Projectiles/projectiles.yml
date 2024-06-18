@@ -1106,7 +1106,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 9
+        Heat: 10
   - type: Trail
     scale: 0.03, 0.0
 

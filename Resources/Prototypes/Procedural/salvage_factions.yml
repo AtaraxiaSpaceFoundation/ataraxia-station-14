@@ -6,21 +6,24 @@
       cost: 2
     - proto: MobXenoPraetorian
       cost: 5
-      prob: 0.1
+      prob: 0.5
     - proto: MobXenoQueen
       cost: 10
-      prob: 0.02
+      prob: 0.1
     - proto: MobXenoRavager
-      cost: 5
+      cost: 4
     - proto: MobXenoRunner
       cost: 2
     - proto: MobXenoRouny
-      cost: 3
-      prob: 0.02
+      cost: 2
+      prob: 0.5
     - proto: MobXenoSpitter
       cost: 3
     - proto: WeaponTurretXeno
       prob: 0.1
+    - proto: MobLaserRaptor
+      cost: 5
+      prob: 0.5
   configs:
     DefenseStructure: XenoWardingTower
     Megafauna: MobXenoQueen
@@ -31,20 +34,23 @@
     - proto: MobCarpDungeon
     # These do too much damage for salvage, need nerfs
     - proto: MobCarpHolo
-      cost: 5
-      prob: 0.05
+      cost: 8
+      prob: 0.25
     - proto: MobCarpMagic
-      cost: 4
-      prob: 0.1
+      cost: 2
+      prob: 0.5
     - proto: MobCarpRainbow # carp version of rouny...
-      cost: 6
-      prob: 0.05
+      cost: 4
+      prob: 0.5
     - proto: MobShark
       cost: 8
-      prob: 0.035
+      prob: 0.25
     - proto: MobDragonDungeon
       cost: 12
-      prob: 0.02
+      prob: 0.1
+    - proto: MobLaserRaptor
+      cost: 5
+      prob: 0.5
   configs:
     DefenseStructure: CarpStatue
     Megafauna: MobDragonDungeon

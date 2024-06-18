@@ -11,6 +11,10 @@
       rootTask:
         task: SimpleHostileCompound
       blackboard:
+        NavInteract: !type:Bool
+          true
+        NavPry: !type:Bool
+          true
         NavSmash: !type:Bool
           true
     - type: NpcFactionMember
@@ -82,6 +86,17 @@
     - type: NightVision
       toggleSound: null
       color: "#404040"
+    - type: Tool
+      speed: 2
+      qualities:
+        - Prying
+    - type: Prying
+      pryPowered: !type:Bool
+          true
+      force: !type:Bool
+        true
+      useSound:
+        path: /Audio/Items/crowbar.ogg
 
 - type: entity
   parent: BaseMobCarp
@@ -100,8 +115,6 @@
         alive: Rainbow
       enum.DamageStateVisualLayers.BaseUnshaded:
         mouth: ""
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 6
 
 - type: entity
   name: magicarp
@@ -148,6 +161,8 @@
     energy: 0.5
   - type: RgbLightController
     layers: [ 0 ]
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
 
 - type: entity
   id: MobCarpSalvage

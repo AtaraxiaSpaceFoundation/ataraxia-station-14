@@ -131,6 +131,17 @@
   - type: NightVision
     toggleSound: null
     color: "#404040"
+  - type: Tool
+    speed: 3
+    qualities:
+      - Prying
+  - type: Prying
+    pryPowered: !type:Bool
+        true
+    force: !type:Bool
+      true
+    useSound:
+      path: /Audio/Items/crowbar.ogg
 
 - type: entity
   parent: BaseMobDragon
@@ -151,6 +162,13 @@
   components:
   - type: GhostRole
     description: ghost-role-information-space-dragon-dungeon-description
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      180: 0.7
   # less meat spawned since it's a lot easier to kill
   - type: Butcherable
     spawned:
@@ -159,7 +177,7 @@
   - type: MeleeWeapon
     damage:
       groups:
-        Brute: 20
+        Brute: 25
   - type: ExpeditionGhostRole
 
 - type: entity

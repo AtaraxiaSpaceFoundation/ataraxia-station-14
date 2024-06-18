@@ -1,6 +1,6 @@
 - type: salvageDifficulty
   id: Minimal
-  lootBudget: 10
+  lootBudget: 5
   mobBudget: 10
   modifierBudget: 1
   color: "#9FED5896"
@@ -8,7 +8,7 @@
 
 - type: salvageDifficulty
   id: Minor
-  lootBudget: 30
+  lootBudget: 15
   mobBudget: 30
   modifierBudget: 1
   color: "#EFB34196"
@@ -16,24 +16,24 @@
 
 - type: salvageDifficulty
   id: Moderate
-  lootBudget: 50
-  mobBudget: 50
+  lootBudget: 30
+  mobBudget: 60
   modifierBudget: 2
   color: "#52B4E996"
   recommendedPlayers: 2
 
 - type: salvageDifficulty
   id: Hazardous
-  lootBudget: 70
-  mobBudget: 70
+  lootBudget: 50
+  mobBudget: 100
   modifierBudget: 2
   color: "#DE3A3A96"
   recommendedPlayers: 3
 
 - type: salvageDifficulty
   id: Extreme
-  lootBudget: 100
-  mobBudget: 100
+  lootBudget: 75
+  mobBudget: 150
   modifierBudget: 3
   color: "#D381C996"
   recommendedPlayers: 4

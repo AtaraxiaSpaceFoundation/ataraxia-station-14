@@ -179,7 +179,7 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.5
-        Heat: 0.3
+        Heat: 0.5
         Radiation: 0.1
         Caustic: 0.5
   - type: ExplosionResistance

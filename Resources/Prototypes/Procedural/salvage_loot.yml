@@ -107,97 +107,119 @@
           cost: 2
         - proto: EnergyBattleAxe
           prob: 0.1
-          cost: 8
+          cost: 20
         - proto: WeaponRifleAk
-          cost: 5
+          cost: 16
         - proto: TimeBeacon
           cost: 2
           prob: 0.5
         - proto: ClothingBackpackDuffelSyndicateFilledSMG
-          cost: 6
-          prob: 0.5
+          cost: 15
+          prob: 0.2
         - proto: ClothingBackpackDuffelSyndicateFilledShotgun
-          cost: 8
-          prob: 0.5
+          cost: 17
+          prob: 0.2
         - proto: BriefcaseSyndieSniperBundleFilled
-          cost: 10
-          prob: 0.5
+          cost: 20
+          prob: 0.2
         - proto: ClothingBackpackDuffelSyndicateFilledLMG
-          cost: 12
-          prob: 0.5
+          cost: 25
+          prob: 0.2
         - proto: WeaponRevolverMateba
-          cost: 5
+          cost: 10
+          prob: 0.1
         - proto: WeaponRevolverDeckard
-          cost: 4
+          cost: 10
         - proto: ExGrenade
-          cost: 3
+          cost: 8
         - proto: SupermatterGrenade
-          cost: 5
+          cost: 12
         - proto: WhiteholeGrenade
-          cost: 3
-        - proto: ClothingOuterHardsuitMaxim
           cost: 5
+        - proto: ClothingOuterHardsuitMaxim
+          cost: 12
         - proto: GrenadeIncendiary
-          cost: 4
+          cost: 8
         - proto: ExperimentalSyndicateTeleporter
           cost: 8
-          prob: 0.5
+          prob: 0.2
         - proto: ClothingHeadHelmetSwat
           cost: 4
+          prob: 0.5
         - proto: ClothingBeltMilitaryWebbing
           cost: 2
         - proto: ClothingOuterVestWeb
           cost: 5
+          prob: 0.5
         - proto: ClothingEyesNightVisionGoggles
-          cost: 5
+          cost: 8
         - proto: ClothingHandsGlovesCombat
           cost: 3
         - proto: Katana
-          cost: 3
+          cost: 5
         - proto: WeaponMakeshiftLaser
-          cost: 4
-        - proto: WeaponLaserGun
-          cost: 5
-        - proto: WeaponEgun
-          cost: 5
-        - proto: WeaponXrayCannon
-          cost: 6
-        - proto: WeaponLaserCannon
-          cost: 6
-        - proto: WeaponTempGun
-          cost: 4
-        - proto: WeaponAdvancedLaser
           cost: 10
           prob: 0.5
+        - proto: WeaponLaserGun
+          cost: 12
+          prob: 0.1
+        - proto: WeaponEgun
+          cost: 16
+          prob: 0.1
+        - proto: WeaponXrayCannon
+          cost: 18
+          prob: 0.1
+        - proto: WeaponLaserCannon
+          cost: 20
+          prob: 0.1
         - proto: Stimpack
-          cost: 6
-        - proto: StimkitFilled
           cost: 8
+          prob: 0.5
+        - proto: StimkitFilled
+          cost: 12
           prob: 0.5
         - proto: CrateSecurityRiot
-          cost: 5
+          cost: 12
           prob: 0.5
         - proto: CrateSecurityNonlethal
-          cost: 4
+          cost: 10
           prob: 0.5
         - proto: ClothingShoesBootsMagSyndie
-          cost: 5
+          cost: 4
+          prob: 0.2
         - proto: JetpackBlackFilled
           cost: 3
+          prob: 0.5
         - proto: WeaponLauncherRocket
-          cost: 8
+          cost: 20
         - proto: WeaponLauncherPirateCannon
-          cost: 5
+          cost: 15
         - proto: LightModule
-          cost: 2
-        - proto: LaserModule
-          cost: 4
-        - proto: FlameHiderModule
-          cost: 2
-        - proto: SilencerModule
           cost: 3
-        - proto: AcceleratorModule
+        - proto: LaserModule
+          cost: 8
+        - proto: FlameHiderModule
+          cost: 3
+        - proto: SilencerModule
           cost: 5
+        - proto: AcceleratorModule
+          cost: 12
+        - proto: MedkitFilled
+          cost: 3
+        - proto: MedkitRadiationFilled
+          cost: 5
+        - proto: MedkitOxygenFilled
+          cost: 3
+        - proto: MedkitBruteFilled
+          cost: 5
+        - proto: MedkitCombatFilled
+          cost: 10
+        - proto: MedkitToxinFilled
+          cost: 5
+        - proto: MedkitBurnFilled
+          cost: 5
+        - proto: MedkitAdvancedFilled
+          cost: 8
 
 
 # Mob loot table

@@ -22,7 +22,7 @@
       NavSmash: !type:Bool
         true
   - type: Tool
-    speed: 1.5
+    speed: 2
     qualities:
       - Prying
   - type: Prying
@@ -140,12 +140,12 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      200: Dead
   - type: Stamina
     critThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
-      130: 0.7
+      180: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -178,10 +178,10 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      200: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      130: 0.7
+      180: 0.7
   - type: MeleeWeapon
     damage:
       groups:
@@ -256,7 +256,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      150: Dead
   - type: MovementSpeedModifier
     baseSprintSpeed: 4
   - type: MeleeWeapon
@@ -265,7 +265,7 @@
        Brute: 20
   - type: SlowOnDamage
     speedModifierThresholds:
-      80: 0.7
+      130: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -322,6 +322,10 @@
     spawned:
     - id: FoodMeatRouny
       amount: 3
+  - type: MeleeWeapon
+    damage:
+     groups:
+       Brute: 15
 
 - type: entity
   name: Spitter
