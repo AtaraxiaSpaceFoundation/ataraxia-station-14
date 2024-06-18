@@ -40,6 +40,9 @@ spellbook-recall-desc = { ent-ActionInstantRecallSpell.desc }
 spellbook-smite-name = { ent-ActionSmite }
 spellbook-smite-desc = { ent-ActionSmite.desc }
 
+spellbook-mindswap-name = { ent-ActionMindswapSpell }
+spellbook-mindswap-desc = { ent-ActionMindswapSpell.desc }
+
 spellbook-hardsuit-name = Скафандр волшебника
 spellbook-hardsuit-desc = Украшенный магическими драгоценными камнями скафандр, функционирующий так же, как и обычная мантия волшебника, но в то же время является пригодным для использования в космосе и бронированным. Небольшое замедление. Теперь вы можете произносить заклинания в космосе и местах с низкой температурой! Имеет функцию энергетического щита,который защищает от всех снарядов. Щит разряжается при получении урона и автоматически заряжается.
 

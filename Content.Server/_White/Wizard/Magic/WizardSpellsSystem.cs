@@ -13,14 +13,18 @@ using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server.Lightning;
 using Content.Server.Magic;
+using Content.Server.Mind;
 using Content.Server.Singularity.EntitySystems;
 using Content.Server.Standing;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._White.BetrayalDagger;
+using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Events;
 using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Magic;
 using Content.Shared.Actions;
+using Content.Shared.Borer;
+using Content.Shared.Changeling;
 using Content.Shared.Cluwne;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Hands.Components;
@@ -35,6 +39,7 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Revolutionary.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
@@ -71,6 +76,8 @@ public sealed class WizardSpellsSystem : EntitySystem
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly TelefragSystem _telefrag = default!;
     [Dependency] private readonly EuiManager _euiManager = default!;
+    [Dependency] private readonly MindSystem _mindSystem = default!;
+    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
 
     #endregion
 
@@ -78,6 +85,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<MindswapSpellEvent>(OnMindswapSpell);
         SubscribeLocalEvent<TeleportSpellEvent>(OnTeleportSpell);
         SubscribeLocalEvent<InstantRecallSpellEvent>(OnInstantRecallSpell);
         SubscribeLocalEvent<MimeTouchSpellEvent>(OnMimeTouchSpell);
@@ -94,6 +102,73 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         SubscribeLocalEvent<MagicComponent, BeforeCastSpellEvent>(OnBeforeCastSpell);
     }
+
+    #region Mindswap
+
+    private void OnMindswapSpell(MindswapSpellEvent msg)
+    {
+        if (!CanCast(msg))
+            return;
+
+        var target = msg.Target;
+        var uid = msg.Performer;
+
+        if (HasComp<ChangelingComponent>(target) || HasComp<RevolutionaryComponent>(target) ||
+            HasComp<CultistComponent>(target))
+        {
+            _popupSystem.PopupEntity("Не работает на культистов, генокрадов и революционеров.", uid, uid,
+                PopupType.MediumCaution);
+            return;
+        }
+
+        if (TryComp(target, out InfestedBorerComponent? borer) && borer.ControllingBrain)
+        {
+            _popupSystem.PopupEntity("Им уже кто-то управляет.", uid, uid, PopupType.MediumCaution);
+            return;
+        }
+
+        var userHasMind = _mindSystem.TryGetMind(uid, out var mindId, out var mind);
+        var targetHasMind = _mindSystem.TryGetMind(target, out var targetMindId, out var targetMind);
+
+        if (!userHasMind)
+            return;
+
+        _mindSystem.TransferTo(mindId, target, mind: mind);
+
+        if (targetHasMind)
+        {
+            _mindSystem.TransferTo(targetMindId, uid, mind: targetMind);
+            _popupSystem.PopupEntity(Loc.GetString("Ваш разум подменили!"), uid, uid, PopupType.LargeCaution);
+        }
+
+        TransferAllMagicActions(uid, target);
+
+        _standing.TryLieDown(uid);
+        _standing.TryLieDown(target);
+
+        msg.Handled = true;
+        Speak(msg);
+
+        var hasWiz = HasComp<WizardComponent>(uid);
+        var targetHasWiz = HasComp<WizardComponent>(target);
+
+        if (hasWiz == targetHasWiz)
+            return;
+
+        if (hasWiz)
+        {
+            RemComp<WizardComponent>(uid);
+            EnsureComp<WizardComponent>(target);
+        }
+
+        if (targetHasWiz)
+        {
+            RemComp<WizardComponent>(target);
+            EnsureComp<WizardComponent>(uid);
+        }
+    }
+
+    #endregion
 
     #region Teleport
 
@@ -797,27 +872,48 @@ public sealed class WizardSpellsSystem : EntitySystem
     private void OnBeforeCastSpell(Entity<MagicComponent> ent, ref BeforeCastSpellEvent args)
     {
         var comp = ent.Comp;
+
+        if (!comp.RequiresClothes)
+            return;
+
         var hasReqs = false;
 
-        if (comp.RequiresClothes)
+        var enumerator = _inventory.GetSlotEnumerator(args.Performer, SlotFlags.OUTERCLOTHING | SlotFlags.HEAD);
+        while (enumerator.MoveNext(out var containerSlot))
         {
-            var enumerator = _inventory.GetSlotEnumerator(args.Performer, SlotFlags.OUTERCLOTHING | SlotFlags.HEAD);
-            while (enumerator.MoveNext(out var containerSlot))
-            {
-                if (containerSlot.ContainedEntity is { } item)
-                    hasReqs = HasComp<WizardClothesComponent>(item);
-                else
-                    hasReqs = false;
+            if (containerSlot.ContainedEntity is { } item)
+                hasReqs = HasComp<WizardClothesComponent>(item);
+            else
+                hasReqs = false;
 
-                if (!hasReqs)
-                    break;
-            }
+            if (!hasReqs)
+                break;
         }
 
-        if (!hasReqs)
+        if (hasReqs)
+            return;
+
+        args.Cancelled = true;
+        _popupSystem.PopupEntity(Loc.GetString("magic-component-missing-req"), args.Performer, args.Performer);
+    }
+
+    private void TransferAllMagicActions(EntityUid uid1, EntityUid uid2)
+    {
+        if (!TryComp(uid1, out ActionsContainerComponent? container1) ||
+            !TryComp(uid2, out ActionsContainerComponent? container2))
+            return;
+
+        var actions1 = container1.Container.ContainedEntities.Where(HasComp<MagicComponent>).ToList();
+        var actions2 = container2.Container.ContainedEntities.Where(HasComp<MagicComponent>).ToList();
+
+        foreach (var act in actions1)
         {
-            args.Cancelled = true;
-            _popupSystem.PopupEntity(Loc.GetString("magic-component-missing-req"), args.Performer, args.Performer);
+            _actionContainer.TransferActionWithNewAttached(act, uid2, uid2, container: container2);
+        }
+
+        foreach (var act in actions2)
+        {
+            _actionContainer.TransferActionWithNewAttached(act, uid1, uid1, container: container1);
         }
     }
 

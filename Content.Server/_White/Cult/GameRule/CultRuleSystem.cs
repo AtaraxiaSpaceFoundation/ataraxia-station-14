@@ -311,7 +311,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
             cult.WinCondition = CultWinCondition.Failure;
 
-            // Check for all in once gamemode
+            // Check for all at once gamemode
             if (!GameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
                 _roundEndSystem.EndRound();
         }

@@ -14,6 +14,7 @@ using Content.Shared.Item;
 using Content.Shared.Bed.Sleep;
 using System.Linq;
 using System.Numerics;
+using Content.Server._White.Wizard;
 using Content.Server.Bible.Components;
 using Content.Server.Maps;
 using Content.Server.Revenant.Components;
@@ -335,10 +336,12 @@ public sealed partial class RevenantSystem
 
         // WD START
         var cultistQuery = GetEntityQuery<CultistComponent>();
+        var wizardQuery = GetEntityQuery<WizardComponent>();
         var humanoidQuery = GetEntityQuery<HumanoidAppearanceComponent>();
         foreach (var e in _lookup.GetEntitiesInRange(uid, component.BlightRadius))
         {
-            if (!humanoidQuery.HasComponent(e) || !_mobState.IsAlive(e) || cultistQuery.HasComponent(e))
+            if (!humanoidQuery.HasComponent(e) || !_mobState.IsAlive(e) || cultistQuery.HasComponent(e) ||
+                wizardQuery.HasComponent(e))
                 continue;
 
             var blight = EnsureComp<BlightComponent>(e);

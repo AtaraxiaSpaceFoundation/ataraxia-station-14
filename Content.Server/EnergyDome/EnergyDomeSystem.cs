@@ -1,3 +1,4 @@
+using Content.Server.Damage.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Power.Components;
@@ -12,6 +13,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Throwing;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Verbs;
@@ -34,6 +36,8 @@ public sealed partial class EnergyDomeSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<DamageOtherOnHitComponent, ThrownEvent>(OnThrow);
 
         //Generator events
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, MapInitEvent>(OnInit);
@@ -60,6 +64,14 @@ public sealed partial class EnergyDomeSystem : EntitySystem
 
         //Dome events
         SubscribeLocalEvent<EnergyDomeComponent, DamageChangedEvent>(OnDomeDamaged);
+    }
+
+    private void OnThrow(Entity<DamageOtherOnHitComponent> ent, ref ThrownEvent args)
+    {
+        if (args.User == null)
+            return;
+
+        RaiseLocalEvent(args.User.Value, new EnergyDomeClothesTurnOffEvent());
     }
 
     private void OnClothesTurnOff(Entity<EnergyDomeGeneratorComponent> ent,

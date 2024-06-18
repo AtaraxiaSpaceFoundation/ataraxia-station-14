@@ -178,4 +178,10 @@ public sealed partial class TeleportSpellEvent : InstantActionEvent, ISpeakSpell
     public string? Speech { get; private set; }
 }
 
+public sealed partial class MindswapSpellEvent : EntityTargetActionEvent, ISpeakSpell
+{
+    [DataField("speech")]
+    public string? Speech { get; private set; }
+}
+
 #endregion

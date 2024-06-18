@@ -38,6 +38,8 @@
   name: Force
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: WorldTargetAction
       itemIconStyle: BigAction
       useDelay: 60
@@ -100,6 +102,8 @@
   name: Cards
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: WorldTargetAction
       itemIconStyle: BigAction
       useDelay: 60
@@ -167,6 +171,8 @@
   name: Blink
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: InstantAction
       useDelay: 6
       itemIconStyle: BigAction
@@ -216,6 +222,8 @@
   name: Cluwne Curse
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: EntityTargetAction
       whitelist:
         components:
@@ -235,6 +243,8 @@
   name: Banana Touch
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: EntityTargetAction
       whitelist:
         components:
@@ -254,6 +264,8 @@
   name: Mime Touch
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: EntityTargetAction
       whitelist:
         components:
@@ -273,6 +285,8 @@
   name: Instant Recall
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: InstantRecall
     - type: InstantAction
       useDelay: 10
@@ -288,6 +302,8 @@
   name: Teleport
   noSpawn: true
   components:
+    - type: Magic
+      requiresClothes: false
     - type: InstantAction
       checkCanInteract: false
       useDelay: 60
@@ -297,3 +313,25 @@
         state: teleport
       event: !type:TeleportSpellEvent
         speech: "SCYAR FIDE!"
+
+- type: entity
+  id: ActionMindswapSpell
+  name: Mindswap
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: false
+    - type: EntityTargetAction
+      whitelist:
+        components:
+        - MindContainer
+        - ActionContainer
+      canTargetSelf: false
+      checkCanInteract: false
+      useDelay: 60
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: mindswap
+      event: !type:MindswapSpellEvent
+        speech: "GIN'YU CAPAN!"

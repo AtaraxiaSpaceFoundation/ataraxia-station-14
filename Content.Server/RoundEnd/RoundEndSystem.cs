@@ -53,7 +53,7 @@ namespace Content.Server.RoundEnd
         /// <summary>
         /// Countdown to use where there is no station alert countdown to be found.
         /// </summary>
-        public TimeSpan DefaultCountdownDuration { get; set; } = TimeSpan.FromMinutes(10);
+        public TimeSpan DefaultCountdownDuration { get; set; } = TimeSpan.FromMinutes(5);
 
         private CancellationTokenSource? _countdownTokenSource;
         private CancellationTokenSource? _cooldownTokenSource;

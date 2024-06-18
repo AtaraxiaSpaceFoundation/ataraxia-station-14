@@ -57,6 +57,9 @@
       },
       {
           "name": "icebeam_active"
+      },
+      {
+          "name": "mindswap"
       }
   ]
 }

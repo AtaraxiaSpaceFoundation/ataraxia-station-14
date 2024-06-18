@@ -151,3 +151,12 @@
     - type: Scroll
       actionId: ActionSmite
       learnPopup: scroll-component-smite
+
+- type: entity
+  id: ScrollMindswap
+  parent: BaseScroll
+  name: "Mindswap scroll"
+  components:
+    - type: Scroll
+      actionId: ActionMindswapSpell
+      learnPopup: scroll-component-mindswap

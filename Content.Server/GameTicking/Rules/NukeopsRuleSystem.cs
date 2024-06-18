@@ -45,6 +45,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Server.StationEvents.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
 
@@ -683,9 +684,14 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 : WinCondition.AllNukiesDead);
 
             SetWinType(uid, WinType.CrewMajor, nukeops, false);
-            _roundEndSystem.DoRoundEndBehavior(
-                nukeops.RoundEndBehavior, nukeops.EvacShuttleTime, nukeops.RoundEndTextSender,
-                nukeops.RoundEndTextShuttleCall, nukeops.RoundEndTextAnnouncement);
+
+            // WD EDIT, check for all at once gamemode
+            if (!GameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+            {
+                _roundEndSystem.DoRoundEndBehavior(
+                    nukeops.RoundEndBehavior, nukeops.EvacShuttleTime, nukeops.RoundEndTextSender,
+                    nukeops.RoundEndTextShuttleCall, nukeops.RoundEndTextAnnouncement);
+            }
 
             // prevent it called multiple times
             nukeops.RoundEndBehavior = RoundEndBehavior.Nothing;

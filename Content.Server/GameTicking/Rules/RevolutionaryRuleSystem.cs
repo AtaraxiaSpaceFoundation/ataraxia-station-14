@@ -107,10 +107,8 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             if (CheckCommandLose())
             {
                 // WD EDIT START
-                // Basically check for all in once gamemode
-                if (_gameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
-                    _roundEnd.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, component.ShuttleCallTime);
-                else
+                // Check for all at once gamemode
+                if (!_gameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
                     _roundEnd.EndRound();
 
                 // WD EDIT END

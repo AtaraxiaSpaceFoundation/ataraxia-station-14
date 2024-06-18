@@ -223,12 +223,28 @@
     stock: 1
 
 - type: listing
+  id: SpellBookMindswap
+  name: spellbook-mindswap-name
+  description: spellbook-mindswap-desc
+  productEntity: ScrollMindswap
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: mindswap
+  cost:
+    SpellPoint: 2
+  categories:
+  - UtilitySpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: SpellBookHardsuit
   name: spellbook-hardsuit-name
   description: spellbook-hardsuit-desc
   productEntity: ClothingOuterHardsuitWizard
   cost:
-    SpellPoint: 4
+    SpellPoint: 5
   categories:
   - MagicItems
   conditions:

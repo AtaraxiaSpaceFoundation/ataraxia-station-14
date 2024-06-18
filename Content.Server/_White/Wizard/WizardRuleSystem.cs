@@ -23,6 +23,7 @@ using Robust.Shared.Prototypes;
 using System.Linq;
 using Content.Server.Objectives;
 using Content.Server.Station.Components;
+using Content.Server.StationEvents.Components;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Components;
 using Content.Shared.Objectives.Components;
@@ -62,7 +63,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         SubscribeLocalEvent<RoundStartAttemptEvent>(OnStartAttempt);
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayersSpawning);
         SubscribeLocalEvent<GameRunLevelChangedEvent>(OnRunLevelChanged);
-        SubscribeLocalEvent<WizardComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<WizardComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<WizardComponent, GhostRoleSpawnerUsedEvent>(OnPlayersGhostSpawning);
         SubscribeLocalEvent<WizardComponent, MindAddedMessage>(OnMindAdded);
@@ -121,11 +121,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
         if (GameTicker.RunLevel == GameRunLevel.InRound)
             SpawnWizardGhostRole(uid, component);
-    }
-
-    private void OnComponentRemove(EntityUid uid, WizardComponent component, ComponentRemove args)
-    {
-        CheckAnnouncement();
     }
 
     private void OnMobStateChanged(EntityUid uid, WizardComponent component, MobStateChangedEvent ev)
@@ -249,6 +244,10 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
     private void CheckAnnouncement()
     {
+        // Check for all at once gamemode
+        if (GameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+            return;
+
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var wizard, out _))
         {

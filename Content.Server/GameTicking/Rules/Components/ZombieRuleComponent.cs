@@ -36,13 +36,13 @@ public sealed partial class ZombieRuleComponent : Component
     /// The minimum amount of time after the round starts that the initial infected will be chosen.
     /// </summary>
     [DataField]
-    public TimeSpan MinStartDelay = TimeSpan.FromMinutes(10);
+    public TimeSpan MinStartDelay = TimeSpan.FromMinutes(3);
 
     /// <summary>
     /// The maximum amount of time after the round starts that the initial infected will be chosen.
     /// </summary>
     [DataField]
-    public TimeSpan MaxStartDelay = TimeSpan.FromMinutes(15);
+    public TimeSpan MaxStartDelay = TimeSpan.FromMinutes(6);
 
     /// <summary>
     /// The sound that plays when someone becomes an initial infected.
