@@ -4580,3 +4580,11 @@
   id: 311
   time: '2024-06-19T02:47:36.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/364
+- author: ThereDrD
+  changes:
+  - message: "\u0425\u043E\u0442\u0444\u0438\u043A\u0441 \u0437\u0432\u0443\u043A\u043E\
+      \u0432"
+    type: Fix
+  id: 312
+  time: '2024-06-19T10:08:29.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/366
