@@ -31,6 +31,15 @@
   - type: Appearance
   - type: StaticPrice
     price: 500
+  - type: EmitSoundOnPickup
+    sound:
+      collection: LasersPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: LasersDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: LasersDrop
 
 - type: entity
   id: BaseWeaponPowerCell
@@ -259,6 +268,15 @@
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
     fireCost: 100
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PulsePickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PulseDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PulseDrop
 
 - type: entity
   name: pulse carbine
@@ -287,6 +305,15 @@
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
     fireCost: 40
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PulsePickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PulseDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PulseDrop
 
 - type: entity
   name: pulse rifle
@@ -311,6 +338,15 @@
   - type: ProjectileBatteryAmmoProvider
     proto: PulseBoltProjectile
     fireCost: 2.5
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PulsePickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PulseDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PulseDrop
 
 - type: entity
   name: laser cannon

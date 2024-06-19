@@ -13,6 +13,10 @@ lathe-menu-material-amount = { $amount ->
     [1] {NATURALFIXED($amount, 2)} {$unit}
     *[other] {NATURALFIXED($amount, 2)} {$unit}
 }
+lathe-menu-material-amount-missing = { $amount ->
+    [1] {NATURALFIXED($amount, 1)} {$unit} {$material}, [color=red]требуется {NATURALFIXED($missingAmount, 1)} {$unit}[/color]
+    *[other] {NATURALFIXED($amount, 1)} {$unit} {$material}, [color=red]требуется {NATURALFIXED($missingAmount, 1)} {$unit}[/color]
+}
 lathe-menu-no-materials-message = Материалы не загружены
 lathe-menu-fabricating-message = Создаем...
 lathe-menu-materials-title = Материалы

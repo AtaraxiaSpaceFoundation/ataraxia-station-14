@@ -288,6 +288,10 @@
     - type: Magic
       requiresClothes: false
     - type: InstantRecall
+      linkSound:
+        path: /Audio/White/Magic/Recall/link.ogg
+      recallSound:
+        path: /Audio/White/Magic/Recall/recall.ogg
     - type: InstantAction
       useDelay: 10
       itemIconStyle: BigAction

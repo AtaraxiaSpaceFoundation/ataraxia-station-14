@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: EffectMagicDisappearance
+  noSpawn: true
+  components:
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/White/Magic/Recall/disappearance.ogg

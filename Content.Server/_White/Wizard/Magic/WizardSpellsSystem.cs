@@ -217,6 +217,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             recallComponent.Item = handsComponent.ActiveHandEntity.Value;
             _popupSystem.PopupEntity($"Сопряжено с {MetaData(handsComponent.ActiveHandEntity.Value).EntityName}",
                 msg.Performer, msg.Performer);
+            _audio.PlayPvs(recallComponent.LinkSound, msg.Performer);
             return;
         }
 
@@ -226,12 +227,13 @@ public sealed class WizardSpellsSystem : EntitySystem
             var coordsItem = Transform(recallComponent.Item.Value).Coordinates;
             var coordsPerformer = Transform(msg.Performer).Coordinates;
 
-            Spawn("EffectEmpPulse", coordsItem);
+            Spawn("EffectMagicDisappearance", coordsItem);
 
             _transformSystem.SetCoordinates(recallComponent.Item.Value, coordsPerformer);
             _transformSystem.AttachToGridOrMap(recallComponent.Item.Value);
 
             _handsSystem.TryForcePickupAnyHand(msg.Performer, recallComponent.Item.Value);
+            _audio.PlayPvs(recallComponent.RecallSound, msg.Performer);
 
             msg.Handled = true;
             Speak(msg);

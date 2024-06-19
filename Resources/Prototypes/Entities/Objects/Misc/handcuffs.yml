@@ -28,6 +28,15 @@
     - Security
   - type: UseDelay
     delay: 6
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/Handcuffs/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/Handcuffs/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/White/Items/Handcuffs/drop.ogg
 
 - type: entity
   name: makeshift handcuffs

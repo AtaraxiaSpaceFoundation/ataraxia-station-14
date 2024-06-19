@@ -84,3 +84,7 @@
     - uploadfile
     - loadprototype
     - uploadfolder
+
+- Flags: ADMIN
+  Commands:
+    - fuckrules

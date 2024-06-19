@@ -76,6 +76,12 @@
     solution: drink
   - type: FitsInDispenser
     solution: drink
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/White/Items/handling/drinkglass_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/White/Items/handling/drinkglass_drop.ogg
 
 # Transformable container - normal glass
 - type: entity

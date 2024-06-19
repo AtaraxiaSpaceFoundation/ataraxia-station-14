@@ -1,0 +1,96 @@
+﻿- type: soundCollection
+  id: RiflesPickUp
+  files:
+  - /Audio/White/Items/Weapon/Rifle/pickup1.ogg
+  - /Audio/White/Items/Weapon/Rifle/pickup2.ogg
+  - /Audio/White/Items/Weapon/Rifle/pickup3.ogg
+
+- type: soundCollection
+  id: RiflesDrop
+  files:
+  - /Audio/White/Items/Weapon/Rifle/drop1.ogg
+  - /Audio/White/Items/Weapon/Rifle/drop2.ogg
+
+- type: soundCollection
+  id: PistolsPickUp
+  files:
+  - /Audio/White/Items/Weapon/Pistol/pickup1.ogg
+  - /Audio/White/Items/Weapon/Pistol/pickup2.ogg
+  - /Audio/White/Items/Weapon/Pistol/pickup3.ogg
+  - /Audio/White/Items/Weapon/Pistol/pickup4.ogg
+
+- type: soundCollection
+  id: PistolsDrop
+  files:
+  - /Audio/White/Items/Weapon/Pistol/drop1.ogg
+  - /Audio/White/Items/Weapon/Pistol/drop2.ogg
+  - /Audio/White/Items/Weapon/Pistol/drop3.ogg
+
+- type: soundCollection
+  id: LasersPickUp
+  files:
+  - /Audio/White/Items/Weapon/Laser/pickup1.ogg
+  - /Audio/White/Items/Weapon/Laser/pickup2.ogg
+
+- type: soundCollection
+  id: LasersDrop
+  files:
+  - /Audio/White/Items/Weapon/Laser/drop1.ogg
+
+- type: soundCollection
+  id: PulsePickUp
+  files:
+  - /Audio/White/Items/Weapon/Pulse/pickup1.ogg
+
+- type: soundCollection
+  id: PulseDrop
+  files:
+  - /Audio/White/Items/Weapon/Pulse/drop1.ogg
+
+- type: soundCollection
+  id: SnipersPickUp
+  files:
+  - /Audio/White/Items/Weapon/Sniper/pickup1.ogg
+  - /Audio/White/Items/Weapon/Sniper/pickup2.ogg
+
+- type: soundCollection
+  id: SnipersDrop
+  files:
+  - /Audio/White/Items/Weapon/Sniper/drop1.ogg
+  - /Audio/White/Items/Weapon/Sniper/drop2.ogg
+  - /Audio/White/Items/Weapon/Sniper/drop3.ogg
+
+- type: soundCollection
+  id: ShotgunsPickUp
+  files:
+  - /Audio/White/Items/Weapon/Shotgun/pickup1.ogg
+  - /Audio/White/Items/Weapon/Shotgun/pickup2.ogg
+  - /Audio/White/Items/Weapon/Shotgun/pickup3.ogg
+
+- type: soundCollection
+  id: ShotgunsDrop
+  files:
+  - /Audio/White/Items/Weapon/Shotgun/drop1.ogg
+  - /Audio/White/Items/Weapon/Shotgun/drop2.ogg
+
+- type: soundCollection
+  id: RevolversPickUp
+  files:
+  - /Audio/White/Items/Weapon/Revolver/pickup1.ogg
+  - /Audio/White/Items/Weapon/Revolver/pickup2.ogg
+
+- type: soundCollection
+  id: RevolversDrop
+  files:
+  - /Audio/White/Items/Weapon/Revolver/drop1.ogg
+  - /Audio/White/Items/Weapon/Revolver/drop2.ogg
+
+- type: soundCollection
+  id: RevolversCollide
+  files:
+  - /Audio/White/Items/Weapon/Revolver/collide1.ogg
+
+- type: soundCollection
+  id: RevolversPutIn
+  files:
+  - /Audio/White/Items/Weapon/Revolver/putin1.ogg

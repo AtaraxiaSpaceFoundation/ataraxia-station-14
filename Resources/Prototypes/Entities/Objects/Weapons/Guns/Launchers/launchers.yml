@@ -19,6 +19,15 @@
     containers:
       ballistic-ammo: !type:Container
         ents: []
+  - type: EmitSoundOnPickup
+    sound:
+      collection: RiflesPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: RiflesDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: RiflesPickUp
 
 - type: entity
   name: china lake
