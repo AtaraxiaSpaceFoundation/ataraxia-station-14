@@ -1,15 +1,15 @@
 ﻿- type: soundCollection
   id: RiflesPickUp
   files:
-  - /Audio/White/Items/Weapon/Rifle/pickup1.ogg
-  - /Audio/White/Items/Weapon/Rifle/pickup2.ogg
-  - /Audio/White/Items/Weapon/Rifle/pickup3.ogg
+  - /Audio/White/Items/Weapon/rifle/pickup1.ogg
+  - /Audio/White/Items/Weapon/rifle/pickup2.ogg
+  - /Audio/White/Items/Weapon/rifle/pickup3.ogg
 
 - type: soundCollection
   id: RiflesDrop
   files:
-  - /Audio/White/Items/Weapon/Rifle/drop1.ogg
-  - /Audio/White/Items/Weapon/Rifle/drop2.ogg
+  - /Audio/White/Items/Weapon/rifle/drop1.ogg
+  - /Audio/White/Items/Weapon/rifle/drop2.ogg
 
 - type: soundCollection
   id: PistolsPickUp
