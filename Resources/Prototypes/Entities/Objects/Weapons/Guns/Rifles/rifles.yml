@@ -58,7 +58,7 @@
       collection: RiflesDrop
   - type: EmitSoundOnLand
     sound:
-      collection: RiflesPickUp
+      collection: RiflesDrop
 
 - type: entity
   name: AKMS
