@@ -26,6 +26,7 @@ namespace Content.Shared.Throwing
         [Dependency] private readonly SharedGravitySystem _gravity = default!;
 
         private const string ThrowingFixture = "throw-fixture";
+        private readonly HashSet<(EntityUid, EntityUid)> _processed = new (); // WD edit
 
         public override void Initialize()
         {
@@ -66,7 +67,14 @@ namespace Content.Shared.Throwing
             if (args.OtherEntity == component.Thrower)
                 return;
 
+            // WD edit start
+            var collisionPair = (uid, args.OtherEntity);
+            if (_processed.Contains(collisionPair))
+                return;
+            // WD edit end
+
             ThrowCollideInteraction(component, args.OurEntity, args.OtherEntity);
+            _processed.Add(collisionPair);
         }
 
         private void PreventCollision(EntityUid uid, ThrownItemComponent component, ref PreventCollideEvent args)
@@ -113,6 +121,7 @@ namespace Content.Shared.Throwing
 
             EntityManager.EventBus.RaiseLocalEvent(uid, new StopThrowEvent { User = thrownItemComponent.Thrower }, true);
             EntityManager.RemoveComponent<ThrownItemComponent>(uid);
+            _processed.Clear(); // WD edit
         }
 
         public void LandComponent(EntityUid uid, ThrownItemComponent thrownItem, PhysicsComponent physics, bool playSound)

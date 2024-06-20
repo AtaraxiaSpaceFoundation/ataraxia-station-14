@@ -577,9 +577,12 @@
 
 - type: reaction
   id: Synthflesh
+  minTemp: 370
   reactants:
     Blood:
-      amount: 1
+      amount: 2
+    WeldingFuel:
+      amount: 2
     Carbon:
       amount: 1
     Bicaridine:

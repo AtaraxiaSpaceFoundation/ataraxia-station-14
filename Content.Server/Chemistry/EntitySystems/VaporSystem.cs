@@ -30,17 +30,26 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly ReactiveSystem _reactive = default!;
 
         private const float ReactTime = 0.125f;
+        private readonly HashSet<(EntityUid, EntityUid)> _processed = new (); // WD edit
 
         public override void Initialize()
         {
             base.Initialize();
 
             SubscribeLocalEvent<VaporComponent, StartCollideEvent>(HandleCollide);
+            SubscribeLocalEvent<VaporComponent, ComponentRemove>(OnDespawn); // WD edit
         }
 
         private void HandleCollide(Entity<VaporComponent> entity, ref StartCollideEvent args)
         {
-            if (!EntityManager.TryGetComponent(entity.Owner, out SolutionContainerManagerComponent? contents)) return;
+            if (!EntityManager.TryGetComponent(entity.Owner, out SolutionContainerManagerComponent? contents))
+                return;
+
+            // WD edit start
+            var collisionPair = (entity.Owner, args.OtherEntity);
+            if (_processed.Contains(collisionPair))
+                return;
+            // WD edit end
 
             foreach (var (_, soln) in _solutionContainerSystem.EnumerateSolutions((entity.Owner, contents)))
             {
@@ -48,11 +57,19 @@ namespace Content.Server.Chemistry.EntitySystems
                 _reactive.DoEntityReaction(args.OtherEntity, solution, ReactionMethod.Touch);
             }
 
+            _processed.Add(collisionPair); // WD edit
+
             // Check for collision with a impassable object (e.g. wall) and stop
             if ((args.OtherFixture.CollisionLayer & (int) CollisionGroup.Impassable) != 0 && args.OtherFixture.Hard)
             {
                 EntityManager.QueueDeleteEntity(entity);
             }
+        }
+
+        // WD edit
+        private void OnDespawn(Entity<VaporComponent> entity, ref ComponentRemove args)
+        {
+            _processed.RemoveWhere(pair => pair.Item1 == entity.Owner);
         }
 
         public void Start(Entity<VaporComponent> vapor, TransformComponent vaporXform, Vector2 dir, float speed, MapCoordinates target, float aliveTime, EntityUid? user = null)
