@@ -83,7 +83,7 @@ public sealed partial class IdCardConsoleComponent : Component
     [DataField, AutoNetworkedField]
     public List<List<ProtoId<AccessLevelPrototype>>> AccessLevelsConsole = new()
     {
-        new List<ProtoId<AccessLevelPrototype>> {"Captain", "HeadOfPersonnel", "HeadOfSecurity", "ChiefMedicalOfficer", "ChiefEngineer", "ResearchDirector", "Command"}, // Command
+        new List<ProtoId<AccessLevelPrototype>> {"Captain", "HeadOfPersonnel", "HeadOfSecurity", "ChiefMedicalOfficer", "ChiefEngineer", "ResearchDirector", "Quartermaster", "Command"}, // Command
         new List<ProtoId<AccessLevelPrototype>> {"Armory", "Brig", "Security","Detective", "Lawyer"}, // Security
         new List<ProtoId<AccessLevelPrototype>> {"Chemistry", "Cryogenics", "Medical"}, // Medical
         new List<ProtoId<AccessLevelPrototype>> {"Atmospherics", "Engineering", "External", "Maintenance"}, // Engineering
