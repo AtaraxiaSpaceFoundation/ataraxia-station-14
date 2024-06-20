@@ -24,9 +24,11 @@ namespace Content.Client.Access.UI
 
         private readonly IdCardConsoleBoundUserInterface _owner;
 
-        private AccessLevelControl _accessButtons = new();
+        private GridContainer _grid = default!;
+
+        private readonly AccessLevelControl _groupAccessButtons = new();
         private readonly Dictionary<string, TextureButton> _jobIconButtons = new(); //WD-EDIT
-        private readonly List<string> _jobPrototypeIds = new();
+        private string _newJob = "";
 
         private string? _lastFullName;
         private string? _lastJobTitle;
@@ -36,7 +38,7 @@ namespace Content.Client.Access.UI
         public IdCardConsoleWindow(
             IdCardConsoleBoundUserInterface owner,
             IPrototypeManager prototypeManager,
-            List<ProtoId<AccessLevelPrototype>> accessLevels)
+            List<List<ProtoId<AccessLevelPrototype>>> accessLevels)
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
@@ -59,26 +61,20 @@ namespace Content.Client.Access.UI
 
             JobTitleSaveButton.OnPressed += _ => SubmitData();
 
-            var jobs = _prototypeManager.EnumeratePrototypes<JobPrototype>().ToList();
-            jobs.Sort((x, y) => string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCulture));
+            _groupAccessButtons.PopulateForConsole(accessLevels, prototypeManager);
 
-            foreach (var job in jobs)
+            foreach (var department in _groupAccessButtons.ButtonGroups)
             {
-                if (!job.OverrideConsoleVisibility.GetValueOrDefault(job.SetPreference))
+                var departmentGrid = new GridContainer {};
+                foreach (var button in department.Values)
                 {
-                    continue;
+                    departmentGrid.AddChild(button);
                 }
-
-                _jobPrototypeIds.Add(job.ID);
-                JobPresetOptionButton.AddItem(Loc.GetString(job.Name), _jobPrototypeIds.Count - 1);
+                AccessLevelControlContainer.AddChild(departmentGrid);
             }
 
-            JobPresetOptionButton.OnItemSelected += SelectJobPreset;
 
-            _accessButtons.Populate(accessLevels, prototypeManager);
-            AccessLevelControlContainer.AddChild(_accessButtons);
-
-            foreach (var (id, button) in _accessButtons.ButtonsList)
+            foreach (var (id, button) in _groupAccessButtons.ButtonsList)
             {
                 button.OnPressed += _ => SubmitData();
             }
@@ -92,72 +88,89 @@ namespace Content.Client.Access.UI
             if (rsi == null)
                 return;
 
-            foreach (var jobIcon in idConsoleComponent.JobIcons)
+            foreach (var department in idConsoleComponent.JobIcons)
             {
-                var newButton = new TextureButton
+                _grid = new GridContainer
                 {
-                    TextureNormal = rsi.RSI.TryGetState(jobIcon, out var state) ? state.Frame0
-                        : rsi.RSI.TryGetState("CustomId", out var customState) ? customState.Frame0
-                        : null,
-                    Scale = new Vector2(5, 5)
+                    Columns = department.Count
                 };
-
-                _jobIconButtons.Add(jobIcon, newButton);
-                newButton.OnPressed += _ =>
+                foreach (var jobIcon in department)
                 {
-                    _lastJobIcon = "JobIcon" + jobIcon;
-                    SubmitData();
-                };
+                    var newButton = new TextureButton
+                    {
+                        TextureNormal = rsi.RSI.TryGetState(jobIcon, out var state) ? state.Frame0
+                            : rsi.RSI.TryGetState("CustomId", out var customState) ? customState.Frame0
+                            : null,
+                        Scale = new Vector2(5, 5)
+                    };
 
-                JobIconsGrid.AddChild(newButton);
+                    _jobIconButtons.TryAdd(jobIcon, newButton);
+
+                    newButton.OnPressed += _ =>
+                    {
+                        SelectJobPreset(jobIcon);
+                        _newJob = jobIcon;
+                        _lastJobIcon = "JobIcon" + jobIcon;
+                        SubmitData();
+                    };
+
+                    _grid.AddChild(newButton);
+                }
+
+                JobIconsGrid.AddChild(_grid);
             }
             //WD-EDIT
         }
 
         private void ClearAllAccess()
         {
-            foreach (var button in _accessButtons.ButtonsList.Values)
+            foreach (var group in _groupAccessButtons.ButtonGroups)
             {
-                if (button.Pressed)
+                foreach (var button in group.Values)
                 {
-                    button.Pressed = false;
+                    if (button.Pressed)
+                    {
+                        button.Pressed = false;
+                    }
                 }
             }
         }
 
-        private void SelectJobPreset(OptionButton.ItemSelectedEventArgs args)
+        private void SelectJobPreset(string jobName)
         {
-            if (!_prototypeManager.TryIndex(_jobPrototypeIds[args.Id], out JobPrototype? job))
+            if (!_prototypeManager.TryIndex(jobName, out JobPrototype? job))
             {
                 return;
             }
 
             JobTitleLineEdit.Text = Loc.GetString(job.Name);
-            args.Button.SelectId(args.Id);
 
             ClearAllAccess();
 
             // this is a sussy way to do this
             foreach (var access in job.Access)
             {
-                if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+                foreach (var group in _groupAccessButtons.ButtonGroups)
                 {
-                    button.Pressed = true;
+                    if (group.TryGetValue(access, out var button) && !button.Disabled)
+                    {
+                        button.Pressed = true;
+                    }
                 }
+
             }
 
             foreach (var group in job.AccessGroups)
             {
                 if (!_prototypeManager.TryIndex(group, out AccessGroupPrototype? groupPrototype))
-                {
                     continue;
-                }
 
                 foreach (var access in groupPrototype.Tags)
                 {
-                    if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+                    foreach (var buttonGroup in _groupAccessButtons.ButtonGroups)
                     {
-                        button.Pressed = true;
+                        if (buttonGroup.TryGetValue(access, out var button) && !button.Disabled)
+                            button.Pressed = true;
                     }
                 }
             }
@@ -204,18 +217,11 @@ namespace Content.Client.Access.UI
 
             JobTitleSaveButton.Disabled = !interfaceEnabled || !jobTitleDirty;
 
-            JobPresetOptionButton.Disabled = !interfaceEnabled;
 
-            _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
-                                       new List<ProtoId<AccessLevelPrototype>>(),
+            _groupAccessButtons.UpdateStateConsole(state.TargetIdAccessList?.ToList() ??
+                                                   new List<ProtoId<AccessLevelPrototype>>(),
                                        state.AllowedModifyAccessList?.ToList() ??
                                        new List<ProtoId<AccessLevelPrototype>>());
-
-            var jobIndex = _jobPrototypeIds.IndexOf(state.TargetIdJobPrototype);
-            if (jobIndex >= 0)
-            {
-                JobPresetOptionButton.SelectId(jobIndex);
-            }
 
             //WD-EDIT
             if (_resource.TryGetResource(new ResPath("/Textures/Interface/Misc/job_icons.rsi"), out RSIResource? rsi))
@@ -234,7 +240,6 @@ namespace Content.Client.Access.UI
                         : rsi.RSI.TryGetState("CustomId", out var customState)
                             ? customState.Frame0
                             : null,
-
                     TextureScale = new Vector2(4, 4)
                 };
 
@@ -256,15 +261,18 @@ namespace Content.Client.Access.UI
         private void SubmitData()
         {
             // Don't send this if it isn't dirty.
-            var jobProtoDirty = _lastJobProto != null &&
-                _jobPrototypeIds[JobPresetOptionButton.SelectedId] != _lastJobProto;
+            var jobProtoDirty = _lastJobProto != null && _newJob != _lastJobProto;
 
             _owner.SubmitData(
                 FullNameLineEdit.Text,
                 JobTitleLineEdit.Text,
                 // Iterate over the buttons dictionary, filter by `Pressed`, only get key from the key/value pair
-                _accessButtons.ButtonsList.Where(x => x.Value.Pressed).Select(x => x.Key).ToList(),
-                jobProtoDirty ? _jobPrototypeIds[JobPresetOptionButton.SelectedId] : string.Empty,
+                _groupAccessButtons.ButtonGroups
+                    .SelectMany(dict => dict)
+                    .Where(x => x.Value.Pressed)
+                    .Select(x => x.Key)
+                    .ToList(),
+                jobProtoDirty ? _newJob : string.Empty,
                 _lastJobIcon);
         }
     }

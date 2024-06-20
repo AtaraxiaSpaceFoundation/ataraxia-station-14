@@ -24,6 +24,60 @@
     - WhitelistChameleon
   - type: StealTarget
     stealGroup: IDCard
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.IdVisuals.State:
+        base:
+          Captain: { state: idcaptain }
+          HeadOfPersonnel: { state: idheadofpersonnel }
+          HeadOfSecurity: { state: idheadofsecurity }
+          ChiefMedicalOfficer: { state: idchiefmedicalofficer }
+          ChiefEngineer: { state: idchiefengineer }
+          ResearchDirector: { state: idresearchdirector }
+          QuarterMaster: { state: idquartermaster }
+          Lawyer: { state: idlawyer }
+          Clown: { state: idclown }
+          Bartender: { state: idbartender }
+          Reporter: { state: idreporter }
+          Chef: { state: idcook }
+          Botanist: { state: idbotanist }
+          ServiceWorker: { state: idintern-service }
+          Zookeeper: { state: idzookeeper }
+          Musician: { state: idmusician }
+          Librarian: { state: idcurator }
+          Janitor: { state: idjanitor }
+          Chaplain: { state: idchaplain }
+          Mime: { state: idmime }
+          Boxer: { state: idboxer }
+          Passenger: { state: idpassenger }
+          Visitor: { state: idpassenger }
+          Borg: { state: idunknown }
+          CustomId: { state: idunknown }
+          Warden: { state: idwarden }
+          SeniorOfficer: { state: idseniorofficer }
+          SecurityOfficer: { state: idsecurityofficer }
+          Detective: { state: iddetective }
+          SecurityCadet: { state: idintern-cadet }
+          Brigmedic: { state: idbrigmedic }
+          SeniorPhysician: { state: idseniorphysician }
+          Paramedic: { state: idparamedic }
+          Chemist: { state: idchemist }
+          MedicalDoctor: { state: idmedicaldoctor }
+          Virologist: { state: idvirologist }
+          Geneticist: { state: idgeneticist }
+          MedicalIntern: { state: idintern-med }
+          Psychologist: { state: idpsychologist }
+          SeniorEngineer: { state: idseniorengineer }
+          AtmosphericTechnician: { state: idatmospherictechnician }
+          StationEngineer: { state: idstationengineer }
+          TechnicalAssistant: { state: idintern-tech }
+          SeniorResearcher: { state: idseniorresearcher }
+          Scientist: { state: idscientist }
+          Roboticist: { state: idroboticist }
+          ResearchAssistant: { state: idintern-sci }
+          ShaftMiner: { state: idshaftminer }
+          CargoTechnician: { state: idcargotechnician }
 
 #IDs with layers
 

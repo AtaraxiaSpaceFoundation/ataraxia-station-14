@@ -13,6 +13,7 @@ namespace Content.Client.Access.UI;
 public sealed partial class AccessLevelControl : GridContainer
 {
     public readonly Dictionary<ProtoId<AccessLevelPrototype>, Button> ButtonsList = new();
+    public readonly List<Dictionary<ProtoId<AccessLevelPrototype>, Button>> ButtonGroups = new ();
 
     public AccessLevelControl()
     {
@@ -37,6 +38,61 @@ public sealed partial class AccessLevelControl : GridContainer
             AddChild(newButton);
             ButtonsList.Add(accessLevel.ID, newButton);
         }
+    }
+
+    public void PopulateForConsole(List<List<ProtoId<AccessLevelPrototype>>> accessLevels, IPrototypeManager prototypeManager)
+    {
+        var departmentColors = new List<String> // Colors from StyleNano.cs
+        {
+            "ButtonColorCommandDepartment",
+            "ButtonColorSecurityDepartment",
+            "ButtonColorMedicalDepartment",
+            "ButtonColorEngineeringDepartment",
+            "ButtonColorResearchingDepartment",
+            "ButtonColorCargoDepartment",
+            "ButtonColorServiceDepartment"
+        };
+        var currentColorIndex = 0;
+
+        foreach (var department in accessLevels)
+        {
+            Dictionary<ProtoId<AccessLevelPrototype>, Button> buttons = new();
+            foreach (var access in department)
+            {
+                if (!prototypeManager.TryIndex(access, out var accessLevel))
+                {
+                    Logger.Error($"Unable to find accesslevel for {access}");
+                    continue;
+                }
+
+                var newButton = new Button
+                {
+                    Text = accessLevel.GetAccessLevelName(),
+                    ToggleMode = true,
+                };
+
+                newButton.AddStyleClass(departmentColors[currentColorIndex]);
+                buttons.Add(accessLevel.ID, newButton);
+            }
+
+            ButtonGroups.Add(buttons);
+            currentColorIndex++;
+        }
+    }
+
+    public void UpdateStateConsole(
+        List<ProtoId<AccessLevelPrototype>> pressedList,
+        List<ProtoId<AccessLevelPrototype>>? enabledList = null)
+    {
+        foreach (var department in ButtonGroups)
+        {
+            foreach (var (accessName, button) in department)
+            {
+                button.Pressed = pressedList.Contains(accessName);
+                button.Disabled = !(enabledList?.Contains(accessName) ?? true);
+            }
+        }
+
     }
 
     public void UpdateState(

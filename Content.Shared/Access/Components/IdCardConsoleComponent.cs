@@ -30,7 +30,7 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly List<ProtoId<AccessLevelPrototype>> AccessList;
         public readonly ProtoId<AccessLevelPrototype> JobPrototype;
         public readonly string? SelectedIcon; //WD-EDIT
-        
+
         public WriteToTargetIdMessage(string fullName, string jobTitle, List<ProtoId<AccessLevelPrototype>> accessList, ProtoId<AccessLevelPrototype> jobPrototype,
             string? selectedIcon)
         {
@@ -79,62 +79,34 @@ public sealed partial class IdCardConsoleComponent : Component
         "Theatre"
     };
 
-    //WD-EDIT
-    [DataField("jobIcons")]
-    public List<string> JobIcons = new()
+    // WD edit
+    [DataField, AutoNetworkedField]
+    public List<List<ProtoId<AccessLevelPrototype>>> AccessLevelsConsole = new()
     {
-        "AtmosphericTechnician",
-        "Bartender",
-        "Borg",
-        "Botanist",
-        "Boxer",
-        "Brigmedic",
-        "Captain",
-        "CargoTechnician",
-        "Chaplain",
-        "Chef",
-        "Chemist",
-        "ChiefEngineer",
-        "ChiefMedicalOfficer",
-        "Clown",
-        "CustomId",
-        "Detective",
-        "Geneticist",
-        "HeadOfPersonnel",
-        "HeadOfSecurity",
-        "Inspector",
-        "Janitor",
-        "Lawyer",
-        "Librarian",
-        "MedicalDoctor",
-        "MedicalIntern",
-        "Mime",
-        "Musician",
-        "Paramedic",
-        "Passenger",
-        "Psychologist",
-        "QuarterMaster",
-        "Reporter",
-        "ResearchAssistant",
-        "ResearchDirector",
-        "Roboticist",
-        "Scientist",
-        "SecurityCadet",
-        "SecurityOfficer",
-        "SeniorEngineer",
-        "SeniorOfficer",
-        "SeniorPhysician",
-        "SeniorResearcher",
-        "ServiceWorker",
-        "ShaftMiner",
-        "StationEngineer",
-        "TechnicalAssistant",
-        "Virologist",
-        "Visitor",
-        "Warden",
-        "Zookeeper"
+        new List<ProtoId<AccessLevelPrototype>> {"Captain", "HeadOfPersonnel", "HeadOfSecurity", "ChiefMedicalOfficer", "ChiefEngineer", "ResearchDirector", "Command"}, // Command
+        new List<ProtoId<AccessLevelPrototype>> {"Armory", "Brig", "Security","Detective", "Lawyer"}, // Security
+        new List<ProtoId<AccessLevelPrototype>> {"Chemistry", "Cryogenics", "Medical"}, // Medical
+        new List<ProtoId<AccessLevelPrototype>> {"Atmospherics", "Engineering", "External", "Maintenance"}, // Engineering
+        new List<ProtoId<AccessLevelPrototype>> {"Research"}, // Researching
+        new List<ProtoId<AccessLevelPrototype>> {"Cargo", "Salvage"}, // Cargo
+        new List<ProtoId<AccessLevelPrototype>> { "Service", "Theatre", "Bar", "Chapel", "Hydroponics", "Janitor", "Kitchen"} // Service
+    };
+
+    //WD-EDIT
+    // Command, Service, Security, Medical, Engineering, Researching, Cargo,
+    [DataField("jobIcons")]
+    public List<List<string>> JobIcons = new()
+    {
+        new List<string> {"Captain", "HeadOfPersonnel", "HeadOfSecurity", "ChiefMedicalOfficer", "ChiefEngineer", "ResearchDirector", "QuarterMaster", "Inspector"},
+        new List<string> {"HeadOfPersonnel", "Lawyer", "Clown", "Bartender", "Reporter", "Chef", "Botanist", "ServiceWorker", "Zookeeper", "Musician", "Librarian", "Janitor", "Chaplain", "Mime",  "Boxer", "Passenger", "Visitor", "Borg", "CustomId"},
+        new List<string> {"HeadOfSecurity", "Warden",  "SeniorOfficer", "SecurityOfficer", "Detective", "SecurityCadet", "Brigmedic", "Lawyer"},
+        new List<string> {"ChiefMedicalOfficer", "SeniorPhysician", "Paramedic", "Chemist", "MedicalDoctor", "Virologist", "Geneticist", "MedicalIntern", "Psychologist"},
+        new List<string> {"ChiefEngineer", "SeniorEngineer", "AtmosphericTechnician", "StationEngineer", "TechnicalAssistant"},
+        new List<string> {"ResearchDirector", "SeniorResearcher",  "Scientist", "Roboticist", "ResearchAssistant"},
+        new List<string> {"QuarterMaster", "ShaftMiner", "CargoTechnician"},
     };
     // WD EDIT END
+
 
     [Serializable, NetSerializable]
     public sealed class IdCardConsoleBoundUserInterfaceState : BoundUserInterfaceState
@@ -150,7 +122,7 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly List<ProtoId<AccessLevelPrototype>>? AllowedModifyAccessList;
         public readonly ProtoId<AccessLevelPrototype> TargetIdJobPrototype;
         public readonly string? TargetIdJobIcon; //WD-EDIT
-        
+
         public IdCardConsoleBoundUserInterfaceState(
             bool isPrivilegedIdPresent,
             bool isPrivilegedIdAuthorized,
