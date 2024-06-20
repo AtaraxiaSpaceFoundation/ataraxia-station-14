@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._White.Wizard.Timestop;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
@@ -78,6 +79,8 @@ namespace Content.Shared.Throwing
 
         private void OnSleep(EntityUid uid, ThrownItemComponent thrownItem, ref PhysicsSleepEvent @event)
         {
+            if (HasComp<FrozenComponent>(uid)) // WD
+                return;
             StopThrow(uid, thrownItem);
         }
 

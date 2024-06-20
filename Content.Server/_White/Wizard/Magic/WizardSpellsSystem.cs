@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._White.Cult;
 using Content.Server._White.IncorporealSystem;
 using Content.Server._White.Wizard.Magic.Amaterasu;
 using Content.Server._White.Wizard.Magic.Other;
@@ -24,7 +25,6 @@ using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Magic;
 using Content.Shared.Actions;
 using Content.Shared.Borer;
-using Content.Shared.Changeling;
 using Content.Shared.Cluwne;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Hands.Components;
@@ -36,6 +36,7 @@ using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Magic;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
@@ -85,6 +86,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<StopTimeSpellEvent>(OnTimeStop);
         SubscribeLocalEvent<MindswapSpellEvent>(OnMindswapSpell);
         SubscribeLocalEvent<TeleportSpellEvent>(OnTeleportSpell);
         SubscribeLocalEvent<InstantRecallSpellEvent>(OnInstantRecallSpell);
@@ -103,6 +105,25 @@ public sealed class WizardSpellsSystem : EntitySystem
         SubscribeLocalEvent<MagicComponent, BeforeCastSpellEvent>(OnBeforeCastSpell);
     }
 
+    #region Timestop
+
+    private void OnTimeStop(StopTimeSpellEvent msg)
+    {
+        if (!CanCast(msg))
+            return;
+
+        var ent = Spawn(msg.Prototype, Transform(msg.Performer).Coordinates);
+        _transformSystem.AttachToGridOrMap(ent);
+
+        var comp = EnsureComp<PreventCollideComponent>(ent);
+        comp.Uid = msg.Performer;
+
+        msg.Handled = true;
+        Speak(msg);
+    }
+
+    #endregion
+
     #region Mindswap
 
     private void OnMindswapSpell(MindswapSpellEvent msg)
@@ -113,17 +134,12 @@ public sealed class WizardSpellsSystem : EntitySystem
         var target = msg.Target;
         var uid = msg.Performer;
 
-        if (HasComp<ChangelingComponent>(target) || HasComp<RevolutionaryComponent>(target) ||
-            HasComp<CultistComponent>(target))
-        {
-            _popupSystem.PopupEntity("Не работает на культистов, генокрадов и революционеров.", uid, uid,
-                PopupType.MediumCaution);
+        if (!TryComp(target, out MobStateComponent? mobState) || mobState.CurrentState != MobState.Alive)
             return;
-        }
 
         if (TryComp(target, out InfestedBorerComponent? borer) && borer.ControllingBrain)
         {
-            _popupSystem.PopupEntity("Им уже кто-то управляет.", uid, uid, PopupType.MediumCaution);
+            _popupSystem.PopupEntity(Loc.GetString("mindswap-borer-failed"), uid, uid, PopupType.MediumCaution);
             return;
         }
 
@@ -138,7 +154,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (targetHasMind)
         {
             _mindSystem.TransferTo(targetMindId, uid, mind: targetMind);
-            _popupSystem.PopupEntity(Loc.GetString("Ваш разум подменили!"), uid, uid, PopupType.LargeCaution);
+            _popupSystem.PopupEntity(Loc.GetString("mindswap-success"), uid, uid, PopupType.LargeCaution);
         }
 
         TransferAllMagicActions(uid, target);
@@ -149,23 +165,11 @@ public sealed class WizardSpellsSystem : EntitySystem
         msg.Handled = true;
         Speak(msg);
 
-        var hasWiz = HasComp<WizardComponent>(uid);
-        var targetHasWiz = HasComp<WizardComponent>(target);
-
-        if (hasWiz == targetHasWiz)
-            return;
-
-        if (hasWiz)
-        {
-            RemComp<WizardComponent>(uid);
-            EnsureComp<WizardComponent>(target);
-        }
-
-        if (targetHasWiz)
-        {
-            RemComp<WizardComponent>(target);
-            EnsureComp<WizardComponent>(uid);
-        }
+        SwapComponent<WizardComponent>(uid, target);
+        SwapComponent<RevolutionaryComponent>(uid, target);
+        SwapComponent<HeadRevolutionaryComponent>(uid, target);
+        SwapComponent<PentagramComponent>(uid, target);
+        SwapComponent<CultistComponent>(uid, target);
     }
 
     #endregion
@@ -916,6 +920,27 @@ public sealed class WizardSpellsSystem : EntitySystem
         foreach (var act in actions2)
         {
             _actionContainer.TransferActionWithNewAttached(act, uid1, uid1, container: container1);
+        }
+    }
+
+    private void SwapComponent<T>(EntityUid uid1, EntityUid uid2) where T : Component, new()
+    {
+        var hasComp = HasComp<T>(uid1);
+        var targetHasComp = HasComp<T>(uid2);
+
+        if (hasComp == targetHasComp)
+            return;
+
+        if (hasComp)
+        {
+            EnsureComp<T>(uid2);
+            RemComp<T>(uid1);
+        }
+
+        if (targetHasComp)
+        {
+            EnsureComp<T>(uid1);
+            RemComp<T>(uid2);
         }
     }
 

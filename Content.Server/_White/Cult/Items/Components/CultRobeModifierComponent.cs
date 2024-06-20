@@ -10,4 +10,7 @@ public sealed partial class CultRobeModifierComponent : Component
     public string DamageModifierSetId = "CultRobe";
 
     public string? StoredDamageSetId { get; set; }
+
+    [ViewVariables]
+    public bool Active;
 }

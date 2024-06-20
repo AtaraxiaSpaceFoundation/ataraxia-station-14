@@ -36,6 +36,9 @@ ent-ClothingOuterRealWizardFancy = мантия волшебника
 ent-ClothingHeadHelmetWizardHelmArmored = шлем мага
     .desc = Странный головной убор, который наверняка принадлежит настоящему магу. Не обладает свойствами волшебной шляпы.
 
+mindswap-success = Ваш разум подменили!
+mindswap-borer-failed = Его разумом кто-то управляет.
+
 store-currency-display-spell-point = Очки заклинаний
 
 store-category-spells-attack = Атакующие заклинания

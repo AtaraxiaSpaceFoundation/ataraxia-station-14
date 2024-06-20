@@ -29,6 +29,7 @@ using Content.Shared._White.Mood;
 using Content.Shared.Cloning;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Systems;
+using Robust.Server.Containers;
 using Robust.Server.Player;
 
 namespace Content.Server._White.Cult.GameRule;
@@ -50,6 +51,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly GulagSystem _gulag = default!;
     [Dependency] private readonly BloodSpearSystem _bloodSpear = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
 
     private const int PlayerPerCultist = 10;
     private int _minStartingCultists;
@@ -160,22 +162,18 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
 
     private void OnCultistComponentInit(EntityUid uid, CultistComponent component, ComponentInit args)
     {
+        RaiseLocalEvent(uid, new MoodEffectEvent("CultFocused"));
+
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out var cult, out _))
         {
-            if (!TryComp<MindContainerComponent>(uid, out var mindComponent))
-                return;
-
-            if (!mindComponent.HasMind)
-                return;
-
             cult.CurrentCultists.Add(component);
 
             var name = Name(uid);
 
-            if (TryComp<ActorComponent>(uid, out var actor) && !cult.CultistsCache.ContainsKey(name))
+            if (TryComp<ActorComponent>(uid, out var actor))
             {
-                cult.CultistsCache.Add(name, actor.PlayerSession.Name);
+                cult.CultistsCache.TryAdd(name, actor.PlayerSession.Name);
             }
 
             UpdateCultistsAppearance(cult);
@@ -203,17 +201,23 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         while (query.MoveNext(out _, out var cult, out _))
         {
             cult.CurrentCultists.Remove(component);
-
-            _bloodSpear.DetachSpearFromUser((uid, component));
-
-            foreach (var empower in component.SelectedEmpowers)
-            {
-                _actions.RemoveAction(uid, GetEntity(empower));
-            }
-
-            RemoveCultistAppearance(uid);
-            CheckRoundShouldEnd();
         }
+
+        if (!TerminatingOrDeleted(uid))
+        {
+            RemoveAllCultistItems(uid);
+            RemoveCultistAppearance(uid);
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent("CultFocused"));
+        }
+
+        _bloodSpear.DetachSpearFromUser((uid, component));
+
+        foreach (var empower in component.SelectedEmpowers)
+        {
+            _actions.RemoveAction(uid, GetEntity(empower));
+        }
+
+        CheckRoundShouldEnd();
     }
 
     private void OnCultistsStateChanged(EntityUid uid, CultistComponent component, MobStateChangedEvent ev)
@@ -422,8 +426,6 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         _factionSystem.RemoveFaction(cultist, "NanoTrasen", false);
         _factionSystem.AddFaction(cultist, "Cultist");
 
-        RaiseLocalEvent(cultist, new MoodEffectEvent("CultFocused"));
-
         if (_inventorySystem.TryGetSlotEntity(cultist, "back", out var backPack))
         {
             foreach (var itemPrototype in rule.StartingItems)
@@ -440,6 +442,20 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
         _mindSystem.TryAddObjective(mindId, mind, "KillCultTargetObjective");
 
         return true;
+    }
+
+    private void RemoveAllCultistItems(EntityUid uid)
+    {
+        if (!_inventorySystem.TryGetContainerSlotEnumerator(uid, out var enumerator))
+            return;
+
+        while (enumerator.MoveNext(out var container))
+        {
+            if (container.ContainedEntity != null && HasComp<CultItemComponent>(container.ContainedEntity.Value))
+            {
+                _container.Remove(container.ContainedEntity.Value, container, true, true);
+            }
+        }
     }
 
     public void TransferRole(EntityUid transferFrom, EntityUid transferTo)

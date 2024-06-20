@@ -1,0 +1,31 @@
+- type: entity
+  id: Timestop
+  name: "chronofield"
+  description: "ZA WARUDO"
+  components:
+  - type: Sprite
+    drawdepth: FloorObjects
+    sprite: White/Effects/timestop.rsi
+    state: icon
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2.5
+        density: 0
+        hard: false
+        mask:
+        - None
+        layer:
+        - Impassable
+        - HighImpassable
+        - MidImpassable
+        - LowImpassable
+        - Opaque
+        - BulletImpassable
+  - type: Physics
+    bodyType: Static
+  - type: TimedDespawn
+    lifetime: 10
+  - type: FreezeContacts

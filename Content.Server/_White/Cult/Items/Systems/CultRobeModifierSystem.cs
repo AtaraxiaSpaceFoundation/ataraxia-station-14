@@ -29,17 +29,21 @@ public sealed class CultRobeModifierSystem : EntitySystem
         if (args.Slot != "outerClothing")
             return;
 
+        component.Active = true;
+
         ModifySpeed(args.Equipee, component, true);
         ModifyDamage(args.Equipee, component, true);
     }
 
     private void OnUnequip(EntityUid uid, CultRobeModifierComponent component, GotUnequippedEvent args)
     {
-        if (!HasComp<CultistComponent>(args.Equipee))
+        if (!component.Active)
             return;
 
         if (args.Slot != "outerClothing")
             return;
+
+        component.Active = false;
 
         ModifySpeed(args.Equipee, component, false);
         ModifyDamage(args.Equipee, component, false);

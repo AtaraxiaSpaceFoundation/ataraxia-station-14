@@ -330,6 +330,7 @@
         components:
         - MindContainer
         - ActionContainer
+        - MobState
       canTargetSelf: false
       checkCanInteract: false
       useDelay: 60
@@ -339,3 +340,24 @@
         state: mindswap
       event: !type:MindswapSpellEvent
         speech: "GIN'YU CAPAN!"
+
+- type: entity
+  id: ActionTimestopSpell
+  name: Stop time
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      alwaysPlaySound: false
+      sound: !type:SoundPathSpecifier
+        path: /Audio/White/Magic/timeparadox2.ogg
+      useDelay: 50
+      itemIconStyle: BigAction
+      checkCanInteract: false
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: time
+      event: !type:StopTimeSpellEvent
+        prototype: Timestop
+        speech: "TOKI YO TOMARE!"

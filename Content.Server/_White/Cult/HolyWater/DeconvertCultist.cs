@@ -1,18 +1,11 @@
 using System.Threading;
 using Content.Server._White.Cult.GameRule;
-using Content.Server.Objectives.Components;
 using Content.Server.Popups;
-using Content.Server.Roles;
 using Content.Server.Stunnable;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Inventory;
-using Content.Shared._White.Cult.Components;
-using Content.Shared._White.Mood;
 using Content.Shared.Jittering;
-using Content.Shared.Mind;
 using JetBrains.Annotations;
-using Robust.Server.Containers;
 using Robust.Shared.Prototypes;
 using CultistComponent = Content.Shared._White.Cult.Components.CultistComponent;
 using Timer = Robust.Shared.Timing.Timer;
@@ -60,26 +53,10 @@ public sealed partial class DeconvertCultist : ReagentEffect
 
         cultist.HolyConvertToken = null;
 
-        var inventory = entityManager.System<InventorySystem>();
-        var containerSystem = entityManager.System<ContainerSystem>();
-        if (!inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
-            return;
-
-        while (enumerator.MoveNext(out var container))
-        {
-            if (container.ContainedEntity != null &&
-                entityManager.HasComponent<CultItemComponent>(container.ContainedEntity.Value))
-            {
-                containerSystem.Remove(container.ContainedEntity.Value, container, true, true);
-            }
-        }
-
         entityManager.RemoveComponent<CultistComponent>(uid);
         entityManager.RemoveComponent<PentagramComponent>(uid);
 
         var cultRuleSystem = entityManager.System<CultRuleSystem>();
         cultRuleSystem.RemoveObjectiveAndRole(uid);
-
-        entityManager.EventBus.RaiseLocalEvent(uid, new MoodRemoveEffectEvent("CultFocused"));
     }
 }

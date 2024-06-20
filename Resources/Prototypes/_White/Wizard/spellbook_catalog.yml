@@ -31,6 +31,22 @@
     stock: 1
 
 - type: listing
+  id: SpellBookTimestop
+  name: spellbook-timestop-name
+  description: spellbook-timestop-desc
+  productEntity: ScrollTimestop
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: time
+  cost:
+    SpellPoint: 2
+  categories:
+  - DefenceSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: SpellBookKnock
   name: spellbook-knock-name
   description: spellbook-knock-desc

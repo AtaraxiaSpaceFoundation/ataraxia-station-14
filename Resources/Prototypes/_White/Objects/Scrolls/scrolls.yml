@@ -160,3 +160,12 @@
     - type: Scroll
       actionId: ActionMindswapSpell
       learnPopup: scroll-component-mindswap
+
+- type: entity
+  id: ScrollTimestop
+  parent: BaseScroll
+  name: "Stop time scroll"
+  components:
+    - type: Scroll
+      actionId: ActionTimestopSpell
+      learnPopup: scroll-component-timestop

@@ -184,4 +184,13 @@ public sealed partial class MindswapSpellEvent : EntityTargetActionEvent, ISpeak
     public string? Speech { get; private set; }
 }
 
+public sealed partial class StopTimeSpellEvent : InstantActionEvent, ISpeakSpell
+{
+    [DataField("prototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string Prototype = default!;
+
+    [DataField("speech")]
+    public string? Speech { get; private set; }
+}
+
 #endregion
