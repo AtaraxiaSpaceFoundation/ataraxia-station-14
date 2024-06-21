@@ -32,6 +32,23 @@
     - 0,0,0,0
   - type: Appearance
 
+- type: entity
+  id: BaseAimModule
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/modules.rsi
+  - type: Tag
+    tags:
+      - BaseAimModule
+  - type: Item
+    sprite: White/Objects/Weapons/modules.rsi
+    size: Small
+    shape:
+    - 0,0,0,0
+  - type: Appearance
+
 # modules
 - type: entity
   id: LightModule
@@ -96,4 +113,17 @@
     module_type: "handguard_module"
   - type: Sprite
     state: accelerator
+  - type: Appearance
+
+- type: entity
+  id: EightAimModule
+  description: 8X Aim Module for rifles.
+  name: "aim module"
+  parent: BaseAimModule
+  components:
+  - type: AimModule
+    value: "eightaim"
+    module_type: "aim_module"
+  - type: Sprite
+    state: eightaim
   - type: Appearance

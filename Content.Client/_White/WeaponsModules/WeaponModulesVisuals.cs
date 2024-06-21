@@ -18,6 +18,7 @@ public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModule
 
         args.Sprite.LayerSetVisible(ModuleVisualState.HandGuardModule, false);
         args.Sprite.LayerSetVisible(ModuleVisualState.BarrelModule, false);
+        args.Sprite.LayerSetVisible(ModuleVisualState.AimModule, false);
 
         if (AppearanceSystem.TryGetData<string>(uid, ModuleVisualState.HandGuardModule, out var handguardModule, args.Component) && handguardModule.Length != 0 && handguardModule != "none")
         {
@@ -29,6 +30,12 @@ public sealed partial class WeaponModulesVisuals : VisualizerSystem<WeaponModule
         {
             args.Sprite.LayerSetState(ModuleVisualState.BarrelModule, barrelModule);
             args.Sprite.LayerSetVisible(ModuleVisualState.BarrelModule, true);
+        }
+
+        if (AppearanceSystem.TryGetData<string>(uid, ModuleVisualState.AimModule, out var aimModule, args.Component) && aimModule.Length != 0 && aimModule != "none")
+        {
+            args.Sprite.LayerSetState(ModuleVisualState.AimModule, aimModule);
+            args.Sprite.LayerSetVisible(ModuleVisualState.AimModule, true);
         }
 
         if (AppearanceSystem.TryGetData(uid, Modules.Light, out var data, args.Component))

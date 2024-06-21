@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Content.Shared._White.Telescope;
 using Content.Shared._White.WeaponModules;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -11,7 +12,7 @@ public sealed class WeaponModulesSystem : EntitySystem
 {
     protected static readonly Dictionary<string, Enum> Slots = new()
     {
-        { "handguard_module", ModuleVisualState.HandGuardModule }, { "barrel_module", ModuleVisualState.BarrelModule }
+        { "handguard_module", ModuleVisualState.HandGuardModule }, { "barrel_module", ModuleVisualState.BarrelModule }, { "aim_module", ModuleVisualState.AimModule }
     };
 
     [Dependency] private readonly PointLightSystem _lightSystem = default!;
@@ -36,6 +37,9 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotInsertedIntoContainerMessage>(AcceleratorModuleOnInsert);
         SubscribeLocalEvent<AcceleratorModuleComponent, EntGotRemovedFromContainerMessage>(AcceleratorModuleOnEject);
+
+        SubscribeLocalEvent<AimModuleComponent, EntGotInsertedIntoContainerMessage>(EightAimModuleOnInsert);
+        SubscribeLocalEvent<AimModuleComponent, EntGotRemovedFromContainerMessage>(EightAimModuleOnEject);
     }
 
     private bool TryInsertModule(EntityUid module, EntityUid weapon, BaseModuleComponent component,
@@ -154,6 +158,18 @@ public sealed class WeaponModulesSystem : EntitySystem
 
         _gunSystem.SetFireRate(weapon, component.OldFireRate + component.FireRateAdd);
     }
+
+    private void EightAimModuleOnInsert(EntityUid module, AimModuleComponent component, EntGotInsertedIntoContainerMessage args)
+    {
+        EntityUid weapon = args.Container.Owner;
+
+        if (!TryComp<GunComponent>(weapon, out var gunComp)) return;
+
+        if(!TryInsertModule(module, weapon, component, args.Container.ID, out var weaponModulesComponent))
+            return;
+
+        EnsureComp<TelescopeComponent>(weapon).Divisor = component.Divisor;
+    }
     #endregion
 
     #region EjectModules
@@ -212,6 +228,16 @@ public sealed class WeaponModulesSystem : EntitySystem
             return;
 
         _gunSystem.SetFireRate(weapon, component.OldFireRate);
+    }
+
+    private void EightAimModuleOnEject(EntityUid module, AimModuleComponent component, EntGotRemovedFromContainerMessage args)
+    {
+        EntityUid weapon = args.Container.Owner;
+
+        if(!TryEjectModule(module, weapon, args.Container.ID, out var weaponModulesComponent))
+            return;
+
+        RemComp<TelescopeComponent>(weapon);
     }
     #endregion
 }

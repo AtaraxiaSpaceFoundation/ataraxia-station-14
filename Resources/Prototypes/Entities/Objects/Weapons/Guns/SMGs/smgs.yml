@@ -108,6 +108,10 @@
       visible: false
       sprite: White/Objects/Weapons/modulesOnSMGs.rsi
       map: [ "enum.ModuleVisualState.HandGuardModule" ]
+    - state: aim_module
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnSMGs.rsi
+      map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
   - type: Gun
@@ -150,12 +154,21 @@
         whitelist:
           tags:
           - BaseHandGuardModule
+      aim_module:
+        name: Aim Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseAimModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
       handguard_module: !type:ContainerSlot
       barrel_module: !type:ContainerSlot
+      aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 6
@@ -186,6 +199,10 @@
           visible: false
           sprite: White/Objects/Weapons/modulesOnWeapon.rsi
           map: [ "enum.ModuleVisualState.HandGuardModule" ]
+        - state: aim_module
+          visible: false
+          sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+          map: [ "enum.ModuleVisualState.AimModule" ]
     - type: Clothing
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
     - type: Gun
@@ -230,12 +247,21 @@
           whitelist:
             tags:
             - BaseHandGuardModule
+        aim_module:
+          name: Aim Module
+          insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+          ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+          priority: 3
+          whitelist:
+            tags:
+            - BaseAimModule
     - type: ContainerContainer
       containers:
         gun_magazine: !type:ContainerSlot
         gun_chamber: !type:ContainerSlot
         handguard_module: !type:ContainerSlot
         barrel_module: !type:ContainerSlot
+        aim_module: !type:ContainerSlot
     - type: MagazineVisuals
       magState: mag
       steps: 1
@@ -319,6 +345,10 @@
         visible: false
         sprite: White/Objects/Weapons/modulesOnWeapon.rsi
         map: [ "enum.ModuleVisualState.HandGuardModule" ]
+      - state: aim_module
+        visible: false
+        sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+        map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
   - type: ChamberMagazineAmmoProvider
@@ -363,12 +393,21 @@
         whitelist:
           tags:
             - BaseHandGuardModule
+      aim_module:
+        name: Aim Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - BaseAimModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
       handguard_module: !type:ContainerSlot
       barrel_module: !type:ContainerSlot
+      aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 6
@@ -419,6 +458,14 @@
           whitelist:
             tags:
             - BaseHandGuardModule
+        aim_module:
+          name: Aim Module
+          insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+          ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+          priority: 3
+          whitelist:
+            tags:
+            - BaseAimModule
 
 - type: entity
   name: Vector

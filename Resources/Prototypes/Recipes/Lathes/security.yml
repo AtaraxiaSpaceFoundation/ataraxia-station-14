@@ -701,3 +701,12 @@
      Plastic: 1000
      Glass: 500
      Gold: 1000
+
+- type: latheRecipe
+  id: EightAimRecipe
+  result: EightAimModule
+  completetime: 15
+  materials:
+     Steel: 500
+     Plastic: 700
+     Glass: 300

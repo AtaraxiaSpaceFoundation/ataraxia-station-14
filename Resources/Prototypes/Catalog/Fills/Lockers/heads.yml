@@ -285,6 +285,7 @@
       - id: MagazinePistol
       - id: BoxMindshield
       - id: TagillaHammer
+      - id: EightAimModule
 - type: entity
   id: LockerFreezerVaultFilled
   suffix: Vault, Locked

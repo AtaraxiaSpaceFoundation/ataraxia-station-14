@@ -15,7 +15,6 @@
     - Back
     - suitStorage
   - type: AmmoCounter
-  - type: WeaponModules
   - type: Gun
     fireRate: 5
     selectedMode: FullAuto
@@ -81,10 +80,15 @@
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
       map: [ "enum.ModuleVisualState.HandGuardModule" ]
+    - state: aim_module
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Gun
     fireRate: 5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ak.ogg
+  - type: WeaponModules
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
@@ -122,12 +126,21 @@
         whitelist:
           tags:
           - BaseBarrelModule
+      aim_module:
+        name: Aim Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseAimModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
       handguard_module: !type:ContainerSlot
       barrel_module: !type:ContainerSlot
+      aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -201,11 +214,16 @@
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
       map: [ "enum.ModuleVisualState.HandGuardModule" ]
+    - state: aim_module
+      visible: false
+      sprite: White/Objects/Weapons/modulesOnWeapon.rsi
+      map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
+  - type: WeaponModules
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -240,12 +258,21 @@
         whitelist:
           tags:
           - BaseBarrelModule
+      aim_module:
+        name: Aim Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseAimModule
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
       handguard_module: !type:ContainerSlot
       barrel_module: !type:ContainerSlot
+      aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -261,6 +288,7 @@
   id: WeaponRifleLecterRubber
   suffix: Non-lethal
   components:
+  - type: WeaponModules
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -295,3 +323,11 @@
         whitelist:
           tags:
           - BaseBarrelModule
+      aim_module:
+        name: Aim Module
+        insertSound: /Audio/White/Gun/Modules/insertmodule.ogg
+        ejectSound: /Audio/White/Gun/Modules/ejectmodule.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - BaseAimModule

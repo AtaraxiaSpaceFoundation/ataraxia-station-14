@@ -75,3 +75,6 @@
 
 - type: Tag
   id: BaseHandGuardModule
+
+- type: Tag
+  id: BaseAimModule
