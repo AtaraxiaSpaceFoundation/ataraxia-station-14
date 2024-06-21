@@ -1,4 +1,4 @@
-﻿namespace Content.Server._White.Lighting;
+﻿namespace Content.Server._White.Lighting.Pointlight.Battery;
 
 [RegisterComponent]
 public sealed partial class PointLightBatteryComponent : Component

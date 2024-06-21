@@ -1,5 +1,4 @@
 using Content.Client.Wires.Visualizers;
-using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Robust.Client.Animations;
@@ -17,7 +16,7 @@ public sealed class AirlockSystem : SharedAirlockSystem
         SubscribeLocalEvent<AirlockComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<AirlockComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
-    
+
     private void OnComponentStartup(EntityUid uid, AirlockComponent comp, ComponentStartup args)
     {
         // Has to be on component startup because we don't know what order components initialize in and running this before DoorComponent inits _will_ crash.
@@ -113,6 +112,7 @@ public sealed class AirlockSystem : SharedAirlockSystem
 
         args.Sprite.LayerSetVisible(DoorVisualLayers.BaseUnlit, unlitVisible);
         args.Sprite.LayerSetVisible(DoorVisualLayers.BaseBolted, boltedVisible);
+
         if (comp.EmergencyAccessLayer)
         {
             args.Sprite.LayerSetVisible(

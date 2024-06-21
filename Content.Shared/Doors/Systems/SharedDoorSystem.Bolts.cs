@@ -1,3 +1,4 @@
+using Content.Shared._White.Lighting;
 using Content.Shared.Doors.Components;
 using Content.Shared.Prying.Components;
 
@@ -55,7 +56,8 @@ public abstract partial class SharedDoorSystem
 
     public void UpdateBoltLightStatus(Entity<DoorBoltComponent> ent)
     {
-        AppearanceSystem.SetData(ent, DoorVisuals.BoltLights, GetBoltLightsVisible(ent));
+        var value = GetBoltLightsVisible(ent);
+        AppearanceSystem.SetData(ent, DoorVisuals.BoltLights, value);
     }
 
     public bool GetBoltLightsVisible(Entity<DoorBoltComponent> ent)
@@ -83,6 +85,8 @@ public abstract partial class SharedDoorSystem
         ent.Comp.BoltsDown = value;
         Dirty(ent, ent.Comp);
         UpdateBoltLightStatus(ent);
+
+        RaiseLocalEvent(ent, new DoorlightsChangedEvent(DoorVisuals.BoltLights, value), true);
 
         var sound = value ? ent.Comp.BoltDownSound : ent.Comp.BoltUpSound;
         if (predicted)

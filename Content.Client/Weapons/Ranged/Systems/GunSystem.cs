@@ -339,9 +339,9 @@ public sealed partial class GunSystem : SharedGunSystem
         }
 
         Lights.SetEnabled(uid, true, light);
-        Lights.SetRadius(uid, 2f, light);
+        Lights.SetRadius(uid, 1.4f, light);
         Lights.SetColor(uid, Color.FromHex("#cc8e2b"), light);
-        Lights.SetEnergy(uid, 5f, light);
+        Lights.SetEnergy(uid, 0.7f, light);
 
         var animTwo = new Animation()
         {

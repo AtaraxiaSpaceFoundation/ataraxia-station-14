@@ -455,8 +455,8 @@
       netsync: false
       enabled: false
       radius: 1.5
-      energy: 2
-      color: blue
+      energy: 0.7
+      color: "#678AD9"
     - type: Reflect
       enabled: false
       reflectProb: 1

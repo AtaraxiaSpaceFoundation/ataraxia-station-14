@@ -49,6 +49,11 @@
     node: done
     containers:
     - entity_storage
+  - type: PointLight
+    enabled: false
+    radius: 1.15
+    energy: 0.45
+  - type: PointLightLocker
 
 - type: entity
   id: LockerBaseSecure

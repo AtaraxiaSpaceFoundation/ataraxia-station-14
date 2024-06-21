@@ -37,6 +37,12 @@
   - type: ProjectileBatteryAmmoProvider
     proto: BulletTrailLaserLight
     fireCost: 50
+  - type: PointLight
+    enabled: false
+    color: "#7FC080"
+    radius: 1.05
+    energy: 0.3
+  - type: PointLightRealBattery
 
 - type: entity
   name: potato battery
@@ -57,6 +63,10 @@
   - type: Construction
     graph: PowerCellPotato
     node: potatobattery
+  - type: PointLight
+    enabled: false
+    radius: 1 # Костыльный путь отрубить свет
+    energy: 1
 
 - type: entity
   name: small-capacity power cell
@@ -121,6 +131,7 @@
   - type: MachinePart
     part: PowerCell
     rating: 2
+
 
 - type: entity
   id: PowerCellMediumPrinted
@@ -301,6 +312,11 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
+  - type: PointLight
+    enabled: false
+    color: "#7FC080"
+    radius: 1.2
+    energy: 0.5
 
 - type: entity
   id: PowerCageSmall

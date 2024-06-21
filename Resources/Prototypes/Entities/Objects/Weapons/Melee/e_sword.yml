@@ -62,7 +62,7 @@
   - type: PointLight
     enabled: false
     radius: 2
-    energy: 2
+    energy: 0.6
     color: white
     netsync: false
   - type: Appearance

@@ -1,3 +1,4 @@
+using Content.Shared._White.Lighting;
 using Content.Shared.Doors.Components;
 using Content.Shared.Popups;
 using Content.Shared.Prying.Components;
@@ -120,6 +121,7 @@ public abstract class SharedAirlockSystem : EntitySystem
 
     public void UpdateEmergencyLightStatus(EntityUid uid, AirlockComponent component)
     {
+        RaiseLocalEvent(uid, new DoorlightsChangedEvent(DoorVisuals.EmergencyLights, component.EmergencyAccess));
         Appearance.SetData(uid, DoorVisuals.EmergencyLights, component.EmergencyAccess);
     }
 
