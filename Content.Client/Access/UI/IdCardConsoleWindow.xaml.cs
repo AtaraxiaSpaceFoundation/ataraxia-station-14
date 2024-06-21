@@ -73,11 +73,14 @@ namespace Content.Client.Access.UI
                 AccessLevelControlContainer.AddChild(departmentGrid);
             }
 
-
-            foreach (var (id, button) in _groupAccessButtons.ButtonsList)
+            foreach (var department in _groupAccessButtons.ButtonGroups)
             {
-                button.OnPressed += _ => SubmitData();
+                foreach (var button in department.Values)
+                {
+                    button.OnPressed += _ => SubmitData();
+                }
             }
+
 
             //WD-EDIT
             if (!_entityManager.TryGetComponent<IdCardConsoleComponent>(owner.Owner, out var idConsoleComponent))
