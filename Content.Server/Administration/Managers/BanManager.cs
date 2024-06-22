@@ -204,6 +204,26 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         _sawmill.Info(logMessage);
         _chat.SendAdminAlert(logMessage);
 
+        //WD start
+        var dbMan = IoCManager.Resolve<IServerDbManager>();
+        var listban = await dbMan.GetServerBansAsync(null, target, null);
+        var banId = listban.Count == 0 ? null : listban[^1].Id;
+
+        var utkaBanned = new UtkaBannedEvent()
+        {
+            Ckey = targetUsername,
+            ACkey = adminName,
+            Bantype = "server",
+            Duration = minutes,
+            Global = isGlobalBan,
+            Reason = reason,
+            Rid = EntitySystem.Get<GameTicker>().RoundId,
+            BanId = banId
+        };
+        _pandaWeb.SendBotPostMessage(utkaBanned);
+        _entMan.EventBus.RaiseEvent(EventSource.Local, utkaBanned);
+        //WD end
+
 
         if (banDef.UserId.HasValue)
         {
