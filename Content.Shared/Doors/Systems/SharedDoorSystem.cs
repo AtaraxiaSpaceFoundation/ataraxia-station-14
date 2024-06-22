@@ -118,7 +118,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
         SetCollidable(ent, collidable, door);
 
-        RaiseLocalEvent(ent, new DoorlightsChangedEvent(door.State, true), true);
         AppearanceSystem.SetData(ent, DoorVisuals.State, door.State);
     }
 
@@ -167,7 +166,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
             _activeDoors.Add(ent);
 
         RaiseLocalEvent(ent, new DoorStateChangedEvent(door.State));
-        RaiseLocalEvent(ent, new DoorlightsChangedEvent(door.State, true), true);
 
         AppearanceSystem.SetData(ent, DoorVisuals.State, door.State);
     }
@@ -219,7 +217,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
         Dirty(uid, door);
 
         RaiseLocalEvent(uid, new DoorStateChangedEvent(state));
-        RaiseLocalEvent(uid, new DoorlightsChangedEvent(door.State, true), true);
 
         AppearanceSystem.SetData(uid, DoorVisuals.State, door.State);
         return true;
@@ -525,7 +522,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
             door.NextStateChange = GameTiming.CurTime + door.OpenTimeTwo;
             door.State = DoorState.Opening;
 
-            RaiseLocalEvent(uid, new DoorlightsChangedEvent(door.State, true), true);
             AppearanceSystem.SetData(uid, DoorVisuals.State, DoorState.Opening);
             return false;
         }

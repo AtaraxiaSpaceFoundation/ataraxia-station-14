@@ -121,7 +121,6 @@ public abstract class SharedAirlockSystem : EntitySystem
 
     public void UpdateEmergencyLightStatus(EntityUid uid, AirlockComponent component)
     {
-        RaiseLocalEvent(uid, new DoorlightsChangedEvent(DoorVisuals.EmergencyLights, component.EmergencyAccess));
         Appearance.SetData(uid, DoorVisuals.EmergencyLights, component.EmergencyAccess);
     }
 

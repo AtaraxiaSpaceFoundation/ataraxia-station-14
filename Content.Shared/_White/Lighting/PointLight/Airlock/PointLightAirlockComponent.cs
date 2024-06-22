@@ -6,14 +6,20 @@ namespace Content.Shared._White.Lighting.PointLight.Airlock;
 public sealed partial class PointLightAirlockComponent : Component
 {
     [ViewVariables]
-    public string RedColor = "#D56C6C";
+    public bool IsLightsEnabled;
 
     [ViewVariables]
-    public string BlueColor = "#7F93C0";
+    public bool LastBoltsState;
 
     [ViewVariables]
-    public string YellowColor = "#BDC07F";
+    public readonly string RedColor = "#D56C6C";
 
     [ViewVariables]
-    public string GreenColor = "#7FC080";
+    public readonly string BlueColor = "#7F93C0";
+
+    [ViewVariables]
+    public readonly string YellowColor = "#BDC07F";
+
+    [ViewVariables]
+    public readonly string GreenColor = "#7FC080";
 }

@@ -86,8 +86,6 @@ public abstract partial class SharedDoorSystem
         Dirty(ent, ent.Comp);
         UpdateBoltLightStatus(ent);
 
-        RaiseLocalEvent(ent, new DoorlightsChangedEvent(DoorVisuals.BoltLights, value), true);
-
         var sound = value ? ent.Comp.BoltDownSound : ent.Comp.BoltUpSound;
         if (predicted)
             Audio.PlayPredicted(sound, ent, user: user);
