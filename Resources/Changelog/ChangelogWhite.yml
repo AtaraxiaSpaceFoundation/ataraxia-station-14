@@ -4793,3 +4793,18 @@
   id: 322
   time: '2024-06-21T19:03:52.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/368
+- author: ThereDrD
+  changes:
+  - message: "\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0434\u0432\u0435\u0440\u0435\
+      \u0439 \u0431\u044B\u043B\u0430 \u043F\u0435\u0440\u0435\u043F\u0438\u0441\u0430\
+      \u043D\u0430, \u0442\u0435\u043F\u0435\u0440\u044C \u043E\u043D\u0430 \u0440\
+      \u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043B\u0443\u0447\u0448\u0435"
+    type: Fix
+  - message: "\u0414\u0432\u0435\u0440\u0438 \u0431\u043E\u043B\u044C\u0448\u0435\
+      \ \u043D\u0435 \u0441\u0432\u0435\u0442\u044F\u0442\u0441\u044F, \u043A\u043E\
+      \u0433\u0434\u0430 \u0442\u0435\u0440\u044F\u044E\u0442 \u044D\u043D\u0435\u0440\
+      \u0433\u0438\u044E"
+    type: Fix
+  id: 323
+  time: '2024-06-22T10:53:37.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/375
