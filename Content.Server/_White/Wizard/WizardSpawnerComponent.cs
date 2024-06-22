@@ -10,9 +10,6 @@ public sealed partial class WizardSpawnerComponent : Component
     [DataField("name")]
     public string Name = "Ololo The Balls' Twister";
 
-    [DataField("points")]
-    public int Points = 10;
-
     [DataField("startingGear")]
     public ProtoId<StartingGearPrototype> StartingGear = "WizardGear";
 

@@ -36,6 +36,11 @@ ent-ClothingOuterRealWizardFancy = мантия волшебника
 ent-ClothingHeadHelmetWizardHelmArmored = шлем мага
     .desc = Странный головной убор, который наверняка принадлежит настоящему магу. Не обладает свойствами волшебной шляпы.
 
+ent-ArcaneBarrage = магический залп
+    .desc = Пиу Пиу Пиу.
+
+arcane-barrage-no-empty-hand = Вам нужна свободная рука для использования заклинания!
+
 mindswap-success = Ваш разум подменили!
 mindswap-borer-failed = Его разумом кто-то управляет.
 

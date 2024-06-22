@@ -110,6 +110,11 @@ public sealed partial class ExplosionPrototype : IPrototype
     [DataField("fireStates")]
     public int FireStates = 3;
 
+    // WD START
+    [DataField]
+    public bool IgnoreResistances = true;
+    // WD END
+
     /// <summary>
     ///     Basic function for linear interpolation of the _tileBreakChance and _tileBreakIntensity arrays
     /// </summary>

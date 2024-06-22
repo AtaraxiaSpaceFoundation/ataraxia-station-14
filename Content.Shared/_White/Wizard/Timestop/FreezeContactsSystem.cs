@@ -8,6 +8,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Movement.Events;
 using Content.Shared.Speech;
+using Content.Shared.Standing.Systems;
 using Content.Shared.Throwing;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics;
@@ -30,11 +31,14 @@ public sealed class FreezeContactsSystem : EntitySystem
 
         SubscribeLocalEvent<FreezeContactsComponent, StartCollideEvent>(OnEntityEnter);
         SubscribeLocalEvent<FreezeContactsComponent, EndCollideEvent>(OnEntityExit);
+
         SubscribeLocalEvent<FrozenComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<FrozenComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<FrozenComponent, PreventCollideEvent>(OnPreventCollide);
         SubscribeLocalEvent<FrozenComponent, EntGotInsertedIntoContainerMessage>(OnGetInserted);
 
+        SubscribeLocalEvent<FrozenComponent, StandAttemptEvent>(OnAttempt);
+        SubscribeLocalEvent<FrozenComponent, DownAttemptEvent>(OnAttempt);
         SubscribeLocalEvent<FrozenComponent, SpeakAttemptEvent>(OnAttempt);
         SubscribeLocalEvent<FrozenComponent, EmoteAttemptEvent>(OnAttempt);
         SubscribeLocalEvent<FrozenComponent, ChangeDirectionAttemptEvent>(OnAttempt);
@@ -152,21 +156,25 @@ public sealed class FreezeContactsSystem : EntitySystem
 
     private void OnEntityEnter(Entity<FreezeContactsComponent> ent, ref StartCollideEvent args)
     {
-        var hadFrozen = HasComp<FrozenComponent>(args.OtherEntity);
-        var frozen = EnsureComp<FrozenComponent>(args.OtherEntity);
+        FreezeEm(args.OtherEntity, ent);
+    }
 
-        if (!TryComp(ent, out TimedDespawnComponent? timedDespawn))
+    private void FreezeEm(EntityUid uid, EntityUid freezeContact)
+    {
+        if (HasComp<FrozenComponent>(uid))
+            return;
+
+        var frozen = EnsureComp<FrozenComponent>(uid);
+
+        if (!TryComp(freezeContact, out TimedDespawnComponent? timedDespawn))
             return;
 
         frozen.Lifetime = timedDespawn.Lifetime;
 
-        if (TryComp(args.OtherEntity, out TimedDespawnComponent? otherTimedDespawn))
+        if (TryComp(uid, out TimedDespawnComponent? otherTimedDespawn))
             otherTimedDespawn.Lifetime += timedDespawn.Lifetime;
 
-        if (hadFrozen)
-            return;
-
-        if (!TryComp(args.OtherEntity, out ThrownItemComponent? thrownItem))
+        if (!TryComp(uid, out ThrownItemComponent? thrownItem))
             return;
 
         if (thrownItem.LandTime != null)

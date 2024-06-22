@@ -104,3 +104,31 @@
         Structural: 80
   - type: ChangeThrowForce
     throwForce: 20
+
+- type: entity
+  name: arcane barrage
+  parent: BaseItem
+  id: ArcaneBarrage
+  description: Pew Pew Pew.
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/arcane_barrage.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: White/Objects/Weapons/arcane_barrage.rsi
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 4
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundEmpty: null
+    soundGunshot:
+      path: /Audio/Weapons/emitter.ogg
+    clumsyProof: true
+  - type: BasicEntityAmmoProvider
+    proto: ArcaneBolt
+    capacity: 30
+  - type: BoltBarrage
+  - type: GiftIgnore

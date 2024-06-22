@@ -18,6 +18,7 @@ scroll-component-teleport = телепортацию
 scroll-component-smite = кару
 scroll-component-mindswap = подмену сознания
 scroll-component-timestop = остановку времени
+scroll-component-barrage = магический залп
 
 ent-BaseScroll = магический свиток
     .desc = Этот древний пергамент, ставший реликвией в арканных преданиях, хранит в себе бесчисленные мистические заклятия и забытые заклинания.
@@ -54,4 +55,6 @@ ent-ScrollSmite = свиток кары
 ent-ScrollMindswap = свиток подмены сознания
     .desc = { ent-BaseScroll.desc }
 ent-ScrollTimestop = свиток остановки времени
+    .desc = { ent-BaseScroll.desc }
+ent-ScrollArcaneBarrage = свиток магического залпа
     .desc = { ent-BaseScroll.desc }

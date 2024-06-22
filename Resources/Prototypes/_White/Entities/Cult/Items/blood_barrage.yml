@@ -25,6 +25,8 @@
     capacity: 25
   - type: BoltBarrage
   - type: GiftIgnore
+  - type: CultItem
+    canPickUp: false
 
 - type: cultistFactoryProduction
   id: FactoryCultBloodBarrage

@@ -220,21 +220,21 @@
     - type: Projectile
       damage:
         types:
-          Caustic: 10
+          Shock: 10
     - type: Sprite
       sprite: Structures/Power/Generation/Tesla/energy_miniball.rsi
       layers:
         - state: tesla_projectile
           shader: unshaded
     - type: Explosive
-      explosionType: Default
-      maxIntensity: 100
-      intensitySlope: 0.1
-      totalIntensity: 0.3
+      explosionType: Shock
+      maxIntensity: 40
+      intensitySlope: 6
+      totalIntensity: 200
       maxTileBreak: 0
     - type: StunOnCollide
-      stunAmount: 2
-      knockdownAmount: 2
+      stunAmount: 6
+      knockdownAmount: 6
     - type: TeslaProjectile
 
 - type: entity
@@ -276,4 +276,3 @@
       - 0, 0, 1, 0.4
       - 1, 0, 1, 0.25
       - 1, 0, 0, 0.1
-    optionsConcealable: true

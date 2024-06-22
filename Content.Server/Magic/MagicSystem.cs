@@ -10,6 +10,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
+using Content.Shared.Lock;
 using Content.Shared.Magic;
 using Content.Shared.Magic.Events;
 using Content.Shared.Maps;
@@ -46,6 +47,7 @@ public sealed class MagicSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly WizardSpellsSystem _wizardSpells = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
 
     public override void Initialize()
     {
@@ -177,6 +179,9 @@ public sealed class MagicSystem : EntitySystem
 
             if (TryComp<DoorComponent>(entity, out var doorComp) && doorComp.State is not DoorState.Open)
                 _doorSystem.StartOpening(entity);
+
+            if (TryComp<LockComponent>(entity, out var lockComp) && lockComp.Locked)
+                _lock.Unlock(entity, null, lockComp);
         }
     }
 

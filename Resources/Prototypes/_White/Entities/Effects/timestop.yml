@@ -29,3 +29,6 @@
   - type: TimedDespawn
     lifetime: 10
   - type: FreezeContacts
+  - type: GravPulseOnStartup # Because physics sucks
+    maxRange: 2.5
+    baseRadialAcceleration: 0.1

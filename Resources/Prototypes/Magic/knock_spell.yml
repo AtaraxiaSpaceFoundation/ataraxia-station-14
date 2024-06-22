@@ -15,4 +15,5 @@
       sprite: Objects/Magic/magicactions.rsi
       state: knock
     event: !type:KnockSpellEvent
+      range: 5
       speech: action-speech-spell-knock

@@ -29,8 +29,8 @@
         prototype: ProjectileTeslaBall
         posData: !type:TargetCasterPos
     - type: VariableUseDelay
-      useDelay: 6
-      altUseDelay: 12
+      useDelay: 5
+      altUseDelay: 5
       chargeUseDelay: 30
 
 - type: entity
@@ -361,3 +361,19 @@
       event: !type:StopTimeSpellEvent
         prototype: Timestop
         speech: "TOKI YO TOMARE!"
+
+- type: entity
+  id: ActionArcaneBarrageSpell
+  name: Arcane barrage
+  noSpawn: true
+  components:
+    - type: Magic
+      requiresClothes: true
+    - type: InstantAction
+      useDelay: 75
+      itemIconStyle: BigAction
+      icon:
+        sprite: Objects/Magic/magicactions.rsi
+        state: arcane_barrage
+      event: !type:ArcaneBarrageSpellEvent
+        prototype: ArcaneBarrage

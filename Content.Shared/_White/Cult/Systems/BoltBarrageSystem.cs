@@ -27,7 +27,7 @@ public sealed class BoltBarrageSystem : EntitySystem
         SubscribeLocalEvent<BoltBarrageComponent, AttemptShootEvent>(OnShootAttempt);
         SubscribeLocalEvent<BoltBarrageComponent, GunShotEvent>(OnGunShot);
         SubscribeLocalEvent<BoltBarrageComponent, DroppedEvent>(OnDrop);
-        SubscribeLocalEvent<BoltBarrageComponent, UnequippedHandEvent>(OnUnequipHand);
+        SubscribeLocalEvent<BoltBarrageComponent, GotUnequippedHandEvent>(OnUnequipHand);
         SubscribeLocalEvent<BoltBarrageComponent, ContainerGettingRemovedAttemptEvent>(OnRemoveAttempt);
         SubscribeLocalEvent<BoltBarrageComponent, OnEmptyGunShotEvent>(OnEmptyShot);
         SubscribeLocalEvent<BoltBarrageComponent, ExaminedEvent>(OnExamine);
@@ -38,7 +38,7 @@ public sealed class BoltBarrageSystem : EntitySystem
         args.PushMarkup(Loc.GetString("bolt-barrage-component-extra-desc"));
     }
 
-    private void OnUnequipHand(Entity<BoltBarrageComponent> ent, ref UnequippedHandEvent args)
+    private void OnUnequipHand(Entity<BoltBarrageComponent> ent, ref GotUnequippedHandEvent args)
     {
         if (_net.IsServer && ent.Comp.Unremoveable)
             QueueDel(ent);
@@ -82,12 +82,12 @@ public sealed class BoltBarrageSystem : EntitySystem
 
     private void OnShootAttempt(Entity<BoltBarrageComponent> ent, ref AttemptShootEvent args)
     {
-        if (!HasComp<CultistComponent>(args.User) && !HasComp<GhostComponent>(args.User))
+        /*if (!HasComp<CultistComponent>(args.User) && !HasComp<GhostComponent>(args.User))
         {
             args.Cancelled = true;
             args.Message = Loc.GetString("bolt-barrage-component-not-cultist");
             return;
-        }
+        }*/
 
         if (_hands.EnumerateHands(args.User).Any(hand => hand.IsEmpty))
             return;

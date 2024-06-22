@@ -2,6 +2,8 @@
 using Content.Server.Popups;
 using Content.Shared._White.Wizard.Teleport;
 using Content.Shared.Eui;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server._White.Wizard.Teleport;
@@ -11,6 +13,7 @@ public sealed class WizardTeleportSpellEui : BaseEui
     [Dependency] private readonly EntityManager _entityManager = default!;
     private readonly SharedTransformSystem _transformSystem;
     private readonly TeleportLocationSystem _teleportLocation;
+    private readonly PullingSystem _pulling;
     private readonly PopupSystem _popupSystem;
 
     private readonly EntityUid _performer;
@@ -22,6 +25,7 @@ public sealed class WizardTeleportSpellEui : BaseEui
         IoCManager.InjectDependencies(this);
 
         _transformSystem = _entityManager.System<SharedTransformSystem>();
+        _pulling = _entityManager.System<PullingSystem>();
         _teleportLocation = _entityManager.System<TeleportLocationSystem>();
         _popupSystem = _entityManager.System<PopupSystem>();
 
@@ -81,6 +85,19 @@ public sealed class WizardTeleportSpellEui : BaseEui
         }
 
         _used = true;
+
+        // break pulls before portal enter so we dont break shit
+        if (_entityManager.TryGetComponent<PullableComponent>(_performer, out var pullable) && pullable.BeingPulled)
+        {
+            _pulling.TryStopPull(_performer, pullable);
+        }
+
+        if (_entityManager.TryGetComponent<PullerComponent>(_performer, out var pulling)
+            && pulling.Pulling != null
+            && _entityManager.TryGetComponent<PullableComponent>(pulling.Pulling.Value, out var subjectPulling))
+        {
+            _pulling.TryStopPull(pulling.Pulling.Value, subjectPulling);
+        }
 
         var coords = locationTransform.Coordinates;
 

@@ -546,6 +546,8 @@
         Piercing: 0.9
         Heat: 0.9
   - type: WizardClothes
+  - type: FlashImmunity
+  - type: EyeProtection
 
 #Organic Space Suit
 - type: entity

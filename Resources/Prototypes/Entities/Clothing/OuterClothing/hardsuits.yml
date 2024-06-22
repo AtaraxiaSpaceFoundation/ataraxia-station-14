@@ -697,7 +697,7 @@
             - PowerCell
             - PowerCellSmall
   - type: EnergyDomeGenerator
-    damageEnergyDraw: 20
+    damageEnergyDraw: 15
     domePrototype: EnergyDomeSmallPink
   - type: ClothingSpeedModifier
     walkModifier: 0.9

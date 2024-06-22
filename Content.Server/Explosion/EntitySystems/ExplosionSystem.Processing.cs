@@ -205,7 +205,8 @@ public sealed partial class ExplosionSystem
         MapCoordinates epicenter,
         HashSet<EntityUid> processed,
         string id,
-        float? fireStacks)
+        float? fireStacks,
+        bool ignoreResistances) // WD
     {
         var size = grid.Comp.TileSize;
         var gridBox = new Box2(tile * size, (tile + 1) * size);
@@ -224,7 +225,7 @@ public sealed partial class ExplosionSystem
         // process those entities
         foreach (var (uid, xform) in list)
         {
-            ProcessEntity(uid, epicenter, damage, throwForce, id, xform, fireStacks);
+            ProcessEntity(uid, epicenter, damage, throwForce, id, xform, fireStacks, ignoreResistances); // WD EDIT
         }
 
         // process anchored entities
@@ -234,7 +235,7 @@ public sealed partial class ExplosionSystem
         foreach (var entity in _anchored)
         {
             processed.Add(entity);
-            ProcessEntity(entity, epicenter, damage, throwForce, id, null, fireStacks);
+            ProcessEntity(entity, epicenter, damage, throwForce, id, null, fireStacks, ignoreResistances); // WD EDIT
         }
 
         // Walls and reinforced walls will break into girders. These girders will also be considered turf-blocking for
@@ -270,7 +271,7 @@ public sealed partial class ExplosionSystem
         {
             // Here we only throw, no dealing damage. Containers n such might drop their entities after being destroyed, but
             // they should handle their own damage pass-through, with their own damage reduction calculation.
-            ProcessEntity(uid, epicenter, null, throwForce, id, xform, null);
+            ProcessEntity(uid, epicenter, null, throwForce, id, xform, null, ignoreResistances); // WD EDIT
         }
 
         return !tileBlocked;
@@ -306,7 +307,8 @@ public sealed partial class ExplosionSystem
         MapCoordinates epicenter,
         HashSet<EntityUid> processed,
         string id,
-        float? fireStacks)
+        float? fireStacks,
+        bool ignoreResistances) // WD
     {
         var gridBox = Box2.FromDimensions(tile * DefaultTileSize, new Vector2(DefaultTileSize, DefaultTileSize));
         var worldBox = spaceMatrix.TransformBox(gridBox);
@@ -322,7 +324,7 @@ public sealed partial class ExplosionSystem
         foreach (var (uid, xform) in state.Item1)
         {
             processed.Add(uid);
-            ProcessEntity(uid, epicenter, damage, throwForce, id, xform, fireStacks);
+            ProcessEntity(uid, epicenter, damage, throwForce, id, xform, fireStacks, ignoreResistances);
         }
 
         if (throwForce <= 0)
@@ -336,7 +338,7 @@ public sealed partial class ExplosionSystem
 
         foreach (var (uid, xform) in list)
         {
-            ProcessEntity(uid, epicenter, null, throwForce, id, xform, fireStacks);
+            ProcessEntity(uid, epicenter, null, throwForce, id, xform, fireStacks, ignoreResistances);
         }
     }
 
@@ -434,7 +436,8 @@ public sealed partial class ExplosionSystem
         float throwForce,
         string id,
         TransformComponent? xform,
-        float? fireStacksOnIgnite)
+        float? fireStacksOnIgnite,
+        bool ignoreResistances) // WD
     {
         if (originalDamage != null)
         {
@@ -442,7 +445,7 @@ public sealed partial class ExplosionSystem
             foreach (var (entity, damage) in _toDamage)
             {
                 // TODO EXPLOSIONS turn explosions into entities, and pass the the entity in as the damage origin.
-                _damageableSystem.TryChangeDamage(entity, damage, ignoreResistances: true);
+                _damageableSystem.TryChangeDamage(entity, damage, ignoreResistances: ignoreResistances); // WD EDIT
 
             }
         }
@@ -827,7 +830,8 @@ sealed class Explosion
                     Epicenter,
                     ProcessedEntities,
                     ExplosionType.ID,
-                    ExplosionType.FireStacks);
+                    ExplosionType.FireStacks,
+                    ExplosionType.IgnoreResistances); // WD
 
                 // If the floor is not blocked by some dense object, damage the floor tiles.
                 if (canDamageFloor)
@@ -845,7 +849,8 @@ sealed class Explosion
                     Epicenter,
                     ProcessedEntities,
                     ExplosionType.ID,
-                    ExplosionType.FireStacks);
+                    ExplosionType.FireStacks,
+                    ExplosionType.IgnoreResistances); // WD
             }
 
             if (!MoveNext())

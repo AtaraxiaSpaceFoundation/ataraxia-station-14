@@ -111,6 +111,22 @@
     stock: 1
 
 - type: listing
+  id: SpellBookArcaneBarrage
+  name: spellbook-barrage-name
+  description: spellbook-barrage-desc
+  icon:
+    sprite: Objects/Magic/magicactions.rsi
+    state: arcane_barrage
+  productEntity: ScrollArcaneBarrage
+  cost:
+    SpellPoint: 2
+  categories:
+  - AttackSpells
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: SpellBookBlink
   name: spellbook-blink-name
   description: spellbook-blink-desc
@@ -273,7 +289,7 @@
   description: spellbook-hfrequency-desc
   productEntity: HighFrequencyBlade
   cost:
-    SpellPoint: 2
+    SpellPoint: 1
   categories:
   - MagicItems
   conditions:
@@ -286,7 +302,7 @@
   description: spellbook-spellblade-desc
   productEntity: SpellBlade
   cost:
-    SpellPoint: 2
+    SpellPoint: 1
   categories:
   - MagicItems
   conditions:

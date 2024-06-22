@@ -125,7 +125,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
     private void OnMobStateChanged(EntityUid uid, WizardComponent component, MobStateChangedEvent ev)
     {
-        if (ev.NewMobState == MobState.Dead)
+        if (ev.NewMobState == MobState.Dead && component.EndRoundOnDeath)
             CheckAnnouncement();
     }
 
@@ -149,7 +149,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return;
         }
 
-        SetupWizardEntity(uid, wizardSpawner.Points, gear, profile);
+        SetupWizardEntity(uid, gear, profile, false);
     }
 
     private void OnMindAdded(EntityUid uid, WizardComponent component, MindAddedMessage args)
@@ -280,11 +280,11 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
     private void SetupWizardEntity(
         EntityUid mob,
-        int points,
         StartingGearPrototype gear,
-        HumanoidCharacterProfile? profile)
+        HumanoidCharacterProfile? profile,
+        bool endRoundOnDeath)
     {
-        EnsureComp<WizardComponent>(mob);
+        EnsureComp<WizardComponent>(mob).EndRoundOnDeath = endRoundOnDeath;
 
         profile ??= HumanoidCharacterProfile.RandomWithSpecies();
 
@@ -346,7 +346,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
                 return;
             }
 
-            SetupWizardEntity(mob, component.Points, gear, profile);
+            SetupWizardEntity(mob, gear, profile, true);
 
             var newMind = _mind.CreateMind(session.UserId, name);
             _mind.SetUserId(newMind, session.UserId);

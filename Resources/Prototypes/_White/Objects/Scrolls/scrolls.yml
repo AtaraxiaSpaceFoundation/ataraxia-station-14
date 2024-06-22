@@ -169,3 +169,12 @@
     - type: Scroll
       actionId: ActionTimestopSpell
       learnPopup: scroll-component-timestop
+
+- type: entity
+  id: ScrollArcaneBarrage
+  parent: BaseScroll
+  name: "Arcane barrage scroll"
+  components:
+    - type: Scroll
+      actionId: ActionArcaneBarrageSpell
+      learnPopup: scroll-component-barrage

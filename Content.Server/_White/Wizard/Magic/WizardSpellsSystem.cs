@@ -4,6 +4,7 @@ using Content.Server._White.Cult;
 using Content.Server._White.IncorporealSystem;
 using Content.Server._White.Wizard.Magic.Amaterasu;
 using Content.Server._White.Wizard.Magic.Other;
+using Content.Server._White.Wizard.Magic.TeslaProjectile;
 using Content.Server._White.Wizard.Teleport;
 using Content.Server.Abilities.Mime;
 using Content.Server.Administration.Commands;
@@ -86,6 +87,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ArcaneBarrageSpellEvent>(OnArcaneBarrage);
         SubscribeLocalEvent<StopTimeSpellEvent>(OnTimeStop);
         SubscribeLocalEvent<MindswapSpellEvent>(OnMindswapSpell);
         SubscribeLocalEvent<TeleportSpellEvent>(OnTeleportSpell);
@@ -104,6 +106,29 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         SubscribeLocalEvent<MagicComponent, BeforeCastSpellEvent>(OnBeforeCastSpell);
     }
+
+    #region Arcane Barrage
+
+    private void OnArcaneBarrage(ArcaneBarrageSpellEvent msg)
+    {
+        if (!CanCast(msg))
+            return;
+
+        var uid = msg.Performer;
+
+        var entity = Spawn(msg.Prototype, Transform(uid).Coordinates);
+        if (!_handsSystem.TryPickupAnyHand(uid, entity))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("arcane-barrage-no-empty-hand"), uid, uid);
+            QueueDel(entity);
+            _actions.SetCooldown(msg.Action, TimeSpan.FromSeconds(1));
+            return;
+        }
+
+        msg.Handled = true;
+    }
+
+    #endregion
 
     #region Timestop
 
@@ -803,6 +828,7 @@ public sealed class WizardSpellsSystem : EntitySystem
                 userVelocity = physics.LinearVelocity;
 
             var ent = Spawn(msg.Prototype, spawnCoords);
+            EnsureComp<TeslaProjectileComponent>(ent).Caster = msg.Performer;
             var direction = msg.Target.ToMapPos(EntityManager, _transformSystem) -
                             spawnCoords.ToMapPos(EntityManager, _transformSystem);
             _gunSystem.ShootProjectile(ent, direction, userVelocity, msg.Performer, msg.Performer);

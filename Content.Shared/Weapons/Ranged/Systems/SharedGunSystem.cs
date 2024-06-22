@@ -540,6 +540,10 @@ public abstract partial class SharedGunSystem : EntitySystem
         gun.UseKey = useKey;
     }
 
+    public void SetClumsyProof(GunComponent gun, bool clumsyProof)
+    {
+        gun.ClumsyProof = clumsyProof;
+    }
     public void SetProjectileSpeed(EntityUid weapon, float projectileSpeed)
     {
         if(!TryComp<GunComponent>(weapon, out var gunComponent))

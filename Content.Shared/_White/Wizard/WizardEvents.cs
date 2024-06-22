@@ -193,4 +193,13 @@ public sealed partial class StopTimeSpellEvent : InstantActionEvent, ISpeakSpell
     public string? Speech { get; private set; }
 }
 
+public sealed partial class ArcaneBarrageSpellEvent : InstantActionEvent, ISpeakSpell
+{
+    [DataField("prototype", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string Prototype = default!;
+
+    [DataField("speech")]
+    public string? Speech { get; private set; }
+}
+
 #endregion

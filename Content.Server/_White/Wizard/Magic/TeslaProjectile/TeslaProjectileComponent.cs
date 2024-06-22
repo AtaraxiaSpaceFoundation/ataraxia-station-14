@@ -1,4 +1,8 @@
 ﻿namespace Content.Server._White.Wizard.Magic.TeslaProjectile;
 
 [RegisterComponent]
-public sealed partial class TeslaProjectileComponent : Component {}
+public sealed partial class TeslaProjectileComponent : Component
+{
+    [ViewVariables]
+    public EntityUid? Caster;
+}

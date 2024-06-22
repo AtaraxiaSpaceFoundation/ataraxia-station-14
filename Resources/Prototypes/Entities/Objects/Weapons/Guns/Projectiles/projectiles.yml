@@ -1441,4 +1441,45 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 20
+        Piercing: 25
+
+- type: entity
+  name: arcane bolt
+  id: ArcaneBolt
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/arcane_barrage.rsi
+    state: bullet
+  - type: Ammo
+    muzzleFlash: null
+  - type: Projectile
+    damage:
+      types:
+        Heat: 25
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        mask:
+        - Opaque
+      fly-by: *flybyfixture
+  - type: Trail
+    splineIteratorType: Linear
+    splineRendererType: Continuous
+    creationMethod: OnMove
+    scale: 0.05, 0.0
+    lifetime: 0.5
+    randomWalk: 0.001, 0.001
+    gravity: 0, 0
+    gradient:
+    - 1, 0, 0.75, 1
+    - 1, 0, 0.75, 0
+  - type: PointLight
+    radius: 1.7
+    color: purple
+    energy: 0.7

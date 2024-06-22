@@ -150,3 +150,16 @@
   fireColor: Green
   texturePath: /Textures/Effects/fire_greyscale.rsi
   fireStates: 3
+
+- type: explosion
+  id: Shock
+  damagePerIntensity:
+    types:
+      Shock: 15
+  tileBreakChance: [0]
+  tileBreakIntensity: [0]
+  lightColor: "#B3CEFF"
+  fireColor: "#B3CEFF"
+  texturePath: /Textures/Effects/fire_greyscale.rsi
+  fireStates: 3
+  ignoreResistances: false
