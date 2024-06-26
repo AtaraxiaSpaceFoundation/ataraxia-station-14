@@ -1,20 +1,25 @@
 using System.Linq;
+using Content.Server.Actions;
+using Content.Shared._White.Wizard.Magic;
+using Content.Shared.Actions;
 using Content.Shared.Eye;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Physics;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server._White.IncorporealSystem;
 
 public sealed class IncorporealSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
@@ -78,6 +83,21 @@ public sealed class IncorporealSystem : EntitySystem
         _stealth.SetVisibility(uid, 1);
         RemComp<StealthComponent>(uid);
         _movement.RefreshMovementSpeedModifiers(uid);
+        if (!TryComp(uid, out ActionsContainerComponent? container))
+            return;
+
+        var cooldown = TimeSpan.FromSeconds(3);
+
+        foreach (var action in container.Container.ContainedEntities.Where(HasComp<MagicComponent>))
+        {
+            if (!_actions.TryGetActionData(action, out var comp, false))
+                continue;
+
+            if (comp.Cooldown.HasValue && comp.Cooldown.Value.End >= _timing.CurTime + cooldown)
+                continue;
+
+            _actions.SetCooldown(action, cooldown);
+        }
     }
 
     private void OnRefresh(EntityUid uid, IncorporealComponent component, RefreshMovementSpeedModifiersEvent args)

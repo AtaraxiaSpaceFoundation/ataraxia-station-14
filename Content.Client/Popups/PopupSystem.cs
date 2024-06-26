@@ -93,11 +93,14 @@ namespace Content.Client.Popups
 
             _aliveWorldLabels.Add(label);
 
-            // START WhiteDream 
+            // START WhiteDream
             if (!_isLogging)
                 return;
 
-            if (!_examine.InRangeUnOccluded(_playerManager.LocalEntity!.Value, coordinates, 10))
+            if (_playerManager.LocalEntity == null)
+                return;
+
+            if (!_examine.InRangeUnOccluded(_playerManager.LocalEntity.Value, coordinates, 10))
                 return;
 
             var fontSizeDict = new Dictionary<PopupType, string>
@@ -117,7 +120,7 @@ namespace Content.Client.Popups
             var chatMsg = new ChatMessage(ChatChannel.Emotes, message, wrappedMEssage,
                 GetNetEntity(EntityUid.Invalid), null);
             _uiManager.GetUIController<ChatUIController>().ProcessChatMessage(chatMsg);
-            
+
             // END WhiteDream
         }
 

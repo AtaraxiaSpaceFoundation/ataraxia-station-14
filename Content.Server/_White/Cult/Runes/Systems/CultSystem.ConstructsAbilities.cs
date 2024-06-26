@@ -12,6 +12,7 @@ using Content.Shared.Physics;
 using Content.Shared.StatusEffect;
 using Content.Shared._White.Cult;
 using Content.Shared._White.Cult.Components;
+using Content.Shared.Throwing;
 
 namespace Content.Server._White.Cult.Runes.Systems;
 
@@ -34,6 +35,7 @@ public partial class CultSystem
 
         SubscribeLocalEvent<WraithPhaseActionEvent>(OnWraithPhase);
         SubscribeLocalEvent<IncorporealComponent, AttackAttemptEvent>(OnAttackAttempt);
+        SubscribeLocalEvent<IncorporealComponent, ThrowAttemptEvent>(OnThrowAttempt);
 
         SubscribeLocalEvent<JuggernautCreateWallActionEvent>(OnJuggernautCreateWall);
 
@@ -156,6 +158,14 @@ public partial class CultSystem
     }
 
     private void OnAttackAttempt(EntityUid uid, IncorporealComponent component, AttackAttemptEvent args)
+    {
+        if (_statusEffectsSystem.HasStatusEffect(args.Uid, "Incorporeal"))
+        {
+            _statusEffectsSystem.TryRemoveStatusEffect(args.Uid, "Incorporeal");
+        }
+    }
+
+    private void OnThrowAttempt(Entity<IncorporealComponent> ent, ref ThrowAttemptEvent args)
     {
         if (_statusEffectsSystem.HasStatusEffect(args.Uid, "Incorporeal"))
         {

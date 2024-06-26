@@ -9,7 +9,7 @@ namespace Content.Shared.Kitchen.Components;
 public sealed partial class KitchenSpikeComponent : Component
 {
     [DataField("delay")]
-    public float SpikeDelay = 7.0f;
+    public float SpikeDelay = 2.0f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("sound")]

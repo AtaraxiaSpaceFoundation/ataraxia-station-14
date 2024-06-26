@@ -12,8 +12,8 @@
               southRotation: true
           steps:
             - material: Steel
-              amount: 15
-              doAfter: 2
+              amount: 5
+              doAfter: 5
     - node: MeatSpike
       entity: KitchenSpike
       edges:
@@ -21,7 +21,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 15
+              amount: 5
           steps:
             - tool: Screwing
-              doAfter: 1
+              doAfter: 5

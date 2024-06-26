@@ -76,7 +76,6 @@ namespace Content.Server.Light.EntitySystems
         {
             light.LightBulbContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, LightBulbContainer);
             _signalSystem.EnsureSinkPorts(uid, light.OnPort, light.OffPort, light.TogglePort);
-            _signalSystem.EnsureSourcePorts(uid, light.StatusPort); // WD
         }
 
         private void OnMapInit(EntityUid uid, PoweredLightComponent light, MapInitEvent args)
@@ -446,14 +445,6 @@ namespace Content.Server.Light.EntitySystems
                 return;
 
             light.On = !light.On;
-
-            // WD START
-            var data = new NetworkPayload
-            {
-                {DeviceNetworkConstants.LogicState, light.On ? SignalState.High : SignalState.Low}
-            };
-            _signalSystem.InvokePort(uid, light.StatusPort, data);
-            // WD END
 
             UpdateLight(uid, light);
         }

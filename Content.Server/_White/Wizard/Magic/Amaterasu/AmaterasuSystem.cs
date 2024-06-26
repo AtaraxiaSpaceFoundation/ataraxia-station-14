@@ -24,7 +24,7 @@ public sealed class AmaterasuSystem : EntitySystem
 
             if (flammable.OnFire)
             {
-                _bodySystem.GibBody(uid);
+                _bodySystem.GibBody(uid, true);
                 return;
             }
 

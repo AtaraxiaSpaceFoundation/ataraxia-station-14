@@ -32,6 +32,9 @@ public sealed class FlipOnHitSystem : SharedFlipOnHitSystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
+        if (TerminatingOrDeleted(user))
+            return;
+
         if (_animationSystem.HasRunningAnimation(user, EmoteAnimationSystem.AnimationKey))
         {
             EnsureComp<FlippingComponent>(user);

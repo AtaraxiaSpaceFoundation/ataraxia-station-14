@@ -4,13 +4,13 @@ namespace Content.Shared._White.Cult.Components;
 public sealed partial class CultBuffComponent : Component
 {
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public TimeSpan BuffTime = TimeSpan.FromSeconds(60);
+    public TimeSpan BuffTime = TimeSpan.FromSeconds(20);
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public TimeSpan StartingBuffTime = TimeSpan.FromSeconds(60);
+    public TimeSpan StartingBuffTime = TimeSpan.FromSeconds(20);
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public TimeSpan BuffLimit = TimeSpan.FromSeconds(55);
+    public TimeSpan BuffLimit = TimeSpan.FromSeconds(10);
 
     public static float NearbyTilesBuffRadius = 1f;
 

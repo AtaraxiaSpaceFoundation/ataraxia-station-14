@@ -1,10 +1,13 @@
+using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Kitchen.Components;
 using Content.Server.Popups;
+using Content.Shared.Body.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
+using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -50,7 +53,19 @@ namespace Content.Server.Kitchen.EntitySystems
 
             SubscribeLocalEvent<KitchenSpikeComponent, SuicideEvent>(OnSuicide);
 
+            SubscribeLocalEvent<KitchenSpikeComponent, ExaminedEvent>(OnExamine);
+
             SubscribeLocalEvent<ButcherableComponent, CanDropDraggedEvent>(OnButcherableCanDrop);
+        }
+
+        private void OnExamine(Entity<KitchenSpikeComponent> ent, ref ExaminedEvent args)
+        {
+            var (uid, comp) = ent;
+
+            if (comp.Victim is not "?" or "")
+            {
+                args.PushMarkup(Loc.GetString("comp-kitchen-spike-examine", ("this", uid), ("victim", comp.Victim)));
+            }
         }
 
         private void OnButcherableCanDrop(EntityUid uid, ButcherableComponent component, ref CanDropDraggedEvent args)
@@ -152,7 +167,8 @@ namespace Content.Server.Kitchen.EntitySystems
             // THE WHAT?
             // TODO: Need to be able to leave them on the spike to do DoT, see ss13.
             var gibs = _bodySystem.GibBody(victimUid);
-            foreach (var gib in gibs) {
+            foreach (var gib in gibs.Where(HasComp<BodyComponent>)) // WD EDIT
+            {
                 QueueDel(gib);
             }
 
@@ -236,21 +252,23 @@ namespace Content.Server.Kitchen.EntitySystems
 
             // THE WHAT? (again)
             // Prevent dead from being spiked TODO: Maybe remove when rounds can be played and DOT is implemented
-            if (Resolve(victimUid, ref mobState, false) &&
+            /*if (Resolve(victimUid, ref mobState, false) &&
                 _mobStateSystem.IsAlive(victimUid, mobState))
             {
                 _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-deny-not-dead", ("victim", Identity.Entity(victimUid, EntityManager))),
                     victimUid, userUid);
                 return true;
-            }
+            }*/
+            // WD EDIT
 
             if (userUid != victimUid)
-            {
                 _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-begin-hook-victim", ("user", Identity.Entity(userUid, EntityManager)), ("this", uid)), victimUid, victimUid, PopupType.LargeCaution);
-            }
             // TODO: make it work when SuicideEvent is implemented
-            // else
-            //    _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-begin-hook-self", ("this", uid)), victimUid, Filter.Pvs(uid)); // This is actually unreachable and should be in SuicideEvent
+            else
+            {
+                _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-begin-hook-self", ("this", uid)), victimUid,
+                    victimUid); // This is actually unreachable and should be in SuicideEvent
+            }
 
             butcherable.BeingButchered = true;
             component.InUse = true;
