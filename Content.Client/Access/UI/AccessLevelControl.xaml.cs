@@ -48,9 +48,9 @@ public sealed partial class AccessLevelControl : GridContainer
             "ButtonColorSecurityDepartment",
             "ButtonColorMedicalDepartment",
             "ButtonColorEngineeringDepartment",
-            "ButtonColorResearchingDepartment",
+            "ButtonColorScienceDepartment",
             "ButtonColorCargoDepartment",
-            "ButtonColorServiceDepartment"
+            "ButtonColorCivilianDepartment"
         };
         var currentColorIndex = 0;
 

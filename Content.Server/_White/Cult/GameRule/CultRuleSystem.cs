@@ -23,6 +23,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Content.Shared._White;
+using Content.Shared._White.Antag;
 using Content.Shared._White.Cult.Components;
 using Content.Shared._White.Cult.Systems;
 using Content.Shared._White.Mood;
@@ -353,6 +354,7 @@ public sealed class CultRuleSystem : GameRuleSystem<CultRuleComponent>
                 return;
 
             EnsureComp<PentagramComponent>(cultistComponent.Owner);
+            EnsureComp<GlobalAntagonistComponent>(cultistComponent.Owner).AntagonistPrototype = "globalAntagonistCult";
         }
     }
 

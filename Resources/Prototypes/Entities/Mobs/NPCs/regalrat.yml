@@ -121,6 +121,8 @@
   - type: NightVision
     toggleSound: null
     color: "#404040"
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistRats
 
 - type: entity
   id: MobRatKingBuff
@@ -198,7 +200,6 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded"]
       state: eyes
       shader: unshaded
-
   - type: SpriteMovement
     movementLayers:
       movement:
@@ -291,6 +292,8 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistRats
 
 - type: weightedRandomEntity
   id: RatKingLoot

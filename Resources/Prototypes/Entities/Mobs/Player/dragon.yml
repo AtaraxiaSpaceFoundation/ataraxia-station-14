@@ -154,6 +154,8 @@
   - type: GuideHelp
     guides:
     - MinorAntagonists
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistDragon
 
 - type: entity
   parent: BaseMobDragon

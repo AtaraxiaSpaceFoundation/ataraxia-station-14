@@ -46,6 +46,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Server.StationEvents.Components;
+using Content.Shared._White.Antag;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
 
@@ -731,6 +732,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     {
         _metaData.SetEntityName(mob, name);
         EnsureComp<NukeOperativeComponent>(mob);
+        EnsureComp<GlobalAntagonistComponent>(mob).AntagonistPrototype = "globalAntagonistNukeops";
 
         if (profile != null)
             _humanoid.LoadProfile(mob, profile);

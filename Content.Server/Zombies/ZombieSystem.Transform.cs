@@ -15,6 +15,7 @@ using Content.Server.NPC.Systems;
 using Content.Server.Roles;
 using Content.Server.Speech.Components;
 using Content.Server.Temperature.Components;
+using Content.Shared._White.Antag;
 using Content.Shared.CombatMode;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
@@ -96,6 +97,7 @@ namespace Content.Server.Zombies
 
             //you're a real zombie now, son.
             var zombiecomp = AddComp<ZombieComponent>(target);
+            EnsureComp<GlobalAntagonistComponent>(target).AntagonistPrototype = "globalAntagonistZombie";
 
             //we need to basically remove all of these because zombies shouldn't
             //get diseases, breath, be thirst, be hungry, die in space, have offspring or be paraplegic.

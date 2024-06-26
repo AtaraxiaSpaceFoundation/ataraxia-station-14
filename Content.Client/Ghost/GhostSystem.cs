@@ -148,9 +148,7 @@ namespace Content.Client.Ghost
         private void OnGhostWarpsResponse(GhostWarpsResponseEvent msg)
         {
             if (!IsGhost)
-            {
                 return;
-            }
 
             GhostWarpsResponse?.Invoke(msg);
         }

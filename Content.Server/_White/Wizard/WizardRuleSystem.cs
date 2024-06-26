@@ -24,6 +24,7 @@ using System.Linq;
 using Content.Server.Objectives;
 using Content.Server.Station.Components;
 using Content.Server.StationEvents.Components;
+using Content.Shared._White.Antag;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Components;
 using Content.Shared.Objectives.Components;
@@ -285,6 +286,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         bool endRoundOnDeath)
     {
         EnsureComp<WizardComponent>(mob).EndRoundOnDeath = endRoundOnDeath;
+        EnsureComp<GlobalAntagonistComponent>(mob).AntagonistPrototype = "globalAntagonistWizard";
 
         profile ??= HumanoidCharacterProfile.RandomWithSpecies();
 

@@ -93,3 +93,5 @@
     - RevenantTheme
   - type: Speech
     speechVerb: Ghost
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistRevenant

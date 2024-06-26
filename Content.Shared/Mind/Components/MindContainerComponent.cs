@@ -17,6 +17,10 @@ namespace Content.Shared.Mind.Components
         [Access(typeof(SharedMindSystem), Other = AccessPermissions.ReadWriteExecute)] // FIXME Friends
         public EntityUid? Mind { get; set; }
 
+        [DataField, AutoNetworkedField]
+        [Access(typeof(SharedMindSystem), Other = AccessPermissions.ReadWriteExecute)]
+        public EntityUid? LastMindStored { get; set; }
+
         /// <summary>
         ///     True if we have a mind, false otherwise.
         /// </summary>
@@ -59,6 +63,7 @@ namespace Content.Shared.Mind.Components
         public MindRemovedMessage(Entity<MindComponent> mind, Entity<MindContainerComponent> container)
             : base(mind, container)
         {
+            container.Comp.LastMindStored = mind; // Holy shit
         }
     }
 

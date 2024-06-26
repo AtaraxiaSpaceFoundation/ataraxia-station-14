@@ -2225,6 +2225,8 @@
       name: ghost-role-information-giant-spider-name
       description: ghost-role-information-giant-spider-description
     - type: GhostTakeoverAvailable
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistSpider
 
 - type: entity
   name: angry monkey
@@ -2285,6 +2287,8 @@
     - type: Bloodstream
       bloodMaxVolume: 150
       bloodReagent: Laughter
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistSpiderClown
 
 - type: entity
   name: possum

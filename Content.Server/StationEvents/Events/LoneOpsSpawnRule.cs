@@ -3,6 +3,7 @@ using Robust.Server.Maps;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.StationEvents.Components;
 using Content.Server.RoundEnd;
+using Content.Shared._White.Antag;
 
 namespace Content.Server.StationEvents.Events;
 
@@ -32,6 +33,9 @@ public sealed class LoneOpsSpawnRule : StationEventSystem<LoneOpsSpawnRuleCompon
         var nukeopsEntity = GameTicker.AddGameRule(component.GameRuleProto);
         component.AdditionalRule = nukeopsEntity;
         var nukeopsComp = Comp<NukeopsRuleComponent>(nukeopsEntity);
+
+        EnsureComp<GlobalAntagonistComponent>(nukeopsEntity).AntagonistPrototype = "globalAntagonistLoneops";
+
         nukeopsComp.SpawnOutpost = false;
         nukeopsComp.RoundEndBehavior = RoundEndBehavior.Nothing;
         GameTicker.StartGameRule(nukeopsEntity);

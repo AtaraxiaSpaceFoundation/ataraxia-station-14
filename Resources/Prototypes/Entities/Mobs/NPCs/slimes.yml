@@ -148,6 +148,8 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistSlime
 
 - type: entity
   name: green slime
@@ -183,6 +185,8 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistSlime
 
 - type: entity
   name: yellow slime
@@ -218,3 +222,5 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistSlime

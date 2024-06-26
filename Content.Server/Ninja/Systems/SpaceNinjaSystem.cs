@@ -20,6 +20,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Objectives.Components;
+using Content.Shared._White.Antag;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Ninja.Systems;
@@ -154,6 +155,8 @@ public sealed class SpaceNinjaSystem : SharedSpaceNinjaSystem
         var config = NinjaRule(uid);
         if (config == null)
             return;
+
+        EnsureComp<GlobalAntagonistComponent>(uid).AntagonistPrototype = "globalAntagonistNinja";
 
         var role = new NinjaRoleComponent
         {

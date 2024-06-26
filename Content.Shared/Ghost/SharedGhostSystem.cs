@@ -1,8 +1,10 @@
+using Content.Shared._White.Antag;
 using Content.Shared.Emoting;
 using Content.Shared.Hands;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Ghost
@@ -63,17 +65,121 @@ namespace Content.Shared.Ghost
     }
 
     /// <summary>
+    /// An player body a ghost can warp to.
+    /// This is used as part of <see cref="GhostWarpsResponseEvent"/>
+    /// </summary>
+    [Serializable, NetSerializable]
+    public struct GhostWarpPlayer
+    {
+        public GhostWarpPlayer(NetEntity entity, string playerName, string playerJobName, string playerDepartmentID, bool isGhost, bool isLeft, bool isDead, bool isAlive)
+        {
+            Entity = entity;
+            Name = playerName;
+            JobName = playerJobName;
+            DepartmentID = playerDepartmentID;
+
+            IsGhost = isGhost;
+            IsLeft = isLeft;
+            IsDead = isDead;
+            IsAlive = isAlive;
+        }
+
+        /// <summary>
+        /// The entity representing the warp point.
+        /// This is passed back to the server in <see cref="GhostWarpToTargetRequestEvent"/>
+        /// </summary>
+        public NetEntity Entity { get; }
+
+        /// <summary>
+        /// The display player name to be surfaced in the ghost warps menu
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// The display player job to be surfaced in the ghost warps menu
+        /// </summary>
+
+        public string JobName { get; }
+
+        /// <summary>
+        /// The display player department to be surfaced in the ghost warps menu
+        /// </summary>
+        public string DepartmentID { get; set; }
+
+        /// <summary>
+        /// Is player is ghost
+        /// </summary>
+        public bool IsGhost { get;  }
+
+        /// <summary>
+        /// Is player body alive
+        /// </summary>
+        public bool IsAlive { get;  }
+
+        /// <summary>
+        /// Is player body dead
+        /// </summary>
+        public bool IsDead { get;  }
+
+        /// <summary>
+        /// Is player left from body
+        /// </summary>
+        public bool IsLeft { get;  }
+    }
+
+    [Serializable, NetSerializable]
+    public struct GhostWarpGlobalAntagonist
+    {
+        public GhostWarpGlobalAntagonist(NetEntity entity, string playerName, string antagonistName, string antagonistDescription, string prototypeID)
+        {
+            Entity = entity;
+            Name = playerName;
+            AntagonistName = antagonistName;
+            AntagonistDescription = antagonistDescription;
+            PrototypeID = prototypeID;
+        }
+
+        /// <summary>
+        /// The entity representing the warp point.
+        /// This is passed back to the server in <see cref="GhostWarpToTargetRequestEvent"/>
+        /// </summary>
+        public NetEntity Entity { get; }
+
+        /// <summary>
+        /// The display player name to be surfaced in the ghost warps menu
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// The display antagonist name to be surfaced in the ghost warps menu
+        /// </summary>
+        public string AntagonistName { get; }
+
+        /// <summary>
+        /// The display antagonist description to be surfaced in the ghost warps menu
+        /// </summary>
+        public string AntagonistDescription { get; }
+
+        /// <summary>
+        /// A antagonist prototype id
+        /// </summary>
+        public string PrototypeID { get; }
+
+    }
+
+
+    /// <summary>
     /// An individual place a ghost can warp to.
     /// This is used as part of <see cref="GhostWarpsResponseEvent"/>
     /// </summary>
     [Serializable, NetSerializable]
-    public struct GhostWarp
+    public struct GhostWarpPlace
     {
-        public GhostWarp(NetEntity entity, string displayName, bool isWarpPoint)
+        public GhostWarpPlace(NetEntity entity, string name, string description)
         {
             Entity = entity;
-            DisplayName = displayName;
-            IsWarpPoint = isWarpPoint;
+            Name = name;
+            Description = description;
         }
 
         /// <summary>
@@ -85,14 +191,14 @@ namespace Content.Shared.Ghost
         /// <summary>
         /// The display name to be surfaced in the ghost warps menu
         /// </summary>
-        public string DisplayName { get; }
+        public string Name { get; }
 
         /// <summary>
-        /// Whether this warp represents a warp point or a player
+        /// The display name to be surfaced in the ghost warps menu
         /// </summary>
-        public bool IsWarpPoint { get;  }
-    }
+        public string Description { get; }
 
+    }
     /// <summary>
     /// A server to client response for a <see cref="GhostWarpsRequestEvent"/>.
     /// Contains players, and locations a ghost can warp to
@@ -100,15 +206,27 @@ namespace Content.Shared.Ghost
     [Serializable, NetSerializable]
     public sealed class GhostWarpsResponseEvent : EntityEventArgs
     {
-        public GhostWarpsResponseEvent(List<GhostWarp> warps)
+        public GhostWarpsResponseEvent(List<GhostWarpPlayer> players, List<GhostWarpPlace> places, List<GhostWarpGlobalAntagonist> antagonists)
         {
-            Warps = warps;
+            Players = players;
+            Places = places;
+            Antagonists = antagonists;
         }
+
+        /// <summary>
+        /// A list of players to teleport.
+        /// </summary>
+        public List<GhostWarpPlayer> Players { get; }
 
         /// <summary>
         /// A list of warp points.
         /// </summary>
-        public List<GhostWarp> Warps { get; }
+        public List<GhostWarpPlace> Places { get; }
+
+        /// <summary>
+        /// A list of antagonists to teleport.
+        /// </summary>
+        public List<GhostWarpGlobalAntagonist> Antagonists { get; }
     }
 
     /// <summary>
@@ -159,3 +277,4 @@ namespace Content.Shared.Ghost
     {
     }
 }
+

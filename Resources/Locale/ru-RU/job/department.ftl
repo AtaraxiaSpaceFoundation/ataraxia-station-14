@@ -5,6 +5,6 @@ department-Engineering = Инженерный отдел
 department-Medical = Медицинский отдел
 department-Security = Служба безопасности
 department-Science = Научный отдел
-department-Specific = Особые для станции
+department-Specific = Другие
 department-Silicon = Киборги
 department-Justice = Отдел юстиции
