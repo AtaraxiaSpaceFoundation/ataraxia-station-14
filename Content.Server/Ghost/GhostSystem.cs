@@ -32,6 +32,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.SSDIndicator;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
@@ -61,10 +62,18 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+        [Dependency] private readonly MetaDataSystem _metaData = default!;
+        [Dependency] private readonly IMapManager _mapManager = default!;
+
+        private EntityQuery<GhostComponent> _ghostQuery;
+        private EntityQuery<PhysicsComponent> _physicsQuery;
 
         public override void Initialize()
         {
             base.Initialize();
+
+            _ghostQuery = GetEntityQuery<GhostComponent>();
+            _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
@@ -107,8 +116,13 @@ namespace Content.Server.Ghost
             {
                 var message = Loc.GetString("ghost-respawn-max-players", ("players", maxPlayers));
                 var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server, message,
-                    wrappedMessage, default, false, args.SenderSession.ConnectedClient, Color.Red);
+                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server,
+                    message,
+                    wrappedMessage,
+                    default,
+                    false,
+                    args.SenderSession.ConnectedClient,
+                    Color.Red);
                 return;
             }
 
@@ -119,13 +133,18 @@ namespace Content.Server.Ghost
             {
                 var message = Loc.GetString("ghost-respawn-bug");
                 var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server, message,
-                    wrappedMessage, default, false, args.SenderSession.ConnectedClient, Color.Red);
+                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server,
+                    message,
+                    wrappedMessage,
+                    default,
+                    false,
+                    args.SenderSession.ConnectedClient,
+                    Color.Red);
                 _deathTime[userId] = _gameTiming.CurTime;
                 return;
             }
 
-            var timeUntilRespawn = (double)cfg.GetCVar(WhiteCVars.GhostRespawnTime);
+            var timeUntilRespawn = (double) cfg.GetCVar(WhiteCVars.GhostRespawnTime);
             var timePast = (_gameTiming.CurTime - deathTime).TotalMinutes;
             if (timePast >= timeUntilRespawn)
             {
@@ -137,20 +156,32 @@ namespace Content.Server.Ghost
                     ticker.Respawn(targetPlayer);
                 _deathTime.Remove(userId);
 
-                _adminLogger.Add(LogType.Mind, LogImpact.Extreme, $"{args.SenderSession.ConnectedClient.UserName} вернулся в лобби посредством гост респавна.");
+                _adminLogger.Add(LogType.Mind,
+                    LogImpact.Extreme,
+                    $"{args.SenderSession.ConnectedClient.UserName} вернулся в лобби посредством гост респавна.");
 
                 var message = Loc.GetString("ghost-respawn-window-rules-footer");
                 var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server, message,
-                    wrappedMessage, default, false, args.SenderSession.ConnectedClient, Color.Red);
+                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server,
+                    message,
+                    wrappedMessage,
+                    default,
+                    false,
+                    args.SenderSession.ConnectedClient,
+                    Color.Red);
 
             }
             else
             {
-                var message = Loc.GetString("ghost-respawn-time-left", ("time", (int)(timeUntilRespawn-timePast)));
+                var message = Loc.GetString("ghost-respawn-time-left", ("time", (int) (timeUntilRespawn - timePast)));
                 var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server, message,
-                    wrappedMessage, default, false, args.SenderSession.ConnectedClient, Color.Red);
+                _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server,
+                    message,
+                    wrappedMessage,
+                    default,
+                    false,
+                    args.SenderSession.ConnectedClient,
+                    Color.Red);
             }
         }
 
@@ -324,8 +355,8 @@ namespace Content.Server.Ghost
 
         private void OnGhostReturnToBodyRequest(GhostReturnToBodyRequest msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? ghost)
+            if (args.SenderSession.AttachedEntity is not { Valid: true } attached
+                || !_ghostQuery.TryComp(attached, out var ghost)
                 || !ghost.CanReturnToBody
                 || !TryComp(attached, out ActorComponent? actor))
             {
@@ -340,10 +371,11 @@ namespace Content.Server.Ghost
 
         private void OnGhostWarpsRequest(GhostWarpsRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} entity
-                || !HasComp<GhostComponent>(entity))
+            if (args.SenderSession.AttachedEntity is not { Valid: true } entity
+                || !_ghostQuery.HasComp(entity))
             {
-                Log.Warning($"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
+                Log.Warning(
+                    $"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
                 return;
             }
 
@@ -353,8 +385,8 @@ namespace Content.Server.Ghost
 
         private void OnGhostWarpToTargetRequest(GhostWarpToTargetRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? _))
+            if (args.SenderSession.AttachedEntity is not { Valid: true } attached
+                || !_ghostQuery.HasComp(attached))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to warp to {msg.Target} without being a ghost.");
                 return;
@@ -379,7 +411,25 @@ namespace Content.Server.Ghost
             _transformSystem.AttachToGridOrMap(attached, xform);
             if (TryComp(attached, out PhysicsComponent? physics))
                 _physics.SetLinearVelocity(attached, Vector2.Zero, body: physics);
+
+            WarpTo(attached, target);
         }
+
+        private void WarpTo(EntityUid uid, EntityUid target)
+        {
+            if ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target))
+            {
+                _followerSystem.StartFollowingEntity(uid, target);
+                return;
+            }
+
+            var xform = Transform(uid);
+            _transformSystem.SetCoordinates(uid, xform, Transform(target).Coordinates);
+            _transformSystem.AttachToGridOrMap(uid, xform);
+            if (_physicsQuery.TryComp(uid, out var physics))
+                _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
+        }
+
 
         private List<GhostWarpPlace> GetLocationWarps()
         {
@@ -388,7 +438,9 @@ namespace Content.Server.Ghost
 
             while (allQuery.MoveNext(out var uid, out var warp))
             {
-                var newWarp =  new GhostWarpPlace(GetNetEntity(uid), warp.Location ?? Name(uid), warp.Location ?? Description(uid));
+                var newWarp = new GhostWarpPlace(GetNetEntity(uid),
+                    warp.Location ?? Name(uid),
+                    warp.Location ?? Description(uid));
                 warps.Add(newWarp);
             }
 
@@ -403,13 +455,16 @@ namespace Content.Server.Ghost
             {
                 var entity = mindContainer.Owner;
 
-                if (!(HasComp<HumanoidAppearanceComponent>(entity) || HasComp<GhostComponent>(entity)) || HasComp<GlobalAntagonistComponent>(entity))
+                if (!(HasComp<HumanoidAppearanceComponent>(entity) || HasComp<GhostComponent>(entity)) ||
+                    HasComp<GlobalAntagonistComponent>(entity))
                     continue;
 
                 var playerDepartmentId = _prototypeManager.Index<DepartmentPrototype>("Specific").ID;
                 var playerJobName = "Неизвестно";
 
-                if (_jobs.MindTryGetJob(mindContainer.Mind ?? mindContainer.LastMindStored, out _, out var jobPrototype))
+                if (_jobs.MindTryGetJob(mindContainer.Mind ?? mindContainer.LastMindStored,
+                        out _,
+                        out var jobPrototype))
                 {
                     playerJobName = Loc.GetString(jobPrototype.Name);
 
@@ -418,9 +473,11 @@ namespace Content.Server.Ghost
                         playerDepartmentId = departmentPrototype.ID;
                     }
                 }
+
                 var hasAnyMind = (mindContainer.Mind ?? mindContainer.LastMindStored) != null;
                 var isDead = _mobState.IsDead(entity);
-                var isLeft = TryComp<SSDIndicatorComponent>(entity, out var indicator) && indicator.IsSSD && !isDead && hasAnyMind;
+                var isLeft = TryComp<SSDIndicatorComponent>(entity, out var indicator) && indicator.IsSSD && !isDead &&
+                             hasAnyMind;
 
                 var warp = new GhostWarpPlayer(
                     GetNetEntity(entity),
@@ -446,7 +503,9 @@ namespace Content.Server.Ghost
             foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
             {
                 var entity = antagonist.Owner;
-                var prototype = _prototypeManager.Index<AntagonistPrototype>(antagonist.AntagonistPrototype ?? "globalAntagonistUnknown");
+                var prototype =
+                    _prototypeManager.Index<AntagonistPrototype>(antagonist.AntagonistPrototype ??
+                                                                 "globalAntagonistUnknown");
 
                 var warp = new GhostWarpGlobalAntagonist(
                     GetNetEntity(entity),
@@ -464,7 +523,9 @@ namespace Content.Server.Ghost
 
         #endregion
 
-        private void OnEntityStorageInsertAttempt(EntityUid uid, GhostComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
+        private void OnEntityStorageInsertAttempt(EntityUid uid,
+            GhostComponent comp,
+            ref InsertIntoEntityStorageAttemptEvent args)
         {
             args.Cancelled = true;
         }
@@ -491,6 +552,7 @@ namespace Content.Server.Ghost
                     _visibilitySystem.AddLayer(uid, vis, (int) VisibilityFlags.Ghost, false);
                     _visibilitySystem.RemoveLayer(uid, vis, (int) VisibilityFlags.Normal, false);
                 }
+
                 _visibilitySystem.RefreshVisibility(uid, visibilityComponent: vis);
             }
         }
@@ -502,5 +564,62 @@ namespace Content.Server.Ghost
 
             return ghostBoo.Handled;
         }
+
+        public EntityUid? SpawnGhost(Entity<MindComponent?> mind,
+            EntityUid targetEntity,
+            bool canReturn = false)
+        {
+            _transformSystem.TryGetMapOrGridCoordinates(targetEntity, out var spawnPosition);
+            return SpawnGhost(mind, spawnPosition, canReturn);
+        }
+
+        public EntityUid? SpawnGhost(Entity<MindComponent?> mind,
+            EntityCoordinates? spawnPosition = null,
+            bool canReturn = false)
+        {
+            if (!Resolve(mind, ref mind.Comp))
+                return null;
+
+            // Test if the map is being deleted
+            var mapUid = spawnPosition?.GetMapUid(EntityManager);
+            if (mapUid == null || TerminatingOrDeleted(mapUid.Value))
+                spawnPosition = null;
+
+            spawnPosition ??= _ticker.GetObserverSpawnPoint();
+
+            if (!spawnPosition.Value.IsValid(EntityManager))
+            {
+                Log.Warning($"No spawn valid ghost spawn position found for {mind.Comp.CharacterName}"
+                            + " \"{ToPrettyString(mind)}\"");
+                _minds.TransferTo(mind.Owner, null, createGhost: false, mind: mind.Comp);
+                return null;
+            }
+
+            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
+            var ghostComponent = Comp<GhostComponent>(ghost);
+
+            // Try setting the ghost entity name to either the character name or the player name.
+            // If all else fails, it'll default to the default entity prototype name, "observer".
+            // However, that should rarely happen.
+            if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
+                _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
+            else if (!string.IsNullOrWhiteSpace(mind.Comp.Session?.Name))
+                _metaData.SetEntityName(ghost, mind.Comp.Session.Name);
+
+            if (mind.Comp.TimeOfDeath.HasValue)
+            {
+                SetTimeOfDeath(ghost, mind.Comp.TimeOfDeath!.Value, ghostComponent);
+            }
+
+            SetCanReturnToBody(ghostComponent, canReturn);
+
+            if (canReturn)
+                _minds.Visit(mind.Owner, ghost, mind.Comp);
+            else
+                _minds.TransferTo(mind.Owner, ghost, mind: mind.Comp);
+            Log.Debug($"Spawned ghost \"{ToPrettyString(ghost)}\" for {mind.Comp.CharacterName}.");
+            return ghost;
+        }
     }
 }
+
