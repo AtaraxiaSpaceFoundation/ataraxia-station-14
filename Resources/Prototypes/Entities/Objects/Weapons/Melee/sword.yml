@@ -24,6 +24,9 @@
   - type: Item
     size: Large
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
+    storedRotation: 44 # It just works
+    shape:
+    - 0, 0, 4, 0
   - type: Tag
     tags:
     - CaptainSabre

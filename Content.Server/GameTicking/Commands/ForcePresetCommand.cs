@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using Content.Server.Administration;
+using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Presets;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
@@ -10,6 +13,9 @@ namespace Content.Server.GameTicking.Commands
     [AdminCommand(AdminFlags.Round)]
     sealed class ForcePresetCommand : IConsoleCommand
     {
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly IChatManager _chatManager = default!;
+
         public string Command => "forcepreset";
         public string Description => "Forces a specific game preset to start for the current lobby.";
         public string Help => $"Usage: {Command} <preset>";
@@ -36,8 +42,19 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
 
-            ticker.SetGamePreset(type, true);
-            shell.WriteLine($"Forced the game to start with preset {name}.");
+            ticker.SetGamePreset(type);
+
+            _adminLogger.Add(LogType.EventStarted, $"Forced {type.ID} for secret.");
+
+
+            var player = "Someone";
+
+            if (shell.Player != null)
+                player = shell.Player.Name;
+
+            _chatManager.SendAdminAnnouncement($"{player} forced {type.ID} for secret.");
+            shell.WriteLine($"forced the game to start with preset {name}.");
+
             ticker.UpdateInfoText();
         }
 

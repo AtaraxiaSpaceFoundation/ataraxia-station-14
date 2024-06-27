@@ -18,6 +18,8 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Item
+    size: Tiny
 
 - type: entity
   name: explosive payload

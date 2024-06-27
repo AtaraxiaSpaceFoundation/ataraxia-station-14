@@ -21,6 +21,8 @@
   - type: Sprite
     sprite: Objects/Misc/nukedisk.rsi
     state: icon
+  - type: Item
+    size: Tiny
   - type: StaticPrice
     price: 2000
   - type: CargoSellBlacklist

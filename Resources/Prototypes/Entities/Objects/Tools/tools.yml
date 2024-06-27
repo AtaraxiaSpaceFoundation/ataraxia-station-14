@@ -502,6 +502,7 @@
     sprite: Objects/Tools/rcd.rsi
     state: ammo
   - type: Item
+    size: Tiny
     sprite: Objects/Tools/rcd.rsi
     heldPrefix: ammo
   - type: PhysicalComposition

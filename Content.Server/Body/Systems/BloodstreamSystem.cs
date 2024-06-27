@@ -1,3 +1,4 @@
+using Content.Server._White.Accent.Bloodloss;
 using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Chemistry.ReactionEffects;
@@ -43,6 +44,7 @@ public sealed class BloodstreamSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly ForensicsSystem _forensicsSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!; // WD
+    [Dependency] private readonly BloodLossAccent _bloodLossAccent = default!;
 
     public override void Initialize()
     {
@@ -158,7 +160,7 @@ public sealed class BloodstreamSystem : EntitySystem
                     uid,
                     (float) bloodstream.UpdateInterval.TotalSeconds * 2,
                     applySlur: false);
-                _stutteringSystem.DoStutter(uid, bloodstream.UpdateInterval * 2, refresh: false);
+                _bloodLossAccent.StartBloodLossAccent(uid, bloodstream.UpdateInterval * 2, refresh: false);
 
                 // storing the drunk and stutter time so we can remove it independently from other effects additions
                 bloodstream.StatusTime += bloodstream.UpdateInterval * 2;
@@ -173,7 +175,7 @@ public sealed class BloodstreamSystem : EntitySystem
 
                 // Remove the drunk effect when healthy. Should only remove the amount of drunk and stutter added by low blood level
                 _drunkSystem.TryRemoveDrunkenessTime(uid, bloodstream.StatusTime.TotalSeconds);
-                _stutteringSystem.DoRemoveStutterTime(uid, bloodstream.StatusTime.TotalSeconds);
+                _bloodLossAccent.StopBloodLossAccent(uid, bloodstream.StatusTime.TotalSeconds);
                 // Reset the drunk and stutter time to zero
                 bloodstream.StatusTime = TimeSpan.Zero;
             }

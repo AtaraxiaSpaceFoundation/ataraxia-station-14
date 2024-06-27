@@ -9,6 +9,7 @@
   - type: Item
     size: Normal
     sprite: Objects/Tanks/generic.rsi
+    storedRotation: 45
   - type: Clothing
     quickEquip: false
     sprite: Objects/Tanks/generic.rsi
@@ -57,6 +58,8 @@
     sprite: Objects/Tanks/oxygen.rsi
   - type: Item
     sprite: Objects/Tanks/oxygen.rsi
+    shape:
+    - 0, 0, 3, 0
   - type: GasTank
     outputPressure: 21.3
     air:
@@ -87,6 +90,8 @@
     sprite: Objects/Tanks/emergency.rsi
   - type: Item
     size: Small
+    shape:
+    - 0, 0, 1, 0
     sprite: Objects/Tanks/emergency.rsi
   - type: GasTank
     air:
@@ -208,6 +213,9 @@
     air:
       volume: 15
       temperature: 293.15
+  - type: Item
+    shape:
+    - 0, 0, 3, 0
 
 - type: entity
   parent: GasTankRoundBase
@@ -219,6 +227,8 @@
     sprite: Objects/Tanks/anesthetic.rsi
   - type: Item
     sprite: Objects/Tanks/anesthetic.rsi
+    shape:
+    - 0, 0, 3, 0
   - type: GasTank
     outputPressure: 30.4
     air:

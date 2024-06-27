@@ -39,6 +39,7 @@
     - KnockedDown
     - SlowedDown
     - Stutter
+    - BloodLoss
     - Electrocution
   - type: Pullable
   - type: Tag

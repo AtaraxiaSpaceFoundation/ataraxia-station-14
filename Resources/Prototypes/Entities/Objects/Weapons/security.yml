@@ -52,6 +52,9 @@
   - type: Item
     heldPrefix: off
     size: Normal
+    shape:
+    - 0,0,2,0
+    storedRotation: 44
   - type: Clothing
     sprite: Objects/Weapons/Melee/stunbaton.rsi
     quickEquip: false

@@ -548,7 +548,9 @@
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
   - type: Item
-    size: Ginormous
+    size: Huge
+    shape:
+    - 0, 0, 4, 0
   - type: ItemSlots
     slots:
       item:

@@ -9,7 +9,7 @@
     sprite: Objects/Materials/Sheets/glass.rsi
   - type: Item
     sprite: Objects/Materials/Sheets/glass.rsi
-    size: Small
+    size: Normal
   - type: StaticPrice
     price: 0
   - type: Tag
@@ -197,7 +197,7 @@
         - ReagentId: Carbon
           Quantity: 0.5
         canReact: false
-        
+
 - type: entity
   parent: SheetGlassBase
   id: SheetPGlass

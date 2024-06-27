@@ -23,6 +23,9 @@
   - type: Item
     size: Large
     sprite: Objects/Specific/Janitorial/mop.rsi
+    storedRotation: -135
+    shape:
+    - 0, 0, 3, 0
   - type: Absorbent
   - type: SolutionContainerManager
     solutions:

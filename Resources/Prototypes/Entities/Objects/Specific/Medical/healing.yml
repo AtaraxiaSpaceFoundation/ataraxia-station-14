@@ -27,6 +27,7 @@
     state: ointment
   - type: Item
     heldPrefix: ointment
+    storedRotation: 45
   - type: Healing
     damageContainers:
       - Biological
@@ -229,7 +230,7 @@
   components:
   - type: Stack
     lingering: true
-    
+
 - type: entity
   parent: BaseHealingItem
   id: Tourniquet
@@ -268,6 +269,8 @@
     - Gauze
   - type: Sprite
     state: gauze
+  - type: Item
+    storedRotation: 90
   - type: Construction
     graph: Gauze
     node: gauze

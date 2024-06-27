@@ -21,6 +21,7 @@
     allowed:
     - SlowedDown
     - Stutter
+    - BloodLoss
     - Electrocution
     - ForcedSleep
     - TemporaryBlindness
@@ -97,6 +98,7 @@
       - KnockedDown
       - SlowedDown
       - Stutter
+      - BloodLoss
       - Electrocution
       - ForcedSleep
       - TemporaryBlindness

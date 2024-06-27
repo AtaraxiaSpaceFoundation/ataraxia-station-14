@@ -56,6 +56,7 @@
     - KnockedDown
     - SlowedDown
     - Stutter
+    - BloodLoss
     - Electrocution
   - type: NameIdentifier
     group: GenericNumber

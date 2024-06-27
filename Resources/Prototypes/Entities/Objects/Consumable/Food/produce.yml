@@ -440,6 +440,8 @@
         Quantity: 10
       - ReagentId: Oculine
         Quantity: 2
+  - type: Item
+    storedRotation: -45
 
 - type: entity
   name: cabbage
@@ -872,6 +874,8 @@
   - type: Tag
     tags:
     - Fruit
+  - type: Item
+    size: Tiny
 
 - type: entity
   name: cocoa pod

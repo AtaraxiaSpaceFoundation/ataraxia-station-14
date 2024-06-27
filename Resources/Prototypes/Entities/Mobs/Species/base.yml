@@ -132,6 +132,7 @@
     - KnockedDown
     - SlowedDown
     - Stutter
+    - BloodLoss
     - SeeingRainbows
     - Electrocution
     - Drunk
@@ -290,6 +291,7 @@
     - KnockedDown
     - SlowedDown
     - Stutter
+    - BloodLoss
     - SeeingRainbows
     - Electrocution
     - ForcedSleep

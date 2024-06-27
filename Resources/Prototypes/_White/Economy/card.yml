@@ -9,6 +9,8 @@
       sprite: White/Misc/cards.rsi
       scale: 0.8, 0.8
       state: budgetcard
+    - type: Item
+      storedRotation: 90
 
 - type: entity
   parent: BaseDepartmentBudgetCard

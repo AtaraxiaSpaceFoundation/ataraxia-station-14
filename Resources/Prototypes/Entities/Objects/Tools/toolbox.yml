@@ -23,7 +23,9 @@
     grid:
     - 0,0,6,3
   - type: Item
-    size: Ginormous
+    size: Large
+    shape:
+    - 0,0,6,2
   - type: MeleeWeapon
     damage:
       types:

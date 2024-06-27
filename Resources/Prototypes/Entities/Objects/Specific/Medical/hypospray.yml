@@ -328,6 +328,9 @@
     layers:
     - state: stimpen
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: Item
+    size: Small
+    storedRotation: 90
   - type: SolutionContainerManager
     solutions:
       pen:

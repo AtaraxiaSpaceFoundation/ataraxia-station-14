@@ -17,6 +17,7 @@
     - type: Item
       heldPrefix: off
       sprite: White/VoiceRecorder/voicerecorder.rsi
+      storedRotation: 90
     - type: Appearance
     - type: VoiceRecorder
       blacklist:

@@ -68,6 +68,9 @@
   id: NarcoticEffect
   alwaysAllowed: true
 
-#WD EDIT
+# WD EDIT
 - type: statusEffect
   id: Incorporeal
+
+- type: statusEffect
+  id: BloodLoss

@@ -41,6 +41,7 @@
     state: icon
   - type: Item
     sprite: Objects/Weapons/Melee/kitchen_knife.rsi
+    storedRotation: -45
   - type: GuideHelp
     guides:
     - Chef
@@ -102,6 +103,7 @@
         Slash: 10
   - type: Item
     sprite: Objects/Weapons/Melee/combat_knife.rsi
+    storedRotation: -45
   - type: DisarmMalus
     malus: 0.225
   - type: Construction
@@ -291,3 +293,4 @@
         Piercing: 15
   - type: Item
     sprite: Objects/Weapons/Melee/throwing_knife.rsi
+    storedRotation: -45

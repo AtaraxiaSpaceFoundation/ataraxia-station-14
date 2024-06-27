@@ -13,7 +13,9 @@
     slots:
     - belt
   - type: Item
-    size: Ginormous
+    size: Large
+    shape:
+    - 0, 0, 2, 1
   - type: Storage
     maxItemSize: Normal # allow up to 5 large beakers / 10 beakers / 10 pill canisters
     grid:

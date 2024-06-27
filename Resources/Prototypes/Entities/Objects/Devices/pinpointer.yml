@@ -22,6 +22,7 @@
     state: pinpointer
   - type: Item
     sprite: Objects/Devices/pinpointer.rsi
+    size: Tiny
   - type: Pinpointer
   - type: Appearance
   - type: GenericVisualizer

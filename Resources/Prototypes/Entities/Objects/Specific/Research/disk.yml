@@ -4,6 +4,10 @@
   name: research point disk (1000)
   description: A disk for the R&D server containing 1000 points.
   components:
+  - type: Item
+    size: Small
+    shape:
+    - 0, 0, 1, 1
   - type: Sprite
     sprite: Objects/Specific/Research/researchdisk.rsi
     state: icon

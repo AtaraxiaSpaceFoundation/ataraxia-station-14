@@ -48,7 +48,10 @@
       types:
         Piercing: 15
   - type: Item
-    size: Ginormous
+    storedRotation: 44 # It just works
+    size: Huge
+    shape:
+    - 0,0,5,0
   - type: Clothing
     quickEquip: false
     slots:

@@ -11,6 +11,8 @@
       map: ["enum.GunVisualLayers.Base"]
   - type: Item
     size: Huge
+    shape:
+    - 0,0,4,0
   - type: Clothing
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
     quickEquip: false
