@@ -9,6 +9,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using Content.Server._White.Cult.GameRule;
+using Content.Server._White.Wizard;
 
 namespace Content.Server.Administration.Systems;
 
@@ -22,6 +23,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly PiratesRuleSystem _piratesRule = default!;
     [Dependency] private readonly RevolutionaryRuleSystem _revolutionaryRule = default!;
     [Dependency] private readonly CultRuleSystem _cultRule = default!;
+    [Dependency] private readonly WizardRuleSystem _wizardRule = default!;
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -150,8 +152,21 @@ public sealed partial class AdminVerbSystem
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-changeling"),
         };
-
         args.Verbs.Add(changeling);
-        //WD edit end
+
+        Verb wizard = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-wizard"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Clothing/Head/Hats/wizardhat.rsi/icon.png")),
+            Act = () =>
+            {
+                _wizardRule.AdminMakeWizard(args.Target);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-wizard"),
+        };
+        args.Verbs.Add(wizard);
     }
+    //WD edit end
 }

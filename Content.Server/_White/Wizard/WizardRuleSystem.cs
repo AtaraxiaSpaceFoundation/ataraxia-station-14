@@ -300,10 +300,10 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         _npcFaction.AddFaction(mob, "Wizard");
     }
 
-    private void SpawnWizard(ICommonSession? session, WizardRuleComponent component, bool spawnGhostRoles = true)
+    private EntityCoordinates WizardSpawnPoint(WizardRuleComponent component)
     {
         if (component.ShuttleMap is not {Valid: true} mapUid)
-            return;
+            return EntityCoordinates.Invalid;
 
         var spawn = new EntityCoordinates();
         foreach (var (_, meta, xform) in EntityQuery<SpawnPointComponent, MetaDataComponent, TransformComponent>(true))
@@ -318,11 +318,23 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             break;
         }
 
-        //Fallback, spawn at the centre of the map
+        // Fallback, spawn at the centre of the map
         if (spawn == new EntityCoordinates())
         {
             spawn = Transform(mapUid).Coordinates;
             _sawmill.Warning("Fell back to default spawn for wizard!");
+        }
+
+        return spawn;
+    }
+
+    private void SpawnWizard(ICommonSession? session, WizardRuleComponent component, bool spawnGhostRoles = true)
+    {
+        var spawn = WizardSpawnPoint(component);
+        if (spawn == EntityCoordinates.Invalid)
+        {
+            _sawmill.Error("Failed to calculate wizard spawn point");
+            return;
         }
 
         var wizardAntag = _prototypeManager.Index(component.WizardRoleProto);
@@ -394,5 +406,63 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
         ICommonSession? session = null;
         SpawnWizard(session, component, true);
+    }
+
+    /// <summary>
+    /// Makes mob a wizard through admin verb button
+    /// </summary>
+    public void AdminMakeWizard(EntityUid uid)
+    {
+        var rule = EntityQuery<WizardRuleComponent>().FirstOrDefault();
+
+        if (rule == null)
+        {
+            GameTicker.StartGameRule("Wizard", out var ruleEntity);
+            rule = Comp<WizardRuleComponent>(ruleEntity);
+        }
+
+        if (HasComp<WizardComponent>(uid))
+            return;
+
+        MakeWizard(uid, rule, true);
+    }
+
+    private bool MakeWizard(EntityUid wizard, WizardRuleComponent rule,
+        bool giveObjectives = true)
+    {
+        if (!_mind.TryGetMind(wizard, out var mindId, out var mind))
+        {
+            Log.Info("Failed getting mind for picked wizard.");
+            return false;
+        }
+
+        if (HasComp<WizardRoleComponent>(mindId))
+        {
+            Log.Error($"Player {mind.CharacterName} is already a wizard.");
+            return false;
+        }
+
+        HumanoidCharacterProfile? profile = null;
+        if (TryComp(wizard, out ActorComponent? actor))
+            profile = _prefs.GetPreferences(actor.PlayerSession.UserId).SelectedCharacter as HumanoidCharacterProfile;
+
+        if (giveObjectives)
+        {
+            AddRole(mindId, mind, rule);
+        }
+
+        if (!_prototypeManager.TryIndex(rule.StartingGear, out var gear))
+        {
+            _sawmill.Error("Failed to load wizard gear prototype");
+            return false;
+        }
+
+        SetupWizardEntity(wizard, rule.Points, gear, profile);
+
+        var spawnpoint = WizardSpawnPoint(rule);
+        var transform = EnsureComp<TransformComponent>(wizard);
+        transform.Coordinates = spawnpoint;
+
+        return true;
     }
 }
