@@ -457,7 +457,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return false;
         }
 
-        SetupWizardEntity(wizard, rule.Points, gear, profile);
+        SetupWizardEntity(wizard, gear, profile, false);
 
         var spawnpoint = WizardSpawnPoint(rule);
         var transform = EnsureComp<TransformComponent>(wizard);
