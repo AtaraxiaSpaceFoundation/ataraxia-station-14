@@ -46,6 +46,7 @@
   id: UplinkRifleAk
   name: uplink-rifle-ak-name
   description: uplink-rifle-ak-description
+  icon: { sprite: /Textures/White/Objects/Weapons/Guns/Rifles/ak-icons.rsi, state: icon }
   productEntity: WeaponRifleAk
   cost:
     Telecrystal: 16
@@ -189,7 +190,7 @@
   id: UplinkMagazineLightRifleBox
   name: uplink-magazine-l6-name
   description: uplink-magazine-l6-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_box.rsi, state: base }
+  icon: { sprite: /Textures/White/Objects/Weapons/Ammunition/Magazine/LightRifle/light_rifle_box.rsi, state: base }
   productEntity: MagazineLightRifleBox
   cost:
     Telecrystal: 3

@@ -9,7 +9,7 @@
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+    sprite: White/Objects/Weapons/Guns/LMGs/l6.rsi
     quickEquip: false
     slots:
     - Back
@@ -77,15 +77,20 @@
   description: A rather traditionally made LMG with a pleasantly lacquered wooden pistol grip. Uses .30 rifle ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+    sprite: White/Objects/Weapons/Guns/LMGs/l6-icons.rsi
     layers:
     - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-3
-      map: ["enum.GunVisualLayers.Mag"]
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-4
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/LMGs/l6-inhands.rsi
+    size: Huge
+  - type: Clothing
+    sprite: White/Objects/Weapons/Guns/LMGs/l6-inhands.rsi
   - type: MagazineVisuals
     magState: mag
-    steps: 4
+    steps: 5
     zeroVisible: true
   - type: Appearance
 
@@ -109,14 +114,19 @@
       soundEmpty:
         path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
     - type: Sprite
-      sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+      sprite: White/Objects/Weapons/Guns/LMGs/l6-icons.rsi
       layers:
         - state: base
           map: [ "enum.GunVisualLayers.Base" ]
-        - state: mag-3
+        - state: mag-4
           map: [ "enum.GunVisualLayers.Mag" ]
     - type: Item
+      sprite: White/Objects/Weapons/Guns/LMGs/l6-inhands.rsi
       size: Huge
+    - type: Clothing
+      sprite: White/Objects/Weapons/Guns/LMGs/l6-inhands.rsi
+      slots:
+      - Back
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -130,3 +140,8 @@
       autoRecharge: true
       autoRechargeRate: 25
     - type: AmmoCounter
+    - type: MagazineVisuals
+      magState: mag
+      steps: 5
+      zeroVisible: true
+    - type: Appearance

@@ -62,16 +62,17 @@
   description: It's a magazine-fed shotgun designed for close quarters combat. Uses .50 shotgun shells.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/bulldog-icons.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    sprite: White/Objects/Weapons/Guns/Shotguns/bulldog-inhands.rsi
     size: Large
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/bulldog-inhands.rsi
     quickEquip: false
     slots:
     - Back
@@ -104,7 +105,7 @@
   - type: MagazineAmmoProvider
   - type: MagazineVisuals
     magState: mag
-    steps: 1
+    steps: 4
     zeroVisible: true
   - type: Appearance
   - type: StaticPrice
@@ -117,12 +118,14 @@
   description: An immortal classic. Uses .50 shotgun shells.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/db_shotgun-icons.rsi
+  - type: Clothing
+    sprite: White/Objects/Weapons/Guns/Shotguns/db_shotgun-inhands.rsi
   - type: Item
     size: Normal
     shape:
     - 0,0,4,0
-    sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/db_shotgun-inhands.rsi
     heldPrefix: db
   - type: Gun
     fireRate: 2
@@ -151,11 +154,11 @@
   description: A premium combat shotgun based on the Kammerer design, featuring an upgraded clip capacity. .50 shotgun shells.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/enforcer-icons.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/enforcer-inhands.rsi
   - type: Item
-    sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/enforcer-inhands.rsi
     heldPrefix: enforcer
   - type: BallisticAmmoProvider
 
@@ -177,12 +180,12 @@
     size: Normal
     shape:
     - 0,0,4,0
-    sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/pump-inhands.rsi
     heldPrefix: pump
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/pump-icons.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/pump-inhands.rsi
   - type: BallisticAmmoProvider
     capacity: 4
   - type: Tag
@@ -278,14 +281,14 @@
   description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/improvised_shotgun-icons.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/improvised_shotgun-icons.rsi
   - type: Item
     size: Normal
     shape:
     - 0,0,4,0
-    sprite: Objects/Weapons/Guns/Shotguns/inhands_64x.rsi
+    sprite: White/Objects/Weapons/Guns/Shotguns/improvised_shotgun-inhands.rsi
     heldPrefix: improvised
   - type: Gun
     fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.

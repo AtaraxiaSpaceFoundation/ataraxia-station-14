@@ -38,12 +38,14 @@
   description: PLOOP
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-icons.rsi
     layers:
       - state: icon
         map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-inhands.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-inhands.rsi
     slots:
     - Back
     - suitStorage
@@ -72,14 +74,16 @@
   description: A modified ancient rocket-propelled grenade launcher.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-icons.rsi
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-inhands.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-inhands.rsi
   - type: Gun
     fireRate: 0.5
     soundGunshot:
@@ -105,14 +109,16 @@
   description: A modified ancient rocket-propelled grenade launcher.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-icons.rsi
     layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-0
-        map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-inhands.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    sprite: White/Objects/Weapons/Guns/Launchers/rocket-inhands.rsi
   - type: Gun
     fireRate: 6
     selectedMode: FullAuto
@@ -129,7 +135,7 @@
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: MagazineVisuals
     magState: mag
-    steps: 1
+    steps: 2
     zeroVisible: true
   - type: Appearance
 

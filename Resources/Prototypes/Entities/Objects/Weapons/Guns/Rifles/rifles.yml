@@ -68,7 +68,7 @@
   description: An iconic weapon of war. Uses .30 rifle ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/ak.rsi
+    sprite: White/Objects/Weapons/Guns/Rifles/ak-icons.rsi
     layers:
     - state: base
       map: [ "enum.GunVisualLayers.Base" ]
@@ -86,6 +86,10 @@
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
       map: [ "enum.ModuleVisualState.AimModule" ]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Rifles/ak-inhands.rsi
+  - type: Clothing
+    sprite: White/Objects/Weapons/Guns/Rifles/ak-inhands.rsi
   - type: Gun
     fireRate: 5
     soundGunshot:
@@ -202,7 +206,7 @@
   description: A high end military grade assault rifle. Uses .20 rifle ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
+    sprite: White/Objects/Weapons/Guns/Rifles/lecter-icons.rsi
     layers:
     - state: base
       map: [ "enum.GunVisualLayers.Base" ]
@@ -220,8 +224,10 @@
       visible: false
       sprite: White/Objects/Weapons/modulesOnWeapon.rsi
       map: [ "enum.ModuleVisualState.AimModule" ]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Rifles/lecter-inhands.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
+    sprite: White/Objects/Weapons/Guns/Rifles/lecter-inhands.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg

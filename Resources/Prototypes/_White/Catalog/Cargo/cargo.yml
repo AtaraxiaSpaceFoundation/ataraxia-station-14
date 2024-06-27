@@ -37,7 +37,7 @@
   description: ящик с магазинами для Лектора, заполненными патронами.
   id: cargoLecterMagazines
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    sprite: White/Objects/Weapons/Ammunition/Magazine/Rifle/rifle_mag.rsi
     state: base
   product: CrateLecterMagazines
   cost: 2500
@@ -61,7 +61,7 @@
   description: ящик с магазинами для CV-47, заполненными патронами.
   id: cargoAKmagazines
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_mag.rsi
+    sprite: White/Objects/Weapons/Ammunition/Magazine/LightRifle/light_rifle_mag.rsi
     state: base
   product: CrateAKmagazines
   cost: 2500
@@ -184,7 +184,7 @@
   description: проверенная временем автоматическая винтовка.
   id: cargoCV47
   icon:
-    sprite: Objects/Weapons/Guns/Rifles/ak.rsi
+    sprite: White/Objects/Weapons/Guns/Rifles/ak.rsi
     state: icon
   product: CrateCV47
   cost: 10000
@@ -234,7 +234,7 @@
   description: Ящик с тремя обоймами нелетальных магазинов для лектора.
   id: CargoLecterRubberMagazines
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    sprite: White/Objects/Weapons/Ammunition/Magazine/Rifle/rifle_mag.rsi
     state: rubber
   product: CrateLecterRubberMagazines
   cost: 500
@@ -258,7 +258,7 @@
   description: Ящик с с тремя нелетальными магазинами для CV-47.
   id: cargoRifleRubberMagazines
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    sprite: White/Objects/Weapons/Ammunition/Magazine/Rifle/rifle_mag.rsi
     state: rubber
   product: CrateRifleRubberMagazines
   cost: 600

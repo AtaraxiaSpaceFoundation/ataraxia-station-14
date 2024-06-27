@@ -71,12 +71,16 @@
   description: Pla-ket-ket-ket-ket! Uses .35 auto ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
+    sprite: White/Objects/Weapons/Guns/SMG/atreides-icons.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/SMG/atreides-inhands.rsi
+  - type: Clothing
+    sprite: White/Objects/Weapons/Guns/SMG/atreides-inhands.rsi
   - type: Gun
     fireRate: 10
     soundGunshot:
@@ -94,7 +98,7 @@
   description: A firearm that is often used by the infamous nuclear operatives. Uses .35 auto ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    sprite: White/Objects/Weapons/Guns/SMG/c20r-icons.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -113,7 +117,9 @@
       sprite: White/Objects/Weapons/modulesOnSMGs.rsi
       map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    sprite: White/Objects/Weapons/Guns/SMG/c20r-inhands.rsi
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/SMG/c20r-inhands.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
@@ -171,7 +177,7 @@
       aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
-    steps: 6
+    steps: 4
     zeroVisible: true
   - type: Appearance
   - type: PointLight
@@ -185,7 +191,7 @@
   description: An excellent fully automatic Heavy SMG.
   components:
     - type: Sprite
-      sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
+      sprite: White/Objects/Weapons/Guns/SMG/drozd-icons.rsi
       layers:
         - state: base
           map: ["enum.GunVisualLayers.Base"]
@@ -204,7 +210,9 @@
           sprite: White/Objects/Weapons/modulesOnWeapon.rsi
           map: [ "enum.ModuleVisualState.AimModule" ]
     - type: Clothing
-      sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
+      sprite: White/Objects/Weapons/Guns/SMG/drozd-inhands.rsi
+    - type: Item
+      sprite: White/Objects/Weapons/Guns/SMG/drozd-inhands.rsi
     - type: Gun
       fireRate: 6
       selectedMode: FullAuto
@@ -325,7 +333,7 @@
   description: An excellent SMG, produced by NanoTrasen's Small Arms Division. Uses .35 auto ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
+    sprite: White/Objects/Weapons/Guns/SMG/wt550-icons.rsi
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
@@ -350,7 +358,9 @@
         sprite: White/Objects/Weapons/modulesOnWeapon.rsi
         map: [ "enum.ModuleVisualState.AimModule" ]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
+    sprite: White/Objects/Weapons/Guns/SMG/wt550-inhands.rsi
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/SMG/wt550-inhands.rsi
   - type: ChamberMagazineAmmoProvider
     boltClosed: null
   - type: Gun
@@ -410,7 +420,7 @@
       aim_module: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
-    steps: 6
+    steps: 5
     zeroVisible: true
   - type: PointLight
     enabled: false
