@@ -421,7 +421,7 @@
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: Item
-    size: Normal
+    size: Huge
   - type: Tag
     tags:
     - WhitelistChameleon

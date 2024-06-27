@@ -12,6 +12,9 @@
   - type: Item
     size: Small
     sprite: Objects/Weapons/Guns/Shotguns/flaregun.rsi
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
   - type: Gun
     fireRate: 8
     selectedMode: SemiAuto
@@ -37,3 +40,12 @@
     slots:
     - Belt
     - suitStorage
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PistolsPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PistolsDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PistolsDrop

@@ -1,28 +1,38 @@
+# Хз куда это
+#- /Audio/Lobby/itachi.ogg
+#- /Audio/Lobby/bobby.ogg
+
 - type: soundCollection
-  id: LobbyMusic
+  id: LobbyMusicMeme
+  files:
+   - /Audio/Lobby/govnovoz.ogg
+   - /Audio/Lobby/govnovoz2.ogg
+   - /Audio/Lobby/govnovoz3.ogg
+   - /Audio/Lobby/govnovoz4.ogg
+
+- type: soundCollection
+  id: LobbyMusicSongs
+  files:
+  - /Audio/Lobby/spaceoddity.ogg
+  - /Audio/Lobby/space_asshole.ogg
+
+- type: soundCollection
+  id: LobbyMusicWhite
   files:
     - /Audio/Lobby/thunderdome.ogg
     - /Audio/Lobby/singuloose.ogg
-    - /Audio/Lobby/title2.ogg
-    - /Audio/Lobby/title3.ogg
     - /Audio/Lobby/lasers_rip_apart_the_bulkhead.ogg
     - /Audio/Lobby/every_light_is_blinking_at_once.ogg
     - /Audio/Lobby/atomicamnesiammx.ogg
-    - /Audio/Lobby/itachi.ogg
-    - /Audio/Lobby/govnovoz.ogg
-    - /Audio/Lobby/govnovoz2.ogg
-    - /Audio/Lobby/govnovoz3.ogg
-    - /Audio/Lobby/govnovoz4.ogg
-    - /Audio/Lobby/spaceoddity.ogg
-  #  - /Audio/Lobby/absconditus.ogg
-  #  - /Audio/Lobby/space_asshole.ogg
-  #  - /Audio/Lobby/endless_space.ogg
-  #  - /Audio/Lobby/comet_haley.ogg
-  #  - /Audio/Lobby/mod.flip-flap.ogg
-  #  - /Audio/Lobby/Spac_Stac.ogg
-  #  - /Audio/Lobby/pwmur.ogg
+    - /Audio/Lobby/Spac_Stac.ogg
+    - /Audio/Lobby/comet_haley.ogg
 
 - type: soundCollection
-  id: LobbyMusicOld
+  id: LobbyMusicSS13
   files:
-    - /Audio/Lobby/bobby.ogg
+    - /Audio/Lobby/title2.ogg
+    - /Audio/Lobby/title3.ogg
+    - /Audio/Lobby/absconditus.ogg
+    - /Audio/Lobby/endless_space.ogg
+    - /Audio/Lobby/mod.flip-flap.ogg
+    - /Audio/Lobby/pwmur.ogg
