@@ -24,6 +24,10 @@
     speed: 0.05
   - type: Item
     sprite: Objects/Tools/Cowtools/haycutters.rsi
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: moodriver
@@ -47,6 +51,10 @@
     useSound:
       collection: Screwdriver
     speed: 0.05
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: wronch
@@ -70,6 +78,10 @@
     useSound:
       path: /Audio/Items/ratchet.ogg
     speed: 0.05
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: cowbar
@@ -96,6 +108,10 @@
     speed: 0.05
   - type: ToolTileCompatible
   - type: Prying
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: mooltitool
@@ -114,6 +130,10 @@
   - type: Tag
     tags:
       - Multitool
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: cowelding tool
@@ -133,6 +153,10 @@
       types: # When lit, negate standard melee damage and replace with heat
         Heat: 0.5
         Blunt: -5
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: milkalyzer
@@ -150,6 +174,10 @@
     - key: enum.GasAnalyzerUiKey.Key
       type: GasAnalyzerBoundUserInterface
   - type: Appearance
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: cow toolbox

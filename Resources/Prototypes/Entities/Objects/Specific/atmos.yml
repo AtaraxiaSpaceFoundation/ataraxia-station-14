@@ -35,6 +35,10 @@
     materialComposition:
       Steel: 400
       Glass: 100
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
   # WD edit sounds start
   - type: EmitSoundOnPickup
     sound:

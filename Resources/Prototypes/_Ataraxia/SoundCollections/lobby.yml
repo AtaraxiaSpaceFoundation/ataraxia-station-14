@@ -1,0 +1,32 @@
+- type: soundCollection
+  id: AtaraxiaLobbyMusic
+  files:
+    - /Audio/Ataraxia/Lobby/12am.ogg # Ataraxia-START
+    - /Audio/Ataraxia/Lobby/after_dark.ogg
+    - /Audio/Ataraxia/Lobby/closed.ogg
+    - /Audio/Ataraxia/Lobby/freaks.ogg
+    - /Audio/Ataraxia/Lobby/heres_to_you.ogg
+    - /Audio/Ataraxia/Lobby/nightcall.ogg
+    - /Audio/Ataraxia/Lobby/oceanman.ogg
+    - /Audio/Ataraxia/Lobby/protorave.ogg
+    - /Audio/Ataraxia/Lobby/space_oddity-1.ogg
+    - /Audio/Ataraxia/Lobby/space_oddity-2.ogg
+    - /Audio/Ataraxia/Lobby/space_oddity.ogg
+    - /Audio/Ataraxia/Lobby/SS13.ogg
+    - /Audio/Ataraxia/Lobby/star_eater.ogg
+    - /Audio/Ataraxia/Lobby/starman.ogg
+    - /Audio/Ataraxia/Lobby/syndicate.ogg
+    - /Audio/Ataraxia/Lobby/tomorrow.ogg
+    - /Audio/Ataraxia/Lobby/your_house.ogg
+    - /Audio/Ataraxia/Lobby/Voyager.ogg
+    - /Audio/Ataraxia/Lobby/space_asshole.ogg
+    - /Audio/Ataraxia/Lobby/temnotu.ogg
+    - /Audio/Ataraxia/Lobby/stuzha.ogg
+    - /Audio/Ataraxia/Lobby/smerti.ogg
+    - /Audio/Ataraxia/Lobby/perfect_girl.ogg
+    - /Audio/Ataraxia/Lobby/dust.ogg
+    - /Audio/Ataraxia/Lobby/drown.ogg
+    - /Audio/Ataraxia/Lobby/DIAMANT.ogg
+    - /Audio/Ataraxia/Lobby/burning_memory.ogg
+    - /Audio/Ataraxia/Lobby/notion.ogg # Ataraxia-END
+    - /Audio/Lobby/atomicamnesiammx.ogg

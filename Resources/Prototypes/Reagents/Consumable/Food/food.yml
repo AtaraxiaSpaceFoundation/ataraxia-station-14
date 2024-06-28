@@ -10,6 +10,8 @@
   metabolisms:
     Food:
       effects:
+      - !type:SatiateThirst # Ataraxia
+        factor: 0.2
       - !type:SatiateHunger
   plantMetabolism:
   - !type:PlantAdjustNutrition

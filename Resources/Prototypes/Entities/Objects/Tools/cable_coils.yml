@@ -27,6 +27,10 @@
     price: 0
   - type: StackPrice
     price: 1
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   id: CableHVStack

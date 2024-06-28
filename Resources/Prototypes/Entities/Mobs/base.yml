@@ -57,13 +57,13 @@
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
-        damage: 400
+        damage: 2400 # Ataraxia
       behaviors:
       - !type:GibBehavior { }
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat
-        damage: 1500
+        damage: 6500 # Ataraxia
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawnInContainer: true

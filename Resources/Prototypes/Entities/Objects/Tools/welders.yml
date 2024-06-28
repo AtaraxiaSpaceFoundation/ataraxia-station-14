@@ -114,6 +114,10 @@
     price: 40
   - type: IgnitionSource
     temperature: 700
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: welding tool

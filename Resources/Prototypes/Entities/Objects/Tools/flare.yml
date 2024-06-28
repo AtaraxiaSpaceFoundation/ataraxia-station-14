@@ -73,6 +73,10 @@
         endValue: 1.0
   - type: Extractable
     grindableSolutionName: flare
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
   - type: SolutionContainerManager
     solutions:
       flare:

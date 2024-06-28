@@ -5,20 +5,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingHeadHatCaptain
-      - id: ClothingHeadHatCapcap
-      - id: ClothingNeckCloakCap
-      - id: ClothingNeckCloakCapFormal
-      - id: ClothingUniformJumpsuitCapFormal
-      - id: ClothingUniformJumpskirtCapFormalDress
-      - id: ClothingHandsGlovesCaptain
-      - id: ClothingNeckMantleCap
-      - id: ClothingEyesGlassesSunglasses
-      - id: ClothingOuterArmorCaptainCarapace
-      - id: ClothingHeadsetAltCommand
-      - id: ClothingMaskGasCaptain
-      - id: ClothingUniformJumpskirtCaptain
-      - id: ClothingOuterWinterCap
+      - id: ToyRubberDuck # ATARAXIA-CAPTAINDROBE
 
 - type: entity
   id: DresserChiefEngineerFilled
@@ -96,6 +83,8 @@
       - id: ClothingHeadsetAltSecurity
       - id: ClothingMaskGasSwat
       - id: ClothingOuterCoatHoSTrench
+      - id: ClothinNeckCloakHeadOfSecurityOld # Ataraxia
+      - id: ClothingUniformJumpsuitСommandHeadOfSecurity # Ataraxia
 
 - type: entity
   id: DresserQuarterMasterFilled

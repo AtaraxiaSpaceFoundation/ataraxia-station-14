@@ -56,7 +56,7 @@
     state: telecrystal
   content:
   - AgentIDCard
-  - Emag
+  - EmagBudget # Ataraxia
   - SyndicatePersonalAI
   - ClothingHeadHatSyndieMAA
   - CigPackSyndicate

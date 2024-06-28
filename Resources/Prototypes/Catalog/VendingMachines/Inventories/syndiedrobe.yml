@@ -6,6 +6,8 @@
     ClothingMaskNeckGaiter: 5
     ClothingOuterWinterSyndie: 5
     ClothingHeadHatSyndieMAA: 3
+    ClothinNeckCloakSyndicateAdmiral: 1 # Ataraxia
+    ClothinNeckCloakSyndicateOfficer: 4 # Ataraxia
     ClothingOuterWinterSyndieCap: 3
     ClothingOuterCoatSyndieCap: 3
     ClothingUniformJumpsuitSyndieFormal: 5
@@ -15,6 +17,7 @@
     ClothingNeckScarfStripedSyndieGreen: 2
     ClothingNeckScarfStripedSyndieRed: 2
     ClothingShoesBootsWinterSyndicate: 2
+    HandledBoomBox: 1 # Ataraxia
     
   emaggedInventory:
     ClothingOuterCoatSyndieCapArmored: 1
