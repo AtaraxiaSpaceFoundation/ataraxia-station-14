@@ -64,7 +64,7 @@
   - type: Strippable
   - type: UserInterface
     interfaces:
-      enum.StrippingUiKey.Key:
+      - key: enum.StrippingUiKey.Key
         type: StrippableBoundUserInterface
   - type: RandomMetadata
     nameSegments:
