@@ -45,6 +45,9 @@
         Quantity: 5
       - ReagentId: CopperBlood
         Quantity: 10
+  - type: Tag # Ataraxia
+    tags:
+      - Head
 
 - type: entity
   id: LeftArmArachnid

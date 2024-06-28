@@ -41,6 +41,7 @@
     shoes: ClothingShoesColorBrown
     id: CMOPDA
     ears: ClothingHeadsetCMO
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersCMO # White-Underwear
   underweart: ClothingUnderwearTopBraCMO # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCMO # White-Underwear

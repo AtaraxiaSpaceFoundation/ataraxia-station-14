@@ -54,7 +54,7 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: true
+  showInVote: false # Ataraxia
   description: secret-description
   rules:
     - Secret
@@ -153,6 +153,7 @@
   name: zombie-title
   description: zombie-description
   showInVote: true
+  minPlayers: 10 # Ataraxia
   rules:
   - Zombie
   - BasicStationEventScheduler

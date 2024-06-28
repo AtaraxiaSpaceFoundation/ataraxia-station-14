@@ -42,6 +42,7 @@
     shoes: ClothingShoesBootsLaceup
     id: CaptainPDA
     ears: ClothingHeadsetAltCommand
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersCap # White-Underwear
   underweart: ClothingUnderwearTopBraCap # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCap # White-Underwear

@@ -5,22 +5,41 @@
   buttonText: Кричать
   chatMessages: [ кричит, орет, вопит, рявкает ]
   chatTriggers:
-  - кричит
-  - закричал
-  - закричала
-  - орет
-  - заорал
-  - заорала
-  - визжит
-  - завизжал
-  - завизжала
-  - взвизгнул
-  - взвизгнула
-  - рявкает
-  - рявкнул
-  - рявкнула
-  - вопит
-  allowMenu: true
+    - scream
+    - screams
+    - screams.
+    - screams!
+    - screaming
+    - screamed
+    - shriek
+    - shrieks
+    - shrieks.
+    - shrieks!
+    - shrieking
+    - shrieked
+    - screech
+    - screeches
+    - screeches.
+    - screeches!
+    - screeching
+    - screeched
+    - yell
+    - yells
+    - yells.
+    - yells!
+    - yelled
+    - yelling
+    # Ataraxia-Localization-Start
+    - кричит
+    - кричит.
+    - кричит!
+    - орёт
+    - орёт.
+    - орёт!
+    - визжит
+    - визжит.
+    - визжит!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Laugh
@@ -28,26 +47,73 @@
   buttonText: Смеяться
   chatMessages: [ смеется, ржет, усмехается, хохочет, гогочет ]
   chatTriggers:
-  - смеется
-  - просмеялся
-  - засмеялся
-  - засмеялась
-  - хихикает
-  - хихикнул
-  - хихикнула
-  - хихикает
-  - ржет
-  - усмехается
-  - усмехнулась
-  - усмехнулся
-  - хохочет
-  - гогочет
-  allowMenu: true
+    - laugh
+    - laughs
+    - laughs.
+    - laughs!
+    - laughing
+    - laughed
+    - chuckle
+    - chuckles
+    - chuckles.
+    - chuckles!
+    - chuckled
+    - chuckling
+    - giggle
+    - giggles
+    - giggles.
+    - giggles!
+    - giggling
+    - giggled
+    - chortle
+    - chortle.
+    - chortle!
+    - chortles
+    - chortles.
+    - chortles!
+    - chortling
+    - chortling.
+    - chortling!
+    # Ataraxia-Localization-Start
+    - смеется
+    - смеется.
+    - смеется!
+    - смеётся
+    - смеётся.
+    - смеётся!
+    - хохочет
+    - хохочет.
+    - хохочет!
+    - хихикает
+    - хихикает.
+    - хихикает!
+    - хихикнул
+    - хихикнула
+    - ржёт
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Honk
   category: Vocal
   chatMessages: [ хонкает ]
+  chatTriggers:
+    - honk
+    - honk.
+    - honk!
+    - honks
+    - honks.
+    - honks!
+    - honked
+    - honked.
+    - honked!
+    - honking
+    - honking.
+    - honking!
+    # Ataraxia-Localization-Start
+    - хонк
+    - хонк.
+    - хонк!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Sigh
@@ -55,11 +121,20 @@
   buttonText: Вздохнуть
   chatMessages: [ вздыхает ]
   chatTriggers:
-  - вздыхает
-  - вздохнула
-  - вздохнул
-  - вздохнуло
-  allowMenu: true
+    - sigh
+    - sighs
+    - sighed
+    - sigh.
+    - sighs.
+    - sighed.
+    # Ataraxia-Localization-Start
+    - вздыхает
+    - вздыхает.
+    - вздохнул
+    - вздохнула
+    - вздохнул.
+    - вздохнула.
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Whistle
@@ -67,10 +142,23 @@
   buttonText: Свистнуть
   chatMessages: [ свистит ]
   chatTriggers:
-  - свистнул
-  - свистнула
-  - свистнуло
-  allowMenu: true
+    - whistle
+    - whistle.
+    - whistle!
+    - whistles
+    - whistles.
+    - whistles!
+    - whistleblowing
+    - whistleblowing.
+    - whistleblowing!
+    # Ataraxia-Localization-Start
+    - свистит
+    - свистит.
+    - свистит!
+    - свистнул
+    - свистнул.
+    - свистнул!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Crying
@@ -78,53 +166,111 @@
   buttonText: Плакать
   chatMessages: [ плачет ]
   chatTriggers:
-  - плачет
-  - заплакал
-  - заплакала
-  - заплакало
-  - рыдает
-  - хнычет
-  allowMenu: true
+    - cry
+    - cry.
+    - cry!
+    - crying
+    - crying.
+    - crying!
+    - cries
+    - cries.
+    - cries!
+    - sob
+    - sob.
+    - sobs
+    - sobs.
+    - sobs!
+    - sobbing
+    - sobbing.
+    - sobbing!
+    # Ataraxia-Localization-Start
+    - плачет
+    - плачет.
+    - плачет!
+    - рыдает
+    - рыдает.
+    - рыдает!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Squish
   category: Vocal
   chatMessages: [ хлюпает ]
   chatTriggers:
-  - хлюпать
-  - хлюпает
+    - squish
+    - squish.
+    - squish!
+    - squishing
+    - squishing.
+    - squishing!
+    - squishes
+    - squishes.
+    - squishes!
+    # Ataraxia-Localization-Start
+    - хлюпает
+    - хлюпает.
+    - хлюпает!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Chitter
   category: Vocal
   chatMessages: [ стрекочет ]
   chatTriggers:
-  - стрекочет
-  - стрекочет.
-  - стрекочет!
-  - щебечет
-  - щебечет.
-  - щебечет!
+   - chitter
+   - chitter.
+   - chitter!
+   - chitters
+   - chitters.
+   - chitters!
+   - chittered
+   - chittered.
+   - chittered!
+   # Ataraxia-Localization-Start
+   - стрекочет
+   - стрекочет.
+   - стрекочет!
+   # Ataraxia-Localization-End
 
 - type: emote
   id: Squeak
   category: Vocal
   chatMessages: [сквикает]
   chatTriggers:
-  - сквик
-  - сквик.
-  - сквикает
-  - сквикает.
+   - squeak
+   - squeak.
+   - squeak!
+   - squeaks
+   - squeaks.
+   - squeaks!
+   - squeaked
+   - squeaked.
+   - squeaked!
+   # Ataraxia-Localization-Start
+   - пищит
+   - пищит.
+   - пищит!
+   # Ataraxia-Localization-End
 
 - type: emote
   id: Click
   category: Vocal
   chatMessages: [щёлкает]
   chatTriggers:
-  - щелк
-  - щёлкает
-  - щелкает
-  - щёлк
+   - click
+   - click.
+   - click!
+   - clicks
+   - clicks.
+   - clicks!
+   # Ataraxia-Localization-Start
+   - клац
+   - клац.
+   - клац!
+   - клацает
+   - клацает.
+   - клацает!
+   # Ataraxia-Localization-End
 
 # hand emotes
 - type: emote
@@ -133,15 +279,27 @@
   buttonText: Хлопать
   chatMessages: [ хлопает ]
   chatTriggers:
-  - хлопает
-  - хлопает!
-  - захлопала
-  - захлопала!
-  - захлопал
-  - захлопал!
-  - похлопал
-  - похлопал!
-  allowMenu: true
+    - clap
+    - claps
+    - claps.
+    - claps!
+    - clapping
+    - clapped
+    # Ataraxia-Localization-Start
+    - хлопает
+    - хлопает.
+    - хлопает!
+    - хлопнул
+    - хлопнула
+    - хлопает в ладоши
+    - хлопает в ладоши.
+    - хлопает в ладоши!
+    - хлопнул в ладоши
+    - хлопнула в ладоши
+    - апплодирует
+    - апплодирует.
+    - апплодирует!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Snap
@@ -149,22 +307,69 @@
   buttonText: Щелкать пальцами
   chatMessages: [ щелкает пальцами ] # snaps <{THEIR($ent)}> fingers?
   chatTriggers:
-  - щелкает пальцами
-  - щелкнул пальцами
-  - щелкнула пальцами
-  - щелкунл пальцами
-  - щелкунла пальцами
-  allowMenu: true
+    - snap
+    - snaps
+    - snapping
+    - snapped
+    - snap fingers
+    - snaps fingers
+    - snaps fingers.
+    - snaps fingers!
+    - snaps their fingers
+    - snaps their fingers.
+    - snaps their fingers!
+    - snapping fingers
+    - snapped fingers
+    # Ataraxia-Localization-Start
+    - щелкает
+    - щелкает.
+    - щелкает!
+    - щелкнул
+    - щелкнула
+    - щёлкает
+    - щёлкает.
+    - щёлкает!
+    - щёлкнул
+    - щёлкнула
+    - щелкает пальцами
+    - щелкает пальцами.
+    - щелкает пальцами!
+    - щелкнул пальцами
+    - щелкнула пальцами
+    - щёлкает пальцами
+    - щёлкает пальцами.
+    - щёлкает пальцами!
+    - щёлкнул пальцами
+    - щёлкнула пальцами
+    # Ataraxia-Localization-End
 
-- type: emote
-  id: Salute
-  category: Hands
-  buttonText: Отдать честь
-  chatMessages: [ отдает честь ]
-  chatTriggers:
-  - салютует
-  - отдаёт честь
-  allowMenu: true
+#- type: emote # Ataraxia-Emotes
+#  id: Salute
+#  category: Hands
+#  buttonText: Отдать честь
+#  chatMessages: [ отдает честь ]
+#  chatTriggers:
+#    - salute
+#    - salute.
+#    - salute!
+#    - salutes
+#    - salutes.
+#    - salutes!
+    # Ataraxia-Localization-Start | Ataraxia-Emotes
+#    - салютует
+#    - салютует.
+#    - салютует!
+#    - отдаёт честь
+#    - отдаёт честь.
+#    - отдаёт честь!
+#    - отдал честь
+#    - отдал честь.
+#    - отдал честь!
+#    - отдала честь
+#    - отдала честь.
+#    - отдала честь!
+
+# WD-EMOTIONS-START
 
 - type: emote
   id: WaveHand
@@ -215,20 +420,24 @@
   chatMessages: [облизывается]
   allowMenu: true
 
+# WD-EMOTIONS-END
+
 - type: emote
   id: DefaultDeathgasp
   chatMessages: [ "emote-deathgasp" ]
   chatTriggers:
+  - deathgasp
   - задыхается
+
+- type: emote
+  id: MonkeyDeathgasp
+  chatMessages: ["chat-emote-msg-deathgasp-monkey"]
 
 - type: emote
   id: Buzz
   category: Vocal
   chatMessages: [жужжит]
   chatTriggers:
-    - жужжит
-    - жужжит.
-    - жужжит!
     - buzzing
     - buzzing!
     - buzzing.
@@ -241,28 +450,45 @@
     - buzzes
     - buzzes.
     - buzzes!
+    # Ataraxia-Localization-Start
+    - жужжит!
+    - жужжит.
+    - жужжит
+    - зажужжал
+    - зажужжал.
+    - зажужжал!
+    - зажужжала
+    - зажужжала.
+    - зажужжала!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Weh
   category: Vocal
-  chatMessages: [Вах!]
+  chatMessages: [издаёт вех!]
 
-- type: emote
-  id: Chirp
-  category: Vocal
-  chatMessages: [чирикает]
-  chatTriggers:
-  - чирик
-  - чирик.
-  - чирикает.
-  - чирикает
-  - чик-чирикает
-  - чик-чирикает.
-  - chirps.
-  - chirp.
-  - chirp!
-  - chirping.
-  - chirped.
+#- type: emote # Ataraxia-Emote
+#  id: Chirp
+#  category: Vocal
+#  chatMessages: [чирикает]
+#  chatTriggers:
+#    - chirp
+#    - chirp!
+#    - chirp.
+#    - chirps
+#    - churps.
+#    - chirps!
+#    - chirped
+#    - chirped.
+#    - chirped!
+#    - chirping
+#    - chirping.
+#    - chirping!
+#    # Ataraxia-Localization-Start
+#    - чирикает
+#    - чирикает.
+#    - чирикает!
+#    # Ataraxia-Localization-End
 
 # Machine Emotes
 - type: emote
@@ -270,8 +496,6 @@
   category: Vocal
   chatMessages: [пищит]
   chatTriggers:
-    - писк
-    - пищит
     - beep
     - beep!
     - beep.
@@ -284,11 +508,16 @@
     - beeping
     - beeping.
     - beeping!
+    # Ataraxia-Localization-Start
+    - бип
+    - бип.
+    - бип!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Chime
   category: Vocal
-  chatMessages: [chimes.]
+  chatMessages: [дзынькает.]
   chatTriggers:
     - chime
     - chime.
@@ -302,11 +531,19 @@
     - chiming
     - chiming,
     - chiming!
+    # Ataraxia-Localization-Start
+    - дзынь
+    - дзынь.
+    - дзынь!
+    - дзынькает
+    - дзынькает.
+    - дзынькает!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Buzz-Two
   category: Vocal
-  chatMessages: [buzzesTwice.]
+  chatMessages: [бип-буп]
   chatTriggers:
     - buzztwice
     - buzztwice.
@@ -338,11 +575,31 @@
     - buzzed twice
     - buzzed twice.
     - buzzed twice!
+    # Ataraxia-Localization-Start
+    - бипбуп
+    - бипбуп.
+    - бипбуп!
+    - бип буп
+    - бип буп.
+    - бип буп!
+    - бип-буп
+    - бип-буп.
+    - бип-буп!
+    - бипбип
+    - бипбип.
+    - бипбип!
+    - бип бип
+    - бип бип.
+    - бип бип!
+    - бип-бип
+    - бип-бип.
+    - бип-бип!
+    # Ataraxia-Localization-End
 
 - type: emote
   id: Ping
   category: Vocal
-  chatMessages: [pings.]
+  chatMessages: [пинг]
   chatTriggers:
     - ping
     - ping.
@@ -356,3 +613,8 @@
     - pinging
     - pinging.
     - pinging!
+    # Ataraxia-Localization-Start
+    - пинг
+    - пинг.
+    - пинг!
+    # Ataraxia-Localization-End

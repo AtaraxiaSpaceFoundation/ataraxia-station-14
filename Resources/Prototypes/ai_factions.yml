@@ -9,6 +9,9 @@
     - Revolutionary
     - Cultist
     - Changeling
+    - InteQ # Ataraxia-Factions-START
+    - InteQHostile
+    - PetsInteQ # Ataraxia-Factions-END
 
 - type: npcFaction
   id: NanoTrasen
@@ -21,6 +24,7 @@
   - Cultist
   - Wizard
   - Changeling
+  - InteQHostile # Ataraxia-Factions
 
 - type: npcFaction
   id: Mouse
@@ -49,6 +53,9 @@
   - Revolutionary
   - Cultist
   - Changeling
+  - InteQ # Ataraxia-Factions-START
+  - InteQHostile
+  - PetsInteQ # Ataraxia-Factions-END
 
 - type: npcFaction
   id: SimpleNeutral
@@ -64,6 +71,7 @@
   - Cultist
   - Wizard
   - Changeling
+  - InteQHostile # Ataraxia-Factions
 
 - type: npcFaction
   id: Xeno
@@ -76,6 +84,9 @@
   - Revolutionary
   - Cultist
   - Changeling
+  - InteQ # Ataraxia-Factions-START
+  - InteQHostile
+  - PetsInteQ # Ataraxia-Factions-END
 
 - type: npcFaction
   id: Zombie
@@ -90,6 +101,9 @@
   - Cultist
   - Wizard
   - Changeling
+  - InteQ # Ataraxia-Factions-START
+  - InteQHostile
+  - PetsInteQ # Ataraxia-Factions-END
 
 - type: npcFaction
   id: Revolutionary
@@ -101,6 +115,9 @@
   - Cultist
   - Wizard
   - Changeling
+  - InteQ # Ataraxia-Factions-START
+  - InteQHostile
+  - PetsInteQ # Ataraxia-Factions-END
 
 # WD EDIT STARt
 - type: npcFaction
@@ -113,6 +130,8 @@
     - Syndicate
     - Wizard
     - Changeling
+    - InteQ # Ataraxia-Factions-START
+    - InteQHostile # Ataraxia-Factions-END
 
 - type: npcFaction
   id: Wizard
@@ -123,6 +142,7 @@
   - Revolutionary
   - Zombie
   - Changeling
+  - InteQ # Ataraxia-Factions
 
 - type: npcFaction
   id: Changeling
@@ -136,4 +156,6 @@
   - Revolutionary
   - Zombie
   - Wizard
+  - InteQ # Ataraxia-Factions-START
+  - InteQHostile # Ataraxia-Factions-END
 # WD EDIT END

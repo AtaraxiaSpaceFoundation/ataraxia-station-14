@@ -64,6 +64,7 @@
     shoes: ClothingShoesColorBrown
     id: HoPPDA
     ears: ClothingHeadsetAltCommand
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
   underweart: ClothingUnderwearTopBraHOP # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear

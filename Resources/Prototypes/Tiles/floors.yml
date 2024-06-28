@@ -1861,7 +1861,7 @@
     West: /Textures/Tiles/Planet/Grass/double_edge.png
   baseTurf: Plating
   isSubfloor: false
-  deconstructTools: [ Cutting ]
+  deconstructTools: [ Cutting, Digging ] # Ataraxia
   footstepSounds:
     collection: FootstepGrass
   itemDrop: FloorTileItemAstroGrass

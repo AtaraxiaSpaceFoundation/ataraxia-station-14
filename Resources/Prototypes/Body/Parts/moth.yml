@@ -46,6 +46,9 @@
         Quantity: 5
       - ReagentId: Blood
         Quantity: 10
+  - type: Tag # Ataraxia
+    tags:
+      - Head
 
 - type: entity
   id: LeftArmMoth

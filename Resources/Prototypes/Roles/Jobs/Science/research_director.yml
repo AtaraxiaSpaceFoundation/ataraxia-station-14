@@ -38,6 +38,7 @@
     shoes: ClothingShoesColorBrown
     id: RnDPDA
     ears: ClothingHeadsetRD
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
   underweart: ClothingUnderwearTopBraRD # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
