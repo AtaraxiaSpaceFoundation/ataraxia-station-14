@@ -93,7 +93,7 @@
   - type: WindowMark
     replacementProto: WallSolid
   - type: BlockWeather
-  
+
 - type: entity
   id: WindowRCDResistant
   parent: Window
@@ -117,7 +117,6 @@
   - type: Tag
     tags:
       - Window
-      - Directional
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -198,7 +197,7 @@
   - type: ReflectAspectMark
 
 - type: entity
-  id: WindowDirectionalRCDResistant  
+  id: WindowDirectionalRCDResistant
   parent: WindowDirectional
   abstract: true
   components:
