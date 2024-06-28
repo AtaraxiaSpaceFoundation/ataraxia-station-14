@@ -33,10 +33,10 @@
     RArm: MobReptilianRArm
     LHand: MobReptilianLHand
     RHand: MobReptilianRHand
-    LLeg: MobReptilianLLeg
-    RLeg: MobReptilianRLeg
-    LFoot: MobReptilianLFoot
-    RFoot: MobReptilianRFoot
+    LLeg: MobReptilianLLegDigi # Ataraxia-Digitigrade
+    RLeg: MobReptilianRLegDigi # Ataraxia-Digitigrade
+    LFoot: MobReptilianLFootDigi # Ataraxia-Digitigrade
+    RFoot: MobReptilianRFootDigi # Ataraxia-Digitigrade
 
 - type: bodyType
   id: SkeletonNormal
