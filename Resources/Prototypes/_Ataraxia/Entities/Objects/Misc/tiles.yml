@@ -1,0 +1,46 @@
+- type: entity
+  parent: FloorTileItemBase
+  id: FloorTileItemAtaraxiaPlanetGrass
+  noSpawn: true
+  name: grass tile
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Tiles/tile.rsi
+    state: planet_grass
+  - type: FloorTile
+    placeTileSound:
+      collection: AtaraxiaDigging
+      params:
+        variation: 0.133
+    outputs:
+      - FloorPlanetGrass
+  - type: Stack
+    stackType: FloorTileAtaraxiaPlanetGrass
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+
+- type: entity
+  parent: FloorTileItemBase
+  id: FloorTileItemAtaraxiaPlanetDirt
+  noSpawn: true
+  name: dirt tile
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Tiles/tile.rsi
+    state: planet_dirt
+  - type: FloorTile
+    placeTileSound:
+      collection: AtaraxiaDigging
+      params:
+        variation: 0.133
+    outputs:
+      - Plating
+      - FloorPlanetDirt
+  - type: Stack
+    stackType: FloorTileAtaraxiaPlanetDirt
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1

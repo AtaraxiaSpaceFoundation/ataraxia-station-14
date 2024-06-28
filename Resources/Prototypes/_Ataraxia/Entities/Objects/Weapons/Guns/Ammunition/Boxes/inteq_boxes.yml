@@ -1,0 +1,77 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseInteQMagazineBox
+  name: ammunition box
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: CartridgeCaselessRifle
+    capacity: 80
+  - type: Item
+    size: Normal
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    layers:
+      - state: icon
+      - state: rifle
+  - type: Appearance
+
+# AMMO
+
+- type: entity
+  parent: BaseInteQMagazineBox
+  id: MagazineBoxLightRifleInteQ
+  name: ammunition box (.30 rifle)
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRifle
+    capacity: 80
+    proto: CartridgeLightRifle
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    layers:
+      - state: icon
+      - state: rifle
+  - type: Appearance
+
+- type: entity
+  parent: BaseInteQMagazineBox
+  id: MagazineBoxPistolInteQ
+  name: ammunition box (.35 pistol)
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgePistol
+    capacity: 80
+    proto: CartridgePistol
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    layers:
+      - state: icon
+      - state: pistol
+  - type: Appearance
+
+- type: entity
+  parent: BaseInteQMagazineBox
+  id: MagazineBoxShotgunInteQ
+  name: ammunition box (.50 pellet)
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - ShellShotgun
+    capacity: 80
+    proto: ShellShotgun
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    layers:
+      - state: icon
+      - state: shotgun
+  - type: Appearance

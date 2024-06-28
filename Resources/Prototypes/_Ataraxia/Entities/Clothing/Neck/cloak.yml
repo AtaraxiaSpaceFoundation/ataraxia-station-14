@@ -1,0 +1,161 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCaptainWide
+  name: широкая шинель капитана
+  description: Широкая капитанская шинель. Кажется, она не по размеру вам, но как накидка на плечи сойдёт.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/cap_cloak.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Neck/cap_cloak.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckNanoTrasenRed
+  name: плащ NanoTrasen
+  description: Офицерский плащ с логотипом NanoTrasen, показывающий преданность своему делу его владельца.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/NT_red.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakFluffyPink
+  name: плюшевый розовый плащ
+  description: Его носитель прекрасная женщина, или хороший сутенёр.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/fluffypinkcape.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckMantleElderLizards
+  name: мантия древних ящеров
+  description: Давным давно, в далёкой, далёкой галактике...
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/mantle_lizards.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakRoyalCaptain
+  name: королевский плащ капитана
+  description: Царь во дворца, царь во дворца.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/royal_captain.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakRoyalHeadOfSecurityHOS
+  name: королевский плащ главы службы безопасности
+  description: Царь во дворца, царь во дворца.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/royal_hos.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakRoyalResearchDirectorRD
+  name: королевский плащ научного руководителя
+  description: Царь во дворца, царь во дворца.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/royal_rd.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakSyndicateAdmiral
+  name: плащ адмирала синдиката
+  description: Красный плащ, прошитый золотой тканью.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/syndicate_admiral.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakSyndicateOfficer
+  name: плащ офицера синдиката
+  description: Чёрный плащ, прошитый золотой тканью у шеи.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/syndicate_officer.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckWhiteMantleCaptain
+  name: белая мантия капитана
+  description: Мантия капитана, с белым пухом.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/white_cap_mantle.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakHeadOfSecurityOld
+  name: плащ главы службы безопасности
+  description: Устаревший дизайн плаща главы службы безопасности, но всё так же не теряющий своей искры.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/HoS_OLD.rsi
+    - type: StealTarget
+      stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakInteQ
+  name: плащ Интек
+  description: Плащ членов группировки Интек, с золотой обшивкой внутри и стильным золотым щитом на спине.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/inteq_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakHellDiverBlack
+  name: чёрный плащ хеллдайвера
+  description: Солидный плащ, который отлично подошёл бы настоящему герою!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/helldiver/black.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakHellDiverWhite
+  name: белый плащ хеллдайвера
+  description: Солидный плащ, который отлично подошёл бы настоящему герою!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/helldiver/white.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakHellDiverBrown
+  name: коричневый плащ хеллдайвера
+  description: Солидный плащ, который отлично подошёл бы настоящему герою!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/helldiver/brown.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckCloakHellDiverRed
+  name: красный плащ хеллдайвера
+  description: Солидный плащ, который отлично подошёл бы настоящему герою!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Neck/helldiver/red.rsi

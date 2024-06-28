@@ -1,0 +1,191 @@
+- type: jukebox
+  id: 12AM
+  name: British Sea Power - Whirling In Rags 12 PM
+  path:
+    path: /Audio/Ataraxia/Lobby/12am.ogg
+
+- type: jukebox
+  id: AfterDark
+  name: Mr.Kitty - After Dark
+  path:
+    path: /Audio/Ataraxia/Lobby/after_dark.ogg
+
+- type: jukebox
+  id: BurningMemory
+  name: The Caretaker - Its just a burning memory
+  path:
+    path: /Audio/Ataraxia/Lobby/burning_memory.ogg
+
+- type: jukebox
+  id: Closed
+  name: plenka - Closed
+  path:
+    path: /Audio/Ataraxia/Lobby/closed.ogg
+
+- type: jukebox
+  id: DIAMANT
+  name: Rammstein - Diamant
+  path:
+    path: /Audio/Ataraxia/Lobby/DIAMANT.ogg
+
+- type: jukebox
+  id: Drown
+  name: Danger Mouse, Karen O - Drown
+  path:
+    path: /Audio/Ataraxia/Lobby/drown.ogg
+
+- type: jukebox
+  id: Dust
+  name: M.O.O.N. - Dust
+  path:
+    path: /Audio/Ataraxia/Lobby/dust.ogg
+
+- type: jukebox
+  id: Freaks
+  name: Surf Curse - Freaks
+  path:
+    path: /Audio/Ataraxia/Lobby/freaks.ogg
+
+- type: jukebox
+  id: HeresToYou
+  name: Joan Baez - Heres to you, Nicola and Bart
+  path:
+    path: /Audio/Ataraxia/Lobby/heres_to_you.ogg
+
+- type: jukebox
+  id: NightCall
+  name: Kavinsky - Nightcall
+  path:
+    path: /Audio/Ataraxia/Lobby/nightcall.ogg
+
+- type: jukebox
+  id: Notion
+  name: The Rare Occasions - Notion
+  path:
+    path: /Audio/Ataraxia/Lobby/notion.ogg
+
+- type: jukebox
+  id: OceanMan
+  name: Ween - Ocean Man
+  path:
+    path: /Audio/Ataraxia/Lobby/oceanman.ogg
+
+- type: jukebox
+  id: PerfectGirl
+  name: Mareux - The Perfect Girl
+  path:
+    path: /Audio/Ataraxia/Lobby/perfect_girl.ogg
+
+- type: jukebox
+  id: EcstaticVibrations
+  name: Sea Power - Ecstatic Vibrations
+  path:
+    path: /Audio/Ataraxia/Lobby/protorave.ogg
+
+- type: jukebox
+  id: VneSmerti
+  name: Plamenev - Вне смерти
+  path:
+    path: /Audio/Ataraxia/Lobby/smerti.ogg
+
+- type: jukebox
+  id: SpaceAsshole
+  name: Chris Remo - Space Asshole
+  path:
+    path: /Audio/Ataraxia/Lobby/space_asshole.ogg
+
+- type: jukebox
+  id: SpaceOddityDavid
+  name: David Bowie - Space Oddity
+  path:
+    path: /Audio/Ataraxia/Lobby/space_oddity.ogg
+
+- type: jukebox
+  id: SpaceOddityAyden
+  name: Ayden George - Space Oddity (Gagarin Remix)
+  path:
+    path: /Audio/Ataraxia/Lobby/space_oddity-1.ogg
+
+- type: jukebox
+  id: SpaceOddityMUSEN
+  name: MUSEN - Space Oddity (RUSSIAN COVER)
+  path:
+    path: /Audio/Ataraxia/Lobby/space_oddity-2.ogg
+
+- type: jukebox
+  id: SS13
+  name: The Ninja Scout - Space Station 13
+  path:
+    path: /Audio/Ataraxia/Lobby/SS13.ogg
+
+- type: jukebox
+  id: StarEater
+  name: Daniel Deluxe - Star Eater
+  path:
+    path: /Audio/Ataraxia/Lobby/star_eater.ogg
+
+- type: jukebox
+  id: Starman
+  name: David Bowie - Starman
+  path:
+    path: /Audio/Ataraxia/Lobby/starman.ogg
+
+- type: jukebox
+  id: Stuzha
+  name: 5opka, Grechko - Стужа
+  path:
+    path: /Audio/Ataraxia/Lobby/stuzha.ogg
+
+- type: jukebox
+  id: AlienSyndicate
+  name: Barotrauma OST - Alien Syndicate
+  path:
+    path: /Audio/Ataraxia/Lobby/syndicate.ogg
+
+- type: jukebox
+  id: VTemnotu
+  name: Plamenev - Шаг в темноту
+  path:
+    path: /Audio/Ataraxia/Lobby/temnotu.ogg
+
+- type: jukebox
+  id: Tomorrow
+  name: Rat Boy, IBDY - Whos Ready for Tomorrow
+  path:
+    path: /Audio/Ataraxia/Lobby/tomorrow.ogg
+
+- type: jukebox
+  id: Voyager
+  name: Noize MC - Вояджер-1
+  path:
+    path: /Audio/Ataraxia/Lobby/Voyager.ogg
+
+- type: jukebox
+  id: YourHouse
+  name: Rosa Walton, Hallie Coggins - I Really Want to Stay at Your House
+  path:
+    path: /Audio/Ataraxia/Lobby/your_house.ogg
+
+- type: jukebox
+  id: TheRebelPath
+  name: P.T. Adamczyk - The Rebel Path
+  path:
+    path: /Audio/Ataraxia/Lobby/TheRebelPath.ogg
+
+- type: jukebox
+  id: Snigeri
+  name: Бумер - Там по периметру
+  path:
+    path: /Audio/Ataraxia/Lobby/Snigeri.ogg
+
+- type: jukebox
+  id: PENISMUSIC
+  name: Rubber Band - PENIS MUSIC
+  path:
+    path: /Audio/Ataraxia/Lobby/PENIS_MUSIC.ogg
+
+- type: jukebox
+  id: OnMyWayToHell
+  name: Połoz, Tinnitus - On My Way to Hell
+  path:
+    path: /Audio/Ataraxia/Lobby/OnMyWayToHell.ogg

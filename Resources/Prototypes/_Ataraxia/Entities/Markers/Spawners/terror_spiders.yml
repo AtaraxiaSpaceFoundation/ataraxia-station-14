@@ -1,0 +1,63 @@
+- type: entity
+  id: SpawnPointGhostTerrorSpiderQueen
+  name: ghost role spawn point
+  suffix: terror spider queen
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: Королева пауков ужаса
+    description: Поглатите станцию во мрак тьмы, сделайте её самым ужасным местом во вселенной, вы антагонист! Терроризируйте экипаж.
+    rules: "Ознакомиться с представителями пауков ужаса, можно в гайдбуках Атараксии (num 0)"
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderQueen
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Animals/TerrorSpiders/queen.rsi
+        state: state1
+
+- type: entity
+  name: terror spider queen spawner
+  id: SpawnMobTerrorSpiderQueen
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Animals/TerrorSpiders/queen.rsi
+        state: state1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobTerrorSpiderQueen
+
+- type: entity
+  parent: MarkerBase
+  id: RandomTerrorSpiderSpawner
+  name: random terror spider spawner
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Consumable/Food/meat.rsi
+          state: spiderleg
+    - type: RandomSpawner
+      prototypes:
+        - MobTerrorSpiderReaper
+        - MobTerrorSpiderDrone
+        - MobTerrorSpiderHealer
+        - MobTerrorSpiderLurker
+        - MobTerrorSpiderWidow
+        - MobTerrorSpiderKnight
+        - MobTerrorSpiderDefiler
+        - MobTerrorSpiderDestroyer
+        - MobTerrorSpiderGuardian
+      chance: 0.92
+      rarePrototypes:
+        - MobTerrorSpiderPrince
+        - MobTerrorSpiderPrincess
+        - MobTerrorSpiderMother
+        - MobTerrorSpiderQueen
+      rareChance: 0.08

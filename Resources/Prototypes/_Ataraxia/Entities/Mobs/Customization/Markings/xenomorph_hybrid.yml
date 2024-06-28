@@ -1,0 +1,68 @@
+# ГОЛОВА
+
+- type: marking
+  id: XenomorphHeadHollywood
+  bodyPart: Hair
+  markingCategory: HeadTop
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: head_hollywood_ADJ
+
+- type: marking
+  id: XenomorphHeadRoyal
+  bodyPart: Hair
+  markingCategory: HeadTop
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: head_royal_ADJ
+
+- type: marking
+  id: XenomorphHeadWarrior
+  bodyPart: Hair
+  markingCategory: HeadTop
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: head_warrior_ADJ
+
+# ХВОСТ
+
+- type: marking
+  id: XenomorphTailDefault
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: tail_xeno
+
+# ОВЕРЛЕЙ
+
+- type: marking
+  id: XenomorphChestXenodorsalDown
+  bodyPart: HeadSide
+  markingCategory: Chest
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: xenodorsal_down
+
+- type: marking
+  id: XenomorphChestXenodorsalRoyal
+  bodyPart: HeadSide
+  markingCategory: Chest
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: xenodorsal_royal
+
+- type: marking
+  id: XenomorphChestXenodorsalStandard
+  bodyPart: HeadSide
+  markingCategory: Chest
+  speciesRestriction: [XenomorphHybrid]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/xenomorph_hybrid_parts.rsi
+    state: xenodorsal_standard

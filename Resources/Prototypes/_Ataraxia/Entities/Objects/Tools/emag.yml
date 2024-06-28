@@ -1,0 +1,35 @@
+- type: entity # Всего 3 заряда, без зарядки
+  parent: EmagUnlimited
+  id: EmagBudget
+  suffix: Limited | No charge
+  name: budget cryptographic sequencer
+  description: The all-in-one hacking solution. The thinking man's lockpick. The iconic EMAG.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Tools/emag.rsi
+    state: icon
+  - type: LimitedCharges
+
+- type: entity
+  parent: EmagUnlimited
+  id: EmagGold
+  name: golden cryptographic sequencer
+  description: The all-in-one hacking solution. The thinking man's lockpick. The iconic EMAG.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Tools/emag.rsi
+    state: emag_gold
+  - type: LimitedCharges
+  - type: AutoRecharge
+
+- type: entity
+  parent: EmagUnlimited
+  id: EmagLantern
+  name: lantern cryptographic sequencer
+  description: The all-in-one hacking solution. The thinking man's lockpick. The iconic EMAG.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Tools/emag.rsi
+    state: emag_lantern
+  - type: LimitedCharges
+  - type: AutoRecharge

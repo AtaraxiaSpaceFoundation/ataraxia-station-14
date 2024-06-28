@@ -1,0 +1,291 @@
+{
+  "version": 1,
+  "license": "CC BY-NC-SA 4.0",
+  "copyright": "Edited, resprited and reshaded by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "m_tail_bee",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_bee_overlay_1",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_bee_overlay_2",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_bee_overlay_jalo",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_chemlight",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_chemlight_overlay_1",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_chemlight_overlay_2",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_deer",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_easternd",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_easternd_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fluffy",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_gecko",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_gecko_overlay_1",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_gecko_overlay_2",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_insect",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_insect_overlay_1",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_insect_overlay_2",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_longpigeon",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_nightstalker",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_nightstalker_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shadekin",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shadekinshort",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shorthawk",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shortpigeon",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_snaketail",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_succubus",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_swallow",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_swallow_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_tailmaw",
+      "directions": 4 
+    },
+    {
+      "name": "m_tail_ailurus",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_ailurus_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_axolotl",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_bear",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_capra",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_catbig",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_cow",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_datashark",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_datashark_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_eevee",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_eevee_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fennec",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fish",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fish_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fox",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_fox_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_guilmon",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_hawk",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_horse",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_husky",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_husky_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_kitsune",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_lab",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_lunasune",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_orca",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_orca_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_otie",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_pede",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_pede_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_rabbit",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_raccoon",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_sabresune",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_sabresune_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_sergal",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shark",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_shepherd",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_skunk",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_skunk_overlay",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_squirrel",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_tentacle",
+      "directions": 4
+    },
+    {
+      "name": "m_tail_wolf",
+      "directions": 4
+    }
+  ]
+}

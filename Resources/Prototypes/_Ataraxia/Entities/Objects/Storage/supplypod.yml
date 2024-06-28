@@ -1,0 +1,248 @@
+# BASE
+
+- type: entity
+  parent: BaseStructure
+  id: BaseSupplyPodCapsule
+  abstract: true
+  name: supply pod
+  description: It broke god damned floor... ugh...
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: ResistLocker
+  - type: TimedDespawn
+    lifetime: 5520
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: rubble_overlay
+      map: ["base"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: default_pod
+    stateDoorOpen: default_open
+    stateDoorClosed: default_closed
+  - type: Weldable
+  - type: ItemSlots
+  - type: EntityStorage
+    capacity: 1
+  - type: WarpPoint
+    follow: true
+    location: Грузовая капсула
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+  - type: InteractionOutline
+  - type: Appearance
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+      - !type:EmptyAllContainersBehaviour
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: GuideHelp
+    guides:
+    - AtaraxiaSupplyPods
+
+# SUPPLY PODS
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleDefault
+  suffix: Пустой | Обычная
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleBluespace
+  suffix: Пустой | Блюспейс
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodBluespace.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleCult
+  suffix: Пустой | Культ
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodCult.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleGondola
+  suffix: Пустой | Гондола
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodGondola.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleOrange
+  suffix: Пустой | Апельсин
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodOrange.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleHonk
+  suffix: Пустой | Хонк
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodHonk.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleNanoTrasen
+  suffix: Пустой | НТ
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodNanoTrasen.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleDeathSquad
+  suffix: Пустой | Сквад
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodSquad.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]
+
+- type: entity
+  parent: BaseSupplyPodCapsule
+  id: SupplyPodCapsuleSyndicate
+  suffix: Пустой | Синдикат
+  components:
+  - type: Sprite
+    noRot: true
+    scale: 0.9, 0.9
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodSyndicate.rsi
+    layers:
+    - state: default_pod
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: default_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: rubble_overlay
+      map: ["base"]

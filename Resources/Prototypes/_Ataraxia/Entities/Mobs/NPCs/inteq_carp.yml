@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseMobCarp
+  id: MobCarpBrownInteQ
+  suffix: Интек
+  name: brown carp
+  description: Seriously, a brown carp, in a jacket and a beret?!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Pets/inteq_carp.rsi
+  - type: NpcFactionMember
+    factions:
+      - PetsInteQ

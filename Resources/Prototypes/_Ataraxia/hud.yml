@@ -1,0 +1,11 @@
+- type: hudTheme
+  id: SS14OperativeTheme
+  name: ui-options-hud-theme-operative
+  path: /Textures/Ataraxia/Interface/Operative/
+  order: 7
+
+- type: hudTheme
+  id: SS14CrystallPunkTheme
+  name: ui-options-hud-theme-crystallpunk
+  path: /Textures/Ataraxia/Interface/CrystallPunk/
+  order: 7

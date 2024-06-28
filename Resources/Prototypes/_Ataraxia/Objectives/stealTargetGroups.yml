@@ -1,0 +1,6 @@
+- type: stealTargetGroup
+  id: TelescopicBaton
+  name: Телескопическая дубинка
+  sprite:
+    sprite: Ataraxia/Objects/Weapons/Melee/baton.rsi
+    state: icon

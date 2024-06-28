@@ -1,0 +1,85 @@
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineInteQDrobe
+  name: InteQDrobe
+  description: Wardrobe machine encoded by the InteQ, contains elite outfits for various operations.
+  components:
+  - type: VendingMachine
+    pack: InteQDrobeInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: InteQDrobeAds
+  - type: Sprite
+    sprite: Ataraxia/Structures/Machines/VendingMachines/inteqdrobe.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#FF8C00"
+  - type: AccessReader
+    access: [["InteQVanguardLeader"], ["InteQVanguard"]]
+
+- type: entity
+  parent: VendingMachineInteQDrobe
+  id: VendingMachineInteQDrobeNerf
+  suffix: Общественный
+  name: ИнтекШкаф
+  description: Гардеробная машина, закодированная Интек, содержит элитную одежду для различных операций.
+  components:
+  - type: VendingMachine
+    pack: InteQDrobeNerfInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+
+- type: entity
+  parent: VendingMachineSyndieDrobe
+  id: VendingMachineSyndieDrobeNerf
+  suffix: Общественный
+  name: СиндиШкаф
+  description: Гардеробная машина, закодированная синдикатом, содержит элитное снаряжение для различных операций.
+  components:
+  - type: VendingMachine
+    pack: SyndieDrobeNerfInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+
+- type: entity
+  parent: VendingMachine
+  id: CaptainDrobe
+  name: КапитанШкаф
+  description: Стильная форма, для сильного лидера!
+  components:
+  - type: VendingMachine
+    pack: CaptainDrobeInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: Ataraxia/Structures/Machines/VendingMachines/capdrobe.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#05DAF2"
+  - type: Transform # Для грузовых капсул
+    anchored: true
+  - type: AccessReader
+    access: [["Captain"]]

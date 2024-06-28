@@ -1,0 +1,98 @@
+- type: entity
+  parent: BaseBorgChassisNT
+  id: BorgChassisAtaraxiaBased
+  name: cyborg
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Silicon/sex_borg.rsi
+    layers:
+    - state: borg
+    - state: borg_null
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleService
+    hasMindState: borg_null
+    noMindState: borg_null
+  - type: BorgTransponder
+    sprite:
+      sprite: Ataraxia/Mobs/Silicon/sex_borg.rsi
+      state: borg
+    name: cyborg
+  - type: Construction
+    node: service
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: AccessReader
+    access: [["Service"], ["Command"], ["Research"]]
+  - type: Inventory
+    templateId: borgTall
+
+- type: entity
+  parent: BaseBorgChassisNT
+  id: BorgChassisAtaraxiaBasedXenomorph
+  noSpawn: true # До доработки
+  name: cyborg-xenomorph
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Silicon/sex_borg_xenomorph.rsi
+    layers:
+    - state: borg_xenomorph
+    - state: borg_null
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleService
+    hasMindState: borg_null
+    noMindState: borg_null
+  - type: BorgTransponder
+    sprite:
+      sprite: Ataraxia/Mobs/Silicon/sex_borg_xenomorph.rsi
+      state: borg_xenomorph
+    name: cyborg-xenomorph
+  - type: Construction
+    node: service
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: AccessReader
+    access: [["Service"], ["Command"], ["Research"]]
+  - type: Inventory
+    templateId: borgTall

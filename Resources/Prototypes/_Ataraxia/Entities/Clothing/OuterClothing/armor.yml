@@ -1,0 +1,196 @@
+# База рыцаря
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorTemplarBase
+  abstract: true
+  name: доспехи рыцаря
+  description: Идеальный наряд для проведения крестовых походов.
+  components:
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.9
+        Heat: 0.5
+
+# Броня
+
+- type: entity
+  parent: ClothingOuterArmorTemplarBase
+  id: ClothingOuterArmorInteQDarkTemplar
+  suffix: Интек
+  name: доспехи рыцаря
+  description: Идеальный наряд для проведения крестовых походов. Раскрашен в фирменном стиле Интек.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_dark_templar.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetInteQDarkTemplar
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetInteQDarkTemplar
+  noSpawn: true
+  name: шлем доспеха
+  description: Еретично только тогда, когда это делают другие.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_dark_templar.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplarBase
+  id: ClothingOuterArmorInteQDarkTemplarAlt
+  suffix: Интек
+  name: доспехи рыцаря
+  description: Идеальный наряд для проведения крестовых походов. Раскрашен в фирменном стиле Интек.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_alt_dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_alt_dark_templar.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetInteQDarkTemplarAlt
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetInteQDarkTemplarAlt
+  noSpawn: true
+  name: шлем доспеха
+  description: Еретично только тогда, когда это делают другие.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_alt_dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_alt_dark_templar.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplarBase
+  id: ClothingOuterArmorChaplainDarkTemplar
+  name: доспехи рыцаря
+  description: Идеальный наряд для проведения крестовых походов.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/dark_templar_chaplain.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/dark_templar_chaplain.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetDarkChaplainTemplar
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetDarkChaplainTemplar
+  noSpawn: true
+  name: шлем доспеха
+  description: Еретично только тогда, когда это делают другие.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/dark_templar_chaplain.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/dark_templar_chaplain.rsi
+
+- type: entity
+  parent: ClothingOuterArmorTemplarBase
+  id: ClothingOuterArmorDarkTemplar
+  name: доспехи рыцаря
+  description: Идеальный наряд для проведения крестовых походов.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/dark_templar.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetDarkTemplar
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetDarkTemplar
+  noSpawn: true
+  name: шлем доспеха
+  description: Еретично только тогда, когда это делают другие.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/dark_templar.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/dark_templar.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorAllianceAssasin
+  name: бронежилет ассасина альянса
+  description: Качественный бронежилет с бронепластиной из многослойной пластали. Совмещает в себе лёгкость и прочность, имеет буферный подкладки и идеально прилегает к телу, не издавая лишних звуков при ношении.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/alliance_assasin.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/alliance_assasin.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.5
+        Piercing: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+        Heat: 0.6
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetAllianceAssasin
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorInteQInflator
+  name: бронированный плащ инфлятора
+  suffix: Интек
+  description: Качественный плащ с бронепластиной из многослойной пластали. Совмещает в себе лёгкость и прочность, имеет буферный подкладки и идеально прилегает к телу, не издавая лишних звуков при ношении.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_inflator.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_inflator.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.7
+        Piercing: 0.6
+        Radiation: 0.9
+        Caustic: 0.9
+        Heat: 0.8
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetInteQInflator
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorInteQTombstone
+  name: бронекостюм 'Надгробие'
+  suffix: Интек
+  description: Древний, но от этого не менее грозный броне костюм. Предоставляет невероятную защиту от пуль и осколков, но сковывает движения. Или так было до того, как технический отдел не приделал под основу пассивный экзоскелет.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_tombstone.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Armor/inteq_tombstone.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.3
+        Radiation: 0.9
+        Caustic: 0.9
+        Heat: 0.85
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetInteQTombstone

@@ -1,0 +1,98 @@
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtInteQFormalDress
+  name: inteq formal dress
+  description: "The inteq uniform is made in an elegant style, it's even a pity to do badass tricks in this."
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_end_skirt.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_end_skirt.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtInteQOperative
+  name: inteq operative jumpskirt
+  description: Uniform for inteq operatives performing tactical operations in deep space.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_skirt.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_skirt.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtInteQMedical
+  name: inteq medical skirt
+  description: A skirt that symbolizes our life.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_med_skirt.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_med_skirt.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtInteQTacticalMaid
+  name: tactical maid suitskirt
+  description: It is assumed that the best maids should have designer suits.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_maid.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/inteq_maid.rsi
+
+- type: entity
+  parent: ClothingUniformJumpskirtCaptain
+  id: ClothingUniformJumpskirtWhiteCaptain
+  name: белая юбка-комбинезон капитана
+  description: Белая юбка-комбинезон капитана символизирующая, что ваша зарплата явно превышает нормы.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/white_captainwhiteskirt.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/white_captainwhiteskirt.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtHoodieSkirt
+  name: худи с юбкой
+  description: Выглядит стильно, и продуваемость хорошая.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/hoodieskirt.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/hoodieskirt.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtRoll
+  name: красная юбка
+  description: Красная юбка, с белыми помпонами.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/roll.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/roll.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtShizuneGreen
+  name: зелёная школьная юбка 
+  description: Крутая юбка, отличная форма.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/shizune_normal.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/shizune_normal.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtShizuneOrange
+  name: оранжевая школьная юбка
+  description: Крутая юбка, отличная форма.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/shizune_winter.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpskirt/shizune_winter.rsi

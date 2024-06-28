@@ -1,0 +1,23 @@
+- type: entity
+  parent: CryogenicSleepUnit
+  id: CentralCommandTeleporterCryogenicSleepUnit
+  name: телепорт на центком
+  description: Устали от смены? Повод телепортироваться отсюда и забыть о всех проблемах.
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: Ataraxia/Structures/Machines/centcommteleporter.rsi
+    layers:
+    - state: teleport
+      map: ["base"]
+  - type: PointLight
+    color: Lime
+    radius: 1.5
+    energy: 0.5
+    castShadows: false
+  - type: GenericVisualizer
+    visuals:
+      enum.CryostorageVisuals.Full:
+        base:
+          True: { state: teleport_on }
+          False: { state: teleport }

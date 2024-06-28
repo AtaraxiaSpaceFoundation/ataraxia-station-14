@@ -1,0 +1,73 @@
+- type: entity
+  parent: BasePDA
+  id: ModernPDABase
+  abstract: true
+  name: modern PDA
+  description: Smells like smoke.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Icon
+    sprite: Ataraxia/Objects/Devices/pda.rsi
+    state: pda-inteq
+  - type: Pda
+    id: InteQIDCard
+    state: pda-inteq
+  - type: PdaBorderColor
+    borderColor: "#FF8C00"
+    accentVColor: "#FFA500"
+  - type: Appearance
+
+# PDA
+
+- type: entity
+  parent: ModernPDABase
+  id: InteQVanguardLeaderPDA
+  suffix: "Коммандер Авангарда"
+  name: InteQ PDA
+  description: Smells like smoke.
+  components:
+  - type: Pda
+    id: InteQVanguardLeaderIDCard
+    state: pda-inteq
+
+- type: entity
+  parent: ModernPDABase
+  id: InteQVanguardPDA
+  suffix: "Авангард"
+  name: InteQ PDA
+  description: Smells like smoke.
+  components:
+  - type: Pda
+    id: InteQVanguardIDCard
+    state: pda-inteq
+
+- type: entity
+  parent: ModernPDABase
+  id: BluespaceTechnicPDA
+  suffix: "Дебаг"
+  name: КПК Блюспейс техника
+  description: Пахнет блюспейсом.
+  components:
+  - type: Pda
+    id: BluespaceTechnicIDCard
+    state: pda-bluespacetechnic
+  - type: HealthAnalyzer
+    scanDelay: 0
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - LogProbeCartridge

@@ -1,0 +1,767 @@
+# ---GUNS---
+
+- type: listing
+  id: BlackMarketSvalinn
+  name: Лазерный пистолет свалинн
+  description: Дешевый и широко используемый лазерный пистолет.
+  productEntity: TargetCircleSupplyPodBlackMarketSvalinn
+  cost:
+    SpaceCash: 170 #4500 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: BlackMarketMakeshiftLaser
+  name: Самодельная лазерная винтовка
+  description: Молитесь, чтобы она не обожгла вам руки.
+  productEntity: TargetCircleSupplyPodBlackMarketMakeshiftLaser
+  cost:
+    SpaceCash: 230 #5600 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketMakeshiftLaserGun
+  name: старомодный лазерный пистолет
+  description: Оружие, использующее свет, усиленный излучением радиации.
+  productEntity: TargetCircleSupplyPodBlackMarketLaserGun
+  cost:
+    SpaceCash: 260 #6200 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketMk58
+  name: МК 58
+  description: Дешевый и распространённый пистолет, производимый дочерней компанией NanoTrasen. Использует патроны калибра .35 авто.
+  productEntity: TargetCircleSupplyPodBlackMarketMk58
+  cost:
+    SpaceCash: 290 #5500 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketCommissar
+  name: Комиссар
+  description: Небольшой, легко скрываемый, но несколько маломощный пистолет. Оснащен полностью автоматической ствольной коробкой. Использует автоматические патроны калибра .35. Окрашен в фирменный цвет Интек.
+  productEntity: TargetCircleSupplyPodBlackMarketInteQCommissar
+  cost:
+    SpaceCash: 5700 #9500 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketImprovisedLoaded
+  name: Импровизированный дробовик
+  description: Дерьмовый самодельный дробовик, в котором используются патроны для дробовика .50. Он может держать только один патрон в патроннике.
+  productEntity: TargetCircleSupplyPodBlackMarketShotgunImprovised
+  cost:
+    SpaceCash: 130 #1200 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketBlunderbuss
+  name: Мушкетон
+  description: Смертельно опасен на близком расстоянии.
+  productEntity: TargetCircleSupplyPodBlackMarketShotgunBlunderbuss
+  cost:
+    SpaceCash: 350 #3500 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketDoubleBarreled
+  name: Двуствольное ружьё
+  description: Бессмертная классика. Использует патроны калибра .50 ружейный.
+  productEntity: TargetCircleSupplyPodBlackMarketShotgunDoubleBarreled
+  cost:
+    SpaceCash: 400 #5600 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSawn
+  name: Обрез
+  description: Против всякой шелупони. Использует патроны калибра .50 ружейный.
+  productEntity: TargetCircleSupplyPodBlackMarketShotgunSawn
+  cost:
+    SpaceCash: 410 #5700 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketBulldog
+  name: Бульдог
+  description: Это магазинное ружье, предназначенное для ближнего боя. В нем используются патроны .50 калибра. Оно окрашено в фирменный цвет Интек.
+  productEntity: TargetCircleSupplyPodBlackMarketShotgunInteQBulldog
+  cost:
+    SpaceCash: 9000 #26500 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketTesla
+  name: Пушка Теслы
+  description: Сила молнии в ваших руках.
+  productEntity: TargetCircleSupplyPodBlackMarketTeslaGun
+  cost:
+    SpaceCash: 18000 #21200 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketAKM
+  name: АКМ
+  description: Культовое военное оружие. Использует винтовочные патроны .30 калибра. Окрашен в фирменный цвет Интек.
+  productEntity: TargetCircleSupplyPodBlackMarketRifleInteQAKM
+  cost:
+    SpaceCash: 6800 #13200 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketAtreides
+  name: Атрейдес
+  description: Пле-ке-ке-ке-ке! Использует патроны калибра .35 авто.
+  productEntity: TargetCircleSupplyPodBlackMarketSubMachineGunAtreides
+  cost:
+    SpaceCash: 3700 #9800 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 3
+
+- type: listing
+  id: BlackMarketSMG
+  name: SMG
+  description: Огнестрельное оружие, которое часто используется Интек. Использует автоматические патроны .35 калибра. Оно окрашено в фирменный цвет Интек.
+  productEntity: TargetCircleSupplyPodBlackMarketSubMachineGunInteQSMG
+  cost:
+    SpaceCash: 9000 #23200 - Цена с деньгами карго
+  categories:
+  - BlackMarketWeapons
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+# ---AMMO---
+
+- type: listing
+  id: BlackMarketMBRifle
+  name: Коробка патронов (.30 винтовка)
+  description: Содержит внутри себя 80 патронов .30 калибра.
+  productEntity: TargetCircleSupplyPodBlackMarketMagazineBoxLightRifleInteQ
+  cost:
+    SpaceCash: 1000 #6500 - Цена с деньгами карго
+  categories:
+  - BlackMarketAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 3
+
+- type: listing
+  id: BlackMarketMBPistol
+  name: Коробка патронов (.35 пистолет)
+  description: Содержит внутри себя 80 патронов .35 калибра.
+  productEntity: TargetCircleSupplyPodBlackMarketMagazineBoxPistolInteQ
+  cost:
+    SpaceCash: 1000 #6500 - Цена с деньгами карго
+  categories:
+  - BlackMarketAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 3
+
+- type: listing
+  id: BlackMarketMBShotgun
+  name: Коробка патронов (.50 дробь)
+  description: Содержит внутри себя 80 патронов .50 калибра.
+  productEntity: TargetCircleSupplyPodBlackMarketMagazineBoxShotgunInteQ
+  cost:
+    SpaceCash: 1000 #6500 - Цена с деньгами карго
+  categories:
+  - BlackMarketAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 3
+
+# ---EXPLOSIVE---
+
+- type: listing
+  id: BlackMarketEMP
+  name: ЭМИ-граната
+  description: Граната, предназначенная для разрушения электронных систем.
+  productEntity: TargetCircleSupplyPodBlackMarketEmpGrenade
+  cost:
+    SpaceCash: 1200 #6000 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSupermatter
+  name: Граната суперматерии
+  description: Граната, имитирующая расслоение двигателя суперматерии, собирающая предметы в кучу и взрывающаяся через некоторое время.
+  productEntity: TargetCircleSupplyPodBlackMarketSupermatterGrenade
+  cost:
+    SpaceCash: 3200 #8500 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketWhitehole
+  name: Граната белой дыры
+  description: Граната, которая на некоторое время отталкивает все вокруг.
+  productEntity: TargetCircleSupplyPodBlackMarketWhiteholeGrenade
+  cost:
+    SpaceCash: 1500 #5000 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketIncendiary
+  name: Зажигательная граната
+  description: Гарантированно поднимет накал публики.
+  productEntity: TargetCircleSupplyPodBlackMarketGrenadeIncendiary
+  cost:
+    SpaceCash: 3500 #8500 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketExplosiveG
+  name: Разрывная граната
+  description: Граната, создающая небольшой но разрушительный взрыв.
+  productEntity: TargetCircleSupplyPodBlackMarketExGrenade
+  cost:
+    SpaceCash: 4500 #10000 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketC4
+  name: Взрывчатка C-4
+  description: Используется для проделывания аккуратных, не слишком больших, брешей в местах закладки. Любимое средство диверсантов.
+  productEntity: TargetCircleSupplyPodBlackMarketC4
+  cost:
+    SpaceCash: 6400 #12000 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketMiniBomb
+  name: Минибомба
+  description: Взрывное устройство для точечных актов саботажа, например, быстрого уничтожения устройства, трупа или чего-то другого.
+  productEntity: TargetCircleSupplyPodBlackMarketSyndieMiniBomb
+  cost:
+    SpaceCash: 8200 #14600 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketCluster
+  name: Кластерная граната
+  description: Зачем использовать одну гранату, когда можно использовать сразу три!
+  productEntity: TargetCircleSupplyPodBlackMarketClusterGrenade
+  cost:
+    SpaceCash: 12000 #19600 - Цена с деньгами карго
+  categories:
+  - BlackMarketExplosives
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+# ---BUNDLES---
+
+- type: listing
+  id: BlackMarketBInteqEVA
+  name: Коробка с коричневой ЕВА
+  description: Продвинутая версия обычной коробки, вмещающая в себя большие предметы, содержит шлем и скафандр.
+  productEntity: TargetCircleSupplyPodBlackMarketBoxInteQEVA
+  cost:
+    SpaceCash: 1200 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketBSyndicateEVA
+  name: Коробка с кроваво-красной ЕВА
+  description: Продвинутая версия обычной коробки, вмещающая в себя большие предметы, содержит шлем и скафандр.
+  productEntity: TargetCircleSupplyPodBlackMarketBoxSyndicateEVA
+  cost:
+    SpaceCash: 1200 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketBPistol
+  name: Коробка с Комисаром
+  description: Продвинутая версия обычной коробки, вмещающая в себя большие предметы, содержит Комисар и коробку с 80 патронами.
+  productEntity: TargetCircleSupplyPodBlackMarketBoxInteQPistol
+  cost:
+    SpaceCash: 6200 #12300 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBObserver
+  name: Коробка надсмоторщика станции
+  description: Коробка, содержит продвинутый мониторинг экипажа, батарею высокой ёмкости и солнечные очки с HUD.
+  productEntity: TargetCircleSupplyPodBlackMarketObservationskit
+  cost:
+    SpaceCash: 3400 #7200 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBChemical
+  name: Коробка запрещённых химикатов
+  description: Стартовый набор для начинающего химика, включающий токсин и вестин для всех ваших криминальных нужд!
+  productEntity: TargetCircleSupplyPodBlackMarketChemicalSynthesisKit
+  cost:
+    SpaceCash: 4200 #9800 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBAllianceAssasin
+  name: Кейс с набором ассасина альянса
+  description: Белый кейс с эмблемой альянса, содержит внутри полный набор ассасина альянса.
+  productEntity: TargetCircleSupplyPodBlackMarketCaseAllianceAssasin
+  cost:
+    SpaceCash: 21000 #51000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketBPPSH41
+  name: Набор PPSH41
+  description: ППШ-41, который многие террористические организации копировали на протяжении многих лет. Несмотря на малую поражающую способность, его надежность, исключительная долговечность и высокая огневая мощь оказываются полезными для рук пользователя. Использует калибр .35 авто.
+  productEntity: TargetCircleSupplyPodBlackMarketBundlePPSH41
+  cost:
+    SpaceCash: 12600 #17500 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBP90
+  name: Набор P90
+  description: P-90 - Обычно его носят военнослужащие, которым нужно легкое огнестрельное оружие для спешки. Использует калибр .35 авто.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleP90
+  cost:
+    SpaceCash: 12600 #17500 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBMG42
+  name: Набор MG42
+  description: Пулемёт ОПЗ периода Второй мировой войны. Использует калибр .25 безгильзовый.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleMG42
+  cost:
+    SpaceCash: 28200 #42000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBAKMS
+  name: Набор AKMS
+  description: Культовое оружие войны. Использует патроны калибра .30 винтовочные.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleAKMS
+  cost:
+    SpaceCash: 14000 #20000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBSPAS12
+  name: Набор SPAS12
+  description: Дробовик, используемый морским корпусом EarthGov. Использует гильзы калибра 50.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleSPAS12
+  cost:
+    SpaceCash: 17000 #33000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBV31
+  name: Набор V31
+  description: V-31 любят за сравнительную простоту производства и обслуживания, а также из-за встроенного низкоскоростного рельсотрона, предназначенного для так называемых микро гранат. Обладает хорошей управляемостью благодаря компактной конструкции bullpup и, как правило, эффективен на всех дистанциях.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleV31
+  cost:
+    SpaceCash: 27000 #40000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBSVD
+  name: Набор СВД
+  description: Полуавтоматическая снайперская винтовка, известная своей меткостью, полностью предназначена для стрельбы на дальние дистанции.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleSVD
+  cost:
+    SpaceCash: 28000 #45000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBMP38
+  name: Набор MP38
+  description: MP-38 - старый и дешевый пистолет-пулемет, используемый повстанцами, он обладает хорошими характеристиками на больших дистанциях в компактном корпусе, хотя и страдает из-за низкой для своего класса скорострельности.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleMP38
+  cost:
+    SpaceCash: 13000 #21000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBAKSU
+  name: Набор AKSU
+  description: Культовое оружие войны. Использует патроны калибра .30 винтовочные.
+  productEntity: TargetCircleSupplyPodBlackMarketBundleAKSU
+  cost:
+    SpaceCash: 16000 #19000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketBFlamethrower
+  name: Набор Огнемёта
+  description: Реактивный огнемёт Nomadova, удивительное оружие, на котором есть надпись Смерть врагам человечества!
+  productEntity: TargetCircleSupplyPodBlackMarketBundleFlamethrower
+  cost:
+    SpaceCash: 20000 #28000 - Цена с деньгами карго
+  categories:
+  - BlackMarketBundles
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+# ---UTILITY---
+
+- type: listing
+  id: BlackMarketJetpack
+  name: чёрный джетпак
+  description: Это реактивный ранец - джетпак.
+  productEntity: TargetCircleSupplyPodBlackMarketJetpackBlackFilled
+  cost:
+    SpaceCash: 750 #2500 - Цена с деньгами карго
+  categories:
+  - BlackMarketUtility
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketDropPouch
+  name: Разгрузка
+  description: Улучшенная разгрузка для хранения различных предметов
+  productEntity: TargetCircleSupplyPodBlackMarketClothingBeltInteQDropPouch
+  cost:
+    SpaceCash: 1700 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketUtility
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 4
+
+- type: listing
+  id: BlackMarketWebbing
+  name: Разгрузка
+  description: Уникальное и универсальное крепление на груди, в котором вы можете хранить оружие и боеприпасы.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingBeltInteQWebbing
+  cost:
+    SpaceCash: 1700 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketUtility
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 4
+
+- type: listing
+  id: BlackMarketHolster
+  name: Плечевая кобура
+  description: Глубокая плечевая кобура, способная вместить множество различных видов оружия.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingBeltSyndieHolster
+  cost:
+    SpaceCash: 2200 #4200 - Цена с деньгами карго
+  categories:
+  - BlackMarketUtility
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketJammer
+  name: Глушитель радио
+  description: Это устройство будет прерывать любую близлежащую исходящую радиосвязь при активации.
+  productEntity: TargetCircleSupplyPodBlackMarketRadioJammer
+  cost:
+    SpaceCash: 4500 #8300 - Цена с деньгами карго
+  categories:
+  - BlackMarketUtility
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+# ---ARMOR---
+
+- type: listing
+  id: BlackMarketArmorBasic
+  name: Бронежилет
+  description: Стандартный бронежилет типа I, который обеспечивает достойную защиту от большинства типов повреждений.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterArmorBasic
+  cost:
+    SpaceCash: 1700 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSynCoat
+  name: Бронированный плащ
+  description: Бронированный плащ синдиката изготовлен из прочной ткани с позолоченными узорами.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterCoatSyndieCapArmored
+  cost:
+    SpaceCash: 2500 #4700 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 3
+
+- type: listing
+  id: BlackMarketRiot
+  name: Противоударный костюм
+  description: Бронежилет с тяжелыми накладками для защиты в ближнем бою, идеально подходит для борьбы с правонарушителями на станции.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterArmorRiot
+  cost:
+    SpaceCash: 1900 #3200 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketHeavy
+  name: Тяжёлый бронекостюм
+  description: Тяжело бронированный костюм, способный защитить от высокого урона.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterArmorHeavy
+  cost:
+    SpaceCash: 6800 #12800 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketBulletproof
+  name: Пуленепробиваемый жилет
+  description: Бронежилет с тяжелыми пластинами для защиты от баллистических снарядов.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterArmorBulletproof
+  cost:
+    SpaceCash: 2100 #3500 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSWATNT
+  name: Шлем спецназа
+  description: Чрезвычайно прочный шлем, обычно используемый военизированными формированиями. На этом сверху красуется логотип Nanotrasen.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwat
+  cost:
+    SpaceCash: 2500 #5000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSWATSyndie
+  name: Шлем спецназа
+  description: Чрезвычайно прочный шлем, обычно используемый военизированными формированиями. Он украшен гнусным рисунком в красную и черную полоску.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatSyndicate
+  cost:
+    SpaceCash: 2500 #5000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketSWATInteQ
+  name: Шлем спецназа
+  description: Чрезвычайно прочный шлем, обычно используемый военизированными формированиями. Он украшен отвратительным рисунком в оранжевую и черную полоску.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatInteQ
+  cost:
+    SpaceCash: 2500 #5000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5
+
+- type: listing
+  id: BlackMarketOTAAllianceHardsuit
+  name: Скафандр ОТА альянса
+  description: Скафандр юнита ОТА.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitOTAAlliance
+  cost:
+    SpaceCash: 20000 #52000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 2
+
+- type: listing
+  id: BlackMarketInteQHardsuit
+  name: Скафандр Интек
+  description: Модернизированная версия скафандра Синдиката, отличающаяся повышенной огнестойкостью, устойчивостью к давлению и превосходной броней.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitInteQ
+  cost:
+    SpaceCash: 30000 #72000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+- type: listing
+  id: BlackMarketSyndieHardsuit
+  name: Кроваво-красный скафандр
+  description: Тяжелобронированный и мобильный скафандр, предназначенный для специальных операций.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitSyndie
+  cost:
+    SpaceCash: 30000 #72000 - Цена с деньгами карго
+  categories:
+  - BlackMarketArmor
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 1
+
+# ---MISC---
+
+- type: listing
+  id: BlackMarketClown
+  name: Набор клоуна
+  description: Большой вещмешок для хранит силу хонков.
+  productEntity: TargetCircleSupplyPodBlackMarketClothingBackpackDuffelSyndicateCostumeClown
+  cost:
+    SpaceCash: 200 #1269 - Цена с деньгами карго
+  categories:
+  - BlackMarketMisc
+  conditions:
+  - !type:ListingLimitedStockCondition 
+    stock: 5

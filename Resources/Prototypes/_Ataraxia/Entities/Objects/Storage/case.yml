@@ -1,0 +1,38 @@
+# BASE
+- type: entity
+  parent: BoxCardboard
+  id: BaseCase
+  abstract: true
+  name: case
+  description: I wonder what's in it?
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,5,4
+
+# CASES
+
+- type: entity
+  parent: BaseCase
+  id: CaseAlliance
+  name: alliance case
+  suffix: Пустой, Альянс
+  description: White case with the alliance logo, I wonder what's in it?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/alliance_case.rsi
+    state: icon
+
+- type: entity
+  parent: BaseCase
+  id: CaseInteQ
+  name: коричневый кейс
+  suffix: Пустой, Интек
+  description: Коричневый кейс с золотым логотипом, интересно, что же там?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_case.rsi
+    state: icon

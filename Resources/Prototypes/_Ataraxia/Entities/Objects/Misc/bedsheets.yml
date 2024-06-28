@@ -1,0 +1,11 @@
+- type: entity
+  parent: BedsheetBase
+  id: BedsheetInteQ
+  name: inteq bedsheet
+  description: It's decorated with a gold emblem.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Misc/inteq_bedsheet.rsi
+    state: sheetinteq
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Neck/inteq_bedsheet.rsi

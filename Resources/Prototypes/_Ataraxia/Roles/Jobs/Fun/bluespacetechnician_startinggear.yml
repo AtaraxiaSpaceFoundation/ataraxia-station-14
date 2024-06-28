@@ -1,0 +1,18 @@
+- type: startingGear
+  id: BluespaceTechnicianGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBluespaceTechnic
+    back: ClothingBackpackSatchelHoldingFilled
+    mask: ClothingMaskNeckGaiter
+    eyes: ClothingEyesGogglessBluespaceTechnic
+    ears: ClothingHeadsetAltCentCom
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitBluespaceTechnic
+    shoes: ClothingShoesBootsCombatFilled
+    id: BluespaceTechnicPDA
+    belt: ClothingBeltBluespaceTechnicFilled
+  innerclothingskirt: ClothingUniformJumpsuitBluespaceTechnic
+  satchel: ClothingBackpackSatchelHoldingFilled
+  duffelbag: ClothingBackpackSatchelHoldingFilled
+
+# https://github.com/BlueMoon-Labs/MOLOT-BlueMoon-Station/blob/6cf674444d399db995c86444ac892b056693ae48/modular_sand/code/modules/clothing/outfits/standard.dm#L49

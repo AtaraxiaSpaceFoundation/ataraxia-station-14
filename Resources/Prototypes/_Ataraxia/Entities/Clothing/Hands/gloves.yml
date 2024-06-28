@@ -1,0 +1,43 @@
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsInteQTacticalMaidGloves
+  name: tactical maid gloves
+  description: Tactical maid gloves, every self-respecting maid should be able to discreetly eliminate her goals.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/inteq_maid_gloves.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Hands/inteq_maid_gloves.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesCaptainWhite
+  name: белые перчатки капитана
+  description: Белые перчатки капитана, выглядят стильно, самое то для лидера.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/white_gloves.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Hands/white_gloves.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesCaptainSheriff
+  name: перчатки шерифа
+  description: Перчатки капитана в элитном стиле.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/sherif_gloves.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Hands/sherif_gloves.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesAllianceAssasin
+  name: перчатки ассасина альянса
+  description: Боевые перчатки предназначенные для усиления навыков владельца. Встроенные наночипы напрямую посылают сигналы в нервные окончания рук, доводя движения владельца до идеала, что позволяет укладывать жертв на землю и перетаскивать их с максимальной эффективностью.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/aliance_assasin.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Hands/aliance_assasin.rsi

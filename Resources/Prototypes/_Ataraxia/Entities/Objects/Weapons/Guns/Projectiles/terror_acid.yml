@@ -1,0 +1,103 @@
+- type: entity
+  parent: BulletAcid
+  id: BulletAcidSpider
+  name: poisonous spit
+  noSpawn: true
+  components:
+    - type: Projectile
+      damage:
+        types:
+          Poison: 18
+
+- type: entity
+  parent: BulletAcid
+  id: BulletAcidDoubleSpider
+  name: poisonous spit
+  noSpawn: true
+  components:
+    - type: Projectile
+      damage:
+        types:
+          Poison: 12
+
+- type: entity
+  parent: BulletAcid
+  id: BulletAcidHeatSpider
+  name: burning spit
+  noSpawn: true
+  components:
+    - type: Projectile
+      damage:
+        types:
+          Heat: 25
+
+- type: entity
+  parent: BulletAcid
+  id: BulletSmokeTerrorSpider
+  name: smoke
+  noSpawn: true
+  components:
+  - type: Projectile
+    deleteOnCollide: false
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Effects/gen_hit.ogg
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: SmokeOnTrigger
+    duration: 20
+    spreadAmount: 10
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+
+- type: entity
+  parent: BulletAcid
+  id: BulletNeurotoxinSmokeTerrorSpider
+  name: smoke
+  noSpawn: true
+  components:
+  - type: Projectile
+    deleteOnCollide: false
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Effects/gen_hit.ogg
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: SmokeOnTrigger
+    duration: 10
+    spreadAmount: 5
+    solution:
+      reagents:
+      - ReagentId: Neurotoxin
+        Quantity: 2
+
+- type: entity
+  parent: BulletAcid
+  id: BulletNeurotoxinDrugsSmokeTerrorSpider
+  name: smoke
+  noSpawn: true
+  components:
+  - type: Projectile
+    deleteOnCollide: false
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Effects/gen_hit.ogg
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: SmokeOnTrigger
+    duration: 10
+    spreadAmount: 8
+    solution:
+      reagents:
+      - ReagentId: SpaceDrugs
+        Quantity: 3
+      - ReagentId: Neurotoxin
+        Quantity: 1

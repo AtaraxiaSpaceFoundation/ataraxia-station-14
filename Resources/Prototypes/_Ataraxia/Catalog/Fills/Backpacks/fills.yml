@@ -1,0 +1,60 @@
+- type: entity
+  parent: ClothingBackpackAdminSatchelHolding
+  id: ClothingBackpackSatchelHoldingFilled
+  name: сумка хранения
+  description: Сумка, открывающаяся в локальный карман блюспейса.
+  suffix: "Заполненный, Дебаг"
+  components:
+  - type: StorageFill
+    contents:
+      - id: EnergyBattleAxe
+      - id: RCDExperimental
+      - id: GasAnalyzer
+      - id: BluespaceFireExtinguisher
+      - id: BluespaceLightReplacer
+      - id: WeaponPulseRifle
+      - id: WeaponTaser
+      - id: ToolDebug
+      - id: ImplanterAdmeme
+      - id: ScramImplanter
+      - id: DeathAcidifierImplanter
+      - id: mantisEImplanter
+      - id: EmagUnlimited
+      - id: BluespaceSpawner
+      - id: BodyBag_Bluespace_Folded
+      - id: MedkitCombatFilled
+      - id: JetpackVoidFilled
+      - id: TrashBagBlue
+      - id: AdvMopItem
+      - id: DoubleEmergencyOxygenTankFilled
+      - id: DoubleEmergencyNitrogenTankFilled
+
+- type: entity
+  parent: ClothingBeltBluespaceTechnic
+  id: ClothingBeltBluespaceTechnicFilled
+  suffix: "Заполненный, Дебаг"
+  components:
+  - type: StorageFill
+    contents:
+      - id: PowerDrill
+      - id: JawsOfLife
+      - id: WelderExperimental
+      - id: BluespaceHoloprojectorField
+      - id: BluespaceHolofanProjector
+      - id: Tricorder
+      - id: CableApcStack
+
+- type: entity
+  noSpawn: True
+  parent: ClothingBackpackNinja
+  id: ClothingBackpackNinjaFill
+  components:
+  - type: StorageFill
+    contents:
+      - id: Wirecutter
+      - id: Screwdriver
+      - id: Wrench
+      - id: Crowbar
+      - id: Multitool
+      - id: Welder
+      - id: BoxSurvival

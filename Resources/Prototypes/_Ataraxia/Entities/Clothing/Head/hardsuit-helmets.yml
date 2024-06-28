@@ -1,0 +1,117 @@
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetEliteHardsuitInteQ
+  noSpawn: true
+  name: elite inteq hardsuit helmet
+  description: A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hardsuits/elite_inteq_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hardsuits/elite_inteq_hardsuit.rsi
+  - type: PointLight
+    radius: 6
+    energy: 3
+    color: "#FF8C00"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FlashImmunity
+  - type: EyeProtection
+
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitInteQ
+  noSpawn: true
+  name: inteq hardsuit helmet
+  description: A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hardsuits/inteq_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hardsuits/inteq_hardsuit.rsi
+  - type: PointLight
+    radius: 6
+    energy: 3
+    color: "#FF8C00"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FlashImmunity
+  - type: EyeProtection
+
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitSyndieInteQ
+  noSpawn: true
+  name: inteq hardsuit helmet
+  description: A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hardsuits/inteq_syn_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hardsuits/inteq_syn_hardsuit.rsi
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#FF8C00"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FlashImmunity
+  - type: EyeProtection
+
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitOTAAlliance
+  noSpawn: true
+  name: OTA alliance hardsuit helmet
+  description: OTA stormtrooper hardsuit helmet.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#F08080"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FlashImmunity
+  - type: EyeProtection
+
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitBluespaceTechnic
+  noSpawn: true
+  name: шлем скафандра блюспейс техника
+  description: Как божьи локоны, только круче.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hardsuits/bluespacetechnician.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hardsuits/bluespacetechnician.rsi
+  - type: PointLight
+    radius: 6
+    energy: 3
+    color: "#00FFFF"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.01
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological

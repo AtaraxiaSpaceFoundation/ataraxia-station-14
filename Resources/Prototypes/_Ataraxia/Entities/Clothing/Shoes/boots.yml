@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesBootsAllianceAssasin
+  name: силовые ботинки ассасина альянса
+  description: Пара ботинок с высоким берцем. Подошва покрыта звукопоглощающим слоем, почти полностью сводя шум шагов на нет.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Shoes/alliance_assasin.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Shoes/alliance_assasin.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepCatwalk
+      params:
+        volume: -25

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "license": "CC BY-NC-SA 4.0",
+  "copyright": "Sprited by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "acid_spit"
+    },
+    {
+      "name": "acid_heat_spit"
+    },
+    {
+      "name": "acid_double_spit"
+    },
+    {
+      "name": "acid_spit_debug"
+    },
+    {
+      "name": "claw_heal"
+    },
+    {
+      "name": "claw_melee"
+    },
+    {
+      "name": "claw_melee_alt"
+    },
+    {
+      "name": "smoke"
+    },
+    {
+      "name": "smoke_neurotoxin"
+    },
+    {
+      "name": "smoke_neurotoxin_drugs"
+    },
+    {
+      "name": "egg_birth"
+    },
+    {
+      "name": "stealth"
+    },
+    {
+      "name": "terror_web"
+    }
+  ]
+}

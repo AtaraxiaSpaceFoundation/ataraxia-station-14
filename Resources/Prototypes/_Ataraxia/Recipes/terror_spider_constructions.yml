@@ -1,0 +1,49 @@
+# GENERATOR
+- type: construction
+  name: инкубатор ужаса
+  description: Производит 10 сгустков ужаса, раз в 120 секунд.
+  id: TerrorRTSGenerator
+  graph: TerrorRTSGenerator
+  startNode: start
+  targetNode: TerrorRTSGenerator
+  category: construction-category-misc
+  icon:
+    sprite: Ataraxia/Structures/Other/TerrorSpiders/generator.rsi
+    state: state1
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: constructionGraph
+  id: TerrorRTSGenerator
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: TerrorRTSGenerator
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: TerrorWebRTS
+              name: сгустков ужаса
+              icon:
+                sprite: Ataraxia/Objects/Materials/terror_material.rsi
+                state: state1
+              amount: 30
+              doAfter: 20
+
+    - node: TerrorRTSGenerator
+      entity: TerrorRTSGenerator
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: TerrorWebRTS
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 25

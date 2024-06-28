@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC BY-NC-SA 4.0",
+  "copyright": "Sprited by PuroSlavKing (Github)",
+  "size": {
+    "x": 23,
+    "y": 19
+  },
+  "states": [
+    {
+      "name": "state2"
+    },
+    {
+      "name": "state1",
+      "delays": [
+        [
+          0.3,
+          0.3
+        ]
+      ]
+    }
+  ]
+}

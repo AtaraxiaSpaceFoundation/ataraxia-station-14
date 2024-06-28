@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC BY-NC-SA 4.0",
+  "copyright": "Edited, resprited and reshaded by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "m_snout_synthliz_long_ADJ",
+      "directions": 4
+    },
+    {
+      "name": "m_snout_synthliz_thick_ADJ",
+      "directions": 4
+    },
+    {
+      "name": "m_snout_synthliz_thicklong_ADJ",
+      "directions": 4
+    }
+  ]
+}

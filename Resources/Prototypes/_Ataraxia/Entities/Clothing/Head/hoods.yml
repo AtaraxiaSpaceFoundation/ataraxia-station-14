@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingHeadHatHoodBioGeneral
+  id: ClothingHeadHatHoodInteQHoodieHood
+  noSpawn: true
+  name: inteq hoodie hood
+  description: Maximum badness in this star system.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Hoods/inteq_hoodiehood.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Hoods/inteq_hoodiehood.rsi

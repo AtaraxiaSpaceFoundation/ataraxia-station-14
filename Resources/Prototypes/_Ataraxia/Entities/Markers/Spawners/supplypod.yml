@@ -1,0 +1,72 @@
+- type: entity
+  name: спавнер случайная грузовая капсула
+  id: SpawnRandomSupplyPod
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+        state: default_pod
+      - sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+        state: default_closed
+      - sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+        state: overlay
+  - type: RandomSpawner
+    prototypes:
+      - TargetCircleSupplyPodSyndicate1TK
+      - TargetCircleSupplyPodSyndicate5TK
+      - TargetCircleSupplyPodBlackMarketSvalinn
+      - TargetCircleSupplyPodBlackMarketMakeshiftLaser
+      - TargetCircleSupplyPodBlackMarketLaserGun
+      - TargetCircleSupplyPodBlackMarketMk58
+      - TargetCircleSupplyPodBlackMarketInteQCommissar
+      - TargetCircleSupplyPodBlackMarketShotgunImprovised
+      - TargetCircleSupplyPodBlackMarketShotgunBlunderbuss
+      - TargetCircleSupplyPodBlackMarketShotgunDoubleBarreled
+      - TargetCircleSupplyPodBlackMarketShotgunSawn
+      - TargetCircleSupplyPodBlackMarketShotgunInteQBulldog
+      - TargetCircleSupplyPodBlackMarketTeslaGun
+      - TargetCircleSupplyPodBlackMarketRifleInteQAKM
+      - TargetCircleSupplyPodBlackMarketSubMachineGunAtreides
+      - TargetCircleSupplyPodBlackMarketSubMachineGunInteQSMG
+      - TargetCircleSupplyPodBlackMarketMagazineBoxLightRifleInteQ
+      - TargetCircleSupplyPodBlackMarketMagazineBoxPistolInteQ
+      - TargetCircleSupplyPodBlackMarketMagazineBoxShotgunInteQ
+      - TargetCircleSupplyPodBlackMarketEmpGrenade
+      - TargetCircleSupplyPodBlackMarketSupermatterGrenade
+      - TargetCircleSupplyPodBlackMarketWhiteholeGrenade
+      - TargetCircleSupplyPodBlackMarketGrenadeIncendiary
+      - TargetCircleSupplyPodBlackMarketExGrenade
+      - TargetCircleSupplyPodBlackMarketC4
+      - TargetCircleSupplyPodBlackMarketSyndieMiniBomb
+      - TargetCircleSupplyPodBlackMarketClusterGrenade
+      - TargetCircleSupplyPodBlackMarketBaseBoxInteQEVA
+      - TargetCircleSupplyPodBlackMarketBaseBoxSyndicateEVA
+      - TargetCircleSupplyPodBlackMarketBaseBoxInteQPistol
+      - TargetCircleSupplyPodBlackMarketObservationskit
+      - TargetCircleSupplyPodBlackMarketChemicalSynthesisKit
+      - TargetCircleSupplyPodBlackMarketCaseAllianceAssasin
+      - TargetCircleSupplyPodBlackMarketJetpackBlackFilled
+      - TargetCircleSupplyPodBlackMarketClothingBeltInteQDropPouch
+      - TargetCircleSupplyPodBlackMarketClothingBeltInteQWebbing
+      - TargetCircleSupplyPodBlackMarketClothingBeltSyndieHolster
+      - TargetCircleSupplyPodBlackMarketRadioJammer
+      - TargetCircleSupplyPodBlackMarketClothingOuterArmorBasic
+      - TargetCircleSupplyPodBlackMarketClothingOuterCoatSyndieCapArmored
+      - TargetCircleSupplyPodBlackMarketClothingOuterArmorRiot
+      - TargetCircleSupplyPodBlackMarketClothingOuterArmorHeavy
+      - TargetCircleSupplyPodBlackMarketClothingOuterArmorBulletproof
+      - TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwat
+      - TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatSyndicate
+      - TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatInteQ
+      - TargetCircleSupplyPodBlackMarketClothingOuterHardsuitOTAAlliance
+      - TargetCircleSupplyPodBlackMarketClothingOuterHardsuitInteQ
+      - TargetCircleSupplyPodBlackMarketClothingOuterHardsuitSyndie
+      - TargetCircleSupplyPodBlackMarketClothingBackpackDuffelSyndicateCostumeClown
+      - TargetCircleSupplyPodMobGondola
+    chance: 0.95
+    rarePrototypes:
+      - TargetCircleSupplyPodSyndicate10TK
+      - TargetCircleSupplyPodSyndicate20TK
+    rareChance: 0.05

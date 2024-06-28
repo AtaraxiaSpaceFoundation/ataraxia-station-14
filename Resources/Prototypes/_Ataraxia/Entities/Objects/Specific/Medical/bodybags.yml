@@ -1,0 +1,161 @@
+- type: entity
+  parent: BodyBag
+  id: BodyBag_Bluespace_Container
+  name: блюспейс мешок для тела
+  description: Прочный блюспейс мешок, предназначенный для хранения и транспортировки трупов, и предовтвращения их гниения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/bluespace.rsi
+    layers:
+    - state: bluespacebag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: bluespacebag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: label_overlay
+      map: ["enum.BodyBagVisualLayers.Label"]
+  - type: Icon
+    sprite: Ataraxia/Objects/Specific/Medical/bluespace.rsi
+    state: bluespacebag
+  - type: EntityStorage
+    capacity: 50
+
+- type: entity
+  parent: BodyBag_Bluespace_Container
+  id: BodyBag_Bluespace_Folded
+  suffix: Сложенный
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: BodyBag
+  id: BodyBag_NT_Container
+  name: мешок для тела
+  description: Пластиковый мешок НТ, предназначенный для хранения и транспортировки трупов, и предовтвращения их гниения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/nanotrasen.rsi
+    layers:
+    - state: ntbag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: ntbag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: label_overlay
+      map: ["enum.BodyBagVisualLayers.Label"]
+  - type: Icon
+    sprite: Ataraxia/Objects/Specific/Medical/nanotrasen.rsi
+    state: ntbag
+  - type: EntityStorage
+    capacity: 1
+
+- type: entity
+  parent: BodyBag_NT_Container
+  id: BodyBag_NT_Folded
+  suffix: Сложенный
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: BodyBag
+  id: BodyBag_Prisoner_Container
+  name: тюремный мешок для тела
+  description: Пластиковый мешок, предназначенный для хранения и транспортировки трупов, и предовтвращения их гниения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/prison.rsi
+    layers:
+    - state: prisonerbag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: prisonerbag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: label_overlay
+      map: ["enum.BodyBagVisualLayers.Label"]
+  - type: Icon
+    sprite: Ataraxia/Objects/Specific/Medical/prison.rsi
+    state: prisonerbag
+  - type: EntityStorage
+    capacity: 1
+
+- type: entity
+  parent: BodyBag_Prisoner_Container
+  id: BodyBag_Prisoner_Folded
+  suffix: Сложенный
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: BodyBag
+  id: BodyBag_Radiation_Container
+  name: противорадиационный мешок для тела
+  description: Пластиковый мешок, предназначенный для хранения и транспортировки радиоактивных трупов, и предовтвращения их гниения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/radiation.rsi
+    layers:
+    - state: radiationbag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: radiationbag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: label_overlay
+      map: ["enum.BodyBagVisualLayers.Label"]
+  - type: Icon
+    sprite: Ataraxia/Objects/Specific/Medical/radiation.rsi
+    state: radiationbag
+  - type: EntityStorage
+    capacity: 1
+  - type: RadiationBlockingContainer
+    resistance: 5
+
+- type: entity
+  parent: BodyBag_Radiation_Container
+  id: BodyBag_Radiation_Folded
+  suffix: Сложенный
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: BodyBag
+  id: BodyBag_Syndicate_Container
+  name: мешок для тела
+  description: Пластиковый мешок синдиката, предназначенный для хранения и транспортировки трупов, и предовтвращения их гниения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/syndicate.rsi
+    layers:
+    - state: syndicatebag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: syndicatebag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: label_overlay
+      map: ["enum.BodyBagVisualLayers.Label"]
+  - type: Icon
+    sprite: Ataraxia/Objects/Specific/Medical/syndicate.rsi
+    state: syndicatebag
+  - type: EntityStorage
+    capacity: 1
+
+- type: entity
+  parent: BodyBag_Syndicate_Container
+  id: BodyBag_Syndicate_Folded
+  suffix: Сложенный
+  components:
+  - type: Foldable
+    folded: true

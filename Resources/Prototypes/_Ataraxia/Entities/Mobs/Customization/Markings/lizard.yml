@@ -1,0 +1,41 @@
+- type: marking
+  id: LizardHeadCobraHood
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/reptilian_parts.rsi
+    state: m_ears_cobraears_ADJ
+  - sprite: Ataraxia/Mobs/Customization/reptilian_parts.rsi
+    state: frills_hood_secondary
+
+- type: marking
+  id: SnakeLargeTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/lizard.rsi
+      state: m_tail_snakelarge
+    - sprite: Ataraxia/Mobs/Customization/lizard.rsi
+      state: m_tail_snakelarge_overlay
+
+- type: marking
+  id: WesternDragonTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/lizard.rsi
+      state: m_tail_westerndragon
+    - sprite: Ataraxia/Mobs/Customization/lizard.rsi
+      state: m_tail_westerndragon_overlay
+
+- type: marking
+  id: KangarooTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/lizard.rsi
+      state: m_tail_kangaroo

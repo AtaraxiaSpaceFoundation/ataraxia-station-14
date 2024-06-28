@@ -1,0 +1,12 @@
+- type: entity
+  parent: ClothingHeadEVAHelmetBase
+  id: ClothingHeadHelmetInteq
+  name: inteq EVA helmet
+  description: A simple, stylish EVA helmet. Designed for maximum humble space-badassery.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_eva.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_eva.rsi
+  - type: Item
+    size: Normal

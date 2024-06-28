@@ -1,0 +1,92 @@
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltInteQWebbing
+  name: inteq webbing
+  description: Unique and versatile chest mount in which you can store weapons and ammunition.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/inteq_webbing.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/inteq_webbing.rsi
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltInteQDropPouch
+  name: inteq drop pouch
+  description: Improved unloading for storing various items
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/inteq_droppouch.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/inteq_droppouch.rsi
+
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltInteQShieldBelt
+  name: inteq shield belt
+  description: Brilliant ideas came before the bullet, and the mercenaries came up with the idea of using shields not only in hardsuits.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/inteq_shieldbelt.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/inteq_shieldbelt.rsi
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+        whitelist:
+          tags:
+            - PowerCell
+            - PowerCellSmall
+#  - type: EnergyDomeGenerator
+#    damageEnergyDraw: 5
+#    domePrototype: EnergyDomeSmallOrange
+  - type: PowerCellDraw
+    drawRate: 8
+    useRate: 0
+  - type: UseDelay
+    delay: 10.0
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltBluespaceTechnic
+  suffix: "Дебаг"
+  name: пояс блюспейс техника
+  description: Нихуясибе.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/bluespacetechnic_belt.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/bluespacetechnic_belt.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltWhiteSheath
+  name: белые сабельные ножны
+  description: Стиль, блеск, всё для лучших сабель во вселенной.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/white_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/white_sheath.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltSheriffSheath
+  name: сабельные ножны шерифа
+  description: Практичность, прочность, сабля точно не окажется в вашей ноге.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Belt/sherif_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Belt/sherif_sheath.rsi

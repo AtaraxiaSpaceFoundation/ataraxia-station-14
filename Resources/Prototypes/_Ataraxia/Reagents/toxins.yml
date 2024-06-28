@@ -1,0 +1,97 @@
+- type: reagent
+  id: MutatorGoonHuman
+  name: reagent-name-mutator
+  group: Toxins
+  desc: reagent-desc-mutator
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: metallic
+  color: "#007100"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        conditions:
+          - !type:OrganType
+            type: Human
+        reagent: MutatorGoonHuman
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Polymorph
+        prototype: GoonHumanMorph
+        conditions:
+        - !type:OrganType
+          type: Animal
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: MutatorXenomorphHybrid
+  name: reagent-name-mutator
+  group: Toxins
+  desc: reagent-desc-mutator
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: metallic
+  color: "#007100"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        reagent: MutatorXenomorphHybrid
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Polymorph
+        prototype: XenomorphHybridMorph
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: MutatorPredator
+  name: reagent-name-mutator
+  group: Toxins
+  desc: reagent-desc-mutator
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: metallic
+  color: "#007100"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        reagent: MutatorPredator
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Polymorph
+        prototype: PredatorMorph
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: MutatorWalter
+  name: reagent-name-mutator
+  group: Toxins
+  desc: reagent-desc-mutator
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: metallic
+  color: "#007100"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        reagent: MutatorWalter
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-sick" ]
+        probability: 0.5
+      - !type:Polymorph
+        prototype: WalterMorph
+        conditions:
+        - !type:ReagentThreshold
+          min: 5

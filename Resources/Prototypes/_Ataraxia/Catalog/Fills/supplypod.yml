@@ -1,0 +1,2038 @@
+# КАПИТАН ШКАФ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodCaptainDrobe
+  suffix: Под | КапитанШкаф
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Machines/VendingMachines/capdrobe.rsi
+    state: off
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledCapatainDrobe
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleNanoTrasen
+  id: SupplyPodCapsuleFilledCapatainDrobe
+  noSpawn: true
+  components:
+  - type: EntityStorage
+    capacity: 2
+  - type: StorageFill
+    contents:
+    - id: CaptainDrobe
+    - id: ImprovedWrench
+
+# БЛЮСПЕЙС ТЕХНИК
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBluespaceTechinc
+  suffix: Под | Блюспейс Техник
+  components:
+  - type: TimedDespawn
+    lifetime: 3
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBluespaceTechnic
+    intervalSeconds: 2
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleBluespace
+  id: SupplyPodCapsuleFilledBluespaceTechnic
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: RandomHumanoidSpawnerBluespaceTechnic
+
+# ГОНДОЛА В ГОНДОЛЕ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodMobGondola
+  suffix: Под | Гондола в Гондоле
+  components:
+  - type: Icon
+    sprite: Ataraxia/Mobs/Animals/gondola.rsi
+    state: gondola_body_medium
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledMobGondola
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleGondola
+  id: SupplyPodCapsuleFilledMobGondola
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: MobGondola
+
+# ТЕЛЕКРИСТАЛЛЫ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSyndicate1TK
+  suffix: Под | 1ТК
+  components:
+  - type: Icon
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledSyndicate1TK
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledSyndicate1TK
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: Telecrystal1
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSyndicate5TK
+  suffix: Под | 5ТК
+  components:
+  - type: Icon
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledSyndicate5TK
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledSyndicate5TK
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: Telecrystal5
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSyndicate10TK
+  suffix: Под | 10ТК
+  components:
+  - type: Icon
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledSyndicate10TK
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledSyndicate10TK
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: Telecrystal10
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSyndicate20TK
+  suffix: Под | 20ТК
+  components:
+  - type: Icon
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledSyndicate20TK
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledSyndicate20TK
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: Telecrystal
+
+# ЧЁРНЫЙ РЫНОК - ОРУЖИЕ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketSvalinn
+  suffix: Под | Лазерный пистолет Свалинн
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketSvalinn
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketSvalinn
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLaserSvalinn
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketMakeshiftLaser
+  suffix: Под | Самодельный лазерный пистолет
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketMakeshiftLaser
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketMakeshiftLaser
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponMakeshiftLaser
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketLaserGun
+  suffix: Под | Старомодный лазерный бластер
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketLaserGun
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketLaserGun
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLaserGun
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketMk58
+  suffix: Под | МК 58
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Pistols/mk58.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketMk58
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketMk58
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolMk58
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketInteQCommissar
+  suffix: Под | Комиссар
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Weapons/Guns/Pistols/inteq_commissar.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketInteQCommissar
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketInteQCommissar
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolInteQCommissar
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketShotgunImprovised
+  suffix: Под | Импровизированный дробовик
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketShotgunImprovised
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketShotgunImprovised
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunImprovisedLoaded
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketShotgunBlunderbuss
+  suffix: Под | Мушкетон
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketShotgunBlunderbuss
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketShotgunBlunderbuss
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunBlunderbuss
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketShotgunDoubleBarreled
+  suffix: Под | Двухствольное ружьё
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketShotgunDoubleBarreled
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketShotgunDoubleBarreled
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunDoubleBarreled
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketShotgunSawn
+  suffix: Под | Обрез
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Shotguns/sawn.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketShotgunSawn
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketShotgunSawn
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunSawn
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketShotgunInteQBulldog
+  suffix: Под | Бульдог Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketShotgunInteQBulldog
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketShotgunInteQBulldog
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunInteQBulldog
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketTeslaGun
+  suffix: Под | Тесла-пушка
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/Battery/tesla_gun.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketTeslaGun
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketTeslaGun
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponTeslaGun
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketRifleInteQAKM
+  suffix: Под | АКМ Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketRifleInteQAKM
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketRifleInteQAKM
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleInteQAKM
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketSubMachineGunAtreides
+  suffix: Под | Атрейдес
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketSubMachineGunAtreides
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketSubMachineGunAtreides
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunAtreides
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketSubMachineGunInteQSMG
+  suffix: Под | СМГ Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Weapons/Guns/SMGs/inteq_smg.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketSubMachineGunInteQSMG
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketSubMachineGunInteQSMG
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponSubMachineGunInteQSMG
+
+# ЧЁРНЫЙ РЫНОК - ПАТРОНЫ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketMagazineBoxLightRifleInteQ
+  suffix: Под | Коробка патрон .30
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    state: rifle
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketMagazineBoxLightRifleInteQ
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketMagazineBoxLightRifleInteQ
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxLightRifleInteQ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketMagazineBoxPistolInteQ
+  suffix: Под | Коробка патрон .35
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    state: pistol
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketMagazineBoxPistolInteQ
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketMagazineBoxPistolInteQ
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxPistolInteQ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketMagazineBoxShotgunInteQ
+  suffix: Под | Коробка патрон .50
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/inteq_ammobox.rsi
+    state: shotgun
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketMagazineBoxShotgunInteQ
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketMagazineBoxShotgunInteQ
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxShotgunInteQ
+
+# ЧЁРНЫЙ РЫНОК - ВЗРЫВЧАТКА
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketEmpGrenade
+  suffix: Под | ЕМП граната
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/empgrenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketEmpGrenade
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketEmpGrenade
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: EmpGrenade
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketSupermatterGrenade
+  suffix: Под | Граната суперматерии
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/supermattergrenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketSupermatterGrenade
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketSupermatterGrenade
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: SupermatterGrenade
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketWhiteholeGrenade
+  suffix: Под | Граната белой дыры
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/whiteholegrenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketWhiteholeGrenade
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketWhiteholeGrenade
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: WhiteholeGrenade
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketGrenadeIncendiary
+  suffix: Под | Зажигательная граната
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/pyrogrenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketGrenadeIncendiary
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketGrenadeIncendiary
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: GrenadeIncendiary
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketExGrenade
+  suffix: Под | Разрывная граната
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/grenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketExGrenade
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketExGrenade
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ExGrenade
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketC4
+  suffix: Под | С4
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Bombs/c4.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketC4
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketC4
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: C4
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketSyndieMiniBomb
+  suffix: Под | Мини-бомба
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/syndgrenade.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketSyndieMiniBomb
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketSyndieMiniBomb
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: SyndieMiniBomb
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClusterGrenade
+  suffix: Под | Кластерная граната
+  components:
+  - type: Icon
+    sprite: Objects/Weapons/Grenades/clusterbomb.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClusterGrenade
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClusterGrenade
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClusterGrenade
+
+# ЧЁРНЫЙ РЫНОК - НАБОРЫ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBoxInteQEVA
+  suffix: Под | ЕВА Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_eva.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBoxInteQEVA
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketBoxInteQEVA
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxInteQEVA
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBoxSyndicateEVA
+  suffix: Под | ЕВА Синдикат
+  components:
+  - type: Icon
+    sprite: Clothing/Head/Helmets/eva_syndicate.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBoxSyndicateEVA
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBoxSyndicateEVA
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxSyndicateEVA
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBoxInteQPistol
+  suffix: Под | Набор Комиссар
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/inteq_box.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBoxInteQPistol
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketBoxInteQPistol
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxInteQPistol
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketObservationskit
+  suffix: Под | Набор наблюдателя
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/syndicate_box.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketObservationskit
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketObservationskit
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: Observationskit
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketChemicalSynthesisKit
+  suffix: Под | Набор запрещённых химикатов
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/syndicate_box.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketChemicalSynthesisKit
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketChemicalSynthesisKit
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ChemicalSynthesisKit
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketCaseAllianceAssasin
+  suffix: Под | Кейс ассасина альянса
+  components:
+  - type: Icon
+    sprite: Ataraxia/Objects/Storage/alliance_case.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketCaseAllianceAssasin
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketCaseAllianceAssasin
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: CaseAllianceAssasin
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundlePPSH41
+  suffix: Под | Набор PPSH41
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/ppsh41/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundlePPSH41
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundlePPSH41
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledPPSH41
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleP90
+  suffix: Под | Набор P90
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/p90.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleP90
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleP90
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledP90
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleMG42
+  suffix: Под | Набор MG42
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/LMGs/mg42/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleMG42
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleMG42
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledMG42
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleAKMS
+  suffix: Под | Набор AKMS
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/akms/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleAKMS
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleAKMS
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledAKMS
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleSPAS12
+  suffix: Под | Набор SPAS12
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Shotguns/spas-16/big.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleSPAS12
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleSPAS12
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledSPAS12
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleV31
+  suffix: Под | Набор V31
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/v31/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleV31
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleV31
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledV31
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleSVD
+  suffix: Под | Набор SVD
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Snipers/dragunov/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleSVD
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleSVD
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledSVD
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleMP38
+  suffix: Под | Набор MP38
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/mp38/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleMP38
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleMP38
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledMP38
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleAKSU
+  suffix: Под | Набор AKSU
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/aksu.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleAKSU
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleAKSU
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateFilledAKSU
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketBundleFlamethrower
+  suffix: Под | Набор Огнемёта
+  components:
+  - type: Icon
+    sprite: Backmen/Objects/Weapons/Gunsx64/Flamethrowers/M6/big.rsi
+    state: base
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketBundleFlamethrower
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketBundleFlamethrower
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: CrateFlamethrowerBundle
+
+# ЧЁРНЫЙ РЫНОК - УТИЛИТЫ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketJetpackBlackFilled
+  suffix: Под | Чёрный джетпак
+  components:
+  - type: Icon
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketJetpackBlackFilled
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketJetpackBlackFilled
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: JetpackBlackFilled
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingBeltInteQDropPouch
+  suffix: Под | Разгрузка Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/Belt/inteq_droppouch.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingBeltInteQDropPouch
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingBeltInteQDropPouch
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBeltInteQDropPouch
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingBeltInteQWebbing
+  suffix: Под | РПС Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/Belt/inteq_webbing.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingBeltInteQWebbing
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingBeltInteQWebbing
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBeltInteQWebbing
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingBeltSyndieHolster
+  suffix: Под | Плечевая кобура Синдиката
+  components:
+  - type: Icon
+    sprite: Clothing/Belt/syndieholster.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingBeltSyndieHolster
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketClothingBeltSyndieHolster
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBeltSyndieHolster
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketRadioJammer
+  suffix: Под | Глушитель радио
+  components:
+  - type: Icon
+    sprite: Objects/Devices/jammer.rsi
+    state: jammer
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketRadioJammer
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketRadioJammer
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: RadioJammer
+
+# ЧЁРНЫЙ РЫНОК - БРОНЯ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterArmorBasic
+  suffix: Под | Бронежилет
+  components:
+  - type: Icon
+    sprite: White/Clothing/OuterClothing/kevlar.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterArmorBasic
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterArmorBasic
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterArmorBasic
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterCoatSyndieCapArmored
+  suffix: Под | Бронированный плащ синдиката
+  components:
+  - type: Icon
+    sprite: Clothing/OuterClothing/Coats/syndicate/coatsyndiecaparmored.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterCoatSyndieCapArmored
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterCoatSyndieCapArmored
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterCoatSyndieCapArmored
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterArmorRiot
+  suffix: Под | Противоударная броня
+  components:
+  - type: Icon
+    sprite: Clothing/OuterClothing/Armor/riot.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterArmorRiot
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterArmorRiot
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterArmorRiot
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterArmorHeavy
+  suffix: Под | Тяжёлый бронекостюм
+  components:
+  - type: Icon
+    sprite: Clothing/OuterClothing/Armor/heavy.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterArmorHeavy
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterArmorHeavy
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterArmorHeavy
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterArmorBulletproof
+  suffix: Под | Пуленепробиваемый жилет
+  components:
+  - type: Icon
+    sprite: Clothing/OuterClothing/Armor/bulletproof.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterArmorBulletproof
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterArmorBulletproof
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterArmorBulletproof
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwat
+  suffix: Под | Шлем спецназа
+  components:
+  - type: Icon
+    sprite: Clothing/Head/Helmets/swat.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwat
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwat
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadHelmetSwat
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatSyndicate
+  suffix: Под | Шлем спецназа Синдикат
+  components:
+  - type: Icon
+    sprite: Clothing/Head/Helmets/swat_syndicate.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwatSyndicate
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwatSyndicate
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadHelmetSwatSyndicate
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingHeadHelmetSwatInteQ
+  suffix: Под | Шлем спецназа Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_swat.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwatInteQ
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingHeadHelmetSwatInteQ
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadHelmetSwatInteQ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitOTAAlliance
+  suffix: Под | Скафандр ОТА альянса
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitOTAAlliance
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitOTAAlliance
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitOTAAlliance
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitInteQ
+  suffix: Под | Скафандр Интек
+  components:
+  - type: Icon
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_hardsuit.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitInteQ
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleDefault
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitInteQ
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitInteQ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingOuterHardsuitSyndie
+  suffix: Под | Скафандр Синдиката
+  components:
+  - type: Icon
+    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitSyndie
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleSyndicate
+  id: SupplyPodCapsuleFilledBlackMarketClothingOuterHardsuitSyndie
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitSyndie
+
+# ЧЁРНЫЙ РЫНОК - РАЗНОЕ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBlackMarketClothingBackpackDuffelSyndicateCostumeClown
+  suffix: Под | Набор клоуна
+  components:
+  - type: Icon
+    sprite: Clothing/Back/Duffels/clown.rsi
+    state: icon
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleFilledBlackMarketClothingBackpackDuffelSyndicateCostumeClown
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: SupplyPodCapsuleHonk
+  id: SupplyPodCapsuleFilledBlackMarketClothingBackpackDuffelSyndicateCostumeClown
+  noSpawn: true
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingBackpackDuffelSyndicateCostumeClown

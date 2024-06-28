@@ -1,0 +1,49 @@
+- type: body
+  id: Predator
+  name: "predator"
+  root: torso
+  slots:
+    head:
+      part: HeadPredator
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoPredator
+      organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
+        stomach: OrganReptilianStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+    right arm:
+      part: RightArmPredator
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmPredator
+      connections:
+      - left hand
+    right hand:
+      part: RightHandPredator
+    left hand:
+      part: LeftHandPredator
+    right leg:
+      part: RightLegPredator
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegPredator
+      connections:
+      - left foot
+    right foot:
+      part: RightFootPredator
+    left foot:
+      part: LeftFootPredator

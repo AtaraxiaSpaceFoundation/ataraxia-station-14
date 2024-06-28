@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Взято от моего отчима",
+  "states":
+  [
+    {
+      "name": "walter",
+      "directions": 4
+    },
+
+    {
+      "name": "walter_dead",
+      "directions": 1
+    }
+  ]
+}

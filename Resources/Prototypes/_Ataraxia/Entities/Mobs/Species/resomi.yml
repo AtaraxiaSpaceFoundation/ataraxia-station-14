@@ -1,0 +1,198 @@
+#- type: entity
+#  save: false
+#  name: Urist MacResomi
+#  parent: BaseMobSpeciesOrganic
+#  id: BaseMobResomi
+#  abstract: true
+#  components:
+#  - type: HumanoidAppearance
+#    species: Resomi
+#  - type: Hunger
+#  - type: Puller
+#    needsHands: false
+#  - type: Thirst
+#  - type: Icon
+#    sprite: Ataraxia/Mobs/Species/Resomi/parts.rsi
+#    state: full
+#  - type: Body
+#    prototype: Resomi
+#    requiredLegs: 2
+#  - type: Sprite
+#    layers:
+#    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+#    - map: [ "enum.HumanoidVisualLayers.Head" ]
+#    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+#    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+#    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+#    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+#    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+#    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+#    - shader: StencilClear
+#      sprite: Ataraxia/Mobs/Species/Resomi/parts.rsi
+#      state: l_leg
+#    - shader: StencilMask
+#      map: ["enum.HumanoidVisualLayers.StencilMask"]
+#      sprite: Mobs/Customization/masking_helpers.rsi
+#      state: unisex_full
+#      visible: false
+#    - map: ["enum.HumanoidVisualLayers.LFoot"]
+#    - map: ["enum.HumanoidVisualLayers.RFoot"]
+#    - map: ["jumpsuit"]
+#    - map: ["enum.HumanoidVisualLayers.LHand"]
+#    - map: ["enum.HumanoidVisualLayers.RHand"]
+#    - map: [ "gloves" ]
+#    - map: [ "shoes" ]
+#    - map: [ "outerClothing" ]
+#    - map: [ "eyes" ]
+#    - map: [ "belt" ]
+#    - map: [ "id" ]
+#    - map: [ "neck" ]
+#    - map: [ "back" ]
+#    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+#    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+#    - map: [ "ears" ]
+#    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+#    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+#    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+#    - map: [ "mask" ]
+#    - map: [ "head" ]
+#    - map: [ "pocket1" ]
+#    - map: [ "pocket2" ]
+#    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+#      color: "#ffffff"
+#      sprite: Objects/Misc/handcuffs.rsi
+#      state: body-overlay-2
+#      visible: false
+#    - map: [ "clownedon" ]
+#      sprite: "Effects/creampie.rsi"
+#      state: "creampie_human"
+#      visible: false
+#  - type: Butcherable
+#    butcheringType: Spike
+#    spawned:
+#    - id: FoodMeatChicken
+#      amount: 3
+#  - type: Speech
+#    speechSounds: Lizard
+#  - type: Vocal
+#    sounds:
+#      Male: UnisexResomi
+#      Female: UnisexResomi
+#      Unsexed: UnisexResomi
+#  - type: Damageable
+#    damageContainer: Biological
+#    damageModifierSet: Resomi
+#  - type: Stamina
+#    critThreshold: 90
+#  - type: MeleeWeapon
+#    hidden: true
+#    soundHit:
+#      path: /Audio/Weapons/pierce.ogg
+#    angle: 30
+#    animation: WeaponArcPunch
+#    damage:
+#      types:
+#        Piercing: 2
+#  - type: Temperature
+#    heatDamageThreshold: 410
+#    coldDamageThreshold: 273.15
+#    currentTemperature: 313.15
+#    specificHeat: 46
+#    coldDamage:
+#      types:
+#        Cold : 0.1
+#    heatDamage:
+#      types:
+#        Heat : 0.1
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed : 2.9
+#    baseSprintSpeed : 4.7
+#  - type: Perishable
+#  - type: Inventory
+#    templateId: resomi
+#    speciesId: resomi
+#  - type: DamageVisuals
+#    thresholds: [ 20, 40, 100 ]
+#    targetLayers:
+#    - "enum.HumanoidVisualLayers.Chest"
+#    - "enum.HumanoidVisualLayers.Head"
+#    - "enum.HumanoidVisualLayers.LArm"
+#    - "enum.HumanoidVisualLayers.LLeg"
+#    - "enum.HumanoidVisualLayers.RArm"
+#    - "enum.HumanoidVisualLayers.RLeg"
+#    - "enum.HumanoidVisualLayers.RFoot"
+#    - "enum.HumanoidVisualLayers.LFoot"
+#    - "enum.HumanoidVisualLayers.RHand"
+#    - "enum.HumanoidVisualLayers.LHand"
+#    - "enum.HumanoidVisualLayers.Tail"
+#    damageOverlayGroups:
+#      Brute:
+#        sprite: Ataraxia/Mobs/Effects/brute_damage_resomi.rsi
+#        color: "#D514F7" #"#5F7BB0"
+#      Burn:
+#        sprite: Ataraxia/Mobs/Effects/burn_damage_resomi.rsi
+#  - type: FireVisuals
+#    sprite: Ataraxia/Mobs/Effects/onfire.rsi
+#    normalState: Resomi_burning
+#    alternateState: Resomi_burning
+
+#- type: entity
+#  name: Urist McResomi
+#  parent: BaseSpeciesDummy
+#  id: MobResomiDummy
+#  noSpawn: true
+#  description: A dummy resomi meant to be used in character setup.
+#  components:
+#  - type: HumanoidAppearance
+#    species: Resomi
+#  - type: Sprite
+#    drawdepth: Mobs
+#    noRot: true
+#    layers:
+#    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+#    - map: [ "enum.HumanoidVisualLayers.Head" ]
+#    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+#    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+#    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+#    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+#    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+#    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+#    - shader: StencilClear
+#      sprite: Ataraxia/Mobs/Species/Resomi/parts.rsi
+#      state: l_leg
+#    - shader: StencilClear
+#      sprite: Ataraxia/Mobs/Species/Resomi/parts.rsi
+#      state: l_leg
+#    - shader: StencilMask
+#      map: ["enum.HumanoidVisualLayers.StencilMask"]
+#      sprite: Mobs/Customization/masking_helpers.rsi
+#      state: unisex_full
+#      visible: false
+#    - map: ["enum.HumanoidVisualLayers.LFoot"]
+#    - map: ["enum.HumanoidVisualLayers.RFoot"]
+#    - map: ["jumpsuit"]
+#    - map: ["enum.HumanoidVisualLayers.LHand"]
+#    - map: ["enum.HumanoidVisualLayers.RHand"]
+#    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+#      color: "#ffffff"
+#      sprite: Objects/Misc/handcuffs.rsi
+#      state: body-overlay-2
+#      visible: false
+#    - map: [ "gloves" ]
+#    - map: [ "shoes" ]
+#    - map: [ "outerClothing" ]
+#    - map: [ "eyes" ]
+#    - map: [ "belt" ]
+#    - map: [ "id" ]
+#    - map: [ "neck" ]
+#    - map: [ "back" ]
+#    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+#    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+#    - map: [ "ears" ]
+#    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+#    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+#    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+#    - map: [ "mask" ]
+#    - map: [ "head" ]
+#    - map: [ "pocket1" ]
+#    - map: [ "pocket2" ]

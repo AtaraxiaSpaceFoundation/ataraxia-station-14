@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "By DELUZ for Andromeda-13",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "error",
+      "directions":1,
+      "delays":[
+                [
+                0.1,
+                0.1,
+                0.1,
+                0.1
+                ]
+               ]
+    }]
+}

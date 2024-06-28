@@ -1,0 +1,20 @@
+- type: parallax
+  id: PebbleStation
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Ataraxia/Parallaxes/Pebble.png"
+      slowness: 0.98
+      scale: 0.5,0.5
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Ataraxia/Parallaxes/Asteroids.png"
+      slowness: 0.97
+      scale: 1.2,1.2
+      scrolling: "0.018, 0.01"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Ataraxia/Parallaxes/Asteroids.png"
+      slowness: 0.90
+      scale: 0.95,0.95
+      scrolling: "-0.0075, -0.009"

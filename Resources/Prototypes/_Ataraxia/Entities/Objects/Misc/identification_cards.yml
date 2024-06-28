@@ -1,0 +1,137 @@
+- type: entity
+  parent: IDCardStandard
+  id: InteQVanguardLeaderIDCard
+  suffix: "Коммандер Авангарда"
+  name: inteq ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: card_black
+    - state: sub_department
+      color: "#9c4300"
+    - state: frame_head
+      color: "#9c4300"
+    - state: assigned_syndicate
+    - state: trim_deathcommando
+  - type: IdCard
+    jobTitle: Коммандер Авангарда
+    jobIcon: JobIconInteQ
+  - type: Access
+    tags:
+    - InteQVanguardLeader
+    - InteQVanguard
+    - Maintenance
+
+- type: entity
+  parent: IDCardStandard
+  id: InteQVanguardIDCard
+  suffix: "Авангард"
+  name: inteq ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: card_black
+    - state: sub_department
+      color: "#9c4300"
+    - state: frame_default
+      color: "#9c4300"
+    - state: assigned_syndicate
+    - state: trim_deathcommando
+  - type: IdCard
+    jobTitle: Авангард
+    jobIcon: JobIconInteQ
+  - type: Access
+    tags:
+    - InteQVanguard
+    - Maintenance
+
+- type: entity
+  parent: BaseItem # No tags
+  id: RatQueenIDCard
+  suffix: "Королева крыс"
+  name: ID карта Королевы крыс
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Misc/id_cards.rsi # Ataraxia
+    scale: 0.9, 0.9 # Ataraxia
+    layers:
+    - state: card_red
+    - state: sub_department
+      color: "#9c4300"
+    - state: frame_head
+      color: "#ff7e00"
+    - state: assigned_centcom
+    - state: idratqueen
+  - type: Clothing
+    slots:
+    - idcard
+  - type: Item
+    size: Small
+    heldPrefix: default
+    storedRotation: -90
+  - type: Access
+    tags:
+    - Maintenance
+  - type: IdCard
+    jobTitle: Королева крыс
+    jobIcon: JobIconRat
+  - type: StationRecordKeyStorage
+  - type: StealTarget
+    stealGroup: IDCard
+
+- type: entity
+  parent: IDCardStandard
+  id: BluespaceTechnicIDCard
+  suffix: "Дебаг"
+  name: ID карта Блюспейс техника
+  components:
+  - type: Sprite
+    layers:
+    - state: card_centcom
+    - state: sub_department
+      color: "#0066ff"
+    - state: frame_head
+      color: "#00437c"
+    - state: assigned_centcom
+    - state: idbluespacetechnic
+  - type: IdCard
+    jobTitle: Блюспейс Техник
+    jobIcon: JobIconBluespaceTechnic
+  - type: Access
+    tags:
+    - CentralCommand
+    - EmergencyShuttleRepealAll
+    - Captain
+    - HeadOfPersonnel
+    - ChiefEngineer
+    - ChiefMedicalOfficer
+    - HeadOfSecurity
+    - ResearchDirector
+    - Command
+    - Cryogenics
+    - Security
+    - Detective
+    - Armory
+    - Brig
+    - Lawyer
+    - Engineering
+    - Medical
+    - Quartermaster
+    - Salvage
+    - Cargo
+    - Research
+    - Service
+    - Maintenance
+    - External
+    - Janitor
+    - Theatre
+    - Bar
+    - Chemistry
+    - Kitchen
+    - Chapel
+    - Hydroponics
+    - Atmospherics
+    - InteQVanguardLeader
+    - InteQVanguard
+    - NuclearOperative
+    - SyndicateAgent

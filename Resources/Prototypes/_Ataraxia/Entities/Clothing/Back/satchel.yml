@@ -1,0 +1,25 @@
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelInteQ
+  name: inteq satchel
+  description: A tough satchel with extra pockets.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Back/Satchels/inteq_satchel.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchelHolding
+  id: ClothingBackpackAdminSatchelHolding # Версия без надетого спрайта
+  noSpawn: true
+  name: сумка хранения
+  description: Сумка, открывающаяся в локальный карман блюспейса.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Back/Satchels/holding.rsi
+    state: icon
+    layers:
+    - state: icon
+    - state: icon-unlit
+      shader: unshaded
+  - type: Unremoveable
+    deleteOnDrop: true

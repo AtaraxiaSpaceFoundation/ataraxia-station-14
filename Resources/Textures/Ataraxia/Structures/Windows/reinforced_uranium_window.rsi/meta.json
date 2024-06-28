@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CC BY-NC-SA 4.0",
+    "copyright": "Sprited and edited by PuroSlavKing (Github)",
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "states": [
+      {
+        "name": "full"
+      },
+      {
+        "name": "ruwindow0",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow1",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow2",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow3",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow4",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow5",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow6",
+        "directions": 4
+      },
+      {
+        "name": "ruwindow7",
+        "directions": 4
+      }
+    ]
+  }

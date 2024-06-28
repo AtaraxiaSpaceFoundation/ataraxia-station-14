@@ -1,0 +1,63 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: mantisImplant
+  name: клинки богомола
+  description: Этот имплант вставляет в ваши руки пару смертоносных клинков, позволяющих грациозно устранить свою жертву.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionToggleMantis
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHandsGlovesMantisBlade
+      slot: gloves
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: TriggerImplantAction
+
+- type: entity
+  id: ActionToggleMantis
+  name: Активировать клинки богомола
+  description: Убедитесь, что вы не носите перчатки.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 3 # equip noise spam.
+    event: !type:ToggleClothingEvent
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Ataraxia/Clothing/Hands/mantis.rsi
+      state: icon
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: mantisEImplant
+  name: энергетические клинки богомола
+  description: Этот имплант вставляет в ваши руки пару смертоносных энергетических клинков, позволяющих грациозно устранить свою жертву.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionToggleEMantis
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHandsGlovesMantisEBlade
+      slot: gloves
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: TriggerImplantAction
+
+- type: entity
+  id: ActionToggleEMantis
+  name: Активировать энергетические клинки богомола
+  description: Убедитесь, что вы не носите перчатки.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 3 # equip noise spam.
+    event: !type:ToggleClothingEvent
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Ataraxia/Clothing/Hands/mantiseblade.rsi
+      state: icon

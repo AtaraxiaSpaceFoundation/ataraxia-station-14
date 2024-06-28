@@ -1,0 +1,61 @@
+# Elite InteQ hardsuit
+- type: entity
+  parent: SuitStorageBase
+  id: SuitStorageEliteHardsuitInteQ
+  name: хранилище скафандра
+  suffix: Элитный Скафандр Интек
+  description: Необычное высокотехнологичное хранилище, предназначенное для хранения космических скафандров.
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: ClothingOuterEliteHardsuitInteQ
+        - id: ClothingMaskNeckGaiter
+  - type: AccessReader
+    access: [["InteQVanguard"]]
+
+# InteQ hardsuit
+- type: entity
+  parent: SuitStorageBase
+  id: SuitStorageHardsuitInteQ
+  name: хранилище скафандра
+  suffix: Скафандр Интек
+  description: Необычное высокотехнологичное хранилище, предназначенное для хранения космических скафандров.
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: ClothingOuterHardsuitInteQ
+        - id: ClothingMaskNeckGaiter
+  - type: AccessReader
+    access: [["InteQVanguard"]]
+
+# Syndie InteQ hardsuit
+- type: entity
+  parent: SuitStorageBase
+  id: SuitStorageHardsuitSyndieInteQ
+  name: хранилище скафандра
+  suffix: Скафандр Интек (Синдикат)
+  description: Необычное высокотехнологичное хранилище, предназначенное для хранения космических скафандров.
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: ClothingOuterHardsuitSyndieInteQ
+        - id: ClothingMaskNeckGaiter
+  - type: AccessReader
+    access: [["InteQVanguard"]]
+
+# OTA hardsuit
+- type: entity
+  parent: SuitStorageBase
+  id: SuitStorageHardsuitOTAAlliance
+  name: хранилище скафандра
+  suffix: Скафандр ОТА
+  description: Необычное высокотехнологичное хранилище, предназначенное для хранения космических скафандров.
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: ClothingOuterHardsuitOTAAlliance
+        - id: ClothingMaskNeckGaiter

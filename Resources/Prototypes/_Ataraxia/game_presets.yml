@@ -1,0 +1,62 @@
+- type: gamePreset
+  id: AtaraxiaEvent
+  name: ataraxia-event-title
+  showInVote: false 
+  description: ataraxia-event-description
+  rules:
+  - BasicRoundstartVariation
+  - WageScheduler #backmen: currency
+
+- type: gamePreset
+  id: AtaraxiaExtended
+  name: ataraxia-extended-title
+  alias:
+    - Secret
+    - secret
+    - sekrit
+  showInVote: true
+  description: ataraxia-extended-description
+  rules:
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: AtaraxiaLight
+  name: ataraxia-light-title
+  showInVote: true 
+  description: ataraxia-light-description
+  minPlayers: 15
+  maxPlayers: 25
+  rules:
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+  - SubGamemodesRule
+
+- type: gamePreset
+  id: AtaraxiaMedium
+  name: ataraxia-medium-title
+  showInVote: true
+  description: ataraxia-medium-description
+  minPlayers: 20
+  rules:
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+  - Traitor
+  - SubGamemodesRule
+
+- type: gamePreset
+  id: AtaraxiaHard
+  name: ataraxia-hard-title
+  showInVote: true
+  description: ataraxia-hard-description
+  minPlayers: 25
+  rules:
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+  - Traitor
+  - Revolutionary
+  - SubGamemodesRule

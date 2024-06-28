@@ -1,0 +1,92 @@
+- type: entity
+  parent: ClothingOuterHardsuitSyndieCommander
+  id: ClothingOuterEliteHardsuitInteQ
+  name: elite inteq hardsuit
+  description: An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/elite_inteq_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/elite_inteq_hardsuit.rsi
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetEliteHardsuitInteQ
+
+- type: entity
+  parent: ClothingOuterHardsuitSyndie
+  id: ClothingOuterHardsuitInteQ
+  name: inteq hardsuit
+  description: An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_hardsuit.rsi
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitInteQ
+
+- type: entity
+  parent: ClothingOuterHardsuitSyndie
+  id: ClothingOuterHardsuitSyndieInteQ
+  name: inteq hardsuit
+  description: An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_syn_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_syn_hardsuit.rsi
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSyndieInteQ
+
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitOTAAlliance
+  name: OTA alliance hardsuit
+  description: OTA Stormtrooper Hardsuit.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitOTAAlliance
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitBluespaceTechnic
+  suffix: "Дебаг"
+  name: скафандр блюспейс техника
+  description: Сила блюспейса во всей красе.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/bluespacetechnician.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/bluespacetechnician.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.02
+        Slash: 0.02
+        Piercing: 0.02
+        Heat: 0.02
+        Radiation: 0
+        Caustic: 0
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitBluespaceTechnic
+  - type: ClothingSpeedModifier
+    walkModifier: 1.2
+    sprintModifier: 1.2

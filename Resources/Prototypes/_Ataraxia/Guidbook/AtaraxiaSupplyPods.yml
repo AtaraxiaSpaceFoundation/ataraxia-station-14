@@ -1,0 +1,61 @@
+# ГРУЗОВЫЕ КАПСУЛЫ
+
+- type: guideEntry
+  id: AtaraxiaSupplyPods
+  name: guide-entry-supplypods
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods.xml"
+  children:
+    - SupplyPodCapsuleBluespace
+    - SupplyPodCapsuleCult
+    - SupplyPodCapsuleDeathSquad
+    - SupplyPodCapsuleDefault
+    - SupplyPodCapsuleGondola
+    - SupplyPodCapsuleHonk
+    - SupplyPodCapsuleNanoTrasen
+    - SupplyPodCapsuleOrange
+    - SupplyPodCapsuleSyndicate
+
+- type: guideEntry
+  id: SupplyPodCapsuleBluespace
+  name: supplypod-name-bluespace
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Bluespace.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleCult
+  name: supplypod-name-cult
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Cult.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleDeathSquad
+  name: supplypod-name-deathsquad
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_DeathSquad.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleDefault
+  name: supplypod-name-default
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Default.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleGondola
+  name: supplypod-name-gondola
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Gondola.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleHonk
+  name: supplypod-name-honk
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Honk.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleNanoTrasen
+  name: supplypod-name-nanotrasen
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_NanoTrasen.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleOrange
+  name: supplypod-name-orange
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Orange.xml"
+
+- type: guideEntry
+  id: SupplyPodCapsuleSyndicate
+  name: supplypod-name-syndicate
+  text: "/ServerInfo/_Ataraxia/Guidebook/SupplyPods/SupplyPods/SupplyPod_Syndicate.xml"

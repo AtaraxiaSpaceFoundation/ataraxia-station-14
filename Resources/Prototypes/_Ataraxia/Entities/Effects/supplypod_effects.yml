@@ -1,0 +1,225 @@
+﻿- type: entity
+  id: BaseTargetCircleSpawnEffect
+  abstract: true
+  suffix: НЕ МАППИТЬ
+  name: красный круг
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: TimedDespawn
+      lifetime: 13
+    - type: EvaporationSparkle
+    - type: Transform
+      noRot: true
+      anchored: true
+    - type: Sprite
+      layers:
+        - sprite: Ataraxia/Effects/telegraph.rsi
+          state: target_circle
+          shader: unshaded
+      netsync: false
+      drawdepth: FloorObjects
+      color: "#FF0000"
+    - type: PointLight
+      color: "#FF0000"
+    - type: Timer
+
+# КРУГИ
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodDefault
+  suffix: Пустой | Стандартный
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodDefault.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleDefault
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodBluespace
+  suffix: Пустой | Блюспейс
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodBluespace.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleBluespace
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodCult
+  suffix: Пустой | Культ
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodCult.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleCult
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodGondola
+  suffix: Пустой | Гондола
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodGondola.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleGondola
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodOrange
+  suffix: Пустой | Апельсин
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodOrange.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleOrange
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodHonk
+  suffix: Пустой | Хонк
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodHonk.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleHonk
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodNanoTrasen
+  suffix: Пустой | НТ
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodNanoTrasen.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleNanoTrasen
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSquad
+  suffix: Пустой | Сквад
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodSquad.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleDeathSquad
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20
+
+- type: entity
+  parent: BaseTargetCircleSpawnEffect
+  id: TargetCircleSupplyPodSyndicate
+  suffix: Пустой | Синдикат
+  components:
+  - type: Icon
+    sprite: Ataraxia/Structures/Storage/SupplyPods/SupplyPodSyndicate.rsi
+    state: default_pod
+  - type: TimedSpawner
+    prototypes:
+      - SupplyPodCapsuleSyndicate
+    intervalSeconds: 12
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Ataraxia/Misc/supplypod.ogg
+      params:
+        variation: 0.3
+        volume: 4
+        maxDistance: 20

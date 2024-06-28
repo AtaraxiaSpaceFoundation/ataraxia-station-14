@@ -1,0 +1,14 @@
+# Tier 1
+
+- type: technology
+  id: RNDPinpointersResearch
+  name: ataraxia-research-technology-rnd-pinpoiners-research
+  icon:
+    sprite: Ataraxia/Objects/Devices/pinpointer.rsi
+    state: pinpointer
+  discipline: Experimental
+  tier: 1
+  cost: 2500
+  recipeUnlocks:
+  - PinpointerAnomaly
+  - PinpointerArtifact

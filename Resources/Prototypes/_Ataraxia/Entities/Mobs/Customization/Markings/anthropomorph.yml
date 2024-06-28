@@ -1,0 +1,2485 @@
+# МОРДА
+
+- type: marking
+  id: AnthropomorphShoutBeaktiny
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_beaktiny
+
+- type: marking
+  id: AnthropomorphShoutBigbeak
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bigbeak
+
+- type: marking
+  id: AnthropomorphShoutBigmandible
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bigmandible
+
+- type: marking
+  id: AnthropomorphShoutBird
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bird
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bird_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bird_overlay_2
+
+- type: marking
+  id: AnthropomorphShoutBovie
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bovine
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bovine_overlay
+
+- type: marking
+  id: AnthropomorphShoutChemlight
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_chemlight
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_chemlight_overlay
+
+- type: marking
+  id: AnthropomorphShoutCorvidbeak
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_corvidbeak
+
+- type: marking
+  id: AnthropomorphShoutDeer
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_deer
+
+- type: marking
+  id: AnthropomorphShoutDuck
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_duck
+
+- type: marking
+  id: AnthropomorphShoutEasternDragon
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_easterndnw
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_easterndnw_overlay
+
+- type: marking
+  id: AnthropomorphShoutEasternDragonUsiki
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_easterndnw
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_easterndnw_overlay
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_easterndnw_usiki
+
+- type: marking
+  id: AnthropomorphShoutElephant
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_elephant
+
+- type: marking
+  id: AnthropomorphShoutFox
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_fox
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_fox_overlay
+
+- type: marking
+  id: AnthropomorphShoutGoose
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_goose
+
+- type: marking
+  id: AnthropomorphShoutHanubus
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hanubus
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hanubus_overlay
+
+- type: marking
+  id: AnthropomorphShoutHorse
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hhorse
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hhorse_overlay
+
+- type: marking
+  id: AnthropomorphShoutJackal
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hjackal
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hjackal_overlay
+
+- type: marking
+  id: AnthropomorphShoutPanda
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hpanda
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hpanda_overlay
+
+- type: marking
+  id: AnthropomorphShoutShark
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hshark
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hshark_overlay
+
+- type: marking
+  id: AnthropomorphShoutSpots
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hspots
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hspots_overlay
+
+- type: marking
+  id: AnthropomorphShoutHusky
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_husky
+
+- type: marking
+  id: AnthropomorphShoutHuskyAlt
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_huskyalt
+
+- type: marking
+  id: AnthropomorphShoutZebra
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hzebra
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_hzebra_overlay
+
+- type: marking
+  id: AnthropomorphShoutCanid
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_lcanid
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_lcanid_overlay
+
+- type: marking
+  id: AnthropomorphShoutMagus
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_magus
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_magus_overlay
+
+- type: marking
+  id: AnthropomorphShoutNoodle
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_noodle
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_noodle_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_noodle_overlay_2
+
+- type: marking
+  id: AnthropomorphShoutOrca
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_orca
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_orca_overlay
+
+- type: marking
+  id: AnthropomorphShoutOtie
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_otie
+
+- type: marking
+  id: AnthropomorphShoutOwl
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_owl
+
+- type: marking
+  id: AnthropomorphShoutPede
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_pede
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_pede_overlay
+
+- type: marking
+  id: AnthropomorphShoutProbos
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_proboscis
+
+- type: marking
+  id: AnthropomorphShoutRabbit
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rabbit
+
+- type: marking
+  id: AnthropomorphShoutRenamon
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_renamon
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_renamon_overlay
+
+- type: marking
+  id: AnthropomorphShoutRhino
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rhino
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rhino_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rhino_overlay_2
+
+- type: marking
+  id: AnthropomorphShoutRhinoBeetle
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rhinobeetle
+
+- type: marking
+  id: AnthropomorphShoutRodent
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rodent
+
+- type: marking
+  id: AnthropomorphShoutRodenthick
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_rodentthick
+
+- type: marking
+  id: AnthropomorphShoutRound
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_round
+
+- type: marking
+  id: AnthropomorphShoutRoundAlt
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_roundlight
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_roundlight_overlay
+
+- type: marking
+  id: AnthropomorphShoutScanid
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_scanid
+
+- type: marking
+  id: AnthropomorphShoutScarab
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_scarab
+
+- type: marking
+  id: AnthropomorphShoutSergal
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_sergal
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_sergal_overlay
+
+- type: marking
+  id: AnthropomorphShoutSharkAlt
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_shark
+
+- type: marking
+  id: AnthropomorphShoutSharp
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_sharp
+
+- type: marking
+  id: AnthropomorphShoutSharpAlt
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_sharplight
+
+- type: marking
+  id: AnthropomorphShoutShort
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_short
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_short_overlay
+
+- type: marking
+  id: AnthropomorphShoutSmallMandible
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_smallmandible
+
+- type: marking
+  id: AnthropomorphShoutSnub
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_snub
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_snub_overlay
+
+- type: marking
+  id: AnthropomorphShoutSpider
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_spider
+
+- type: marking
+  id: AnthropomorphShoutStubby
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_stubby
+
+- type: marking
+  id: AnthropomorphShoutTajaran
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_tajaran
+
+- type: marking
+  id: AnthropomorphShoutTarantula
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_tarantula
+
+- type: marking
+  id: AnthropomorphShoutToucan
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_toucan
+
+- type: marking
+  id: AnthropomorphShoutVulp
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_vulp
+
+- type: marking
+  id: AnthropomorphShoutWah
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_wah
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_wah_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_wah_overlay_2
+
+- type: marking
+  id: AnthropomorphShoutWolf
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_wolf
+
+# ГОЛОВА
+
+- type: marking
+  id: AnthropomorphHeadBug
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bug
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_bug_overlay
+
+- type: marking
+  id: AnthropomorphHeadHaydeeMedical
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_extra_haydeemedical
+
+- type: marking
+  id: AnthropomorphHeadMagus
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_extra_magus
+
+- type: marking
+  id: AnthropomorphHeadGuilmon
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_guilmon
+
+- type: marking
+  id: AnthropomorphHeadSkullbird
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_skullbird
+
+- type: marking
+  id: AnthropomorphHeadSloog
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_sloog
+
+- type: marking
+  id: AnthropomorphHeadSkullDog
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_extra_skulldog
+
+- type: marking
+  id: AnthropomorphHeadSkullDogAlt
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_snouts.rsi
+    state: m_snout_extra_skulldogALT
+
+# РОГА
+
+- type: marking
+  id: AnthropomorphHeadSideGuilmon
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_horns_guilmon
+
+- type: marking
+  id: AnthropomorphHeadSideGoatHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_goathorns
+
+- type: marking
+  id: AnthropomorphHeadSideHornRound
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_horn1
+
+# УШИ
+
+- type: marking
+  id: AnthropomorphHeadSideAvali
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_avali
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_avali_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideAxolotl
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_axolotl
+
+- type: marking
+  id: AnthropomorphHeadSideBat
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bat
+
+- type: marking
+  id: AnthropomorphHeadSideBear
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bear
+
+- type: marking
+  id: AnthropomorphHeadSideBigWolf
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bigwolf
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bigwolf_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideEBunny
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bunny
+
+- type: marking
+  id: AnthropomorphHeadSideBunny
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bunny_ADJ
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bunny_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideBunnyRound
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bunny2
+
+- type: marking
+  id: AnthropomorphHeadSideBunnyAlt
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_bunnyalt
+
+- type: marking
+  id: AnthropomorphHeadSideCatBig
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_catbig
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_catbig_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideCatNormal
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_catnormal
+
+- type: marking
+  id: AnthropomorphHeadSideChemlight
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_chemlight
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_chemlight_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_chemlight_overlay_2
+
+- type: marking
+  id: AnthropomorphHeadSideCow
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_cow
+
+- type: marking
+  id: AnthropomorphHeadSideDeer
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_deer
+
+- type: marking
+  id: AnthropomorphHeadSideEasternDragon
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_easternd
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_easternd_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_easternd_overlay_2
+
+- type: marking
+  id: AnthropomorphHeadSideEevee
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_eevee
+
+- type: marking
+  id: AnthropomorphHeadSideElephant
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_elephant
+
+- type: marking
+  id: AnthropomorphHeadSideElf
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Dwarf, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_elf
+
+- type: marking
+  id: AnthropomorphHeadSideFennec
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_fennec
+
+- type: marking
+  id: AnthropomorphHeadSideFish
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_fish
+
+- type: marking
+  id: AnthropomorphHeadSideFoldedBack
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_foldedback
+
+- type: marking
+  id: AnthropomorphHeadSideFox
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_fox
+
+- type: marking
+  id: AnthropomorphHeadSideGoat
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_goat
+
+- type: marking
+  id: AnthropomorphHeadSideGret
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_gret
+
+- type: marking
+  id: AnthropomorphHeadSideHawk
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_hawk
+
+- type: marking
+  id: AnthropomorphHeadSideJackal
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_jackal
+
+- type: marking
+  id: AnthropomorphHeadSideJellyfish
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_jellyfish
+
+- type: marking
+  id: AnthropomorphHeadSideKangaroo
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_kangaroo
+
+- type: marking
+  id: AnthropomorphHeadSideMoth
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_moth
+
+- type: marking
+  id: AnthropomorphHeadSideMouse
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_mouse
+
+- type: marking
+  id: AnthropomorphHeadSideMurid
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_murid
+
+- type: marking
+  id: AnthropomorphHeadSideNoodleDragon
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_noodledragon
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_noodledragon_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideOtie
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_otie
+
+- type: marking
+  id: AnthropomorphHeadSidePede
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_pede
+
+- type: marking
+  id: AnthropomorphHeadSidePlumeant
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_plumeant
+
+- type: marking
+  id: AnthropomorphHeadSidePointy
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_pointy
+
+- type: marking
+  id: AnthropomorphHeadSidePossum
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_possum
+
+- type: marking
+  id: AnthropomorphHeadSideRabbitLong
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_rabbit
+
+- type: marking
+  id: AnthropomorphHeadSideRabbitAlt
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_rabbitalt
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_rabbitalt_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_rabbitalt_overlay_2
+
+- type: marking
+  id: AnthropomorphHeadSideRenamon
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_renamon
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_renamon_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideRoundant
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_roundant
+
+- type: marking
+  id: AnthropomorphHeadSideSergal
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_sergal
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_sergal_overlay
+
+- type: marking
+  id: AnthropomorphHeadSideShadekin
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_shadekin
+
+- type: marking
+  id: AnthropomorphHeadSideThinant
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_thinant
+
+- type: marking
+  id: AnthropomorphHeadSideWolf
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears.rsi
+    state: m_ears_wolf
+
+#- type: marking
+#  id: AnthropomorphHeadSideBunnyLongUps
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy_overlay_1
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy_overlay_2
+
+#- type: marking
+#  id: AnthropomorphHeadSideBunnyLongUpsAlt
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy2
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy2_overlay_1
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bnnuy2_overlay_2
+
+#- type: marking
+#  id: AnthropomorphHeadSideBunnyLongTall
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bunnytall
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_bunnytall_overlay
+
+#- type: marking
+#  id: AnthropomorphHeadSideJaclalopeLong
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_jackalope
+
+#- type: marking
+#  id: AnthropomorphHeadSideSandFoxLong
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_sandfox
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_sandfox_overlay
+
+#- type: marking
+#  id: AnthropomorphHeadSideShadekinRound
+#  bodyPart: HeadSide
+#  markingCategory: HeadSide
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_shadekinround
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_ears_32x64.rsi
+#    state: m_ears_shadekinround_overlay
+
+# ХВОСТ
+
+- type: marking
+  id: AnthropomorphTailAilurus
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_ailurus
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_ailurus_overlay
+
+- type: marking
+  id: AnthropomorphTailAxolotl
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_axolotl
+
+- type: marking
+  id: AnthropomorphTailBear
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bear
+
+- type: marking
+  id: AnthropomorphTailBee
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee_overlay_2
+
+- type: marking
+  id: AnthropomorphTailBeeJalo
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee_overlay_2
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_bee_overlay_jalo
+
+- type: marking
+  id: AnthropomorphTailCapra
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_capra
+
+- type: marking
+  id: AnthropomorphTailCatBig
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_catbig
+
+- type: marking
+  id: AnthropomorphTailChemlight
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_chemlight
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_chemlight_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_chemlight_overlay_2
+
+- type: marking
+  id: AnthropomorphTailCow
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_cow
+
+- type: marking
+  id: AnthropomorphTailDataShark
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_datashark
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_datashark_overlay
+
+- type: marking
+  id: AnthropomorphTailDeer
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_deer
+
+- type: marking
+  id: AnthropomorphTailEasternDragon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_easternd
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_easternd_overlay
+
+- type: marking
+  id: AnthropomorphTailEevee
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_eevee
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_eevee_overlay
+
+- type: marking
+  id: AnthropomorphTailFennec
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fennec
+
+- type: marking
+  id: AnthropomorphTailFish
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fish
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fish_overlay
+
+- type: marking
+  id: AnthropomorphTailFluffly
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fluffy
+
+- type: marking
+  id: AnthropomorphTailFox
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fox
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_fox_overlay
+
+- type: marking
+  id: AnthropomorphTailGecko
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_gecko
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_gecko_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_gecko_overlay_2
+
+- type: marking
+  id: AnthropomorphTailGuilmon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_guilmon
+
+- type: marking
+  id: AnthropomorphTailHawk
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Harpy]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_hawk
+
+- type: marking
+  id: AnthropomorphTailHorse
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_horse
+
+- type: marking
+  id: AnthropomorphTailHusky
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_husky
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_husky_overlay
+
+- type: marking
+  id: AnthropomorphTailInsect
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_insect_overlay_1
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_insect_overlay_2
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_insect
+
+- type: marking
+  id: AnthropomorphTailKisune
+  bodyPart: Tail
+  markingCategory: Tail
+  sponsorOnly: true
+  speciesRestriction: [Anthropomorph, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_kitsune
+
+- type: marking
+  id: AnthropomorphTailLunasune
+  bodyPart: Tail
+  markingCategory: Tail
+  sponsorOnly: true
+  speciesRestriction: [Anthropomorph, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_lunasune
+
+- type: marking
+  id: AnthropomorphTailSabresune
+  bodyPart: Tail
+  markingCategory: Tail
+  sponsorOnly: true
+  speciesRestriction: [Anthropomorph, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_sabresune
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_sabresune_overlay
+
+- type: marking
+  id: AnthropomorphTailLab
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_lab
+
+- type: marking
+  id: AnthropomorphTailLongPigeon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Harpy]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_longpigeon
+
+- type: marking
+  id: AnthropomorphTailNightStalker
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_nightstalker
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_nightstalker_overlay
+
+- type: marking
+  id: AnthropomorphTailOrca
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_orca
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_orca_overlay
+
+- type: marking
+  id: AnthropomorphTailOtie
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_otie
+
+- type: marking
+  id: AnthropomorphTailPede
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_pede
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_pede_overlay
+
+- type: marking
+  id: AnthropomorphTailRabbit
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_rabbit
+
+- type: marking
+  id: AnthropomorphTailRaccon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_raccoon
+
+- type: marking
+  id: AnthropomorphTailSergal
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_sergal
+
+- type: marking
+  id: AnthropomorphTailShadekin
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shadekin
+
+- type: marking
+  id: AnthropomorphTailShadekingShort
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shadekinshort
+
+- type: marking
+  id: AnthropomorphTailShark
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shark
+
+- type: marking
+  id: AnthropomorphTailShepherd
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shepherd
+
+- type: marking
+  id: AnthropomorphTailShortHawk
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Harpy]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shorthawk
+
+- type: marking
+  id: AnthropomorphTailShortPigeon
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Harpy]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_shortpigeon
+
+- type: marking
+  id: AnthropomorphTailSkunk
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_skunk
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_skunk_overlay
+
+- type: marking
+  id: AnthropomorphTailSnake
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_snaketail
+
+- type: marking
+  id: AnthropomorphTailSquirrel
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_squirrel
+
+- type: marking
+  id: AnthropomorphTailSuccubus
+  bodyPart: Tail
+  markingCategory: Tail
+  sponsorOnly: true
+  speciesRestriction: [Anthropomorph, Dwarf, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_succubus
+
+- type: marking
+  id: AnthropomorphTailSwallow
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_swallow
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_swallow_overlay
+
+- type: marking
+  id: AnthropomorphTailMaw
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_tailmaw
+
+- type: marking
+  id: AnthropomorphTailTentacle
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_tentacle
+
+- type: marking
+  id: AnthropomorphTailWolf
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_tails.rsi
+    state: m_tail_wolf
+
+# ГРУДЬ 
+
+- type: marking
+  id: AnthropomorphChestAbsarms
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: absarms_chest
+
+- type: marking
+  id: AnthropomorphChestAbsbelly
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: absbelly_chest
+
+- type: marking
+  id: AnthropomorphChestBat
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: bat_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: bat_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestBee
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: bee_chest
+
+- type: marking
+  id: AnthropomorphChestBovine
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: bovine_chest
+
+- type: marking
+  id: AnthropomorphChestChemlight
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestCorgi
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: corgi_chest
+
+- type: marking
+  id: AnthropomorphChestCorvid
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: corvid_chest
+
+- type: marking
+  id: AnthropomorphChestDalmation
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: dalmation_chest
+
+- type: marking
+  id: AnthropomorphChestDeer
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: deer_chest
+
+- type: marking
+  id: AnthropomorphChestDog
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: dog_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: dog_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestEasternDragon
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: easternd_chest
+
+- type: marking
+  id: AnthropomorphChestEevee
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: eevee_chest
+
+- type: marking
+  id: AnthropomorphChestTemplate
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: female_template
+
+- type: marking
+  id: AnthropomorphChestFennec
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: fennec_chest
+
+- type: marking
+  id: AnthropomorphChestFloof
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: floof_chest
+
+- type: marking
+  id: AnthropomorphChestFox
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: fox_chest
+
+- type: marking
+  id: AnthropomorphChestGlossV1
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian, Dwarf, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: gloss_chest_v1
+
+- type: marking
+  id: AnthropomorphChestGlossV2
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian, Dwarf, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: gloss_chest_v2
+
+- type: marking
+  id: AnthropomorphChestHawk
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: hawk_chest
+
+- type: marking
+  id: AnthropomorphChestHusky
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: husky_chest
+
+- type: marking
+  id: AnthropomorphChestHyena
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: hyena_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: hyena_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestLightTiger
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: ltiger_chest
+
+- type: marking
+  id: AnthropomorphChestMoth
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: moth_chest
+
+- type: marking
+  id: AnthropomorphChestNoodleDragon
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: noodledragon_chest
+
+- type: marking
+  id: AnthropomorphChestNoodleDragonDots
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: noodledragon_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: noodledragon_chest_dots
+
+- type: marking
+  id: AnthropomorphChestDots
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: noodledragon_chest_dots
+
+- type: marking
+  id: AnthropomorphChestOrca
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: orca_chest
+
+- type: marking
+  id: AnthropomorphChestOtie
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: otie_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: otie_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestOtter
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: otter_chest
+
+- type: marking
+  id: AnthropomorphChestPanter
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: panther_chest
+
+- type: marking
+  id: AnthropomorphChestPigeon
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: pigeon_chest
+
+- type: marking
+  id: AnthropomorphChestPossum
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: possum_chest
+
+- type: marking
+  id: AnthropomorphChestRaccoonAlt
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: raccalt_chest
+
+- type: marking
+  id: AnthropomorphChestRaccoon
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: raccoon_chest
+
+- type: marking
+  id: AnthropomorphChestRedPanda
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: redpanda_chest
+
+- type: marking
+  id: AnthropomorphChestSabresune
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Dwarf, Human]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: sabresune_chest
+
+- type: marking
+  id: AnthropomorphChestSergal
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: sergal_chest
+
+- type: marking
+  id: AnthropomorphChestShark
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: shark_chest
+
+- type: marking
+  id: AnthropomorphChestShepherd
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: shepherd_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: shepherd_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestShrike
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: shrike_chest
+
+- type: marking
+  id: AnthropomorphChestSkunk
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: skunk_chest
+
+- type: marking
+  id: AnthropomorphChestSloog
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: sloog_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: sloog_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestTajaran
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: tajaran_chest
+
+- type: marking
+  id: AnthropomorphChestTiger
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: tiger_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: tiger_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestWolf
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: wolf_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: wolf_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestSynthLizardLight
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/synthliz_body_markings.rsi
+    state: synthlizlights_chest
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/synthliz_body_markings.rsi
+    state: synthlizlights_chest_overlay
+
+- type: marking
+  id: AnthropomorphChestSynthLizardCutes
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/synthliz_body_markings.rsi
+    state: synthlizscutes_chest
+
+- type: marking
+  id: AnthropomorphChestSynthLizardPecs
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/synthliz_body_markings.rsi
+    state: synthlizpecs_chest
+
+- type: marking
+  id: AnthropomorphChestSynthLizardSplates
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/synthliz_body_markings.rsi
+    state: synthlizsplates_chest
+
+# ОВЕРЛЕЙ
+
+- type: marking
+  id: AnthropomorphNeckOverlayInsectFluffFlat
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_flat
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_flat_overlay
+
+- type: marking
+  id: AnthropomorphNeckOverlayHyenaFluff
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_hyena
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_hyena_overlay
+
+- type: marking
+  id: AnthropomorphNeckOverlayHyenaStripesFluff
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_hyena
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_hyena_overlay
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_hyena_stripes
+
+- type: marking
+  id: AnthropomorphNeckOverlayRenamonFluff
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_renamon
+
+- type: marking
+  id: AnthropomorphNeckOverlayInsectFluffSoft
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_soft
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/neck_fluff.rsi
+    state: m_insect_fluff_soft_overlay
+
+# TODO переместить куда-то, или переделать, нихуя не красятся. Доделать.
+#- type: marking
+#  id: AnthropomorphChestOverlayAngelMoth
+#  bodyPart: HeadTop
+#  markingCategory: Overlay
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+#    state: m_insect_wings_angelmoth
+
+#- type: marking
+#  id: AnthropomorphChestOverlayAspen
+#  bodyPart: HeadTop
+#  markingCategory: Overlay
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+#    state: m_insect_wings_aspen
+
+- type: marking
+  id: AnthropomorphChestOverlayBeetle
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_beetle
+
+#- type: marking
+#  id: AnthropomorphChestOverlayDelirious
+#  bodyPart: HeadTop
+#  markingCategory: Overlay
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+#    state: m_insect_wings_delirious
+
+- type: marking
+  id: AnthropomorphChestOverlayDelta
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_delta
+
+- type: marking
+  id: AnthropomorphChestOverlayDragonAlt
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph, Reptilian]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_dragonalt
+
+#- type: marking
+#  id: AnthropomorphChestOverlayDreamhead
+#  bodyPart: HeadTop
+#  markingCategory: Overlay
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+#    state: m_insect_wings_dreamhead
+
+- type: marking
+  id: AnthropomorphChestOverlayInsect
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_insect
+
+- type: marking
+  id: AnthropomorphChestOverlayMiniBat
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_minibat
+
+- type: marking
+  id: AnthropomorphChestOverlayMiniFeather
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_minifeather
+
+- type: marking
+  id: AnthropomorphChestOverlayStraight
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_straight
+
+- type: marking
+  id: AnthropomorphChestOverlaySwept
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_swept
+
+- type: marking
+  id: AnthropomorphChestOverlayTinyBat
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_tinybat
+
+- type: marking
+  id: AnthropomorphChestOverlayTinyFeather
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_tinyfeather
+
+- type: marking
+  id: AnthropomorphChestOverlayVariable
+  bodyPart: HeadTop
+  markingCategory: Overlay
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/wings.rsi
+    state: m_insect_wings_variable
+
+# РУКИ
+
+- type: marking
+  id: AnthropomorphLArmChemlight
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_l_hand
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_l_hand_overlay
+
+- type: marking
+  id: AnthropomorphRArmChemlight
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_r_hand
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: chemlight_r_hand_overlay
+
+- type: marking
+  id: AnthropomorphLArmPanther
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: panther_l_hand
+
+- type: marking
+  id: AnthropomorphRArmPanther
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Anthropomorph]
+  sprites:
+  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+    state: panther_r_hand
+
+# НОГИ
+
+#- type: marking
+#  id: AnthropomorphLLegChemlight
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: chemlight_l_leg_digi
+
+#- type: marking
+#  id: AnthropomorphRLegChemlight
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: chemlight_r_leg_digi
+
+#- type: marking
+#  id: AnthropomorphLLegAvian
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: avian_l_leg_digi
+
+#- type: marking
+#  id: AnthropomorphRLegAvian
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: avian_r_leg_digi
+
+#- type: marking
+#  id: AnthropomorphLLegDeoxys
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: deoxys_l_leg
+
+#- type: marking
+#  id: AnthropomorphRLegDeoxys
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: deoxys_r_leg
+
+#- type: marking
+#  id: AnthropomorphLLegEasternDragon
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph, Reptilian]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: easternd_l_leg
+
+#- type: marking
+#  id: AnthropomorphRLegEasternDragon
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph, Reptilian]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: easternd_r_leg
+
+#- type: marking
+#  id: AnthropomorphLLegKogti
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: kogti
+
+#- type: marking
+#  id: AnthropomorphRLegKogti
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: kogti
+
+#- type: marking
+#  id: AnthropomorphLLegPanther
+#  bodyPart: LLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: panther_l_leg
+
+#- type: marking
+#  id: AnthropomorphRLegPanther
+#  bodyPart: RLeg
+#  markingCategory: Legs
+#  speciesRestriction: [Anthropomorph]
+#  sprites:
+#  - sprite: Ataraxia/Mobs/Customization/Anthropomorph/mam_markings.rsi
+#    state: panther_r_leg

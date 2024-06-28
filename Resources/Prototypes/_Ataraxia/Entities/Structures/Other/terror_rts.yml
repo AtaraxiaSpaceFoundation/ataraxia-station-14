@@ -1,0 +1,45 @@
+- type: entity
+  parent: BaseStructure
+  id: TerrorRTSGenerator
+  name: incubator of terror
+  description: Produces 10 clots of terror, once every 120 seconds.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Other/TerrorSpiders/generator.rsi
+    state: state1
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+      - TerrorWebRTS10
+    chance: 1
+    intervalSeconds: 120
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: InteractionOutline
+  - type: Damageable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 250
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/gib1.ogg
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              TerrorWebRTS5:
+                min: 0
+                max: 1
+  - type: InteractionPopup
+    successChance: 0.8
+    interactSuccessString: petting-success-generic
+    interactFailureString: petting-failure-generic
+    interactSuccessSound:
+      path: /Audio/Animals/snake_hiss.ogg
+  - type: Construction
+    graph: TerrorRTSGenerator
+    node: TerrorRTSGenerator

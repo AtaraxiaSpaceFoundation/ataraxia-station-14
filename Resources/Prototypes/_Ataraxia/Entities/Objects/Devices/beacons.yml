@@ -1,0 +1,215 @@
+- type: entity
+  parent: BaseItem
+  id: BeaconCuratorRelic
+  name: beacon relics
+  description: A beacon that delivers ancient and not-so-ancient relics from various eras, times, and places to the user.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+#  - type: ActivatableUI
+#    key: enum.SelectWeaponUi.Key
+#    inHandsOnly: true
+#    closeOnHandDeselect: true
+#  - type: UserInterface
+#    interfaces:
+#    - key: enum.SelectWeaponUi.Key
+#      type: NullRodBui
+#  - type: NullRod
+#    weapons:
+#    - ClothingBackpackNinjaCuratorPack
+#    - ClothingBackpackDuffelCuratorSyndie
+#    - ClothingBackpackDuffelCuratorInteQ
+#    - ClothingBackpackDuffelCuratorLavaLand
+#    - ClothingBackpackDuffelCuratorTemplar
+#    - ClothingBackpackDuffelCuratorSamurai
+#    - ClothingBackpackDuffelCuratorPirate
+#    - ClothingBackpackDuffelCuratorHotlineMiami
+
+- type: entity
+  parent: BaseItem
+  id: BeaconCaptainDrobe
+  name: beacon CaptainDrobe
+  description: The beacon delivers the CaptainDrobe to the desired point.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodCaptainDrobe
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconBlueSpaceTechnic
+  name: beacon bluespace technic
+  description: Beacon for calling bluespace technic.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodBluespaceTechinc
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# ГРУЗОВЫЕ КАПСУЛЫ
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodDefault
+  suffix: Пустой | Обычный
+  name: beacon supply pod
+  description: Beacon for calling supply pod.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodDefault
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodBluespace
+  suffix: Пустой | Блюспейс
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodBluespace
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodCult
+  suffix: Пустой | Культ
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodCult
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodGondola
+  suffix: Пустой | Гондола
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodGondola
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodOrange
+  suffix: Пустой | Апельсин
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodOrange
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodHonk
+  suffix: Пустой | Хонк
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodHonk
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodNanoTrasen
+  suffix: Пустой | НТ
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodNanoTrasen
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodSquad
+  suffix: Пустой | Сквад
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodSquad
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BeaconSupplyPodSyndicate
+  suffix: Пустой | Синдикат
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/device.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: SpawnItemsOnUse
+    items:
+    - id: TargetCircleSupplyPodSyndicate
+    sound:
+      path: /Audio/Effects/unwrap.ogg

@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionPlasmaGeneration
+  name: plasmatransfer-action-name
+  description: plasmatransfer-action-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Ataraxia/Interface/Actions/xenomorph.rsi/plasma_transfer.png
+    event: !type:SericultureActionEvent
+    useDelay: 5
+
+# когда-нибудь тут будет действие по сбросу семян

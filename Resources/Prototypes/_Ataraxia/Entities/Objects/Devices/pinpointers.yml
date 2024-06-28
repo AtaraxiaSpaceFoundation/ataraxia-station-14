@@ -1,0 +1,45 @@
+- type: entity
+  parent: PinpointerBase
+  id: PinpointerAnomaly
+  name: anomaly tracker
+  components:
+  - type: Pinpointer
+    component: Anomaly
+    mediumDistance: 24
+    closeDistance: 12
+    reachedDistance: 5
+    precision: 0.2
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/pinpointer.rsi
+    layers:
+    - state: pinpointer
+      color: "#94388B"
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinpointer_screen
+    - state: pinpointer_led
+      color: "#447994"
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]
+
+- type: entity
+  parent: PinpointerBase
+  id: PinpointerArtifact
+  name: artifact tracker
+  components:
+  - type: Pinpointer
+    component: Artifact
+    mediumDistance: 24
+    closeDistance: 12
+    reachedDistance: 5
+    precision: 0.02
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/pinpointer.rsi
+    layers:
+    - state: pinpointer
+      color: "#C350B7"
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinpointer_screen
+    - state: pinpointer_led
+      color: "#44944A"
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]

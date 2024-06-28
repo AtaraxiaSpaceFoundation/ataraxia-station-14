@@ -1,0 +1,46 @@
+# ИГРОВЫЕ РАСЫ
+
+- type: guideEntry
+  id: AtaraxiaSpecies
+  name: guide-entry-species
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/Species.xml"
+  children:
+    - XenomorphHybrid
+    - Anthropomorph
+    - AtaraxiaSpeciesOther
+
+- type: guideEntry
+  id: XenomorphHybrid
+  name: species-name-xenomorph-hybrid
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/XenomorphHybrid/XenomorphHybrid.xml"
+
+- type: guideEntry
+  id: Anthropomorph
+  name: species-name-anthropomorph
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/Anthropomorph/Anthropomorph.xml"
+
+# НЕ ИГРОВЫЕ РАСЫ
+
+- type: guideEntry
+  id: AtaraxiaSpeciesOther
+  name: guide-entry-species-other
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/SpeciesOther.xml"
+  children:
+    - Predator
+    - GoonHuman
+    - Resomi
+
+- type: guideEntry
+  id: Predator
+  name: species-name-predator
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/Other/Predator.xml"
+
+- type: guideEntry
+  id: GoonHuman
+  name: species-name-goonhuman
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/Other/GoonHuman.xml"
+
+- type: guideEntry
+  id: Resomi
+  name: species-name-resomi
+  text: "/ServerInfo/_Ataraxia/Guidebook/Species/Other/Resomi.xml"

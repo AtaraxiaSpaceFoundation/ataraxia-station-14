@@ -1,0 +1,39 @@
+- type: entity
+  id: WindowResinMembraneXenomorph
+  parent: Window
+  name: resin membrane
+  description: "Slimy and sticky mass."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Windows/resin_membrane.rsi
+    state: full
+  - type: Icon
+    sprite: Ataraxia/Structures/Windows/resin_membrane.rsi
+    state: full
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
+  - type: Construction
+    deconstructionTarget: null
+    graph: Window
+    node: window
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

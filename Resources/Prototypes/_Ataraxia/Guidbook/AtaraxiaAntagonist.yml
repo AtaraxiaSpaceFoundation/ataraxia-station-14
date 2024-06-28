@@ -1,0 +1,134 @@
+# АНТАГОНИСТЫ
+
+- type: guideEntry
+  id: AtaraxiaAntagonist
+  name: guide-entry-antagonist
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist.xml"
+  children:
+    - TerrorSpiders
+    - Headcrabs
+    - InteQAgent
+    - RatQueen
+
+- type: guideEntry
+  id: InteQAgent
+  name: antagonist-name-inteqagent
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/InteQAgent.xml"
+
+- type: guideEntry
+  id: RatQueen
+  name: antagonist-name-ratqueen
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/RatQueen.xml"
+
+#- type: guideEntry
+#  id: Skibidi
+#  name: antagonist-name-skibidi
+#  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Skibidi.xml"
+
+- type: guideEntry
+  id: TerrorSpiders
+  name: antagonist-name-terror-spiders
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders.xml"
+  children:
+    - TerrorSpiderDefiler
+    - TerrorSpiderDestroyer
+    - TerrorSpiderDrone
+    - TerrorSpiderGuardian
+    - TerrorSpiderHealer
+    - TerrorSpiderKnight
+    - TerrorSpiderLurker
+    - TerrorSpiderMother
+    - TerrorSpiderPrince
+    - TerrorSpiderPrincess
+    - TerrorSpiderQueen
+    - TerrorSpiderReaper
+    - TerrorSpiderWidow
+
+- type: guideEntry
+  id: TerrorSpiderDefiler
+  name: antagonist-name-terror-spider-defiler
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Defiler.xml"
+
+- type: guideEntry
+  id: TerrorSpiderDestroyer
+  name: antagonist-name-terror-spider-destroyer
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Destroyer.xml"
+
+- type: guideEntry
+  id: TerrorSpiderDrone
+  name: antagonist-name-terror-spider-drone
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Drone.xml"
+
+- type: guideEntry
+  id: TerrorSpiderGuardian
+  name: antagonist-name-terror-spider-guardian
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Guardian.xml"
+
+- type: guideEntry
+  id: TerrorSpiderHealer
+  name: antagonist-name-terror-spider-healer
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Healer.xml"
+
+- type: guideEntry
+  id: TerrorSpiderKnight
+  name: antagonist-name-terror-spider-knight
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Knight.xml"
+
+- type: guideEntry
+  id: TerrorSpiderLurker
+  name: antagonist-name-terror-spider-lurker
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Lurker.xml"
+
+- type: guideEntry
+  id: TerrorSpiderMother
+  name: antagonist-name-terror-spider-mother
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Mother.xml"
+
+- type: guideEntry
+  id: TerrorSpiderPrince
+  name: antagonist-name-terror-spider-prince
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Prince.xml"
+
+- type: guideEntry
+  id: TerrorSpiderPrincess
+  name: antagonist-name-terror-spider-princess
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Princess.xml"
+
+- type: guideEntry
+  id: TerrorSpiderQueen
+  name: antagonist-name-terror-spider-queen
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Queen.xml"
+
+- type: guideEntry
+  id: TerrorSpiderReaper
+  name: antagonist-name-terror-spider-reaper
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Reaper.xml"
+
+- type: guideEntry
+  id: TerrorSpiderWidow
+  name: antagonist-name-terror-spider-widow
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Widow.xml"
+
+- type: guideEntry
+  id: Headcrabs
+  name: antagonist-name-headcrabs
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs.xml"
+  children:
+    - Headcrab
+    - HeadcrabFast
+    - HeadcrabPoison
+
+- type: guideEntry
+  id: Headcrab
+  name: antagonist-name-headcrab
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/Headcrab.xml"
+
+- type: guideEntry
+  id: HeadcrabFast
+  name: antagonist-name-headcrab-fast
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabFast.xml"
+
+- type: guideEntry
+  id: HeadcrabPoison
+  name: antagonist-name-headcrab-poison
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabPoison.xml"

@@ -1,0 +1,570 @@
+# Hat
+- type: loadout
+  id: ClothingHeadHatBeretCaptainWhite
+  equipment: ClothingHeadHatBeretCaptainWhite
+
+- type: startingGear
+  id: ClothingHeadHatBeretCaptainWhite
+  equipment:
+    head: ClothingHeadHatBeretCaptainWhite
+
+
+- type: loadout
+  id: ClothingHeadHatBeretCaptainSheriff
+  equipment: ClothingHeadHatBeretCaptainSheriff
+
+- type: startingGear
+  id: ClothingHeadHatBeretCaptainSheriff
+  equipment:
+    head: ClothingHeadHatBeretCaptainSheriff
+
+
+- type: loadout
+  id: ClothingHeadHatCapcapWhite
+  equipment: ClothingHeadHatCapcapWhite
+
+- type: startingGear
+  id: ClothingHeadHatCapcapWhite
+  equipment:
+    head: ClothingHeadHatCapcapWhite
+
+
+- type: loadout
+  id: ClothingHeadHatCapcapSheriff
+  equipment: ClothingHeadHatCapcapSheriff
+
+- type: startingGear
+  id: ClothingHeadHatCapcapSheriff
+  equipment:
+    head: ClothingHeadHatCapcapSheriff
+
+
+
+# Jumpskirt
+- type: loadout
+  id: ClothingUniformJumpskirtHoodieSkirt
+  equipment: ClothingUniformJumpskirtHoodieSkirt
+
+- type: startingGear
+  id: ClothingUniformJumpskirtHoodieSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoodieSkirt
+
+
+- type: loadout
+  id: ClothingUniformJumpskirtRoll
+  equipment: ClothingUniformJumpskirtRoll
+
+- type: startingGear
+  id: ClothingUniformJumpskirtRoll
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRoll
+
+
+- type: loadout
+  id: ClothingUniformJumpskirtShizuneGreen
+  equipment: ClothingUniformJumpskirtShizuneGreen
+
+- type: startingGear
+  id: ClothingUniformJumpskirtShizuneGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtShizuneGreen
+
+
+- type: loadout
+  id: ClothingUniformJumpskirtShizuneOrange
+  equipment: ClothingUniformJumpskirtShizuneOrange
+
+- type: startingGear
+  id: ClothingUniformJumpskirtShizuneOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtShizuneOrange
+
+
+- type: loadout
+  id: ClothingUniformJumpskirtWhiteCaptain
+  equipment: ClothingUniformJumpskirtWhiteCaptain
+
+- type: startingGear
+  id: ClothingUniformJumpskirtWhiteCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtWhiteCaptain
+
+
+
+# Jumpsuit
+- type: loadout
+  id: ClothingUniformJumpsuitBlueGalaxy
+  equipment: ClothingUniformJumpsuitBlueGalaxy
+
+- type: startingGear
+  id: ClothingUniformJumpsuitBlueGalaxy
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueGalaxy
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitRedGalaxy
+  equipment: ClothingUniformJumpsuitRedGalaxy
+
+- type: startingGear
+  id: ClothingUniformJumpsuitRedGalaxy
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRedGalaxy
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitAviator
+  equipment: ClothingUniformJumpsuitAviator
+
+- type: startingGear
+  id: ClothingUniformJumpsuitAviator
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAviator
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitCIA
+  equipment: ClothingUniformJumpsuitCIA
+
+- type: startingGear
+  id: ClothingUniformJumpsuitCIA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCIA
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitClownis
+  equipment: ClothingUniformJumpsuitClownis
+
+- type: startingGear
+  id: ClothingUniformJumpsuitClownis
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownis
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitDoom
+  equipment: ClothingUniformJumpsuitDoom
+
+- type: startingGear
+  id: ClothingUniformJumpsuitDoom
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDoom
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitFallout14
+  equipment: ClothingUniformJumpsuitFallout14
+
+- type: startingGear
+  id: ClothingUniformJumpsuitFallout14
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFallout14
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitFalloutBase
+  equipment: ClothingUniformJumpsuitFalloutBase
+
+- type: startingGear
+  id: ClothingUniformJumpsuitFalloutBase
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFalloutBase
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGoku
+  equipment: ClothingUniformJumpsuitGoku
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGoku
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGoku
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGokuAlt
+  equipment: ClothingUniformJumpsuitGokuAlt
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGokuAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGokuAlt
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGreaserBase
+  equipment: ClothingUniformJumpsuitGreaserBase
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGreaserBase
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGreaserBase
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGreaserCult
+  equipment: ClothingUniformJumpsuitGreaserCult
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGreaserCult
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGreaserCult
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGreaserJuli
+  equipment: ClothingUniformJumpsuitGreaserJuli
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGreaserJuli
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGreaserJuli
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGreaserSnakes
+  equipment: ClothingUniformJumpsuitGreaserSnakes
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGreaserSnakes
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGreaserSnakes
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitGreaserSpider
+  equipment: ClothingUniformJumpsuitGreaserSpider
+
+- type: startingGear
+  id: ClothingUniformJumpsuitGreaserSpider
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGreaserSpider
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitHoodieJeans
+  equipment: ClothingUniformJumpsuitHoodieJeans
+
+- type: startingGear
+  id: ClothingUniformJumpsuitHoodieJeans
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoodieJeans
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitJoe
+  equipment: ClothingUniformJumpsuitJoe
+
+- type: startingGear
+  id: ClothingUniformJumpsuitJoe
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJoe
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitMegaMan
+  equipment: ClothingUniformJumpsuitMegaMan
+
+- type: startingGear
+  id: ClothingUniformJumpsuitMegaMan
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMegaMan
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitMegaManX
+  equipment: ClothingUniformJumpsuitMegaManX
+
+- type: startingGear
+  id: ClothingUniformJumpsuitMegaManX
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMegaManX
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitNRI
+  equipment: ClothingUniformJumpsuitNRI
+
+- type: startingGear
+  id: ClothingUniformJumpsuitNRI
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNRI
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitProto
+  equipment: ClothingUniformJumpsuitProto
+
+- type: startingGear
+  id: ClothingUniformJumpsuitProto
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitProto
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitRotten
+  equipment: ClothingUniformJumpsuitRotten
+
+- type: startingGear
+  id: ClothingUniformJumpsuitRotten
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRotten
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitSneaking
+  equipment: ClothingUniformJumpsuitSneaking
+
+- type: startingGear
+  id: ClothingUniformJumpsuitSneaking
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSneaking
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitStil
+  equipment: ClothingUniformJumpsuitStil
+
+- type: startingGear
+  id: ClothingUniformJumpsuitStil
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStil
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitWhiteCaptain
+  equipment: ClothingUniformJumpsuitWhiteCaptain
+
+- type: startingGear
+  id: ClothingUniformJumpsuitWhiteCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteCaptain
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitSheriffCaptain
+  equipment: ClothingUniformJumpsuitSheriffCaptain
+
+- type: startingGear
+  id: ClothingUniformJumpsuitSheriffCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSheriffCaptain
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitСommandCaptain
+  equipment: ClothingUniformJumpsuitСommandCaptain
+
+- type: startingGear
+  id: ClothingUniformJumpsuitСommandCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitСommandCaptain
+
+
+- type: loadout
+  id: ClothingUniformJumpsuitСommandHeadOfSecurity
+  equipment: ClothingUniformJumpsuitСommandHeadOfSecurity
+
+- type: startingGear
+  id: ClothingUniformJumpsuitСommandHeadOfSecurity
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitСommandHeadOfSecurity
+
+
+# Neck
+- type: loadout
+  id: ClothinNeckMantleElderLizards
+  equipment: ClothinNeckMantleElderLizards
+
+- type: startingGear
+  id: ClothinNeckMantleElderLizards
+  equipment:
+    neck: ClothinNeckMantleElderLizards
+
+
+- type: loadout
+  id: ClothinNeckCaptainWide
+  equipment: ClothinNeckCaptainWide
+
+- type: startingGear
+  id: ClothinNeckCaptainWide
+  equipment:
+    neck: ClothinNeckCaptainWide
+
+
+- type: loadout
+  id: ClothinNeckCloakFluffyPink
+  equipment: ClothinNeckCloakFluffyPink
+
+- type: startingGear
+  id: ClothinNeckCloakFluffyPink
+  equipment:
+    neck: ClothinNeckCloakFluffyPink
+
+
+- type: loadout
+  id: ClothinNeckCloakRoyalCaptain
+  equipment: ClothinNeckCloakRoyalCaptain
+
+- type: startingGear
+  id: ClothinNeckCloakRoyalCaptain
+  equipment:
+    neck: ClothinNeckCloakRoyalCaptain
+
+
+- type: loadout
+  id: ClothinNeckWhiteMantleCaptain
+  equipment: ClothinNeckWhiteMantleCaptain
+
+- type: startingGear
+  id: ClothinNeckWhiteMantleCaptain
+  equipment:
+    neck: ClothinNeckWhiteMantleCaptain
+
+
+- type: loadout
+  id: ClothinNeckCloakHeadOfSecurityOld
+  equipment: ClothinNeckCloakHeadOfSecurityOld
+
+- type: startingGear
+  id: ClothinNeckCloakHeadOfSecurityOld
+  equipment:
+    neck: ClothinNeckCloakHeadOfSecurityOld
+
+
+- type: loadout
+  id: ClothinNeckCloakRoyalHeadOfSecurityHOS
+  equipment: ClothinNeckCloakRoyalHeadOfSecurityHOS
+
+- type: startingGear
+  id: ClothinNeckCloakRoyalHeadOfSecurityHOS
+  equipment:
+    neck: ClothinNeckCloakRoyalHeadOfSecurityHOS
+
+
+- type: loadout
+  id: ClothinNeckCloakRoyalResearchDirectorRD
+  equipment: ClothinNeckCloakRoyalResearchDirectorRD
+
+- type: startingGear
+  id: ClothinNeckCloakRoyalResearchDirectorRD
+  equipment:
+    neck: ClothinNeckCloakRoyalResearchDirectorRD
+
+
+- type: loadout
+  id: ClothinNeckCloakInteQ
+  equipment: ClothinNeckCloakInteQ
+
+- type: startingGear
+  id: ClothinNeckCloakInteQ
+  equipment:
+    neck: ClothinNeckCloakInteQ
+
+
+- type: loadout
+  id: ClothinNeckCloakHellDiverBlack
+  equipment: ClothinNeckCloakHellDiverBlack
+
+- type: startingGear
+  id: ClothinNeckCloakHellDiverBlack
+  equipment:
+    neck: ClothinNeckCloakHellDiverBlack
+
+
+- type: loadout
+  id: ClothinNeckCloakHellDiverWhite
+  equipment: ClothinNeckCloakHellDiverWhite
+
+- type: startingGear
+  id: ClothinNeckCloakHellDiverWhite
+  equipment:
+    neck: ClothinNeckCloakHellDiverWhite
+
+
+- type: loadout
+  id: ClothinNeckCloakHellDiverBrown
+  equipment: ClothinNeckCloakHellDiverBrown
+
+- type: startingGear
+  id: ClothinNeckCloakHellDiverBrown
+  equipment:
+    neck: ClothinNeckCloakHellDiverBrown
+
+
+- type: loadout
+  id: ClothinNeckCloakHellDiverRed
+  equipment: ClothinNeckCloakHellDiverRed
+
+- type: startingGear
+  id: ClothinNeckCloakHellDiverRed
+  equipment:
+    neck: ClothinNeckCloakHellDiverRed
+
+
+
+# Back
+#- type: startingGear
+#  id: Null
+#  equipment:
+#    back: Null
+
+
+
+# Gloves
+#- type: startingGear
+#  id: Null
+#  equipment:
+#    gloves: Null
+
+
+
+# Outerclothing
+- type: loadout
+  id: ClothingOuterWinterInteQ
+  equipment: ClothingOuterWinterInteQ
+
+- type: startingGear
+  id: ClothingOuterWinterInteQ
+  equipment:
+    outerClothing: ClothingOuterWinterInteQ
+
+
+- type: loadout
+  id: ClothingOuterHoodieInteQ
+  equipment: ClothingOuterHoodieInteQ
+
+- type: startingGear
+  id: ClothingOuterHoodieInteQ
+  equipment:
+    outerClothing: ClothingOuterHoodieInteQ
+
+
+- type: loadout
+  id: ClothingOuterCoatSamurai
+  equipment: ClothingOuterCoatSamurai
+
+- type: startingGear
+  id: ClothingOuterCoatSamurai
+  equipment:
+    outerClothing: ClothingOuterCoatSamurai
+
+
+- type: loadout
+  id: ClothingOuterCoatTraumaTeam
+  equipment: ClothingOuterCoatTraumaTeam
+
+- type: startingGear
+  id: ClothingOuterCoatTraumaTeam
+  equipment:
+    outerClothing: ClothingOuterCoatTraumaTeam
+
+
+
+# Shoes
+#- type: startingGear
+#  id: Null
+#  equipment:
+#    shoes: Null

@@ -1,0 +1,47 @@
+- type: entity
+  name: Уолтер
+  parent:
+    - MobRespirator
+    - MobAtmosStandard
+    - BaseSimpleMob
+    - MobBloodstream
+    - MobFlammable
+  id: MobWalterRofls
+  description: Say my name...
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Ataraxia/Mobs/Pets/walter.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: walter
+  - type: Speech
+    speechSounds: GoofyAhh
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Ataraxia/Emotions/breakbad.ogg
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: walter
+      Critical:
+        Base: walter_dead
+      Dead:
+        Base: walter_dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+  - type: StealTarget
+    stealGroup: AnimalWalter
+  - type: HTN
+    rootTask:
+      task: IdleCompound

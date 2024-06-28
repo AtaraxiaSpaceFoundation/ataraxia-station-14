@@ -1,0 +1,149 @@
+# BASE
+
+- type: entity
+  parent: BaseItem
+  id: BaseWeaponAcidTerrorSpider
+  name: poisonous spit
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/terror_spider.rsi
+  - type: AmmoCounter
+  - type: UseDelayOnShoot
+  - type: UseDelay
+  - type: Gun
+    soundGunshot: 
+      path: /Audio/Weapons/Xeno/alien_spitacid.ogg
+      params:
+        volume: -2
+    fireRate: 1
+    useKey: true
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 13.5
+    rechargeSound:
+      path: /Audio/Weapons/Xeno/alien_spitacid.ogg
+      params:
+        volume: -20
+  - type: BasicEntityAmmoProvider
+
+# ACID SPIT
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponAcidSpider
+  noSpawn: true
+  description: "Damage: 18 poison."
+  components:
+  - type: Sprite
+    state: acid_spit
+  - type: BasicEntityAmmoProvider
+    proto: BulletAcidSpider
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 14
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponAcidDoubleTerrorSpider
+  noSpawn: true
+  name: double poisonous spit
+  description: "Damage: 12 poison."
+  components:
+  - type: Sprite
+    state: acid_double_spit
+  - type: BasicEntityAmmoProvider
+    proto: BulletAcidDoubleSpider
+    capacity: 2
+    count: 2
+  - type: UseDelay
+    delay: 10
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 9.5
+  - type: Gun
+    fireRate: 2
+    useKey: true
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponAcidHeatTerrorSpider
+  noSpawn: true
+  name: burning spit
+  description: "Damage: 25 burns."
+  components:
+  - type: Sprite
+    state: acid_heat_spit
+  - type: BasicEntityAmmoProvider
+    proto: BulletAcidHeatSpider
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 16
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 15.5
+  - type: Gun
+    fireRate: 2
+    useKey: true
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponSmokeTerrorSpider
+  noSpawn: true
+  name: release smoke
+  description: Releases a cloud of smoke that blocks vision.
+  components:
+  - type: Sprite
+    state: smoke
+  - type: BasicEntityAmmoProvider
+    proto: BulletSmokeTerrorSpider
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 20
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 19.5
+  - type: Gun
+    fireRate: 2
+    useKey: true
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponNeurotoxinSmokeTerrorSpider
+  noSpawn: true
+  name: release neurotoxin smoke
+  description: Creates chemical smoke with neurotoxin. It can be effective if you apply it while standing directly on the target without a mask.
+  components:
+  - type: Sprite
+    state: smoke_neurotoxin
+  - type: BasicEntityAmmoProvider
+    proto: BulletNeurotoxinSmokeTerrorSpider
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 40
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 39.5
+  - type: Gun
+    fireRate: 2
+    useKey: true
+
+- type: entity
+  parent: BaseWeaponAcidTerrorSpider
+  id: WeaponNeurotoxinDrugsSmokeTerrorSpider
+  noSpawn: true
+  name: release neurotoxin-drug smoke
+  description: Releases gas filled with drugs and neurotoxin. It is practically useless, especially against the owners of gas masks.
+  components:
+  - type: Sprite
+    state: smoke_neurotoxin_drugs
+  - type: BasicEntityAmmoProvider
+    proto: BulletNeurotoxinDrugsSmokeTerrorSpider
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 30
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 29.5
+  - type: Gun
+    fireRate: 2
+    useKey: true

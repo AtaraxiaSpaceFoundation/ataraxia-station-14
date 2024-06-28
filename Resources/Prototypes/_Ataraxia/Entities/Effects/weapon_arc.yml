@@ -1,0 +1,11 @@
+- type: entity
+  parent: WeaponArcStatic
+  id: HealAnimation
+  noSpawn: true
+  components:
+    - type: WeaponArcVisuals
+      fadeOut: false
+    - type: Sprite
+      sprite: Ataraxia/Effects/heal.rsi
+      state: heal
+      drawdepth: Effects

@@ -1,0 +1,34 @@
+- type: entity
+  id: RandomHumanoidSpawnerBluespaceTechnic
+  name: Блюспейс Техник
+  suffix: Дебаг, Админарбуз
+  components:
+    - type: Sprite
+      sprite: Structures/Specific/anomaly.rsi
+      state: anom4
+    - type: RandomMetadata
+      nameSegments:
+        - NamesLastMilitary
+    - type: RandomHumanoidSpawner
+      settings: BluespaceTechnic
+    - type: InitialInfectedExempt
+
+- type: randomHumanoidSettings
+  id: BluespaceTechnic
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: Loadout
+      prototypes: [ BluespaceTechnicianGear ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesLastMilitary
+    - type: InitialInfectedExempt
+    - type: PotentialPsionic
+    - type: MassSleepPower
+    - type: NoosphericZapPower
+    - type: PsionicInvisibilityPower
+    - type: PsionicRegenerationPower
+    - type: PyrokinesisPower
+    - type: TelegnosisPower
+    - type: BibleUser

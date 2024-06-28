@@ -1,0 +1,469 @@
+- type: entity
+  parent: MobRatKing
+  id: MobRatQueen
+  name: rat queen
+  suffix: Король Крыс
+  description: Shes da rat. He make da roolz.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Animals/mommy_rat.rsi
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: regalrat
+      - map: [ "enum.HumanoidVisualLayers.Head" ]
+        state: queen_head_overlay
+      - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+        state: eyes
+        shader: unshaded
+      - map: [ "ears" ]
+      - map: [ "id" ]
+      - map: [ "neck" ]
+      - map: [ "enum.HumanoidVisualLayers.Tail" ]
+        state: queen_tail_overlay
+      - map: [ "head" ]
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: regalrat
+        BaseUnshaded: eyes
+      Dead:
+        Base: regalrat
+        BaseUnshaded: eyes
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleOff
+  - type: Speech
+    speechSounds: Squeak
+    speechVerb: SmallMob
+  - type: Grammar
+    attributes:
+      gender: female
+      proper: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.00
+    baseSprintSpeed : 4.6
+  - type: RatKing
+    hungerPerArmyUse: 18
+    hungerPerDomainUse: 40
+  - type: Emoting
+  - type: Body
+    prototype: RatHands
+    requiredLegs: 1 # TODO: More than 1 leg
+  - type: Hands
+  - type: Puller
+    needsHands: false
+  - type: IdExaminable
+  - type: Inventory
+    templateId: ratqueen
+  - type: InventorySlots
+  - type: Loadout
+    prototypes: [ RatQueenGear ]
+  - type: Stripping
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: RandomMetadata
+    nameSegments:
+    - RegalRatQueenNameKingdom
+    - RegalRatQueenNameTitle
+  - type: GuideHelp
+    guides:
+    - RatQueen
+
+- type: entity
+  parent: MobInteQAgent
+  id: MobHumanMutant
+  name: human
+  suffix: Мутант
+  description: Human... but...
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/NPCs/human_mutant.rsi
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: alive
+  - type: GhostRole
+    allowSpeech: true
+    allowMovement: true
+    makeSentient: true
+    name: Мутант
+    description: Гра? Грх..
+    rules: "Ты даун, аутист."
+    raffle:
+      settings: default
+  - type: Butcherable
+    spawned:
+      - id: FoodMeat
+  - type: MeleeWeapon
+    attackRate: 0.6
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/star_hit.ogg
+    damage:
+      types:
+        Blunt: 10
+        Structural: 5
+  - type: Reflect
+    reflectProb: 0.01
+    reflects:
+      - Energy
+  - type: Speech
+    speechSounds: GoofyAhh
+
+- type: entity
+  parent: [SimpleSpaceMobBase ]
+  id: MobBigKozel
+  name: Теневой Козёл
+  description: Он пришел с ночных кошмаров...
+  components:
+  - type: Stealth
+  - type: StealthOnMove
+    passiveVisibilityRate: -0.4
+    movementVisibilityRate: 0.20
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: "теневой козел"
+    description: "он пришел с ночных кошмаров..."
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: NightVision
+    isToggle: true
+    color: "#C0C0C0"
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Speech
+    speechVerb: LargeMob
+  - type: CombatMode
+  - type: MobMover
+  - type: InputMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 6
+    weightlessModifier: 1.5
+  - type: Sprite
+    sprite: Ataraxia/Mobs/NPCs/bigkozel.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 130
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.9
+      200: 0.6
+      500: 0.4
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritLastWords
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: Metabolizer
+    solutionOnBody: false
+    updateFrequency: 0.25
+    metabolizerTypes: [ Dragon ]
+    groups:
+    - id: Medicine
+    - id: Poison
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatDragon
+      amount: 2
+  - type: InteractionPopup
+    successChance: 0.25
+    interactSuccessString: petting-success-dragon
+    interactFailureString: petting-failure-dragon
+    interactFailureSound:
+      path: /Audio/Animals/space_dragon_roar.ogg
+    soundPerceivedByOthers: true
+  - type: MeleeWeapon
+    altDisarm: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 10
+        Slash: 20
+        Structural: 60
+  - type: Devourer
+    foodPreference: Humanoid
+    shouldStoreDevoured: true
+    chemical: Ichor
+    healRate: 25.0
+    whitelist:
+      components:
+      - MobState
+      - Door
+      - Construction
+      tags:
+      - Wall
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+
+- type: entity
+  parent: [SimpleSpaceMobBase]
+  id: MobBlackDeath
+  name: Чёрная-Смерть
+  description: У вас будут ночные кошмары после встречи с ним....
+  components:
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+      sprite: Ataraxia/Mobs/NPCs/bigspider.rsi
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 130
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatSpider
+      amount: 5
+  - type: CombatMode
+  - type: Body
+    prototype: AnimalHemocyanin
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      900: Dead
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 30
+        Structural: 40
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 30
+  - type: SolutionRegeneration
+    solution: melee
+    generated:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 10
+  - type: MeleeChemicalInjector
+    transferAmount: 5
+    solution: melee
+  - type: ReplacementAccent
+    accent: xeno
+  - type: InteractionPopup
+    successChance: 0.5
+    interactSuccessString: petting-success-tarantula
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+  - type: NoSlip
+  - type: Spider
+    WebAction: ActionBigSpiderWeb
+  - type: IgnoreSpiderWeb
+  - type: Bloodstream
+    bloodMaxVolume: 400
+    bloodReagent: CopperBlood
+  - type: Speech
+    speechVerb: Arachnid
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      800: 0.8
+      900: 0.7
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - FootstepSound
+
+- type: entity
+  parent: [ SimpleSpaceMobBase, FlyingMobBase ]
+  id: MobBlueDragon
+  name: Древний дракон
+  description: Древний дракон, только вселенной известно как давно он живет.
+  components:
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-space-dragon-name
+    description: ghost-role-information-space-dragon-description
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - Dragon
+  - type: Speech
+    speechVerb: LargeMob
+  - type: CombatMode
+  - type: MobMover
+  - type: InputMover
+  - type: NightVision
+    isToggle: true
+    color: "#C0C0C0"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+    weightlessModifier: 1.5
+  - type: Sprite
+    sprite: Ataraxia/Mobs/NPCs/bluedragon.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 100
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MobState
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      1500: 0.8
+      2000: 0.5
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritLastWords
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: Metabolizer
+    solutionOnBody: false
+    updateFrequency: 0.25
+    metabolizerTypes: [ Dragon ]
+    groups:
+    - id: Medicine
+    - id: Poison
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatDragon
+      amount: 2
+  - type: InteractionPopup
+    successChance: 0.25
+    interactSuccessString: petting-success-dragon
+    interactFailureString: petting-failure-dragon
+    interactFailureSound:
+      path: /Audio/Animals/space_dragon_roar.ogg
+    soundPerceivedByOthers: true
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 20
+        Slash: 20
+        Structural: 200
+  - type: Devourer
+    foodPreference: Humanoid
+    shouldStoreDevoured: true
+    chemical: Ichor
+    healRate: 25.0
+    whitelist:
+      components:
+      - MobState
+      - Door
+      - Construction
+      tags:
+      - Wall
+  - type: Dragon
+    spawnsLeft: 4
+    spawnsProto: MobCarpDragon
+    spawnRiftAction: ActionSpawnRift
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener

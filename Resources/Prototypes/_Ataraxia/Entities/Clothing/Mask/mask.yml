@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingMaskGas
+  id: EmeraldMask
+  name: древний противогаз
+  description: Полумаска из прочных материалов с возможностью подключения ЗСД.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Mask/emerald.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Mask/emerald.rsi

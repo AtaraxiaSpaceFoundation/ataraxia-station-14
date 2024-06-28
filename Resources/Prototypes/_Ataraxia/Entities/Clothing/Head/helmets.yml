@@ -1,0 +1,47 @@
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetSwatInteQ
+  name: SWAT helmet
+  suffix: InteQ
+  description: An extremely robust helmet, commonly used by paramilitary forces. It is adorned in a nefarious orange and black stripe pattern.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_swat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_swat.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetAllianceAssasin
+  name: шлем ассасина альянса
+  description: Лёгкий шлем с панорамным визором. Покрыт защитной плёнкой, спасающей владельца от ярких вспышек, а армированный визор сможет выдержать не одну пулю во время твоей 'скрытной' миссии.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/alliance_assasin.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/alliance_assasin.rsi
+  - type: FlashImmunity
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetInteQInflator
+  name: шлем инфлятора
+  description: Лёгкий шлем с панорамным визором. Покрыт защитной плёнкой, спасающей владельца от ярких вспышек, а армированный визор сможет выдержать не одну пулю во время твоей 'скрытной' миссии.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_inflator
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_inflator
+  - type: FlashImmunity
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetInteQTombstone
+  name: шлем бронекостюма 'Надгробие'
+  description: Лёгкий шлем с панорамным визором. Покрыт защитной плёнкой, спасающей владельца от ярких вспышек, а армированный визор сможет выдержать не одну пулю во время твоей 'скрытной' миссии.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_tombstone.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Helmets/inteq_tombstone.rsi
+  - type: FlashImmunity

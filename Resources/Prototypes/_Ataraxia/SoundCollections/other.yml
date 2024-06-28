@@ -1,0 +1,11 @@
+- type: soundCollection
+  id: AtaraxiaDigging
+  files:
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_1.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_2.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_3.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_4.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_5.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_6.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_7.ogg
+  - /Audio/Ataraxia/Items/shovel/shovel_digging_8.ogg

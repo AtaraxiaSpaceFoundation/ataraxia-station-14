@@ -1,0 +1,4 @@
+- type: startingGear
+  id: RatQueenGear
+  equipment:
+    id: RatQueenIDCard

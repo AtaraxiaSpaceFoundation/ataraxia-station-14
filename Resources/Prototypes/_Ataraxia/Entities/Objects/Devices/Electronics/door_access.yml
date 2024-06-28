@@ -1,0 +1,15 @@
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsInteQVanguard
+  suffix: Интек, Авангард, Закрыт
+  components:
+  - type: AccessReader
+    access: [["InteQVanguard"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsInteQVanguardLeader
+  suffix: Интек, Лидер, Закрыт
+  components:
+  - type: AccessReader
+    access: [["InteQVanguardLeader"]]

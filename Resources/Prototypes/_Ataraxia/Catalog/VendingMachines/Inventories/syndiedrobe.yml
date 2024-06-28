@@ -1,0 +1,21 @@
+- type: vendingMachineInventory
+  id: SyndieDrobeNerfInventory
+  startingInventory:
+    ClothingHeadHatOutlawHat: 3
+    ClothingHeadHatSyndie: 3
+    ClothingMaskNeckGaiter: 5
+    ClothingOuterWinterSyndie: 5
+    ClothinNeckCloakSyndicateOfficer: 4 # Ataraxia
+    ClothingUniformJumpsuitSyndieFormal: 2
+    ClothingUniformJumpskirtSyndieFormalDress: 2
+    ClothingUniformJumpsuitOperative: 3
+    ClothingUniformJumpskirtOperative: 3
+    ClothingNeckScarfStripedSyndieGreen: 2
+    ClothingNeckScarfStripedSyndieRed: 2
+    ClothingShoesBootsWinterSyndicate: 2
+  contrabandInventory:
+    ClothinNeckCloakSyndicateAdmiral: 1 # Ataraxia
+    ClothingOuterCoatSyndieCapArmored: 1
+    ClothingHeadHatTacticalMaidHeadband: 1
+    ClothingUniformJumpskirtTacticalMaid: 1
+    ClothingHandsTacticalMaidGloves: 1

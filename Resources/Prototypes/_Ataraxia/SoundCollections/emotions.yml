@@ -1,0 +1,157 @@
+- type: soundCollection
+  id: Burp
+  files:
+  - /Audio/Ataraxia/Emotions/burps/belch_1.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_2.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_3.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_4.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_5.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_6.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_7.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_8.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_9.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_10.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_11.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_12.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_13.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_14.ogg
+  - /Audio/Ataraxia/Emotions/burps/belch_15.ogg
+
+- type: soundCollection
+  id: Fart
+  files:
+  - /Audio/Ataraxia/Emotions/farts/fart_1.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_2.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_3.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_4.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_5.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_6.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_7.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_8.ogg
+  - /Audio/Ataraxia/Emotions/farts/fart_9.ogg
+
+- type: soundCollection
+  id: CoyoteHowl
+  files:
+  - /Audio/Ataraxia/Emotions/howls/coyote_howl_1.ogg
+  - /Audio/Ataraxia/Emotions/howls/coyote_howl_2.ogg
+  - /Audio/Ataraxia/Emotions/howls/coyote_howl_3.ogg
+  - /Audio/Ataraxia/Emotions/howls/coyote_howl_4.ogg
+  - /Audio/Ataraxia/Emotions/howls/coyote_howl_5.ogg
+
+- type: soundCollection
+  id: CatMeowAlt
+  files:
+  - /Audio/Ataraxia/Emotions/meows/cat_meow_1.ogg
+  - /Audio/Ataraxia/Emotions/meows/cat_meow_2.ogg
+  - /Audio/Ataraxia/Emotions/meows/cat_meow_3.ogg
+
+- type: soundCollection
+  id: CatMew
+  files:
+  - /Audio/Ataraxia/Emotions/meows/cat_mew_1.ogg
+  - /Audio/Ataraxia/Emotions/meows/cat_mew_2.ogg
+
+- type: soundCollection
+  id: CatMrrp
+  files:
+  - /Audio/Ataraxia/Emotions/meows/cat_mrrp_1.ogg
+  - /Audio/Ataraxia/Emotions/meows/cat_mrrp_2.ogg
+
+- type: soundCollection
+  id: FemaleMoan
+  files:
+  - /Audio/Ataraxia/Emotions/moans/moan_f1.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f2.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f3.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f4.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f5.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f6.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_f7.ogg
+
+- type: soundCollection
+  id: MaleMoan
+  files:
+  - /Audio/Ataraxia/Emotions/moans/moan_m1.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_m2.ogg
+  - /Audio/Ataraxia/Emotions/moans/moan_m3.ogg
+
+- type: soundCollection
+  id: CartoonScream
+  files:
+  - /Audio/Ataraxia/Emotions/scream/cscream_1.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_2.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_3.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_4.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_5.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_6.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_7.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_8.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_9.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_10.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_11.ogg
+  - /Audio/Ataraxia/Emotions/scream/cscream_12.ogg
+
+- type: soundCollection
+  id: AraAra
+  files:
+  - /Audio/Ataraxia/Emotions/ara_ara_1.ogg
+  - /Audio/Ataraxia/Emotions/ara_ara_2.ogg
+
+- type: soundCollection
+  id: AnimalBark
+  files:
+  - /Audio/Ataraxia/Emotions/bark_1.ogg
+  - /Audio/Ataraxia/Emotions/bark_2.ogg
+
+- type: soundCollection
+  id: CryKing
+  files:
+  - /Audio/Ataraxia/Emotions/cry_king_1.ogg
+  - /Audio/Ataraxia/Emotions/cry_king_2.ogg
+
+- type: soundCollection
+  id: LaughMuta
+  files:
+  - /Audio/Ataraxia/Emotions/laugh_muta_1.ogg
+  - /Audio/Ataraxia/Emotions/laugh_muta_2.ogg
+
+- type: soundCollection
+  id: WhistleTerror
+  files:
+  - /Audio/Ataraxia/Emotions/terror_1.ogg
+  - /Audio/Ataraxia/Emotions/terror_2.ogg
+
+- type: soundCollection
+  id: AnimalWarble
+  files:
+  - /Audio/Ataraxia/Emotions/warble_1.ogg
+  - /Audio/Ataraxia/Emotions/warble_2.ogg
+
+- type: soundCollection
+  id: LizardWeh
+  files:
+  - /Audio/Ataraxia/Emotions/weh_1.ogg
+  - /Audio/Ataraxia/Emotions/weh_2.ogg
+
+- type: soundCollection
+  id: FemaleGasp
+  files:
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female1.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female2.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female3.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female4.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female5.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female6.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_female7.ogg
+
+- type: soundCollection
+  id: MaleGasp
+  files:
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male1.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male2.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male3.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male4.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male5.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male6.ogg
+  - /Audio/Ataraxia/Emotions/gasp/gasp_male7.ogg

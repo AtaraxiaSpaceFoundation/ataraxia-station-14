@@ -1,0 +1,21 @@
+- type: entity
+  parent: BaseBoxInteQ
+  id: BoxInteQEVA
+  suffix: Ева
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHelmetInteq
+      - id: ClothingOuterEVASuitInteQ
+      - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyOxygenTankFilled
+
+- type: entity
+  parent: BaseBoxInteQ
+  id: BoxInteQPistol
+  suffix: Комиссар
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolInteQCommissar
+      - id: MagazineBoxPistolInteQ

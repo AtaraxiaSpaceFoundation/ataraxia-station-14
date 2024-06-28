@@ -1,0 +1,50 @@
+- type: construction
+  name: неизвестное устройство
+  description: Это очень странное устройство, сложно понять, зачем оно нужно, не воспользовавшись им.
+  id: BlackMarket
+  graph: BlackMarket
+  startNode: start
+  targetNode: blackmarket
+  category: construction-category-misc
+  icon: { sprite: Ataraxia/Objects/Devices/blackmarket.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: BlackMarket
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: blackmarket
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+            - material: Glass
+              amount: 1
+              doAfter: 1
+            - material: Cable
+              amount: 2
+              doAfter: 5
+            - tag: Cartridge
+              name: любой картридж
+              icon:
+                sprite: Objects/Devices/cartridge.rsi
+                state: cart-y
+            - tag: ManipulatorStockPart
+              name: манипулятор
+              icon:
+                sprite: Objects/Misc/stock_parts.rsi
+                state: micro_mani
+            - tag: CapacitorStockPart
+              name: конденсатор
+              icon:
+                sprite: Objects/Misc/stock_parts.rsi
+                state: capacitor
+            - tag: CapacitorStockPart
+              name: конденсатор
+              icon:
+                sprite: Objects/Misc/stock_parts.rsi
+                state: capacitor
+    - node: blackmarket
+      entity: BlackMarket

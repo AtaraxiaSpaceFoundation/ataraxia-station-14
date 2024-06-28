@@ -1,0 +1,51 @@
+- type: polymorph
+  id: GoonHumanMorph
+  configuration:
+    entity: MobGoonHuman
+    forced: true
+    inventory: Transfer
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: true
+
+- type: polymorph
+  id: XenomorphHybridMorph
+  configuration:
+    entity: MobXenomorphHybrid
+    forced: true
+    inventory: Transfer
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: true
+
+- type: polymorph
+  id: PredatorMorph
+  configuration:
+    entity: MobPredator
+    forced: true
+    inventory: Transfer
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: true
+
+- type: polymorph
+  id: Gondola
+  configuration:
+    entity: MobGondola
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: Drop
+    revertOnCrit: false
+    revertOnDeath: true
+
+- type: polymorph
+  id: WalterMorph
+  configuration:
+    entity: MobWalterRofls
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: Drop
+    revertOnCrit: false
+    revertOnDeath: true

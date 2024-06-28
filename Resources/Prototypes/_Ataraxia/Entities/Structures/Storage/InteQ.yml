@@ -1,0 +1,29 @@
+- type: entity
+  id: LockerInteQVanguard
+  parent: LockerBaseSecure
+  name: inteq vanguard locker
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: Ataraxia/Structures/Storage/inteq.rsi
+  - type: EntityStorageVisuals
+    stateBaseClosed: inteq
+    stateDoorOpen: open
+    stateDoorClosed: vanguard_door
+  - type: AccessReader
+    access: [["InteQVanguardLeader"], ["InteQVanguard"]]
+
+- type: entity
+  id: LockerInteQVanguardLeader
+  parent: LockerBaseSecure
+  name: inteq vanguard leader locker
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: Ataraxia/Structures/Storage/inteq.rsi
+  - type: EntityStorageVisuals
+    stateBaseClosed: inteq
+    stateDoorOpen: open
+    stateDoorClosed: leader_door
+  - type: AccessReader
+    access: [["InteQVanguardLeader"]]

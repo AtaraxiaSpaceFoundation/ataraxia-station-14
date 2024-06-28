@@ -1,0 +1,34 @@
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconInteQ
+  icon:
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi
+    state: InteQ
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconDeathSquad
+  icon:
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi
+    state: DeathSquad
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconShrambled
+  icon:
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi
+    state: Shrambled
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconBluespaceTechnic
+  icon:
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi
+    state: BluespaceTechnic
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconRat
+  icon:
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi
+    state: Rat

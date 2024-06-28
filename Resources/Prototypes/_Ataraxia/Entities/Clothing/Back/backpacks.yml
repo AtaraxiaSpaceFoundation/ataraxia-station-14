@@ -1,0 +1,17 @@
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackInteQ
+  name: inteq backpack
+  description: It's a very robust backpack.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Back/Backpacks/inteq_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackNinja
+  name: space Ninja backpack
+  description: A special backpack made for the silent operations of the spider clan
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Back/Backpacks/spaceninjabackpack.rsi

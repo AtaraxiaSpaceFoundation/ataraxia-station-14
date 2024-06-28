@@ -1,0 +1,49 @@
+﻿- type: body
+  id: XenomorphHybrid
+  name: "xenomorph hybrid"
+  root: torso
+  slots:
+    head:
+      part: HeadXenomorphHybrid
+      connections:
+      - torso
+      organs:
+        brain: OrganXenomorphHybridBrain
+        eyes: OrganXenomorphHybridEyes
+    torso:
+      part: TorsoXenomorphHybrid
+      organs:
+        heart: OrganXenomorphHybridHeart
+        lungs: OrganXenomorphHybridLungs
+        stomach: OrganXenomorphHybridStomach
+        liver: OrganXenomorphHybridLiver
+        kidneys: OrganXenomorphHybridKidneys
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+    right_arm:
+      part: RightArmXenomorphHybrid
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmXenomorphHybrid
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandXenomorphHybrid
+    left_hand:
+      part: LeftHandXenomorphHybrid
+    right_leg:
+      part: RightLegXenomorphHybrid
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegXenomorphHybrid
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootXenomorphHybrid
+    left_foot:
+      part: LeftFootXenomorphHybrid

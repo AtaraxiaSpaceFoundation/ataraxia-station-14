@@ -1,0 +1,12 @@
+- type: entity
+  parent: RiotLaserShield
+  id: InteQLaserShield
+  name: laser shield inteq
+  description: A InteQ shield built for withstanding lasers, but not much else.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Objects/Weapons/Melee/shields.rsi
+      state: inteq_icon
+    - type: Item
+      sprite: Ataraxia/Objects/Weapons/Melee/shields.rsi
+      heldPrefix: inteq

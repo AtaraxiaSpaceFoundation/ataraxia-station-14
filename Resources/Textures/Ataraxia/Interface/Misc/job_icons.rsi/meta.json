@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "license": "CC BY-NC-SA 4.0",
+    "copyright": "Sprited by PuroSlavKing (Github)",
+
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "InteQ"
+        },
+        {
+            "name": "DeathSquad"
+        },
+        {
+            "name": "Shrambled",
+            "delays":
+            [
+                [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2]
+            ]
+        },
+        {
+            "name": "BluespaceTechnic"
+        },
+        {
+            "name": "Rat"
+        }
+    ]
+}

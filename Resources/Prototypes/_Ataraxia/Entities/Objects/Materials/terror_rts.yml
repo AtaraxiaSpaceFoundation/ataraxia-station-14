@@ -1,0 +1,82 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: TerrorMaterialWebBase
+  description: Used for construction, by terror spiders.
+  components:
+  - type: Material
+    materials:
+      MaterialTerrorWeb: 100
+  - type: Sprite
+    sprite: Ataraxia/Objects/Materials/terror_material.rsi
+  - type: Item
+    sprite: Ataraxia/Objects/Materials/terror_material.rsi
+    size: Small
+  - type: StaticPrice
+    price: 0
+  - type: Tag
+    tags:
+    - Sheet
+
+- type: entity
+  parent: TerrorMaterialWebBase
+  id: TerrorWebRTS
+  suffix: "1"
+  components:
+  - type: Stack
+    stackType: TerrorWebRTS
+  - type: Sprite
+    state: state1
+  - type: Item
+    size: Small
+  - type: Appearance
+    visuals:
+    - type: StackVisualizer
+      stackLayers:
+      - state1
+      - state1
+      - state1
+
+- type: entity
+  parent: TerrorWebRTS
+  id: TerrorWebRTS5
+  suffix: "5"
+  components:
+  - type: Sprite
+    state: state1
+  - type: Stack
+    stackType: TerrorWebRTS
+    count: 5
+
+- type: entity
+  parent: TerrorWebRTS
+  id: TerrorWebRTS10
+  suffix: "10"
+  components:
+  - type: Sprite
+    state: state1
+  - type: Stack
+    stackType: TerrorWebRTS
+    count: 10
+
+- type: entity
+  parent: TerrorWebRTS
+  id: TerrorWebRTS20
+  suffix: "20"
+  components:
+  - type: Sprite
+    state: state1
+  - type: Stack
+    stackType: TerrorWebRTS
+    count: 20
+
+- type: entity
+  parent: TerrorMaterialWebBase
+  id: TerrorWebRTS30
+  suffix: "30"
+  components:
+  - type: Sprite
+    state: state1
+  - type: Stack
+    stackType: TerrorWebRTS
+    count: 30

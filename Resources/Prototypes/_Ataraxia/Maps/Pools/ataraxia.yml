@@ -1,0 +1,30 @@
+- type: gameMapPool
+  id: AtaraxiaMapPool
+  maps:
+  - BackmenAspid
+  - BackmenKettle
+  - Tortuga
+  - TheHive
+  - Shoukou
+  - Meta
+  - Fland
+  - CorvaxDelta
+  - CorvaxAvrite
+  - CorvaxSilly
+  - CorvaxOutpost
+  - CorvaxAstra
+  - CorvaxGelta
+  - CorvaxMaus
+  - CorvaxIshimura
+  - CorvaxPaper
+  - CorvaxPilgrim
+  - CorvaxSplit
+  - Cluster
+  - Saltern
+  - Omega
+  - Bagel
+  - Train
+  - Oasis
+#  - WonderDelta # Выключена до исправления
+  - Moonshine
+  - Pebble

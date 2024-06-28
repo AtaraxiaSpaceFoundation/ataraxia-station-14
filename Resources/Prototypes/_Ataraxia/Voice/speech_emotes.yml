@@ -1,0 +1,1055 @@
+# vocal emotes
+- type: emote
+  id: Hiss
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Шипеть
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [шипит]
+  chatTriggers:
+  - шипит
+  - шипит.
+  - шипит!
+  - хисс
+  - хисс.
+  - хисс!
+  - шипеть
+  - хис
+  - хсс
+  - хс
+
+- type: emote
+  id: Salute
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Отдать честь
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [ отдаёт честь ]
+  chatTriggers:
+  - салютует
+  - салютует.
+  - салютует!
+  - отдаёт честь
+  - отдаёт честь.
+  - отдаёт честь!
+  - отдал честь
+  - отдал честь.
+  - отдал честь!
+  - отдала честь
+  - отдала честь.
+  - отдала честь!
+
+- type: emote
+  id: RaiseEyebrow
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Поднять бровь (Громко)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [громко поднимает бровь]
+  chatTriggers:
+  - громко поднимает бровь
+  - громко поднимает бровь.
+  - приподнимает бровь
+  - поднимает бровь
+
+- type: emote
+  id: Burp
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Отрыжка
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [делает смачную отрыжку]
+  chatTriggers:
+  - делает смачную отрыжку
+  - делает смачную отрыжку.
+  - отрыгнул
+  - отрыгнул.
+  - отрыгнул!
+  - отрыжка
+  - отрыжка.
+  - отрыжка!
+
+- type: emote
+  id: CoyoteHowl
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Выть (Койот)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [протяжно воет]
+  chatTriggers:
+  - протяжно воет
+  - протяжно воет!
+  - протяжно воет.
+
+- type: emote
+  id: CartoonScream
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Кричать (Мультяшно)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [кричит словно в мультике!]
+  chatTriggers:
+  - кричит словно в мультике!
+  - ньяяяу!
+
+- type: emote
+  id: AraAra
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Ара-Ара~
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [произносит ара-ара~]
+  chatTriggers:
+  - произносит ара-ара~
+  - ара-ара
+  - ара-ара!
+  - ара-ара.
+
+- type: emote
+  id: AnimalBark
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Гафкать
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [гафкает]
+  chatTriggers:
+  - гафкает
+  - гафкает.
+  - гаф
+  - гаф.
+  - гаф!
+
+- type: emote
+  id: CryKing
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Плакать (Король)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [плачет как король]
+  chatTriggers:
+  - плачет как король
+  - плачет как король.
+  - вуаа
+
+- type: emote
+  id: LaughMuta
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Смеяться (Дико)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [дико угарает]
+  chatTriggers:
+  - дико угарает
+  - дико угарает.
+
+- type: emote
+  id: WhistleTerror
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Свистеть (Пугающе)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [пугающе свистит]
+  chatTriggers:
+  - пугающе свистит
+  - пугающе свистит.
+
+- type: emote
+  id: AnimalWarble
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Трель
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [издаёт странные звуки]
+  chatTriggers:
+  - издаёт странные звуки
+  - издаёт странные звуки.
+  - трель
+
+- type: emote
+  id: LizardWeh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Вех
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [вех!]
+  chatTriggers:
+  - вех
+  - вех.
+  - вех!
+
+- type: emote
+  id: LoudAauugghh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Недовольно орать
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [недовольно орёт!]
+  chatTriggers:
+  - недовольно орёт!
+  - недовольно орёт.
+  - уаааа
+
+- type: emote
+  id: Agony
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Агония
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [впадает в агонию]
+  chatTriggers:
+  - впадает в агонию
+  - впадает в агонию.
+  - агония
+
+- type: emote
+  id: Boowomp
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Хлюпать (Неловко)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [неловко хлюпает]
+  chatTriggers:
+  - неловко хлюпает
+  - неловко хлюпает.
+  - хлюмп
+
+- type: emote
+  id: BreakingBad
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Смотреть (Подозрение)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [пристально смотрит]
+  chatTriggers:
+  - смотрит с подозрением
+  - смотрит с подозрением.
+  - пристально смотрит
+  - пристально смотрит.
+  - пристально наблюдает
+  - пристально наблюдает.
+  - заглядывается
+  - заглядывается.
+
+- type: emote
+  id: Bruh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Брух
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [кринжует]
+  chatTriggers:
+  - кринжует
+  - кринжует.
+  - брух
+  - брух.
+  - брах
+  - брах.
+
+- type: emote
+  id: HereticLaugh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Смеяться (Еретически)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [еретически смеётся]
+  chatTriggers:
+  - еретически смеяться
+  - еретически смеяться.
+  - еретически смеётся
+  - еретически смеётся.
+
+- type: emote
+  id: CanonEvent
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Каноничный ивент
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [наблюдает за каноничным ивентом]
+  chatTriggers:
+  - наблюдает за каноничным ивентом
+  - наблюдает за каноничным ивентом.
+  - канон
+  - канон.
+
+- type: emote
+  id: Chirp
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Чирикнуть
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [чирикает]
+  chatTriggers:
+  - чирикает
+  - чирикает.
+  - чирик
+  - чирик!
+  - чирик.
+
+- type: emote
+  id: Glares
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Рычать (Свирепо)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [свирепо рычит]
+  chatTriggers:
+  - свирепо рычать
+  - свирепо рычать.
+  - свирепо рычит
+  - свирепо рычит.
+
+- type: emote
+  id: Huh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Хух?
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [испытывает неопределённые эмоции]
+  chatTriggers:
+  - испытывает неопределённые эмоции
+  - испытывает неопределённые эмоции.
+  - хух
+  - хух.
+  - хах
+  - хах.
+
+- type: emote
+  id: KingLaugh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Смеяться (Король)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [смеётся словно король]
+  chatTriggers:
+  - смеётся словно король
+  - смеётся словно король.
+  - хихиха
+
+- type: emote
+  id: LawyerRP
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Поправить галстук (Юрист)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [выразительно поправляет галстук]
+  chatTriggers:
+  - выразительно поправляет галстук
+  - выразительно поправляет галстук.
+  - поправляет галстук
+  - поправляет галстук.
+  - поправил галстук
+  - поправил галстук.
+  - поправила галстук
+  - поправила галстук.
+
+- type: emote
+  id: MemeLaugh
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Смеяться (Угарать)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [угарает!]
+  chatTriggers:
+  - угарает!
+  - угарает
+  - угарать
+  - угараем
+
+- type: emote
+  id: MemeMeow
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Мяукать (Мря)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [странно мяучет]
+  chatTriggers:
+  - странно мяучет
+  - странно мяучет.
+  - мря
+
+- type: emote
+  id: Mewo
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Мяукать (Миау)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [шаловлило мяучет]
+  chatTriggers:
+  - шаловлило мяучет
+  - шаловлило мяучет.
+  - миау
+
+- type: emote
+  id: MoonMen
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Поднять бровь (Задумчиво)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [приподнимает бровь задумавшись]
+  chatTriggers:
+  - приподнимает бровь задумавшись
+  - приподнимает бровь задумавшись.
+  - задумывается
+  - задумывается.
+
+- type: emote
+  id: OMG
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Ахуеть (ОМГ)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [впадая в конфузию кричит!]
+  chatTriggers:
+  - впадая в конфузию кричит!
+  - конфузился
+  - конфузия
+
+- type: emote
+  id: WTH
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Ахуеть (ВТХ)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [впадая в прострацию кричит!]
+  chatTriggers:
+  - впадая в прострацию кричит!
+  - ватахел
+
+- type: emote
+  id: Yippee
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Радоваться
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [радостно кричит!]
+  chatTriggers:
+  - радостно кричит!
+  - йапи
+
+- type: emote
+  id: LizardPurr
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Урчать (Ящер)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [шипяще урчит]
+  chatTriggers:
+  - шипяще урчит
+  - шипяще урчит.
+  - урхс
+
+- type: emote
+  id: SickoMode
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Впасть в ступор
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [на мгновение впадает ступор]
+  chatTriggers:
+  - на мгновение впадает ступор
+  - на мгновение впадает ступор.
+  - ступор
+
+- type: emote
+  id: Waa
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Ваа
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [испускает из себя ваааа~]
+  chatTriggers:
+  - испускает из себя ваааа~
+  - ва
+  - ваа
+  - вааа
+
+- type: emote
+  id: Whine
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Скулить
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [скулит]
+  chatTriggers:
+  - скулит
+  - скулит.
+  - скулит!
+
+- type: emote
+  id: SexyWhistle
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Свистеть (Удивлённо)
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [удивлённо свистит]
+  chatTriggers:
+  - удивлённо свистит
+  - удивлённо свистит.
+
+- type: emote
+  id: Blink
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Моргнуть
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [моргает]
+  chatTriggers:
+    - моргнул
+    - моргнул!
+    - моргнул.
+    - моргает
+    - моргает.
+    - моргает!
+    - хлопает глазами
+    - хлопает глазами.
+    - хлопает глазами!
+    - мигает
+    - мигает.
+    - мигает!
+
+- type: emote
+  id: Gasp
+  icon: Interface/Actions/scream.png
+  category: Vocal
+  name: Задыхатся
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [задыхается]
+  chatTriggers:
+    - задыхается
+    - задыхается!
+    - задыхается.
+    - задохнулась
+    - задохнулась.
+    - задохнулась!
+    - задохнулся
+    - задохнулся.
+    - задохнулся!
+    - жадно глотает воздух
+    - жадно глотает воздух.
+    - жадно глотает воздух!
+    - испытывает удушье
+    - испытывает удушье.
+    - испытывает удушье!
+
+# Скрытые
+
+- type: emote
+  id: Mrowl
+  category: Vocal
+  name: Мяукать (Мруа)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [мрряучет]
+  chatTriggers:
+  - мрряучет
+  - мрряучет.
+  - мруа
+
+- type: emote
+  id: FBI
+  category: Vocal
+  name: ФСБ
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [фсб открывайте]
+  chatTriggers:
+  - фсб открывайте
+  - фсб открывайте.
+  - стучит рукой по ближайшему объекту громко крича!
+  - фбр
+  - фбр.
+  - фсб
+  - фсб.
+  - фби
+  - фби.
+  - fbi
+  - fbi.
+
+- type: emote
+  id: Iluminati
+  category: Vocal
+  name: Показать треугольник
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [складывает из пальцев треугольник]
+  chatTriggers:
+  - складывает из пальцев треугольник
+  - складывает из пальцев треугольник.
+  - треугольник
+  - треугольник.
+  - складывает треугольник
+  - складывает треугольник.
+
+- type: emote
+  id: Buff
+  category: Vocal
+  name: Показать себя
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [показывает своё тело поворачиваясь под разными ракурсами]
+  chatTriggers:
+  - показывает своё тело
+  - показывает своё тело.
+  - показывает своё тело поворачиваясь под разными ракурсами
+  - показывает своё тело поворачиваясь под разными ракурсами.
+  - показывает себя
+  - показывает себя.
+
+- type: emote
+  id: CatMeowAlt
+  category: Vocal
+  name: Мяукать (Протяжно)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [протяжно мяучет]
+  chatTriggers:
+  - протяжно мяучет
+  - протяжно мяучет.
+  - мриаув
+
+- type: emote
+  id: CatMrrp
+  category: Vocal
+  name: Мяукать (Нежно)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [нежно мяучет]
+  chatTriggers:
+  - нежно мяучет
+  - нежно мяучет.
+  - миряу
+
+- type: emote
+  id: BoneRif
+  category: Vocal
+  name: Костянной риф
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [издаёт костянной риф]
+  chatTriggers:
+  - издаёт костянной риф
+  - издаёт костянной риф.
+  - риф
+  - риф.
+  - кости
+  - плохой
+
+- type: emote
+  id: Paradise
+  category: Vocal
+  name: Поймать кайф
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [наклоняет спину назад и пристально смотрит вверх]
+  chatTriggers:
+  - наклоняет спину назад и пристально смотрит вверх
+  - наклоняет спину назад и пристально смотрит вверх.
+  - кайф
+  - кайф.
+
+- type: emote
+  id: Coo
+  category: Vocal
+  name: Чирикнуть (Мило)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [мило чирикает]
+  chatTriggers:
+  - мило чирикает
+  - мило чирикает.
+  - чримк
+  - чримк.
+
+- type: emote
+  id: Fusrodah
+  category: Vocal
+  name: Фусродах
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам]
+  chatTriggers:
+  - ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам
+  - ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам.
+  - фусродах
+  - фусродах.
+
+- type: emote
+  id: DemomanLaugh
+  category: Vocal
+  name: Смеяться (Бомбардир)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [смеётся словно террорист]
+  chatTriggers:
+  - смеётся словно террорист
+  - смеётся словно террорист.
+  - смихихи
+
+- type: emote
+  id: VoronKar
+  category: Vocal
+  name: Каркать (Ворон)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [каркает]
+  chatTriggers:
+  - каркает
+  - каркает.
+  - кар
+
+- type: emote
+  id: WolfHowl
+  category: Vocal
+  name: Выть (Волк)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [воет словно волк]
+  chatTriggers:
+  - воет словно волк
+  - воет словно волк.
+  - выыыы
+
+- type: emote
+  id: Fart
+  category: Vocal
+  name: Пёрнуть
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [пердит]
+  chatTriggers:
+    - пердит
+    - пердит!
+    - пердит.
+    - пукнул
+    - пукнул!
+    - пукнул.
+    - пёрнул
+    - пёрнул.
+    - пёрнул!
+    - перданул
+    - перданул.
+    - перданул!
+    - пукает
+    - пукает.
+    - пукает!
+    - напердел
+    - напердел.
+    - напердел!
+
+- type: emote
+  id: CatMew
+  category: Vocal
+  name: Мяукать (Мило)
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [мило мяучет]
+  chatTriggers:
+  - мило мяучет
+  - мило мяучет.
+  - мев
+  - мев.
+
+- type: emote
+  id: MoreBullets
+  category: Vocal
+  name: Запрос патронов
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [запрашивает патроны]
+  chatTriggers:
+  - запрашивает патроны
+  - запрашивает патроны.
+  - патроны
+  - патроны.
+  - пули
+  - пули.
+  - магазины
+  - магазины.
+  - аммуниция
+  - аммуниция.
+  - запрос
+  - запрос.
+  - запрос патронов
+  - запрос патронов.
+  - запрос аммуниции
+  - запрос аммуниции.
+
+- type: emote
+  id: Moan
+  category: Vocal
+  name: Стонать
+#  whitelist:
+#    components:
+#    - Vocal
+#  blacklist:
+#    components:
+#    - BorgChassis
+  chatMessages: [стонет]
+  chatTriggers:
+    - стонет
+    - стонет.
+    - постанывает
+    - постанывает.
+    - простанывает
+    - простанывает.
+
+# hand emotes

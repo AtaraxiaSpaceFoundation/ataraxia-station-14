@@ -1,0 +1,65 @@
+- type: entity
+  parent: BaseGameRule
+  id: InteQAgentInvasion
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-inteqagent-start-announcement
+    startAudio:
+      path: /Audio/Effects/metal_break1.ogg
+    weight: 10
+    duration: 1
+    startDelay: 10
+    minimumPlayers: 15
+    earliestStart: 30
+    reoccurrenceDelay: 50
+  - type: RandomSpawnRule
+    prototype: SpawnMobInteQAgent
+
+- type: entity
+  parent: BaseGameRule
+  id: TerrorSpiderInvasion
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 6
+    duration: 1
+    startDelay: 10
+    minimumPlayers: 30
+    earliestStart: 30
+    reoccurrenceDelay: 60
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostTerrorSpiderQueen
+
+- type: entity
+  parent: BaseGameRule
+  id: HeadcrabInvasion
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 8
+    duration: 1
+    startDelay: 10
+    minimumPlayers: 15
+    earliestStart: 15
+    reoccurrenceDelay: 25
+  - type: RandomSpawnRule
+    prototype: SpawnHeadcrabNest
+
+- type: entity
+  parent: BaseGameRule
+  id: RandomSupplyPodDrop
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-randomsupplypoddrop-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 12
+    duration: 1
+    startDelay: 10
+    minimumPlayers: 3
+    earliestStart: 20
+    reoccurrenceDelay: 10
+  - type: RandomSpawnRule
+    prototype: SpawnRandomSupplyPod

@@ -1,0 +1,78 @@
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatInteQBattle
+  name: inteq battle coat
+  description: InteQ armored coat is made of durable fabric, with gilded patterns.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_battle_coat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_battle_coat.rsi
+
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatInteQHonorableBattle
+  name: inteq honorable battle coat
+  description: InteQ honorable armored coat is made of durable fabric, with gilded patterns.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_honorable_battle_coat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_honorable_battle_coat.rsi
+
+- type: entity
+  parent: ClothingOuterCoatAMG
+  id: ClothingOuterCoatInteQMedical
+  name: inteq medical coat
+  description: The version of the medical coat, with elements of a bulletproof vest, but your heart is protected.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_med_coat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_med_coat.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterWinterInteQ
+  name: inteq winter coat
+  description: Insulated winter coat, looks like a merch.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/WinterCoats/inteq_wintercoat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/WinterCoats/inteq_wintercoat.rsi
+
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterHoodieInteQ
+  name: inteq winter coat
+  description: Insulated hoodie, looks like a merch.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_hoodie.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Coats/inteq_hoodie.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodInteQHoodieHood
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatSamurai
+  name: куртка самурая
+  description: Культовая куртка рокера из старых годов, от неё исходит ощущение перемен.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/OuterClothing/Coats/samurai_coat.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/OuterClothing/Coats/samurai_coat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatTraumaTeam
+  name: Куртка Trauma Team
+  description: Эта куртка, выполненная из высокотехнологичных материалов, идеально сочетает в себе практичность и эстетику. С ходом времени и сменой владельцев, её функции и предназначения были утеряны. Единственный понятный элемент – это зелёный символ, нанесённый несмываемой краской, каким-то идиотом.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/OuterClothing/Coats/traumateam_coat.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/OuterClothing/Coats/traumateam_coat.rsi

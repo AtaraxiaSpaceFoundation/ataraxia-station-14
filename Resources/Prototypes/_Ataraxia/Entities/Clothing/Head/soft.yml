@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadBaseButcherable
+  id: ClothingHeadHatInteQSoft
+  name: inteq cap
+  description: A truly.. badass accessory.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Head/Soft/inteq_softhat.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Head/Soft/inteq_softhat.rsi

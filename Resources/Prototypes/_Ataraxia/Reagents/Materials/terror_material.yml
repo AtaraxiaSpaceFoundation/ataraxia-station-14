@@ -1,0 +1,7 @@
+- type: material
+  id: MaterialTerrorWeb
+  stackEntity: TerrorWebRTS1
+  name: clot of terror
+  icon: { sprite: Ataraxia/Objects/Materials/terror_material.rsi, state: state1 }
+  color: "#8A9A5B"
+  price: 0

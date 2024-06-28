@@ -1,0 +1,85 @@
+- type: entity
+  name: спавнер Интек авангард лидер
+  id: SpawnMobInteQVanguardLeader
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Misc/inteq.rsi
+        state: logo
+  - type: ConditionalSpawner
+    prototypes:
+      - RandomHumanoidSpawnerInteQVanguardLeader
+
+- type: entity
+  name: спавнер Интек авангард оперативник
+  id: SpawnMobInteQVanguardOperative
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Misc/inteq.rsi
+        state: logo
+  - type: ConditionalSpawner
+    prototypes:
+      - RandomHumanoidSpawnerInteQVanguardOperative
+
+- type: entity
+  name: спавнер Интек авангард солдат
+  id: SpawnMobInteQVanguardSolder
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Misc/inteq.rsi
+        state: logo
+  - type: ConditionalSpawner
+    prototypes:
+      - RandomHumanoidSpawnerInteQVanguardSolder
+
+- type: entity
+  name: спавнер Интек авангард медик
+  id: SpawnMobInteQVanguardMedic
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Misc/inteq.rsi
+        state: logo
+  - type: ConditionalSpawner
+    prototypes:
+      - RandomHumanoidSpawnerInteQVanguardMedic
+
+# Мобы
+
+- type: entity # Качок
+  name: спавнер агент Интек
+  id: SpawnMobInteQAgent
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/NPCs/gigachad_inteq.rsi
+        state: base
+  - type: ConditionalSpawner
+    prototypes:
+      - MobInteQAgent
+
+- type: entity
+  name: спавнер карп Интек
+  id: SpawnMobCarpBrownInteQ
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Pets/inteq_carp.rsi
+        state: icon
+  - type: ConditionalSpawner
+    prototypes:
+      - MobCarpBrownInteQ

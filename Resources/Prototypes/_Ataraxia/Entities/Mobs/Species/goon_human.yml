@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseMobHuman
+  id: BaseMobGoonHuman
+  name: Урист МакГун
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: GoonHuman
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: Ataraxia/Mobs/Species/GoonHuman/parts.rsi
+    state: full
+  - type: Body
+    prototype: GoonHuman
+    requiredLegs: 2
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobGoonHumanDummy
+  noSpawn: true
+  components:
+  - type: HumanoidAppearance
+    species: GoonHuman
