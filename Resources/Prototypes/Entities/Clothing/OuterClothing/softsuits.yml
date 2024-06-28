@@ -31,6 +31,10 @@
     - SuitEVA
     - MonkeyWearable
     - WhitelistChameleon
+  - type: Item # Ataraxia
+    size: Normal
+    shape:
+    - 0,0,1,1
 
 #Emergency EVA
 - type: entity

@@ -1,5 +1,5 @@
 - type: soundCollection
-  id: AtaraxiaLobbyMusic
+  id: LobbyMusicAtaraxia
   files:
     - /Audio/Ataraxia/Lobby/12am.ogg # Ataraxia-START
     - /Audio/Ataraxia/Lobby/after_dark.ogg

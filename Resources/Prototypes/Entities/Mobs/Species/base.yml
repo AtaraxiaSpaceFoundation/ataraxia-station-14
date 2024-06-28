@@ -107,6 +107,9 @@
         layer:
         - MobLayer
   - type: FloorOcclusion
+  - type: Gasp # Ataraxia
+    GaspInterval: 15
+    ThresholdGasp: 8
   - type: RangedDamageSound
     soundGroups:
       Brute:

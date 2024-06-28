@@ -5,9 +5,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/uranium_window.rsi
+    sprite: Ataraxia/Structures/Windows/uranium_window.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Windows/uranium_window.rsi
+    sprite: Ataraxia/Structures/Windows/uranium_window.rsi # Ataraxia
     state: full
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -64,10 +64,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: uranium_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: uranium_window
   - type: Construction
     graph: WindowDirectional
@@ -109,14 +109,14 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/uranium_window_diagonal.rsi # Ataraxia
     state: state0
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls  # Ataraxia
     base: state
   - type: Icon
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/uranium_window_diagonal.rsi # Ataraxia
     state: state0
   - type: Fixtures
     fixtures:

@@ -5,9 +5,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: Ataraxia/Structures/Windows/reinforced_window.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: Ataraxia/Structures/Windows/reinforced_window.rsi # Ataraxia
   - type: Repairable
     fuelCost: 10
     doAfterDelay: 2
@@ -65,9 +65,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/tinted_window.rsi
+    sprite: Ataraxia/Structures/Windows/tinted_window.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Windows/tinted_window.rsi
+    sprite: Ataraxia/Structures/Windows/tinted_window.rsi # Ataraxia
   - type: IconSmooth
     base: twindow
   - type: Construction
@@ -88,10 +88,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -148,14 +148,14 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/reinforced_window_diagonal.rsi # Ataraxia
     state: state0
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls  # Ataraxia
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/reinforced_window_diagonal.rsi # Ataraxia
     state: state0
   - type: Fixtures
     fixtures:

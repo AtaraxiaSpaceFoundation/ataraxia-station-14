@@ -92,6 +92,14 @@
       - PosterContrabandInterdyne
       - PosterContrabandWaffleCorp
       #- PosterContrabandMissingSpacepen # HAHAHAHAHAAH
+      - PosterContrabandInteQRecruitment # ATARAXIA-START
+      - PosterContrabandInteQWorkship
+      - PosterContrabandInteQWorkship2
+      - PosterContrabandInteQ
+      - PosterContrabandInteQNoSex
+      - PosterContrabandInteQVulpa
+      - PosterContrabandInteQJuli
+      - WallmountFlagInteQ # ATARAXIA-END
     chance: 1
 
 - type: entity
@@ -150,4 +158,5 @@
       - PosterLegitPeriodicTable
       - PosterLegitRenault
       - PosterLegitNTTGC
+      - PosterLegitWideEngineer # Ataraxia
     chance: 1
