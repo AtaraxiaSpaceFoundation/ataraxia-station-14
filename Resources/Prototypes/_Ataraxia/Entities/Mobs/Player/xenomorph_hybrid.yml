@@ -4,7 +4,6 @@
   parent: BaseMobXenomorphHybrid
   id: MobXenomorphHybrid
   components:
-    - type: PotentialPsionic
     - type: Respirator
       damage:
         types:

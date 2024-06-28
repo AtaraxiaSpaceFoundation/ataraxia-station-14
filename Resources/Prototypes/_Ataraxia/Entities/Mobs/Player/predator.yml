@@ -4,7 +4,6 @@
   parent: BaseMobPredator
   id: MobPredator
   components:
-  - type: PotentialPsionic
   - type: Respirator
     damage:
       types:

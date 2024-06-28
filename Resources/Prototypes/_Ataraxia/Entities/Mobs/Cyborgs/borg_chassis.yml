@@ -23,11 +23,11 @@
       - BorgModuleService
     hasMindState: borg_null
     noMindState: borg_null
-  - type: BorgTransponder
-    sprite:
-      sprite: Ataraxia/Mobs/Silicon/sex_borg.rsi
-      state: borg
-    name: cyborg
+#  - type: BorgTransponder
+#    sprite:
+#      sprite: Ataraxia/Mobs/Silicon/sex_borg.rsi
+#      state: borg
+#    name: cyborg
   - type: Construction
     node: service
   - type: IntrinsicRadioTransmitter
@@ -73,11 +73,11 @@
       - BorgModuleService
     hasMindState: borg_null
     noMindState: borg_null
-  - type: BorgTransponder
-    sprite:
-      sprite: Ataraxia/Mobs/Silicon/sex_borg_xenomorph.rsi
-      state: borg_xenomorph
-    name: cyborg-xenomorph
+#  - type: BorgTransponder
+#    sprite:
+#      sprite: Ataraxia/Mobs/Silicon/sex_borg_xenomorph.rsi
+#      state: borg_xenomorph
+#    name: cyborg-xenomorph
   - type: Construction
     node: service
   - type: IntrinsicRadioTransmitter

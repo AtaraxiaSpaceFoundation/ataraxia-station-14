@@ -13,8 +13,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-  - type: ShowJobIcons
-  - type: ShowMindShieldIcons
+  - type: ShowSecurityIcons
 
 - type: entity
   parent: ClothingEyesBase
@@ -32,10 +31,16 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-  - type: ShowJobIcons
-  - type: ShowMindShieldIcons
+  - type: ShowSecurityIcons
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+    - Silicon
   - type: ShowRevIcons
+  - type: ShowSyndicateIcons
+  - type: ShowCultHud
   - type: ShowZombieIcons

@@ -26,13 +26,13 @@
     thresholds:
       0: Alive
       50: Dead
-  - type: FleshWorm
-    paralyzeTime: 3
-    chansePounce: 33
-    damage:
-      types:
-        Piercing: 2
-    actionWormJump: ActionHeadcrabJump
+#  - type: FleshWorm
+#    paralyzeTime: 3
+#    chansePounce: 33
+#    damage:
+#      types:
+#        Piercing: 2
+#    actionWormJump: ActionHeadcrabJump
   - type: DamageStateVisuals
     states:
       Alive:
@@ -145,10 +145,10 @@
         state: alive
   - type: Clothing
     sprite: Ataraxia/Mobs/Animals/headcrab_poison.rsi
-  - type: FleshWorm
-    damage:
-      types:
-        Poison: 1.2
+#  - type: FleshWorm
+#    damage:
+#      types:
+#        Poison: 1.2
   - type: MeleeWeapon
     damage:
       types:

@@ -24,11 +24,4 @@
       nameSegments:
       - NamesLastMilitary
     - type: InitialInfectedExempt
-    - type: PotentialPsionic
-    - type: MassSleepPower
-    - type: NoosphericZapPower
-    - type: PsionicInvisibilityPower
-    - type: PsionicRegenerationPower
-    - type: PyrokinesisPower
-    - type: TelegnosisPower
     - type: BibleUser

@@ -18,9 +18,9 @@
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: TerrorSpider
-  - type: BlobSpeak
-    name: speak-vv-terror-spider
-    channel: Hivemind
+#  - type: BlobSpeak
+#    name: speak-vv-terror-spider
+#    channel: Hivemind
   - type: Arachne
   - type: ReplacementAccent
     accent: xeno

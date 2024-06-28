@@ -1,14 +1,14 @@
 ﻿# vocal emotes
-- type: emote
-  id: Hiss
-  category: Vocal
-  chatMessages: [Шипит.]
-  chatTriggers:
-    - шипит
-    - шипит.
-    - шипит!
-    - шипит
-    - шипит
+#- type: emote # Ataraxia-Emotions
+#  id: Hiss
+#  category: Vocal
+#  chatMessages: [Шипит.]
+#  chatTriggers:
+#    - шипит
+#    - шипит.
+#    - шипит!
+#    - шипит
+#    - шипит
 
 - type: emote
   id: Meow
