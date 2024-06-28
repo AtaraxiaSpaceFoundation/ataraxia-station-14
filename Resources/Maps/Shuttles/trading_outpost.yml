@@ -23,7 +23,7 @@ entities:
   - uid: 2
     components:
     - type: MetaData
-      name: Automated Trade Station
+      name: Автономная Торговая Станция
     - type: Transform
       pos: -2.9375,-1.625
       parent: invalid
@@ -382,6 +382,11 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: ProtectedGrid
+    - type: TradeStation
+    - type: Shuttle
+      linearDamping: 10000
+      angularDamping: 10000
 - proto: AirAlarm
   entities:
   - uid: 802

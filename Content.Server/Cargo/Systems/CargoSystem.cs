@@ -7,6 +7,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Stack;
 using Content.Server.Station.Systems;
 using Content.Server._White.Economy;
+using Content.Server.GameTicking;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Cargo;
@@ -16,6 +17,8 @@ using Content.Shared.Mobs.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
@@ -44,6 +47,11 @@ public sealed partial class CargoSystem : SharedCargoSystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly BankCardSystem _bankCard = default!; // WD
+    [Dependency] private readonly IConfigurationManager _cfgManager = default!; // WD
+    [Dependency] private readonly IMapManager _mapManager = default!; // WD
+    [Dependency] private readonly IComponentFactory _factory = default!; // WD
+    [Dependency] private readonly MapLoaderSystem _mapLoader = default!; // WD
+    [Dependency] private readonly GameTicker _ticker = default!; // WD
 
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;
