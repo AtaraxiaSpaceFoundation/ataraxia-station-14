@@ -12,22 +12,3 @@
     maxItemSize: Normal
     grid:
     - 0,0,3,3
-# Ataraxia-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: ataraxia-hidden-desc-BoxSyndicate-antag
-      whitelistMind:
-        components:
-          - TraitorRole
-          - NukeOperative
-    - label: ataraxia-hidden-desc-BoxSyndicate-security
-      jobRequired:
-        - HeadOfSecurity
-        - HeadOfSecurity
-        - SecurityCadet
-        - SecurityOfficer
-        - Pilot # Corvax-Pilot
-        - Detective
-        - Warden
-        - Brigmedic #backmen
-# Ataraxia-HiddenDesc-End

@@ -6,24 +6,6 @@
   components:
     - type: Implanter
       implant: mantisImplant
-    - type: HiddenDescription # Ataraxia-Hidden-Description
-      entries:
-      - label: corvax-hidden-desc-IllegalImplants-medical
-        jobRequired:
-          - Paramedic
-          - MedicalDoctor
-          - ChiefMedicalOfficer
-      - label: ataraxia-hidden-desc-MantisBladeImplanter-research
-        jobRequired:
-          - ResearchAssistant
-          - ResearchDirector
-          - Scientist
-          - Borg
-      - label: ataraxia-hidden-desc-MantisBladeImplanter-syndicate
-        whitelistMind:
-          components:
-            - TraitorRole
-            - NukeOperative
 
 - type: entity
   parent: BaseImplantOnlyImplanterSyndi
@@ -33,22 +15,3 @@
   components:
     - type: Implanter
       implant: mantisEImplant
-    - type: HiddenDescription # Ataraxia-Hidden-Description
-      entries:
-      - label: corvax-hidden-desc-IllegalImplants-medical
-        jobRequired:
-          - Paramedic
-          - Brigmedic #backmen
-          - MedicalDoctor
-          - ChiefMedicalOfficer
-      - label: ataraxia-hidden-desc-MantisEBladeImplanter-research
-        jobRequired:
-          - ResearchAssistant
-          - ResearchDirector
-          - Scientist
-          - Borg
-      - label: ataraxia-hidden-desc-MantisEBladeImplanter-syndicate
-        whitelistMind:
-          components:
-            - TraitorRole
-            - NukeOperative
