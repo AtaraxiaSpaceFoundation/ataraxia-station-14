@@ -68,6 +68,9 @@ namespace Content.Server.Tabletop
             // Find the entity, remove it from the session and set it's position to the tabletop
             session.Entities.TryGetValue(entity, out var result);
             session.Entities.Remove(result);
+
+            tabletop.HologramsSpawned--; // White Dream fix
+
             QueueDel(result);
         }
 
@@ -90,6 +93,16 @@ namespace Content.Server.Tabletop
             if (!TryComp<ItemComponent>(handEnt, out var item))
                 return;
 
+            // Skye hotfix to prevent people from infinitely spawning mice on the board games and crashing server.
+            if (component.HologramsSpawned >= component.MaximumHologramsAllowed)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("tabletop-max-entities"), uid, args.User);
+                return;
+            }
+
+            component.HologramsSpawned++;
+            // Skye hotfix end
+            
             var meta = MetaData(handEnt);
             var protoId = meta.EntityPrototype?.ID;
 

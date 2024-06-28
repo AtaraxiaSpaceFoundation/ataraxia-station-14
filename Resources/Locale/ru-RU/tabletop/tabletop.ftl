@@ -5,6 +5,7 @@ tabletop-verb-dump-pieces = Сбросить куски
 tabletop-default-board-name = Настольная игра
 tabletop-error-remove-non-hologram = Вы не можете удалить встроенный элемент!
 tabletop-added-piece = Доска ярко переливается!
+tabletop-max-entities = Максимальное количество голограмм уже поставлено.
 
 ## Chess
 
