@@ -47,7 +47,7 @@
 - type: entity
   noSpawn: True
   parent: ClothingBackpackNinja
-  id: ClothingBackpackNinjaFill
+  id: ClothingBackpackNinjaFilled
   components:
   - type: StorageFill
     contents:

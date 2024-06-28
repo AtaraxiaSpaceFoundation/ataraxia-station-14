@@ -40,6 +40,7 @@
     - визжит.
     - визжит!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Laugh
@@ -91,6 +92,7 @@
     - хихикнула
     - ржёт
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Honk
@@ -114,6 +116,7 @@
     - хонк.
     - хонк!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Sigh
@@ -135,6 +138,7 @@
     - вздохнул.
     - вздохнула.
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Whistle
@@ -159,6 +163,7 @@
     - свистнул.
     - свистнул!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Crying
@@ -191,6 +196,7 @@
     - рыдает.
     - рыдает!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Squish
@@ -211,6 +217,7 @@
     - хлюпает.
     - хлюпает!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Chitter
@@ -231,6 +238,7 @@
    - стрекочет.
    - стрекочет!
    # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Squeak
@@ -251,6 +259,7 @@
    - пищит.
    - пищит!
    # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Click
@@ -271,6 +280,7 @@
    - клацает.
    - клацает!
    # Ataraxia-Localization-End
+  allowMenu: true
 
 # hand emotes
 - type: emote
@@ -300,6 +310,7 @@
     - апплодирует.
     - апплодирует!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Snap
@@ -342,6 +353,7 @@
     - щёлкнул пальцами
     - щёлкнула пальцами
     # Ataraxia-Localization-End
+  allowMenu: true
 
 #- type: emote # Ataraxia-Emotes
 #  id: Salute
@@ -427,7 +439,7 @@
   chatMessages: [ "emote-deathgasp" ]
   chatTriggers:
   - deathgasp
-  - задыхается
+  - хрипит
 
 - type: emote
   id: MonkeyDeathgasp
@@ -461,6 +473,7 @@
     - зажужжала.
     - зажужжала!
     # Ataraxia-Localization-End
+  allowMenu: true
 
 - type: emote
   id: Weh
