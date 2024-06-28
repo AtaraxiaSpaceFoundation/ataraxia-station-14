@@ -1,0 +1,14 @@
+marking-TaurCanine = таур, собака
+marking-TaurCow = таур, корова
+marking-TaurDeer = таур, олень
+marking-TaurDrake = таур, дрейк
+marking-TaurSpider = таур, паук
+marking-TaurEevee = таур, иви
+marking-TaurFeline = таур, кошка
+marking-TaurHorse = таур, лошадь
+marking-TaurSynthLizard = таур, синтетический ящер
+marking-TaurNaga = таур, нага
+marking-TaurOtie = таур, оти
+marking-TaurPede = таур, педе
+marking-TaurTentacle = таур, тентакли
+marking-TaurSynthWolf = таур, синтетический волк

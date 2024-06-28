@@ -1,0 +1,14 @@
+ent-ResinWeedNode = семена полимера
+    .desc = Слизистая и липкая масса со светящимися семенами.
+ent-ResinMass1 = масса полимера
+    .desc = Слизистая и липкая масса.
+ent-ResinMass2 = { ent-ResinMass1 }
+    .desc = { ent-ResinMass1.desc }
+ent-ResinMass3 = { ent-ResinMass1 }
+    .desc = { ent-ResinMass1.desc }
+ent-ResinNestBed = полимерное гнездо
+    .desc = Слизистая и липкая масса, представляющая собой постель?....
+ent-WallResinXenomorph = полимерная стена
+    .desc = Слизистая и липкая, устойчива к всему кроме огня.
+ent-WindowResinMembraneXenomorph = полимерная мембрана
+    .desc = Слизистая, липкая и прозрачная, устойчива к всему кроме огня.
