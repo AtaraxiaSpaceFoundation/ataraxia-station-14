@@ -1,0 +1,97 @@
+- type: bodyType
+  id: XenomorphHybridNormal
+  name: body-normal
+  sprites:
+    Head: MobXenomorphHybridHead
+    Hair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Chest: MobXenomorphHybridTorso
+    HeadTop: MobHumanoidAnyMarking
+    HeadSide: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobXenomorphHybridEyes
+    LArm: MobXenomorphHybridLArm
+    RArm: MobXenomorphHybridRArm
+    LHand: MobXenomorphHybridLHand
+    RHand: MobXenomorphHybridRHand
+    LLeg: MobXenomorphHybridLLegDigi # Ataraxia-Digitigrade
+    RLeg: MobXenomorphHybridRLegDigi # Ataraxia-Digitigrade
+    LFoot: MobXenomorphHybridLFootDigi # Ataraxia-Digitigrade
+    RFoot: MobXenomorphHybridRFootDigi # Ataraxia-Digitigrade
+
+- type: bodyType
+  id: AnthropomorphNormal
+  name: body-normal
+  sprites:
+    Head: MobAnthropomorphHead
+    Hair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Chest: MobAnthropomorphTorso
+    HeadTop: MobHumanoidAnyMarking
+    HeadSide: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobHumanoidEyes
+    LArm: MobAnthropomorphLArm
+    RArm: MobAnthropomorphRArm
+    LHand: MobAnthropomorphLHand
+    RHand: MobAnthropomorphRHand
+    LLeg: MobAnthropomorphLLegDigi # Ataraxia-Digitigrade
+    RLeg: MobAnthropomorphRLegDigi # Ataraxia-Digitigrade
+    LFoot: MobAnthropomorphLFootDigi # Ataraxia-Digitigrade
+    RFoot: MobAnthropomorphRFootDigi # Ataraxia-Digitigrade
+
+- type: bodyType
+  id: HumanGoonNormal
+  name: body-normal
+  sprites:
+    Head: MobGoonHumanHead
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Chest: MobGoonHumanTorso
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobGoonHumanEyes
+    LArm: MobGoonHumanLArm
+    RArm: MobGoonHumanRArm
+    LHand: MobGoonHumanLHand
+    RHand: MobGoonHumanRHand
+    LLeg: MobGoonHumanLLeg
+    RLeg: MobGoonHumanRLeg
+    LFoot: MobGoonHumanLFoot
+    RFoot: MobGoonHumanRFoot
+
+- type: bodyType
+  id: PredatorNormal
+  name: body-normal
+  sprites:
+    Head: MobPredatorHead
+    Chest: MobPredatorTorso
+    LArm: MobPredatorLArm
+    RArm: MobPredatorRArm
+    LHand: MobPredatorLHand
+    RHand: MobPredatorRHand
+    LLeg: MobPredatorLLeg
+    RLeg: MobPredatorRLeg
+    LFoot: MobPredatorLFoot
+    RFoot: MobPredatorRFoot
+
+#- type: bodyType
+#  id: ResomiNormal
+#  name: body-normal
+#  sprites:
+#    Head: MobResomiHead
+#    Hair: MobHumanoidAnyMarking
+#    Snout: MobHumanoidAnyMarking
+#    Chest: MobResomiTorso
+#    HeadTop: MobHumanoidAnyMarking
+#    HeadSide: MobHumanoidAnyMarking
+#    Tail: MobHumanoidAnyMarking
+#    Eyes: MobHumanoidEyes
+#    LArm: MobResomiLArm
+#    RArm: MobResomiRArm
+#    LHand: MobResomiLHand
+#    RHand: MobResomiRHand
+#    LLeg: MobResomiLLeg
+#    RLeg: MobResomiRLeg
+#    LFoot: MobResomiLFoot
+#    RFoot: MobResomiRFoot

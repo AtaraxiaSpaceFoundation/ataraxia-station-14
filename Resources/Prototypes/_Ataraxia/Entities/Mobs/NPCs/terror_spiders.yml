@@ -21,7 +21,6 @@
 #  - type: BlobSpeak
 #    name: speak-vv-terror-spider
 #    channel: Hivemind
-  - type: Arachne
   - type: ReplacementAccent
     accent: xeno
   - type: Hands

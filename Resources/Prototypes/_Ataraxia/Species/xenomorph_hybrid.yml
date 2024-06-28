@@ -3,7 +3,7 @@
   name: species-name-xenomorph-hybrid
   roundStart: true
   prototype: MobXenomorphHybrid
-  sprites: MobXenomorphHybridSprites
+#  sprites: MobXenomorphHybridSprites
   defaultSkinTone: "#787878"
   markingLimits: MobXenomorphHybridMarkingLimits
   dollPrototype: MobXenomorphHybridDummy
@@ -11,26 +11,28 @@
   maleFirstNames: names_xenomorph_hybrid_male
   femaleFirstNames: names_xenomorph_hybrid_female
   naming: FirstDashFirst
+  bodyTypes:
+    - XenomorphHybridNormal
 
-- type: speciesBaseSprites
-  id: MobXenomorphHybridSprites
-  sprites:
-    Head: MobXenomorphHybridHead
-    Hair: MobHumanoidAnyMarking
-    Snout: MobHumanoidAnyMarking
-    Chest: MobXenomorphHybridTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobXenomorphHybridEyes
-    LArm: MobXenomorphHybridLArm
-    RArm: MobXenomorphHybridRArm
-    LHand: MobXenomorphHybridLHand
-    RHand: MobXenomorphHybridRHand
-    LLeg: MobXenomorphHybridLLegDigi # Ataraxia-Digitigrade
-    RLeg: MobXenomorphHybridRLegDigi # Ataraxia-Digitigrade
-    LFoot: MobXenomorphHybridLFootDigi # Ataraxia-Digitigrade
-    RFoot: MobXenomorphHybridRFootDigi # Ataraxia-Digitigrade
+#- type: speciesBaseSprites
+#  id: MobXenomorphHybridSprites
+#  sprites:
+#    Head: MobXenomorphHybridHead
+#    Hair: MobHumanoidAnyMarking
+#    Snout: MobHumanoidAnyMarking
+#    Chest: MobXenomorphHybridTorso
+#    HeadTop: MobHumanoidAnyMarking
+#    HeadSide: MobHumanoidAnyMarking
+#    Tail: MobHumanoidAnyMarking
+#    Eyes: MobXenomorphHybridEyes
+#    LArm: MobXenomorphHybridLArm
+#    RArm: MobXenomorphHybridRArm
+#    LHand: MobXenomorphHybridLHand
+#    RHand: MobXenomorphHybridRHand
+#    LLeg: MobXenomorphHybridLLegDigi # Ataraxia-Digitigrade
+#    RLeg: MobXenomorphHybridRLegDigi # Ataraxia-Digitigrade
+#    LFoot: MobXenomorphHybridLFootDigi # Ataraxia-Digitigrade
+#    RFoot: MobXenomorphHybridRFootDigi # Ataraxia-Digitigrade
 
 - type: markingPoints
   id: MobXenomorphHybridMarkingLimits

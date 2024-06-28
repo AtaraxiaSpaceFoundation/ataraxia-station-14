@@ -3,29 +3,31 @@
   name: species-name-goon-human
   roundStart: false
   prototype: MobGoonHuman
-  sprites: MobGoonHumanSprites
+#  sprites: MobGoonHumanSprites
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobGoonHumanDummy
   skinColoration: HumanToned
+  bodyTypes:
+    - HumanGoonNormal
 
-- type: speciesBaseSprites
-  id: MobGoonHumanSprites
-  sprites:
-    Head: MobGoonHumanHead
-    Hair: MobHumanoidAnyMarking
-    FacialHair: MobHumanoidAnyMarking
-    Chest: MobGoonHumanTorso
-    HeadTop: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobGoonHumanEyes
-    LArm: MobGoonHumanLArm
-    RArm: MobGoonHumanRArm
-    LHand: MobGoonHumanLHand
-    RHand: MobGoonHumanRHand
-    LLeg: MobGoonHumanLLeg
-    RLeg: MobGoonHumanRLeg
-    LFoot: MobGoonHumanLFoot
-    RFoot: MobGoonHumanRFoot
+#- type: speciesBaseSprites
+#  id: MobGoonHumanSprites
+#  sprites:
+#    Head: MobGoonHumanHead
+#    Hair: MobHumanoidAnyMarking
+#    FacialHair: MobHumanoidAnyMarking
+#    Chest: MobGoonHumanTorso
+#    HeadTop: MobHumanoidAnyMarking
+#    Tail: MobHumanoidAnyMarking
+#    Eyes: MobGoonHumanEyes
+#    LArm: MobGoonHumanLArm
+#    RArm: MobGoonHumanRArm
+#    LHand: MobGoonHumanLHand
+#    RHand: MobGoonHumanRHand
+#    LLeg: MobGoonHumanLLeg
+#    RLeg: MobGoonHumanRLeg
+#    LFoot: MobGoonHumanLFoot
+#    RFoot: MobGoonHumanRFoot
 
 #- type: speciesBaseSprites
 #  id: MobGoonHumanSprites

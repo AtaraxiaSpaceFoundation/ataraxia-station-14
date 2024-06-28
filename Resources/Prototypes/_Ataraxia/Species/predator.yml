@@ -3,27 +3,29 @@
   name: species-name-predator
   roundStart: false
   prototype: MobPredator
-  sprites: MobPredatorSprites
+#  sprites: MobPredatorSprites
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobPredatorDummy
   skinColoration: Hues
   maleFirstNames: names_xenomorph_hybrid_male
   femaleFirstNames: names_xenomorph_hybrid_female
   naming: FirstDashFirst
+  bodyTypes:
+    - PredatorNormal
 
-- type: speciesBaseSprites
-  id: MobPredatorSprites
-  sprites:
-    Head: MobPredatorHead
-    Chest: MobPredatorTorso
-    LArm: MobPredatorLArm
-    RArm: MobPredatorRArm
-    LHand: MobPredatorLHand
-    RHand: MobPredatorRHand
-    LLeg: MobPredatorLLeg
-    RLeg: MobPredatorRLeg
-    LFoot: MobPredatorLFoot
-    RFoot: MobPredatorRFoot
+#- type: speciesBaseSprites
+#  id: MobPredatorSprites
+#  sprites:
+#    Head: MobPredatorHead
+#    Chest: MobPredatorTorso
+#    LArm: MobPredatorLArm
+#    RArm: MobPredatorRArm
+#    LHand: MobPredatorLHand
+#    RHand: MobPredatorRHand
+#    LLeg: MobPredatorLLeg
+#    RLeg: MobPredatorRLeg
+#    LFoot: MobPredatorLFoot
+#    RFoot: MobPredatorRFoot
 
 # MARKINGS FOR PredatorS //TODO
 #- type: markingPoints

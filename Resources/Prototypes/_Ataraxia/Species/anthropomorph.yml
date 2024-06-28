@@ -3,7 +3,7 @@
   name: species-name-anthropomorph
   roundStart: true
   prototype: MobAnthropomorph
-  sprites: MobAnthropomorphSprites
+#  sprites: MobAnthropomorphSprites
   defaultSkinTone: "#f5aaff"
   markingLimits: MobAnthropomorphMarkingLimits
   dollPrototype: MobAnthropomorphDummy 
@@ -11,26 +11,28 @@
   maleFirstNames: names_arachnid_first
   femaleFirstNames: names_arachnid_first
   naming: FirstDashFirst
+  bodyTypes:
+    - AnthropomorphNormal
 
-- type: speciesBaseSprites
-  id: MobAnthropomorphSprites
-  sprites:
-    Head: MobAnthropomorphHead
-    Hair: MobHumanoidAnyMarking
-    Snout: MobHumanoidAnyMarking
-    Chest: MobAnthropomorphTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
-    LArm: MobAnthropomorphLArm
-    RArm: MobAnthropomorphRArm
-    LHand: MobAnthropomorphLHand
-    RHand: MobAnthropomorphRHand
-    LLeg: MobAnthropomorphLLegDigi # Ataraxia-Digitigrade
-    RLeg: MobAnthropomorphRLegDigi # Ataraxia-Digitigrade
-    LFoot: MobAnthropomorphLFootDigi # Ataraxia-Digitigrade
-    RFoot: MobAnthropomorphRFootDigi # Ataraxia-Digitigrade
+#- type: speciesBaseSprites
+#  id: MobAnthropomorphSprites
+#  sprites:
+#    Head: MobAnthropomorphHead
+#    Hair: MobHumanoidAnyMarking
+#    Snout: MobHumanoidAnyMarking
+#    Chest: MobAnthropomorphTorso
+#    HeadTop: MobHumanoidAnyMarking
+#    HeadSide: MobHumanoidAnyMarking
+#    Tail: MobHumanoidAnyMarking
+#    Eyes: MobHumanoidEyes
+#    LArm: MobAnthropomorphLArm
+#    RArm: MobAnthropomorphRArm
+#    LHand: MobAnthropomorphLHand
+#    RHand: MobAnthropomorphRHand
+#    LLeg: MobAnthropomorphLLegDigi # Ataraxia-Digitigrade
+#    RLeg: MobAnthropomorphRLegDigi # Ataraxia-Digitigrade
+#    LFoot: MobAnthropomorphLFootDigi # Ataraxia-Digitigrade
+#    RFoot: MobAnthropomorphRFootDigi # Ataraxia-Digitigrade
 
 - type: markingPoints
   id: MobAnthropomorphMarkingLimits
