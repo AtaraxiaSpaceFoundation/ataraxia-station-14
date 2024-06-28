@@ -1,0 +1,26 @@
+<Document>
+  # Вдова ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderWidow" Caption=""/>
+  </Box>
+  Один из самых смертоносных пауков, убивает любую органическую цель за несколько укусов, обладает опасными плевками, но имеет мало здоровья. Охотится на одиночек, или атакует вместе с другими пауками.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#46A446]25 яда[/color] своими когтями.
+  - Наносит [color=#46A446]12 яда[/color] своими плевками.
+  - Обладает двойным плевком.
+  - Умеет выпускать облако дыма и облако нейротоксина с наркотиками.
+  - Имеет 120 ХП.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawWidowTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponAcidDoubleTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponSmokeTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponNeurotoxinDrugsSmokeTerrorSpider" Caption=""/>
+  </Box>
+
+</Document>

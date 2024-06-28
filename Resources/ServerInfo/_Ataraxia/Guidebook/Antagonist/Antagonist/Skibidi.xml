@@ -1,0 +1,25 @@
+<Document>
+  # Скибиди туалет
+
+  <Box>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption=""/>
+  </Box>
+  Скибиди туалет - блюспейс аномалия, один из столпов дегенеративности альтернативной реальности, невозможно объяснить, почему, зачем? А какая разница, аномалия на то и аномалия, все и так знают, что камерамены круче.
+
+  ## Особенности
+  
+  - Наносит [color=#ff1f1f]7 урона ожогами[/color], но это не самое страшное, самое страшное это то, что он кричит фирменный боевой клич "Шкибиди" во время своей атаки, вводя в панику и оргазм своих врагов.
+  - Имеет 100 ХП.
+  - Стреляет лазерами из глаз.
+  - Очень редко выступают по одиночке, обычно держатся в группами по 3 особи.
+  - Делает шкибиди, если его погладить.
+
+  <Box>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption=""/>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption=""/>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption="АРМИЯ СКИБИДИ ТУАЛЕТОВ"/>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption=""/>
+    <GuideEntityEmbed Entity="MobSkibidiToilet" Caption=""/>
+  </Box>
+
+</Document>

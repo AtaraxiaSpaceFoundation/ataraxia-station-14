@@ -1,0 +1,26 @@
+<Document>
+  # Королева ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderQueen" Caption=""/>
+  </Box>
+  Создает логово, массово производит пауков, сражается с пауками на передовой, используя свои опасные плевки.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#ff1f1f]22 режущего[/color] и [color=#46A446]10 яда[/color] своими когтями.
+  - Наносит [color=#C9181A]25 ожогов[/color] своими плевками.
+  - Имеет 340 ХП.
+  - Может вскрывать шлюзы своими лапами.
+  - Может откладывать яйца.
+  - Тело стоит [color=#E3E444]9000[/color] кредитов.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawQueenTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponAcidHeatTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="TerrorEggIcon" Caption=""/>
+  </Box>
+
+</Document>

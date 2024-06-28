@@ -1,0 +1,19 @@
+<Document>
+  # Грузовые капсулы
+
+  Простая и общая информация о грузовых капсулах, которые вы можете вызвать используя специальный маячок, с ивента потерянной грузовой капсулы, или от администратора у которого вы что-то попросили.
+
+  Виды грузовых капсул:
+  <Box>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleDefault" Caption="Обычная грузовая капсула."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleBluespace" Caption="Блюспейс грузовая капсула."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleCult" Caption="Грузовая капсула Культа."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleGondola" Caption="Грузовая капсула Гондола."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleOrange" Caption="Грузовая капсула Апельсин."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleHonk" Caption="Грузовая капсула Хонк."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleNanoTrasen" Caption="Грузовая капсула НТ."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleDeathSquad" Caption="Групповая грузовая капсула."/>
+    <GuideEntityEmbed Entity="SupplyPodCapsuleSyndicate" Caption="Грузовая капсула Синдиката."/>
+  </Box>
+
+</Document>
