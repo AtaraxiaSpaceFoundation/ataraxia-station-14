@@ -318,10 +318,9 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         // TODO: this is kinda awful for multi-nukies
         foreach (var nukeops in EntityQuery<NukeopsRuleComponent>())
         {
-            SetupOperativeEntity(uid, nukeOpSpawner.OperativeName, nukeOpSpawner.SpawnDetails, profile);
-
             nukeops.OperativeMindPendingData.Add(uid, nukeOpSpawner.SpawnDetails.AntagRoleProto);
         }
+        SetupOperativeEntity(uid, nukeOpSpawner.OperativeName, nukeOpSpawner.SpawnDetails, profile);
     }
 
     private void OnMindAdded(EntityUid uid, NukeOperativeComponent component, MindAddedMessage args)

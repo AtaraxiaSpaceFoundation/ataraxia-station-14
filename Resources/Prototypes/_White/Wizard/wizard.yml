@@ -26,6 +26,8 @@
   name: wizard spawn point (ghost role)
   components:
   - type: GhostRole
+    raffle:
+      settings: default
   - type: GhostRoleMobSpawner
     prototype: MobHumanSpaceWiz
   - type: Sprite
