@@ -6,11 +6,12 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: Ataraxia/Objects/Misc/id_cards.rsi # Ataraxia
+    scale: 0.9, 0.9 # Ataraxia
   - type: Clothing
     slots:
     - idcard
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: Ataraxia/Objects/Misc/id_cards.rsi # Ataraxia
   - type: Item
     size: Small
     heldPrefix: default
@@ -88,8 +89,13 @@
   components:
   - type: Sprite
     layers:
-    - state: default
-    - state: idpassenger
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#717171"
+    - state: frame_default # Ataraxia
+      color: "#717171"
+    - state: assigned # Ataraxia
+    - state: idassistant # Ataraxia
   - type: PresetIdCard
     job: Passenger
 
@@ -102,7 +108,12 @@
     job: TechnicalAssistant
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#ffa005"
+    - state: frame_default # Ataraxia
+      color: "#ffa005"
+    - state: assigned # Ataraxia
     - state: idintern-tech
 
 - type: entity
@@ -114,7 +125,12 @@
     job: MedicalIntern
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idintern-med
 
 - type: entity
@@ -126,7 +142,12 @@
     job: ResearchAssistant
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idintern-sci
 
 - type: entity
@@ -138,7 +159,12 @@
     job: SecurityCadet
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#cb0000"
+    - state: frame_default # Ataraxia
+      color: "#cb0000"
+    - state: assigned # Ataraxia
     - state: idintern-cadet
 
 - type: entity
@@ -150,7 +176,12 @@
     job: ServiceWorker
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idintern-service
 
 - type: entity
@@ -160,7 +191,12 @@
   components:
   - type: Sprite
     layers:
-    - state: gold
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idcaptain
   - type: Item
     heldPrefix: gold
@@ -181,7 +217,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#cb0000"
+    - state: frame_default # Ataraxia
+      color: "#cb0000"
+    - state: assigned # Ataraxia
     - state: idsecurityofficer
   - type: PresetIdCard
     job: SecurityOfficer
@@ -193,7 +234,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#cb0000"
+        - state: frame_default # Ataraxia
+          color: "#cb0000"
+        - state: assigned # Ataraxia
         - state: idwarden
     - type: PresetIdCard
       job: Warden
@@ -205,7 +251,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#ffa005"
+    - state: frame_default # Ataraxia
+      color: "#ffa005"
+    - state: assigned # Ataraxia
     - state: idstationengineer
   - type: PresetIdCard
     job: StationEngineer
@@ -217,7 +268,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idmedicaldoctor
   - type: PresetIdCard
     job: MedicalDoctor
@@ -229,7 +285,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idparamedic
   - type: PresetIdCard
     job: Paramedic
@@ -241,7 +302,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idchemist
   - type: PresetIdCard
     job: Chemist
@@ -253,7 +319,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#b18644"
+    - state: frame_default # Ataraxia
+      color: "#b18644"
+    - state: assigned # Ataraxia
     - state: idcargotechnician
   - type: PresetIdCard
     job: CargoTechnician
@@ -265,7 +336,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#b18644"
+    - state: frame_default # Ataraxia
+      color: "#b18644"
+    - state: assigned # Ataraxia
     - state: idshaftminer
   - type: PresetIdCard
     job: SalvageSpecialist
@@ -277,7 +353,12 @@
   components:
     - type: Sprite
       layers:
-        - state: silver
+        - state: card_silver # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#1b67a5"
+        - state: frame_head # Ataraxia
+          color: "#1b67a5"
+        - state: assigned_centcom # Ataraxia
         - state: idquartermaster
     - type: Item
       heldPrefix: silver
@@ -291,7 +372,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idscientist
   - type: PresetIdCard
     job: Scientist
@@ -303,7 +389,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_rainbow # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idclown
   - type: PresetIdCard
     job: Clown
@@ -315,7 +406,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idmime
   - type: PresetIdCard
     job: Mime
@@ -327,7 +423,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#58c800"
+        - state: frame_default # Ataraxia
+          color: "#58c800"
+        - state: assigned # Ataraxia
         - state: idchaplain
     - type: PresetIdCard
       job: Chaplain
@@ -339,7 +440,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idjanitor
   - type: PresetIdCard
     job: Janitor
@@ -351,7 +457,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idbartender
   - type: PresetIdCard
     job: Bartender
@@ -363,7 +474,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#58c800"
+        - state: frame_default # Ataraxia
+          color: "#58c800"
+        - state: assigned # Ataraxia
         - state: idbartender
     - type: PresetIdCard
       job: Bartender
@@ -376,7 +492,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idcook
   - type: PresetIdCard
     job: Chef
@@ -388,7 +509,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#58c800"
+        - state: frame_default # Ataraxia
+          color: "#58c800"
+        - state: assigned # Ataraxia
         - state: idbotanist
     - type: PresetIdCard
       job: Botanist
@@ -400,7 +526,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#58c800"
+        - state: frame_default # Ataraxia
+          color: "#58c800"
+        - state: assigned # Ataraxia
         - state: idcurator
     - type: PresetIdCard
       job: Librarian
@@ -412,23 +543,15 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#913343"
+        - state: frame_default # Ataraxia
+          color: "#913343"
+        - state: assigned # Ataraxia
         - state: idlawyer
     - type: PresetIdCard
       job: Lawyer
-
-#WHITE
-- type: entity
-  parent: IDCardStandard
-  id: InspectorIDCard
-  name: inspector ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: silver
-    - state: idinspector
-  - type: PresetIdCard
-    job: Inspector
 
 - type: entity
   parent: IDCardStandard
@@ -437,7 +560,12 @@
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idheadofpersonnel
   - type: Item
     heldPrefix: silver
@@ -451,7 +579,12 @@
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idchiefengineer
   - type: Item
     heldPrefix: silver
@@ -465,7 +598,12 @@
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idchiefmedicalofficer
   - type: Item
     heldPrefix: silver
@@ -479,7 +617,12 @@
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idresearchdirector
   - type: Item
     heldPrefix: silver
@@ -493,7 +636,12 @@
   components:
   - type: Sprite
     layers:
-    - state: silver
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
     - state: idheadofsecurity
   - type: Item
     heldPrefix: silver
@@ -507,8 +655,15 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#cb0000"
+    - state: frame_default # Ataraxia
+      color: "#cb0000"
+    - state: assigned # Ataraxia
     - state: idbrigmedic
+  - type: PresetIdCard
+    job: Brigmedic
 
 - type: entity
   parent: IDCardStandard
@@ -517,12 +672,17 @@
   components:
   - type: Sprite
     layers:
-    - state: centcom
+    - state: card_centcom # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
     - state: idcentcom
   - type: Item
     heldPrefix: blue
   - type: IdCard
-    jobTitle: Central Commander
+    jobTitle: Представитель ЦК # Ataraxia
     jobIcon: JobIconNanotrasen
   - type: Access
     groups:
@@ -533,78 +693,114 @@
 - type: entity
   parent: CentcomIDCard
   id: ERTLeaderIDCard
+  noSpawn: true
   name: ERT leader ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_commander
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: trim_ert_commander # Ataraxia
   - type: IdCard
-    jobTitle: ERT Company Commander
+    jobTitle: Лидер ОБР # Ataraxia
   - type: Item
     heldPrefix: gold
 
 - type: entity
   parent: ERTLeaderIDCard
   id: ERTChaplainIDCard
+  noSpawn: true
   name: ERT chaplain ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_chaplain # we have the sprite for the id but dont have chaplain ERT equipment for now.
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: idchaplain # Ataraxia
   - type: IdCard
-    jobTitle: ERT Soul Officer
+    jobTitle: Священник ОБР # Ataraxia
   - type: Item
     heldPrefix: blue
 
 - type: entity
   parent: ERTChaplainIDCard
   id: ERTEngineerIDCard
+  noSpawn: true
   name: ERT engineer ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_engineer
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: idchiefengineer # Ataraxia
   - type: IdCard
-    jobTitle: ERT Field Engineer
+    jobTitle: Инженер ОБР # Ataraxia
 
 - type: entity
   parent: ERTChaplainIDCard
   id: ERTJanitorIDCard
+  noSpawn: true
   name: ERT janitor ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_janitor
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: idjanitor # Ataraxia
   - type: IdCard
-    jobTitle: ERT Custodian
+    jobTitle: Уборщик ОБР # Ataraxia
 
 - type: entity
   parent: ERTChaplainIDCard
   id: ERTMedicIDCard
+  noSpawn: true
   name: ERT medic ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_medic
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: idchiefmedicalofficer # Ataraxia
   - type: IdCard
-    jobTitle: ERT Medical Doctor
+    jobTitle: Медик ОБР # Ataraxia
 
 - type: entity
   parent: ERTChaplainIDCard
   id: ERTSecurityIDCard
+  noSpawn: true
   name: ERT security ID card
   components:
   - type: Sprite
     layers:
-    - state: gold
-    - state: ert_security
+    - state: card_gold # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: idheadofsecurity # Ataraxia
   - type: IdCard
-    jobTitle: ERT Field Officer
+    jobTitle: Офицер ОБР # Ataraxia
 
 - type: entity
   parent: IDCardStandard
@@ -614,12 +810,17 @@
   components:
   - type: Sprite
     layers:
-    - state: centcom
+    - state: card_centcom # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
     - state: idcentcom
   - type: Item
     heldPrefix: blue
   - type: IdCard
-    jobTitle: Central Commander
+    jobTitle: Представитель ЦК # Ataraxia
   - type: Access
     tags:
     - Maintenance
@@ -631,7 +832,12 @@
   components:
     - type: Sprite
       layers:
-        - state: default
+        - state: card_default # Ataraxia
+        - state: sub_department # Ataraxia
+          color: "#58c800"
+        - state: frame_default # Ataraxia
+          color: "#58c800"
+        - state: assigned # Ataraxia
         - state: idmusician
     - type: PresetIdCard
       job: Musician
@@ -643,11 +849,18 @@
   components:
   - type: Sprite
     layers:
-    - state: centcom
+    - state: card_centcom # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#0F4162"
+    - state: frame_head # Ataraxia
+      color: "#0F4162"
+    - state: assigned_centcom # Ataraxia
+    - state: trim_deathcommando # Ataraxia
   - type: Item
     heldPrefix: blue
   - type: IdCard
-    jobTitle: Centcom Agent
+    jobTitle: Оперативник Эскадрона # Ataraxia
+    jobIcon: JobIconDeathSquad # Ataraxia
 
 - type: entity
   name: passenger ID card
@@ -663,8 +876,13 @@
     - SyndicateAgent
   - type: Sprite
     layers:
-    - state: default
-    - state: idpassenger
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#717171"
+    - state: frame_default # Ataraxia
+      color: "#717171"
+    - state: assigned # Ataraxia
+    - state: idassistant # Ataraxia
   - type: AgentIDCard
     icons:
     # TODO figure out a better way of doing this.
@@ -713,14 +931,18 @@
     - JobIconServiceWorker
     - JobIconSecurityCadet
     - JobIconZookeeper
-    - JobIconInspector
     - JobIconVisitor
+    - JobIconInspector # WD-START
     - JobIconNoId
     - JobIconBorg
     - JobIconSeniorPhysician
     - JobIconSeniorOfficer
     - JobIconSeniorEngineer
-    - JobIconSeniorResearcher
+    - JobIconSeniorResearcher # WD-END
+    - JobIconInteQ # Ataraxia-START
+    - JobIconDeathSquad
+    - JobIconRat
+    - JobIconBluespaceTechnic # Ataraxia-END
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
     inHandsOnly: true
@@ -756,7 +978,12 @@
   components:
   - type: Sprite
     layers:
-    - state: orange
+    - state: card_orange # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#ffa005"
+    - state: frame_default # Ataraxia
+      color: "#ffa005"
+    - state: assigned # Ataraxia
     - state: idatmospherictechnician
   - type: PresetIdCard
     job: AtmosphericTechnician
@@ -768,7 +995,13 @@
   components:
   - type: Sprite
     layers:
-    - state: syndie
+    - state: card_black # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#8F242E"
+    - state: frame_default # Ataraxia
+      color: "#8F242E"
+    - state: assigned_syndicate # Ataraxia
+    - state: trim_syndicate # Ataraxia
   - type: Access
     tags:
     - NuclearOperative
@@ -781,7 +1014,13 @@
   components:
   - type: Sprite
     layers:
-    - state: pirate
+    - state: card_orange # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#8F6724"
+    - state: frame_default # Ataraxia
+      color: "#8F6724"
+    - state: assigned # Ataraxia
+    - state: idpirate # Ataraxia
   - type: Access
     tags:
     - NuclearOperative
@@ -794,7 +1033,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned # Ataraxia
     - state: idpsychologist
   - type: PresetIdCard
     job: Psychologist
@@ -806,7 +1050,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idreporter
   - type: PresetIdCard
     job: Reporter
@@ -818,7 +1067,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idboxer
   - type: PresetIdCard
     job: Boxer
@@ -830,7 +1084,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#58c800"
+    - state: frame_default # Ataraxia
+      color: "#58c800"
+    - state: assigned # Ataraxia
     - state: idzookeeper
   - type: PresetIdCard
     job: Zookeeper
@@ -842,7 +1101,12 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#cb0000"
+    - state: frame_default # Ataraxia
+      color: "#cb0000"
+    - state: assigned # Ataraxia
     - state: iddetective
   - type: PresetIdCard
     job: Detective
@@ -855,11 +1119,17 @@
   components:
   - type: Sprite
     layers:
-    - state: centcom
+    - state: card_centcom # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#BB8830"
+    - state: frame_head # Ataraxia
+      color: "#BB8830"
+    - state: assigned # Ataraxia
+    - state: trim_headcrystallomancer # Ataraxia
   - type: Item
     heldPrefix: blue
   - type: IdCard
-    jobTitle: Centcom Quarantine Officer
+    jobTitle: Оперативник РХБЗЗ # Ataraxia
 
 - type: entity
   parent: IDCardStandard
@@ -869,48 +1139,91 @@
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_carp # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#50BB30"
+    - state: frame_default # Ataraxia
+      color: "#50BB30"
+    - state: assigned_syndicate # Ataraxia
     - state: idcluwne
   - type: IdCard
-    jobTitle: Cluwne
+    jobTitle: Клувень # Ataraxia
   - type: Unremoveable
 
 - type: entity
-  parent: IDCardStandard
+  parent: EngineeringIDCard
   id: SeniorEngineerIDCard
   name: senior engineer ID card
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#ffa005"
+    - state: frame_default # Ataraxia
+      color: "#ffa005"
+    - state: assigned_gold # Ataraxia
     - state: idseniorengineer
 
 - type: entity
-  parent: IDCardStandard
+  parent: ResearchIDCard
   id: SeniorResearcherIDCard
   name: senior researcher ID card
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned_gold # Ataraxia
     - state: idseniorresearcher
 
 - type: entity
-  parent: IDCardStandard
+  parent: MedicalIDCard
   id: SeniorPhysicianIDCard
   name: senior physician ID card
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#2ab0d9"
+    - state: frame_default # Ataraxia
+      color: "#2ab0d9"
+    - state: assigned_gold # Ataraxia
     - state: idseniorphysician
 
 - type: entity
-  parent: IDCardStandard
+  parent: SecurityIDCard
   id: SeniorOfficerIDCard
   name: senior officer ID card
   components:
   - type: Sprite
     layers:
-    - state: default
+    - state: card_default # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#cb0000"
+    - state: frame_default # Ataraxia
+      color: "#cb0000"
+    - state: assigned_gold # Ataraxia
     - state: idseniorofficer
+
+#WHITE
+- type: entity
+  parent: IDCardStandard
+  id: InspectorIDCard
+  name: inspector ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: card_silver # Ataraxia
+    - state: sub_department # Ataraxia
+      color: "#1b67a5"
+    - state: frame_head # Ataraxia
+      color: "#1b67a5"
+    - state: assigned_centcom # Ataraxia
+    - state: idinspector
+  - type: PresetIdCard
+    job: Inspector
