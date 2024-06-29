@@ -52,7 +52,7 @@
   indestructible: true
 
 # Grass
-- type: tile
+- type: tile # Ataraxia | Слой 1
   id: FloorPlanetGrass
   name: tiles-grass-planet-floor
   sprite: /Textures/Tiles/Planet/Grass/grass.png
@@ -74,11 +74,11 @@
     West: /Textures/Tiles/Planet/Grass/double_edge.png
   deconstructTools: [ Cutting, Digging ] # Ataraxia
   itemDrop: FloorTileItemAtaraxiaPlanetGrass # Ataraxia
-  baseTurf: FloorPlanetDirt
+  baseTurf: FloorPlanetDirt # Ataraxia
+  #baseTurf: FloorPlanetHumusDirt # Ataraxia
   isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
-  itemDrop: FloorTileItemGrass
   heatCapacity: 10000
   weather: true
   indestructible: true

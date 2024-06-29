@@ -16,10 +16,13 @@
     swingLeft: true
     damage:
       types:
-        Slash: 10
+        Slash: 6
   - type: Item
     sprite: Objects/Tools/Hydroponics/hoe.rsi
-    storedRotation: 45
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: plant clippers
@@ -41,6 +44,10 @@
   - type: Item
     sprite: Objects/Tools/Hydroponics/clippers.rsi
     storedRotation: -90
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: scythe
@@ -84,10 +91,14 @@
     swingLeft: true
     damage:
       types:
-        Slash: 10
-        Piercing: 5
+        Slash: 8
+        Piercing: 2
   - type: Item
     sprite: Objects/Tools/Hydroponics/hatchet.rsi
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: spade
@@ -105,13 +116,27 @@
     wideAnimationRotation: 45
     damage:
       types:
-        Blunt: 10
-        Piercing: 5 # I guess you can stab it into them?
+        Blunt: 8
+        Piercing: 2 # I guess you can stab it into them?
+    soundHit:
+      collection: MetalThud
   - type: Item
     sprite: Objects/Tools/Hydroponics/spade.rsi
-    storedRotation: 135
   - type: Shovel
     speedModifier: 0.75 # slower at digging than a full-sized shovel
+  - type: Tool # Ataraxia
+    qualities:
+      - Digging
+    useSound:
+      collection: AtaraxiaDigging
+      params:
+        variation: 0.133
+        volume: 1
+  - type: ToolTileCompatible # Ataraxia
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: plant bag
@@ -123,7 +148,7 @@
     sprite: Objects/Specific/Hydroponics/Equipment/plant_bag.rsi
     state: icon
   - type: Item
-    size: Normal
+    storedRotation: -90
   - type: Clothing
     quickEquip: false
     slots:

@@ -12,6 +12,10 @@
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
   # WD edit sounds end
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
@@ -103,6 +107,10 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: wrench
@@ -150,6 +158,10 @@
       Steel: 100
   - type: StaticPrice
     price: 22
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: crowbar
@@ -199,6 +211,10 @@
   - type: StaticPrice
     price: 22
   - type: Prying
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   parent: Crowbar
@@ -391,6 +407,10 @@
         Piercing: 10
     soundHit:
       path: "/Audio/Items/drill_hit.ogg"
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   id: RCD
@@ -490,6 +510,12 @@
   components:
   - type: AutoRecharge
     rechargeDuration: 1
+  - type: Sprite # Ataraxia
+    sprite: Ataraxia/Objects/Tools/bluespace_rcd.rsi
+    state: icon
+  - type: Clothing # Ataraxia
+    sprite: Ataraxia/Objects/Tools/bluespace_rcd.rsi
+
 
 - type: entity
   name: compressed matter
@@ -576,7 +602,11 @@
           state: omnitool-pulsing
         changeSound:
           path: /Audio/Items/change_drill.ogg
-
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
+    -
 #Other
 - type: entity
   name: shovel
@@ -585,7 +615,7 @@
   description: A large tool for digging and moving dirt.
   components:
   - type: Sprite
-    sprite: Objects/Tools/shovel.rsi
+    sprite: Ataraxia/Objects/Tools/shovel.rsi # Ataraxia
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: 45
@@ -593,10 +623,10 @@
       types:
         Blunt: 14
     soundHit:
-      path: "/Audio/Weapons/smash.ogg"
+      collection: MetalThud
   - type: Item
     size: Normal
-    sprite: Objects/Tools/shovel.rsi
+    sprite: Ataraxia/Objects/Tools/shovel.rsi # Ataraxia
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -604,6 +634,22 @@
   - type: StaticPrice
     price: 25
   - type: Shovel
+  - type: Tool # Ataraxia
+    qualities:
+    - Digging
+    useSound:
+      collection: AtaraxiaDigging
+      params:
+        variation: 0.133
+  - type: ToolTileCompatible # Ataraxia
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+  - type: Construction # Ataraxia
+    graph: Shovel
+    node: Shovel
 
 - type: entity
   parent: BaseItem
