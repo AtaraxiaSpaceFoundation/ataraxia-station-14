@@ -8,12 +8,6 @@
   },
     "states": [
         {
-            "name" : "bodycammonitor"
-        },
-        {
-            "name" : "bodycamprogram"
-        },
-        {
             "name": "ai-fixer",
             "directions": 4
         },
