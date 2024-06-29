@@ -1,5 +1,4 @@
 using Content.Shared.DoAfter;
-using Content.Shared.Gravity;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Mobs.Systems;
@@ -146,17 +145,27 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
         return true;
     }
 
-    public bool TryLieDown(EntityUid uid, StandingStateComponent? standingState = null, bool dropHeldItems = false)
+    public enum DropHeldItemsBehavior
     {
-        if (!Resolve(uid, ref standingState, false) || !standingState.CanLieDown)
-            return false;
+        NoDrop,
+        DropIfStanding,
+        AlwaysDrop
+    }
 
-        if (standingState.CurrentState is not StandingState.Standing)
+    public bool TryLieDown(EntityUid uid,
+        StandingStateComponent? standingState = null,
+        DropHeldItemsBehavior behavior = DropHeldItemsBehavior.NoDrop)
+    {
+        if (!Resolve(uid, ref standingState, false) || !standingState.CanLieDown ||
+            standingState.CurrentState is not StandingState.Standing)
         {
+            if (behavior == DropHeldItemsBehavior.AlwaysDrop)
+                RaiseLocalEvent(uid, new DropHandItemsEvent());
+
             return false;
         }
 
-        Down(uid, true, dropHeldItems, standingState);
+        Down(uid, true, behavior != DropHeldItemsBehavior.NoDrop, standingState);
         return true;
     }
     // WD EDIT END

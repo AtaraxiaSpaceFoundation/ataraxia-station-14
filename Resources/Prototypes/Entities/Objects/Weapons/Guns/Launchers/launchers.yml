@@ -294,7 +294,7 @@
     - type: TentacleGun
     - type: Gun
       soundGunshot: /Audio/Effects/gib1.ogg
-      fireRate: 0.3
+      fireRate: 0.5
       selectedMode: PullMob
       availableModes:
         - PullItem
@@ -305,7 +305,7 @@
       count: 1
     - type: AmmoCounter
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 0.75
+      rechargeCooldown: 1.5
       playRechargeSound: false
     - type: Sprite
       sprite: Objects/Weapons/Guns/Launchers/tentacle_gun.rsi

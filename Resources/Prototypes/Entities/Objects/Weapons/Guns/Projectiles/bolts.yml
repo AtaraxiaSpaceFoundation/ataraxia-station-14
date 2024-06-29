@@ -27,6 +27,3 @@
         mask:
         - Opaque
   - type: KnockdownOnCollide
-  - type: StaminaDamageOnCollide
-    ignoreResistances: false
-    damage: 60

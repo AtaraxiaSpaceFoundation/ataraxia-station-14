@@ -29,8 +29,8 @@ public sealed class StandingStateSystem : SharedStandingStateSystem
             : Vector2.Zero;
         var dropAngle = Random.NextFloat(0.8f, 1.2f);
 
-        var fellEvent = new FellDownEvent(uid);
-        RaiseLocalEvent(uid, fellEvent);
+        // var fellEvent = new FellDownEvent(uid);
+        // RaiseLocalEvent(uid, fellEvent);
 
         if (!TryComp(uid, out HandsComponent? handsComp))
             return;

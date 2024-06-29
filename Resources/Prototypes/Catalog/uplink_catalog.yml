@@ -99,7 +99,7 @@
   description: uplink-gloves-north-star-desc
   productEntity: ClothingHandsGlovesNorthStar
   cost:
-    Telecrystal: 8
+    Telecrystal: 4
   categories:
   - UplinkWeaponry
   saleLimit: 1
@@ -200,7 +200,7 @@
   description: uplink-explosive-grenade-desc
   productEntity: ExGrenade
   cost:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
   - UplinkExplosives
 
@@ -250,7 +250,7 @@
   description: uplink-whitehole-grenade-desc
   productEntity: WhiteholeGrenade
   cost:
-    Telecrystal: 3
+    Telecrystal: 1
   categories:
     - UplinkExplosives
 
@@ -366,7 +366,7 @@
   description: uplink-cluster-grenade-desc
   productEntity: ClusterGrenade
   cost:
-    Telecrystal: 8
+    Telecrystal: 4
   categories:
   - UplinkExplosives
 
@@ -376,7 +376,7 @@
   description: uplink-shrapnel-grenade-desc
   productEntity: GrenadeShrapnel
   cost:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
   - UplinkExplosives
 
@@ -386,7 +386,7 @@
   description: uplink-incendiary-grenade-desc
   productEntity: GrenadeIncendiary
   cost:
-    Telecrystal: 4
+    Telecrystal: 2
   categories:
   - UplinkExplosives
 
@@ -511,7 +511,7 @@
   icon: { sprite: /Textures/Objects/Fun/Darts/dart_red.rsi, state: icon }
   productEntity: HypoDartBox
   cost:
-    Telecrystal: 2
+    Telecrystal: 1
   categories:
   - UplinkChemicals
 

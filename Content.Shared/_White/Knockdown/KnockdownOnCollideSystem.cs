@@ -19,7 +19,7 @@ public sealed class KnockdownOnCollideSystem : EntitySystem
 
     private void OnProjectileHit(Entity<KnockdownOnCollideComponent> ent, ref ProjectileHitEvent args)
     {
-        _standing.TryLieDown(args.Target, null, true);
+        _standing.TryLieDown(args.Target, null, SharedStandingStateSystem.DropHeldItemsBehavior.AlwaysDrop);
 
         if (ent.Comp.BlurTime <= 0f)
             return;

@@ -12,6 +12,7 @@ using Content.Shared.Maps;
 using Content.Shared.Parallax;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
+using Content.Shared.Standing.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Timing;
 using Content.Shared.Whitelist;
@@ -590,7 +591,7 @@ public sealed partial class ShuttleSystem
                     continue;
 
                 _stuns.TryParalyze(child, _hyperspaceKnockdownTime, true, status);*/
-                _standing.TryLieDown(child, dropHeldItems: true);
+                _standing.TryLieDown(child, behavior: SharedStandingStateSystem.DropHeldItemsBehavior.DropIfStanding);
 
                 // If the guy we knocked down is on a spaced tile, throw them too
                 if (grid != null)
