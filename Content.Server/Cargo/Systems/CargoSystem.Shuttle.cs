@@ -25,7 +25,7 @@ public sealed partial class CargoSystem
 
     private static readonly SoundPathSpecifier ApproveSound = new("/Audio/Effects/Cargo/ping.ogg");
 
-    private const string TradeStationMapPath = "/Maps/Shuttles/trading_outpost.yml";
+    private const string TradeStationMapPath = "/Maps/Ataraxia/Shuttles/TradingPost_Tarkon.yml";
 
     private void InitializeShuttle()
     {
