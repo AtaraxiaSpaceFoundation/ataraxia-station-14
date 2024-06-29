@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
+using Content.Server._White.Discord.GameTicking;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -22,6 +23,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Server._White.PandaSocket.Main;
+using Content.Server._White.RealRoundEnded;
 using Content.Server._White.Reputation;
 using Content.Server._White.Stalin;
 using Content.Shared._White;
@@ -503,6 +505,7 @@ namespace Content.Server.GameTicking
             _sawmill.Info("Restarting round!");
 
             SendServerMessage(Loc.GetString("game-ticker-restart-round"));
+            RaiseLocalEvent(new RealRoundEndedEvent());
 
             RoundNumberMetric.Inc();
 

@@ -1,4 +1,4 @@
-namespace Content.Shared.GameTicking;
+namespace Content.Server._White.Discord.GameTicking;
 
 public sealed class RoundEndedEvent : EntityEventArgs
 {

@@ -12,6 +12,9 @@ public sealed partial class PointLightAirlockComponent : Component
     public bool LastBoltsState;
 
     [ViewVariables]
+    public bool IsEmagged;
+
+    [ViewVariables]
     public readonly string RedColor = "#D56C6C";
 
     [ViewVariables]
