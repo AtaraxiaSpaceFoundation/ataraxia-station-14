@@ -153,7 +153,7 @@ namespace Content.Shared.CCVar
         ///     Controls the default game preset.
         /// </summary>
         public static readonly CVarDef<string>
-            GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "secret", CVar.ARCHIVE);
+            GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "AtaraxiaExtended", CVar.ARCHIVE);
 
         /// <summary>
         ///     Controls if the game can force a different preset if the current preset's criteria are not met.
@@ -165,7 +165,7 @@ namespace Content.Shared.CCVar
         ///     The preset for the game to fall back to if the selected preset could not be used, and fallback is enabled.
         /// </summary>
         public static readonly CVarDef<string>
-            GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "Traitor,Extended", CVar.ARCHIVE);
+            GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "AtaraxiaExtended,Traitor", CVar.ARCHIVE);
 
         /// <summary>
         ///     Controls if people can win the game in Suspicion or Deathmatch.
@@ -202,7 +202,7 @@ namespace Content.Shared.CCVar
         ///     Prototype to use for map pool.
         /// </summary>
         public static readonly CVarDef<string>
-            GameMapPool = CVarDef.Create("game.map_pool", "WhiteMapPool", CVar.SERVERONLY);
+            GameMapPool = CVarDef.Create("game.map_pool", "AtaraxiaMapPool", CVar.SERVERONLY);
 
         /// <summary>
         /// The depth of the queue used to calculate which map is next in rotation.
@@ -697,9 +697,8 @@ namespace Content.Shared.CCVar
          * Specific Sounds
          */
         // Round  end sound (APC Destroyed)
-        // hailrakes note: this thing is broken somehow. Disabled for now
         public static readonly CVarDef<bool> RestartSoundsEnabled =
-            CVarDef.Create("ambience.restart_sounds_enabled", false, CVar.ARCHIVE | CVar.CLIENTONLY);
+            CVarDef.Create("ambience.restart_sounds_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /*
          * Admin sounds
@@ -728,7 +727,7 @@ namespace Content.Shared.CCVar
             CVarDef.Create("hud.combat_mode_indicators_point_show", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         public static readonly CVarDef<bool> LoocAboveHeadShow =
-            CVarDef.Create("hud.show_looc_above_head", false, CVar.ARCHIVE | CVar.CLIENTONLY);
+            CVarDef.Create("hud.show_looc_above_head", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         public static readonly CVarDef<float> HudHeldItemOffset =
             CVarDef.Create("hud.held_item_offset", 28f, CVar.ARCHIVE | CVar.CLIENTONLY);
@@ -1042,7 +1041,7 @@ namespace Content.Shared.CCVar
         ///     Whether gas differences will move entities.
         /// </summary>
         public static readonly CVarDef<bool> SpaceWind =
-            CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
+            CVarDef.Create("atmos.space_wind", false, CVar.SERVERONLY);
 
         /// <summary>
         ///     Divisor from maxForce (pressureDifference * 2.25f) to force applied on objects.
@@ -1105,7 +1104,7 @@ namespace Content.Shared.CCVar
         ///     1.0 for instant spacing, 0.2 means 20% of remaining air lost each time
         /// </summary>
         public static readonly CVarDef<float> AtmosSpacingEscapeRatio =
-            CVarDef.Create("atmos.mmos_spacing_speed", 0.9f, CVar.SERVERONLY);
+            CVarDef.Create("atmos.mmos_spacing_speed", 0.05f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Minimum amount of air allowed on a spaced tile before it is reset to 0 immediately in kPa
@@ -1224,7 +1223,7 @@ namespace Content.Shared.CCVar
         /// Whether or not OOC chat should be enabled during a round.
         /// </summary>
         public static readonly CVarDef<bool> OocEnableDuringRound =
-            CVarDef.Create("ooc.enable_during_round", false, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("ooc.enable_during_round", true, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
 
         public static readonly CVarDef<bool> ShowOocPatronColor =
             CVarDef.Create("ooc.show_ooc_patron_color", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
@@ -1248,7 +1247,7 @@ namespace Content.Shared.CCVar
         /// True: Crit players can use LOOC
         /// False: Crit player LOOC gets redirected to dead chat
         /// </summary>
-        public static readonly CVarDef<bool> CritLoocEnabled = CVarDef.Create("looc.enabled_crit", false, CVar.NOTIFY | CVar.REPLICATED);
+        public static readonly CVarDef<bool> CritLoocEnabled = CVarDef.Create("looc.enabled_crit", true, CVar.NOTIFY | CVar.REPLICATED);
 
         /*
          * Entity Menu Grouping Types
@@ -1321,7 +1320,7 @@ namespace Content.Shared.CCVar
         ///     See vote.enabled, but specific to map votes
         /// </summary>
         public static readonly CVarDef<bool> VoteMapEnabled =
-            CVarDef.Create("vote.map_enabled", false, CVar.SERVERONLY);
+            CVarDef.Create("vote.map_enabled", true, CVar.SERVERONLY);
 
         /// <summary>
         ///     The required ratio of the server that must agree for a restart round vote to go through.
@@ -1448,19 +1447,19 @@ namespace Content.Shared.CCVar
         /// Is the emergency shuttle allowed to be early launched.
         /// </summary>
         public static readonly CVarDef<bool> EmergencyEarlyLaunchAllowed =
-            CVarDef.Create("shuttle.emergency_early_launch_allowed", false, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.emergency_early_launch_allowed", true, CVar.SERVERONLY);
 
         /// <summary>
         /// How long the emergency shuttle remains docked with the station, in seconds.
         /// </summary>
         public static readonly CVarDef<float> EmergencyShuttleDockTime =
-            CVarDef.Create("shuttle.emergency_dock_time", 180f, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.emergency_dock_time", 280f, CVar.SERVERONLY);
 
         /// <summary>
         /// How long after the console is authorized for the shuttle to early launch.
         /// </summary>
         public static readonly CVarDef<float> EmergencyShuttleAuthorizeTime =
-            CVarDef.Create("shuttle.emergency_authorize_time", 10f, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.emergency_authorize_time", 30f, CVar.SERVERONLY);
 
         /// <summary>
         /// The minimum time for the emergency shuttle to arrive at centcomm.
@@ -1491,14 +1490,14 @@ namespace Content.Shared.CCVar
         ///     Time in minutes after round start to auto-call the shuttle. Set to zero to disable.
         /// </summary>
         public static readonly CVarDef<int> EmergencyShuttleAutoCallTime =
-            CVarDef.Create("shuttle.auto_call_time", 0, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.auto_call_time", 150, CVar.SERVERONLY);
 
         /// <summary>
         ///     Time in minutes after the round was extended (by recalling the shuttle) to call
         ///     the shuttle again.
         /// </summary>
         public static readonly CVarDef<int> EmergencyShuttleAutoCallExtensionTime =
-            CVarDef.Create("shuttle.auto_call_extension_time", 45, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.auto_call_extension_time", 70, CVar.SERVERONLY);
 
         /*
          * Crew Manifests
@@ -1567,7 +1566,7 @@ namespace Content.Shared.CCVar
             CVarDef.Create("viewport.minimum_width", 15, CVar.REPLICATED);
 
         public static readonly CVarDef<int> ViewportMaximumWidth =
-            CVarDef.Create("viewport.maximum_width", 21, CVar.REPLICATED);
+            CVarDef.Create("viewport.maximum_width", 24, CVar.REPLICATED);
 
         public static readonly CVarDef<int> ViewportWidth =
             CVarDef.Create("viewport.width", 21, CVar.CLIENTONLY | CVar.ARCHIVE);
@@ -1653,10 +1652,10 @@ namespace Content.Shared.CCVar
             CVarDef.Create("chat.rate_limit_announce_admins_delay", 15, CVar.SERVERONLY);
 
         public static readonly CVarDef<int> ChatMaxMessageLength =
-            CVarDef.Create("chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
+            CVarDef.Create("chat.max_message_length", 5000, CVar.SERVER | CVar.REPLICATED);
 
         public static readonly CVarDef<int> ChatMaxAnnouncementLength =
-            CVarDef.Create("chat.max_announcement_length", 1024, CVar.SERVER | CVar.REPLICATED);
+            CVarDef.Create("chat.max_announcement_length", 1200, CVar.SERVER | CVar.REPLICATED);
 
         public static readonly CVarDef<bool> ChatSanitizerEnabled =
             CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);
@@ -1709,7 +1708,7 @@ namespace Content.Shared.CCVar
         /// Adds a period at the end of a sentence if the sentence ends in a letter.
         /// </summary>
         public static readonly CVarDef<bool> ChatPunctuation =
-            CVarDef.Create("ic.punctuation", false, CVar.SERVER);
+            CVarDef.Create("ic.punctuation", true, CVar.SERVER);
 
         /// <summary>
         /// Enables automatically forcing IC name rules. Uppercases the first letter of the first and last words of the name
@@ -1749,7 +1748,7 @@ namespace Content.Shared.CCVar
         /// Cooldown for missions.
         /// </summary>
         public static readonly CVarDef<float>
-            SalvageExpeditionCooldown = CVarDef.Create("salvage.expedition_cooldown", 300f, CVar.REPLICATED);
+            SalvageExpeditionCooldown = CVarDef.Create("salvage.expedition_cooldown", 780f, CVar.REPLICATED);
 
         /*
          * Flavor
@@ -1851,7 +1850,7 @@ namespace Content.Shared.CCVar
         /// Whether or not the storage UI is static and bound to the hotbar, or unbound and allowed to be dragged anywhere.
         /// </summary>
         public static readonly CVarDef<bool> StaticStorageUI =
-            CVarDef.Create("control.static_storage_ui", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+            CVarDef.Create("control.static_storage_ui", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
         /// <summary>
         /// Whether or not the storage window uses a transparent or opaque sprite.
