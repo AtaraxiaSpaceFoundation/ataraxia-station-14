@@ -12,10 +12,6 @@
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
   # WD edit sounds end
-  - type: Clothing # Ataraxia
-    quickEquip: false
-    slots:
-    - Belt
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
@@ -55,6 +51,10 @@
       Steel: 100
   - type: StaticPrice
     price: 30
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   name: screwdriver
@@ -606,7 +606,7 @@
     quickEquip: false
     slots:
     - Belt
-    -
+
 #Other
 - type: entity
   name: shovel
