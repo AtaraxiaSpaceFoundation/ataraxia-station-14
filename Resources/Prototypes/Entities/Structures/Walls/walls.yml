@@ -536,9 +536,9 @@
   name: reinforced wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ataraxia/Structures/Walls/solid.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ataraxia/Structures/Walls/solid.rsi # Ataraxia
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -603,9 +603,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ataraxia/Structures/Walls/solid_rust.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ataraxia/Structures/Walls/solid_rust.rsi # Ataraxia
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -626,14 +626,14 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: Ataraxia/Structures/Walls/reinforced_diagonal.rsi # Ataraxia
     state: state0
   - type: IconSmooth
     mode: Diagonal
     key: walls
     base: state
   - type: Icon
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: Ataraxia/Structures/Walls/reinforced_diagonal.rsi # Ataraxia
     state: state0
 
 # Riveting
@@ -883,13 +883,13 @@
     tags:
       - Wall
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ataraxia/Structures/Walls/solid.rsi # Ataraxia
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: Ataraxia/Structures/Walls/solid.rsi # Ataraxia
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -937,14 +937,14 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/solid_diagonal.rsi
+    sprite: Ataraxia/Structures/Walls/solid_diagonal.rsi # Ataraxia
     state: state0
   - type: IconSmooth
     mode: Diagonal
     key: walls
     base: state
   - type: Icon
-    sprite: Structures/Walls/solid_diagonal.rsi
+    sprite: Ataraxia/Structures/Walls/solid_diagonal.rsi # Ataraxia
     state: state0
 
 - type: entity
@@ -954,9 +954,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ataraxia/Structures/Walls/solid_rust.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: Ataraxia/Structures/Walls/solid_rust.rsi # Ataraxia
     state: full
   - type: Construction
     graph: Girder
