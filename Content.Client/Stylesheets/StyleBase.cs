@@ -47,7 +47,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexSans/IBMPlexSans-Regular.ttf",
+                    "/Fonts/NotoSans/NotoSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -57,7 +57,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf",
+                    "/Fonts/NotoSans/NotoSans-Italic.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -177,7 +177,7 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#9e9e9e")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#4B596A")),
                     }),
                 // Window close button hover.
                 new StyleRule(
@@ -185,7 +185,7 @@ namespace Content.Client.Stylesheets
                         new[] {TextureButton.StylePseudoClassHover}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#960000")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#7F3636")),
                     }),
                 // Window close button pressed.
                 new StyleRule(
@@ -193,7 +193,7 @@ namespace Content.Client.Stylesheets
                         new[] {TextureButton.StylePseudoClassPressed}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#050505")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
                     }),
 
                 // Scroll bars

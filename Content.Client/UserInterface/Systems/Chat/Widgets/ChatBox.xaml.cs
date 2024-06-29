@@ -35,6 +35,7 @@ public partial class ChatBox : UIWidget
         ChatInput.Input.OnTextEntered += OnTextEntered;
         ChatInput.Input.OnKeyBindDown += OnInputKeyBindDown;
         ChatInput.Input.OnTextChanged += OnTextChanged;
+
         ChatInput.ChannelSelector.OnChannelSelect += OnChannelSelect;
         ChatInput.FilterButton.Popup.OnChannelFilter += OnChannelFilter;
 
@@ -172,16 +173,10 @@ public partial class ChatBox : UIWidget
         _controller.UpdateSelectedChannel(this);
 
         // Warn typing indicator about change
-        if (IsValidChannel())
-        {
-            _controller.NotifyChatTextChange();
-        }
+        _controller.NotifyChatTextChange();
     }
 
-    private bool IsValidChannel()
-    {
-        return SelectedChannel is not (ChatSelectChannel.Admin or ChatSelectChannel.Dead or ChatSelectChannel.OOC or ChatSelectChannel.LOOC);
-    }
+
 
     protected override void Dispose(bool disposing)
     {
