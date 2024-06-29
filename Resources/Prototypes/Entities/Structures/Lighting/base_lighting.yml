@@ -27,9 +27,6 @@
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
       state: base
-    - map: ["enum.PoweredLightLayers.Glow"]
-      state: glow
-      shader: unshaded
     state: base
   - type: PointLight
     color: "#FFE4CE" # 5000K color temp
