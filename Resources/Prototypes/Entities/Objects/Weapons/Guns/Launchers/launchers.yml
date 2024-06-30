@@ -420,7 +420,7 @@
     whitelist:
       tags:
         - CartridgeRocket
-    proto: MeteorLarge
+    proto: MeteorMedium
   - type: GiftIgnore
 
 - type: entity

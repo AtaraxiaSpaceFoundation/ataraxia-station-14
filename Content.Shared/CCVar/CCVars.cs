@@ -121,6 +121,18 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<float>
             EventsRampingAverageChaos = CVarDef.Create("events.ramping_average_chaos", 6f, CVar.ARCHIVE | CVar.SERVERONLY);
 
+        /// <summary>
+        ///     Minimum time between meteor swarms in minutes.
+        /// </summary>
+        public static readonly CVarDef<float>
+            MeteorSwarmMinTime = CVarDef.Create("events.meteor_swarm_min_time", 12.5f, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
+        ///     Maximum time between meteor swarms in minutes.
+        /// </summary>
+        public static readonly CVarDef<float>
+            MeteorSwarmMaxTime = CVarDef.Create("events.meteor_swarm_max_time", 17.5f, CVar.ARCHIVE | CVar.SERVERONLY);
+
         /*
          * Game
          */

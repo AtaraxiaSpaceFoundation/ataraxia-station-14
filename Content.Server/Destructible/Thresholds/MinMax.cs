@@ -1,13 +1,25 @@
-﻿namespace Content.Server.Destructible.Thresholds
+﻿using Robust.Shared.Random;
+
+namespace Content.Server.Destructible.Thresholds
 {
-    [Serializable]
-    [DataDefinition]
+    [DataDefinition, Serializable]
     public partial struct MinMax
     {
-        [DataField("min")]
+        [DataField]
         public int Min;
 
-        [DataField("max")]
+        [DataField]
         public int Max;
+
+        public MinMax(int min, int max)
+        {
+            Min = min;
+            Max = max;
+        }
+
+        public int Next(IRobustRandom random)
+        {
+            return random.Next(Min, Max + 1);
+        }
     }
 }
