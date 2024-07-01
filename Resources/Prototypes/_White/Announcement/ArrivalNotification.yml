@@ -10,47 +10,40 @@
   id: HeadOfPersonnelArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Service
 
 - type: arrivalNotification
   id: HeadOfSecurityArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Security
 
 - type: arrivalNotification
   id: ChiefMedicalOfficerArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Medical
 
 - type: arrivalNotification
   id: ChiefEngineerArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Engineering
 
 - type: arrivalNotification
   id: ResearchDirectorArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Science
 
 - type: arrivalNotification
   id: QuartermasterArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Cargo
 
 - type: arrivalNotification
   id: InspectorArrivalNotification
   message: head-arrived-message
   radioChannelsPrototypes:
-  - Command
   - Security
