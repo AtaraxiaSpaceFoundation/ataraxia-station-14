@@ -19,16 +19,16 @@ namespace Content.Shared.Roles
         [IdDataField]
         public string ID { get; private set; } = default!;
 
-        [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
+        [DataField("playTimeTracker", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
         public string PlayTimeTracker { get; private set; } = string.Empty;
 
-        [DataField]
+        [DataField("supervisors")]
         public string Supervisors { get; private set; } = "nobody";
 
         /// <summary>
         ///     The name of this job as displayed to players.
         /// </summary>
-        [DataField]
+        [DataField("name")]
         public string Name { get; private set; } = string.Empty;
 
         [ViewVariables(VVAccess.ReadOnly)]
@@ -37,25 +37,22 @@ namespace Content.Shared.Roles
         /// <summary>
         ///     The name of this job as displayed to players.
         /// </summary>
-        [DataField]
+        [DataField("description")]
         public string? Description { get; private set; }
 
         [ViewVariables(VVAccess.ReadOnly)]
         public string? LocalizedDescription => Description is null ? null : Loc.GetString(Description);
 
-        [DataField]
+        [DataField("requirements")]
         public HashSet<JobRequirement>? Requirements;
 
-        [DataField]
+        [DataField("joinNotifyCrew")]
         public bool JoinNotifyCrew { get; private set; } = false;
 
-        [DataField]
-        public string AnnouncementPrototype = default!;
-
-        [DataField]
+        [DataField("requireAdminNotify")]
         public bool RequireAdminNotify { get; private set; } = false;
 
-        [DataField]
+        [DataField("setPreference")]
         public bool SetPreference { get; private set; } = true;
 
         /// <summary>
@@ -65,14 +62,14 @@ namespace Content.Shared.Roles
         [DataField]
         public bool? OverrideConsoleVisibility { get; private set; } = null;
 
-        [DataField]
+        [DataField("canBeAntag")]
         public bool CanBeAntag { get; private set; } = true;
 
         /// <summary>
         ///     Whether this job is a head.
         ///     The job system will try to pick heads before other jobs on the same priority level.
         /// </summary>
-        [DataField]
+        [DataField("weight")]
         public int Weight { get; private set; }
 
         /// <summary>
@@ -89,10 +86,10 @@ namespace Content.Shared.Roles
         ///     A numerical score for how much easier this job is for antagonists.
         ///     For traitors, reduces starting TC by this amount. Other gamemodes can use it for whatever they find fitting.
         /// </summary>
-        [DataField]
+        [DataField("antagAdvantage")]
         public int AntagAdvantage = 0;
 
-        [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<StartingGearPrototype>))]
+        [DataField("startingGear", customTypeSerializer: typeof(PrototypeIdSerializer<StartingGearPrototype>))]
         public string? StartingGear { get; private set; }
 
         /// <summary>
@@ -100,28 +97,28 @@ namespace Content.Shared.Roles
         /// Starting gear will be ignored.
         /// If you want to just add special attributes to a humanoid, use AddComponentSpecial instead.
         /// </summary>
-        [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+        [DataField("jobEntity", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
         public string? JobEntity = null;
 
-        [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<StatusIconPrototype>))]
+        [DataField("icon", customTypeSerializer: typeof(PrototypeIdSerializer<StatusIconPrototype>))]
         public string Icon { get; private set; } = "JobIconUnknown";
 
-        [DataField(serverOnly: true)]
+        [DataField("special", serverOnly: true)]
         public JobSpecial[] Special { get; private set; } = Array.Empty<JobSpecial>();
 
-        [DataField]
+        [DataField("access")]
         public IReadOnlyCollection<ProtoId<AccessLevelPrototype>> Access { get; private set; } = Array.Empty<ProtoId<AccessLevelPrototype>>();
 
-        [DataField]
+        [DataField("accessGroups")]
         public IReadOnlyCollection<ProtoId<AccessGroupPrototype>> AccessGroups { get; private set; } = Array.Empty<ProtoId<AccessGroupPrototype>>();
 
-        [DataField]
+        [DataField("extendedAccess")]
         public IReadOnlyCollection<ProtoId<AccessLevelPrototype>> ExtendedAccess { get; private set; } = Array.Empty<ProtoId<AccessLevelPrototype>>();
 
-        [DataField]
+        [DataField("extendedAccessGroups")]
         public IReadOnlyCollection<ProtoId<AccessGroupPrototype>> ExtendedAccessGroups { get; private set; } = Array.Empty<ProtoId<AccessGroupPrototype>>();
 
-        [DataField]
+        [DataField("whitelistedSpecies")]
         public IReadOnlyCollection<ProtoId<SpeciesPrototype>> WhitelistedSpecies { get; private set; } = Array.Empty<ProtoId<SpeciesPrototype>>();
     }
 

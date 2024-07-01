@@ -15,7 +15,6 @@
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
-  announcementPrototype: QuartermasterArrivalNotification
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human

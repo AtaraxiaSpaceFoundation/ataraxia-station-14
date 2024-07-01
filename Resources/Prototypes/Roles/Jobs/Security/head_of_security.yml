@@ -16,7 +16,6 @@
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
   requireAdminNotify: true
-  announcementPrototype: HeadOfSecurityArrivalNotification
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human

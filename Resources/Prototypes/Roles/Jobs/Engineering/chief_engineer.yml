@@ -16,7 +16,6 @@
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
-  announcementPrototype: ChiefEngineerArrivalNotification
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human
