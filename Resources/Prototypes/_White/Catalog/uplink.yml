@@ -93,7 +93,7 @@
   icon: { sprite: /Textures/White/Objects/Weapons/hardlight_spear.rsi, state: spear }
   productEntity: HardlightSpearImplanter
   cost:
-    Telecrystal: 12
+    Telecrystal: 10
   categories:
   - UplinkImplants
   conditions:
