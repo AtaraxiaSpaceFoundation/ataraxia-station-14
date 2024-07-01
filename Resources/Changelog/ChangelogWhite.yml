@@ -5264,3 +5264,11 @@
   id: 339
   time: '2024-06-30T07:04:16.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/400
+- author: Warete
+  changes:
+  - message: "\u0423\u043F\u0440\u043E\u0449\u0435\u043D \u043A\u0440\u0430\u0444\u0442\
+      \ \u043F\u0430\u0440\u044B \u0440\u0435\u0446\u0435\u043F\u0442\u043E\u0432"
+    type: Fix
+  id: 340
+  time: '2024-07-01T04:33:47.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/401
