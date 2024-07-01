@@ -1,6 +1,7 @@
 ﻿using Content.Shared._White.Wizard;
 using Content.Shared._White.Wizard.Charging;
 using Content.Shared.Follower;
+using Content.Shared.Mobs;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -25,10 +26,13 @@ public sealed class ChargingSystem : SharedChargingSystem
         SubscribeNetworkEvent<RequestSpellChargingAudio>(OnCharging);
         SubscribeNetworkEvent<RequestSpellChargedAudio>(OnCharged);
         SubscribeNetworkEvent<RequestAudioSpellStop>(OnStop);
+
         SubscribeLocalEvent<PlayerDetachedEvent>(OnDetach);
+        SubscribeLocalEvent<MobStateChangedEvent>(OnStateChanged);
 
         SubscribeNetworkEvent<AddWizardChargeEvent>(Add);
         SubscribeNetworkEvent<RemoveWizardChargeEvent>(Remove);
+
     }
 
     #region Audio
@@ -103,39 +107,28 @@ public sealed class ChargingSystem : SharedChargingSystem
         if (user == null)
             return;
 
-        if (_chargingLoops.TryGetValue(user.Value, out var currentStream))
-        {
-            _audio.Stop(currentStream);
-            _chargingLoops.Remove(user.Value);
-        }
-
-        if (_chargedLoop.TryGetValue(user.Value, out var chargedLoop))
-        {
-            _audio.Stop(chargedLoop);
-            _chargedLoop.Remove(user.Value);
-        }
-    }
-
-    private void OnDetach(PlayerDetachedEvent msg, EntitySessionEventArgs args)
-    {
-        var user = msg.Entity;
-
-        if (_chargingLoops.TryGetValue(user, out var currentStream))
-        {
-            _audio.Stop(currentStream);
-            _chargingLoops.Remove(user);
-        }
-
-        if (_chargedLoop.TryGetValue(user, out var chargedLoop))
-        {
-            _audio.Stop(chargedLoop);
-            _chargedLoop.Remove(user);
-        }
+        StopAllSounds(user.Value);
     }
 
     #endregion
 
     #region Charges
+
+    private void OnDetach(PlayerDetachedEvent msg)
+    {
+        var user = msg.Entity;
+
+        RemoveAllCharges(user);
+        StopAllSounds(user);
+    }
+
+    private void OnStateChanged(MobStateChangedEvent ev)
+    {
+        var user = ev.Target;
+
+        RemoveAllCharges(user);
+        StopAllSounds(user);
+    }
 
     private void Add(AddWizardChargeEvent msg, EntitySessionEventArgs args)
     {
@@ -152,6 +145,21 @@ public sealed class ChargingSystem : SharedChargingSystem
     #endregion
 
     #region Helpers
+
+    public void StopAllSounds(EntityUid uid)
+    {
+        if (_chargingLoops.TryGetValue(uid, out var currentStream))
+        {
+            _audio.Stop(currentStream);
+            _chargingLoops.Remove(uid);
+        }
+
+        if (_chargedLoop.TryGetValue(uid, out var chargedLoop))
+        {
+            _audio.Stop(chargedLoop);
+            _chargedLoop.Remove(uid);
+        }
+    }
 
     public void AddCharge(EntityUid uid, string msgChargeProto)
     {

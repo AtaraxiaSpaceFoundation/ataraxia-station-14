@@ -164,8 +164,7 @@ public sealed class MagicSystem : EntitySystem
         if (!_wizardSpells.CanCast(args)) // WD EDIT
             return;
 
-        args.Handled = true;
-        Speak(args);
+        _wizardSpells.Cast(args); // WD EDIT
 
         var transform = Transform(args.Performer);
         var coords = transform.Coordinates;
@@ -190,9 +189,7 @@ public sealed class MagicSystem : EntitySystem
         if (!_wizardSpells.CanCast(ev)) // WD EDIT
             return;
 
-        ev.Handled = true;
-
-        Speak(ev);
+        _wizardSpells.Cast(ev); // WD EDIT
 
         var direction = _transformSystem.GetMapCoordinates(ev.Target).Position - _transformSystem.GetMapCoordinates(ev.Performer).Position;
         var impulseVector = direction * 10000;
