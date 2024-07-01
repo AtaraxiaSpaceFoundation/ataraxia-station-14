@@ -45,8 +45,6 @@ public sealed class ArrivalNotificationSystem : EntitySystem
 
         if (notification.UseGlobalAnnouncement)
             _chatSystem.DispatchGlobalAnnouncement(message, senderName, colorOverride: Color.Gold);
-        else
-            _chatSystem.DispatchStationAnnouncement(source, message, senderName, false);
 
         message = GetMessage(args.Mob, jobPrototype, notification.Message); // Changing message type for radio notification
 
