@@ -8,6 +8,7 @@
   rules:
     - RampingStationEventScheduler
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 
 - type: gamePreset
   id: AllAtOnce
@@ -24,6 +25,7 @@
     - Cult
     - Wizard
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 
 - type: gamePreset
   id: Extended
@@ -175,6 +177,7 @@
     - Pirates
     - BasicStationEventScheduler
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 
 #WD EDIT START
 - type: gamePreset
@@ -190,6 +193,7 @@
     - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 
 - type: gamePreset
   id: Changeling
@@ -204,6 +208,7 @@
     - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 
 - type: gamePreset
   id: Wizard
@@ -219,4 +224,5 @@
     - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
+    - GameRuleMeteorScheduler
 #WD EDIT END

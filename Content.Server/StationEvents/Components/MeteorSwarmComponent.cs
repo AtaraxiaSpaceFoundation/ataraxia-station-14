@@ -48,11 +48,11 @@ public sealed partial class MeteorSwarmComponent : Component
     public Dictionary<EntProtoId, float> Meteors = new();
 
     [DataField]
-    public MinMax Waves = new(3, 3);
+    public MinMax Waves = new(2, 4);
 
     [DataField]
     public MinMax MeteorsPerWave = new(3, 4);
 
     [DataField]
-    public MinMax WaveCooldown = new (10, 60);
+    public MinMax WaveCooldown = new (30, 60);
 }
