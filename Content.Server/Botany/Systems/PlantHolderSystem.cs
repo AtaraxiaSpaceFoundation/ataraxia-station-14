@@ -245,6 +245,13 @@ public sealed class PlantHolderSystem : EntitySystem
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-nothing-to-sample-message"), args.User);
                 return;
             }
+            //rejects clipping of unclippable plants
+            if (component.Seed.Unclippable)
+            {
+                _popup.PopupCursor(Loc.GetString("plant-holder-component-nothing-to-sample-message"), args.User);
+                return;
+            }
+
 
             if (component.Sampled)
             {

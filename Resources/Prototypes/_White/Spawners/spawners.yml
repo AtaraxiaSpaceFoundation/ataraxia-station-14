@@ -1,0 +1,12 @@
+﻿- type: entity
+  name: Gnome spawner
+  id: SpawnMobGnome
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobGnome

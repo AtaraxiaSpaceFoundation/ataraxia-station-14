@@ -1,0 +1,19 @@
+﻿- type: soundCollection
+  id: GnomesSpeechCollection
+  files:
+  - /Audio/White/Voice/Gnomes/Gnome1V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome2V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome3V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome4V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome5V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome6V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome7V1.ogg
+  - /Audio/White/Voice/Gnomes/Gnome8V1.ogg
+
+- type: soundCollection
+  id: GnomesDeathCollection
+  files:
+  - /Audio/White/Voice/Gnomes/Death1.ogg
+  - /Audio/White/Voice/Gnomes/Death2.ogg
+  - /Audio/White/Voice/Gnomes/Death3.ogg
+  - /Audio/White/Voice/Gnomes/Death4.ogg

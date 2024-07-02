@@ -19,6 +19,8 @@
         map: [ "enum.SolutionContainerLayers.Overlay" ]
   - type: Appearance
   - type: Glue
+  - type: RefillableSolution
+    solution: drink
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -26,6 +28,11 @@
         reagents:
         - ReagentId: SpaceGlue
           Quantity: 30
+      Welder:
+        reagents:
+        - ReagentId: SpaceGlue
+          Quantity: 30
+        maxVol: 30
   - type: SolutionContainerVisuals
     maxFillLevels: 6
     fillBaseName: fill
@@ -38,8 +45,15 @@
   - type: Tag
     tags:
       - DrinkSpaceGlue
+      - GlueTool
   - type: TrashOnSolutionEmpty
     solution: drink
+  - type: Tool
+    qualities: Gluing
+  - type: Welder #this here uses welding code to take fuel out of the bottle (fuel being glue)
+    fuelSolutionName: drink
+    fuelReagent: SpaceGlue
+    hiddenInfo: true
 
 - type: entity
   parent: DrinkBase

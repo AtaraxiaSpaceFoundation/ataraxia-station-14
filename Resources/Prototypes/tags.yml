@@ -644,6 +644,9 @@
 - type: Tag
   id: Grenade
 
+- type: Tag # tag to make a glue tool use glue on repair
+  id: GlueTool
+
 - type: Tag
   id: HudMedical
 
@@ -1187,7 +1190,7 @@
 
 - type: Tag
   id: SuitEVA
-  
+
 - type: Tag
   id: Sunglasses
 
@@ -1322,5 +1325,3 @@
 
 - type: Tag
   id: WriteIgnoreStamps
-
-# ALPHABETICAL
