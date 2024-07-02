@@ -5390,3 +5390,14 @@
   id: 348
   time: '2024-07-02T15:12:29.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/412
+- author: Remuchi
+  changes:
+  - message: "\u0422\u0422\u0421 \u0441\u043E \u0432\u0441\u0435\u0439 \u0441\u0442\
+      \u0430\u043D\u0446\u0438\u0438 \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435\
+      \ \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0441\u043B\
+      \u044B\u0448\u0435\u043D \u0432 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\
+      \u0445 \u043C\u0435\u0441\u0442\u0430\u0445 \u043A\u0430\u0440\u0442\u044B."
+    type: Fix
+  id: 349
+  time: '2024-07-02T15:56:53.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/413
