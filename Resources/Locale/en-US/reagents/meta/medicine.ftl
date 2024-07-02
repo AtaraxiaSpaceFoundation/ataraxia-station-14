@@ -142,3 +142,9 @@ reagent-desc-silversulfadiazine = This compound with antibacterial properties is
 reagent-name-stypticpowder = styptic powder
 reagent-desc-stypticpowder = Aluminum sulfate styptic powder aids in managing bleeding and promoting the healing of bodily injuries.
 
+reagent-name-mannitol = mannitol
+reagent-desc-mannitol = Efficiently restores brain damage.
+
+reagent-name-psicodine = psicodine
+reagent-desc-psicodine = Suppresses anxiety and other various forms of mental distress. Overdose causes hallucinations and minor toxin damage.
+
