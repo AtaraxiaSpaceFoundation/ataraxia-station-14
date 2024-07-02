@@ -63,7 +63,9 @@ public sealed partial class TTSSystem : EntitySystem
 
         Filter filter;
         if (ev.Global)
+        {
             filter = Filter.Broadcast();
+        }
         else
         {
             var station = _stationSystem.GetOwningStation(ev.Source);
@@ -132,11 +134,7 @@ public sealed partial class TTSSystem : EntitySystem
 
     private async void OnEntitySpoke(EntityUid uid, SharedTTSComponent component, EntitySpokeEvent args)
     {
-        if (!_isEnabled ||
-            args.Message.Length > MaxMessageChars)
-            return;
-
-        if (string.IsNullOrEmpty(_apiUrl))
+        if (!_isEnabled || string.IsNullOrEmpty(_apiUrl) || args.Message.Length > MaxMessageChars)
         {
             return;
         }
@@ -154,6 +152,7 @@ public sealed partial class TTSSystem : EntitySystem
         var soundData = await GenerateTTS(uid, message, protoVoice.Speaker);
         if (soundData is null)
             return;
+
         var ttsEvent = new PlayTTSEvent(GetNetEntity(uid), soundData, false);
 
         // Say
@@ -181,7 +180,6 @@ public sealed partial class TTSSystem : EntitySystem
         var xformQuery = GetEntityQuery<TransformComponent>();
         var sourcePos = _xforms.GetWorldPosition(xformQuery.GetComponent(uid), xformQuery);
         var receptions = Filter.Pvs(uid).Recipients;
-
 
         foreach (var session in receptions)
         {
