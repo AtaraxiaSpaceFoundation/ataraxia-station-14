@@ -858,6 +858,8 @@
     allowMovement: true
     name: ghost-role-information-gnome-name
     description: ghost-role-information-gnome-description
+    raffle:
+      settings: short
   - type: GhostTakeoverAvailable
   - type: Flashable
   - type: Tag
@@ -927,7 +929,7 @@
   - type: Barotrauma #gnomes instantly explode in space, gnomes shouldnt go in space
     damage:
       types:
-        Blunt: 60 #per second, scales with pressure and other constants.
+        Blunt: 20 #per second, scales with pressure and other constants.
   - type: Repairable
     fuelCost: 5
     qualityNeeded: Gluing

@@ -37,6 +37,7 @@
     BerrySeeds: 5
     PeaSeeds: 5
     CottonSeeds: 5
-    GnomeSeeds: 2
+  contrabandInventory:
+    GnomeSeeds: 1
   emaggedInventory:
     FlyAmanitaSeeds: 1
