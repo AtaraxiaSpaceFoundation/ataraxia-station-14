@@ -1,0 +1,15 @@
+- type: entity
+  parent: EnergyDomeBase
+  id: EnergyDomeSmallOrange
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Effects/EnergyDome/energydome_small.rsi
+    layers:
+    - state: small
+      color: "#E97E0C"
+  - type: PointLight
+    enabled: true
+    radius: 5
+    power: 2
+    color: "#E97E0C"
