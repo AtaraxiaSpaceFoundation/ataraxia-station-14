@@ -46,9 +46,9 @@
           tags:
             - PowerCell
             - PowerCellSmall
-#  - type: EnergyDomeGenerator
-#    damageEnergyDraw: 5
-#    domePrototype: EnergyDomeSmallOrange
+  - type: EnergyDomeGenerator
+    damageEnergyDraw: 5
+    domePrototype: EnergyDomeSmallOrange
   - type: PowerCellDraw
     drawRate: 8
     useRate: 0
