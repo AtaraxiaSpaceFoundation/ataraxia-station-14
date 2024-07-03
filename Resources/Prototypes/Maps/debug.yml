@@ -31,6 +31,8 @@
           - Captain
           availableJobs:
             Captain: [ -1, -1 ]
+        - type: StationGoal
+
 
 - type: gameMap
   id: TestTeg

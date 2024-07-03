@@ -7,6 +7,14 @@
     WonderDelta:
       stationProto: StandardNanotrasenStation
       components:
+        - type: StationGoal
+          goals:
+          - SolarPanels
+          - Artifacts
+          - Bank
+          - Zoo
+          - MiningOutpost
+          - Tesla
         - type: StationNameSetup
           mapNameTemplate: '{0} WonderDelta Station {1}'
           nameGenerator:
