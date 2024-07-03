@@ -1,59 +1,59 @@
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen1
   path: Ataraxia/LobbyScreens/1.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen2
   path: Ataraxia/LobbyScreens/2.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen3
   path: Ataraxia/LobbyScreens/3.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen4
   path: Ataraxia/LobbyScreens/4.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen5
   path: Ataraxia/LobbyScreens/5.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen6
   path: Ataraxia/LobbyScreens/6.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen7
   path: Ataraxia/LobbyScreens/7.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen8
   path: Ataraxia/LobbyScreens/8.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen9
   path: Ataraxia/LobbyScreens/9.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen10
   path: Ataraxia/LobbyScreens/10.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen11
   path: Ataraxia/LobbyScreens/11.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen12
   path: Ataraxia/LobbyScreens/12.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen13
   path: Ataraxia/LobbyScreens/13.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen14
   path: Ataraxia/LobbyScreens/14.rsi
 
-- type: animatedLobbyScreen
+- type: lobbyBackground
   id: AtaraxiaLobbyScreen15
   path: Ataraxia/LobbyScreens/15.rsi
