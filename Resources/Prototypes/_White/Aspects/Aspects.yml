@@ -161,7 +161,7 @@
   components:
     - type: Aspect
       name: "Battled"
-      description: "Люди очень насторожены и готовы дать отпор в любую секунду."
+      description: "ЦК выдало каждому члену экипажа определённый предмет." # Ataraxia
       weight: 1
       startAudio:
         path: /Audio/White/Aspects/accent.ogg
