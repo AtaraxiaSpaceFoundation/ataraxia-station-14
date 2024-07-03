@@ -16,9 +16,6 @@
       - id: WeaponTaser
       - id: ToolDebug
       - id: ImplanterAdmeme
-      - id: ScramImplanter
-      - id: DeathAcidifierImplanter
-      - id: mantisEImplanter
       - id: EmagUnlimited
       - id: BluespaceSpawner
       - id: BodyBag_Bluespace_Folded

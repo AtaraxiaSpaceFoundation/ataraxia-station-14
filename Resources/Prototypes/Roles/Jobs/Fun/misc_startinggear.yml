@@ -312,7 +312,7 @@
   equipment:
     back: ClothingBackpackSatchelHoldingFilled # Ataraxia
     pocket1: BeaconBlueSpaceTechnic # Ataraxia
-    id: AdminPDA
+    id: BluespaceTechnicPDA # Ataraxia
 
 #Head Rev Gear
 - type: startingGear

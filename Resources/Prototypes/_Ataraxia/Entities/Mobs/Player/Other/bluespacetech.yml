@@ -20,6 +20,12 @@
     - type: MindShield
     - type: Loadout
       prototypes: [ BluespaceTechnicianGear ]
+    - type: AutoImplant
+      implants:
+      - mantisEImplant
+      - ScramImplant
+      - FreedomImplant
+      - DeathAcidifierImplant
     - type: RandomMetadata
       nameSegments:
       - NamesLastMilitary
