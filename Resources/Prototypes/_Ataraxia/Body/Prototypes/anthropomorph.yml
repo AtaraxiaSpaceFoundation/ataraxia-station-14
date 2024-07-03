@@ -24,26 +24,26 @@
       - right_leg
       - left_leg
     right_arm:
-      part: RightArmVulpkanin
+      part: RightArmHuman
       connections:
       - right_hand
     left_arm:
-      part: LeftArmVulpkanin
+      part: LeftArmHuman
       connections:
       - left_hand
     right_hand:
-      part: RightHandVulpkanin
+      part: RightHandHuman
     left_hand:
-      part: LeftHandVulpkanin
+      part: LeftHandHuman
     right_leg:
-      part: RightLegVulpkanin
+      part: RightLegHuman
       connections:
       - right_foot
     left_leg:
-      part: LeftLegVulpkanin
+      part: LeftLegHuman
       connections:
       - left_foot
     right_foot:
-      part: RightFootVulpkanin
+      part: RightFootHuman
     left_foot:
-      part: LeftFootVulpkanin
+      part: LeftFootHuman
