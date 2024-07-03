@@ -1,67 +1,30 @@
-- type: nonPeacefulRoundEndItems
+- type: nonPeacefulRoundEndItems # Ataraxia-Peaceful-EDIT
   id: nonPeacefulRoundEndRange
   items:
-    - WeaponSubMachineGunVector
-    - WeaponSubMachineGunWt550
-    - WeaponSubMachineGunC20r
-    - WeaponSubMachineGunAtreides
-    - WeaponSubMachineGunDrozd
-    - WeaponShotgunBulldog
-    - WeaponShotgunDoubleBarreled
-    - WeaponShotgunEnforcer
-    - WeaponShotgunKammerer
-    - WeaponShotgunSawn
-    - WeaponShotgunBlunderbuss
-    - WeaponShotgunImprovisedLoaded
-    - WeaponRifleAk
-    - WeaponRifleM90GrenadeLauncher
-    - WeaponRifleLecter
-    - WeaponRevolverDeckard
-    - WeaponRevolverInspector
-    - WeaponRevolverMateba
-    - WeaponRevolverPython
-    - WeaponRevolverPirate
-    - RevolverCapGunFake
-    - WeaponLightMachineGunL6
-    - WeaponSniperMosin
-    - Musket
-    - EnergyCrossbowMini
-    - WeaponLauncherRocket
-    - WeaponLauncherPirateCannon
-    - WeaponPistolViper
-    - WeaponPistolCobra
-    - WeaponPistolMk58
-    - WeaponPistolFlintlock
-    - WeaponLaserCannon
-    - WeaponLaserCarbine
-    - WeaponLaserGun
-    - WeaponAdvancedLaser
-    - WeaponMakeshiftLaser
-    - WeaponXrayCannon
-    - WeaponEgun
+    - FoamCrossbow
+    - RevolverCapGun
+    - BananiumHorn
+    - BikeHorn
+    - GoldenBikeHorn
+    - CluwneHorn
+    - PlushieSharkBlue
+    - PlushieSharkGrey
+    - PlushieSharkPink
+    - FoodCakeBirthday
+    - TargetCircleSupplyPodMobGondola
+    - TargetCircleSupplyPodBlackMarketCaseAllianceAssasin
+    - TargetCircleSupplyPodBlackMarketClothingOuterHardsuitOTAAlliance
 
-- type: nonPeacefulRoundEndItems
+- type: nonPeacefulRoundEndItems # Ataraxia-Peaceful-EDIT
   id: nonPeacefulRoundEndMelee
   items:
-    - FireAxeFlaming
-    - FireAxe
-    - CaptainSabre
-    - Katana
-    - Machete
-    - Claymore
-    - Stunbaton
-    - Spear
-    - SpearReinforced
-    - SpearPlasma
-    - SpearUranium
-    - ButchCleaver
-    - CombatKnife
-    - SurvivalKnife
-    - EnergyDagger
-    - EnergySword
-    - EnergySwordDouble
-    - EnergyCutlass
-    - Cutlass
-    - BaseBallBat
-    - BloodSuckerDagger
-    - Truncheon
+    - FoamCutlass
+    - FoamBlade
+    - ToySwordDouble
+    - ToySword
+    - TeslaToy # GOOOAL
+    - ToyHammer
+    - FoodCakeBirthday
+    - TargetCircleSupplyPodMobGondola
+    - TargetCircleSupplyPodBlackMarketWhiteholeGrenade
+    - TargetCircleSupplyPodBlackMarketClothingBackpackDuffelSyndicateCostumeClown
