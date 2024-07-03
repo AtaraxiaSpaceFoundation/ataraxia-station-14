@@ -1372,7 +1372,7 @@ namespace Content.Client.Stylesheets
                 Element<PanelContainer>().Class(ClassLowDivider)
                     .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat
                     {
-                        BackgroundColor = Color.FromHex("#444"),
+                        BackgroundColor = Color.FromHex("#25252A"),
                         ContentMarginLeftOverride = 2,
                         ContentMarginBottomOverride = 2
                     }),
