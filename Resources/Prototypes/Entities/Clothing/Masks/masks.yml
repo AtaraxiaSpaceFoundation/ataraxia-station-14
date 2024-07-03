@@ -517,6 +517,7 @@
     sprite: Clothing/Mask/neckgaiter.rsi
   - type: IdentityBlocker
     coverage: MOUTH
+  - type: BreathMask # Ataraxia
   - type: Tag
     tags:
     - WhitelistChameleon
