@@ -232,8 +232,8 @@ namespace Content.Client.Lobby
                 _lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
-            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] White Dream [/font]");
-            _lobby!.Version.SetMarkup("Version: 1.0");
+            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] Ataraxia [/font]");
+            _lobby!.Version.SetMarkup("Version: 6.9");
             _lobby!.ChangelogLabel.SetMarkup("Список изменений:");
         }
 
@@ -249,17 +249,17 @@ namespace Content.Client.Lobby
 
         private void MakeButtonReady(OhioLobbyTextButton button)
         {
-            button.ButtonText = "Ready";
+            button.ButtonText = "Готов";
         }
 
         private void MakeButtonUnReady(OhioLobbyTextButton button)
         {
-            button.ButtonText = "Not Ready";
+            button.ButtonText = "Не готов";
         }
 
         private void MakeButtonJoinGame(OhioLobbyTextButton button)
         {
-            button.ButtonText = "Join Game";
+            button.ButtonText = "Присоединиться";
         }
 
         private async void PopulateChangelog()

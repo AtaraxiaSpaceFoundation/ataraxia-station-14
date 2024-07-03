@@ -70,38 +70,38 @@
                                 Name="ReadyButton"
                                 Access="Public"
                                 ToggleMode="True"
-                                ButtonText="Ready"
+                                ButtonText="Готов"
                                 Margin="0 0 0 10" />
 
                             <buttons:OhioUICommandButton
                                 Name="ObserveButton"
                                 WindowType="{x:Type lobbyUi:ObserveWarningWindow}"
                                 Access="Public"
-                                ButtonText="Observe"
+                                ButtonText="Наблюдать"
                                 Margin="0 10 0 10" />
 
                             <buttons:OhioLobbyTextButton
                                 Name="CharacterSetupButton"
                                 Access="Public"
-                                ButtonText="Character Setup"
+                                ButtonText="Редактор персонажа"
                                 Margin="0 10 0 10" />
 
                             <buttons:OhioLobbyTextButton
                                 Name="OptionsButton"
                                 Access="Public"
-                                ButtonText="Options"
+                                ButtonText="Настройки"
                                 Margin="0 10 0 10" />
 
                             <buttons:OhioLobbyTextButton
                                 Name="DiscordButton"
                                 Access="Public"
-                                ButtonText="Привязать Discord"
+                                ButtonText="Привязать Дискорд"
                                 Margin="0 10 0 10" />
 
                             <buttons:OhioLobbyTextButton
                                 Name="QuitButton"
                                 Access="Public"
-                                ButtonText="Quit"
+                                ButtonText="Выйти"
                                 Margin="0 10 0 0" />
 
                         </BoxContainer>
