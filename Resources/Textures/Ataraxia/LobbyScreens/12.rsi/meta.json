@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 5950,
+    "y": 3850
+  },
+  "states": [
+    {
+      "name": "12",
+	  "delays": [
+        [
+          0.1
+        ]
+      ]
+    }
+  ]
+}
