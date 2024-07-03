@@ -233,7 +233,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: стена шаттла внутренняя
+  name: стена шаттла (Внутренняя)
   id: InteriorShuttleWall
   graph: Girder
   startNode: start
@@ -251,7 +251,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: диагональная стена шаттла
+  name: стена шаттла (Диагональная)
   id: DiagonalShuttleWall
   graph: Girder
   startNode: start
@@ -341,7 +341,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональная решётка
+  name: решётка (Диагональная)
   id: GrilleDiagonal
   graph: GrilleDiagonal
   startNode: start
@@ -358,7 +358,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: диагональная заводная решётка
+  name: заводная решётка (Диагональная)
   id: ClockworkGrilleDiagonal
   graph: GrilleDiagonal
   startNode: start
@@ -394,7 +394,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональное окно
+  name: окно (Диагональное)
   id: WindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -431,7 +431,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональное укреплённое окно
+  name: бронированное окно (Диагональное)
   id: ReinforcedWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -487,7 +487,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональное заводное окно
+  name: заводное окно (Диагональное)
   id: ClockworkWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -562,7 +562,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональное окно из плазмы
+  name: окно из плазмы (Диагональное)
   id: PlasmaWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -580,7 +580,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: диагональное укреплённое окно из плазмы
+  name: бронированное окно из плазмы (Диагональное)
   id: ReinforcedPlasmaWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -726,7 +726,7 @@
   canRotate: false
 
 - type: construction
-  name: диагональное окно из урана
+  name: окно из урана (Диагональное)
   id: UraniumWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -744,7 +744,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: диагональное укреплённое окно из урана
+  name: бронированное окно из урана (Диагональное)
   id: ReinforcedUraniumWindowDiagonal
   graph: WindowDiagonal
   startNode: start
@@ -1677,7 +1677,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: дверь секретная
+  name: стена (Дверь)
   id: SolidSecretDoor
   graph: SecretDoor
   startNode: start
