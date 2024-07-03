@@ -1,14 +1,14 @@
-- type: animatedLobbyScreen
-  id: FourthLobbyScreen
-  path: Ohio/Lobby/backgrounds/papich.rsi
+#- type: animatedLobbyScreen # ATARAXIA-REMOVE
+#  id: FourthLobbyScreen
+#  path: Ohio/Lobby/backgrounds/papich.rsi
 
 - type: animatedLobbyScreen
   id: MilkywayLobbyScreen
   path: Ohio/Lobby/backgrounds/4.rsi
 
-- type: animatedLobbyScreen
-  id: SusLobbyScreen
-  path: Ohio/Lobby/backgrounds/syndicate.rsi
+#- type: animatedLobbyScreen # ATARAXIA-REMOVE
+#  id: SusLobbyScreen
+#  path: Ohio/Lobby/backgrounds/syndicate.rsi
 
 #- type: animatedLobbyScreen
 #  id: NativeLobbyScreen
@@ -18,6 +18,6 @@
 #  id: ThirdLobbyScreen
 #  path: Ohio/Lobby/backgrounds/3.rsi
 
-#- type: animatedLobbyScreen
-#  id: FifthLobbyScreen
-#  path: Ohio/Lobby/backgrounds/5.rsi
+- type: animatedLobbyScreen # Ataraxia-RESTORE
+  id: FifthLobbyScreen
+  path: Ohio/Lobby/backgrounds/5.rsi
