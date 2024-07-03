@@ -160,8 +160,8 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletTrailLaser
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 62.5
   - type: MagazineVisuals
     magState: mag
@@ -190,8 +190,8 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletTrailLaser
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 125
   - type: PointLightBattery
   - type: PointLight
@@ -219,8 +219,8 @@
       path: /Audio/Effects/Lightning/lightningshock.ogg
       params:
         variation: 0.2
-  - type: ProjectileBatteryAmmoProvider
-    proto: TeslaGunBullet
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 300
   - type: MagazineVisuals
     magState: mag
@@ -250,8 +250,8 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletTrailLaser
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 62.5
   - type: PointLightBattery
   - type: PointLight
@@ -265,8 +265,8 @@
   id: WeaponLaserCarbinePractice
   description: This modified laser rifle fires nearly harmless beams in the 40-watt range, for target practice.
   components:
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletTrailLaserPractice
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 62.5
   - type: StaticPrice
     price: 300
