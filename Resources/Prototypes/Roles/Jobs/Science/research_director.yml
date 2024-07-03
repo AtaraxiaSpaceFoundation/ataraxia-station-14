@@ -14,10 +14,7 @@
   icon: "JobIconResearchDirector"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Research
   - Command

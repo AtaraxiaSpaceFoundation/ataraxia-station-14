@@ -10,8 +10,6 @@
   startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
-  whitelistedSpecies:
-    - Human
   canBeAntag: false
   access:
   - Security

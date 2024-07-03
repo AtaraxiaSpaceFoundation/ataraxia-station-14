@@ -20,10 +20,7 @@
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Command
   - HeadOfPersonnel

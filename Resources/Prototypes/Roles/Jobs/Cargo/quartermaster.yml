@@ -16,11 +16,7 @@
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Dwarf
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Cargo
   - Salvage
