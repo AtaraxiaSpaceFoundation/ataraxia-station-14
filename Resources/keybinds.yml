@@ -253,7 +253,7 @@ binds:
   mod1: Shift
 - function: OpenBackpack
   type: State
-  key: V
+  key: U # Ataraxia
 - function: OpenBelt
   type: State
   key: V
@@ -539,4 +539,4 @@ binds:
   key: Num9
 - function: LieDown
   type: State
-  key: U
+  key: V # Ataraxia
