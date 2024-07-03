@@ -97,6 +97,7 @@
 - type: emote
   id: Honk
   category: Vocal
+  buttonText: Хонкнуть
   chatMessages: [ хонкает ]
   chatTriggers:
     - honk
@@ -201,6 +202,7 @@
 - type: emote
   id: Squish
   category: Vocal
+  buttonText: Хлюпать
   chatMessages: [ хлюпает ]
   chatTriggers:
     - squish
@@ -222,6 +224,7 @@
 - type: emote
   id: Chitter
   category: Vocal
+  buttonText: Стрекотать
   chatMessages: [ стрекочет ]
   chatTriggers:
    - chitter
@@ -243,6 +246,7 @@
 - type: emote
   id: Squeak
   category: Vocal
+  buttonText: Сквикать
   chatMessages: [сквикает]
   chatTriggers:
    - squeak
@@ -264,6 +268,7 @@
 - type: emote
   id: Click
   category: Vocal
+  buttonText: Щёлкнуть
   chatMessages: [щёлкает]
   chatTriggers:
    - click
@@ -436,6 +441,7 @@
 
 - type: emote
   id: DefaultDeathgasp
+  buttonText: Притвориться мёртвым
   chatMessages: [ "emote-deathgasp" ]
   chatTriggers:
   - deathgasp
@@ -443,11 +449,13 @@
 
 - type: emote
   id: MonkeyDeathgasp
+  buttonText: Притвориться мёртвым
   chatMessages: ["chat-emote-msg-deathgasp-monkey"]
 
 - type: emote
   id: Buzz
   category: Vocal
+  buttonText: Жужжать
   chatMessages: [жужжит]
   chatTriggers:
     - buzzing
@@ -478,11 +486,13 @@
 - type: emote
   id: Weh
   category: Vocal
+  buttonText: Вех!
   chatMessages: [издаёт вех!]
 
 #- type: emote # Ataraxia-Emote
 #  id: Chirp
 #  category: Vocal
+#  buttonText: Чирикать
 #  chatMessages: [чирикает]
 #  chatTriggers:
 #    - chirp
@@ -507,7 +517,8 @@
 - type: emote
   id: Beep
   category: Vocal
-  chatMessages: [пищит]
+  buttonText: Бипкать
+  chatMessages: [бип]
   chatTriggers:
     - beep
     - beep!
@@ -530,6 +541,7 @@
 - type: emote
   id: Chime
   category: Vocal
+  buttonText: Дзынькать
   chatMessages: [дзынькает.]
   chatTriggers:
     - chime
@@ -556,6 +568,7 @@
 - type: emote
   id: Buzz-Two
   category: Vocal
+  buttonText: Бип-Бупать
   chatMessages: [бип-буп]
   chatTriggers:
     - buzztwice
@@ -612,6 +625,7 @@
 - type: emote
   id: Ping
   category: Vocal
+  buttonText: Пинг
   chatMessages: [пинг]
   chatTriggers:
     - ping

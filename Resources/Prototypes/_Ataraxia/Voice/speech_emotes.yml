@@ -456,7 +456,7 @@
 - type: emote
   id: Gasp
   category: Vocal
-  buttonText: Задыхатся
+  buttonText: Задыхаться
   chatMessages: [задыхается]
   chatTriggers:
     - задыхается
