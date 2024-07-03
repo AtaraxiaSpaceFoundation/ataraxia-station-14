@@ -345,6 +345,12 @@
       - KitchenKnife # WD EDIT
       - ButchCleaver # WD EDIT
       - WeaponTempGun # WD EDIT
+      - BluespaceBodyBag # Ataraxia
+      - NTBodyBag # Ataraxia
+      - PrisonerBodyBag # Ataraxia
+      - RadiationBodyBag # Ataraxia
+      - PinpointerAnomaly # Ataraxia
+      - PinpointerArtifact # Ataraxia
       - DeviceQuantumSpinInverter
   - type: EmagLatheRecipes
     emagDynamicRecipes:
@@ -369,6 +375,7 @@
       - Truncheon
       - MagazineGrenadeEmpty
       - GrenadeEMP
+      - SyndicateBodyBag # Ataraxia
       - GrenadeFlash
   - type: BluespaceStorage
 
