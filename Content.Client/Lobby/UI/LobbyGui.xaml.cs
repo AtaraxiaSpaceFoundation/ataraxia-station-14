@@ -36,7 +36,7 @@ namespace Content.Client.Lobby.UI
                     RightSide.Visible = true;
                     Version.Visible = true;
                     LabelName.Visible = true;
-                    Changelog.Visible = true;
+                    Changelog.Visible = false;
                     VersionLabel.Visible = true;
                     break;
                 case LobbyGuiState.CharacterSetup:
