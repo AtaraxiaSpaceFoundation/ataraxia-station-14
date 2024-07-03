@@ -232,7 +232,7 @@ namespace Content.Client.Lobby
                 _lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
-            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] Ataraxia [/font]");
+            _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=22] ATARAXIA [/font]");
             _lobby!.Version.SetMarkup("Version: 6.9");
             _lobby!.ChangelogLabel.SetMarkup("Список изменений:");
         }
