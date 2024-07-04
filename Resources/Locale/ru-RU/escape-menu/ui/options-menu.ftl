@@ -20,6 +20,8 @@ ui-options-general-cursor = Курсор
 ui-options-general-speech = Речь
 ui-options-general-storage = Инвентарь
 ui-options-general-accessibility = Доступность
+ui-options-chat-window-opacity = Прозрачность окна чата
+ui-options-chat-window-opacity-percent = { TOSTRING($opacity, "P0") }
 
 ## Audio menu
 

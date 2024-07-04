@@ -5,6 +5,7 @@
                   xmlns:s="clr-namespace:Content.Client.Stylesheets">
     <BoxContainer Orientation="Vertical">
         <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8" VerticalExpand="True">
                 <Label Text="{Loc 'ui-options-general-ui-style'}"
                        FontColorOverride="{xNamespace:Static s:StyleNano.NanoGold}"
@@ -19,7 +20,16 @@
                     <Control MinSize="4 0" />
                     <OptionButton Name="HudLayoutOption" />
                 </BoxContainer>
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="{Loc 'ui-options-chat-window-opacity'}" Margin="8 0" />
+                    <Slider Name="ChatWindowOpacitySlider"
+                            MinValue="0"
+                            MaxValue="1"
+                            MinWidth="200" />
+                    <Label Name="ChatWindowOpacityLabel" Margin="8 0" />
+                </BoxContainer>
                 <Label Text="{Loc 'ui-options-general-accessibility'}"
+
                        FontColorOverride="{xNamespace:Static s:StyleNano.NanoGold}"
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ReducedMotionCheckBox" Text="{Loc 'ui-options-reduced-motion'}" />
