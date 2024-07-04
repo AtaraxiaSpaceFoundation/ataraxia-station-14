@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "license": null,
-  "copyright": null,
+  "license": "CC-BY-NC-SA-3.0"
+  "copyright": "By PuroSlavKing"
   "size": {
-    "x": 2892,
-    "y": 1872
+    "x": 1920,
+    "y": 1080
   },
   "states": [
     {
