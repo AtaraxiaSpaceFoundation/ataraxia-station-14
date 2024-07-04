@@ -1,0 +1,13 @@
+# ЧЁРНЫЙ РЫНОК
+
+- type: guideEntry
+  id: AtaraxiaBlackMarket
+  name: guide-entry-blacmarket
+  text: "/ServerInfo/_Ataraxia/Guidebook/BlackMarket/BlackMarket.xml"
+  children:
+    - BlackMarket
+
+- type: guideEntry
+  id: BlackMarket
+  name: blackmarket-name-blackmarket
+  text: "/ServerInfo/_Ataraxia/Guidebook/BlackMarket/BlackMarket/BlackMarket.xml"

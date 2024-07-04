@@ -1,0 +1,12 @@
+- type: entity
+  parent: BalloonSyn
+  id: BalloonInteQ
+  name: inteq balloon
+  description: Merch, it looks cool.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Fun/inteq_balloon.rsi
+    state: inteq
+  - type: Item
+    sprite: Ataraxia/Objects/Fun/inteq_balloon.rsi
+    state: inteq

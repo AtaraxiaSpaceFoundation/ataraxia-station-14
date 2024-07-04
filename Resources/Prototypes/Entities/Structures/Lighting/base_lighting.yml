@@ -25,9 +25,9 @@
     sprite: Structures/Wallmounts/Lighting/light_tube.rsi
     drawdepth: WallMountedItems
     layers:
-    - state: on
-      map: ["enum.PoweredLightLayers.Base"]
-    state: on
+    - map: ["enum.PoweredLightLayers.Base"]
+      state: base
+    state: base
   - type: PointLight
     color: "#FFE4CE" # 5000K color temp
     energy: 0.8
@@ -89,7 +89,7 @@
     bulb: Tube
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: ContainerContainer
     containers:
       light_bulb: !type:ContainerSlot
@@ -109,6 +109,12 @@
   - type: PoweredLightVisuals
     blinkingSound:
       path: "/Audio/Machines/light_tube_on.ogg"
+    spriteStateMap:
+      empty: empty
+      off: base
+      on: base
+      broken: broken
+      burned: burned
 
 - type: entity
   id: Poweredlight
@@ -117,14 +123,14 @@
   parent: PoweredlightEmpty
   components:
   - type: Sprite
-    state: off
+    state: base
   - type: PointLight
     enabled: true
   - type: PoweredLight
     hasLampOnSpawn: LightTube
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -15
@@ -143,7 +149,7 @@
     hasLampOnSpawn: LedLightTube
     damage:
       types:
-        Heat: 5
+        Heat: 1 #LEDs don't get as hot
   - type: PointLight
     radius: 15
     energy: 1
@@ -165,19 +171,19 @@
 - type: entity
   id: PoweredlightExterior
   description: "A light fixture. Draws power and produces light when equipped with a light tube."
-  suffix: Blue
+  suffix: Exterior
   parent: Poweredlight
   components:
   - type: PoweredLight
     hasLampOnSpawn: ExteriorLightTube
     damage:
       types:
-        Heat: 5
+        Heat: 4 #brighter light gets hotter
 
 - type: entity
   parent: AlwaysPoweredWallLight
   id: AlwaysPoweredLightExterior
-  suffix: Always Powered, Blue
+  suffix: Always Powered, Exterior
   components:
   - type: PointLight
     radius: 12
@@ -196,7 +202,7 @@
     hasLampOnSpawn: SodiumLightTube
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 10
     energy: 2.5
@@ -229,7 +235,7 @@
         path: /Audio/Ambience/Objects/light_hum.ogg
     - type: Sprite
       sprite: Structures/Wallmounts/Lighting/light_small.rsi
-      state: on
+      state: base
     - type: PointLight
       energy: 1.0
       radius: 6
@@ -283,7 +289,7 @@
     bulb: Bulb
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
   - type: DeviceNetwork
@@ -293,6 +299,12 @@
     range: 200
   - type: Appearance
   - type: PoweredLightVisuals
+    spriteStateMap:
+      empty: empty
+      off: base
+      on: base
+      broken: broken
+      burned: burned
   - type: DeviceLinkSink
     ports:
       - On
@@ -316,7 +328,7 @@
     hasLampOnSpawn: LedLightBulb
     damage:
       types:
-        Heat: 2.5
+        Heat: 1
 
 - type: entity
   id: PoweredSmallLight
@@ -324,14 +336,14 @@
   parent: PoweredSmallLightEmpty
   components:
   - type: Sprite
-    state: off
+    state: base
   - type: PointLight
     enabled: true
   - type: PoweredLight
     hasLampOnSpawn: LightBulb
     damage:
       types:
-        Heat: 5
+        Heat: 2
 
 #Emergency Lights
 - type: entity
@@ -346,7 +358,7 @@
     radius: 5
     energy: 0.6
     offset: "0, 0.4"
-    color: "#FF4020"
+    color: "#7CFC00"
     mask: /Textures/Effects/LightMasks/double_cone.png
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
@@ -363,10 +375,10 @@
       map: [ "enum.EmergencyLightVisualLayers.Base" ]
     - state: emergency_light_off
       map: [ "enum.EmergencyLightVisualLayers.LightOff" ]
-      color: "#FF4020"
+      color: "#7CFC00"
     - state: emergency_light_on
       map: [ "enum.EmergencyLightVisualLayers.LightOn" ]
-      color: "#FF4020"
+      color: "#7CFC00"
       shader: "unshaded"
       visible: false
   - type: Appearance
@@ -386,7 +398,7 @@
     hasLampOnSpawn: LightTubeCrystalCyan
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3
@@ -413,7 +425,7 @@
     hasLampOnSpawn: LightTubeCrystalBlue
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3
@@ -440,7 +452,7 @@
     hasLampOnSpawn: LightTubeCrystalPink
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3
@@ -467,7 +479,7 @@
     hasLampOnSpawn: LightTubeCrystalOrange
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3
@@ -494,7 +506,7 @@
     hasLampOnSpawn: LightTubeCrystalRed
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3
@@ -521,7 +533,7 @@
     hasLampOnSpawn: LightTubeCrystalGreen
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: PointLight
     radius: 8
     energy: 3

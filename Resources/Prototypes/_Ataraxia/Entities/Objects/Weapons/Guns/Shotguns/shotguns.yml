@@ -1,0 +1,57 @@
+- type: entity
+  name: Bulldog
+  parent: WeaponShotgunBulldog
+  id: WeaponShotgunInteQBulldog
+  suffix: "Дробовик"
+  description: It's a magazine-fed shotgun designed for close quarters combat. Uses .50 shotgun shells. It is painted in the InteQ brand color.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Large
+  - type: Clothing
+    sprite: Ataraxia/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 2.5
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineShotgun
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineShotgun
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineAmmoProvider
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: GunRequiresWield # 4BackmenGuns
+  - type: Wieldable # 4BackmenGuns
+  - type: UseDelay # 4BackmenGuns
+    delay: 1.3

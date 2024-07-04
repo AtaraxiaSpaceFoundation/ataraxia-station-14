@@ -1,0 +1,14 @@
+- type: entity
+  parent: BoxCardboard
+  id: BaseBoxInteQ
+  suffix: Пустой, Интек
+  name: brown box
+  description: Brown box with a golden shield on its lid, I wonder what's in there?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/inteq_box.rsi
+    state: icon
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,3

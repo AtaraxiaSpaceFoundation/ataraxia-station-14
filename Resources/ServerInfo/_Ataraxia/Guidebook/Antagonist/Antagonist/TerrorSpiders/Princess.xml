@@ -1,0 +1,25 @@
+<Document>
+  # Принцесса ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderPrincess" Caption=""/>
+  </Box>
+  Создает логово, откладывает яйца, старается не попадаться экипажу на глаза.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#ff1f1f]12 режущего[/color] и [color=#46A446]8 яда[/color] своими когтями.
+  - Наносит [color=#C9181A]25 ожогов[/color] своими плевками.
+  - Имеет 185 ХП.
+  - Может вскрывать шлюзы своими лапами.
+  - Может откладывать яйца.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawPrincessTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponAcidHeatTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="TerrorEggIcon" Caption=""/>
+  </Box>
+
+</Document>

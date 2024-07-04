@@ -1,0 +1,13 @@
+- type: stack
+  id: FloorTileAtaraxiaPlanetGrass
+  name: grass tile
+  spawn: FloorTileItemAtaraxiaPlanetGrass
+  maxCount: 30
+  itemSize: 5
+
+- type: stack
+  id: FloorTileAtaraxiaPlanetDirt
+  name: dirt tile
+  spawn: FloorTileItemAtaraxiaPlanetDirt
+  maxCount: 30
+  itemSize: 5

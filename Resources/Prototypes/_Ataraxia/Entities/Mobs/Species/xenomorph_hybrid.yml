@@ -1,0 +1,86 @@
+- type: entity
+  save: false
+  name: Urist McXenomorph
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobXenomorphHybrid
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: XenomorphHybrid
+  - type: NightVision
+    isToggle: true
+    color: "#1E1E1E"
+  - type: Hunger
+  - type: Puller
+    needsHands: false
+  - type: Thirst
+  - type: Icon
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: xeno_m
+  - type: Body
+    prototype: XenomorphHybrid
+    requiredLegs: 2
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 5.2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatXeno
+      amount: 5
+  - type: Inventory
+    speciesId: reptilian
+  - type: LizardAccent
+  - type: Speech
+    speechSounds: XenomorphHybrid
+  - type: TypingIndicator
+    proto: alien
+  - type: Vocal
+    sounds:
+      Male: UnisexXenomorphHybrid
+      Female: UnisexXenomorphHybrid
+      Unsexed: UnisexXenomorphHybrid
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: XenomorphHybrid
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 6
+  - type: Temperature
+    heatDamageThreshold: 360
+    coldDamageThreshold: 240
+    currentTemperature: 310.15
+    specificHeat: 46
+    coldDamage:
+      types:
+        Cold : 0.075
+    heatDamage:
+      types:
+        Heat : 0.22
+  - type: Sericulture
+    action: ActionPlasmaGeneration
+    productionLength: 5
+    entityProduced: PlasmaOre1
+    hungerCost: 3
+  - type: Bloodstream
+    bloodReagent: XenomorphHybridBlood
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.18
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobXenomorphHybridDummy
+  noSpawn: true
+  name: Urist McXenos
+  description: A dummy xenomorph meant to be used in character setup..
+  components:
+  - type: HumanoidAppearance
+    species: XenomorphHybrid

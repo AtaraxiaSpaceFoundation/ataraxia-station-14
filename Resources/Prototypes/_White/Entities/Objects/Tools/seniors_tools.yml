@@ -13,9 +13,9 @@
           Blunt: 12
           Structural: 7
     - type: Sprite
-      sprite: White/Objects/Tools/impcrowbar.rsi
+      sprite: Ataraxia/Objects/Tools/brasscrowbar.rsi
     - type: Item
-      sprite: White/Objects/Tools/impcrowbar.rsi
+      sprite: Ataraxia/Objects/Tools/brasscrowbar.rsi
 
 - type: entity
   id: ImprovedWrench # OK
@@ -27,9 +27,9 @@
     - type: Tool
       speed: 2
     - type: Sprite
-      sprite: White/Objects/Tools/impwrench.rsi
+      sprite: Ataraxia/Objects/Tools/brasswrench.rsi
     - type: Item
-      sprite: White/Objects/Tools/impwrench.rsi
+      sprite: Ataraxia/Objects/Tools/brasswrench.rsi
     - type: MeleeWeapon
       attackRate: 1.5
       damage:
@@ -44,17 +44,14 @@
   components:
     - type: StaticPrice
       price: 500
-    - type: EmitSoundOnLand
-      sound:
-        path: /Audio/Items/screwdriver_drop.ogg
     - type: Tag
       tags:
         - Screwdriver
     - type: Sprite
-      sprite: White/Objects/Tools/impscrewdriver.rsi
+      sprite: Ataraxia/Objects/Tools/brassscrewdriver.rsi
       state: icon
     - type: Item
-      sprite: White/Objects/Tools/impscrewdriver.rsi
+      sprite: Ataraxia/Objects/Tools/brassscrewdriver.rsi
     - type: UseDelay
     - type: MeleeWeapon
       attackRate: 1
@@ -72,6 +69,10 @@
     - type: PhysicalComposition
       materialComposition:
         Steel: 100
+    - type: Clothing # Ataraxia
+      quickEquip: false
+      slots:
+      - Belt
 
 - type: entity
   id: ImprovedWirecutter
@@ -82,13 +83,10 @@
     - type: StaticPrice
       price: 500
     - type: Item
-      sprite: White/Objects/Tools/impwirecutter.rsi
+      sprite: Ataraxia/Objects/Tools/brasswirecutter.rsi
     - type: Sprite
-      sprite: White/Objects/Tools/impwirecutter.rsi
+      sprite: Ataraxia/Objects/Tools/brasswirecutter.rsi
       state: icon
-    - type: EmitSoundOnLand
-      sound:
-        path: /Audio/Items/wirecutter_drop.ogg
     - type: Tag
       tags:
         - PlantSampleTaker
@@ -110,10 +108,14 @@
     - type: PhysicalComposition
       materialComposition:
         Steel: 100
+    - type: Clothing # Ataraxia
+      quickEquip: false
+      slots:
+      - Belt
 
 - type: entity
   id: ImprovedWelder
-  parent: BaseWelder
+  parent: Welder
   name: improved welder
   description: ""
   components:
@@ -125,9 +127,9 @@
               Quantity: 300
           maxVol: 300
     - type: Sprite
-      sprite: White/Objects/Tools/impwelder.rsi
+      sprite: Ataraxia/Objects/Tools/brasswelder.rsi
     - type: Item
-      sprite: White/Objects/Tools/impwelder.rsi
+      sprite: Ataraxia/Objects/Tools/brasswelder.rsi
     - type: StaticPrice
       price: 700
     - type: Tool

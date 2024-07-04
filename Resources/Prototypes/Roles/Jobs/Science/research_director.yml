@@ -14,10 +14,7 @@
   icon: "JobIconResearchDirector"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Research
   - Command
@@ -38,6 +35,7 @@
     shoes: ClothingShoesColorBrown
     id: RnDPDA
     ears: ClothingHeadsetRD
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
   underweart: ClothingUnderwearTopBraRD # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear

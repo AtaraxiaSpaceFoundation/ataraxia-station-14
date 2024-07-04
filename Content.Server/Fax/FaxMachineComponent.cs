@@ -119,6 +119,15 @@ public sealed partial class FaxMachineComponent : Component
     /// </summary>
     [ViewVariables]
     public float PrintingTime = 2.3f;
+
+    // Corvax-StationGoal-Start
+    /// <summary>
+    /// Should that fax receive station goal info
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("receiveStationGoal")]
+    public bool ReceiveStationGoal { get; set; } = false;
+    // Corvax-StationGoal-End
 }
 
 [DataDefinition]

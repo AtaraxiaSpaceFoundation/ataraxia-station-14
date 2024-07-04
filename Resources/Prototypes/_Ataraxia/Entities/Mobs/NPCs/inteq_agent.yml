@@ -1,0 +1,96 @@
+- type: entity
+  name: inteq agent
+  parent:
+  - BaseSimpleMob
+  - MobCombat
+  id: MobInteQAgent
+  description: UGH!? AGH!! BREAK THINGS!!!
+  components:
+  - type: GhostRole
+    allowSpeech: true
+    allowMovement: true
+    makeSentient: true
+    name: Агент Интек
+    description: КРУШИ ЧЕРЕПА, ТЫ ЕБАНУТЫЙ, УБИВАЙ, ЛОМАЙ!!!
+    rules: "Нельзя гибать. Нельзя гибать!!! ДАЖЕ НЕ ПЫТАЙСЯ!!!!!!"
+    raffle:
+      settings: default
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: GhostTakeoverAvailable
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - InteQHostile
+  - type: Body
+    prototype: Animal
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: HellSpawn
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: Sprite
+    sprite: Ataraxia/Mobs/NPCs/gigachad_inteq.rsi
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: base
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: MobPrice
+    price: 1000 # Living critters are valuable in space.
+  - type: Perishable
+  - type: Reflect
+    reflectProb: 0.7
+    reflects:
+      - Energy
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - DoorBumpOpener
+      - FootstepSound
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      420: Dead
+  - type: Butcherable
+    spawned:
+      - id: ClothingHeadHelmetSwatInteQ
+      - id: ClothingBeltInteQWebbing
+      - id: Sledgehammer
+  - type: MeleeWeapon
+    attackRate: 0.6
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/star_hit.ogg
+    damage:
+      types:
+        Blunt: 92
+        Structural: 72
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: GuideHelp
+    guides:
+    - InteQAgent

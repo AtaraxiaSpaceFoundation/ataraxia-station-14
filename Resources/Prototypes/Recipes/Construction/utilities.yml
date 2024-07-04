@@ -1,6 +1,6 @@
 # SURVEILLANCE
 - type: construction
-  name: camera
+  name: камера
   id: SurveillanceCameraAssembly
   graph: SurveillanceCamera
   startNode: start
@@ -14,7 +14,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: telescreen
+  name: монитор
   id: WallmountTelescreen
   graph: WallmountTelescreen
   startNode: start
@@ -29,7 +29,7 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: station map
+  name: карта станции
   id: StationMap
   graph: StationMap
   startNode: start
@@ -48,7 +48,7 @@
 
 # POWER
 - type: construction
-  name: APC
+  name: ЛКП
   id: APCBasic
   graph: APC
   startNode: start
@@ -63,7 +63,7 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: solar assembly
+  name: солнечная панель каркас
   id: SolarPanel
   graph: SolarPanel
   startNode: start
@@ -81,7 +81,7 @@
       failIfSpace: false
 
 - type: construction
-  name: cable terminal
+  name: кабельный терминал
   id: CableTerminal
   graph: CableTerminal
   startNode: start
@@ -96,7 +96,7 @@
   canBuildInImpassable: false
 
 - type: construction
-  name: wallmount substation
+  name: настенная подстанция
   id: BaseSubstationWall
   graph: WallmountSubstation
   startNode: start
@@ -111,7 +111,7 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: wallmount generator
+  name: настенный генератор
   id: GeneratorWallmountBasic
   graph: WallmountGenerator
   startNode: start
@@ -126,7 +126,7 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: wallmount APU
+  name: настенный ВСУ
   id: GeneratorWallmountAPU
   graph: WallmountGenerator
   startNode: start
@@ -142,7 +142,7 @@
 
 # DISPOSALS
 - type: construction
-  name: disposal unit
+  name: мусорка
   description: A pneumatic waste disposal unit.
   id: DisposalUnit
   graph: DisposalMachine
@@ -156,7 +156,7 @@
     state: "disposal"
 
 - type: construction
-  name: mailing unit
+  name: почта
   description: A pneumatic mail delivery unit.
   id: MailingUnit
   graph: DisposalMachine

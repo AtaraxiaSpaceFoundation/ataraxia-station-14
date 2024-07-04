@@ -489,6 +489,16 @@
         conditions:
           - !type:OrganType
             type: Human
+      - !type:HealthChange # Ataraxia
+        conditions:
+        - !type:OrganType
+          type: Animal
+          shouldHave: true
+        damage:
+          types:
+            Blunt: -0.5
+            Piercing: -0.5
+            Heat: -0.2
       - !type:HealthChange
         conditions:
         - !type:OrganType

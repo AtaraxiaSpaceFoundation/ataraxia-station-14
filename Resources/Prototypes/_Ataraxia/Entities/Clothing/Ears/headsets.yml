@@ -1,0 +1,30 @@
+- type: entity
+  parent: ClothingHeadsetAlt
+  id: ClothingHeadsetAltInteQ
+  name: InteQ over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInteQ
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Ears/inteq_headset.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Ears/inteq_headset.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetInteQ
+  name: InteQ headset
+  description: A headset used by InteQ forces.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInteQ
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Ears/inteq_headset.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Ears/inteq_headset.rsi

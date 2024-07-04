@@ -1,0 +1,103 @@
+# BASE
+
+- type: entity
+  parent: SpiderWeb
+  id: BaseSpiderWebTerror
+  abstract: true
+  name: terror web
+  description: It looks like a bunch of dark threads.
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: Damageable
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 15
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - type: Temperature
+      heatDamage:
+        types:
+          Heat: 5
+      coldDamage: {}
+      coldDamageThreshold: 0
+    - type: Flammable
+      fireSpread: true
+      damage:
+        types:
+          Heat: 5
+
+# WEB
+
+- type: entity
+  parent: BaseSpiderWebTerror
+  id: SpiderWebTerror
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Objects/Misc/terror_web.rsi
+      layers:
+        - state: spider_web_1
+          map: ["spiderWebLayer"]
+      drawdepth: WallMountedItems
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.45
+      sprintSpeedModifier: 0.48
+      ignoreWhitelist:
+        components:
+            - IgnoreSpiderWeb
+
+- type: entity
+  parent: BaseSpiderWebTerror
+  id: SpiderWebTerrorReinforcered
+  name: reinforcered terror web
+  description: It looks like a bunch of dark threads. They are so dense that they can even block the depressurization!
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Objects/Misc/terror_web_reinforcered.rsi
+      layers:
+        - state: spider_web_1
+          map: ["spiderWebLayer"]
+      drawdepth: WallMountedItems
+    - type: Airtight
+      noAirWhenFullyAirBlocked: false
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - type: Temperature
+      heatDamage:
+        types:
+          Heat: 30
+      coldDamage: {}
+      ColdDamageThreshold: 0
+    - type: Flammable
+      fireSpread: true
+      cold:
+        types: {}
+      damage:
+        types:
+          Heat: 30
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.55
+      sprintSpeedModifier: 0.6
+      ignoreWhitelist:
+        components:
+            - IgnoreSpiderWeb

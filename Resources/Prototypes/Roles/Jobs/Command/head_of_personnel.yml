@@ -20,10 +20,7 @@
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Command
   - HeadOfPersonnel
@@ -64,6 +61,7 @@
     shoes: ClothingShoesColorBrown
     id: HoPPDA
     ears: ClothingHeadsetAltCommand
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
   underweart: ClothingUnderwearTopBraHOP # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear

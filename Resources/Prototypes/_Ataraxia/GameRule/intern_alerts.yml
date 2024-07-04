@@ -1,0 +1,343 @@
+# WELCOME
+
+- type: entity
+  id: Intern_Alert_Welcome_1
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/welcome/1.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_Welcome_2
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/welcome/2.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_Welcome_3
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/welcome/4.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_Welcome_4
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/welcome/5.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_Welcome_5
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/welcome/6.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+# ALERTS
+
+- type: entity
+  id: Intern_Alert_1
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/2.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_2
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/3.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_3
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/4.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_4
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/6.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_5
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/7.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_6
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/8.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_7
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/9.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_8
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/10.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_9
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/11.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_10
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/12.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_11
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/13.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001
+
+- type: entity
+  id: Intern_Alert_12
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: ataraxia-intern-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/14.ogg # Ataraxia-Announcements
+      params:
+        volume: 1
+    weight: 15
+    duration: 5
+    reoccurrenceDelay: 69
+    minimumPlayers: 169 # Отключение по наплаку
+  - type: VentCrittersRule
+    entries:
+    - id: MobMouse
+      prob: 0.0001

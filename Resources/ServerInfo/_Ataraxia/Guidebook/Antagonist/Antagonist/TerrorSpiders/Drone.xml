@@ -1,0 +1,24 @@
+<Document>
+  # Дрон ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderDrone" Caption=""/>
+  </Box>
+  Оплетает всё вокруг паутиной, отгоняет плевками экипаж, защищает гнездо.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#ff1f1f]10 режущего[/color] и [color=#46A446]4 яда[/color] своими когтями.
+  - Наносит [color=#46A446]12 яда[/color] своими плевками.
+  - Обладает двойным плевком.
+  - Имеет 100 ХП.
+  - Может вскрывать шлюзы своими лапами.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawDroneTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponAcidDoubleTerrorSpider" Caption=""/>
+  </Box>
+
+</Document>

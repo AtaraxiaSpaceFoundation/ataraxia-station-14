@@ -1,0 +1,9 @@
+supplypod-name-bluespace = Блюспейс грузовая капсула
+supplypod-name-cult = Грузовая капсула Культа
+supplypod-name-deathsquad = Групповая грузовая капсула
+supplypod-name-default = Обычная грузовая капсула
+supplypod-name-gondola = Грузовая капсула Гондола
+supplypod-name-honk = Грузовая капсула Хонк
+supplypod-name-nanotrasen = Грузовая капсула НТ
+supplypod-name-orange = Грузовая капсула Апельсин
+supplypod-name-syndicate = Грузовая капсула Синдиката

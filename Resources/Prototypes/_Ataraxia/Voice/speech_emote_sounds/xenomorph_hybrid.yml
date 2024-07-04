@@ -1,0 +1,279 @@
+- type: emoteSounds
+  id: UnisexXenomorphHybrid
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: XenomorphScreams
+      params:
+        volume: -12
+    Laugh:
+      collection: XenomorphLaugh
+      params:
+        volume: -12
+    Sneeze:
+      collection: XenomorphSneezes
+      params:
+        volume: -12
+    Cough:
+      collection: XenomorphCoughs
+      params:
+        volume: -12
+    CatMeow:
+      collection: XenomorphMeows
+      params:
+        volume: -12
+    CatHisses:
+      collection: XenomorphHisses
+      params:
+        volume: -60
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: XenomorphYawn
+      params:
+        volume: -12
+    Snore:
+      collection: XenomorphSnores
+      params:
+        volume: -12
+    Honk:
+      collection: BikeHorn
+    Clap:
+      collection: Claps
+    Snap:
+      collection: Snaps
+      params:
+        volume: -6
+    Salute:
+      collection: Salutes
+    Click:
+      path: /Audio/Voice/Arachnid/arachnid_click.ogg
+    Whistle:
+      collection: Whistles
+    Hiss:
+      collection: XenomorphHisses
+      params:
+        volume: -60
+    Buzz:
+      path: /Audio/Voice/Moth/moth_scream.ogg
+    Squish:
+      collection: Squishes
+    Chitter:
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+    Squeak:
+      path: /Audio/Voice/Moth/moth_squeak.ogg
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+# Ataraxia-Start
+    Gasp:
+      collection: MaleGasp
+      params:
+        volume: -10
+    Fart:
+      collection: Fart
+      params:
+        volume: -4
+    Burp:
+      collection: Burp
+      params:
+        volume: -4
+    CoyoteHowl:
+      collection: CoyoteHowl
+      params:
+        volume: -4
+    CatMeowAlt:
+      collection: CatMeowAlt
+      params:
+        volume: -4
+    CatMew:
+      collection: CatMew
+      params:
+        volume: -4
+    CatMrrp:
+      collection: CatMrrp
+      params:
+        volume: -4
+    CartoonScream:
+      collection: CartoonScream
+      params:
+        volume: -4
+    AraAra:
+      collection: AraAra
+      params:
+        volume: -4
+    AnimalBark:
+      collection: AnimalBark
+      params:
+        volume: -3
+    CryKing:
+      collection: CryKing
+      params:
+        volume: -6
+    LaughMuta:
+      collection: LaughMuta
+      params:
+        volume: -8
+    WhistleTerror:
+      collection: WhistleTerror
+      params:
+        volume: -4
+    AnimalWarble:
+      collection: AnimalWarble
+    LizardWeh:
+      collection: LizardWeh
+      params:
+        volume: -3
+    Moan:
+      collection: XenomorphYawn
+      params:
+        volume: -12
+    LoudAauugghh:
+      path: /Audio/Ataraxia/Emotions/aauugghh.ogg
+      params:
+        volume: -4
+    Agony:
+      path: /Audio/Ataraxia/Emotions/agony.ogg
+      params:
+        volume: -4
+    Blink:
+      path: /Audio/Ataraxia/Emotions/blink.ogg
+      params:
+        volume: -2
+    BoneRif:
+      path: /Audio/Ataraxia/Emotions/bonerif.ogg
+      params:
+        volume: -3
+    Boowomp:
+      path: /Audio/Ataraxia/Emotions/boowomp.ogg
+      params:
+        volume: -2
+    BreakingBad:
+      path: /Audio/Ataraxia/Emotions/breakbad.ogg
+      params:
+        volume: -5
+    Bruh:
+      path: /Audio/Ataraxia/Emotions/bruh.ogg
+      params:
+        volume: -6
+    Buff:
+      path: /Audio/Ataraxia/Emotions/buff.ogg
+      params:
+        volume: -6
+    HereticLaugh:
+      path: /Audio/Ataraxia/Emotions/cackle_yeen.ogg
+      params:
+        volume: -4
+    CanonEvent:
+      path: /Audio/Ataraxia/Emotions/canon_event.ogg
+      params:
+        volume: -6
+    Chirp:
+      path: /Audio/Ataraxia/Emotions/chirp.ogg
+    Paradise:
+      path: /Audio/Ataraxia/Emotions/paradise.ogg
+      params:
+        volume: -4
+    Coo:
+      path: /Audio/Ataraxia/Emotions/coo.ogg
+    FBI:
+      path: /Audio/Ataraxia/Emotions/fbi.ogg
+      params:
+        volume: -4
+    Fusrodah:
+      path: /Audio/Ataraxia/Emotions/fusrodah.ogg
+      params:
+        volume: -4
+    Glares:
+      path: /Audio/Ataraxia/Emotions/deathglare.ogg
+      params:
+        volume: -3
+    Huh:
+      path: /Audio/Ataraxia/Emotions/huh.ogg
+      params:
+        volume: -4
+    Iluminati:
+      path: /Audio/Ataraxia/Emotions/illuminati.ogg
+      params:
+        volume: -3
+    DemomanLaugh:
+      path: /Audio/Ataraxia/Emotions/laugh_deman.ogg
+      params:
+        volume: -4
+    KingLaugh:
+      path: /Audio/Ataraxia/Emotions/laugh_king.ogg
+      params:
+        volume: -4
+    LawyerRP:
+      path: /Audio/Ataraxia/Emotions/lawyerup.ogg
+      params:
+        volume: -8
+    MemeLaugh:
+      path: /Audio/Ataraxia/Emotions/lol.ogg
+      params:
+        volume: -4
+    MemeMeow:
+      path: /Audio/Ataraxia/Emotions/meow_meme.ogg
+      params:
+        volume: -4
+    Mewo:
+      path: /Audio/Ataraxia/Emotions/mewo.ogg
+      params:
+        volume: -4
+    MoonMen:
+      path: /Audio/Ataraxia/Emotions/moonmen.ogg
+      params:
+        volume: -4
+    Mrowl:
+      path: /Audio/Ataraxia/Emotions/mrowl.ogg
+      params:
+        volume: -4
+    OMG:
+      path: /Audio/Ataraxia/Emotions/OMG.ogg
+      params:
+        volume: -4
+    WTH:
+      path: /Audio/Ataraxia/Emotions/WTH.ogg
+      params:
+        volume: -4
+    Yippee:
+      path: /Audio/Ataraxia/Emotions/yippee.ogg
+      params:
+        volume: -8
+    LizardPurr:
+      path: /Audio/Ataraxia/Emotions/raptor_purr.ogg
+    SickoMode:
+      path: /Audio/Ataraxia/Emotions/sicko.ogg
+      params:
+        volume: -2
+    VoronKar:
+      path: /Audio/Ataraxia/Emotions/voron.ogg
+    Waa:
+      path: /Audio/Ataraxia/Emotions/waa.ogg
+      params:
+        volume: -2
+    Whine:
+      path: /Audio/Ataraxia/Emotions/whine.ogg
+      params:
+        volume: -2
+    WolfHowl:
+      path: /Audio/Ataraxia/Emotions/wolfhowl.ogg
+      params:
+        volume: -2
+    SexyWhistle:
+      path: /Audio/Ataraxia/Emotions/wolfwhistle.ogg
+      params:
+        volume: -3
+    MoreBullets:
+      path: /Audio/Ataraxia/Emotions/more_bullets.ogg
+      params:
+        volume: -2
+    RaiseEyebrow:
+      path: /Audio/Ataraxia/Emotions/eyebrow.ogg
+      params:
+        volume: -4
+# Ataraxia-End

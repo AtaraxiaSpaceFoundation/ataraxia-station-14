@@ -10,8 +10,6 @@
   startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
-  whitelistedSpecies:
-    - Human
   canBeAntag: false
   access:
   - Security

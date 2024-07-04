@@ -1,0 +1,166 @@
+- type: species
+  id: XenomorphHybrid
+  name: species-name-xenomorph-hybrid
+  roundStart: true
+  prototype: MobXenomorphHybrid
+#  sprites: MobXenomorphHybridSprites
+  defaultSkinTone: "#787878"
+  markingLimits: MobXenomorphHybridMarkingLimits
+  dollPrototype: MobXenomorphHybridDummy
+  skinColoration: Hues
+  maleFirstNames: names_xenomorph_hybrid_male
+  femaleFirstNames: names_xenomorph_hybrid_female
+  naming: FirstDashFirst
+  bodyTypes:
+    - XenomorphHybridNormal
+
+#- type: speciesBaseSprites
+#  id: MobXenomorphHybridSprites
+#  sprites:
+#    Head: MobXenomorphHybridHead
+#    Hair: MobHumanoidAnyMarking
+#    Snout: MobHumanoidAnyMarking
+#    Chest: MobXenomorphHybridTorso
+#    HeadTop: MobHumanoidAnyMarking
+#    HeadSide: MobHumanoidAnyMarking
+#    Tail: MobHumanoidAnyMarking
+#    Eyes: MobXenomorphHybridEyes
+#    LArm: MobXenomorphHybridLArm
+#    RArm: MobXenomorphHybridRArm
+#    LHand: MobXenomorphHybridLHand
+#    RHand: MobXenomorphHybridRHand
+#    LLeg: MobXenomorphHybridLLegDigi # Ataraxia-Digitigrade
+#    RLeg: MobXenomorphHybridRLegDigi # Ataraxia-Digitigrade
+#    LFoot: MobXenomorphHybridLFootDigi # Ataraxia-Digitigrade
+#    RFoot: MobXenomorphHybridRFootDigi # Ataraxia-Digitigrade
+
+- type: markingPoints
+  id: MobXenomorphHybridMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Tail:
+      points: 1
+      required: true
+      defaultMarkings: [ XenomorphTailDefault ]
+    Chest:
+      points: 1
+      required: false
+    HeadTop:
+      points: 1
+      required: false
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHead
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHeadMale
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHeadFemale
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridEyes
+  baseSprite:
+    sprite: Mobs/Customization/eyes.rsi
+    state: no_eyes
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridTorso
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridTorsoMale
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridTorsoFemale
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLLeg
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLHand
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLArm
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLFoot
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRLeg
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRHand
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRArm
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRFoot
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_foot
+
+# DIGI-LEGS
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLLegDigi
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_leg_digi
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLFootDigi
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: l_foot_digi
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRLegDigi
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_leg_digi
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRFootDigi
+  baseSprite:
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: r_foot_digi

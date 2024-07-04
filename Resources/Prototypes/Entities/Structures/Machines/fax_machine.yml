@@ -77,7 +77,9 @@
         color: "#bfe3ff"
   - type: FaxMachine
     name: "Central Command"
+    receiveStationGoal: true # Corvax-StationGoal
     notifyAdmins: true
+
 
 - type: entity
   parent: FaxMachineBase
@@ -104,6 +106,19 @@
   components:
     - type: FaxMachine
       name: "Captain's Office"
+      receiveStationGoal: true # Corvax-StationGoal
       receiveNukeCodes: true
     - type: StealTarget
       stealGroup: FaxMachineCaptain
+
+- type: entity
+  parent: Paper
+  id: StationGoalPaper
+  name: station goal centcomm message
+  description: 'It looks like you have a lot of work to do.'
+  components:
+  - type: Paper
+    stampState: paper_stamp-centcom
+    stampedBy:
+    - stampedName: stamp-component-stamped-name-centcom
+      stampedColor: "#bb3232"

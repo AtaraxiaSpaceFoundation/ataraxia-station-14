@@ -109,8 +109,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/solar.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/solar.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.SolarControlConsoleUiKey.Key }
@@ -122,8 +122,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/communications.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/communications.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.CommunicationsConsoleUiKey.Key }
@@ -135,8 +135,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/radar.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/radar.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.RadarConsoleUiKey.Key }
@@ -148,8 +148,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/cargo.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/cargo.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.CargoConsoleUiKey.Orders }
@@ -161,8 +161,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/monitoring.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/monitoring.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.CrewMonitoringUIKey.Key }
@@ -174,8 +174,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }
-    iconOn: Structures/Machines/parts.rsi/box_2.png
+    icon: Ataraxia/Interface/AdminActions/records.png # Ataraxia
+    iconOn: Ataraxia/Interface/AdminActions/records.png # Ataraxia
     keywords: [ "AI", "console", "interface" ]
     priority: -10
     event: !type:ToggleIntrinsicUIEvent { key: enum.GeneralStationRecordConsoleKey.Key }

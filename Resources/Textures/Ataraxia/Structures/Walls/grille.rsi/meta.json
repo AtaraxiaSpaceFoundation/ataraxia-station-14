@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/ChaoticOnyx/OnyxBay/commit/f5f57df889338a828a5869da344b8e17042d7a01 | Sprited and edited by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "grille"
+    },
+    {
+      "name": "grille_diagonal"
+    },
+    {
+      "name": "grille_broken"
+    },
+    {
+      "name": "grille_damaged_0"
+    },
+    {
+      "name": "grille_damaged_1"
+    },
+    {
+      "name": "grille_damaged_2"
+    },
+    {
+      "name": "grille_damaged_3"
+    }
+  ]
+}

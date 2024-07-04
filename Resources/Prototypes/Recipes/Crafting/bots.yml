@@ -1,64 +1,64 @@
 - type: construction
-  name: cleanbot
+  name: бот уборщик
   id: MobCleanBot
   graph: CleanBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: This bot wanders around the station, mopping up any puddles it sees.
+  description: Чистит станцию, не всегда успешно.
   icon:
     sprite: Mobs/Silicon/Bots/cleanbot.rsi
     state: cleanbot
 
 - type: construction
-  name: honkbot
+  name: бот хонк
   id: MobHonkBot
   graph: HonkBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: This bot honks and slips people.
+  description: Агрессивно хонкает на экипаж, за что и получает пизды.
   icon:
     sprite: Mobs/Silicon/Bots/honkbot.rsi
     state: honkbot
 
 - type: construction
-  name: jonkbot
+  name: бот кринж
   id: MobJonkBot
   graph: JonkBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: This cursed bot honks, laughs and slips people.
+  description: Вызывает кринж своим существованием.
   icon:
     sprite: Mobs/Silicon/Bots/honkbot.rsi
     state: jonkbot
 
 - type: construction
-  name: medibot
+  name: бот медик
   id: MobMedibot
   graph: MediBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: This bot can help supply basic healing.
+  description: Тот самый героиновый наркоман, который обкалывает вас не спрашивая.
   icon:
     sprite: Mobs/Silicon/Bots/medibot.rsi
     state: medibot
 
 - type: construction
-  name: mimebot
+  name: бот мим
   id: MobMimeBot
   graph: MimeBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: This bot knows how to wave.
+  description: Агрессивно молчит.
   icon:
     sprite: Mobs/Silicon/Bots/mimebot.rsi
     state: mimebot

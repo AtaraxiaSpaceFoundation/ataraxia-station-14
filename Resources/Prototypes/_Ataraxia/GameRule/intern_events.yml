@@ -1,0 +1,333 @@
+- type: entity
+  id: BureaucraticError_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-bureaucratic-error-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/commandreport/2.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    minimumPlayers: 99
+    weight: 3
+    duration: 1
+    reoccurrenceDelay: 140
+    startDelay: 10
+  - type: BureaucraticErrorRule
+
+- type: entity
+  id: ClericalError_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-clerical-error-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/commandreport/1.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    minimumPlayers: 99
+    weight: 5
+    duration: 1
+    reoccurrenceDelay: 140
+    startDelay: 20
+  - type: ClericalErrorRule
+
+- type: entity
+  id: GasLeak_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-gas-leak-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/intercept.ogg # Ataraxia-Announcements
+      params:
+        volume: -4
+    endAnnouncement: station-event-gas-leak-end-announcement
+    weight: 8
+    endAudio:
+      path: /Audio/Announcements/gasleak_end.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 30
+    minimumPlayers: 99
+    reoccurrenceDelay: 140
+  - type: GasLeakRule
+
+- type: entity
+  id: MeteorSwarm_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    earliestStart: 30
+    weight: 7.5
+    minimumPlayers: 99
+    startAnnouncement: station-event-meteor-swarm-start-announcement
+    endAnnouncement: station-event-meteor-swarm-end-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/1.ogg
+      params:
+        volume: 4
+    endAudio:
+      path: /Audio/Announcements/meteors_end.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    duration: null #ending is handled by MeteorSwarmRule
+    startDelay: 40
+    reoccurrenceDelay: 140
+  - type: MeteorSwarmRule
+
+- type: entity
+  id: CockroachMigration_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/aliens.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 50
+    weight: 6
+    duration: 50
+    minimumPlayers: 99
+    reoccurrenceDelay: 140
+  - type: VentCrittersRule
+    entries:
+    - id: MobCockroach
+      prob: 0.03
+    - id: MobMothroach
+      prob: 0.008
+
+- type: entity
+  id: PowerGridCheck_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 5
+    startAnnouncement: station-event-power-grid-check-start-announcement
+    endAnnouncement: station-event-power-grid-check-end-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/poweroff.ogg # Ataraxia-Announcements
+      params:
+       volume: 4
+    endAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/poweron.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 70
+    duration: 60
+    minimumPlayers: 99
+    maxDuration: 120
+    reoccurrenceDelay: 140
+  - type: PowerGridCheckRule
+
+- type: entity
+  id: PowerGridCheck_Boomer
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 5
+    startAnnouncement: station-event-power-grid-check-start-announcement
+    endAnnouncement: station-event-power-grid-check-end-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/poweroff_boomer.ogg # Ataraxia-Announcements
+      params:
+       volume: 3
+    startDelay: 80
+    duration: 60
+    maxDuration: 120
+    minimumPlayers: 99
+    reoccurrenceDelay: 140
+  - type: PowerGridCheckRule
+
+- type: entity
+  id: RandomSentience_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 6
+    duration: 1
+    maxOccurrences: 1 # this event has diminishing returns on interesting-ness, so we cap it
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/spanomalies.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    reoccurrenceDelay: 140
+    minimumPlayers: 99
+    startDelay: 90
+  - type: RandomSentienceRule
+
+- type: entity
+  parent: BaseGameRule
+  id: SolarFlare_Intern
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 8
+    startAnnouncement: station-event-solar-flare-start-announcement
+    endAnnouncement: station-event-solar-flare-end-announcement
+    startAudio: # Ataraxia-Announcements
+      path: /Audio/Ataraxia/Announcements/Intern/granomalies.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    duration: 120
+    maxDuration: 240
+    minimumPlayers: 99
+    reoccurrenceDelay: 140
+    startDelay: 100
+  - type: SolarFlareRule
+    onlyJamHeadsets: true
+    affectedChannels:
+    - Common
+    extraChannels:
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    extraCount: 2
+    lightBreakChancePerSecond: 0.0003
+    doorToggleChancePerSecond: 0.001
+
+- type: entity
+  id: VentClog_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-clog-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/13.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    earliestStart: 15
+    minimumPlayers: 99
+    weight: 5
+    startDelay: 110
+    duration: 60
+    reoccurrenceDelay: 140
+  - type: VentClogRule
+
+- type: entity
+  id: SlimesSpawn_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/12.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 120
+    earliestStart: 20
+    minimumPlayers: 99
+    weight: 5
+    duration: 60
+    reoccurrenceDelay: 140
+  - type: VentCrittersRule
+    entries:
+    - id: MobAdultSlimesBlueAngry
+      prob: 0.02
+    - id: MobAdultSlimesGreenAngry
+      prob: 0.02
+    - id: MobAdultSlimesYellowAngry
+      prob: 0.02
+
+- type: entity
+  id: SpiderSpawn_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/animes.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 130
+    earliestStart: 20
+    minimumPlayers: 99
+    weight: 5
+    duration: 60
+    reoccurrenceDelay: 140
+  - type: VentCrittersRule
+    entries:
+    - id: MobGiantSpiderAngry
+      prob: 0.05
+
+- type: entity
+  id: SpiderClownSpawn_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/outbreak5.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    startDelay: 140
+    earliestStart: 20
+    minimumPlayers: 99
+    weight: 1.5
+    duration: 60
+    reoccurrenceDelay: 140
+  - type: VentCrittersRule
+    entries:
+    - id: MobClownSpider
+      prob: 0.05
+
+- type: entity
+  id: ImmovableRodSpawn_Intern
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-immovable-rod-start-announcement
+    startAudio:
+      path: /Audio/Ataraxia/Announcements/Intern/alerts/5.ogg # Ataraxia-Announcements
+      params:
+        volume: 4
+    weight: 3.5
+    duration: 1
+    earliestStart: 30
+    minimumPlayers: 20
+    reoccurrenceDelay: 140
+    startDelay: 150
+  - type: ImmovableRodRule
+    rodPrototypes:
+    - id: ImmovableRodKeepTilesStill
+      prob: 0.95
+      orGroup: rodProto
+    - id: ImmovableRodMop
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodShark
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodClown
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodBanana
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodHammer
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodThrongler
+      prob: 0.0072
+      orGroup: rodProto
+    - id: ImmovableRodGibstick
+      prob: 0.0072
+      orGroup: rodProto

@@ -127,7 +127,7 @@ namespace Content.Client._White.Medical.BodyScanner
             });
 
             // Third column.
-            HealthBar.Value = 1 - (state.TotalDamage / state.DeadThreshold).Float();
+            HealthBar.Value = 1 - (state.TotalDamage / (state.DeadThreshold + 1)).Float();
 
             HealthBar.ForegroundStyleBoxOverride = new StyleBoxFlat()
             {

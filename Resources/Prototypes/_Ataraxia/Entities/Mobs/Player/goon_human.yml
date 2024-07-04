@@ -1,0 +1,6 @@
+- type: entity
+  save: false
+  parent: BaseMobGoonHuman
+  name: Urist McGoon
+  description: Это человек... но ущербный?
+  id: MobGoonHuman

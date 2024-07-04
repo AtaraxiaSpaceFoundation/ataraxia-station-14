@@ -1,0 +1,9 @@
+#- type: entity
+#  save: false
+#  name: Urist McResomi
+#  parent: BaseMobResomi
+#  id: MobResomi
+#  components:
+#    - type: FootPrints
+#      leftBarePrint: "footprint-left-bare-lizard"
+#      rightBarePrint: "footprint-right-bare-lizard"

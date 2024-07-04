@@ -1,0 +1,9 @@
+- type: entity
+  parent: BaseHumanOrgan
+  id: OrganReptilianTongue
+  name: язык ящера
+  description: Мясистая мышца, используемая в основном для шипения.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Items/Misc/lizardtongue.rsi
+    state: tonguelizard

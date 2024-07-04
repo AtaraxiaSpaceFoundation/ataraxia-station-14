@@ -1,0 +1,32 @@
+- type: entity
+  id: TerrorSpiderLayEgg
+  name: lay-egg-action-name
+  description: lay-egg-action-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Ataraxia/Interface/Actions/terror_spider.rsi, state: egg_birth }
+    useDelay: 80
+    event: !type:EggLayInstantActionEvent
+
+- type: entity
+  id: TerrorWebAction
+  name: lay-web-action-name
+  description: lay-web-action-description
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Ataraxia/Interface/Actions/terror_spider.rsi, state: terror_web }
+    event: !type:SpiderWebActionEvent
+    useDelay: 25
+
+#- type: entity
+#  id: TerrorSpiderCloak
+#  name: terror-cloak-action-name
+#  description: terror-cloak-action-description
+#  noSpawn: true
+#  components:
+#  - type: InstantAction
+#    icon: { sprite: Ataraxia/Interface/Actions/terror_spider.rsi, state: stealth }
+#    useDelay: 10
+#    event: !type:ToggleStealthEvent

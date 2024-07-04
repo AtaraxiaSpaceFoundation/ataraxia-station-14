@@ -25,3 +25,29 @@
   - type: Tag
     tags:
       - SpreaderIgnore
+  - type: Damageable # Ataraxia-START
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1: # takes two to construct, so drop less than that
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+    node: AtmosDeviceFanTiny
+  - type: InteractionOutline # Ataraxia-END

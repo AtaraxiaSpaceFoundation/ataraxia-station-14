@@ -1,0 +1,13 @@
+- type: entity
+  save: false
+  name: Urist McPredator
+  parent: BaseMobPredator
+  id: MobPredator
+  components:
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.1
+    damageRecovery:
+      types:
+        Asphyxiation: -10

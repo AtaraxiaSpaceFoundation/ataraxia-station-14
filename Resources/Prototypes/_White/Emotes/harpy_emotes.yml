@@ -17,19 +17,9 @@
 - type: emote
   id: HonkHarpy
   category: Vocal
-  chatMessages: [гудит]
+  chatMessages: [скрежа гудит]
   chatTriggers:
-    - гудит.
-    - гудит
-    - хонкает
-    - хонкает.
-    - хонк
-    - honk
-    - honks
-    - honks.
-    - honks!
-    - honking
-    - honked
+    - скрежа гудит
 
 - type: emote
   id: Ring

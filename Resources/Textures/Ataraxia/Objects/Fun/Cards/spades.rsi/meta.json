@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC BY-NC-SA 4.0",
+    "copyright": "Sprited and edited by PuroSlavKing (Github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "spades_a"
+        },
+        {
+            "name": "spades_2"
+        },
+        {
+            "name": "spades_3"
+        },
+        {
+            "name": "spades_4"
+        },
+        {
+            "name": "spades_5"
+        },
+        {
+            "name": "spades_6"
+        },
+        {
+            "name": "spades_7"
+        },
+        {
+            "name": "spades_8"
+        },
+        {
+            "name": "spades_9"
+        },
+        {
+            "name": "spades_10"
+        },
+        {
+            "name": "spades_j"
+        },
+        {
+            "name": "spades_q"
+        },
+        {
+            "name": "spades_k"
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Edited by PuroSlavKing (Github)",
+  "states": [
+    {
+      "name": "inteq"
+    },
+    {
+      "name": "vanguard_door"
+    },
+    {
+      "name": "leader_door"
+    },
+    {
+      "name": "open"
+    },
+    {
+      "name": "generic"
+    },
+    {
+      "name": "generic_door"
+    },
+    {
+      "name": "generic_open"
+    },
+    {
+      "name": "generic_icon"
+    },
+    {
+      "name": "welded"
+    },
+    {
+      "name": "unlocked"
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "sparking",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}

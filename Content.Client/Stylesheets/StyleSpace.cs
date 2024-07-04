@@ -10,17 +10,17 @@ namespace Content.Client.Stylesheets
 {
     public sealed class StyleSpace : StyleBase
     {
-        public static readonly Color SpaceRed = Color.FromHex("#960000");
+        public static readonly Color SpaceRed = Color.FromHex("#9b2236");
 
-        public static readonly Color ButtonColorDefault = Color.FromHex("#333333");
-        public static readonly Color ButtonColorHovered = Color.FromHex("#444444");
+        public static readonly Color ButtonColorDefault = Color.FromHex("#464966");
+        public static readonly Color ButtonColorHovered = Color.FromHex("#575b7f");
         public static readonly Color ButtonColorPressed = Color.FromHex("#3e6c45");
         public static readonly Color ButtonColorDisabled = Color.FromHex("#30313c");
 
-        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#640000");
-        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#960000");
-        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#0f0f0f");
-        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#0f0f0f");
+        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#ab3232");
+        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cf2f2f");
+        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#3e6c45");
+        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#602a2a");
 
         public override Stylesheet Stylesheet { get; }
 
@@ -30,7 +30,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf",
+                    "/Fonts/NotoSans/NotoSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -40,7 +40,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/IBMPlexMono/IBMPlexMono-Bold.ttf",
+                    "/Fonts/NotoSans/NotoSans-Bold.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -55,7 +55,7 @@ namespace Content.Client.Stylesheets
 
             var progressBarForeground = new StyleBoxFlat
             {
-                BackgroundColor = new Color(0.25f, 0.25f, 0.25f)
+                BackgroundColor = new Color(0.25f, 0.50f, 0.25f)
             };
             progressBarForeground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
@@ -153,7 +153,7 @@ namespace Content.Client.Stylesheets
 
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#191919")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#202030")),
 
                 Child()
                     .Parent(Element<Button>().Class(ContainerButton.StylePseudoClassDisabled))

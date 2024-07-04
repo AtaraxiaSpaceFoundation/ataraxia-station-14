@@ -1,0 +1,26 @@
+- type: marking
+  id: DemonSpadeTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/extended_tails.rsi
+      state: m_tail_demonspade
+
+- type: marking
+  id: FennecTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/extended_tails.rsi
+      state: m_tail_downwardfennec
+
+- type: marking
+  id: ZorgoiaTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: Ataraxia/Mobs/Customization/extended_tails.rsi
+      state: m_tail_zorgoia

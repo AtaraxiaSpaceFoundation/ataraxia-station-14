@@ -19,6 +19,8 @@
       - id: ClothingOuterHardsuitWarden
       - id: OxygenTankFilled
       - id: LightModule
+      - id: BodyBag_Prisoner_Folded # Ataraxia
+        amount: 3
 
 - type: entity
   id: LockerWardenFilled
@@ -39,6 +41,8 @@
       - id: MagazinePistol
       - id: BoxMindshield
       - id: LightModule
+      - id: BodyBag_Prisoner_Folded # Ataraxia
+        amount: 3
 
 - type: entity
   id: LockerSecurityFilled

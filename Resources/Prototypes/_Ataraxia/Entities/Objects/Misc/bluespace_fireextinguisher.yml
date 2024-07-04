@@ -1,0 +1,21 @@
+- type: entity
+  name: блюспейс огнетушитель
+  parent: FireExtinguisher
+  id: BluespaceFireExtinguisher
+  suffix: "Дебаг"
+  description: Он прекрасно тушит огни.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Misc/bluespace_fireextinguisher.rsi
+    layers:
+        - state: fire_extinguisher_closed
+          map: [ "enabled" ]
+  - type: Item
+    sprite: Ataraxia/Objects/Misc/bluespace_fireextinguisher.rsi
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 10000
+        reagents:
+        - ReagentId: Water
+          Quantity: 10000

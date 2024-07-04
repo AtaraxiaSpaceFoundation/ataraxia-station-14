@@ -1,0 +1,30 @@
+- type: entity
+  parent: BorgChassisAtaraxiaBased
+  id: PlayerBorgAtaraxiaBasedBattery
+  suffix: Батарея
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - MMIFilled
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
+- type: entity
+  parent: BorgChassisAtaraxiaBasedXenomorph
+  id: PlayerBorgAtaraxiaBasedXenomorphBattery
+  noSpawn: true # До доработки
+  suffix: Батарея
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - MMIFilled
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium

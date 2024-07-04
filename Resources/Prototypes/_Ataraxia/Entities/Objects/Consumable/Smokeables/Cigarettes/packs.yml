@@ -1,0 +1,10 @@
+- type: entity
+  parent: CigPackBase
+  id: CigPackInteQ
+  name: inteq cigarette pack
+  description: Elite cigarette pack. Cigarettes have buttons with the smell of whiskey and gunpowder.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Consumable/Smokeables/Cigarettes/Packs/inteq_cigarette.rsi
+  - type: Item
+    sprite: Ataraxia/Objects/Consumable/Smokeables/Cigarettes/Packs/inteq_cigarette.rsi

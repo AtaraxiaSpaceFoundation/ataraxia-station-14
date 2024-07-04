@@ -1,0 +1,11 @@
+- type: gameMapPool
+  id: AtaraxiaMapPool
+  maps:
+  - WonderBox
+  - Triumph
+  - WhiteBox
+  - Origin
+  - Meta
+  - WonderDelta
+  - Moonshine
+  - Pebble

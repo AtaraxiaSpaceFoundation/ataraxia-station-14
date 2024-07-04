@@ -1,0 +1,7 @@
+- type: accessLevel
+  id: InteQVanguard
+  name: Авангард
+
+- type: accessLevel
+  id: InteQVanguardLeader
+  name: Коммандер Авангарда

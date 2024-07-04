@@ -1,0 +1,7 @@
+﻿- type: stack
+  id: TerrorWebRTS
+  name: clot of terror
+  icon: { sprite: Ataraxia/Objects/Materials/terror_material.rsi, state: state1 }
+  spawn: TerrorWebRTS
+  maxCount: 5000
+  itemSize: 1

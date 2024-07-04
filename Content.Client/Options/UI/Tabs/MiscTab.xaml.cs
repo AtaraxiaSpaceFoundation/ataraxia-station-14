@@ -76,6 +76,7 @@ namespace Content.Client.Options.UI.Tabs
             ScreenShakeIntensitySlider.OnValueChanged += OnScreenShakeIntensitySliderChanged;
             // ToggleWalk.OnToggled += OnCheckBoxToggled;
             StaticStorageUI.OnToggled += OnCheckBoxToggled;
+            ChatWindowOpacitySlider.OnValueChanged += OnChatWindowOpacitySliderChanged;
 
             HudThemeOption.SelectId(_hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0));
             DiscordRich.Pressed = _cfg.GetCVar(CVars.DiscordEnabled);
@@ -92,7 +93,7 @@ namespace Content.Client.Options.UI.Tabs
             ScreenShakeIntensitySlider.Value = _cfg.GetCVar(CCVars.ScreenShakeIntensity) * 100f;
             // ToggleWalk.Pressed = _cfg.GetCVar(CCVars.ToggleWalk);
             StaticStorageUI.Pressed = _cfg.GetCVar(CCVars.StaticStorageUI);
-
+            ChatWindowOpacitySlider.Value = _cfg.GetCVar(CCVars.ChatWindowOpacity);
 
             ApplyButton.OnPressed += OnApplyButtonPressed;
             UpdateApplyButton();
@@ -106,6 +107,13 @@ namespace Content.Client.Options.UI.Tabs
         private void OnHudThemeChanged(OptionButton.ItemSelectedEventArgs args)
         {
             HudThemeOption.SelectId(args.Id);
+            UpdateApplyButton();
+        }
+
+        private void OnChatWindowOpacitySliderChanged(Range range)
+        {
+            ChatWindowOpacityLabel.Text = Loc.GetString("ui-options-chat-window-opacity-percent",
+                ("opacity", range.Value));
             UpdateApplyButton();
         }
 
@@ -139,6 +147,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.ScreenShakeIntensity, ScreenShakeIntensitySlider.Value / 100f);
             // _cfg.SetCVar(CCVars.ToggleWalk, ToggleWalk.Pressed);
             _cfg.SetCVar(CCVars.StaticStorageUI, StaticStorageUI.Pressed);
+            _cfg.SetCVar(CCVars.ChatWindowOpacity, ChatWindowOpacitySlider.Value);
 
             if (HudLayoutOption.SelectedMetadata is string opt)
             {
@@ -162,6 +171,7 @@ namespace Content.Client.Options.UI.Tabs
             var isFancyChatSame = FancySpeechBubblesCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
             var isFancyBackgroundSame = FancyNameBackgroundsCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatFancyNameBackground);
             var isEnableColorNameSame = EnableColorNameCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableColorName);
+            var isChatWindowOpacitySame = Math.Abs(ChatWindowOpacitySlider.Value - _cfg.GetCVar(CCVars.ChatWindowOpacity)) < 0.01f;
             var isColorblindFriendly = ColorblindFriendlyCheckBox.Pressed == _cfg.GetCVar(CCVars.AccessibilityColorblindFriendly);
             var isReducedMotionSame = ReducedMotionCheckBox.Pressed == _cfg.GetCVar(CCVars.ReducedMotion);
             var isScreenShakeIntensitySame = Math.Abs(ScreenShakeIntensitySlider.Value / 100f - _cfg.GetCVar(CCVars.ScreenShakeIntensity)) < 0.01f;
@@ -181,6 +191,7 @@ namespace Content.Client.Options.UI.Tabs
                                    isEnableColorNameSame &&
                                    isColorblindFriendly &&
                                    isReducedMotionSame &&
+                                   isChatWindowOpacitySame &&
                                    isScreenShakeIntensitySame &&
                                    // isToggleWalkSame &&
                                    isStaticStorageUISame;

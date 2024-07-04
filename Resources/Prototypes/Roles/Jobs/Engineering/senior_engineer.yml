@@ -17,9 +17,6 @@
   icon: "JobIconSeniorEngineer"
   supervisors: job-supervisors-ce
   canBeAntag: false
-  special:
-    - !type:AddImplantSpecial
-      implants: [ MindShieldImplant ]
   access:
   - Maintenance
   - Engineering

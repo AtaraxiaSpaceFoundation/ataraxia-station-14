@@ -1,0 +1,17 @@
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterEVASuitInteQ
+  name: inteq EVA suit
+  description: "Has a tag on the back that reads: 'Property of InteQ'"
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_eva.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/OuterClothing/Hardsuits/inteq_eva.rsi
+  - type: Tag
+    tags:
+    - SuitEVA
+  - type: Item # Ataraxia
+    size: Normal
+    shape:
+    - 0,0,1,1

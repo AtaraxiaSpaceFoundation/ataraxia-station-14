@@ -1,0 +1,158 @@
+# BASE EGG
+
+- type: entity
+  parent: BaseItem
+  id: BaseTerrorSpiderEgg
+  abstract: true
+  name: gloomy egg
+  description: It seems to be moving.
+  components:
+  - type: StaticPrice
+    price: 1500
+  - type: Sprite
+    sprite: Ataraxia/Objects/Misc/egg.rsi
+    layers:
+    - state: egg
+  - type: GhostRole
+    name: Новорождённый паук ужаса
+    description: Формируйте улей, действуйте агрессивно в отношении гуманоидов в области вашего улья.
+    raffle:
+      settings: default
+  - type: EmitSoundOnUse
+    sound: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+  - type: UseDelay
+    delay: 300
+  - type: Item
+    size: Huge
+  - type: Damageable
+    damageContainer: Biological
+  - type: Flammable
+    fireSpread: true
+    damage:
+     types:
+       Heat: 10
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Eggshells:
+            min: 0
+            max: 1
+          FoodMeatSpiderLeg:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# EGGS
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderReaperEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderReaper
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderDroneEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderDrone
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderHealerEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderHealer
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderLurkerEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderLurker
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderWidowEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderWidow
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderKnightEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderKnight
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderDefilerEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderDefiler
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderDestroyerEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderDestroyer
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderGuardianEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderGuardian
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderPrinceEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderPrince
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderPrincessEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderPrincess
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderMotherEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderMother
+
+- type: entity
+  parent: BaseTerrorSpiderEgg
+  id: TerrorSpiderQueenEgg
+  noSpawn: true
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: MobTerrorSpiderQueen

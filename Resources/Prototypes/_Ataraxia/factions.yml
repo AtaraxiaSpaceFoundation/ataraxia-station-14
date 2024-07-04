@@ -1,0 +1,42 @@
+- type: npcFaction
+  id: InteQ
+  hostile:
+  - SimpleHostile
+  - Xeno
+  - Zombie
+  - SuperZloy # Backmen-Factions-START
+  - Spanish
+  - Blob
+  - Flesh
+  - Britan # Backmen-Factions-END
+
+- type: npcFaction
+  id: InteQHostile
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Passive
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - SuperZloy # Backmen-Factions-START
+  - Spanish
+  - Blob
+  - Flesh
+  - Britan
+  - SpecialForce
+  - CombineForce
+  - CentralCommand # Backmen-Factions-END
+
+- type: npcFaction
+  id: PetsInteQ
+  hostile:
+  - Mouse
+  - SimpleHostile
+  - Zombie
+  - Xeno
+  - SuperZloy # Backmen-Factions-START
+  - Spanish
+  - Blob
+  - Flesh
+  - Britan # Backmen-Factions-END

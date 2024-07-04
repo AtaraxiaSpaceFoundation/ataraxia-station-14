@@ -1,0 +1,11 @@
+﻿- type: cargoProduct
+#  name: кейс снаряжения ассасина альянса
+#  description: содержит бронежилет, униформу, обувь и перчатки.
+  id: cargoCaseAllianceAssasin
+  icon:
+    sprite: Ataraxia/Objects/Storage/alliance_case.rsi
+    state: icon
+  product: CaseAllianceAssasin
+  cost: 49000
+  category: cargoproduct-category-name-security
+  group: market

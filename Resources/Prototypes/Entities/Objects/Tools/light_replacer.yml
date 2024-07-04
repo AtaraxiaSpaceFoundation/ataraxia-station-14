@@ -23,6 +23,10 @@
   - type: ContainerContainer
     containers:
       light_replacer_storage: !type:Container
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 - type: entity
   parent: LightReplacer

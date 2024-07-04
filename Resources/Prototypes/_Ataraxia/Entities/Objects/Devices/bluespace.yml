@@ -1,0 +1,38 @@
+- type: entity
+  parent: HoloprojectorBorg
+  id: BluespaceHoloprojectorField
+  suffix: "Дебаг"
+  name: блюспейс проектор силового поля
+  components:
+    - type: HolosignProjector
+      signProto: HolosignForcefield
+      chargeUse: 1
+    - type: Sprite
+      sprite: Objects/Devices/Holoprojectors/field.rsi
+      state: icon
+
+- type: entity
+  parent: HoloprojectorBorg
+  id: BluespaceHolofanProjector
+  suffix: "Дебаг"
+  name: блюспейс атмос голопроектор
+  components:
+  - type: HolosignProjector
+    signProto: HoloFan
+    chargeUse: 1
+  - type: Sprite
+    sprite: Objects/Devices/Holoprojectors/atmos.rsi
+    state: icon
+
+- type: entity
+  parent: HoloprojectorBorg
+  id: BluespaceSpawner
+  suffix: "Дебаг"
+  name: спавнер уриста
+  components:
+  - type: HolosignProjector
+    signProto: MobHuman
+    chargeUse: 1
+  - type: Sprite
+    sprite: Ataraxia/Objects/Tools/bluespacespawner.rsi
+    state: icon

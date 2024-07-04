@@ -1,0 +1,46 @@
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGogglessInteQ
+  name: inteq goggles
+  description: Used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Eyes/inteq_googgles.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Eyes/inteq_googgles.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: ShowSecurityIcons
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGogglessBluespaceTechnic
+  suffix: "Дебаг"
+  name: блюспейс визор
+  description: Видит всё насквозь, и даже больше чем надо.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Eyes/bluespace_googgles.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Eyes/bluespace_googgles.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: ShowSecurityIcons
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+    - Silicon
+  - type: ShowRevIcons
+  - type: ShowSyndicateIcons
+  - type: ShowCultHud
+  - type: ShowZombieIcons

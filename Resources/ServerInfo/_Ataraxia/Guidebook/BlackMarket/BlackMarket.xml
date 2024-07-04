@@ -1,0 +1,11 @@
+<Document>
+  # Чёрный рынок
+
+  Простая и общая информация о чёрном рынке.
+
+  Устройство:
+  <Box>
+    <GuideEntityEmbed Entity="BlackMarket" Caption="Неизвестное устройство."/>
+  </Box>
+
+</Document>

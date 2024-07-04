@@ -22,6 +22,9 @@
     - type: Sprite
       sprite: Mobs/Species/Slime/parts.rsi
       state: "head_m"
+    - type: Tag # Ataraxia
+      tags:
+        - Head
   
 - type: entity
   id: LeftArmSlime

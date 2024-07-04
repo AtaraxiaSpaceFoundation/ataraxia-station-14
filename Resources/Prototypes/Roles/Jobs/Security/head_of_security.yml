@@ -17,8 +17,6 @@
   icon: "JobIconHeadOfSecurity"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
   canBeAntag: false
   access:
   - HeadOfSecurity
@@ -47,6 +45,7 @@
     id: HoSPDA
     ears: ClothingHeadsetAltSecurity
     pocket1: WeaponPistolMk58Nonlethal
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
   underweart: ClothingUnderwearTopBraHOS # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear

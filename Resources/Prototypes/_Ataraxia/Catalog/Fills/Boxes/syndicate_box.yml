@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseBoxSyndicate
+  id: BoxSyndicateEVA
+  suffix: Ева
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHelmetSyndicate
+      - id: ClothingOuterHardsuitSyndicate
+      - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyOxygenTankFilled

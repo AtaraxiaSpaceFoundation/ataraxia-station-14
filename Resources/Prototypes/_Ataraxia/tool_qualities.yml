@@ -1,0 +1,6 @@
+- type: tool
+  id: Digging
+  name: tool-quality-digging-name
+  toolName: tool-quality-digging-tool-name
+  spawn: shovel
+  icon: { sprite: Ataraxia/Objects/Tools/shovel.rsi, state: icon}

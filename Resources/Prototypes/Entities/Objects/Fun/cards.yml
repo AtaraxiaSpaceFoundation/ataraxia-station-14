@@ -6,10 +6,12 @@
 - type: entity
   parent: BaseItem
   id: BaseCard
-  name: Карта
+  name: карта
   description: Игральная карта
   abstract: true
   components:
+    - type: Sprite # Ataraxia
+      scale: 0.6, 0.6
     - type: Item
       size: Small
     - type: SpawnItemsOnUse
@@ -25,11 +27,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_2
-  name: Карта Бубны 2
+  name: карта Бубны 2
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_2
     - type: SpawnItemsOnUse
       items:
@@ -37,11 +39,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_2
-  name: Карта Черви 2
+  name: карта Черви 2
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_2
     - type: SpawnItemsOnUse
       items:
@@ -49,11 +51,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_2
-  name: Карта Крести 2
+  name: карта Крести 2
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_2
     - type: SpawnItemsOnUse
       items:
@@ -61,11 +63,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_2
-  name: Карта Пики 2
+  name: карта Пики 2
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_2
     - type: SpawnItemsOnUse
       items:
@@ -73,11 +75,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_3
-  name: Карта Бубны 3
+  name: карта Бубны 3
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_3
     - type: SpawnItemsOnUse
       items:
@@ -85,11 +87,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_3
-  name: Карта Черви 3
+  name: карта Черви 3
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_3
     - type: SpawnItemsOnUse
       items:
@@ -97,11 +99,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_3
-  name: Карта Крести 3
+  name: карта Крести 3
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_3
     - type: SpawnItemsOnUse
       items:
@@ -109,11 +111,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_3
-  name: Карта Пики 3
+  name: карта Пики 3
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_3
     - type: SpawnItemsOnUse
       items:
@@ -121,11 +123,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_4
-  name: Карта Бубны 4
+  name: карта Бубны 4
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_4
     - type: SpawnItemsOnUse
       items:
@@ -133,11 +135,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_4
-  name: Карта Черви 4
+  name: карта Черви 4
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_4
     - type: SpawnItemsOnUse
       items:
@@ -145,11 +147,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_4
-  name: Карта Крести 4
+  name: карта Крести 4
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_4
     - type: SpawnItemsOnUse
       items:
@@ -157,11 +159,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_4
-  name: Карта Пики 4
+  name: карта Пики 4
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_4
     - type: SpawnItemsOnUse
       items:
@@ -169,11 +171,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_5
-  name: Карта Бубны 5
+  name: карта Бубны 5
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_5
     - type: SpawnItemsOnUse
       items:
@@ -181,11 +183,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_5
-  name: Карта Черви 5
+  name: карта Черви 5
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_5
     - type: SpawnItemsOnUse
       items:
@@ -193,11 +195,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_5
-  name: Карта Крести 5
+  name: карта Крести 5
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_5
     - type: SpawnItemsOnUse
       items:
@@ -205,11 +207,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_5
-  name: Карта Пики 5
+  name: карта Пики 5
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_5
     - type: SpawnItemsOnUse
       items:
@@ -217,11 +219,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_6
-  name: Карта Бубны 6
+  name: карта Бубны 6
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_6
     - type: SpawnItemsOnUse
       items:
@@ -229,11 +231,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_6
-  name: Карта Черви 6
+  name: карта Черви 6
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_6
     - type: SpawnItemsOnUse
       items:
@@ -241,11 +243,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_6
-  name: Карта Крести 6
+  name: карта Крести 6
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_6
     - type: SpawnItemsOnUse
       items:
@@ -253,11 +255,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_6
-  name: Карта Пики 6
+  name: карта Пики 6
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_6
     - type: SpawnItemsOnUse
       items:
@@ -265,11 +267,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_7
-  name: Карта Бубны 7
+  name: карта Бубны 7
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_7
     - type: SpawnItemsOnUse
       items:
@@ -277,11 +279,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_7
-  name: Карта Черви 7
+  name: карта Черви 7
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_7
     - type: SpawnItemsOnUse
       items:
@@ -289,11 +291,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_7
-  name: Карта Крести 7
+  name: карта Крести 7
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_7
     - type: SpawnItemsOnUse
       items:
@@ -301,11 +303,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_7
-  name: Карта Пики 7
+  name: карта Пики 7
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_7
     - type: SpawnItemsOnUse
       items:
@@ -313,11 +315,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_8
-  name: Карта Бубны 8
+  name: карта Бубны 8
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_8
     - type: SpawnItemsOnUse
       items:
@@ -325,11 +327,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_8
-  name: Карта Черви 8
+  name: карта Черви 8
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_8
     - type: SpawnItemsOnUse
       items:
@@ -337,11 +339,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_8
-  name: Карта Крести 8
+  name: карта Крести 8
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_8
     - type: SpawnItemsOnUse
       items:
@@ -349,11 +351,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_8
-  name: Карта Пики 8
+  name: карта Пики 8
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_8
     - type: SpawnItemsOnUse
       items:
@@ -361,11 +363,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_9
-  name: Карта Бубны 9
+  name: карта Бубны 9
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_9
     - type: SpawnItemsOnUse
       items:
@@ -373,11 +375,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_9
-  name: Карта Черви 9
+  name: карта Черви 9
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_9
     - type: SpawnItemsOnUse
       items:
@@ -385,11 +387,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_9
-  name: Карта Крести 9
+  name: карта Крести 9
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_9
     - type: SpawnItemsOnUse
       items:
@@ -397,11 +399,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_9
-  name: Карта Пики 9
+  name: карта Пики 9
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_9
     - type: SpawnItemsOnUse
       items:
@@ -409,11 +411,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_10
-  name: Карта Бубны 10
+  name: карта Бубны 10
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_10
     - type: SpawnItemsOnUse
       items:
@@ -421,11 +423,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_10
-  name: Карта Черви 10
+  name: карта Черви 10
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_10
     - type: SpawnItemsOnUse
       items:
@@ -433,11 +435,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_10
-  name: Карта Крести 10
+  name: карта Крести 10
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_10
     - type: SpawnItemsOnUse
       items:
@@ -445,11 +447,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_10
-  name: Карта Пики 10
+  name: карта Пики 10
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_10
     - type: SpawnItemsOnUse
       items:
@@ -457,11 +459,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_j
-  name: Карта Бубны Валет
+  name: карта Бубны Валет
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_j
     - type: SpawnItemsOnUse
       items:
@@ -469,11 +471,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_j
-  name: Карта Черви Валет
+  name: карта Черви Валет
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_j
     - type: SpawnItemsOnUse
       items:
@@ -481,11 +483,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_j
-  name: Карта Крести Валет
+  name: карта Крести Валет
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_j
     - type: SpawnItemsOnUse
       items:
@@ -493,11 +495,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_j
-  name: Карта Пики Валет
+  name: карта Пики Валет
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_j
     - type: SpawnItemsOnUse
       items:
@@ -505,11 +507,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_q
-  name: Карта Бубны Королева
+  name: карта Бубны Королева
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_q
     - type: SpawnItemsOnUse
       items:
@@ -517,11 +519,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_q
-  name: Карта Черви Королева
+  name: карта Черви Королева
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_q
     - type: SpawnItemsOnUse
       items:
@@ -529,11 +531,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_q
-  name: Карта Крести Королева
+  name: карта Крести Королева
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_q
     - type: SpawnItemsOnUse
       items:
@@ -541,11 +543,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_q
-  name: Карта Пики Королева
+  name: карта Пики Королева
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_q
     - type: SpawnItemsOnUse
       items:
@@ -553,11 +555,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_k
-  name: Карта Бубны Король
+  name: карта Бубны Король
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_k
     - type: SpawnItemsOnUse
       items:
@@ -565,11 +567,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_k
-  name: Карта Черви Король
+  name: карта Черви Король
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_k
     - type: SpawnItemsOnUse
       items:
@@ -577,11 +579,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_k
-  name: Карта Крести Король
+  name: карта Крести Король
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_k
     - type: SpawnItemsOnUse
       items:
@@ -589,11 +591,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_k
-  name: Карта Пики Король
+  name: карта Пики Король
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_k
     - type: SpawnItemsOnUse
       items:
@@ -601,11 +603,11 @@
 - type: entity
   parent: BaseCard
   id: Carddiamonds_a
-  name: Карта Бубны Туз
+  name: карта Бубны Туз
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/diamonds.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/diamonds.rsi
       state: diamonds_a
     - type: SpawnItemsOnUse
       items:
@@ -613,11 +615,11 @@
 - type: entity
   parent: BaseCard
   id: Cardhearts_a
-  name: Карта Черви Туз
+  name: карта Черви Туз
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/hearts.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/hearts.rsi
       state: hearts_a
     - type: SpawnItemsOnUse
       items:
@@ -625,11 +627,11 @@
 - type: entity
   parent: BaseCard
   id: Cardclubs_a
-  name: Карта Крести Туз
+  name: карта Крести Туз
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/clubs.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/clubs.rsi
       state: clubs_a
     - type: SpawnItemsOnUse
       items:
@@ -637,11 +639,11 @@
 - type: entity
   parent: BaseCard
   id: Cardspades_a
-  name: Карта Пики Туз
+  name: карта Пики Туз
   description: Игральная карта
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/spades.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/spades.rsi
       state: spades_a
     - type: SpawnItemsOnUse
       items:
@@ -652,14 +654,15 @@
 
 
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseItem
   id: BaseCardUnknown
   description: Там неизвестная карта
   noSpawn: true
   components:
     - type: Sprite
-      sprite: Objects/Fun/Cards/Other.rsi
+      sprite: Ataraxia/Objects/Fun/Cards/Other.rsi
+      scale: 0.6, 0.6 # Ataraxia
       state: Unknown
       sound:
         path: /Audio/Effects/unwrap.ogg
@@ -672,7 +675,7 @@
 
 
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown1
   description: Там неизвестная карта
@@ -681,7 +684,7 @@
     items:
       - id: Carddiamonds_2
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown2
   description: Там неизвестная карта
@@ -690,7 +693,7 @@
     items:
       - id: Cardhearts_2
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown3
   description: Там неизвестная карта
@@ -699,7 +702,7 @@
     items:
       - id: Cardclubs_2
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown4
   description: Там неизвестная карта
@@ -708,7 +711,7 @@
     items:
       - id: Cardspades_2
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown5
   description: Там неизвестная карта
@@ -717,7 +720,7 @@
     items:
       - id: Carddiamonds_3
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown6
   description: Там неизвестная карта
@@ -726,7 +729,7 @@
     items:
       - id: Cardhearts_3
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown7
   description: Там неизвестная карта
@@ -735,7 +738,7 @@
     items:
       - id: Cardclubs_3
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown8
   description: Там неизвестная карта
@@ -744,7 +747,7 @@
     items:
       - id: Cardspades_3
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown9
   description: Там неизвестная карта
@@ -753,7 +756,7 @@
     items:
       - id: Carddiamonds_4
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown10
   description: Там неизвестная карта
@@ -762,7 +765,7 @@
     items:
       - id: Cardhearts_4
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown11
   description: Там неизвестная карта
@@ -771,7 +774,7 @@
     items:
       - id: Cardclubs_4
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown12
   description: Там неизвестная карта
@@ -780,7 +783,7 @@
     items:
       - id: Cardspades_4
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown13
   description: Там неизвестная карта
@@ -789,7 +792,7 @@
     items:
       - id: Carddiamonds_5
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown14
   description: Там неизвестная карта
@@ -798,7 +801,7 @@
     items:
       - id: Cardhearts_5
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown15
   description: Там неизвестная карта
@@ -807,7 +810,7 @@
     items:
       - id: Cardclubs_5
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown16
   description: Там неизвестная карта
@@ -816,7 +819,7 @@
     items:
       - id: Cardspades_5
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown17
   description: Там неизвестная карта
@@ -825,7 +828,7 @@
     items:
       - id: Carddiamonds_6
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown18
   description: Там неизвестная карта
@@ -834,7 +837,7 @@
     items:
       - id: Cardhearts_6
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown19
   description: Там неизвестная карта
@@ -843,7 +846,7 @@
     items:
       - id: Cardclubs_6
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown20
   description: Там неизвестная карта
@@ -852,7 +855,7 @@
     items:
       - id: Cardspades_6
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown21
   description: Там неизвестная карта
@@ -861,7 +864,7 @@
     items:
       - id: Carddiamonds_7
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown22
   description: Там неизвестная карта
@@ -870,7 +873,7 @@
     items:
       - id: Cardhearts_7
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown23
   description: Там неизвестная карта
@@ -879,7 +882,7 @@
     items:
       - id: Cardclubs_7
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown24
   description: Там неизвестная карта
@@ -888,7 +891,7 @@
     items:
       - id: Cardspades_7
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown25
   description: Там неизвестная карта
@@ -897,7 +900,7 @@
     items:
       - id: Carddiamonds_8
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown26
   description: Там неизвестная карта
@@ -906,7 +909,7 @@
     items:
       - id: Cardhearts_8
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown27
   description: Там неизвестная карта
@@ -915,7 +918,7 @@
     items:
       - id: Cardclubs_8
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown28
   description: Там неизвестная карта
@@ -924,7 +927,7 @@
     items:
       - id: Cardspades_8
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown29
   description: Там неизвестная карта
@@ -933,7 +936,7 @@
     items:
       - id: Carddiamonds_9
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown30
   description: Там неизвестная карта
@@ -942,7 +945,7 @@
     items:
       - id: Cardhearts_9
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown31
   description: Там неизвестная карта
@@ -951,7 +954,7 @@
     items:
       - id: Cardclubs_9
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown32
   description: Там неизвестная карта
@@ -960,7 +963,7 @@
     items:
       - id: Cardspades_9
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown33
   description: Там неизвестная карта
@@ -969,7 +972,7 @@
     items:
       - id: Carddiamonds_10
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown34
   description: Там неизвестная карта
@@ -978,7 +981,7 @@
     items:
       - id: Cardhearts_10
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown35
   description: Там неизвестная карта
@@ -987,7 +990,7 @@
     items:
       - id: Cardclubs_10
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown36
   description: Там неизвестная карта
@@ -996,7 +999,7 @@
     items:
       - id: Cardspades_10
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown37
   description: Там неизвестная карта
@@ -1005,7 +1008,7 @@
     items:
       - id: Carddiamonds_j
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown38
   description: Там неизвестная карта
@@ -1014,7 +1017,7 @@
     items:
       - id: Cardhearts_j
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown39
   description: Там неизвестная карта
@@ -1023,7 +1026,7 @@
     items:
       - id: Cardclubs_j
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown40
   description: Там неизвестная карта
@@ -1032,7 +1035,7 @@
     items:
       - id: Cardspades_j
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown41
   description: Там неизвестная карта
@@ -1041,7 +1044,7 @@
     items:
       - id: Carddiamonds_q
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown42
   description: Там неизвестная карта
@@ -1050,7 +1053,7 @@
     items:
       - id: Cardhearts_q
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown43
   description: Там неизвестная карта
@@ -1059,7 +1062,7 @@
     items:
       - id: Cardclubs_q
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown44
   description: Там неизвестная карта
@@ -1068,7 +1071,7 @@
     items:
       - id: Cardspades_q
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown45
   description: Там неизвестная карта
@@ -1077,7 +1080,7 @@
     items:
       - id: Carddiamonds_k
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown46
   description: Там неизвестная карта
@@ -1086,7 +1089,7 @@
     items:
       - id: Cardhearts_k
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown47
   description: Там неизвестная карта
@@ -1095,7 +1098,7 @@
     items:
       - id: Cardclubs_k
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown48
   description: Там неизвестная карта
@@ -1104,7 +1107,7 @@
     items:
       - id: Cardspades_k
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown49
   description: Там неизвестная карта
@@ -1113,7 +1116,7 @@
     items:
       - id: Carddiamonds_a
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown50
   description: Там неизвестная карта
@@ -1122,7 +1125,7 @@
     items:
       - id: Cardhearts_a
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown51
   description: Там неизвестная карта
@@ -1131,7 +1134,7 @@
     items:
       - id: Cardclubs_a
 - type: entity
-  name: Неизвестная карта
+  name: неизвестная карта
   parent: BaseCardUnknown
   id: CardUnknown52
   description: Там неизвестная карта
@@ -1147,12 +1150,12 @@
 - type: entity
   parent: BaseStorageItem
   id: CardBag36
-  name: Колода Карт 36
+  name: колода Карт 36
   suffix: 36
   description: Новейшая колода карт
   components:
   - type: Sprite
-    sprite: Objects/Fun/Cards/Other.rsi
+    sprite: Ataraxia/Objects/Fun/Cards/Other.rsi
     state: deck
   - type: Item
     size: Huge
@@ -1216,12 +1219,12 @@
 - type: entity
   parent: BaseStorageItem
   id: CardBag52
-  name: Колода Карт 52
+  name: колода Карт 52
   suffix: 52
   description: Новейшая колода карт
   components:
   - type: Sprite
-    sprite: Objects/Fun/Cards/Other.rsi
+    sprite: Ataraxia/Objects/Fun/Cards/Other.rsi
     state: deck
   - type: Item
     size: Huge
@@ -1301,7 +1304,7 @@
 #  parent: CrateBaseWeldable
 #  id: CardCrate1
 #  suffix: 36
-#  name: Сундук с картами
+#  name: сундук с картами
 #  components:
 #  - type: Icon
 #    sprite: Structures/Storage/Crates/generic.rsi
@@ -1352,7 +1355,7 @@
 #  parent: CrateBaseWeldable
 #  id: CardCrate2
 #  suffix: 52
-#  name: Сундук с картами
+#  name: сундук с картами
 #  components:
 #  - type: Icon
 #    sprite: Structures/Storage/Crates/generic.rsi
@@ -1419,11 +1422,11 @@
 - type: entity
   parent: BaseStorageItem
   id: PlayerCardBag
-  name: Карты игрока
+  name: карты игрока
   description: Новейшая колода карт
   components:
   - type: Sprite
-    sprite: Objects/Fun/Cards/Other.rsi
+    sprite: Ataraxia/Objects/Fun/Cards/Other.rsi
     state: fan
   - type: Item
     size: Normal

@@ -1,0 +1,43 @@
+- type: construction
+  name: маленький вентилятор
+  description: Маленький вентилятор, создающий легкий поток воздуха.
+  id: AtmosDeviceFanTiny
+  graph: AtmosDeviceFanTiny
+  startNode: start
+  targetNode: AtmosDeviceFanTiny
+  category: construction-category-machines
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: /Textures/Structures/Piping/Atmospherics/tinyfan.rsi
+    state: "icon"
+
+- type: constructionGraph
+  id: AtmosDeviceFanTiny
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: AtmosDeviceFanTiny
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 5
+
+    - node: AtmosDeviceFanTiny
+      entity: AtmosDeviceFanTiny
+      edges:
+        - to: start
+          completed:
+            - !type:AdminLog
+              message: "Маленький вентилятор был разобран"
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 3
+            - !type:DeleteEntity
+          steps:
+            - tool: Screwing
+              doAfter: 10

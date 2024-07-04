@@ -1,0 +1,67 @@
+- type: entity
+  parent: Pill
+  id: PillMutatorGoonHuman
+  name: межпространственная таблетка
+  suffix: Мутатор, ГунЧеловек
+  description: Выглядит словно с другого измерения... гун.
+  components:
+    - type: Sprite
+      state: pill22
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 10
+          reagents:
+            - ReagentId: MutatorGoonHuman
+              Quantity: 5
+
+- type: entity
+  parent: Pill
+  id: PillMutatorXenomorphHybrid
+  name: межпространственная таблетка
+  suffix: Мутатор, Гибрид Ксеноморфа
+  description: Выглядит словно с другого измерения... гун.
+  components:
+    - type: Sprite
+      state: pill22
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 10
+          reagents:
+            - ReagentId: MutatorXenomorphHybrid
+              Quantity: 5
+
+- type: entity
+  parent: Pill
+  id: PillMutatorPredator
+  name: межпространственная таблетка
+  suffix: Мутатор, Хищник
+  description: Выглядит словно с другого измерения... гун.
+  components:
+    - type: Sprite
+      state: pill22
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 10
+          reagents:
+            - ReagentId: MutatorPredator
+              Quantity: 5
+
+- type: entity
+  parent: Pill
+  id: PillMutatorWalter
+  name: межпространственная таблетка
+  suffix: Мутатор, Уолтер Вайт
+  description: Выглядит словно с другого измерения... гун.
+  components:
+    - type: Sprite
+      state: pill22
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 10
+          reagents:
+            - ReagentId: MutatorWalter
+              Quantity: 5

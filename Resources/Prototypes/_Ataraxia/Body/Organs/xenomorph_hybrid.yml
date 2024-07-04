@@ -1,0 +1,188 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BaseXenomorphHybridOrgan
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+  - type: Organ
+  - type: Food
+  - type: Extractable
+    grindableSolutionName: organ
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: FlavorProfile
+    flavors:
+      - people
+  - type: Tag
+    tags:
+      - Meat
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridBrain
+  name: alien brain
+  description: "The source of incredible, unending intelligence."
+  components:
+  - type: Sprite
+    state: brain
+  - type: Organ
+  - type: Input
+    context: "ghost"
+  - type: Brain
+  - type: InputMover
+  - type: Examiner
+  - type: BlockMovement
+  - type: BadFood
+  - type: Tag
+    tags:
+      - Meat
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: GreyMatter
+          Quantity: 5
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridEyes
+  name: alien eyes
+  description: "We see you!"
+  components:
+  - type: Sprite
+    layers:
+      - state: eyeball-l
+      - state: eyeball-r
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridTongue
+  name: alien tongue
+  description: "A fleshy mini alien mostly used for bite."
+  components:
+  - type: Sprite
+    state: tongue
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridEars
+  name: alien ears
+  description: "WTF is this..."
+  components:
+  - type: Sprite
+    state: ears
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridLungs
+  name: alien lungs
+  description: "Its just work."
+  components:
+  - type: Sprite
+    layers:
+      - state: lung-l
+      - state: lung-r
+  - type: Lung
+  - type: Metabolizer
+    removeEmpty: true
+    solutionOnBody: false
+    solution: "Lung"
+    metabolizerTypes: [ Human ]
+    groups:
+    - id: Gas
+      rateModifier: 100.0
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      Lung:
+        maxVol: 100.0
+        canReact: false
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridHeart
+  name: alien heart
+  description: "I feel bad for the heartless bastard who lost this."
+  components:
+  - type: Sprite
+    state: heart-on
+  - type: Metabolizer
+    maxReagents: 2
+    metabolizerTypes: [Xenomorph]
+    groups:
+    - id: Medicine
+    - id: Poison
+    - id: Narcotic
+
+- type: entity
+  parent: [BaseXenomorphHybridOrgan, OrganReptilianStomach]
+  id: OrganXenomorphHybridStomach
+  name: alien stomach
+  description: "Gross. This is hard to stomach."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+    state: stomach
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 60
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: Stomach
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridLiver
+  name: alien liver
+  description: "Pairing suggestion: chianti and fava beans."
+  components:
+  - type: Sprite
+    state: liver
+  - type: Metabolizer
+    maxReagents: 1
+    metabolizerTypes: [Xenomorph]
+    groups:
+    - id: Alcohol
+      rateModifier: 0.1
+
+- type: entity
+  parent: BaseXenomorphHybridOrgan
+  id: OrganXenomorphHybridKidneys
+  name: alien kidneys
+  description: "Filters toxins from the bloodstream."
+  components:
+  - type: Sprite
+    layers:
+      - state: kidney-l
+      - state: kidney-r
+  - type: Metabolizer
+    maxReagents: 5
+    metabolizerTypes: [Xenomorph]
+    removeEmpty: true

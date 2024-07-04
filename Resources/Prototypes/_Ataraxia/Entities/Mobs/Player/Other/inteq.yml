@@ -1,0 +1,137 @@
+# Settings
+- type: randomHumanoidSettings
+  id: InteQVanguardLeader
+  randomizeName: false
+  speciesBlacklist:
+    - Diona
+    - SlimePerson
+  components:
+  - type: Loadout
+    prototypes: [ InteQVanguardLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardLeaderNamesPrefix
+    - NamesLastMilitary
+  - type: InitialInfectedExempt
+  - type: NpcFactionMember
+    factions:
+      - InteQ
+
+- type: randomHumanoidSettings
+  id: InteQVanguardOperative
+  randomizeName: false
+  speciesBlacklist:
+    - Diona
+    - SlimePerson
+  components:
+  - type: Loadout
+    prototypes: [ InteQVanguardOperativeGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesLastMilitary
+  - type: InitialInfectedExempt
+  - type: NpcFactionMember
+    factions:
+      - InteQ
+
+- type: randomHumanoidSettings
+  id: InteQVanguardSolder
+  randomizeName: false
+  speciesBlacklist:
+    - Diona
+    - SlimePerson
+  components:
+  - type: Loadout
+    prototypes: [ InteQVanguardSolderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesLastMilitary
+  - type: InitialInfectedExempt
+  - type: NpcFactionMember
+    factions:
+      - InteQ
+
+- type: randomHumanoidSettings
+  id: InteQVanguardMedic
+  randomizeName: false
+  speciesBlacklist:
+    - Diona
+    - SlimePerson
+  components:
+  - type: Loadout
+    prototypes: [ InteQMedicGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesLastMilitary
+  - type: InitialInfectedExempt
+  - type: NpcFactionMember
+    factions:
+      - InteQ
+
+# Mobs
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeader
+  name: Интек Авангард Лидер
+  suffix: Интек
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Misc/inteq.rsi
+      state: logo
+    - type: RandomMetadata
+      nameSegments:
+      - InteQVanguardLeaderNamesPrefix
+      - NamesLastMilitary
+    - type: RandomHumanoidSpawner
+      settings: InteQVanguardLeader
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardOperative
+  name: Интек Авангард Оперативник
+  suffix: Интек
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Misc/inteq.rsi
+      state: logo
+    - type: RandomMetadata
+      nameSegments:
+      - InteQVanguardNamesPrefix
+      - NamesLastMilitary
+    - type: RandomHumanoidSpawner
+      settings: InteQVanguardOperative
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardSolder
+  name: Интек Авангард Солдат
+  suffix: Интек
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Misc/inteq.rsi
+      state: logo
+    - type: RandomMetadata
+      nameSegments:
+      - InteQVanguardNamesPrefix
+      - NamesLastMilitary
+    - type: RandomHumanoidSpawner
+      settings: InteQVanguardSolder
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardMedic
+  name: Интек Авангард Медик
+  suffix: Интек
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Misc/inteq.rsi
+      state: logo
+    - type: RandomMetadata
+      nameSegments:
+      - InteQVanguardNamesPrefix
+      - NamesLastMilitary
+    - type: RandomHumanoidSpawner
+      settings: InteQVanguardMedic
+    - type: InitialInfectedExempt

@@ -1,11 +1,11 @@
 - type: construction
-  name: torch
+  name: факел
   id: Torch
   graph: LightTorch
   startNode: start
   targetNode: torch
   category: construction-category-tools
-  description: A torch fashioned from some wood.
+  description: Светит.
   icon: { sprite: Objects/Misc/torch.rsi, state: icon }
   objectType: Item
 

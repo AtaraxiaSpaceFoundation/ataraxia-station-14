@@ -1,0 +1,61 @@
+# Обычные
+
+- type: entity
+  parent: Airlock
+  id: AirlockInteQ
+  suffix: Интек
+  name: шлюз
+  description: Умеет давить черепа как кувалда.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Doors/Airlocks/Standard/inteq.rsi
+
+- type: entity
+  parent: AirlockInteQ
+  id: AirlockInteQVanguardLocked
+  suffix: Интек, Авангард, Закрыт
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsInteQVanguard ]
+
+- type: entity
+  parent: AirlockInteQ
+  id: AirlockInteQLeaderLocked
+  suffix: Интек, Лидер, Закрыт
+  name: шлюз лидера
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsInteQVanguardLeader ]
+
+# Стеклянные
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockInteQGlass
+  suffix: Интек
+  name: стеклянный шлюз
+  description: Умеет давить черепа как кувалда.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Doors/Airlocks/Glass/inteq.rsi
+
+- type: entity
+  parent: AirlockInteQGlass
+  id: AirlockInteQVanguardGlassLocked
+  suffix: Интек, Авангард, Закрыт
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsInteQVanguard ]
+
+- type: entity
+  parent: AirlockInteQGlass
+  id: AirlockInteQLeaderGlassLocked
+  suffix: Интек, Лидер, Закрыт
+  name: стеклянный шлюз лидера
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsInteQVanguardLeader ]

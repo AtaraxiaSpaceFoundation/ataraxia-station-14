@@ -91,7 +91,7 @@
     sprite: Structures/Machines/traversal_distorter.rsi
     state: display
   discipline: Experimental
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 5000
   recipeUnlocks:
   - TraversalDistorterMachineCircuitboard
@@ -104,7 +104,7 @@
     sprite: Structures/Machines/anomaly_sync.rsi
     state: base
   discipline: Experimental
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - WeaponPistolCHIMP
@@ -120,7 +120,7 @@
     sprite: Objects/Weapons/Guns/Battery/particle_decelerator.rsi
     state: base
   discipline: Experimental
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 7500
   recipeUnlocks:
   - WeaponParticleDecelerator
@@ -135,7 +135,7 @@
     sprite: Objects/Weapons/Guns/Launchers/tether_gun.rsi
     state: base
   discipline: Experimental
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 10000
   recipeUnlocks:
     - WeaponForceGun
@@ -148,7 +148,7 @@
     sprite: Objects/Devices/swapper.rsi
     state: icon
   discipline: Experimental
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - DeviceQuantumSpinInverter

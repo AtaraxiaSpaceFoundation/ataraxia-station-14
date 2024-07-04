@@ -1,0 +1,81 @@
+# ONE HAND
+- type: body
+  id: AtaraxiaBodyOne
+  name: "OneHandBazed"
+  root: torso
+  slots:
+    torso:
+      part: TorsoReptilian
+      organs:
+        lungs: OrganXenomorphHybridLungs
+        stomach: OrganXenomorphHybridStomach
+      connections:
+      - hand 1
+    hand 1:
+      part: TerrorSpiderArm
+
+# DOUBLE HAND
+- type: body
+  id: AtaraxiaBodyDouble
+  name: "DoubleHandBazed"
+  root: torso
+  slots:
+    torso:
+      part: TorsoReptilian
+      organs:
+        lungs: OrganXenomorphHybridLungs
+        stomach: OrganXenomorphHybridStomach
+      connections:
+      - hand 1
+      - hand 2
+    hand 1:
+      part: TerrorSpiderArm
+    hand 2:
+      part: TerrorSpiderArm
+
+# THREEPLE HAND
+- type: body
+  id: AtaraxiaBodyThreeple
+  name: "ThreepleHandBazed"
+  root: torso
+  slots:
+    torso:
+      part: TorsoReptilian
+      organs:
+        lungs: OrganXenomorphHybridLungs
+        stomach: OrganXenomorphHybridStomach
+      connections:
+      - hand 1
+      - hand 2
+      - hand 3
+    hand 1:
+      part: TerrorSpiderArm
+    hand 2:
+      part: TerrorSpiderArm
+    hand 3:
+      part: TerrorSpiderArm
+
+# QUADRUPLE HAND
+- type: body
+  id: AtaraxiaBodyQuadruple
+  name: "QuadrupleHandBazed"
+  root: torso
+  slots:
+    torso:
+      part: TorsoReptilian
+      organs:
+        lungs: OrganXenomorphHybridLungs
+        stomach: OrganXenomorphHybridStomach
+      connections:
+      - hand 1
+      - hand 2
+      - hand 3
+      - hand 4
+    hand 1:
+      part: TerrorSpiderArm
+    hand 2:
+      part: TerrorSpiderArm
+    hand 3:
+      part: TerrorSpiderArm
+    hand 4:
+      part: TerrorSpiderArm

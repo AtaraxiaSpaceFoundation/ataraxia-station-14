@@ -1,0 +1,66 @@
+- type: soundCollection
+  id: XenomorphScreams # кричит
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl3.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl4.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl5.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl6.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl7.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl8.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl9.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/growl10.ogg
+
+- type: soundCollection
+  id: XenomorphHisses # шипит
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss3.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss4.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss5.ogg
+
+- type: soundCollection
+  id: XenomorphLaugh # смеётся
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/laugh1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/laugh2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/laugh3.ogg
+
+- type: soundCollection
+  id: XenomorphSneezes # кашляет
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/cough1.ogg
+
+- type: soundCollection
+  id: XenomorphCoughs # кашляет
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/cough1.ogg
+
+- type: soundCollection
+  id: XenomorphMeows # мяукает
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss3.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss4.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss5.ogg
+
+- type: soundCollection
+  id: XenomorphYawn # зевает
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss3.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss4.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/hiss5.ogg
+
+- type: soundCollection
+  id: XenomorphSnores # спит
+  files:
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/sleep1.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/sleep2.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/sleep3.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/sleep4.ogg
+  - /Audio/Ataraxia/Voice/xenomorph_hybrid/sleep5.ogg

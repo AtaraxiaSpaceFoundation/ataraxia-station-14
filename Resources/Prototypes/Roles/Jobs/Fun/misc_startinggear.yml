@@ -23,7 +23,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitNinja
     # belt holds katana so satchel has the tools for sabotaging things
-    back: ClothingBackpackSatchelTools
+    back: ClothingBackpackNinjaFilled # Ataraxia
     mask: ClothingMaskNinja
     head: ClothingHeadHelmetSpaceNinja
     eyes: ClothingEyesVisorNinja
@@ -310,8 +310,9 @@
 - type: startingGear
   id: MobAghostGear
   equipment:
-    back: ClothingBackpackSatchelHoldingAdmin
-    id: AdminPDA
+    back: ClothingBackpackSatchelHoldingFilled # Ataraxia
+    pocket1: BeaconBlueSpaceTechnic # Ataraxia
+    id: BluespaceTechnicPDA # Ataraxia
 
 #Head Rev Gear
 - type: startingGear

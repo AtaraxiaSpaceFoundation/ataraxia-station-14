@@ -24,6 +24,7 @@
   - type: StorageFill
     contents:
       - id: WeaponEgun
+      - id: BeaconCaptainDrobe # Ataraxia
       - id: NukeDisk
       - id: PinpointerNuclear
       - id: CaptainIDCard
@@ -32,10 +33,10 @@
         prob: 0.1
       - id: ClothingBeltSheathFilled
       - id: DoorRemoteCommand
-      - id: RubberStampCaptain
+#      - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
       - id: WeaponAntiqueLaser
       - id: JetpackCaptainFilled
-      - id: MedalCase
+#      - id: MedalCase # ATARAXIA-CAPTAINDROBE
       - id: CommandBudgetCard
       - id: CommandBudgetPinPaper
       - id: ClothingOuterHardsuitCap
@@ -49,6 +50,7 @@
   - type: StorageFill
     contents:
     - id: WeaponEgun
+    - id: BeaconCaptainDrobe # Ataraxia
     - id: NukeDisk
     - id: PinpointerNuclear
     - id: CaptainIDCard
@@ -57,10 +59,10 @@
       prob: 0.1
     - id: ClothingBeltSheathFilled
     - id: DoorRemoteCommand
-    - id: RubberStampCaptain
+#    - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
     - id: WeaponAntiqueLaser
     - id: JetpackCaptainFilled
-    - id: MedalCase
+#    - id: MedalCase # ATARAXIA-CAPTAINDROBE
     - id: CommandBudgetCard
     - id: CommandBudgetPinPaper
 
@@ -72,6 +74,7 @@
   - type: StorageFill
     contents:
     - id: WeaponEgun
+    - id: BeaconCaptainDrobe # ATARAXIA-CAPTAINDROBE
     - id: NukeDisk
     - id: PinpointerNuclear
     - id: CaptainIDCard
@@ -81,9 +84,9 @@
       prob: 0.1
     - id: ClothingBeltSheathFilled
     - id: DoorRemoteCommand
-    - id: RubberStampCaptain
+#    - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
     - id: JetpackCaptainFilled
-    - id: MedalCase
+#    - id: MedalCase # ATARAXIA-CAPTAINDROBE
     - id: CommandBudgetCard
     - id: CommandBudgetPinPaper
 
@@ -225,6 +228,13 @@
       - id: BoxEncryptionKeyScience
       - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
+      - id: PinpointerAnomaly # Ataraxia
+        prob: 0.15
+      - id: PinpointerArtifact # Ataraxia
+        prob: 0.15
+      - id: BodyBag_Radiation_Folded # Ataraxia
+        amount: 3
+      - id: ClothinNeckCloakRoyalResearchDirectorRD # Ataraxia
 
 - type: entity
   id: LockerResearchDirectorFilled
@@ -243,6 +253,13 @@
       - id: BoxEncryptionKeyScience
       - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
+      - id: PinpointerAnomaly # Ataraxia
+        prob: 0.15
+      - id: PinpointerArtifact # Ataraxia
+        prob: 0.15
+      - id: BodyBag_Radiation_Folded # Ataraxia
+        amount: 3
+      - id: ClothinNeckCloakRoyalResearchDirectorRD # Ataraxia
 
 - type: entity
   id: LockerHeadOfSecurityFilledHardsuit
@@ -265,6 +282,7 @@
       - id: ClothingOuterHardsuitSecurityRed
       - id: JetpackSecurityFilled
       - id: OxygenTankFilled
+      - id: ClothinNeckCloakRoyalHeadOfSecurityHOS # Ataraxia
 
 - type: entity
   id: LockerHeadOfSecurityFilled
@@ -286,6 +304,7 @@
       - id: BoxMindshield
       - id: TagillaHammer
       - id: EightAimModule
+      - id: ClothinNeckCloakRoyalHeadOfSecurityHOS # Ataraxia
 - type: entity
   id: LockerFreezerVaultFilled
   suffix: Vault, Locked

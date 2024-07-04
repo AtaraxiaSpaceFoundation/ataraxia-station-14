@@ -64,10 +64,13 @@ public sealed class NonPeacefulRoundEndSystem : EntitySystem
 
         for (int i = 0; i <= announceCount; i++)
         {
-            _chatManager.SendAdminAnnouncement("!!!РЕЗНЯ!!!");
+            if (i == 0)
+            {
+            _chatManager.SendAdminAnnouncement("!!!GOOOOOOAL!!!");
+            }
         }
 
-        _sharedAudioSystem.PlayGlobal("/Audio/White/RoundEnd/rezniya.ogg", Filter.Broadcast(), false);
+        _sharedAudioSystem.PlayGlobal("/Audio/Ataraxia/Announcements/RoundEnd/fart.ogg", Filter.Broadcast(), false);
     }
 
     private void GiveItem(EntityUid player)

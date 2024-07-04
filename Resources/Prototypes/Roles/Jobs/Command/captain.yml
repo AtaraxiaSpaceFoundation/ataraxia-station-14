@@ -21,9 +21,6 @@
   requireAdminNotify: true
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
-  whitelistedSpecies:
-    - Human
-    - Felinid
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -42,6 +39,7 @@
     shoes: ClothingShoesBootsLaceup
     id: CaptainPDA
     ears: ClothingHeadsetAltCommand
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersCap # White-Underwear
   underweart: ClothingUnderwearTopBraCap # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCap # White-Underwear

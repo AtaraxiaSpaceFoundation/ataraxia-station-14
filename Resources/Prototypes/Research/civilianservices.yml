@@ -107,7 +107,7 @@
     sprite: Objects/Tiles/tile.rsi
     state: astroice
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 5000
   recipeUnlocks:
   - FauxTileAstroGrass
@@ -123,7 +123,7 @@
     sprite: Structures/Machines/stasis_bed.rsi
     state: icon
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 7500
   recipeUnlocks:
   - StasisBedMachineCircuitboard
@@ -138,7 +138,7 @@
     sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
     state: scanner
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - HandheldCrewMonitor
@@ -150,7 +150,7 @@
     sprite: Mobs/Silicon/chassis.rsi
     state: medical
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 5000
   recipeUnlocks:
   - BorgModuleAdvancedTreatment
@@ -163,7 +163,7 @@
     sprite: Objects/Specific/Janitorial/advmop.rsi
     state: advmop
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - AdvMopItem
@@ -176,7 +176,7 @@
     sprite: Objects/Specific/Mech/mecha.rsi
     state: honker
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 7500
   recipeUnlocks:
   - HonkerHarness
@@ -196,7 +196,7 @@
     sprite: Objects/Weapons/Guns/Basic/spraynozzle.rsi
     state: icon
   discipline: CivilianServices
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - WeaponSprayNozzle
@@ -211,7 +211,7 @@
     sprite: Structures/cargo_telepad.rsi
     state: display
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
@@ -223,7 +223,7 @@
     sprite: Clothing/Shoes/Boots/speedboots.rsi
     state: icon
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - ClothingShoesBootsSpeed
@@ -235,8 +235,12 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+  - BluespaceBodyBag # Ataraxia
+  - NTBodyBag # Ataraxia
+  - PrisonerBodyBag # Ataraxia
+  - RadiationBodyBag # Ataraxia

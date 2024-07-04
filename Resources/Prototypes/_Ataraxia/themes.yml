@@ -1,0 +1,29 @@
+- type: uiTheme
+  id: SS14OperativeTheme
+  path: /Textures/Ataraxia/Interface/Operative/
+  colors:
+    whiteText: "#FFF5EE"
+    slotSelectedGold: "#e6b812"
+    slotColor: "#0f1215"
+    slotOutline: "#333850"
+    slotText: "#333850"
+    nanoGold: "#A88B5E"
+    goodGreenFore: "#31843E"
+    concerningOrangeFore: "#A5762F"
+    dangerousRedFore: "#BB3232"
+    disabledFore: "#5A5A5A"
+
+- type: uiTheme
+  id: SS14CrystallPunkTheme
+  path: /Textures/Ataraxia/Interface/CrystallPunk/
+  colors:
+    whiteText: "#faf0e6"
+    slotSelectedGold: "#e6b812"
+    slotColor: "#140f0b"
+    slotOutline: "#fffacd"
+    slotText: "#333850"
+    nanoGold: "#A88B5E"
+    goodGreenFore: "#31843E"
+    concerningOrangeFore: "#A5762F"
+    dangerousRedFore: "#c34d0a"
+    disabledFore: "#5A5A5A"

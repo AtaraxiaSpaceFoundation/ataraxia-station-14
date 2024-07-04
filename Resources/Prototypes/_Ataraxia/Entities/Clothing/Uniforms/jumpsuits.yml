@@ -1,0 +1,398 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitInteQFormal
+  name: inteq formal suit
+  description: "The inteq uniform is made in an elegant style, it's even a pity to do badass tricks in this."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_eng_suit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_eng_suit.rsi
+
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformJumpsuitInteQOperative
+  name: inteq operative jumpsuit
+  description: Uniform for inteq operatives performing tactical operations in deep space.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_suit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitInteQHonorable
+  name: inteq honorable suit
+  description: "Honorable uniform of InteQ, looks graceful."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_honorable.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_honorable.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitInteQMedical
+  name: inteq medical suit
+  description: "Symbolizes our life."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_med_suit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/inteq_med_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBluespaceTechnic
+  name: униформа блюспейс техника
+  description: Типо ахуено.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpsuit/ert_leader.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpsuit/ert_leader.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCaptain
+  id: ClothingUniformJumpsuitWhiteCaptain
+  name: белый комбинезон капитана
+  description: Белый комбинезон капитана символизирующий, что ваша зарплата явно превышает нормы.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/white_captainwhite.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/white_captainwhite.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitCaptain
+  id: ClothingUniformJumpsuitSheriffCaptain
+  name: комбинезон шерифа
+  description: Комбинезон показывающий вашу статусность, как ужасн... великого правителя.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captainsheriff.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captainsheriff.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBlueGalaxy
+  name: синий космический комбинезон
+  description: Уууу, почему костюм движется?!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/bluegalaxysuit.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/bluegalaxysuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitRedGalaxy
+  name: красный космический комбинезон
+  description: Уууу, почему костюм движется?!
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/redgalaxysuit.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/redgalaxysuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAviator
+  name: костюм авиатора
+  description: Хороший костюм авиатора, а вот авиатор чего уже интересный вопрос.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/aviator.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/aviator.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBiker
+  name: костюм байкера
+  description: Время гасить петухов, для это мне нужен тесак и пару метательных ножа.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/biker.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/biker.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCIA
+  name: костюм ЦРУ
+  description: Костюм анти-иногента, и просто патриота великой омэрики! СКРЯЯЯ!!!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/cia.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/cia.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitClownis
+  name: костюм клоуна
+  description: Костюм клоуна, кажется фаната омэрики.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/clown.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/clown.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDoom
+  name: кожанные шорты
+  description: Не рекомендуется носителям женского пола.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/doom.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/doom.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitFallout14
+  name: комбинезон убежища 14
+  description: Сомневаюсь, что он связан с чем-то хорошим, однако выглядит стильно.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/fallout/f14.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/fallout/f14.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitFalloutBase
+  name: комбинезон убежища
+  description: Сомневаюсь, что он связан с чем-то хорошим, однако выглядит стильно.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/fallout/fbase.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/fallout/fbase.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGoku
+  name: костюм гоку
+  description: Кастуем аниме фанфики!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/goku.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/goku.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGokuAlt
+  name: костюм гоку
+  description: Кастуем аниме фанфики!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/gokualt.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/gokualt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserBase
+  name: гризер
+  description: Куртка выполнена в стиле банды Гризеров, в последнее время используется другими бандами совместно с эмблемами, не имеет никаких эмблем.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/base.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/base.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserCult
+  name: гризер культистов
+  description: Куртка выполнена в стиле банды Гризеров, в последнее время используется другими бандами совместно с эмблемами, имеет эмблему культа.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/cult.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/cult.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserJuli
+  name: гризер Ти-Джули
+  description: Куртка выполнена в стиле банды Гризеров, в последнее время используется другими бандами совместно с эмблемами, имеет эмблему Ти-Джули.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/juli.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/juli.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserSnakes
+  name: гризер змей
+  description: Куртка выполнена в стиле банды Гризеров, в последнее время используется другими бандами совместно с эмблемами, имеет эмблему змея.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/snakes.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/snakes.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserSpider
+  name: гризер пауков
+  description: Куртка выполнена в стиле банды Гризеров, в последнее время используется другими бандами совместно с эмблемами, имеет эмблему пауков.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/spider.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/greaser/spider.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitHoodieJeans
+  name: худи с джинсами
+  description: Хорошо подойдёт для книжных червей, и любителей не рванных джинс.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/hoodiejeans.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/hoodiejeans.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitJacket
+  name: флоридский костюм
+  description: Выглядит как пережиток прошлого, на груди имеется буква B, а на бирке написано Флорида.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/jacket.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/jacket.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitJoe
+  name: зелёный костюм
+  description: Обычный зелёный костюм, с чёрными рукавами.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/joe.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/joe.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMegaMan
+  name: костюм мега мена
+  description: Что-то на японском.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/mega.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/mega.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMegaManX
+  name: костюм мега мена Х
+  description: Что-то на японском.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/megax.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/megax.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNRI
+  name: военная униформа
+  description: 
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/nri_uniform.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/nri_uniform.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitProto
+  name: прото костюм
+  description: Ну чё, доволен?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/proto.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/proto.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitRotten
+  name: костюм Робби
+  description: We are number one!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/rottensuit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/rottensuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSneaking
+  name: костюм подкрадульца
+  description: Сразу захотелось в стелс, да?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/sneaking_suit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/sneaking_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitStil
+  name: старый костюм
+  description: Настолько старый, что пережил несколько корпоративных войн.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/stil_suit.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/stil_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitСommandCaptain
+  name: командный костюм капитана
+  description: Чёрный костюм, с золотыми погонами на плечах.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_captain.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_captain.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitСommandHeadOfSecurity
+  name: командный костюм главы службы безопасности
+  description: Чёрный костюм, погонами на плечах.
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_hos.rsi
+    - type: Clothing
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_hos.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformBaseAllianceAssasin
+  name: униформа ассасина альянса
+  description: Униформа данной модели выполнен на основе неизвестного костюма. Изготавливается из особо прочной ткани Альянсиума с водоотталкивающей пропиткой и высоким содержанием хлопка, и полиэфирных нитей. Идеально подогнан под пропорции клиента и прекрасно подходит для грязной работы.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/alliance_assasin.rsi
+  - type: Clothing
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/alliance_assasin.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.1

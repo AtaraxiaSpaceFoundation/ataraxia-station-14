@@ -1,0 +1,12 @@
+#- type: entity
+#  id: ActionHeadcrabJump
+#  name: headcrab-jump-action-name
+#  description: headcrab-jump-action-description
+#  noSpawn: true
+#  components:
+#  - type: WorldTargetAction
+#    icon: { sprite: Ataraxia/Interface/Actions/headcrab.rsi, state: jump }
+#    itemIconStyle: NoItem
+#    event: !type:FleshWormJumpActionEvent
+#    useDelay: 10
+#    range: 160

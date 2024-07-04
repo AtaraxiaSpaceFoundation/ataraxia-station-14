@@ -1,0 +1,78 @@
+- type: entity
+  parent: BaseItem
+  id: BlackMarket
+  name: unknown device
+  description: It's a strange device, apparently it's a black market.
+  suffix: Чёрный рынок
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Devices/blackmarket.rsi
+    state: icon
+  - type: Item
+    sprite: Ataraxia/Objects/Devices/blackmarket.rsi
+    heldPrefix: black market
+  - type: UserInterface
+    interfaces:
+      - key: enum.StoreUiKey.Key
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    preset: StorePresetBlackMarket
+    balance:
+      SpaceCash: 0
+  - type: Construction
+    graph: BlackMarket
+    node: blackmarket
+  - type: GuideHelp
+    guides:
+    - AtaraxiaBlackMarket
+
+- type: storePreset
+  id: StorePresetBlackMarket
+  storeName: Black Market
+  categories:
+  - BlackMarketWeapons
+  - BlackMarketAmmo
+  - BlackMarketExplosives
+  - BlackMarketBundles
+  - BlackMarketUtility
+  - BlackMarketArmor
+  - BlackMarketMisc
+  currencyWhitelist:
+  - SpaceCash
+
+- type: storeCategory
+  id: BlackMarketWeapons
+  name: store-category-weapons
+  priority: 0
+
+- type: storeCategory
+  id: BlackMarketAmmo
+  name: store-category-ammo
+  priority: 1
+
+- type: storeCategory
+  id: BlackMarketExplosives
+  name: store-category-explosives
+  priority: 2
+
+- type: storeCategory
+  id: BlackMarketBundles
+  name: store-category-bundles
+  priority: 3
+
+- type: storeCategory
+  id: BlackMarketUtility
+  name: store-category-utility
+  priority: 4
+
+- type: storeCategory
+  id: BlackMarketArmor
+  name: store-category-armor
+  priority: 5
+
+- type: storeCategory
+  id: BlackMarketMisc
+  name: store-category-misc
+  priority: 6

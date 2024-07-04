@@ -1,0 +1,61 @@
+- type: entity
+  name: SMG
+  parent: BaseWeaponSubMachineGun
+  id: WeaponSubMachineGunInteQSMG
+  suffix: "Пистолет-пулемёт"
+  description: A firearm that is often used by the InteQ. Uses .35 auto ammo. It is painted in the InteQ brand color.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Weapons/Guns/SMGs/inteq_smg.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Ataraxia/Objects/Weapons/Guns/SMGs/inteq_smg.rsi
+  - type: ChamberMagazineAmmoProvider
+    boltClosed: null
+  - type: GunWieldBonus # 4BackmenGuns
+    minAngle: -22
+    maxAngle: 0
+  - type: Gun
+    angleDecay: 20 # 4BackmenGuns-Stats-NERF
+    angleIncrease: 5
+    minAngle: 24
+    maxAngle: 45
+    fireRate: 6
+    selectedMode: FullAuto
+    shotsPerBurst: 5
+    availableModes:
+    - SemiAuto
+    - Burst
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolSubMachineGun
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGun
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable # 4BackmenGuns
+  - type: UseDelay # 4BackmenGuns
+    delay: 0.5

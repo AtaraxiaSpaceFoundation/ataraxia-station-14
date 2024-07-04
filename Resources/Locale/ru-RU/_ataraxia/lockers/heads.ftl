@@ -1,0 +1,9 @@
+ent-LockerCaptainFilledHardsuitNoDrobe = { ent-LockerCaptain }
+    .suffix = Заполненный, Нету маяка, Скафандр
+    .desc = { ent-LockerCaptain.desc }
+ent-LockerCaptainFilledNoDrobe = { ent-LockerCaptain }
+    .suffix = Заполненный, Нету маяка, Антикварный лазер
+    .desc = { ent-LockerCaptain.desc }
+ent-LockerCaptainFilledNoLaserNoDrobe = { ent-LockerCaptain }
+    .suffix = Заполненный, Нету маяка
+    .desc = { ent-LockerCaptain.desc }

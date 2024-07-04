@@ -1,0 +1,106 @@
+- type: entity
+  id: SpawnPointGhostRatQueen
+  name: ghost role spawn point
+  suffix: rat queen
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-rat-queen-name
+    description: ghost-role-information-rat-queen-description
+    rules: ghost-role-information-rat-king-rules
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobRatQueen
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Animals/mommy_rat.rsi
+        state: icon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobHumanMutant
+  name: human mutant spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/NPCs/human_mutant.rsi
+        state: alive
+  - type: ConditionalSpawner
+    prototypes:
+      - MobHumanMutant
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobWalterRofls
+  name: Walter White spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Pets/walter.rsi
+        state: walter
+  - type: ConditionalSpawner
+    prototypes:
+      - MobWalterRofls
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBigKozel
+  name: kozel spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/NPCs/bigkozel.rsi
+        state: alive
+  - type: ConditionalSpawner
+    prototypes:
+      - MobBigKozel
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBlackDeath
+  name: black-death spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/NPCs/bigspider.rsi
+        state: alive
+  - type: ConditionalSpawner
+    prototypes:
+      - MobBlackDeath
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBlueDragon
+  name: blue dragon spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/NPCs/bluedragon.rsi
+        state: alive
+  - type: ConditionalSpawner
+    prototypes:
+      - MobBlueDragon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobGondola
+  name: Gondola spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Animals/gondola.rsi
+        state: gondola_body_medium
+      - sprite: Ataraxia/Mobs/Animals/gondola.rsi
+        state: gondola_moustache_large_short
+  - type: ConditionalSpawner
+    prototypes:
+      - MobGondola

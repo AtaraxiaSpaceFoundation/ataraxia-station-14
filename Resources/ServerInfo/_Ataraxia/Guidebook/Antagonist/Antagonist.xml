@@ -1,0 +1,18 @@
+<Document>
+  # Антагонисты
+
+  Простая и общая информация об антагонистах, появляются в основном механически, но могут и благодаря администрации.
+
+  Мажорные антагонисты:
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderQueen" Caption="Паук ужаса."/>
+  </Box>
+
+  Мидраунд антагонисты:
+  <Box>
+    <GuideEntityEmbed Entity="MobHeadcrab" Caption="Хедкраб."/>
+    <GuideEntityEmbed Entity="MobInteQAgent" Caption="Агент Интек."/>
+    <GuideEntityEmbed Entity="MobRatQueen" Caption="Королева крыс."/>
+  </Box>
+
+</Document>

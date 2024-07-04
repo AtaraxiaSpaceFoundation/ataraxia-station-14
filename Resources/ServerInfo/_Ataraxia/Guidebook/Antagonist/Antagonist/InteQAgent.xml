@@ -1,0 +1,26 @@
+<Document>
+  # Агент Интек
+
+  <Box>
+    <GuideEntityEmbed Entity="MobInteQAgent" Caption=""/>
+  </Box>
+  Агент Интек - соответственно представитель ЧВК Интек, специализируется на бить и ломать, череп, крушить. Крайне опасен в ближнем бою, тупой, не женат.
+
+  ## Особенности
+  
+  - Наносит [color=#ff1f1f]92 тупого урона[/color] и [color=#ffa500]72 структурного урона[/color] с одного удара.
+  - Имеет 420 ХП.
+  - Его ахуенные мышцы отражают лазеры с 70% вероятностью, а даже если и не отразят, то нанесут почти нихуя!
+  - Не может задохнуться, его лёгкие настолько мощные, что даже вакуум может стать ему кислородом.
+  - Не получает урона от давления, для него его просто не существует, его мышцы сами давят на давление, причём успешно.
+  - Его мышцы настолько жмут, что даже после смерти он не оставляет своё снаряжение, для этого требуется разделать его чем-то острым.
+  - [color=#9400D3]B[/color][color=#4B0082]r[/color][color=#0000FF]A[/color][color=#00FF00]i[/color][color=#FFFF00]N[/color][color=#FF7F00]D[/color][color=#FF0000]a[/color][color=#9400D3]M[/color][color=#4B0082]a[/color][color=#0000FF]G[/color][color=#00FF00]e[/color][color=#FFFF00]D[/color]
+
+  Снаряжение:
+  <Box>
+    <GuideEntityEmbed Entity="Sledgehammer" Caption=""/>
+    <GuideEntityEmbed Entity="ClothingBeltInteQWebbing" Caption=""/>
+    <GuideEntityEmbed Entity="ClothingHeadHelmetSwatInteQ" Caption=""/>
+  </Box>
+
+</Document>

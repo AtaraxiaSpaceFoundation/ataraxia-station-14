@@ -13,8 +13,6 @@
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
-  whitelistedSpecies:
-    - Human
   canBeAntag: false
   access:
   - Security

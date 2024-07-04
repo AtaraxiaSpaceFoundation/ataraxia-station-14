@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/Bubberstation/Bubberstation/commit/c539a469d59849c15a115b319ec5953904863321 | Sprited, resprited and edited by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "budgetcard"
+    },
+    {
+      "name": "car_budget"
+    },
+    {
+      "name": "card_rpg"
+    },
+    {
+      "name": "civ_budget"
+    },
+    {
+      "name": "ctf_blue"
+    },
+    {
+      "name": "ctf_green"
+    },
+    {
+      "name": "ctf_red"
+    },
+    {
+      "name": "ctf_yellow"
+    },
+    {
+      "name": "eng_budget"
+    },
+    {
+      "name": "med_budget"
+    },
+    {
+      "name": "sci_budget"
+    },
+    {
+      "name": "sec_budget"
+    },
+    {
+      "name": "srv_budget"
+    }
+  ]
+}

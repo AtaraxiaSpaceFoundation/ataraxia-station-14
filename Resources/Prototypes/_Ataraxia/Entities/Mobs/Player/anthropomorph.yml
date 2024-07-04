@@ -1,0 +1,9 @@
+- type: entity
+  save: false
+  name: Urist McAnthropomorph
+  parent: BaseMobAnthropomorph
+  id: MobAnthropomorph
+#  components:
+#    - type: FootPrints
+#      leftBarePrint: "footprint-left-bare-lizard"
+#      rightBarePrint: "footprint-right-bare-lizard"

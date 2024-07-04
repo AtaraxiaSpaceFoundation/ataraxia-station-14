@@ -13,6 +13,8 @@
     - 0,0,4,1
   - type: Item
     size: Normal
+    shape: # Ataraxia
+    - 0,0,1,1
     sprite: Objects/Specific/Medical/firstaidkits.rsi
     heldPrefix: firstaid
   - type: Tag

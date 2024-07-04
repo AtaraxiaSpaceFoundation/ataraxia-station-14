@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseImplantOnlyImplanterSyndi
+  id: mantisImplanter
+  name: имплантер
+  suffix: клинки богомола
+  components:
+    - type: Implanter
+      implant: mantisImplant
+
+- type: entity
+  parent: BaseImplantOnlyImplanterSyndi
+  id: mantisEImplanter
+  name: имплантер
+  suffix: энергетические клинки богомола
+  components:
+    - type: Implanter
+      implant: mantisEImplant

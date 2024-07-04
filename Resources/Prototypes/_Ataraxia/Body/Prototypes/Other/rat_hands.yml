@@ -1,0 +1,31 @@
+- type: body
+  id: RatHands
+  name: "RatHands"
+  root: torso
+  slots:
+    torso:
+      part: TorsoRat
+      organs:
+        lungs: OrganRatLungs
+        stomach: OrganRatStomach
+        liver: OrganAnimalLiver
+        heart: OrganAnimalHeart
+        kidneys: OrganAnimalKidneys
+      connections:
+      - right_arm
+      - left_arm
+      - legs
+    right_arm:
+      part: RightArmRatQueen
+    left_arm:
+      part: LeftArmRatQueen
+      connections:
+      - left_hand
+    left_hand:
+      part: LeftHandRatQueen
+    legs:
+      part: RightHandRatQueen
+      connections:
+      - feet
+    feet:
+      part: FeetAnimal

@@ -16,7 +16,7 @@
     denySound:
       path: /Audio/Machines/airlock_deny.ogg
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/external.rsi
+    sprite: Ataraxia/Structures/Doors/Airlocks/Standard/external.rsi # Ataraxia
   - type: PaintableAirlock
     group: External
     department: null
@@ -31,6 +31,6 @@
   - type: Occluder
     enabled: false
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/external.rsi
+    sprite: Ataraxia/Structures/Doors/Airlocks/Glass/external.rsi # Ataraxia
   - type: PaintableAirlock
     group: ExternalGlass

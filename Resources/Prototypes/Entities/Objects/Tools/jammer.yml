@@ -10,6 +10,10 @@
   - type: RadioJammer
   - type: PowerCellSlot
     cellSlotId: cell_slot
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot

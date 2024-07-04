@@ -1,0 +1,146 @@
+- type: entity
+  id: ResinWeedBase
+  abstract: true
+  parent: CarpetBase
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 12
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Ataraxia/Misc/resin_footstep.ogg
+
+- type: entity
+  id: ResinWeedNode
+  parent: ResinWeedBase
+  name: resin node
+  description: "Slimy and sticky mass with luminous seeds."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi
+  - type: PointLight
+    radius: 2.5
+    energy: 2
+    color: "#00CED1"
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 20
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+#- type: entity
+#  id: RandomResinMassSpawner
+#  parent: MarkerBase
+#  name: random resin mass spawner
+#  components:
+#  - type: Sprite
+#    layers:
+#      - sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
+#        state: full
+#  - type: RandomSpawner
+#    prototypes:
+#      - ResinMass1
+#      - ResinMass2
+#      - ResinMass3
+#    chance: 1
+
+- type: entity
+  id: ResinMass1
+  suffix: 1
+#  abstract: true
+  parent: ResinWeedBase
+  name: resin mass
+  description: "Slimy and sticky mass with luminous seeds."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
+
+- type: entity
+  id: ResinMass2
+  suffix: 2
+#  abstract: true
+  parent: ResinWeedBase
+  name: resin mass
+  description: "Slimy and sticky mass with luminous seeds."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds2.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds2.rsi
+
+- type: entity
+  id: ResinMass3
+  suffix: 3
+#  abstract: true
+  parent: ResinWeedBase
+  name: resin mass
+  description: "Slimy and sticky mass with luminous seeds."
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds3.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds3.rsi
+
+- type: entity
+  id: ResinNestBed
+  parent: BaseStructure
+  name: resin nest
+  description: "Slimy and sticky mass representing a bed?...."
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_nest.rsi
+    drawdepth: Objects
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_nest.rsi
+    state: catwalk_preview
+  - type: IconSmooth
+    key: catwalk
+    base: catwalk_
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 35
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+  - type: HealOnBuckle
+    damage:
+      types:
+        Poison: -0.1
+        Blunt: -0.1
+  - type: Strap
+    position: Down
+    rotation: -90

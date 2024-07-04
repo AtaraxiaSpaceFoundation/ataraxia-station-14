@@ -9,6 +9,7 @@
 - type: entity
   id: StandardNanotrasenStation
   parent:
+    - BaseStationGoal # Corvax
     - BaseStation
     - BaseStationNews
     - BaseStationCargo

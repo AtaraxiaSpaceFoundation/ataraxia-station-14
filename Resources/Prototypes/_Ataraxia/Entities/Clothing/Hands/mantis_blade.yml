@@ -1,0 +1,109 @@
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingHandsGlovesMantisBlade
+  name: клинки богомола
+  description: Боевой кибернетический имплант. Клинки исходят из предплечья, что позволяет использовать их как оружие ближнего боя.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/mantis.rsi
+  - type: Clothing
+    slots:
+    - gloves
+    sprite: Ataraxia/Clothing/Hands/mantis.rsi
+    equipSound: /Audio/Ataraxia/Weapons/Melee/mantis/on.ogg
+    unequipSound: /Audio/Ataraxia/Weapons/Melee/mantis/off.ogg
+  - type: MeleeWeapon
+    attackRate: 1.8
+    damage:
+      types:
+        Piercing: 15
+        Structural: 18
+    soundSwing: /Audio/Ataraxia/Weapons/Melee/mantis/miss.ogg
+    soundHit: /Audio/Ataraxia/Weapons/Melee/mantis/hit.ogg
+  - type: StaticPrice
+    price: 7200
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingHandsGlovesMantisBladeCurator
+  name: клинки богомола
+  suffix: "Бомж версия"
+  description: Бутофорская подделка известного импланта, из-за чего не вживляется под кожу. Конструкция клинков по большей части состоит из дешёвого пластика, а сами клинки из обычной стали, плохой заточки, но это не мешает использовать их как оружие ближнего боя.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/mantis.rsi
+  - type: Clothing
+    slots:
+    - gloves
+    sprite: Ataraxia/Clothing/Hands/mantis.rsi
+    equipSound: /Audio/Ataraxia/Weapons/Melee/mantis/on.ogg
+    unequipSound: /Audio/Ataraxia/Weapons/Melee/mantis/off.ogg
+  - type: MeleeWeapon
+    attackRate: 1.8
+    damage:
+      types:
+        Piercing: 8
+        Structural: 6
+    soundSwing: /Audio/Ataraxia/Weapons/Melee/mantis/miss.ogg
+    soundHit: /Audio/Ataraxia/Weapons/Melee/mantis/hit.ogg
+  - type: StaticPrice
+    price: 2500
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingHandsGlovesMantisEBlade
+  name: энергетические клинки богомола
+  description: Боевой кибернетический имплант. Клинки исходят из предплечья, что позволяет использовать их как оружие ближнего боя.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Clothing/Hands/mantiseblade.rsi
+    layers:
+      - state: icon
+        map: [ "effect" ]
+      - state: icon-unshaded
+        shader: unshaded
+        map: ["enum.EffectLayers.Unshaded"]
+  - type: Clothing
+    slots:
+    - gloves
+    sprite: Ataraxia/Clothing/Hands/mantiseblade.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+        map: [ "effect" ]
+      - state: equipped-HAND-unshaded
+        shader: unshaded
+        map: ["enum.EffectLayers.Unshaded"]
+    equipSound: /Audio/Ataraxia/Weapons/Melee/mantis/on.ogg
+    unequipSound: /Audio/Ataraxia/Weapons/Melee/mantis/off.ogg
+  - type: Item
+    sprite: Ataraxia/Clothing/Hands/mantiseblade.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        map: [ "effect" ]
+      - state: inhand-left-unshaded
+        shader: unshaded
+        map: ["enum.EffectLayers.Unshaded"]
+      right:
+      - state: inhand-right
+        map: [ "effect" ]
+      - state: inhand-right-unshaded
+        shader: unshaded
+        map: ["enum.EffectLayers.Unshaded"]
+  - type: MeleeWeapon
+    attackRate: 1.8
+    damage:
+      types:
+        Piercing: 15
+        Heat: 18
+        Structural: 25
+    soundSwing: /Audio/Ataraxia/Weapons/Melee/mantis/miss.ogg
+    soundHit: /Audio/Ataraxia/Weapons/Melee/mantis/hit.ogg
+  - type: Reflect
+    reflectProb: 0.25
+    enabled: true
+    reflects:
+      - Energy
+  - type: StaticPrice
+    price: 23000

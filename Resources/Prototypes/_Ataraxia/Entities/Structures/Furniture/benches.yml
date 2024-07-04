@@ -1,0 +1,54 @@
+# Base benches
+- type: entity
+  parent: SeatBase
+  id: AtaraxiaBenchBase
+  abstract: true
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Rotatable
+
+# Standard sofa ALT
+- type: entity
+  name: sofa
+  id: BenchSofaAltMiddle
+  suffix: Середина
+  parent: AtaraxiaBenchBase
+  components:
+  - type: Sprite
+    sprite: White/Structures/Furniture/Benches/sofa.rsi
+    state: middle
+
+- type: entity
+  id: BenchSofaAltLeft
+  suffix: Левый
+  parent: BenchSofaAltMiddle
+  components:
+  - type: Sprite
+    state: left
+
+- type: entity
+  id: BenchSofaAltRight
+  suffix: Правый
+  parent: BenchSofaAltMiddle
+  components:
+  - type: Sprite
+    state: right
+
+- type: entity
+  id: BenchSofaAltCorner
+  suffix: Угловой
+  parent: BenchSofaAltMiddle
+  components:
+  - type: Sprite
+    state: corner
+
+- type: entity
+  id: BenchSofaAltCornerOut
+  suffix: Угловой Внеш.
+  parent: BenchSofaAltMiddle
+  components:
+  - type: Sprite
+    state: corner_out

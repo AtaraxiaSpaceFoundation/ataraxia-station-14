@@ -1,0 +1,24 @@
+<Document>
+  # Осквернитель ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderDefiler" Caption=""/>
+  </Box>
+  Кусает всех подряд, создавая хаос на станции.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#46A446]1 яда[/color] и [color=#18A0C9]35 стамины[/color] своими когтями.
+  - Умеет выпускать облако дыма и облако нейротоксина.
+  - Имеет 200 ХП.
+  - Может вскрывать шлюзы своими лапами.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawDefilerTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponSmokeTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="WeaponNeurotoxinSmokeTerrorSpider" Caption=""/>
+  </Box>
+
+</Document>

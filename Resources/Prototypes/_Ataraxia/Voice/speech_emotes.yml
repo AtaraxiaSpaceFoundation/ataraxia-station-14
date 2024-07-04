@@ -1,0 +1,703 @@
+# vocal emotes
+- type: emote
+  id: Hiss
+  category: Vocal
+  buttonText: Шипеть
+  chatMessages: [ шипит ]
+  chatTriggers:
+  - шипит
+  - шипит.
+  - шипит!
+  - хисс
+  - хисс.
+  - хисс!
+  - шипеть
+  - хис
+  - хсс
+  - хс
+  allowMenu: true
+
+- type: emote
+  id: Salute
+  category: Vocal
+  buttonText: Отдать честь
+  chatMessages: [ отдаёт честь, исполняет воинское приветствие, салютует ]
+  chatTriggers:
+  - салютует
+  - салютует.
+  - салютует!
+  - отдаёт честь
+  - отдаёт честь.
+  - отдаёт честь!
+  - отдал честь
+  - отдал честь.
+  - отдал честь!
+  - отдала честь
+  - отдала честь.
+  - отдала честь!
+  - исполняет воинское приветствие
+  - исполняет воинское приветствие.
+  - исполняет воинское приветствие!
+  allowMenu: true
+
+- type: emote
+  id: RaiseEyebrow
+  category: Vocal
+  buttonText: Поднять бровь (Громко)
+  chatMessages: [громко поднимает бровь]
+  chatTriggers:
+  - громко поднимает бровь
+  - громко поднимает бровь.
+  - приподнимает бровь
+  - приподнимает бровь.
+  - поднимает бровь
+  - поднимает бровь.
+
+- type: emote
+  id: Burp
+  category: Vocal
+  buttonText: Отрыжка
+  chatMessages: [делает смачную отрыжку]
+  chatTriggers:
+  - делает смачную отрыжку
+  - делает смачную отрыжку.
+  - отрыгнул
+  - отрыгнул.
+  - отрыгнул!
+  - отрыжка
+  - отрыжка.
+  - отрыжка!
+
+- type: emote
+  id: CoyoteHowl
+  category: Vocal
+  buttonText: Выть (Койот)
+  chatMessages: [протяжно воет]
+  chatTriggers:
+  - протяжно воет
+  - протяжно воет!
+  - протяжно воет.
+
+- type: emote
+  id: CartoonScream
+  category: Vocal
+  buttonText: Кричать (Мультяшно)
+  chatMessages: [кричит словно в мультике!]
+  chatTriggers:
+  - кричит словно в мультике!
+  - ньяяяу!
+
+- type: emote
+  id: AraAra
+  category: Vocal
+  buttonText: Ара-Ара
+  chatMessages: [произносит ара-ара~]
+  chatTriggers:
+  - произносит ара-ара~
+  - ара-ара
+  - ара-ара!
+  - ара-ара.
+
+- type: emote
+  id: AnimalBark
+  category: Vocal
+  buttonText: Гафкать
+  chatMessages: [гафкает]
+  chatTriggers:
+  - гафкает
+  - гафкает.
+  - гаф
+  - гаф.
+  - гаф!
+  allowMenu: true
+
+- type: emote
+  id: CryKing
+  category: Vocal
+  buttonText: Плакать (Король)
+  chatMessages: [плачет как король]
+  chatTriggers:
+  - плачет как король
+  - плачет как король.
+  - вуаа
+
+- type: emote
+  id: LaughMuta
+  category: Vocal
+  buttonText: Смеяться (Дико)
+  chatMessages: [дико угарает]
+  chatTriggers:
+  - дико угарает
+  - дико угарает.
+
+- type: emote
+  id: WhistleTerror
+  category: Vocal
+  buttonText: Свистеть (Пугающе)
+  chatMessages: [пугающе свистит]
+  chatTriggers:
+  - пугающе свистит
+  - пугающе свистит.
+
+- type: emote
+  id: AnimalWarble
+  category: Vocal
+  buttonText: Трель
+  chatMessages: [издаёт странные звуки]
+  chatTriggers:
+  - издаёт странные звуки
+  - издаёт странные звуки.
+  - трель
+
+- type: emote
+  id: LizardWeh
+  category: Vocal
+  buttonText: Шипеть
+  chatMessages: [вех!]
+  chatTriggers:
+  - вех
+  - вех.
+  - вех!
+  allowMenu: true
+
+- type: emote
+  id: LoudAauugghh
+  category: Vocal
+  buttonText: Недовольно орать
+  chatMessages: [недовольно орёт!]
+  chatTriggers:
+  - недовольно орёт
+  - недовольно орёт!
+  - недовольно орёт.
+  - уаааа
+
+- type: emote
+  id: Agony
+  category: Vocal
+  buttonText: Агония
+  chatMessages: [впадает в агонию]
+  chatTriggers:
+  - впадает в агонию
+  - впадает в агонию.
+  - впадает в агонию!
+  - агония
+  - агония.
+  - агония!
+
+- type: emote
+  id: Boowomp
+  category: Vocal
+  buttonText: Хлюпать (Неловко)
+  chatMessages: [неловко хлюпает]
+  chatTriggers:
+  - неловко хлюпает
+  - неловко хлюпает.
+  - хлюмп
+  allowMenu: true
+
+- type: emote
+  id: BreakingBad
+  category: Vocal
+  buttonText: Смотреть (Подозрение)
+  chatMessages: [пристально смотрит]
+  chatTriggers:
+  - смотрит с подозрением
+  - смотрит с подозрением.
+  - пристально смотрит
+  - пристально смотрит.
+  - пристально наблюдает
+  - пристально наблюдает.
+  - заглядывается
+  - заглядывается.
+
+- type: emote
+  id: Bruh
+  category: Vocal
+  buttonText: Брух
+  chatMessages: [кринжует]
+  chatTriggers:
+  - кринжует
+  - кринжует.
+  - брух
+  - брух.
+  - брах
+  - брах.
+  allowMenu: true
+
+- type: emote
+  id: HereticLaugh
+  category: Vocal
+  buttonText: Смеяться (Еретически)
+  chatMessages: [еретически смеётся]
+  chatTriggers:
+  - еретически смеяться
+  - еретически смеяться.
+  - еретически смеётся
+  - еретически смеётся.
+  allowMenu: true
+
+- type: emote
+  id: CanonEvent
+  category: Vocal
+  buttonText: Каноничный ивент
+  chatMessages: [наблюдает за каноничным ивентом]
+  chatTriggers:
+  - наблюдает за каноничным ивентом
+  - наблюдает за каноничным ивентом.
+  - канон
+  - канон.
+
+- type: emote
+  id: Chirp
+  category: Vocal
+  buttonText: Чирикнуть
+  chatMessages: [чирикает]
+  chatTriggers:
+  - чирикает
+  - чирикает.
+  - чирик
+  - чирик!
+  - чирик.
+
+- type: emote
+  id: Glares
+  category: Vocal
+  buttonText: Рычать (Свирепо)
+  chatMessages: [свирепо рычит]
+  chatTriggers:
+  - свирепо рычать
+  - свирепо рычать.
+  - свирепо рычит
+  - свирепо рычит.
+
+- type: emote
+  id: Huh
+  category: Vocal
+  buttonText: Хух?
+  chatMessages: [испытывает неопределённые эмоции]
+  chatTriggers:
+  - испытывает неопределённые эмоции
+  - испытывает неопределённые эмоции.
+  - хух
+  - хух.
+  - хах
+  - хах.
+  allowMenu: true
+
+- type: emote
+  id: KingLaugh
+  category: Vocal
+  buttonText: Смеяться (Король)
+  chatMessages: [смеётся словно король]
+  chatTriggers:
+  - смеётся словно король
+  - смеётся словно король.
+  - хихиха
+
+- type: emote
+  id: LawyerRP
+  category: Vocal
+  buttonText: Поправить галстук (Юрист)
+  chatMessages: [выразительно поправляет галстук]
+  chatTriggers:
+  - выразительно поправляет галстук
+  - выразительно поправляет галстук.
+  - поправляет галстук
+  - поправляет галстук.
+  - поправил галстук
+  - поправил галстук.
+  - поправила галстук
+  - поправила галстук.
+
+- type: emote
+  id: MemeLaugh
+  category: Vocal
+  buttonText: Смеяться (Угарать)
+  chatMessages: [угарает!]
+  chatTriggers:
+  - угарает!
+  - угарает
+  - угарать
+  - угараем
+
+- type: emote
+  id: MemeMeow
+  category: Vocal
+  buttonText: Мяукать (Мря)
+  chatMessages: [странно мяучет]
+  chatTriggers:
+  - странно мяучет
+  - странно мяучет.
+  - мря
+
+- type: emote
+  id: Mewo
+  category: Vocal
+  buttonText: Мяукать (Миау)
+  chatMessages: [шаловлило мяучет]
+  chatTriggers:
+  - шаловлило мяучет
+  - шаловлило мяучет.
+  - миау
+
+- type: emote
+  id: MoonMen
+  category: Vocal
+  buttonText: Поднять бровь (Задумчиво)
+  chatMessages: [приподнимает бровь задумавшись]
+  chatTriggers:
+  - приподнимает бровь задумавшись
+  - приподнимает бровь задумавшись.
+  - задумывается
+  - задумывается.
+
+- type: emote
+  id: OMG
+  category: Vocal
+  buttonText: Ахуеть (ОМГ)
+  chatMessages: [впадая в конфузию кричит!]
+  chatTriggers:
+  - впадая в конфузию кричит!
+  - конфузился
+  - конфузия
+
+- type: emote
+  id: WTH
+  category: Vocal
+  buttonText: Ахуеть (ВТХ)
+  chatMessages: [впадая в прострацию кричит!]
+  chatTriggers:
+  - впадая в прострацию кричит!
+  - ватахел
+
+- type: emote
+  id: Yippee
+  category: Vocal
+  buttonText: Радоваться
+  chatMessages: [радостно кричит!]
+  chatTriggers:
+  - радостно кричит!
+  - йапи
+
+- type: emote
+  id: LizardPurr
+  category: Vocal
+  buttonText: Урчать (Ящер)
+  chatMessages: [шипяще урчит]
+  chatTriggers:
+  - шипяще урчит
+  - шипяще урчит.
+  - урхс
+  allowMenu: true
+
+- type: emote
+  id: SickoMode
+  category: Vocal
+  buttonText: Впасть в ступор
+  chatMessages: [на мгновение впадает ступор]
+  chatTriggers:
+  - на мгновение впадает ступор
+  - на мгновение впадает ступор.
+  - ступор
+
+- type: emote
+  id: Waa
+  category: Vocal
+  buttonText: Ваа
+  chatMessages: [испускает из себя ваааа~]
+  chatTriggers:
+  - испускает из себя ваааа~
+  - ва
+  - ваа
+  - вааа
+  allowMenu: true
+
+- type: emote
+  id: Whine
+  category: Vocal
+  buttonText: Скулить
+  chatMessages: [скулит]
+  chatTriggers:
+  - скулит
+  - скулит.
+  - скулит!
+  allowMenu: true
+
+- type: emote
+  id: SexyWhistle
+  category: Vocal
+  buttonText: Свистеть (Удивлённо)
+  chatMessages: [удивлённо свистит]
+  chatTriggers:
+  - удивлённо свистит
+  - удивлённо свистит.
+  allowMenu: true
+
+- type: emote
+  id: Blink
+  category: Vocal
+  buttonText: Моргнуть
+  chatMessages: [моргает]
+  chatTriggers:
+    - моргнул
+    - моргнул!
+    - моргнул.
+    - моргает
+    - моргает.
+    - моргает!
+    - хлопает глазами
+    - хлопает глазами.
+    - хлопает глазами!
+    - мигает
+    - мигает.
+    - мигает!
+  allowMenu: true
+
+- type: emote
+  id: Gasp
+  category: Vocal
+  buttonText: Задыхаться
+  chatMessages: [задыхается]
+  chatTriggers:
+    - задыхается
+    - задыхается!
+    - задыхается.
+    - задохнулась
+    - задохнулась.
+    - задохнулась!
+    - задохнулся
+    - задохнулся.
+    - задохнулся!
+    - жадно глотает воздух
+    - жадно глотает воздух.
+    - жадно глотает воздух!
+    - испытывает удушье
+    - испытывает удушье.
+    - испытывает удушье!
+  allowMenu: true
+
+# Скрытые
+
+- type: emote
+  id: Mrowl
+  category: Vocal
+  buttonText: Мяукать (Мруа)
+  chatMessages: [мрряучет]
+  chatTriggers:
+  - мрряучет
+  - мрряучет.
+  - мруа
+
+- type: emote
+  id: FBI
+  category: Vocal
+  buttonText: ФСБ
+  chatMessages: [фсб открывайте]
+  chatTriggers:
+  - фсб открывайте
+  - фсб открывайте.
+  - стучит рукой по ближайшему объекту громко крича!
+  - фбр
+  - фбр.
+  - фсб
+  - фсб.
+  - фби
+  - фби.
+  - fbi
+  - fbi.
+
+- type: emote
+  id: Iluminati
+  category: Vocal
+  buttonText: Показать треугольник
+  chatMessages: [складывает из пальцев треугольник]
+  chatTriggers:
+  - складывает из пальцев треугольник
+  - складывает из пальцев треугольник.
+  - треугольник
+  - треугольник.
+  - складывает треугольник
+  - складывает треугольник.
+
+- type: emote
+  id: Buff
+  category: Vocal
+  buttonText: Показать себя
+  chatMessages: [показывает своё тело поворачиваясь под разными ракурсами]
+  chatTriggers:
+  - показывает своё тело
+  - показывает своё тело.
+  - показывает своё тело поворачиваясь под разными ракурсами
+  - показывает своё тело поворачиваясь под разными ракурсами.
+  - показывает себя
+  - показывает себя.
+
+- type: emote
+  id: CatMeowAlt
+  category: Vocal
+  buttonText: Мяукать (Протяжно)
+  chatMessages: [протяжно мяучет]
+  chatTriggers:
+  - протяжно мяучет
+  - протяжно мяучет.
+  - мриаув
+
+- type: emote
+  id: CatMrrp
+  category: Vocal
+  buttonText: Мяукать (Нежно)
+  chatMessages: [нежно мяучет]
+  chatTriggers:
+  - нежно мяучет
+  - нежно мяучет.
+  - миряу
+
+- type: emote
+  id: BoneRif
+  category: Vocal
+  buttonText: Костянной риф
+  chatMessages: [издаёт костянной риф]
+  chatTriggers:
+  - издаёт костянной риф
+  - издаёт костянной риф.
+  - риф
+  - риф.
+  - кости
+  - плохой
+
+- type: emote
+  id: Paradise
+  category: Vocal
+  buttonText: Поймать кайф
+  chatMessages: [наклоняет спину назад и пристально смотрит вверх]
+  chatTriggers:
+  - наклоняет спину назад и пристально смотрит вверх
+  - наклоняет спину назад и пристально смотрит вверх.
+  - кайф
+  - кайф.
+
+- type: emote
+  id: Coo
+  category: Vocal
+  buttonText: Чирикнуть (Мило)
+  chatMessages: [мило чирикает]
+  chatTriggers:
+  - мило чирикает
+  - мило чирикает.
+  - чримк
+  - чримк.
+
+- type: emote
+  id: Fusrodah
+  category: Vocal
+  buttonText: Фусродах
+  chatMessages: [ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам]
+  chatTriggers:
+  - ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам
+  - ставит ноги на ширене плеч и громко кричит "ФУСРОДАХ" развивая свои руки по сторонам.
+  - фусродах
+  - фусродах.
+
+- type: emote
+  id: DemomanLaugh
+  category: Vocal
+  buttonText: Смеяться (Бомбардир)
+  chatMessages: [смеётся словно террорист]
+  chatTriggers:
+  - смеётся словно террорист
+  - смеётся словно террорист.
+  - смихихи
+
+- type: emote
+  id: VoronKar
+  category: Vocal
+  buttonText: Каркать (Ворон)
+  chatMessages: [каркает]
+  chatTriggers:
+  - каркает
+  - каркает.
+  - кар
+
+- type: emote
+  id: WolfHowl
+  category: Vocal
+  buttonText: Выть (Волк)
+  chatMessages: [воет словно волк]
+  chatTriggers:
+  - воет словно волк
+  - воет словно волк.
+  - выыыы
+
+- type: emote
+  id: Fart
+  category: Vocal
+  buttonText: Пёрнуть
+  chatMessages: [пердит]
+  chatTriggers:
+    - пердит
+    - пердит!
+    - пердит.
+    - пукнул
+    - пукнул!
+    - пукнул.
+    - пёрнул
+    - пёрнул.
+    - пёрнул!
+    - перданул
+    - перданул.
+    - перданул!
+    - пукает
+    - пукает.
+    - пукает!
+    - напердел
+    - напердел.
+    - напердел!
+
+- type: emote
+  id: CatMew
+  category: Vocal
+  buttonText: Мяукать (Мило)
+  chatMessages: [мило мяучет]
+  chatTriggers:
+  - мило мяучет
+  - мило мяучет.
+  - мев
+  - мев.
+
+- type: emote
+  id: MoreBullets
+  category: Vocal
+  buttonText: Запрос патронов
+  chatMessages: [запрашивает патроны]
+  chatTriggers:
+  - запрашивает патроны
+  - запрашивает патроны.
+  - патроны
+  - патроны.
+  - пули
+  - пули.
+  - магазины
+  - магазины.
+  - аммуниция
+  - аммуниция.
+  - запрос
+  - запрос.
+  - запрос патронов
+  - запрос патронов.
+  - запрос аммуниции
+  - запрос аммуниции.
+
+- type: emote
+  id: Moan
+  category: Vocal
+  buttonText: Стонать
+  chatMessages: [стонет]
+  chatTriggers:
+    - стонет
+    - стонет.
+    - постанывает
+    - постанывает.
+    - простанывает
+    - простанывает.
+
+# hand emotes

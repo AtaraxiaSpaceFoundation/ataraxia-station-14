@@ -1,0 +1,150 @@
+# ROADS
+
+- type: entity
+  parent: BaseStructure
+  id: SmallWorldRoadFourWay
+  suffix: Маленький Мир
+  name: road four way
+  description: For your foots?...
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Other/SmallWorld/roads.rsi
+    state: roadfourway
+  - type: Transform
+    anchored: true
+  - type: Physics
+    canCollide: false
+  - type: Anchorable
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+  - type: StaticPrice
+    price: 10
+  - type: Construction
+    graph: SmallWorldRoads
+    node: SmallWorldRoadFourWay
+
+- type: entity
+  parent: SmallWorldRoadFourWay
+  id: SmallWorldRoadStraight
+  suffix: Маленький Мир
+  name: road straight
+  description: For your foots?...
+  components:
+  - type: Sprite
+    state: roadstraight
+  - type: Construction
+    graph: SmallWorldRoads
+    node: SmallWorldRoadStraight
+
+- type: entity
+  parent: SmallWorldRoadFourWay
+  id: SmallWorldRoadThreeWay
+  suffix: Маленький Мир
+  name: road three way
+  description: For your foots?...
+  components:
+  - type: Sprite
+    state: roadthreeway
+  - type: Construction
+    graph: SmallWorldRoads
+    node: SmallWorldRoadThreeWay
+
+- type: entity
+  parent: SmallWorldRoadFourWay
+  id: SmallWorldRoadTurn
+  suffix: Маленький Мир
+  name: road turn
+  description: For your foots?...
+  components:
+  - type: Sprite
+    state: roadturn
+  - type: Construction
+    graph: SmallWorldRoads
+    node: SmallWorldRoadTurn
+
+# BUILDINGS
+
+- type: entity
+  parent: BaseStructure
+  id: SmallWorldBuildingSmallBusiness
+  suffix: Маленький Мир
+  name: small business
+  description: NOT for your foots!!!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Other/SmallWorld/buildings.rsi
+    state: smallbusiness
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+  - type: StaticPrice
+    price: 10
+  - type: Construction
+    graph: SmallWorldBuilding
+    node: SmallWorldBuildingSmallBusiness
+
+- type: entity
+  parent: SmallWorldBuildingSmallBusiness
+  id: SmallWorldBuildingSmallHouses
+  suffix: Маленький Мир
+  name: small houses
+  description: NOT for your foots!!!
+  components:
+  - type: Sprite
+    state: smallhouses
+  - type: Construction
+    graph: SmallWorldBuilding
+    node: SmallWorldBuildingSmallHouses
+
+- type: entity
+  parent: SmallWorldBuildingSmallBusiness
+  id: SmallWorldBuildingSmallMuseum
+  suffix: Маленький Мир
+  name: small museum
+  description: NOT for your foots!!!
+  components:
+  - type: Sprite
+    state: smallmuseum
+  - type: Construction
+    graph: SmallWorldBuilding
+    node: SmallWorldBuildingSmallMuseum
+
+- type: entity
+  parent: SmallWorldBuildingSmallBusiness
+  id: SmallWorldBuildingSmallWarehouse
+  suffix: Маленький Мир
+  name: small warehouse
+  description: NOT for your foots!!!
+  components:
+  - type: Sprite
+    state: warehouse
+  - type: Construction
+    graph: SmallWorldBuilding
+    node: SmallWorldBuildingSmallWarehouse

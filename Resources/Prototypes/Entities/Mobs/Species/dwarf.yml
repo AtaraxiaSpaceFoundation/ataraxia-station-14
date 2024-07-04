@@ -42,11 +42,11 @@
         - MobMask
         layer:
         - MobLayer
-  - type: Vocal
+  - type: Vocal # Ataraxia-Vocal-Human
     sounds:
-      Male: UnisexDwarf
-      Female: FemaleDwarf
-      Unsexed: UnisexDwarf
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
   - type: ReplacementAccent
     accent: dwarf
   - type: Speech

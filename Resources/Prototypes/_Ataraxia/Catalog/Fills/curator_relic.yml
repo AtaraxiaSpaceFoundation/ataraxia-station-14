@@ -1,0 +1,142 @@
+- type: entity
+  parent: ClothingBackpackNinja
+  id: ClothingBackpackNinjaCuratorPack
+  name: набор ниндзи
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingMaskNinja
+      - id: ClothingHeadHelmetSpaceNinja
+      - id: ClothingShoesSwat
+      - id: ClothingUniformJumpsuitNinja
+      - id: ClothingHandsGlovesPowerglove
+      - id: CombatKnife
+      - id: ThrowingStar
+        amount: 4
+      - id: Multitool
+      - id: ImprovedScrewdriver
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorSyndie
+  name: набор синдиката
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingUniformJumpskirtTacticalMaid
+      - id: ClothingEyesNightVisionGogglesSyndie
+      - id: ClothingHandsTacticalMaidGloves
+      - id: ClothingHeadHatTacticalMaidHeadband
+      - id: ClothingNeckScarfStripedSyndieRed
+      - id: ClothingShoesBootsCombat
+      - id: SyndieHandyFlag
+      - id: FoodSnackSyndi
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingOuterArmorBasic
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorInteQ
+  name: набор интек
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingUniformJumpskirtInteQTacticalMaid
+      - id: ClothingHeadHatInteQTacticalMaidHeadband
+      - id: ClothingHandsInteQTacticalMaidGloves
+      - id: ClothingNeckScarfStripedBrown
+      - id: ItemFlagMiniInteQ
+      - id: FoodSnackInteQCookies
+      - id: ClothingShoesBootsCombat
+      - id: ClothingEyesGogglessInteQ
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingOuterArmorBasic
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorLavaLand
+  name: набор лаваленда
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorBone
+      - id: ShardGlass
+        amount: 4
+      - id: ClothingHeadHelmetBone
+      - id: ClothingHeadHatGladiator
+      - id: ClothingUniformJumpsuitGladiator
+      - id: MaterialBones
+      - id: BowImprovised
+      - id: ArrowRegular
+        amount: 2
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorTemplar
+  name: набор рыцаря
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorDarkTemplar
+      - id: Claymore
+      - id: WhiteKnight
+      - id: BlackKnight
+      - id: BruteAutoInjector
+      - id: ClothingMaskGasSecurity
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorSamurai
+  name: набор самурая
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterDogi
+      - id: ClothingOuterCoatSamurai
+      - id: ClothingMaskNeckGaiter
+        amount: 2
+      - id: StimpackMini
+        amount: 2
+      - id: BruteAutoInjector
+        amount: 2
+      - id: Katana
+      - id: ClothingHandsGlovesMantisBladeCurator
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorPirate
+  name: набор пирата
+  components:
+  - type: StorageFill
+    contents:
+      - id: PiratePDA
+      - id: ClothingOuterCoatPirate
+      - id: ClothingHeadHatPirateTricord
+      - id: ClothingUniformJumpsuitPirate
+      - id: PirateHandyFlag
+      - id: ClothingHeadHatPirate
+        amount: 2
+      - id: WeaponRevolverPirate
+      - id: CannonBallGlassshot
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelCuratorHotlineMiami
+  name: набор Hotline Miami
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHatRichard
+      - id: ClothingHeadHatHoodMoth
+      - id: ClothingShoesBootsCombat
+        amount: 2
+      - id: SyringeStimulants
+        amount: 2
+      - id: BruteAutoInjector
+        amount: 2
+      - id: ClothingUniformJumpsuitBiker
+      - id: ClothingUniformJumpsuitJacket
+      - id: BaseBallBat
+      - id: ButchCleaver
+      - id: ClothingOuterVestWebMerc
+        amount: 2

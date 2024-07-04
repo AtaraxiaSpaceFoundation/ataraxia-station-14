@@ -20,9 +20,9 @@
       - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    sprite: Ataraxia/Structures/Windows/window.rsi # Ataraxia
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: Ataraxia/Structures/Windows/window.rsi # Ataraxia
     state: full
   - type: Physics
     bodyType: Static
@@ -72,7 +72,7 @@
         acts: [ "Destruction" ]
   - type: Airtight
   - type: IconSmooth
-    key: walls
+    key: walls  # Ataraxia
     base: window
   - type: InteractionPopup
     interactSuccessSound:
@@ -93,7 +93,7 @@
   - type: WindowMark
     replacementProto: WallSolid
   - type: BlockWeather
-  
+
 - type: entity
   id: WindowRCDResistant
   parent: Window
@@ -123,10 +123,10 @@
         collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: Ataraxia/Structures/Windows/directional.rsi # Ataraxia
     state: window
   - type: InteractionPopup
     interactSuccessSound:
@@ -197,7 +197,7 @@
   - type: ReflectAspectMark
 
 - type: entity
-  id: WindowDirectionalRCDResistant  
+  id: WindowDirectionalRCDResistant
   parent: WindowDirectional
   abstract: true
   components:
@@ -232,14 +232,14 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/window_diagonal.rsi # Ataraxia
     state: state0
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls  # Ataraxia
     base: state
   - type: Icon
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: Ataraxia/Structures/Windows/window_diagonal.rsi # Ataraxia
     state: state0
   - type: Fixtures
     fixtures:

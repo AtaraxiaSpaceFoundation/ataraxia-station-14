@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyInteQ
+  name: inteq encryption key
+  description: An encryption key used by InteQ.
+  components:
+    - type: EncryptionKey
+      channels:
+        - InteQ
+      defaultChannel: InteQ
+    - type: Sprite
+      layers:
+        - state: crypt_orange
+        - state: inteq_label

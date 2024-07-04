@@ -89,6 +89,10 @@
     color: orange
   - type: StaticPrice
     price: 10
+  - type: Clothing # Ataraxia
+    quickEquip: false
+    slots:
+    - Belt
 
 
 - type: entity

@@ -1,0 +1,222 @@
+- type: entity
+  id: TableUraniumGlass
+  parent: TableBase
+  name: стол из уранового стекла
+  description: Квадратный кусок уранового стекла, стоящий на четырех металлических ножках. Красиво!
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Furniture/Tables/uranium.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Furniture/Tables/uranium.rsi
+  - type: GlassTable
+    climberDamage:
+      types:
+        Slash: 30
+    tableDamage:
+      types:
+        Blunt: 100
+    tableMassLimit: 300
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/glass_break2.ogg
+      - !type:ChangeConstructionNodeBehavior
+        node: TableFrame
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlassUranium:
+            min: 1
+            max: 1
+          PartRodMetal1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: Table
+    node: TableUraniumGlass
+
+- type: entity
+  id: TableReinforcedUraniumGlass
+  parent: TableBase
+  name: стол из уранового бронестекла
+  description: Квадратный кусок уранового стекла, стоящий на четырех металлических ножках. Очень прочный.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Furniture/Tables/r_uranium.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Furniture/Tables/r_uranium.rsi
+  - type: GlassTable
+    climberDamage:
+      types:
+        Slash: 25
+    tableDamage:
+      types:
+        Blunt: 40
+    tableMassLimit: 350
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/glass_break2.ogg
+      - !type:ChangeConstructionNodeBehavior
+        node: TableFrame
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlassUranium:
+            min: 1
+            max: 1
+          PartRodMetal1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: Table
+    node: TableReinforcedGlass
+
+- type: entity
+  id: TableReinforcedPlasmaGlass
+  parent: TableBase
+  name: стол из плазменного бронестекла
+  description: Квадратный кусок плазменного стекла, стоящий на четырех металлических ножках. Очень прочный.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Furniture/Tables/r_plasma.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Furniture/Tables/r_plasma.rsi
+  - type: GlassTable
+    climberDamage:
+      types:
+        Slash: 25
+    tableDamage:
+      types:
+        Blunt: 40
+    tableMassLimit: 250
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/glass_break2.ogg
+      - !type:ChangeConstructionNodeBehavior
+        node: TableFrame
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlassPlasma:
+            min: 1
+            max: 1
+          PartRodMetal1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: Table
+    node: TableReinforcedGlass
+
+- type: entity
+  id: FancyTableBlackred
+  parent: TableBase
+  name: стол с чёрно-красной скатертью
+  description: Красивый, мягкий, сексуальный...
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Furniture/Tables/fancy_table_blackred.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Furniture/Tables/fancy_table_blackred.rsi
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/woodhit.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
+          MaterialCloth1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: Table
+    node: TableCarpet
+  - type: Tag
+    tags:
+    - Wooden
+
+- type: entity
+  id: FancyTableMnochrome
+  parent: TableBase
+  name: стол с монохромной скатертью
+  description: Красивый, мягкий, сексуальный...
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Furniture/Tables/fancy_table_monochrome.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Furniture/Tables/fancy_table_monochrome.rsi
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/woodhit.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
+          MaterialCloth1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: Table
+    node: TableCarpet
+  - type: Tag
+    tags:
+    - Wooden

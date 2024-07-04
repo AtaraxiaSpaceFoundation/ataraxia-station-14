@@ -1,0 +1,16 @@
+- type: entity
+  id: TerrorSpiderArm
+  noSpawn: true
+  name: "лапка паука ужаса"
+  parent: PartSilicon
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Mobs/Silicon/drone.rsi
+    state: "l_hand"
+  - type: Icon
+    sprite: Mobs/Silicon/drone.rsi
+    state: "l_hand"
+  - type: BodyPart
+    partType: Hand
+    symmetry: Left

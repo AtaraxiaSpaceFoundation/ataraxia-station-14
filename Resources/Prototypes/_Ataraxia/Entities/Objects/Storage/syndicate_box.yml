@@ -1,0 +1,14 @@
+- type: entity
+  parent: BoxCardboard
+  id: BaseBoxSyndicate
+  suffix: Пустой, Синдикат
+  name: red box
+  description: Red box, I wonder what's in there?
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Storage/syndicate_box.rsi
+    state: icon
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,3

@@ -1,0 +1,22 @@
+<Document>
+  # Скрытень ужаса
+
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderLurker" Caption=""/>
+  </Box>
+  Выжидает в засаде, а после быстро расправляется со своей целью, действует либо как одиночка, либо в гнезде.
+
+  ## Особенности
+  
+  - Получает [color=#ff1f1f]на 10% меньше тупого, 10% меньше режущего урона, на 10% больше колотого урона[/color], [color=#ffa500]на 40% больше урона от огня[/color] и [color=#46A446]на 50% меньше урона от яда[/color].
+  - Наносит [color=#ff1f1f]12 режущего[/color], [color=#46A446]8 яда[/color] и [color=#18A0C9]8 стамины[/color] своими когтями.
+  - Может становиться невидимым.
+  - Имеет 100 ХП.
+
+  Способности:
+  <Box>
+    <GuideEntityEmbed Entity="WeaponClawLurkerTerrorSpider" Caption=""/>
+    <GuideEntityEmbed Entity="TerrorStealthIcon" Caption=""/>
+  </Box>
+
+</Document>

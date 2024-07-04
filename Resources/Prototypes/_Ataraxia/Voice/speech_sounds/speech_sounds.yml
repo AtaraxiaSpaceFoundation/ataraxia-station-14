@@ -1,0 +1,17 @@
+- type: speechSounds
+  id: XenomorphHybrid
+  saySound:
+    path: /Audio/Ataraxia/Voice/xenomorph_hybrid/xenomorph.ogg
+  askSound:
+    path: /Audio/Ataraxia/Voice/xenomorph_hybrid/xenomorph_ask.ogg
+  exclaimSound:
+    path: /Audio/Ataraxia/Voice/xenomorph_hybrid/xenomorph_exclaim.ogg
+
+- type: speechSounds
+  id: GoofyAhh
+  saySound:
+    path: /Audio/Ataraxia/Voice/SpeechSounds/kazooie/ehh.ogg
+  askSound:
+    path: /Audio/Ataraxia/Voice/SpeechSounds/kazooie/uhm.ogg
+  exclaimSound:
+    path: /Audio/Ataraxia/Voice/SpeechSounds/kazooie/slurp.ogg

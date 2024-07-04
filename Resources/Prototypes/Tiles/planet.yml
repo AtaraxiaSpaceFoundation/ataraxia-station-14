@@ -2,7 +2,10 @@
   id: FloorPlanetDirt
   name: tiles-dirt-floor
   sprite: /Textures/Tiles/Planet/dirt.rsi/dirt.png
-  isSubfloor: true
+  baseTurf: Plating # Ataraxia
+  deconstructTools: [ Digging ] # Ataraxia
+  itemDrop: FloorTileItemAtaraxiaPlanetDirt # Ataraxia
+  isSubfloor: false # Ataraxia
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
@@ -49,7 +52,7 @@
   indestructible: true
 
 # Grass
-- type: tile
+- type: tile # Ataraxia | Слой 1
   id: FloorPlanetGrass
   name: tiles-grass-planet-floor
   sprite: /Textures/Tiles/Planet/Grass/grass.png
@@ -69,11 +72,13 @@
     East: /Textures/Tiles/Planet/Grass/double_edge.png
     North: /Textures/Tiles/Planet/Grass/double_edge.png
     West: /Textures/Tiles/Planet/Grass/double_edge.png
-  baseTurf: FloorPlanetDirt
+  deconstructTools: [ Cutting, Digging ] # Ataraxia
+  itemDrop: FloorTileItemAtaraxiaPlanetGrass # Ataraxia
+  baseTurf: FloorPlanetDirt # Ataraxia
+  #baseTurf: FloorPlanetHumusDirt # Ataraxia
   isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
-  itemDrop: FloorTileItemGrass
   heatCapacity: 10000
   weather: true
   indestructible: true

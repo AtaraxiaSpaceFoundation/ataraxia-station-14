@@ -17,9 +17,6 @@
   icon: "JobIconSeniorPhysician"
   supervisors: job-supervisors-cmo
   canBeAntag: false
-  special:
-    - !type:AddImplantSpecial
-      implants: [ MindShieldImplant ]
   access:
   - Medical
   - Maintenance

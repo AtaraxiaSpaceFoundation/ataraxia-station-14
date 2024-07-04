@@ -1,0 +1,40 @@
+<Document>
+  # Пауки ужаса
+
+  Пауки Ужаса (Terror Spiders) - это результат экспериментов Синдиката по скрещиванию ДНК гигантского космического паука и Ксеноморфа.
+  Как и ксеноморфы, они разумны, а так же формируют улей, который действует агрессивно в отношении гуманоидов в области, в которой расположен их улей. Как и гигантские космические пауки, они заматывают жертв в паутину, пьют внутренности гуманоидов и размножаются путем откладывания яиц, вырастающих во взрослых пауков. Они невероятно сильны в ближнем бою, но слабы против дальнобойного оружия и огня. В качестве дополнительных атак, они используют различные яды, поражающие врагов на дальнем расстоянии, или при укусе паука.
+
+  Пауки Ужаса начинают свое размножение в виде одной королевы, появившейся в случайном месте на станции.
+
+  # Распределение
+
+  Тир 1, Босс:
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderQueen" Caption="Королева."/>
+  </Box>
+
+  Тир 2, Минибоссы:
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderMother" Caption="Матерь."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderPrincess" Caption="Принцесса."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderPrince" Caption="Принц."/>
+  </Box>
+
+  Тир 3, Специалисты:
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderDestroyer" Caption="Разрушитель."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderGuardian" Caption="Страж."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderDefiler" Caption="Осквернитель."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderWidow" Caption="Вдова."/>
+  </Box>
+
+  Тир 4, Солдаты:
+  <Box>
+    <GuideEntityEmbed Entity="MobTerrorSpiderReaper" Caption="Жнец."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderDrone" Caption="Дрон."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderHealer" Caption="Лекарь."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderLurker" Caption="Скрытень."/>
+    <GuideEntityEmbed Entity="MobTerrorSpiderKnight" Caption="Рыцарь."/>
+  </Box>
+
+</Document>

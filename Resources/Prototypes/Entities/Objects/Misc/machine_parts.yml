@@ -38,6 +38,9 @@
     - type: MachinePart
       part: Manipulator
       rating: 1
+    - type: Tag # Ataraxia
+      tags:
+        - ManipulatorStockPart
 
 - type: entity
   id: MatterBinStockPart
@@ -51,3 +54,6 @@
     - type: MachinePart
       part: MatterBin
       rating: 1
+    - type: Tag # Ataraxia
+      tags:
+        - MatterBinStockPart

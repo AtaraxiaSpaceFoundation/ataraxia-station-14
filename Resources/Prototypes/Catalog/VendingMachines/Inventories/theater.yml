@@ -67,6 +67,17 @@
     ClothingShoesBootsCowboyBrown: 1
     ClothingShoesBootsCowboyBlack: 1
     ClothingShoesBootsCowboyWhite: 1
+ # Ataraxia-Start
+    ClothingUniformJumpsuitClownis: 2
+    ClothingUniformJumpsuitFallout14: 2
+    ClothingUniformJumpsuitFalloutBase: 2
+    ClothingUniformJumpsuitGoku: 1
+    ClothingUniformJumpsuitGokuAlt: 1
+    ClothingUniformJumpsuitRotten: 2
+    ClothingUniformJumpsuitMegaMan: 1
+    ClothingUniformJumpsuitMegaManX: 1
+    ClothinNeckMantleElderLizards: 2
+ # Ataraxia-End
   emaggedInventory:
     ClothingShoesBling: 1
     ClothingShoesBootsCowboyFancy: 1

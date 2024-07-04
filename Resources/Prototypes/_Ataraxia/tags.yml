@@ -1,0 +1,5 @@
+- type: Tag
+  id: ManipulatorStockPart
+
+- type: Tag
+  id: MatterBinStockPart

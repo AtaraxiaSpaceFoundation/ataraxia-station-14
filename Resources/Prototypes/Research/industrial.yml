@@ -126,7 +126,7 @@
     sprite: Objects/Tools/handheld_mass_scanner.rsi
     state: icon
   discipline: Industrial
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 7500
   recipeUnlocks:
   - RadarConsoleCircuitboard
@@ -140,7 +140,7 @@
     sprite: Structures/Shuttles/gyroscope.rsi
     state: base
   discipline: Industrial
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
@@ -155,7 +155,7 @@
     sprite: Objects/Devices/Holoprojectors/atmos.rsi
     state: icon
   discipline: Industrial
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 7500
   recipeUnlocks:
   - HellfireFreezerMachineCircuitBoard
@@ -169,7 +169,7 @@
     sprite: Objects/Tools/welder_experimental.rsi
     state: icon
   discipline: Industrial
-  tier: 2
+  tier: 1 # Ataraxia
   cost: 10000
   recipeUnlocks:
     - WelderExperimental
@@ -187,7 +187,7 @@
     sprite: Clothing/Back/Backpacks/holding.rsi
     state: holding
   discipline: Industrial
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 15000
   recipeUnlocks:
   - ClothingBackpackHolding
@@ -201,7 +201,7 @@
     sprite: Objects/Power/power_cells.rsi
     state: microreactor
   discipline: Industrial
-  tier: 3
+  tier: 2 # Ataraxia
   cost: 10000
   recipeUnlocks:
   - PowerCellMicroreactor

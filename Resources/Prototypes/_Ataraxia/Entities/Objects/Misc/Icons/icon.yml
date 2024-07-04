@@ -1,0 +1,32 @@
+# STEALTH ICON
+
+- type: entity
+  parent: BaseItem
+  id: TerrorStealthIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/terror_spider.rsi
+    state: stealth
+
+# EGG BIRTH ICON
+
+- type: entity
+  parent: BaseItem
+  id: TerrorEggIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/terror_spider.rsi
+    state: egg_birth
+
+# HEADCRAB JUMP ICON
+
+- type: entity
+  parent: BaseItem
+  id: HeadcrabJumpIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/headcrab.rsi
+    state: jump

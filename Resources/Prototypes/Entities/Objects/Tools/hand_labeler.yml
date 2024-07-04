@@ -25,3 +25,7 @@
           - Item
         tags:
           - Structure
+    - type: Clothing # Ataraxia
+      quickEquip: false
+      slots:
+      - Belt

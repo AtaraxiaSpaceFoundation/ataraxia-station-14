@@ -1,0 +1,98 @@
+- type: entity
+  parent: [BaseItem, BasePart]
+  id: PartPredator
+  name: "predator body part"
+  abstract: true
+
+- type: entity
+  parent: [PartPredator, BaseTorso]
+  id: TorsoPredator
+  name: "predator torso"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "torso_m"
+
+- type: entity
+  parent: [PartPredator, BaseHead]
+  id: HeadPredator
+  name: "predator head"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "head_m"
+    - type: Tag
+      tags:
+        - Head
+
+- type: entity
+  parent: [PartPredator, BaseLeftArm]
+  id: LeftArmPredator
+  name: "left predator arm"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "l_arm"
+
+- type: entity
+  parent: [PartPredator, BaseRightArm]
+  id: RightArmPredator
+  name: "right predator arm"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "r_arm"
+
+- type: entity
+  parent: [PartPredator, BaseLeftHand]
+  id: LeftHandPredator
+  name: "left predator hand"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "l_hand"
+
+- type: entity
+  parent: [PartPredator, BaseRightHand]
+  id: RightHandPredator
+  name: "right predator hand"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "r_hand"
+
+- type: entity
+  parent: [PartPredator, BaseLeftLeg]
+  id: LeftLegPredator
+  name: "left predator leg"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "l_leg"
+
+- type: entity
+  parent: [PartPredator, BaseRightLeg]
+  id: RightLegPredator
+  name: "right predator leg"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "r_leg"
+
+- type: entity
+  parent: [PartPredator, BaseLeftFoot]
+  id: LeftFootPredator
+  name: "left predator foot"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "l_foot"
+
+- type: entity
+  parent: [PartPredator, BaseRightFoot]
+  id: RightFootPredator
+  name: "right predator foot"
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Predator/parts.rsi
+      state: "r_foot"

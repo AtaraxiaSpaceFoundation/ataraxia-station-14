@@ -4,6 +4,8 @@
   id: ClothingOuterBase
   components:
   - type: Clothing
+    equipDelay: 0.45 
+    unequipDelay: 0.20
     slots:
     - outerClothing
   - type: Sprite
@@ -18,6 +20,8 @@
   components:
   - type: Item
     size: Large
+    shape: # Ataraxia
+    - 0,0,3,3
   - type: Clothing
     slots:
     - outerClothing
@@ -177,6 +181,8 @@
   - type: HeldSpeedModifier
   - type: Item
     size: Huge
+    shape: # Ataraxia
+    - 0,0,3,3
 
 - type: entity
   parent: ClothingOuterBase
@@ -200,3 +206,5 @@
   components:
   - type: Item
     size: Large
+    shape: # Ataraxia
+    - 0,0,3,3

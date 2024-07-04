@@ -17,11 +17,7 @@
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
-  whitelistedSpecies:
-    - Human
-    - Dwarf
-    - Felinid
-  canBeAntag: true
+  canBeAntag: false # Ataraxia
   access:
   - Maintenance
   - Engineering
@@ -44,6 +40,7 @@
     shoes: ClothingShoesColorBrown
     id: CEPDA
     ears: ClothingHeadsetCE
+    pocket2: TelescopicBaton # Ataraxia
     underwearb: ClothingUnderwearBottomBoxersCE # White-Underwear
   underweart: ClothingUnderwearTopBraCE # White-Underwear
   underwearb: ClothingUnderwearBottomPantiesCE # White-Underwear

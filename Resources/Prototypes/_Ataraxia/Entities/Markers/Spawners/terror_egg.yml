@@ -1,0 +1,29 @@
+- type: entity
+  parent: MarkerBase
+  id: RandomTerrorSpiderEggSpawner
+  name: terror spider spawner
+  suffix: Яйцо
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Ataraxia/Objects/Misc/egg.rsi
+          state: egg
+    - type: RandomSpawner
+      prototypes:
+        - TerrorSpiderReaperEgg
+        - TerrorSpiderDroneEgg
+        - TerrorSpiderHealerEgg
+        - TerrorSpiderLurkerEgg
+        - TerrorSpiderWidowEgg
+        - TerrorSpiderKnightEgg
+        - TerrorSpiderDefilerEgg
+        - TerrorSpiderDestroyerEgg
+        - TerrorSpiderGuardianEgg
+      chance: 0.92
+      rarePrototypes:
+        - TerrorSpiderPrinceEgg
+        - TerrorSpiderPrincessEgg
+        - TerrorSpiderMotherEgg
+        - TerrorSpiderQueenEgg
+      rareChance: 0.08

@@ -1,0 +1,27 @@
+- type: construction
+  name: лопата
+  description: Лопата. Копает грядки и лица тоже.
+  id: Shovel
+  graph: Shovel
+  startNode: start
+  targetNode: Shovel
+  category: construction-category-tools
+  icon: { sprite: Ataraxia/Objects/Tools/shovel.rsi, state: icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: Shovel
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: Shovel
+          steps:
+            - material: Steel
+              amount: 3
+              doAfter: 8
+            - material: WoodPlank
+              amount: 10
+              doAfter: 3
+    - node: Shovel
+      entity: Shovel

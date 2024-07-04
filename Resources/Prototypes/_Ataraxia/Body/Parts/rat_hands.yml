@@ -1,0 +1,35 @@
+- type: entity
+  id: LeftArmRatQueen
+  noSpawn: true
+  parent: [PartAnimal, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: "l_arm"
+
+- type: entity
+  id: RightArmRatQueen
+  noSpawn: true
+  parent: [PartAnimal, BaseRightArm]
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: "r_arm"
+
+- type: entity
+  id: LeftHandRatQueen
+  noSpawn: true
+  parent: [PartAnimal, BaseLeftHand]
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: "l_hand"
+
+- type: entity
+  id: RightHandRatQueen
+  noSpawn: true
+  parent: [PartAnimal, BaseRightHand]
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
+    state: "r_hand"
