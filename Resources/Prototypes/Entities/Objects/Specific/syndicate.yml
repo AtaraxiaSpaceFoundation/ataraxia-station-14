@@ -58,11 +58,11 @@
   suffix: Empty
   components:
   - type: Sprite
-    sprite: Objects/Devices/communication.rsi
+    sprite: Ataraxia/Objects/Devices/syndicate_uplink.rsi # Ataraxia
     layers:
     - state: old-radio
   - type: Item
-    sprite: Objects/Devices/communication.rsi
+    sprite: Ataraxia/Objects/Devices/syndicate_uplink.rsi # Ataraxia
     heldPrefix: old-radio
     storedRotation: 90
   - type: UserInterface
