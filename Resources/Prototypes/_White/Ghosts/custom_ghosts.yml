@@ -273,6 +273,7 @@
   alpha: 0.8
   ghostName: Fiammetta
   ghostDescription: Горничная под своим кодовым именем. Следит за порядком в кафе Мастера.
+  size: 0.7, 0.7
 
 - type: customGhost
   id: hayras-ghost
@@ -419,12 +420,3 @@
   alpha: 0.9
   ghostName: Никотиноед
   ghostDescription: Поедает никотин в любом виде
-
-#Jabak
-- type: customGhost
-  id: jabak-ghost
-  ckey: Jabak
-  sprite: White/Ghosts/jabak-ghost.rsi
-  alpha: 0.9
-  ghostName: Жопа
-  ghostDescription: Хуй
