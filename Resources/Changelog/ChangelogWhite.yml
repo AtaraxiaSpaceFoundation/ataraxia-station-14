@@ -5463,3 +5463,11 @@
   id: 352
   time: '2024-07-02T22:12:36.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/417
+- author: ThereDrD0
+  changes:
+  - message: "\u0413\u043D\u043E\u043C\u044B \u043F\u0435\u0440\u0435\u0440\u0438\u0441\
+      \u043E\u0432\u0430\u043D\u044B"
+    type: Tweak
+  id: 353
+  time: '2024-07-05T07:09:51.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/419
