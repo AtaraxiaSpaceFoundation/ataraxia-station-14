@@ -253,6 +253,33 @@ BriefcaseSyndieBase: null
 BodyBag_Container: BodyBag
 BodyBag_Folded: BodyBagFolded
 
+# ATARAXIA-MIGRATION (!)
+AlwaysPoweredSmallLightMaintenanceRed: PoweredSmallLight
+BackmenVendingMachineChang: VendingMachineChang
+BackmenVendingMachineCigs: VendingMachineCigs
+BackmenVendingMachineCoffee: VendingMachineCoffee
+BackmenVendingMachineCola: VendingMachineCola
+BackmenVendingMachineDiscount: VendingMachineDiscount
+BackmenVendingMachineDonut: VendingMachineDonut
+BackmenVendingMachineHappyHonk: VendingMachineHappyHonk
+BackmenVendingMachineSnack: VendingMachineSnack
+BackmenVendingMachineSovietSoda: VendingMachineSovietSoda
+BaseBoxInteQEVA: BoxInteQEVA
+GlimmerProber: null
+Oracle: null
+SpawnMobGorillaLargo: SpawnMobRaccoonMorticia
+SpawnPointPrisoner: null
+SpawnPointStationAI: null
+WeaponEarthGovLaserRifle: WeaponLaserCarbine
+WeaponPistolACP14: WeaponPistolMk58
+WeaponShotguntrenchgun4034: WeaponShotgunKammerer
+WeaponSniperMosinNew: WeaponSniperMosin
+WeaponSubMachineGunVectorSpecial: WeaponSubMachineGunDrozd
+ChemDispenser: null
+WeaponLauncherRL5: WeaponLauncherRocket
+WeaponSubMachineGunMP7: WeaponSubMachineGunDrozd
+WeaponTurretLaserNanoTrasenAI: WeaponTurretSyndicateBroken
+
 # 2024-04-14
 BookSpaceLaws: null
 NewsReadCartridge: null
