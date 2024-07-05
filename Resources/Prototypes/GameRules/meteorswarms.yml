@@ -4,7 +4,7 @@
   noSpawn: true
   components:
   - type: GameRule
-    minPlayers: 25
+    minPlayers: 999
   - type: MeteorScheduler
 
 - type: weightedRandomEntity
