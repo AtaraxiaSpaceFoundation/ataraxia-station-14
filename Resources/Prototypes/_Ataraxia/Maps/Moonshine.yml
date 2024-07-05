@@ -2,7 +2,7 @@
   id: Moonshine
   mapName: 'Moonshine Station'
   mapPath: /Maps/Ataraxia/Moonshine/moonshine_station.yml
-  minPlayers: 6
+  minPlayers: 0
   stations:
     Moonshine:
       stationProto: StandardNanotrasenStation
