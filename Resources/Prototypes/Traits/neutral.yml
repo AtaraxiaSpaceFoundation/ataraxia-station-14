@@ -23,3 +23,10 @@
   description: trait-southern-desc
   components:
     - type: SouthernAccent
+
+- type: trait
+  id: Hell
+  name: Hell
+  description: Hell
+  components:
+  - type: Hell
