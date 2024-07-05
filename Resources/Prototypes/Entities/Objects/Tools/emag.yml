@@ -7,8 +7,8 @@
   components:
   - type: Emag
   - type: Sprite
-    sprite: Objects/Tools/emag.rsi
-    state: icon
+    sprite: Ataraxia/Objects/Tools/emag.rsi # Ataraxia
+    state: emag_bs
   - type: Item
     sprite: Objects/Tools/emag.rsi
     storedRotation: -90
@@ -20,3 +20,6 @@
   components:
   - type: LimitedCharges
   - type: AutoRecharge
+  - type: Sprite
+    sprite: Ataraxia/Objects/Tools/emag.rsi # Ataraxia
+    state: emag_ultra
