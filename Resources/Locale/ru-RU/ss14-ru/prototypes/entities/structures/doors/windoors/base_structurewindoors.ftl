@@ -1,6 +1,12 @@
 ent-BaseWindoor = { ent-BaseStructure }
     .desc = { ent-BaseStructure.desc }
-    .suffix = { "" }
 ent-BaseSecureWindoor = { ent-BaseWindoor }
     .desc = { ent-BaseWindoor.desc }
-    .suffix = { "" }
+ent-BasePlasmaWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-BaseSecurePlasmaWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-BaseUraniumWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-BaseSecureUraniumWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }

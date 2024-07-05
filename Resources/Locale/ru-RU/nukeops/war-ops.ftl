@@ -1,2 +1,7 @@
-war-ops-infiltrator-unavailable = ОШИБКА: Идет перерасчет пути БСС-перемещения. Ожидаемое время: {$minutes} минут и {$seconds} секунд
-war-ops-shuttle-call-unavailable = Эвакуационный шаттл сейчас недоступен. Пожалуйста, подождите.
+war-ops-infiltrator-unavailable =
+    ОШИБКА: Выполняется перерасчёт БСС-перемещений. Расчётное время: { $time } { $time ->
+        [one] минута
+        [few] минуты
+       *[other] минут
+    }.
+war-ops-shuttle-call-unavailable = Эвакуационный шаттл в настоящее время недоступен. Пожалуйста, подождите

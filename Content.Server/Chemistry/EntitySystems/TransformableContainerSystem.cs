@@ -58,7 +58,7 @@ public sealed class TransformableContainerSystem : EntitySystem
             && _prototypeManager.TryIndex(reagentId.Value.Prototype, out ReagentPrototype? proto))
         {
             var metadata = MetaData(entity.Owner);
-            var val = Loc.GetString("transformable-container-component-glass", ("name", proto.LocalizedName));
+            var val = Loc.GetString("transformable-container-component-glass", ("reagent", proto.LocalizedName));
             _metadataSystem.SetEntityName(entity.Owner, val, metadata);
             _metadataSystem.SetEntityDescription(entity.Owner, proto.LocalizedDescription, metadata);
             entity.Comp.CurrentReagent = proto;

@@ -1,5 +1,5 @@
 mech-verb-enter = Войти
-mech-verb-exit = Покинуть
+mech-verb-exit = Извлечь пилота
 mech-equipment-begin-install = { CAPITALIZE($item) } устанавливается...
 mech-equipment-finish-install = Установка { $item } завершена
 mech-equipment-select-popup = Выбрано следующее: { $item }
@@ -8,5 +8,6 @@ mech-ui-open-verb = Открыть панель управления
 mech-menu-title = Панель управления меха
 mech-integrity-display = Целостность: { $amount }%
 mech-energy-display = Энергия: { $amount }%
+mech-energy-missing = Энергия: ОТСУТСТВУЕТ
 mech-slot-display = Доступно слотов: { $amount }
 mech-no-enter = Вы не можете пилотировать это.

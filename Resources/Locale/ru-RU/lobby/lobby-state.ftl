@@ -1,5 +1,5 @@
 lobby-state-paused = Пауза
-lobby-state-soon = Раунд скоро начинается
+lobby-state-soon = Раунд скоро начнётся
 lobby-state-right-now-question = Прямо сейчас?
 lobby-state-right-now-confirmation = Прямо сейчас
 lobby-state-round-start-countdown-text = Раунд начнётся через: { $timeLeft }
@@ -19,4 +19,7 @@ lobby-state-player-status-round-time =
         [few] минуты
        *[other] минут
     }
-lobby-state-preloading = Скоро
+lobby-state-song-text = Играет: [color=white]{ $songTitle }[/color], исполнитель [color=white]{ $songArtist }[/color]
+lobby-state-song-no-song-text = В лобби не играет песня.
+lobby-state-song-unknown-title = [color=dimgray]Неизвестное название[/color]
+lobby-state-song-unknown-artist = [color=dimgray]Неизвестный исполнитель[/color]

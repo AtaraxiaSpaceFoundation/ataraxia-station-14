@@ -1,3 +1,4 @@
 ent-RadioHandheld = портативная рация
     .desc = Удобная портативная рация.
-    .suffix = { "" }
+ent-RadioHandheldSecurity = рация охраны
+    .desc = Удобная рация охраны.
