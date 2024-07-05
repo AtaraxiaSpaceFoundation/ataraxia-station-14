@@ -120,9 +120,7 @@
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
-  - type: ReplacementAccent
-    accent: slimes
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Bubblish
     understands:

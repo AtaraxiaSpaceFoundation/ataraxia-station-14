@@ -28,7 +28,7 @@
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
 
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - GalacticCommon
     - SolCommon

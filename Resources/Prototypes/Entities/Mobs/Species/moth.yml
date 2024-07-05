@@ -25,7 +25,7 @@
   - type: Speech
     speechVerb: Moth
     allowedEmotes: ['Chitter', 'Squeak']
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - GalacticCommon
     - Moffic

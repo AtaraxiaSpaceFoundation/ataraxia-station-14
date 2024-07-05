@@ -36,7 +36,7 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalIan
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Dog
     understands:
@@ -131,7 +131,7 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalNamedCat
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Cat
     understands:
@@ -157,7 +157,7 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalNamedCat
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Cat
     understands:
@@ -302,7 +302,7 @@
     spawned:
     - id: FoodMeat
       amount: 2
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Dog
     understands:
@@ -399,7 +399,7 @@
     spawned:
     - id: FoodMeat
       amount: 3
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Dog
     understands:
@@ -562,7 +562,7 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalRenault
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Fox
     understands:
@@ -617,7 +617,7 @@
     - Hamster
     - VimPilot
     - ChefPilot
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Mouse
     understands:
@@ -791,7 +791,7 @@
     attributes:
       proper: true
       gender: female
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Bubblish
     understands:
@@ -831,7 +831,7 @@
     attributes:
       proper: true
       gender: male
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Monkey
     understands:
@@ -865,7 +865,7 @@
 #  - type: AlwaysRevolutionaryConvertible
   - type: StealTarget
     stealGroup: AnimalTropico
-  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - Crab
     understands:
