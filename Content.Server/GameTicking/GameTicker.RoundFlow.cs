@@ -453,8 +453,6 @@ namespace Content.Server.GameTicking
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
             _replayRoundText = roundEndText;
-
-            RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // WD-EDIT
         }
 
         private async void SendRoundEndDiscordMessage()
@@ -505,7 +503,9 @@ namespace Content.Server.GameTicking
             _sawmill.Info("Restarting round!");
 
             SendServerMessage(Loc.GetString("game-ticker-restart-round"));
-            RaiseLocalEvent(new RealRoundEndedEvent());
+
+            RaiseLocalEvent(new RealRoundEndedEvent()); // WD
+            RaiseLocalEvent(new RoundEndedEvent(RoundId, RoundDuration())); // WD
 
             RoundNumberMetric.Inc();
 
