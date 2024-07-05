@@ -2,7 +2,7 @@
   id: WonderDelta
   mapName: 'WonderDelta Station'
   mapPath: /Maps/Ataraxia/Delta/wonder_delta.yml
-  minPlayers: 6
+  minPlayers: 0
   stations:
     WonderDelta:
       stationProto: StandardNanotrasenStation
