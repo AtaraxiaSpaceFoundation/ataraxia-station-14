@@ -18,9 +18,9 @@
   id: AtaraxiaLobbyScreen5
   path: Ataraxia/LobbyScreens/5.rsi
 
-#- type: animatedLobbyScreen
-#  id: AtaraxiaLobbyScreen6
-#  path: Ataraxia/LobbyScreens/6.rsi
+- type: animatedLobbyScreen
+  id: AtaraxiaLobbyScreen6
+  path: Ataraxia/LobbyScreens/6.rsi
 
 - type: animatedLobbyScreen
   id: AtaraxiaLobbyScreen7
