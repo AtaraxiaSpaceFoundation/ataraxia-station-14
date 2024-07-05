@@ -1,139 +1,239 @@
-﻿- files: ["12am.ogg"]
+﻿- files: ["5opka_stuzha.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "12am"
+  copyright: "5opka"
   source: "Nashol"
 
-- files: ["after_dark.ogg"]
+- files: ["adamczyk_phantom_liberty.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "after dark"
+  copyright: "P.T Adamczyk"
   source: "Nashol"
 
-- files: ["burning_memory.ogg"]
+- files: ["adamczyk_the_rebel_path.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "burning memory"
+  copyright: "P.T Adamczyk"
   source: "Nashol"
 
-- files: ["closed.ogg"]
+- files: ["aydengeorge_space_oddity.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "closed"
+  copyright: "Ayden George"
   source: "Nashol"
 
-- files: ["DIAMANT.ogg"]
+- files: ["barotrauma_alien_syndicate.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "DIAMANT"
-  source: "Rammstein"
-
-- files: ["drown.ogg"]
-  license: "CC-BY-NC-SA-3.0"
-  copyright: "drown"
+  copyright: "Barotrauma"
   source: "Nashol"
 
-- files: ["dust.ogg"]
+- files: ["bsp_12am.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "dust"
+  copyright: "British Sea Power"
   source: "Nashol"
 
-- files: ["freaks.ogg"]
+- files: ["bumer_perimetr.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "freaks"
+  copyright: "Бумер"
   source: "Nashol"
 
-- files: ["heres_to_you.ogg"]
+- files: ["caretaker_burning_memory.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "heres to you"
+  copyright: "The Caretaker"
   source: "Nashol"
 
-- files: ["nightcall.ogg"]
+- files: ["chrisremo_space_asshole.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "nightcall"
+  copyright: "Chris Remo"
   source: "Nashol"
 
-- files: ["notion.ogg"]
+- files: ["danieldeluxe_star_eater.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "notion"
+  copyright: "Daniel Deluxe"
   source: "Nashol"
 
-- files: ["oceanman.ogg"]
+- files: ["davidbowie_space_oddity.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "oceanman"
+  copyright: "David Bowie"
   source: "Nashol"
 
-- files: ["perfect_girl.ogg"]
+- files: ["davidbowie_starman.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "perfect girl"
+  copyright: "David Bowie"
   source: "Nashol"
 
-- files: ["protorave.ogg"]
+- files: ["joanbaez_heres_to_you.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "protorave"
+  copyright: "Joan Baez"
   source: "Nashol"
 
-- files: ["smerti.ogg"]
+- files: ["kareno_drown.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "smerti"
+  copyright: "Karen O"
   source: "Nashol"
 
-- files: ["space_asshole.ogg"]
+- files: ["kavinsky_nightcall.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "space asshole"
+  copyright: "Kavinsky"
   source: "Nashol"
 
-- files: ["space_oddity.ogg"]
+- files: ["mareux_perfect_girl.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "space_oddity"
+  copyright: "Mareux"
   source: "Nashol"
 
-- files: ["space_oddity-1.ogg"]
+- files: ["moon_dust.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "space_oddity-1"
+  copyright: "M.O.O.N."
   source: "Nashol"
 
-- files: ["space_oddity-2.ogg"]
+- files: ["mrkitty_after_dark.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "space_oddity-2"
+  copyright: "Mr.Kitty"
   source: "Nashol"
 
-- files: ["SS13.ogg"]
+- files: ["musen_space_oddity.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "SS13"
+  copyright: "MUSEN"
   source: "Nashol"
 
-- files: ["star_eater.ogg"]
+- files: ["noizemc_voyager.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "star_eater"
+  copyright: "Noize MC"
   source: "Nashol"
 
-- files: ["starman.ogg"]
+- files: ["plamenev_beskonechnost_tmi.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "starman"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_bystro_sgoraya.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_devushka_kradushhaya_sny.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_geroi_s_tysyachyu_lits.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_kogda_to_davno.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_nash_mir.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_nehvataet_chut_chut.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_opyat_snachala.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_pered_kaznyu.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_shag_v_temnotu.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_sokrushitel_velikih.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_uhozju.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_vne_smerti.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plamenev_volya_nozja.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plamenev"
+  source: "https://vk.com/audios-54341096"
+
+- files: ["plenka_closed.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Plenka"
   source: "Nashol"
 
-- files: ["stuzha.ogg"]
+- files: ["poloz_on_my_way_to_hell.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "stuzha"
-  source: "5opka"
-
-- files: ["syndicate.ogg"]
-  license: "CC-BY-NC-SA-3.0"
-  copyright: "syndicate"
+  copyright: "Poloz"
   source: "Nashol"
 
-- files: ["temnotu.ogg"]
+- files: ["poormanspoison_feed_the_machine.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "temnotu"
+  copyright: "Poor Mans Poison"
   source: "Nashol"
 
-- files: ["tomorrow.ogg"]
+- files: ["poormanspoison_give_and_take.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "tomorrow"
+  copyright: "Poor Mans Poison"
   source: "Nashol"
 
-- files: ["Voyager.ogg"]
+- files: ["rammstein_diamant.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "Voyager"
+  copyright: "Rammstein"
   source: "Nashol"
 
-- files: ["your_house.ogg"]
+- files: ["ratbot_whos_ready_for_tomorrow.ogg"]
   license: "CC-BY-NC-SA-3.0"
-  copyright: "your_house"
+  copyright: "Rat Boy"
+  source: "Nashol"
+
+- files: ["rosawalton_want_to_stay_at_your_house.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Rosa Walton"
+  source: "Nashol"
+
+- files: ["rubberband_penis_music.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Rubber Band"
+  source: "Nashol"
+
+- files: ["seapower_ecstatic_vibrations.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Sea Power"
+  source: "Nashol"
+
+- files: ["surfcurse_freaks.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Surf Curse"
+  source: "Nashol"
+
+- files: ["tilllindermann_ubers_meer.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Till Lindermann"
+  source: "Nashol"
+
+- files: ["tns_ss13.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "The Ninja Scout"
+  source: "Nashol"
+
+- files: ["tro_notion.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "The Rare Occasions"
+  source: "Nashol"
+
+- files: ["ween_oceanman.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Ween"
   source: "Nashol"
