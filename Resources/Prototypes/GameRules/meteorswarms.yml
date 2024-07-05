@@ -10,9 +10,9 @@
 - type: weightedRandomEntity
   id: DefaultConfig
   weights:
-    GameRuleSpaceDustMinor: 44
-    GameRuleSpaceDustMajor: 22
-    GameRuleMeteorSwarmSmall: 18
+    GameRuleSpaceDustMinor: 50
+    GameRuleSpaceDustMajor: 20
+    GameRuleMeteorSwarmSmall: 15
     GameRuleMeteorSwarmMedium: 10
     GameRuleMeteorSwarmLarge: 5
     GameRuleUristSwarm: 0.05
@@ -37,7 +37,7 @@
     meteors:
       MeteorSpaceDust: 1
     waves:
-      min: 2
+      min: 1
       max: 3
     meteorsPerWave:
       min: 3
@@ -58,8 +58,8 @@
       min: 2
       max: 3
     meteorsPerWave:
-      min: 8
-      max: 12
+      min: 6
+      max: 10
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -78,8 +78,8 @@
   components:
   - type: MeteorSwarm
     meteors:
-      MeteorSmall: 3
-      MeteorMedium: 6
+      MeteorSmall: 1
+      MeteorMedium: 4
       MeteorLarge: 1
 
 - type: entity
@@ -89,9 +89,9 @@
   components:
   - type: MeteorSwarm
     meteors:
-      MeteorSmall: 2
-      MeteorMedium: 4
-      MeteorLarge: 4
+      MeteorSmall: 1
+      MeteorMedium: 2
+      MeteorLarge: 3
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -104,8 +104,8 @@
     meteors:
       MeteorUrist: 1
     waves:
-      min: 3
+      min: 1
       max: 3
     meteorsPerWave:
-      min: 10
-      max: 10
+      min: 6
+      max: 8
