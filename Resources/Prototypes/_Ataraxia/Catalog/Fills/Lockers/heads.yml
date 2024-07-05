@@ -5,28 +5,23 @@
   components:
   - type: StorageFill
     contents:
-#      - id: ClothingOuterArmorCaptainCarapace
+      - id: WeaponEgun
       - id: NukeDisk
       - id: PinpointerNuclear
       - id: CaptainIDCard
-      - id: ClothingOuterHardsuitCap
-      - id: ClothingMaskGasCaptain
-      - id: WeaponDisabler
       - id: CommsComputerCircuitboard
-#      - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
       - id: ClothingBeltSheathFilled
       - id: DoorRemoteCommand
-#      - id: RubberStampCaptain
+#      - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
+      - id: WeaponAntiqueLaser
       - id: JetpackCaptainFilled
-#      - id: MedalCase
-      - id: AntiPsychicKnife  # backmen
-#      - id: ClothingHeadCage # backmen | Ataraxia-remove
-#      - id: ClothingHeadHatCapcap
+#      - id: MedalCase # ATARAXIA-CAPTAINDROBE
+      - id: CommandBudgetCard
+      - id: CommandBudgetPinPaper
+      - id: ClothingOuterHardsuitCap
+      - id: OxygenTankFilled
 
 - type: entity # ВЕРСИЯ БЕЗ КАПИТАНШКАФА
   id: LockerCaptainFilledNoDrobe
@@ -35,33 +30,21 @@
   components:
   - type: StorageFill
     contents:
-      - id: Eftpos # backmen
-        amount: 3 # backmen
-#      - id: ClothingOuterArmorCaptainCarapace
-      - id: NukeDisk
-      - id: PinpointerNuclear
-      - id: CaptainIDCard
-      - id: WeaponDisabler
-      - id: CommsComputerCircuitboard
-#      - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
-      - id: PlushieNuke
-        prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingBeltSheathFilled
-      - id: DoorRemoteCommand
-#      - id: RubberStampCaptain
-      - id: WeaponAntiqueLaser
-      - id: JetpackCaptainFilled
-#      - id: MedalCase
-#      - id: ClothingHeadHatCapcap
-      # Corvax-Resprite-Start
-#      - id: ClothingHeadCaptainHat
-#      - id: ClothingOuterCoatCaptain
-      # Corvax-Resprite-End
-      - id: AntiPsychicKnife  # backmen
-#      - id: ClothingHeadCage # backmen | Ataraxia-remove
+    - id: WeaponEgun
+    - id: NukeDisk
+    - id: PinpointerNuclear
+    - id: CaptainIDCard
+    - id: CommsComputerCircuitboard
+    - id: PlushieNuke
+      prob: 0.1
+    - id: ClothingBeltSheathFilled
+    - id: DoorRemoteCommand
+#    - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
+    - id: WeaponAntiqueLaser
+    - id: JetpackCaptainFilled
+#    - id: MedalCase # ATARAXIA-CAPTAINDROBE
+    - id: CommandBudgetCard
+    - id: CommandBudgetPinPaper
 
 - type: entity # ВЕРСИЯ БЕЗ КАПИТАНШКАФА
   id: LockerCaptainFilledNoLaserNoDrobe
@@ -70,21 +53,18 @@
   components:
   - type: StorageFill
     contents:
-#      - id: ClothingOuterArmorCaptainCarapace
-      - id: NukeDisk
-      - id: PinpointerNuclear
-      - id: CaptainIDCard
-      - id: WeaponDisabler
-      - id: CommsComputerCircuitboard
-#      - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
-      - id: PlushieNuke
-        prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingBeltSheathFilled
-      - id: DoorRemoteCommand
-#      - id: RubberStampCaptain
-      - id: JetpackCaptainFilled
-#      - id: MedalCase
-      - id: AntiPsychicKnife  # backmen | Ataraxia-ADD
+    - id: WeaponEgun
+    - id: NukeDisk
+    - id: PinpointerNuclear
+    - id: CaptainIDCard
+    - id: WeaponDisabler
+    - id: CommsComputerCircuitboard
+    - id: PlushieNuke
+      prob: 0.1
+    - id: ClothingBeltSheathFilled
+    - id: DoorRemoteCommand
+#    - id: RubberStampCaptain # ATARAXIA-CAPTAINDROBE
+    - id: JetpackCaptainFilled
+#    - id: MedalCase # ATARAXIA-CAPTAINDROBE
+    - id: CommandBudgetCard
+    - id: CommandBudgetPinPaper
