@@ -1,6 +1,7 @@
 - type: soundCollection
   id: LobbyMusicAtaraxia
   files:
+    - /Audio/Ataraxia/Music/5opka_stuzha.ogg
     - /Audio/Ataraxia/Music/adamczyk_phantom_liberty.ogg
     - /Audio/Ataraxia/Music/aydengeorge_space_oddity.ogg
     - /Audio/Ataraxia/Music/barotrauma_alien_syndicate.ogg
