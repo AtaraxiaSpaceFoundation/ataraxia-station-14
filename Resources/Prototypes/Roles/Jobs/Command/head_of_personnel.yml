@@ -19,7 +19,7 @@
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
-  announcementPrototype: HeadOfPersonnelArrivalNotification
+  arrivalNotificationPrototype: HeadOfPersonnelArrivalNotification
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human

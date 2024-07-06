@@ -2,6 +2,7 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Standing.Systems;
 using Content.Shared.StatusEffect;
+using Content.Shared.Throwing;
 
 namespace Content.Shared._White.Knockdown;
 
@@ -15,16 +16,24 @@ public sealed class KnockdownOnCollideSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<KnockdownOnCollideComponent, ProjectileHitEvent>(OnProjectileHit);
+        SubscribeLocalEvent<KnockdownOnCollideComponent, ThrowDoHitEvent>(OnEntityHit);
+    }
+
+    private void OnEntityHit(Entity<KnockdownOnCollideComponent> ent, ref ThrowDoHitEvent args)
+    {
+        ApplyEffects(args.Target, ent.Comp);
     }
 
     private void OnProjectileHit(Entity<KnockdownOnCollideComponent> ent, ref ProjectileHitEvent args)
     {
-        _standing.TryLieDown(args.Target, null, SharedStandingStateSystem.DropHeldItemsBehavior.AlwaysDrop);
+        ApplyEffects(args.Target, ent.Comp);
+    }
 
-        if (ent.Comp.BlurTime <= 0f)
-            return;
+    private void ApplyEffects(EntityUid target, KnockdownOnCollideComponent component)
+    {
+        _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.AlwaysDrop);
 
-        _statusEffects.TryAddStatusEffect<BlurryVisionComponent>(args.Target, "BlurryVision",
-            TimeSpan.FromSeconds(ent.Comp.BlurTime), true);
+        if (component.UseBlur)
+            _statusEffects.TryAddStatusEffect<BlurryVisionComponent>(target, "BlurryVision", TimeSpan.FromSeconds(component.BlurTime), true);
     }
 }

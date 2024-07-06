@@ -13,7 +13,7 @@
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   requireAdminNotify: true
-  announcementPrototype: ResearchDirectorArrivalNotification
+  arrivalNotificationPrototype: ResearchDirectorArrivalNotification
   supervisors: job-supervisors-captain
   whitelistedSpecies:
     - Human

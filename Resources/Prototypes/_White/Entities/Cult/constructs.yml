@@ -79,6 +79,8 @@
         - DoorBumpOpener
     - type: NameIdentifier
       group: Construct
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistCult
 
 - type: entity
   id: JuggernautConstruct

@@ -26,4 +26,3 @@
         hard: false
         mask:
         - Opaque
-  - type: KnockdownOnCollide

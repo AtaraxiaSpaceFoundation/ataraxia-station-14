@@ -14,7 +14,7 @@
       time: 36000 #10 hrs
   startingGear: InspectorGear
   icon: "JobIconInspector"
-  announcementPrototype: InspectorArrivalNotification
+  arrivalNotificationPrototype: InspectorArrivalNotification
   supervisors: job-supervisors-captain
   access:
     - Service

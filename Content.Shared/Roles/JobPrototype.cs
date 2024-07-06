@@ -50,7 +50,7 @@ namespace Content.Shared.Roles
         public bool JoinNotifyCrew { get; private set; } = false;
 
         [DataField]
-        public string? AnnouncementPrototype;
+        public string? ArrivalNotificationPrototype;
 
         [DataField]
         public bool RequireAdminNotify { get; private set; } = false;

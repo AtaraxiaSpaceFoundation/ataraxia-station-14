@@ -204,7 +204,7 @@ namespace Content.Shared.Ghost
     /// Contains players, and locations a ghost can warp to
     /// </summary>
     [Serializable, NetSerializable]
-    public sealed class GhostWarpsResponseEvent : EntityEventArgs
+    public sealed class GhostWarpsResponseEvent : EntityEventArgs // WD edit
     {
         public GhostWarpsResponseEvent(List<GhostWarpPlayer> players, List<GhostWarpPlace> places, List<GhostWarpGlobalAntagonist> antagonists)
         {
