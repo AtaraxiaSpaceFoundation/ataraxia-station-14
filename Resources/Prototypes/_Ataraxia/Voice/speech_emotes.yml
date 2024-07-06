@@ -152,7 +152,7 @@
 - type: emote
   id: LizardWeh
   category: Vocal
-  buttonText: Шипеть
+  buttonText: Вех!
   chatMessages: [вех!]
   chatTriggers:
   - вех

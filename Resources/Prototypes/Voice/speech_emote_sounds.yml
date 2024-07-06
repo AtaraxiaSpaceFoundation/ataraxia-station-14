@@ -39,6 +39,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -283,6 +285,8 @@
       collection: FemaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -1259,6 +1263,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -1485,6 +1491,8 @@
       collection: FemaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -1731,6 +1739,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -1977,6 +1987,8 @@
       collection: FemaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -2196,6 +2208,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -2418,6 +2432,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -2642,6 +2658,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -2887,6 +2905,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -3132,6 +3152,8 @@
       collection: FemaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -3358,6 +3380,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -3617,6 +3641,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
@@ -3840,6 +3866,8 @@
       collection: MaleGasp
       params:
         volume: -10
+    Hiss:
+      collection: FelinidHisses
     Fart:
       collection: Fart
       params:
