@@ -3,7 +3,7 @@
   id: Scream
   category: Vocal
   buttonText: Кричать
-  chatMessages: [ кричит, орет, вопит, рявкает ]
+  chatMessages: [ кричит, орёт, визжит ]
   chatTriggers:
     - scream
     - screams
@@ -46,7 +46,7 @@
   id: Laugh
   category: Vocal
   buttonText: Смеяться
-  chatMessages: [ смеется, ржет, усмехается, хохочет, гогочет ]
+  chatMessages: [ смеется, хохочет, хихикает ]
   chatTriggers:
     - laugh
     - laughs
@@ -116,6 +116,9 @@
     - хонк
     - хонк.
     - хонк!
+    - хонкает
+    - хонкает.
+    - хонкает!
     # Ataraxia-Localization-End
   allowMenu: true
 
@@ -219,7 +222,6 @@
     - хлюпает.
     - хлюпает!
     # Ataraxia-Localization-End
-  allowMenu: true
 
 - type: emote
   id: Chitter
@@ -241,7 +243,6 @@
    - стрекочет.
    - стрекочет!
    # Ataraxia-Localization-End
-  allowMenu: true
 
 - type: emote
   id: Squeak
@@ -263,7 +264,6 @@
    - пищит.
    - пищит!
    # Ataraxia-Localization-End
-  allowMenu: true
 
 - type: emote
   id: Click
@@ -481,7 +481,6 @@
     - зажужжала.
     - зажужжала!
     # Ataraxia-Localization-End
-  allowMenu: true
 
 - type: emote
   id: Weh
