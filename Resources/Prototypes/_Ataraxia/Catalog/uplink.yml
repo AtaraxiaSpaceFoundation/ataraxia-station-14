@@ -1,7 +1,7 @@
 - type: listing
   id: UplinkMantisBladeImplanter
-  name: Имплант клинков богомола
-  description: Размещает под кожей ваших рук пару скрытых и смертоносных клинков, рекомендуется избегать встречи с MaxTac во время применения импланта по прямому назначению.
+  name: uplink-MantisBlade-name
+  description: uplink-MantisBlade-desc
   icon: { sprite: /Textures/Ataraxia/Clothing/Hands/mantis.rsi, state: icon }
   productEntity: mantisImplanter
   cost:
@@ -11,8 +11,8 @@
 
 - type: listing
   id: UplinkMantisEBladeImplanter
-  name: Имплант энергетических клинков богомола
-  description: Размещает под кожей ваших рук пару скрытых и смертоносных энергетических клинков, рекомендуется избегать встречи с MaxTac во время применения импланта по прямому назначению.
+  name: uplink-MantisEBlade-name
+  description: uplink-MantisEBlade-desc
   icon: { sprite: /Textures/Ataraxia/Clothing/Hands/mantiseblade.rsi, state: icon }
   productEntity: mantisEImplanter
   cost:
