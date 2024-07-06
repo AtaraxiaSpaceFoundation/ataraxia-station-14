@@ -22597,6 +22597,23 @@ entities:
     - type: Transform
       pos: -28.477703,29.682264
       parent: 2
+- proto: Bola
+  entities:
+  - uid: 15989
+    components:
+    - type: Transform
+      pos: -9.321633,41.837517
+      parent: 2
+  - uid: 15993
+    components:
+    - type: Transform
+      pos: -9.477883,41.858364
+      parent: 2
+  - uid: 15994
+    components:
+    - type: Transform
+      pos: -9.623716,41.754124
+      parent: 2
 - proto: BookBartendersManual
   entities:
   - uid: 16828
@@ -74167,21 +74184,6 @@ entities:
     components:
     - type: Transform
       pos: -15.619384,52.650238
-      parent: 2
-  - uid: 15989
-    components:
-    - type: Transform
-      pos: -9.793967,41.908085
-      parent: 2
-  - uid: 15993
-    components:
-    - type: Transform
-      pos: -9.762717,41.67371
-      parent: 2
-  - uid: 15994
-    components:
-    - type: Transform
-      pos: -9.637717,41.89246
       parent: 2
 - proto: d20Dice
   entities:
