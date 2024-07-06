@@ -1,5 +1,5 @@
 store-category-bundles = Наборы
-store-categoty-utility = Утилиты
+store-category-utility = Утилиты
 store-category-armor = Броня
 store-category-misc = Разное
 
