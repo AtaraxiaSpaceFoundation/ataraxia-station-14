@@ -38151,13 +38151,6 @@ entities:
     - type: Transform
       pos: 15.5,13.5
       parent: 2
-- proto: ChemDispenserEmpty
-  entities:
-  - uid: 17617
-    components:
-    - type: Transform
-      pos: -28.5,1.5
-      parent: 2
 - proto: ChemicalPayload
   entities:
   - uid: 5943
