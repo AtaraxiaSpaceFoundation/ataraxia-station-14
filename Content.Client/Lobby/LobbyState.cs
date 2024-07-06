@@ -232,6 +232,29 @@ namespace Content.Client.Lobby
                 _lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
+            if (_gameTicker.LobbySong == null)
+            {
+                _lobby!.LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
+            }
+            else if (_resourceCache.TryGetResource<AudioResource>(_gameTicker.LobbySong, out var lobbySongResource))
+            {
+                var lobbyStream = lobbySongResource.AudioStream;
+
+                var title = string.IsNullOrEmpty(lobbyStream.Title) ?
+                    Loc.GetString("lobby-state-song-unknown-title") :
+                    lobbyStream.Title;
+
+                var artist = string.IsNullOrEmpty(lobbyStream.Artist) ?
+                    Loc.GetString("lobby-state-song-unknown-artist") :
+                    lobbyStream.Artist;
+
+                var markup = Loc.GetString("lobby-state-song-text",
+                    ("songTitle", title),
+                    ("songArtist", artist));
+
+                _lobby!.LobbySong.SetMarkup(markup);
+            }
+
             _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=22] ATARAXIA [/font]");
             _lobby!.Version.SetMarkup("Version: 6.9");
             _lobby!.ChangelogLabel.SetMarkup("Список изменений:");

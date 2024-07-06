@@ -109,6 +109,8 @@
                     </PanelContainer>
 
                     <BoxContainer Name="VersionLabel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <PanelContainer StyleClasses="AngleRect">
+                            <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
 
                         <PanelContainer StyleClasses="LobbyGayBackground">
 
