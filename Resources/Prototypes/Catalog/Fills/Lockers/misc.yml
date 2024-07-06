@@ -495,6 +495,79 @@
         - id: SpaceCash10000
           prob: 0.0001
           orGroup: cashmaintloot
+        # Misc loot (Ataraxia)
+        - id: BlackMarket
+          prob: 0.001
+        - id: NetProbeCartridge
+          prob: 0.01
+        - id: LogProbeCartridge
+          prob: 0.01
+#        - id: PillMutatorGoonHuman
+#          prob: 0.001
+#        - id: PillMutatorXenomorphHybrid
+#          prob: 0.001
+#        - id: PillMutatorPredator
+#          prob: 0.001
+#        - id: PillMutatorWalter
+#          prob: 0.001
+        - id: ClothinNeckCloakHellDiverBlack
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverWhite
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverBrown
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverRed
+          prob: 0.001
+#        - id: HandledBoomBox
+#          prob: 0.005
+        # InteQ loot (Ataraxia)
+        - id: null
+          prob: 0.95
+          orGroup: inteqmaintloot
+        - id: BoxInteQPistol
+          prob: 0.002
+          orGroup: inteqmaintloot
+        - id: ClothinNeckCloakInteQ
+          prob: 0.005
+        - id: BoxInteQEVA
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBeltInteQWebbing
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBeltInteQDropPouch
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingUniformJumpsuitInteQHonorable
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: BalloonInteQ
+          prob: 0.008
+        - id: ItemFlagMiniInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingHeadHelmetSwatInteQ
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingEyesGogglessInteQ
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBackpackInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackSatchelInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackDuffelInteQ
+          prob: 0.008
+          orGroup: inteqmaintloot
+        # Angry animals (Ataraxia)
+        - id: null
+          prob: 0.95
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
 
 - type: entity
   id: ClosetWallMaintenanceFilledRandom
@@ -865,6 +938,9 @@
         - id: ClothingOuterHardsuitSyndie
           prob: 0.00005
           orGroup: hardsuitmaintloot
+        - id: ClothingOuterHardsuitInteQ # Ataraxia
+          prob: 0.00005
+          orGroup: hardsuitmaintloot
         - id: ClothingOuterHardsuitSyndicate
           prob: 0.00005
           orGroup: hardsuitmaintloot
@@ -890,3 +966,76 @@
         - id: SpaceCash10000
           prob: 0.0001
           orGroup: cashmaintloot
+        # Misc loot (Ataraxia)
+        - id: BlackMarket
+          prob: 0.001
+        - id: NetProbeCartridge
+          prob: 0.01
+        - id: LogProbeCartridge
+          prob: 0.01
+#        - id: PillMutatorGoonHuman
+#          prob: 0.001
+#        - id: PillMutatorXenomorphHybrid
+#          prob: 0.001
+#        - id: PillMutatorPredator
+#          prob: 0.001
+#        - id: PillMutatorWalter
+#          prob: 0.001
+        - id: ClothinNeckCloakHellDiverBlack
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverWhite
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverBrown
+          prob: 0.001
+        - id: ClothinNeckCloakHellDiverRed
+          prob: 0.001
+#        - id: HandledBoomBox
+#          prob: 0.005
+        # InteQ loot (Ataraxia)
+        - id: null
+          prob: 0.95
+          orGroup: inteqmaintloot
+        - id: BoxInteQPistol
+          prob: 0.002
+          orGroup: inteqmaintloot
+        - id: ClothinNeckCloakInteQ
+          prob: 0.005
+        - id: BoxInteQEVA
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBeltInteQWebbing
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBeltInteQDropPouch
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingUniformJumpsuitInteQHonorable
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: BalloonInteQ
+          prob: 0.008
+        - id: ItemFlagMiniInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingHeadHelmetSwatInteQ
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingEyesGogglessInteQ
+          prob: 0.005
+          orGroup: inteqmaintloot
+        - id: ClothingBackpackInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackSatchelInteQ
+          prob: 0.008
+          orGroup: syndiemaintloot
+        - id: ClothingBackpackDuffelInteQ
+          prob: 0.008
+          orGroup: inteqmaintloot
+        # Angry animals (Ataraxia)
+        - id: null
+          prob: 0.95
+          orGroup: angryanimalsmaintloot
+        - id: MobCarp
+          prob: 0.05
+          orGroup: angryanimalsmaintloot
