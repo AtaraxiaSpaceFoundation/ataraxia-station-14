@@ -91,7 +91,6 @@ entities:
       fixtures: {}
     - type: OccluderTree
     - type: SpreaderGrid
-    - type: Shuttle
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -767,6 +766,11 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: ProtectedGrid
+    - type: TradeStation
+    - type: Shuttle
+      linearDamping: 10000
+      angularDamping: 10000
     - type: NavMap
 - proto: AirlockExternalCargoLocked
   entities:
