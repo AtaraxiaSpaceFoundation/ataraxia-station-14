@@ -507,6 +507,8 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(new RealRoundEndedEvent()); // WD
             RaiseLocalEvent(new RoundEndedEvent(RoundId, RoundDuration())); // WD
 
+            SendRoundStatus("round_ended"); // WD
+
             RoundNumberMetric.Inc();
 
             PlayersJoinedRoundNormally = 0;
