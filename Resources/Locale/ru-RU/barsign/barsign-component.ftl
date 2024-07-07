@@ -1,6 +1,4 @@
 barsign-component-name = вывеска бара
-barsign-ui-menu = Настройка вывески бара
-barsign-ui-set-label = Выбрать вывеску:
 
 # Bar signs prototypes
 
@@ -17,7 +15,7 @@ barsign-prototype-description-singulo = Куда приходят люди, ко
 
 ## The Drunk Carp
 
-barsign-prototype-name-drunk-carp = Бухой карп
+barsign-prototype-name-drunk-carp = Пьяный карп
 barsign-prototype-description-drunk-carp = Не пейте плавая.
 
 ## Officer Beersky
@@ -98,7 +96,7 @@ barsign-prototype-description-wiggle-room = MoMMI маневрируют в та
 ## The Lightbulb
 
 barsign-prototype-name-the-lightbulb = Лампочка
-barsign-prototype-description-the-lightbulb = Кафе, популярное среди молей. Однажды его закрыли на неделю после того, как барменша использовала нафталин для обработки своей запасной униформы.
+barsign-prototype-description-the-lightbulb = Кафе, популярное среди мотыльков и моффов. Однажды его закрыли на неделю после того, как барменша использовала нафталин для обработки своей запасной униформы.
 
 ## The Loose Goose
 
@@ -108,7 +106,7 @@ barsign-prototype-description-goose = Пей до рвоты и/или нару�
 ## The Engine Change
 
 barsign-prototype-name-enginechange = Замена двигателя
-barsign-prototype-description-enginechange = Всё ещё ожидаем.
+barsign-prototype-description-enginechange = Все еще ожидаем.
 
 ## 4 The Emprah
 
@@ -117,10 +115,10 @@ barsign-prototype-description-emprah = Нравится и фанатикам, �
 
 ## EmpBarSign
 
-barsign-prototype-name-spacebucks = Кредиты
-barsign-prototype-description-spacebucks = От них нельзя скрыться, даже в космосе.
+barsign-prototype-name-spacebucks = Космобаксы
+barsign-prototype-description-spacebucks = Вы не сможете убежать от них, даже в космосе.
 barsign-prototype-description-empbarsign = Что-то пошло совсем не так.
 
 ## SignOff
 
-barsign-prototype-description-sign-off = Этот знак, похоже, не включён.
+barsign-prototype-description-sign-off = Этот знак, похоже, не включен.

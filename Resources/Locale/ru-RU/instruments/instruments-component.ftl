@@ -8,9 +8,9 @@ instruments-component-menu-no-midi-support =
     Если вы на Linux, вам может потребоваться установить
     FluidSynth или пакет разработки
     для FluidSynth.
-instruments-component-menu-input-button = MIDI-ввод
-instruments-component-menu-band-button = Присоединиться к группе
-instruments-component-menu-play-button = Воспроизвести MIDI-файл
+instruments-component-menu-input-button = MIDI Ввод
+instruments-component-menu-band-button = Присоединяйтесь к группе
+instruments-component-menu-play-button = Воспроизвести MIDI файл
 instruments-component-menu-loop-button = Повтор
 instruments-component-menu-channels-button = Каналы
 instruments-component-menu-stop-button = Стоп
@@ -21,4 +21,4 @@ instrument-component-channel-name = MIDI-канал { $number }
 instruments-component-channels-all-button = Все
 instruments-component-channels-clear-button = Очистить
 # SwappableInstrumentComponent
-swappable-instrument-component-style-set = Установить стиль "{ $style }"
+swappable-instrument-component-style-set = Установить стиль на "{ $style }"

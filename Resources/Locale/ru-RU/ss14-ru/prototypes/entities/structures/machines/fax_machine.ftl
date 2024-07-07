@@ -1,5 +1,6 @@
 ent-FaxMachineBase = факс дальнего действия
     .desc = Блюспейс-технологии на службе бюрократии.
+    .suffix = { "" }
 ent-FaxMachineCentcom = факс дальнего действия Центком
     .suffix = Центком
     .desc = { ent-FaxMachineBase.desc }

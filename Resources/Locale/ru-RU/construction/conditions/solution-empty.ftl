@@ -1,3 +1,3 @@
 # SolutionEmpty
-construction-examine-condition-solution-empty = Сперва опустошите содержимое.
-construction-guide-condition-solution-empty = Опустошите содержимое.
+construction-examine-condition-solution-empty = Сначала, вылейте содержимое.
+construction-guide-condition-solution-empty = Вылейте содержимое.

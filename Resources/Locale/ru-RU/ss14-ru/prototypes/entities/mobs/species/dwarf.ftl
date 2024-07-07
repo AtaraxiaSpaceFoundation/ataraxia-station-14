@@ -1,5 +1,6 @@
 ent-BaseMobDwarf = Урист МакХэндс Дварф
-    .desc = { ent-BaseMobSpeciesOrganic.desc }
-    .suffix = Дворф
-ent-MobDwarfDummy = { ent-BaseSpeciesDummy }
-    .desc = { ent-BaseSpeciesDummy.desc }
+    .desc = { ent-BaseMobOrganic.desc }
+    .suffix = { "" }
+ent-MobDwarfDummy = Урист МакХэндс
+    .desc = Манекен-дварф, используемый при создании персонажа.
+    .suffix = { "" }

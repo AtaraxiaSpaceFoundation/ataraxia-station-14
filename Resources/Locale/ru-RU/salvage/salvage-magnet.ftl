@@ -1,35 +1,39 @@
 salvage-system-announcement-losing = Магнит больше не может удерживать обломок. Оставшееся время удержания: { $timeLeft } секунд.
-salvage-system-announcement-spawn-debris-disintegrated = Обломок дезинтегрировал во время орбитального перемещения.
-salvage-system-announcement-spawn-no-debris-available = Нет обломков, которые можно притянуть магнитом.
-salvage-system-announcement-arrived = Обломок был притянут для утилизации. Расчётное время удержания: { $timeLeft } секунд.
+salvage-system-announcement-spawn-debris-disintegrated = Обломок развалился при орбитальном перемещении.
+salvage-system-announcement-spawn-no-debris-available = Нет обломков которые можно притянуть магнитом.
+salvage-system-announcement-arrived = Кусок обломков был притянут для утилизации. Расчетное время удержания: { $timeLeft } секунд.
 salvage-asteroid-name = Астероид
+
 salvage-magnet-window-title = Магнит обломков
 salvage-expedition-window-progression = Прогресс
-salvage-magnet-resources =
-    { $resource ->
-        [OreIron] Железо
-        [OreCoal] Уголь
-        [OreQuartz] Кварц
-        [OreGold] Золото
-        [OreSilver] Серебро
-        [OrePlasma] Плазма
-        [OreUranium] Уран
-       *[other] { $resource }
-    }
-salvage-magnet-resources-count =
-    { $count ->
-        [1] (Мало)
-        [2] (Средне)
-        [3] (Средне)
-        [4] (Много)
-        [5] (Много)
-       *[other] (Изобилие)
-    }
+
+salvage-magnet-resources = {$resource ->
+    [OreIron] Железо
+    [OreCoal] Уголь
+    [OreQuartz] Кварц
+    [OreGold] Золото
+    [OreSilver] Серебро
+    [OrePlasma] Плазма
+    [OreUranium] Уран
+    [OreArtifactFragment] Фрагменты артефакта
+    *[other] {$resource}
+}
+
+salvage-magnet-resources-count = {$count ->
+    [1] (Очень мало)
+    [2] (Мало)
+    [3] (Средне)
+    [4] (много)
+    [5] (Очень много)
+    *[other] (Изобилие)
+}
+
 # Asteroids
 dungeon-config-proto-BlobAsteroid = Астероидный массив
 dungeon-config-proto-ClusterAsteroid = Астероидный кластер
 dungeon-config-proto-SpindlyAsteroid = Астероидная спираль
 dungeon-config-proto-SwissCheeseAsteroid = Фрагменты астероидов
+
 # Wrecks
 salvage-map-proto-Small1 = Инженерное хранилище
 salvage-map-proto-Small2 = Игровой уголок
@@ -43,6 +47,7 @@ salvage-map-proto-SmallChef = Ресторан
 salvage-map-proto-SmallParty = День рождения
 salvage-map-proto-SmallSyndicate = Разрушенное судно Синдиката
 salvage-map-proto-SmallTesla = Зона содержания Теслы
+
 salvage-map-proto-SmallA1 = Плазменный пожар на астероиде
 salvage-map-proto-Medium1 = Тайник с плазменной ловушкой
 salvage-map-proto-MediumVault1 = Хранилище
@@ -58,7 +63,7 @@ salvage-map-proto-MediumShuttleWreck = Разбившийся эвакуацио
 salvage-map-proto-MediumPetHospital = Медвежий госпиталь
 salvage-map-proto-MediumCrashedShuttle = Разбившийся шаттл
 salvage-map-proto-Meatball = Фрикаделька
-salvage-map-proto-VeganMeatball = Веганская фрикаделька
+
 salvage-map-proto-StationStation = Станция станция
 salvage-map-proto-AsteroidBase = База на астероиде
 salvage-map-proto-RuinCargoBase = Разрушенный склад снабжения

@@ -1,5 +1,6 @@
 ent-GasPipeBase = труба
     .desc = Содержит газ.
+    .suffix = { "" }
 ent-GasPipeHalf = { ent-GasPipeBase }
     .suffix = Половинная
     .desc = { ent-GasPipeBase.desc }
@@ -15,5 +16,3 @@ ent-GasPipeTJunction = { ent-GasPipeBase }
 ent-GasPipeFourway = { ent-GasPipeBase }
     .suffix = Четверная
     .desc = { ent-GasPipeBase.desc }
-ent-GasPipeBroken = сломанная труба
-    .desc = Раньше в ней содержался газ.

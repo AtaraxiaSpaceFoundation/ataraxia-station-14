@@ -2,45 +2,39 @@ whitelist-not-whitelisted = Вас нет в вайтлисте.
 # proper handling for having a min/max or not
 whitelist-playercount-invalid =
     { $min ->
-        [0] Вайтлист для этого сервера применяется только для числа игроков ниже { $max }.
+        [0] Вайтлист этого сервера включается при игроках меньше { $max }.
        *[other]
-            Вайтлист для этого сервера применяется только для числа игроков выше { $min } { $max ->
-                [2147483647] ->  так что, возможно, вы сможете присоединиться позже.
-               *[other] ->  и ниже { $max } игроков, так что, возможно, вы сможете присоединиться позже.
+            Вайтлист этого сервера включается при игроках больше { $min } { $max ->
+                [2147483647] -> игроках, так что вы можете присоединиться позже.
+               *[other] -> игроках и меньше { $max } игроков, так что вы можете присоединиться позже.
             }
     }
-whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://discord.station14.ru).
-cmd-whitelistadd-desc = Добавить игрока в вайтлист сервера.
-cmd-whitelistadd-help = Использование: whitelistadd <username>
-cmd-whitelistadd-existing = { $username } уже находится в вайтлисте!
-cmd-whitelistadd-added = { $username } добавлен в вайтлист
-cmd-whitelistadd-not-found = Не удалось найти игрока '{ $username }'
-cmd-whitelistadd-arg-player = [player]
-cmd-whitelistremove-desc = Удалить игрока с вайтлиста сервера.
-cmd-whitelistremove-help = Использование: whitelistremove <username>
-cmd-whitelistremove-existing = { $username } не находится в вайтлисте!
-cmd-whitelistremove-removed = { $username } удалён с вайтлиста
-cmd-whitelistremove-not-found = Не удалось найти игрока '{ $username }'
-cmd-whitelistremove-arg-player = [player]
-cmd-kicknonwhitelisted-desc = Кикнуть всег игроков не в белом списке с сервера.
-cmd-kicknonwhitelisted-help = Использование: kicknonwhitelisted
+whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://discord.station13.ru).
+command-whitelistadd-description = Добавить игрока с указанным юзернеймом в вайтлист.
+command-whitelistadd-help = whitelistadd <username>
+command-whitelistadd-existing = { $username } уже в вайтлисте!
+command-whitelistadd-added = { $username } добавлен в вайтлист
+command-whitelistadd-not-found = Пользователь '{ $username }' не найден
+command-whitelistremove-description = Удалить игрока с указанным юзернеймом из вайтлиста.
+command-whitelistremove-help = whitelistremove <username>
+command-whitelistremove-existing = { $username } не в вайтлисте!
+command-whitelistremove-removed = Пользователь { $username } удалён из вайтлиста
+command-whitelistremove-not-found = Пользователь '{ $username }' не найден
+command-kicknonwhitelisted-description = Кикнуть с сервера всех пользователей не из вайтлиста.
+command-kicknonwhitelisted-help = kicknonwhitelisted
 ban-banned-permanent = Этот бан можно только обжаловать. Для этого посетите наш Discord: https://discord.station13.ru
-ban-banned-permanent-appeal = Этот бан можно только обжаловать. Для этого посетите { $link }.
-ban-expires = Вы получили бан на { $duration } минут, и он истечёт { $time } по UTC (для московского времени добавьте 3 часа).
+ban-banned-permanent-appeal = Этот бан можно только обжаловать. Для этого посетите наш форум: { $link }
+ban-expires = Вы получили бан на { $duration } минут, и он истечёт { $time } по UTC (для москосвкого времени добавьте 3 часа).
 ban-banned-1 = Вам, или другому пользователю этого компьютера или соединения, запрещено здесь играть.
 ban-banned-2 = Причина бана: "{ $reason }"
-ban-banned-3 = Попытки обойти этот бан, например, путём создания нового аккаунта, будут фиксироваться.
+ban-banned-3 = Попытки обойти этот бан, такие как создание новой учетной записи, будут фиксироваться.
 soft-player-cap-full = Сервер заполнен!
-panic-bunker-account-denied = Этот сервер находится в режиме "Бункер", часто используемом в качестве меры предосторожности против рейдов. Новые подключения от аккаунтов, не соответствующих определённым требованиям, временно не принимаются. Повторите попытку позже
-panic-bunker-account-denied-reason = Этот сервер находится в режиме "Бункер", часто используемом в качестве меры предосторожности против рейдов. Новые подключения от аккаунтов, не соответствующих определённым требованиям, временно не принимаются. Повторите попытку позже Причина: "{ $reason }"
-panic-bunker-account-reason-account = Ваш аккаунт Space Station 14 слишком новый. Он должен быть старше { $minutes } минут
+panic-bunker-account-denied = Этот сервер находится в режиме "Бункер". В данный момент новые подключения не принимаются. Повторите попытку позже
+panic-bunker-account-denied-reason = Этот сервер находится в режиме "Бункер", и вам было отказано в доступе. Причина: "{ $reason }"
+panic-bunker-account-reason-account = Ваш аккаунт должен быть старше { $minutes } минут
 panic-bunker-account-reason-overall =
-    Необходимо минимальное отыгранное Вами время на сервере — { $minutes } { $minutes ->
-        [one] минута
-        [few] минуты
-       *[other] минут
+    Необходимо минимальное отыгранное время — { $hours } { $hours ->
+        [one] час
+        [few] часа
+       *[other] часов
     }.
-baby-jail-account-denied = This server is a newbie server, intended for new players and those who want to help them. New connections by accounts that are too old or are not on a whitelist are not accepted. Check out some other servers and see everything Space Station 14 has to offer. Have fun!
-baby-jail-account-denied-reason = This server is a newbie server, intended for new players and those who want to help them. New connections by accounts that are too old or are not on a whitelist are not accepted. Check out some other servers and see everything Space Station 14 has to offer. Have fun! Reason: "{ $reason }"
-baby-jail-account-reason-account = Your Space Station 14 account is too old. It must be younger than { $minutes } minutes
-baby-jail-account-reason-overall = Your overall playtime on the server must be younger than { $minutes } $minutes

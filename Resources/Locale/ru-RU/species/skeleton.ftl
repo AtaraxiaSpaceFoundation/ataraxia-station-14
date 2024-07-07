@@ -1,2 +1,2 @@
-skeleton-healed-by-milk-popup = Кальций восстановлен.
-skeleton-sprayed-by-oat-milk-popup = Похоже, что это ненастоящее молоко. Вы ничего не чувствуете.
+﻿skeleton-healed-by-milk-popup = Уровень кальция восстановлен.
+skeleton-sprayed-by-oat-milk-popup = На вкус как поддельное молоко. Вы ничего не ощущаете.

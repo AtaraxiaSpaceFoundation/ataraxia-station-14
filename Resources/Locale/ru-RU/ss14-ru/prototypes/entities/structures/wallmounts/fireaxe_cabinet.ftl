@@ -1,5 +1,6 @@
 ent-FireAxeCabinet = шкаф для пожарного топора
     .desc = Небольшая табличка гласит "Только для экстренных случаев" и содержит инструкцию по безопасной эксплуатации топора. Ага, конечно.
+    .suffix = { "" }
 ent-FireAxeCabinetOpen = { ent-FireAxeCabinet }
     .suffix = Открытый
     .desc = { ent-FireAxeCabinet.desc }

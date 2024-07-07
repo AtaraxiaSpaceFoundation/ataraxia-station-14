@@ -1,5 +1,6 @@
 ent-BaseMobDiona = Урист МакПлэнтс
-    .desc = { ent-BaseMobSpeciesOrganic.desc }
-    .suffix = Диона
-ent-MobDionaDummy = { ent-BaseSpeciesDummy }
-    .desc = { ent-BaseSpeciesDummy.desc }
+    .desc = { ent-BaseMobOrganic.desc }
+    .suffix = { "" }
+ent-MobDionaDummy = Урист МакХэндс
+    .desc = Манекен-диона, используемый при создании персонажа.
+    .suffix = { "" }

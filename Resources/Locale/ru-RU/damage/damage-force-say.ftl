@@ -1,5 +1,5 @@
-damage-force-say-message-wrap = { $message }-{ $suffix }
-damage-force-say-message-wrap-no-suffix = { $message }-
+﻿damage-force-say-message-wrap = {$message}-{$suffix}
+damage-force-say-message-wrap-no-suffix = {$message}-
 
 damage-force-say-1 = АЙ!!
 damage-force-say-2 = ГРХ!

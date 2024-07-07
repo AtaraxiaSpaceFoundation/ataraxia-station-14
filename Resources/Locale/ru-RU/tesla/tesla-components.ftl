@@ -1,4 +1,5 @@
-tesla-coil-on = Катушка Теслы включается.
-tesla-coil-off = Катушка Теслы выключается.
-tesla-grounding-on = Заземляющий стержень включается.
-tesla-grounding-off = Заземляющий стержень выключается.
+tesla-coil-on = Катушка теслы включается.
+tesla-coil-off = Катушка теслы выключается.
+
+tesla-grounding-on = Громоотвод включается.
+tesla-grounding-off = Громоотвод выключается.

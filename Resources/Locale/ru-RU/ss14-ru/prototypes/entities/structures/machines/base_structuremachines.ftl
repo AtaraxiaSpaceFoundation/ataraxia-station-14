@@ -1,8 +1,9 @@
 ent-BaseMachine = { ent-BaseStructure }
     .desc = { ent-BaseStructure.desc }
+    .suffix = { "" }
 ent-BaseMachinePowered = { ent-BaseMachine }
     .desc = { ent-BaseMachine.desc }
+    .suffix = { "" }
 ent-ConstructibleMachine = { "" }
     .desc = { "" }
-ent-SmallConstructibleMachine = { ent-ConstructibleMachine }
-    .desc = { ent-ConstructibleMachine.desc }
+    .suffix = { "" }

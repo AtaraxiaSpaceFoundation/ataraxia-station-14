@@ -1,14 +1,13 @@
-defusable-examine-defused = { CAPITALIZE($name) } [color=lime]обезврежена[/color].
-defusable-examine-live =
-    { CAPITALIZE($name) } тикает [color=red][/color] и осталось [color=red]{ $time } { $time ->
+defusable-examine-defused = {CAPITALIZE($name)} [color=lime]обезврежена[/color].
+defusable-examine-live = {CAPITALIZE($name)} [color=red]тикает[/color] и до взрыва осталось [color=red]{$time}[/color] { $time ->
         [one] секунда
         [few] секунды
-       *[other] секунд
+        *[other] секунд
     }.
-defusable-examine-live-display-off = { CAPITALIZE($name) } [color=red]тикает[/color] и таймер, похоже, выключен.
-defusable-examine-inactive = { CAPITALIZE($name) } [color=lime]неактивна[/color], но всё ещё может взорваться.
-defusable-examine-bolts =
-    Болты { $down ->
-        [true] [color=red]опущены[/color]
-       *[false] [color=green]подняты[/color]
-    }.
+
+defusable-examine-live-display-off = {CAPITALIZE($name)} [color=red]тикает[/color], но таймер, по всей видимости, отключен.
+defusable-examine-inactive = {CAPITALIZE($name)} [color=lime]неактивна[/color], но все еще может быть запущена.
+defusable-examine-bolts = Болты {$down ->
+    [true] [color=red]опущены[/color]
+    *[false] [color=green]подняты[/color]
+}.

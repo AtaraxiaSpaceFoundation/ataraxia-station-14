@@ -1,7 +1,7 @@
 ## Entity
 
 chem-master-component-activate-no-hands = У вас нет рук.
-chem-master-component-cannot-put-entity-message = Вы не можете поместить это в ХимМастер!
+chem-master-component-cannot-put-entity-message = Вы не можете поместить это в Мастер реагентов!
 
 ## Bound UI
 
@@ -25,7 +25,7 @@ chem-master-window-packaging-text = Упаковка
 chem-master-current-text-label = Метка:
 chem-master-window-pills-label = Таблетка:
 chem-master-window-pill-type-label = Тип таблеток:
-chem-master-window-pills-number-label = количество:
+chem-master-window-pills-number-label = Кол-во:
 chem-master-window-dose-label = Дозировка (ед.):
 chem-master-window-create-button = Создать
 chem-master-window-bottles-label = Бутылочки:

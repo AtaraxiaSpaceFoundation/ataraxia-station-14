@@ -1,9 +1,9 @@
 ent-JetpackEffect = { "" }
     .desc = { "" }
+    .suffix = { "" }
 ent-BaseJetpack = джетпак
     .desc = Это реактивный ранец - джетпак.
-ent-ActionToggleJetpack = Переключить джетпак
-    .desc = Переключить джетпак, позволяющий с лёгкостью передвигаться вне станции.
+    .suffix = { "" }
 ent-JetpackBlue = джетпак
     .suffix = Пустой
     .desc = { ent-BaseJetpack.desc }

@@ -1,6 +1,6 @@
 ent-BaseWeaponSniper = BaseWeaponSniper
     .desc = Дерзай — налетай, целься и стреляй.
-ent-WeaponSniperMosin = Кардашёв-Мосин
+ent-WeaponSniperMosin = Кардашев-Мосин
     .desc = Оружие охоты, или бесконечной окопной войны. Использует патроны калибра .30 винтовочный.
     .suffix = Винтовка
 ent-WeaponSniperHristov = Христов
