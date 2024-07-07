@@ -451,9 +451,9 @@
   description: Do not apply fire to this. Rumour says it burns easily.
   components:
   - type: Sprite
-    sprite: White/Structures/Furniture/Tables/wood.rsi
+    sprite: Structures/Furniture/Tables/wood.rsi # Ataraxia-OLD-sprite
   - type: Icon
-    sprite: White/Structures/Furniture/Tables/wood.rsi
+    sprite: Structures/Furniture/Tables/wood.rsi # Ataraxia-OLD-sprite
   - type: Damageable
     damageModifierSet: Wood
   - type: Destructible
