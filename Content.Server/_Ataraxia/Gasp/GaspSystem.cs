@@ -25,14 +25,6 @@ namespace Content.Server._Ataraxia.Gasp
         {
             if (!_mobStateSystem.IsAlive(uid))
                 return;
-
-
-
-            if (args.DamageDelta!.GetTotal() < component.ThresholdGasp)
-                return;
-
-
-            
         }
 
         public override void Update(float frameTime)
