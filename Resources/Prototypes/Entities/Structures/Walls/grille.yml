@@ -19,7 +19,7 @@
     - type: CanBuildWindowOnTop
     - type: Sprite
       drawdepth: Walls
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       layers:
         - state: grille
         - state: electrified
@@ -28,7 +28,7 @@
           shader: unshaded
           visible: false
     - type: Icon
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       state: grille
     - type: Construction
       graph: Grille
@@ -119,10 +119,10 @@
   components:
     - type: Sprite
       drawdepth: Walls
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       state: grille_broken
     - type: Icon
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       state: grille_broken
     - type: Tag
       tags:
@@ -177,7 +177,7 @@
   components:
     - type: Sprite
       drawdepth: Walls
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       layers:
         - state: grille_diagonal
         - state: electrified_diagonal
@@ -186,7 +186,7 @@
           shader: unshaded
           visible: false
     - type: Icon
-      sprite: Structures/Walls/grille.rsi
+      sprite: Ataraxia/Structures/Walls/grille.rsi
       state: grille_diagonal
     - type: Fixtures
       fixtures:

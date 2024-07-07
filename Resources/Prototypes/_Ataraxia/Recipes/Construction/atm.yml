@@ -1,0 +1,14 @@
+- type: construction
+  id: ATM
+  graph: ATM
+  startNode: start
+  targetNode: ATM
+  category: construction-category-utilities
+  name: Банкомат
+  description: "Банкомат для работы с наличкой"
+  icon:
+    sprite: Ataraxia/Structures/Wallmounts/atm.rsi
+    state: off
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
