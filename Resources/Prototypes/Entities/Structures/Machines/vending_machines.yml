@@ -14,7 +14,7 @@
       path: /Audio/Ambience/Objects/vending_machine_hum.ogg
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/empty.rsi
-    snapCardinals: true
+    snapCardinals: false # Ataraxia
   - type: Physics
     bodyType: Static
   - type: Transform
@@ -86,10 +86,12 @@
   - type: Electrified
     enabled: false
     usesApcPower: true
-  - type: PointLight
+  - type: PointLight # Ataraxia-Edit
     enabled: false
-    radius: 1.3
-    energy: 0.7
+    radius: 2
+    energy: 1.5
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 200
@@ -100,6 +102,11 @@
     price: 100
   - type: Appearance
   - type: WiresVisuals
+  - type: Transform # Ataraxia
+    noRot: false
+  - type: Rotatable # Ataraxia
+    rotateWhileAnchored: false
+    rotateWhilePulling: true
 
 - type: entity
   parent: VendingMachine
