@@ -5,9 +5,9 @@
   components:
   - type: Pinpointer
     component: Anomaly
-    mediumDistance: 24
-    closeDistance: 12
-    reachedDistance: 5
+    mediumDistance: 15
+    closeDistance: 6
+    reachedDistance: 2
     precision: 0.2
   - type: Sprite
     sprite: Ataraxia/Objects/Devices/pinpointer.rsi
@@ -28,9 +28,9 @@
   components:
   - type: Pinpointer
     component: Artifact
-    mediumDistance: 24
-    closeDistance: 12
-    reachedDistance: 5
+    mediumDistance: 15
+    closeDistance: 6
+    reachedDistance: 2
     precision: 0.02
   - type: Sprite
     sprite: Ataraxia/Objects/Devices/pinpointer.rsi
