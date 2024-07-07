@@ -18,7 +18,7 @@
   - type: Physics
     bodyType: Static
   - type: Transform
-    noRot: true
+    noRot: false # Ataraxia
   - type: Fixtures
     fixtures:
       fix1:
@@ -102,8 +102,6 @@
     price: 100
   - type: Appearance
   - type: WiresVisuals
-  - type: Transform # Ataraxia
-    noRot: false
   - type: Rotatable # Ataraxia
     rotateWhileAnchored: false
     rotateWhilePulling: true
