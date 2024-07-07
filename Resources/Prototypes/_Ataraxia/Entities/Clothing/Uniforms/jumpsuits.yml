@@ -60,9 +60,9 @@
   description: Белый комбинезон капитана символизирующий, что ваша зарплата явно превышает нормы.
   components:
     - type: Sprite
-      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/white_captainwhite.rsi
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_white.rsi
     - type: Clothing
-      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/white_captainwhite.rsi
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_white.rsi
 
 - type: entity
   parent: ClothingUniformJumpsuitCaptain
@@ -71,9 +71,9 @@
   description: Комбинезон показывающий вашу статусность, как ужасн... великого правителя.
   components:
     - type: Sprite
-      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captainsheriff.rsi
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_sheriff.rsi
     - type: Clothing
-      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captainsheriff.rsi
+      sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_sheriff.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -368,9 +368,9 @@
   description: Чёрный костюм, с золотыми погонами на плечах.
   components:
   - type: Sprite
-    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_captain.rsi
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_command.rsi
   - type: Clothing
-    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/command_captain.rsi
+    sprite: Ataraxia/Clothing/Uniforms/Jumpsuit/captain_command.rsi
 
 - type: entity
   parent: ClothingUniformBase
