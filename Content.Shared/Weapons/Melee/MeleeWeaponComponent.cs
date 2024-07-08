@@ -69,7 +69,7 @@ public sealed partial class MeleeWeaponComponent : Component
     public bool IgnoreResistances;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float HeavyAttackStaminaCost = 8;
+    public float HeavyAttackStaminaCost = 3;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public EntProtoId MissAnimation = "WeaponArcPunch";
