@@ -3,7 +3,7 @@
 
 ## 'createvote' command
 
-cmd-createvote-desc = Создает голосование
+cmd-createvote-desc = Создаёт голосование
 cmd-createvote-help = Использование: createvote <'restart'|'preset'|'map'>
 cmd-createvote-cannot-call-vote-now = Сейчас вы не можете запустить голосование!
 cmd-createvote-invalid-vote-type = Неверный тип голосования
@@ -17,8 +17,6 @@ cmd-customvote-on-finished-tie = Ничья между { $ties }!
 cmd-customvote-on-finished-win = { $winner } побеждает!
 cmd-customvote-arg-title = <title>
 cmd-customvote-arg-option-n = <option{ $n }>
-cmd-customvote-on-finished-votes = Количество голосов за варианты в голосовании "{ $title }":
-cmd-customvote-option-votes = { $option } - { $votes }
 
 ## 'vote' command
 

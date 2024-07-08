@@ -1,5 +1,7 @@
 ent-ProjectileFireball = огненный шар
     .desc = По мнению волшебников явлется средством от всех проблем.
+ent-ProjectileDragonsBreath = дыхание дракона
+    .desc = Постарайтесь не поджариться.
 ent-ProjectileAnomalyFireball = огненный шар
     .desc = Парящий сгусток пламени.
 ent-ProjectilePolyboltBase = { ent-BaseBullet }
@@ -20,5 +22,3 @@ ent-ProjectileIcicle = сосулька
     .desc = Бррррр.
 ent-ProjectilePolyboltBread = полизаряд хлеба
     .desc = Неееет, я не хочу быть хлебом!
-ent-ProjectileCult = кровь
-    .desc = О нет.

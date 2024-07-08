@@ -2,7 +2,7 @@
 
 random-sentience-event-data-1 = сканирование сенсорами дальнего действия
 random-sentience-event-data-2 = наши сложные статистические модели вероятности
-random-sentience-event-data-3 = наше всемогущество
+random-sentience-event-data-3 = полученную информацию
 random-sentience-event-data-4 = коммуникационный трафик с вашей станции
 random-sentience-event-data-5 = обнаруженные нами энергетические всплески
 random-sentience-event-data-6 = [УДАЛЕНО]
@@ -36,4 +36,5 @@ station-event-random-sentience-flavor-mechanical = механизмы
 station-event-random-sentience-flavor-organic = органики
 station-event-random-sentience-flavor-corgi = корги
 station-event-random-sentience-flavor-primate = приматы
-station-event-random-sentience-flavor-slime = слайм
+station-event-random-sentience-flavor-kobold = кобольды
+station-event-random-sentience-flavor-slime = слаймы

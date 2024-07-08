@@ -1,9 +1,8 @@
 ent-ClothingShoesBase = { ent-Clothing }
     .desc = { ent-Clothing.desc }
-    .suffix = { "" }
 ent-ClothingShoesBaseButcherable = { ent-ClothingShoesBase }
     .desc = { ent-ClothingShoesBase.desc }
-    .suffix = { "" }
-ent-ClothingShoesStorageBase = { ent-ClothingShoesBase }
+ent-ClothingShoesMilitaryBase = { ent-ClothingShoesBase }
     .desc = { ent-ClothingShoesBase.desc }
-    .suffix = { "" }
+ent-ClothingShoesBaseWinterBoots = { ent-ClothingShoesBaseButcherable }
+    .desc = Меховые ботинки, которые помогут пережить даже самую холодную зиму.

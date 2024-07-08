@@ -1,3 +1,2 @@
 ent-LidSalami = крышка коробки салями
-    .desc = Крышка для салями. Не влезет.
-    .suffix = { "" }
+    .desc = Salami lid. Ain't gon' fit, won't fit.

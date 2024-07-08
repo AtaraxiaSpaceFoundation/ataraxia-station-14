@@ -1,1 +1,1 @@
-construction-step-condition-no-unstackable-in-tile = Нельзя сделать стопку из похожих устройств.
+construction-step-condition-no-unstackable-in-tile = Вы не можете расположить несколько устройств стопкой.

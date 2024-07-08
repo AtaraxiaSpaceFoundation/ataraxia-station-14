@@ -1,5 +1,4 @@
-spider-web-action-name = Паутина
-spider-web-action-description = Создает паутину, которая замедляет вашу добычу.
-spider-web-action-nogrid = Под тобой нет пола!
-spider-web-action-success = Вы опутываете себя паутиной.
-spider-web-action-fail = Вы не можете размещать здесь паутину! Во всех направлениях света уже есть паутина!
+spider-web-action-nogrid = Под вами нет пола!
+spider-web-action-success = Вы развешиваете паутину вокруг себя.
+spider-web-action-fail = Вы не можете разместить паутину здесь! На основных направлениях вокруг вас уже есть паутина!
+sericulture-failure-hunger = Ваш желудок слишком пуст для плетения паутины!
