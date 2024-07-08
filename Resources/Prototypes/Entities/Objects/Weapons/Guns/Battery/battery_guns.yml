@@ -265,8 +265,8 @@
   id: WeaponLaserCarbinePractice
   description: This modified laser rifle fires nearly harmless beams in the 40-watt range, for target practice.
   components:
-  - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletTrailLaserPractice
     fireCost: 62.5
   - type: StaticPrice
     price: 300
