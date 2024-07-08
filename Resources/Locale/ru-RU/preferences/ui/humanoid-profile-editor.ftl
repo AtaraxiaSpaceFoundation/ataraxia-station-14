@@ -1,12 +1,13 @@
-humanoid-profile-editor-randomize-everything-button = Сгенерировать случайного
+humanoid-profile-editor-randomize-everything-button = Случайный персонаж
 humanoid-profile-editor-name-label = Имя:
 humanoid-profile-editor-clown-name-label = Имя для клоуна:
 humanoid-profile-editor-mime-name-label = Имя для мима:
 humanoid-profile-editor-borg-name-label = Имя для киборгов:
 humanoid-profile-editor-name-random-button = Случайно
+humanoid-profile-editor-name-random-button = Сгенерировать
 humanoid-profile-editor-appearance-tab = Внешность
-humanoid-profile-editor-clothing = Показать одежду
-humanoid-profile-editor-clothing-show = Показать
+humanoid-profile-editor-clothing = Отображать одежду
+humanoid-profile-editor-clothing-show = Переключить
 humanoid-profile-editor-sex-label = Пол:
 humanoid-profile-editor-sex-male-text = Мужской
 humanoid-profile-editor-sex-female-text = Женский
@@ -25,7 +26,7 @@ humanoid-profile-editor-export-button = Экспорт
 humanoid-profile-editor-save-button = Сохранить
 humanoid-profile-editor-clothing-label = Одежда:
 humanoid-profile-editor-backpack-label = Сумка:
-humanoid-profile-editor-spawn-priority-label = Приоритет появления:
+humanoid-profile-editor-spawn-priority-label = Приоритет спавна:
 humanoid-profile-editor-eyes-label = Цвет глаз:
 humanoid-profile-editor-jobs-tab = Должности
 humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Остаться в лобби, если должность недоступна.
@@ -35,13 +36,12 @@ humanoid-profile-editor-preference-jumpskirt = Юбка-комбинезон
 humanoid-profile-editor-preference-backpack = Рюкзак
 humanoid-profile-editor-preference-satchel = Сумка
 humanoid-profile-editor-preference-duffelbag = Вещмешок
-
+humanoid-profile-editor-guidebook-button-tooltip = Кликните для получения дополнительной информации
 # Spawn priority
 humanoid-profile-editor-preference-spawn-priority-none = Нет
-humanoid-profile-editor-preference-spawn-priority-arrivals = Прибытие
-humanoid-profile-editor-preference-spawn-priority-cryosleep = Криосон
-
-humanoid-profile-editor-jobs-amount-in-department-tooltip = Должностей в отделе {$departmentName}
+humanoid-profile-editor-preference-spawn-priority-arrivals = Зал прибытия
+humanoid-profile-editor-preference-spawn-priority-cryosleep = Капсула криосна
+humanoid-profile-editor-jobs-amount-in-department-tooltip = { $departmentName }
 humanoid-profile-editor-department-jobs-label = { $departmentName }
 humanoid-profile-editor-antags-tab = Антагонисты
 humanoid-profile-editor-antag-preference-yes-button = Да
