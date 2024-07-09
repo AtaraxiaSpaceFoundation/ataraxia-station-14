@@ -2,7 +2,7 @@
   id: Triumph
   mapName: 'Triumph Station'
   mapPath: /Maps/White/Triumph.yml
-  minPlayers: 20
+  minPlayers: 0 # Ataraxia
   stations:
     TriumphStation:
       stationProto: StandardNanotrasenStation
