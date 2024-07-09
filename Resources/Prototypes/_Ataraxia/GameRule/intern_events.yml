@@ -56,29 +56,6 @@
     reoccurrenceDelay: 140
   - type: GasLeakRule
 
-- type: entity
-  id: MeteorSwarm_Intern
-  parent: BaseGameRule
-  noSpawn: true
-  components:
-  - type: StationEvent
-    earliestStart: 30
-    weight: 7.5
-    minimumPlayers: 99
-    startAnnouncement: station-event-meteor-swarm-start-announcement
-    endAnnouncement: station-event-meteor-swarm-end-announcement
-    startAudio:
-      path: /Audio/Ataraxia/Announcements/Intern/alerts/1.ogg
-      params:
-        volume: 4
-    endAudio:
-      path: /Audio/Announcements/meteors_end.ogg # Ataraxia-Announcements
-      params:
-        volume: 4
-    duration: null #ending is handled by MeteorSwarmRule
-    startDelay: 40
-    reoccurrenceDelay: 140
-  - type: MeteorSwarmRule
 
 - type: entity
   id: CockroachMigration_Intern
