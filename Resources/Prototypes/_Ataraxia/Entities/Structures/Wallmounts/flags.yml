@@ -1,0 +1,259 @@
+- type: entity
+  parent: BaseFlag
+  id: FlagAgurk
+  name: Agurk flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: agurk
+
+- type: entity
+  parent: BaseFlag
+  id: FlagBelarus
+  name: Belarus flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: belarus
+
+- type: entity
+  parent: BaseFlag
+  id: FlagChechnya
+  name: Chechnya flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: chechnya
+
+- type: entity
+  parent: BaseFlag
+  id: FlagCoder
+  name: coder flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: coder
+
+- type: entity
+  parent: BaseFlag
+  id: FlagGermany
+  name: Germany flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: germany
+
+- type: entity
+  parent: BaseFlag
+  id: FlagGermanySolfed
+  name: Germany Solfed flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: germany_solfed
+
+- type: entity
+  parent: BaseFlag
+  id: FlagGoldRing
+  name: gold ring flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: goldring
+
+- type: entity
+  parent: BaseFlag
+  id: FlagHCA
+  name: HCA flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: hca
+
+- type: entity
+  parent: BaseFlag
+  id: FlagInteQ
+  name: InteQ flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: inteq
+
+- type: entity
+  parent: BaseFlag
+  id: FlagLizard
+  name: lizard flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: lizard
+
+- type: entity
+  parent: BaseFlag
+  id: FlagMars
+  name: Mars flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: mars
+
+- type: entity
+  parent: BaseFlag
+  id: FlagMarsSolfed
+  name: Mars Solfed flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: mars_solfed
+
+- type: entity
+  parent: BaseFlag
+  id: FlagMothic
+  name: Mothic flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: mothic
+
+- type: entity
+  parent: BaseFlag
+  id: FlagNRI
+  name: NRI flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: nri
+
+- type: entity
+  parent: BaseFlag
+  id: FlagNanoTrasen
+  name: NanoTrasen flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: nt
+
+- type: entity
+  parent: BaseFlag
+  id: FlagRussian
+  name: Russian flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: russian
+
+- type: entity
+  parent: BaseFlag
+  id: FlagShigu
+  name: Shigu flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: shigu
+
+- type: entity
+  parent: BaseFlag
+  id: FlagSolfed
+  name: Solfed flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: solfed
+
+- type: entity
+  parent: BaseFlag
+  id: FlagSovietUSSP
+  name: USSP flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: soviet
+
+- type: entity
+  parent: BaseFlag
+  id: FlagSSC
+  name: SSC flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: ssc
+
+- type: entity
+  parent: BaseFlag
+  id: FlagSyndicate
+  name: Syndicate flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: syndicate
+
+- type: entity
+  parent: BaseFlag
+  id: FlagTerraGov
+  name: TerraGov flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: terragov
+
+- type: entity
+  parent: BaseFlag
+  id: FlagTizira
+  name: Tizira flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: tizira
+
+- type: entity
+  parent: BaseFlag
+  id: FlagUkraine
+  name: Ukraine flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: ukraine
+
+- type: entity
+  parent: BaseFlag
+  id: FlagUSA
+  name: USA flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: usa
+
+- type: entity
+  parent: BaseFlag
+  id: FlagVulp
+  name: vulp flag
+  description: NULL
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Wallmounts/flags.rsi
+    state: vulp

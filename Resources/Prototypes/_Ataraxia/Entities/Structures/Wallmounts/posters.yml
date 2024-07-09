@@ -77,13 +77,3 @@
   - type: Sprite
     sprite: Ataraxia/Structures/Wallmounts/posters.rsi
     state: eng_poster
-
-- type: entity
-  parent: BaseFlag
-  id: WallmountFlagInteQ
-  name: "InteQ flag"
-  description: "We even take freaks, you need join us!"
-  components:
-  - type: Sprite
-    sprite: Ataraxia/Structures/Wallmounts/inteq_flag.rsi
-    state: inteq_flag

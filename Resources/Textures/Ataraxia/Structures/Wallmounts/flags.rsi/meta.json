@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/shiptest-ss13/Shiptest | Edited and sprited by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "agurk"
+    },
+    {
+      "name": "belarus"
+    },
+    {
+      "name": "chechnya"
+    },
+    {
+      "name": "coder"
+    },
+    {
+      "name": "germany"
+    },
+    {
+      "name": "germany_solfed"
+    },
+    {
+      "name": "goldring"
+    },
+    {
+      "name": "hca"
+    },
+    {
+      "name": "inteq"
+    },
+    {
+      "name": "lizard"
+    },
+    {
+      "name": "mars"
+    },
+    {
+      "name": "mars_solfed"
+    },
+    {
+      "name": "mothic"
+    },
+    {
+      "name": "nri"
+    },
+    {
+      "name": "nt"
+    },
+    {
+      "name": "russian"
+    },
+    {
+      "name": "shigu"
+    },
+    {
+      "name": "solfed"
+    },
+    {
+      "name": "soviet"
+    },
+    {
+      "name": "ssc"
+    },
+    {
+      "name": "syndicate"
+    },
+    {
+      "name": "terragov"
+    },
+    {
+      "name": "tizira"
+    },
+    {
+      "name": "ukraine"
+    },
+    {
+      "name": "usa"
+    },
+    {
+      "name": "vulp"
+    }
+  ]
+}
