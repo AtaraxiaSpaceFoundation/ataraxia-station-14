@@ -253,6 +253,12 @@ BriefcaseSyndieBase: null
 BodyBag_Container: BodyBag
 BodyBag_Folded: BodyBagFolded
 
+# ATARAXIA-MIGRATION
+WallmountFlagInteQ: FlagInteQ
+NTFlag: FlagNanoTrasen
+SyndieFlag: FlagSyndicate
+LGBTQFlag: RandomPosterLegit
+
 # ATARAXIA-MIGRATION (!)
 AlwaysPoweredSmallLightMaintenanceRed: PoweredSmallLight
 BackmenVendingMachineChang: VendingMachineChang

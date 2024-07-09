@@ -99,7 +99,9 @@
       - PosterContrabandInteQNoSex
       - PosterContrabandInteQVulpa
       - PosterContrabandInteQJuli
-      - WallmountFlagInteQ # ATARAXIA-END
+      - FlagCoder
+      - FlagSyndicate
+      - FlagInteQ # ATARAXIA-END
     chance: 1
 
 - type: entity
@@ -159,4 +161,29 @@
       - PosterLegitRenault
       - PosterLegitNTTGC
       - PosterLegitWideEngineer # Ataraxia
-    chance: 1
+    chance: 0.99 # Ataraxia
+    rarePrototypes: # Ataraxia-START
+      - FlagAgurk
+      - FlagBelarus
+      - FlagChechnya
+      - FlagGermany
+      - FlagGermanySolfed
+      - FlagGoldRing
+      - FlagHCA
+      - FlagLizard
+      - FlagMars
+      - FlagMarsSolfed
+      - FlagMothic
+      - FlagNRI
+      - FlagNanoTrasen
+      - FlagRussian
+      - FlagShigu
+      - FlagSolfed
+      - FlagSovietUSSP
+      - FlagSSC
+      - FlagTerraGov
+      - FlagTizira
+      - FlagUkraine
+      - FlagUSA
+      - FlagVulp
+    rareChance: 0.01 # Ataraxia-END
