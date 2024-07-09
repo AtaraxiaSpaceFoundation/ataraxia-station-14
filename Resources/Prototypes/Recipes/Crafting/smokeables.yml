@@ -10,6 +10,17 @@
   objectType: Item
 
 - type: construction
+  name: rainbow joint
+  id: smokeableJointRainbow
+  graph: smokeableJointRainbow
+  startNode: start
+  targetNode: jointRainbow
+  category: construction-category-misc
+  description: "A roll of dried plant matter wrapped in thin paper."
+  icon: { sprite: Objects/Consumable/Smokeables/Cannabis/joint.rsi, state: unlit-icon }
+  objectType: Item
+
+- type: construction
   name: блант
   id: Blunt
   graph: smokeableBlunt
@@ -21,7 +32,18 @@
   objectType: Item
 
 - type: construction
-  name: сигарета
+  name: rainbow blunt
+  id: smokeableBluntRainbow
+  graph: smokeableBluntRainbow
+  startNode: start
+  targetNode: bluntRainbow
+  category: construction-category-misc
+  description: "A roll of dried plant matter wrapped in a dried tobacco leaf."
+  icon: { sprite: Objects/Consumable/Smokeables/Cannabis/blunt.rsi, state: unlit-icon }
+  objectType: Item
+
+- type: construction
+  name: cigarette
   id: Cigarette
   graph: smokeableCigarette
   startNode: start
@@ -46,7 +68,18 @@
   objectType: Item
 
 - type: construction
-  name: измельчённый табак
+  name: ground rainbow cannabis
+  id: smokeableGroundCannabisRainbow
+  graph: smokeableGroundCannabisRainbow
+  startNode: start
+  targetNode: groundRainbow
+  category: construction-category-misc
+  description: "Ground rainbow cannabis, ready to take you on a trip."
+  icon: { sprite: Objects/Specific/Hydroponics/rainbow_cannabis.rsi, state: powderpile_rainbow }
+  objectType: Item
+
+- type: construction
+  name: ground tobacco
   id: GroundTobacco
   graph: smokeableGroundTobacco
   startNode: start

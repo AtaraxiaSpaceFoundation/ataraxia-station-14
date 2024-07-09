@@ -15,12 +15,15 @@
   - type: Clothing
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
     slots:
-    - back
-    - suitStorage
+    - none
   - type: Reflect
     reflectProb: 0.4
   - type: Item
     sprite: White/Objects/Weapons/Chaplain/hfrequency.rsi
+    size: Large
+    storedRotation: 44
+    shape:
+    - 0, 0, 3, 0
 
 - type: entity
   name: клинок заклинаний

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
@@ -42,7 +42,7 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
 
-            ticker.SetGamePreset(type);
+            ticker.SetGamePreset(type, true);
 
             _adminLogger.Add(LogType.EventStarted, $"Forced {type.ID} for secret.");
 

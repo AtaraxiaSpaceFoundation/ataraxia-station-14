@@ -1,0 +1,49 @@
+﻿- type: arrivalNotification
+  id: CaptainArrivalNotification
+  message: head-arrived-message
+  globalMessage: head-arrived-message-global
+  radioChannelsPrototypes:
+  - Command
+  useGlobalAnnouncement: True
+
+- type: arrivalNotification
+  id: HeadOfPersonnelArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Service
+
+- type: arrivalNotification
+  id: HeadOfSecurityArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Security
+
+- type: arrivalNotification
+  id: ChiefMedicalOfficerArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Medical
+
+- type: arrivalNotification
+  id: ChiefEngineerArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Engineering
+
+- type: arrivalNotification
+  id: ResearchDirectorArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Science
+
+- type: arrivalNotification
+  id: QuartermasterArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Cargo
+
+- type: arrivalNotification
+  id: InspectorArrivalNotification
+  message: head-arrived-message
+  radioChannelsPrototypes:
+  - Security

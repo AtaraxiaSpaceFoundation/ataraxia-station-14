@@ -169,6 +169,12 @@ flavor-complex-light = like a light gone out
 flavor-complex-profits = like profits
 flavor-complex-fishops = like the dreaded fishops
 flavor-complex-violets = like violets
+flavor-complex-pyrotton = like a burning mouth
+flavor-complex-mothballs = like mothballs
+flavor-complex-paint-thinner = like paint thinner
+flavor-complex-numbing-tranquility = like numbing tranquility
+flavor-complex-true-nature = like the true nature of reality
+flavor-complex-false-meat = not entirely unlike meat
 
 # Drink-specific flavors.
 

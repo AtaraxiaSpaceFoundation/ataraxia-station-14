@@ -14,6 +14,7 @@
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
+  arrivalNotificationPrototype: ChiefMedicalOfficerArrivalNotification
   requireAdminNotify: true
   supervisors: job-supervisors-captain
   canBeAntag: false # Ataraxia

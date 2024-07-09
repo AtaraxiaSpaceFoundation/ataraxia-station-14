@@ -19,6 +19,7 @@
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
+  arrivalNotificationPrototype: HeadOfPersonnelArrivalNotification
   supervisors: job-supervisors-captain
   canBeAntag: false # Ataraxia
   access:

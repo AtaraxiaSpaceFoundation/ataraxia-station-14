@@ -7,6 +7,8 @@
   packetPrototype: WheatSeeds
   productPrototypes:
     - WheatBushel
+  mutationPrototypes:
+    - meatwheat
   lifespan: 25
   maturation: 6
   production: 3
@@ -20,6 +22,32 @@
       Max: 20
       PotencyDivisor: 20
     Flour:
+      Min: 5
+      Max: 20
+      PotencyDivisor: 20
+
+- type: seed
+  id: meatwheat
+  name: seeds-meatwheat-name
+  noun: seeds-noun-seeds
+  displayName: seeds-meatwheat-display-name
+  plantRsi: Objects/Specific/Hydroponics/meatwheat.rsi
+  packetPrototype: MeatwheatSeeds
+  productPrototypes:
+    - MeatwheatBushel
+  lifespan: 25
+  maturation: 6
+  production: 3
+  yield: 3
+  potency: 5
+  idealLight: 8
+  nutrientConsumption: 0.40
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 20
+      PotencyDivisor: 20
+    UncookedAnimalProteins:
       Min: 5
       Max: 20
       PotencyDivisor: 20
@@ -145,6 +173,8 @@
   packetPrototype: LaughinPeaSeeds
   productPrototypes:
     - FoodLaughinPeaPod
+  mutationPrototypes:
+    - worldPea
   lifespan: 25
   growthStages: 3
   maturation: 8
@@ -258,6 +288,8 @@
   packetPrototype: OrangeSeeds
   productPrototypes:
     - FoodOrange
+  mutationPrototypes:
+    - extradimensionalOrange
   harvestRepeat: Repeat
   lifespan: 55
   maturation: 6
@@ -266,6 +298,36 @@
   potency: 10
   idealLight: 8
   chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+
+- type: seed
+  id: extradimensionalOrange
+  name: seeds-extradimensionalorange-name
+  noun: seeds-noun-seeds
+  displayName: seeds-extradimensionalorange-display-name
+  plantRsi: Objects/Specific/Hydroponics/extradimensional_orange.rsi
+  packetPrototype: ExtradimensionalOrangeSeeds
+  productPrototypes:
+    - FoodExtradimensionalOrange
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 3
+  potency: 10
+  idealLight: 8
+  chemicals:
+    #Haloperidol:
+    #  Min: 3
+    #  Max: 10
+    #  PotencyDivisor: 20
     Nutriment:
       Min: 1
       Max: 5
@@ -479,8 +541,10 @@
   packetPrototype: BloodTomatoSeeds
   productPrototypes:
     - FoodBloodTomato
+  mutationPrototypes:
+    - killerTomato
   harvestRepeat: Repeat
-  lifespan: 25
+  lifespan: 60
   maturation: 8
   production: 6
   yield: 2
@@ -496,6 +560,38 @@
       Max: 10
       PotencyDivisor: 10
     Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+
+- type: seed
+  id: killerTomato
+  name: seeds-killertomato-name
+  noun: seeds-noun-seeds
+  displayName: seeds-killertomato-display-name
+  plantRsi: Objects/Specific/Hydroponics/tomatokiller.rsi
+  packetPrototype: KillerTomatoSeeds
+  productPrototypes:
+    - MobTomatoKiller
+  harvestRepeat: Repeat
+  lifespan: 25
+  maturation: 15
+  production: 6
+  yield: 2
+  potency: 10
+  waterConsumption: 0.60
+  nutrientConsumption: 0.70
+  idealLight: 8
+  idealHeat: 298
+  juicy: true
+  growthStages: 2
+  splatPrototype: PuddleSplatter
+  chemicals:
+    Blood:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    JuiceTomato:
       Min: 1
       Max: 4
       PotencyDivisor: 25
@@ -761,6 +857,8 @@
   packetPrototype: CannabisSeeds
   productPrototypes:
     - LeavesCannabis
+  mutationPrototypes:
+    - rainbowCannabis
   harvestRepeat: Repeat
   lifespan: 75
   maturation: 8
@@ -776,6 +874,51 @@
       Min: 1
       Max: 10
       PotencyDivisor: 10
+
+- type: seed
+  id: rainbowCannabis
+  name: seeds-rainbow-cannabis-name
+  noun: seeds-noun-seeds
+  displayName: seeds-rainbow-cannabis-display-name
+  plantRsi: Objects/Specific/Hydroponics/rainbow_cannabis.rsi
+  packetPrototype: RainbowCannabisSeeds
+  productPrototypes:
+    - LeavesCannabisRainbow
+  harvestRepeat: Repeat
+  lifespan: 75
+  maturation: 8
+  production: 12
+  yield: 2
+  potency: 20
+  growthStages: 3
+  waterConsumption: 0.40
+  idealLight: 9
+  idealHeat: 298
+  chemicals:
+    SpaceDrugs:
+      Min: 1
+      Max: 15
+      PotencyDivisor: 10
+    Lipolicide:
+      Min: 1
+      Max: 15
+      PotencyDivisor: 10
+    MindbreakerToxin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Happiness:
+      Min: 1
+      Max: 5
+#     PotencyDivisor: 20
+#   ColorfulReagent:
+#     Min: 0
+#     Max: 5
+#     PotencyDivisor: 20
+    Psicodine:
+      Min: 0
+      Max: 5
+      PotencyDivisor: 33
 
 - type: seed
   id: tobacco
@@ -1318,6 +1461,8 @@
   packetPrototype: WatermelonSeeds
   productPrototypes:
     - FoodWatermelon
+  mutationPrototypes:
+    - holymelon
   lifespan: 55
   maturation: 12
   production: 3
@@ -1330,6 +1475,35 @@
       Max: 10
       PotencyDivisor: 10
     Water:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+
+- type: seed
+  id: holymelon
+  name: seeds-holymelon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-holymelon-display-name
+  plantRsi: Objects/Specific/Hydroponics/holymelon.rsi
+  packetPrototype: HolymelonSeeds
+  productPrototypes:
+    - FoodHolymelon
+  lifespan: 55
+  maturation: 12
+  production: 3
+  yield: 1
+  potency: 1
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Holywater:
       Min: 1
       Max: 10
       PotencyDivisor: 10
@@ -1453,6 +1627,39 @@
       PotencyDivisor: 50
 
 - type: seed
+  id: worldPea
+  name: seeds-worldpea-name
+  noun: seeds-noun-seeds
+  displayName: seeds-worldpea-display-name
+  plantRsi: Objects/Specific/Hydroponics/world_pea.rsi
+  packetPrototype: PeaSeeds
+  productPrototypes:
+    - FoodWorldPeas
+  lifespan: 25
+  growthStages: 3
+  maturation: 20
+  production: 6
+  yield: 3
+  potency: 25
+  idealLight: 8
+  harvestRepeat: Repeat
+  nutrientConsumption: 0.5
+  waterConsumption: 0.5
+  chemicals:
+    Happiness:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 25
+    Nutriment:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 20
+    Pax:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 50
+
+- type: seed
   id: pumpkin
   name: seeds-pumpkin-name
   noun: seeds-noun-seeds
@@ -1487,6 +1694,8 @@
   packetPrototype: CottonSeeds
   productPrototypes:
     - CottonBol
+  mutationPrototypes:
+    - pyrotton
   lifespan: 25
   maturation: 8
   production: 3
@@ -1501,3 +1710,49 @@
       Max: 10
       PotencyDivisor: 20
 
+- type: seed #once again, replacing learning with comments because ive been in this file for 10 hours
+  id: gnome
+  name: seeds-gome-name #the name of the seeds
+  noun: seeds-noun-seeds
+  displayName: seeds-gnome-display-name #name of the plant when looking at the tray
+  plantRsi: Objects/Specific/Hydroponics/gnome.rsi
+  packetPrototype: GnomeSeeds #seeds you get when clipping? BUT YOU CANT CLIP THIS PLANT TAKE THAT BOTANISTS!
+  productPrototypes:
+    - MobGnome #THE THING THAT SPAWNS!
+  lifespan: 25
+  maturation: 10
+  production: 1
+  yield: 1
+  potency: 1
+  idealLight: 8
+  growthStages: 2
+  waterConsumption: 0
+  seedless: true #fuckin does nothing but im keeping it just in case someone wants botany to riot
+  unclippable: true
+
+- type: seed
+  id: pyrotton
+  name: seeds-pyrotton-name
+  noun: seeds-noun-seeds
+  displayName: seeds-pyrotton-display-name
+  plantRsi: Objects/Specific/Hydroponics/pyrotton.rsi
+  packetPrototype: PyrottonSeeds
+  productPrototypes:
+  - PyrottonBol
+  lifespan: 25
+  maturation: 8
+  production: 3
+  yield: 2
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.80
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+    Phlogiston:
+      Min: 4
+      Max: 8
+      PotencyDivisor: 30

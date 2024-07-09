@@ -284,3 +284,9 @@
   entity: ClothingOuterParamedicSuitFluff
   sponsorOnly: true
   whitelistJobs: [Paramedic]
+
+- type: loadout
+  id: CargoLoadoutSerbwoSA
+  entity: HandTeleporter
+  sponsorOnly: true
+  whitelistJobs: [Quartermaster, SalvageSpecialist, CargoTechnician]

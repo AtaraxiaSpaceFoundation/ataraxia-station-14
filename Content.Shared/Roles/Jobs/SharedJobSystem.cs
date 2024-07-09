@@ -61,15 +61,15 @@ public abstract class SharedJobSystem : EntitySystem
     {
         // Not that many departments so we can just eat the cost instead of storing the inverse lookup.
         var departmentProtos = _protoManager.EnumeratePrototypes<DepartmentPrototype>().ToList();
-        departmentProtos.Sort((x, y) => string.Compare(x.ID, y.ID, StringComparison.Ordinal));
+        departmentProtos = departmentProtos.OrderByDescending(d => d.Weight).ToList();
 
         foreach (var department in departmentProtos)
         {
-            if (department.Roles.Contains(jobProto))
-            {
-                departmentPrototype = department;
-                return true;
-            }
+            if (!department.Roles.Contains(jobProto))
+                continue;
+
+            departmentPrototype = department;
+            return true;
         }
 
         departmentPrototype = null;

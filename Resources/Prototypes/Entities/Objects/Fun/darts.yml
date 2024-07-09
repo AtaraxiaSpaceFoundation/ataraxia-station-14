@@ -127,6 +127,7 @@
   - type: SolutionInjectOnEmbed
     transferAmount: 7
     solution: melee
+    blockSlots: NONE
   - type: SolutionTransfer
     maxTransferAmount: 7
 

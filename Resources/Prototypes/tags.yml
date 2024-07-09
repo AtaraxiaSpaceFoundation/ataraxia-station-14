@@ -259,6 +259,9 @@
   id: CableCoil
 
 - type: Tag
+  id: CaneBlade
+
+- type: Tag
   id: CannonBall
 
 - type: Tag
@@ -640,6 +643,9 @@
 
 - type: Tag
   id: Grenade
+
+- type: Tag # tag to make a glue tool use glue on repair
+  id: GlueTool
 
 - type: Tag
   id: HudMedical
@@ -1184,7 +1190,7 @@
 
 - type: Tag
   id: SuitEVA
-  
+
 - type: Tag
   id: Sunglasses
 

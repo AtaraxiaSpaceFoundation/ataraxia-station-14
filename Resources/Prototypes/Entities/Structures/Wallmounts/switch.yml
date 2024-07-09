@@ -32,7 +32,9 @@
                 collection: MetalBreak
     - type: UseDelay
       delay: 0.2 # prevent light-toggling auto-clickers.
-# WD edit start
+    - type: Tag
+      tags:
+      - Structure
 
 - type: entity
   id: SignalSwitch

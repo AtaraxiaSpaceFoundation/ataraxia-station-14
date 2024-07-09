@@ -1,38 +1,29 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using Content.Shared.Physics;
+﻿using System.IO;
 using Content.Shared._White;
 using Content.Shared._White.TTS;
 using Robust.Client.Audio;
-using Robust.Client.GameObjects;
-using Robust.Client.Graphics;
-using Robust.Shared.Audio.Sources;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
+// ReSharper disable InconsistentNaming
 
 namespace Content.Client._White.TTS;
 
 /// <summary>
 /// Plays TTS audio in world
 /// </summary>
-// ReSharper disable once InconsistentNaming
 public sealed class TTSSystem : EntitySystem
 {
-    [Dependency] private readonly IAudioManager _audioSystem = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly IAudioManager _audioManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly SharedPhysicsSystem _broadPhase = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly AudioSystem _audioSystem = default!;
 
     private float _volume;
-    private const int TTSCollisionMask = (int)CollisionGroup.Impassable;
-
-    private readonly HashSet<AudioStream> _currentStreams = new();
-    private readonly Dictionary<EntityUid, Queue<AudioStream>> _entityQueues = new();
+    private readonly Dictionary<EntityUid, AudioComponent> _currentlyPlaying = new();
+    private readonly Dictionary<EntityUid, Queue<AudioStreamWithParams>> _enquedStreams = new();
+    
+    // Same as Server.ChatSystem.VoiceRange
+    private const float VoiceRange = 10;
 
     public override void Initialize()
     {
@@ -44,54 +35,35 @@ public sealed class TTSSystem : EntitySystem
     {
         base.Shutdown();
         _cfg.UnsubValueChanged(WhiteCVars.TtsVolume, OnTtsVolumeChanged);
-        EndStreams();
+        ClearQueues();
     }
 
-    // Little bit of duplication logic from AudioSystem
     public override void FrameUpdate(float frameTime)
     {
-        var streamToRemove = new HashSet<AudioStream>();
-
-        var ourPos = _eye.CurrentEye.Position.Position;
-        foreach (var stream in _currentStreams)
+        foreach (var (uid, audioComponent) in _currentlyPlaying)
         {
-            if (!stream.Source.Playing ||
-                !_entity.TryGetComponent<MetaDataComponent>(stream.Uid, out var meta) ||
-                Deleted(stream.Uid, meta) ||
-                !_entity.TryGetComponent<TransformComponent>(stream.Uid, out var xform))
-            {
-                stream.Source.Dispose();
-                streamToRemove.Add(stream);
-                continue;
-            }
-
-            var mapPos = _transform.GetMapCoordinates(xform);
-            if (mapPos.MapId != MapId.Nullspace)
-            {
-                stream.Source.Position = mapPos.Position;
-            }
-
-            if (mapPos.MapId != _eye.CurrentMap)
+            if (audioComponent is { Running: true, Playing: true })
             {
                 continue;
             }
 
-            var sourceRelative = ourPos - mapPos.Position;
-            var occlusion = 0f;
-            if (sourceRelative.Length() > 0)
+            if (!_enquedStreams.TryGetValue(uid, out var queue))
             {
-                occlusion = _broadPhase.IntersectRayPenetration(mapPos.MapId,
-                    new CollisionRay(mapPos.Position, sourceRelative.Normalized(), TTSCollisionMask),
-                    sourceRelative.Length(), stream.Uid);
+                continue;
             }
 
-            stream.Source.Occlusion = occlusion;
-        }
+            if (!queue.TryDequeue(out var toPlay))
+            {
+                continue;
+            }
 
-        foreach (var audioStream in streamToRemove)
-        {
-            _currentStreams.Remove(audioStream);
-            ProcessEntityQueue(audioStream.Uid);
+            var audio = _audioSystem.PlayEntity(toPlay.Stream, uid, toPlay.Params);
+            if (!audio.HasValue)
+            {
+                continue;
+            }
+
+            _currentlyPlaying[uid] = audio.Value.Component;
         }
     }
 
@@ -102,114 +74,76 @@ public sealed class TTSSystem : EntitySystem
 
     private void OnPlayTTS(PlayTTSEvent ev)
     {
-        if (_volume <= -20f)
-            return;
-
-        var volume = _volume;
-        if (ev.BoostVolume)
-            volume += 5f;
-        if (!TryCreateAudioSource(ev.Data, out var source, volume))
-            return;
-
-        var stream = new AudioStream(GetEntity(ev.Uid), source);
-        AddEntityStreamToQueue(stream);
+        PlayTTS(GetEntity(ev.Uid), ev.Data, ev.BoostVolume ? _volume + 5 : _volume);
     }
 
-    public void PlayCustomText(string text)
+    public void PlayTTS(EntityUid uid, byte[] data, float volume)
     {
-        RaiseNetworkEvent(new RequestTTSEvent(text));
+        if (_volume <= -20f)
+        {
+            return;
+        }
+
+        var stream = CreateAudioStream(data);
+
+        var audioParams = new AudioParams
+        {
+            Volume = volume,
+            MaxDistance = VoiceRange
+        };
+
+        var audioStream = new AudioStreamWithParams(stream, audioParams);
+        EnqueueAudio(uid, audioStream);
     }
 
-    private bool TryCreateAudioSource(byte[] data, [NotNullWhen(true)] out IAudioSource? source, float volume = 0f)
+    public void StopCurrentTTS(EntityUid uid)
+    {
+        if (!_currentlyPlaying.TryGetValue(uid, out var audio))
+        {
+            return;
+        }
+
+        _audioSystem.Stop(audio.Owner);
+    }
+
+    private void EnqueueAudio(EntityUid uid, AudioStreamWithParams audioStream)
+    {
+        if (!_currentlyPlaying.ContainsKey(uid))
+        {
+            var audio = _audioSystem.PlayEntity(audioStream.Stream, uid, audioStream.Params);
+            if (!audio.HasValue)
+            {
+                return;
+            }
+
+            _currentlyPlaying[uid] = audio.Value.Component;
+            return;
+        }
+
+        if (_enquedStreams.TryGetValue(uid, out var queue))
+        {
+            queue.Enqueue(audioStream);
+            return;
+        }
+
+        queue = new Queue<AudioStreamWithParams>();
+        queue.Enqueue(audioStream);
+        _enquedStreams[uid] = queue;
+    }
+
+    private void ClearQueues()
+    {
+        foreach (var (_, queue) in _enquedStreams)
+        {
+            queue.Clear();
+        }
+    }
+
+    private AudioStream CreateAudioStream(byte[] data)
     {
         var dataStream = new MemoryStream(data) { Position = 0 };
-        var audioStream = _audioSystem.LoadAudioOggVorbis(dataStream);
-        source = _audioSystem.CreateAudioSource(audioStream);
-        if (source == null)
-        {
-            return false;
-        }
-
-        source.Volume = volume == 0f ? _volume : volume;
-        return true;
+        return _audioManager.LoadAudioOggVorbis(dataStream);
     }
 
-    private void AddEntityStreamToQueue(AudioStream stream)
-    {
-        if (_entityQueues.TryGetValue(stream.Uid, out var queue))
-        {
-            queue.Enqueue(stream);
-        }
-        else
-        {
-            _entityQueues.Add(stream.Uid, new Queue<AudioStream>(new[] { stream }));
-
-            if (!IsEntityCurrentlyPlayStream(stream.Uid))
-                ProcessEntityQueue(stream.Uid);
-        }
-    }
-
-    private bool IsEntityCurrentlyPlayStream(EntityUid uid)
-    {
-        return _currentStreams.Any(s => s.Uid == uid);
-    }
-
-    private void ProcessEntityQueue(EntityUid uid)
-    {
-        if (TryTakeEntityStreamFromQueue(uid, out var stream))
-            PlayEntity(stream);
-    }
-
-    private bool TryTakeEntityStreamFromQueue(EntityUid uid, [NotNullWhen(true)] out AudioStream? stream)
-    {
-        if (_entityQueues.TryGetValue(uid, out var queue))
-        {
-            stream = queue.Dequeue();
-            if (queue.Count == 0)
-                _entityQueues.Remove(uid);
-
-            return true;
-        }
-
-        stream = null;
-        return false;
-    }
-
-    private void PlayEntity(AudioStream stream)
-    {
-        if (!_entity.TryGetComponent<TransformComponent>(stream.Uid, out var xform))
-            return;
-
-        stream.Source.Position = _transform.GetWorldPosition(xform);
-        stream.Source.StartPlaying();
-        _currentStreams.Add(stream);
-    }
-
-    public void StopAllStreams()
-    {
-        foreach (var stream in _currentStreams)
-        {
-            stream.Source.StopPlaying();
-        }
-    }
-
-    private void EndStreams()
-    {
-        foreach (var stream in _currentStreams)
-        {
-            stream.Source.StopPlaying();
-            stream.Source.Dispose();
-        }
-
-        _currentStreams.Clear();
-        _entityQueues.Clear();
-    }
-
-    // ReSharper disable once InconsistentNaming
-    private sealed class AudioStream(EntityUid uid, IAudioSource source)
-    {
-        public EntityUid Uid { get; } = uid;
-
-        public IAudioSource Source { get; } = source;
-    }
+    private record AudioStreamWithParams(AudioStream Stream, AudioParams Params);
 }
