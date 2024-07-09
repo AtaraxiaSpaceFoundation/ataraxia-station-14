@@ -2,6 +2,7 @@
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
 using Content.Server._White.Cult.Items.Components;
+using Content.Server._White.Discord.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;

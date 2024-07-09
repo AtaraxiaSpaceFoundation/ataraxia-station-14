@@ -1,0 +1,8 @@
+﻿- type: speechSounds
+  id: GnomesSpeech
+  saySound:
+    collection: GnomesSpeechCollection
+  askSound:
+    collection: GnomesSpeechCollection
+  exclaimSound:
+    collection: GnomesSpeechCollection

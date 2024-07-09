@@ -16,6 +16,7 @@
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
+  arrivalNotificationPrototype: ChiefEngineerArrivalNotification
   supervisors: job-supervisors-captain
   canBeAntag: false # Ataraxia
   access:

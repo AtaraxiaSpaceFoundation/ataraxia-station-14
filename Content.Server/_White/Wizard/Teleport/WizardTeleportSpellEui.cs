@@ -1,4 +1,5 @@
-﻿using Content.Server.EUI;
+﻿using Content.Server._White.Wizard.Charging;
+using Content.Server.EUI;
 using Content.Server.Popups;
 using Content.Shared._White.Wizard.Teleport;
 using Content.Shared.Eui;
@@ -15,6 +16,7 @@ public sealed class WizardTeleportSpellEui : BaseEui
     private readonly TeleportLocationSystem _teleportLocation;
     private readonly PullingSystem _pulling;
     private readonly PopupSystem _popupSystem;
+    private readonly ChargingSystem _charging;
 
     private readonly EntityUid _performer;
 
@@ -28,6 +30,7 @@ public sealed class WizardTeleportSpellEui : BaseEui
         _pulling = _entityManager.System<PullingSystem>();
         _teleportLocation = _entityManager.System<TeleportLocationSystem>();
         _popupSystem = _entityManager.System<PopupSystem>();
+        _charging = _entityManager.System<ChargingSystem>();
 
         _performer = performer;
 
@@ -106,6 +109,9 @@ public sealed class WizardTeleportSpellEui : BaseEui
 
         _entityManager.SpawnEntity("AdminInstantEffectSmoke10", oldCoords);
         _entityManager.SpawnEntity("AdminInstantEffectSmoke10", coords);
+
+        _charging.RemoveAllCharges(_performer);
+        _charging.StopAllSounds(_performer);
 
         Close();
     }

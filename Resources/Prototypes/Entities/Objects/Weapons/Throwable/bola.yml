@@ -44,9 +44,12 @@
     breakoutTime: 3.5 #all bola should generally be fast to remove
     walkSpeed: 0.7 #makeshift bola shouldn't slow too much
     sprintSpeed: 0.7
-    staminaDamage: 55 # Sudden weight increase sapping stamina
+    staminaDamage: 33 # Sudden weight increase sapping stamina
     canThrowTrigger: true
     canMoveBreakout: true
+  - type: KnockdownOnCollide
+
+# WD added
 
 - type: entity
   parent: Bola
@@ -54,9 +57,42 @@
   name: Bola
   description: Linked together with some spare cuffs and metal.
   components:
+    - type: Sprite
+      sprite: White/Cult/bola.rsi
     - type: Ensnaring
       freeTime: 2.0
       breakoutTime: 3.5 #all bola should generally be fast to remove
       walkSpeed: 0.5
       sprintSpeed: 0.5
       canThrowTrigger: true
+
+- type: entity
+  parent: Bola
+  id: EnergyBola
+  name: Bola
+  description: Linked together with some spare cuffs and metal.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: White/Objects/Weapons/Throwable/energybola.rsi
+  - type: Ensnaring
+    freeTime: 1
+    breakoutTime: 2
+    walkSpeed: 0.8
+    sprintSpeed: 0.8
+    staminaDamage: 33
+  - type: EmitSoundOnLand
+    collection: sparks
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: EnergyMiss
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: KnockdownOnCollide

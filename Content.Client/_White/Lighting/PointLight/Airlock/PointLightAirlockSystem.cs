@@ -4,6 +4,9 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._White.Lighting.PointLight.Airlock;
 
+// TODO: Перепилить емаггинг дверей, потому что ебучие двери вообще не в курсе, емагнуты они или нет.
+// А сам емаг просто ставит стейты, а не поражает дверь
+// А еще он ставит дверь на болты каким-то хуем не меняя DoorVisuals.BoltLights
 public sealed class PointLightAirlockSystem : EntitySystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLightSystem = default!;
@@ -44,10 +47,16 @@ public sealed class PointLightAirlockSystem : EntitySystem
         if (!args.AppearanceData.TryGetValue(DoorVisuals.State, out var state))
             return;
 
-        HandleState(uid, component, (DoorState) state);
+        if (!component.IsEmagged)
+            HandleState(uid, component, (DoorState) state);
 
         if (args.AppearanceData.TryGetValue(DoorVisuals.EmergencyLights, out var emergency))
-            ToggleLight(uid, component.YellowColor, component, (bool) emergency);
+        {
+            if ((bool) emergency)
+                ToggleLight(uid, component.YellowColor, component, (bool) emergency);
+            else if (!component.IsEmagged)
+                HandleState(uid, component, (DoorState) state);
+        }
 
         if (!args.AppearanceData.TryGetValue(DoorVisuals.BoltLights, out var boltsDown))
             return;
@@ -59,17 +68,25 @@ public sealed class PointLightAirlockSystem : EntitySystem
             else if (args.AppearanceData.TryGetValue(DoorVisuals.EmergencyLights, out var emergencyLights) && (bool) emergencyLights)
                 ToggleLight(uid, component.YellowColor, component);
             else
+            {
+                if (component.IsEmagged)
+                    component.IsEmagged = false;
                 HandleState(uid, component, (DoorState) state);
+            }
         }
 
         component.LastBoltsState = (bool) boltsDown;
-
     }
 
     private void HandleState(EntityUid uid, PointLightAirlockComponent component, DoorState state)
     {
         switch (state)
         {
+            case DoorState.Emagging:
+                ToggleLight(uid, component.RedColor, component);
+                component.IsEmagged = true;
+                break;
+
             case DoorState.Open:
                 ToggleLight(uid, component.BlueColor, component);
                 break;

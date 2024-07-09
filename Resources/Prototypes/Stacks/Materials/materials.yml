@@ -1,6 +1,6 @@
 - type: stack
   id: Biomass
-  name: биомасса
+  name: biomass
   icon: { sprite: /Textures/Objects/Misc/monkeycube.rsi, state: cube }
   spawn: MaterialBiomass1
   maxCount: 100
@@ -8,7 +8,7 @@
 
 - type: stack
   id: WoodPlank
-  name: древесина
+  name: wood plank
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: wood }
   spawn: MaterialWoodPlank1
   maxCount: 30
@@ -16,7 +16,7 @@
 
 - type: stack
   id: Cardboard
-  name: картонная коробка
+  name: cardboard
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cardboard }
   spawn: MaterialCardboard1
   maxCount: 30
@@ -24,7 +24,7 @@
 
 - type: stack
   id: Cloth
-  name: ткань
+  name: cloth
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cloth }
   spawn: MaterialCloth1
   maxCount: 30
@@ -32,7 +32,7 @@
 
 - type: stack
   id: Durathread
-  name: дюраткань
+  name: durathread
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: durathread }
   spawn: MaterialDurathread1
   maxCount: 30
@@ -40,7 +40,7 @@
 
 - type: stack
   id: Diamond
-  name: алмаз
+  name: diamond
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: diamond }
   spawn: MaterialDiamond1
   maxCount: 30
@@ -48,15 +48,22 @@
 
 - type: stack
   id: Cotton
-  name: хлопок
+  name: cotton
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cotton }
   spawn: MaterialCotton1
   maxCount: 30
   itemSize: 1
 
 - type: stack
+  id: Pyrotton
+  name: pyrotton
+  icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: pyrotton }
+  spawn: MaterialPyrotton1
+  maxCount: 30
+
+- type: stack
   id: Bananium
-  name: бананиум
+  name: bananium
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: bananium }
   spawn: MaterialBananium1
   maxCount: 10
@@ -92,11 +99,10 @@
   icon: { sprite: /Textures/White/Cult/Entities/runic_metal.rsi, state: runic}
   spawn: CultRunicMetal1
   maxCount: 30
-  itemSize: 1
 
 - type: stack
   id: Gunpowder
-  name: порох
+  name: gunpowder
   icon: { sprite: /Textures/Objects/Misc/reagent_fillings.rsi, state: powderpile }
   spawn: MaterialGunpowder
   maxCount: 60

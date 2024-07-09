@@ -123,6 +123,8 @@
     magState: mag
     steps: 5
     zeroVisible: false
+  - type: Item
+    storedRotation: 90
   - type: Appearance
   - type: ContainerContainer
     containers:

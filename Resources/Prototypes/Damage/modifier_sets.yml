@@ -345,3 +345,9 @@
     Caustic: 0.5
     Poison: 0.0
     Cellular: 0.0
+
+# protects against radiation
+- type: damageModifierSet
+  id: PotassiumIodide
+  coefficients:
+    Radiation: 0.1

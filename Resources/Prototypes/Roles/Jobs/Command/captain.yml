@@ -20,6 +20,7 @@
   icon: "JobIconCaptain"
   requireAdminNotify: true
   joinNotifyCrew: true
+  arrivalNotificationPrototype: CaptainArrivalNotification
   supervisors: job-supervisors-centcom
   canBeAntag: false
   accessGroups:

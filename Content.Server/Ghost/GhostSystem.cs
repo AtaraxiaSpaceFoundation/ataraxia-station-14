@@ -380,7 +380,7 @@ namespace Content.Server.Ghost
                 return;
             }
 
-            var response = new GhostWarpsResponseEvent(GetPlayerWarps(), GetLocationWarps(), GetAntagonistWarps());
+            var response = new GhostWarpsResponseEvent(GetPlayerWarps(), GetLocationWarps(), GetAntagonistWarps()); // WD edit
             RaiseNetworkEvent(response, args.SenderSession.Channel);
         }
 
@@ -432,7 +432,7 @@ namespace Content.Server.Ghost
         }
 
 
-        private List<GhostWarpPlace> GetLocationWarps()
+        private List<GhostWarpPlace> GetLocationWarps() // WD added
         {
             var warps = new List<GhostWarpPlace> { };
             var allQuery = AllEntityQuery<WarpPointComponent>();
@@ -448,7 +448,7 @@ namespace Content.Server.Ghost
             return warps;
         }
 
-        private List<GhostWarpPlayer> GetPlayerWarps()
+        private List<GhostWarpPlayer> GetPlayerWarps() // WD added
         {
             var warps = new List<GhostWarpPlayer> { };
 
@@ -499,7 +499,7 @@ namespace Content.Server.Ghost
             return warps;
         }
 
-        private List<GhostWarpGlobalAntagonist> GetAntagonistWarps()
+        private List<GhostWarpGlobalAntagonist> GetAntagonistWarps() // WD added
         {
             var warps = new List<GhostWarpGlobalAntagonist> { };
 

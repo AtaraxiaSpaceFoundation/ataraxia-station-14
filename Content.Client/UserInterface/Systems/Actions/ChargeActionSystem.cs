@@ -56,23 +56,39 @@ public sealed class ChargeActionSystem : SharedChargingSystem
     {
         base.Update(frameTime);
 
-        if (_playerManager.LocalEntity is not { } user)
+        if (!_timing.IsFirstTimePredicted)
             return;
+
+        if (_playerManager.LocalEntity is not { } user)
+        {
+            Reset();
+            return;
+        }
 
         if (!_mobState.IsAlive(user) || _statusEffects.HasStatusEffect(user, "Incorporeal"))
+        {
+            Reset();
             return;
+        }
 
-        if (!_timing.IsFirstTimePredicted || _controller == null || _controller.SelectingTargetFor is not { } actionId)
+        if (_controller == null || _controller.SelectingTargetFor is not { } actionId)
+        {
+            Reset();
             return;
+        }
 
         if (!_actionsSystem.TryGetActionData(actionId, out var baseAction) ||
             baseAction is not BaseTargetActionComponent action || !action.IsChargeEnabled)
+        {
+            Reset();
             return;
+        }
 
         if (!action.Enabled
             || action is { Charges: 0, RenewCharges: false }
             || action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
         {
+            Reset();
             return;
         }
 
@@ -137,6 +153,17 @@ public sealed class ChargeActionSystem : SharedChargingSystem
             _isChargedPlaying = true;
             RaiseNetworkEvent(new RequestSpellChargedAudio(action.MaxChargedSound, action.LoopMaxCharged));
         }
+    }
+
+    private void Reset()
+    {
+        _charging = false;
+        _prevCharging = false;
+        _chargeTime = 0f;
+        _chargeLevel = 0;
+        _prevChargeLevel = 0;
+        _isChargingPlaying = false;
+        _isChargedPlaying = false;
     }
 
     private void HandleAction(EntityUid actionId, BaseTargetActionComponent action, EntityUid user, int chargeLevel)

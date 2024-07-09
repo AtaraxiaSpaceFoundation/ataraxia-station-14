@@ -135,7 +135,12 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("wireLayout");
             _prototypeManager.RegisterIgnore("alertLevels");
             _prototypeManager.RegisterIgnore("nukeopsRole");
+
             _prototypeManager.RegisterIgnore("stationGoal");
+
+            _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
+
+
             //WD-EDIT
             _prototypeManager.RegisterIgnore("loadout");
             //WD-EDIT

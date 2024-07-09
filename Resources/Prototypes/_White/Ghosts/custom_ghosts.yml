@@ -61,8 +61,8 @@
   ckey: reider207
   sprite: White/Ghosts/reider207-ghost.rsi
   alpha: 0.8
-  ghostName: Соня
-  ghostDescription: Видишь спит соня? Так не буди
+  ghostName: Tighnari
+  ghostDescription: But what are they going to do, lock me up?
   size: 0.8, 0.8
 
 #mikvisan

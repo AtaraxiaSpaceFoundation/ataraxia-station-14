@@ -519,6 +519,7 @@
         - SmokeOnTrigger
         - Flash
         - Handcuff
+        - Ensnaring
   - type: ItemMapper
     mapLayers:
       flashbang:

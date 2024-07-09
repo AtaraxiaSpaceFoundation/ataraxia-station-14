@@ -31,6 +31,7 @@ using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Linq;
+using Robust.Server.Player;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -39,6 +40,7 @@ namespace Content.Server.GameTicking.Rules;
 /// </summary>
 public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleComponent>
 {
+    [Dependency] private readonly IPlayerManager _playerManager = default!; // WD
     [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly AntagSelectionSystem _antagSelection = default!;
@@ -180,7 +182,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
                 continue;
 
             var headRevCount =
-                _antagSelection.CalculateAntagCount(ev.Players.Length, comp.PlayersPerHeadRev, comp.MaxHeadRevs);
+                _antagSelection.CalculateAntagCount(_playerManager.PlayerCount, comp.PlayersPerHeadRev, comp.MaxHeadRevs); // WD EDIT
 
             var headRevs = _antagSelection.ChooseAntags(headRevCount, eligiblePlayers);
 
@@ -355,6 +357,13 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
                 if (_mind.TryGetSession(mindId, out var session))
                     _euiMan.OpenEui(new DeconvertedEui(), session);
             }
+
+            // WD EDIT START
+            // Check for all at once gamemode
+            if (!_gameTicker.GetActiveGameRules().Where(HasComp<RampingStationEventSchedulerComponent>).Any())
+                _roundEnd.EndRound();
+
+            // WD EDIT END
 
             return true;
         }

@@ -1,3 +1,4 @@
+
 accent-pirate-prefix-1 = Арргх
 accent-pirate-prefix-2 = Гарр
 accent-pirate-prefix-3 = Йарр
@@ -66,3 +67,4 @@ accent-pirate-replaced-31 = rifle
 accent-pirate-replacement-31 = musket
 accent-pirate-replaced-32 = ammo
 accent-pirate-replacement-32 = gunpowder
+

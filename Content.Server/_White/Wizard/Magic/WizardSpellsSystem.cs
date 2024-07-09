@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Server._White.Cult;
 using Content.Server._White.IncorporealSystem;
+using Content.Server._White.Wizard.Charging;
 using Content.Server._White.Wizard.Magic.Amaterasu;
 using Content.Server._White.Wizard.Magic.Other;
 using Content.Server._White.Wizard.Magic.TeslaProjectile;
@@ -80,6 +81,7 @@ public sealed class WizardSpellsSystem : EntitySystem
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly ChargingSystem _charging = default!;
 
     #endregion
 
@@ -125,7 +127,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             return;
         }
 
-        msg.Handled = true;
+        Cast(msg);
     }
 
     #endregion
@@ -143,8 +145,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         var comp = EnsureComp<PreventCollideComponent>(ent);
         comp.Uid = msg.Performer;
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -187,8 +188,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         _standing.TryLieDown(uid);
         _standing.TryLieDown(target);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
 
         SwapComponent<WizardComponent>(uid, target);
         SwapComponent<RevolutionaryComponent>(uid, target);
@@ -213,8 +213,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         _euiManager.OpenEui(eui, actor.PlayerSession);
         eui.StateDirty();
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg, false);
     }
 
     #endregion
@@ -264,8 +263,7 @@ public sealed class WizardSpellsSystem : EntitySystem
             _handsSystem.TryForcePickupAnyHand(msg.Performer, recallComponent.Item.Value);
             _audio.PlayPvs(recallComponent.RecallSound, msg.Performer);
 
-            msg.Handled = true;
-            Speak(msg);
+            Cast(msg);
             return;
         }
 
@@ -293,8 +291,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -317,8 +314,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -340,8 +336,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -357,8 +352,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
         _empSystem.EmpPulse(coords, 15, 1000000, 60f);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -381,8 +375,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         _statusEffectsSystem.TryAddStatusEffect<IncorporealComponent>(msg.Performer, "Incorporeal",
             TimeSpan.FromSeconds(10), false);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -434,8 +427,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         Spawn("AdminInstantEffectSmoke3", oldCoords);
         Spawn("AdminInstantEffectSmoke3", coords);
 
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     #endregion
@@ -460,9 +452,7 @@ public sealed class WizardSpellsSystem : EntitySystem
                 break;
         }
 
-        SetCooldown(msg.Action, msg.ActionUseType);
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     private void ForcewallSpellDefault(ForceWallSpellEvent msg)
@@ -533,9 +523,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!result)
             return;
 
-        SetCooldown(msg.Action, msg.ActionUseType);
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     private void CardsSpellDefault(CardsSpellEvent msg)
@@ -638,9 +626,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!result)
             return;
 
-        SetCooldown(msg.Action, msg.ActionUseType);
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     private void FireballSpellDefault(FireballSpellEvent msg)
@@ -725,9 +711,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!result)
             return;
 
-        SetCooldown(msg.Action, msg.ActionUseType);
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     private bool ForceSpellAlt(ForceSpellEvent msg)
@@ -782,9 +766,7 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!result)
             return;
 
-        SetCooldown(msg.Action, msg.ActionUseType);
-        msg.Handled = true;
-        Speak(msg);
+        Cast(msg);
     }
 
     private bool ArcSpellDefault(ArcSpellEvent msg)
@@ -842,6 +824,17 @@ public sealed class WizardSpellsSystem : EntitySystem
     private void TurnOffShield(EntityUid uid)
     {
         RaiseLocalEvent(uid, new EnergyDomeClothesTurnOffEvent());
+    }
+
+    public void Cast(BaseActionEvent msg, bool removeAllCharges = true)
+    {
+        SetCooldown(msg.Action, msg.ActionUseType);
+        msg.Handled = true;
+        Speak(msg);
+        if (!removeAllCharges)
+            return;
+        _charging.RemoveAllCharges(msg.Performer);
+        _charging.StopAllSounds(msg.Performer);
     }
 
     public bool CanCast(BaseActionEvent msg)

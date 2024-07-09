@@ -87,7 +87,7 @@ public sealed partial class HumanoidProfileEditor
         if (_previewDummy is null || Profile is null)
             return;
 
-        _ttsSys.StopAllStreams();
+        _ttsSys.StopCurrentTTS(_previewDummy.Value);
         _ttsMgr.RequestTTS(_previewDummy.Value, IoCManager.Resolve<IRobustRandom>().Pick(_sampleText), Profile.Voice);
     }
 }
