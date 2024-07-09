@@ -8,6 +8,6 @@ atm-ui-select-withdraw-amount = Выберите сумму вывода.
 atm-ui-insert-card = Вставьте карту.
 atm-ui-balance = Баланс: { $balance } ¢
 
-ent-ATM = Банкомат
+ent-ATM = банкомат
     .desc = Для всех ваших денежных нужд!
     .suffix = { "" }
