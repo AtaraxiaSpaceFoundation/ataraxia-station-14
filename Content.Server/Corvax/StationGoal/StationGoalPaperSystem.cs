@@ -43,13 +43,6 @@ namespace Content.Server.Corvax.StationGoal
                     var goalId = _random.Pick(tempGoals);
                     var goalProto = _proto.Index(goalId);
 
-                    if (playerCount > goalProto.MaxPlayers ||
-                        playerCount < goalProto.MinPlayers)
-                    {
-                        tempGoals.Remove(goalId);
-                        continue;
-                    }
-
                     selGoal = goalProto;
                     break;
                 }
