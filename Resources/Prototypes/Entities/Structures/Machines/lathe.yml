@@ -524,7 +524,7 @@
   description: Creates parts for robotics and other mechanical needs
   components:
   - type: Sprite
-    sprite: Structures/Machines/exosuit_fabricator.rsi
+    sprite: Ataraxia/Structures/Machines/exosuit_fabricator.rsi # Ataraxia
     layers:
     - state: fab-idle
       map: ["enum.LatheVisualLayers.IsRunning"]
