@@ -8,8 +8,8 @@
   },
   "states": [
     {
-      "name": "2",
-	  "delays": [
+      "name": "1",
+      "delays": [
         [
           0.1
         ]
