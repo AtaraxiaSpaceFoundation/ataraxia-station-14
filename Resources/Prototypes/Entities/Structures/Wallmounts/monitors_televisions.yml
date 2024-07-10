@@ -12,7 +12,7 @@
     - map: ["computerLayerBody"]
       state: television
     - map: ["computerLayerScreen"]
-      state: detective_television
+      state: television_playing # Ataraxia
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight
