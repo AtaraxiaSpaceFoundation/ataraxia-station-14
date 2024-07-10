@@ -115,6 +115,12 @@ public abstract class SharedStunSystem : EntitySystem
         if (!TryComp(uid, out StandingStateComponent? standing) || !(!standing.CanLieDown || standing.AutoGetUp)) // WD EDIT
             return;
 
+        if (standing.AutoGetUp) // WD EDIT
+        {
+            _standingState.TryStandUp(uid, standing);
+            return;
+        }
+
         _standingState.Stand(uid, standing);
         // WD EDIT END
     }
