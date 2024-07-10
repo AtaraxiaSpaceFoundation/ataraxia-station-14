@@ -5,6 +5,7 @@
   description: Finally, some decent reception around here...
   components:
   - type: Sprite
+    sprite: Ataraxia/Structures/Machines/Computers/tv.rsi # Ataraxia
     noRot: true
     drawdepth: SmallObjects
     layers:
