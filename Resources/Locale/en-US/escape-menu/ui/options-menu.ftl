@@ -137,6 +137,7 @@ ui-options-function-swap-hands = Swap hands
 ui-options-function-move-stored-item = Move stored item
 ui-options-function-rotate-stored-item = Rotate stored item
 ui-options-function-lie-down = Lie down/Get up
+ui-options-function-auto-get-up = Automatically get up when falling
 ui-options-function-save-item-location = Save item location
 ui-options-static-storage-ui = Lock storage window to hotbar
 

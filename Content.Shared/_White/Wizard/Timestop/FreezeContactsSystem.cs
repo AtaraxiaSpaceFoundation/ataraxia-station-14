@@ -36,6 +36,7 @@ public sealed class FreezeContactsSystem : EntitySystem
         SubscribeLocalEvent<FrozenComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<FrozenComponent, PreventCollideEvent>(OnPreventCollide);
         SubscribeLocalEvent<FrozenComponent, EntGotInsertedIntoContainerMessage>(OnGetInserted);
+        SubscribeLocalEvent<FrozenComponent, StandingUpDoAfterEvent>(OnStandingUpDoAfter);
 
         SubscribeLocalEvent<FrozenComponent, StandAttemptEvent>(OnAttempt);
         SubscribeLocalEvent<FrozenComponent, DownAttemptEvent>(OnAttempt);
@@ -59,6 +60,11 @@ public sealed class FreezeContactsSystem : EntitySystem
             return;
 
         args.Cancel();
+    }
+
+    private void OnStandingUpDoAfter(EntityUid uid, FrozenComponent component, StandingUpDoAfterEvent args)
+    {
+        args.Handled = true;
     }
 
     private void OnAttempt(EntityUid uid, FrozenComponent component, CancellableEntityEventArgs args)

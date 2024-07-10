@@ -1,11 +1,12 @@
 using Content.Shared.Standing.Systems;
+using Content.Shared._White.Standing;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Standing
 {
-    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedStandingStateSystem))]
+    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedStandingStateSystem), typeof(StandingStateSystem))]
     public sealed partial class StandingStateComponent : Component
     {
         [ViewVariables(VVAccess.ReadWrite), DataField]
@@ -23,19 +24,29 @@ namespace Content.Shared.Standing
         // WD EDIT
         [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
         public bool CanLieDown = false;
-        
+
+        // WD EDIT
+        [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+        public bool AutoGetUp = false;
+
         /// <summary>
         ///     List of fixtures that had their collision mask changed when the entity was downed.
         ///     Required for re-adding the collision mask.
         /// </summary>
         [DataField, AutoNetworkedField]
         public List<string> ChangedFixtures = new();
-        
+
     }
 }
 
 [Serializable, NetSerializable]
-public sealed class ChangeStandingStateEvent : EntityEventArgs
+public sealed class ChangeStandingStateEvent : CancellableEntityEventArgs
+{
+}
+
+// WD EDIT
+[Serializable, NetSerializable]
+public sealed class CheckAutoGetUpEvent : CancellableEntityEventArgs
 {
 }
 
