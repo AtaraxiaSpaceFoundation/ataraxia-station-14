@@ -53,7 +53,7 @@
     state: full
 
 - type: entity
-  parent: ResinWeedBase
+  parent: BaseStructure
   id: ResinWeedNode
   name: resin node
   description: Slimy and sticky mass with luminous seeds.
@@ -65,11 +65,39 @@
   - type: Icon
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi
     state: full
-  - type: PointLight
-    radius: 2.5
-    energy: 2
-    color: "#00CED1"
   - type: AreaSpawner
     radius: 6
     spawnPrototype: ResinWeed
     intervalSeconds: 20
+  - type: PointLight
+    radius: 2.5
+    energy: 2
+    color: "#00CED1"
+  - type: Tag
+    tags: [ Carpet ]
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        density: 1000
+        hard: false
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PlasmaGainModifier
