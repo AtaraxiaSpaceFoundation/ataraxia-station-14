@@ -85,7 +85,7 @@ namespace Content.Client.Chat.Managers
                     break;
 
                 case ChatSelectChannel.XenoHivemind:
-                    _consoleHost.ExecuteCommand($"aliensay \"{CommandParsing.Escape(str)}\"");
+                    _consoleHost.ExecuteCommand($"aliensay \"{CommandParsing.Escape(text)}\"");
                     break;
 
                 default:
