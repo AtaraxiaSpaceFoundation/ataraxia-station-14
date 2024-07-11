@@ -20,7 +20,10 @@
 
         - !type:HTNPrimitiveTask
           operator: !type:SpeakOperator
-            speech: medibot-start-inject
+            speech:
+            - Пожалуйста, не двигайтесь.
+            - Пожалуйста, стойте на месте.
+            - Пожалуйста, не шевелитесь.
             hidden: true
 
         - !type:HTNPrimitiveTask

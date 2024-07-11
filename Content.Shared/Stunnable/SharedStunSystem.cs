@@ -104,6 +104,7 @@ public abstract class SharedStunSystem : EntitySystem
 
     private void OnKnockInit(EntityUid uid, KnockedDownComponent component, ComponentInit args)
     {
+        RaiseNetworkEvent(new CheckAutoGetUpEvent()); // WD EDIT
         _standingState.Down(uid);
     }
 
@@ -111,8 +112,14 @@ public abstract class SharedStunSystem : EntitySystem
     {
         // WD EDIT START
         // Don't stand up if we can lie down via keybind
-        if (!TryComp(uid, out StandingStateComponent? standing) || standing.CanLieDown)
+        if (!TryComp(uid, out StandingStateComponent? standing) || !(!standing.CanLieDown || standing.AutoGetUp)) // WD EDIT
             return;
+
+        if (standing.AutoGetUp) // WD EDIT
+        {
+            _standingState.TryStandUp(uid, standing);
+            return;
+        }
 
         _standingState.Stand(uid, standing);
         // WD EDIT END
