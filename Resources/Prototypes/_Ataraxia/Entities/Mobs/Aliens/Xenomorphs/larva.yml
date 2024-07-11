@@ -1,0 +1,73 @@
+- type: entity
+  parent: MobAlienLarva # Larva that is inside of it's owner
+  id: MobAlienLarvaInside
+  components:
+  - type: TimedPolymorph
+    enabled: false
+  - type: InsideAlienLarva
+    evolutionCooldown: 5
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-alien-larva-name
+    description: ghost-role-information-alien-larva-inside-description
+
+- type: entity
+  parent: MobAlienLarva
+  id: MobAlienLarvaGrowStageTwo
+  components:
+    - type: Sprite
+      drawdepth: SmallMobs
+      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      layers:
+        - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+          state: larva1
+    - type: SpriteMovement
+      movementLayers:
+        movement:
+          state: larva1
+      noMovementLayers:
+        movement:
+          state: larva1
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: larva1
+        Critical:
+          Base: larva1_stun
+        Dead:
+          Base: larva1_dead
+    - type: TimedPolymorph
+      polymorphPrototype: AlienEvolutionGrowStageThree
+      polymorphTime: 50
+
+- type: entity
+  parent: MobAlienLarva
+  id: MobAlienLarvaGrowStageThree
+  components:
+    - type: Sprite
+      drawdepth: SmallMobs
+      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      layers:
+        - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+          state: larva2
+    - type: SpriteMovement
+      movementLayers:
+        movement:
+          state: larva2
+      noMovementLayers:
+        movement:
+          state: larva2
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: larva2
+        Critical:
+          Base: larva2_stun
+        Dead:
+          Base: larva2_dead
+    - type: TimedPolymorph
+      enabled: false
+    - type: AlienEvolution
+      evolutionCooldown: 50

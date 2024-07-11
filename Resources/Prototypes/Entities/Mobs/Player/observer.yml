@@ -45,6 +45,7 @@
     bodyType: KinematicController
     bodyStatus: InAir
   - type: CanMoveInAir
+  - type: ShowInfectedIcons # Ataraxia
   - type: Tag
     tags:
     - BypassInteractionRangeChecks
