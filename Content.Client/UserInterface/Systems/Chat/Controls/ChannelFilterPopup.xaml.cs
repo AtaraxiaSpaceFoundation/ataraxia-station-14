@@ -25,6 +25,7 @@ public sealed partial class ChannelFilterPopup : Popup
         ChatChannel.AdminChat,
         ChatChannel.Server,
         ChatChannel.Changeling,
+        ChatChannel.XenoHivemind,
         ChatChannel.Cult // WD EDIT
     };
 

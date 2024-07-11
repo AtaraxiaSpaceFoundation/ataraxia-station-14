@@ -93,10 +93,13 @@ public enum ChatChannel : uint
     /// </summary>
     Unspecified = 1 << 16,
 
+    // Ataraxia
+    XenoHivemind  = 2 << 1,
+
     /// <summary>
     ///     Channels considered to be IC.
     /// </summary>
-    IC = Local | Whisper | Radio | Dead | Emotes | Damage | Visual | Notifications | Cult | Changeling,
+    IC = Local | Whisper | Radio | Dead | Emotes | Damage | Visual | Notifications | Cult | Changeling | XenoHivemind,
 
     AdminRelated = Admin | AdminAlert | AdminChat,
 }

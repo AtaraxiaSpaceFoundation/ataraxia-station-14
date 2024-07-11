@@ -55,6 +55,8 @@
 
         Changeling = ChatChannel.Changeling,
 
+        XenoHivemind = ChatChannel.XenoHivemind,
+
         Console = ChatChannel.Unspecified
     }
 }

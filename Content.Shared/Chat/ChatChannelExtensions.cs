@@ -17,6 +17,7 @@ public static class ChatChannelExtensions
             ChatChannel.Whisper => Color.DarkGray,
             ChatChannel.Changeling => Color.Purple,
             ChatChannel.Cult => Color.DarkRed, // WD EDIT
+            ChatChannel.XenoHivemind => Color.FromHex("#600a91"),
             _ => Color.LightGray
         };
     }

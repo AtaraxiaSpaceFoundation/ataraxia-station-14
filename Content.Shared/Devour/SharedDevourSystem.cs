@@ -50,19 +50,16 @@ public abstract class SharedDevourSystem : EntitySystem
         // Structure and mob devours handled differently.
         if (TryComp(target, out MobStateComponent? targetState))
         {
-            switch (targetState.CurrentState)
+            if (component.Consumes.Contains(targetState.CurrentState))
             {
-                case MobState.Critical:
-                case MobState.Dead:
-
-                    _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, component.DevourTime, new DevourDoAfterEvent(), uid, target: target, used: uid)
-                    {
-                        BreakOnMove = true,
-                    });
-                    break;
-                default:
-                    _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-alive"), uid,uid);
-                    break;
+                _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, component.DevourTime, new DevourDoAfterEvent(), uid, target: target, used: uid)
+                {
+                    BreakOnUserMove = true,
+                });
+            }
+            else
+            {
+                _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-alive"), uid,uid);
             }
 
             return;

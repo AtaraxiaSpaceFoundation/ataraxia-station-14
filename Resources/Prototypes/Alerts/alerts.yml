@@ -5,6 +5,7 @@
   id: BaseAlertOrder
   order:
     - category: Health
+    - category: Counter
     - alertType: Bleeding
     - category: Mood # WD edit
     - category: Stamina
