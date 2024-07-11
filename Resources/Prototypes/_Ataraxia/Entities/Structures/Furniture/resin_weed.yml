@@ -3,12 +3,23 @@
   id: ResinWeedBase
   abstract: true
   components:
-  - type: Damageable
-    damageContainer: Biological
-    damageModifierSet: Resin
   - type: IconSmooth
     key: full
     base: resin-weeds
+
+- type: entity
+  parent: BaseStructure
+  id: ResinWeed
+  name: resin weed
+  description: Strange grey weeds.
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi
+    state: full
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi
+    state: full
   - type: Tag
     tags: [ Carpet ]
   - type: Physics
@@ -25,6 +36,9 @@
         - ItemMask
         density: 1000
         hard: false
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
   - type: Destructible
     thresholds:
     - trigger:
@@ -37,20 +51,6 @@
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Ataraxia/Misc/resin_footstep.ogg
-
-- type: entity
-  parent: ResinWeedBase
-  id: ResinWeed
-  name: resin weed
-  description: Strange grey weeds.
-  components:
-  - type: Sprite
-    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi
-    state: full
-    drawdepth: FloorTiles
-  - type: Icon
-    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi
-    state: full
 
 - type: entity
   parent: BaseStructure
@@ -66,7 +66,7 @@
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi
     state: full
   - type: AreaSpawner
-    radius: 6
+    radius: 4
     spawnPrototype: ResinWeed
     intervalSeconds: 20
   - type: PointLight
@@ -101,3 +101,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: PlasmaGainModifier
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Ataraxia/Misc/resin_footstep.ogg
