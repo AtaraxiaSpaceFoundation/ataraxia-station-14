@@ -258,6 +258,13 @@ WallmountFlagInteQ: FlagInteQ
 NTFlag: FlagNanoTrasen
 SyndieFlag: FlagSyndicate
 LGBTQFlag: RandomPosterLegit
+ResinWeedNode: AlienWeednode
+ResinMass1: AlienWeed
+ResinMass2: AlienWeed
+ResinMass3: AlienWeed
+ResinNestBed: AlienNest
+WindowResinMembraneXenomorph: WindowResin
+WallResinXenomorph: WallResin
 
 # ATARAXIA-MIGRATION (!)
 AlwaysPoweredSmallLightMaintenanceRed: PoweredSmallLight
