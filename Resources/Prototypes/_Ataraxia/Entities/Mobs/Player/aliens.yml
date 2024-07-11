@@ -71,7 +71,7 @@
         Critical: AlienCrit
         Dead: AlienDead
     - type: MovementSpeedModifier
-      baseWalkSpeed : 5
+      baseWalkSpeed : 2
       baseSprintSpeed : 5
     - type: DamageStateVisuals
       states:
@@ -428,7 +428,6 @@
   components:
   - type: Alien
     caste: sentinel
-  - type: AlienStalk
   - type: AcidMaker
     action: ActionMakeAcid
     entityProduced: AlienAcid
@@ -490,9 +489,6 @@
     availableModes:
     - FullAuto
     soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 5
 
 - type: entity
   name: Alien praetorian
@@ -643,8 +639,9 @@
   - type: Devourer
     devourTime: 2
   - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 8
+    baseWalkSpeed: 2
+    baseSprintSpeed: 7
+  - type: AlienStalk
   - type: JumpVisuals
     baseState: alienh
   - type: AlienJump
@@ -711,9 +708,6 @@
     plasmaPerSecond: 5
     plasmaModified: 40
   - type: ResinSpinner
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1
-    baseSprintSpeed: 2
   - type: AcidMaker
     plasmaCost: 50
     entityProduced: AlienAcid
