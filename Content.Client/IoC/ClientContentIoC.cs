@@ -1,3 +1,4 @@
+using Content.Client._White.Chat;
 using Content.Client._White.JoinQueue;
 using Content.Client._White.Jukebox;
 using Content.Client._White.Reputation;
@@ -61,6 +62,7 @@ namespace Content.Client.IoC
             IoCManager.Register<TTSManager>();
             IoCManager.Register<ITrailLineManager, TrailSplineManager>();
             IoCManager.Register<ReputationManager>();
+            IoCManager.Register<IChatAbbreviationManager,ChatAbbreviationManager>();
             //WD-EDIT
         }
     }

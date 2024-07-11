@@ -41,6 +41,8 @@ public partial class ChatBox : UIWidget
         _controller = UserInterfaceManager.GetUIController<ChatUIController>();
         _controller.MessageAdded += OnMessageAdded;
         _controller.RegisterChat(this);
+
+        InitializeExtension(); //WD EDIT
     }
 
     private void OnTextEntered(LineEditEventArgs args)
