@@ -205,9 +205,9 @@
       speechVerb: SmallMob
     - type: Vocal
       sounds:
-        Male: UnisexReptilian
-        Female: UnisexReptilian
-        Unsexed: UnisexReptilian
+        Male: UnisexXenomorphHybrid
+        Female: UnisexXenomorphHybrid
+        Unsexed: UnisexXenomorphHybrid
     - type: LizardAccent
 
 - type: entity
@@ -231,9 +231,9 @@
       speechVerb: SmallMob
     - type: Vocal
       sounds:
-        Male: UnisexReptilian
-        Female: UnisexReptilian
-        Unsexed: UnisexReptilian
+        Male: UnisexXenomorphHybrid
+        Female: UnisexXenomorphHybrid
+        Unsexed: UnisexXenomorphHybrid
     - type: LizardAccent
     - type: Sprite
       drawdepth: SmallMobs

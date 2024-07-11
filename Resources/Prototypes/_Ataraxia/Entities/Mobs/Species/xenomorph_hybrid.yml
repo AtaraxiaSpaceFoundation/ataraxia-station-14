@@ -31,6 +31,8 @@
   - type: Inventory
     speciesId: reptilian
   - type: LizardAccent
+  - type: VomitAction
+  - type: PlasmaVessel
   - type: Speech
     speechSounds: Xenomorph
   - type: TypingIndicator
