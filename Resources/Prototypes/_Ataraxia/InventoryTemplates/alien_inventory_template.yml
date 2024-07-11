@@ -1,5 +1,8 @@
 ﻿- type: inventoryTemplate
   id: alien
+
+- type: inventoryTemplate
+  id: alien_maid
   slots:
     - name: pocket1
       slotTexture: "pocket"

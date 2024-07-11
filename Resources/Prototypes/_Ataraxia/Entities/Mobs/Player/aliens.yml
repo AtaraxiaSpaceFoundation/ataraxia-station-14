@@ -15,7 +15,7 @@
       description: ghost-role-information-alien-larva-description
     - type: GhostTakeoverAvailable
     - type: Speech
-      speechSounds: Alien
+      speechSounds: Xenomorph
       speechVerb: SmallMob
     - type: Vocal
       sounds:
@@ -379,31 +379,19 @@
         - TemporaryBlindness
         - Pacified
         - StaminaModifier
-    - type: Devourer
-      shouldStoreDevoured: true
-      foodPreference: Humanoid
-      chemical: UncookedAnimalProteins
-      healRate: 5.0
-      whitelist:
-        components:
-          - MobState
-      consumes:
-        - Alive
-        - Critical
-        - Dead
     - type: VomitAction
       thirstAdded: 5.0
       hungerAdded: 5.0
     - type: PlasmaVessel
     - type: Alerts
     - type: Speech
-      speechSounds: Alien
+      speechSounds: Xenomorph
       speechVerb: SmallMob
     - type: Vocal
       sounds:
-        Male: UnisexReptilian
-        Female: UnisexReptilian
-        Unsexed: UnisexReptilian
+        Male: UnisexXenomorphHybrid
+        Female: UnisexXenomorphHybrid
+        Unsexed: UnisexXenomorphHybrid
     - type: LizardAccent
 
 - type: entity
@@ -721,8 +709,20 @@
   - type: AlienQueen
     action: ActionAlienRoyalLarva
   - type: Speech
-    speechSounds: Alien
+    speechSounds: Xenomorph
     speechVerb: LargeMob
+  - type: Devourer
+    shouldStoreDevoured: true
+    foodPreference: Humanoid
+    chemical: UncookedAnimalProteins
+    healRate: 5.0
+    whitelist:
+      components:
+        - MobState
+    consumes:
+      - Alive
+      - Critical
+      - Dead
   - type: TailLash
 
 - type: entity
@@ -775,4 +775,6 @@
         Base: maid
       Dead:
         Base: maid_dead
+    - type: Inventory
+      templateId: alien_maid
   - type: OwOAccent
