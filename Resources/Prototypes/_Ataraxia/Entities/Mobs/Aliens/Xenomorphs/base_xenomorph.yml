@@ -201,7 +201,7 @@
     - type: PlasmaVessel
     - type: Alerts
     - type: Speech
-      speechSounds: Alien
+      speechSounds: Xenomorph
       speechVerb: SmallMob
     - type: Vocal
       sounds:
@@ -227,7 +227,7 @@
       description: ghost-role-information-alien-larva-description
     - type: GhostTakeoverAvailable
     - type: Speech
-      speechSounds: Alien
+      speechSounds: Xenomorph
       speechVerb: SmallMob
     - type: Vocal
       sounds:

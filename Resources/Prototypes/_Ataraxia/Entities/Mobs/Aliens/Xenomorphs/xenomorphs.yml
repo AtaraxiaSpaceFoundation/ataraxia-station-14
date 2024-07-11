@@ -307,7 +307,7 @@
   - type: AlienQueen
     action: ActionAlienRoyalLarva
   - type: Speech
-    speechSounds: Alien
+    speechSounds: Xenomorph
     speechVerb: LargeMob
   - type: TailLash
 

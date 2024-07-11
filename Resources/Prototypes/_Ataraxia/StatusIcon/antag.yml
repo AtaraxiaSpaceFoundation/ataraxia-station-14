@@ -5,7 +5,7 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected0
 
 - type: statusIcon
@@ -13,7 +13,7 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected1
 
 - type: statusIcon
@@ -21,7 +21,7 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected2
 
 - type: statusIcon
@@ -29,7 +29,7 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected3
 
 - type: statusIcon
@@ -37,7 +37,7 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected4
 
 - type: statusIcon
@@ -45,5 +45,5 @@
   priority: 0
   locationPreference: Right
   icon:
-    sprite: /Textures/Interface/Ataraxia/Misc/infected.rsi
+    sprite: /Textures/Ataraxia/Interface/Misc/infected.rsi
     state: infected5
