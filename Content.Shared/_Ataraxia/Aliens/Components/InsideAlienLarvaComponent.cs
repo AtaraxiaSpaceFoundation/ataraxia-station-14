@@ -12,7 +12,7 @@ namespace Content.Shared.Aliens.Components;
 public sealed partial class InsideAlienLarvaComponent : Component
 {
     [DataField]
-    public ProtoId<PolymorphPrototype> PolymorphPrototype = "AlienLarvaGrow";
+    public ProtoId<PolymorphPrototype> PolymorphPrototype = "AlienEvolutionGrowStageTwo";
 
     [DataField("EvolutionAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string? EvolutionAction = "ActionLarvaGrow";
