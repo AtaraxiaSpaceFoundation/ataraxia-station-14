@@ -22,6 +22,9 @@
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/sentinel.rsi
+    layers:
+      - map: ["enum.DamageStateVisualLayers.Base"]
+        state: aliens
   - type: Alien
     caste: sentinel
   - type: AcidMaker
@@ -76,6 +79,9 @@
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/hunter.rsi
+    layers:
+      - map: ["enum.DamageStateVisualLayers.Base"]
+        state: alienh
   - type: Alien
     caste: hunter
   - type: GenericVisualizer
@@ -135,11 +141,13 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/praetorian.rsi
     layers:
-    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
-      color: "#ffffff"
-      sprite: Ataraxia/Effects/cuffs_big.rsi
-      state: aliencuff_p
-      visible: false
+      - map: ["enum.DamageStateVisualLayers.Base"]
+        state: alienp
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Ataraxia/Effects/cuffs_big.rsi
+        state: aliencuff_p
+        visible: false
   - type: Alien
     caste: praetorian
   - type: AcidMaker
@@ -210,11 +218,13 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/queen.rsi
     layers:
-    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
-      color: "#ffffff"
-      sprite: Ataraxia/Effects/cuffs_big.rsi
-      state: aliencuff_q
-      visible: false
+      - map: ["enum.DamageStateVisualLayers.Base"]
+        state: alienq
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Ataraxia/Effects/cuffs_big.rsi
+        state: aliencuff_q
+        visible: false
   - type: Alien
     caste: queen
   - type: Fixtures
@@ -277,6 +287,9 @@
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/maid.rsi
+    layers:
+      - map: ["enum.DamageStateVisualLayers.Base"]
+        state: maid
   - type: Alien
     caste: maid
   - type: PlasmaVessel
