@@ -1,46 +1,47 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/BlueMoon-Labs/MOLOT-BlueMoon-Station/tree/master/icons/obj/smooth_structures | Edited by PuroSlavKing (Github)",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
+	"version": 1,
+	"size": {
+		"x": 32,
+		"y": 32
+	},
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Taken from tgstation on https://github.com/tgstation/tgstation/blob/master/icons/obj/smooth_structures/alien/nest.dmi",
 	"states": [
 		{
-			"name": "catwalk_0",
+			"name": "alien_nest0",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_1",
+			"name": "alien_nest1",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_2",
+			"name": "alien_nest2",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_3",
+			"name": "alien_nest3",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_4",
+			"name": "alien_nest4",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_5",
+			"name": "alien_nest5",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_6",
+			"name": "alien_nest6",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_7",
+			"name": "alien_nest7",
 			"directions": 4
 		},
 		{
-			"name": "catwalk_preview"
+			"name": "full",
+			"directions": 1
 		}
 	]
 }

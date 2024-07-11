@@ -1,106 +1,64 @@
 - type: entity
-  id: ResinWeedBase
+  parent: BaseStructure
+  id: AlienWeedBase
   abstract: true
-  parent: CarpetBase
   components:
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Resin
+  - type: IconSmooth
+    key: full
+    base: resin-weeds
+  - type: Physics
+    canCollide: false
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 12
+          damage: 15
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+  - type: PlasmaGainModifier
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Ataraxia/Misc/resin_footstep.ogg
 
 - type: entity
-  id: ResinWeedNode
-  parent: ResinWeedBase
-  name: resin node
-  description: "Slimy and sticky mass with luminous seeds."
+  parent: AlienWeedBase
+  id: AlienWeed
+  name: resin weed
+  description: Strange grey weeds.
   components:
   - type: Sprite
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi.rsi
   - type: Icon
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi.rsi
+
+- type: entity
+  parent: AlienWeedBase
+  id: AlienWeednode
+  name: resin node
+  description: Slimy and sticky mass with luminous seeds.
+  components:
+  - type: AreaSpawner
+    radius: 6
+    spawnPrototype: AlienWeed
+    intervalSeconds: 20
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi.rsi
+  - type: Icon
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi.rsi
   - type: PointLight
     radius: 2.5
     energy: 2
     color: "#00CED1"
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 20
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
-
-#- type: entity
-#  id: RandomResinMassSpawner
-#  parent: MarkerBase
-#  name: random resin mass spawner
-#  components:
-#  - type: Sprite
-#    layers:
-#      - sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
-#        state: full
-#  - type: RandomSpawner
-#    prototypes:
-#      - ResinMass1
-#      - ResinMass2
-#      - ResinMass3
-#    chance: 1
 
 - type: entity
-  id: ResinMass1
-  suffix: 1
-#  abstract: true
-  parent: ResinWeedBase
-  name: resin mass
-  description: "Slimy and sticky mass with luminous seeds."
-  components:
-  - type: Sprite
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
-  - type: Icon
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds1.rsi
-
-- type: entity
-  id: ResinMass2
-  suffix: 2
-#  abstract: true
-  parent: ResinWeedBase
-  name: resin mass
-  description: "Slimy and sticky mass with luminous seeds."
-  components:
-  - type: Sprite
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds2.rsi
-  - type: Icon
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds2.rsi
-
-- type: entity
-  id: ResinMass3
-  suffix: 3
-#  abstract: true
-  parent: ResinWeedBase
-  name: resin mass
-  description: "Slimy and sticky mass with luminous seeds."
-  components:
-  - type: Sprite
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds3.rsi
-  - type: Icon
-    sprite: Ataraxia/Structures/Specific/Xenomorph/weeds3.rsi
-
-- type: entity
-  id: ResinNestBed
   parent: BaseStructure
+  id: AlienNest
   name: resin nest
-  description: "Slimy and sticky mass representing a bed?...."
+  description: Slimy and sticky mass representing a bed?....
   components:
   - type: Clickable
   - type: Sprite
@@ -108,10 +66,10 @@
     drawdepth: Objects
   - type: Icon
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_nest.rsi
-    state: catwalk_preview
+    state: full
   - type: IconSmooth
-    key: catwalk
-    base: catwalk_
+    key: full
+    base: alien_nest
   - type: Physics
     canCollide: false
   - type: Fixtures
@@ -139,8 +97,9 @@
   - type: HealOnBuckle
     damage:
       types:
-        Poison: -0.1
-        Blunt: -0.1
+        Poison: -0.01
+        Blunt: -0.01
   - type: Strap
+    delay: 120
     position: Down
     rotation: -90

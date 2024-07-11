@@ -19,13 +19,16 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 120
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
           collection: gib
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resin
   - type: IconSmooth
     key: resinwall
     base: resinwall

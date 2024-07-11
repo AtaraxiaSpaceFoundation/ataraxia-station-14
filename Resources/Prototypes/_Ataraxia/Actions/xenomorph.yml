@@ -45,7 +45,7 @@
   - type: InstantAction
     priority: 2
     useDelay: 10
-    icon: { sprite: Ataraxia/Structures/weednode.rsi, state: full }
+    icon: { sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi, state: full }
     event: !type:WeednodeActionEvent
 
 - type: entity
@@ -97,7 +97,7 @@
   - type: InstantAction
     priority: 4
     useDelay: 1
-    icon: { sprite : Ataraxia/Structures/alien_nest.rsi, state: full }
+    icon: { sprite : Ataraxia/Structures/Specific/Xenomorph/resin_nest.rsi, state: full }
     event: !type:AlienNestActionEvent
 
 # Evolutions
