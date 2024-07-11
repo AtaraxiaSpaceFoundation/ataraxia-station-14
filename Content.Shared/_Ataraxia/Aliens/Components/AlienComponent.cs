@@ -36,10 +36,10 @@ public sealed partial class AlienComponent : Component
     /// The node prototype to use.
     /// </summary>
     [DataField("nodePrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string WeednodePrototype = "AlienWeednode";
+    public string WeednodePrototype = "ResinWeedNode";
 
     [DataField("nodeAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string? WeednodeAction = "ActionAlienNode";
+    public string? WeednodeAction = "ActionResinNode";
 
     [DataField]
     public string Caste;

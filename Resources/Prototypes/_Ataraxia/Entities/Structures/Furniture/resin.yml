@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseStructure
-  id: AlienWeedBase
+  id: ResinWeedBase
   abstract: true
   components:
   - type: Damageable
@@ -25,8 +25,8 @@
       path: /Audio/Ataraxia/Misc/resin_footstep.ogg
 
 - type: entity
-  parent: AlienWeedBase
-  id: AlienWeed
+  parent: ResinWeedBase
+  id: ResinWeed
   name: resin weed
   description: Strange grey weeds.
   components:
@@ -36,14 +36,14 @@
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed.rsi.rsi
 
 - type: entity
-  parent: AlienWeedBase
-  id: AlienWeednode
+  parent: ResinWeedBase
+  id: ResinWeedNode
   name: resin node
   description: Slimy and sticky mass with luminous seeds.
   components:
   - type: AreaSpawner
     radius: 6
-    spawnPrototype: AlienWeed
+    spawnPrototype: ResinWeed
     intervalSeconds: 20
   - type: Sprite
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi.rsi

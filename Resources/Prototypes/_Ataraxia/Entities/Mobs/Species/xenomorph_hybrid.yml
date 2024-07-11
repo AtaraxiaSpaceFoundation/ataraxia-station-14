@@ -64,7 +64,7 @@
         Cold : 0.075
     heatDamage:
       types:
-        Heat : 0.22
+        Heat : 0.15
   - type: Sericulture
     action: ActionPlasmaGeneration
     productionLength: 5
@@ -75,7 +75,7 @@
   - type: Barotrauma
     damage:
       types:
-        Blunt: 0.18
+        Blunt: 0.13
 
 - type: entity
   parent: BaseSpeciesDummy

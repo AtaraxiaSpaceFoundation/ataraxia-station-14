@@ -37,7 +37,7 @@
       useDelay: 1
 
 - type: entity
-  id: ActionAlienNode
+  id: ActionResinNode
   name: action-create-weednode-name
   description: action-create-weednode-desc
   noSpawn: true
@@ -58,7 +58,7 @@
     checkCanInteract: false
     checkConsciousness: false
     icon: { sprite: Ataraxia/Interface/Actions/xenomorph.rsi, state: help-alt }
-    iconOn: { sprite: Ataraxia/Interface/Alien/screen_alien.rsi, state: harm }
+    iconOn: { sprite: Ataraxia/Interface/Actions/xenomorph.rsi, state: harm }
     event: !type:ToggleCombatActionEvent
     priority: -100
 
