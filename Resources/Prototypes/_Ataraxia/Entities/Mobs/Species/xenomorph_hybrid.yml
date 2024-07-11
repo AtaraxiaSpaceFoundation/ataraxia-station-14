@@ -8,7 +8,7 @@
   - type: HumanoidAppearance
     species: XenomorphHybrid
   - type: NightVision
-    isToggle: false
+    isToggle: true
     color: "#1E1E1E"
   - type: Hunger
   - type: Puller
@@ -32,7 +32,7 @@
     speciesId: reptilian
   - type: LizardAccent
   - type: Speech
-    speechSounds: Xenomorph
+    speechSounds: XenomorphHybrid
   - type: TypingIndicator
     proto: alien
   - type: Vocal
