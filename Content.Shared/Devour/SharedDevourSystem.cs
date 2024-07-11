@@ -54,7 +54,7 @@ public abstract class SharedDevourSystem : EntitySystem
             {
                 _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, component.DevourTime, new DevourDoAfterEvent(), uid, target: target, used: uid)
                 {
-                    BreakOnUserMove = true,
+                    BreakOnMove = true,
                 });
             }
             else
