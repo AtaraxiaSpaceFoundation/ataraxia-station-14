@@ -307,6 +307,12 @@ public sealed class WhiteCVars
     public static readonly CVarDef<bool> LogChatActions =
         CVarDef.Create("white.log_to_chat", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
+    /// <summary>
+    ///     Determines whether automatic get up is required
+    /// </summary>
+    public static readonly CVarDef<bool> AutoGetUp =
+        CVarDef.Create("white.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
+
     /*
      * Aspects
      */
