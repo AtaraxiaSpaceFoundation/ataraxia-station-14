@@ -11,9 +11,6 @@ using Content.Shared.Body.Events;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
 using Content.Shared.Ghost.Roles;
-using Content.Shared.Gibbing.Components;
-using Content.Shared.Gibbing.Events;
-using Content.Shared.Gibbing.Systems;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Random;
@@ -72,7 +69,6 @@ public sealed class AlienInfectedSystem : EntitySystem
                 Comp<InsideAlienLarvaComponent>(infected.SpawnedLarva).IsGrown)
             {
                 _container.EmptyContainer(infected.Stomach);
-                _body.GibBody(uid, true, CompOrNull<BodyComponent>(uid), true, null, 5f);
             }
 
             if (infected.GrowthStage == 5)
