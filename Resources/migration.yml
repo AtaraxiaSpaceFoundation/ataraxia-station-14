@@ -258,10 +258,9 @@ WallmountFlagInteQ: FlagInteQ
 NTFlag: FlagNanoTrasen
 SyndieFlag: FlagSyndicate
 LGBTQFlag: RandomPosterLegit
-ResinWeedNode: AlienWeednode
-ResinMass1: AlienWeed
-ResinMass2: AlienWeed
-ResinMass3: AlienWeed
+ResinMass1: ResinWeed
+ResinMass2: ResinWeed
+ResinMass3: ResinWeed
 ResinNestBed: AlienNest
 WindowResinMembraneXenomorph: WindowResin
 WallResinXenomorph: WallResin
