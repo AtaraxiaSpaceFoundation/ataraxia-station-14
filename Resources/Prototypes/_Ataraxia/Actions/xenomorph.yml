@@ -45,7 +45,7 @@
   - type: InstantAction
     priority: 2
     useDelay: 10
-    icon: { sprite: Ataraxia/Structures/Specific/Xenomorph/weednode.rsi, state: full }
+    icon: { sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi, state: full }
     event: !type:WeednodeActionEvent
 
 - type: entity
@@ -57,8 +57,8 @@
   - type: InstantAction
     checkCanInteract: false
     checkConsciousness: false
-    icon: { sprite: Ataraxia/Interface/Alien/screen_alien.rsi, state: combat_off }
-    iconOn: { sprite: Ataraxia/Interface/Alien/screen_alien.rsi, state: combat }
+    icon: { sprite: Ataraxia/Interface/Actions/xenomorph.rsi, state: help-alt }
+    iconOn: { sprite: Ataraxia/Interface/Alien/screen_alien.rsi, state: harm }
     event: !type:ToggleCombatActionEvent
     priority: -100
 
@@ -174,20 +174,6 @@
     icon: { sprite : Ataraxia/Mobs/Aliens/Xenos/alien.rsi, state: larva0 }
     event: !type:AlienLarvaGrowActionEvent
 
-# Sentinel
-
-- type: entity
-  id: ActionStalkAlien
-  name: action-stalk-alien-hunter
-  description: action-stalk-alien-hunter-desc
-  noSpawn: true
-  components:
-  - type: InstantAction
-    priority: 0
-    useDelay: 0
-    icon: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: walking }
-    event: !type:AlienStalkActionEvent
-
 # Hunter
 
 - type: entity
@@ -204,6 +190,18 @@
     icon: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: leap_off }
     iconOn: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: leap_on }
     event: !type:AlienJumpActionEvent
+
+- type: entity
+  id: ActionStalkAlien
+  name: action-stalk-alien-hunter
+  description: action-stalk-alien-hunter-desc
+  noSpawn: true
+  components:
+  - type: InstantAction
+    priority: 0
+    useDelay: 0
+    icon: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: walking }
+    event: !type:AlienStalkActionEvent
 
 # Queen
 
@@ -241,7 +239,7 @@
   - type: InstantAction
     priority: 0
     cooldown: 11
-    icon: { sprite : Ataraxia/Mobs/Aliens/Xenos/alien.rsi, state: tail_lash }
+    icon: { sprite : Ataraxia/Interface/Actions/xenomorph.rsi, state: tail_attack }
     event: !type:TailLashActionEvent
 
 - type: entity
@@ -253,6 +251,6 @@
   - type: EntityTargetAction
     priority: 0
     useDelay: 1
-    icon: { sprite : Objects/Materials/Sheets/other.rsi, state: plasma }
-    iconOn: { sprite : Objects/Materials/Sheets/other.rsi, state: plasma_2 }
+    icon: { sprite : Ataraxia/Interface/Actions/xenomorph.rsi, state: plasma_transfer }
+    iconOn: { sprite : Ataraxia/Interface/Actions/xenomorph.rsi, state: plasma_transfer }
     event: !type:TransferPlasmaActionEvent

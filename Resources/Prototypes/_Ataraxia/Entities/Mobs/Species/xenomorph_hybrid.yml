@@ -10,6 +10,8 @@
   - type: NightVision
     isToggle: false
     color: "#1E1E1E"
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleAlien
   - type: Hunger
   - type: Puller
     needsHands: false
@@ -31,8 +33,6 @@
   - type: Inventory
     speciesId: reptilian
   - type: LizardAccent
-  - type: VomitAction
-  - type: PlasmaVessel
   - type: Speech
     speechSounds: Xenomorph
   - type: TypingIndicator
