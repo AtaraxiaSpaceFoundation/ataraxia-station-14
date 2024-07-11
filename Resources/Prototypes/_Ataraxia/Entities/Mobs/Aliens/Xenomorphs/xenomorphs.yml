@@ -23,8 +23,20 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/sentinel.rsi
     layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: aliens
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Ataraxia/Effects/cuffs.rsi
+        state: aliencuff
+        visible: false
+      - map: [ "clownedon" ] # Dynamically generated
+        sprite: "Effects/creampie.rsi"
+        state: "creampie_human"
+        visible: false
   - type: Alien
     caste: sentinel
   - type: AcidMaker
@@ -80,8 +92,23 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/hunter.rsi
     layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "enum.JumpLayers.Jumping" ]
+        sprite: Ataraxia/Mobs/Aliens/Xenos/alien_hunter_jump.rsi
+        state: icon
+        visible: false
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: alienh
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Ataraxia/Effects/cuffs.rsi
+        state: aliencuff
+        visible: false
+      - map: [ "clownedon" ] # Dynamically generated
+        sprite: "Effects/creampie.rsi"
+        state: "creampie_human"
+        visible: false
   - type: Alien
     caste: hunter
   - type: GenericVisualizer
@@ -141,8 +168,10 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/praetorian.rsi
     layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: alienp
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
       - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
         color: "#ffffff"
         sprite: Ataraxia/Effects/cuffs_big.rsi
@@ -218,8 +247,10 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/queen.rsi
     layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: alienq
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
       - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
         color: "#ffffff"
         sprite: Ataraxia/Effects/cuffs_big.rsi
@@ -288,8 +319,19 @@
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/maid.rsi
     layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: maid
+      - map: [ "pocket1" ]
+      - map: [ "pocket2" ]
+      - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+        color: "#ffffff"
+        sprite: Ataraxia/Effects/cuffs.rsi
+        state: aliencuff
+        visible: false
+      - map: [ "clownedon" ] # Dynamically generated
+        sprite: "Effects/creampie.rsi"
+        state: "creampie_human"
+        visible: false
   - type: Alien
     caste: maid
   - type: PlasmaVessel
