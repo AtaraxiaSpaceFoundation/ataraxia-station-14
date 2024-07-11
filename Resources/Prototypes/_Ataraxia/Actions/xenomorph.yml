@@ -1,8 +1,8 @@
 ﻿# Base actions
 - type: entity
   id: ActionToggleLightingAlien
-  name: Toggle All Lighting
-  description: Toggle all light rendering to better observe dark areas.
+  name: action-toggle-hunter-vision-name
+  description: action-toggle-hunter-vision-desc
   noSpawn: true
   components:
     - type: InstantAction
@@ -50,8 +50,8 @@
 
 - type: entity
   id: ActionCombatModeToggleAlien
-  name: "[color=red]Combat Mode[/color]"
-  description: Enter combat mode
+  name: "[color=red]Боевой режим[/color]"
+  description: Войти в боевой режим.
   noSpawn: true
   components:
   - type: InstantAction

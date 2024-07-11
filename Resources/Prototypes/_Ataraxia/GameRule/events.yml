@@ -75,7 +75,8 @@
       path: /Audio/Announcements/attention.ogg
     startDelay: 10
     earliestStart: 20
-    minimumPlayers: 10
+    reoccurrenceDelay: 40
+    minimumPlayers: 30
     weight: 5
     duration: 1
   - type: VentCrittersRule

@@ -19,7 +19,7 @@
           restitution: 0.3
           friction: 0.2
     - type: Sprite
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Interface/Actions/xenomorph.rsi
       state: acid
     - type: MeleeWeapon
       wideAnimationRotation: -45
@@ -32,7 +32,7 @@
         path: /Audio/Weapons/pierce.ogg
     - type: Item
       size: Tiny
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Interface/Actions/xenomorph.rsi
       state: acid
     - type: Damageable
       damageContainer: Inorganic
@@ -71,7 +71,7 @@
   description: alien-acid-desc
   components:
   - type: Sprite
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
     state: acid
   - type: TimedSpawner
     prototypes:
@@ -87,7 +87,7 @@
   description: alien-acid-desc
   components:
   - type: Sprite
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
     state: acid
   - type: EventHorizon
     radius: 0.1
