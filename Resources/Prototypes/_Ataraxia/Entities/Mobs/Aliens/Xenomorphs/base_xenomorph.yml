@@ -49,7 +49,6 @@
     - type: Sprite
       drawdepth: Mobs
       offset: 0, 0.2
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
       layers:
         - map: ["enum.DamageStateVisualLayers.Base"]
           state: aliend
@@ -57,7 +56,7 @@
         - map: [ "pocket2" ]
         - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
           color: "#ffffff"
-          sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+          sprite: Ataraxia/Effects/cuffs.rsi
           state: aliencuff
           visible: false
         - map: [ "clownedon" ] # Dynamically generated
@@ -237,7 +236,7 @@
     - type: LizardAccent
     - type: Sprite
       drawdepth: SmallMobs
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Mobs/Aliens/Xenos/larva.rsi
       layers:
         - map: ["enum.DamageStateVisualLayers.Base", "movement"]
           state: larva0

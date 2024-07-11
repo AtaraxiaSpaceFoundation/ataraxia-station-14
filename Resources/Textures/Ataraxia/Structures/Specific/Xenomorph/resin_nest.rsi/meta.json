@@ -40,6 +40,10 @@
 			"directions": 4
 		},
 		{
+			"name": "overlay",
+			"directions": 1
+		},
+		{
 			"name": "full",
 			"directions": 1
 		}

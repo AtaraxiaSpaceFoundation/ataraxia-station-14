@@ -42,10 +42,10 @@
     - AlienItem
     - MonkeyWearable
   - type: Sprite
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
   - type: Item
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
     size: Small
   - type: StaticPrice
@@ -67,10 +67,10 @@
   suffix: Inactive
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
       state: facehugger_impregnated
     - type: Item
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
       state: facehugger_impregnated
       size: Small
     - type: StaticPrice
@@ -130,10 +130,10 @@
     - AlienItem
     - MonkeyWearable
   - type: Sprite
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
   - type: Item
-    sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
     size: Small
   - type: StaticPrice

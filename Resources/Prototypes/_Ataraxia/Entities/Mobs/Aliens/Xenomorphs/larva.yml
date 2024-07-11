@@ -19,7 +19,7 @@
   components:
     - type: Sprite
       drawdepth: SmallMobs
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Mobs/Aliens/Xenos/larva.rsi
       layers:
         - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
           state: larva1
@@ -48,7 +48,7 @@
   components:
     - type: Sprite
       drawdepth: SmallMobs
-      sprite: Ataraxia/Mobs/Aliens/Xenos/alien.rsi
+      sprite: Ataraxia/Mobs/Aliens/Xenos/larva.rsi
       layers:
         - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
           state: larva2
