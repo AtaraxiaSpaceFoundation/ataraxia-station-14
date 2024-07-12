@@ -5672,3 +5672,11 @@
   id: 368
   time: '2024-07-11T16:38:35.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/435
+- author: Spatison
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u044B \u0431\u043E\
+      \u0434\u0438\u043A\u0430\u043C\u0435\u0440\u044B"
+    type: Fix
+  id: 369
+  time: '2024-07-12T11:14:18.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/436
