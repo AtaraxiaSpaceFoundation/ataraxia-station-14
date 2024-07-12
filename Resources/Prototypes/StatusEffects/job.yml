@@ -128,8 +128,8 @@
   parent: JobIcon
   id: JobIconUnknown
   icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: Unknown
+    sprite: /Textures/Ataraxia/Interface/Misc/job_icons.rsi # Ataraxia
+    state: Shrambled
 
 - type: statusIcon
   parent: JobIcon
