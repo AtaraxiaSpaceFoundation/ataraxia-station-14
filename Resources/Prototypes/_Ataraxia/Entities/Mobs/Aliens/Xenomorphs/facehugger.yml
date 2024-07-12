@@ -58,6 +58,9 @@
   - type: Facehugger
     range: 1
   - type: Blindfold
+  - type: GuideHelp
+    guides:
+    - XenomorphFacehugger
 
 - type: entity
   name: Alien
@@ -85,6 +88,9 @@
       tags:
       - AlienItem
       - MonkeyWearable
+    - type: GuideHelp
+      guides:
+      - XenomorphFacehugger
 
 - type: entity
   name: Lamarr
@@ -144,3 +150,6 @@
     - Mask
   - type: BreathMask
   - type: Blindfold
+  - type: GuideHelp
+    guides:
+    - XenomorphFacehugger

@@ -36,6 +36,9 @@
       plasmaPerSecond: 5
       plasmaModified: 40
     - type: PraetorianEvolution
+    - type: GuideHelp
+      guides:
+      - XenomorphDrone
 
 - type: entity
   parent: MobAlienBase
@@ -104,6 +107,9 @@
     availableModes:
     - FullAuto
     soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
+  - type: GuideHelp
+    guides:
+    - XenomorphSentinel
 
 - type: entity
   parent: MobAlienBase
@@ -180,6 +186,9 @@
     baseState: alienh
   - type: AlienJump
     jumpSprite: Ataraxia/Mobs/Aliens/Xenos/alien_hunter_jump.rsi
+  - type: GuideHelp
+    guides:
+    - XenomorphHunter
 
 - type: entity
   parent: MobAlienBase
@@ -259,6 +268,9 @@
   - type: QueenEvolution
   - type: ResinSpinner
   - type: TailLash
+  - type: GuideHelp
+    guides:
+    - XenomorphPraetorian
 
 - type: entity
   parent: MobAlienBase
@@ -330,6 +342,9 @@
     speechSounds: Xenomorph
     speechVerb: LargeMob
   - type: TailLash
+  - type: GuideHelp
+    guides:
+    - XenomorphQueen
 
 - type: entity
   parent: MobAlienBase
@@ -382,3 +397,6 @@
         Base: maid_dead
   - type: OwOAccent
   - type: Pacified
+  - type: GuideHelp
+    guides:
+    - XenomorphMaid

@@ -186,6 +186,9 @@
         Female: UnisexXenomorphHybrid
         Unsexed: UnisexXenomorphHybrid
     - type: LizardAccent
+    - type: GuideHelp
+      guides:
+      - Xenomorphs
 
 - type: entity
   parent: SimpleSpaceMobBase
@@ -312,3 +315,6 @@
     - type: TimedPolymorph
       polymorphPrototype: AlienEvolutionGrowStageTwo
       polymorphTime: 50
+    - type: GuideHelp
+      guides:
+      - XenomorphLarva
