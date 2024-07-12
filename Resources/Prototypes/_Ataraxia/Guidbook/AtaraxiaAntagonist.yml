@@ -134,15 +134,6 @@
   name: antagonist-name-headcrab-poison
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabPoison.xml"
 
-
-
-
-
-
-
-
-
-
 - type: guideEntry
   id: Xenomorphs
   name: antagonist-name-xenomorphs
