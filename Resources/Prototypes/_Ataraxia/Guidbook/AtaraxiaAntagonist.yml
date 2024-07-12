@@ -5,6 +5,7 @@
   name: guide-entry-antagonist
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist.xml"
   children:
+    - Xenomorphs
     - TerrorSpiders
     - Headcrabs
     - InteQAgent
