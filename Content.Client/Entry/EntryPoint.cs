@@ -1,3 +1,4 @@
+using Content.Client._White.Chat;
 using Content.Client._White.JoinQueue;
 using Content.Client._White.Jukebox;
 using Content.Client._White.Overlays;
@@ -87,6 +88,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly ClientJukeboxSongsSyncManager _jukeboxSyncManager = default!;
         [Dependency] private readonly TTSManager _ttsManager = default!;
         [Dependency] private readonly ReputationManager _reputationManager = default!;
+        [Dependency] private readonly IChatAbbreviationManager _chatAbbreviationManager = default!;
         //WD-EDIT
 
         public override void Init()
@@ -159,6 +161,7 @@ namespace Content.Client.Entry
 
             //WD-EDIT
             _stalinManager.Initialize();
+            _chatAbbreviationManager.Initialize();
             //WD-EDIT
 
             //AUTOSCALING default Setup!
