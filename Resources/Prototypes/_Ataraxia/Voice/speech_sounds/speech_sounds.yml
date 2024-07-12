@@ -1,5 +1,5 @@
 - type: speechSounds
-  id: XenomorphHybrid
+  id: Xenomorph
   saySound:
     path: /Audio/Ataraxia/Voice/xenomorph_hybrid/xenomorph.ogg
   askSound:

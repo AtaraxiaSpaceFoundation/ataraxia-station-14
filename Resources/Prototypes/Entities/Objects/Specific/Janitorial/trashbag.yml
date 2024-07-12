@@ -26,6 +26,7 @@
     tags:
     - TrashBag
     - DroneUsable
+    - AlienItem # Ataraxia
   - type: Appearance
   - type: StorageFillVisualizer
     maxFillLevels: 4

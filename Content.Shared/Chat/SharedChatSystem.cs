@@ -23,6 +23,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char DefaultChannelKey = 'h';
     public const char ChangelingPrefix = '<';
     public const char CultPrefix = '^'; // WD EDIT
+    public const char XenoHivemindPrefix = 'a';
 
     [ValidatePrototypeId<RadioChannelPrototype>]
     public const string CommonChannel = "Common";

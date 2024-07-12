@@ -14,6 +14,24 @@
             "name": "help-alt"
         },
         {
+            "name": "vision_on"
+        },
+        {
+            "name": "vision_off"
+        },
+        {
+            "name": "leap_off"
+        },
+        {
+            "name": "leap_on"
+        },
+        {
+            "name": "crawl"
+        },
+        {
+            "name": "stalk"
+        },
+        {
             "name": "egg"
         },
         {
@@ -24,6 +42,18 @@
         },
         {
             "name": "plasma_transfer"
+        },
+        {
+            "name": "plasma_transfer_off"
+        },
+        {
+            "name": "acid"
+        },
+        {
+            "name": "alien_medal"
+        },
+        {
+            "name": "alien_medal_active"
         },
         {
             "name": "whisper"

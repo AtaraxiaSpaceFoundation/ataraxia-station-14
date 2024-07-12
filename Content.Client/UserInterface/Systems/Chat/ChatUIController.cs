@@ -84,7 +84,8 @@ public sealed class ChatUIController : UIController
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
         {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
         {SharedChatSystem.CultPrefix, ChatSelectChannel.Cult},
-        {SharedChatSystem.ChangelingPrefix, ChatSelectChannel.Changeling}
+        {SharedChatSystem.ChangelingPrefix, ChatSelectChannel.Changeling},
+        {SharedChatSystem.XenoHivemindPrefix, ChatSelectChannel.XenoHivemind}
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -99,8 +100,8 @@ public sealed class ChatUIController : UIController
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
         {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
         {ChatSelectChannel.Cult, SharedChatSystem.CultPrefix},
-        {ChatSelectChannel.Changeling, SharedChatSystem.ChangelingPrefix}
-
+        {ChatSelectChannel.Changeling, SharedChatSystem.ChangelingPrefix},
+        {ChatSelectChannel.XenoHivemind, SharedChatSystem.XenoHivemindPrefix }
     };
 
     /// <summary>
@@ -229,6 +230,9 @@ public sealed class ChatUIController : UIController
 
         _input.SetInputCommand(ContentKeyFunctions.FocusConsoleChat,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Console)));
+
+        _input.SetInputCommand(ContentKeyFunctions.FocusXenoHivemindChat,
+            InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.XenoHivemind)));
 
         _input.SetInputCommand(ContentKeyFunctions.CycleChatChannelForward,
             InputCmdHandler.FromDelegate(_ => CycleChatChannel(true)));
@@ -574,6 +578,8 @@ public sealed class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
+                CanSendChannels |= ChatSelectChannel.XenoHivemind;
+                FilterableChannels |= ChatChannel.XenoHivemind;
             }
         }
 

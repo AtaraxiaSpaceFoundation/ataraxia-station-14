@@ -8,8 +8,10 @@
   - type: HumanoidAppearance
     species: XenomorphHybrid
   - type: NightVision
-    isToggle: true
+    isToggle: false
     color: "#1E1E1E"
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleAlien
   - type: Hunger
   - type: Puller
     needsHands: false
@@ -32,7 +34,7 @@
     speciesId: reptilian
   - type: LizardAccent
   - type: Speech
-    speechSounds: XenomorphHybrid
+    speechSounds: Xenomorph
   - type: TypingIndicator
     proto: alien
   - type: Vocal
@@ -62,7 +64,7 @@
         Cold : 0.075
     heatDamage:
       types:
-        Heat : 0.22
+        Heat : 0.15
   - type: Sericulture
     action: ActionPlasmaGeneration
     productionLength: 5
@@ -73,7 +75,7 @@
   - type: Barotrauma
     damage:
       types:
-        Blunt: 0.18
+        Blunt: 0.13
 
 - type: entity
   parent: BaseSpeciesDummy

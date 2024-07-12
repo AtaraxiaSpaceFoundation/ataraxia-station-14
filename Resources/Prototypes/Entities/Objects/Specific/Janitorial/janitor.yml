@@ -38,6 +38,7 @@
       - DroneUsable #No bucket because it holds chems, they can drag the cart or use a drain
       - Mop
       - MopBasic
+      - AlienItem # Ataraxia
   - type: GuideHelp
     guides:
     - Janitorial
@@ -91,6 +92,7 @@
         - DroneUsable #No bucket because it holds chems, they can drag the cart or use a drain
         - Mop
         - MopAdv
+        - AlienItem # Ataraxia
 
 - type: entity
   name: wet floor sign

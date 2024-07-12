@@ -84,6 +84,9 @@ namespace Content.Client.Chat.Managers
                         _consoleHost.ExecuteCommand($"gsay \"{CommandParsing.Escape(text)}\"");
                     break;
 
+                case ChatSelectChannel.XenoHivemind:
+                    _consoleHost.ExecuteCommand($"aliensay \"{CommandParsing.Escape(text)}\"");
+                    break;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(channel), channel, null);

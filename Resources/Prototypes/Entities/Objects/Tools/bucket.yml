@@ -58,6 +58,7 @@
   - type: Tag
     tags:
       - Bucket
+      - AlienItem # Ataraxia
   - type: PhysicalComposition
     materialComposition:
       Plastic: 50

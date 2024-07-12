@@ -5,6 +5,7 @@
   name: guide-entry-antagonist
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist.xml"
   children:
+    - Xenomorphs
     - TerrorSpiders
     - Headcrabs
     - InteQAgent
@@ -132,3 +133,57 @@
   id: HeadcrabPoison
   name: antagonist-name-headcrab-poison
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabPoison.xml"
+
+- type: guideEntry
+  id: Xenomorphs
+  name: antagonist-name-xenomorphs
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs.xml"
+  children:
+    - XenomorphQueen
+    - XenomorphPraetorian
+    - XenomorphDrone
+    - XenomorphHunter
+    - XenomorphSentinel
+    - XenomorphMaid
+    - XenomorphFacehugger
+    - XenomorphLarva
+
+- type: guideEntry
+  id: XenomorphQueen
+  name: antagonist-name-xenomorph-queen
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Queen.xml"
+
+- type: guideEntry
+  id: XenomorphPraetorian
+  name: antagonist-name-xenomorph-praetorian
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Praetorian.xml"
+
+- type: guideEntry
+  id: XenomorphDrone
+  name: antagonist-name-xenomorph-drone
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Drone.xml"
+
+- type: guideEntry
+  id: XenomorphHunter
+  name: antagonist-name-xenomorph-hunter
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Hunter.xml"
+
+- type: guideEntry
+  id: XenomorphMaid
+  name: antagonist-name-xenomorph-maid
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Maid.xml"
+
+- type: guideEntry
+  id: XenomorphSentinel
+  name: antagonist-name-xenomorph-sentinel
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Sentinel.xml"
+
+- type: guideEntry
+  id: XenomorphFacehugger
+  name: antagonist-name-xenomorph-facehugger
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Facehugger.xml"
+
+- type: guideEntry
+  id: XenomorphLarva
+  name: antagonist-name-xenomorph-larva
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Larva.xml"
