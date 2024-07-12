@@ -5,6 +5,28 @@
   components:
     - type: Sprite
       sprite: Ataraxia/Mobs/Aliens/Xenos/drone.rsi
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: aliend
+        - map: [ "pocket1" ]
+        - map: [ "pocket2" ]
+        - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+          color: "#ffffff"
+          sprite: Ataraxia/Effects/cuffs.rsi
+          state: aliencuff
+          visible: false
+        - map: [ "clownedon" ] # Dynamically generated
+          sprite: "Effects/creampie.rsi"
+          state: "creampie_human"
+          visible: false
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: aliend
+        Critical:
+          Base: aliend_unconscious
+        Dead:
+          Base: aliend_dead
     - type: AcidMaker
       action: ActionMakeAcid
       productionLength: 0
@@ -22,7 +44,6 @@
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/sentinel.rsi
-    layers:
     layers:
       - map: [ "enum.DamageStateVisualLayers.Base" ]
         state: aliens

@@ -49,20 +49,6 @@
     - type: Sprite
       drawdepth: Mobs
       offset: 0, 0.2
-      layers:
-        - map: ["enum.DamageStateVisualLayers.Base"]
-          state: aliend
-        - map: [ "pocket1" ]
-        - map: [ "pocket2" ]
-        - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
-          color: "#ffffff"
-          sprite: Ataraxia/Effects/cuffs.rsi
-          state: aliencuff
-          visible: false
-        - map: [ "clownedon" ] # Dynamically generated
-          sprite: "Effects/creampie.rsi"
-          state: "creampie_human"
-          visible: false
     - type: Fixtures
       fixtures:
         fix1:
@@ -115,13 +101,6 @@
           Structural: 60
     - type: DamageStateVisuals
       rotate: true
-      states:
-        Alive:
-          Base: aliend
-        Critical:
-          Base: aliend_unconscious
-        Dead:
-          Base: aliend_dead
     - type: Butcherable
       butcheringType: knife
       spawned:
