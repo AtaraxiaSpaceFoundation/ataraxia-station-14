@@ -9,6 +9,16 @@
     Poison: 0.9
 
 - type: damageModifierSet
+  id: Xenomorph
+  coefficients:
+    Blunt: 0.85
+    Slash: 0.80
+    Piercing: 1.2
+    Cold: 0
+    Heat: 1.65
+    Poison: 0
+
+- type: damageModifierSet
   id: TerrorSpider
   coefficients:
     Blunt: 0.90

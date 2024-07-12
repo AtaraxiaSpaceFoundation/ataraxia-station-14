@@ -34,7 +34,7 @@ action-promotion-alien-desc = Сделайте так, чтобы один из 
 action-tail-lash = Удар хвостом
 action-tail-lash-desc = Оглушайте ближайших врагов своим хвостом.
 
-alien-pick-item-fail = Вы слишком неуклюжи, чтобы поднять предмет.
+alien-pickup-item-fail = Вы слишком неуклюжи, чтобы поднять предмет.
 
 action-transfer-plasma-alien = Передать плазму
 action-transfer-plasma-alien-desc = Передайте 50 плазмы ближайшему соратнику.

@@ -5,7 +5,6 @@
   components:
     - type: ShowInfectedIcons
     - type: PlasmaTransfer
-    - type: Insulated
     - type: CombatMode
       combatToggleAction: ActionCombatModeToggleAlien
       canDisarm: true
@@ -78,6 +77,9 @@
     - type: SlowOnDamage
       speedModifierThresholds:
         25: 0.5
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: Xenomorph
     - type: Stamina
       critThreshold: 200
     - type: Bloodstream
@@ -99,7 +101,7 @@
         groups:
           Brute: 20
         types:
-          Structural: 60
+          Structural: 10
     - type: DamageStateVisuals
       rotate: true
     - type: Butcherable

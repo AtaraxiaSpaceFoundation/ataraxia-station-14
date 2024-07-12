@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: AlienAcid
+  noSpawn: true
   name: alien-acid-name
   description: alien-acid-desc
   components:
@@ -66,6 +67,7 @@
 
 - type: entity
   id: CorrosiveAcid
+  noSpawn: true
   name: alien-acid-name
   suffix: overlay
   description: alien-acid-desc
@@ -82,6 +84,7 @@
 
 - type: entity
   id: CorrodedAcid
+  noSpawn: true
   name: corroded acid
   suffix: overlay
   description: alien-acid-desc
