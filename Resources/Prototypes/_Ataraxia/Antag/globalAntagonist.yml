@@ -1,0 +1,5 @@
+- type: antagonist
+  id: globalAntagonistXenomorphs
+  name: global-antagonist-xenomorphs-name
+  description: global-antagonist-xenomorphs-description
+  weight: 69

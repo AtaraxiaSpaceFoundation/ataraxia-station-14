@@ -4,6 +4,8 @@
   parent: SimpleSpaceMobBase
   components:
     - type: ShowInfectedIcons
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistXenomorphs
     - type: PlasmaTransfer
     - type: CombatMode
       combatToggleAction: ActionCombatModeToggleAlien
@@ -167,18 +169,6 @@
         - TemporaryBlindness
         - Pacified
         - StaminaModifier
-    - type: Devourer
-      shouldStoreDevoured: true
-      foodPreference: Humanoid
-      chemical: UncookedAnimalProteins
-      healRate: 5.0
-      whitelist:
-        components:
-          - MobState
-      consumes:
-        - Alive
-        - Critical
-        - Dead
     - type: VomitAction
       thirstAdded: 5.0
       hungerAdded: 5.0
