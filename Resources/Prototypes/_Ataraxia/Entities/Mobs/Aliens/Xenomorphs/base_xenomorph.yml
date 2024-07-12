@@ -115,7 +115,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: mob-alien-name
+      name: ghost-role-mob-alien-name
       description: ghost-role-mob-alien-description
       rules: ghost-role-information-xeno-rules
     - type: GhostTakeoverAvailable

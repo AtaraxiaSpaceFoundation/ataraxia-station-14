@@ -132,3 +132,24 @@
   id: HeadcrabPoison
   name: antagonist-name-headcrab-poison
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabPoison.xml"
+
+
+
+
+
+
+
+
+
+
+- type: guideEntry
+  id: Xenomorphs
+  name: antagonist-name-xenomorphs
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs.xml"
+  children:
+    - XenomorphQueen
+
+- type: guideEntry
+  id: XenomorphQueen
+  name: antagonist-name-xenomorph-queen
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Queen.xml"
