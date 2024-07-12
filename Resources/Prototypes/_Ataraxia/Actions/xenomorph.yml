@@ -187,8 +187,8 @@
     useDelay: 3
     checkCanAccess: false
     range: 10
-    icon: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: leap_off }
-    iconOn: { sprite : Ataraxia/Interface/Alien/screen_alien.rsi, state: leap_on }
+    icon: { sprite : Ataraxia/Interface/Actions/xenomorph.rsi, state: leap_off }
+    iconOn: { sprite : Ataraxia/Interface/Actions/xenomorph.rsi, state: leap_on }
     event: !type:AlienJumpActionEvent
 
 - type: entity

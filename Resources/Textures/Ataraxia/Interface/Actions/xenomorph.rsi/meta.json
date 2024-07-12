@@ -20,6 +20,12 @@
             "name": "vision_off"
         },
         {
+            "name": "leap_off"
+        },
+        {
+            "name": "leap_on"
+        },
+        {
             "name": "crawl"
         },
         {

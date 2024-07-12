@@ -30,3 +30,113 @@
   - type: Sprite
     sprite: Ataraxia/Interface/Actions/headcrab.rsi
     state: jump
+
+# XENOMORPH XRAY ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphXRayIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: vision_on
+
+# VOMIT ICON
+
+- type: entity
+  parent: BaseItem
+  id: VomitIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Fluids/vomit.rsi
+    state: vomit-0
+
+# XENOMORPH PLASMA TRANSFER ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphPlasmaTransferIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: plasma_transfer
+
+# XENOMORPH TAIL ATTACK ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphTailAttackIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: tail_attack
+
+# XENOMORPH ROYAL LARVA ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphRoyalLarvaIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: alien_medal_active
+
+# XENOMORPH NEST ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphNestIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Specific/Xenomorph/resin_nest.rsi
+    state: full
+
+# XENOMORPH MEMBRANE ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphMembraneIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Windows/resin_membrane.rsi
+    state: full
+
+# XENOMORPH WALL ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphWallIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Structures/Walls/resin.rsi
+    state: full
+
+# XENOMORPH JUMP ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphJumpIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: leap_off
+
+# XENOMORPH STALK ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphStalkIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Interface/Actions/xenomorph.rsi
+    state: stalk

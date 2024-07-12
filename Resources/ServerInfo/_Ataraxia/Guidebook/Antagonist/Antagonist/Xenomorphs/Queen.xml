@@ -16,22 +16,24 @@
   - Имеет 740 ХП.
   - Может вскрывать шлюзы своими лапами.
   - Может откладывать яйца.
+  - Может возводить полимерные строения.
+  - Может ударять хвостом.
+  - Может плюваться нейротоксином.
   - Обладает Х-рей зрением.
-  - Может содержать до [color=#9400D3]500[/color] плазмы.
+  - Содержит до [color=#9400D3]500[/color] плазмы.
 
   Способности:
   <Box>
     <GuideEntityEmbed Entity="AlienEgg" Caption=""/>
-    <GuideEntityEmbed Entity="ActionToggleLightingAlien" Caption=""/>
-    <GuideEntityEmbed Entity="ActionVomit" Caption=""/>
-    <GuideEntityEmbed Entity="ActionAlienTransferPlasma" Caption=""/>
-    <GuideEntityEmbed Entity="ActionTailLash" Caption=""/>
-    <GuideEntityEmbed Entity="ActionAlienRoyalLarva" Caption=""/>
-    <GuideEntityEmbed Entity="ActionAlienNest" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphXRayIcon" Caption=""/>
+    <GuideEntityEmbed Entity="VomitIcon" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphPlasmaTransferIcon" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphTailAttackIcon" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphRoyalLarvaIcon" Caption=""/>
     <GuideEntityEmbed Entity="ActionResinNode" Caption=""/>
-    <GuideEntityEmbed Entity="WindowResin" Caption=""/>
-    <GuideEntityEmbed Entity="WindowResin" Caption=""/>
-    <GuideEntityEmbed Entity="WallResin" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphNestIcon" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphMembraneIcon" Caption=""/>
+    <GuideEntityEmbed Entity="XenomorphWallIcon" Caption=""/>
   </Box>
 
 </Document>

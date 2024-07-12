@@ -361,7 +361,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      208: Dead
+      200: Dead
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
