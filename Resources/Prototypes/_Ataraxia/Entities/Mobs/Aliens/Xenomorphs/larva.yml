@@ -29,7 +29,7 @@
           state: larva1
       noMovementLayers:
         movement:
-          state: larva1
+          state: larva1_cuff
     - type: DamageStateVisuals
       states:
         Alive:
@@ -58,7 +58,7 @@
           state: larva2
       noMovementLayers:
         movement:
-          state: larva2
+          state: larva2_cuff
     - type: DamageStateVisuals
       states:
         Alive:

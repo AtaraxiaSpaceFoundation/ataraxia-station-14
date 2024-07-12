@@ -224,7 +224,7 @@
           state: larva0
       noMovementLayers:
         movement:
-          state: larva0
+          state: larva0_cuff
     - type: NpcFactionMember
       factions:
         - Xeno

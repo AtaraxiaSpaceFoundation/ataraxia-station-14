@@ -34,6 +34,8 @@ public sealed class AlienInfectedSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
+
     public override void Initialize()
     {
         base.Initialize();
