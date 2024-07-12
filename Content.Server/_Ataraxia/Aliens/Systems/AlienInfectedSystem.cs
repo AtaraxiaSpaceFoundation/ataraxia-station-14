@@ -70,7 +70,6 @@ public sealed class AlienInfectedSystem : EntitySystem
             {
                 _container.EmptyContainer(infected.Stomach);
                 _entityManager.RemoveComponent<AlienInfectedComponent>(uid);
-                damageToDeal = 100;
             }
 
             if (infected.GrowthStage == 5)
