@@ -1,0 +1,40 @@
+#Martell
+- type: customGhost
+  id: _martell-ghost
+  ckey: _Martell
+  sprite: Ataraxia/Ghosts/_martell-ghost.rsi
+  ghostName: Martell
+  ghostDescription: Гигачад с огромной челюстью
+
+#yourmommy
+- type: customGhost
+  id: yourmommy-ghost
+  ckey: yourmommy
+  sprite: Ataraxia/Ghosts/yourmommy-ghost.rsi
+  alpha: 1
+  ghostName: yourmommy
+  ghostDescription: Самая праздничная киса на диком западе
+
+#GodFace
+- type: customGhost
+  id: godface-ghost
+  ckey: GodFace
+  sprite: Ataraxia/Ghosts/GodFace.rsi
+  ghostName: GodFace
+  ghostDescription: В рамке явно должны оказаться вы!
+
+#PuroSlavKing
+- type: customGhost
+  id: puroslavking-ghost
+  ckey: PuroSlavKing
+  sprite: Ataraxia/Ghosts/GodFace.rsi
+  ghostName: PuroSlavKing
+  ghostDescription: В рамке явно должны оказаться вы!
+
+#LIZARDWIZARD
+- type: customGhost
+  id: LIZARDWIZARD-ghost
+  ckey: LIZARDWIZARD
+  sprite: Ataraxia/Ghosts/LIZARDWIZARD.rsi
+  ghostName: LIZARDWIZARD
+  ghostDescription: Фр-Йиф.
