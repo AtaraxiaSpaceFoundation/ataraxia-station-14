@@ -1,4 +1,4 @@
-using Content.Server.SurveillanceCamera.Systems;
+using Content.Server._White.SurveillanceCamera;
 using Content.Shared.DeviceNetwork;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
