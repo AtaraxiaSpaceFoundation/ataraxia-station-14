@@ -9,7 +9,7 @@
         - torso
       organs:
         brain: OrganXenoBrain
-        eyes: OrganHumanEyes
+        eyes: OrganXenomorphHybridEyes
     torso:
       part: TorsoXeno
       connections:
@@ -18,11 +18,11 @@
         - right_leg
         - left_leg
       organs:
-        heart: OrganHumanHeart
-        stomach: OrganAnimalStomach
-        liver: OrganHumanLiver
-        kidneys: OrganHumanKidneys
-        plasmaVessel: OrganXenoPlasmaVessel
+        heart: OrganXenomorphHybridHeart
+        stomach: OrganXenomorphHybridStomach
+        liver: OrganXenomorphHybridLiver
+        kidneys: OrganXenomorphHybridKidneys
+        plasmaVessel: OrganXenoPlasmaVesselMedium
         acidGland: OrganXenoAcidGland
         hivenode: OrganXenoHivenode
     right_arm:

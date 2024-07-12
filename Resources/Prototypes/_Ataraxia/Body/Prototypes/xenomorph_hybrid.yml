@@ -18,6 +18,7 @@
         stomach: OrganXenomorphHybridStomach
         liver: OrganXenomorphHybridLiver
         kidneys: OrganXenomorphHybridKidneys
+        plasmaVessel: OrganXenoPlasmaVesselSmall
       connections:
       - right_arm
       - left_arm
