@@ -1,56 +1,83 @@
 ﻿- type: entity
-  id: OrganXenoAcidGland
   parent: BaseAnimalOrgan
+  id: OrganXenoAcidGland
   name: acid-gland
-  noSpawn: true
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Species/Xeno/organs.rsi
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
       state: acid_gland
     - type: Organ
 
 - type: entity
-  id: OrganXenoEggsac
   parent: BaseAnimalOrgan
+  id: OrganXenoEggsac
   name: eggsac
-  noSpawn: true
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Species/Xeno/organs.rsi
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
       state: eggsac
     - type: Organ
 
 - type: entity
-  id: OrganXenoHivenode
   parent: BaseAnimalOrgan
+  id: OrganXenoHivenode
   name: hivenode
-  noSpawn: true
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Species/Xeno/organs.rsi
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
       state: hivenode
     - type: Organ
 
 - type: entity
-  id: OrganXenoPlasmaVessel
   parent: BaseAnimalOrgan
-  name: plasma-vessel
-  noSpawn: true
+  id: OrganXenoPlasmaVesselTiny
+  name: tiny plasma-vessel
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Species/Xeno/organs.rsi
-      state: plasma_vessel
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+      state: plasma_tiny
     - type: Organ
 
 - type: entity
-  id: OrganXenoBrain
+  parent: BaseAnimalOrgan
+  id: OrganXenoPlasmaVesselSmall
+  name: small plasma-vessel
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+      state: plasma_small
+    - type: Organ
+
+- type: entity
+  parent: BaseAnimalOrgan
+  id: OrganXenoPlasmaVesselMedium
+  name: medium plasma-vessel
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+      state: plasma_medium
+    - type: Organ
+
+- type: entity
+  parent: BaseAnimalOrgan
+  id: OrganXenoPlasmaVesselLarge
+  name: large plasma-vessel
+  components:
+    - type: Sprite
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+      state: plasma_large
+    - type: Organ
+
+- type: entity
   parent: BaseHumanOrganUnGibbable
+  id: OrganXenoBrain
+  noSpawn: true
   name: brain
   description: "The source of incredible, unending intelligence. Honk."
   components:
     - type: Sprite
-      sprite: Ataraxia/Mobs/Species/Xeno/organs.rsi
-      state: brain-x
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/organs.rsi
+      state: brain
     - type: Organ
     - type: Input
       context: "ghost"
@@ -65,11 +92,12 @@
 
 - type: entity
   id: TorsoXeno
+  noSpawn: true
   name: "alien torso"
   parent: [PartHuman, BaseTorso]
   components:
     - type: Sprite
-      sprite: Mobs/Species/Human/parts.rsi
+      sprite: Ataraxia/Mobs/Species/Xenomorph_hybrid/parts.rsi
       state: "torso_m"
     - type: Extractable
       juiceSolution:

@@ -6,7 +6,7 @@
   noSpawn: true
   components:
     - type: InstantAction
-      icon: { sprite: Ataraxia/Interface/Alien/screen_alien.rsi, state: nightvision0 }
+      icon: { sprite: Ataraxia/Interface/Actions/xenomorph.rsi, state: vision_on }
       priority: -1
       clientExclusive: true
       checkCanInteract: false

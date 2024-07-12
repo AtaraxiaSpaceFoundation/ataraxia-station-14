@@ -8,6 +8,7 @@
     - type: Insulated
     - type: CombatMode
       combatToggleAction: ActionCombatModeToggleAlien
+      canDisarm: true
     - type: InputMover
     - type: MobMover
     - type: MovementSpeedModifier
@@ -114,6 +115,9 @@
       description: ghost-role-mob-alien-description
       rules: ghost-role-information-xeno-rules
     - type: GhostTakeoverAvailable
+    - type: RotationVisuals
+      defaultRotation: 90
+      horizontalRotation: 90
     - type: TypingIndicator
       proto: alien
     - type: Temperature

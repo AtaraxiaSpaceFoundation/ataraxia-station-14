@@ -1,8 +1,8 @@
 - type: entity
+  parent: MarkerBase
   id: SpawnPointGhostAlienLarva
   name: ghost role spawn point
   suffix: alien larva
-  parent: MarkerBase
   components:
   - type: GhostRole
     name: ghost-role-information-alien-larva-name

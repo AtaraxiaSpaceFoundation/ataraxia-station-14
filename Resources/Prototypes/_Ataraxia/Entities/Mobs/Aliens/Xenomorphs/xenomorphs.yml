@@ -114,7 +114,7 @@
     sprite: Ataraxia/Mobs/Aliens/Xenos/hunter.rsi
     layers:
       - map: [ "enum.JumpLayers.Jumping" ]
-        sprite: Ataraxia/Mobs/Aliens/Xenos/alien_hunter_jump.rsi
+        sprite: Ataraxia/Mobs/Aliens/Xenos/hunter_jump.rsi
         state: icon
         visible: false
       - map: [ "enum.DamageStateVisualLayers.Base" ]
