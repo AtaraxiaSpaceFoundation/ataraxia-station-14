@@ -5,6 +5,7 @@
 
   Мажорные антагонисты:
   <Box>
+    <GuideEntityEmbed Entity="MobAlienQueen" Caption="Ксеноморф."/>
     <GuideEntityEmbed Entity="MobTerrorSpiderQueen" Caption="Паук ужаса."/>
   </Box>
 

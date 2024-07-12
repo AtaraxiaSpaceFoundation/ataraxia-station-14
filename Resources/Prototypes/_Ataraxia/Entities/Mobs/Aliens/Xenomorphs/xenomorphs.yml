@@ -78,7 +78,7 @@
       groups:
         Brute: 25
       types:
-        Structural: 60
+        Structural: 8
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -156,7 +156,7 @@
       groups:
         Brute: 20
       types:
-        Structural: 60
+        Structural: 8
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -230,7 +230,7 @@
       groups:
         Brute: 30
       types:
-        Structural: 80
+        Structural: 10
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -305,7 +305,7 @@
       groups:
         Brute: 30
       types:
-        Structural: 300
+        Structural: 30
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -370,9 +370,9 @@
     animation: WeaponArcBite
     damage:
       groups:
-        Brute: 25
+        Brute: 10
       types:
-        Structural: 60
+        Structural: 5
   - type: DamageStateVisuals
     rotate: true
     states:
