@@ -27,7 +27,7 @@
 - type: customGhost
   id: puroslavking-ghost
   ckey: PuroSlavKing
-  sprite: Ataraxia/Ghosts/GodFace.rsi
+  sprite: Ataraxia/Ghosts/PuroSlavKing.rsi
   ghostName: PuroSlavKing
   ghostDescription: В рамке явно должны оказаться вы!
 
