@@ -54,11 +54,6 @@ public sealed class AlienJumpSystem : EntitySystem
         _appearance.SetData(uid, JumpVisuals.Jumping, true, Comp<AppearanceComponent>(uid));
     }
 
-    private void ApplyEffects(EntityUid target, KnockdownOnCollideComponent component)
-    {
-        _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
-    }
-
     private void OnHit(EntityUid uid, AlienJumpComponent comp, ThrowDoHitEvent args)
     {
         var xform = Transform(args.Target);
