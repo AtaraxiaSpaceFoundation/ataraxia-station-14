@@ -12,21 +12,6 @@
     - RatQueen
 
 - type: guideEntry
-  id: InteQAgent
-  name: antagonist-name-inteqagent
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/InteQAgent.xml"
-
-- type: guideEntry
-  id: RatQueen
-  name: antagonist-name-ratqueen
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/RatQueen.xml"
-
-#- type: guideEntry
-#  id: Skibidi
-#  name: antagonist-name-skibidi
-#  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Skibidi.xml"
-
-- type: guideEntry
   id: TerrorSpiders
   name: antagonist-name-terror-spiders
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders.xml"
@@ -46,71 +31,6 @@
     - TerrorSpiderWidow
 
 - type: guideEntry
-  id: TerrorSpiderDefiler
-  name: antagonist-name-terror-spider-defiler
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Defiler.xml"
-
-- type: guideEntry
-  id: TerrorSpiderDestroyer
-  name: antagonist-name-terror-spider-destroyer
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Destroyer.xml"
-
-- type: guideEntry
-  id: TerrorSpiderDrone
-  name: antagonist-name-terror-spider-drone
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Drone.xml"
-
-- type: guideEntry
-  id: TerrorSpiderGuardian
-  name: antagonist-name-terror-spider-guardian
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Guardian.xml"
-
-- type: guideEntry
-  id: TerrorSpiderHealer
-  name: antagonist-name-terror-spider-healer
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Healer.xml"
-
-- type: guideEntry
-  id: TerrorSpiderKnight
-  name: antagonist-name-terror-spider-knight
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Knight.xml"
-
-- type: guideEntry
-  id: TerrorSpiderLurker
-  name: antagonist-name-terror-spider-lurker
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Lurker.xml"
-
-- type: guideEntry
-  id: TerrorSpiderMother
-  name: antagonist-name-terror-spider-mother
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Mother.xml"
-
-- type: guideEntry
-  id: TerrorSpiderPrince
-  name: antagonist-name-terror-spider-prince
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Prince.xml"
-
-- type: guideEntry
-  id: TerrorSpiderPrincess
-  name: antagonist-name-terror-spider-princess
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Princess.xml"
-
-- type: guideEntry
-  id: TerrorSpiderQueen
-  name: antagonist-name-terror-spider-queen
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Queen.xml"
-
-- type: guideEntry
-  id: TerrorSpiderReaper
-  name: antagonist-name-terror-spider-reaper
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Reaper.xml"
-
-- type: guideEntry
-  id: TerrorSpiderWidow
-  name: antagonist-name-terror-spider-widow
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/TerrorSpiders/Widow.xml"
-
-- type: guideEntry
   id: Headcrabs
   name: antagonist-name-headcrabs
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs.xml"
@@ -120,24 +40,17 @@
     - HeadcrabPoison
 
 - type: guideEntry
-  id: Headcrab
-  name: antagonist-name-headcrab
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/Headcrab.xml"
-
-- type: guideEntry
-  id: HeadcrabFast
-  name: antagonist-name-headcrab-fast
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabFast.xml"
-
-- type: guideEntry
-  id: HeadcrabPoison
-  name: antagonist-name-headcrab-poison
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Headcrabs/HeadcrabPoison.xml"
-
-- type: guideEntry
   id: Xenomorphs
   name: antagonist-name-xenomorphs
   text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs.xml"
+  children:
+    - XenomorphsEvolutions
+    - XenomorphsHowToPlay
+
+- type: guideEntry
+  id: XenomorphsEvolutions
+  name: antagonist-name-xenomorphs-evolutions
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Evolutions.xml"
   children:
     - XenomorphQueen
     - XenomorphPraetorian
@@ -149,41 +62,9 @@
     - XenomorphLarva
 
 - type: guideEntry
-  id: XenomorphQueen
-  name: antagonist-name-xenomorph-queen
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Queen.xml"
-
-- type: guideEntry
-  id: XenomorphPraetorian
-  name: antagonist-name-xenomorph-praetorian
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Praetorian.xml"
-
-- type: guideEntry
-  id: XenomorphDrone
-  name: antagonist-name-xenomorph-drone
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Drone.xml"
-
-- type: guideEntry
-  id: XenomorphHunter
-  name: antagonist-name-xenomorph-hunter
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Hunter.xml"
-
-- type: guideEntry
-  id: XenomorphMaid
-  name: antagonist-name-xenomorph-maid
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Maid.xml"
-
-- type: guideEntry
-  id: XenomorphSentinel
-  name: antagonist-name-xenomorph-sentinel
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Sentinel.xml"
-
-- type: guideEntry
-  id: XenomorphFacehugger
-  name: antagonist-name-xenomorph-facehugger
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Facehugger.xml"
-
-- type: guideEntry
-  id: XenomorphLarva
-  name: antagonist-name-xenomorph-larva
-  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/Larva.xml"
+  id: XenomorphsHowToPlay
+  name: antagonist-name-xenomorphs-howtoplay
+  text: "/ServerInfo/_Ataraxia/Guidebook/Antagonist/Antagonist/Xenomorphs/HowToPlay.xml"
+  children:
+    - XenomorphHowToPlayCrew
+    - XenomorphHowToPlayXenomorph

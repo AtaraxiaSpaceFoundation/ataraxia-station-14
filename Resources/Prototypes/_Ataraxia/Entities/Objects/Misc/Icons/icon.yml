@@ -140,3 +140,25 @@
   - type: Sprite
     sprite: Ataraxia/Interface/Actions/xenomorph.rsi
     state: stalk
+
+# XENOMORPH GUNS ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphGunsIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Misc/icons.rsi
+    state: xenomorph_guns
+
+# XENOMORPH FIRE ICON
+
+- type: entity
+  parent: BaseItem
+  id: XenomorphFireIcon
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Misc/icons.rsi
+    state: xenomorph_fire
