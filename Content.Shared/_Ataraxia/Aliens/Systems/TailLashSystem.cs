@@ -30,6 +30,11 @@ public sealed class TailLashSystem : EntitySystem
         _actions.AddAction(uid, ref component.TailLashActionEntity, component.TailLashAction, uid);
     }
 
+    private void ApplyEffects(EntityUid target, KnockdownOnCollideComponent component)
+    {
+        _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
+    }
+
     private void OnLash(EntityUid uid, TailLashComponent component, TailLashActionEvent args)
     {
         _audio.PlayPredicted(component.LashSound, uid, uid);
@@ -37,7 +42,7 @@ public sealed class TailLashSystem : EntitySystem
         {
             if (HasComp<MobStateComponent>(entity))
             {
-                _stun.TryParalyze(entity, TimeSpan.FromSeconds(component.StunTime), true);
+                ApplyEffects(args.Target, ent.Comp);
             }
         }
         _actions.SetCooldown(component.TailLashActionEntity, TimeSpan.FromSeconds(component.Cooldown));

@@ -53,6 +53,11 @@ public sealed class AlienJumpSystem : EntitySystem
         _appearance.SetData(uid, JumpVisuals.Jumping, true, Comp<AppearanceComponent>(uid));
     }
 
+    private void ApplyEffects(EntityUid target, KnockdownOnCollideComponent component)
+    {
+        _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
+    }
+
     private void OnHit(EntityUid uid, AlienJumpComponent comp, ThrowDoHitEvent args)
     {
         var xform = Transform(args.Target);
@@ -70,8 +75,7 @@ public sealed class AlienJumpSystem : EntitySystem
 
         if (HasComp<StatusEffectsComponent>(args.Target) && _statusEffect.CanApplyEffect(args.Target, "Stun"))
         {
-            _stun.TryParalyze(args.Target, TimeSpan.FromSeconds(10), true);
-            _physics.SetBodyStatus(EnsureComp<PhysicsComponent>(uid), BodyStatus.OnGround);
+            ApplyEffects(args.Target, ent.Comp);
         }
     }
 
