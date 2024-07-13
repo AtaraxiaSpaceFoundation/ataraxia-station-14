@@ -17,6 +17,9 @@
         layer:
         - SmallMobLayer
   - type: MobState
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Xenomorph
   - type: Deathgasp
   - type: MobStateActions
     actions:
@@ -111,6 +114,9 @@
         layer:
         - SmallMobLayer
   - type: MobState
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Xenomorph
   - type: Deathgasp
   - type: MobStateActions
     actions:

@@ -3,7 +3,7 @@
   id: AlienEggGrowing
   name: Egg
   suffix: Growing
-  description: A large mottled egg
+  description: A large mottled egg.
   components:
     - type: Transform
       noRot: true
@@ -31,7 +31,8 @@
     - type: PlaceableSurface
       isPlaceable: false # defaults to closed.
     - type: Damageable
-      damageContainer: StructuralInorganic
+      damageContainer: Biological
+      damageModifierSet: Resin
     - type: Destructible
       thresholds:
         - trigger:
@@ -55,7 +56,7 @@
   parent: BaseStructureDynamic
   id: AlienEgg
   name: Egg
-  description: A large mottled egg
+  description: A large mottled egg.
   components:
     - type: Transform
       noRot: true
@@ -83,7 +84,8 @@
     - type: PlaceableSurface
       isPlaceable: false
     - type: Damageable
-      damageContainer: StructuralInorganic
+      damageContainer: Biological
+      damageModifierSet: Resin
     - type: Destructible
       thresholds:
         - trigger:
@@ -107,7 +109,7 @@
   id: AlienEggHatching
   suffix: Hatching
   name: Egg
-  description: A large mottled egg
+  description: A large mottled egg.
   components:
     - type: Transform
       noRot: true
@@ -118,6 +120,9 @@
       noRot: true
       sprite: Ataraxia/Structures/Specific/Xenomorph/xenomorph_egg.rsi
       state: egg_opening
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: Resin
     - type: TimedDespawn
       lifetime: 1.5
     - type: SpawnOnDespawn
@@ -127,8 +132,8 @@
   parent: BaseStructureDynamic
   id: AlienEggOpened
   name: Egg
-  suffix: Open
-  description: A large mottled egg
+  suffix: Open, Facehugger
+  description: A large mottled egg.
   components:
     - type: Transform
       noRot: true
@@ -156,7 +161,8 @@
     - type: PlaceableSurface
       isPlaceable: false
     - type: Damageable
-      damageContainer: StructuralInorganic
+      damageContainer: Biological
+      damageModifierSet: Resin
     - type: Destructible
       thresholds:
         - trigger:
@@ -175,6 +181,57 @@
     - type: ConditionalSpawner
       prototypes:
       - Facehugger
+
+- type: entity
+  parent: BaseStructureDynamic
+  id: AlienEggOpenedDecoration
+  name: Egg
+  suffix: Open, Decoration
+  description: A large mottled egg.
+  components:
+    - type: Transform
+      noRot: true
+    - type: Icon
+      sprite: Ataraxia/Structures/Specific/Xenomorph/xenomorph_egg.rsi
+      state: egg_hatched
+    - type: Sprite
+      noRot: true
+      sprite: Ataraxia/Structures/Specific/Xenomorph/xenomorph_egg.rsi
+      state: egg_hatched
+    - type: InteractionOutline
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.4,-0.4,0.4,0.4"
+          density: 1000
+          mask:
+          - ItemMask
+          layer:
+          - SlipLayer
+          hard: false
+    - type: PlaceableSurface
+      isPlaceable: false
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: Resin
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 50
+          behaviors:
+            - !type:DoActsBehavior
+              acts: ["Destruction"]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: blood
+    - type: Appearance
+    - type: ItemSlots
+    - type: StaticPrice
+      price: 1000
 
 - type: entity
   parent: MarkerBase
