@@ -29,7 +29,7 @@ public sealed class AlienJumpSystem : EntitySystem
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standing = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {

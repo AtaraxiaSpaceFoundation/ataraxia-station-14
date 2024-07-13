@@ -16,7 +16,7 @@ public sealed class TailLashSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standing = default!;
     public override void Initialize()
     {
         base.Initialize();
