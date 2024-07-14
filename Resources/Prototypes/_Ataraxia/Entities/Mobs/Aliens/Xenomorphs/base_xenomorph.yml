@@ -167,7 +167,6 @@
     - type: Ensnareable
       sprite: Objects/Misc/ensnare.rsi
       state: icon
-    - type: InventorySlots
     - type: StatusEffects
       allowed:
         - Stun
