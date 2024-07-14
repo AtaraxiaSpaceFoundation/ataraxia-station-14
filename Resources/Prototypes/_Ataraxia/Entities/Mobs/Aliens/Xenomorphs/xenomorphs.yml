@@ -1,6 +1,7 @@
 ﻿- type: entity
   parent: MobAlienBase
-  id: MobAlienDrone
+  id: MobAlienDroneBase
+  abstract: true
   name: alien drone
   components:
     - type: Sprite
@@ -41,17 +42,30 @@
       - XenomorphDrone
 
 - type: entity
-  parent: MobAlienDrone
+  parent: MobAlienDroneBase
+  id: MobAlienDrone
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienDroneBase
   id: MobAlienDroneDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
-  id: MobAlienSentinel
+  id: MobAlienSentinelBase
+  abstract: true
   name: alien sentinel
   components:
   - type: Sprite
@@ -127,17 +141,30 @@
     - XenomorphSentinel
 
 - type: entity
-  parent: MobAlienSentinel
+  parent: MobAlienSentinelBase
+  id: MobAlienSentinel
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienSentinelBase
   id: MobAlienSentinelDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
-  id: MobAlienHunter
+  id: MobAlienHunterBase
+  abstract: true
   name: alien hunter
   components:
   - type: Sprite
@@ -220,17 +247,30 @@
     - XenomorphHunter
 
 - type: entity
-  parent: MobAlienHunter
+  parent: MobAlienHunterBase
+  id: MobAlienHunter
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienHunterBase
   id: MobAlienHunterDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
-  id: MobAlienPraetorian
+  id: MobAlienPraetorianBase
+  abstract: true
   name: Alien praetorian
   components:
   - type: Sprite
@@ -316,17 +356,30 @@
     - XenomorphPraetorian
 
 - type: entity
-  parent: MobAlienPraetorian
+  parent: MobAlienPraetorianBase
+  id: MobAlienPraetorian
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienPraetorianBase
   id: MobAlienPraetorianDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
-  id: MobAlienQueen
+  id: MobAlienQueenBase
+  abstract: true
   name: Alien queen
   components:
   - type: Sprite
@@ -404,17 +457,30 @@
     - XenomorphQueen
 
 - type: entity
-  parent: MobAlienQueen
+  parent: MobAlienQueenBase
+  id: MobAlienQueen
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienQueenBase
   id: MobAlienQueenDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
-  id: MobAlienMaid
+  id: MobAlienMaidBase
+  abstract: true
   name: lusty alien maid
   description: Don't ask it to lay eggs in you.
   components:
@@ -473,10 +539,22 @@
     - XenomorphMaid
 
 - type: entity
-  parent: MobAlienMaid
+  parent: MobAlienMaidBase
+  id: MobAlienMaid
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienMaidBase
   id: MobAlienMaidDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false

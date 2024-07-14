@@ -7,6 +7,7 @@
     enabled: false
   - type: InsideAlienLarva
     evolutionCooldown: 5
+  - type: GhostTakeoverAvailable
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
@@ -42,10 +43,20 @@
     - type: TimedPolymorph
       polymorphPrototype: AlienEvolutionGrowStageThree
       polymorphTime: 50
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      makeSentient: true
+      allowSpeech: true
+      allowMovement: true
+      name: ghost-role-information-alien-larva-name
+      description: ghost-role-information-alien-larva-description
+      raffle:
+        settings: default
 
 - type: entity
   parent: MobAlienLarva
-  id: MobAlienLarvaGrowStageThree
+  id: MobAlienLarvaGrowStageThreeBase
+  abstract: true
   components:
     - type: Sprite
       drawdepth: SmallMobs
@@ -74,10 +85,21 @@
       evolutionCooldown: 50
 
 - type: entity
-  parent: MobAlienLarvaGrowStageThree
+  parent: MobAlienLarvaGrowStageThreeBase
+  id: MobAlienLarvaGrowStageThree
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      makeSentient: true
+      allowSpeech: true
+      allowMovement: true
+      name: ghost-role-information-alien-larva-name
+      description: ghost-role-information-alien-larva-description
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienLarvaGrowStageThreeBase
   id: MobAlienLarvaGrowStageThreeDummy
   noSpawn: true
   suffix: Без гост роли
-  components:
-    - type: GhostRole
-      makeSentient: false

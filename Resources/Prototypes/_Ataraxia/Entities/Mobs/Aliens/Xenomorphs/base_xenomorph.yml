@@ -1,7 +1,7 @@
 - type: entity
-  abstract: true
-  id: MobAlienBase
   parent: SimpleSpaceMobBase
+  id: MobAlienBase
+  abstract: true
   components:
     - type: ShowInfectedIcons
     - type: GlobalAntagonist
@@ -121,16 +121,6 @@
       spawned:
         - id: FoodMeatXeno
           amount: 5
-    - type: GhostRole
-      allowMovement: true
-      allowSpeech: true
-      makeSentient: true
-      name: ghost-role-mob-alien-name
-      description: ghost-role-mob-alien-description
-      rules: ghost-role-information-xeno-rules
-      raffle:
-        settings: default
-    - type: GhostTakeoverAvailable
     - type: RotationVisuals
       defaultRotation: 90
       horizontalRotation: 90
@@ -212,15 +202,6 @@
       antagonistPrototype: globalAntagonistXenomorphs
     - type: Body
       prototype: Xeno
-    - type: GhostRole
-      makeSentient: true
-      allowSpeech: true
-      allowMovement: true
-      name: ghost-role-information-alien-larva-name
-      description: ghost-role-information-alien-larva-description
-      raffle:
-        settings: default
-    - type: GhostTakeoverAvailable
     - type: Speech
       speechSounds: Xenomorph
       speechVerb: SmallMob
