@@ -92,4 +92,7 @@ public sealed partial class ElectrifiedComponent : Component
 
     public EntityUid? Caster;
     // WD EDIT END
+
+    [DataField]
+    public float Probability = 1f;
 }

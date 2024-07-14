@@ -179,7 +179,6 @@ namespace Content.Client.Entry
             _parallaxManager.LoadDefaultParallax();
 
             _overlayManager.AddOverlay(new SingularityOverlay());
-            _overlayManager.AddOverlay(new FlashOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             // _overlayManager.AddOverlay(new GrainOverlay());
             // _overlayManager.AddOverlay(new AtmOverlay());

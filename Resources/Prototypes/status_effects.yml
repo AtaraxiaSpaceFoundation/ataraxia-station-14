@@ -1,4 +1,4 @@
-﻿# Status effect prototypes.
+# Status effect prototypes.
 # Holds no actual logic, just some basic data about the effect.
 
 - type: statusEffect
@@ -74,9 +74,13 @@
 - type: statusEffect
   id: Drowsiness #blurs your vision and makes you randomly fall asleep
 
+- type: statusEffect
+  id: Flashed
+
 # WD EDIT
 - type: statusEffect
   id: Incorporeal
+  alwaysAllowed: true
 
 - type: statusEffect
   id: BloodLoss
