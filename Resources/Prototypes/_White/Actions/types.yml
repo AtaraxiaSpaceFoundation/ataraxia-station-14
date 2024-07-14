@@ -51,6 +51,7 @@
   - type: InstantAction
     itemIconStyle: BigAction
     priority: -20
-    icon: { sprite: Objects\Specific\Security\body-camera.rsi, state: unpowered }
-    iconOn: { sprite: Objects\Specific\Security\body-camera.rsi, state: active }
+    icon: 
+      sprite: Objects\Specific\Security\body-camera.rsi
+      state: unpowered
     event: !type:ToggleBodyCameraEvent
