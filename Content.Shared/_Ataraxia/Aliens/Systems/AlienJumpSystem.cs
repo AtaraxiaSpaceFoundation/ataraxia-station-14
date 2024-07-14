@@ -9,6 +9,7 @@ using Content.Shared.Pinpointer;
 using Content.Shared.StatusEffect;
 using Content.Shared.Standing.Systems;
 using Content.Shared._White.Knockdown;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Robust.Shared.Map;
@@ -71,9 +72,9 @@ public sealed class AlienJumpSystem : EntitySystem
             return;
         }
 
-        if (HasComp<StatusEffectsComponent>(args.Target) && _statusEffect.CanApplyEffect(args.Target, "Stun"))
+        if (HasComp<StandingStateComponent>(args.Target))
         {
-            _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
+            _standing.TryLieDown(args.Target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
         }
     }
 
