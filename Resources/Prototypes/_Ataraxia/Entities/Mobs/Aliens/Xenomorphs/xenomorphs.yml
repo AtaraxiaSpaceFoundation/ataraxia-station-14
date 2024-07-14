@@ -70,7 +70,12 @@
     thresholds:
       0: Alive
       250: Critical
-      350: Dead
+      260: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      170: 0.9
+      200: 0.7
+      220: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -92,6 +97,7 @@
       Dead:
         Base: aliens_dead
   - type: PlasmaVessel
+    maxPlasma: 150
     plasmaPerSecond: 5
     plasmaModified: 40
   - type: RechargeBasicEntityAmmo
@@ -151,7 +157,12 @@
     thresholds:
       0: Alive
       205: Critical
-      305: Dead
+      215: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      140: 0.9
+      170: 0.7
+      190: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -228,7 +239,12 @@
     thresholds:
       0: Alive
       250: Critical
-      350: Dead
+      260: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      170: 0.9
+      200: 0.7
+      220: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -306,7 +322,12 @@
     thresholds:
       0: Alive
       640: Critical
-      740: Dead
+      650: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      540: 0.9
+      580: 0.7
+      610: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -377,6 +398,11 @@
     thresholds:
       0: Alive
       200: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.9
+      170: 0.7
+      190: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0

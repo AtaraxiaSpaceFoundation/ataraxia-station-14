@@ -71,14 +71,16 @@
       thresholds:
         0: Alive
         180: Critical
-        280: Dead
+        190: Dead
       stateAlertDict:
         Alive: AlienHealth
         Critical: AlienCrit
         Dead: AlienDead
     - type: SlowOnDamage
       speedModifierThresholds:
-        25: 0.5
+        100: 0.9
+        130: 0.7
+        160: 0.6
     - type: Damageable
       damageContainer: Biological
       damageModifierSet: Xenomorph
