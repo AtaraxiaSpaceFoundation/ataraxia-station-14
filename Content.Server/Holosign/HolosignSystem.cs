@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Holosign;
 
@@ -42,7 +43,7 @@ public sealed class HolosignSystem : EntitySystem
 
     private void OnUse(EntityUid uid, HolosignProjectorComponent comp, UseInHandEvent args)
     {
-        foreach (var sign in comp.Signs)
+        foreach (var sign in comp.Signs.ShallowClone())
         {
             comp.Signs.Remove(sign);
             QueueDel(sign);

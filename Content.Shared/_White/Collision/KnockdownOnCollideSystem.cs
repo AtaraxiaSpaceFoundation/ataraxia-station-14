@@ -1,15 +1,12 @@
-using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Standing.Systems;
-using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 
-namespace Content.Shared._White.Knockdown;
+namespace Content.Shared._White.Collision;
 
 public sealed class KnockdownOnCollideSystem : EntitySystem
 {
     [Dependency] private readonly SharedStandingStateSystem _standing = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
 
     public override void Initialize()
     {
@@ -31,9 +28,6 @@ public sealed class KnockdownOnCollideSystem : EntitySystem
 
     private void ApplyEffects(EntityUid target, KnockdownOnCollideComponent component)
     {
-        _standing.TryLieDown(target, null, SharedStandingStateSystem.DropHeldItemsBehavior.AlwaysDrop);
-
-        if (component.UseBlur)
-            _statusEffects.TryAddStatusEffect<BlurryVisionComponent>(target, "BlurryVision", TimeSpan.FromSeconds(component.BlurTime), true);
+        _standing.TryLieDown(target, null, component.Behavior);
     }
 }

@@ -2,6 +2,7 @@ using System.Threading;
 using Content.Server._White.Cult.GameRule;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
+using Content.Shared._White.Antag;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
@@ -55,6 +56,7 @@ public sealed partial class DeconvertCultist : ReagentEffect
 
         entityManager.RemoveComponent<CultistComponent>(uid);
         entityManager.RemoveComponent<PentagramComponent>(uid);
+        entityManager.RemoveComponent<GlobalAntagonistComponent>(uid);
 
         var cultRuleSystem = entityManager.System<CultRuleSystem>();
         cultRuleSystem.RemoveObjectiveAndRole(uid);

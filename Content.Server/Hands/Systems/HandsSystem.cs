@@ -10,6 +10,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Part;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Ensnaring.Components;
 using Content.Shared.Explosion;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -73,7 +74,7 @@ namespace Content.Server.Hands.Systems
         {
             args.State = new HandsComponentState(hands);
         }
-        
+
         private void OnExploded(Entity<HandsComponent> ent, ref BeforeExplodeEvent args)
         {
             if (ent.Comp.DisableExplosionRecursion)
@@ -193,7 +194,8 @@ namespace Content.Server.Hands.Systems
                 return false;
 
             // WD EDIT START
-            if (HasComp<DamageOtherOnHitComponent>(throwEnt) && !_cultItem.CanThrow(player, throwEnt))
+            if ((HasComp<DamageOtherOnHitComponent>(throwEnt) || HasComp<EnsnaringComponent>(throwEnt)) &&
+                !_cultItem.CanThrow(player, throwEnt))
                 return false;
             // WD EDIT END
 
