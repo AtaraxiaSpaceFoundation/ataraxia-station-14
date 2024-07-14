@@ -21,5 +21,5 @@ public sealed partial class PraetorianEvolutionComponent : Component
 
     [DataField("plasmaCost")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public float PlasmaCost = 150f;
+    public float PlasmaCost = 500f;
 }

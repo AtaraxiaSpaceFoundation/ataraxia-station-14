@@ -65,8 +65,8 @@
     prototype: SpawnRandomSupplyPod
 
 - type: entity
-  id: AlienInfestation
   parent: BaseGameRule
+  id: XenomorphInfestation
   noSpawn: true
   components:
   - type: StationEvent
@@ -79,10 +79,5 @@
     minimumPlayers: 30
     weight: 5
     duration: 1
-  - type: VentCrittersRule
-    entries:
-    - id: SpawnPointGhostAlienLarva
-      prob: 0.05
-    specialEntries:
-    - id: SpawnPointGhostAlienLarva
-      prob: 0.05
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostAlienLarva

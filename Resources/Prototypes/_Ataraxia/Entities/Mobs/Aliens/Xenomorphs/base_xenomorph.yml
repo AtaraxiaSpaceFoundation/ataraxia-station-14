@@ -1,7 +1,7 @@
 - type: entity
-  abstract: true
-  id: MobAlienBase
   parent: SimpleSpaceMobBase
+  id: MobAlienBase
+  abstract: true
   components:
     - type: ShowInfectedIcons
     - type: GlobalAntagonist
@@ -28,7 +28,7 @@
         NavSmash: !type:Bool
           true
     - type: Tool
-      speed: 1.5
+      speed: 2
       qualities:
         - Prying
     - type: Prying
@@ -48,6 +48,14 @@
     - type: Hands
     - type: Puller
       needsHands: false
+    - type: IdExaminable
+    - type: InventorySlots
+    - type: Stripping
+    - type: Strippable
+    - type: UserInterface
+      interfaces:
+        - key: enum.StrippingUiKey.Key
+          type: StrippableBoundUserInterface
     - type: Sprite
       drawdepth: Mobs
       offset: 0, 0.2
@@ -71,14 +79,16 @@
       thresholds:
         0: Alive
         180: Critical
-        280: Dead
+        190: Dead
       stateAlertDict:
         Alive: AlienHealth
         Critical: AlienCrit
         Dead: AlienDead
     - type: SlowOnDamage
       speedModifierThresholds:
-        25: 0.5
+        100: 0.9
+        130: 0.7
+        160: 0.6
     - type: Damageable
       damageContainer: Biological
       damageModifierSet: Xenomorph
@@ -111,14 +121,6 @@
       spawned:
         - id: FoodMeatXeno
           amount: 5
-    - type: GhostRole
-      allowMovement: true
-      allowSpeech: true
-      makeSentient: true
-      name: ghost-role-mob-alien-name
-      description: ghost-role-mob-alien-description
-      rules: ghost-role-information-xeno-rules
-    - type: GhostTakeoverAvailable
     - type: RotationVisuals
       defaultRotation: 90
       horizontalRotation: 90
@@ -157,7 +159,6 @@
     - type: Ensnareable
       sprite: Objects/Misc/ensnare.rsi
       state: icon
-    - type: InventorySlots
     - type: StatusEffects
       allowed:
         - Stun
@@ -197,15 +198,10 @@
   description: Little and harmless alien
   components:
     - type: ShowInfectedIcons
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistXenomorphs
     - type: Body
       prototype: Xeno
-    - type: GhostRole
-      makeSentient: true
-      allowSpeech: true
-      allowMovement: true
-      name: ghost-role-information-alien-larva-name
-      description: ghost-role-information-alien-larva-description
-    - type: GhostTakeoverAvailable
     - type: Speech
       speechSounds: Xenomorph
       speechVerb: SmallMob
@@ -295,6 +291,8 @@
     - type: MobPrice
       price: 50
     - type: BadFood
+    - type: TypingIndicator
+      proto: alien
     - type: NonSpreaderZombie
     - type: PreventSpiller
     - type: PassiveDamage

@@ -7,6 +7,9 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Pinpointer;
 using Content.Shared.StatusEffect;
+using Content.Shared.Standing.Systems;
+using Content.Shared._White.Knockdown;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Robust.Shared.Map;
@@ -29,6 +32,7 @@ public sealed class AlienJumpSystem : EntitySystem
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standing = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -68,10 +72,9 @@ public sealed class AlienJumpSystem : EntitySystem
             return;
         }
 
-        if (HasComp<StatusEffectsComponent>(args.Target) && _statusEffect.CanApplyEffect(args.Target, "Stun"))
+        if (HasComp<StandingStateComponent>(args.Target))
         {
-            _stun.TryParalyze(args.Target, TimeSpan.FromSeconds(10), true);
-            _physics.SetBodyStatus(EnsureComp<PhysicsComponent>(uid), BodyStatus.OnGround);
+            _standing.TryLieDown(args.Target, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
         }
     }
 

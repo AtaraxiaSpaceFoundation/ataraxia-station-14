@@ -44,6 +44,6 @@ public sealed partial class AcidMakerComponent : Component
     [DataField("plasmaCost")]
     [ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
-    public float PlasmaCost = 150f;
+    public float PlasmaCost = 300f;
 
 }

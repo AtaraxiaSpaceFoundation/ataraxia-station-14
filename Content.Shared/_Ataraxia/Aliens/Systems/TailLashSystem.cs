@@ -1,6 +1,9 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.Aliens.Components;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Standing.Systems;
+using Content.Shared._White.Knockdown;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio.Systems;
 
@@ -14,8 +17,8 @@ public sealed class TailLashSystem : EntitySystem
     /// <inheritdoc/>
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedStandingStateSystem _standing = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -35,9 +38,9 @@ public sealed class TailLashSystem : EntitySystem
         _audio.PlayPredicted(component.LashSound, uid, uid);
         foreach (var entity in _lookup.GetEntitiesInRange(uid, component.LashRange))
         {
-            if (HasComp<MobStateComponent>(entity))
+            if (HasComp<StandingStateComponent>(entity))
             {
-                _stun.TryParalyze(entity, TimeSpan.FromSeconds(component.StunTime), true);
+                _standing.TryLieDown(entity, null, SharedStandingStateSystem.DropHeldItemsBehavior.NoDrop);
             }
         }
         _actions.SetCooldown(component.TailLashActionEntity, TimeSpan.FromSeconds(component.Cooldown));

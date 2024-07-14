@@ -1,38 +1,17 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation on https://github.com/tgstation/tgstation/blob/master/icons/hud/screen_alien.dmi",
+  "copyright": "Taken from tgstation on https://github.com/tgstation/tgstation/blob/master/icons/hud/screen_alien.dmi | Edited by PuroSlavKing (Github)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "suit"
-    },
-    {
-      "name": "pocket"
-    },
-    {
-      "name": "hand_r"
-    },
-    {
-      "name": "hand_l"
-    },
-    {
-      "name": "rhandactive"
-    },
-    {
-      "name": "lhandactive"
-    },
-    {
-      "name": "pull"
+      "name": "act_drop"
     },
     {
       "name": "act_resist"
-    },
-    {
-      "name": "act_drop"
     },
     {
       "name": "act_rest"
@@ -47,43 +26,58 @@
       "name": "act_throw_on"
     },
     {
-      "name": "swap_1"
+      "name": "chest"
     },
     {
-      "name": "swap_2"
+      "name": "combat"
     },
     {
-      "name": "harm"
-    },
-    {
-      "name": "help"
+      "name": "combat_off"
     },
     {
       "name": "disarm"
     },
     {
+      "name": "eyes"
+    },
+    {
+      "name": "finder_center",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "finder_near",
+      "directions": 8
+    },
+    {
+      "name": "finder_med",
+      "directions": 8
+    },
+    {
+      "name": "finder_far",
+      "directions": 8
+    },
+    {
       "name": "grab"
     },
     {
-      "name": "running"
+      "name": "groin"
     },
     {
-      "name": "zone_sel"
+      "name": "hand_l"
     },
     {
-      "name": "leap_off"
+      "name": "hand_r"
     },
     {
-      "name": "leap_on"
+      "name": "harm"
     },
     {
-      "name": "template"
-    },
-    {
-      "name": "reserved"
-    },
-    {
-      "name": "template_frame"
+      "name": "head"
     },
     {
       "name": "health0"
@@ -119,76 +113,67 @@
       "name": "health8"
     },
     {
-      "name": "power_display"
-    },
-    {
-      "name": "chest"
-    },
-    {
-      "name": "groin"
-    },
-    {
-      "name": "r_arm"
-    },
-    {
       "name": "l_arm"
-    },
-    {
-      "name": "r_leg"
     },
     {
       "name": "l_leg"
     },
     {
-      "name": "eyes"
+      "name": "lhandactive"
     },
     {
       "name": "mouth"
     },
     {
-      "name": "head"
+      "name": "pocket"
     },
     {
-      "name": "nightvision0"
+      "name": "power_display"
     },
     {
-      "name": "nightvision1"
+      "name": "pull"
     },
     {
       "name": "queen_finder"
     },
     {
-      "name": "finder_med",
-      "directions": 8
+      "name": "r_arm"
     },
     {
-      "name": "finder_near",
-      "directions": 8
+      "name": "r_leg"
     },
     {
-      "name": "finder_center",
-      "delays": [
-        [
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "reserved"
     },
     {
-      "name": "finder_far",
-      "directions": 8
+      "name": "rhandactive"
     },
     {
-      "name": "combat_off"
+      "name": "running"
     },
     {
-      "name": "combat"
+      "name": "scroll_down"
     },
     {
       "name": "scroll_up"
     },
     {
-      "name": "scroll_down"
+      "name": "suit"
+    },
+    {
+      "name": "swap_1"
+    },
+    {
+      "name": "swap_2"
+    },
+    {
+      "name": "template"
+    },
+    {
+      "name": "template_frame"
+    },
+    {
+      "name": "zone_sel"
     }
   ]
 }

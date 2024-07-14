@@ -8,7 +8,11 @@ ent-AlienEggHatching = { ent-AlienEggGrowing }
     .suffix = Вылупляется
 ent-AlienEggOpened = { ent-AlienEggGrowing }
     .desc = { ent-AlienEggGrowing.desc }
-    .suffix = Открытое
+    .suffix = Открытое, Лицехват
+ent-AlienEggOpenedDecoration = { ent-AlienEggGrowing }
+    .desc = { ent-AlienEggGrowing.desc }
+    .suffix = Открытое, Декорация
+
 ent-AlienEggSpawner = спавнер яйца ксеноморфа
 ent-AlienEggSpawnerRandom = { ent-AlienEggSpawner }
 
@@ -49,6 +53,36 @@ ent-MobAlienQueen = королева
 ent-MobAlienMaid = горничная
     .desc = { ent-MobAlienDrone.desc }
 
+ent-MobAlienDroneDummy = { ent-MobAlienDrone }
+    .desc = Ксеноморф, да это реально.
+ent-MobAlienSentinelDummy = { ent-MobAlienSentinel }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienHunterDummy = { ent-MobAlienHunter }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienPraetorianDummy = { ent-MobAlienPraetorian }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienQueenDummy = { ent-MobAlienQueen }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienMaidDummy = { ent-MobAlienMaid }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienLarvaGrowStageThreeDummy = { ent-MobAlienLarvaGrowStageThree }
+    .desc = { ent-MobAlienLarvaGrowStageThree.desc }
+
+ent-SpawnMobAlienDrone = спавнер дрона
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienSentinel = спавнер плевальщика
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienHunter = спавнер охотника
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienPraetorian = спавнер преторианца
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienQueen = спавнер королева
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienMaid = спавнер горничная
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienLarva = спавнер лярва
+    .desc = { ent-MobAlienLarvaGrowStageThree.desc }
+
 station-event-alien-infestation-anouncement = Обнаружены неопознанные признаки жизни на борту станции. Обеспечьте безопасность внешних доступов, включая скубберы и вентиляцию.
 
 hud-chatbox-select-channel-XenoHivemind = Разум роя
@@ -60,7 +94,7 @@ ghost-role-information-alien-larva-description = Станьте безобидн
 ghost-role-information-alien-larva-inside-name = Лярва (Вырывающаяся)
 ghost-role-information-alien-larva-inside-description = Станьте инопланетной личинкой, которая вот-вот вырвется наружу из своего носителя.
 
-alien-role-greeting = Вы - лярва. Помогите своему улью расширяться. Если вы первый в своём улье - найдите место, для нового улья и эволюционируйте в дрона. Вы можете связаться со своим ульем, добавив английскую "а" в начале своего сообщения.
+alien-role-greeting = Вы - лярва. Помогите своему улью расширяться. Если вы первый, или последний в своём улье - найдите безопасное место, для нового улья и эволюционируйте в ДРОНА, иначе рой не сможет продолжить своё существование. Вы можете связаться со своим ульем, добавив английскую "а" в начале своего сообщения.
 alien-hunter-greeting = Вы - охотник. Найдите лицехватов и бросайте их в носителей. Пожирайте людей и доставляйте их в свой улей. Вы можете связаться со своим ульем, добавив английскую "а" в начале своего сообщения.
 alien-drone-greeting = Вы - дрон. Постройте свой улей, эволюционируйте в преторианца, если вы будете первым. Вы можете связаться со своим ульем, добавив английскую "а" в начале своего сообщения.
 alien-sentinel-greeting = Вы - плевальщик. Защищайте свой улей, сражайтесь с незваными гостями. Вы можете связаться со своим ульем, добавив английскую "а" в начале своего сообщения.

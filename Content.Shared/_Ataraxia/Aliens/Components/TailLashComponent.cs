@@ -20,10 +20,10 @@ public sealed partial class TailLashComponent : Component
     public float LashRange = 2f;
 
     [DataField]
-    public int StunTime = 5;
+    public int StunTime = 1;
 
     [DataField]
-    public int Cooldown = 11;
+    public int Cooldown = 15;
 
     [DataField("disarmSuccessSound")]
     public SoundSpecifier LashSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");

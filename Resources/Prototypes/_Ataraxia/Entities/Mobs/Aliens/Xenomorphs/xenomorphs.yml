@@ -1,6 +1,7 @@
 ﻿- type: entity
   parent: MobAlienBase
-  id: MobAlienDrone
+  id: MobAlienDroneBase
+  abstract: true
   name: alien drone
   components:
     - type: Sprite
@@ -41,8 +42,30 @@
       - XenomorphDrone
 
 - type: entity
+  parent: MobAlienDroneBase
+  id: MobAlienDrone
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienDroneBase
+  id: MobAlienDroneDummy
+  noSpawn: true
+  suffix: Без гост роли
+
+- type: entity
   parent: MobAlienBase
-  id: MobAlienSentinel
+  id: MobAlienSentinelBase
+  abstract: true
   name: alien sentinel
   components:
   - type: Sprite
@@ -70,7 +93,12 @@
     thresholds:
       0: Alive
       250: Critical
-      350: Dead
+      260: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      170: 0.9
+      200: 0.7
+      220: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -92,6 +120,7 @@
       Dead:
         Base: aliens_dead
   - type: PlasmaVessel
+    maxPlasma: 150
     plasmaPerSecond: 5
     plasmaModified: 40
   - type: RechargeBasicEntityAmmo
@@ -112,8 +141,30 @@
     - XenomorphSentinel
 
 - type: entity
+  parent: MobAlienSentinelBase
+  id: MobAlienSentinel
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienSentinelBase
+  id: MobAlienSentinelDummy
+  noSpawn: true
+  suffix: Без гост роли
+
+- type: entity
   parent: MobAlienBase
-  id: MobAlienHunter
+  id: MobAlienHunterBase
+  abstract: true
   name: alien hunter
   components:
   - type: Sprite
@@ -151,7 +202,12 @@
     thresholds:
       0: Alive
       205: Critical
-      305: Dead
+      215: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      140: 0.9
+      170: 0.7
+      190: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -191,8 +247,30 @@
     - XenomorphHunter
 
 - type: entity
+  parent: MobAlienHunterBase
+  id: MobAlienHunter
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienHunterBase
+  id: MobAlienHunterDummy
+  noSpawn: true
+  suffix: Без гост роли
+
+- type: entity
   parent: MobAlienBase
-  id: MobAlienPraetorian
+  id: MobAlienPraetorianBase
+  abstract: true
   name: Alien praetorian
   components:
   - type: Sprite
@@ -228,7 +306,12 @@
     thresholds:
       0: Alive
       250: Critical
-      350: Dead
+      260: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      170: 0.9
+      200: 0.7
+      220: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -273,8 +356,30 @@
     - XenomorphPraetorian
 
 - type: entity
+  parent: MobAlienPraetorianBase
+  id: MobAlienPraetorian
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienPraetorianBase
+  id: MobAlienPraetorianDummy
+  noSpawn: true
+  suffix: Без гост роли
+
+- type: entity
   parent: MobAlienBase
-  id: MobAlienQueen
+  id: MobAlienQueenBase
+  abstract: true
   name: Alien queen
   components:
   - type: Sprite
@@ -306,7 +411,12 @@
     thresholds:
       0: Alive
       640: Critical
-      740: Dead
+      650: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      540: 0.9
+      580: 0.7
+      610: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -347,8 +457,30 @@
     - XenomorphQueen
 
 - type: entity
+  parent: MobAlienQueenBase
+  id: MobAlienQueen
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienQueenBase
+  id: MobAlienQueenDummy
+  noSpawn: true
+  suffix: Без гост роли
+
+- type: entity
   parent: MobAlienBase
-  id: MobAlienMaid
+  id: MobAlienMaidBase
+  abstract: true
   name: lusty alien maid
   description: Don't ask it to lay eggs in you.
   components:
@@ -377,6 +509,11 @@
     thresholds:
       0: Alive
       200: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.9
+      170: 0.7
+      190: 0.6
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -400,3 +537,24 @@
   - type: GuideHelp
     guides:
     - XenomorphMaid
+
+- type: entity
+  parent: MobAlienMaidBase
+  id: MobAlienMaid
+  components:
+    - type: GhostTakeoverAvailable
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-mob-alien-name
+      description: ghost-role-mob-alien-description
+      rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
+
+- type: entity
+  parent: MobAlienMaidBase
+  id: MobAlienMaidDummy
+  noSpawn: true
+  suffix: Без гост роли

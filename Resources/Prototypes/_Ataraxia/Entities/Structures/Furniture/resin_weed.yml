@@ -66,7 +66,7 @@
     sprite: Ataraxia/Structures/Specific/Xenomorph/resin_weed_node.rsi
     state: full
   - type: AreaSpawner
-    radius: 4
+    radius: 3
     spawnPrototype: ResinWeed
     intervalSeconds: 20
   - type: PointLight
