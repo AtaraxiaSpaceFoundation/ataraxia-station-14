@@ -63,8 +63,7 @@ public sealed partial class DevourerComponent : Component
     [ViewVariables(VVAccess.ReadWrite), DataField("consumes")]
     public HashSet<MobState> Consumes = new()
     {
-        MobState.Critical,
-        MobState.Dead
+        MobState.Critical
     };
 
     /// <summary>
