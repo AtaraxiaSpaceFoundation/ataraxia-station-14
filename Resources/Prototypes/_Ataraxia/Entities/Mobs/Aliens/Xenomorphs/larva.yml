@@ -1,6 +1,7 @@
 - type: entity
   parent: MobAlienLarva # Larva that is inside of it's owner
   id: MobAlienLarvaInside
+  noSpawn: true
   components:
   - type: TimedPolymorph
     enabled: false
@@ -71,3 +72,12 @@
       enabled: false
     - type: AlienEvolution
       evolutionCooldown: 50
+
+- type: entity
+  parent: MobAlienLarvaGrowStageThree
+  id: MobAlienLarvaGrowStageThreeDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false

@@ -53,6 +53,36 @@ ent-MobAlienQueen = королева
 ent-MobAlienMaid = горничная
     .desc = { ent-MobAlienDrone.desc }
 
+ent-MobAlienDroneDummy = { ent-MobAlienDrone }
+    .desc = Ксеноморф, да это реально.
+ent-MobAlienSentinelDummy = { ent-MobAlienSentinel }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienHunterDummy = { ent-MobAlienHunter }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienPraetorianDummy = { ent-MobAlienPraetorian }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienQueenDummy = { ent-MobAlienQueen }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienMaidDummy = { ent-MobAlienMaid }
+    .desc = { ent-MobAlienDrone.desc }
+ent-MobAlienLarvaGrowStageThreeDummy = { ent-MobAlienLarvaGrowStageThree }
+    .desc = { ent-MobAlienLarvaGrowStageThree.desc }
+
+ent-SpawnMobAlienDrone = спавнер дрона
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienSentinel = спавнер плевальщика
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienHunter = спавнер охотника
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienPraetorian = спавнер преторианца
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienQueen = спавнер королева
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienMaid = спавнер горничная
+    .desc = { ent-MobAlienDrone.desc }
+ent-SpawnMobAlienLarva = спавнер лярва
+    .desc = { ent-MobAlienLarvaGrowStageThree.desc }
+
 station-event-alien-infestation-anouncement = Обнаружены неопознанные признаки жизни на борту станции. Обеспечьте безопасность внешних доступов, включая скубберы и вентиляцию.
 
 hud-chatbox-select-channel-XenoHivemind = Разум роя

@@ -41,6 +41,15 @@
       - XenomorphDrone
 
 - type: entity
+  parent: MobAlienDrone
+  id: MobAlienDroneDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false
+
+- type: entity
   parent: MobAlienBase
   id: MobAlienSentinel
   name: alien sentinel
@@ -116,6 +125,15 @@
   - type: GuideHelp
     guides:
     - XenomorphSentinel
+
+- type: entity
+  parent: MobAlienSentinel
+  id: MobAlienSentinelDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
@@ -200,6 +218,15 @@
   - type: GuideHelp
     guides:
     - XenomorphHunter
+
+- type: entity
+  parent: MobAlienHunter
+  id: MobAlienHunterDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false
 
 - type: entity
   parent: MobAlienBase
@@ -289,6 +316,15 @@
     - XenomorphPraetorian
 
 - type: entity
+  parent: MobAlienPraetorian
+  id: MobAlienPraetorianDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false
+
+- type: entity
   parent: MobAlienBase
   id: MobAlienQueen
   name: Alien queen
@@ -368,6 +404,15 @@
     - XenomorphQueen
 
 - type: entity
+  parent: MobAlienQueen
+  id: MobAlienQueenDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false
+
+- type: entity
   parent: MobAlienBase
   id: MobAlienMaid
   name: lusty alien maid
@@ -426,3 +471,12 @@
   - type: GuideHelp
     guides:
     - XenomorphMaid
+
+- type: entity
+  parent: MobAlienMaid
+  id: MobAlienMaidDummy
+  noSpawn: true
+  suffix: Без гост роли
+  components:
+    - type: GhostRole
+      makeSentient: false

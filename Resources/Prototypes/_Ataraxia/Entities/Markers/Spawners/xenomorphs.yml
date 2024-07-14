@@ -1,0 +1,104 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienDrone
+  name: spawn alien drone
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/drone.rsi
+        state: aliend
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienDroneDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienSentinel
+  name: spawn alien sentinel
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/sentinel.rsi
+        state: aliens
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienSentinelDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienHunter
+  name: spawn alien hunter
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/hunter.rsi
+        state: alienh
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienHunterDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienPraetorian
+  name: spawn alien praetorian
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/praetorian.rsi
+        state: alienp
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienPraetorianDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienQueen
+  name: spawn alien queen
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/queen.rsi
+        state: alienq
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienQueenDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienMaid
+  name: spawn alien maid
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/maid.rsi
+        state: maid
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienMaidDummy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAlienLarva
+  name: spawn alien larva
+  suffix: Без гост роли
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Ataraxia/Mobs/Aliens/Xenos/larva.rsi
+        state: larva2
+  - type: ConditionalSpawner
+    prototypes:
+      - MobAlienLarvaGrowStageThreeDummy

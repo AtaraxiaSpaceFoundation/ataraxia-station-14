@@ -1,7 +1,7 @@
 ﻿- type: entity
-  name: Alien
   parent: BaseItem
   id: Facehugger
+  name: alien
   description: It has some sort of a tube at the end of its tail. It seems to be active!
   components:
   - type: Physics
@@ -66,9 +66,9 @@
     - XenomorphFacehugger
 
 - type: entity
-  name: Alien
   parent: BaseItem
   id: FacehuggerInactive
+  name: alien
   description: It has some sort of a tube at the end of its tail. It doesn't seem active.
   suffix: Inactive
   components:
@@ -96,9 +96,9 @@
       - XenomorphFacehugger
 
 - type: entity
-  name: Lamarr
   parent: BaseItem
   id: FacehuggerLamarr
+  name: Lamarr
   description: It has some sort of a tube at the end of its tail, but it doesn't seem, like it can use it.
   components:
   - type: Physics

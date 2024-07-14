@@ -128,6 +128,8 @@
       name: ghost-role-mob-alien-name
       description: ghost-role-mob-alien-description
       rules: ghost-role-information-xeno-rules
+      raffle:
+        settings: default
     - type: GhostTakeoverAvailable
     - type: RotationVisuals
       defaultRotation: 90
@@ -216,6 +218,8 @@
       allowMovement: true
       name: ghost-role-information-alien-larva-name
       description: ghost-role-information-alien-larva-description
+      raffle:
+        settings: default
     - type: GhostTakeoverAvailable
     - type: Speech
       speechSounds: Xenomorph
