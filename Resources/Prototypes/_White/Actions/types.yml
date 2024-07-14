@@ -41,3 +41,16 @@
       sprite: White/Clothing/Head/nightvision.rsi
       state: icon
     event: !type:ToggleNightVisionEvent
+
+- type: entity
+  id: ToggleBodyCamera
+  name: Toggle body camera.
+  description: Toggles body camera.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: BigAction
+    priority: -20
+    icon: { sprite: Objects\Specific\Security\body-camera.rsi, state: unpowered }
+    iconOn: { sprite: Objects\Specific\Security\body-camera.rsi, state: active }
+    event: !type:ToggleBodyCameraEvent

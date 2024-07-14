@@ -74,3 +74,8 @@
     - type: Tag
       tags:
         - SurveillanceBodyCamera
+    - type: ActivatableUI
+      key: enum.SurveillanceCameraSetupUiKey.Camera
+      singleUser: true
+      closeOnHandDeselect: false
+      verbText: surveillance-camera-setup
