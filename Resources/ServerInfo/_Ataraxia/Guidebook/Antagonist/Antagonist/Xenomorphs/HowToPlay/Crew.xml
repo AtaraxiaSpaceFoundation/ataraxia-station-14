@@ -16,7 +16,7 @@
   На вашем пути встали противные полимерные структуры? Их нужно уничтожить!
   Структуры:
   <Box>
-    <GuideEntityEmbed Entity="ActionResinNode" Caption="Семена."/>
+    <GuideEntityEmbed Entity="ResinWeedNode" Caption="Семена."/>
     <GuideEntityEmbed Entity="XenomorphNestIcon" Caption="Гнездо."/>
     <GuideEntityEmbed Entity="XenomorphMembraneIcon" Caption="Мембрана."/>
     <GuideEntityEmbed Entity="XenomorphWallIcon" Caption="Стена."/>
@@ -31,7 +31,7 @@
 
   - Даже не пытайтесь сломать полимерное покрытие на полу - если полимерные семена всё ещё не уничтожены, именно от них исходит распостранение, семена имеют довольно яркое свячение голубого цвета, так что найти их не составит проблем!
   <Box>
-    <GuideEntityEmbed Entity="ActionResinNode" Caption="Семена."/>
+    <GuideEntityEmbed Entity="ResinWeedNode" Caption="Семена."/>
   </Box>
 
   - Одевайте герметичные шлемы скафандров и маски на лицо, это поможет избежать насаждение лицехвата на ваше лицо, во время осады.
