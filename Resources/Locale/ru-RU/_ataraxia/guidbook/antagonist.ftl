@@ -23,8 +23,8 @@ antagonist-name-headcrab = Хедкраб
 antagonist-name-headcrab-fast = Быстрый хедкраб
 antagonist-name-headcrab-poison = Ядовитый хедкраб
 
-antagonist-name-xenomorph-evolutions = Эволюции
-antagonist-name-xenomorph-howtoplay = Как играть
+antagonist-name-xenomorphs-evolutions = Эволюции
+antagonist-name-xenomorphs-howtoplay = Как играть
 antagonist-name-xenomorph-queen = Королева
 antagonist-name-xenomorph-praetorian = Преторианец
 antagonist-name-xenomorph-drone = Дрон
