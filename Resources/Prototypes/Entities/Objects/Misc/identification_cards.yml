@@ -23,6 +23,7 @@
     tags:
     - DoorBumpOpener
     - WhitelistChameleon
+    - AlienItem
   - type: StealTarget
     stealGroup: IDCard
   - type: Appearance
