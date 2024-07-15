@@ -58,11 +58,12 @@ namespace Content.Server.Damage.Systems
             }
 
             _guns.PlayImpactSound(args.Target, dmg, component.Sound, component.Sound != null); // WD EDIT
-            if (TryComp<PhysicsComponent>(uid, out var body) && body.LinearVelocity.LengthSquared() > 0f)
+            /* if (TryComp<PhysicsComponent>(uid, out var body) && body.LinearVelocity.LengthSquared() > 0f)
             {
                 var direction = body.LinearVelocity.Normalized();
                 _sharedCameraRecoil.KickCamera(args.Target, direction);
-            }
+            }*/
+            // WD EDIT
 
             // TODO: If more stuff touches this then handle it after.
             if (!HasComp<EmbeddableProjectileComponent>(uid) && TryComp<PhysicsComponent>(uid, out var physics)) // WD EDIT

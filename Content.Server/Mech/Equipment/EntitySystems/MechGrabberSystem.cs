@@ -2,6 +2,7 @@
 using Content.Server.Interaction;
 using Content.Server.Mech.Equipment.Components;
 using Content.Server.Mech.Systems;
+using Content.Shared._White.Supermatter.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Mech;
@@ -133,7 +134,8 @@ public sealed class MechGrabberSystem : EntitySystem
 
         if (TryComp<PhysicsComponent>(target, out var physics) && physics.BodyType == BodyType.Static ||
             HasComp<WallMountComponent>(target) ||
-            HasComp<MobStateComponent>(target))
+            HasComp<MobStateComponent>(target) ||
+            HasComp<SupermatterComponent>(target)) // WD EDIT
         {
             return;
         }

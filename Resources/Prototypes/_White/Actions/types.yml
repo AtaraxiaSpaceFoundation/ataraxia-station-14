@@ -20,7 +20,7 @@
   noSpawn: true
   components:
   - type: InstantAction
-    useDelay: 2.5
+    useDelay: 1.5
     itemIconStyle: BigAction
     priority: -20
     icon:
@@ -51,7 +51,7 @@
   - type: InstantAction
     itemIconStyle: BigAction
     priority: -20
-    icon: 
+    icon:
       sprite: Objects\Specific\Security\body-camera.rsi
       state: unpowered
     event: !type:ToggleBodyCameraEvent

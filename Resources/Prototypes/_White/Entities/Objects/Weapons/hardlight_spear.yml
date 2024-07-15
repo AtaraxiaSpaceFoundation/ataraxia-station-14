@@ -18,8 +18,8 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 30
-        Heat: 30
+        Piercing: 20
+        Heat: 20
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

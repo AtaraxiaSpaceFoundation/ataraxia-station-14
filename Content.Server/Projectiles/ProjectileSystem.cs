@@ -51,7 +51,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         {
             return;
         }
-        
+
         // it's here so this check is only done once before possible hit
         var attemptEv = new ProjectileReflectAttemptEvent(uid, component, false);
         RaiseLocalEvent(target, ref attemptEv);
@@ -84,7 +84,8 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         if (!deleted)
         {
             _guns.PlayImpactSound(target, modifiedDamage, component.SoundHit, component.ForceSound);
-            _sharedCameraRecoil.KickCamera(target, direction);
+            // _sharedCameraRecoil.KickCamera(target, direction);
+            // WD EDIT
         }
 
         component.DamagedEntity = true;
