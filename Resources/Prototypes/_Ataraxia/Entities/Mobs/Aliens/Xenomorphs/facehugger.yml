@@ -48,8 +48,7 @@
     sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
   - type: Item
-    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
-    state: facehugger
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger_inhands.rsi
     size: Small
   - type: StaticPrice
     price: 1000
@@ -76,8 +75,7 @@
       sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
       state: facehugger_impregnated
     - type: Item
-      sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
-      state: facehugger_impregnated
+      sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger_inhands.rsi
       size: Small
     - type: StaticPrice
       price: 100
@@ -145,8 +143,7 @@
     sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
     state: facehugger
   - type: Item
-    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger.rsi
-    state: facehugger
+    sprite: Ataraxia/Mobs/Aliens/Xenos/facehugger_inhands.rsi
     size: Small
   - type: StaticPrice
     price: 1000

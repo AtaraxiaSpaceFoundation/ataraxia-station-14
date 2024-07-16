@@ -81,6 +81,10 @@
       "directions": 4
     },
     {
+      "name": "larva0_idle",
+      "directions": 4
+    },
+    {
       "name": "larva0_dead"
     },
     {
@@ -157,6 +161,10 @@
       "directions": 4
     },
     {
+      "name": "larva1_idle",
+      "directions": 4
+    },
+    {
       "name": "larva1_dead"
     },
     {
@@ -230,6 +238,10 @@
     },
     {
       "name": "larva2_cuff",
+      "directions": 4
+    },
+    {
+      "name": "larva2_idle",
       "directions": 4
     },
     {
