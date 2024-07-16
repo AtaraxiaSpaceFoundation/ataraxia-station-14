@@ -33,15 +33,3 @@
 
 - type: startingGear
   id: ResearchDirectorGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitResearchDirector
-    back: ClothingBackpackResearchDirectorFilled
-    shoes: ClothingShoesColorBrown
-    id: RnDPDA
-    ears: ClothingHeadsetRD
-    underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
-  underweart: ClothingUnderwearTopBraRD # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtResearchDirector
-  satchel: ClothingBackpackSatchelResearchDirectorFilled
-  duffelbag: ClothingBackpackDuffelResearchDirectorFilled

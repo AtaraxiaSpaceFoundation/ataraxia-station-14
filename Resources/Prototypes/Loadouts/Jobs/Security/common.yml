@@ -1,0 +1,44 @@
+﻿# jumpsuit
+- type: itemLoadout
+  id: SecurityJumpsuitBlue
+  equipment: SecurityJumpsuitBlue
+- type: startingGear
+  id: SecurityJumpsuitBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecBlue
+
+# ears
+
+- type: itemLoadout
+  id: SecurityHeadset
+  equipment: SecurityHeadset
+- type: startingGear
+  id: SecurityHeadset
+  equipment:
+    ears: ClothingHeadsetSecurity
+
+- type: itemLoadout
+  id: SecurityCommandHeadset
+  equipment: SecurityCommandHeadset
+- type: startingGear
+  id: SecurityCommandHeadset
+  equipment:
+    ears: ClothingHeadsetAltSecurity
+
+# Mask
+
+- type: itemLoadout
+  id: SecurityMaskStandard
+  equipment: SecurityMaskStandard
+- type: startingGear
+  id: SecurityMaskStandard
+  equipment:
+    mask: ClothingMaskGasSecurity
+
+- type: itemLoadout
+  id: SecurityMaskSwat
+  equipment: SecurityMaskSwat
+- type: startingGear
+  id: SecurityMaskSwat
+  equipment:
+    mask: ClothingMaskGasSwat

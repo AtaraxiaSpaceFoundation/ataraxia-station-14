@@ -13,8 +13,9 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 3600
-    - !type:OverallPlaytimeRequirement
-      time: 108000
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 3600
   weight: 20
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
@@ -59,15 +60,3 @@
 
 - type: startingGear
   id: HoPGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitHoP
-    back: ClothingBackpackHOPFilled
-    shoes: ClothingShoesColorBrown
-    id: HoPPDA
-    ears: ClothingHeadsetAltCommand
-    underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
-  underweart: ClothingUnderwearTopBraHOP # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtHoP
-  satchel: ClothingBackpackSatchelHOPFilled
-  duffelbag: ClothingBackpackDuffelHOPFilled

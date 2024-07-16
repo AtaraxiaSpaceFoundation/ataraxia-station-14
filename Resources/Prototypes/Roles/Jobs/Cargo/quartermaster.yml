@@ -37,16 +37,3 @@
 
 - type: startingGear
   id: QuartermasterGear
-  equipment:
-    head: ClothingHeadHatQMsoft
-    jumpsuit: ClothingUniformJumpsuitQM
-    back: ClothingBackpackQuartermasterFilled
-    shoes: ClothingShoesColorBrown
-    id: QuartermasterPDA
-    ears: ClothingHeadsetQM
-    underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
-  underweart: ClothingUnderwearTopBraQM # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtQM
-  satchel: ClothingBackpackSatchelQuartermasterFilled
-  duffelbag: ClothingBackpackDuffelQuartermasterFilled

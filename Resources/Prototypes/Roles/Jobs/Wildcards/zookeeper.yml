@@ -12,16 +12,3 @@
 
 - type: startingGear
   id: ZookeeperGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSafari
-    back: ClothingBackpackFilled
-    head: ClothingHeadSafari
-    shoes: ClothingShoesColorWhite
-    id: ZookeeperPDA
-    ears: ClothingHeadsetService
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraSports # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpsuitSafari
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled

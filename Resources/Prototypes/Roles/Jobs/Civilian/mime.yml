@@ -20,22 +20,6 @@
 
 - type: startingGear
   id: MimeGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMime
-    back: ClothingBackpackMimeFilled
-    head: ClothingHeadHatBeret
-    gloves: ClothingHandsGlovesLatex
-    shoes: ClothingShoesColorWhite
-    pocket1: CrayonMime
-    mask: ClothingMaskMime
-    id: MimePDA
-    ears: ClothingHeadsetService
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtMime
-  satchel: ClothingBackpackSatchelMimeFilled
-  duffelbag: ClothingBackpackDuffelMimeFilled
 
 - type: entity
   id: ActionMimeInvisibleWall

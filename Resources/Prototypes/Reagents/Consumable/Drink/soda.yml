@@ -72,6 +72,7 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.05
+  fizziness: 0.4
 
 - type: reagent
   id: GrapeSoda
@@ -97,6 +98,7 @@
   metamorphicMaxFillLevels: 5
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
+  fizziness: 0
 
 - type: reagent
   id: LemonLime
@@ -115,6 +117,7 @@
   physicalDesc: reagent-physical-desc-fizzy
   flavor: pwrgamesoda
   color: "#9385bf"
+  fizziness: 0.9 # gamers crave the fizz
 
 - type: reagent
   id: RootBeer
@@ -145,6 +148,7 @@
   metamorphicMaxFillLevels: 7
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
+  fizziness: 0.4
 
 - type: reagent
   id: SolDry

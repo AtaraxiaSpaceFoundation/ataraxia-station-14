@@ -60,6 +60,13 @@
                     <RichTextLabel Name="LabelName" Access="Public" HorizontalAlignment="Left"
                                           VerticalAlignment="Center" Margin="0 0 0 420" />
 
+                    <!-- Left Bot Panel -->
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                       <PanelContainer StyleClasses="AngleRect">
+                            <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
+                        </PanelContainer>
+                    </BoxContainer>
+
                     <!-- Ohio Container -->
                     <PanelContainer HorizontalAlignment="Left" Name="Center" VerticalAlignment="Center">
 
@@ -107,16 +114,6 @@
                         </BoxContainer>
 
                     </PanelContainer>
-
-                    <BoxContainer Name="VersionLabel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-
-                        <PanelContainer StyleClasses="LobbyGayBackground">
-
-                            <RichTextLabel Name="Version" Access="Public" HorizontalAlignment="Center" />
-
-                        </PanelContainer>
-
-                    </BoxContainer>
 
                     <!-- Changelog -->
                     <PanelContainer Name="Changelog" StyleClasses="LobbyGayBackground" HorizontalAlignment="Right"

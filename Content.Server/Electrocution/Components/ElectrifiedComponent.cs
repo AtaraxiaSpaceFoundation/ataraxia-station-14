@@ -86,13 +86,13 @@ public sealed partial class ElectrifiedComponent : Component
     [DataField("shockVolume")]
     public float ShockVolume = 20;
 
+    [DataField]
+    public float Probability = 1f;
+
     // WD EDIT START
     [DataField]
     public bool IgnoreInsulation;
 
     public EntityUid? Caster;
     // WD EDIT END
-
-    [DataField]
-    public float Probability = 1f;
 }

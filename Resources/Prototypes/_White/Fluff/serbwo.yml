@@ -214,78 +214,78 @@
       sprite: White/Fluff/serbwo/admiralcloak.rsi
 
 
-- type: loadout
+- type: sponsorLoadout
   id: ScuffLoadoutSW
   entity: ClothingOuterScufSuitFluff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: CapLoadoutSO
   entity: ClothingOuterHardsuitERTLeaderFluff
   sponsorOnly: true
   whitelistJobs: [Captain]
 
-- type: loadout
+- type: sponsorLoadout
   id: CeLoadoutSO
   entity: ClothingOuterHardsuitERTEngineerFluff
   sponsorOnly: true
   whitelistJobs: [ChiefEngineer]
 
-- type: loadout
+- type: sponsorLoadout
   id: CmoLoadoutSO
   entity: ClothingOuterHardsuitERTMedicalFluff
   sponsorOnly: true
   whitelistJobs: [ChiefMedicalOfficer]
 
-- type: loadout
+- type: sponsorLoadout
   id: RDLoadoutSO
   entity: ClothingOuterHardsuitERTJanitorFluff
   sponsorOnly: true
   whitelistJobs: [ResearchDirector]
 
-- type: loadout
+- type: sponsorLoadout
   id: HOSLoadoutSO
   entity: ClothingOuterHardsuitERTSecurityFluff
   sponsorOnly: true
   whitelistJobs: [HeadOfSecurity, SecurityOfficer]
 
-- type: loadout
+- type: sponsorLoadout
   id: EngLoadoutSO
   entity: ClothingOuterHardsuitWizardFluff
   sponsorOnly: true
   whitelistJobs: [AtmosphericTechnician, StationEngineer, TechnicalAssistant, Scientist]
 
-- type: loadout
+- type: sponsorLoadout
   id: AssLoadoutSO
   entity: ClothingOuterSuitDeadSquadFake
   sponsorOnly: true
   whitelistJobs: [Passenger]
 
-- type: loadout
+- type: sponsorLoadout
   id: NeckLoadoutSO
   entity: ClothingSerbwoNeckFluff
   sponsorOnly: true
   whitelistJobs: [Captain, HeadOfSecurity, ResearchDirector, ChiefEngineer, AtmosphericTechnician, StationEngineer, TechnicalAssistant, CargoTechnician, Quartermaster, SalvageSpecialist, ResearchAssistant, Scientist]
 
-- type: loadout
+- type: sponsorLoadout
   id: MaskSerbwoLoadoutSO
   entity: ClothingMaskBreathMedicalSecurity
   sponsorOnly: true
   whitelistJobs: [Captain, HeadOfSecurity, ResearchDirector, ChiefEngineer, AtmosphericTechnician, StationEngineer, TechnicalAssistant, CargoTechnician, Quartermaster, SalvageSpecialist, ResearchAssistant, Scientist]
 
-- type: loadout
+- type: sponsorLoadout
   id: CargoLoadoutSerbwoSO
   entity: ClothingOuterCargoSuitFluff
   sponsorOnly: true
   whitelistJobs: [Quartermaster, SalvageSpecialist]
 
-- type: loadout
+- type: sponsorLoadout
   id: ParamedicLoadoutSerbwoSO
   entity: ClothingOuterParamedicSuitFluff
   sponsorOnly: true
   whitelistJobs: [Paramedic]
 
-- type: loadout
+- type: sponsorLoadout
   id: CargoLoadoutSerbwoSA
   entity: HandTeleporter
   sponsorOnly: true

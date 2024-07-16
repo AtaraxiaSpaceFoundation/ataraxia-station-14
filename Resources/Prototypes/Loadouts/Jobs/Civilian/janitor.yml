@@ -1,0 +1,108 @@
+# Timers
+- type: loadoutEffectGroup # WD
+  id: TimerJanitorFunnyHeads
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobJanitor
+      time: 36000 # 10 hours
+
+# Head
+- type: itemLoadout
+  id: JanitorHead
+  equipment: JanitorHead
+
+- type: startingGear
+  id: JanitorHead
+  equipment:
+    head: ClothingHeadHatPurplesoft
+
+- type: itemLoadout # WD
+  id: JanitorPlunger
+  equipment: JanitorPlunger
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TimerJanitorFunnyHeads
+- type: startingGear
+  id: JanitorPlunger
+  equipment:
+    head: Plunger
+
+- type: itemLoadout # WD
+  id: JanitorBucket
+  equipment: JanitorBucket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TimerJanitorFunnyHeads
+- type: startingGear
+  id: JanitorBucket
+  equipment:
+    head: Bucket
+
+# Jumpsuit
+- type: itemLoadout
+  id: JanitorJumpsuit
+  equipment: JanitorJumpsuit
+
+- type: startingGear
+  id: JanitorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJanitor
+
+- type: itemLoadout
+  id: JanitorJumpskirt
+  equipment: JanitorJumpskirt
+
+- type: startingGear
+  id: JanitorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanitor
+
+# Gloves
+- type: itemLoadout
+  id: JanitorGlovesRubber
+  equipment: JanitorGlovesRubber
+
+- type: startingGear
+  id: JanitorGlovesRubber
+  equipment:
+    gloves: ClothingHandsGlovesJanitor
+
+- type: itemLoadout
+  id: JanitorGlovesOrange
+  equipment: JanitorGlovesOrange
+
+- type: startingGear
+  id: JanitorGlovesOrange
+  equipment:
+    gloves: ClothingHandsGlovesColorOrange
+
+- type: itemLoadout
+  id: JanitorGlovesPurple
+  equipment: JanitorGlovesPurple
+
+- type: startingGear
+  id: JanitorGlovesPurple
+  equipment:
+    gloves: ClothingHandsGlovesColorPurple
+
+# Outer clothing
+- type: itemLoadout
+  id: JanitorWintercoat
+  equipment: JanitorWintercoat
+
+- type: startingGear
+  id: JanitorWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterJani
+
+# PDA
+
+- type: itemLoadout # WD
+  id: JanitorPDA
+  equipment: JanitorPDA
+- type: startingGear
+  id: JanitorPDA
+  equipment:
+    id: JanitorPDA

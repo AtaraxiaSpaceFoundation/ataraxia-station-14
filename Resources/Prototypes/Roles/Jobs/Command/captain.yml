@@ -6,15 +6,16 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 18000
+      time: 18000 # 15 3
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 18000
+      time: 18000 # 15 3
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 18000
-    - !type:OverallPlaytimeRequirement
-      time: 108000
+      time: 18000 # 15 3
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # 15 3
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"
@@ -37,15 +38,3 @@
 
 - type: startingGear
   id: CaptainGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCaptain
-    back: ClothingBackpackCaptainFilled
-    shoes: ClothingShoesBootsLaceup
-    id: CaptainPDA
-    ears: ClothingHeadsetAltCommand
-    underwearb: ClothingUnderwearBottomBoxersCap # White-Underwear
-  underweart: ClothingUnderwearTopBraCap # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCap # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtCaptain
-  satchel: ClothingBackpackSatchelCaptainFilled
-  duffelbag: ClothingBackpackDuffelCaptainFilled

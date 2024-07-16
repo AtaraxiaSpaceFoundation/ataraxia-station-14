@@ -29,16 +29,3 @@
 
 - type: startingGear
   id: SecurityCadetGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorRed
-    back: ClothingBackpackSecurityFilled
-    shoes: ClothingShoesBootsCombatFilled
-    id: SecurityCadetPDA
-    ears: ClothingHeadsetSecurity
-    pocket1: BookSecurity
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtColorRed
-  satchel: ClothingBackpackSatchelSecurityFilled
-  duffelbag: ClothingBackpackDuffelSecurityFilled

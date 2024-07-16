@@ -185,9 +185,16 @@ namespace Content.Server.Cargo.Systems
             order.SetApproverData(idCard.Comp?.FullName, idCard.Comp?.JobTitle);
             _audio.PlayPvs(component.ConfirmSound, uid);
 
-            ConsolePopup(args.Session,
-                Loc.GetString("cargo-console-trade-station",
-                    ("destination", MetaData(tradeDestination.Value).EntityName)));
+            var approverName = idCard.Comp?.FullName ?? Loc.GetString("access-reader-unknown-id");
+            var approverJob = idCard.Comp?.JobTitle ?? Loc.GetString("access-reader-unknown-id");
+            var message = Loc.GetString("cargo-console-unlock-approved-order-broadcast",
+                ("productName", Loc.GetString(order.ProductName)),
+                ("orderAmount", order.OrderQuantity),
+                ("approverName", approverName),
+                ("approverJob", approverJob),
+                ("cost", cost));
+            _radio.SendRadioMessage(uid, message, component.AnnouncementChannel, uid, escapeMarkup: false);
+            ConsolePopup(args.Session, Loc.GetString("cargo-console-trade-station", ("destination", MetaData(tradeDestination.Value).EntityName)));
 
             // Log order approval
             _adminLogger.Add(LogType.Action, LogImpact.Low,
@@ -332,8 +339,7 @@ namespace Content.Server.Cargo.Systems
         private static CargoOrderData GetOrderData(CargoConsoleAddOrderMessage args, CargoProductPrototype cargoProduct,
             int id)
         {
-            return new CargoOrderData(id, cargoProduct.Product, cargoProduct.Cost, args.Amount, args.Requester,
-                args.Reason);
+            return new CargoOrderData(id, cargoProduct.Product, cargoProduct.Name, cargoProduct.Cost, args.Amount, args.Requester, args.Reason);
         }
 
         public static int GetOutstandingOrderCount(StationCargoOrderDatabaseComponent component)
@@ -382,6 +388,7 @@ namespace Content.Server.Cargo.Systems
         public bool AddAndApproveOrder(
             EntityUid dbUid,
             string spawnId,
+            string name,
             int cost,
             int qty,
             string sender,
@@ -394,7 +401,7 @@ namespace Content.Server.Cargo.Systems
             DebugTools.Assert(_protoMan.HasIndex<EntityPrototype>(spawnId));
             // Make an order
             var id = GenerateOrderId(component);
-            var order = new CargoOrderData(id, spawnId, cost, qty, sender, description);
+            var order = new CargoOrderData(id, spawnId, name, cost, qty, sender, description);
 
             // Approve it now
             order.SetApproverData(dest, sender);

@@ -1,0 +1,86 @@
+# Mask
+
+- type: itemLoadout # WD
+  id: SalvageSpecialistMaskGas
+  equipment: SalvageSpecialistMaskGas
+- type: startingGear
+  id: SalvageSpecialistMaskGas
+  equipment:
+    mask: ClothingMaskGasExplorer
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: SalvageSpecialistJumpsuit
+  equipment: SalvageSpecialistJumpsuit
+- type: startingGear
+  id: SalvageSpecialistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+
+# Back
+- type: itemLoadout
+  id: SalvageSpecialistBackpack
+  equipment: SalvageSpecialistBackpack
+
+- type: startingGear
+  id: SalvageSpecialistBackpack
+  equipment:
+    back: ClothingBackpackSalvageFilled
+
+- type: itemLoadout
+  id: SalvageSpecialistSatchel
+  equipment: SalvageSpecialistSatchel
+
+- type: startingGear
+  id: SalvageSpecialistSatchel
+  equipment:
+    back: ClothingBackpackSatchelSalvageFilled
+
+- type: itemLoadout
+  id: SalvageSpecialistDuffel
+  equipment: SalvageSpecialistDuffel
+
+- type: startingGear
+  id: SalvageSpecialistDuffel
+  equipment:
+    back: ClothingBackpackDuffelSalvageFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: SalvageSpecialistWintercoat
+  equipment: SalvageSpecialistWintercoat
+
+- type: startingGear
+  id: SalvageSpecialistWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterMiner
+
+# Shoes
+- type: itemLoadout
+  id: SalvageBoots
+  equipment: SalvageBoots
+
+- type: startingGear
+  id: SalvageBoots
+  equipment:
+    shoes: ClothingShoesBootsSalvage
+
+# Belt
+- type: itemLoadout
+  id: SalvageSpecialistWebbing
+  equipment: SalvageSpecialistWebbing
+- type: startingGear
+  id: SalvageSpecialistWebbing
+  equipment:
+    belt: ClothingBeltSalvageWebbing
+
+# PDA
+
+- type: itemLoadout
+  id: SalvagePDA
+  equipment: SalvagePDA
+- type: startingGear
+  id: SalvagePDA
+  equipment:
+    id: SalvagePDA

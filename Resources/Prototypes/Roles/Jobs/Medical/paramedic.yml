@@ -20,12 +20,3 @@
 
 - type: startingGear
   id: ParamedicGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitParamedic
-    back: ClothingBackpackParamedicFilled
-    shoes: ClothingShoesColorBlue
-    id: ParamedicPDA
-    ears: ClothingHeadsetMedical
-  innerClothingSkirt: ClothingUniformJumpskirtParamedic
-  satchel: ClothingBackpackSatchelParamedicFilled
-  duffelbag: ClothingBackpackDuffelParamedicFilled

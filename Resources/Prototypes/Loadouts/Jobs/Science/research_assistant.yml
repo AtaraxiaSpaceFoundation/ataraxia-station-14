@@ -1,0 +1,8 @@
+﻿# ID
+- type: itemLoadout # WD
+  id: ResearchAssistantPDA
+  equipment: ResearchAssistantPDA
+- type: startingGear
+  id: ResearchAssistantPDA
+  equipment:
+    id: ResearchAssistantPDA

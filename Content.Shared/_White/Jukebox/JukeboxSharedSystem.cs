@@ -11,16 +11,16 @@ public sealed class JukeboxSharedSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<JukeboxComponent, ComponentStartup>(OnJukeboxInit);
+        SubscribeLocalEvent<WhiteJukeboxComponent, ComponentStartup>(OnJukeboxInit);
     }
 
-    public void OnJukeboxInit(EntityUid uid, JukeboxComponent component, ComponentStartup args)
+    public void OnJukeboxInit(EntityUid uid, WhiteJukeboxComponent component, ComponentStartup args)
     {
         component.TapeContainer =
-            _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxContainerName);
+            _containerSystem.EnsureContainer<Container>(uid, WhiteJukeboxComponent.JukeboxContainerName);
 
         component.DefaultSongsContainer =
-            _containerSystem.EnsureContainer<Container>(uid, JukeboxComponent.JukeboxDefaultSongsName);
+            _containerSystem.EnsureContainer<Container>(uid, WhiteJukeboxComponent.JukeboxDefaultSongsName);
 
         if (_netManager.IsServer)
         {
@@ -30,7 +30,7 @@ public sealed class JukeboxSharedSystem : EntitySystem
             {
                 var tapeUid = EntityManager.SpawnEntity(tapePrototype, transform.MapPosition);
 
-                if (!TryComp<TapeComponent>(tapeUid, out _)) 
+                if (!TryComp<TapeComponent>(tapeUid, out _))
                     continue;
 
                 _containerSystem.Insert(tapeUid, component.DefaultSongsContainer);

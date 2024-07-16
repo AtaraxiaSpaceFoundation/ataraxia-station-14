@@ -3,9 +3,6 @@
   name: job-name-chaplain
   description: job-description-chaplain
   playTimeTracker: JobChaplain
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hrs
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
@@ -19,18 +16,3 @@
 
 - type: startingGear
   id: ChaplainGear
-  equipment:
-    neck: ClothingNeckNecklaceSilver
-    jumpsuit: ClothingUniformJumpsuitChaplain
-    back: ClothingBackpackChaplainFilled
-    shoes: ClothingShoesColorBlack
-    belt: NullRod
-    id: ChaplainPDA
-    ears: ClothingHeadsetService
-    pocket1: ArmamentsBeacon
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtChaplain
-  satchel: ClothingBackpackSatchelChaplainFilled
-  duffelbag: ClothingBackpackDuffelChaplainFilled

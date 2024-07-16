@@ -1,0 +1,28 @@
+# Jumpsuit
+- type: itemLoadout
+  id: WhiteJumpsuit
+  equipment: WhiteJumpsuit
+
+- type: startingGear
+  id: WhiteJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+
+- type: itemLoadout
+  id: WhiteJumpskirt
+  equipment: WhiteJumpskirt
+
+- type: startingGear
+  id: WhiteJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorWhite
+
+# PDA
+
+- type: itemLoadout # WD
+  id: MedicalInternPDA
+  equipment: MedicalInternPDA
+- type: startingGear
+  id: MedicalInternPDA
+  equipment:
+    jumpsuit: MedicalInternPDA

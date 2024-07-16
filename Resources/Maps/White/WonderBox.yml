@@ -65236,12 +65236,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 31.5,-1.5
       parent: 2
-  - uid: 8701
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 33.5,-1.5
-      parent: 2
   - uid: 8702
     components:
     - type: Transform
@@ -120980,6 +120974,13 @@ entities:
     - type: Transform
       pos: -12.5,22.5
       parent: 2
+- proto: Jukebox
+  entities:
+  - uid: 8701
+    components:
+    - type: Transform
+      pos: 33.5,-1.5
+      parent: 2
 - proto: KitchenKnife
   entities:
   - uid: 15922
@@ -126985,6 +126986,11 @@ entities:
       parent: 2
 - proto: PottedPlant21
   entities:
+  - uid: 8708
+    components:
+    - type: Transform
+      pos: 27.5,0.5
+      parent: 2
   - uid: 16543
     components:
     - type: Transform
@@ -126999,11 +127005,6 @@ entities:
     components:
     - type: Transform
       pos: 10.5,-0.5
-      parent: 2
-  - uid: 16546
-    components:
-    - type: Transform
-      pos: 27.5,0.5
       parent: 2
   - uid: 16547
     components:

@@ -20,7 +20,7 @@ public enum TapeCreatorUIKey : byte
 }
 
 [NetworkedComponent, RegisterComponent, AutoGenerateComponentState]
-public sealed partial class JukeboxComponent : Component
+public sealed partial class WhiteJukeboxComponent : Component
 {
     public static string JukeboxContainerName = "jukebox_tapes";
     public static string JukeboxDefaultSongsName = "jukebox_default_tapes";

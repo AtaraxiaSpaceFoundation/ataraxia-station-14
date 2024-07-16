@@ -1,0 +1,191 @@
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 21600 #6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 216000 # 60 hrs
+
+# Head
+- type: itemLoadout
+  id: SecurityHelmet
+  equipment: SecurityHelmet
+
+- type: startingGear
+  id: SecurityHelmet
+  equipment:
+    head: ClothingHeadHelmetBasic
+
+- type: itemLoadout
+  id: SecurityHat
+  equipment: SecurityHat
+
+- type: startingGear
+  id: SecurityHat
+  equipment:
+    head: ClothingHeadHatSecsoft
+
+- type: itemLoadout
+  id: SecurityBeret
+  equipment: SecurityBeret
+
+- type: startingGear
+  id: SecurityBeret
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+
+# Jumpsuit
+- type: itemLoadout
+  id: SecurityJumpsuit
+  equipment: SecurityJumpsuit
+
+- type: startingGear
+  id: SecurityJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+
+- type: itemLoadout
+  id: SecurityJumpskirt
+  equipment: SecurityJumpskirt
+
+- type: startingGear
+  id: SecurityJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSec
+
+- type: itemLoadout
+  id: SecurityJumpsuitGrey
+  equipment: SecurityJumpsuitGrey
+
+- type: startingGear
+  id: SecurityJumpsuitGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecGrey
+
+- type: itemLoadout
+  id: SecurityJumpskirtGrey
+  equipment: SecurityJumpskirtGrey
+
+- type: startingGear
+  id: SecurityJumpskirtGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSecGrey
+
+- type: itemLoadout
+  id: SeniorOfficerJumpsuit
+  equipment: SeniorOfficerJumpsuit
+
+- type: startingGear
+  id: SeniorOfficerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorOfficer
+
+- type: itemLoadout
+  id: SeniorOfficerJumpskirt
+  equipment: SeniorOfficerJumpskirt
+
+- type: startingGear
+  id: SeniorOfficerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorOfficer
+
+# Back
+- type: itemLoadout
+  id: SecurityBackpack
+  equipment: SecurityBackpack
+
+- type: startingGear
+  id: SecurityBackpack
+  equipment:
+    back: ClothingBackpackSecurityFilled
+
+- type: itemLoadout
+  id: SecuritySatchel
+  equipment: SecuritySatchel
+
+- type: startingGear
+  id: SecuritySatchel
+  equipment:
+    back: ClothingBackpackSatchelSecurityFilled
+
+- type: itemLoadout
+  id: SecurityDuffel
+  equipment: SecurityDuffel
+
+- type: startingGear
+  id: SecurityDuffel
+  equipment:
+    back: ClothingBackpackDuffelSecurityFilled
+
+# Outerclothing
+- type: itemLoadout
+  id: ArmorVest
+  equipment: ArmorVest
+
+- type: startingGear
+  id: ArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorBasic
+
+- type: itemLoadout
+  id: ArmorVestSlim
+  equipment: ArmorVestSlim
+
+- type: startingGear
+  id: ArmorVestSlim
+  equipment:
+    outerClothing: ClothingOuterArmorBasicSlim
+
+- type: itemLoadout
+  id: SecurityOfficerWintercoat
+  equipment: SecurityOfficerWintercoat
+
+- type: startingGear
+  id: SecurityOfficerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSec
+
+# Shoes
+- type: itemLoadout
+  id: CombatBoots
+  equipment: CombatBoots
+
+- type: startingGear
+  id: CombatBoots
+  equipment:
+    shoes: ClothingShoesBootsCombatFilled
+
+- type: itemLoadout
+  id: SecurityWinterBoots
+  equipment: SecurityWinterBoots
+
+- type: startingGear
+  id: SecurityWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterSec
+
+# PDA
+- type: itemLoadout
+  id: SecurityPDA
+  equipment: SecurityPDA
+
+- type: startingGear
+  id: SecurityPDA
+  equipment:
+    id: SecurityPDA
+
+- type: itemLoadout
+  id: SeniorOfficerPDA
+  equipment: SeniorOfficerPDA
+
+- type: startingGear
+  id: SeniorOfficerPDA
+  equipment:
+    id: SeniorOfficerPDA

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client._Ohio.Buttons;
+using Content.Client.Audio;
 using Content.Client.Changelog;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
@@ -40,6 +41,7 @@ namespace Content.Client.Lobby
         [ViewVariables] private CharacterSetupGui? _characterSetup;
 
         private ClientGameTicker _gameTicker = default!;
+        private ContentAudioSystem _contentAudioSystem = default!;
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
 
@@ -57,7 +59,8 @@ namespace Content.Client.Lobby
             var chatController = _userInterfaceManager.GetUIController<ChatUIController>();
 
             _gameTicker = _entityManager.System<ClientGameTicker>();
-
+            _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
+            _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
             _characterSetup = new CharacterSetupGui(_entityManager, _resourceCache, _preferencesManager,
                 _prototypeManager, _configurationManager);
 
@@ -71,13 +74,19 @@ namespace Content.Client.Lobby
 
             _characterSetup.CloseButton.OnPressed += _ =>
             {
+                // Reset sliders etc.
+                _characterSetup?.UpdateControls();
+
+                var controller = _userInterfaceManager.GetUIController<LobbyUIController>();
+                controller.SetClothes(true);
+                controller.UpdateProfile();
                 _lobby.SwitchState(LobbyGui.LobbyGuiState.Default);
             };
 
             _characterSetup.SaveButton.OnPressed += _ =>
             {
                 _characterSetup.Save();
-                //_lobby.CharacterPreview.UpdateUI();
+                _userInterfaceManager.GetUIController<LobbyUIController>().ReloadProfile();
             };
 
             LayoutContainer.SetAnchorPreset(_lobby, LayoutContainer.LayoutPreset.Wide);
@@ -110,6 +119,7 @@ namespace Content.Client.Lobby
             _gameTicker.InfoBlobUpdated -= UpdateLobbyUi;
             _gameTicker.LobbyStatusUpdated -= LobbyStatusUpdated;
             _gameTicker.LobbyLateJoinStatusUpdated -= LobbyLateJoinStatusUpdated;
+            _contentAudioSystem.LobbySoundtrackChanged -= UpdateLobbySoundtrackInfo;
 
             _voteManager.ClearPopupContainer();
 
@@ -233,8 +243,49 @@ namespace Content.Client.Lobby
             }
 
             _lobby!.LabelName.SetMarkup("[font=\"Bedstead\" size=20] White Dream [/font]");
-            _lobby!.Version.SetMarkup("Version: 1.0");
             _lobby!.ChangelogLabel.SetMarkup("Список изменений:");
+        }
+
+        private void UpdateLobbySoundtrackInfo(LobbySoundtrackChangedEvent ev)
+        {
+            if (ev.SoundtrackFilename == null)
+            {
+                _lobby!.LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
+            }
+            else if (
+                ev.SoundtrackFilename != null
+                && _resourceCache.TryGetResource<AudioResource>(ev.SoundtrackFilename, out var lobbySongResource)
+                )
+            {
+                var lobbyStream = lobbySongResource.AudioStream;
+
+                var title = string.IsNullOrEmpty(lobbyStream.Title)
+                    ? Loc.GetString("lobby-state-song-unknown-title")
+                    : lobbyStream.Title;
+
+                var artist = string.IsNullOrEmpty(lobbyStream.Artist)
+                    ? Loc.GetString("lobby-state-song-unknown-artist")
+                    : lobbyStream.Artist;
+
+                var markup = Loc.GetString("lobby-state-song-text",
+                    ("songTitle", title),
+                    ("songArtist", artist));
+
+                _lobby!.LobbySong.SetMarkup(markup);
+            }
+        }
+
+        private void UpdateLobbyBackground()
+        {
+            if (_gameTicker.LobbyBackground != null)
+            {
+                _lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(_gameTicker.LobbyBackground );
+            }
+            else
+            {
+                _lobby!.Background.Texture = null;
+            }
+
         }
 
         private void SetReady(bool newReady)

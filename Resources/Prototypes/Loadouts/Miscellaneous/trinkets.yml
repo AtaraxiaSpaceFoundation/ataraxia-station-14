@@ -1,0 +1,122 @@
+- type: itemLoadout
+  id: PlushieLizard
+  equipment: PlushieLizard
+
+- type: startingGear
+  id: PlushieLizard
+  storage:
+    back:
+    - PlushieLizard
+
+# Table games
+- type: itemLoadout # WD
+  id: ChessBoard
+  equipment: ChessBoard
+- type: startingGear
+  id: ChessBoard
+  storage:
+    back:
+    - ChessBoard
+
+- type: itemLoadout # WD
+  id: CheckerBoard
+  equipment: CheckerBoard
+- type: startingGear
+  id: CheckerBoard
+  storage:
+    back:
+    - CheckerBoard
+
+- type: itemLoadout # WD
+  id: BackgammonBoard
+  equipment: BackgammonBoard
+- type: startingGear
+  id: BackgammonBoard
+  storage:
+    back:
+    - BackgammonBoard
+
+- type: itemLoadout # WD
+  id: ParchisBoard
+  equipment: ParchisBoard
+- type: startingGear
+  id: ParchisBoard
+  storage:
+    back:
+    - ParchisBoard
+
+# Sport
+
+- type: itemLoadout # WD
+  id: Basketball
+  equipment: Basketball
+- type: startingGear
+  id: Basketball
+  storage:
+    back:
+    - Basketball
+
+- type: itemLoadout # WD
+  id: BeachBall
+  equipment: BeachBall
+- type: startingGear
+  id: BeachBall
+  storage:
+    back:
+    - BeachBall
+
+- type: itemLoadout # WD
+  id: Football
+  equipment: Football
+- type: startingGear
+  id: Football
+  storage:
+    back:
+    - Football
+
+# Toys
+
+- type: itemLoadout # WD
+  id: RubberDuck
+  equipment: RubberDuck
+- type: startingGear
+  id: RubberDuck
+  storage:
+    back:
+    - ToyRubberDuck
+
+- type: itemLoadout # WD
+  id: SharkBlue
+  equipment: SharkBlue
+- type: startingGear
+  id: SharkBlue
+  storage:
+    back:
+    - PlushieSharkBlue
+
+- type: itemLoadout # WD
+  id: SharkPink
+  equipment: SharkPink
+- type: startingGear
+  id: SharkPink
+  storage:
+    back:
+    - PlushieSharkPink
+
+- type: itemLoadout # WD
+  id: SharkGrey
+  equipment: SharkGrey
+- type: startingGear
+  id: SharkGrey
+  storage:
+    back:
+    - PlushieSharkGrey
+
+- type: itemLoadout # WD
+  id: NTFlag
+  equipment: NTFlag
+- type: startingGear
+  id: NTFlag
+  storage:
+    back:
+    - NTHandyFlag

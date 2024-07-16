@@ -8,20 +8,20 @@ public sealed class JukeboxBUI : BoundUserInterface
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
 
-    private readonly JukeboxMenu? _window;
+    private readonly WhiteJukeboxMenu? _window;
 
     public JukeboxBUI(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         IoCManager.InjectDependencies(this);
         var sharedPopupSystem = _entityManager.System<SharedPopupSystem>();
 
-        if (!_entityManager.TryGetComponent(owner, out JukeboxComponent? jukeboxComponent))
+        if (!_entityManager.TryGetComponent(owner, out WhiteJukeboxComponent? jukeboxComponent))
         {
-            sharedPopupSystem.PopupEntity("Тут нет JukeboxComponent, звоните кодерам", owner);
+            sharedPopupSystem.PopupEntity("Тут нет WhiteJukeboxComponent, звоните кодерам", owner);
             return;
         }
 
-        _window = new JukeboxMenu(owner, jukeboxComponent);
+        _window = new WhiteJukeboxMenu(owner, jukeboxComponent);
         _window.RepeatButton.OnToggled += OnRepeatButtonToggled;
         _window.StopButton.OnPressed += OnStopButtonPressed;
         _window.EjectButton.OnPressed += OnEjectButtonPressed;

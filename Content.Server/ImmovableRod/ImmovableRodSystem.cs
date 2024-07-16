@@ -60,18 +60,15 @@ public sealed class ImmovableRodSystem : EntitySystem
             _physics.SetFriction(uid, phys, 0f);
             _physics.SetBodyStatus(uid, phys, BodyStatus.InAir);
 
-            var xform = Transform(uid);
-            var worldRot = _transform.GetWorldRotation(uid);
-            var vel = worldRot.ToWorldVec() * component.MaxSpeed;
+            if (!component.RandomizeVelocity)
+                return;
 
-            if (component.RandomizeVelocity)
+            var xform = Transform(uid);
+            var vel = component.DirectionOverride.Degrees switch
             {
-                vel = component.DirectionOverride.Degrees switch
-                {
-                    0f => _random.NextVector2(component.MinSpeed, component.MaxSpeed),
-                    _ => worldRot.RotateVec(component.DirectionOverride.ToVec()) * _random.NextFloat(component.MinSpeed, component.MaxSpeed)
-                };
-            }
+                0f => _random.NextVector2(component.MinSpeed, component.MaxSpeed),
+                _ => _transform.GetWorldRotation(uid).RotateVec(component.DirectionOverride.ToVec()) * _random.NextFloat(component.MinSpeed, component.MaxSpeed)
+            };
 
             _physics.ApplyLinearImpulse(uid, vel, body: phys);
             xform.LocalRotation = (vel - _transform.GetWorldPosition(uid)).ToWorldAngle() + MathHelper.PiOver2;
@@ -115,10 +112,10 @@ public sealed class ImmovableRodSystem : EntitySystem
 
             if (!component.ShouldGib)
             {
-                if (component.Damage == null || !TryComp<DamageableComponent>(ent, out var damageable))
+                if (component.Damage == null)
                     return;
 
-                _damageable.SetDamage(ent, damageable, component.Damage);
+                _damageable.TryChangeDamage(ent, component.Damage, ignoreResistances: true);
                 return;
             }
 

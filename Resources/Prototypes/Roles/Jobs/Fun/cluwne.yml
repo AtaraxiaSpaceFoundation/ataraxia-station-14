@@ -14,5 +14,3 @@
 
 - type: startingGear
   id: HoloClownGear
-  equipment:
-    pocket1: BikeHorn

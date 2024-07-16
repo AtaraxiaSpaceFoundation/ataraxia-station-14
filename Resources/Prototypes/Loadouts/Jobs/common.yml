@@ -1,0 +1,454 @@
+﻿# Eyes
+
+- type: itemLoadout
+  id: GlassesGarOrange
+  equipment: GlassesGarOrange
+- type: startingGear
+  id: GlassesGarOrange
+  equipment:
+    eyes: ClothingEyesGlassesGarOrange
+
+- type: itemLoadout
+  id: GlassesGar
+  equipment: GlassesGar
+- type: startingGear
+  id: GlassesGar
+  equipment:
+    eyes: ClothingEyesGlassesGar
+
+- type: itemLoadout
+  id: GlassesGarGiga
+  equipment: GlassesGarGiga
+- type: startingGear
+  id: GlassesGarGiga
+  equipment:
+    eyes: ClothingEyesGlassesGarGiga
+
+
+# Shoes
+
+- type: itemLoadout
+  id: BootsLaceup
+  equipment: BootsLaceup
+- type: startingGear
+  id: BootsLaceup
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+
+- type: itemLoadout
+  id: ShoesLeather
+  equipment: ShoesLeather
+- type: startingGear
+  id: ShoesLeather
+  equipment:
+    shoes: ClothingShoesLeather
+
+- type: itemLoadout
+  id: BootsJack
+  equipment: BootsJack
+- type: startingGear
+  id: BootsJack
+  equipment:
+    shoes: ClothingShoesBootsJack
+
+- type: itemLoadout
+  id: ShoesColorOrange
+  equipment: ShoesColorOrange
+- type: startingGear
+  id: ShoesColorOrange
+  equipment:
+    shoes: ClothingShoesColorOrange
+
+- type: itemLoadout
+  id: ShoesColorBlack
+  equipment: ShoesColorBlack
+- type: startingGear
+  id: ShoesColorBlack
+  equipment:
+    shoes: ClothingShoesColorBlack
+
+- type: itemLoadout
+  id: BootsWinter
+  equipment: BootsWinter
+- type: startingGear
+  id: BootsWinter
+  equipment:
+    shoes: ClothingShoesBootsWinter
+
+- type: itemLoadout
+  id: ShoesTourist
+  equipment: ShoesTourist
+- type: startingGear
+  id: ShoesTourist
+  equipment:
+    shoes: ClothingShoesTourist
+
+# OuterClothing
+
+- type: itemLoadout
+  id: CoatJensen
+  equipment: CoatJensen
+- type: startingGear
+  id: CoatJensen
+  equipment:
+    outerClothing: ClothingOuterCoatJensen
+
+- type: itemLoadout
+  id: CoatInspector
+  equipment: CoatInspector
+- type: startingGear
+  id: CoatInspector
+  equipment:
+    outerClothing: ClothingOuterCoatInspector
+
+- type: itemLoadout
+  id: CoatGentle
+  equipment: CoatGentle
+- type: startingGear
+  id: CoatGentle
+  equipment:
+    outerClothing: ClothingOuterCoatGentle
+
+- type: itemLoadout
+  id: CoatTrench
+  equipment: CoatTrench
+- type: startingGear
+  id: CoatTrench
+  equipment:
+    outerClothing: ClothingOuterCoatTrench
+
+- type: itemLoadout
+  id: CoatBomber
+  equipment: CoatBomber
+- type: startingGear
+  id: CoatBomber
+  equipment:
+    outerClothing: ClothingOuterCoatBomber
+
+- type: itemLoadout
+  id: HoodieGrey
+  equipment: HoodieGrey
+- type: startingGear
+  id: HoodieGrey
+  equipment:
+    outerClothing: ClothingOuterHoodieGrey
+
+- type: itemLoadout
+  id: HoodieBlack
+  equipment: HoodieBlack
+- type: startingGear
+  id: HoodieBlack
+  equipment:
+    outerClothing: ClothingOuterHoodieBlack
+
+# Gloves
+
+- type: itemLoadout
+  id: GlovesColorBlack
+  equipment: GlovesColorBlack
+- type: startingGear
+  id: GlovesColorBlack
+  equipment:
+    gloves: ClothingHandsGlovesColorBlack
+
+- type: itemLoadout
+  id: GlovesLatex
+  equipment: GlovesLatex
+- type: startingGear
+  id: GlovesLatex
+  equipment:
+    gloves: ClothingHandsGlovesLatex
+
+- type: itemLoadout
+  id: GlovesColorPurple
+  equipment: GlovesColorPurple
+- type: startingGear
+  id: GlovesColorPurple
+  equipment:
+    gloves: ClothingHandsGlovesColorPurple
+
+- type: itemLoadout
+  id: GlovesFingerless
+  equipment: GlovesFingerless
+- type: startingGear
+  id: GlovesFingerless
+  equipment:
+    gloves: ClothingHandsGlovesFingerless
+
+# Neck
+- type: itemLoadout
+  id: BlackTie
+  equipment: BlackTie
+- type: startingGear
+  id: BlackTie
+  equipment:
+    neck: ClothingNeckTieDet
+
+- type: itemLoadout
+  id: RedTie
+  equipment: RedTie
+- type: startingGear
+  id: RedTie
+  equipment:
+    neck: ClothingNeckTieRed
+
+# Head
+
+- type: itemLoadout
+  id: CowboyBountyHunter
+  equipment: CowboyBountyHunter
+- type: startingGear
+  id: CowboyBountyHunter
+  equipment:
+    head: ClothingHeadHatCowboyBountyHunter
+
+- type: itemLoadout
+  id: CowboyBlack
+  equipment: CowboyBlack
+- type: startingGear
+  id: CowboyBlack
+  equipment:
+    head: ClothingHeadHatCowboyBlack
+
+- type: itemLoadout
+  id: CowboyBrown
+  equipment: CowboyBrown
+- type: startingGear
+  id: CowboyBrown
+  equipment:
+    head: ClothingHeadHatCowboyBrown
+
+- type: itemLoadout
+  id: CowboyRed
+  equipment: CowboyRed
+- type: startingGear
+  id: CowboyRed
+  equipment:
+    head: ClothingHeadHatCowboyRed
+
+- type: itemLoadout
+  id: CowboyGrey
+  equipment: CowboyGrey
+- type: startingGear
+  id: CowboyGrey
+  equipment:
+    head: ClothingHeadHatCowboyGrey
+
+- type: itemLoadout
+  id: CowboyWhite
+  equipment: CowboyWhite
+- type: startingGear
+  id: CowboyWhite
+  equipment:
+    head: ClothingHeadHatCowboyWhite
+
+- type: itemLoadout
+  id: SafariHat
+  equipment: SafariHat
+- type: startingGear
+  id: SafariHat
+  equipment:
+    head: ClothingHeadSafari
+
+- type: itemLoadout
+  id: BowlerHat
+  equipment: BowlerHat
+- type: startingGear
+  id: BowlerHat
+  equipment:
+    head: ClothingHeadHatBowlerHat
+
+- type: itemLoadout
+  id: FedoraBrown
+  equipment: FedoraBrown
+- type: startingGear
+  id: FedoraBrown
+  equipment:
+    head: ClothingHeadHatFedoraBrown
+
+- type: itemLoadout
+  id: FedoraGrey
+  equipment: FedoraGrey
+- type: startingGear
+  id: FedoraGrey
+  equipment:
+    head: ClothingHeadHatFedoraGrey
+
+- type: itemLoadout
+  id: Tophat
+  equipment: Tophat
+- type: startingGear
+  id: Tophat
+  equipment:
+    head: ClothingHeadHatTophat
+
+- type: itemLoadout
+  id: FrenchBeret
+  equipment: FrenchBeret
+- type: startingGear
+  id: FrenchBeret
+  equipment:
+    head: ClothingHeadHatBeretFrench
+
+- type: itemLoadout
+  id: BeretStandard
+  equipment: BeretStandard
+- type: startingGear
+  id: BeretStandard
+  equipment:
+    head: ClothingHeadHatBeret
+
+- type: itemLoadout
+  id: HatGreyFlatcap
+  equipment: HatGreyFlatcap
+- type: startingGear
+  id: HatGreyFlatcap
+  equipment:
+    head: ClothingHeadHatGreyFlatcap
+
+- type: itemLoadout
+  id: HatBlacksoft
+  equipment: HatBlacksoft
+- type: startingGear
+  id: HatBlacksoft
+  equipment:
+    head: ClothingHeadHatBlacksoft
+
+- type: itemLoadout
+  id: HatBrownFlatcap
+  equipment: HatBrownFlatcap
+- type: startingGear
+  id: HatBrownFlatcap
+  equipment:
+    head: ClothingHeadHatBrownFlatcap
+
+- type: itemLoadout
+  id: HatMagician
+  equipment: HatMagician
+- type: startingGear
+  id: HatMagician
+  equipment:
+    head: ClothingHeadHatMagician
+
+# backpack
+- type: itemLoadout
+  id: CommonSatchelLeather
+  equipment: CommonSatchelLeather
+- type: startingGear
+  id: CommonSatchelLeather
+  equipment:
+    back: ClothingBackpackSatchelLeather
+
+# Mask
+
+- type: itemLoadout
+  id: MaskCigarette
+  equipment: MaskCigarette
+- type: startingGear
+  id: MaskCigarette
+  equipment:
+    mask: Cigarette
+
+- type: itemLoadout
+  id: MaskCigar
+  equipment: MaskCigar
+- type: startingGear
+  id: MaskCigar
+  equipment:
+    mask: Cigar
+
+- type: itemLoadout
+  id: MaskCigarGold
+  equipment: MaskCigarGold
+- type: startingGear
+  id: MaskCigarGold
+  equipment:
+    mask: CigarGold
+
+- type: itemLoadout
+  id: MaskCigaretteSpent
+  equipment: MaskCigaretteSpent
+- type: startingGear
+  id: MaskCigaretteSpent
+  equipment:
+    mask: CigaretteSpent
+
+- type: itemLoadout
+  id: MaskCigarSpent
+  equipment: MaskCigarSpent
+- type: startingGear
+  id: MaskCigarSpent
+  equipment:
+    mask: CigarSpent
+
+- type: itemLoadout
+  id: MaskCigarGoldSpent
+  equipment: MaskCigarGoldSpent
+- type: startingGear
+  id: MaskCigarGoldSpent
+  equipment:
+    mask: CigarGoldSpent
+
+# Jumpsuit
+
+- type: itemLoadout
+  id: JumpsuitSafari
+  equipment: JumpsuitSafari
+- type: startingGear
+  id: JumpsuitSafari
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSafari
+
+- type: itemLoadout
+  id: JumpsuitFamily
+  equipment: JumpsuitFamily
+- type: startingGear
+  id: JumpsuitFamily
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFamilyGuy
+
+- type: itemLoadout
+  id: JumpsuitLoungewear
+  equipment: JumpsuitLoungewear
+- type: startingGear
+  id: JumpsuitLoungewear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLoungewear
+
+- type: itemLoadout
+  id: JumpsuitOveralls
+  equipment: JumpsuitOveralls
+- type: startingGear
+  id: JumpsuitOveralls
+  equipment:
+    jumpsuit: ClothingUniformOveralls
+
+# Ears
+
+- type: itemLoadout
+  id: AssistantHeadset
+  equipment: AssistantHeadset
+- type: startingGear
+  id: AssistantHeadset
+  equipment:
+    ears: ClothingHeadsetGrey
+
+# Belt
+
+- type: itemLoadout
+  id: BeltUtility
+  equipment: BeltUtility
+- type: startingGear
+  id: BeltUtility
+  equipment:
+    belt: ClothingBeltUtility
+
+# Inhands
+
+- type: itemLoadout
+  id: Cane
+  equipment: Cane
+- type: startingGear
+  id: Cane
+  equipment:
+    belt: Cane

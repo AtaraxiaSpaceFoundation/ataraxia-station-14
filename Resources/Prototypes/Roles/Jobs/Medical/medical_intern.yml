@@ -18,16 +18,3 @@
 
 - type: startingGear
   id: MedicalInternGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorWhite
-    back: ClothingBackpackMedicalFilled
-    shoes: ClothingShoesColorWhite
-    id: MedicalInternPDA
-    ears: ClothingHeadsetMedical
-    pocket1: BookMedicalReferenceBook
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtColorWhite
-  satchel: ClothingBackpackSatchelMedicalFilled
-  duffelbag: ClothingBackpackDuffelMedicalFilled

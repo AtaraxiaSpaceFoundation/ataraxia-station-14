@@ -29,7 +29,6 @@
   - type: StorageFill
     contents:
       - id: BoxHug
-      - id: RubberStampClown
 
 - type: entity
   noSpawn: true
@@ -212,7 +211,7 @@
       - id: BoxSurvival
       - id: Bible
       - id: RubberStampChaplain
-  
+
 - type: entity
   noSpawn: true
   parent: ClothingBackpackSatchel

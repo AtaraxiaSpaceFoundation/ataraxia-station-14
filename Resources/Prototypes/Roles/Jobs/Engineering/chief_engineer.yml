@@ -39,15 +39,3 @@
 
 - type: startingGear
   id: ChiefEngineerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitChiefEngineer
-    back: ClothingBackpackChiefEngineerFilled
-    shoes: ClothingShoesColorBrown
-    id: CEPDA
-    ears: ClothingHeadsetCE
-    underwearb: ClothingUnderwearBottomBoxersCE # White-Underwear
-  underweart: ClothingUnderwearTopBraCE # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCE # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
-  satchel: ClothingBackpackSatchelChiefEngineerFilled
-  duffelbag: ClothingBackpackDuffelChiefEngineerFilled

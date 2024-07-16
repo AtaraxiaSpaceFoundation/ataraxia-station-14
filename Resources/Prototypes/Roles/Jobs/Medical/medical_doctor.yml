@@ -18,15 +18,3 @@
 
 - type: startingGear
   id: DoctorGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMedicalDoctor
-    back: ClothingBackpackMedicalFilled
-    shoes: ClothingShoesColorWhite
-    id: MedicalPDA
-    ears: ClothingHeadsetMedical
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtMedicalDoctor
-  satchel: ClothingBackpackSatchelMedicalFilled
-  duffelbag: ClothingBackpackDuffelMedicalFilled

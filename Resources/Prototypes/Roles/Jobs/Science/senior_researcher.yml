@@ -20,15 +20,3 @@
 
 - type: startingGear
   id: SeniorResearcherGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSeniorResearcher
-    back: ClothingBackpackScienceFilled
-    shoes: ClothingShoesColorBlack
-    id: SeniorResearcherPDA
-    ears: ClothingHeadsetScience
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtSeniorResearcher
-  satchel: ClothingBackpackSatchelScienceFilled
-  duffelbag: ClothingBackpackDuffelScienceFilled

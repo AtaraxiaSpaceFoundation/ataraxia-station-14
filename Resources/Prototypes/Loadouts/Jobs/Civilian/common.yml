@@ -1,0 +1,9 @@
+﻿# ears
+
+- type: itemLoadout
+  id: ServiceHeadset
+  equipment: ServiceHeadset
+- type: startingGear
+  id: ServiceHeadset
+  equipment:
+    ears: ClothingHeadsetService

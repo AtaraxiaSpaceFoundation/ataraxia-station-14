@@ -144,7 +144,7 @@
 #      sprite: White/Fluff/Maury/chemshit.rsi
 
 - type: entity
-  parent: ClothingUniformJumpsuitColorGrey
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitColorMaury #Should be ClothingUniformJumpsuitMaury but i`m retard and lazy idiot
   name: красное худи
   suffix: fluff
@@ -156,7 +156,7 @@
       sprite: White/Fluff/Maury/hoodie.rsi
 
 - type: entity
-  parent: ClothingShoesColorBlack
+  parent: ClothingShoesBaseButcherable
   id: ClothingShoesMaurySneakers
   name: кеды
   suffix: fluff
@@ -955,7 +955,7 @@
       sprite: White/Fluff/Oleg_Tinkoff/helmet_gop.rsi
 
 - type: entity
-  parent: ClothingShoesColorBlack
+  parent: ClothingShoesBaseButcherable
   id: ClothingShoesGopTinkoff
   name: cпортивные кроссовки "ГОП ПАК"
   description: Предназначены для спорта и гоп стопа.

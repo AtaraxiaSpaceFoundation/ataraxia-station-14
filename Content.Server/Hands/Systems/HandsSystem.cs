@@ -165,7 +165,7 @@ namespace Content.Server.Hands.Systems
                     continue;
                 }
 
-                QueueDel(hand.HeldEntity.Value);
+                TryDrop(args.PullerUid, hand, handsComp: component);
                 break;
             }
         }

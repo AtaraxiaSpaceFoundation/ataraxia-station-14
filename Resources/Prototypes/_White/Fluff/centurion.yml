@@ -213,49 +213,49 @@
   - type: Clothing
     sprite: White/Fluff/centurion/deathsquad-helmet.rsi
 
-- type: loadout
+- type: sponsorLoadout
   id: CapLoadoutCenturion
   entity: ClothingOuterHardsuitCapDeathSquadFluff
   sponsorOnly: true
   whitelistJobs: [Captain]
 
-- type: loadout
+- type: sponsorLoadout
   id: CeLoadoutCenturion
   entity: ClothingOuterHardsuitEngineeringWhiteDeathSquadFluff
   sponsorOnly: true
   whitelistJobs: [ChiefEngineer]
 
-- type: loadout
+- type: sponsorLoadout
   id: CmoLoadoutCenturion
   entity: ClothingOuterHardsuitMedicalDeathSquadFluff
   sponsorOnly: true
   whitelistJobs: [ChiefMedicalOfficer]
 
-- type: loadout
+- type: sponsorLoadout
   id: RDLoadoutCenturion
   entity: ClothingOuterHardsuitRdDeathSquadFluff
   sponsorOnly: true
   whitelistJobs: [ResearchDirector]
 
-- type: loadout
+- type: sponsorLoadout
   id: HOSLoadoutCenturion
   entity: ClothingOuterHardsuitSecurityRedDeathSquadFluff
   sponsorOnly: true
   whitelistJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: SecLoadoutCenturion
   entity: ClothingOuterHardsuitSecurityCenturion
   sponsorOnly: true
   whitelistJobs: [Warden, SecurityCadet, SecurityOfficer, Detective]
 
-- type: loadout
+- type: sponsorLoadout
   id: SalvageLoadoutCenturion
   entity: ClothingOuterHardsuitSalvageCenturion
   sponsorOnly: true
   whitelistJobs: [SalvageSpecialist]
 
-- type: loadout
+- type: sponsorLoadout
   id: centCoatMeowLoadout
   entity: ClothingCenturionNeckFluff
   sponsorOnly: true

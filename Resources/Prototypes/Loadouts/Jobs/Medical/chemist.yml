@@ -1,0 +1,75 @@
+# Jumpsuit
+- type: itemLoadout
+  id: ChemistJumpsuit
+  equipment: ChemistJumpsuit
+
+- type: startingGear
+  id: ChemistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChemistry
+
+- type: itemLoadout
+  id: ChemistJumpskirt
+  equipment: ChemistJumpskirt
+
+- type: startingGear
+  id: ChemistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChemistry
+
+# Back
+- type: itemLoadout
+  id: ChemistBackpack
+  equipment: ChemistBackpack
+
+- type: startingGear
+  id: ChemistBackpack
+  equipment:
+    back: ClothingBackpackChemistryFilled
+
+- type: itemLoadout
+  id: ChemistSatchel
+  equipment: ChemistSatchel
+
+- type: startingGear
+  id: ChemistSatchel
+  equipment:
+    back: ClothingBackpackSatchelChemistryFilled
+
+- type: itemLoadout
+  id: ChemistDuffel
+  equipment: ChemistDuffel
+
+- type: startingGear
+  id: ChemistDuffel
+  equipment:
+    back: ClothingBackpackDuffelChemistryFilled
+
+# Outer clothing
+- type: itemLoadout
+  id: ChemistLabCoat
+  equipment: ChemistLabCoat
+
+- type: startingGear
+  id: ChemistLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabChem
+
+- type: itemLoadout
+  id: ChemistWintercoat
+  equipment: ChemistWintercoat
+
+- type: startingGear
+  id: ChemistWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterChem
+
+# PDA
+
+- type: itemLoadout # WD added
+  id: ChemistPDA
+  equipment: ChemistPDA
+- type: startingGear
+  id: ChemistPDA
+  equipment:
+    id: ChemistryPDA

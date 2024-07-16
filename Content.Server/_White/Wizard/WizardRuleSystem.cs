@@ -294,7 +294,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
 
         _metaData.SetEntityName(mob, profile.Name);
 
-        _stationSpawning.EquipStartingGear(mob, gear, profile);
+        _stationSpawning.EquipStartingGear(mob, gear);
 
         _npcFaction.RemoveFaction(mob, "NanoTrasen", false);
         _npcFaction.AddFaction(mob, "Wizard");

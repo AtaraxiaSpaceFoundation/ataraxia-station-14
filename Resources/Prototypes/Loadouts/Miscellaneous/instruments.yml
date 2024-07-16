@@ -1,0 +1,280 @@
+# Instruments
+- type: itemLoadout
+  id: Glockenspiel
+  equipment: Glockenspiel
+
+- type: startingGear
+  id: Glockenspiel
+  storage:
+    back:
+    - GlockenspielInstrument
+
+- type: itemLoadout
+  id: MusicBox
+  equipment: MusicBox
+
+- type: startingGear
+  id: MusicBox
+  storage:
+    back:
+    - MusicBoxInstrument
+
+- type: itemLoadout
+  id: Xylophone
+  equipment: Xylophone
+
+- type: startingGear
+  id: Xylophone
+  storage:
+    back:
+    - XylophoneInstrument
+
+- type: itemLoadout
+  id: Microphone
+  equipment: Microphone
+
+- type: startingGear
+  id: Microphone
+  storage:
+    back:
+    - MicrophoneInstrument
+
+- type: itemLoadout
+  id: Synthesizer
+  equipment: Synthesizer
+
+- type: startingGear
+  id: Synthesizer
+  storage:
+    back:
+    - SynthesizerInstrument
+
+- type: itemLoadout
+  id: Kalimba
+  equipment: Kalimba
+
+- type: startingGear
+  id: Kalimba
+  storage:
+    back:
+    - KalimbaInstrument
+
+- type: itemLoadout
+  id: Woodblock
+  equipment: Woodblock
+
+- type: startingGear
+  id: Woodblock
+  storage:
+    back:
+    - WoodblockInstrument
+
+- type: itemLoadout
+  id: ElectricGuitar
+  equipment: ElectricGuitar
+
+- type: startingGear
+  id: ElectricGuitar
+  storage:
+    back:
+    - ElectricGuitarInstrument
+
+- type: itemLoadout
+  id: BassGuitar
+  equipment: BassGuitar
+
+- type: startingGear
+  id: BassGuitar
+  storage:
+    back:
+    - BassGuitarInstrument
+
+- type: itemLoadout
+  id: RockGuitar
+  equipment: RockGuitar
+
+- type: startingGear
+  id: RockGuitar
+  storage:
+    back:
+    - RockGuitarInstrument
+
+- type: itemLoadout
+  id: AcousticGuitar
+  equipment: AcousticGuitar
+
+- type: startingGear
+  id: AcousticGuitar
+  storage:
+    back:
+    - AcousticGuitarInstrument
+
+- type: itemLoadout
+  id: Banjo
+  equipment: Banjo
+
+- type: startingGear
+  id: Banjo
+  storage:
+    back:
+    - BanjoInstrument
+
+- type: itemLoadout
+  id: Violin
+  equipment: Violin
+
+- type: startingGear
+  id: Violin
+  storage:
+    back:
+    - ViolinInstrument
+
+- type: itemLoadout
+  id: Viola
+  equipment: Viola
+
+- type: startingGear
+  id: Viola
+  storage:
+    back:
+    - ViolaInstrument
+
+- type: itemLoadout
+  id: Cello
+  equipment: Cello
+
+- type: startingGear
+  id: Cello
+  storage:
+    back:
+    - CelloInstrument
+
+- type: itemLoadout
+  id: Trumpet
+  equipment: Trumpet
+
+- type: startingGear
+  id: Trumpet
+  storage:
+    back:
+    - TrumpetInstrument
+
+- type: itemLoadout
+  id: Trombone
+  equipment: Trombone
+
+- type: startingGear
+  id: Trombone
+  storage:
+    back:
+    - TromboneInstrument
+
+- type: itemLoadout
+  id: FrenchHorn
+  equipment: FrenchHorn
+
+- type: startingGear
+  id: FrenchHorn
+  storage:
+    back:
+    - FrenchHornInstrument
+
+- type: itemLoadout
+  id: Euphonium
+  equipment: Euphonium
+
+- type: startingGear
+  id: Euphonium
+  storage:
+    back:
+    - EuphoniumInstrument
+
+- type: itemLoadout
+  id: Saxophone
+  equipment: Saxophone
+
+- type: startingGear
+  id: Saxophone
+  storage:
+    back:
+    - SaxophoneInstrument
+
+- type: itemLoadout
+  id: Accordion
+  equipment: Accordion
+
+- type: startingGear
+  id: Accordion
+  storage:
+    back:
+    - AccordionInstrument
+
+- type: itemLoadout
+  id: Harmonica
+  equipment: Harmonica
+
+- type: startingGear
+  id: Harmonica
+  storage:
+    back:
+    - HarmonicaInstrument
+
+- type: itemLoadout
+  id: Clarinet
+  equipment: Clarinet
+
+- type: startingGear
+  id: Clarinet
+  storage:
+    back:
+    - ClarinetInstrument
+
+- type: itemLoadout
+  id: Flute
+  equipment: Flute
+
+- type: startingGear
+  id: Flute
+  storage:
+    back:
+    - FluteInstrument
+
+- type: itemLoadout
+  id: Recorder
+  equipment: Recorder
+
+- type: startingGear
+  id: Recorder
+  storage:
+    back:
+    - RecorderInstrument
+
+- type: itemLoadout
+  id: PanFlute
+  equipment: PanFlute
+
+- type: startingGear
+  id: PanFlute
+  storage:
+    back:
+    - PanFluteInstrument
+
+- type: itemLoadout
+  id: Ocarina
+  equipment: Ocarina
+
+- type: startingGear
+  id: Ocarina
+  storage:
+    back:
+    - OcarinaInstrument
+
+- type: itemLoadout
+  id: Bagpipe
+  equipment: Bagpipe
+
+- type: startingGear
+  id: Bagpipe
+  storage:
+    back:
+    - BagpipeInstrument

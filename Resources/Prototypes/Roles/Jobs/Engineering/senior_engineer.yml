@@ -28,15 +28,3 @@
 
 - type: startingGear
   id: SeniorEngineerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSeniorEngineer
-    back: ClothingBackpackEngineeringFilled
-    shoes: ClothingShoesBootsMag
-    id: SeniorEngineerPDA
-    ears: ClothingHeadsetEngineering
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtSeniorEngineer
-  satchel: ClothingBackpackSatchelEngineeringFilled
-  duffelbag: ClothingBackpackDuffelEngineeringFilled

@@ -1,0 +1,196 @@
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorPhysician
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChemist
+      time: 21600 #6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalDoctor
+      time: 21600 #6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 216000 # 60 hrs
+
+# Head
+- type: itemLoadout
+  id: MedicalBeret
+  equipment: MedicalBeret
+
+- type: startingGear
+  id: MedicalBeret
+  equipment:
+    head: ClothingHeadHatBeretMedic
+
+- type: itemLoadout
+  id: BlueSurgeryCap
+  equipment: BlueSurgeryCap
+
+- type: startingGear
+  id: BlueSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapBlue
+
+- type: itemLoadout
+  id: GreenSurgeryCap
+  equipment: GreenSurgeryCap
+
+- type: startingGear
+  id: GreenSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapGreen
+
+- type: itemLoadout
+  id: PurpleSurgeryCap
+  equipment: PurpleSurgeryCap
+
+- type: startingGear
+  id: PurpleSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapPurple
+
+# Jumpsuit
+- type: itemLoadout
+  id: MedicalDoctorJumpsuit
+  equipment: MedicalDoctorJumpsuit
+
+- type: startingGear
+  id: MedicalDoctorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+
+- type: itemLoadout
+  id: MedicalDoctorJumpskirt
+  equipment: MedicalDoctorJumpskirt
+
+- type: startingGear
+  id: MedicalDoctorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMedicalDoctor
+
+- type: itemLoadout
+  id: SeniorPhysicianJumpsuit
+  equipment: SeniorPhysicianJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+
+- type: startingGear
+  id: SeniorPhysicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+
+- type: itemLoadout
+  id: SeniorPhysicianJumpskirt
+  equipment: SeniorPhysicianJumpskirt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+
+- type: startingGear
+  id: SeniorPhysicianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+
+- type: itemLoadout
+  id: MedicalBlueScrubs
+  equipment: MedicalBlueScrubs
+
+- type: startingGear
+  id: MedicalBlueScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorBlue
+
+- type: itemLoadout
+  id: MedicalGreenScrubs
+  equipment: MedicalGreenScrubs
+
+- type: startingGear
+  id: MedicalGreenScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorGreen
+
+- type: itemLoadout
+  id: MedicalPurpleScrubs
+  equipment: MedicalPurpleScrubs
+
+- type: startingGear
+  id: MedicalPurpleScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorPurple
+
+# Back
+- type: itemLoadout
+  id: MedicalDoctorBackpack
+  equipment: MedicalDoctorBackpack
+
+- type: startingGear
+  id: MedicalDoctorBackpack
+  equipment:
+    back: ClothingBackpackMedicalFilled
+
+- type: itemLoadout
+  id: MedicalDoctorSatchel
+  equipment: MedicalDoctorSatchel
+
+- type: startingGear
+  id: MedicalDoctorSatchel
+  equipment:
+    back: ClothingBackpackSatchelMedicalFilled
+
+- type: itemLoadout
+  id: MedicalDoctorDuffel
+  equipment: MedicalDoctorDuffel
+
+- type: startingGear
+  id: MedicalDoctorDuffel
+  equipment:
+    back: ClothingBackpackDuffelMedicalFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: MedicalDoctorWintercoat
+  equipment: MedicalDoctorWintercoat
+
+- type: startingGear
+  id: MedicalDoctorWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterMed
+
+- type: itemLoadout
+  id: SeniorPhysicianLabCoat
+  equipment: SeniorPhysicianLabCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+
+- type: startingGear
+  id: SeniorPhysicianLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorPhysician
+
+# Shoes
+- type: itemLoadout
+  id: MedicalWinterBoots
+  equipment: MedicalWinterBoots
+
+- type: startingGear
+  id: MedicalWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterMed
+
+# ID
+- type: itemLoadout
+  id: MedicalDoctorPDA
+  equipment: MedicalDoctorPDA
+
+- type: startingGear
+  id: MedicalDoctorPDA
+  equipment:
+    id: MedicalPDA

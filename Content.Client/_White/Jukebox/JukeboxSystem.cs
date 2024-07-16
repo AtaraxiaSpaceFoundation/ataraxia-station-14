@@ -25,7 +25,7 @@ public sealed class JukeboxSystem : EntitySystem
 
     private const CollisionGroup CollisionMask = CollisionGroup.Impassable;
 
-    private readonly Dictionary<JukeboxComponent, JukeboxAudio> _playingJukeboxes = new();
+    private readonly Dictionary<WhiteJukeboxComponent, JukeboxAudio> _playingJukeboxes = new();
 
     private float _jukeboxVolume;
 
@@ -35,7 +35,7 @@ public sealed class JukeboxSystem : EntitySystem
 
         _cfg.OnValueChanged(WhiteCVars.JukeboxVolume, JukeboxVolumeChanged, true);
 
-        SubscribeLocalEvent<JukeboxComponent, ComponentRemove>(OnComponentRemoved);
+        SubscribeLocalEvent<WhiteJukeboxComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeNetworkEvent<TickerJoinLobbyEvent>(JoinLobby);
         SubscribeNetworkEvent<JukeboxStopPlaying>(OnStopPlaying);
@@ -57,7 +57,7 @@ public sealed class JukeboxSystem : EntitySystem
         CleanUp();
     }
 
-    private void OnComponentRemoved(EntityUid uid, JukeboxComponent component, ComponentRemove args)
+    private void OnComponentRemoved(EntityUid uid, WhiteJukeboxComponent component, ComponentRemove args)
     {
         if (!_playingJukeboxes.TryGetValue(component, out var playingData)) return;
 
@@ -68,7 +68,7 @@ public sealed class JukeboxSystem : EntitySystem
     private void OnStopPlaying(JukeboxStopPlaying ev)
     {
         if (!ev.JukeboxUid.HasValue) return;
-        if (!TryComp<JukeboxComponent>(GetEntity(ev.JukeboxUid), out var jukeboxComponent)) return;
+        if (!TryComp<WhiteJukeboxComponent>(GetEntity(ev.JukeboxUid), out var jukeboxComponent)) return;
 
         if (!_playingJukeboxes.TryGetValue(jukeboxComponent, out var jukeboxAudio)) return;
 
@@ -76,7 +76,7 @@ public sealed class JukeboxSystem : EntitySystem
         _playingJukeboxes.Remove(jukeboxComponent);
     }
 
-    public void RequestSongToPlay(EntityUid jukebox, JukeboxComponent component, JukeboxSong jukeboxSong)
+    public void RequestSongToPlay(EntityUid jukebox, WhiteJukeboxComponent component, JukeboxSong jukeboxSong)
     {
         if (!_resource.TryGetResource<AudioResource>((ResPath) jukeboxSong.SongPath!, out var songResource))
         {
@@ -108,7 +108,7 @@ public sealed class JukeboxSystem : EntitySystem
 
     private void ProcessJukeboxes()
     {
-        var jukeboxes = EntityQueryEnumerator<JukeboxComponent, TransformComponent>();
+        var jukeboxes = EntityQueryEnumerator<WhiteJukeboxComponent, TransformComponent>();
         var player = _playerManager.LocalEntity!.Value;
         var playerXform = Comp<TransformComponent>(player);
 
@@ -173,7 +173,7 @@ public sealed class JukeboxSystem : EntitySystem
     private void SetRolloffAndOcclusion(
         EntityUid player,
         EntityUid jukebox,
-        JukeboxComponent jukeboxComponent,
+        WhiteJukeboxComponent jukeboxComponent,
         JukeboxAudio jukeboxAudio)
     {
         var jukeboxWorldPosition = _transform.GetWorldPosition(jukebox);
@@ -197,7 +197,7 @@ public sealed class JukeboxSystem : EntitySystem
         EntityUid jukebox,
         EntityUid player,
         JukeboxAudio jukeboxAudio,
-        JukeboxComponent jukeboxComponent)
+        WhiteJukeboxComponent jukeboxComponent)
     {
         jukeboxAudio.PlayingStream.StopPlaying();
 
@@ -221,7 +221,7 @@ public sealed class JukeboxSystem : EntitySystem
         EntityUid jukebox,
         EntityUid player,
         JukeboxAudio jukeboxAudio,
-        JukeboxComponent jukeboxComponent)
+        WhiteJukeboxComponent jukeboxComponent)
     {
         if (!jukeboxComponent.Playing)
         {
@@ -247,7 +247,7 @@ public sealed class JukeboxSystem : EntitySystem
         }
     }
 
-    private JukeboxAudio? TryCreateStream(EntityUid jukebox, EntityUid player, JukeboxComponent jukeboxComponent)
+    private JukeboxAudio? TryCreateStream(EntityUid jukebox, EntityUid player, WhiteJukeboxComponent jukeboxComponent)
     {
         if (jukeboxComponent.PlayingSongData == null) return null!;
 

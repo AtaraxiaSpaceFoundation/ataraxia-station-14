@@ -27,11 +27,10 @@ using Content.Server._White.Reputation;
 using Content.Server._White.Sponsors;
 using Content.Server._White.Stalin;
 using Content.Server._White.TTS;
-using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
-using Robust.Server.Player;
+using Content.Shared.Players.PlayTimeTracking;
 
 namespace Content.Server.IoC
 {
@@ -62,18 +61,14 @@ namespace Content.Server.IoC
             IoCManager.Register<GhostKickManager>();
             IoCManager.Register<ISharedAdminLogManager, AdminLogManager>();
             IoCManager.Register<IAdminLogManager, AdminLogManager>();
-
-            #if FULL_RELEASE
-            IoCManager.Register<IPlayTimeTrackingManager, GlobalPlayTimeTrackingManager>();
-            #else
-            IoCManager.Register<IPlayTimeTrackingManager, PlayTimeTrackingManager>();
-            #endif
-
+            IoCManager.Register<PlayTimeTrackingManager>();
             IoCManager.Register<UserDbDataManager>();
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
             IoCManager.Register<ServerDbEntryManager>();
+            IoCManager.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
+            IoCManager.Register<IPlayTimeTrackingManager, GlobalPlayTimeTrackingManager>();
 
             // WD-EDIT
             IoCManager.Register<SponsorsManager>();

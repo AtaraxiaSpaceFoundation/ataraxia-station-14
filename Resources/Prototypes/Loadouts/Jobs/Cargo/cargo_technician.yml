@@ -1,0 +1,86 @@
+# Head
+- type: itemLoadout
+  id: CargoTechnicianHead
+  equipment: CargoTechnicianHead
+
+- type: startingGear
+  id: CargoTechnicianHead
+  equipment:
+    head: ClothingHeadHatCargosoft
+
+# Jumpsuit
+- type: itemLoadout
+  id: CargoTechnicianJumpsuit
+  equipment: CargoTechnicianJumpsuit
+
+- type: startingGear
+  id: CargoTechnicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargo
+
+- type: itemLoadout
+  id: CargoTechnicianJumpskirt
+  equipment: CargoTechnicianJumpskirt
+
+- type: startingGear
+  id: CargoTechnicianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCargo
+
+# Back
+- type: itemLoadout
+  id: CargoTechnicianBackpack
+  equipment: CargoTechnicianBackpack
+
+- type: startingGear
+  id: CargoTechnicianBackpack
+  equipment:
+    back: ClothingBackpackCargoFilled
+
+- type: itemLoadout
+  id: CargoTechnicianSatchel
+  equipment: CargoTechnicianSatchel
+
+- type: startingGear
+  id: CargoTechnicianSatchel
+  equipment:
+    back: ClothingBackpackSatchelCargoFilled
+
+- type: itemLoadout
+  id: CargoTechnicianDuffel
+  equipment: CargoTechnicianDuffel
+
+- type: startingGear
+  id: CargoTechnicianDuffel
+  equipment:
+    back: ClothingBackpackDuffelCargoFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: CargoTechnicianWintercoat
+  equipment: CargoTechnicianWintercoat
+
+- type: startingGear
+  id: CargoTechnicianWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCargo
+
+# Shoes
+- type: itemLoadout
+  id: CargoWinterBoots
+  equipment: CargoWinterBoots
+
+- type: startingGear
+  id: CargoWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterCargo
+
+# PDA
+
+- type: itemLoadout
+  id: CargoPDA
+  equipment: CargoPDA
+- type: startingGear
+  id: CargoPDA
+  equipment:
+    id: CargoPDA

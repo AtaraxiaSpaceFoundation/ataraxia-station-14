@@ -1,0 +1,140 @@
+﻿# Timers
+- type: loadoutEffectGroup # WD
+  id: MercenaryLoadoutTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 54000 # 15 hours
+
+# Head
+
+- type: itemLoadout # WD
+  id: MercenaryBand
+  equipment: MercenaryBand
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryBand
+  equipment:
+    head: ClothingHeadBandMerc
+
+- type: itemLoadout # WD
+  id: MercenaryBeret
+  equipment: MercenaryBeret
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryBeret
+  equipment:
+    head: ClothingHeadHatBeretMerc
+
+# Eyes
+
+- type: itemLoadout # WD
+  id: MercenaryGlasses
+  equipment: MercenaryGlasses
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryGlasses
+  equipment:
+    eyes: ClothingEyesGlassesMercenaryMeaty
+
+# Mask
+
+- type: itemLoadout # WD
+  id: MercenaryMask
+  equipment: MercenaryMask
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryMask
+  equipment:
+    mask: ClothingMaskBandMerc
+
+- type: itemLoadout # WD
+  id: MercenaryMaskGas
+  equipment: MercenaryMaskGas
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryMaskGas
+  equipment:
+    mask: ClothingMaskGasMerc
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: MercenaryJumpsuit
+  equipment: MercenaryJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+
+# Gloves
+
+- type: itemLoadout # WD
+  id: MercenaryGlovesFingerless
+  equipment: MercenaryGlovesFingerless
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryGlovesFingerless
+  equipment:
+    gloves: ClothingHandsGlovesMercFingerless
+
+# Shoes
+
+- type: itemLoadout # WD
+  id: MercenaryBoots
+  equipment: MercenaryBoots
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryBoots
+  equipment:
+    shoes: ClothingShoesBootsMerc
+
+- type: itemLoadout # WD
+  id: ShoesColorBrown
+  equipment: ShoesColorBrown
+- type: startingGear
+  id: ShoesColorBrown
+  equipment:
+    shoes: ClothingShoesColorBrown
+
+# Backpack
+
+- type: itemLoadout # WD
+  id: MercenaryBackpack
+  equipment: MercenaryBackpack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MercenaryLoadoutTimer
+- type: startingGear
+  id: MercenaryBackpack
+  equipment:
+    back: ClothingBackpackMerc
+
+# Ears
+
+- type: itemLoadout # WD
+  id: CargoHeadset
+  equipment: CargoHeadset
+- type: startingGear
+  id: CargoHeadset
+  equipment:
+    ears: ClothingHeadsetCargo

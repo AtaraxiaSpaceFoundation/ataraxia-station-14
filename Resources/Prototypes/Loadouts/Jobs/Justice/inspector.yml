@@ -1,0 +1,193 @@
+﻿# Head
+
+- type: itemLoadout # WD
+  id: InspectorCap
+  equipment: InspectorCap
+- type: startingGear
+  id: InspectorCap
+  equipment:
+    head: ClothingHeadCapInspector
+
+- type: itemLoadout # WD
+  id: InspectorHat
+  equipment: InspectorHat
+- type: startingGear
+  id: InspectorHat
+  equipment:
+    head: ClothingHeadHatInspector
+
+# Eyes
+
+- type: itemLoadout # WD
+  id: InspectorGlasses
+  equipment: InspectorGlasses
+- type: startingGear
+  id: InspectorGlasses
+  equipment:
+    eyes: ClothingEyesGlassesInspector
+
+# Mask
+
+- type: itemLoadout # WD
+  id: InspectorMask
+  equipment: InspectorMask
+- type: startingGear
+  id: InspectorMask
+  equipment:
+    mask: ClothingMaskInspector
+
+# Neck
+
+- type: itemLoadout # WD
+  id: InspectorCloak
+  equipment: InspectorCloak
+- type: startingGear
+  id: InspectorCloak
+  equipment:
+    neck: ClothingNeckCloakInspector
+
+- type: itemLoadout # WD
+  id: InspectorMantle
+  equipment: InspectorMantle
+- type: startingGear
+  id: InspectorMantle
+  equipment:
+    neck: ClothingNeckMantleInspector
+
+- type: itemLoadout # WD
+  id: InspectorMedal
+  equipment: InspectorMedal
+- type: startingGear
+  id: InspectorMedal
+  equipment:
+    neck: ClothingNeckInspectorbadge
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: InspectorJumpsuitFormal
+  equipment: InspectorJumpsuitFormal
+- type: startingGear
+  id: InspectorJumpsuitFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteInspectorFormal
+
+- type: itemLoadout # WD
+  id: InspectorJumpsuit
+  equipment: InspectorJumpsuit
+- type: startingGear
+  id: InspectorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteInspector
+
+- type: itemLoadout # WD
+  id: InspectorJumpskirt
+  equipment: InspectorJumpskirt
+- type: startingGear
+  id: InspectorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtInspector
+
+# Outerclothing
+
+- type: itemLoadout # WD
+  id: InspectorJacket
+  equipment: InspectorJacket
+- type: startingGear
+  id: InspectorJacket
+  equipment:
+    outerClothing: ClothingOuterJacketInspector
+
+- type: itemLoadout # WD
+  id: InspectorOuterWinter
+  equipment: InspectorOuterWinter
+- type: startingGear
+  id: InspectorOuterWinter
+  equipment:
+    outerClothing: ClothingOuterWinterInspector
+
+- type: itemLoadout # WD
+  id: InspectorCoat
+  equipment: InspectorCoat
+- type: startingGear
+  id: InspectorCoat
+  equipment:
+    outerClothing: ClothingOuterOverCoatInspector
+
+- type: itemLoadout # WD
+  id: InspectorTrench
+  equipment: InspectorTrench
+- type: startingGear
+  id: InspectorTrench
+  equipment:
+    outerClothing: ClothingOuterTrenchCoatInspector
+
+# Back
+
+- type: itemLoadout # WD
+  id: InspectorSatchel
+  equipment: InspectorSatchel
+- type: startingGear
+  id: InspectorSatchel
+  equipment:
+    back: ClothingBackpackSatchelInspector
+
+# Gloves
+
+- type: itemLoadout # WD
+  id: InspectorGloves
+  equipment: InspectorGloves
+- type: startingGear
+  id: InspectorGloves
+  equipment:
+    gloves: ClothingHandsGlovesInspector
+
+# Shoes
+
+- type: itemLoadout # WD
+  id: InspectorBoots
+  equipment: InspectorBoots
+- type: startingGear
+  id: InspectorBoots
+  equipment:
+    shoes: ClothingShoesBootsInspector
+
+# PDA
+
+- type: itemLoadout # WD
+  id: InspectorPDA
+  equipment: InspectorPDA
+- type: startingGear
+  id: InspectorPDA
+  equipment:
+    id: InspectorPDA
+
+# Job trinkets
+
+- type: itemLoadout # WD
+  id: InspectorFlask
+  equipment: InspectorFlask
+- type: startingGear
+  id: InspectorFlask
+  storage:
+    back:
+    - DrinkDetFlask
+
+- type: itemLoadout # WD
+  id: InspectorStamp
+  equipment: InspectorStamp
+- type: startingGear
+  id: InspectorStamp
+  storage:
+    back:
+    - RubberStampInspector
+
+# Inhand
+
+- type: itemLoadout # WD
+  id: InspectorBriefcaseInhand
+  equipment: InspectorBriefcaseInhand
+- type: startingGear
+  id: InspectorBriefcaseInhand
+  inhand:
+  - BriefcaseBrownFilled

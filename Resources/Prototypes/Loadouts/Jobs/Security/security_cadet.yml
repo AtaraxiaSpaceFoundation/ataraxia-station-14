@@ -1,0 +1,25 @@
+# Jumpsuit
+- type: itemLoadout
+  id: RedJumpsuit
+  equipment: RedJumpsuit
+- type: startingGear
+  id: RedJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+
+- type: itemLoadout
+  id: RedJumpskirt
+  equipment: RedJumpskirt
+- type: startingGear
+  id: RedJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorRed
+
+# id
+- type: itemLoadout
+  id: SecurityCadetPDA
+  equipment: SecurityCadetPDA
+- type: startingGear
+  id: SecurityCadetPDA
+  equipment:
+    id: SecurityCadetPDA

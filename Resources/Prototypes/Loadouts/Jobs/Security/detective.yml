@@ -1,0 +1,94 @@
+# Jumpsuit
+- type: itemLoadout
+  id: DetectiveJumpsuit
+  equipment: DetectiveJumpsuit
+
+- type: startingGear
+  id: DetectiveJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetective
+
+- type: itemLoadout
+  id: DetectiveJumpskirt
+  equipment: DetectiveJumpskirt
+
+- type: startingGear
+  id: DetectiveJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetective
+
+- type: itemLoadout
+  id: NoirJumpsuit
+  equipment: NoirJumpsuit
+
+- type: startingGear
+  id: NoirJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetectiveGrey
+
+- type: itemLoadout
+  id: NoirJumpskirt
+  equipment: NoirJumpskirt
+
+- type: startingGear
+  id: NoirJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetectiveGrey
+
+# Back
+- type: itemLoadout
+  id: DetectiveBackpack
+  equipment: DetectiveBackpack
+
+- type: startingGear
+  id: DetectiveBackpack
+  equipment:
+    back: ClothingBackpackSecurityFilledDetective
+
+- type: itemLoadout
+  id: DetectiveSatchel
+  equipment: DetectiveSatchel
+
+- type: startingGear
+  id: DetectiveSatchel
+  equipment:
+    back: ClothingBackpackSatchelSecurityFilledDetective
+
+- type: itemLoadout
+  id: DetectiveDuffel
+  equipment: DetectiveDuffel
+
+- type: startingGear
+  id: DetectiveDuffel
+  equipment:
+    back: ClothingBackpackDuffelSecurityFilledDetective
+
+# OuterClothing
+- type: itemLoadout
+  id: DetectiveArmorVest
+  equipment: DetectiveArmorVest
+
+- type: startingGear
+  id: DetectiveArmorVest
+  equipment:
+    outerClothing: ClothingOuterVestDetective
+
+- type: itemLoadout
+  id: DetectiveCoat
+  equipment: DetectiveCoat
+
+- type: startingGear
+  id: DetectiveCoat
+  equipment:
+    outerClothing: ClothingOuterCoatDetective
+
+
+# Gloves
+
+- type: itemLoadout
+  id: GlovesForensic
+  equipment: GlovesForensic
+- type: startingGear
+  id: GlovesForensic
+  equipment:
+    gloves: ClothingHandsGlovesForensic

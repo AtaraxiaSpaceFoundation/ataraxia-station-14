@@ -531,6 +531,9 @@
   id: DoorElectronics
 
 - type: Tag
+  id: DoorElectronicsConfigurator
+
+- type: Tag
   id: DrinkBottle
 
 - type: Tag

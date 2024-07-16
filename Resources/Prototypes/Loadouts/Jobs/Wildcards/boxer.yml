@@ -1,0 +1,75 @@
+# Jumpsuit
+- type: itemLoadout
+  id: BoxerShorts
+  equipment: BoxerShorts
+
+- type: startingGear
+  id: BoxerShorts
+  equipment:
+    jumpsuit: UniformShortsRed
+
+- type: itemLoadout
+  id: BoxerShortsWithTop
+  equipment: BoxerShortsWithTop
+
+- type: startingGear
+  id: BoxerShortsWithTop
+  equipment:
+    jumpsuit: UniformShortsRedWithTop
+
+# Gloves
+- type: itemLoadout
+  id: RedBoxingGloves
+  equipment: RedBoxingGloves
+
+- type: startingGear
+  id: RedBoxingGloves
+  equipment:
+    gloves: ClothingHandsGlovesBoxingRed
+
+- type: itemLoadout
+  id: BlueBoxingGloves
+  equipment: BlueBoxingGloves
+
+- type: startingGear
+  id: BlueBoxingGloves
+  equipment:
+    gloves: ClothingHandsGlovesBoxingBlue
+
+- type: itemLoadout
+  id: GreenBoxingGloves
+  equipment: GreenBoxingGloves
+
+- type: startingGear
+  id: GreenBoxingGloves
+  equipment:
+    gloves: ClothingHandsGlovesBoxingGreen
+
+- type: itemLoadout
+  id: YellowBoxingGloves
+  equipment: YellowBoxingGloves
+
+- type: startingGear
+  id: YellowBoxingGloves
+  equipment:
+    gloves: ClothingHandsGlovesBoxingYellow
+
+# Belt
+
+- type: itemLoadout
+  id: BoxerBelt
+  equipment: BoxerBelt
+- type: startingGear
+  id: BoxerBelt
+  equipment:
+    belt: ClothingBeltChampion
+
+# PDA
+
+- type: itemLoadout
+  id: BoxerPDA
+  equipment: BoxerPDA
+- type: startingGear
+  id: BoxerPDA
+  equipment:
+    id: BoxerPDA

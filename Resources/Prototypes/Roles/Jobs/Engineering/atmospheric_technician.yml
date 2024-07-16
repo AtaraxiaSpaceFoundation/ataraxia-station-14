@@ -19,15 +19,3 @@
 
 - type: startingGear
   id: AtmosphericTechnicianGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitAtmos
-    back: ClothingBackpackAtmosphericsFilled
-    shoes: ClothingShoesColorWhite
-    id: AtmosPDA
-    ears: ClothingHeadsetEngineering
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtAtmos
-  satchel: ClothingBackpackSatchelAtmosphericsFilled
-  duffelbag: ClothingBackpackDuffelAtmosphericsFilled

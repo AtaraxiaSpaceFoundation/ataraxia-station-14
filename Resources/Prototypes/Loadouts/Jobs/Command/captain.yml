@@ -1,0 +1,141 @@
+# Jumpsuit
+- type: itemLoadout
+  id: CaptainJumpsuit
+  equipment: CaptainJumpsuit
+
+- type: startingGear
+  id: CaptainJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+
+- type: itemLoadout
+  id: CaptainJumpskirt
+  equipment: CaptainJumpskirt
+
+- type: startingGear
+  id: CaptainJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCaptain
+
+- type: itemLoadout
+  id: CaptainFormalSuit
+  equipment: CaptainFormalSuit
+
+- type: startingGear
+  id: CaptainFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+
+- type: itemLoadout
+  id: CaptainFormalSkirt
+  equipment: CaptainFormalSkirt
+
+- type: startingGear
+  id: CaptainFormalSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCapFormalDress
+
+# Head
+- type: itemLoadout
+  id: CaptainHead
+  equipment: CaptainHead
+
+- type: startingGear
+  id: CaptainHead
+  equipment:
+    head: ClothingHeadHatCaptain
+
+- type: itemLoadout
+  id: CaptainCap
+  equipment: CaptainCap
+
+- type: startingGear
+  id: CaptainCap
+  equipment:
+    head: ClothingHeadHatCapcap
+
+# Neck
+- type: itemLoadout
+  id: CaptainCloak
+  equipment: CaptainCloak
+
+- type: startingGear
+  id: CaptainCloak
+  equipment:
+    neck: ClothingNeckCloakCap
+
+- type: itemLoadout
+  id: CaptainCloakFormal
+  equipment: CaptainCloakFormal
+
+- type: startingGear
+  id: CaptainCloakFormal
+  equipment:
+    neck: ClothingNeckCloakCapFormal
+
+- type: itemLoadout
+  id: CaptainMantle
+  equipment: CaptainMantle
+
+- type: startingGear
+  id: CaptainMantle
+  equipment:
+    neck: ClothingNeckMantleCap
+
+# Back
+- type: itemLoadout
+  id: CaptainBackpack
+  equipment: CaptainBackpack
+
+- type: startingGear
+  id: CaptainBackpack
+  equipment:
+    back: ClothingBackpackCaptainFilled
+
+- type: itemLoadout
+  id: CaptainSatchel
+  equipment: CaptainSatchel
+
+- type: startingGear
+  id: CaptainSatchel
+  equipment:
+    back: ClothingBackpackSatchelCaptainFilled
+
+- type: itemLoadout
+  id: CaptainDuffel
+  equipment: CaptainDuffel
+
+- type: startingGear
+  id: CaptainDuffel
+  equipment:
+    back: ClothingBackpackDuffelCaptainFilled
+
+# Outer clothing
+- type: itemLoadout
+  id: CaptainWintercoat
+  equipment: CaptainWintercoat
+
+- type: startingGear
+  id: CaptainWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCap
+
+# PDA
+
+- type: itemLoadout # WD
+  id: CaptainPDA
+  equipment: CaptainPDA
+- type: startingGear
+  id: CaptainPDA
+  equipment:
+    id: CaptainPDA
+
+# Ears
+- type: itemLoadout # WD
+  id: CaptainEars
+  equipment: CaptainEars
+
+- type: startingGear
+  id: CaptainEars
+  equipment:
+    id: ClothingHeadsetAltCommand

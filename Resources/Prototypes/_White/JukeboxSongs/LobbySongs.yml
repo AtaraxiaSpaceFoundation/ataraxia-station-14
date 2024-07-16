@@ -1,0 +1,85 @@
+﻿# Music from lobby for stationary jukebox
+
+- type: jukebox
+  id: SpaceOddity
+  name: Song - Space Oddity
+  path:
+    path: /Audio/Lobby/Songs/SpaceOddity.ogg
+
+- type: jukebox
+  id: SpaceAsshole
+  name: Song - Space Asshole
+  path:
+    path: /Audio/Lobby/Songs/SpaceAsshole.ogg
+
+- type: jukebox
+  id: SpaceShuttle
+  name: Song - Space Shuttle
+  path:
+    path: /Audio/Lobby/Songs/SpaceShuttle.ogg
+
+- type: jukebox
+  id: TheSettler
+  name: Song - The Settler
+  path:
+    path: /Audio/Lobby/Songs/TheSettler.ogg
+
+- type: jukebox
+  id: TheWizard
+  name: Song - The Wizard
+  path:
+    path: /Audio/Lobby/Songs/TheWizard.ogg
+
+- type: jukebox
+  id: CirclesAroundTheSun
+  name: Song - Circles Around The Sun
+  path:
+    path: /Audio/Lobby/Songs/CirclesAroundTheSun.ogg
+
+- type: jukebox
+  id: RetroFilk
+  name: Song - RetroFilk
+  path:
+    path: /Audio/Lobby/Songs/RetroFilk.ogg
+
+- type: jukebox
+  id: Thunderdome
+  name: Music - Thunderdome
+  path:
+    path: /Audio/Lobby/White/thunderdome.ogg
+
+- type: jukebox
+  id: Singuloose
+  name: Music - Singuloose
+  path:
+    path: /Audio/Lobby/White/singuloose.ogg
+
+- type: jukebox
+  id: LasersRipApartTheBulkhead
+  name: Music - Laser rip apart the bulkhead
+  path:
+    path: /Audio/Lobby/White/lasers_rip_apart_the_bulkhead.ogg
+
+- type: jukebox
+  id: EveryLightIsBlinkingAtOnce
+  name: Music - Every light is blinking at once
+  path:
+    path: /Audio/Lobby/White/every_light_is_blinking_at_once.ogg
+
+- type: jukebox
+  id: AtomicAmnesiaMMX
+  name: Music - Atomic amnesia mmx
+  path:
+    path: /Audio/Lobby/White/atomicamnesiammx.ogg
+
+- type: jukebox
+  id: SpacSpac
+  name: Music - Spac Spac
+  path:
+    path: /Audio/Lobby/White/Spac_Stac.ogg
+
+- type: jukebox
+  id: CometHaley
+  name: Music - Comet Haley
+  path:
+    path: /Audio/Lobby/White/comet_haley.ogg

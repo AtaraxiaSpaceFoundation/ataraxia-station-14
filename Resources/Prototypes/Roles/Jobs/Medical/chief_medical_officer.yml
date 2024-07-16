@@ -36,15 +36,3 @@
 
 - type: startingGear
   id: CMOGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCMO
-    back: ClothingBackpackCMOFilled
-    shoes: ClothingShoesColorBrown
-    id: CMOPDA
-    ears: ClothingHeadsetCMO
-    underwearb: ClothingUnderwearBottomBoxersCMO # White-Underwear
-  underweart: ClothingUnderwearTopBraCMO # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCMO # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtCMO
-  satchel: ClothingBackpackSatchelCMOFilled
-  duffelbag: ClothingBackpackDuffelCMOFilled

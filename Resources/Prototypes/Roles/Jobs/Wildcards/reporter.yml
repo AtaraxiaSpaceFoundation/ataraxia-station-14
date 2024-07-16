@@ -12,15 +12,3 @@
 
 - type: startingGear
   id: ReporterGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitReporter
-    back: ClothingBackpackFilled
-    shoes: ClothingShoesColorWhite
-    id: ReporterPDA
-    ears: ClothingHeadsetService
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraSports # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpsuitJournalist
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled

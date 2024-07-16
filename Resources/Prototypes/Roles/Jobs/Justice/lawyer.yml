@@ -20,17 +20,3 @@
 
 - type: startingGear
   id: LawyerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitLawyerBlack  # TODO change jumpsuit to randomiser of the 4 variants # ignoring this since loadouts are gonna be out soon
-    back: ClothingBackpackLawyerFilled 
-    shoes: ClothingShoesBootsLaceup
-    id: LawyerPDA
-    ears: ClothingHeadsetSecurity
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  inhand:
-    - BriefcaseBrownFilled
-  innerClothingSkirt: ClothingUniformJumpskirtLawyerBlack
-  satchel: ClothingBackpackSatchelLawyerFilled
-  duffelbag: ClothingBackpackDuffelLawyerFilled

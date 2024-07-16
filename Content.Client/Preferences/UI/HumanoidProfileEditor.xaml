@@ -1,7 +1,8 @@
 <Control xmlns="https://spacestation14.io"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:prefUi="clr-namespace:Content.Client.Preferences.UI"
-         xmlns:humanoid="clr-namespace:Content.Client.Humanoid">
+         xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
+         xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls">
     <BoxContainer Orientation="Horizontal">
         <!-- Left side -->
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Stretch" Margin="10 10 10 10">
@@ -135,20 +136,6 @@
                                         <BoxContainer HorizontalExpand="True">
                                             <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
                                             <Button Name="ShowClothes" Pressed="True" ToggleMode="True" Text="{Loc 'humanoid-profile-editor-clothing-show'}" HorizontalAlignment="Right" />
-                                        </BoxContainer>
-                                    </prefUi:HighlightedContainer>
-                                    <!-- Clothing -->
-                                    <prefUi:HighlightedContainer>
-                                        <BoxContainer Orientation="Horizontal">
-                                            <Label Text="{Loc 'humanoid-profile-editor-clothing-label'}" />
-                                            <OptionButton Name="CClothingButton" />
-                                        </BoxContainer>
-                                    </prefUi:HighlightedContainer>
-                                    <!-- Backpack -->
-                                    <prefUi:HighlightedContainer>
-                                        <BoxContainer Orientation="Horizontal">
-                                            <Label Text="{Loc 'humanoid-profile-editor-backpack-label'}" />
-                                            <OptionButton Name="CBackpackButton" />
                                         </BoxContainer>
                                     </prefUi:HighlightedContainer>
                                     <!-- Spawn Priority -->

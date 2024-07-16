@@ -1,0 +1,127 @@
+# Senior Time
+- type: loadoutEffectGroup
+  id: SeniorResearcher
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 216000 #60 hrs
+
+# Head
+
+- type: itemLoadout
+  id: ScientificBeret
+  equipment: ScientificBeret
+
+- type: startingGear
+  id: ScientificBeret
+  equipment:
+    head: ClothingHeadHatBeretRND
+
+# Neck
+
+- type: itemLoadout
+  id: ScientistTie
+  equipment: ScientistTie
+
+- type: startingGear
+  id: ScientistTie
+  equipment:
+    neck: ClothingNeckTieSci
+
+# Jumpsuit
+- type: itemLoadout
+  id: ScientistJumpsuit
+  equipment: ScientistJumpsuit
+
+- type: startingGear
+  id: ScientistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientist
+
+- type: itemLoadout
+  id: ScientistJumpskirt
+  equipment: ScientistJumpskirt
+
+- type: startingGear
+  id: ScientistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtScientist
+
+# Back
+- type: itemLoadout
+  id: ScientistBackpack
+  equipment: ScientistBackpack
+
+- type: startingGear
+  id: ScientistBackpack
+  equipment:
+    back: ClothingBackpackScienceFilled
+
+- type: itemLoadout
+  id: ScientistSatchel
+  equipment: ScientistSatchel
+
+- type: startingGear
+  id: ScientistSatchel
+  equipment:
+    back: ClothingBackpackSatchelScienceFilled
+
+- type: itemLoadout
+  id: ScientistDuffel
+  equipment: ScientistDuffel
+
+- type: startingGear
+  id: ScientistDuffel
+  equipment:
+    back: ClothingBackpackDuffelScienceFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: RegularLabCoat
+  equipment: RegularLabCoat
+
+- type: startingGear
+  id: RegularLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLab
+
+- type: itemLoadout
+  id: ScienceLabCoat
+  equipment: ScienceLabCoat
+
+- type: startingGear
+  id: ScienceLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatRnd
+
+- type: itemLoadout
+  id: ScienceWintercoat
+  equipment: ScienceWintercoat
+
+- type: startingGear
+  id: ScienceWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSci
+
+# Shoes
+- type: itemLoadout
+  id: ScienceWinterBoots
+  equipment: ScienceWinterBoots
+
+- type: startingGear
+  id: ScienceWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterSci
+
+# ID
+- type: itemLoadout
+  id: ScientistPDA
+  equipment: ScientistPDA
+
+- type: startingGear
+  id: ScientistPDA
+  equipment:
+    id: SciencePDA
+

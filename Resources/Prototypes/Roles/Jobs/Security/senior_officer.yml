@@ -35,15 +35,3 @@
 
 - type: startingGear
   id: SeniorOfficerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSeniorOfficer
-    back: ClothingBackpackSecurityFilled
-    shoes: ClothingShoesBootsCombatFilled
-    id: SeniorOfficerPDA
-    ears: ClothingHeadsetSecurity
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtSeniorOfficer
-  satchel: ClothingBackpackSatchelSecurityFilled
-  duffelbag: ClothingBackpackDuffelSecurityFilled

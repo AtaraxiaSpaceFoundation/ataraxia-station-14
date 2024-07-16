@@ -20,14 +20,3 @@
 
 - type: startingGear
   id: SalvageSpecialistGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
-    back: ClothingBackpackSalvageFilled
-    shoes: ClothingShoesBootsSalvage
-    id: SalvagePDA
-    ears: ClothingHeadsetCargo
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  satchel: ClothingBackpackSatchelSalvageFilled
-  duffelbag: ClothingBackpackDuffelSalvageFilled

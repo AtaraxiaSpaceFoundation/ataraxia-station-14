@@ -1,0 +1,114 @@
+# Jumpsuit
+- type: itemLoadout
+  id: ChiefMedicalOfficerJumpsuit
+  equipment: ChiefMedicalOfficerJumpsuit
+
+- type: startingGear
+  id: ChiefMedicalOfficerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMO
+
+- type: itemLoadout
+  id: ChiefMedicalOfficerJumpskirt
+  equipment: ChiefMedicalOfficerJumpskirt
+
+- type: startingGear
+  id: ChiefMedicalOfficerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMO
+
+# Head
+- type: itemLoadout
+  id: ChiefMedicalOfficerBeret
+  equipment: ChiefMedicalOfficerBeret
+
+- type: startingGear
+  id: ChiefMedicalOfficerBeret
+  equipment:
+    head: ClothingHeadHatBeretCmo
+
+# Neck
+- type: itemLoadout
+  id: ChiefMedicalOfficerCloak
+  equipment: ChiefMedicalOfficerCloak
+
+- type: startingGear
+  id: ChiefMedicalOfficerCloak
+  equipment:
+    neck: ClothingCloakCmo
+
+- type: itemLoadout
+  id: ChiefMedicalOfficerMantle
+  equipment: ChiefMedicalOfficerMantle
+
+- type: startingGear
+  id: ChiefMedicalOfficerMantle
+  equipment:
+    neck: ClothingNeckMantleCMO
+
+# Back
+- type: itemLoadout
+  id: ChiefMedicalOfficerBackpack
+  equipment: ChiefMedicalOfficerBackpack
+
+- type: startingGear
+  id: ChiefMedicalOfficerBackpack
+  equipment:
+    back: ClothingBackpackCMOFilled
+
+- type: itemLoadout
+  id: ChiefMedicalOfficerSatchel
+  equipment: ChiefMedicalOfficerSatchel
+
+- type: startingGear
+  id: ChiefMedicalOfficerSatchel
+  equipment:
+    back: ClothingBackpackSatchelCMOFilled
+
+- type: itemLoadout
+  id: ChiefMedicalOfficerDuffel
+  equipment: ChiefMedicalOfficerDuffel
+
+- type: startingGear
+  id: ChiefMedicalOfficerDuffel
+  equipment:
+    back: ClothingBackpackDuffelCMOFilled
+
+# Outer clothing
+- type: itemLoadout
+  id: ChiefMedicalOfficerLabCoat
+  equipment: ChiefMedicalOfficerLabCoat
+
+- type: startingGear
+  id: ChiefMedicalOfficerLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatLabCmo
+
+- type: itemLoadout
+  id: ChiefMedicalOfficerWintercoat
+  equipment: ChiefMedicalOfficerWintercoat
+
+- type: startingGear
+  id: ChiefMedicalOfficerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCMO
+
+# Ears
+
+- type: itemLoadout # WD
+  id: CMOHeadset
+  equipment: CMOHeadset
+- type: startingGear
+  id: CMOHeadset
+  equipment:
+    ears: ClothingHeadsetCMO
+
+# PDA
+
+- type: itemLoadout # WD
+  id: ChiefMedicalOfficerPDA
+  equipment: ChiefMedicalOfficerPDA
+- type: startingGear
+  id: ChiefMedicalOfficerPDA
+  equipment:
+    id: CMOPDA

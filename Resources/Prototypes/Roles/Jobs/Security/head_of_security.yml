@@ -41,16 +41,3 @@
 
 - type: startingGear
   id: HoSGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitHoS
-    back: ClothingBackpackHOSFilled
-    shoes: ClothingShoesBootsCombatFilled
-    id: HoSPDA
-    ears: ClothingHeadsetAltSecurity
-    pocket1: WeaponPistolMk58Nonlethal
-    underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
-  underweart: ClothingUnderwearTopBraHOS # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtHoS
-  satchel: ClothingBackpackSatchelHOSFilled
-  duffelbag: ClothingBackpackDuffelHOSFilled

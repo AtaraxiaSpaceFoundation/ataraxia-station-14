@@ -27,15 +27,3 @@
 
 - type: startingGear
   id: DetectiveGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitDetective
-    back: ClothingBackpackSecurityFilledDetective
-    shoes: ClothingShoesBootsCombatFilled
-    id: DetectivePDA
-    ears: ClothingHeadsetSecurity
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraSportsAlternative # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtDetective
-  satchel: ClothingBackpackSatchelSecurityFilledDetective
-  duffelbag: ClothingBackpackDuffelSecurityFilledDetective

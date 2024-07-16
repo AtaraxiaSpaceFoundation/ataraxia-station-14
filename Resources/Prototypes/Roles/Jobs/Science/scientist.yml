@@ -16,15 +16,3 @@
 
 - type: startingGear
   id: ScientistGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitScientist
-    back: ClothingBackpackScienceFilled
-    shoes: ClothingShoesColorWhite
-    id: SciencePDA
-    ears: ClothingHeadsetScience
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtScientist
-  satchel: ClothingBackpackSatchelScienceFilled
-  duffelbag: ClothingBackpackDuffelScienceFilled

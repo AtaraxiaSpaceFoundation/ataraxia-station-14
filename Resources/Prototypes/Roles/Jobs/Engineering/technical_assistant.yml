@@ -21,16 +21,3 @@
 
 - type: startingGear
   id: TechnicalAssistantGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorYellow
-    back: ClothingBackpackEngineeringFilled
-    shoes: ClothingShoesBootsWork
-    id: TechnicalAssistantPDA
-    ears: ClothingHeadsetEngineering
-    pocket1: BookEngineersHandbook
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtColorYellow
-  satchel: ClothingBackpackSatchelEngineeringFilled
-  duffelbag: ClothingBackpackDuffelEngineeringFilled
