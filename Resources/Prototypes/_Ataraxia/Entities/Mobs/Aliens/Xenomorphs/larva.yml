@@ -14,6 +14,8 @@
     allowMovement: true
     name: ghost-role-information-alien-larva-name
     description: ghost-role-information-alien-larva-inside-description
+    raffle:
+      settings: default
 
 - type: entity
   parent: MobAlienLarva
@@ -31,7 +33,7 @@
           state: larva1
       noMovementLayers:
         movement:
-          state: larva1_cuff
+          state: larva1_idle
     - type: DamageStateVisuals
       states:
         Alive:
@@ -70,7 +72,7 @@
           state: larva2
       noMovementLayers:
         movement:
-          state: larva2_cuff
+          state: larva2_idle
     - type: DamageStateVisuals
       states:
         Alive:

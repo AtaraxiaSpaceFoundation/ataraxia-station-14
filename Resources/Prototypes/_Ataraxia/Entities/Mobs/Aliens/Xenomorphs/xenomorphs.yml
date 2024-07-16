@@ -86,9 +86,6 @@
         visible: false
   - type: Alien
     caste: sentinel
-  - type: AcidMaker
-    action: ActionMakeAcid
-    entityProduced: AlienAcid
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -271,7 +268,7 @@
   parent: MobAlienBase
   id: MobAlienPraetorianBase
   abstract: true
-  name: Alien praetorian
+  name: alien praetorian
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/praetorian.rsi
@@ -287,6 +284,9 @@
         visible: false
   - type: Alien
     caste: praetorian
+  - type: Inventory
+    templateId: alien_praetorian
+    speciesId: alien_praetorian
   - type: AcidMaker
     action: ActionMakeAcid
     entityProduced: AlienAcid
@@ -380,7 +380,7 @@
   parent: MobAlienBase
   id: MobAlienQueenBase
   abstract: true
-  name: Alien queen
+  name: alien queen
   components:
   - type: Sprite
     sprite: Ataraxia/Mobs/Aliens/Xenos/queen.rsi
@@ -396,6 +396,9 @@
         visible: false
   - type: Alien
     caste: queen
+  - type: Inventory
+    templateId: alien_queen
+    speciesId: alien_queen
   - type: Fixtures
     fixtures:
       fix1:
@@ -446,6 +449,19 @@
     plasmaCost: 50
     entityProduced: AlienAcid
     action: ActionMakeAcid
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+  - type: BasicEntityAmmoProvider
+    proto: BulletAcidSentinel
+    capacity: 1
+    count: 1
+  - type: Gun
+    fireRate: 0.25
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
   - type: AlienQueen
     action: ActionAlienRoyalLarva
   - type: Speech
