@@ -126986,11 +126986,6 @@ entities:
       parent: 2
 - proto: PottedPlant21
   entities:
-  - uid: 8708
-    components:
-    - type: Transform
-      pos: 27.5,0.5
-      parent: 2
   - uid: 16543
     components:
     - type: Transform
