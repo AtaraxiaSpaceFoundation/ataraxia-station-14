@@ -1,0 +1,13 @@
+- type: dataset
+  id: WizardHairColor
+  values:
+    - "#B5B8B1"
+    - "#4E5754"
+    - "#A5A5A5"
+    - "#676767"
+    - "#CDCDCD"
+    - "#CCCCCC"
+    - "#7C7C7C"
+    - "#747474"
+    - "#6E6E6E"
+    - "#8F8F8F"

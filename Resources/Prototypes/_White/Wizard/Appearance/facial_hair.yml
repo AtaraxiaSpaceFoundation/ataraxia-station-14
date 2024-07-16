@@ -1,0 +1,13 @@
+- type: dataset
+  id: WizardFacialHair
+  values:
+    - HumanFacialHairLongbeard
+    - HumanFacialHairMoonshiner
+    - HumanFacialHairVandyke
+    - HumanFacialHairMartialartist
+    - HumanFacialHairMutton
+    - HumanFacialHairLongbeard
+    - HumanFacialHairDwarf
+    - HumanFacialHairWise
+    - HumanFacialHairWatson
+    - HumanFacialHairChinlessbeard

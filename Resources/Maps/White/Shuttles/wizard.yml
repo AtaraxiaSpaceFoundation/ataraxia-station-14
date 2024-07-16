@@ -23,24 +23,12 @@ tilemap:
 entities:
 - proto: ""
   entities:
-  - uid: 1
-    components:
-    - type: MetaData
-      name: map 2
-    - type: Transform
-    - type: Map
-    - type: PhysicsMap
-    - type: GridTree
-    - type: MovedGrids
-    - type: Broadphase
-    - type: OccluderTree
-    - type: LoadedMap
   - uid: 2
     components:
     - type: MetaData
     - type: Transform
       pos: 0.3842575,0.4217209
-      parent: 1
+      parent: invalid
     - type: MapGrid
       chunks:
         -1,-1:
@@ -3093,6 +3081,23 @@ entities:
     - type: Transform
       pos: -9.508206,-3.3199291
       parent: 2
+- proto: MagicMirror
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+      pos: 2.5,-8.5
+      parent: 2
+  - uid: 449
+    components:
+    - type: Transform
+      pos: -2.5,1.5
+      parent: 2
+  - uid: 450
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 2
 - proto: MedkitAdvancedFilled
   entities:
   - uid: 447
@@ -3106,23 +3111,6 @@ entities:
     components:
     - type: Transform
       pos: -2.3338752,-0.5901818
-      parent: 2
-- proto: Mirror
-  entities:
-  - uid: 449
-    components:
-    - type: Transform
-      pos: 2.5,-8.5
-      parent: 2
-  - uid: 450
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 2
-  - uid: 451
-    components:
-    - type: Transform
-      pos: -2.5,1.5
       parent: 2
 - proto: NitrogenCanister
   entities:

@@ -1,0 +1,85 @@
+﻿<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:prefUi="clr-namespace:Content.Client.Preferences.UI"
+               xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
+               Title="{Loc 'magic-mirror-window-title'}"
+               MinSize="600 400">
+    <ScrollContainer VerticalExpand="True">
+        <BoxContainer Orientation="Vertical">
+            <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+                <Label Text="{Loc 'humanoid-profile-editor-name-label'}" />
+                <LineEdit Name="CNameEdit" MinSize="200 0" VerticalAlignment="Center" Margin="5 0 0 0" />
+                <Button Name="CSaveButton" Text="{Loc 'humanoid-profile-editor-save-button'}" HorizontalAlignment="Center" Margin="5 0 0 0"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+                <!-- Sex -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-sex-label'}" />
+                        <OptionButton Name="CSexButton" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+                <!-- Body Type -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-body-type-label'}"></Label>
+                        <OptionButton Name="CBodyTypesButton" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+                <!-- Age -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-age-label'}" />
+                        <LineEdit Name="CAgeEdit" MinSize="40 0" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+                <!-- Gender -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-pronouns-label'}" />
+                        <OptionButton Name="CPronounsButton" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+                <!-- Voice -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-voice-label'}" />
+                        <OptionButton Name="CVoiceButton" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+                <!-- Species -->
+                <prefUi:HighlightedContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="{Loc 'humanoid-profile-editor-species-label'}" />
+                        <Control HorizontalExpand="True"/>
+                        <OptionButton Name="CSpeciesButton" />
+                    </BoxContainer>
+                </prefUi:HighlightedContainer>
+            </BoxContainer>
+            <!-- Skin -->
+            <prefUi:HighlightedContainer>
+                <BoxContainer HorizontalExpand="True" Orientation="Vertical">
+                    <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />
+                    <Slider HorizontalExpand="True" Name="CSkin" MinValue="0" MaxValue="100" Value="20" />
+                    <BoxContainer Name="CRgbSkinColorContainer" Visible="False" Orientation="Vertical" HorizontalExpand="True"></BoxContainer>
+                </BoxContainer>
+            </prefUi:HighlightedContainer>
+            <!-- Eyes -->
+            <prefUi:HighlightedContainer>
+                <BoxContainer Orientation="Vertical">
+                    <Label Text="{Loc 'humanoid-profile-editor-eyes-label'}" />
+                    <humanoid:EyeColorPicker Name="CEyeColorPicker" />
+                </BoxContainer>
+            </prefUi:HighlightedContainer>
+            <!-- Hair -->
+            <prefUi:HighlightedContainer>
+                <BoxContainer Orientation="Horizontal">
+                    <humanoid:SingleMarkingPicker Name="CHairStylePicker" Category="Hair" />
+                    <humanoid:SingleMarkingPicker Name="CFacialHairPicker" Category="FacialHair" />
+                </BoxContainer>
+            </prefUi:HighlightedContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</DefaultWindow>

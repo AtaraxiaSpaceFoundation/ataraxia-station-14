@@ -1,0 +1,21 @@
+- type: entity
+  id: MagicMirror
+  name: magic mirror
+  description: 'Mirror mirror on the wall , who''s the most robust of them all?'
+  components:
+    - type: WallMount
+    - type: Sprite
+      sprite: Structures/Wallmounts/mirror.rsi
+      state: mirror
+    - type: InteractionOutline
+    - type: Clickable
+    - type: Transform
+      anchored: true
+    - type: WizardMirror
+    - type: ActivatableUI
+      key: enum.WizardMirrorUiKey.Key
+      singleUser: true
+    - type: UserInterface
+      interfaces:
+        - key: enum.WizardMirrorUiKey.Key
+          type: WizardMirrorBoundUserInterface
