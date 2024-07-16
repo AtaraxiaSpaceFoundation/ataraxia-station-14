@@ -114,6 +114,7 @@
   - ChaplainNullRod # WD
   - CommonShoes # WD
   - ChaplainPDA # WD
+  - ChaplainJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -171,17 +172,21 @@
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
+  - CommonShoes # WD
   - MimePDA
   - Trinkets
 
 - type: roleLoadout
   id: JobMusician
   groups:
-  - CommonServiceHeadset # WD
-  - MusicianBackpack
-  - MusicianOuterClothing
+  - MusicianHead # WD
   - CommonGlasses # WD
-  - MusicianPDA
+  - CommonServiceHeadset # WD
+  - MusicianJumpsuit # WD
+  - MusicianOuterClothing
+  - MusicianBackpack
+  - MusicianPDA # WD
+  - CommonShoes # WD
   - Trinkets
   - Instruments
 
@@ -243,7 +248,7 @@
   - ChiefEngineerOuterClothing
   - CommonGloves # WD
   - ChiefEngineerShoes
-  - ChiefEngineerPDA
+  - ChiefEngineerPDA # WD
   - Trinkets
 
 - type: roleLoadout

@@ -184,6 +184,16 @@
   equipment:
     belt: NullRod
 
+# Job trinkets
+
+- type: itemLoadout # WD
+  id: ArmamentsBeacon
+  equipment: ArmamentsBeacon
+- type: startingGear
+  id: ArmamentsBeacon
+  storage:
+    back:
+    - ArmamentsBeacon
 
 # PDA
 

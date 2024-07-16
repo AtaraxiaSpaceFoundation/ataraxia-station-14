@@ -321,6 +321,13 @@
   loadouts:
   - ChaplainMask
 
+- type: loadoutGroup # WD edit
+  id: ChaplainNeck
+  name: loadout-group-neck
+  loadouts:
+  - ChaplainNecklaceSilver
+  - ChaplainNeck
+
 - type: loadoutGroup
   id: ChaplainJumpsuit
   name: loadout-group-jumpsuit
@@ -356,11 +363,10 @@
   - ChaplainNullRod
 
 - type: loadoutGroup # WD edit
-  id: ChaplainNeck
-  name: loadout-group-neck
+  id: ChaplainJobTrinkets
+  name: loadout-group-job-trinkets
   loadouts:
-  - ChaplainNecklaceSilver
-  - ChaplainNeck
+  - ArmamentsBeacon
 
 - type: loadoutGroup
   id: ChaplainPDA
@@ -585,6 +591,16 @@
   loadouts:
   - MimePDA
 
+- type: loadoutGroup # WD
+  id: MusicianHead
+  name: loadout-group-head
+  loadouts:
+  - BowlerHat
+  - Tophat
+  - HatMagician
+  - BeretStandardЙ
+  - FrenchBeret
+
 - type: loadoutGroup
   id: MusicianBackpack
   name: loadout-group-backpack
@@ -593,6 +609,14 @@
   - MusicianSatchel
   - MusicianDuffel
   - CommonSatchelLeather # WD
+
+- type: loadoutGroup # WD
+  id: MusicianJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - MusicianJumpsuit
+  - JumpsuitFamily
+  - JumpsuitLoungewear
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -927,6 +951,7 @@
   name: loadout-group-ears
   loadouts:
   - ChiefEngineerHeadset
+  - ChiefEngineerHeadsetAlt
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -1829,6 +1854,7 @@
   minLimit: 0
   loadouts:
   - ParamedicBelt
+  - MedicalBeltRig
 
 - type: loadoutGroup
   id: ParamedicPDA
@@ -1871,6 +1897,7 @@
 - type: loadoutGroup
   id: CommonMedicalMask
   name: loadout-group-mask
+  minLimit: 0
   loadouts:
   - MedicalMask
 

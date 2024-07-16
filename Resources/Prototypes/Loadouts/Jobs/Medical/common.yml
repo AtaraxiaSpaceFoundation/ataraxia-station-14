@@ -27,3 +27,13 @@
   id: MedicalMask
   equipment:
     mask: ClothingMaskSterile
+
+# Mask
+
+- type: itemLoadout
+  id: MedicalBeltRig
+  equipment: MedicalBeltRig
+- type: startingGear
+  id: MedicalBeltRig
+  equipment:
+    belt: ClothingBeltMedicalRig

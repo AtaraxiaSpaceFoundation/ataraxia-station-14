@@ -126,6 +126,14 @@
   equipment:
     ears: ClothingHeadsetCE
 
+- type: itemLoadout # WD
+  id: ChiefEngineerHeadsetAlt
+  equipment: ChiefEngineerHeadsetAlt
+- type: startingGear
+  id: ChiefEngineerHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltEngineering
+
 # PDA
 - type: itemLoadout # WD
   id: ChiefEngineerPDA
@@ -133,4 +141,4 @@
 - type: startingGear
   id: ChiefEngineerPDA
   equipment:
-    id: EngineerPDA
+    id: CEPDA

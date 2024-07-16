@@ -26,6 +26,16 @@
   equipment:
     back: ClothingBackpackDuffelMusicianFilled
 
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: MusicianJumpsuit
+  equipment: MusicianJumpsuit
+- type: startingGear
+  id: MusicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMusician
+
 # Outerclothing
 - type: itemLoadout
   id: MusicianWintercoat
