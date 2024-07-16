@@ -5859,3 +5859,11 @@
   id: 380
   time: '2024-07-16T22:31:56.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/448
+- author: PointPNG
+  changes:
+  - message: "\u0424\u0438\u043A\u0441 \u0412\u0430\u043D\u0434\u0435\u0440\u0411\u043E\
+      \u043A\u0441\u0430."
+    type: Fix
+  id: 381
+  time: '2024-07-16T23:05:13.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/449
