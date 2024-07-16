@@ -5811,3 +5811,36 @@
   id: 376
   time: '2024-07-15T16:23:28.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/443
+- author: Spatison
+  changes:
+  - message: "\u0431\u043E\u0434\u0438\u043A\u0430\u043C\u0435\u0440\u0430 \u0442\u0435\
+      \u043F\u0435\u0440\u044C \u0442\u043E\u0447\u043D\u043E \u043E\u0442\u043E\u0431\
+      \u0440\u0430\u0436\u0430\u044E\u0442\u0441\u044F \u0432 \u0445\u043E\u0442\u0431\
+      \u0430\u0440\u0435"
+    type: Fix
+  id: 377
+  time: '2024-07-16T18:20:48.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/445
+- author: ThereDrD
+  changes:
+  - message: "\u0410\u043F\u0441\u0442\u0440\u0438\u043C!"
+    type: Add
+  id: 378
+  time: '2024-07-16T15:30:56.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/421
+- author: Spatison
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043E \u043C\u0430\u0433\
+      \u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0437\u0435\u0440\u043A\u0430\u043B\
+      \u043E"
+    type: Add
+  - message: "\u0417\u0430\u043C\u0435\u043D\u0435\u043D\u044B \u0437\u0435\u0440\u043A\
+      \u0430\u043B\u0430 \u043D\u0430 \u0448\u0430\u0442\u0442\u043B\u0435 \u043C\u0430\
+      \u0433\u0430"
+    type: Tweak
+  - message: "\u0422\u0435\u043F\u0435\u0440\u044C \u043C\u0430\u0433 \u0432\u044B\
+      \u0433\u043B\u044F\u0434\u0438\u0442 \u043A\u0430\u043A \u043C\u0430\u0433"
+    type: Tweak
+  id: 379
+  time: '2024-07-16T15:31:29.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/444
