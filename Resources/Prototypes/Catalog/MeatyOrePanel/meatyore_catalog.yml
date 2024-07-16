@@ -1835,7 +1835,7 @@
 #Dj
 - type: listing
   id: DjJukebox
-  productEntity: Jukebox
+  productEntity: Boombox
   cost:
     MeatyOreCoin: 0
   categories:
