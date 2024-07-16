@@ -9,7 +9,7 @@
     species: XenomorphHybrid
   - type: NightVision
     isToggle: false
-    color: "#1E1E1E"
+    color: "#282828"
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggleAlien
   - type: Hunger
@@ -23,14 +23,22 @@
     prototype: XenomorphHybrid
     requiredLegs: 2
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.5
-    baseSprintSpeed: 5.2
+    weightlessAcceleration: 1.5
+    weightlessFriction: 1
+    weightlessModifier: 1
+    baseWalkSpeed: 2.6
+    baseSprintSpeed: 5.3
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      75: 0.7
+      85: 0.5
   - type: Butcherable
     butcheringType: Spike
     spawned:
     - id: FoodMeatXeno
       amount: 5
   - type: Inventory
+    templateId: xenomorph_hybrid
     speciesId: reptilian
   - type: LizardAccent
   - type: Speech
@@ -56,15 +64,15 @@
         Piercing: 6
   - type: Temperature
     heatDamageThreshold: 360
-    coldDamageThreshold: 240
+    coldDamageThreshold: -150
     currentTemperature: 310.15
     specificHeat: 46
     coldDamage:
       types:
-        Cold : 0.075
+        Cold : 0.02
     heatDamage:
       types:
-        Heat : 0.15
+        Heat : 0.08
   - type: Sericulture
     action: ActionPlasmaGeneration
     productionLength: 5
@@ -75,7 +83,7 @@
   - type: Barotrauma
     damage:
       types:
-        Blunt: 0.13
+        Blunt: 0.045
 
 - type: entity
   parent: BaseSpeciesDummy
