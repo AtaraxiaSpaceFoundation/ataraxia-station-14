@@ -122,7 +122,7 @@
 - type: startingGear
   id: HoPPDA
   equipment:
-    gloves: HoPPDA
+    id: HoPPDA
 
 # Ears
 - type: itemLoadout # WD

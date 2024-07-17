@@ -1,4 +1,15 @@
-﻿# Eyes
+﻿# Timers
+
+- type: loadoutEffectGroup # WD
+  id: TimerTrueAssistant
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 180000 # 50 hours
+
+# Eyes
 
 - type: itemLoadout
   id: GlassesGarOrange
@@ -140,6 +151,17 @@
   id: HoodieBlack
   equipment:
     outerClothing: ClothingOuterHoodieBlack
+
+- type: itemLoadout
+  id: CoatSpaceAsshole
+  equipment: CoatSpaceAsshole
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TimerTrueAssistant
+- type: startingGear
+  id: CoatSpaceAsshole
+  equipment:
+    outerClothing: ClothingOuterCoatSpaceAsshole
 
 # Gloves
 

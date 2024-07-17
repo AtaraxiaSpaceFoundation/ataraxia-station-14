@@ -224,7 +224,7 @@
   id: JobSalvageSpecialist
   groups:
   - SalvageSpecialistHead # WD
-  - CommonCargoEars # WD
+  - SalvageSpecialistHeadset # WD
   - SalvageSpecialistEyes # WD
   - SalvageSpecialistMask # WD
   - SalvageSpecialistJumpsuit # WD

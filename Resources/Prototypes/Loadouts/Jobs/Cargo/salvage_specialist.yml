@@ -1,3 +1,13 @@
+# Ears
+
+- type: itemLoadout # WD
+  id: SalvageSpecialistHeadset
+  equipment: SalvageSpecialistHeadset
+- type: startingGear
+  id: SalvageSpecialistHeadset
+  equipment:
+    ears: ClothingHeadsetMining
+
 # Mask
 
 - type: itemLoadout # WD

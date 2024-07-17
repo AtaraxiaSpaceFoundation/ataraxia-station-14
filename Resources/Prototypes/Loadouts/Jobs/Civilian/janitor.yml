@@ -97,6 +97,17 @@
   equipment:
     outerClothing: ClothingOuterWinterJani
 
+- type: itemLoadout # WD
+  id: JanitorWetFloorSign
+  equipment: JanitorWetFloorSign
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TimerJanitorFunnyHeads
+- type: startingGear
+  id: JanitorWetFloorSign
+  equipment:
+    outerClothing: WetFloorSign
+
 # PDA
 
 - type: itemLoadout # WD

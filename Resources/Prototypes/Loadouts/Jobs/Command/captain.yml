@@ -120,6 +120,15 @@
   equipment:
     outerClothing: ClothingOuterWinterCap
 
+# Gloves
+- type: itemLoadout
+  id: CaptainGloves
+  equipment: CaptainGloves
+- type: startingGear
+  id: CaptainGloves
+  equipment:
+    gloves: ClothingHandsGlovesCaptain
+
 # PDA
 
 - type: itemLoadout # WD

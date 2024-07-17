@@ -65,6 +65,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - CaptainDuffel
   - CommonSatchelLeather # WD
 
 - type: loadoutGroup
@@ -74,6 +75,13 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
+
+- type: loadoutGroup
+  id: CaptainOuterClothing
+  name: loadout-group-gloves
+  minLimit: 0
+  loadouts:
+  - CaptainGloves
 
 - type: loadoutGroup
   id: CaptainShoes
@@ -209,6 +217,7 @@
   - CoatGentle
   - AssistantWintercoat
   - CoatBomber
+  - CoatSpaceAsshole
 
 - type: loadoutGroup # WD
   id: AssistantPDA
@@ -405,6 +414,7 @@
   minLimit: 0
   loadouts:
   - JanitorWintercoat
+  - JanitorWetFloorSign # WD
 
 - type: loadoutGroup
   id: JanitorPDA
@@ -749,6 +759,7 @@
   name: loadout-group-ears
   loadouts:
   - QuartermasterHeadset
+  - QuartermasterHeadsetAlt
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
@@ -857,6 +868,12 @@
   - HatBrownFlatcap
   - MercenaryBand
   - MercenaryBeret
+
+- type: loadoutGroup # WD
+  id: SalvageSpecialistHeadset
+  name: loadout-group-ears
+  loadouts:
+  - SalvageSpecialistHeadset
 
 - type: loadoutGroup # WD
   id: SalvageSpecialistEyes
@@ -1583,12 +1600,6 @@
 # Medical
 
 - type: loadoutGroup
-  id: ChiefMedicalOfficerEars
-  name: loadout-group-ears
-  loadouts:
-  - CMOHeadset
-
-- type: loadoutGroup
   id: ChiefMedicalOfficerHead
   name: loadout-group-head
   minLimit: 0
@@ -1599,6 +1610,13 @@
   - GreenSurgeryCap
   - PurpleSurgeryCap
   - CowboyWhite
+
+- type: loadoutGroup # WD
+  id: ChiefMedicalOfficerEars
+  name: loadout-group-ears
+  loadouts:
+  - CMOHeadset
+  - CMOHeadsetAlt
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerJumpsuit
@@ -1749,7 +1767,7 @@
 
 - type: loadoutGroup
   id: MedicalInternPDA
-  name: loadout-group-jumpsuit
+  name: loadout-group-pda
   loadouts:
   - MedicalInternPDA
 
@@ -1764,11 +1782,12 @@
   - PurpleSurgeryCap
   - CowboyWhite
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: ChemistEyes
   name: loadout-group-eyes
   minLimit: 0
   loadouts:
+  - ChemistGlasses
   - GlassesGarOrange
 
 - type: loadoutGroup

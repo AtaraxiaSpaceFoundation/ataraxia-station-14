@@ -25,4 +25,4 @@
 - type: startingGear
   id: MedicalInternPDA
   equipment:
-    jumpsuit: MedicalInternPDA
+    id: MedicalInternPDA
