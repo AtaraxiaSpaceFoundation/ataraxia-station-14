@@ -32,6 +32,16 @@
   equipment:
     head: ClothingHeadHatBeretMerc
 
+# Ears
+
+- type: itemLoadout # WD
+  id: CargoHeadset
+  equipment: CargoHeadset
+- type: startingGear
+  id: CargoHeadset
+  equipment:
+    ears: ClothingHeadsetCargo
+
 # Eyes
 
 - type: itemLoadout # WD
@@ -129,12 +139,13 @@
   equipment:
     back: ClothingBackpackMerc
 
-# Ears
+# Job Trinkets
 
 - type: itemLoadout # WD
-  id: CargoHeadset
-  equipment: CargoHeadset
+  id: CargoAppraisalTool
+  equipment: CargoAppraisalTool
 - type: startingGear
-  id: CargoHeadset
-  equipment:
-    ears: ClothingHeadsetCargo
+  id: CargoAppraisalTool
+  storage:
+    back:
+    - AppraisalTool

@@ -595,6 +595,15 @@
   loadouts:
   - MimeWintercoat
 
+- type: loadoutGroup
+  id: MimeGloves
+  name: loadout-group-gloves
+  minLimit: 0
+  loadouts:
+  - GlovesColorWhite
+  - GlovesColorBlack
+  - GlovesFingerless
+
 - type: loadoutGroup # WD
   id: MimePDA
   name: loadout-group-pda
@@ -949,10 +958,19 @@
   - SalvagePDA
 
 - type: loadoutGroup # WD
-  id: CommonCargoEars
+  id: CommonCargoHeadset
   name: loadout-group-ears
   loadouts:
   - CargoHeadset
+
+- type: loadoutGroup # WD
+  id: CommonCargoJobTrinkets
+  name: loadout-group-job-trinkets
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - CargoAppraisalTool
+  - Clipboard
 
 # Engineering
 - type: loadoutGroup
@@ -1517,6 +1535,12 @@
   - BootsLaceup
   - ShoesLeather
   - BootsJack
+
+- type: loadoutGroup # WD
+  id: DetectivePDA
+  name: loadout-group-pda
+  loadouts:
+  - DetectivePDA
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit

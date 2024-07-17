@@ -82,13 +82,22 @@
   equipment:
     outerClothing: ClothingOuterCoatDetective
 
-
 # Gloves
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: GlovesForensic
   equipment: GlovesForensic
 - type: startingGear
   id: GlovesForensic
   equipment:
     gloves: ClothingHandsGlovesForensic
+
+# PDA
+
+- type: itemLoadout # WD
+  id: DetectivePDA
+  equipment: DetectivePDA
+- type: startingGear
+  id: DetectivePDA
+  equipment:
+    id: DetectivePDA
