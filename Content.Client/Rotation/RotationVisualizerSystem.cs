@@ -55,6 +55,10 @@ public sealed class RotationVisualizerSystem : SharedRotationVisualsSystem
             _animation.Stop(animationComp, animationKey);
         }
 
+        // WD EDIT
+        if (_animation.HasRunningAnimation(animationComp, "Waddle"))
+            _animation.Stop(animationComp, "Waddle");
+
         var animation = new Animation
         {
             Length = TimeSpan.FromSeconds(animationTime),
