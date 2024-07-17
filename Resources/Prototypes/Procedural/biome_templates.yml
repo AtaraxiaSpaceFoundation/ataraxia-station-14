@@ -570,8 +570,6 @@
         - FloorAsteroidSand
       entities:
         - WallRock
-      entities:
-      - FloorChasmEntity
     - !type:BiomeDummyLayer
       id: Loot
     - !type:BiomeTileLayer

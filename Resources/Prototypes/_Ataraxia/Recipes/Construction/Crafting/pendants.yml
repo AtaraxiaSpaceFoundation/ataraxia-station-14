@@ -5,7 +5,7 @@
   targetNode: pendantgreen
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из зелёного кристалла
+  name: кулон из зелёного кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/green.rsi
@@ -18,7 +18,7 @@
   targetNode: pendantorange
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из оранжевого кристалла
+  name: кулон из оранжевого кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/orange.rsi
@@ -31,7 +31,7 @@
   targetNode: pendantpink
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из розового кристалла
+  name: кулон из розового кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/pink.rsi
@@ -44,7 +44,7 @@
   targetNode: pendantcyan
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из голубого кристалла
+  name: кулон из голубого кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/cyan.rsi
@@ -57,7 +57,7 @@
   targetNode: pendantblue
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из синего кристалла
+  name: кулон из синего кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/blue.rsi
@@ -70,7 +70,7 @@
   targetNode: pendantgrey
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из серого кристалла
+  name: кулон из серого кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/grey.rsi
@@ -83,7 +83,7 @@
   targetNode: pendantred
   category: construction-category-clothing
   objectType: Item
-  name: Кулон из красного кристалла
+  name: кулон из красного кристалла
   description: Подвеска из блестящего кристалла на тонком проводе.
   icon:
     sprite: Ataraxia/Clothing/Neck/Pendants/red.rsi
