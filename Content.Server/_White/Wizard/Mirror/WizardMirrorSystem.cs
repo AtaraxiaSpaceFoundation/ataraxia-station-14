@@ -1,4 +1,6 @@
-﻿using Content.Server.Humanoid;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
 using Content.Shared._White.Wizard.Mirror;
 using Content.Shared.Humanoid;
@@ -7,7 +9,9 @@ using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Content.Shared.Preferences;
 using Content.Shared.UserInterface;
+using FastAccessors;
 using Robust.Server.GameObjects;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 
 namespace Content.Server._White.Wizard.Mirror;
@@ -128,6 +132,8 @@ public sealed class WizardMirrorSystem : EntitySystem
                         profile.Appearance.WithFacialHairStyleName(facialHair.MarkingId))
                     .Appearance.WithFacialHairColor(facialHair.MarkingColors[0]));
         }
+
+        profile = profile.WithCharacterAppearance(profile.Appearance.WithMarkings(humanoid.MarkingSet.GetForwardEnumerator().ToList()));
 
         var state = new WizardMirrorUiState(profile);
 

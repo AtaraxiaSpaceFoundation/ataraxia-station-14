@@ -80,6 +80,12 @@
                     <humanoid:SingleMarkingPicker Name="CFacialHairPicker" Category="FacialHair" />
                 </BoxContainer>
             </prefUi:HighlightedContainer>
+            <!-- Markings -->
+            <prefUi:HighlightedContainer>
+                <BoxContainer Name="CMarkingsTab" Orientation="Vertical" Margin="10">
+                        <humanoid:MarkingPicker Name="CMarkings" IgnoreCategories="Hair,FacialHair" />
+                </BoxContainer>
+            </prefUi:HighlightedContainer>
         </BoxContainer>
     </ScrollContainer>
 </DefaultWindow>
