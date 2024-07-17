@@ -359,7 +359,7 @@
 - type: startingGear
   id: CommonSatchelLeather
   equipment:
-    back: ClothingBackpackSatchelLeather
+    back: ClothingBackpackSatchelLeatherFilled
 
 # Mask
 
@@ -465,12 +465,13 @@
   equipment:
     belt: ClothingBeltUtility
 
-# Inhands
+# Job trinkets
 
 - type: itemLoadout
   id: Cane
   equipment: Cane
 - type: startingGear
   id: Cane
-  equipment:
-    belt: Cane
+  storage:
+    back:
+    - Cane

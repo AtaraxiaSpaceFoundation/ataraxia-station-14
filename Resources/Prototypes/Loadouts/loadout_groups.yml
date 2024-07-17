@@ -734,8 +734,8 @@
   - BootsWinter
 
 - type: loadoutGroup # WD
-  id: InhandCane
-  name: loadout-group-inhand
+  id: ItemCane
+  name: loadout-group-job-trinkets
   minLimit: 0
   loadouts:
   - Cane

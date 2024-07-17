@@ -96,7 +96,7 @@
   - CommonBackpack
   - CommonShoes # WD
   - LibrarianPDA
-  - InhandCane
+  - ItemCane # WD
   - Trinkets
 
 - type: roleLoadout

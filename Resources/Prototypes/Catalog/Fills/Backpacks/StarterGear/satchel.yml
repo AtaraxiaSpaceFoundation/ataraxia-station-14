@@ -9,6 +9,15 @@
 
 - type: entity
   noSpawn: true
+  parent: ClothingBackpackSatchelLeather
+  id: ClothingBackpackSatchelLeatherFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxSurvival
+
+- type: entity
+  noSpawn: true
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelTools
   components:
