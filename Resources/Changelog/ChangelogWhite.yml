@@ -5913,3 +5913,11 @@
   id: 383
   time: '2024-07-17T10:57:09.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/451
+- author: RinKeeper
+  changes:
+  - message: "\u0422\u0440\u0438\u0443\u043C\u0444 \u0441\u043D\u043E\u0432\u0430\
+      \ \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"
+    type: Fix
+  id: 384
+  time: '2024-07-17T11:14:59.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/452
