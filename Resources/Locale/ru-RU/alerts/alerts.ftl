@@ -113,3 +113,6 @@ alerts-changeling-chemicals-desc = Наши химикаты.
 
 alerts-cult-buff-name = Усиление
 alerts-cult-buff-desc = Подготовка заклинаний крови занимает гораздо меньше времени, и вы не теряете столько крови при этом. Также вы неуязвимы к низкому давлению.
+
+alerts-offer-name = Предложение
+alerts-offer-desc = Кто-то предлагает вам предмет.

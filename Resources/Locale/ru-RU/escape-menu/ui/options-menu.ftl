@@ -41,6 +41,7 @@ ui-options-volume-percent = { TOSTRING($volume, "P0") }
 
 ui-options-show-held-item = Показать удерживаемый элемент рядом с курсором?
 ui-options-show-combat-mode-indicators = Показать индикатор боевого режима рядом с курсором
+ui-options-show-offer-mode-indicators = Показывать индикаторы передачи предмета рядом с курсором
 ui-options-opaque-storage-window = Непрозрачность окна хранилища
 ui-options-show-looc-on-head = Показывать LOOC-чат над головами персонажей
 ui-options-fancy-speech = Показывать имена в облачках с текстом
@@ -142,6 +143,7 @@ ui-options-function-lie-down = Лечь/встать
 ui-options-function-auto-get-up = Автоматически вставать при падении
 ui-options-function-save-item-location = Сохранить позицию предмета
 ui-options-static-storage-ui = Закрепить интерфейс хранилища на хотбаре
+ui-options-function-offer-item = Передать что-то
 
 ui-options-function-smart-equip-backpack = Умная экипировка в рюкзак
 ui-options-function-smart-equip-belt = Умная экипировка на пояс

@@ -260,6 +260,7 @@
   - type: CharacterInformation
   - type: Penetrated
   - type: Mood
+  - type: OfferItem # WD-EDIT
 
 - type: entity
   save: false

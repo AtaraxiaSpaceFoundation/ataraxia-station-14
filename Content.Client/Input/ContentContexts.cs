@@ -81,6 +81,7 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.Arcade2);
             human.AddFunction(ContentKeyFunctions.Arcade3);
             human.AddFunction(ContentKeyFunctions.LieDown); // WD EDIT
+            human.AddFunction(ContentKeyFunctions.OfferItem); // WD EDIT
 
             // actions should be common (for ghosts, mobs, etc)
             common.AddFunction(ContentKeyFunctions.OpenActionsMenu);

@@ -191,6 +191,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.MoveStoredItem);
             AddButton(ContentKeyFunctions.RotateStoredItem);
             AddButton(ContentKeyFunctions.SaveItemLocation);
+            AddButton(ContentKeyFunctions.OfferItem); // WD EDIT
             AddButton(ContentKeyFunctions.LieDown); // WD EDIT
             AddCheckBox("ui-options-function-auto-get-up", _cfg.GetCVar(WhiteCVars.AutoGetUp), HandleToggleAutoGetUp); // WD EDIT
 

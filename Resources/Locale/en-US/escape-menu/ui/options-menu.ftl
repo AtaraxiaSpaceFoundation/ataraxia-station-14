@@ -41,6 +41,7 @@ ui-options-volume-percent = { TOSTRING($volume, "P0") }
 
 ui-options-show-held-item = Show held item next to cursor
 ui-options-show-combat-mode-indicators = Show combat mode indicators with cursor
+ui-options-show-offer-mode-indicators = Show offer mode indicators with cursor
 ui-options-opaque-storage-window = Opaque storage window
 ui-options-show-ooc-patron-color = Show OOC Patreon color
 ui-options-show-looc-on-head = Show LOOC chat above characters head
@@ -136,6 +137,7 @@ ui-options-function-examine-entity = Examine
 ui-options-function-swap-hands = Swap hands
 ui-options-function-move-stored-item = Move stored item
 ui-options-function-rotate-stored-item = Rotate stored item
+ui-options-function-offer-item = Offer something
 ui-options-function-lie-down = Lie down/Get up
 ui-options-function-auto-get-up = Automatically get up when falling
 ui-options-function-save-item-location = Save item location

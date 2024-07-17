@@ -27,6 +27,7 @@
     - category: Thirst
     - alertType: Magboots
     - alertType: Pacified
+    - alertType: Offer
 
 - type: entity
   id: AlertSpriteView
@@ -490,3 +491,13 @@
   icons: [ /Textures/Interface/Alerts/bleeding.png ]
   name: alerts-bleeding-name
   description: alerts-bleeding-desc
+
+# WD-EDIT
+- type: alert
+  id: Offer
+  onClick: !type:AcceptOffer  { }
+  icons:
+  - sprite: /Textures/White/Interface/Alerts/offer_item.rsi
+    state: offer_item
+  name: alerts-offer-name
+  description: alerts-offer-desc
