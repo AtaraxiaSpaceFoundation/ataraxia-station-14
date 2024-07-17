@@ -77,7 +77,7 @@
   - CaptainWintercoat
 
 - type: loadoutGroup
-  id: CaptainOuterClothing
+  id: CaptainGloves
   name: loadout-group-gloves
   minLimit: 0
   loadouts:

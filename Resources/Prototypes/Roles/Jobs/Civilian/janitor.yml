@@ -17,10 +17,6 @@
 
 - type: startingGear
   id: JanitorGear
-  equipment:
-    shoes: ClothingShoesGaloshes
-    id: JanitorPDA
-    ears: ClothingHeadsetService
 
 - type: startingGear
   id: JanitorMaidGear

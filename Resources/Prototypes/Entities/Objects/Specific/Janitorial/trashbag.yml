@@ -9,19 +9,15 @@
       - state: icon-0
         map: ["enum.StorageFillLayers.Fill"]
   - type: Storage
-    maxItemSize: Normal
+    maxItemSize: Large
     grid:
-    - 0,0,7,5
+    - 0,0,3,8
     quickInsert: true
     areaInsert: true
     storageOpenSound:
       collection: trashBagRustle
     storageInsertSound:
       collection: trashBagRustle
-    whitelist:
-      tags:
-        - Cartridge
-        - Trash
   - type: Tag
     tags:
     - TrashBag
@@ -31,11 +27,8 @@
     maxFillLevels: 4
     fillBaseName: icon
   - type: Dumpable
-  - type: Clothing
-    slots: [belt]
-    sprite: Objects/Specific/Janitorial/trashbag.rsi
   - type: Item
-    size: Normal
+    size: Huge
 
 - type: entity
   name: trash bag
