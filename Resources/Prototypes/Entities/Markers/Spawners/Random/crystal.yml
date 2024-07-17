@@ -7,14 +7,23 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Structures/Decoration/crystal.rsi
+        - sprite: Ataraxia/Structures/Decoration/crystal.rsi # Ataraxia
           state: crystal_grey
     - type: RandomSpawner
-      prototypes:
+      prototypes: # Ataraxia-EDIT
         - CrystalGreen
+        - CrystalGreenSmall
+        - CrystalGreenMedium
         - CrystalPink
+        - CrystalPinkSmall
+        - CrystalPinkMedium
         - CrystalOrange
+        - CrystalOrangeSmall
+        - CrystalOrangeMedium
         - CrystalBlue
+        - CrystalBlueSmall
+        - CrystalBlueMedium
         - CrystalCyan
-        - CrystalGrey
+        - CrystalCyanSmall
+        - CrystalCyanMedium
       chance: 0.7

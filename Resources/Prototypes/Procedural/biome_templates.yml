@@ -468,8 +468,10 @@
         seed: 2
       allowedTiles:
         - FloorChromite
-      entities:
-        - CrystalPink
+      entities: # Ataraxia-EDIT
+        - CrystalPink 
+        - CrystalPinkSmall
+        - CrystalPinkMedium
     - !type:BiomeEntityLayer
       threshold: 0.97
       noise:
@@ -521,7 +523,7 @@
       threshold: -1
       tile: FloorChromite
 
-# Caves
+# Caves | Ataraxia-EDIT
 - type: biomeTemplate
   id: Caves
   layers:
@@ -568,6 +570,8 @@
         - FloorAsteroidSand
       entities:
         - WallRock
+      entities:
+      - FloorChasmEntity
     - !type:BiomeDummyLayer
       id: Loot
     - !type:BiomeTileLayer
@@ -587,11 +591,26 @@
       allowedTiles:
         - FloorAsteroidSand
       entities:
-        - CrystalGreen
-        - CrystalPink
+        - CrystalGreen 
+        - CrystalGreenSmall
+        - CrystalGreenMedium
+        - CrystalPink 
+        - CrystalPinkSmall
+        - CrystalPinkMedium
         - CrystalOrange
+        - CrystalOrangeSmall
+        - CrystalOrangeMedium
         - CrystalBlue
+        - CrystalBlueSmall
+        - CrystalBlueMedium
         - CrystalCyan
+        - CrystalCyanSmall
+        - CrystalCyanMedium
+        - Stalagmite1
+        - Stalagmite2
+        - Stalagmite3
+        - Stalagmite4
+        - Stalagmite5
     - !type:BiomeEntityLayer
       threshold: 0.95
       noise:

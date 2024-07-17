@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Malanisa (Discord)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "stalagmite1"
+    },
+    {
+      "name": "stalagmite2"
+    },
+    {
+      "name": "stalagmite3"
+    },
+    {
+      "name": "stalagmite4"
+    },
+    {
+      "name": "stalagmite5"
+    }
+  ]
+}
