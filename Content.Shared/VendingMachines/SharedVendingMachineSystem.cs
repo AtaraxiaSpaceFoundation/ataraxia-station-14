@@ -126,6 +126,6 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
     protected virtual int GetEntryPrice(EntityPrototype proto)
     {
-        return 0;
+        return 25;
     } // WD
 }

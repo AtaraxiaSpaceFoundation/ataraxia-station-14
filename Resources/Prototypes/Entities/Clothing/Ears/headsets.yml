@@ -26,6 +26,8 @@
   - type: GuideHelp
     guides:
     - Radio
+  - type: StaticPrice
+    price: 20
 
 - type: entity
   parent: ClothingHeadset

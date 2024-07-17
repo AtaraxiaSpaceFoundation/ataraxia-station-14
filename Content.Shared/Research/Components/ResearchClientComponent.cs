@@ -63,16 +63,20 @@ namespace Content.Shared.Research.Components
     [Serializable, NetSerializable]
     public sealed class ResearchClientBoundInterfaceState : BoundUserInterfaceState
     {
-        public int ServerCount;
-        public string[] ServerNames;
-        public int[] ServerIds;
+        public List<string> ServerNames;
+        public List<int> ServerIds;
         public int SelectedServerId;
 
-        public ResearchClientBoundInterfaceState(int serverCount, string[] serverNames, int[] serverIds, int selectedServerId = -1)
+        public ResearchClientBoundInterfaceState(List<ResearchServerComponent> servers, int selectedServerId = -1)
         {
-            ServerCount = serverCount;
-            ServerNames = serverNames;
-            ServerIds = serverIds;
+            ServerNames = new List<string>(servers.Count);
+            ServerIds = new List<int>(servers.Count);
+            foreach (var server in servers)
+            {
+                ServerNames.Add(server.ServerName);
+                ServerIds.Add(server.Id);
+            }
+
             SelectedServerId = selectedServerId;
         }
     }

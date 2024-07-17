@@ -213,6 +213,8 @@
   - type: UseDelay
   - type: IgnitionSource
     ignited: false
+  - type: StaticPrice
+    price: 20
 
 - type: entity
   name: flippo engraved lighter

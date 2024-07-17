@@ -110,7 +110,6 @@
   - type: VendingMachine
     pack: CondimentInventory
     offState: off
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/condiments.rsi
     drawdepth: SmallObjects
@@ -176,6 +175,7 @@
     normalState: normal-unshaded
     denyState: deny-unshaded
     loopDeny: false
+    priceMultiplier: 0.0
   - type: Advertise
     pack: BoozeOMatAds
   - type: SpeakOnUIClosed
@@ -210,6 +210,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    priceMultiplier: 0.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/cart.rsi
     layers:
@@ -239,6 +240,7 @@
     brokenState: broken
     normalState: normal-unshaded
     ejectState: eject-unshaded
+    priceMultiplier: 0.0
   - type: Advertise
     pack: ChefvendAds
   - type: SpeakOnUIClosed
@@ -275,7 +277,6 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: CigaretteMachineAds
   - type: SpeakOnUIClosed
@@ -304,7 +305,6 @@
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ClothesMateAds
   - type: SpeakOnUIClosed
@@ -341,7 +341,6 @@
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ClothesMateAds
   - type: SpeakOnUIClosed
@@ -383,7 +382,6 @@
     screenState: screen
     ejectDelay: 5
     soundVend: /Audio/Machines/machine_vend_hot_drink.ogg
-    priceMultiplier: 1.0
   - type: Advertise
     pack: HotDrinksMachineAds
   - type: SpeakOnUIClosed
@@ -423,7 +421,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
-    priceMultiplier: 1.0
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
@@ -493,7 +490,6 @@
   components:
   - type: VendingMachine
     pack: SpaceUpInventory
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/spaceup.rsi
     layers:
@@ -516,7 +512,6 @@
   components:
   - type: VendingMachine
     pack: SodaInventory
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/soda.rsi
     layers:
@@ -540,7 +535,6 @@
   components:
   - type: VendingMachine
     pack: StarkistInventory
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/starkist.rsi
     layers:
@@ -572,7 +566,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
-    priceMultiplier: 1.0
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: Speech
@@ -607,7 +600,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
-    priceMultiplier: 1.0
   - type: Advertise
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
@@ -708,6 +700,7 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    priceMultiplier: 0.0
   - type: Advertise
     pack: MagiVendAds
   - type: SpeakOnUIClosed
@@ -740,7 +733,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: DiscountDansAds
   - type: SpeakOnUIClosed
@@ -805,6 +797,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 0.6
+    priceMultiplier: 0.0
   - type: Advertise
     pack: NanoMedAds
   - type: SpeakOnUIClosed
@@ -842,6 +835,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    priceMultiplier: 0.5
   - type: Advertise
     pack: NutriMaxAds
   - type: SpeakOnUIClosed
@@ -876,6 +870,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    priceMultiplier: 0.0
   - type: Advertise
     pack: SecTechAds
   - type: SpeakOnUIClosed
@@ -914,6 +909,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    priceMultiplier: 0.0
   - type: Advertise
     pack: MegaSeedAds
   - type: SpeakOnUIClosed
@@ -956,7 +952,6 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: GetmoreChocolateCorpAds
   - type: SpeakOnUIClosed
@@ -1103,7 +1098,6 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: BodaAds
   - type: SpeakOnUIClosed
@@ -1138,7 +1132,6 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     screenState: screen
-    priceMultiplier: 1.0
   - type: Advertise
     pack: AutoDrobeAds
   - type: SpeakOnUIClosed
@@ -1280,6 +1273,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     ejectDelay: 1.8
+    priceMultiplier: 0.2
   - type: Advertise
     pack: GoodCleanFunAds
   - type: SpeakOnUIClosed
@@ -1312,7 +1306,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ChangAds
   - type: SpeakOnUIClosed
@@ -1378,7 +1371,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: DonutAds
   - type: SpeakOnUIClosed
@@ -1432,6 +1424,7 @@
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
+    priceMultiplier: 0.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/wallmed.rsi
     layers:
@@ -1461,7 +1454,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: HyDrobeAds
   - type: SpeakOnUIClosed
@@ -1490,7 +1482,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: LawDrobeAds
   - type: SpeakOnUIClosed
@@ -1519,7 +1510,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: SecDrobeAds
   - type: SpeakOnUIClosed
@@ -1548,7 +1538,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: BarDrobeAds
   - type: SpeakOnUIClosed
@@ -1577,7 +1566,6 @@
     brokenState: broken
     normalState: normal-unshaded
     denyState: deny-unshaded
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/chapdrobe.rsi
     layers:
@@ -1606,7 +1594,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: CargoDrobeAds
   - type: SpeakOnUIClosed
@@ -1635,7 +1622,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: MediDrobeAds
   - type: SpeakOnUIClosed
@@ -1664,7 +1650,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ChemDrobeAds
   - type: SpeakOnUIClosed
@@ -1721,7 +1706,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: AtmosDrobeAds
   - type: SpeakOnUIClosed
@@ -1750,7 +1734,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: EngiDrobeAds
   - type: SpeakOnUIClosed
@@ -1779,7 +1762,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ChefDrobeAds
   - type: SpeakOnUIClosed
@@ -1808,7 +1790,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: DetDrobeAds
   - type: SpeakOnUIClosed
@@ -1837,7 +1818,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: JaniDrobeAds
   - type: SpeakOnUIClosed
@@ -1866,7 +1846,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: SciDrobeAds
   - type: SpeakOnUIClosed
@@ -1895,6 +1874,7 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    priceMultiplier: 0.0
   - type: Advertise
     pack: SyndieDrobeAds
   - type: SpeakOnUIClosed
@@ -1923,7 +1903,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: RoboDrobeAds
   - type: SpeakOnUIClosed
@@ -1952,7 +1931,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: GeneDrobeAds
   - type: SpeakOnUIClosed
@@ -1981,7 +1959,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Advertise
     pack: ViroDrobeAds
   - type: SpeakOnUIClosed
@@ -2010,7 +1987,6 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-    priceMultiplier: 1.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/centdrobe.rsi
     layers:
@@ -2044,7 +2020,7 @@
     denyState: deny-unshaded
     ejectDelay: 1.9
     soundVend: /Audio/Items/bikehorn.ogg
-    priceMultiplier: 1.0
+    priceMultiplier: 0.2
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/happyhonk.rsi
     layers:
@@ -2077,6 +2053,7 @@
   components:
   - type: VendingMachine
     pack: TankDispenserEVAInventory
+    priceMultiplier: 0.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
     state: dispenser
@@ -2090,6 +2067,7 @@
   components:
   - type: VendingMachine
     pack: TankDispenserEngineeringInventory
+    priceMultiplier: 0.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
     layers:
@@ -2109,6 +2087,7 @@
     normalState: normal
     denyState: deny
     ejectDelay: 2
+    priceMultiplier: 0.0
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/chemvend.rsi
     layers:
@@ -2137,6 +2116,7 @@
     normalState: normal
     denyState: deny
     ejectDelay: 2
+    priceMultiplier: 0.0
   - type: AccessReader
     access: [["SyndicateAgent"]]
 

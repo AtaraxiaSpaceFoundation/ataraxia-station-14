@@ -38,6 +38,7 @@ public sealed partial class VendingMenu : DefaultWindow
                 return;
             OnWithdraw?.Invoke(new VendingMachineWithdrawMessage());
         };
+        
         VendingContents.RemoveAllChildren();
         if (inventory.Count == 0)
         {
@@ -45,6 +46,7 @@ public sealed partial class VendingMenu : DefaultWindow
             SetSizeAfterUpdate(OutOfStockLabel.Text?.Length ?? 0);
             return;
         }
+
         OutOfStockLabel.Visible = false;
 
         var longestEntry = string.Empty;
@@ -65,14 +67,11 @@ public sealed partial class VendingMenu : DefaultWindow
             if (itemName.Length > longestEntry.Length)
                 longestEntry = itemName;
 
-            var price = (int) (entry.Price * priceMultiplier);
-            var vendingItem = new VendingItem($"{itemName} [{entry.Amount}]", $"{price} ¢", icon);
+            var price = (int)(entry.Price * priceMultiplier);
+            var vendingItem = new VendingItem($"{itemName} [{entry.Amount}]", price > 0 ? $"{price} \u00a2" : "выдать", icon);
 
             var j = i;
-            vendingItem.VendingItemBuyButton.OnPressed += _ =>
-            {
-                OnItemSelected?.Invoke(j);
-            };
+            vendingItem.VendingItemBuyButton.OnPressed += _ => { OnItemSelected?.Invoke(j); };
 
             VendingContents.AddChild(vendingItem);
         }

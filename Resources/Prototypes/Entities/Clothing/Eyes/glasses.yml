@@ -181,6 +181,8 @@
   - type: ShowSecurityIcons
   - type: IdentityBlocker
     coverage: EYES
+  - type: StaticPrice
+    price: 25
 
 - type: entity
   parent: ClothingEyesBase

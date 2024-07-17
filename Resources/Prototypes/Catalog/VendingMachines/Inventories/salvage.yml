@@ -2,21 +2,19 @@
   id: SalvageEquipmentInventory
   startingInventory:
     WeaponProtoKineticAccelerator: 2
-    WeaponCrusher: 2
-    WeaponCrusherDagger: 4
-    WeaponGrapplingGun: 3
-    HandheldGPSBasic: 10
-    Crowbar: 6
-    BoxMRE: 6
-    Pickaxe: 6
-    SurvivalKnife: 3
-    OreBag: 6
-    Flare: 20
-    FlashlightLantern: 6
+    WeaponCrusher: 1
+    WeaponCrusherDagger: 2
+    HandheldGPSBasic: 4
+    Crowbar: 2
+    BoxMRE: 3
+    Pickaxe: 4
+    SurvivalKnife: 2
+    OreBag: 4
+    Flare: 10
+    FlashlightLantern: 3
     Floodlight: 2
-    RadioHandheld: 10
-    Brutepack: 2
-    InflatableWallStack1: 40
+    RadioHandheld: 4
+    InflatableWallStack1: 20
     InflatableDoorStack1: 10
     SeismicCharge: 3
     FultonBeacon: 2

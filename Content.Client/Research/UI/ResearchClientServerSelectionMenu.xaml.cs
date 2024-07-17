@@ -8,9 +8,7 @@ namespace Content.Client.Research.UI
     [GenerateTypedNameReferences]
     public sealed partial class ResearchClientServerSelectionMenu : DefaultWindow
     {
-        private int _serverCount;
-        private string[] _serverNames = Array.Empty<string>();
-        private int[] _serverIds = Array.Empty<int>();
+        private List<int> _serverIds = [];
         private int _selectedServerId = -1;
 
         private ResearchClientBoundUserInterface Owner { get; }
@@ -26,20 +24,18 @@ namespace Content.Client.Research.UI
             Servers.OnItemDeselected += OnItemDeselected;
         }
 
-        public void OnItemSelected(ItemList.ItemListSelectedEventArgs itemListSelectedEventArgs)
+        private void OnItemSelected(ItemList.ItemListSelectedEventArgs itemListSelectedEventArgs)
         {
             Owner.SelectServer(_serverIds[itemListSelectedEventArgs.ItemIndex]);
         }
 
-        public void OnItemDeselected(ItemList.ItemListDeselectedEventArgs itemListDeselectedEventArgs)
+        private void OnItemDeselected(ItemList.ItemListDeselectedEventArgs itemListDeselectedEventArgs)
         {
             Owner.DeselectServer();
         }
 
-        public void Populate(int serverCount, string[] serverNames, int[] serverIds, int selectedServerId)
+        public void Populate(List<string> serverNames, List<int> serverIds, int selectedServerId)
         {
-            _serverCount = serverCount;
-            _serverNames = serverNames;
             _serverIds = serverIds;
             _selectedServerId = selectedServerId;
 
@@ -48,10 +44,12 @@ namespace Content.Client.Research.UI
             Servers.OnItemDeselected -= OnItemDeselected;
 
             Servers.Clear();
-            for (var i = 0; i < _serverCount; i++)
+            for (var i = 0; i < serverIds.Count; i++)
             {
-                var id = _serverIds[i];
-                Servers.AddItem(Loc.GetString("research-client-server-selection-menu-server-entry-text", ("id", id), ("serverName", _serverNames[i])));
+                var id = serverIds[i];
+                var name = serverNames[i];
+                Servers.AddItem(Loc.GetString("research-client-server-selection-menu-server-entry-text", ("id", id),
+                    ("serverName", name)));
                 if (id == _selectedServerId)
                 {
                     Servers[i].Selected = true;
