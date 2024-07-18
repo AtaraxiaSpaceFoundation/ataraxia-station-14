@@ -22,11 +22,6 @@
   parent: Holoprojector
   id: HoloprojectorEmpty
   suffix: Empty
-  components:
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
 
 - type: entity
   parent: Holoprojector
@@ -56,11 +51,6 @@
   parent: HolofanProjector
   id: HolofanProjectorEmpty
   suffix: Empty
-  components:
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
 
 - type: entity
   parent: Holoprojector
@@ -84,11 +74,6 @@
   parent: HoloprojectorField
   id: HoloprojectorFieldEmpty
   suffix: Empty
-  components:
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
 
 - type: entity
   parent: Holoprojector
@@ -112,8 +97,3 @@
   parent: HoloprojectorSecurity
   id: HoloprojectorSecurityEmpty
   suffix: Empty
-  components:
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default

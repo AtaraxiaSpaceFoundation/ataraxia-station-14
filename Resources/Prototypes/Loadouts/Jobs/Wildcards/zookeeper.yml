@@ -1,0 +1,10 @@
+﻿
+# PDA
+
+- type: itemLoadout
+  id: ZookeeperPDA
+  equipment: ZookeeperPDA
+- type: startingGear
+  id: ZookeeperPDA
+  equipment:
+    id: ZookeeperPDA

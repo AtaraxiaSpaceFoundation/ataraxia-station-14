@@ -34,27 +34,27 @@
   - type: Clothing
     sprite: White/Fluff/purplemab/lunar_cmo_webbing.rsi
 
-- type: loadout
+- type: sponsorLoadout
   id: BioVirologyPurpleMabFluffLoadout
   entity: BioVirologyPurpleMabFluff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: HatPurpleMabFluffLoadout
   entity: HatPurpleMabFluff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: ClothingBeltWebbingPurpleMabLoadout
   entity: ClothingBeltWebbingPurpleMab
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: ClothingShoesBootsJackPurpleMabLoadout
   entity: ClothingShoesBootsJack
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: ClothingHeadsetAltCommandPurpleMabLoadout
   entity: ClothingHeadsetAltCommand
   sponsorOnly: true

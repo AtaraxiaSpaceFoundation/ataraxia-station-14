@@ -138,6 +138,9 @@
       map: ["enum.StorageVisualLayers.Base"]
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]  
   - type: Construction
     graph: WebStructures
     node: crate
@@ -331,6 +334,10 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "-0.25,0.625"
+      map: ["enum.PaperLabelVisuals.Layer"]  
   - type: Icon
     sprite: Structures/Storage/Crates/livestock.rsi
     state: base
@@ -382,6 +389,10 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,0.125"
+      map: ["enum.PaperLabelVisuals.Layer"]   
   - type: Icon
     sprite: Structures/Storage/Crates/cage.rsi
   - type: Destructible
@@ -435,6 +446,10 @@
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: ["enum.PaperLabelVisuals.Layer"]
   - type: Icon
     sprite: Structures/Storage/Crates/piratechest.rsi
     state: crate_icon
@@ -460,6 +475,8 @@
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      map: ["enum.PaperLabelVisuals.Layer"]
   - type: Icon
     sprite: Structures/Storage/Crates/toybox.rsi
     state: crate_icon
@@ -476,6 +493,8 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      map: ["enum.PaperLabelVisuals.Layer"] 
   - type: Icon
     sprite: Structures/Storage/Crates/coffin.rsi
     state: base
@@ -514,6 +533,10 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "-0.28125,0.625"
+      map: ["enum.PaperLabelVisuals.Layer"] 
   - type: Icon
     sprite: Structures/Storage/Crates/wooden_grave.rsi
     state: base
@@ -558,6 +581,10 @@
     - state: base
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "-0.3125,0.5625"
+      map: ["enum.PaperLabelVisuals.Layer"] 
   - type: Icon
     sprite: Structures/Storage/Crates/stone_grave.rsi
     state: base
@@ -582,6 +609,17 @@
     sprite: Structures/Storage/Crates/trashcart.rsi
   - type: Sprite
     sprite: Structures/Storage/Crates/trashcart.rsi
+    layers:
+    - state: base
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,0.03125"
+      map: ["enum.PaperLabelVisuals.Layer"]
 
 - type: entity
   parent: CrateBaseSecure
@@ -592,6 +630,20 @@
     sprite: Structures/Storage/Crates/trashcart_jani.rsi
   - type: Sprite
     sprite: Structures/Storage/Crates/trashcart_jani.rsi
+    layers:
+    - state: base
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,0.03125"
+      map: ["enum.PaperLabelVisuals.Layer"]
   - type: AccessReader
     access: [["Janitor"]]
 

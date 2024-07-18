@@ -72,7 +72,8 @@ public sealed class CluwneSystem : EntitySystem
 
         EnsureComp<AutoEmoteComponent>(uid);
         _autoEmote.AddEmote(uid, "CluwneGiggle");
-        EnsureComp<ClumsyComponent>(uid);
+        var clumsy = EnsureComp<ClumsyComponent>(uid);
+        clumsy.ClumsyDamage = new DamageSpecifier(_prototypeManager.Index<DamageGroupPrototype>("Brute"), 12);
 
         _popupSystem.PopupEntity(Loc.GetString("cluwne-transform", ("target", uid)), uid, PopupType.LargeCaution);
         _audio.PlayPvs(component.SpawnSound, uid);

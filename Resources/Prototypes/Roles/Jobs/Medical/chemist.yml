@@ -17,15 +17,3 @@
 
 - type: startingGear
   id: ChemistGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitChemistry
-    back: ClothingBackpackChemistryFilled
-    shoes: ClothingShoesColorWhite
-    id: ChemistryPDA
-    ears: ClothingHeadsetMedical
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtChemistry
-  satchel: ClothingBackpackSatchelChemistryFilled
-  duffelbag: ClothingBackpackDuffelChemistryFilled

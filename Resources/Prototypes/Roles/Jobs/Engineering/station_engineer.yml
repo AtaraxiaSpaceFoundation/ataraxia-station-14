@@ -19,15 +19,3 @@
 
 - type: startingGear
   id: StationEngineerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitEngineering
-    back: ClothingBackpackEngineeringFilled
-    shoes: ClothingShoesBootsWork
-    id: EngineerPDA
-    ears: ClothingHeadsetEngineering
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtEngineering
-  satchel: ClothingBackpackSatchelEngineeringFilled
-  duffelbag: ClothingBackpackDuffelEngineeringFilled

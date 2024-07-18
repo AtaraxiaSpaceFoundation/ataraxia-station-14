@@ -54,7 +54,7 @@ public delegate void CalcPlayTimeTrackersCallback(ICommonSession player, HashSet
 /// Operations like refreshing and sending play time info to clients are deferred until the next frame (note: not tick).
 /// </para>
 /// </remarks>
-public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
+public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IServerNetManager _net = default!;
@@ -87,7 +87,6 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         _net.RegisterNetMessage<MsgPlayTime>();
 
         _cfg.OnValueChanged(CCVars.PlayTimeSaveInterval, f => _saveInterval = TimeSpan.FromSeconds(f), true);
-        _sawmill.Info("Using default PlayTimeTracker");
     }
 
     public void Shutdown()
@@ -200,6 +199,11 @@ public sealed class PlayTimeTrackingManager : IPlayTimeTrackingManager
         {
             AddTimeToTracker(data, active, delta);
         }
+    }
+
+    public IReadOnlyDictionary<string, TimeSpan> GetPlayTimes(ICommonSession session)
+    {
+        return GetTrackerTimes(session);
     }
 
     private void SendPlayTimes(ICommonSession pSession)

@@ -15,15 +15,31 @@
       "name": "burned",
       "directions": 4
     },
-    {
-      "name": "base",
-      "directions": 4
-    },
+
     {
       "name": "empty",
       "directions": 4
     },
-	{
+    {
+      "name": "base",
+      "directions": 4,
+      "delays": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+
       "name": "glow",
       "directions": 4
     }

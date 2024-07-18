@@ -1,0 +1,110 @@
+# Jumpsuit
+- type: itemLoadout
+  id: LawyerJumpsuit
+  equipment: LawyerJumpsuit
+
+- type: startingGear
+  id: LawyerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+
+- type: itemLoadout
+  id: LawyerJumpskirt
+  equipment: LawyerJumpskirt
+
+- type: startingGear
+  id: LawyerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlack
+
+- type: itemLoadout
+  id: LawyerJumpsuitBlue
+  equipment: LawyerJumpsuitBlue
+
+- type: startingGear
+  id: LawyerJumpsuitBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlue
+
+- type: itemLoadout
+  id: LawyerJumpskirtBlue
+  equipment: LawyerJumpskirtBlue
+
+- type: startingGear
+  id: LawyerJumpskirtBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlue
+
+- type: itemLoadout
+  id: LawyerJumpsuitPurple
+  equipment: LawyerJumpsuitPurple
+
+- type: startingGear
+  id: LawyerJumpsuitPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerPurple
+
+- type: itemLoadout
+  id: LawyerJumpskirtPurple
+  equipment: LawyerJumpskirtPurple
+
+- type: startingGear
+  id: LawyerJumpskirtPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerPurple
+
+- type: itemLoadout
+  id: LawyerJumpsuitRed
+  equipment: LawyerJumpsuitRed
+
+- type: startingGear
+  id: LawyerJumpsuitRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerRed
+
+- type: itemLoadout
+  id: LawyerJumpskirtRed
+  equipment: LawyerJumpskirtRed
+
+- type: startingGear
+  id: LawyerJumpskirtRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerRed
+
+- type: itemLoadout
+  id: LawyerJumpsuitGood
+  equipment: LawyerJumpsuitGood
+
+- type: startingGear
+  id: LawyerJumpsuitGood
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerGood
+
+- type: itemLoadout
+  id: LawyerJumpskirtGood
+  equipment: LawyerJumpskirtGood
+
+- type: startingGear
+  id: LawyerJumpskirtGood
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerGood
+
+# Neck
+- type: itemLoadout
+  id: LawyerNeck
+  equipment: LawyerNeck
+
+- type: startingGear
+  id: LawyerNeck
+  equipment:
+    neck: ClothingNeckLawyerbadge
+
+# PDA
+
+- type: itemLoadout # WD
+  id: LawyerPDA
+  equipment: LawyerPDA
+- type: startingGear
+  id: LawyerPDA
+  equipment:
+    id: LawyerPDA

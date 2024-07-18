@@ -1,0 +1,135 @@
+# Professional HoP Time
+- type: loadoutEffectGroup
+  id: ProfessionalHoP
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfPersonnel
+      time: 54000 #15 hrs, special reward for HoP mains
+
+# Jumpsuit
+- type: itemLoadout
+  id: HoPJumpsuit
+  equipment: HoPJumpsuit
+
+- type: startingGear
+  id: HoPJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoP
+
+- type: itemLoadout
+  id: HoPJumpskirt
+  equipment: HoPJumpskirt
+
+- type: startingGear
+  id: HoPJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoP
+
+# Head
+- type: itemLoadout
+  id: HoPHead
+  equipment: HoPHead
+
+- type: startingGear
+  id: HoPHead
+  equipment:
+    head: ClothingHeadHatHopcap
+
+# Neck
+- type: itemLoadout
+  id: HoPCloak
+  equipment: HoPCloak
+
+- type: startingGear
+  id: HoPCloak
+  equipment:
+    neck: ClothingNeckCloakHop
+
+- type: itemLoadout
+  id: HoPMantle
+  equipment: HoPMantle
+
+- type: startingGear
+  id: HoPMantle
+  equipment:
+    neck: ClothingNeckMantleHOP
+
+# Back
+- type: itemLoadout
+  id: HoPBackpack
+  equipment: HoPBackpack
+
+- type: startingGear
+  id: HoPBackpack
+  equipment:
+    back: ClothingBackpackHOPFilled
+
+- type: itemLoadout
+  id: HoPSatchel
+  equipment: HoPSatchel
+
+- type: startingGear
+  id: HoPSatchel
+  equipment:
+    back: ClothingBackpackSatchelHOPFilled
+
+- type: itemLoadout
+  id: HoPDuffel
+  equipment: HoPDuffel
+
+- type: startingGear
+  id: HoPDuffel
+  equipment:
+    back: ClothingBackpackDuffelHOPFilled
+
+- type: itemLoadout
+  id: HoPBackpackIan
+  equipment: HoPBackpackIan
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ProfessionalHoP
+
+- type: startingGear
+  id: HoPBackpackIan
+  equipment:
+    back: ClothingBackpackHOPIanFilled
+
+# Outerclothing
+- type: itemLoadout
+  id: HoPWintercoat
+  equipment: HoPWintercoat
+
+- type: startingGear
+  id: HoPWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterHoP
+
+# gloves
+- type: itemLoadout # WD
+  id: HoPGloves
+  equipment: HoPGloves
+- type: startingGear
+  id: HoPGloves
+  equipment:
+    gloves: ClothingHandsGlovesHop
+
+# PDA
+- type: itemLoadout # WD
+  id: HoPPDA
+  equipment: HoPPDA
+- type: startingGear
+  id: HoPPDA
+  equipment:
+    gloves: HoPPDA
+
+# Ears
+- type: itemLoadout # WD
+  id: HoPEars
+  equipment: HoPEars
+
+- type: startingGear
+  id: HoPEars
+  equipment:
+    id: ClothingHeadsetCommand

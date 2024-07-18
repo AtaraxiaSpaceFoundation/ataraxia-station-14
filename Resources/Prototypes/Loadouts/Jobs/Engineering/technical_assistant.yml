@@ -1,0 +1,29 @@
+# Jumpsuit
+- type: itemLoadout
+  id: YellowJumpsuit
+  equipment: YellowJumpsuit
+
+- type: startingGear
+  id: YellowJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+
+- type: itemLoadout
+  id: YellowJumpskirt
+  equipment: YellowJumpskirt
+
+- type: startingGear
+  id: YellowJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorYellow
+
+
+# PDA
+
+- type: itemLoadout # WD
+  id: TechnicalAssistantPDA
+  equipment: TechnicalAssistantPDA
+- type: startingGear
+  id: TechnicalAssistantPDA
+  equipment:
+    id: TechnicalAssistantPDA

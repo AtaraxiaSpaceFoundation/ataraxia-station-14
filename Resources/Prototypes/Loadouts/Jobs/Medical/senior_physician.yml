@@ -1,0 +1,43 @@
+﻿# jumpsuit
+- type: itemLoadout
+  id: JumpsuitSeniorPhysician
+  equipment: JumpsuitSeniorPhysician
+- type: startingGear
+  id: JumpsuitSeniorPhysician
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+
+- type: itemLoadout
+  id: JumpskirtSeniorPhysician
+  equipment: JumpskirtSeniorPhysician
+- type: startingGear
+  id: JumpskirtSeniorPhysician
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+
+# outerClothing
+- type: itemLoadout
+  id: CoatLabSeniorPhysician
+  equipment: CoatLabSeniorPhysician
+- type: startingGear
+  id: CoatLabSeniorPhysician
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorPhysician
+
+# head
+- type: itemLoadout
+  id: SeniorPhysicianBeret
+  equipment: SeniorPhysicianBeret
+- type: startingGear
+  id: SeniorPhysicianBeret
+  equipment:
+    head: ClothingHeadHatBeretSeniorPhysician
+# pda
+- type: itemLoadout
+  id: SeniorPhysicianPDA
+  equipment: SeniorPhysicianPDA
+- type: startingGear
+  id: SeniorPhysicianPDA
+  equipment:
+    id: SeniorPhysicianPDA
+

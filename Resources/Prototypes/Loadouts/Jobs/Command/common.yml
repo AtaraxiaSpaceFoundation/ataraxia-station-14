@@ -1,0 +1,17 @@
+﻿# Ears
+
+- type: itemLoadout # WD
+  id: CommandHeadset
+  equipment: CommandHeadset
+- type: startingGear
+  id: CommandHeadset
+  equipment:
+    ears: ClothingHeadsetCommand
+
+- type: itemLoadout # WD
+  id: CommandHeadsetAlt
+  equipment: CommandHeadsetAlt
+- type: startingGear
+  id: CommandHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltCommand

@@ -10,43 +10,43 @@
   id: ExperimentalStunbatonWaggier
   description: "Литая сталь. Прочный пластик. Дубинка Ветерана СБ Регины Хьюи."
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierBeretLoadout
   entity: ClothingHeadHatBeretWaggier
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden, SeniorOfficer ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierUniformLoadout
   entity: ClothingUniformJumpsuitSeniorOfficer
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierUniformSkirtLoadout
   entity: ClothingUniformJumpskirtSeniorOfficer
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierShoesLoadout
   entity: ClothingShoesBootsCombatFilled
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierGlovesLoadout
   entity: ClothingHandsGlovesCombat
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierStunBatonLoadout
   entity: ExperimentalStunbatonWaggier
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden, SeniorOfficer ]
 
-- type: loadout
+- type: sponsorLoadout
   id: WaggierOuterCoatLoadout
   entity: ClothingOuterCoatHoSTrench
   sponsorOnly: true

@@ -1,0 +1,76 @@
+# Head
+- type: itemLoadout
+  id: ChefHead
+  equipment: ChefHead
+
+- type: startingGear
+  id: ChefHead
+  equipment:
+    head: ClothingHeadHatChef
+
+# Mask
+- type: itemLoadout
+  id: ChefMask
+  equipment: ChefMask
+
+- type: startingGear
+  id: ChefMask
+  equipment:
+    mask: ClothingMaskItalianMoustache
+
+# Jumpsuit
+- type: itemLoadout
+  id: ChefJumpsuit
+  equipment: ChefJumpsuit
+
+- type: startingGear
+  id: ChefJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+
+- type: itemLoadout
+  id: ChefJumpskirt
+  equipment: ChefJumpskirt
+
+- type: startingGear
+  id: ChefJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChef
+
+# Outer clothing
+- type: itemLoadout
+  id: ChefApron
+  equipment: ChefApron
+
+- type: startingGear
+  id: ChefApron
+  equipment:
+    outerClothing: ClothingOuterApronChef
+
+- type: itemLoadout
+  id: ChefJacket
+  equipment: ChefJacket
+
+- type: startingGear
+  id: ChefJacket
+  equipment:
+    outerClothing: ClothingOuterJacketChef
+
+- type: itemLoadout
+  id: ChefWintercoat
+  equipment: ChefWintercoat
+
+- type: startingGear
+  id: ChefWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterChef
+
+# PDA
+
+- type: itemLoadout # WD
+  id: ChefPDA
+  equipment: ChefPDA
+- type: startingGear
+  id: ChefPDA
+  equipment:
+    id: ChefPDA

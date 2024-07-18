@@ -1,0 +1,206 @@
+# Head
+- type: itemLoadout
+  id: ChaplainHead
+  equipment: ChaplainHead
+
+- type: startingGear
+  id: ChaplainHead
+  equipment:
+    head: ClothingHeadHatFez
+
+- type: itemLoadout
+  id: ChaplainNunHood
+  equipment: ChaplainNunHood
+
+- type: startingGear
+  id: ChaplainNunHood
+  equipment:
+    head: ClothingHeadHatHoodNunHood
+
+- type: itemLoadout
+  id: ChaplainPlagueHat
+  equipment: ChaplainPlagueHat
+
+- type: startingGear
+  id: ChaplainPlagueHat
+  equipment:
+    head: ClothingHeadHatPlaguedoctor
+
+- type: itemLoadout
+  id: ChaplainWitchHat
+  equipment: ChaplainWitchHat
+
+- type: startingGear
+  id: ChaplainWitchHat
+  equipment:
+    head: ClothingHeadHatWitch
+
+- type: itemLoadout
+  id: ChaplainWitchHatAlt
+  equipment: ChaplainWitchHatAlt
+
+- type: startingGear
+  id: ChaplainWitchHatAlt
+  equipment:
+    head: ClothingHeadHatWitch1
+
+# Mask
+- type: itemLoadout
+  id: ChaplainMask
+  equipment: ChaplainMask
+
+- type: startingGear
+  id: ChaplainMask
+  equipment:
+    mask: ClothingMaskPlague
+
+# Jumpsuit
+- type: itemLoadout
+  id: ChaplainJumpsuit
+  equipment: ChaplainJumpsuit
+
+- type: startingGear
+  id: ChaplainJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChaplain
+
+- type: itemLoadout
+  id: ChaplainJumpskirt
+  equipment: ChaplainJumpskirt
+
+- type: startingGear
+  id: ChaplainJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChaplain
+
+- type: itemLoadout
+  id: ChaplainRobesDark
+  equipment: ChaplainRobesDark
+
+- type: startingGear
+  id: ChaplainRobesDark
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMonasticRobeDark
+
+- type: itemLoadout
+  id: ChaplainRobesLight
+  equipment: ChaplainRobesLight
+
+- type: startingGear
+  id: ChaplainRobesLight
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMonasticRobeLight
+
+# Back
+- type: itemLoadout
+  id: ChaplainBackpack
+  equipment: ChaplainBackpack
+
+- type: startingGear
+  id: ChaplainBackpack
+  equipment:
+    back: ClothingBackpackChaplainFilled
+
+- type: itemLoadout
+  id: ChaplainSatchel
+  equipment: ChaplainSatchel
+
+- type: startingGear
+  id: ChaplainSatchel
+  equipment:
+    back: ClothingBackpackSatchelChaplainFilled
+
+- type: itemLoadout
+  id: ChaplainDuffel
+  equipment: ChaplainDuffel
+
+- type: startingGear
+  id: ChaplainDuffel
+  equipment:
+    back: ClothingBackpackDuffelChaplainFilled
+
+# Neck
+- type: itemLoadout
+  id: ChaplainNeck
+  equipment: ChaplainNeck
+
+- type: startingGear
+  id: ChaplainNeck
+  equipment:
+    neck: ClothingNeckStoleChaplain
+
+- type: itemLoadout # WD
+  id: ChaplainNecklaceSilver
+  equipment: ChaplainNecklaceSilver
+- type: startingGear
+  id: ChaplainNecklaceSilver
+  equipment:
+    neck: ClothingNeckNecklaceSilver
+
+# Outer clothing
+- type: itemLoadout
+  id: ChaplainPlagueSuit
+  equipment: ChaplainPlagueSuit
+
+- type: startingGear
+  id: ChaplainPlagueSuit
+  equipment:
+    outerClothing: ClothingOuterPlagueSuit
+
+- type: itemLoadout
+  id: ChaplainNunRobe
+  equipment: ChaplainNunRobe
+
+- type: startingGear
+  id: ChaplainNunRobe
+  equipment:
+    outerClothing: ClothingOuterNunRobe
+
+- type: itemLoadout
+  id: ChaplainBlackHoodie
+  equipment: ChaplainBlackHoodie
+
+- type: startingGear
+  id: ChaplainBlackHoodie
+  equipment:
+    outerClothing: ClothingOuterHoodieBlack
+
+- type: itemLoadout
+  id: ChaplainHoodie
+  equipment: ChaplainHoodie
+
+- type: startingGear
+  id: ChaplainHoodie
+  equipment:
+    outerClothing: ClothingOuterHoodieChaplain
+
+# Belt
+
+- type: itemLoadout # WD
+  id: ChaplainNullRod
+  equipment: ChaplainNullRod
+- type: startingGear
+  id: ChaplainNullRod
+  equipment:
+    belt: NullRod
+
+# Job trinkets
+
+- type: itemLoadout # WD
+  id: ArmamentsBeacon
+  equipment: ArmamentsBeacon
+- type: startingGear
+  id: ArmamentsBeacon
+  storage:
+    back:
+    - ArmamentsBeacon
+
+# PDA
+
+- type: itemLoadout # WD
+  id: ChaplainPDA
+  equipment: ChaplainPDA
+- type: startingGear
+  id: ChaplainPDA
+  equipment:
+    id: ChaplainPDA

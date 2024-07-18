@@ -1,0 +1,156 @@
+# Senior times
+- type: loadoutEffectGroup
+  id: SeniorEngineering
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobAtmosphericTechnician
+      time: 21600 #6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobStationEngineer
+      time: 21600 #6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 216000 # 60 hrs
+
+# Head
+- type: itemLoadout
+  id: StationEngineerHardhatYellow
+  equipment: StationEngineerHardhatYellow
+
+- type: startingGear
+  id: StationEngineerHardhatYellow
+  equipment:
+    head: ClothingHeadHatHardhatYellow
+
+- type: itemLoadout
+  id: StationEngineerHardhatOrange
+  equipment: StationEngineerHardhatOrange
+
+- type: startingGear
+  id: StationEngineerHardhatOrange
+  equipment:
+    head: ClothingHeadHatHardhatOrange
+
+- type: itemLoadout
+  id: StationEngineerHardhatRed
+  equipment: StationEngineerHardhatRed
+
+- type: startingGear
+  id: StationEngineerHardhatRed
+  equipment:
+    head: ClothingHeadHatHardhatRed
+
+- type: startingGear
+  id: EngineeringBeret
+  equipment:
+    head: ClothingHeadHatBeretEngineering
+
+# Jumpsuit
+- type: itemLoadout
+  id: StationEngineerJumpsuit
+  equipment: StationEngineerJumpsuit
+
+- type: startingGear
+  id: StationEngineerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineering
+
+- type: itemLoadout
+  id: StationEngineerJumpskirt
+  equipment: StationEngineerJumpskirt
+
+- type: startingGear
+  id: StationEngineerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtEngineering
+
+- type: itemLoadout
+  id: StationEngineerHazardsuit
+  equipment: StationEngineerHazardsuit
+
+- type: startingGear
+  id: StationEngineerHazardsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+
+# Back
+- type: itemLoadout
+  id: StationEngineerBackpack
+  equipment: StationEngineerBackpack
+
+- type: startingGear
+  id: StationEngineerBackpack
+  equipment:
+    back: ClothingBackpackEngineeringFilled
+
+- type: itemLoadout
+  id: StationEngineerSatchel
+  equipment: StationEngineerSatchel
+
+- type: startingGear
+  id: StationEngineerSatchel
+  equipment:
+    back: ClothingBackpackSatchelEngineeringFilled
+
+- type: itemLoadout
+  id: StationEngineerDuffel
+  equipment: StationEngineerDuffel
+
+- type: startingGear
+  id: StationEngineerDuffel
+  equipment:
+    back: ClothingBackpackDuffelEngineeringFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: StationEngineerOuterVest
+  equipment: StationEngineerOuterVest
+
+- type: startingGear
+  id: StationEngineerOuterVest
+  equipment:
+    outerClothing: ClothingOuterVestHazard
+
+- type: itemLoadout
+  id: StationEngineerWintercoat
+  equipment: StationEngineerWintercoat
+
+- type: startingGear
+  id: StationEngineerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterEngi
+
+# Shoes
+- type: itemLoadout
+  id: WorkBoots
+  equipment: WorkBoots
+
+- type: startingGear
+  id: WorkBoots
+  equipment:
+    shoes: ClothingShoesBootsWork
+
+- type: itemLoadout
+  id: EngineeringWinterBoots
+  equipment: EngineeringWinterBoots
+
+- type: startingGear
+  id: EngineeringWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterEngi
+
+# ID
+- type: itemLoadout
+  id: StationEngineerPDA
+  equipment: StationEngineerPDA
+
+- type: startingGear
+  id: StationEngineerPDA
+  equipment:
+    id: EngineerPDA

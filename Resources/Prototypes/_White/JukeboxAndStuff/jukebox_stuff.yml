@@ -1,11 +1,11 @@
 - type: entity
   parent: BaseItem
-  id: Jukebox
-  name: jukebox
+  id: Boombox
+  name: boombox
   description: Альфа-Шкварки
   suffix: Empty
   components:
-    - type: Jukebox
+    - type: WhiteJukebox
       maxAudioRange: 15
     - type: Sprite
       sprite: White/Objects/Devices/jukebox.rsi

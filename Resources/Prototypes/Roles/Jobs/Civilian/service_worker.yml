@@ -16,15 +16,3 @@
 
 - type: startingGear
   id: ServiceWorkerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitBartender
-    back: ClothingBackpackFilled
-    shoes: ClothingShoesColorBlack
-    id: ServiceWorkerPDA
-    ears: ClothingHeadsetService
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtBartender
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled

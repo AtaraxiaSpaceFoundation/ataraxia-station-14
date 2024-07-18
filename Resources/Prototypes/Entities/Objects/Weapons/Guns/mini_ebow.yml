@@ -34,4 +34,3 @@
           True: { state: icon }
           False: { state: empty }
   - type: Appearance
-    useBlur: true

@@ -1,0 +1,123 @@
+# Head
+- type: itemLoadout
+  id: BotanistHead
+  equipment: BotanistHead
+
+- type: startingGear
+  id: BotanistHead
+  equipment:
+    head: ClothingHeadHatTrucker
+
+- type: itemLoadout
+  id: BotanistBandana
+  equipment: BotanistBandana
+
+- type: startingGear
+  id: BotanistBandana
+  equipment:
+    head: ClothingHeadBandBotany
+
+# Jumpsuit
+- type: itemLoadout
+  id: BotanistJumpsuit
+  equipment: BotanistJumpsuit
+
+- type: startingGear
+  id: BotanistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponics
+
+- type: itemLoadout
+  id: BotanistJumpskirt
+  equipment: BotanistJumpskirt
+
+- type: startingGear
+  id: BotanistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHydroponics
+
+- type: itemLoadout
+  id: BotanistOveralls
+  equipment: BotanistOveralls
+
+- type: startingGear
+  id: BotanistOveralls
+  equipment:
+    jumpsuit: ClothingUniformOveralls
+
+# Back
+- type: itemLoadout
+  id: BotanistBackpack
+  equipment: BotanistBackpack
+
+- type: startingGear
+  id: BotanistBackpack
+  equipment:
+    back: ClothingBackpackHydroponicsFilled
+
+- type: itemLoadout
+  id: BotanistSatchel
+  equipment: BotanistSatchel
+
+- type: startingGear
+  id: BotanistSatchel
+  equipment:
+    back: ClothingBackpackSatchelHydroponicsFilled
+
+- type: itemLoadout
+  id: BotanistDuffel
+  equipment: BotanistDuffel
+
+- type: startingGear
+  id: BotanistDuffel
+  equipment:
+    back: ClothingBackpackDuffelHydroponicsFilled
+
+# Outer clothing
+- type: itemLoadout
+  id: BotanistApron
+  equipment: BotanistApron
+
+- type: startingGear
+  id: BotanistApron
+  equipment:
+    outerClothing: ClothingOuterApronBotanist
+
+- type: itemLoadout
+  id: BotanistWintercoat
+  equipment: BotanistWintercoat
+
+- type: startingGear
+  id: BotanistWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterHydro
+
+# Gloves
+
+- type: itemLoadout
+  id: BotanistGlovesLeather
+  equipment: BotanistGlovesLeather
+- type: startingGear
+  id: BotanistGlovesLeather
+  equipment:
+    gloves: ClothingHandsGlovesLeather
+
+# Mask
+
+- type: itemLoadout
+  id: BotanistMaskBand
+  equipment: BotanistMaskBand
+- type: startingGear
+  id: BotanistMaskBand
+  equipment:
+    mask: ClothingMaskBandBotany
+
+# PDA
+
+- type: itemLoadout # WD
+  id: BotanistPDA
+  equipment: BotanistPDA
+- type: startingGear
+  id: BotanistPDA
+  equipment:
+    id: BotanistPDA

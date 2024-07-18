@@ -20,15 +20,3 @@
 
 - type: startingGear
   id: ChefGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitChef
-    back: ClothingBackpackFilled
-    shoes: ClothingShoesColorBlack
-    id: ChefPDA
-    ears: ClothingHeadsetService
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtChef
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled

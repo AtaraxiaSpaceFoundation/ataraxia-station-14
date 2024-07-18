@@ -1,0 +1,36 @@
+﻿# PDA
+- type: itemLoadout
+  id: SeniorResearcherPDA
+  equipment: SeniorResearcherPDA
+- type: startingGear
+  id: SeniorResearcherPDA
+  equipment:
+    id: SeniorResearcherPDA
+
+# Jumpsuit
+
+- type: itemLoadout
+  id: SeniorResearcherJumpsuit
+  equipment: SeniorResearcherJumpsuit
+- type: startingGear
+  id: SeniorResearcherJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+
+- type: itemLoadout
+  id: SeniorResearcherJumpskirt
+  equipment: SeniorResearcherJumpskirt
+- type: startingGear
+  id: SeniorResearcherJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorResearcher
+
+# Outerclothing
+
+- type: itemLoadout
+  id: SeniorResearcherCoatLab
+  equipment: SeniorResearcherCoatLab
+- type: startingGear
+  id: SeniorResearcherCoatLab
+  equipment:
+    outerClothing: ClothingOuterCoatLabSeniorResearcher

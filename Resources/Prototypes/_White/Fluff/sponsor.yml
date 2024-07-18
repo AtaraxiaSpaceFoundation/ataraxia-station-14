@@ -1,153 +1,153 @@
 # DOOMMAX
-- type: loadout
+- type: sponsorLoadout
   id: SuitGlamorousLoadout
   entity: ClothingOuterSuitGlamorous
   sponsorOnly: true
   blacklistJobs: [Captain, HeadOfPersonnel, ChiefEngineer, ChiefMedicalOfficer, ResearchDirector, HeadOfSecurity, Warden, Detective, SecurityOfficer, Quartermaster]
 
-- type: loadout
+- type: sponsorLoadout
   id: ClothingOuterHardsuitEVAGLAMOURsLoadout
   entity: ClothingOuterHardsuitEVAGLAMOUR
   sponsorOnly: true
   whitelistJobs: [Captain, HeadOfPersonnel, ChiefEngineer, ChiefMedicalOfficer, ResearchDirector, Quartermaster]
 
-- type: loadout
+- type: sponsorLoadout
   id: GammaUniformLoadout
   entity: ClothingUniformJumpsuitGamma
   sponsorOnly: true
   whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective]
 
-- type: loadout
+- type: sponsorLoadout
   id: GammaBeretLoadout
   entity: ClothingHeadHatBeretGamma
   sponsorOnly: true
   whitelistJobs: [HeadOfSecurity, Warden, SecurityOfficer, Detective]
 
-- type: loadout
+- type: sponsorLoadout
   id: ChaplanSchemaLoadout
   entity: DommaxChaplainSchema
   sponsorOnly: true
   whitelistJobs: [Chaplain]
 
-- type: loadout
+- type: sponsorLoadout
   id: DoommaxCapCloakLoadout
   entity: DoommaxCapCloak
   sponsorOnly: true
   whitelistJobs: [Captain]
 
-- type: loadout
+- type: sponsorLoadout
   id: DoommaxCapCapLoadout
   entity: DoommaxCapCap
   sponsorOnly: true
   whitelistJobs: [Captain]
 
 # Maury
-#- type: loadout
+#- type: sponsorLoadout
 #  id: ClothingUniformJumpsuitMaury #Should be ClothingUniformMauryLoadout but like i said i`m retard
 #  entity: ClothingUniformJumpsuitMauryZ
 #  sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: MauryHoodieRed
   entity: ClothingUniformJumpsuitColorMaury
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: MaurySneakersKedi
   entity: ClothingShoesMaurySneakers
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: MauryKolokolchik
   entity: ClothingNeckMauryChoker
   sponsorOnly: true
 
 # YouWellLeer
 
-#- type: loadout
+#- type: sponsorLoadout
 #  id: SledgebarLoadout
 #  entity: Sledgebar
 #  sponsorOnly: true
 
-#- type: loadout
+#- type: sponsorLoadout
 #  id: LeerBootsLoadout
 #  entity: LeerBoots
 #  sponsorOnly: true
 #  whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerCapLoadout
   entity: LeerCap
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerCloakLoadout
   entity: LeerCloak
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-#- type: loadout
+#- type: sponsorLoadout
 #  id: LeerGlovesLoadout
 #  entity: LeerGloves
 #  sponsorOnly: true
 #  whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerHardsuitLoadout
   entity: LeerHardsuit
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerHelmetLoadout
   entity: LeerHelmet
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerJumpsuitLoadout
   entity: LeerJumpsuit
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerMaskLoadout
   entity: LeerMask
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
-- type: loadout
+- type: sponsorLoadout
   id: LeerTrenchLoadout
   entity: LeerTrench
   sponsorOnly: true
   whitelistedJobs: [HeadOfSecurity]
 
 # мурка
-- type: loadout
+- type: sponsorLoadout
   id: BibleNyaLoadout
   entity: BibleNya
   sponsorOnly: true
 
 # Warete
-- type: loadout
+- type: sponsorLoadout
   id: WareteJumpskirtLoadout
   entity: WareteJumpskirt
   sponsorOnly: true
 
 # HSKveez
-- type: loadout
+- type: sponsorLoadout
   id: HSKveezKulonLoadout
   entity: HSKveezKulon
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: HSKveezStunBatonLoadout
   entity: HSKveezStunBaton
   sponsorOnly: true
   whitelistJobs: [ Detective, HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden ]
 
-- type: loadout
+- type: sponsorLoadout
   id: HSKveezRigLoadout
   entity: ClothingOuterHardsuitHskveezAtmos
   sponsorOnly: true
@@ -155,97 +155,97 @@
 
 
 #Omntns
-- type: loadout
+- type: sponsorLoadout
   id: OmntnsHammerLoadout
   entity: OmntnsHammer
   sponsorOnly: true
 
 # Pets summon book
-- type: loadout
+- type: sponsorLoadout
   id: PetsSummonBookLoadout
   entity: PetSummonBook
   sponsorOnly: true
 
 # 2sh0nka
 
-- type: loadout
+- type: sponsorLoadout
   id: 2sh0nkaBlackLoadout
   entity: ClothingUnderwearSocksBlack2sh0nka
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: 2sh0nkaGrayLoadout
   entity: ClothingUnderwearSocksGray2sh0nka
   sponsorOnly: true
 
 # derderiot
 
-- type: loadout
+- type: sponsorLoadout
   id: derderiotSynthesizerLoadout
   entity: SuperSynthesizerInstrumentDerderiot
   sponsorOnly: true
 
 # koitorra
-- type: loadout
+- type: sponsorLoadout
   id: koitorraMaskLoadout
   entity: ClothingMaskGasKoitorra
   sponsorOnly: true
 
 #thechaotic
-- type: loadout
+- type: sponsorLoadout
   id: thechaoticCoatLoadout
   entity: ClothingOuterCoatThechaotic
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: thechaoticSuitLoadout
   entity: ClothingJumpsuitBlackThechaotic
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: thechaoticTieLoadout
   entity: ClothingNeckTieThechaotic
   sponsorOnly: true
 
 #6elblu
-- type: loadout
+- type: sponsorLoadout
   id: 6elbluCloakLoadout
   entity: ClothingNeck6elbluCap
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: 6elbluOvercoatLoadout
   entity: ClothingOuterStorage6elbluOvercoat
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: 6elbluBootsLoadout
   entity: ClothingShoesTourist
   sponsorOnly: true
 
 #Serafim547
-- type: loadout
+- type: sponsorLoadout
   id: Serafim547MesonBlueLoadout
   entity: ClothingEyesGlassesMesonBlue
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: Serafim547SalvageSpecialistLoadout
   entity: ClothingUniformJumpsuitSerafimSalvageSpecialist
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: Serafim547VulpCoinLoadout
   entity: VulpCoin
   sponsorOnly: true
 
 #Skrimex
-- type: loadout
+- type: sponsorLoadout
   id: SkrimexCapLoadout
   entity: ClothingNeckSkrimexCap
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: SkrimexZippoLoadout
   entity: ZippoLighterSkrimex
   sponsorOnly: true
@@ -253,233 +253,233 @@
 
 # Deus
 
-- type: loadout
+- type: sponsorLoadout
   id: DeusJumpskirtLoadout
   entity: DeusJumpskirt
   sponsorOnly: true
 
 # GusMopsik
 
-- type: loadout
+- type: sponsorLoadout
   id: GusMopsikJumpsuitLoadout
   entity: GusMopsikJumpsuit
   sponsorOnly: true
 
 # JUKEBOX LOADOUT
 
-- type: loadout
+- type: sponsorLoadout
   id: JukeboxLoadout
-  entity: Jukebox
+  entity: Boombox
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: TapeRecorderLoadout
   entity: TapeRecorder
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: TapeLoadout
   entity: TapeEmpty
   sponsorOnly: true
 
 # Vtergot loadout
 
-- type: loadout
+- type: sponsorLoadout
   id: VtergotCloakOrderLoadout
   entity: ClothingNeckCloakOrder
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: VtergotJumpsuitISBLoadout
   entity: ClothingUniformJumpsuitISB
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: VtergotGlovesStrictLoadout
   entity: ClothingHandsGlovesStrict
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: VtergotBootsPeopledavLoadout
   entity: ClothingShoesBootsPeopledav
   sponsorOnly: true
 
 # Geraldiy
 
-- type: loadout
+- type: sponsorLoadout
   id: GeraldiyUSSPHat
   entity: ClothingHeadHatCapUSSPBlack
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: GeraldiyUSSPCoat
   entity: ClothingOuterCoatUSSPOvercoatBlack
   sponsorOnly: true
 
-#- type: loadout
+#- type: sponsorLoadout
 #  id: GeraldiyUSSPMask
 #  entity: ClothingMaskGasGeraldiy
 #  sponsorOnly: true
-- type: loadout
+- type: sponsorLoadout
   id: GeraldiyStamp
   entity: GeraldiyRubberStamp
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: GeraldiyArmblade
   entity: GeraldiyAncientBlade
   sponsorOnly: true
   whitelistJobs: [Chaplain]
 # KnifeCappy
 
-- type: loadout
+- type: sponsorLoadout
   id: KnifeCappySamuraiJacket
   entity: ClothingOuterCoatSamuraiCappy
   sponsorOnly: true
 
 # Medicgaming
-- type: loadout
+- type: sponsorLoadout
   id: MedicgamingDealGlasses
   entity: ClothingEyesDealGlassesMedic
   sponsorOnly: true
 
 # Oleg_Tinkoff
-- type: loadout
+- type: sponsorLoadout
   id: TinkoffGopHelmet
   entity: ClothingHeadHelmetGopTinkoff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: TinkoffShoesGop
   entity: ClothingShoesGopTinkoff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: TinkoffSuitGop
   entity: ClothingUniformGopTinkoff
   sponsorOnly: true
 
 # Zilendorie
-- type: loadout
+- type: sponsorLoadout
   id: ZilendorieFurazhka
   entity: ClothingHeadFurazhkaZilendorie
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: ZilendorieMundir
   entity: ClothingUniformMundirZilendorie
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: ZilendorieShinel
   entity: ClothingOuterShinelZilendorie
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: SvinkaCoatFluffLoadout
   entity: ClothingSvinkaNeckFluff
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: AntohagGasMaskLoadout
   entity: AntohagGasMaskFluff
   sponsorOnly: true
 
 # Forg
-- type: loadout
+- type: sponsorLoadout
   id: ForgPlushieRyan
   entity: PlushieRyanForg
   sponsorOnly: true
 
 # kreses
-- type: loadout
+- type: sponsorLoadout
   id: KresesBackpackVoid
   entity: KresesClothingBackpackVoid
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: KresesShoesVoid
   entity: KresesClothingShoesVoid
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: KresesCoatVoid
   entity: KresesClothingOuterVoid
 
 # Reider207
-- type: loadout
+- type: sponsorLoadout
   id: Reider207Jacket
   entity: ClothingOuterJacketReider207
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: Reider207Skates
   entity: ClothingShoesSkatesReider207
   sponsorOnly: true
 
 # egoruch17
-- type: loadout
+- type: sponsorLoadout
   id: Egoruch17Mask
   entity: EgoruchClothingMaskHoly
   sponsorOnly: true
   whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, Scientist, ResearchAssistant ]
 
-- type: loadout
+- type: sponsorLoadout
   id: Egoruch17Mantle
   entity: EgoruchClothingOuterMantle
   sponsorOnly: true
   whitelistJobs: [ AtmosphericTechnician, ChiefEngineer, StationEngineer, TechnicalAssistant, Chaplain, ResearchDirector, Scientist, ResearchAssistant ]
 
 # g13
-- type: loadout
+- type: sponsorLoadout
   id: G13Eyepatch
   entity: G13ClothingEyesEyepatch
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: G13Suit
   entity: G13ClothingUniformSuit
   sponsorOnly: true
 
-- type: loadout
+- type: sponsorLoadout
   id: G13Coat
   entity: G13ClothingOuterCoat
   sponsorOnly: true
 
 # KommenDant
-- type: loadout
+- type: sponsorLoadout
   id: KommenDantCoat
   entity: ClothingOuterWinterCoatKommenDant
   sponsorOnly: true
   whitelistJobs: [ Detective ]
 
 # qwertymen
-- type: loadout
+- type: sponsorLoadout
   id: QwertymenSecurityBelt
   entity: ClothingBeltSecurityFilledQwertymen
   sponsorOnly: true
   whitelistJobs: [ HeadOfSecurity, SecurityCadet, SecurityOfficer, Warden  ]
 
 #Rector6275
-- type: loadout
+- type: sponsorLoadout
   id: Rector6275Suit
   entity: ClothingOuterSuitRector6275
   sponsorOnly: true
 
 # Pr0fixxx
-- type: loadout
+- type: sponsorLoadout
   id: Pr0fixxxWebbing
   entity: ClothingBeltWebbingPr0fixxx
   sponsorOnly: true
 
 #Joulerk
-- type: loadout
+- type: sponsorLoadout
   id: JoulerkPlushie
   entity: PlushieLerkFluff
   sponsorOnly: true
 
 # Ritoka
-- type: loadout
+- type: sponsorLoadout
   id: RitokaCloak
   entity: ClothingOuterCloakRitoka
   sponsorOnly: true

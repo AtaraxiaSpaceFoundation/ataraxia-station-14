@@ -1,0 +1,137 @@
+# Jumpsuit
+- type: itemLoadout
+  id: HeadofSecurityJumpsuit
+  equipment: HeadofSecurityJumpsuit
+
+- type: startingGear
+  id: HeadofSecurityJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoS
+
+- type: itemLoadout
+  id: HeadofSecurityJumpskirt
+  equipment: HeadofSecurityJumpskirt
+
+- type: startingGear
+  id: HeadofSecurityJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoS
+
+- type: itemLoadout
+  id: HeadofSecurityTurtleneck
+  equipment: HeadofSecurityTurtleneck
+
+- type: startingGear
+  id: HeadofSecurityTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSAlt
+
+- type: itemLoadout
+  id: HeadofSecurityTurtleneckSkirt
+  equipment: HeadofSecurityTurtleneckSkirt
+
+- type: startingGear
+  id: HeadofSecurityTurtleneckSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoSAlt
+
+- type: itemLoadout
+  id: HeadofSecurityFormalSuit
+  equipment: HeadofSecurityFormalSuit
+
+- type: startingGear
+  id: HeadofSecurityFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosFormal
+
+- type: itemLoadout
+  id: HeadofSecurityFormalSkirt
+  equipment: HeadofSecurityFormalSkirt
+
+- type: startingGear
+  id: HeadofSecurityFormalSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHosFormal
+
+- type: itemLoadout # WD
+  id: HeadofSecurityJumpsuitHoSGrey
+  equipment: HeadofSecurityJumpsuitHoSGrey
+- type: startingGear
+  id: HeadofSecurityJumpsuitHoSGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSGrey
+
+- type: itemLoadout # WD
+  id: HeadofSecurityJumpsuitHoSBlue
+  equipment: HeadofSecurityJumpsuitHoSBlue
+- type: startingGear
+  id: HeadofSecurityJumpsuitHoSBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSBlue
+
+# Head
+- type: itemLoadout
+  id: HeadofSecurityHead
+  equipment: HeadofSecurityHead
+
+- type: startingGear
+  id: HeadofSecurityHead
+  equipment:
+    head: ClothingHeadHatHoshat
+
+- type: itemLoadout
+  id: HeadofSecurityBeret
+  equipment: HeadofSecurityBeret
+
+- type: startingGear
+  id: HeadofSecurityBeret
+  equipment:
+    head: ClothingHeadHatBeretHoS
+
+# Neck
+- type: itemLoadout
+  id: HeadofSecurityCloak
+  equipment: HeadofSecurityCloak
+
+- type: startingGear
+  id: HeadofSecurityCloak
+  equipment:
+    neck: ClothingNeckCloakHos
+
+- type: itemLoadout
+  id: HeadofSecurityMantle
+  equipment: HeadofSecurityMantle
+
+- type: startingGear
+  id: HeadofSecurityMantle
+  equipment:
+    neck: ClothingNeckMantleHOS
+
+# OuterClothing - removed
+- type: itemLoadout
+  id: HeadofSecurityCoat
+  equipment: HeadofSecurityCoat
+
+- type: startingGear
+  id: HeadofSecurityCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoSTrench
+
+- type: itemLoadout
+  id: HeadofSecurityWinterCoat
+  equipment: HeadofSecurityWinterCoat
+
+- type: startingGear
+  id: HeadofSecurityWinterCoat
+  equipment:
+    outerClothing: ClothingOuterWinterHoS
+
+# PDA
+
+- type: itemLoadout # WD
+  id: HeadofSecurityPDA
+  equipment: HeadofSecurityPDA
+- type: startingGear
+  id: HeadofSecurityPDA
+  equipment:
+    id: HoSPDA

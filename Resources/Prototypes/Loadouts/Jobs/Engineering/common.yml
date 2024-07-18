@@ -1,0 +1,9 @@
+﻿# Ears
+
+- type: itemLoadout # WD
+  id: EngineeringHeadset
+  equipment: EngineeringHeadset
+- type: startingGear
+  id: EngineeringHeadset
+  equipment:
+    ears: ClothingHeadsetEngineering

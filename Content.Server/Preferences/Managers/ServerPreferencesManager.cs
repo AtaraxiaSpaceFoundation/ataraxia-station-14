@@ -7,6 +7,7 @@ using Content.Server.Database;
 using Content.Server._White.Sponsors;
 using Content.Shared.CCVar;
 using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -24,10 +25,10 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private readonly IServerNetManager _netManager = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IServerDbManager _db = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IPrototypeManager _protos = default!;
 
         // WD-EDIT
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly SponsorsManager _sponsors = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
         // WD-EDIT
@@ -102,19 +103,21 @@ namespace Content.Server.Preferences.Managers
             }
 
             var curPrefs = prefsData.Prefs!;
+            var collection = IoCManager.Instance!;
 
             // WD-EDIT
             var allowedMarkings = _sponsors.TryGetInfo(message.MsgChannel.UserId, out var sponsor)
                 ? sponsor.AllowedMarkings
-                : [];
+                : new string[] {};
 
-            var isAdminSpecie = false;
+
             if (_playerManager.TryGetSessionById(message.MsgChannel.UserId, out var session))
             {
-                isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+                var isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+
+                profile.EnsureValid(session, collection, allowedMarkings, isAdminSpecie);
             }
 
-            profile.EnsureValid(_cfg, _protos, allowedMarkings, isAdminSpecie);
             // WD-EDIT
 
             var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
@@ -216,12 +219,13 @@ namespace Content.Server.Preferences.Managers
                     {
                         var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor)
                             ? sponsor.AllowedMarkings
-                            : [];
+                            : new string[] {};
 
                         var isAdminSpecie =
                             _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
+                        var collection = IoCManager.Instance!;
 
-                        profile.EnsureValid(_cfg, _protos, allowedMarkings, isAdminSpecie);
+                        profile.EnsureValid(session, collection, allowedMarkings, isAdminSpecie);
                     }
                     // WD-EDIT
 
@@ -302,31 +306,29 @@ namespace Content.Server.Preferences.Managers
                 return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.Random());
             }
 
-            return SanitizePreferences(prefs, userId);
+            var session = _playerManager.GetSessionById(userId);
+            var collection = IoCManager.Instance!;
+
+            return SanitizePreferences(session, prefs, collection, userId);
         }
 
-        private PlayerPreferences SanitizePreferences(PlayerPreferences prefs, NetUserId userId)
+        private PlayerPreferences SanitizePreferences(ICommonSession session, PlayerPreferences prefs, IDependencyCollection collection, NetUserId userId)
         {
             // WD-EDIT
             var allowedMarkings = _sponsors.TryGetInfo(userId, out var sponsor)
                 ? sponsor.AllowedMarkings
-                : [];
+                : new string[] {};
 
             var isAdminSpecie = false;
-            if (_playerManager.TryGetSessionById(userId, out var session))
-            {
-                isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
-            }
+            isAdminSpecie = _adminManager.HasAdminFlag(session, Shared.Administration.AdminFlags.AdminSpecies);
 
             // Clean up preferences in case of changes to the game,
             // such as removed jobs still being selected.
-            return new PlayerPreferences(
-                prefs.Characters.Select(p => new KeyValuePair<int, ICharacterProfile>(p.Key,
-                    p.Value.Validated(_cfg, _protos, allowedMarkings, isAdminSpecie))
-                ),
-                prefs.SelectedCharacterIndex,
-                prefs.AdminOOCColor
-            );
+
+            return new PlayerPreferences(prefs.Characters.Select(p =>
+            {
+                return new KeyValuePair<int, ICharacterProfile>(p.Key, p.Value.Validated(session, collection, allowedMarkings, isAdminSpecie));
+            }), prefs.SelectedCharacterIndex, prefs.AdminOOCColor);
         }
 
         public IEnumerable<KeyValuePair<NetUserId, ICharacterProfile>> GetSelectedProfilesForPlayers(

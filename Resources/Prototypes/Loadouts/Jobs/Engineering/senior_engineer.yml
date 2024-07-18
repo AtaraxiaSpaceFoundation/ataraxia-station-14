@@ -1,0 +1,30 @@
+﻿# Head
+- type: itemLoadout
+  id: SeniorEngineerBeret
+  equipment: EngineeringBeret
+
+# Jumpsuit
+- type: itemLoadout
+  id: SeniorEngineerJumpsuit
+  equipment: SeniorEngineerJumpsuit
+- type: startingGear
+  id: SeniorEngineerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorEngineer
+
+- type: itemLoadout
+  id: SeniorEngineerJumpskirt
+  equipment: SeniorEngineerJumpskirt
+- type: startingGear
+  id: SeniorEngineerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorEngineer
+
+# ID
+- type: itemLoadout
+  id: SeniorEngineerPDA
+  equipment: SeniorEngineerPDA
+- type: startingGear
+  id: SeniorEngineerPDA
+  equipment:
+    id: SeniorEngineerPDA

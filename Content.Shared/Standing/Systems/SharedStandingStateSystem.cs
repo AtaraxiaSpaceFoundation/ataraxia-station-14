@@ -10,6 +10,7 @@ using Content.Shared.Stunnable;
 using Content.Shared._White.Wizard.Timestop;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Mobs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Physics;
@@ -236,15 +237,22 @@ public abstract partial class SharedStandingStateSystem : EntitySystem
         standingState.CurrentState = StandingState.Lying;
         Dirty(uid, standingState);
 
-        var rotation = _transform.GetWorldRotation(uid); // WD EDIT
-        _appearance.TryGetData<bool>(uid, BuckleVisuals.Buckled, out var state, appearance); // WD EDIT
-
-        if (!state) // WD EDIT
+        if (TryComp<TransformComponent>(uid, out var transform)) // WD EDIT
         {
-            if (rotation.GetDir() is Direction.East or Direction.North or Direction.NorthEast or Direction.SouthEast)
-                _rotation.SetHorizontalAngle(uid, Angle.FromDegrees(270));
-            else
-                _rotation.ResetHorizontalAngle(uid);
+            var rotation = transform.LocalRotation;
+            _appearance.TryGetData<bool>(uid, BuckleVisuals.Buckled, out var buckled, appearance);
+
+            if (!buckled && (!_appearance.TryGetData<MobState>(uid, MobStateVisuals.State, out var state, appearance) ||
+                             state is MobState.Alive))
+            {
+                if (rotation.GetDir() is Direction.East
+                    or Direction.North
+                    or Direction.NorthEast
+                    or Direction.SouthEast)
+                    _rotation.SetHorizontalAngle(uid, Angle.FromDegrees(270));
+                else
+                    _rotation.ResetHorizontalAngle(uid);
+            }
         }
 
         RaiseLocalEvent(uid, new DownedEvent());

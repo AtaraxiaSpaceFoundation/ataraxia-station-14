@@ -9,6 +9,7 @@ using Content.Shared.Actions;
 using Content.Shared.PowerCell.Components;
 using Content.Shared._White.SurveillanceCamera;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
 using Content.Shared.Toggleable;
 using Robust.Shared.Player;
 
@@ -61,7 +62,7 @@ public sealed class SurveillanceBodyCameraSystem : EntitySystem
         _popup.PopupEntity(message, uid, Filter.PvsExcept(uid, entityManager: EntityManager), true);
     }
 
-    public void OnInit(EntityUid uid, SurveillanceBodyCameraComponent comp, ComponentInit args)
+    private void OnInit(EntityUid uid, SurveillanceBodyCameraComponent comp, ComponentInit args)
     {
         if (!TryComp<SurveillanceCameraComponent>(uid, out var surComp))
             return;
@@ -115,7 +116,7 @@ public sealed class SurveillanceBodyCameraSystem : EntitySystem
         AppearanceChange(uid, surComp.Active);
     }
 
-    public void OnExamine(EntityUid uid, SurveillanceBodyCameraComponent comp, ExaminedEvent args)
+    private void OnExamine(EntityUid uid, SurveillanceBodyCameraComponent comp, ExaminedEvent args)
     {
         if (!TryComp<SurveillanceCameraComponent>(uid, out var surComp))
             return;
@@ -128,7 +129,7 @@ public sealed class SurveillanceBodyCameraSystem : EntitySystem
         args.PushMarkup(message);
     }
 
-    public void AppearanceChange(EntityUid uid, bool isActive)
+    private void AppearanceChange(EntityUid uid, bool isActive)
     {
         if (!TryComp<AppearanceComponent>(uid, out var appearance) ||
             !TryComp<ItemComponent>(uid, out var item))

@@ -10,6 +10,7 @@ using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
+using Content.Client.Options;
 using Content.Client.Eui;
 using Content.Client.GhostKick;
 using Content.Client.Info;
@@ -22,10 +23,14 @@ using Content.Client.Fullscreen;
 using Content.Client.Stylesheets;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Module;
 using Content.Client.Guidebook;
 using Content.Client.Replay;
 using Content.Shared.Administration.Managers;
+using Content.Shared.Players.PlayTimeTracking;
+
 
 namespace Content.Client.IoC
 {
@@ -33,26 +38,29 @@ namespace Content.Client.IoC
     {
         public static void Register()
         {
-            IoCManager.Register<IParallaxManager, ParallaxManager>();
-            IoCManager.Register<IChatManager, ChatManager>();
-            IoCManager.Register<IClientPreferencesManager, ClientPreferencesManager>();
-            IoCManager.Register<IStylesheetManager, StylesheetManager>();
-            IoCManager.Register<IScreenshotHook, ScreenshotHook>();
-            IoCManager.Register<FullscreenHook, FullscreenHook>();
-            IoCManager.Register<IClickMapManager, ClickMapManager>();
-            IoCManager.Register<IClientAdminManager, ClientAdminManager>();
-            IoCManager.Register<ISharedAdminManager, ClientAdminManager>();
-            IoCManager.Register<EuiManager, EuiManager>();
-            IoCManager.Register<IVoteManager, VoteManager>();
-            IoCManager.Register<ChangelogManager, ChangelogManager>();
-            IoCManager.Register<RulesManager, RulesManager>();
-            IoCManager.Register<ViewportManager, ViewportManager>();
-            IoCManager.Register<ISharedAdminLogManager, SharedAdminLogManager>();
-            IoCManager.Register<GhostKickManager>();
-            IoCManager.Register<ExtendedDisconnectInformationManager>();
-            IoCManager.Register<JobRequirementsManager>();
-            IoCManager.Register<DocumentParsingManager>();
-            IoCManager.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
+            var collection = IoCManager.Instance!;
+
+            collection.Register<IParallaxManager, ParallaxManager>();
+            collection.Register<IChatManager, ChatManager>();
+            collection.Register<IClientPreferencesManager, ClientPreferencesManager>();
+            collection.Register<IStylesheetManager, StylesheetManager>();
+            collection.Register<IScreenshotHook, ScreenshotHook>();
+            collection.Register<FullscreenHook, FullscreenHook>();
+            collection.Register<IClickMapManager, ClickMapManager>();
+            collection.Register<IClientAdminManager, ClientAdminManager>();
+            collection.Register<ISharedAdminManager, ClientAdminManager>();
+            collection.Register<EuiManager, EuiManager>();
+            collection.Register<IVoteManager, VoteManager>();
+            collection.Register<ChangelogManager, ChangelogManager>();
+            collection.Register<RulesManager, RulesManager>();
+            collection.Register<ViewportManager, ViewportManager>();
+            collection.Register<ISharedAdminLogManager, SharedAdminLogManager>();
+            collection.Register<GhostKickManager>();
+            collection.Register<ExtendedDisconnectInformationManager>();
+            collection.Register<JobRequirementsManager>();
+            collection.Register<DocumentParsingManager>();
+            collection.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
+            collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
 
             //WD-EDIT
             IoCManager.Register<JoinQueueManager>();

@@ -1,0 +1,39 @@
+﻿# Gloves
+
+- type: itemLoadout
+  id: MedicalGlovesNitrile
+  equipment: MedicalGlovesNitrile
+- type: startingGear
+  id: MedicalGlovesNitrile
+  equipment:
+    gloves: ClothingHandsGlovesNitrile
+
+# Ears
+
+- type: itemLoadout
+  id: MedicalHeadset
+  equipment: MedicalHeadset
+- type: startingGear
+  id: MedicalHeadset
+  equipment:
+    ears: ClothingHeadsetMedical
+
+# Mask
+
+- type: itemLoadout
+  id: MedicalMask
+  equipment: MedicalMask
+- type: startingGear
+  id: MedicalMask
+  equipment:
+    mask: ClothingMaskSterile
+
+# Mask
+
+- type: itemLoadout
+  id: MedicalBeltRig
+  equipment: MedicalBeltRig
+- type: startingGear
+  id: MedicalBeltRig
+  equipment:
+    belt: ClothingBeltMedicalRig

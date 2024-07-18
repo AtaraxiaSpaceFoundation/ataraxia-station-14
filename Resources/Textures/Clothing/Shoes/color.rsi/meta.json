@@ -15,10 +15,12 @@
       "directions": 4
     },
     {
+
       "name": "equipped-FEET-reptilian",
       "directions": 4
     },
     {
+
       "name": "equipped-FEET-vox",
       "directions": 4
     },
@@ -38,10 +40,12 @@
       "directions": 4
     },
     {
+
       "name": "soles-equipped-FEET-reptilian",
       "directions": 4
     },
     {
+
       "name": "soles-equipped-FEET-vox",
       "directions": 4
     },
@@ -58,10 +62,12 @@
       "directions": 4
     },
     {
+
       "name": "contrastedsoles-equipped-FEET-reptilian",
       "directions": 4
     },
     {
+
       "name": "contrastedsoles-equipped-FEET-vox",
       "directions": 4
     }

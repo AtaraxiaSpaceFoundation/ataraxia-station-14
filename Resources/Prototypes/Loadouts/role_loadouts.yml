@@ -1,0 +1,624 @@
+# Command
+- type: roleLoadout
+  id: JobCaptain
+  groups:
+  - CaptainHead
+  - CaptainEyes
+  - CommonCommandHeadset # WD
+  - CommonMaskCigar # WD
+  - CaptainNeck
+  - CaptainJumpsuit
+  - CaptainBackpack
+  - CaptainOuterClothing
+  - CaptainShoes
+  - CaptainPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobHeadOfPersonnel
+  groups:
+  - HoPHead
+  - CommonGlasses # WD
+  - CommonCommandHeadset # WD
+  - CommonMaskCigar
+  - HoPNeck
+  - HoPJumpsuit
+  - HoPGloves # WD
+  - HoPBackpack
+  - HoPOuterClothing
+  - HoPShoes
+  - HoPPDA # WD
+  - Trinkets
+
+# Civilian
+- type: roleLoadout
+  id: JobPassenger
+  groups:
+  - AssistantHead # WD
+  - AssistantHeadset # WD
+  - CommonGlasses # WD
+  - CommonMaskCigarette # WD
+  - AssistantJumpsuit
+  - CommonBackpack
+  - CommonGloves # WD
+  - AssistantOuterClothing
+  - CommonShoes # WD
+  - AssistantPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobBartender
+  groups:
+  - BartenderHead
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - CommonMaskCigarette # WD
+  - BartenderJumpsuit
+  - CommonBackpack
+  - BartenderOuterClothing
+  - CommonShoes # WD
+  - BartenderPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobServiceWorker
+  groups:
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - CommonMaskCigarette # WD
+  - BartenderJumpsuit
+  - CommonBackpack
+  - CommonShoes # WD
+  - ServiceWorkerPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobChef
+  groups:
+  - ChefHead
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - ChefMask
+  - ChefJumpsuit
+  - CommonBackpack
+  - ChefOuterClothing
+  - CommonShoes # WD
+  - ChefPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobLibrarian
+  groups:
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - CommonMaskCigarette # WD
+  - LibrarianJumpsuit
+  - CommonBackpack
+  - CommonShoes # WD
+  - LibrarianPDA
+  - InhandCane
+  - Trinkets
+
+- type: roleLoadout
+  id: JobChaplain
+  groups:
+  - ChaplainHead
+  - CommonGlasses # WD
+  - CommonServiceHeadset # WD
+  - ChaplainMask
+  - ChaplainNeck
+  - ChaplainJumpsuit
+  - CommonGloves # WD
+  - ChaplainBackpack
+  - ChaplainOuterClothing
+  - ChaplainNullRod # WD
+  - CommonShoes # WD
+  - ChaplainPDA # WD
+  - ChaplainJobTrinkets # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobJanitor
+  groups:
+  - JanitorHead
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - CommonMaskCigarette # WD
+  - JanitorJumpsuit
+  - CommonGloves # WD
+  - CommonBackpack
+  - JanitorOuterClothing
+  - CommonShoes # WD
+  - JanitorPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobBotanist
+  groups:
+  - BotanistHead
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - BotanistMask # WD
+  - BotanistJumpsuit
+  - BotanistBackpack
+  - BotanistOuterClothing
+  - BotanistGloves # WD
+  - CommonShoes # WD
+  - BotanistPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobClown
+  groups:
+  - ClownHead
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - ClownMask # WD
+  - ClownNeck # WD
+  - ClownJumpsuit
+  - ClownBackpack
+  - ClownOuterClothing
+  - ClownShoes
+  - ClownPDA # WD
+  - ClownTrinkets # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobMime
+  groups:
+  - MimeHead
+  - CommonServiceHeadset # WD
+  - MimeMask
+  - MimeJumpsuit
+  - MimeBackpack
+  - MimeOuterClothing
+  - CommonShoes # WD
+  - MimePDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobMusician
+  groups:
+  - MusicianHead # WD
+  - CommonGlasses # WD
+  - CommonServiceHeadset # WD
+  - MusicianJumpsuit # WD
+  - MusicianOuterClothing
+  - MusicianBackpack
+  - MusicianPDA # WD
+  - CommonShoes # WD
+  - Trinkets
+  - Instruments
+
+# Cargo
+- type: roleLoadout
+  id: JobQuartermaster
+  groups:
+  - QuartermasterHead
+  - QuartermasterHeadset # WD
+  - CommonGlasses # WD
+  - QuartermasterNeck
+  - QuartermasterJumpsuit
+  - QuartermasterBackpack
+  - QuartermasterOuterClothing
+  - CommonGloves # WD
+  - QuartermasterShoes
+  - QuartermasterPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobCargoTechnician
+  groups:
+  - CargoTechnicianHead
+  - CommonCargoEars # WD
+  - CommonGlasses # WD
+  - CargoTechnicianJumpsuit
+  - CargoTechnicianBackpack
+  - CargoTechnicianOuterClothing
+  - CommonGloves # WD
+  - CargoTechnicianShoes
+  - CargoTechnicianPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSalvageSpecialist
+  groups:
+  - SalvageSpecialistHead # WD
+  - CommonCargoEars # WD
+  - SalvageSpecialistEyes # WD
+  - SalvageSpecialistMask # WD
+  - SalvageSpecialistJumpsuit # WD
+  - SalvageSpecialistOuterClothing
+  - SalvageSpecialistBelt # WD
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistGloves # WD
+  - SalvageSpecialistShoes
+  - SalvagePDA # WD
+  - Trinkets
+
+# Engineering
+- type: roleLoadout
+  id: JobChiefEngineer
+  groups:
+  - ChiefEngineerHead
+  - ChiefEngineerHeadset # WD
+  - ChiefEngineerJumpsuit
+  - ChiefEngineerBackpack
+  - ChiefEngineerNeck
+  - ChiefEngineerOuterClothing
+  - CommonGloves # WD
+  - ChiefEngineerShoes
+  - ChiefEngineerPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSeniorEngineer
+  groups:
+  - SeniorEngineerHead
+  - CommonEngineeringHeadset
+  - SeniorEngineerJumpsuit
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - CommonGloves # WD
+  - StationEngineerShoes
+  - SeniorEngineerPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobTechnicalAssistant
+  groups:
+  - StationEngineerHead
+  - CommonEngineeringHeadset
+  - TechnicalAssistantJumpsuit
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - CommonGloves # WD
+  - StationEngineerShoes
+  - TechnicalAssistantPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobStationEngineer
+  groups:
+  - StationEngineerHead
+  - CommonEngineeringHeadset
+  - StationEngineerJumpsuit
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - CommonGloves # WD
+  - StationEngineerShoes
+  - StationEngineerPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobAtmosphericTechnician
+  groups:
+  - StationEngineerHead
+  - CommonEngineeringHeadset
+  - AtmosphericTechnicianJumpsuit
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianOuterClothing
+  - CommonGloves # WD
+  - AtmosphericTechnicianShoes
+  - AtmosphericTechnicianPDA
+  - Trinkets
+
+# Science
+- type: roleLoadout
+  id: JobResearchDirector
+  groups:
+  - ResearchDirectorHead
+  - ResearchDirectorHeadset # WD
+  - ResearchDirectorNeck
+  - ResearchDirectorJumpsuit
+  - ResearchDirectorBackpack
+  - ResearchDirectorOuterClothing
+  - ResearchDirectorShoes
+  - CommonScienceGloves
+  - ResearchDirectorPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSeniorResearcher
+  groups:
+  - ScientistHead
+  - CommonScienceHeadset
+  - CommonScientistNeck
+  - SeniorResearcherJumpsuit
+  - ScientistBackpack
+  - SeniorResearcherOuterclothing
+  - CommonScienceGloves
+  - ScientistShoes
+  - SeniorResearcherPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobScientist
+  groups:
+  - ScientistHead
+  - CommonScienceHeadset
+  - CommonScientistNeck
+  - ScientistJumpsuit
+  - ScientistBackpack
+  - ScientistOuterClothing
+  - CommonScienceGloves
+  - ScientistShoes
+  - ScientistPDA
+  - CommonGlasses # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobResearchAssistant
+  groups:
+  - CommonScienceHeadset
+  - CommonScientistNeck
+  - ResearchAssistantJumpsuit
+  - ScientistOuterClothing
+  - ScientistBackpack
+  - CommonScienceGloves
+  - ScientistShoes
+  - ResearchAssistantPDA
+  - Trinkets
+
+# Security
+- type: roleLoadout
+  id: JobHeadOfSecurity
+  groups:
+  - HeadofSecurityHead
+  - HeadofSecurityEyes # WD
+  - CommonSecurityCommandHeadset # WD
+  - CommonSecurityCommandMask # WD
+  - HeadofSecurityNeck
+  - HeadofSecurityJumpsuit
+  - CommonSecurityBackpack
+  - HeadofSecurityOuterClothing
+  - CommonSecurityShoes
+  - HeadofSecurityPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobWarden
+  groups:
+  - WardenHead
+  - CommonSecurityCommandHeadset # WD
+  - CommonSecurityCommandMask # WD
+  - CommonSecurityNeck
+  - WardenJumpsuit
+  - CommonSecurityBackpack
+  - CommonSecurityShoes
+  - WardenPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSeniorOfficer
+  groups:
+  - CommonSecurityHead
+  - CommonSecurityHeadset # WD
+  - CommonSecurityCommandMask # WD
+  - CommonSecurityNeck
+  - SeniorOfficerJumpsuit
+  - CommonSecurityBackpack
+  - SecurityOuterClothing
+  - CommonSecurityShoes
+  - SeniorOfficerPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSecurityOfficer
+  groups:
+  - CommonSecurityHead
+  - CommonSecurityHeadset # WD
+  - CommonSecurityMask # WD
+  - CommonSecurityNeck # WD
+  - SecurityJumpsuit
+  - CommonSecurityBackpack
+  - SecurityOuterClothing
+  - CommonSecurityShoes
+  - SecurityPDA
+  - SecurityBelt
+  - Trinkets
+
+- type: roleLoadout
+  id: JobDetective
+  groups:
+  - DetectiveHead
+  - CommonSecurityHeadset # WD
+  - CommonMaskCigarette # WD
+  - CommonSecurityNeck
+  - DetectiveJumpsuit
+  - DetectiveBackpack
+  - DetectiveOuterClothing
+  - DetectiveGloves
+  - DetectiveShoes
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSecurityCadet
+  groups:
+  - CommonSecurityHead
+  - CommonSecurityHeadset # WD
+  - CommonSecurityNeck
+  - SecurityCadetJumpsuit
+  - CommonSecurityBackpack
+  - CommonSecurityShoes
+  - SecurityCadetPDA
+  - Trinkets
+
+# Medical
+- type: roleLoadout
+  id: JobChiefMedicalOfficer
+  groups:
+  - ChiefMedicalOfficerHead
+  - ChiefMedicalOfficerEars # WD
+  - CommonMedicalMask # WD
+  - ChiefMedicalOfficerNeck
+  - ChiefMedicalOfficerJumpsuit
+  - ChiefMedicalOfficerBackpack
+  - ChiefMedicalOfficerOuterClothing
+  - CommonMedicalGloves
+  - ChiefMedicalOfficerShoes
+  - ChiefMedicalOfficerPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSeniorPhysician
+  groups:
+  - SeniorPhysicianHead
+  - CommonMedicalHeadset # WD
+  - CommonMedicalMask
+  - SeniorPhysicianJumpsuit
+  - MedicalBackpack
+  - SeniorPhysicianOuterClothing
+  - CommonMedicalShoes
+  - CommonMedicalGloves
+  - SeniorPhysicianPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobMedicalDoctor
+  groups:
+  - MedicalDoctorHead
+  - CommonMedicalHeadset # WD
+  - CommonMedicalMask # WD
+  - MedicalDoctorJumpsuit
+  - MedicalGloves
+  - MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - CommonMedicalShoes
+  - CommonMedicalGloves
+  - MedicalDoctorPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobMedicalIntern
+  groups:
+  - MedicalDoctorHead
+  - CommonMedicalHeadset # WD
+  - CommonMedicalMask # WD
+  - MedicalInternJumpsuit
+  - MedicalBackpack
+  - CommonMedicalOuterClothing
+  - CommonMedicalGloves
+  - CommonMedicalShoes
+  - MedicalInternPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobChemist
+  groups:
+  - ChemistHead # WD
+  - CommonMedicalHeadset # WD
+  - ChemistEyes
+  - CommonMedicalMask # WD
+  - ChemistJumpsuit
+  - MedicalGloves
+  - ChemistBackpack
+  - ChemistOuterClothing
+  - CommonMedicalGloves
+  - ChemistShoes
+  - ChemistPDA
+  - Trinkets
+
+- type: roleLoadout
+  id: JobParamedic
+  groups:
+  - ParamedicHead
+  - CommonMedicalHeadset # WD
+  - CommonMedicalMask # WD
+  - ParamedicJumpsuit
+  - ParamedicBackpack
+  - ParamedicOuterClothing
+  - ParamedicBelt # WD
+  - CommonMedicalGloves # WD
+  - CommonMedicalShoes # WD
+  - ParamedicPDA # WD
+  - Trinkets
+
+# Justice
+
+- type: roleLoadout # WD
+  id: JobInspector
+  groups:
+  - InspectorHead
+  - InspectorGlasses
+  - CommonSecurityCommandHeadset
+  - InspectorMask
+  - InspectorNeck
+  - InspectorJumpsuit
+  - InspectorOuterclothing
+  - InspectorBackpack
+  - InspectorGloves
+  - InspectorShoes
+  - InspectorPDA
+  - BriefcaseInhand
+  - InspectorJobTrinkets
+  - Trinkets
+
+- type: roleLoadout
+  id: JobLawyer
+  groups:
+  - LawyerHead # WD
+  - CommonGlasses # WD
+  - CommonSecurityHeadset
+  - CommonMaskCigarette # WD
+  - LawyerNeck
+  - LawyerJumpsuit
+  - CommonBackpack
+  - CommonShoes # WD
+  - LawyerPDA
+  - BriefcaseInhand # WD
+  - LawyerJobTrinkets # WD
+  - Trinkets
+
+# Wildcards
+- type: roleLoadout
+  id: JobZookeeper
+  groups:
+  - ZookeeperHead # WD
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - ZookeeperJumpsuit # WD
+  - CommonBackpack
+  - ZookeeperPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobReporter
+  groups:
+  - ReporterHat # WD
+  - CommonGlasses # WD
+  - CommonServiceHeadset # WD
+  - CommonMaskCigarette # WD
+  - ReporterJumpsuit
+  - CommonGloves # WD
+  - CommonBackpack
+  - ReporterPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobPsychologist
+  groups:
+  - PsychologistHead # WD
+  - CommonGlasses # WD
+  - CommonMedicalHeadset # WD
+  - CommonMedicalMask # WD
+  - PsychologistJumpsuit # WD
+  - CommonMedicalGloves # WD
+  - MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - CommonMedicalShoes # WD
+  - PsychologistPDA # WD
+  - Trinkets
+
+- type: roleLoadout
+  id: JobBoxer
+  groups:
+  - CommonServiceHeadset # WD
+  - CommonGlasses # WD
+  - BoxerJumpsuit
+  - BoxerGloves
+  - CommonBackpack
+  - BoxerBelt # WD
+  - CommonShoes # WD
+  - BoxerPDA # WD
+  - Trinkets

@@ -16,7 +16,7 @@ public sealed class JukeboxSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverrideSystem = default!;
 
-    private readonly List<JukeboxComponent> _playingJukeboxes = new() { };
+    private readonly List<WhiteJukeboxComponent> _playingJukeboxes = new() { };
 
     private const float UpdateTimerDefaultTime = 1f;
     private float _updateTimer;
@@ -25,16 +25,16 @@ public sealed class JukeboxSystem : EntitySystem
     {
         base.Initialize();
         SubscribeNetworkEvent<JukeboxRequestSongPlay>(OnSongRequestPlay);
-        SubscribeLocalEvent<JukeboxComponent, InteractUsingEvent>(OnInteract);
-        SubscribeLocalEvent<JukeboxComponent, JukeboxStopRequest>(OnRequestStop);
-        SubscribeLocalEvent<JukeboxComponent, JukeboxRepeatToggled>(OnRepeatToggled);
-        SubscribeLocalEvent<JukeboxComponent, JukeboxEjectRequest>(OnEjectRequest);
-        SubscribeLocalEvent<JukeboxComponent, GetVerbsEvent<Verb>>(OnGetVerb);
-        SubscribeLocalEvent<JukeboxComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<WhiteJukeboxComponent, InteractUsingEvent>(OnInteract);
+        SubscribeLocalEvent<WhiteJukeboxComponent, JukeboxStopRequest>(OnRequestStop);
+        SubscribeLocalEvent<WhiteJukeboxComponent, JukeboxRepeatToggled>(OnRepeatToggled);
+        SubscribeLocalEvent<WhiteJukeboxComponent, JukeboxEjectRequest>(OnEjectRequest);
+        SubscribeLocalEvent<WhiteJukeboxComponent, GetVerbsEvent<Verb>>(OnGetVerb);
+        SubscribeLocalEvent<WhiteJukeboxComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
 
-    private void OnInit(EntityUid uid, JukeboxComponent component, ComponentInit args)
+    private void OnInit(EntityUid uid, WhiteJukeboxComponent component, ComponentInit args)
     {
         _pvsOverrideSystem.AddGlobalOverride(uid);
     }
@@ -44,7 +44,7 @@ public sealed class JukeboxSystem : EntitySystem
         _playingJukeboxes.Clear();
     }
 
-    private void OnEjectRequest(EntityUid uid, JukeboxComponent component, JukeboxEjectRequest args)
+    private void OnEjectRequest(EntityUid uid, WhiteJukeboxComponent component, JukeboxEjectRequest args)
     {
         if (component.PlayingSongData != null) return;
 
@@ -56,7 +56,7 @@ public sealed class JukeboxSystem : EntitySystem
         }
     }
 
-    private void OnGetVerb(EntityUid uid, JukeboxComponent jukeboxComponent, GetVerbsEvent<Verb> ev)
+    private void OnGetVerb(EntityUid uid, WhiteJukeboxComponent jukeboxComponent, GetVerbsEvent<Verb> ev)
     {
         if (ev.Hands == null) return;
         if (jukeboxComponent.PlayingSongData != null) return;
@@ -82,19 +82,19 @@ public sealed class JukeboxSystem : EntitySystem
         ev.Verbs.Add(removeTapeVerb);
     }
 
-    private void OnRepeatToggled(EntityUid uid, JukeboxComponent component, JukeboxRepeatToggled args)
+    private void OnRepeatToggled(EntityUid uid, WhiteJukeboxComponent component, JukeboxRepeatToggled args)
     {
         component.Playing = args.NewState;
         Dirty(uid, component);
     }
 
-    private void OnRequestStop(EntityUid uid, JukeboxComponent component, JukeboxStopRequest args)
+    private void OnRequestStop(EntityUid uid, WhiteJukeboxComponent component, JukeboxStopRequest args)
     {
         component.PlayingSongData = null;
         Dirty(uid, component);
     }
 
-    private void OnInteract(EntityUid uid, JukeboxComponent component, InteractUsingEvent args)
+    private void OnInteract(EntityUid uid, WhiteJukeboxComponent component, InteractUsingEvent args)
     {
         if (component.PlayingSongData != null) return;
 
@@ -122,7 +122,7 @@ public sealed class JukeboxSystem : EntitySystem
     private void OnSongRequestPlay(JukeboxRequestSongPlay msg, EntitySessionEventArgs args)
     {
         var entity = GetEntity(msg.Jukebox!.Value);
-        var jukebox = Comp<JukeboxComponent>(entity);
+        var jukebox = Comp<WhiteJukeboxComponent>(entity);
         jukebox.Playing = true;
 
         var songData = new PlayingSongData

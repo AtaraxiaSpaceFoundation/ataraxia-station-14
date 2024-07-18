@@ -509,6 +509,7 @@
       - TelecomServerCircuitboard
       - MassMediaCircuitboard
       - ReagentGrinderIndustrialMachineCircuitboard
+      - JukeboxCircuitBoard
   - type: BluespaceStorage
   - type: MaterialStorage
     whitelist:
@@ -1049,7 +1050,8 @@
       - ClothingOuterWinterCE
       - ClothingOuterWinterCMO
       - ClothingOuterWinterHoP
-      - ClothingOuterWinterHoS
+      - ClothingOuterWinterHoSUnarmored
+      - ClothingOuterWinterWardenUnarmored
       - ClothingOuterWinterQM
       - ClothingOuterWinterRD
       - ClothingNeckMantleCap

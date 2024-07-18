@@ -56,10 +56,7 @@ internal sealed class BuckleSystem : SharedBuckleSystem
         if (!Appearance.TryGetData<bool>(uid, BuckleVisuals.Buckled, out var buckled, args.Component) ||
             !buckled ||
             args.Sprite == null)
-        {
-            _rotationVisualizerSystem.SetHorizontalAngle((uid, rotVisuals), rotVisuals.DefaultRotation);
             return;
-        }
 
         // Animate strapping yourself to something at a given angle
         // TODO: Dump this when buckle is better

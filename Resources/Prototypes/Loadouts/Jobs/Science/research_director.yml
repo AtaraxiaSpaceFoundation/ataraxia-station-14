@@ -1,0 +1,119 @@
+# Head
+
+- type: itemLoadout
+  id: ResearchDirectorBeret
+  equipment: ScientificBeret
+
+# Neck
+
+- type: itemLoadout
+  id: ResearchDirectorMantle
+  equipment: ResearchDirectorMantle
+
+- type: startingGear
+  id: ResearchDirectorMantle
+  equipment:
+    neck: ClothingNeckMantleRD
+
+- type: itemLoadout
+  id: ResearchDirectorCloak
+  equipment: ResearchDirectorCloak
+
+- type: startingGear
+  id: ResearchDirectorCloak
+  equipment:
+    neck: ClothingNeckCloakRd
+
+# Jumpsuit
+- type: itemLoadout
+  id: ResearchDirectorJumpsuit
+  equipment: ResearchDirectorJumpsuit
+
+- type: startingGear
+  id: ResearchDirectorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitResearchDirector
+
+- type: itemLoadout
+  id: ResearchDirectorJumpskirt
+  equipment: ResearchDirectorJumpskirt
+
+- type: startingGear
+  id: ResearchDirectorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtResearchDirector
+
+# Back
+- type: itemLoadout
+  id: ResearchDirectorBackpack
+  equipment: ResearchDirectorBackpack
+
+- type: startingGear
+  id: ResearchDirectorBackpack
+  equipment:
+    back: ClothingBackpackResearchDirectorFilled
+
+- type: itemLoadout
+  id: ResearchDirectorSatchel
+  equipment: ResearchDirectorSatchel
+
+- type: startingGear
+  id: ResearchDirectorSatchel
+  equipment:
+    back: ClothingBackpackSatchelResearchDirectorFilled
+
+- type: itemLoadout
+  id: ResearchDirectorDuffel
+  equipment: ResearchDirectorDuffel
+
+- type: startingGear
+  id: ResearchDirectorDuffel
+  equipment:
+    back: ClothingBackpackDuffelResearchDirectorFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: ResearchDirectorLabCoat
+  equipment: ResearchDirectorLabCoat
+
+- type: startingGear
+  id: ResearchDirectorLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatRD
+
+- type: itemLoadout
+  id: ResearchDirectorWintercoat
+  equipment: ResearchDirectorWintercoat
+
+- type: startingGear
+  id: ResearchDirectorWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterRD
+
+# pda
+
+- type: itemLoadout # WD
+  id: ResearchDirectorPDA
+  equipment: ResearchDirectorPDA
+- type: startingGear
+  id: ResearchDirectorPDA
+  equipment:
+    id: RnDPDA
+
+# Ears
+
+- type: itemLoadout # WD
+  id: ResearchDirectorHeadsetAlt
+  equipment: ResearchDirectorHeadsetAlt
+- type: startingGear
+  id: ResearchDirectorHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltScience
+
+- type: itemLoadout # WD
+  id: ResearchDirectorHeadset
+  equipment: ResearchDirectorHeadset
+- type: startingGear
+  id: ResearchDirectorHeadset
+  equipment:
+    ears: ClothingHeadsetRD

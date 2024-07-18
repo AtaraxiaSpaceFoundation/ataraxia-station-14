@@ -1,0 +1,112 @@
+# Head
+- type: itemLoadout
+  id: MimeCap
+  equipment: MimeCap
+
+- type: startingGear
+  id: MimeCap
+  equipment:
+    head: ClothingHeadHatMimesoft
+
+# Mask
+- type: itemLoadout
+  id: MimeMask
+  equipment: MimeMask
+
+- type: startingGear
+  id: MimeMask
+  equipment:
+    mask: ClothingMaskMime
+
+- type: itemLoadout
+  id: MimeMaskSad
+  equipment: MimeMaskSad
+
+- type: startingGear
+  id: MimeMaskSad
+  equipment:
+    mask: ClothingMaskSadMime
+
+- type: itemLoadout
+  id: MimeMaskScared
+  equipment: MimeMaskScared
+
+- type: startingGear
+  id: MimeMaskScared
+  equipment:
+    mask: ClothingMaskScaredMime
+
+- type: itemLoadout # WD
+  id: MimeMaskSexy
+  equipment: MimeMaskSexy
+- type: startingGear
+  id: MimeMaskSexy
+  equipment:
+    mask: ClothingMaskSexyMime
+
+# Jumpsuit
+- type: itemLoadout
+  id: MimeJumpsuit
+  equipment: MimeJumpsuit
+
+- type: startingGear
+  id: MimeJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMime
+
+- type: itemLoadout
+  id: MimeJumpskirt
+  equipment: MimeJumpskirt
+
+- type: startingGear
+  id: MimeJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMime
+
+# Back
+- type: itemLoadout
+  id: MimeBackpack
+  equipment: MimeBackpack
+
+- type: startingGear
+  id: MimeBackpack
+  equipment:
+    back: ClothingBackpackMimeFilled
+
+- type: itemLoadout
+  id: MimeSatchel
+  equipment: MimeSatchel
+
+- type: startingGear
+  id: MimeSatchel
+  equipment:
+    back: ClothingBackpackSatchelMimeFilled
+
+- type: itemLoadout
+  id: MimeDuffel
+  equipment: MimeDuffel
+
+- type: startingGear
+  id: MimeDuffel
+  equipment:
+    back: ClothingBackpackDuffelMimeFilled
+
+# Outerclothing
+- type: itemLoadout
+  id: MimeWintercoat
+  equipment: MimeWintercoat
+
+- type: startingGear
+  id: MimeWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterMime
+
+# PDA
+
+- type: itemLoadout
+  id: MimePDA
+  equipment: MimePDA
+- type: startingGear
+  id: MimePDA
+  equipment:
+    id: MimePDA

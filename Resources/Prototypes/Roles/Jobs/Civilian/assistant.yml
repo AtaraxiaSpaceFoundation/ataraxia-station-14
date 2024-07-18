@@ -11,15 +11,3 @@
 
 - type: startingGear
   id: PassengerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorGrey
-    back: ClothingBackpackFilled
-    shoes: ClothingShoesColorBlack
-    id: PassengerPDA
-    ears: ClothingHeadsetGrey
-    underwearb: ClothingUnderwearBottomBoxersWhite # White-Underwear
-  underweart: ClothingUnderwearTopBraWhite # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesWhite # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
-  satchel: ClothingBackpackSatchelFilled
-  duffelbag: ClothingBackpackDuffelFilled

@@ -25,6 +25,7 @@ using Content.Server.Objectives;
 using Content.Server.Station.Components;
 using Content.Server.StationEvents.Components;
 using Content.Shared._White.Antag;
+using Content.Shared.Dataset;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Components;
 using Content.Shared.Objectives.Components;
@@ -54,6 +55,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antagSelection = default!;
     [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
+
 
     private ISawmill _sawmill = default!;
 
@@ -137,10 +139,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         if (!TryComp<WizardSpawnerComponent>(spawner, out var wizardSpawner))
             return;
 
-        HumanoidCharacterProfile? profile = null;
-        if (TryComp(args.Spawned, out ActorComponent? actor))
-            profile = _prefs.GetPreferences(actor.PlayerSession.UserId).SelectedCharacter as HumanoidCharacterProfile;
-
         if (!EntityQuery<WizardRuleComponent>().Any())
             return;
 
@@ -150,7 +148,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return;
         }
 
-        SetupWizardEntity(uid, gear, profile, false);
+        SetupWizardEntity(uid, gear, false);
     }
 
     private void OnMindAdded(EntityUid uid, WizardComponent component, MindAddedMessage args)
@@ -279,25 +277,40 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         return true;
     }
 
-    private void SetupWizardEntity(
+    private HumanoidCharacterProfile SetupWizardEntity(
         EntityUid mob,
         StartingGearPrototype gear,
-        HumanoidCharacterProfile? profile,
         bool endRoundOnDeath)
     {
-        EnsureComp<WizardComponent>(mob).EndRoundOnDeath = endRoundOnDeath;
+        EnsureComp<WizardComponent>(mob, out var component);
+        component.EndRoundOnDeath = endRoundOnDeath;
         EnsureComp<GlobalAntagonistComponent>(mob).AntagonistPrototype = "globalAntagonistWizard";
 
-        profile ??= HumanoidCharacterProfile.RandomWithSpecies();
+        var random = IoCManager.Resolve<IRobustRandom>();
+        var profile = HumanoidCharacterProfile.RandomWithSpecies().WithAge(random.Next(component.MinAge, component.MaxAge));
+
+        var color = Color.FromHex(GetRandom(component.Color, "#B5B8B1"));
+        var hair = GetRandom(component.Hair, "HumanHairAfricanPigtails");
+        var facialHair = GetRandom(component.FacialHair, "HumanFacialHairAbe");
+        profile = profile.WithCharacterAppearance(
+            profile.WithCharacterAppearance(
+                profile.WithCharacterAppearance(
+                    profile.WithCharacterAppearance(
+                        profile.Appearance.WithHairStyleName(hair))
+                        .Appearance.WithFacialHairStyleName(facialHair))
+                    .Appearance.WithHairColor(color))
+                .Appearance.WithFacialHairColor(color));
 
         _humanoid.LoadProfile(mob, profile);
 
-        _metaData.SetEntityName(mob, profile.Name);
+        _metaData.SetEntityName(mob, GetRandom(component.Name, ""));
 
-        _stationSpawning.EquipStartingGear(mob, gear, profile);
+        _stationSpawning.EquipStartingGear(mob, gear);
 
         _npcFaction.RemoveFaction(mob, "NanoTrasen", false);
         _npcFaction.AddFaction(mob, "Wizard");
+
+        return profile;
     }
 
     private EntityCoordinates WizardSpawnPoint(WizardRuleComponent component)
@@ -342,13 +355,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         //If a session is available, spawn mob and transfer mind into it
         if (session != null)
         {
-            var profile =
-                _prefs.GetPreferences(session.UserId).SelectedCharacter as HumanoidCharacterProfile;
-
-            profile ??= HumanoidCharacterProfile.RandomWithSpecies();
-            var name = profile.Name;
-
-            if (!_prototypeManager.TryIndex(profile.Species, out SpeciesPrototype? species))
+            if (!_prototypeManager.TryIndex(SharedHumanoidAppearanceSystem.DefaultSpecies, out SpeciesPrototype? species))
             {
                 species = _prototypeManager.Index<SpeciesPrototype>(SharedHumanoidAppearanceSystem.DefaultSpecies);
             }
@@ -360,7 +367,7 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
                 return;
             }
 
-            SetupWizardEntity(mob, gear, profile, true);
+            var name = SetupWizardEntity(mob, gear, true).Name;
 
             var newMind = _mind.CreateMind(session.UserId, name);
             _mind.SetUserId(newMind, session.UserId);
@@ -442,10 +449,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return false;
         }
 
-        HumanoidCharacterProfile? profile = null;
-        if (TryComp(wizard, out ActorComponent? actor))
-            profile = _prefs.GetPreferences(actor.PlayerSession.UserId).SelectedCharacter as HumanoidCharacterProfile;
-
         if (giveObjectives)
         {
             AddRole(mindId, mind, rule);
@@ -457,12 +460,19 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return false;
         }
 
-        SetupWizardEntity(wizard, gear, profile, false);
+        SetupWizardEntity(wizard, gear, false);
 
         var spawnpoint = WizardSpawnPoint(rule);
         var transform = EnsureComp<TransformComponent>(wizard);
         transform.Coordinates = spawnpoint;
 
         return true;
+    }
+
+    private string GetRandom(string list, string ifNull)
+    {
+        return _prototypeManager.TryIndex<DatasetPrototype>(list, out var prototype)
+            ? _random.Pick(prototype.Values)
+            : ifNull;
     }
 }

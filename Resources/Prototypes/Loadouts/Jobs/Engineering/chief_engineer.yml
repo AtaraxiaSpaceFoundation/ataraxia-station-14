@@ -1,0 +1,144 @@
+# Jumpsuit
+- type: itemLoadout
+  id: ChiefEngineerJumpsuit
+  equipment: ChiefEngineerJumpsuit
+
+- type: startingGear
+  id: ChiefEngineerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+
+- type: itemLoadout
+  id: ChiefEngineerJumpskirt
+  equipment: ChiefEngineerJumpskirt
+
+- type: startingGear
+  id: ChiefEngineerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChiefEngineer
+
+- type: itemLoadout
+  id: ChiefEngineerTurtleneck
+  equipment: ChiefEngineerTurtleneck
+
+- type: startingGear
+  id: ChiefEngineerTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
+
+- type: itemLoadout
+  id: ChiefEngineerTurtleneckSkirt
+  equipment: ChiefEngineerTurtleneckSkirt
+
+- type: startingGear
+  id: ChiefEngineerTurtleneckSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChiefEngineerTurtle
+
+# Head
+- type: itemLoadout
+  id: ChiefEngineerHead
+  equipment: ChiefEngineerHead
+
+- type: startingGear
+  id: ChiefEngineerHead
+  equipment:
+    head: ClothingHeadHatHardhatWhite
+
+- type: itemLoadout
+  id: ChiefEngineerBeret
+  equipment: EngineeringBeret
+
+# Neck
+- type: itemLoadout
+  id: ChiefEngineerCloak
+  equipment: ChiefEngineerCloak
+
+- type: startingGear
+  id: ChiefEngineerCloak
+  equipment:
+    neck: ClothingNeckCloakCe
+
+- type: itemLoadout
+  id: ChiefEngineerMantle
+  equipment: ChiefEngineerMantle
+
+- type: startingGear
+  id: ChiefEngineerMantle
+  equipment:
+    neck: ClothingNeckMantleCE
+
+# Back
+- type: itemLoadout
+  id: ChiefEngineerBackpack
+  equipment: ChiefEngineerBackpack
+
+- type: startingGear
+  id: ChiefEngineerBackpack
+  equipment:
+    back: ClothingBackpackChiefEngineerFilled
+
+- type: itemLoadout
+  id: ChiefEngineerSatchel
+  equipment: ChiefEngineerSatchel
+
+- type: startingGear
+  id: ChiefEngineerSatchel
+  equipment:
+    back: ClothingBackpackSatchelChiefEngineerFilled
+
+- type: itemLoadout
+  id: ChiefEngineerDuffel
+  equipment: ChiefEngineerDuffel
+
+- type: startingGear
+  id: ChiefEngineerDuffel
+  equipment:
+    back: ClothingBackpackDuffelChiefEngineerFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: ChiefEngineerWintercoat
+  equipment: ChiefEngineerWintercoat
+
+- type: startingGear
+  id: ChiefEngineerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCE
+
+# Shoes
+- type: itemLoadout
+  id: BrownShoes
+  equipment: BrownShoes
+
+- type: startingGear
+  id: BrownShoes
+  equipment:
+    shoes: ClothingShoesColorBrown
+
+# Ears
+
+- type: itemLoadout # WD
+  id: ChiefEngineerHeadset
+  equipment: ChiefEngineerHeadset
+- type: startingGear
+  id: ChiefEngineerHeadset
+  equipment:
+    ears: ClothingHeadsetCE
+
+- type: itemLoadout # WD
+  id: ChiefEngineerHeadsetAlt
+  equipment: ChiefEngineerHeadsetAlt
+- type: startingGear
+  id: ChiefEngineerHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltEngineering
+
+# PDA
+- type: itemLoadout # WD
+  id: ChiefEngineerPDA
+  equipment: ChiefEngineerPDA
+- type: startingGear
+  id: ChiefEngineerPDA
+  equipment:
+    id: CEPDA

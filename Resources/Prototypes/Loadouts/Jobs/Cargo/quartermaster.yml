@@ -1,0 +1,141 @@
+# Head
+- type: itemLoadout
+  id: QuartermasterHead
+  equipment: QuartermasterHead
+
+- type: startingGear
+  id: QuartermasterHead
+  equipment:
+    head: ClothingHeadHatQMsoft
+
+- type: itemLoadout
+  id: QuartermasterBeret
+  equipment: QuartermasterBeret
+
+- type: startingGear
+  id: QuartermasterBeret
+  equipment:
+    head: ClothingHeadHatBeretQM
+
+# Ears
+
+- type: itemLoadout
+  id: QuartermasterHeadset
+  equipment: QuartermasterHeadset
+- type: startingGear
+  id: QuartermasterHeadset
+  equipment:
+    ears: ClothingHeadsetQM
+
+# Jumpsuit
+- type: itemLoadout
+  id: QuartermasterJumpsuit
+  equipment: QuartermasterJumpsuit
+
+- type: startingGear
+  id: QuartermasterJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQM
+
+- type: itemLoadout
+  id: QuartermasterJumpskirt
+  equipment: QuartermasterJumpskirt
+
+- type: startingGear
+  id: QuartermasterJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtQM
+
+- type: itemLoadout
+  id: QuartermasterTurtleneck
+  equipment: QuartermasterTurtleneck
+
+- type: startingGear
+  id: QuartermasterTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQMTurtleneck
+
+- type: itemLoadout
+  id: QuartermasterTurtleneckSkirt
+  equipment: QuartermasterTurtleneckSkirt
+
+- type: startingGear
+  id: QuartermasterTurtleneckSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtQMTurtleneck
+
+- type: itemLoadout
+  id: QuartermasterFormalSuit
+  equipment: QuartermasterFormalSuit
+
+- type: startingGear
+  id: QuartermasterFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQMFormal
+
+# Neck
+- type: itemLoadout
+  id: QuartermasterCloak
+  equipment: QuartermasterCloak
+
+- type: startingGear
+  id: QuartermasterCloak
+  equipment:
+    neck: ClothingNeckCloakQm
+
+- type: itemLoadout
+  id: QuartermasterMantle
+  equipment: QuartermasterMantle
+
+- type: startingGear
+  id: QuartermasterMantle
+  equipment:
+    neck: ClothingNeckMantleQM
+
+# Back
+- type: itemLoadout
+  id: QuartermasterBackpack
+  equipment: QuartermasterBackpack
+
+- type: startingGear
+  id: QuartermasterBackpack
+  equipment:
+    back: ClothingBackpackQuartermasterFilled
+
+- type: itemLoadout
+  id: QuartermasterSatchel
+  equipment: QuartermasterSatchel
+
+- type: startingGear
+  id: QuartermasterSatchel
+  equipment:
+    back: ClothingBackpackSatchelQuartermasterFilled
+
+- type: itemLoadout
+  id: QuartermasterDuffel
+  equipment: QuartermasterDuffel
+
+- type: startingGear
+  id: QuartermasterDuffel
+  equipment:
+    back: ClothingBackpackDuffelQuartermasterFilled
+
+# OuterClothing
+- type: itemLoadout
+  id: QuartermasterWintercoat
+  equipment: QuartermasterWintercoat
+
+- type: startingGear
+  id: QuartermasterWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterQM
+
+# PDA
+
+- type: itemLoadout
+  id: QuartermasterPDA
+  equipment: QuartermasterPDA
+- type: startingGear
+  id: QuartermasterPDA
+  equipment:
+    id: QuartermasterPDA

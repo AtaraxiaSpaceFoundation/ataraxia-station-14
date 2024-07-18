@@ -3,6 +3,7 @@ using Content.Server._White.Sponsors;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._White.Loadout;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
@@ -32,7 +33,7 @@ public sealed class LoadoutSystem : EntitySystem
             foreach (var loadoutId in sponsor.AllowedMarkings)
             {
                 // NOTE: Now is easy to not extract method because event give all info we need
-                if (_prototypeManager.TryIndex<LoadoutItemPrototype>(loadoutId, out var loadout))
+                if (_prototypeManager.TryIndex<SponsorLoadoutItemPrototype>(loadoutId, out var loadout))
                 {
                     var isSponsorOnly = loadout.SponsorOnly &&
                                         !sponsor.AllowedMarkings.Contains(loadoutId);

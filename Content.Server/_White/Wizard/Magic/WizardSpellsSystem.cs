@@ -29,6 +29,8 @@ using Content.Shared.Actions;
 using Content.Shared.Borer;
 using Content.Shared.Cluwne;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
@@ -49,6 +51,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._White.Wizard.Magic;
@@ -59,6 +62,7 @@ public sealed class WizardSpellsSystem : EntitySystem
 
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly GunSystem _gunSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
@@ -310,7 +314,8 @@ public sealed class WizardSpellsSystem : EntitySystem
         }
 
         SetOutfitCommand.SetOutfit(msg.Target, "ClownGear", EntityManager);
-        EnsureComp<ClumsyComponent>(msg.Target);
+        var clumsy = EnsureComp<ClumsyComponent>(msg.Target);
+        clumsy.ClumsyDamage = new DamageSpecifier(_prototypeManager.Index<DamageGroupPrototype>("Brute"), 12);
 
         Spawn("AdminInstantEffectSmoke3", Transform(msg.Target).Coordinates);
 

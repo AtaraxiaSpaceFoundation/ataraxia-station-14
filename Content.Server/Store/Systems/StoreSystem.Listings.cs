@@ -2,6 +2,8 @@ using System.Linq;
 using Content.Server.Store.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
+using FastAccessors;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Store.Systems;
@@ -19,7 +21,7 @@ public sealed partial class StoreSystem
         var count = _random.Next(store.Sales.MinItems, store.Sales.MaxItems + 1);
 
         listings = listings
-            .Where(l => !l.SaleBlacklist && l.Cost.Any(x => x.Value > 1) && store.Categories.Overlaps(l.Categories))
+            .Where(l => !l.SaleBlacklist && l.Cost.Any(x => x.Value > 1) && store.Categories.Overlaps(ChangedFormatCategories(l.Categories)))
             .OrderBy(_ => _random.Next()).Take(count).ToList();
 
         foreach (var listing in listings)
@@ -37,6 +39,13 @@ public sealed partial class StoreSystem
             listing.Cost = newCost;
             listing.Categories = new() {store.Sales.SalesCategory};
         }
+    }
+
+    private IEnumerable<string> ChangedFormatCategories(List<ProtoId<StoreCategoryPrototype>> categories)
+    {
+        var modified = from p in categories select p.Id;
+
+        return modified;
     }
 
     private float GetSale(float minMultiplier, float maxMultiplier)

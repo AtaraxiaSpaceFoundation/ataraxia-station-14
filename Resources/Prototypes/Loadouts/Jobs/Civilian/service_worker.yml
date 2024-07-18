@@ -1,0 +1,9 @@
+﻿# PDA
+
+- type: itemLoadout # WD
+  id: ServiceWorkerPDA
+  equipment: ServiceWorkerPDA
+- type: startingGear
+  id: ServiceWorkerPDA
+  equipment:
+    id: ServiceWorkerPDA

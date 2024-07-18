@@ -220,7 +220,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             return;
         }
 
-        if (camera.NameSet && camera.NetworkSet)
+        if (camera.NameSet && camera.NetworkSet && !TryComp<SurveillanceBodyCameraComponent>(uid, out _)) // WD EDIT
         {
             _userInterface.TryCloseAll(uid, SurveillanceCameraSetupUiKey.Camera);
             return;

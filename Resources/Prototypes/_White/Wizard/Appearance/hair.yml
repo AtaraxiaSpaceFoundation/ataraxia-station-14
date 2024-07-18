@@ -1,0 +1,14 @@
+- type: dataset
+  id: WizardHair
+  values:
+    - HumanHair80s
+    - HumanHairFeather
+    - HumanHairBun
+    - HumanHairTopknot
+    - HumanHairBalding
+    - HumanHairBigflattop
+    - HumanHairScully
+    - HumanHairBeehivev2
+    - HumanHairSpikey
+    - HumanHairSwept2
+    - HumanHairGloomyLong

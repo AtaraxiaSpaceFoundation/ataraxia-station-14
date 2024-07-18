@@ -1,0 +1,65 @@
+# Jumpsuit
+- type: itemLoadout
+  id: BartenderJumpsuit
+  equipment: BartenderJumpsuit
+
+- type: startingGear
+  id: BartenderJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+
+- type: itemLoadout
+  id: BartenderJumpskirt
+  equipment: BartenderJumpskirt
+
+- type: startingGear
+  id: BartenderJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBartender
+
+- type: itemLoadout
+  id: BartenderJumpsuitPurple
+  equipment: BartenderJumpsuitPurple
+
+- type: startingGear
+  id: BartenderJumpsuitPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderPurple
+
+# Outer clothing
+- type: itemLoadout
+  id: BartenderApron
+  equipment: BartenderApron
+
+- type: startingGear
+  id: BartenderApron
+  equipment:
+    outerClothing: ClothingOuterApronBar
+
+- type: itemLoadout
+  id: BartenderVest
+  equipment: BartenderVest
+
+- type: startingGear
+  id: BartenderVest
+  equipment:
+    outerClothing: ClothingOuterVest
+
+- type: itemLoadout
+  id: BartenderWintercoat
+  equipment: BartenderWintercoat
+
+- type: startingGear
+  id: BartenderWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterBar
+
+# PDA
+
+- type: itemLoadout # WD
+  id: BartenderPDA
+  equipment: BartenderPDA
+- type: startingGear
+  id: BartenderPDA
+  equipment:
+    id: BartenderPDA

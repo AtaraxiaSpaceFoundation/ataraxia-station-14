@@ -1,0 +1,57 @@
+# Back
+- type: itemLoadout
+  id: MusicianBackpack
+  equipment: MusicianBackpack
+
+- type: startingGear
+  id: MusicianBackpack
+  equipment:
+    back: ClothingBackpackMusicianFilled
+
+- type: itemLoadout
+  id: MusicianSatchel
+  equipment: MusicianSatchel
+
+- type: startingGear
+  id: MusicianSatchel
+  equipment:
+    back: ClothingBackpackSatchelMusicianFilled
+
+- type: itemLoadout
+  id: MusicianDuffel
+  equipment: MusicianDuffel
+
+- type: startingGear
+  id: MusicianDuffel
+  equipment:
+    back: ClothingBackpackDuffelMusicianFilled
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: MusicianJumpsuit
+  equipment: MusicianJumpsuit
+- type: startingGear
+  id: MusicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMusician
+
+# Outerclothing
+- type: itemLoadout
+  id: MusicianWintercoat
+  equipment: MusicianWintercoat
+
+- type: startingGear
+  id: MusicianWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterMusician
+
+# PDA
+
+- type: itemLoadout # WD
+  id: MusicianPDA
+  equipment: MusicianPDA
+- type: startingGear
+  id: MusicianPDA
+  equipment:
+    id: MusicianPDA

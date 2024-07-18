@@ -1,0 +1,19 @@
+﻿# Jumpsuit
+
+- type: itemLoadout # WD
+  id: PsychologistJumpsuit
+  equipment: PsychologistJumpsuit
+- type: startingGear
+  id: PsychologistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPsychologist
+
+# PDA
+
+- type: itemLoadout # WD
+  id: PsychologistPDA
+  equipment: PsychologistPDA
+- type: startingGear
+  id: PsychologistPDA
+  equipment:
+    id: PsychologistPDA
