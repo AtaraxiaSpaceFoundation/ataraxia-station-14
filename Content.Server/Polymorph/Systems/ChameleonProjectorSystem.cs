@@ -58,7 +58,7 @@ public sealed class ChameleonProjectorSystem : SharedChameleonProjectorSystem
         // no sechud trolling
         RemComp<StatusIconComponent>(disguise);
 
-        _appearance.CopyData(entity, disguise);
+            //  _appearance.CopyData(entity, disguise);
 
         var mass = CompOrNull<PhysicsComponent>(entity)?.Mass ?? 0f;
 
