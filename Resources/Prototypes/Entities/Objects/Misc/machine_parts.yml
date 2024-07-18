@@ -24,7 +24,9 @@
     - type: MachinePart
       part: Capacitor
       rating: 1
-    - type: Tag
+    - type: Tag # Ataraxia
+      tags:
+        - CapacitorStockPart
     - type: Stack
       stackType: Capacitor
 
@@ -41,6 +43,8 @@
       part: Manipulator
       rating: 1
     - type: Tag # Ataraxia
+      tags:
+        - ManipulatorStockPart
     - type: Stack
       stackType: MicroManipulator
 
@@ -56,6 +60,8 @@
     - type: MachinePart
       part: MatterBin
       rating: 1
+    - type: Tag # Ataraxia
+      tags:
+        - MatterBinStockPart
     - type: Stack
       stackType: MatterBin
-

@@ -1,0 +1,90 @@
+- type: construction
+  id: CheapPendantGreen
+  graph: CheapPendantGreen
+  startNode: start
+  targetNode: pendantgreen
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из зелёного кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/green.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantOrange
+  graph: CheapPendantOrange
+  startNode: start
+  targetNode: pendantorange
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из оранжевого кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/orange.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantPink
+  graph: CheapPendantPink
+  startNode: start
+  targetNode: pendantpink
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из розового кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/pink.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantCyan
+  graph: CheapPendantCyan
+  startNode: start
+  targetNode: pendantcyan
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из голубого кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/cyan.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantBlue
+  graph: CheapPendantBlue
+  startNode: start
+  targetNode: pendantblue
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из синего кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/blue.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantGrey
+  graph: CheapPendantGrey
+  startNode: start
+  targetNode: pendantgrey
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из серого кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/grey.rsi
+    state: icon
+
+- type: construction
+  id: CheapPendantRed
+  graph: CheapPendantRed
+  startNode: start
+  targetNode: pendantred
+  category: construction-category-clothing
+  objectType: Item
+  name: кулон из красного кристалла
+  description: Подвеска из блестящего кристалла на тонком проводе.
+  icon:
+    sprite: Ataraxia/Clothing/Neck/Pendants/red.rsi
+    state: icon
