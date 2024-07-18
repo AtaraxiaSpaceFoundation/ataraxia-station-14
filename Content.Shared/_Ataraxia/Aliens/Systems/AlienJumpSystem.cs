@@ -8,7 +8,6 @@ using Content.Shared.Physics;
 using Content.Shared.Pinpointer;
 using Content.Shared.StatusEffect;
 using Content.Shared.Standing.Systems;
-using Content.Shared._White.Knockdown;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
