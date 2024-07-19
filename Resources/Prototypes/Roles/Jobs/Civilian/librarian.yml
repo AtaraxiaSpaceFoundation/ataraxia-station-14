@@ -3,7 +3,6 @@
   name: job-name-librarian
   description: job-description-librarian
   playTimeTracker: JobLibrarian
-  startingGear: LibrarianGear
   icon: "JobIconLibrarian"
   supervisors: job-supervisors-hop
   access:
@@ -12,3 +11,11 @@
 
 - type: startingGear
   id: LibrarianGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLibrarian
+    back: ClothingBackpackLibrarianFilled
+    shoes: ClothingShoesBootsLaceup
+    id: LibrarianPDA
+    ears: ClothingHeadsetService
+  inhand:
+    - BriefcaseBrownFilled

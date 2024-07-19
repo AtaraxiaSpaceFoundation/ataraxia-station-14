@@ -7,7 +7,6 @@
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 36000 #10 hrs
-  startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
   whitelistedSpecies:
@@ -28,3 +27,9 @@
 
 - type: startingGear
   id: WardenGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWarden
+    back: ClothingBackpackSecurityFilled
+    shoes: ClothingShoesBootsCombatFilled
+    id: WardenPDA
+    ears: ClothingHeadsetSecurity

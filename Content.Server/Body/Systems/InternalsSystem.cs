@@ -241,7 +241,7 @@ public sealed class InternalsSystem : EntitySystem
         // 3. in-hand tanks
         // 4. pocket/belt tanks
 
-        if (!Resolve(user, ref user.Comp1, ref user.Comp2, ref user.Comp3))
+        if (!Resolve(user, ref user.Comp2, ref user.Comp3, false)) // WD EDIT
             return null;
 
         if (_inventory.TryGetSlotEntity(user, "back", out var backEntity, user.Comp2, user.Comp3) &&
@@ -257,6 +257,9 @@ public sealed class InternalsSystem : EntitySystem
         {
             return (entity.Value, gasTank);
         }
+
+        if (!Resolve(user, ref user.Comp1, false)) // WD EDIT
+            return null;
 
         foreach (var item in _inventory.GetHandOrInventoryEntities((user.Owner, user.Comp1, user.Comp2)))
         {

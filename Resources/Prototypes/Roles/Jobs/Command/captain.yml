@@ -17,7 +17,6 @@
       department: Command
       time: 18000 # 15 3
   weight: 20
-  startingGear: CaptainGear
   icon: "JobIconCaptain"
   requireAdminNotify: true
   joinNotifyCrew: true
@@ -38,3 +37,9 @@
 
 - type: startingGear
   id: CaptainGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+    back: ClothingBackpackCaptainFilled
+    shoes: ClothingShoesBootsLaceup
+    id: CaptainPDA
+    ears: ClothingHeadsetAltCommand

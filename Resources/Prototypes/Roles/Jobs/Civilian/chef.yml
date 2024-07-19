@@ -7,7 +7,6 @@
     - !type:DepartmentTimeRequirement
       department: Civilian
       time: 1800
-  startingGear: ChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hop
   access:
@@ -20,3 +19,9 @@
 
 - type: startingGear
   id: ChefGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorBlack
+    id: ChefPDA
+    ears: ClothingHeadsetService

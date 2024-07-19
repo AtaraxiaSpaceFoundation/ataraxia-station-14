@@ -3,7 +3,6 @@
   name: job-name-janitor
   description: job-description-janitor
   playTimeTracker: JobJanitor
-  startingGear: JanitorGear
   icon: "JobIconJanitor"
   supervisors: job-supervisors-hop
   access:
@@ -17,6 +16,20 @@
 
 - type: startingGear
   id: JanitorGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJanitor
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorPurple
+    id: JanitorPDA
+    ears: ClothingHeadsetService
 
 - type: startingGear
   id: JanitorMaidGear
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaid
+    back: ClothingBackpackFilled
+    id: JanitorPDA
+    gloves: ClothingHandsGlovesJanitor
+    head: ClothingHeadHatCatEars
+    ears: ClothingHeadsetService
+    belt: ClothingBeltJanitorFilled

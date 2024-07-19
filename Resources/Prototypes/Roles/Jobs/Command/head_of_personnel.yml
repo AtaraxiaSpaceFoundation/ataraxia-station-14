@@ -17,7 +17,6 @@
       department: Command
       time: 3600
   weight: 20
-  startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   arrivalNotificationPrototype: HeadOfPersonnelArrivalNotification
@@ -60,3 +59,9 @@
 
 - type: startingGear
   id: HoPGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoP
+    back: ClothingBackpackHOPFilled
+    shoes: ClothingShoesColorBrown
+    id: HoPPDA
+    ears: ClothingHeadsetAltCommand

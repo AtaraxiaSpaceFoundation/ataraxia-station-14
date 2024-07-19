@@ -12,7 +12,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   arrivalNotificationPrototype: ChiefMedicalOfficerArrivalNotification
   requireAdminNotify: true
@@ -36,3 +35,9 @@
 
 - type: startingGear
   id: CMOGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMO
+    back: ClothingBackpackCMOFilled
+    shoes: ClothingShoesColorBrown
+    id: CMOPDA
+    ears: ClothingHeadsetCMO

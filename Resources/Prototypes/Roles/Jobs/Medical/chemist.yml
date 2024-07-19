@@ -7,7 +7,6 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 14400 #4 hrs
-  startingGear: ChemistGear
   icon: "JobIconChemist"
   supervisors: job-supervisors-cmo
   access:
@@ -17,3 +16,9 @@
 
 - type: startingGear
   id: ChemistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChemistry
+    back: ClothingBackpackChemistryFilled
+    shoes: ClothingShoesColorWhite
+    id: ChemistryPDA
+    ears: ClothingHeadsetMedical

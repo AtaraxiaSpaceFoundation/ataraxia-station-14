@@ -7,7 +7,6 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 36000 #10 hrs
-  startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
   whitelistedSpecies:
@@ -26,3 +25,9 @@
 
 - type: startingGear
   id: SecurityOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    back: ClothingBackpackSecurityFilled
+    shoes: ClothingShoesBootsCombatFilled
+    id: SecurityPDA
+    ears: ClothingHeadsetSecurity

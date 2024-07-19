@@ -7,7 +7,6 @@
   - !type:DepartmentTimeRequirement
     department: Security
     time: 54000 # 15 hours
-  startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
   whitelistedSpecies:
@@ -27,3 +26,9 @@
 
 - type: startingGear
   id: DetectiveGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetective
+    back: ClothingBackpackSecurityFilledDetective
+    shoes: ClothingShoesBootsCombatFilled
+    id: DetectivePDA
+    ears: ClothingHeadsetSecurity

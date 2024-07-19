@@ -248,6 +248,7 @@
         - WetFloorSign
         - HolosignProjector
         - Plunger
+        - Bucket
       components:
         - LightReplacer
         - SmokeOnTrigger

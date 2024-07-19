@@ -9,7 +9,6 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 18000 #5 hr
-  startingGear: LawyerGear
   icon: "JobIconLawyer"
   supervisors: job-supervisors-inspector
   access:
@@ -20,3 +19,11 @@
 
 - type: startingGear
   id: LawyerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    back: ClothingBackpackLawyerFilled
+    shoes: ClothingShoesBootsLaceup
+    id: LawyerPDA
+    ears: ClothingHeadsetSecurity
+  inhand:
+    - BriefcaseBrownFilled

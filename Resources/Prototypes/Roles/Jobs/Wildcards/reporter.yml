@@ -3,7 +3,6 @@
   name: job-name-reporter
   description: job-description-reporter
   playTimeTracker: JobReporter
-  startingGear: ReporterGear
   icon: "JobIconReporter"
   supervisors: job-supervisors-hop
   access:
@@ -12,3 +11,9 @@
 
 - type: startingGear
   id: ReporterGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitReporter
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesColorWhite
+    id: ReporterPDA
+    ears: ClothingHeadsetService

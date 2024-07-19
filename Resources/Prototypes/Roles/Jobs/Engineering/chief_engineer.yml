@@ -13,7 +13,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
   arrivalNotificationPrototype: ChiefEngineerArrivalNotification
@@ -39,3 +38,9 @@
 
 - type: startingGear
   id: ChiefEngineerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+    back: ClothingBackpackChiefEngineerFilled
+    shoes: ClothingShoesColorBrown
+    id: CEPDA
+    ears: ClothingHeadsetCE

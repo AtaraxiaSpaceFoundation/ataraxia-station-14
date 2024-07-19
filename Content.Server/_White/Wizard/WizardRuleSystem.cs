@@ -159,7 +159,8 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var wizardRule, out _))
         {
-            AddRole(mindId, mind, wizardRule);
+            if (!AddRole(mindId, mind, wizardRule))
+                return;
 
             if (mind.Session is not { } playerSession)
                 return;
@@ -171,10 +172,10 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         }
     }
 
-    private void AddRole(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)
+    private bool AddRole(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)
     {
         if (_roles.MindHasRole<WizardRoleComponent>(mindId))
-            return;
+            return false;
 
         wizardRule.WizardMinds.Add(mindId);
 
@@ -182,6 +183,8 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         _roles.MindAddRole(mindId, new WizardRoleComponent {PrototypeId = role});
 
         GiveObjectives(mindId, mind, wizardRule);
+
+        return true;
     }
 
     private void GiveObjectives(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)

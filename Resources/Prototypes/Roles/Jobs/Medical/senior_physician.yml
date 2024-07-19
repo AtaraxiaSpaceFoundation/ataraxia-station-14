@@ -13,7 +13,6 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 216000 # 60 hrs
-  startingGear: SeniorPhysicianGear
   icon: "JobIconSeniorPhysician"
   supervisors: job-supervisors-cmo
   canBeAntag: false
@@ -27,3 +26,9 @@
 
 - type: startingGear
   id: SeniorPhysicianGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+    back: ClothingBackpackMedicalFilled
+    shoes: ClothingShoesColorBlack
+    id: SeniorPhysicianPDA
+    ears: ClothingHeadsetMedical

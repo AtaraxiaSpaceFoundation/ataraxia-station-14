@@ -9,7 +9,6 @@
       time: 14400 #4 hrs
     - !type:OverallPlaytimeRequirement
       time: 54000 # 15 hrs
-  startingGear: ParamedicGear
   icon: "JobIconParamedic"
   supervisors: job-supervisors-cmo
   access:
@@ -20,3 +19,9 @@
 
 - type: startingGear
   id: ParamedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitParamedic
+    back: ClothingBackpackParamedicFilled
+    shoes: ClothingShoesColorBlue
+    id: ParamedicPDA
+    ears: ClothingHeadsetMedical
