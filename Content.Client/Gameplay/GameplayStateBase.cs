@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Clickable;
 using Content.Client.UserInterface;
+using Content.Shared.Damage;
 using Content.Shared.Input;
 using Robust.Client.ComponentTrees;
 using Robust.Client.GameObjects;
@@ -99,6 +100,13 @@ namespace Content.Client.Gameplay
         public EntityUid? GetClickedEntity(MapCoordinates coordinates)
         {
             var first = GetClickableEntities(coordinates).FirstOrDefault();
+            return first.IsValid() ? first : null;
+        }
+
+        public EntityUid? GetDamageableClickedEntity(MapCoordinates coordinates) // WD
+        {
+            var first = GetClickableEntities(coordinates)
+                .FirstOrDefault(e => _entityManager.HasComponent<DamageableComponent>(e));
             return first.IsValid() ? first : null;
         }
 

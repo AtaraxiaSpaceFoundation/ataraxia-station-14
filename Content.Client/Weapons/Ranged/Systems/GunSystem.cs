@@ -190,7 +190,7 @@ public sealed partial class GunSystem : SharedGunSystem
         EntityUid? shootingTarget = null;
 
         if (_state.CurrentState is GameplayStateBase screen)
-            shootingTarget = screen.GetClickedEntity(mousePos);
+            shootingTarget = screen.GetDamageableClickedEntity(mousePos);
 
         EntityManager.RaisePredictiveEvent(new RequestShootEvent
         {

@@ -28,6 +28,7 @@ public sealed partial class ChangelingSystem
         RemComp<EyeProtectionComponent>(ent);
         RemComp<FlashImmunityComponent>(ent);
         RemComp<TemporaryNightVisionComponent>(ent);
+        RemComp<TemporaryThermalVisionComponent>(ent);
         RemComp<VoidAdaptationComponent>(ent);
 
         foreach (var hand in _handsSystem.EnumerateHands(ent))

@@ -121,7 +121,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
                 if (_stateManager.CurrentState is GameplayStateBase screen)
                 {
-                    target = screen.GetClickedEntity(mousePos);
+                    target = screen.GetDamageableClickedEntity(mousePos); // WD EDIT
                 }
 
                 EntityManager.RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
@@ -169,7 +169,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
             if (_stateManager.CurrentState is GameplayStateBase screen)
             {
-                target = screen.GetClickedEntity(mousePos);
+                target = screen.GetDamageableClickedEntity(mousePos); // WD EDIT
             }
 
             // Don't light-attack if interaction will be handling this instead

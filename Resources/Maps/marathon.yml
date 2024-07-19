@@ -51820,18 +51820,6 @@ entities:
     - type: Transform
       pos: 47.465996,44.649086
       parent: 30
-- proto: ClothingEyesGlassesThermal
-  entities:
-  - uid: 9441
-    components:
-    - type: Transform
-      pos: 5.522977,-23.530071
-      parent: 30
-  - uid: 10010
-    components:
-    - type: Transform
-      pos: -13.542964,-45.170254
-      parent: 30
 - proto: ClothingEyesHudDiagnostic
   entities:
   - uid: 11291

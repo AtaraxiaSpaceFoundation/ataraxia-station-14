@@ -153,6 +153,8 @@
           prob: 0.5
         - proto: ClothingEyesNightVisionGoggles
           cost: 8
+        - proto: ClothingEyesGlassesThermal
+          cost: 8
         - proto: ClothingHandsGlovesCombat
           cost: 3
         - proto: Katana

@@ -672,12 +672,14 @@ public sealed partial class ChangelingSystem
         if (HasComp<TemporaryNightVisionComponent>(ent))
         {
             RemComp<TemporaryNightVisionComponent>(ent);
+            RemComp<TemporaryThermalVisionComponent>(ent);
             EnsureComp<FlashImmunityComponent>(ent);
             EnsureComp<EyeProtectionComponent>(ent);
             return;
         }
 
         EnsureComp<TemporaryNightVisionComponent>(ent);
+        EnsureComp<TemporaryThermalVisionComponent>(ent);
         RemComp<FlashImmunityComponent>(ent);
         RemComp<EyeProtectionComponent>(ent);
     }
@@ -1049,6 +1051,19 @@ public sealed partial class ChangelingSystem
                 Tint = nvComp.Tint,
                 Strength = nvComp.Strength,
                 Noise = nvComp.Noise
+            };
+
+            EntityManager.AddComponent(to, toAdd);
+        }
+
+        if (TryComp(from, out TemporaryThermalVisionComponent? thermal))
+        {
+            var toAdd = new TemporaryThermalVisionComponent
+            {
+                Color = thermal.Color,
+                Tint = thermal.Tint,
+                Strength = thermal.Strength,
+                Noise = thermal.Noise
             };
 
             EntityManager.AddComponent(to, toAdd);

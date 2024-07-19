@@ -72,6 +72,7 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         if (_player.LocalSession != player)
             return;
 
+        UpdateOverlay(active);
         UpdateNightVision(active);
     }
 
@@ -80,16 +81,31 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         if (_player.LocalSession?.AttachedEntity != uid)
             return;
 
+        UpdateOverlay(active);
         UpdateNightVision(active);
     }
 
-    private void UpdateNightVision(bool active)
+    public void UpdateOverlay(bool active)
     {
+        if (_player.LocalEntity == null)
+        {
+            _overlayMan.RemoveOverlay(_overlay);
+            return;
+        }
+
+        var uid = _player.LocalEntity.Value;
+        active |= TryComp<NightVisionComponent>(uid, out var nv) && nv.IsActive ||
+                  TryComp<ThermalVisionComponent>(uid, out var thermal) && thermal.IsActive ||
+                  HasComp<TemporaryNightVisionComponent>(uid) ||
+                  HasComp<TemporaryThermalVisionComponent>(uid);
         if (active)
             _overlayMan.AddOverlay(_overlay);
         else
             _overlayMan.RemoveOverlay(_overlay);
+    }
 
+    private void UpdateNightVision(bool active)
+    {
         _lightManager.DrawLighting = !active;
     }
 

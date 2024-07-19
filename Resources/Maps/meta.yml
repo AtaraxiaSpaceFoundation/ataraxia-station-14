@@ -60170,18 +60170,6 @@ entities:
     - type: Transform
       pos: 66.56803,33.64219
       parent: 5350
-- proto: ClothingEyesGlassesThermal
-  entities:
-  - uid: 23947
-    components:
-    - type: Transform
-      pos: 55.407906,-5.421943
-      parent: 5350
-  - uid: 23948
-    components:
-    - type: Transform
-      pos: 55.501656,-5.562568
-      parent: 5350
 - proto: ClothingEyesHudMedical
   entities:
   - uid: 14922

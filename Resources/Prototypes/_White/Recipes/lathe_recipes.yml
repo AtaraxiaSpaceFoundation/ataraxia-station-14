@@ -23,6 +23,16 @@
     Gold: 100
 
 - type: latheRecipe
+  id: ClothingEyesGlassesThermal
+  result: ClothingEyesGlassesThermal
+  completetime: 2
+  materials:
+    Steel: 200
+    Glass: 100
+    Silver: 100
+    Gold: 100
+
+- type: latheRecipe
   id: WeaponTempGun
   result: WeaponTempGun
   completetime: 8

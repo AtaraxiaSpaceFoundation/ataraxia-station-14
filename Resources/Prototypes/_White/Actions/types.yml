@@ -43,6 +43,20 @@
     event: !type:ToggleNightVisionEvent
 
 - type: entity
+  id: ToggleThermalVision
+  name: Toggle thermal vision.
+  description: Toggles thermal vision.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Clothing/Eyes/Glasses/thermal.rsi
+      state: icon
+    event: !type:ToggleThermalVisionEvent
+
+- type: entity
   id: ToggleBodyCamera
   name: Toggle body camera.
   description: Toggles body camera.
