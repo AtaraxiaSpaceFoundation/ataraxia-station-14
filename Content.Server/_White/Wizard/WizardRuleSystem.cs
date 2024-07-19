@@ -283,30 +283,35 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
     private HumanoidCharacterProfile SetupWizardEntity(
         EntityUid mob,
         StartingGearPrototype gear,
-        bool endRoundOnDeath)
+        bool endRoundOnDeath,
+        bool randomPtofile = true)
     {
         EnsureComp<WizardComponent>(mob, out var component);
         component.EndRoundOnDeath = endRoundOnDeath;
         EnsureComp<GlobalAntagonistComponent>(mob).AntagonistPrototype = "globalAntagonistWizard";
 
-        var random = IoCManager.Resolve<IRobustRandom>();
-        var profile = HumanoidCharacterProfile.RandomWithSpecies().WithAge(random.Next(component.MinAge, component.MaxAge));
+        if (randomPtofile)
+        {
+            var random = IoCManager.Resolve<IRobustRandom>();
+            var profile = HumanoidCharacterProfile.RandomWithSpecies()
+                .WithAge(random.Next(component.MinAge, component.MaxAge));
 
-        var color = Color.FromHex(GetRandom(component.Color, "#B5B8B1"));
-        var hair = GetRandom(component.Hair, "HumanHairAfricanPigtails");
-        var facialHair = GetRandom(component.FacialHair, "HumanFacialHairAbe");
-        profile = profile.WithCharacterAppearance(
-            profile.WithCharacterAppearance(
+            var color = Color.FromHex(GetRandom(component.Color, "#B5B8B1"));
+            var hair = GetRandom(component.Hair, "HumanHairAfricanPigtails");
+            var facialHair = GetRandom(component.FacialHair, "HumanFacialHairAbe");
+            profile = profile.WithCharacterAppearance(
                 profile.WithCharacterAppearance(
-                    profile.WithCharacterAppearance(
-                        profile.Appearance.WithHairStyleName(hair))
-                        .Appearance.WithFacialHairStyleName(facialHair))
-                    .Appearance.WithHairColor(color))
-                .Appearance.WithFacialHairColor(color));
+                        profile.WithCharacterAppearance(
+                                profile.WithCharacterAppearance(
+                                        profile.Appearance.WithHairStyleName(hair))
+                                    .Appearance.WithFacialHairStyleName(facialHair))
+                            .Appearance.WithHairColor(color))
+                    .Appearance.WithFacialHairColor(color));
 
-        _humanoid.LoadProfile(mob, profile);
+            _humanoid.LoadProfile(mob, profile);
 
-        _metaData.SetEntityName(mob, GetRandom(component.Name, ""));
+            _metaData.SetEntityName(mob, GetRandom(component.Name, ""));
+        }
 
         _stationSpawning.EquipStartingGear(mob, gear);
 
