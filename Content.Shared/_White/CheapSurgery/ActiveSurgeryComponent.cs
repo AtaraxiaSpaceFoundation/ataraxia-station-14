@@ -4,4 +4,7 @@ namespace Content.Shared._White.CheapSurgery;
 public sealed partial class ActiveSurgeryComponent : Component
 {
     [ViewVariables] public EntityUid OrganUid = EntityUid.Invalid;
+
+    [DataField]
+    public bool? IsActive = false;
 }

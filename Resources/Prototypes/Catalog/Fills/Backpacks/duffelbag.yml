@@ -12,6 +12,7 @@
       - id: Cautery
       - id: Retractor
       - id: Scalpel
+      - id: Drapes # Ataraxia
 
 - type: entity
   id: ClothingBackpackDuffelCBURNFilled
@@ -44,6 +45,7 @@
       - id: Cautery
       - id: Retractor
       - id: ScalpelAdvanced
+      - id: Drapes # Ataraxia
       - id: ClothingHandsGlovesNitrile
       - id: EmergencyRollerBedSpawnFolded
 

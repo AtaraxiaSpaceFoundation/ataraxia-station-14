@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseToolSurgery
+  id: Drapes
+  components:
+  - type: Sprite
+    sprite: Ataraxia/Objects/Specific/Medical/Surgery/drapes.rsi
+    state: surgicaldrapes
+  - type: Item
+    sprite: Ataraxia/Objects/Specific/Medical/Surgery/drapes.rsi
+    storedRotation: 90
+  - type: MedicalDrapes

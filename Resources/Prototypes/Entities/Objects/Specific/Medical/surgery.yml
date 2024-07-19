@@ -32,6 +32,15 @@
         Heat: 5
     soundHit:
       path: /Audio/Effects/lightburn.ogg
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Burn: -3
+    IsCautery: true
+    CauterySound:
+      path: /Audio/Ataraxia/Items/Medical/surgery_end.ogg
 
 # Drill
 
@@ -86,6 +95,15 @@
         Slash: 8
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Brute: 10
+    IsScalpel: true
+    ScalpelSound:
+      path: /Audio/Ataraxia/Items/Medical/surgery_start.ogg
 
 - type: entity
   name: shiv
@@ -97,6 +115,15 @@
     state: shiv
   - type: Item
     heldPrefix: shiv
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Brute: 10
+    IsScalpel: true
+    ScalpelSound:
+      path: /Audio/Ataraxia/Items/Medical/surgery_start.ogg
 
 - type: entity
   name: advanced scalpel
@@ -112,6 +139,15 @@
     damage:
       types:
         Slash: 12
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Brute: 10
+    IsScalpel: true
+    ScalpelSound:
+      path: /Audio/Ataraxia/Items/Medical/surgery_start.ogg
 
 - type: entity
   name: laser scalpel
@@ -123,6 +159,15 @@
     state: laser
   - type: Item
     heldPrefix: laser
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Brute: 10
+    IsScalpel: true
+    ScalpelSound:
+      path: /Audio/Ataraxia/Items/Medical/surgery_start.ogg
 
 # Scissors
 
@@ -150,6 +195,16 @@
   - type: Item
     heldPrefix: hemostat
     storedRotation: 90
+  - type: SurgeryTool # Ataraxia
+    damageContainers:
+    - Biological
+    damage:
+      groups:
+        Brute: -23
+        Burn: -21
+    IsHemostat: true
+    InProgressSound:
+      path: "/Audio/Ataraxia/Items/Medical/in_progress.ogg"
 
   # - type: entity
   #   name: bone setter
