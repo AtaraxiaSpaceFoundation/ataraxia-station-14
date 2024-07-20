@@ -1338,8 +1338,6 @@
   id: MobMonkeySyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
   parent: MobBaseSyndicateMonkey
   suffix: NukeOps
-  components:
-  - type: NukeOperative
 
 - type: entity
   name: kobold

@@ -10,7 +10,6 @@
       department: Security
       time: 54000 #15 hrs
       inverted: true # stop playing intern if you're good at security!
-  startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
   canBeAntag: false
@@ -27,3 +26,10 @@
 
 - type: startingGear
   id: SecurityCadetGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    back: ClothingBackpackSecurityFilled
+    shoes: ClothingShoesBootsCombatFilled
+    id: SecurityCadetPDA
+    ears: ClothingHeadsetAltSecurity
+    pocket1: BookSecurity

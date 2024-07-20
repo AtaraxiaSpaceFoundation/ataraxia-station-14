@@ -7034,13 +7034,6 @@ entities:
     - type: Transform
       pos: 10.480986,45.607067
       parent: 1653
-- proto: ClothingEyesGlassesThermal
-  entities:
-  - uid: 800
-    components:
-    - type: Transform
-      pos: 6.5116234,25.568321
-      parent: 1653
 - proto: ClothingHandsGlovesLeather
   entities:
   - uid: 719
@@ -10730,14 +10723,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 52.5,14.5
-      parent: 1653
-- proto: MagicalLamp
-  entities:
-  - uid: 1204
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5085075,47.438328
       parent: 1653
 - proto: MaintenanceFluffSpawner
   entities:

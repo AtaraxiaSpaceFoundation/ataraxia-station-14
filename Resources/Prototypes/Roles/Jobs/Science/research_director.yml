@@ -10,7 +10,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"
   requireAdminNotify: true
   arrivalNotificationPrototype: ResearchDirectorArrivalNotification
@@ -37,11 +36,5 @@
     back: ClothingBackpackResearchDirectorFilled
     shoes: ClothingShoesColorBrown
     id: RnDPDA
-    ears: ClothingHeadsetRD
+    ears: ClothingHeadsetAltScience
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersRD # White-Underwear
-  underweart: ClothingUnderwearTopBraRD # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesRD # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtResearchDirector
-  satchel: ClothingBackpackSatchelResearchDirectorFilled
-  duffelbag: ClothingBackpackDuffelResearchDirectorFilled

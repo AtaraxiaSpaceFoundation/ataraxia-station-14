@@ -686,3 +686,5 @@
   - type: Tag
     tags:
     - RollingPin
+  - type: StaticPrice
+    price: 15

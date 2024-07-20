@@ -27,6 +27,7 @@
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen
     - BaseRandomStation
+    - BaseStationTeleportLocation
   noSpawn: true
   components:
     - type: Transform

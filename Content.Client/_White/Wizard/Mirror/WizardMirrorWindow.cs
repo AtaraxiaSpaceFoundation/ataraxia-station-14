@@ -291,6 +291,15 @@ public sealed partial class WizardMirrorWindow : DefaultWindow
         };
 
         #endregion Eyes
+
+        #region Markings
+
+        CMarkings.OnMarkingAdded += OnMarkingChange;
+        CMarkings.OnMarkingRemoved += OnMarkingChange;
+        CMarkings.OnMarkingColorChange += OnMarkingChange;
+        CMarkings.OnMarkingRankChange += OnMarkingChange;
+
+        #endregion Markings
     }
 
     #region Set
@@ -351,6 +360,15 @@ public sealed partial class WizardMirrorWindow : DefaultWindow
     private void SetBodyType(string newBodyType)
     {
         Profile = Profile?.WithBodyType(newBodyType);
+        IsDirty = true;
+    }
+
+    private void OnMarkingChange(MarkingSet markings)
+    {
+        if (Profile is null)
+            return;
+
+        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithMarkings(markings.GetForwardEnumerator().ToList()));
         IsDirty = true;
     }
 
@@ -602,6 +620,18 @@ public sealed partial class WizardMirrorWindow : DefaultWindow
         EyesPicker.SetData(Profile.Appearance.EyeColor);
     }
 
+    private void UpdateMarkings()
+    {
+        if (Profile == null)
+        {
+            return;
+        }
+
+        CMarkings.SetData(Profile.Appearance.Markings, Profile.Species,
+            Profile.Sex, Profile.BodyType, Profile.Appearance.SkinColor, Profile.Appearance.EyeColor
+        );
+    }
+
     #endregion
 
     private void OnSkinColorOnValueChanged()
@@ -688,5 +718,6 @@ public sealed partial class WizardMirrorWindow : DefaultWindow
         UpdateCMarkingsFacialHair();
         UpdateTtsVoicesControls();
         UpdateBodyTypes();
+        UpdateMarkings();
     }
 }

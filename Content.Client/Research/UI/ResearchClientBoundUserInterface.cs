@@ -1,12 +1,10 @@
 using Content.Shared.Research.Components;
-using Robust.Client.GameObjects;
 
 namespace Content.Client.Research.UI
 {
     public sealed class ResearchClientBoundUserInterface : BoundUserInterface
     {
-        [ViewVariables]
-        private ResearchClientServerSelectionMenu? _menu;
+        [ViewVariables] private ResearchClientServerSelectionMenu? _menu;
 
         public ResearchClientBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
@@ -36,7 +34,7 @@ namespace Content.Client.Research.UI
         {
             base.UpdateState(state);
             if (state is not ResearchClientBoundInterfaceState rState) return;
-            _menu?.Populate(rState.ServerCount, rState.ServerNames, rState.ServerIds, rState.SelectedServerId);
+            _menu?.Populate(rState.ServerNames, rState.ServerIds, rState.SelectedServerId);
         }
 
         protected override void Dispose(bool disposing)

@@ -12,7 +12,7 @@
       - DroneUsable
       - AirAlarmElectronics
   - type: StaticPrice
-    price: 61
+    price: 50
 
 - type: entity
   id: FireAlarmElectronics
@@ -30,4 +30,4 @@
       - DroneUsable
       - FireAlarmElectronics
   - type: StaticPrice
-    price: 61
+    price: 50

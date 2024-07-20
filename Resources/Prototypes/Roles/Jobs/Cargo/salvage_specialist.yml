@@ -10,7 +10,6 @@
     - !type:OverallPlaytimeRequirement
       time: 36000 #10 hrs
   icon: "JobIconShaftMiner"
-  startingGear: SalvageSpecialistGear
   supervisors: job-supervisors-qm
   access:
   - Cargo
@@ -20,3 +19,9 @@
 
 - type: startingGear
   id: SalvageSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+    back: ClothingBackpackSalvageFilled
+    shoes: ClothingShoesBootsSalvage
+    id: SalvagePDA
+    ears: ClothingHeadsetCargo

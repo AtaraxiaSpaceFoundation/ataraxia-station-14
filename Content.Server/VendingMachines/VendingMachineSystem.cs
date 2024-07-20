@@ -52,7 +52,7 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly StackSystem _stackSystem = default!;
         // WD END
 
-        private double _priceMultiplier = 1.0; // WD
+        private const double GlobalPriceMultiplier = 2.0; // WD
 
         public override void Initialize()
         {
@@ -241,7 +241,8 @@ namespace Content.Server.VendingMachines
 
         protected override int GetEntryPrice(EntityPrototype proto)
         {
-            return (int) _pricing.GetEstimatedPrice(proto);
+            var price = (int) _pricing.GetEstimatedPrice(proto);
+            return price > 0 ? price : 25;
         }
 
         private int GetPrice(VendingMachineInventoryEntry entry, VendingMachineComponent comp)
@@ -251,13 +252,13 @@ namespace Content.Server.VendingMachines
 
         private double GetPriceMultiplier(VendingMachineComponent comp)
         {
-            return comp.PriceMultiplier * _priceMultiplier;
+            return comp.PriceMultiplier * GlobalPriceMultiplier;
         }
 
         private void OnWithdrawMessage(EntityUid uid, VendingMachineComponent component, VendingMachineWithdrawMessage args)
         {
-            _stackSystem.Spawn(component.Credits,
-                PrototypeManager.Index<StackPrototype>(component.CreditStackPrototype), Transform(uid).Coordinates);
+            _stackSystem.Spawn(component.Credits, PrototypeManager.Index(component.CreditStackPrototype), 
+                Transform(uid).Coordinates);
             component.Credits = 0;
             Audio.PlayPvs(component.SoundWithdrawCurrency, uid);
 

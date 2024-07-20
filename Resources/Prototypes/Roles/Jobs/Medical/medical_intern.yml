@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: MedicalIntern
   name: job-name-intern
   description: job-description-intern
@@ -8,7 +8,6 @@
       department: Medical
       time: 54000 # 15 hrs
       inverted: true # stop playing intern if you're good at med!
-  startingGear: MedicalInternGear
   icon: "JobIconMedicalIntern"
   supervisors: job-supervisors-medicine
   canBeAntag: true
@@ -18,3 +17,10 @@
 
 - type: startingGear
   id: MedicalInternGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    back: ClothingBackpackMedicalFilled
+    shoes: ClothingShoesColorWhite
+    id: MedicalInternPDA
+    ears: ClothingHeadsetMedical
+    pocket1: BookMedicalReferenceBook

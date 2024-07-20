@@ -1,6 +1,5 @@
 using Content.Shared.Actions;
 using Content.Shared.Stacks;
-using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -16,8 +15,9 @@ namespace Content.Shared.VendingMachines
         /// <summary>
         /// PrototypeID for the vending machine's inventory, see <see cref="VendingMachineInventoryPrototype"/>
         /// </summary>
-        [DataField("pack", customTypeSerializer: typeof(PrototypeIdSerializer<VendingMachineInventoryPrototype>), required: true)]
-        public string PackPrototypeId = string.Empty;
+        [DataField("pack", required: true)]
+        public ProtoId<VendingMachineInventoryPrototype> PackPrototypeId
+            = string.Empty;
 
         /// <summary>
         /// Used by the server to determine how long the vending machine stays in the "Deny" state.
@@ -130,6 +130,7 @@ namespace Content.Shared.VendingMachines
         public TimeSpan NextEmpEject = TimeSpan.Zero;
 
         #region Client Visuals
+
         /// <summary>
         /// RSI state for when the vending machine is unpowered.
         /// Will be displayed on the layer <see cref="VendingMachineVisualLayers.Base"/>
@@ -180,24 +181,26 @@ namespace Content.Shared.VendingMachines
         /// </summary>
         [DataField("loopDeny")]
         public bool LoopDenyAnimation = true;
+
         #endregion
 
         //WD EDIT
 
-        [DataField("priceMultiplier")]
-        public double PriceMultiplier;
+        [DataField]
+        public double PriceMultiplier = 1.0;
 
-        [ValidatePrototypeId<StackPrototype>]
-        public string CreditStackPrototype = "Credit";
+        public ProtoId<StackPrototype> CreditStackPrototype = "Credit";
 
-        [DataField("currencyType")]
+        [DataField]
         public string CurrencyType = "SpaceCash";
 
-        [DataField("soundInsertCurrency")]
-        public SoundSpecifier SoundInsertCurrency = new SoundPathSpecifier("/Audio/White/Machines/polaroid2.ogg");
+        [DataField]
+        public SoundSpecifier SoundInsertCurrency =
+            new SoundPathSpecifier("/Audio/White/Machines/polaroid2.ogg");
 
-        [DataField("soundWithdrawCurrency")]
-        public SoundSpecifier SoundWithdrawCurrency = new SoundPathSpecifier("/Audio/White/Machines/polaroid1.ogg");
+        [DataField]
+        public SoundSpecifier SoundWithdrawCurrency =
+            new SoundPathSpecifier("/Audio/White/Machines/polaroid1.ogg");
 
         [ViewVariables]
         public int Credits;
@@ -209,12 +212,16 @@ namespace Content.Shared.VendingMachines
     {
         [ViewVariables(VVAccess.ReadWrite)]
         public InventoryType Type;
+
         [ViewVariables(VVAccess.ReadWrite)]
         public string ID;
+
         [ViewVariables(VVAccess.ReadWrite)]
         public uint Amount;
+
         [ViewVariables(VVAccess.ReadWrite)]
         public int Price; // WD
+
         public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, int price)
         {
             Type = type;
@@ -254,10 +261,12 @@ namespace Content.Shared.VendingMachines
         /// Off / Broken. The other layers will overlay this if the machine is on.
         /// </summary>
         Base,
+
         /// <summary>
         /// Normal / Deny / Eject
         /// </summary>
         BaseUnshaded,
+
         /// <summary>
         /// Screens that are persistent (where the machine is not off or broken)
         /// </summary>
@@ -279,6 +288,5 @@ namespace Content.Shared.VendingMachines
 
     public sealed partial class VendingMachineSelfDispenseEvent : InstantActionEvent
     {
-
     };
 }

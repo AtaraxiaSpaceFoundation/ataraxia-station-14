@@ -17,7 +17,6 @@
       department: Command
       time: 18000 # 15 3
   weight: 20
-  startingGear: CaptainGear
   icon: "JobIconCaptain"
   requireAdminNotify: true
   joinNotifyCrew: true
@@ -42,9 +41,3 @@
     id: CaptainPDA
     ears: ClothingHeadsetAltCommand
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersCap # White-Underwear
-  underweart: ClothingUnderwearTopBraCap # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCap # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtCaptain
-  satchel: ClothingBackpackSatchelCaptainFilled
-  duffelbag: ClothingBackpackDuffelCaptainFilled

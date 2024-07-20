@@ -12,7 +12,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   arrivalNotificationPrototype: ChiefMedicalOfficerArrivalNotification
   requireAdminNotify: true
@@ -40,12 +39,5 @@
     back: ClothingBackpackCMOFilled
     shoes: ClothingShoesColorBrown
     id: CMOPDA
-    ears: ClothingHeadsetCMO
+    ears: ClothingHeadsetAltMedical
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersCMO # White-Underwear
-  underweart: ClothingUnderwearTopBraCMO # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCMO # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtCMO
-  satchel: ClothingBackpackSatchelCMOFilled
-  duffelbag: ClothingBackpackDuffelCMOFilled
-

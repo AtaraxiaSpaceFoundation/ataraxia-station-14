@@ -1,3 +1,13 @@
+# Glasses
+
+- type: itemLoadout
+  id: ChemistGlasses
+  equipment: ChemistGlasses
+- type: startingGear
+  id: ChemistGlasses
+  equipment:
+    eyes: ClothingEyesGlassesChemical
+
 # Jumpsuit
 - type: itemLoadout
   id: ChemistJumpsuit

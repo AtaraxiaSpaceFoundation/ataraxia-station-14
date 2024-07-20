@@ -24,6 +24,14 @@
   equipment:
     neck: ClothingNeckCloakRd
 
+- type: itemLoadout # WD
+  id: ResearchDirectorCloakLuxurious
+  equipment: ResearchDirectorCloakLuxurious
+- type: startingGear
+  id: ResearchDirectorCloakLuxurious
+  equipment:
+    neck: ClothingNeckCloakRdLuxurious
+
 # Jumpsuit
 - type: itemLoadout
   id: ResearchDirectorJumpsuit

@@ -13,7 +13,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
   requireAdminNotify: true
   arrivalNotificationPrototype: HeadOfSecurityArrivalNotification
@@ -44,12 +43,5 @@
     back: ClothingBackpackHOSFilled
     shoes: ClothingShoesBootsCombatFilled
     id: HoSPDA
-    ears: ClothingHeadsetAltSecurity
-    pocket1: WeaponPistolMk58Nonlethal
+    ears: ClothingHeadsetAltSecurityCommand
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersHOS # White-Underwear
-  underweart: ClothingUnderwearTopBraHOS # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesHOS # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtHoS
-  satchel: ClothingBackpackSatchelHOSFilled
-  duffelbag: ClothingBackpackDuffelHOSFilled

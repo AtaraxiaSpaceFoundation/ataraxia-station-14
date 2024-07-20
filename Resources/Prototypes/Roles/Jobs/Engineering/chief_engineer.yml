@@ -13,7 +13,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
   requireAdminNotify: true
   arrivalNotificationPrototype: ChiefEngineerArrivalNotification
@@ -42,12 +41,5 @@
     back: ClothingBackpackChiefEngineerFilled
     shoes: ClothingShoesColorBrown
     id: CEPDA
-    ears: ClothingHeadsetCE
+    ears: ClothingHeadsetAltEngineering
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersCE # White-Underwear
-  underweart: ClothingUnderwearTopBraCE # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesCE # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
-  satchel: ClothingBackpackSatchelChiefEngineerFilled
-  duffelbag: ClothingBackpackDuffelChiefEngineerFilled
-

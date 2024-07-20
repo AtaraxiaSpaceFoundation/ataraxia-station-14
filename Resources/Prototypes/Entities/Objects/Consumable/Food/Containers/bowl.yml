@@ -57,6 +57,8 @@
   - type: Tag
     tags:
     - Trash
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   name: broken bowl

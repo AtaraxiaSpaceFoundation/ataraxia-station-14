@@ -31,23 +31,28 @@ namespace Content.Client._White.Overlays
 
             var handle = args.WorldHandle;
 
+            if (_playerManager.LocalEntity == null)
+                return;
+
+            var uid = _playerManager.LocalEntity.Value;
+
             Color? color = null;
 
-            if (_entityManager.TryGetComponent<NightVisionComponent>(_playerManager.LocalSession?.AttachedEntity,
-                    out var component) && component.IsActive)
+            if (_entityManager.TryGetComponent<NightVisionComponent>(uid, out var component) && component.IsActive)
             {
-                _shader.SetParameter("tint", component.Tint);
-                _shader.SetParameter("luminance_threshold", component.Strength);
-                _shader.SetParameter("noise_amount", component.Noise);
-                color = component.Color;
+                color = SetParameters(component);
             }
-            else if (_entityManager.TryGetComponent<TemporaryNightVisionComponent>(
-                         _playerManager.LocalSession?.AttachedEntity, out var tempNvComp))
+            else if (_entityManager.TryGetComponent<ThermalVisionComponent>(uid, out var thermal) && thermal.IsActive)
             {
-                _shader.SetParameter("tint", tempNvComp.Tint);
-                _shader.SetParameter("luminance_threshold", tempNvComp.Strength);
-                _shader.SetParameter("noise_amount", tempNvComp.Noise);
-                color = tempNvComp.Color;
+                color = SetParameters(thermal);
+            }
+            else if (_entityManager.TryGetComponent<TemporaryNightVisionComponent>(uid, out var tempNvComp))
+            {
+                color = SetParameters(tempNvComp);
+            }
+            else if (_entityManager.TryGetComponent<TemporaryThermalVisionComponent>(uid, out var tempThermal))
+            {
+                color = SetParameters(tempThermal);
             }
 
             if (color == null)
@@ -58,6 +63,14 @@ namespace Content.Client._White.Overlays
             handle.UseShader(_shader);
             handle.DrawRect(args.WorldBounds, color.Value);
             handle.UseShader(null);
+        }
+
+        private Color SetParameters(BaseNvOverlayComponent component)
+        {
+            _shader.SetParameter("tint", component.Tint);
+            _shader.SetParameter("luminance_threshold", component.Strength);
+            _shader.SetParameter("noise_amount", component.Noise);
+            return component.Color;
         }
     }
 }

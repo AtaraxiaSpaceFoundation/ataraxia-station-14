@@ -315,6 +315,8 @@
   - type: Fiber
     fiberMaterial: fibers-insulative
     fiberColor: fibers-yellow
+  - type: StaticPrice
+    price: 50
 
 # Budget Insulated Gloves
 - type: entity

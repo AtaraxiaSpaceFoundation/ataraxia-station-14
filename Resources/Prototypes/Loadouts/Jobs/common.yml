@@ -1,4 +1,15 @@
-﻿# Eyes
+﻿# Timers
+
+- type: loadoutEffectGroup # WD
+  id: TimerTrueAssistant
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 180000 # 50 hours
+
+# Eyes
 
 - type: itemLoadout
   id: GlassesGarOrange
@@ -141,6 +152,17 @@
   equipment:
     outerClothing: ClothingOuterHoodieBlack
 
+- type: itemLoadout
+  id: CoatSpaceAsshole
+  equipment: CoatSpaceAsshole
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TimerTrueAssistant
+- type: startingGear
+  id: CoatSpaceAsshole
+  equipment:
+    outerClothing: ClothingOuterCoatSpaceAsshole
+
 # Gloves
 
 - type: itemLoadout
@@ -150,6 +172,14 @@
   id: GlovesColorBlack
   equipment:
     gloves: ClothingHandsGlovesColorBlack
+
+- type: itemLoadout
+  id: GlovesColorWhite
+  equipment: GlovesColorWhite
+- type: startingGear
+  id: GlovesColorWhite
+  equipment:
+    gloves: ClothingHandsGlovesColorWhite
 
 - type: itemLoadout
   id: GlovesLatex
@@ -337,7 +367,7 @@
 - type: startingGear
   id: CommonSatchelLeather
   equipment:
-    back: ClothingBackpackSatchelLeather
+    back: ClothingBackpackSatchelLeatherFilled
 
 # Mask
 
@@ -443,12 +473,13 @@
   equipment:
     belt: ClothingBeltUtility
 
-# Inhands
+# Job trinkets
 
 - type: itemLoadout
   id: Cane
   equipment: Cane
 - type: startingGear
   id: Cane
-  equipment:
-    belt: Cane
+  storage:
+    back:
+    - Cane

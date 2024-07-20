@@ -47,6 +47,8 @@
     tags:
     - Trash
     - Skewer
+  - type: StaticPrice
+    price: 10
 
 # Custom Kebab Example
 

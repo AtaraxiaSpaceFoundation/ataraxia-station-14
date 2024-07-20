@@ -113,6 +113,8 @@
       sprite: Objects/Consumable/Drinks/glass_clear.rsi
       state: icon
   - type: TransformableContainer
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   name: coupe glass

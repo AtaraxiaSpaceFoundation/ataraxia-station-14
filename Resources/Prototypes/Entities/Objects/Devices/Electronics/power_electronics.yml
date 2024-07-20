@@ -15,7 +15,7 @@
       chemicalComposition:
         Silicon: 20
     - type: StaticPrice
-      price: 34
+      price: 20
 
 # Wallmount Substation
 - type: entity

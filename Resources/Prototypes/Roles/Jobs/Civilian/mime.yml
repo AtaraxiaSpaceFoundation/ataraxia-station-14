@@ -6,7 +6,6 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 14400 #4 hrs
-  startingGear: MimeGear
   icon: "JobIconMime"
   supervisors: job-supervisors-hop
   access:
@@ -20,6 +19,16 @@
 
 - type: startingGear
   id: MimeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMime
+    back: ClothingBackpackMimeFilled
+    head: ClothingHeadHatBeret
+    gloves: ClothingHandsGlovesLatex
+    shoes: ClothingShoesColorWhite
+    pocket1: CrayonMime
+    mask: ClothingMaskMime
+    id: MimePDA
+    ears: ClothingHeadsetService
 
 - type: entity
   id: ActionMimeInvisibleWall

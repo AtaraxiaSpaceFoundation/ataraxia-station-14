@@ -18,6 +18,9 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: Item
     size: Normal
+    storedRotation: 47 # It just works
+    shape:
+    - 0, 0, 2, 0
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_dagger.rsi
     quickEquip: false
@@ -68,6 +71,9 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: Item
     size: Huge
+    storedRotation: 44 # It just works
+    shape:
+    - 0, 0, 4, 0
   - type: Clothing
     sprite: Objects/Weapons/Melee/cult_blade.rsi
     quickEquip: false

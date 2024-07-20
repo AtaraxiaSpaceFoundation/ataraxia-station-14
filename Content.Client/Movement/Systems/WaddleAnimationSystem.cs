@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Content.Client.Gravity;
+using Content.Shared.Rotation;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Robust.Client.Animations;
@@ -14,6 +15,7 @@ public sealed class WaddleAnimationSystem : EntitySystem
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
     [Dependency] private readonly GravitySystem _gravity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!; // WD EDIT
 
     public override void Initialize()
     {
@@ -32,7 +34,13 @@ public sealed class WaddleAnimationSystem : EntitySystem
             return;
         }
 
-        if (!args.HasDirectionalMovement && component.IsCurrentlyWaddling)
+        // WD EDIT
+        _appearance.TryGetData<RotationState>(entity, RotationVisuals.RotationState, out var state);
+        if (state is RotationState.Horizontal)
+            return;
+        // WD EDIT
+
+            if (!args.HasDirectionalMovement && component.IsCurrentlyWaddling)
         {
             component.IsCurrentlyWaddling = false;
 
@@ -70,6 +78,12 @@ public sealed class WaddleAnimationSystem : EntitySystem
         {
             return;
         }
+
+        // WD EDIT
+        _appearance.TryGetData<RotationState>(uid, RotationVisuals.RotationState, out var state);
+        if (TryComp<SpriteComponent>(uid, out var sprite) && TryComp<RotationVisualsComponent>(uid, out var rotat) && state is RotationState.Horizontal)
+            return;
+        // WD EDIT
 
         var tumbleIntensity = component.LastStep ? 360 - component.TumbleIntensity : component.TumbleIntensity;
         var len = mover.Sprinting ? component.AnimationLength * component.RunAnimationLengthMultiplier : component.AnimationLength;
@@ -128,8 +142,13 @@ public sealed class WaddleAnimationSystem : EntitySystem
 
     private void OnAnimationCompleted(EntityUid uid, WaddleAnimationComponent component, AnimationCompletedEvent args)
     {
-        var started = new StartedWaddlingEvent(uid);
+        if (args.Key is not "Waddle") // WD EDIT
+        {
+            component.IsCurrentlyWaddling = false;
+            return;
+        }
 
+        var started = new StartedWaddlingEvent(uid);
         RaiseLocalEvent(uid, ref started);
     }
 }

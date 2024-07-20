@@ -9,7 +9,7 @@
     - type: Transform
       noRot: true
     - type: Sprite
-      sprite: Structures/Storage/canister.rsi
+      sprite: White/Structures/Storage/canister.rsi
       noRot: true
       layers:
         - state: grey

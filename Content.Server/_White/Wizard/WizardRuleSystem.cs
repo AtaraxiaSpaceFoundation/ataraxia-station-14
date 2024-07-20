@@ -21,6 +21,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Server.Administration.Commands;
 using Content.Server.Objectives;
 using Content.Server.Station.Components;
 using Content.Server.StationEvents.Components;
@@ -159,7 +160,8 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var wizardRule, out _))
         {
-            AddRole(mindId, mind, wizardRule);
+            if (!AddRole(mindId, mind, wizardRule))
+                return;
 
             if (mind.Session is not { } playerSession)
                 return;
@@ -171,10 +173,10 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         }
     }
 
-    private void AddRole(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)
+    private bool AddRole(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)
     {
         if (_roles.MindHasRole<WizardRoleComponent>(mindId))
-            return;
+            return false;
 
         wizardRule.WizardMinds.Add(mindId);
 
@@ -182,6 +184,8 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         _roles.MindAddRole(mindId, new WizardRoleComponent {PrototypeId = role});
 
         GiveObjectives(mindId, mind, wizardRule);
+
+        return true;
     }
 
     private void GiveObjectives(EntityUid mindId, MindComponent mind, WizardRuleComponent wizardRule)
@@ -277,40 +281,43 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         return true;
     }
 
-    private HumanoidCharacterProfile SetupWizardEntity(
+    private void SetupWizardEntity(
         EntityUid mob,
         StartingGearPrototype gear,
-        bool endRoundOnDeath)
+        bool endRoundOnDeath,
+        bool randomPtofile = true)
     {
         EnsureComp<WizardComponent>(mob, out var component);
         component.EndRoundOnDeath = endRoundOnDeath;
         EnsureComp<GlobalAntagonistComponent>(mob).AntagonistPrototype = "globalAntagonistWizard";
 
-        var random = IoCManager.Resolve<IRobustRandom>();
-        var profile = HumanoidCharacterProfile.RandomWithSpecies().WithAge(random.Next(component.MinAge, component.MaxAge));
+        if (randomPtofile)
+        {
+            var random = IoCManager.Resolve<IRobustRandom>();
+            var profile = HumanoidCharacterProfile.RandomWithSpecies()
+                .WithAge(random.Next(component.MinAge, component.MaxAge));
 
-        var color = Color.FromHex(GetRandom(component.Color, "#B5B8B1"));
-        var hair = GetRandom(component.Hair, "HumanHairAfricanPigtails");
-        var facialHair = GetRandom(component.FacialHair, "HumanFacialHairAbe");
-        profile = profile.WithCharacterAppearance(
-            profile.WithCharacterAppearance(
+            var color = Color.FromHex(GetRandom(component.Color, "#B5B8B1"));
+            var hair = GetRandom(component.Hair, "HumanHairAfricanPigtails");
+            var facialHair = GetRandom(component.FacialHair, "HumanFacialHairAbe");
+            profile = profile.WithCharacterAppearance(
                 profile.WithCharacterAppearance(
-                    profile.WithCharacterAppearance(
-                        profile.Appearance.WithHairStyleName(hair))
-                        .Appearance.WithFacialHairStyleName(facialHair))
-                    .Appearance.WithHairColor(color))
-                .Appearance.WithFacialHairColor(color));
+                        profile.WithCharacterAppearance(
+                                profile.WithCharacterAppearance(
+                                        profile.Appearance.WithHairStyleName(hair))
+                                    .Appearance.WithFacialHairStyleName(facialHair))
+                            .Appearance.WithHairColor(color))
+                    .Appearance.WithFacialHairColor(color));
 
-        _humanoid.LoadProfile(mob, profile);
+            _humanoid.LoadProfile(mob, profile);
 
-        _metaData.SetEntityName(mob, GetRandom(component.Name, ""));
+            _metaData.SetEntityName(mob, GetRandom(component.Name, ""));
 
-        _stationSpawning.EquipStartingGear(mob, gear);
+            _stationSpawning.EquipStartingGear(mob, gear);
+        }
 
         _npcFaction.RemoveFaction(mob, "NanoTrasen", false);
         _npcFaction.AddFaction(mob, "Wizard");
-
-        return profile;
     }
 
     private EntityCoordinates WizardSpawnPoint(WizardRuleComponent component)
@@ -367,7 +374,8 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
                 return;
             }
 
-            var name = SetupWizardEntity(mob, gear, true).Name;
+            SetupWizardEntity(mob, gear, true);
+            var name = !TryComp<MetaDataComponent>(mob, out var meta) || meta.EntityName == "" ? "" : meta.EntityName;
 
             var newMind = _mind.CreateMind(session.UserId, name);
             _mind.SetUserId(newMind, session.UserId);
@@ -460,7 +468,14 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
             return false;
         }
 
-        SetupWizardEntity(wizard, gear, false);
+        if (!SpawnMap((wizard, rule)))
+        {
+            _sawmill.Info("Failed to load shuttle for wizard");
+            return false;
+        }
+
+        SetupWizardEntity(wizard, gear, false, false);
+        SetOutfitCommand.SetOutfit(wizard, gear.ID, EntityManager);
 
         var spawnpoint = WizardSpawnPoint(rule);
         var transform = EnsureComp<TransformComponent>(wizard);

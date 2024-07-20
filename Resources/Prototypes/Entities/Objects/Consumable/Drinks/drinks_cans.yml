@@ -4,6 +4,8 @@
   id: DrinkCanBaseFull
   abstract: true
   components:
+  - type: Item
+    size: Tiny
   - type: Drink
   - type: Openable
   - type: Shakeable

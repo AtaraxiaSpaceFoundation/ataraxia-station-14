@@ -113,3 +113,6 @@ alerts-revenant-corporeal-desc = You have manifested physically. People around y
 
 alerts-changeling-chemicals-name = Chemicals
 alerts-changeling-chemicals-desc = Our chemicals.
+
+alerts-offer-name = Offer
+alerts-offer-desc = Someone offers you an item.

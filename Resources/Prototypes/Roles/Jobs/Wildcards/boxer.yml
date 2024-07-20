@@ -3,7 +3,6 @@
   name: job-name-boxer
   description: job-description-boxer
   playTimeTracker: JobBoxer
-  startingGear: BoxerGear
   icon: "JobIconBoxer"
   supervisors: job-supervisors-hop
   access:
@@ -12,3 +11,11 @@
 
 - type: startingGear
   id: BoxerGear
+  equipment:
+    jumpsuit: UniformShortsRed
+    back: ClothingBackpackFilled
+    id: BoxerPDA
+    ears: ClothingHeadsetService
+    gloves: ClothingHandsGlovesBoxingRed
+    shoes: ClothingShoesColorRed
+    belt: ClothingBeltChampion

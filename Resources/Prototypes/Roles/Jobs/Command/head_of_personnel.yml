@@ -17,7 +17,6 @@
       department: Command
       time: 3600
   weight: 20
-  startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   arrivalNotificationPrototype: HeadOfPersonnelArrivalNotification
@@ -66,9 +65,3 @@
     id: HoPPDA
     ears: ClothingHeadsetAltCommand
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersHOP # White-Underwear
-  underweart: ClothingUnderwearTopBraHOP # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesHOP # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtHoP
-  satchel: ClothingBackpackSatchelHOPFilled
-  duffelbag: ClothingBackpackDuffelHOPFilled

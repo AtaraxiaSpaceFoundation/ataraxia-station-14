@@ -18251,15 +18251,6 @@ entities:
       parent: 30
     - type: Physics
       canCollide: False
-- proto: ClothingEyesGlassesThermal
-  entities:
-  - uid: 7267
-    components:
-    - type: Transform
-      pos: -31.624142,-1.1191435
-      parent: 30
-    - type: Physics
-      canCollide: False
 - proto: ClothingHandsGlovesColorYellow
   entities:
   - uid: 1668

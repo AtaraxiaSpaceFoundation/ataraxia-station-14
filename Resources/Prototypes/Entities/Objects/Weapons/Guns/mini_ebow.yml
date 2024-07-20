@@ -15,7 +15,7 @@
     - Belt
   - type: Gun
     resetOnHandSelected: false
-    fireRate: 0.5
+    fireRate: 0.4
     soundGunshot:
       path: /Audio/Weapons/click.ogg
   - type: RechargeBasicEntityAmmo

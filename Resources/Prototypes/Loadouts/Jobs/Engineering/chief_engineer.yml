@@ -59,6 +59,14 @@
   equipment:
     neck: ClothingNeckCloakCe
 
+- type: itemLoadout # WD
+  id: ChiefEngineerCloakLuxurious
+  equipment: ChiefEngineerCloakLuxurious
+- type: startingGear
+  id: ChiefEngineerCloakLuxurious
+  equipment:
+    neck: ClothingNeckCloakCeLuxurious
+
 - type: itemLoadout
   id: ChiefEngineerMantle
   equipment: ChiefEngineerMantle

@@ -23,4 +23,4 @@
 - type: startingGear
   id: ReporterPDA
   equipment:
-    jumpsuit: ReporterPDA
+    id: ReporterPDA

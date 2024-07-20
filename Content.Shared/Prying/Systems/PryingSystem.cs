@@ -99,7 +99,7 @@ public sealed class PryingSystem : EntitySystem
             // to be marked as handled.
             return true;
 
-        return StartPry(target, user, null, 0.1f, out id); // hand-prying is much slower
+        return StartPry(target, user, null, 10f, out id); // hand-prying is much slower
     }
 
     private bool CanPry(EntityUid target, EntityUid user, out string? message, PryingComponent? comp = null)
@@ -133,7 +133,10 @@ public sealed class PryingSystem : EntitySystem
         var modEv = new GetPryTimeModifierEvent(user);
 
         RaiseLocalEvent(target, ref modEv);
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(modEv.BaseTime * modEv.PryTimeModifier / toolModifier), new DoorPryDoAfterEvent(), target, target, tool)
+
+        var time = TimeSpan.FromSeconds(modEv.BaseTime * modEv.PryTimeModifier * (toolModifier - (!TryComp<AirlockComponent>(target, out var airlock) || !airlock.Powered ? 1 : 0))); // WD EDIT
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, time, new DoorPryDoAfterEvent(), target, target, tool)
         {
             BreakOnDamage = true,
             BreakOnMove = true,
@@ -166,7 +169,7 @@ public sealed class PryingSystem : EntitySystem
             return;
         }
 
-        if (args.Used != null && comp != null)
+        if (args.Used != null && comp != null && door.State is not DoorState.Closing and not DoorState.Opening)
         {
             _audioSystem.PlayPredicted(comp.UseSound, args.Used.Value, args.User);
         }

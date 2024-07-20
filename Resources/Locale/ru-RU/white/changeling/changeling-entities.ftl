@@ -5,7 +5,7 @@ changeling-ability-biodegrade = Биоразложение
 changeling-ability-biodegrade-desc = Растворяет наручники и прочие сдерживающие элементы. Стоит 30 химикатов.
 
 changeling-ability-eyesight = Аугментация зрения
-changeling-ability-eyesight-desc = Развивает переключаемое ночное зрение. Когда способность неактивна, защищает вас от флешек и яркого света, например от сварки.
+changeling-ability-eyesight-desc = Развивает переключаемое ночное и термальное зрение. Когда способность неактивна, защищает вас от флешек и яркого света, например от сварки.
 
 changeling-ability-dissonant-shriek = Диссонирующий вопль
 changeling-ability-dissonant-shriek-desc = Испускает заряд ЭМИ, который нарушает работу всего оборудования вокруг. Стоит 20 химикатов.

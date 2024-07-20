@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   abstract: true
   parent: ClothingHeadset
   id: ClothingHeadsetAlt
@@ -9,6 +9,7 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
+  - type: FlashSoundSuppression # WD
 
 - type: entity
   parent: ClothingHeadsetAlt
@@ -108,12 +109,27 @@
     containers:
       key_slots:
       - EncryptionKeySecurity
-      - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/security.rsi
+
+- type: entity # WD
+  parent: ClothingHeadsetAlt
+  id: ClothingHeadsetAltSecurityCommand
+  name: head of security's over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/command.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/command.rsi
 
 - type: entity
   parent: ClothingHeadsetAlt

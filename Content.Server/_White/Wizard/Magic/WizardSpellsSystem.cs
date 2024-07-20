@@ -179,6 +179,12 @@ public sealed class WizardSpellsSystem : EntitySystem
         if (!userHasMind)
             return;
 
+        SwapComponent<WizardComponent>(uid, target);
+        SwapComponent<RevolutionaryComponent>(uid, target);
+        SwapComponent<HeadRevolutionaryComponent>(uid, target);
+        SwapComponent<PentagramComponent>(uid, target);
+        SwapComponent<CultistComponent>(uid, target);
+
         _mindSystem.TransferTo(mindId, target, mind: mind);
 
         if (targetHasMind)
@@ -193,12 +199,6 @@ public sealed class WizardSpellsSystem : EntitySystem
         _standing.TryLieDown(target);
 
         Cast(msg);
-
-        SwapComponent<WizardComponent>(uid, target);
-        SwapComponent<RevolutionaryComponent>(uid, target);
-        SwapComponent<HeadRevolutionaryComponent>(uid, target);
-        SwapComponent<PentagramComponent>(uid, target);
-        SwapComponent<CultistComponent>(uid, target);
     }
 
     #endregion

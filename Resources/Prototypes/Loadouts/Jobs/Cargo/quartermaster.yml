@@ -19,13 +19,21 @@
 
 # Ears
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: QuartermasterHeadset
   equipment: QuartermasterHeadset
 - type: startingGear
   id: QuartermasterHeadset
   equipment:
     ears: ClothingHeadsetQM
+
+- type: itemLoadout # WD
+  id: QuartermasterHeadsetAlt
+  equipment: QuartermasterHeadsetAlt
+- type: startingGear
+  id: QuartermasterHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltCargo
 
 # Jumpsuit
 - type: itemLoadout

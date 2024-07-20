@@ -6,9 +6,9 @@
   description: Теперь ты видишь во тьме!
   components:
   - type: Sprite
-    sprite: White/Clothing/Head/nightvision.rsi
+    sprite: White/Clothing/Eyes/Glasses/nightvision.rsi
   - type: Clothing
-    sprite: White/Clothing/Head/nightvision.rsi
+    sprite: White/Clothing/Eyes/Glasses/nightvision.rsi
   - type: ClothingGrantComponent
     component:
     - type: NightVision

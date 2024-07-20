@@ -50,6 +50,8 @@
     damage:
       types:
         Piercing: 5
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   parent: UtensilBasePlastic
@@ -61,7 +63,9 @@
     state: plastic_fork
   - type: Utensil
     types:
-    - Fork
+    - Fork  
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   parent: UtensilBase
@@ -87,6 +91,8 @@
         Blunt: 1
   - type: Shovel
     speedModifier: 0.1 # you can try
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   parent: UtensilBasePlastic
@@ -103,6 +109,8 @@
     - Spoon
   - type: Shovel
     speedModifier: 0.1 # you can try
+  - type: StaticPrice
+    price: 10
 
 - type: entity
   parent: UtensilBasePlastic
@@ -120,3 +128,5 @@
     - Plastic
     - Trash
     - Knife
+  - type: StaticPrice
+    price: 10

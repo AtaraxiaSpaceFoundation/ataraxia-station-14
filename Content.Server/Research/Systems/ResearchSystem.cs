@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Access.Systems;
@@ -58,34 +57,70 @@ namespace Content.Server.Research.Systems
         }
 
         /// <summary>
-        /// Gets the names of all the servers.
+        /// Gets  all the servers on the grid.
         /// </summary>
-        /// <returns></returns>
-        public string[] GetServerNames()
+        public List<ResearchServerComponent> GetAllServers(EntityUid client)
         {
-            var allServers = EntityQuery<ResearchServerComponent>(true).ToArray();
-            var list = new string[allServers.Length];
+            var query = EntityQueryEnumerator<ResearchServerComponent>();
+            var clientTransform = Transform(client);
+            var list = new List<ResearchServerComponent>(3);
 
-            for (var i = 0; i < allServers.Length; i++)
+            while (query.MoveNext(out var uid, out var server))
             {
-                list[i] = allServers[i].ServerName;
+                var serverTransform = Transform(uid);
+                if (clientTransform.GridUid != serverTransform.GridUid)
+                {
+                    continue;
+                }
+
+                list.Add(server);
             }
 
             return list;
         }
 
         /// <summary>
-        /// Gets the ids of all the servers
+        /// Gets the names of all the servers on the grid.
         /// </summary>
         /// <returns></returns>
-        public int[] GetServerIds()
+        public List<string> GetServerNames(EntityUid client)
         {
-            var allServers = EntityQuery<ResearchServerComponent>(true).ToArray();
-            var list = new int[allServers.Length];
+            var query = EntityQueryEnumerator<ResearchServerComponent>();
+            var clientTransform = Transform(client);
+            var list = new List<string>(3);
 
-            for (var i = 0; i < allServers.Length; i++)
+            while (query.MoveNext(out var uid, out var server))
             {
-                list[i] = allServers[i].Id;
+                var serverTransform = Transform(uid);
+                if (clientTransform.GridUid != serverTransform.GridUid)
+                {
+                    continue;
+                }
+
+                list.Add(server.ServerName);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Gets the ids of all the servers on the grid.
+        /// </summary>
+        /// <returns></returns>
+        public List<int> GetServerIds(EntityUid client)
+        {
+            var query = EntityQueryEnumerator<ResearchServerComponent>();
+            var clientTransform = Transform(client);
+            var list = new List<int>(3);
+            while (query.MoveNext(out var uid, out var server))
+            {
+                var serverTransform = Transform(uid);
+                if (clientTransform.GridUid != serverTransform.GridUid)
+                {
+                    continue;
+                }
+
+                list.Add(server.Id);
             }
 
             return list;

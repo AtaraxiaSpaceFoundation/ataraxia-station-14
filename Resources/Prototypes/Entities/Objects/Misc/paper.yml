@@ -303,6 +303,7 @@
   suffix: Station Only
   components:
   - type: NukeCodePaper
+    allNukesAvailable: false
 
 - type: entity
   name: pen

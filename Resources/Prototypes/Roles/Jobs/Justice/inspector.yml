@@ -12,7 +12,6 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 36000 #10 hrs
-  startingGear: InspectorGear
   icon: "JobIconInspector"
   arrivalNotificationPrototype: InspectorArrivalNotification
   supervisors: job-supervisors-captain
@@ -24,3 +23,11 @@
 
 - type: startingGear
   id: InspectorGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteInspectorFormal
+    back: ClothingBackpackFilled
+    shoes: ClothingShoesBootsInspector
+    id: InspectorPDA
+    ears: ClothingHeadsetAltSecurityCommand
+  inhand:
+    - BriefcaseBrownFilled

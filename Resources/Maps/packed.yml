@@ -32339,13 +32339,6 @@ entities:
     - type: Transform
       pos: 86.49675,1.6024053
       parent: 2
-- proto: ClothingEyesGlassesThermal
-  entities:
-  - uid: 12673
-    components:
-    - type: Transform
-      pos: 32.51945,-30.628448
-      parent: 2
 - proto: ClothingEyesHudDiagnostic
   entities:
   - uid: 11439

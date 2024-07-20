@@ -103,6 +103,14 @@
   equipment:
     ears: ClothingHeadsetCMO
 
+- type: itemLoadout # WD
+  id: CMOHeadsetAlt
+  equipment: CMOHeadsetAlt
+- type: startingGear
+  id: CMOHeadsetAlt
+  equipment:
+    ears: ClothingHeadsetAltMedical
+
 # PDA
 
 - type: itemLoadout # WD

@@ -20,6 +20,13 @@ public sealed class WhiteCVars
         CVarDef.Create("white.show_trails", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /*
+ * Offer Indicator
+     */
+
+    public static readonly CVarDef<bool> OfferModeIndicatorsPointShow =
+        CVarDef.Create("white.offer_mode_indicators_point_show", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /*
  * Wiki rules
     */
 

@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: TechnicalAssistant
   name: job-name-technical-assistant
   description: job-description-technical-assistant
@@ -10,7 +10,6 @@
       department: Engineering
       time: 54000 #15 hrs
       inverted: true # stop playing intern if you're good at engineering!
-  startingGear: TechnicalAssistantGear
   icon: "JobIconTechnicalAssistant"
   supervisors: job-supervisors-engineering
   canBeAntag: true
@@ -21,3 +20,10 @@
 
 - type: startingGear
   id: TechnicalAssistantGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+    back: ClothingBackpackEngineeringFilled
+    shoes: ClothingShoesBootsWork
+    id: TechnicalAssistantPDA
+    ears: ClothingHeadsetEngineering
+    pocket1: BookEngineersHandbook

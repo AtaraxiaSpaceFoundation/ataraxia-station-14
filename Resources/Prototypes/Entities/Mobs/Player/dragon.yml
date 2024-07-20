@@ -131,7 +131,8 @@
     - CannotSuicide
     - DoorBumpOpener
   - type: NightVision
-    toggleSound: null
+    activateSound: null
+    deactivateSound: null
     color: "#404040"
   - type: Tool
     speed: 3

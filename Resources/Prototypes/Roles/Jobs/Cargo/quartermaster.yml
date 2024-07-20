@@ -13,7 +13,6 @@
     - !type:OverallPlaytimeRequirement
       time: 108000
   weight: 10
-  startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
   arrivalNotificationPrototype: QuartermasterArrivalNotification
   supervisors: job-supervisors-captain
@@ -41,11 +40,5 @@
     back: ClothingBackpackQuartermasterFilled
     shoes: ClothingShoesColorBrown
     id: QuartermasterPDA
-    ears: ClothingHeadsetQM
+    ears: ClothingHeadsetAltCargo
     pocket2: TelescopicBaton # Ataraxia
-    underwearb: ClothingUnderwearBottomBoxersQM # White-Underwear
-  underweart: ClothingUnderwearTopBraQM # White-Underwear
-  underwearb: ClothingUnderwearBottomPantiesQM # White-Underwear
-  innerClothingSkirt: ClothingUniformJumpskirtQM
-  satchel: ClothingBackpackSatchelQuartermasterFilled
-  duffelbag: ClothingBackpackDuffelQuartermasterFilled
