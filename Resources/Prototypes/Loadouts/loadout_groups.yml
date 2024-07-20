@@ -56,6 +56,7 @@
   loadouts:
   - CaptainCloak
   - CaptainCloakFormal
+  - CaptainCloakLuxurious # WD
   - CaptainMantle
 
 - type: loadoutGroup
@@ -986,6 +987,15 @@
   - ChiefEngineerHeadsetAlt
 
 - type: loadoutGroup
+  id: ChiefEngineerNeck
+  name: loadout-group-neck
+  minLimit: 0
+  loadouts:
+  - ChiefEngineerCloak
+  - ChiefEngineerCloakLuxurious # WD
+  - ChiefEngineerMantle
+
+- type: loadoutGroup
   id: ChiefEngineerJumpsuit
   name: loadout-group-jumpsuit
   loadouts:
@@ -1002,14 +1012,6 @@
   - ChiefEngineerSatchel
   - ChiefEngineerDuffel
   - CommonSatchelLeather # WD
-
-- type: loadoutGroup
-  id: ChiefEngineerNeck
-  name: loadout-group-neck
-  minLimit: 0
-  loadouts:
-  - ChiefEngineerCloak
-  - ChiefEngineerMantle
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
@@ -1177,6 +1179,7 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  - ResearchDirectorCloakLuxurious # WD
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit

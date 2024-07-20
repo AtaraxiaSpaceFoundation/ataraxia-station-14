@@ -73,6 +73,14 @@
   equipment:
     neck: ClothingNeckCloakCapFormal
 
+- type: itemLoadout # WD
+  id: CaptainCloakLuxurious
+  equipment: CaptainCloakLuxurious
+- type: startingGear
+  id: CaptainCloakLuxurious
+  equipment:
+    neck: ClothingNeckCloakCapLuxurious
+
 - type: itemLoadout
   id: CaptainMantle
   equipment: CaptainMantle

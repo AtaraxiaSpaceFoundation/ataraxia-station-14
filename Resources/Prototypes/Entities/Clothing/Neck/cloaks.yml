@@ -20,6 +20,15 @@
   - type: StealTarget
     stealGroup: HeadCloak
 
+- type: entity # WD
+  parent: ClothingNeckCloakCap
+  id: ClothingNeckCloakCapLuxurious
+  name: captain's cloak
+  description: A pompous and comfy blue cloak with a nice gold trim, while not particularly valuable as your other possessions, it sure is fancy.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Neck/Cloaks/cap.rsi
+
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckCloakHos
@@ -42,6 +51,15 @@
   - type: StealTarget
     stealGroup: HeadCloak
 
+- type: entity # WD
+  parent: ClothingNeckCloakCe
+  id: ClothingNeckCloakCeLuxurious
+  name: chief engineer's cloak
+  description: A dark green cloak with light blue ornaments, given to those who proved themselves to master the precise art of engineering.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Neck/Cloaks/ce.rsi
+
 - type: entity
   parent: ClothingNeckBase
   id: ClothingCloakCmo
@@ -63,6 +81,15 @@
     sprite: Clothing/Neck/Cloaks/rd.rsi
   - type: StealTarget
     stealGroup: HeadCloak
+
+- type: entity # WD
+  parent: ClothingNeckCloakRd
+  id: ClothingNeckCloakRdLuxurious
+  name: research director's cloak
+  description: A white cloak with violet stripes, showing your status as the arbiter of cutting-edge technology.
+  components:
+  - type: Sprite
+    sprite: White/Clothing/Neck/Cloaks/rd.rsi
 
 - type: entity
   parent: ClothingNeckBase
