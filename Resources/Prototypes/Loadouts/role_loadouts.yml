@@ -385,7 +385,7 @@
   id: JobWarden
   groups:
   - WardenHead
-  - CommonSecurityCommandHeadset # WD
+  - CommonSecurityHeadsetFull # WD
   - CommonSecurityCommandMask # WD
   - CommonSecurityNeck
   - WardenJumpsuit
@@ -399,7 +399,7 @@
   id: JobSeniorOfficer
   groups:
   - CommonSecurityHead
-  - CommonSecurityHeadset # WD
+  - CommonSecurityHeadsetFull # WD
   - CommonSecurityCommandMask # WD
   - CommonSecurityNeck
   - SeniorOfficerJumpsuit
@@ -414,7 +414,7 @@
   id: JobSecurityOfficer
   groups:
   - CommonSecurityHead
-  - CommonSecurityHeadset # WD
+  - CommonSecurityHeadsetFull # WD
   - CommonSecurityMask # WD
   - CommonSecurityNeck # WD
   - SecurityJumpsuit
@@ -430,7 +430,7 @@
   id: JobDetective
   groups:
   - DetectiveHead
-  - CommonSecurityHeadset # WD
+  - CommonSecurityHeadsetFull # WD
   - CommonMaskCigarette # WD
   - CommonSecurityNeck
   - DetectiveJumpsuit
@@ -445,7 +445,7 @@
   id: JobSecurityCadet
   groups:
   - CommonSecurityHead
-  - CommonSecurityHeadset # WD
+  - CommonSecurityHeadsetFull # WD
   - CommonSecurityNeck
   - SecurityCadetJumpsuit
   - CommonSecurityBackpack
@@ -459,7 +459,7 @@
   id: JobChiefMedicalOfficer
   groups:
   - ChiefMedicalOfficerHead
-  - ChiefMedicalOfficerEars # WD
+  - ChiefMedicalOfficerHeadset # WD
   - CommonMedicalMask # WD
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerJumpsuit

@@ -148,7 +148,6 @@
   components:
   - type: FlashImmunity
   - type: EyeProtection
-    protectionTime: 5
   - type: Tag
     tags:
     - Sunglasses
@@ -167,7 +166,6 @@
     sprite: Clothing/Eyes/Glasses/secglasses.rsi
   - type: FlashImmunity
   - type: EyeProtection
-    protectionTime: 5
   - type: Construction
     graph: GlassesSecHUD
     node: glassesSec
@@ -232,9 +230,9 @@
   description: Thermals in the shape of glasses.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/Glasses/thermal.rsi
+    sprite: White/Clothing/Eyes/Glasses/thermal.rsi
   - type: Clothing
-    sprite: Clothing/Eyes/Glasses/thermal.rsi
+    sprite: White/Clothing/Eyes/Glasses/thermal.rsi
   - type: ClothingGrantComponent
     component:
     - type: ThermalVision

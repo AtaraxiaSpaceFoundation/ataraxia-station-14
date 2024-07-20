@@ -61,6 +61,7 @@
   - type: TemperatureProtection
     coefficient: 0.005
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Engineering Hardsuit
 - type: entity
@@ -80,6 +81,7 @@
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Spationaut Hardsuit
 - type: entity
@@ -183,6 +185,9 @@
         Piercing: 0.9
         Heat: 0.9
   - type: FlashImmunity # WD edit
+  - type: ClothingGrantComponent # WD
+    component:
+    - type: FlashSoundSuppression
 
 #Brigmedic Hardsuit
 - type: entity
@@ -210,6 +215,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.6
     lowPressureMultiplier: 1000
+  - type: ClothingGrantComponent # WD
+    component:
+    - type: FlashSoundSuppression
 
 #Warden's Hardsuit
 - type: entity
@@ -236,6 +244,9 @@
         Piercing: 0.9
         Heat: 0.9
   - type: FlashImmunity # WD edit
+  - type: ClothingGrantComponent # WD
+    component:
+    - type: FlashSoundSuppression
 
 #Captain's Hardsuit
 - type: entity
@@ -252,6 +263,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
+  - type: ClothingGrantComponent # WD
+    component:
+    - type: FlashSoundSuppression
 
 #Inspector's Hardsuit
 - type: entity
@@ -287,6 +301,7 @@
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Chief Medical Officer's Hardsuit
 - type: entity
@@ -349,6 +364,9 @@
         Piercing: 0.9
         Heat: 0.9
   - type: FlashImmunity
+  - type: ClothingGrantComponent # WD
+    component:
+    - type: FlashSoundSuppression
 
 #Luxury Mining Hardsuit
 - type: entity
@@ -368,6 +386,7 @@
   - type: PointLight
     radius: 7
     energy: 3
+  - type: EyeProtection # WD edit
 
 #Head of Personnel's Hardsuit WD
 - type: entity
@@ -410,8 +429,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Blood-red Medic Hardsuit
 - type: entity
@@ -437,8 +456,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Syndicate Elite Hardsuit
 - type: entity
@@ -466,8 +485,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -493,8 +512,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
@@ -518,8 +537,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Wizard Hardsuit
 - type: entity
@@ -546,8 +565,6 @@
         Piercing: 0.9
         Heat: 0.9
   - type: WizardClothes
-  - type: FlashImmunity
-  - type: EyeProtection
 
 #Organic Space Suit
 - type: entity
@@ -621,8 +638,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #ERT Chaplain Hardsuit
 - type: entity
@@ -660,8 +677,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #ERT Medical Hardsuit
 - type: entity
@@ -677,8 +694,8 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertmedical.rsi
   - type: PointLight
     color: "#adffec"
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #ERT Security Hardsuit
 - type: entity
@@ -701,8 +718,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #ERT Janitor Hardsuit
 - type: entity
@@ -718,8 +735,8 @@
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertjanitor.rsi
   - type: PointLight
     color: "#cbadff"
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #CBURN Hardsuit
 - type: entity
@@ -759,8 +776,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
 
 #Deathsquad Hardsuit
 - type: entity
@@ -786,8 +803,8 @@
         Heat: 0.80
         Radiation: 0.80
         Caustic: 0.95
-  - type: FlashImmunity # WD edit
   - type: EyeProtection # WD edit
+  - type: FlashImmunity # WD
   - type: ShowHealthBars
     damageContainers:
     - Biological

@@ -28,6 +28,6 @@
     back: ClothingBackpackFilled
     shoes: ClothingShoesBootsInspector
     id: InspectorPDA
-    ears: ClothingHeadsetAltSecurity
+    ears: ClothingHeadsetAltSecurityCommand
   inhand:
     - BriefcaseBrownFilled

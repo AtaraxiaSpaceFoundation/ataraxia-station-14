@@ -38,7 +38,7 @@
     itemIconStyle: BigAction
     priority: -20
     icon:
-      sprite: White/Clothing/Head/nightvision.rsi
+      sprite: White/Clothing/Eyes/Glasses/nightvision.rsi
       state: icon
     event: !type:ToggleNightVisionEvent
 

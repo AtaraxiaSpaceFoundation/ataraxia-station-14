@@ -28,9 +28,11 @@ public sealed class ClothingGrantingSystem : EntitySystem
         if (_timing.ApplyingState)
             return;
 
-        if (!TryComp<ClothingComponent>(uid, out var clothing)) return;
+        if (!TryComp<ClothingComponent>(uid, out var clothing))
+            return;
 
-        if (!clothing.Slots.HasFlag(args.SlotFlags)) return;
+        if (!clothing.Slots.HasFlag(args.SlotFlags))
+            return;
 
         if (component.Components.Count > 8)
         {
@@ -53,7 +55,7 @@ public sealed class ClothingGrantingSystem : EntitySystem
         }
 
         component.IsActive = true;
-        Dirty(component);
+        Dirty(uid, component);
     }
 
     private void OnCompUnequip(EntityUid uid, ClothingGrantComponentComponent component, GotUnequippedEvent args)
@@ -68,7 +70,7 @@ public sealed class ClothingGrantingSystem : EntitySystem
         }
 
         component.IsActive = false;
-        Dirty(component);
+        Dirty(uid, component);
     }
 
     private void OnTagEquip(EntityUid uid, ClothingGrantTagComponent component, GotEquippedEvent args)
@@ -81,7 +83,7 @@ public sealed class ClothingGrantingSystem : EntitySystem
         _tagSystem.AddTag(args.Equipee, component.Tag);
 
         component.IsActive = true;
-        Dirty(component);
+        Dirty(uid, component);
     }
 
     private void OnTagUnequip(EntityUid uid, ClothingGrantTagComponent component, GotUnequippedEvent args)
@@ -91,6 +93,6 @@ public sealed class ClothingGrantingSystem : EntitySystem
         _tagSystem.RemoveTag(args.Equipee, component.Tag);
 
         component.IsActive = false;
-        Dirty(component);
+        Dirty(uid, component);
     }
 }

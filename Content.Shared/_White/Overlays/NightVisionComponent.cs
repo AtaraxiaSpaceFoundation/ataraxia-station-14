@@ -12,10 +12,13 @@ public sealed partial class NightVisionComponent : BaseNvOverlayComponent
     public override Color Color { get; set; } = Color.FromHex("#98FB98");
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public bool IsActive = true;
+    public bool IsActive;
 
     [DataField]
-    public SoundSpecifier? ToggleSound = new SoundPathSpecifier("/Audio/Items/flashlight_pda.ogg");
+    public SoundSpecifier? ActivateSound = new SoundPathSpecifier("/Audio/White/Items/Goggles/activate.ogg");
+
+    [DataField]
+    public SoundSpecifier? DeactivateSound = new SoundPathSpecifier("/Audio/White/Items/Goggles/deactivate.ogg");
 
     [DataField]
     public EntProtoId? ToggleAction = "ToggleNightVision";

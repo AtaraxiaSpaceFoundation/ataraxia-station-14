@@ -161,7 +161,6 @@
   id: CommonCommandHeadset
   name: loadout-group-ears
   loadouts:
-  - CommandHeadset
   - CommandHeadsetAlt
 
 # Civilian
@@ -767,7 +766,6 @@
   id: QuartermasterHeadset
   name: loadout-group-ears
   loadouts:
-  - QuartermasterHeadset
   - QuartermasterHeadsetAlt
 
 - type: loadoutGroup
@@ -985,7 +983,6 @@
   id: ChiefEngineerHeadset
   name: loadout-group-ears
   loadouts:
-  - ChiefEngineerHeadset
   - ChiefEngineerHeadsetAlt
 
 - type: loadoutGroup
@@ -1224,7 +1221,6 @@
   id: ResearchDirectorHeadset
   name: loadout-group-ears
   loadouts:
-  - ResearchDirectorHeadset
   - ResearchDirectorHeadsetAlt
 
 - type: loadoutGroup
@@ -1605,6 +1601,12 @@
   - SecurityCommandHeadset
 
 - type: loadoutGroup
+  id: CommonSecurityHeadsetFull
+  name: loadout-group-ears
+  loadouts:
+  - SecurityHeadsetFull
+
+- type: loadoutGroup
   id: CommonSecurityBackpack
   name: loadout-group-backpack
   loadouts:
@@ -1636,10 +1638,9 @@
   - CowboyWhite
 
 - type: loadoutGroup # WD
-  id: ChiefMedicalOfficerEars
+  id: ChiefMedicalOfficerHeadset
   name: loadout-group-ears
   loadouts:
-  - CMOHeadset
   - CMOHeadsetAlt
 
 - type: loadoutGroup
@@ -2029,9 +2030,7 @@
   id: InspectorBackpack
   name: loadout-group-backpack
   loadouts:
-  - InspectorBackpack
   - InspectorSatchel
-  - InspectorDuffel
   - CommonSatchelLeather
 
 - type: loadoutGroup # WD

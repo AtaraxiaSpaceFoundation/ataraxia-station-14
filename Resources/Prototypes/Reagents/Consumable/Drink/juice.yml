@@ -116,6 +116,7 @@
   physicalDesc: reagent-physical-desc-saucey
   flavor: tomato
   color: "#731008"
+  slippery: false
 
 - type: reagent
   id: JuiceWatermelon

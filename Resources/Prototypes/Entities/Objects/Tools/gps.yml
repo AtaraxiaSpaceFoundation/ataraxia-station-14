@@ -11,6 +11,7 @@
     - state: active
   - type: Item
     sprite: Objects/Devices/gps.rsi
+    size: Tiny
   - type: HandheldGPS
   - type: Tag
     tags:

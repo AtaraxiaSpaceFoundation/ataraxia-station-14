@@ -23,6 +23,14 @@
 - type: startingGear
   id: SecurityCommandHeadset
   equipment:
+    ears: ClothingHeadsetAltSecurityCommand
+
+- type: itemLoadout
+  id: SecurityHeadsetFull
+  equipment: SecurityHeadsetFull
+- type: startingGear
+  id: SecurityHeadsetFull
+  equipment:
     ears: ClothingHeadsetAltSecurity
 
 # Mask

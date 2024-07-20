@@ -15,7 +15,10 @@ public sealed partial class ThermalVisionComponent : BaseNvOverlayComponent
     public bool IsActive = true;
 
     [DataField]
-    public SoundSpecifier? ToggleSound = new SoundPathSpecifier("/Audio/Items/flashlight_pda.ogg");
+    public SoundSpecifier? ActivateSound = new SoundPathSpecifier("/Audio/White/Items/Goggles/activate.ogg");
+
+    [DataField]
+    public SoundSpecifier? DeactivateSound = new SoundPathSpecifier("/Audio/White/Items/Goggles/deactivate.ogg");
 
     [DataField]
     public EntProtoId? ToggleAction = "ToggleThermalVision";

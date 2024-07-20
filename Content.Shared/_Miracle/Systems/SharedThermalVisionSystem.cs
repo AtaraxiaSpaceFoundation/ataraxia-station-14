@@ -48,7 +48,11 @@ public abstract class SharedThermalVisionSystem : EntitySystem
             return;
 
         component.IsActive = !component.IsActive;
-        _audio.PlayPredicted(component.ToggleSound, uid, uid);
+
+        if (component.IsActive && component.ActivateSound != null)
+            _audio.PlayPredicted(component.ActivateSound, uid, uid);
+        else if (component.DeactivateSound != null)
+            _audio.PlayPredicted(component.DeactivateSound, uid, uid);
 
         args.Handled = true;
 

@@ -41,7 +41,8 @@
       component:
       - type: NightVision
         toggleAction: null
-        toggleSound: null
+        activateSound: null
+        deactivateSound: null
         color: White
     - type: ShowHealthBars
       damageContainers:

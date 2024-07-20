@@ -33,5 +33,5 @@
     back: ClothingBackpackSecurityFilled
     shoes: ClothingShoesBootsCombatFilled
     id: SecurityCadetPDA
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetAltSecurity
     pocket1: BookSecurity

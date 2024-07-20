@@ -93,7 +93,7 @@
       - id: ClothingHandsGlovesCombat
       - id: ClothingShoesBootsJack
       - id: ClothingEyesGlassesSecurity
-      - id: ClothingHeadsetAltSecurity
+      - id: ClothingHeadsetAltSecurityCommand
       - id: ClothingMaskGasSwat
       - id: ClothingOuterCoatHoSTrench
 
