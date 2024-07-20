@@ -84,7 +84,8 @@
         path: /Audio/Effects/bite.ogg
     - type: Penetrated
     - type: NightVision
-      toggleSound: null
+      activateSound: null
+      deactivateSound: null
       color: "#404040"
     - type: Tool
       speed: 2

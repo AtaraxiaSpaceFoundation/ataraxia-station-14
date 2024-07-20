@@ -64,7 +64,8 @@
     - type: ShowCultHud
     - type: IsDeadIC
     - type: NightVision
-      toggleSound: null
+      activateSound: null
+      deactivateSound: null
       color: White
     - type: ShowHealthBars
       damageContainers:

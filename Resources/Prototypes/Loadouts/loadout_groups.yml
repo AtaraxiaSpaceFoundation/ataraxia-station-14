@@ -1603,7 +1603,7 @@
   loadouts:
   - SecurityCommandHeadset
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityHeadsetFull
   name: loadout-group-ears
   loadouts:

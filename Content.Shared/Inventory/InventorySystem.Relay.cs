@@ -1,3 +1,4 @@
+using Content.Shared._White.BuffedFlashGrenade;
 using Content.Shared._White.Events;
 using Content.Shared._White.StaminaProtection;
 using Content.Shared.Changeling;
@@ -34,6 +35,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, ChemRegenModifyEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, ChangelingRefundEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, EnergyDomeClothesTurnOffEvent>(RelayInventoryEvent); // WD
+        SubscribeLocalEvent<InventoryComponent, GetFlashbangedEvent>(RelayInventoryEvent); // WD
         SubscribeLocalEvent<InventoryComponent, GetDefaultRadioChannelEvent>(RelayInventoryEvent);
 
         // by-ref events

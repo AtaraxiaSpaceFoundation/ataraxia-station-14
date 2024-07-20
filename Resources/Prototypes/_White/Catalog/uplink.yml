@@ -108,7 +108,7 @@
   name: uplink-night-vision-name
   description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesSyndie
-  icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
+  icon: { sprite: White/Clothing/Eyes/Glasses/nightvision.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:
@@ -124,7 +124,7 @@
   name: uplink-night-vision-name
   description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesNukie
-  icon: { sprite: White/Clothing/Head/nightvision.rsi, state: icon }
+  icon: { sprite: White/Clothing/Eyes/Glasses/nightvision.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:
@@ -140,7 +140,7 @@
   name: uplink-thermal-vision-name
   description: uplink-thermal-vision-desc
   productEntity: ClothingEyesGlassesThermalSyndie
-  icon: { sprite: Clothing/Eyes/Glasses/thermal.rsi, state: icon }
+  icon: { sprite: White/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:
@@ -156,7 +156,7 @@
   name: uplink-thermal-vision-name
   description: uplink-thermal-vision-desc
   productEntity: ClothingEyesGlassesThermalNukie
-  icon: { sprite: Clothing/Eyes/Glasses/thermal.rsi, state: icon }
+  icon: { sprite: White/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
   cost:
     Telecrystal: 3
   categories:

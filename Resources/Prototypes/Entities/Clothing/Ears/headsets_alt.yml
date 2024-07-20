@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   abstract: true
   parent: ClothingHeadset
   id: ClothingHeadsetAlt
@@ -9,9 +9,7 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
-  - type: ClothingGrantComponent # WD
-    component:
-    - type: FlashSoundSuppression
+  - type: FlashSoundSuppression # WD
 
 - type: entity
   parent: ClothingHeadsetAlt

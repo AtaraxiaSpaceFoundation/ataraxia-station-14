@@ -52,7 +52,7 @@
     itemIconStyle: BigAction
     priority: -20
     icon:
-      sprite: Clothing/Eyes/Glasses/thermal.rsi
+      sprite: White/Clothing/Eyes/Glasses/thermal.rsi
       state: icon
     event: !type:ToggleThermalVisionEvent
 

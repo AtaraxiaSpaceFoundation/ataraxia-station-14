@@ -121,7 +121,8 @@
     attributes:
       gender: male
   - type: NightVision
-    toggleSound: null
+    activateSound: null
+    deactivateSound: null
     color: "#404040"
   - type: GlobalAntagonist
     antagonistPrototype: globalAntagonistRats
