@@ -134,7 +134,7 @@ public sealed class PryingSystem : EntitySystem
 
         RaiseLocalEvent(target, ref modEv);
 
-        var time = TimeSpan.FromSeconds(!TryComp<AirlockComponent>(target, out var airlock) || !airlock.Powered ? 0 : modEv.BaseTime * modEv.PryTimeModifier * toolModifier); // WD EDIT
+        var time = TimeSpan.FromSeconds(modEv.BaseTime * modEv.PryTimeModifier * (toolModifier - (!TryComp<AirlockComponent>(target, out var airlock) || !airlock.Powered ? 1 : 0))); // WD EDIT
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, time, new DoorPryDoAfterEvent(), target, target, tool)
         {

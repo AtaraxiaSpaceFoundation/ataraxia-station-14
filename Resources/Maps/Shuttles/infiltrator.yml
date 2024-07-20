@@ -165,9 +165,25 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -195,6 +211,14 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
@@ -210,6 +234,14 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
@@ -225,11 +257,27 @@ entities:
           - 0
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         - volume: 2500
           temperature: 293.15
           moles:
           - 0
           - 6666.982
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -2650,8 +2698,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-27.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
 - proto: GasMinerOxygen
   entities:
   - uid: 369
@@ -2660,8 +2706,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-27.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
 - proto: GasMixer
   entities:
   - uid: 370
@@ -2675,8 +2719,6 @@ entities:
     - type: GasMixer
       inletTwoConcentration: 0.78
       inletOneConcentration: 0.22
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
 - proto: GasPassiveVent
@@ -2687,24 +2729,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-26.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
   - uid: 372
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,-26.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
   - uid: 373
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 6.5,-19.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
 - proto: GasPipeBend
   entities:
   - uid: 374
@@ -3268,8 +3304,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 2.5,-23.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
 - proto: GasPressurePump
@@ -3282,8 +3316,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,-19.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
 - proto: GasVentPump
@@ -3294,8 +3326,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,-11.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 450
@@ -3304,8 +3334,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,-21.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 451
@@ -3314,8 +3342,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,-23.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 452
@@ -3324,8 +3350,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,-21.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 453
@@ -3334,8 +3358,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-16.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 454
@@ -3344,8 +3366,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,-16.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
   - uid: 455
@@ -3353,8 +3373,6 @@ entities:
     - type: Transform
       pos: 0.5,-3.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
 - proto: GasVentScrubber
@@ -3365,8 +3383,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,-12.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
   - uid: 457
@@ -3375,8 +3391,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,-17.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
   - uid: 458
@@ -3385,8 +3399,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.5,-20.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
   - uid: 459
@@ -3395,8 +3407,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-17.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
   - uid: 460
@@ -3405,8 +3415,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -3.5,-21.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
   - uid: 461
@@ -3414,8 +3422,6 @@ entities:
     - type: Transform
       pos: -0.5,-3.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
 - proto: GeneratorBasic15kW
@@ -3635,6 +3641,9 @@ entities:
     - type: Transform
       pos: 4.5,-5.5
       parent: 1
+    - type: PointLight
+      color: '#D56C6CFF'
+      enabled: True
     - type: EntityStorage
       air:
         volume: 200
@@ -3643,6 +3652,14 @@ entities:
         moles:
         - 1.7459903
         - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
         - 0
         - 0
         - 0
@@ -3726,19 +3743,19 @@ entities:
     - type: Transform
       pos: 5.6633797,-17.565443
       parent: 1
-- proto: NuclearBombUnanchored
+- proto: NuclearBombSyndicate
   entities:
   - uid: 509
     components:
     - type: Transform
       pos: -2.5,-12.5
       parent: 1
-- proto: NukeCodePaper
+- proto: NukeCodePaperStation
   entities:
   - uid: 510
     components:
     - type: Transform
-      pos: -2.5286522,-11.44479
+      pos: -2.4890966,-11.441471
       parent: 1
 - proto: Ointment
   entities:
@@ -3766,8 +3783,8 @@ entities:
     - type: Transform
       pos: -1.5,-24.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
+    - type: PolymorphableCanister
+      currentPrototype: OxygenCanister
 - proto: OxygenTankFilled
   entities:
   - uid: 515
@@ -4551,8 +4568,8 @@ entities:
     - type: Transform
       pos: 2.5,-23.5
       parent: 1
-    - type: AtmosDevice
-      joinedGrid: 1
+    - type: PolymorphableCanister
+      currentPrototype: StorageCanister
 - proto: SubstationBasic
   entities:
   - uid: 628

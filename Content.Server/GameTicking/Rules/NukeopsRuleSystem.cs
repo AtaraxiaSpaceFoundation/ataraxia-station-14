@@ -251,8 +251,32 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                             continue;
                         }
 
+                        MapId? targetStationMap = null;
+                        if (nukeops.TargetStation != null && TryComp(nukeops.TargetStation, out StationDataComponent? stationData))
+                        {
+                            var stationGrid = stationData.Grids.FirstOrNull();
+                            targetStationMap = stationGrid != null
+                                ? Transform(stationGrid.Value).MapID
+                                : null;
+                        }
+
+                        // WD EDIT
                         nukeops.WinConditions.Add(WinCondition.NukeExplodedOnCorrectStation);
-                        SetWinType(uid, WinType.OpsMajor, nukeops);
+
+
+                        var operatives = EntityQuery<NukeOperativeComponent, TransformComponent>(true);
+                        var operativesAlive = operatives
+                            .Any(ent => ent.Item2.MapID != targetStationMap && ent.Item1.Running);
+
+                        if (operativesAlive)
+                            SetWinType(uid, WinType.OpsMajor, nukeops);
+                        else
+                        {
+                            nukeops.WinConditions.Add(WinCondition.AllNukiesDead);
+                            SetWinType(uid, WinType.OpsMinor, nukeops);
+                        }
+                        // WD EDIT
+
                         correctStation = true;
                     }
 
@@ -516,7 +540,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             return;
 
         // If the win condition was set to operative/crew major win, ignore.
-        if (component.WinType == WinType.OpsMajor || component.WinType == WinType.CrewMajor)
+        if (component.WinType == WinType.OpsMajor || component.WinType == WinType.CrewMajor || component.WinType == WinType.OpsMinor)
             return;
 
         var nukeQuery = AllEntityQuery<NukeComponent, TransformComponent>();
@@ -527,6 +551,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             if (nuke.Status != NukeStatus.ARMED)
                 continue;
 
+            Log.Error("hyi");
             // UH OH
             if (nukeTransform.MapUid != null && centcomms.Contains(nukeTransform.MapUid.Value))
             {
@@ -552,38 +577,41 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             }
         }
 
-        var allAlive = true;
-        var query = EntityQueryEnumerator<NukeopsRoleComponent, MindContainerComponent, MobStateComponent>();
-        while (query.MoveNext(out var nukeopsUid, out _, out var mindContainer, out var mobState))
+        if (!component.WinConditions.Contains(WinCondition.AllNukiesDead)) // WD EDIT
         {
-            // mind got deleted somehow so ignore it
-            if (!_mind.TryGetMind(nukeopsUid, out _, out var mind, mindContainer))
-                continue;
-
-            // check if player got gibbed or ghosted or something - count as dead
-            if (mind.OwnedEntity != null &&
-                // if the player somehow isn't a mob anymore that also counts as dead
-                // have to be alive, not crit or dead
-                mobState.CurrentState is MobState.Alive)
+            var allAlive = true;
+            var query = EntityQueryEnumerator<NukeopsRoleComponent, MindContainerComponent, MobStateComponent>();
+            while (query.MoveNext(out var nukeopsUid, out _, out var mindContainer, out var mobState))
             {
-                continue;
+                // mind got deleted somehow so ignore it
+                if (!_mind.TryGetMind(nukeopsUid, out _, out var mind, mindContainer))
+                    continue;
+
+                // check if player got gibbed or ghosted or something - count as dead
+                if (mind.OwnedEntity != null &&
+                    // if the player somehow isn't a mob anymore that also counts as dead
+                    // have to be alive, not crit or dead
+                    mobState.CurrentState is MobState.Alive)
+                {
+                    continue;
+                }
+
+                allAlive = false;
+                break;
             }
 
-            allAlive = false;
-            break;
-        }
+            // If all nuke ops were alive at the end of the round,
+            // the nuke ops win. This is to prevent people from
+            // running away the moment nuke ops appear.
+            if (allAlive)
+            {
+                SetWinType(uid, WinType.OpsMinor, component);
+                component.WinConditions.Add(WinCondition.AllNukiesAlive);
+                return;
+            }
 
-        // If all nuke ops were alive at the end of the round,
-        // the nuke ops win. This is to prevent people from
-        // running away the moment nuke ops appear.
-        if (allAlive)
-        {
-            SetWinType(uid, WinType.OpsMinor, component);
-            component.WinConditions.Add(WinCondition.AllNukiesAlive);
-            return;
+            component.WinConditions.Add(WinCondition.SomeNukiesAlive);
         }
-
-        component.WinConditions.Add(WinCondition.SomeNukiesAlive);
 
         var diskAtCentCom = false;
         var diskQuery = AllEntityQuery<NukeDiskComponent, TransformComponent>();
@@ -619,7 +647,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 
         component.WinType = type;
 
-        if (endRound && (type == WinType.CrewMajor || type == WinType.OpsMajor))
+        if (endRound && (type == WinType.CrewMajor || type == WinType.OpsMajor || type == WinType.OpsMinor))
             _roundEndSystem.EndRound();
     }
 
