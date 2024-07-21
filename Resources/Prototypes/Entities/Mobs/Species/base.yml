@@ -92,8 +92,8 @@
     species: Human
   - type: SlowOnDamage
     speedModifierThresholds:
-      60: 0.7
-      80: 0.5
+      60: 0.8 # WD
+      80: 0.6 # WD
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -246,7 +246,7 @@
     attributes:
       proper: true
   - type: MobPrice
-    price: 1500 # Kidnapping a living person and selling them for cred is a good move.
+    price: 10000 # Kidnapping a living person and selling them for cred is a good move.
     deathPenalty: 0.01 # However they really ought to be living and intact, otherwise they're worth 100x less.
   - type: Tag
     tags:
@@ -259,7 +259,7 @@
   - type: ExaminableClothes
   - type: CharacterInformation
   - type: Penetrated
-  - type: Mood
+  - type: Mood # WD
   - type: OfferItem # WD-EDIT
 
 - type: entity
