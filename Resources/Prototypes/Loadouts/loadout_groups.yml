@@ -5,6 +5,7 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
+  - HandheldStationMap # WD
   - ChessBoard # WD
   - CheckerBoard # WD
   - BackgammonBoard # WD
@@ -74,7 +75,6 @@
   name: loadout-group-outerclothing
   minLimit: 0
   loadouts:
-  - CaptainOuterClothing
   - CaptainWintercoat
 
 - type: loadoutGroup
@@ -225,7 +225,7 @@
   loadouts:
   - AssistantPDA
 
-- type: loadoutGroup # WD edot
+- type: loadoutGroup # WD edit
   id: BartenderHead
   name: loadout-group-head
   minLimit: 0
@@ -233,7 +233,7 @@
   - BowlerHat
   - Tophat
   - HatMagician
-  - BeretStandardЙ
+  - BeretStandard
   - FrenchBeret
   - FedoraGrey
 
@@ -617,7 +617,7 @@
   - BowlerHat
   - Tophat
   - HatMagician
-  - BeretStandardЙ
+  - BeretStandard
   - FrenchBeret
 
 - type: loadoutGroup
@@ -1211,7 +1211,7 @@
   loadouts:
   - BrownShoes
   - ShoesLeather
-  - ClothingShoesBootsLaceup
+  - BootsLaceup # WD
   - ScienceWinterBoots
 
 - type: loadoutGroup # WD
@@ -1238,8 +1238,8 @@
   loadouts:
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
-  - RoboticistJumpsuit
-  - RoboticistJumpskirt
+  - RoboticistJumpsuit # WD
+  - RoboticistJumpskirt # WD
 
 - type: loadoutGroup
   id: SeniorResearcherOuterclothing
@@ -1251,7 +1251,6 @@
   - ScienceLabCoat
   - ScienceWintercoat
   - RoboticistLabCoat
-  - RoboticistWintercoat
 
 - type: loadoutGroup
   id: ScientistHead
@@ -1287,14 +1286,13 @@
   - ScienceLabCoat
   - ScienceWintercoat
   - RoboticistLabCoat
-  - RoboticistWintercoat
 
 - type: loadoutGroup
   id: ScientistShoes
   name: loadout-group-shoes
   loadouts:
   - WhiteShoes
-  - BlackShoes
+  - ShoesColorBlack # WD
   - ScienceWinterBoots
 
 - type: loadoutGroup
@@ -1333,7 +1331,7 @@
   - GlovesColorBlack
   - GlovesColorPurple
   - GlovesLatex
-  - ClothingHandsGlovesRobohands
+  - RoboticistGloves
 
 - type: loadoutGroup # WD
   id: CommonScienceHeadset
@@ -1556,7 +1554,7 @@
   loadouts:
   - SecurityCadetPDA
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityHead
   name: loadout-group-head
   minLimit: 0
@@ -1568,14 +1566,14 @@
   - CowboyBlack
   - CowboyBountyHunter
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityMask
   name: loadout-group-mask
   minLimit: 0
   loadouts:
   - SecurityMaskStandard
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityCommandMask
   name: loadout-group-mask
   minLimit: 0
@@ -1583,7 +1581,7 @@
   - SecurityMaskStandard
   - SecurityMaskSwat
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityNeck
   name: loadout-group-neck
   minLimit: 0
@@ -1591,13 +1589,13 @@
   - BlackTie
   - RedTie
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityHeadset
   name: loadout-group-ears
   loadouts:
   - SecurityHeadset
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityCommandHeadset
   name: loadout-group-ears
   loadouts:
@@ -1609,14 +1607,21 @@
   loadouts:
   - SecurityHeadsetFull
 
-- type: loadoutGroup
+- type: loadoutGroup # WD
   id: CommonSecurityBackpack
   name: loadout-group-backpack
   loadouts:
   - SecurityBackpack
   - SecuritySatchel
   - SecurityDuffel
-  - CommonSatchelLeather # WD
+  - CommonSatchelLeather
+
+- type: loadoutGroup # WD
+  id: CommonSecurityBelt
+  name: loadout-group-belt
+  minLimit: 0
+  loadouts:
+  - SecurityWebbing
 
 - type: loadoutGroup
   id: CommonSecurityShoes
@@ -1625,6 +1630,14 @@
   - CombatBoots
   - BootsJack
   - SecurityWinterBoots
+
+- type: loadoutGroup # WD
+  id: CommonSecurityJobTrinkets
+  name: loadout-group-job-trinkets
+  minLimit: 0
+  loadouts:
+  - SecurityWhistle
+  - SecurityFlashlight
 
 # Medical
 

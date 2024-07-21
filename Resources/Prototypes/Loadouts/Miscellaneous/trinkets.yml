@@ -8,6 +8,17 @@
     back:
     - PlushieLizard
 
+# Useful items
+
+- type: itemLoadout # WD
+  id: HandheldStationMap
+  equipment: HandheldStationMap
+- type: startingGear
+  id: HandheldStationMap
+  storage:
+    back:
+    - HandheldStationMap
+
 # Table games
 - type: itemLoadout # WD
   id: ChessBoard

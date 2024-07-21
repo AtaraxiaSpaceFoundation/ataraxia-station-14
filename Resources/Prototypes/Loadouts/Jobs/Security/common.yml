@@ -1,15 +1,6 @@
-﻿# jumpsuit
-- type: itemLoadout
-  id: SecurityJumpsuitBlue
-  equipment: SecurityJumpsuitBlue
-- type: startingGear
-  id: SecurityJumpsuitBlue
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSecBlue
+﻿# Ears
 
-# ears
-
-- type: itemLoadout
+- type: itemLoadout # WD
   id: SecurityHeadset
   equipment: SecurityHeadset
 - type: startingGear
@@ -17,7 +8,7 @@
   equipment:
     ears: ClothingHeadsetSecurity
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: SecurityCommandHeadset
   equipment: SecurityCommandHeadset
 - type: startingGear
@@ -25,7 +16,7 @@
   equipment:
     ears: ClothingHeadsetAltSecurityCommand
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: SecurityHeadsetFull
   equipment: SecurityHeadsetFull
 - type: startingGear
@@ -35,7 +26,7 @@
 
 # Mask
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: SecurityMaskStandard
   equipment: SecurityMaskStandard
 - type: startingGear
@@ -43,10 +34,50 @@
   equipment:
     mask: ClothingMaskGasSecurity
 
-- type: itemLoadout
+- type: itemLoadout # WD
   id: SecurityMaskSwat
   equipment: SecurityMaskSwat
 - type: startingGear
   id: SecurityMaskSwat
   equipment:
     mask: ClothingMaskGasSwat
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: SecurityJumpsuitBlue
+  equipment: SecurityJumpsuitBlue
+- type: startingGear
+  id: SecurityJumpsuitBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecBlue
+
+# Belt
+
+- type: itemLoadout # WD
+  id: SecurityWebbing
+  equipment: SecurityWebbing
+- type: startingGear
+  id: SecurityWebbing
+  equipment:
+    belt: ClothingBeltSecurityWebbing
+
+# Job trinkets
+
+- type: itemLoadout # WD
+  id: SecurityWhistle
+  equipment: SecurityWhistle
+- type: startingGear
+  id: SecurityWhistle
+  storage:
+    back:
+    - SecurityWhistle
+
+- type: itemLoadout # WD
+  id: SecurityFlashlight
+  equipment: SecurityFlashlight
+- type: startingGear
+  id: SecurityFlashlight
+  storage:
+    back:
+    - FlashlightSeclite
