@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._White.StaminaProtection;
+using Content.Shared._White.StunLock;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.CombatMode;
@@ -15,6 +16,7 @@ using Content.Shared.Rounding;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.StatusEffect;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -35,6 +37,7 @@ public sealed partial class StaminaSystem : EntitySystem
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!; // WD EDIT
 
     /// <summary>
     /// How much of a buffer is there between the stun duration and when stuns can be re-applied.
@@ -209,7 +212,7 @@ public sealed partial class StaminaSystem : EntitySystem
             damage = modifyEv.Damage;
         }
 
-        TakeStaminaDamage(target, damage, source: uid, sound: component.Sound);
+        TakeStaminaDamage(target, damage, with: uid, sound: component.Sound);
         // WD EDIT END
     }
 
@@ -256,7 +259,11 @@ public sealed partial class StaminaSystem : EntitySystem
 
         // Have we already reached the point of max stamina damage?
         if (component.Critical)
+        {
+            if (TryComp<StunLockComponent>(with, out _)) // WD EDIT
+                _stunSystem.TryParalyze(uid, component.StunTime, true);
             return;
+        }
 
         var oldDamage = component.StaminaDamage;
         component.StaminaDamage = MathF.Max(0f, component.StaminaDamage + value);
@@ -349,7 +356,7 @@ public sealed partial class StaminaSystem : EntitySystem
                 continue;
 
             // We were in crit so come out of it and continue.
-            if (comp.Critical)
+            if (!_statusEffectsSystem.HasStatusEffect(uid, "Stun") && comp.Critical) // WD EIT
             {
                 ExitStamCrit(uid, comp);
                 continue;

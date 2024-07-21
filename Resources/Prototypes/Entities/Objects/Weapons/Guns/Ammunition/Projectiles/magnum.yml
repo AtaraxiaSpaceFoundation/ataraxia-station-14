@@ -32,7 +32,7 @@
         Blunt: 3
   - type: StaminaDamageOnCollide
     ignoreResistances: false
-    damage: 35 # 3 hits to stun cuz revolver
+    damage: 45 # 3 hits to stun cuz revolver
 
 - type: entity
   id: BulletMagnumIncendiary

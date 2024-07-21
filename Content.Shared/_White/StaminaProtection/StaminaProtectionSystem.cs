@@ -20,7 +20,7 @@ public sealed class StaminaProtectionSystem : EntitySystem
             args.Args.Damage = MathF.Max(0f, args.Args.Damage - flat);
 
         if (modifiers.Coefficients.TryGetValue("Blunt", out var coefficient))
-            args.Args.Damage *= coefficient;
+            args.Args.Damage *= coefficient / 1.5f;
     }
 }
 
