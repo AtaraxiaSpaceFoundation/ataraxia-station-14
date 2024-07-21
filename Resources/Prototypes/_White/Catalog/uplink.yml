@@ -292,3 +292,14 @@
   categories:
   - UplinkDisruption
   saleLimit: 2
+
+- type: listing
+  id: UplinkCrateNPCGondola
+  name: uplink-gondola-name
+  description: uplink-gondola-desc
+  icon: { sprite: /Textures/White/Mobs/Animals/gondola.rsi, state: icon }
+  productEntity: CrateNPCGondola
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkDisruption

@@ -1,0 +1,9 @@
+- type: entity
+  parent: CrateLivestock
+  id: CrateNPCGondola
+  name: ящик с Гондолой
+  description: Ящик содержащий в себе Гондолу.
+  components:
+    - type: StorageFill
+      contents:
+        - id: MobGondola

@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: GoofyAhh
+  saySound:
+    path: /Audio/White/Voice/SpeechSounds/kazooie/ehh.ogg
+  askSound:
+    path: /Audio/White/Voice/SpeechSounds/kazooie/ehh3.ogg
+  exclaimSound:
+    path: /Audio/White/Voice/SpeechSounds/kazooie/ehh2.ogg
