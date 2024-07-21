@@ -22,6 +22,7 @@ public sealed class ThermalVisionOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly List<NightVisionRenderEntry> _entries = new();
+    private EntityUid _pointLightEntity;
 
     public ThermalVisionOverlay()
     {
@@ -46,23 +47,50 @@ public sealed class ThermalVisionOverlay : Overlay
             return;
         }
 
+        var transform = _entity.GetComponent<TransformComponent>(ent);
+        if (_pointLightEntity == default)
+        {
+            _pointLightEntity = _entity.SpawnAttachedTo(null, transform.Coordinates);
+            _entity.EnsureComponent<PointLightComponent>(_pointLightEntity);
+            _transform.SetParent(_pointLightEntity, ent);
+        }
+        else
+        {
+            var pointLightXForm = _entity.GetComponent<TransformComponent>(_pointLightEntity);
+            if (pointLightXForm.ParentUid != ent)
+                _transform.SetParent(_pointLightEntity, pointLightXForm, ent, transform);
+        }
+
         if (HasOccluders(ent))
             return;
 
         var handle = args.WorldHandle;
         var eye = args.Viewport.Eye;
+        var mapId = eye?.Position.MapId;
         var eyeRot = eye?.Rotation ?? default;
 
         _entries.Clear();
         var entities = _entity.EntityQueryEnumerator<BodyComponent, SpriteComponent, TransformComponent>();
         while (entities.MoveNext(out var uid, out _, out var sprite, out var xform))
         {
-            if (HasOccluders(uid))
+            var entity = uid;
+
+            if (_container.TryGetOuterContainer(uid, xform, out var container))
+            {
+                var owner = container.Owner;
+                if (_entity.TryGetComponent<SpriteComponent>(owner, out var ownerSprite) &&
+                    _entity.TryGetComponent<TransformComponent>(owner, out var ownerXform))
+                {
+                    entity = owner;
+                    sprite = ownerSprite;
+                    xform = ownerXform;
+                }
+            }
+
+            if (_entries.Any(e => e.Ent.Item1 == entity))
                 continue;
 
-            _entries.Add(new NightVisionRenderEntry((uid, sprite, xform),
-                eye?.Position.MapId,
-                eyeRot));
+            _entries.Add(new NightVisionRenderEntry((entity, sprite, xform), mapId, eyeRot));
         }
 
         foreach (var entry in _entries)
@@ -79,7 +107,7 @@ public sealed class ThermalVisionOverlay : Overlay
         Angle eyeRot)
     {
         var (uid, sprite, xform) = ent;
-        if (xform.MapID != map || _container.IsEntityOrParentInContainer(uid))
+        if (xform.MapID != map || HasOccluders(uid))
             return;
 
         var position = _transform.GetWorldPosition(xform);
@@ -94,6 +122,15 @@ public sealed class ThermalVisionOverlay : Overlay
         var occluders = _occluder.QueryAabb(mapCoordinates.MapId,
             Box2.CenteredAround(mapCoordinates.Position, new Vector2(0.4f, 0.4f)));
         return occluders.Any(o => o.Component.Enabled);
+    }
+
+    public void Reset()
+    {
+        if (_pointLightEntity == default)
+            return;
+
+        _entity.DeleteEntity(_pointLightEntity);
+        _pointLightEntity = default;
     }
 }
 

@@ -1,13 +1,15 @@
 using Content.Shared._Miracle.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared._White.Overlays;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 
 namespace Content.Client._White.Overlays;
 
-public sealed class ThermalVisionSystem : SharedThermalVisionSystem
+public sealed class ThermalVisionSystem : SharedEnhancedVisionSystem<ThermalVisionComponent,
+    TemporaryThermalVisionComponent, ToggleThermalVisionEvent>
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
@@ -46,12 +48,12 @@ public sealed class ThermalVisionSystem : SharedThermalVisionSystem
         if (TryComp(ent, out ThermalVisionComponent? thermalVision) && thermalVision.IsActive)
             return;
 
-        UpdateThermalVision(ent, false);
+        UpdateEnhancedVision(ent, false);
     }
 
     private void OnTempInit(Entity<TemporaryThermalVisionComponent> ent, ref ComponentInit args)
     {
-        UpdateThermalVision(ent, true);
+        UpdateEnhancedVision(ent, true);
     }
 
     private void OnPlayerAttached(EntityUid uid, ThermalVisionComponent component, PlayerAttachedEvent args)
@@ -76,7 +78,7 @@ public sealed class ThermalVisionSystem : SharedThermalVisionSystem
         UpdateThermalVision(active);
     }
 
-    protected override void UpdateThermalVision(EntityUid uid, bool active)
+    protected override void UpdateEnhancedVision(EntityUid uid, bool active)
     {
         if (_player.LocalSession?.AttachedEntity != uid)
             return;
@@ -89,6 +91,7 @@ public sealed class ThermalVisionSystem : SharedThermalVisionSystem
     {
         if (_player.LocalEntity == null)
         {
+            _overlay.Reset();
             _overlayMan.RemoveOverlay(_overlay);
             return;
         }
@@ -99,11 +102,15 @@ public sealed class ThermalVisionSystem : SharedThermalVisionSystem
         if (active)
             _overlayMan.AddOverlay(_overlay);
         else
+        {
+            _overlay.Reset();
             _overlayMan.RemoveOverlay(_overlay);
+        }
     }
 
     private void OnRestart(RoundRestartCleanupEvent ev)
     {
+        _overlay.Reset();
         _overlayMan.RemoveOverlay(_overlay);
     }
 }
