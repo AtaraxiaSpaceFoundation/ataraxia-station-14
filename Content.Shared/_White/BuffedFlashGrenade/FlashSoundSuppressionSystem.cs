@@ -18,26 +18,37 @@ public sealed class FlashSoundSuppressionSystem : EntitySystem
     private void OnGetFlashbanged(Entity<FlashSoundSuppressionComponent> ent,
         ref InventoryRelayedEvent<GetFlashbangedEvent> args)
     {
-        args.Args.Protected = true;
+        args.Args.MaxRange = MathF.Min(args.Args.MaxRange, ent.Comp.MaxRange);
     }
 
-    public void Stun(EntityUid target, float duration)
+    public void Stun(EntityUid target, float duration, float distance, float range)
     {
-        if (HasComp<FlashSoundSuppressionComponent>(target))
-            return;
+        if (TryComp<FlashSoundSuppressionComponent>(target, out var suppression))
+            range = MathF.Min(range, suppression.MaxRange);
 
         var ev = new GetFlashbangedEvent();
+        ev.MaxRange = range;
         RaiseLocalEvent(target, ev);
-        if (ev.Protected)
+        range = MathF.Min(range, ev.MaxRange);
+
+        if (range <= 0f)
+            return;
+        if (distance < 0f)
+            distance = 0f;
+        if (distance > range)
             return;
 
-        _stunSystem.TryParalyze(target, TimeSpan.FromSeconds(duration / 1000f), true);
+        var stunTime = float.Lerp(duration, 0f, distance / range);
+        if (stunTime <= 0f)
+            return;
+
+        _stunSystem.TryParalyze(target, TimeSpan.FromSeconds(stunTime / 1000f), true);
     }
 }
 
 public sealed class GetFlashbangedEvent : EntityEventArgs, IInventoryRelayEvent
 {
-    public bool Protected;
+    public float MaxRange = 7f;
 
     public SlotFlags TargetSlots => SlotFlags.EARS | SlotFlags.HEAD;
 }

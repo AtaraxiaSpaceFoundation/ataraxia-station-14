@@ -179,8 +179,10 @@ namespace Content.Server.Flash
                 // They shouldn't have flash removed in between right?
                 Flash(entity, user, source, duration, slowTo, displayPopup);
 
+                var distance = (mapPosition.Position - _transform.GetMapCoordinates(entity).Position).Length();
+
                 if (forceStun) // WD
-                    _flashSoundSuppressionSystem.Stun(entity, duration);
+                    _flashSoundSuppressionSystem.Stun(entity, duration, distance, range);
             }
 
             _audio.PlayPvs(sound, source, AudioParams.Default.WithVolume(1f).WithMaxDistance(3f));
