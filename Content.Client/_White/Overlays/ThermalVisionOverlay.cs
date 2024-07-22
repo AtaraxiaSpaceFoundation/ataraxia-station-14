@@ -18,6 +18,7 @@ public sealed class ThermalVisionOverlay : Overlay
     private readonly ContainerSystem _container;
     private readonly TransformSystem _transform;
     private readonly OccluderSystem _occluder;
+    private readonly PointLightSystem _pointLight;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
@@ -31,6 +32,7 @@ public sealed class ThermalVisionOverlay : Overlay
         _container = _entity.System<ContainerSystem>();
         _transform = _entity.System<TransformSystem>();
         _occluder = _entity.System<OccluderSystem>();
+        _pointLight = _entity.System<PointLightSystem>();
         ZIndex = -1;
     }
 
@@ -51,7 +53,8 @@ public sealed class ThermalVisionOverlay : Overlay
         if (_pointLightEntity == default)
         {
             _pointLightEntity = _entity.SpawnAttachedTo(null, transform.Coordinates);
-            _entity.EnsureComponent<PointLightComponent>(_pointLightEntity);
+            var pointLight = _entity.EnsureComponent<PointLightComponent>(_pointLightEntity);
+            _pointLight.SetRadius(_pointLightEntity, 3f, pointLight);
             _transform.SetParent(_pointLightEntity, ent);
         }
         else
@@ -59,6 +62,7 @@ public sealed class ThermalVisionOverlay : Overlay
             var pointLightXForm = _entity.GetComponent<TransformComponent>(_pointLightEntity);
             if (pointLightXForm.ParentUid != ent)
                 _transform.SetParent(_pointLightEntity, pointLightXForm, ent, transform);
+            _transform.SetLocalPosition(_pointLightEntity, Vector2.Zero, pointLightXForm);
         }
 
         if (HasOccluders(ent))
@@ -73,6 +77,9 @@ public sealed class ThermalVisionOverlay : Overlay
         var entities = _entity.EntityQueryEnumerator<BodyComponent, SpriteComponent, TransformComponent>();
         while (entities.MoveNext(out var uid, out _, out var sprite, out var xform))
         {
+            if (!CanSee(uid))
+                continue;
+
             var entity = uid;
 
             if (_container.TryGetOuterContainer(uid, xform, out var container))
@@ -107,13 +114,18 @@ public sealed class ThermalVisionOverlay : Overlay
         Angle eyeRot)
     {
         var (uid, sprite, xform) = ent;
-        if (xform.MapID != map || HasOccluders(uid))
+        if (xform.MapID != map || HasOccluders(uid) || !CanSee(uid))
             return;
 
         var position = _transform.GetWorldPosition(xform);
         var rotation = _transform.GetWorldRotation(xform);
 
         sprite.Render(handle, eyeRot, rotation, position: position);
+    }
+
+    private bool CanSee(EntityUid ent)
+    {
+        return !_entity.HasComponent<ThermalBlockerComponent>(ent);
     }
 
     private bool HasOccluders(EntityUid ent)

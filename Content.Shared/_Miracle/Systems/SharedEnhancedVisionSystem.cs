@@ -1,6 +1,8 @@
 using Content.Shared._White.Overlays;
 using Content.Shared.Actions;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Miracle.Systems;
@@ -13,6 +15,7 @@ public abstract class SharedEnhancedVisionSystem<TComp, TTempComp, TEvent> : Ent
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -52,7 +55,8 @@ public abstract class SharedEnhancedVisionSystem<TComp, TTempComp, TEvent> : Ent
 
         component.IsActive = !component.IsActive;
 
-        _audio.PlayPredicted(component.IsActive ? component.ActivateSound : component.DeactivateSound, uid, uid);
+        if (_net.IsClient)
+            _audio.PlayEntity(component.IsActive ? component.ActivateSound : component.DeactivateSound, Filter.Local(), uid, false);
 
         args.Handled = true;
 
