@@ -9,6 +9,7 @@ using Content.Shared.Damage.Events;
 using Content.Shared.Database;
 using Content.Shared.Effects;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
@@ -258,11 +259,19 @@ public sealed partial class StaminaSystem : EntitySystem
             return;
 
         // Have we already reached the point of max stamina damage?
-        if (component.Critical)
+        if (component.Critical) // WD EDIT
         {
-            if (TryComp<StunLockComponent>(with, out _)) // WD EDIT
+            if (TryComp<StunLockComponent>(with, out _))
+            {
+                if (TryComp<ItemToggleComponent>(with, out var toggle) && !toggle.Activated)
+                    return;
                 _stunSystem.TryParalyze(uid, component.StunTime, true);
-            return;
+                if (visual)
+                    _color.RaiseEffect(Color.Aqua, new List<EntityUid>() { uid }, Filter.Pvs(uid, entityManager: EntityManager));
+                if (_net.IsServer)
+                    _audio.PlayPvs(sound, uid);
+                return;
+            }
         }
 
         var oldDamage = component.StaminaDamage;

@@ -1,0 +1,147 @@
+- type: entity
+  name: Riot Launcher
+  parent: BaseItem
+  id: RiotWeaponLauncher
+  description: ShitSec Launcher
+  components:
+  - type: Sprite
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-icons.rsi
+    layers:
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-inhands.rsi
+  - type: Clothing
+    sprite: White/Objects/Weapons/Guns/Launchers/china_lake-inhands.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    projectileSpeed: 10
+    projectileSpeedModified: 10
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - RiotGrenade
+    capacity: 1
+    proto: RiotGrenadeFlash
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+    autoCycle: false
+
+- type: entity
+  id: BaseRiotGrenade
+  name: base riot grenade
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - RiotGrenade
+  - type: Item
+    size: Small
+  - type: Sprite
+
+- type: entity
+  id: RiotGrenadeFlash
+  name: riot flash grenade
+  parent: BaseRiotGrenade
+  components:
+  - type: CartridgeAmmo
+    proto: RiotBulletGrenadeFlash
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    layers:
+    - state: blast
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: flash
+    suffix: false
+
+- type: entity
+  id: RiotGrenadeSmoke
+  name: riot smoke grenade
+  parent: BaseRiotGrenade
+  components:
+  - type: CartridgeAmmo
+    proto: RiotBulletGrenadeSmoke
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    layers:
+    - state: blast
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: smoke
+    suffix: false
+
+- type: entity
+  id: BaseBulletRiotGranade
+  name: base roit granade
+  abstract: true
+  components:
+  - type: MovedByPressure
+  - type: FlyBySound
+  - type: Clickable
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: grenade
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3  # fite me
+        friction: 0.2
+  - type: DeleteOnTrigger
+  - type: Physics
+    bodyType: Dynamic
+  - type: TimedDespawn
+    lifetime: 10
+  - type: TriggerOnLand
+
+- type: entity
+  id: RiotBulletGrenadeFlash
+  name: flash riot grenade
+  parent: BaseBulletRiotGranade
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: grenade
+  - type: FlashOnTrigger
+    range: 7
+    forceStun: true
+  - type: SpawnOnTrigger
+    proto: GrenadeFlashEffect
+
+- type: entity
+  id: RiotBulletGrenadeSmoke
+  name: smoke riot grenade
+  parent: BaseBulletRiotGranade
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: grenade
+  - type: SmokeOnTrigger
+    duration: 30
+    spreadAmount: 50
+  - type: SoundOnTrigger
+    sound: /Audio/Items/smoke_grenade_smoke.ogg
