@@ -1,5 +1,6 @@
 using Content.Shared.Emag.Systems;
 using Content.Shared.Tag;
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization;
@@ -17,4 +18,7 @@ public sealed partial class EmagComponent : Component
     [DataField("emagImmuneTag", customTypeSerializer: typeof(PrototypeIdSerializer<TagPrototype>)), ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
     public string EmagImmuneTag = "EmagImmune";
+
+    [DataField]
+    public EntityWhitelist? Whitelist;
 }

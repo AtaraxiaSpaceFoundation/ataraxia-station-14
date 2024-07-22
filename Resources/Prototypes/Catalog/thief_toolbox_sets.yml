@@ -14,6 +14,7 @@
   - ClothingEyesChameleon
   - ClothingHeadsetChameleon
   - ClothingShoesChameleon
+  - AgentIDCard # WD
 
 - type: thiefBackpackSet
   id: ToolsSet
@@ -108,3 +109,30 @@
   - SmokeGrenade
   - SmokeGrenade
   - SmokeGrenade
+
+- type: thiefBackpackSet
+  id: SlaverySet
+  name: thief-backpack-category-slavery-name
+  description: thief-backpack-category-slavery-description
+  sprite:
+    sprite: /Textures/Clothing/Head/Hats/syndiecap_maa.rsi
+    state: icon
+  content:
+  - MindSlaveImplanter
+  - MindSlaveImplanter
+  - MindSlaveImplanter
+  - ClothingOuterCoatSyndieCap
+  - ClothingHeadHatSyndieMAA
+
+- type: thiefBackpackSet
+  id: HiTechSet
+  name: thief-backpack-category-hitech-name
+  description: thief-backpack-category-hitech-description
+  sprite:
+    sprite: /Textures/White/Objects/Tools/doorjack.rsi
+    state: icon
+  content:
+  - ChameleonProjector
+  - Doorjack
+  - TimeBeacon
+  - RadioJammer

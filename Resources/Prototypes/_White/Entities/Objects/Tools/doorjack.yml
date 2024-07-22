@@ -1,0 +1,21 @@
+- type: entity
+  parent: Emag
+  id: Doorjack
+  name: взломщик замков
+  description: Специальное устройство, предназначенное для обхода доступа в замках шлюзов и шкафов.
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge
+  - type: Sprite
+    sprite: White/Objects/Tools/doorjack.rsi
+    state: icon
+    scale: 0.8, 0.8
+  - type: Item
+    sprite: White/Objects/Tools/doorjack.rsi
+    storedRotation: -90
+  - type: Emag
+    whitelist:
+      tags:
+      - DoorjackUsable
+      components:
+      - Airlock

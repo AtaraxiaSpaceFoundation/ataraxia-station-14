@@ -37,7 +37,8 @@ public sealed class MindslaveSystem : SharedMindslaveSystem
         masterComponent.Slaves.Add(GetNetEntity(args.Target));
         masterComponent.Master = GetNetEntity(args.User);
 
-        Dirty(args.Target, masterComponent);
+        Dirty(args.User, masterComponent);
+        Dirty(args.Target, slaveComponent);
 
         if (!Mind.TryGetMind(args.Target, out var targetMindId, out var targetMind) || targetMind.Session is null)
         {
@@ -73,7 +74,7 @@ public sealed class MindslaveSystem : SharedMindslaveSystem
         {
             return;
         }
-        
+
         if (!TryComp(args.Target, out MindSlaveComponent? mindslave))
         {
             return;
@@ -83,6 +84,14 @@ public sealed class MindslaveSystem : SharedMindslaveSystem
         {
             _role.MindTryRemoveRole<RoleBriefingComponent>(mindId);
             Popup.PopupEntity(Loc.GetString("mindslave-freed", ("player", mindslave.Master)), args.Target, args.Target);
+        }
+
+        var master = GetEntity(mindslave.Master);
+        if (TryComp(master, out MindSlaveComponent? masterMindslave))
+        {
+            masterMindslave.Slaves.Remove(GetNetEntity(args.Target));
+            if (masterMindslave.Slaves.Count == 0)
+                RemComp<MindSlaveComponent>(master);
         }
 
         RemComp<MindSlaveComponent>(args.Target);

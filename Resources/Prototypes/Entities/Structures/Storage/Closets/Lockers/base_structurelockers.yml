@@ -54,6 +54,9 @@
     radius: 1.15
     energy: 0.45
   - type: PointLightLocker
+  - type: Tag
+    tags:
+    - DoorjackUsable
 
 - type: entity
   id: LockerBaseSecure

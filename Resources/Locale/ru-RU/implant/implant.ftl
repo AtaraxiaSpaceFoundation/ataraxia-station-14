@@ -18,7 +18,7 @@ implanter-contained-implant-text = [color=green]{ $desc }[/color]
 
 ## Implant Popups
 
-scramble-implant-activated-popup = Вы превратились в { $identity }
+scramble-implant-activated-popup = Ваша внешность меняется!
 
 ## Implanter Actions
 
