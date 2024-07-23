@@ -25,12 +25,12 @@
     state: icon
 
 - type: construction
-  name: PoppyBouquet
+  name: букет из цветов
   id: PoppyBouquet
   graph: PoppyBouquet
   startNode: start
   targetNode: PoppyBouquet
   category: construction-category-misc
-  description: A bouquet of the best flowers that you could grow. At least you tried...
+  description: Букет из лучших цветов, которые вы смогли вырастить. По крайней мере, вы попытались...
   icon: { sprite: Objects/Misc/poppybouquet.rsi, state: icon }
   objectType: Item

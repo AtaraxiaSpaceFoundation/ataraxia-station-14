@@ -19,13 +19,3 @@
     Telecrystal: 12
   categories:
   - UplinkImplants
-
-- type: listing
-  id: UplinkCrateNPCGondola
-  name: uplink-gondola-name
-  description: uplink-gondola-desc
-  productEntity: CrateNPCGondola
-  cost:
-    Telecrystal: 2
-  categories:
-    -  UplinkDisruption

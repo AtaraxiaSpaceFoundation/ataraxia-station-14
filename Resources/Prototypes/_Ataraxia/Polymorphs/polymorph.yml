@@ -29,17 +29,6 @@
     revertOnDeath: true
 
 - type: polymorph
-  id: Gondola
-  configuration:
-    entity: MobGondola
-    forced: true
-    transferName: false
-    transferHumanoidAppearance: false
-    inventory: Drop
-    revertOnCrit: false
-    revertOnDeath: true
-
-- type: polymorph
   id: WalterMorph
   configuration:
     entity: MobWalterRofls
