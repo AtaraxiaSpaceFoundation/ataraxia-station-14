@@ -77,7 +77,7 @@ public sealed class ThermalVisionOverlay : Overlay
         var entities = _entity.EntityQueryEnumerator<BodyComponent, SpriteComponent, TransformComponent>();
         while (entities.MoveNext(out var uid, out _, out var sprite, out var xform))
         {
-            if (!CanSee(uid))
+            if (!CanSee(uid, sprite))
                 continue;
 
             var entity = uid;
@@ -114,7 +114,7 @@ public sealed class ThermalVisionOverlay : Overlay
         Angle eyeRot)
     {
         var (uid, sprite, xform) = ent;
-        if (xform.MapID != map || HasOccluders(uid) || !CanSee(uid))
+        if (xform.MapID != map || HasOccluders(uid) || !CanSee(uid, sprite))
             return;
 
         var position = _transform.GetWorldPosition(xform);
@@ -123,9 +123,9 @@ public sealed class ThermalVisionOverlay : Overlay
         sprite.Render(handle, eyeRot, rotation, position: position);
     }
 
-    private bool CanSee(EntityUid ent)
+    private bool CanSee(EntityUid ent, SpriteComponent sprite)
     {
-        return !_entity.HasComponent<ThermalBlockerComponent>(ent);
+        return sprite.Visible && !_entity.HasComponent<ThermalBlockerComponent>(ent);
     }
 
     private bool HasOccluders(EntityUid ent)
