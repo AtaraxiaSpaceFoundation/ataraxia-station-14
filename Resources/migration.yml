@@ -256,3 +256,14 @@ BodyBag_Folded: BodyBagFolded
 # 2024-04-14
 BookSpaceLaws: null
 NewsReadCartridge: null
+
+# 2024-07-23 WD
+ComfyChairBlack: BlackComfyChair
+ComfyChairBrown: BrownComfyChair
+ComfyChairCommand: BlueComfyChair
+ComfyChairSecurity: RedComfyChair
+ComfyChairMedical: LightBlueComfyChair
+ComfyChairEngineering: OrangeComfyChair
+ComfyChairScience: PurpleComfyChair
+ComfyChairCargo: BrownComfyChair
+ComfyChairService: GreenComfyChair

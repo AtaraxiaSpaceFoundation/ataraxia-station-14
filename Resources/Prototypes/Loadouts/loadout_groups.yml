@@ -634,6 +634,7 @@
   name: loadout-group-jumpsuit
   loadouts:
   - MusicianJumpsuit
+  - MusicianJumpskirt
   - JumpsuitFamily
   - JumpsuitLoungewear
 

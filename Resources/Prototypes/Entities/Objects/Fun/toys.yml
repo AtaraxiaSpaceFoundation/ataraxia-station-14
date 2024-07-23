@@ -52,6 +52,17 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
+  - type: ItemSlots
+    slots:
+      item:
+        ejectSound:
+          collection: storageRustle
+        insertSound:
+          collection: storageRustle
+        #name: plushie-inserted-pai
+        whitelist:
+          components:
+          - PAI
 
 - type: entity
   parent: BasePlushie

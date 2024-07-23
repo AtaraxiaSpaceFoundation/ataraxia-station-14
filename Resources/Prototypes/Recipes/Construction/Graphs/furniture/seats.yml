@@ -36,7 +36,42 @@
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: chairComfy
+        - to: blackChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: blueChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: greenChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: orangeChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: pinkChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: purpleChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: redChairComfy
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+        - to: whiteChairComfy
           steps:
             - material: Steel
               amount: 2
@@ -87,6 +122,70 @@
               doAfter: 1
             - material: Cloth
               amount: 1
+        - to: blackPaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: bluePaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: greenPaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: orangePaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: pinkPaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: purplePaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: redPaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
+        - to: whitePaddedStool
+          steps:
+            - material: Cloth
+              amount: 3
+              doAfter: 1
+            - material: WoodPlank
+              amount: 1
+              doAfter: 1
 
     - node: chair
       entity: Chair
@@ -156,8 +255,8 @@
             - tool: Screwing
               doAfter: 1
 
-    - node: chairComfy
-      entity: ComfyChair
+    - node: blackChairComfy
+      entity: BlackComfyChair
       edges:
         - to: start
           completed:
@@ -167,6 +266,130 @@
           steps:
             - tool: Screwing
               doAfter: 1
+
+    - node: blueChairComfy
+      entity: BlueComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: greenChairComfy
+      entity: GreenComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: orangeChairComfy
+      entity: OrangeComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: pinkChairComfy
+      entity: PinkComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: purpleChairComfy
+      entity: PurpleComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: redChairComfy
+      entity: RedComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    - node: whiteChairComfy
+      entity: WhiteComfyChair
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+          steps:
+            - tool: Screwing
+              doAfter: 1
+
+    # WD edit starts
+
+    - node: brownChairComfy
+      entity: BrownComfyChair
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+
+    - node: lightBlueChairComfy
+      entity: LightBlueComfyChair
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+
+    - node: chairComfy
+      entity: ComfyChair
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Screwing
+          doAfter: 1
+
+    # WD edit end
 
     - node: chairPilotSeat
       entity: ChairPilotSeat
@@ -275,4 +498,124 @@
             - tool: Cutting
               doAfter: 1
             - tool: Screwing
+              doAfter: 1
+
+    - node: blackPaddedStool
+      entity: BlackPaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: bluePaddedStool
+      entity: BluePaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: greenPaddedStool
+      entity: GreenPaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: orangePaddedStool
+      entity: OrangePaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: pinkPaddedStool
+      entity: PinkPaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: purplePaddedStool
+      entity: PurplePaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: redPaddedStool
+      entity: RedPaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 1
+
+    - node: whitePaddedStool
+      entity: WhitePaddedStool
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 1
+          steps:
+            - tool: Cutting
               doAfter: 1

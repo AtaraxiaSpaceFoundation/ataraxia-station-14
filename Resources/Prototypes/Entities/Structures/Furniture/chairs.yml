@@ -4,7 +4,7 @@
   abstract: true
   description: You sit in this. Either by will or force.
   placement:
-    mode: PlaceFree
+    mode: SnapgridCenter
   components:
   - type: Clickable
   - type: InteractionOutline
@@ -34,7 +34,7 @@
     buckleOffset: "0,-0.05"
   - type: Pullable
   - type: Damageable
-    damageContainer: StructuralInorganic
+    damageContainer: Inorganic
     damageModifierSet: Metallic
   - type: Destructible
     thresholds:
@@ -128,7 +128,7 @@
 - type: entity
   name: stool
   id: Stool
-  parent: UnanchoredChairBase
+  parent: ChairBase
   description: Apply butt.
   components:
   - type: Sprite
@@ -182,16 +182,161 @@
     node: chairOfficeDark
 
 - type: entity
+  name: black comfy chair
+  id: BlackComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#23242c"
+  - type: Construction
+    graph: Seat
+    node: blackChairComfy
+
+- type: entity
+  name: blue comfy chair
+  id: BlueComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#356287"
+  - type: Construction
+    graph: Seat
+    node: blueChairComfy
+
+- type: entity
+  name: green comfy chair
+  id: GreenComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#2a6e47"
+  - type: Construction
+    graph: Seat
+    node: greenChairComfy
+
+- type: entity
+  name: orange comfy chair
+  id: OrangeComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#9d480c"
+  - type: Construction
+    graph: Seat
+    node: orangeChairComfy
+
+- type: entity
+  name: pink comfy chair
+  id: PinkComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#91265e"
+  - type: Construction
+    graph: Seat
+    node: pinkChairComfy
+
+- type: entity
+  name: purple comfy chair
+  id: PurpleComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#563968"
+  - type: Construction
+    graph: Seat
+    node: purpleChairComfyf
+
+- type: entity
+  name: red comfy chair
+  id: RedComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#872222"
+  - type: Construction
+    graph: Seat
+    node: redChairComfy
+
+- type: entity
+  name: white comfy chair
+  id: WhiteComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#dcdcdc"
+  - type: Construction
+    graph: Seat
+    node: whiteChairComfy
+
+# WD edit start
+
+- type: entity
+  name: brown comfy chair
+  id: BrownComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#AE6716"
+  - type: Construction
+    graph: Seat
+    node: brownChairComfy
+
+- type: entity
+  name: light blue comfy chair
+  id: LightBlueComfyChair
+  parent: ChairBase
+  description: It looks comfy.
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#52B4E9"
+  - type: Construction
+    graph: Seat
+    node: lightBlueChairComfy
+
+- type: entity
   name: comfy chair
   id: ComfyChair
   parent: ChairBase
   description: It looks comfy.
   components:
   - type: Sprite
-    state: comfy
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
   - type: Construction
     graph: Seat
     node: chairComfy
+
+# WD edit end
 
 - type: entity
   name: pilot seat
@@ -253,7 +398,7 @@
 
 - type: entity
   id: ChairMeat
-  parent: UnanchoredChairBase
+  parent: ChairBase
   name: meat chair
   description: Uncomfortably sweaty.
   components:
@@ -298,7 +443,7 @@
   name: web chair
   id: ChairWeb
   description: For true web developers.
-  parent: UnanchoredChairBase
+  parent: ChairBase
   components:
   - type: Sprite
     sprite: Structures/Web/chair.rsi
@@ -314,12 +459,6 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300 #excess damage (nuke?). avoid computational cost of spawning entities.  # WD edit start
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger  # WD edit end
         damage: 50
       behaviors:
       - !type:DoActsBehavior
@@ -368,6 +507,8 @@
   parent: ChairFolding
   id: ChairFoldingSpawnFolded
   suffix: folded
+  placement:
+    mode: PlaceFree
   components:
   - type: Foldable
     folded: true
@@ -384,6 +525,7 @@
     graph: Seat
     node: chairSteelBench
 
+# WD edit start
 - type: entity
   name: wooden bench
   id: WoodenBench
@@ -413,3 +555,116 @@
             max: 4
   - type: StaticPrice
     price: 20
+# WD edit end
+
+- type: entity
+  name: black padded stool
+  id: BlackPaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#23242c"
+  - type: Construction
+    graph: Seat
+    node: blackPaddedStool
+
+- type: entity
+  name: blue padded stool
+  id: BluePaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#356287"
+  - type: Construction
+    graph: Seat
+    node: bluePaddedStool
+
+- type: entity
+  name: green padded stool
+  id: GreenPaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#2a6e47"
+  - type: Construction
+    graph: Seat
+    node: greenPaddedStool
+
+- type: entity
+  name: orange padded stool
+  id: OrangePaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#9d480c"
+  - type: Construction
+    graph: Seat
+    node: orangePaddedStool
+
+- type: entity
+  name: pink padded stool
+  id: PinkPaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#91265e"
+  - type: Construction
+    graph: Seat
+    node: pinkPaddedStool
+
+- type: entity
+  name: purple padded stool
+  id: PurplePaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#563968"
+  - type: Construction
+    graph: Seat
+    node: purplePaddedStool
+
+- type: entity
+  name: red padded stool
+  id: RedPaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#872222"
+  - type: Construction
+    graph: Seat
+    node: redPaddedStool
+
+- type: entity
+  name: white padded stool
+  id: WhitePaddedStool
+  parent: ChairBase
+  description: Soft bag chair, comfortable!
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+    color: "#dcdcdc"
+  - type: Construction
+    graph: Seat
+    node: whitePaddedStool

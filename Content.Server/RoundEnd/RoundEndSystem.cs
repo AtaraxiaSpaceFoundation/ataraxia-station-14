@@ -141,7 +141,8 @@ namespace Content.Server.RoundEnd
             EntityUid? requester = null,
             bool checkCooldown = true,
             string text = "round-end-system-shuttle-called-announcement",
-            string name = "Station")
+            string name = "Station",
+            string? reason = null)
         {
             var duration = DefaultCountdownDuration;
 
@@ -156,7 +157,7 @@ namespace Content.Server.RoundEnd
                 }
             }
 
-            RequestRoundEnd(duration, requester, checkCooldown, text, name);
+            RequestRoundEnd(duration, requester, checkCooldown, text, name, reason);
         }
 
         public void RequestRoundEnd(
@@ -164,7 +165,8 @@ namespace Content.Server.RoundEnd
             EntityUid? requester = null,
             bool checkCooldown = true,
             string text = "round-end-system-shuttle-called-announcement",
-            string name = "Station")
+            string name = "Station",
+            string? reason = null)
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
                 return;
@@ -202,13 +204,23 @@ namespace Content.Server.RoundEnd
                 units = "eta-units-minutes";
             }
 
-            _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(text,
+            if (reason == null)
+                _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(text,
                     ("time", time),
                     ("units", Loc.GetString(units))),
-                name,
-                false,
-                null,
-                Color.Gold);
+                    name,
+                    false,
+                    null,
+                    Color.Gold);
+            else
+                _chatSystem.DispatchGlobalAnnouncement(Loc.GetString(text,
+                    ("time", time),
+                    ("units", Loc.GetString(units)),
+                    ("reason", reason)),
+                    name,
+                    false,
+                    null,
+                    Color.Gold);
 
             _audio.PlayGlobal("/Audio/Announcements/shuttlecalled.ogg", Filter.Broadcast(), true);
 
