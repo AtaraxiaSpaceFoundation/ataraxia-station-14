@@ -5,10 +5,12 @@ comms-console-menu-announcement-button = Announce
 comms-console-menu-broadcast-button = Broadcast
 comms-console-menu-call-shuttle = Call emergency shuttle
 comms-console-menu-recall-shuttle = Recall emergency shuttle
+comms-console-window-text = Enter the nature of emergency
 
 # Popup
 comms-console-permission-denied = Permission denied
 comms-console-shuttle-unavailable = Shuttle is currently unavailable
+comms-console-message-too-long = Message is too long
 
 # Placeholder values
 comms-console-announcement-sent-by = Sent by

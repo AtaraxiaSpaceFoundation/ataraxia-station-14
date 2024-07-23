@@ -122,7 +122,7 @@
       path: /Audio/Weapons/Guns/Hits/snap.ogg
   - type: StaminaDamageOnCollide
     ignoreResistances: false
-    damage: 22 # 5 hits to stun sounds reasonable
+    damage: 33 # Wd EDIT
 
 - type: entity
   id: BaseBulletIncendiary
@@ -756,6 +756,7 @@
       - state: grenade
   - type: FlashOnTrigger
     range: 7
+    forceStun: true # WD EDIT
   - type: SpawnOnTrigger
     proto: GrenadeFlashEffect
   - type: ActiveTimerTrigger

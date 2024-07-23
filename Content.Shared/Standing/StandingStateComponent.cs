@@ -23,11 +23,11 @@ namespace Content.Shared.Standing
 
         // WD EDIT
         [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-        public bool CanLieDown = false;
+        public bool CanLieDown;
 
         // WD EDIT
         [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-        public bool AutoGetUp = false;
+        public bool AutoGetUp = true;
 
         /// <summary>
         ///     List of fixtures that had their collision mask changed when the entity was downed.

@@ -9,7 +9,7 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.RoundEnd;
-using Content.Server.Screens;
+using Robust.Shared.Player;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
@@ -27,6 +27,7 @@ using Content.Shared.Popups;
 using Content.Shared._White;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
+using Content.Server.Administration;
 
 namespace Content.Server.Communications
 {
@@ -45,6 +46,7 @@ namespace Content.Server.Communications
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
 
         private const float UIUpdateInterval = 5.0f;
 
@@ -332,7 +334,7 @@ namespace Content.Server.Communications
 
             if (!CanUse(mob, uid))
             {
-                _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+                _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, mob);
                 return;
             }
 
@@ -340,12 +342,30 @@ namespace Content.Server.Communications
             RaiseLocalEvent(ref ev);
             if (ev.Cancelled)
             {
-                _popupSystem.PopupEntity(ev.Reason ?? Loc.GetString("comms-console-shuttle-unavailable"), uid, message.Session);
+                _popupSystem.PopupEntity(ev.Reason ?? Loc.GetString("comms-console-shuttle-unavailable"), uid, mob);
                 return;
             }
 
-            _roundEndSystem.RequestRoundEnd(uid);
-            _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(mob):player} has called the shuttle.");
+            if (!TryComp<ActorComponent>(mob, out var actor))
+                return;
+
+            _quickDialog.OpenDialog(actor.PlayerSession, Loc.GetString("comms-console-window-text"), "Reason", (LongString message) =>
+            {
+                if (!CanUse(mob, uid))
+                {
+                    _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, mob);
+                    return;
+                }
+
+                _roundEndSystem.RequestRoundEnd(uid, text: "round-end-system-shuttle-called-announcement-reason", reason: message);
+
+                //WD-start
+                var ttsEv = new TTSAnnouncementEvent(message, comp.TtsVoiceId, uid, comp.Global);
+                RaiseLocalEvent(ttsEv);
+                //WD-end
+
+                _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(mob):player} has called the shuttle.");
+            });
         }
 
         private void OnRecallShuttleMessage(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleRecallEmergencyShuttleMessage message)

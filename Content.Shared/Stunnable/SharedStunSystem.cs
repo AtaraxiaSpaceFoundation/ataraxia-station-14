@@ -202,6 +202,9 @@ public abstract class SharedStunSystem : EntitySystem
         if (!Resolve(uid, ref status, false))
             return false;
 
+        if (_statusEffect.HasStatusEffect(uid, "Stun"))
+            time = TimeSpan.FromSeconds(6);
+
         return TryKnockdown(uid, time, refresh, status) && TryStun(uid, time, refresh, status);
     }
 

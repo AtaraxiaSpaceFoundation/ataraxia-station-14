@@ -7,7 +7,8 @@ using Robust.Shared.Player;
 
 namespace Content.Client._White.Overlays;
 
-public sealed class NightVisionSystem : SharedNightVisionSystem
+public sealed class NightVisionSystem : SharedEnhancedVisionSystem<NightVisionComponent, TemporaryNightVisionComponent,
+    ToggleNightVisionEvent>
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
@@ -46,12 +47,12 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         if (TryComp(ent, out NightVisionComponent? nightVision) && nightVision.IsActive)
             return;
 
-        UpdateNightVision(ent, false);
+        UpdateEnhancedVision(ent, false);
     }
 
     private void OnTempInit(Entity<TemporaryNightVisionComponent> ent, ref ComponentInit args)
     {
-        UpdateNightVision(ent, true);
+        UpdateEnhancedVision(ent, true);
     }
 
     private void OnPlayerAttached(EntityUid uid, NightVisionComponent component, PlayerAttachedEvent args)
@@ -76,7 +77,7 @@ public sealed class NightVisionSystem : SharedNightVisionSystem
         UpdateNightVision(active);
     }
 
-    protected override void UpdateNightVision(EntityUid uid, bool active)
+    protected override void UpdateEnhancedVision(EntityUid uid, bool active)
     {
         if (_player.LocalSession?.AttachedEntity != uid)
             return;

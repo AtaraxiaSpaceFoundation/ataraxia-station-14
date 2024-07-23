@@ -374,11 +374,12 @@
   - CommonSecurityCommandMask # WD
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
-  - CommonSecurityBackpack
-  - HeadofSecurityOuterClothing
   - CommonGloves # WD
+  - CommonSecurityBelt # WD
+  - CommonSecurityBackpack
   - CommonSecurityShoes
   - HeadofSecurityPDA
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -391,8 +392,10 @@
   - WardenJumpsuit
   - CommonSecurityBackpack
   - CommonGloves # WD
+  - CommonSecurityBelt # WD
   - CommonSecurityShoes
   - WardenPDA
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -405,9 +408,11 @@
   - SeniorOfficerJumpsuit
   - CommonSecurityBackpack
   - SecurityOuterClothing
+  - CommonSecurityBelt # WD
   - CommonGloves # WD
   - CommonSecurityShoes
   - SeniorOfficerPDA
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -420,10 +425,11 @@
   - SecurityJumpsuit
   - CommonSecurityBackpack
   - SecurityOuterClothing
+  - CommonSecurityBelt # WD
   - CommonGloves # WD
   - CommonSecurityShoes
   - SecurityPDA
-  - SecurityBelt
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -439,6 +445,7 @@
   - DetectiveGloves
   - DetectiveShoes
   - DetectivePDA # WD
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 - type: roleLoadout
@@ -452,6 +459,7 @@
   - CommonGloves # WD
   - CommonSecurityShoes
   - SecurityCadetPDA
+  - CommonSecurityJobTrinkets # WD
   - Trinkets
 
 # Medical
@@ -491,12 +499,11 @@
   - CommonMedicalHeadset # WD
   - CommonMedicalMask # WD
   - MedicalDoctorJumpsuit
-  - MedicalGloves
   - MedicalBackpack
   - MedicalDoctorOuterClothing
-  - CommonMedicalShoes
-  - CommonMedicalGloves
-  - MedicalDoctorPDA
+  - CommonMedicalShoes # WD
+  - CommonMedicalGloves # WD
+  - MedicalDoctorPDA # WD
   - Trinkets
 
 - type: roleLoadout
@@ -521,10 +528,9 @@
   - ChemistEyes
   - CommonMedicalMask # WD
   - ChemistJumpsuit
-  - MedicalGloves
   - ChemistBackpack
   - ChemistOuterClothing
-  - CommonMedicalGloves
+  - CommonMedicalGloves # WD
   - ChemistShoes
   - ChemistPDA
   - Trinkets

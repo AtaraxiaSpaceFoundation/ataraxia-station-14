@@ -3,6 +3,7 @@ using Content.Shared.Chat;
 using Content.Shared.Communications;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Communications.UI
 {

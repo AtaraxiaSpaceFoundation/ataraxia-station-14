@@ -50,6 +50,9 @@ public sealed class EmagSystem : EntitySystem
         if (_tag.HasTag(target, comp.EmagImmuneTag))
             return false;
 
+        if (comp.Whitelist?.IsValid(target, EntityManager) is false)
+            return false;
+
         TryComp<LimitedChargesComponent>(uid, out var charges);
         if (_charges.IsEmpty(uid, charges))
         {

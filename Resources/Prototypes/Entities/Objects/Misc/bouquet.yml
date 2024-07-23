@@ -1,0 +1,54 @@
+- type: entity
+  name: PoppyBouquet
+  parent: FoodProduceBase
+  id: PoppyBouquet
+  description: It's a great way to honor the memory of an assistant who was killed through your fault.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/poppybouquet.rsi
+    state: icon
+    scale: 1.15,1.15
+  - type: Item
+    sprite: Objects/Misc/poppybouquet.rsi
+  - type: Construction
+    graph: PoppyBouquet
+    node: PoppyBouquet
+  - type: BadFood
+  - type: SolutionContainerManager # 4 flowers
+    solutions:
+      food:
+        maxVol: 66
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 4
+        - ReagentId: Bicaridine
+          Quantity: 40
+        - ReagentId: Fiber
+          Quantity: 8
+  - type: FlavorProfile
+    flavors:
+    - medicine
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Web
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

@@ -155,6 +155,9 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSmall
         disableEject: true
+  - type: ClothingGrantComponent
+    component:
+    - type: ThermalBlocker
 
 - type: entity
   parent: ClothingOuterBase

@@ -20,6 +20,7 @@
   - type: DeleteOnChangelingRefund
   - type: FlashImmunity
   - type: EyeProtection
+  - type: FlashSoundSuppression
   - type: HiveHead
 
 - type: entity

@@ -1,0 +1,4 @@
+- type: accent
+  id: gondola
+  fullReplacements:
+  - accent-words-gondola-1

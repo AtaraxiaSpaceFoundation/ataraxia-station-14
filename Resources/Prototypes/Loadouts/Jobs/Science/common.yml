@@ -7,3 +7,41 @@
   id: ScienceHeadset
   equipment:
     ears: ClothingHeadsetScience
+
+# Jumpsuit
+
+- type: itemLoadout # WD
+  id: RoboticistJumpskirt
+  equipment: RoboticistJumpskirt
+- type: startingGear
+  id: RoboticistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRoboticist
+
+- type: itemLoadout # WD
+  id: RoboticistJumpsuit
+  equipment: RoboticistJumpsuit
+- type: startingGear
+  id: RoboticistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+
+# Outercloting
+
+- type: itemLoadout # WD
+  id: RoboticistLabCoat
+  equipment: RoboticistLabCoat
+- type: startingGear
+  id: RoboticistLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatRoboOpened
+
+# Gloves
+
+- type: itemLoadout # WD
+  id: RoboticistGloves
+  equipment: RoboticistGloves
+- type: startingGear
+  id: RoboticistGloves
+  equipment:
+    gloves: ClothingHandsGlovesRobohands

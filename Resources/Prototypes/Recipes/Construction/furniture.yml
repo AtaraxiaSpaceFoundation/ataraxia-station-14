@@ -102,16 +102,16 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: удобное кресло
-  id: ComfyChair
+  name: удобное кресло чёрный
+  id: BlackChairComfy
   graph: Seat
   startNode: start
-  targetNode: chairComfy
+  targetNode: blackChairComfy
   category: construction-category-furniture
   description: Выглядит комфортно.
   icon:
     sprite: Structures/Furniture/chairs.rsi
-    state: comfy
+    state: comfy-greyscale
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -119,8 +119,184 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: удобное кресло синий
+  id: BlueChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: blueChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло зелёный
+  id: GreenChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: greenChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло оранжевый
+  id: OrangeChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: orangeChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло розовый
+  id: PinkChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: pinkChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло фиолетовый
+  id: PurpleChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: purpleChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло красный
+  id: RedChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: redChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло белый
+  id: WhiteChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: whiteChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+# WD edit start
+
+- type: construction
+  name: удобное кресло коричневый
+  id: BrownChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: brownChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#AE6716"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло голубой
+  id: LightBlueChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: lightBlueChairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+    color: "#52B4E9"
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: удобное кресло
+  id: ChairComfy
+  graph: Seat
+  startNode: start
+  targetNode: chairComfy
+  category: construction-category-furniture
+  description: Выглядит комфортно.
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: comfy-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+# WD edit end
+
+- type: construction
   name: кресло пилота
-  id: ChairPilotSeat
+  id: chairPilotSeat
   graph: Seat
   startNode: start
   targetNode: chairPilotSeat
@@ -265,6 +441,142 @@
   icon:
     sprite: Structures/Furniture/Bench/comf_bench.rsi
     state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло чёрный
+  id: BlackPaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: blackPaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло синий
+  id: BluePaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: bluePaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло зелёный
+  id: GreenPaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: greenPaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло оранжевый
+  id: OrangePaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: orangePaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло розовый
+  id: PinkPaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: pinkPaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло фиолетовый
+  id: PurplePaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: purplePaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло красный
+  id: RedPaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: redPaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: мягкое кресло белый
+  id: WhitePaddedStool
+  graph: Seat
+  startNode: start
+  targetNode: whitePaddedStool
+  category: construction-category-furniture
+  description: Мягкое кресло, удобное!
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: pufi-box-greyscale
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -885,10 +1197,11 @@
   conditions:
     - !type:TileNotBlocked
 
+# WD edit start
 - type: construction
   id: NoticeBoard
-  name: notice board
-  description: Wooden notice board, can store paper inside itself.
+  name: доска объявлений
+  description: Деревянная доска, для объявлений, можно повесить бумагу.
   graph: NoticeBoard
   startNode: start
   targetNode: noticeBoard
@@ -901,12 +1214,12 @@
   canRotate: true
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   id: Mannequin
-  name: mannequin
-  description: Wooden mannequin designed for clothing displaying
+  name: манекен
+  description: Манекен из дерева, можно навесить снаряжение на него.
   graph: Mannequin
   startNode: start
   targetNode: mannequin
@@ -920,3 +1233,4 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+# WD edit end

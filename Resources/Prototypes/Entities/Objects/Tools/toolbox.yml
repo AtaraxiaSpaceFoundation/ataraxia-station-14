@@ -170,10 +170,12 @@
     - ChemistrySet
     - ToolsSet
     - ChameleonSet # - TO DO Chameleon stump PR needed
-    - SyndieSet
+    # - SyndieSet
     - SleeperSet
     - CommunicatorSet
     - SmugglerSet
+    - SlaverySet # WD
+    - HiTechSet # WD
   - type: ActivatableUI
     key: enum.ThiefBackpackUIKey.Key
   - type: UserInterface

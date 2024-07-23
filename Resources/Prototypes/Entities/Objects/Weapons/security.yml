@@ -87,6 +87,7 @@
   - type: GuideHelp
     guides:
     - Security
+  - type: StunLock # Wd EDIT
 
 - type: entity
   name: truncheon
