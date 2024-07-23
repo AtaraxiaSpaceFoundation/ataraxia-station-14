@@ -6463,3 +6463,12 @@
   id: 410
   time: '2024-07-23T02:03:31.0000000+00:00'
   url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/482
+- author: Aviu
+  changes:
+  - message: "\u0425\u0430\u043C\u0435\u043B\u0435\u043E\u043D \u043F\u0440\u043E\u0435\
+      \u043A\u0442\u043E\u0440 \u0442\u0435\u043F\u0435\u0440\u044C \u0440\u0430\u0431\
+      \u043E\u0442\u0430\u0435\u0442 \u043B\u0443\u0447\u0448\u0435."
+    type: Fix
+  id: 411
+  time: '2024-07-23T15:34:13.0000000+00:00'
+  url: https://api.github.com/repos/frosty-dev/ss14-core/pulls/484
