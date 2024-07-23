@@ -1,7 +1,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobGondola
-  name: спавнер Гондола
+  name: Gondola spawner
   components:
   - type: Sprite
     layers:

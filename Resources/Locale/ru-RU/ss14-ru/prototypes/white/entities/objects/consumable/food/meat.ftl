@@ -1,5 +1,7 @@
-ent-FoodMeatGondola = сырое мясо Гондолы
-    .desc = Ты монстр.
+ent-FoodMeatGondola = { ent-FoodMeat }
+    .desc = { ent-FoodMeat.desc }
+    .suffix = Гондола
 
-ent-FoodMeatGondolaCooked = стейк из Гондолы
-    .desc = Приготовленное мясо Гондолы...
+ent-FoodMeatGondolaCooked = { ent-FoodMeatCooked }
+    .desc = { ent-FoodMeatCooked.desc }
+    .suffix = Гондола

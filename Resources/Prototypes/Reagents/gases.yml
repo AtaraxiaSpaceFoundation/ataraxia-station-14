@@ -14,6 +14,10 @@
         conditions:
         - !type:OrganType
           type: Human
+      - !type:Oxygenate # WD
+        conditions:
+        - !type:OrganType
+          type: AnthroAnimal
       - !type:Oxygenate
         conditions:
         - !type:OrganType
@@ -450,6 +454,11 @@
         conditions:
         - !type:OrganType
           type: Human
+      - !type:Oxygenate # WD
+        factor: 8
+        conditions:
+        - !type:OrganType
+          type: AnthroAnimal
       - !type:Oxygenate
         factor: 8
         conditions:

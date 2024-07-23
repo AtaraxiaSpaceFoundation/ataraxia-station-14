@@ -18,10 +18,10 @@
       - left leg
       - right leg
       organs:
-        heart: OrganHumanHeart
+        heart: OrganAnthroAnimalHeart
         lungs: OrganHumanLungs
-        stomach: OrganHumanStomach
-        liver:  OrganHumanLiver
+        stomach: OrganAnthroAnimalStomach
+        liver:  OrganAnthroAnimalLiver
         kidneys: OrganHumanKidneys
     right arm:
       part: RightArmHuman

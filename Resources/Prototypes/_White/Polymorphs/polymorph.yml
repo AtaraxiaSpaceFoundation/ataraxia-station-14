@@ -8,3 +8,4 @@
     inventory: Drop
     revertOnDeath: true
     revertOnCrit: false
+    duration: 900

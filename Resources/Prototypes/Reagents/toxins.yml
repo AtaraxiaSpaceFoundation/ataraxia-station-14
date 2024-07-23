@@ -406,6 +406,8 @@
           min: 1
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
+        - !type:OrganType # WD
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.4
@@ -416,6 +418,8 @@
             min: 3
           - !type:OrganType
             type: Animal
+          - !type:OrganType # WD
+            type: AnthroAnimal
 
 - type: reagent
   id: Amatoxin
@@ -482,6 +486,9 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+          - !type:OrganType # WD
+            type: AnthroAnimal
+            shouldHave: false
         reagent: Protein
         type: Local
         visualType: MediumCaution
@@ -493,10 +500,16 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+          - !type:OrganType # WD
+            type: AnthroAnimal
+            shouldHave: false
       - !type:HealthChange
         conditions:
         - !type:OrganType
           type: Animal
+          shouldHave: false
+        - !type:OrganType # WD
+          type: AnthroAnimal
           shouldHave: false
         damage:
           types:
@@ -505,6 +518,9 @@
         conditions:
         - !type:OrganType
           type: Animal
+          shouldHave: true
+        - !type:OrganType # WD
+          type: AnthroAnimal
           shouldHave: true
         reagent: Protein
         amount: 0.5
@@ -527,6 +543,8 @@
           min: 1
         - !type:OrganType
           type: Animal
+        - !type:OrganType # WD
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.06
@@ -569,6 +587,8 @@
           min: 1
         - !type:OrganType
           type: Animal
+        - !type:OrganType # WD
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.06
