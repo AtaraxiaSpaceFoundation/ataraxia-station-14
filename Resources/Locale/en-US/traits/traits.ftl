@@ -63,3 +63,8 @@ trait-name-Foreigner = Foreigner
 trait-description-Foreigner =
     For one reason or another you do not speak this station's primary language.
     Instead, you have a translator issued to you that only you can use.
+
+trait-name-SignLanguage = Sign Language
+trait-description-SignLanguage =
+    You can understand and use Galactic Sign Language (GSL).
+    If you are mute for any reason, you can still communicate with sign language.
