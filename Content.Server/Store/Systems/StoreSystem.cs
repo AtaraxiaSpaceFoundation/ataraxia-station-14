@@ -8,6 +8,8 @@ using Content.Shared.Stacks;
 using Content.Shared.Store.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using System.Linq;
+using Content.Server._White.StoreDiscount;
 using Robust.Shared.Utility;
 using System.Linq;
 
@@ -21,6 +23,7 @@ public sealed partial class StoreSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly StoreDiscountSystem _storeDiscount = default!; // WD EDIT
 
     public override void Initialize()
     {
@@ -164,6 +167,46 @@ public sealed partial class StoreSystem : EntitySystem
         UpdateUserInterface(null, uid, store);
         return true;
     }
+
+    /// <summary>
+    /// Initializes a store based on a preset ID
+    /// </summary>
+    /// <param name="preset">The ID of a store preset prototype</param>
+    /// <param name="uid"></param>
+    /// <param name="component">The store being initialized</param>
+    public void InitializeFromPreset(string? preset, EntityUid uid, StoreComponent component)
+    {
+        if (preset == null)
+            return;
+
+        if (!_proto.TryIndex<StorePresetPrototype>(preset, out var proto))
+            return;
+
+        InitializeFromPreset(proto, uid, component);
+    }
+
+    /// <summary>
+    /// Initializes a store based on a given preset
+    /// </summary>
+    /// <param name="preset">The StorePresetPrototype</param>
+    /// <param name="uid"></param>
+    /// <param name="component">The store being initialized</param>
+    public void InitializeFromPreset(StorePresetPrototype preset, EntityUid uid, StoreComponent component)
+    {
+        component.Preset = preset.ID;
+        component.CurrencyWhitelist.UnionWith(preset.CurrencyWhitelist);
+        component.Categories.UnionWith(preset.Categories);
+        if (component.Balance == new Dictionary<string, FixedPoint2>() && preset.InitialBalance != null) //if we don't have a value stored, use the preset
+            TryAddCurrency(preset.InitialBalance, uid, component);
+
+        _storeDiscount.ApplyDiscounts(component.Listings, preset); // WD EDIT
+
+        var ui = _ui.GetUiOrNull(uid, StoreUiKey.Key);
+        if (ui != null)
+        {
+            _ui.SetUiState(ui, new StoreInitializeState(preset.StoreName));
+        }
+    }
 }
 
 public sealed class CurrencyInsertAttemptEvent : CancellableEntityEventArgs
@@ -181,3 +224,13 @@ public sealed class CurrencyInsertAttemptEvent : CancellableEntityEventArgs
         Store = store;
     }
 }
+
+/// <summary>
+/// Nyano/DeltaV Code. For penguin bombs and what not.
+/// Raised on an item when it is purchased.
+/// An item may need to set it upself up for its purchaser.
+/// For example, to make sure it isn't hostile to them or
+/// to make sure it fits their apperance.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ItemPurchasedEvent(EntityUid Purchaser);

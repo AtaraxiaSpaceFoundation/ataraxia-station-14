@@ -10,6 +10,7 @@
     Telecrystal: 3
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkRevolverPython
@@ -20,6 +21,7 @@
     Telecrystal: 8 # Originally was 13 TC but was not used due to high cost
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 # Inbuilt suppressor so it's sneaky + more expensive.
 - type: listing
@@ -31,6 +33,7 @@
     Telecrystal: 4
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 # Poor accuracy, slow to fire, cheap option
 - type: listing
@@ -42,6 +45,7 @@
     Telecrystal: 1
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkEsword
@@ -53,6 +57,7 @@
     Telecrystal: 8
   categories:
   - UplinkWeaponry
+  saleLimit: 2 # WD EDIT
 
 - type: listing
   id: UplinkEnergyDagger
@@ -64,6 +69,7 @@
     Telecrystal: 2
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkThrowingKnivesKit
@@ -85,6 +91,7 @@
     Telecrystal: 8
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkDisposableTurret
@@ -100,6 +107,7 @@
       blacklist:
         tags:
           - NukeOpsUplink
+  saleLimit: 2 # WD EDIT
 
 - type: listing
   id: UplinkEshield
@@ -171,6 +179,7 @@
     Telecrystal: 30
   categories:
   - UplinkWeaponry
+  saleLimit: 1 # WD EDIT
 
 # Explosives
 
@@ -273,6 +282,7 @@
     whitelist:
       tags:
       - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkC4Bundle
@@ -283,6 +293,7 @@
     Telecrystal: 12 #you're buying bulk so its a 25% discount
   categories:
   - UplinkExplosives
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkEmpGrenade
@@ -320,6 +331,7 @@
     blacklist:
       tags:
       - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkSyndicateBombNukie
@@ -335,6 +347,7 @@
     whitelist:
       tags:
       - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkClusterGrenade
@@ -914,6 +927,7 @@
       blacklist:
         tags:
           - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkReinforcementRadioSyndicateNukeops # Version for Nukeops that spawns another nuclear operative without the uplink.
@@ -930,6 +944,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkReinforcementRadioSyndicateCyborgAssault
@@ -946,6 +961,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkReinforcementRadioSyndicateAncestor
@@ -978,6 +994,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkCarpDehydrated
@@ -1152,6 +1169,7 @@
       blacklist:
         tags:
           - NukeOpsUplink
+  saleBlacklist: true # WD EDIT
 
 - type: listing
   id: UplinkDeathRattle
@@ -1254,6 +1272,16 @@
     Telecrystal: 3
   categories:
   - UplinkWearables
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+          - SurplusBundle
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkClothingShoesBootsMagSyndie
@@ -1286,6 +1314,16 @@
     Telecrystal: 4
   categories:
   - UplinkWearables
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+          - SurplusBundle
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkHardsuitSyndie
@@ -1297,6 +1335,7 @@
     Telecrystal: 8
   categories:
   - UplinkWearables
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkClothingOuterArmorRaid
@@ -1308,11 +1347,7 @@
     Telecrystal: 8
   categories:
   - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: UplinkHardsuitSyndieElite
@@ -1324,6 +1359,16 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
+  saleBlacklist: true # WD EDIT
 
 - type: listing
   id: UplinkClothingOuterHardsuitJuggernaut
@@ -1335,6 +1380,16 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
+  saleBlacklist: true # WD EDIT
 
 - type: listing
   id: UplinkClothingEyesHudSyndicate
@@ -1598,6 +1653,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Chaplain
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: uplinkRevolverCapGunFake
@@ -1613,6 +1669,7 @@
     whitelist:
     - Mime
     - Clown
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: uplinkBananaPeelExplosive
@@ -1657,6 +1714,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+  saleLimit: 1 # WD EDIT
 
 - type: listing
   id: uplinkHotPotato
