@@ -1,0 +1,12 @@
+ent-BaseMobSkrellPerson = { ent-BaseMobSkrell }
+    .desc = { ent-BaseMobSkrell.desc }
+    .suffix = { "" }
+ent-MobSkrellPersonDummy = { ent-BaseMobSkrell }
+    .desc = { ent-BaseMobSkrell.desc }
+    .suffix = { "" }
+ent-BaseMobSkrell = Урист МакСкрелл
+    .desc = { ent-BaseMobSpeciesOrganic.desc }
+    .suffix = { "" }
+ent-MobSkrellDummy = { ent-BaseMobSkrell }
+    .desc = Манекен-скрелл, используемый при создании персонажа.
+    .suffix = { "" }

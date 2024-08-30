@@ -1,0 +1,10 @@
+ent-BoxBodyBagBluespace = коробка блюспейс мешков для тел
+    .desc = { ent-BoxBodyBag.desc }
+ent-BoxBodyBagNT = коробка НТ мешков для тел
+    .desc = { ent-BoxBodyBag.desc }
+ent-BoxBodyBagPrisoner = коробка тюремных мешков для тел
+    .desc = { ent-BoxBodyBag.desc }
+ent-BoxBodyBagRadiation = коробка противорадиационных мешков для тел
+    .desc = { ent-BoxBodyBag.desc }
+ent-BoxBodyBagSyndicate = коробка синдикатных мешков для тел
+    .desc = { ent-BoxBodyBag.desc }
