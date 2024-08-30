@@ -1,50 +1,46 @@
-<!-- Please read these guidelines before opening your PR: https://docs.spacestation14.io/en/getting-started/pr-guideline -->
-<!-- The text between the arrows are comments - they will not be visible on your PR. -->
+<!-- Текст между стрелками - это комментарии - они не будут видны в вашем PR. -->
 
-## About the PR
-<!-- What did you change in this PR? -->
+# Описание PR
+<!-- Опишите здесь ваш Pull Request (PR). Что он изменяет? На что еще это может повлиять? -->
 
-## Why / Balance
-<!-- Why was it changed? Link any discussions or issues here. Please discuss how this would affect game balance. -->
+## Медиа
+<!-- Добавьте скриншоты/видео, для демонстрации вашего PR. Если ваш PR представляет собой визуальное изменение, добавьте скриншоты, иначе он может быть закрыт. -->
 
-## Technical details
-<!-- If this is a code change, summarize at high level how your new code works. This makes it easier to review. -->
+<!-- Место для вашего чек-листа, здесь можно составить список, к примеру того, что вы хотите сделать.
+## Чек-лист
 
-## Media
-<!-- 
-PRs which make ingame changes (adding clothing, items, new features, etc) are required to have media attached that showcase the changes.
-Small fixes/refactors are exempt.
-Any media may be used in SS14 progress reports, with clear credit given.
-
-If you're unsure whether your PR will require media, ask a maintainer.
+- [x] Я сделаю хорошее
 -->
 
-## Requirements
-<!-- 
-Due to influx of PR's we require to ensure that PR's are following the correct guidelines.
+## Тип PR
+<!-- Подходите ответственно к пометке этих пунктов, для этого необходимо поставить английскую "x" между квадратных скобок -->
+- [ ] Feature
+- [ ] Fix
+- [ ] Tweak
+- [ ] Balance
+- [ ] Refactor
+- [ ] Translate
+- [ ] Resprite
 
-Please take a moment to read these if its your first time.
-
-Check the boxes below to confirm that you have in fact seen these (put an X in the brackets, like [X]):
--->
-- [ ] I have read and I am following the [Pull Request Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html). I understand that not doing so may get my pr closed at maintainer’s discretion
-- [ ] I have added screenshots/videos to this PR showcasing its changes ingame, **or** this PR does not require an ingame showcase
-
-## Breaking changes
+**Изменения**
 <!--
-List any breaking changes, including namespace, public class/method/field changes, prototype renames; and provide instructions for fixing them. This will be pasted in #codebase-changes.
+Здесь вы можете написать список изменений, который будет автоматически добавлен в игру, когда ваш PR будет принят
+Для записей в списке изменений есть 4 значка: add, remove, tweak, fix. Думаю, вы сможете разобраться с остальным.
+
+Вы можете поставить свой ник после символа :cl:, чтобы изменить ник, который будет отображаться в журнале изменений (в противном случае будет использоваться ник вашего аккаунта GitHub)
+Например: ":cl: PuroSlavKing".
+
+Как правило, в журналы изменений следует помещать только то, что действительно важно игрокам. Вещи вроде "Рефактор системы X, но изменений вы не увидите" - не должны быть в журнале изменений, эти изменения обычные игроки не смогут заметить.
+
+При написании списка изменений НЕ считайте суффикс типа записи (например, add) "частью" предложения:
+Плохо: - add: Хирургия может вырезать яйца.
+Хорошо: - add: Добавлена хирургическая операция, которая позволяет вырезать яйца.
 -->
 
-**Changelog**
-<!--
-Make players aware of new features and changes that could affect how they play the game by adding a Changelog entry. Please read the Changelog guidelines located at: https://docs.spacestation14.io/en/getting-started/pr-guideline#changelog
--->
-
-<!--
-Make sure to take this Changelog template out of the comment block in order for it to show up. Changelog must have a :cl: symbol, so the bot recognizes the changes and adds them to the game's changelog.
-:cl:
-- add: Added fun!
-- remove: Removed fun!
-- tweak: Changed fun!
-- fix: Fixed fun!
+<!-- Не забудьте убрать стрелки, что-бы changelog отображался, если вы считаете, что он нужен.
+:cl: 
+- add: Добавлено веселье.
+- remove: Убрано веселье.
+- tweak: Изменено веселье.
+- fix: Исправлено веселье.
 -->
