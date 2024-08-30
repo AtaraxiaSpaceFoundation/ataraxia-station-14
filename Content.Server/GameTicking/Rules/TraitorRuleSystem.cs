@@ -18,6 +18,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
 using System.Text;
+using Content.Server.GameTicking.Components;
+using Content.Server.Traitor.Components;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -34,6 +37,10 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly SharedRoleCodewordSystem _roleCodewordSystem = default!;
+    [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!; // WD EDIT
+
+    public const int MaxPicks = 20;
 
     public override void Initialize()
     {
@@ -79,6 +86,8 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         //Grab the mind if it wasnt provided
         if (!_mindSystem.TryGetMind(traitor, out var mindId, out var mind))
             return false;
+
+        component.SelectionStatus = TraitorRuleComponent.SelectionState.Started; // WD EDIT
 
         var briefing = Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", component.Codewords)));
         var issuer = _random.Pick(_prototypeManager.Index(component.ObjectiveIssuers).Values);
@@ -177,4 +186,47 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
 
         return traitors;
     }
+
+    // WD EDIT START
+    public List<(EntityUid Id, MindComponent Mind)> GetAllLivingConnectedTraitors()
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        var traitorRules = EntityQuery<TraitorRuleComponent>();
+
+        foreach (var traitorRule in traitorRules)
+        {
+            traitors.AddRange(GetLivingConnectedTraitors(traitorRule));
+        }
+
+        return traitors;
+    }
+
+    private List<(EntityUid Id, MindComponent Mind)> GetLivingConnectedTraitors(TraitorRuleComponent traitorRule)
+    {
+        var traitors = new List<(EntityUid Id, MindComponent Mind)>();
+
+        foreach (var traitor in traitorRule.TraitorMinds)
+        {
+            if (!TryComp(traitor, out MindComponent? mind))
+                continue;
+
+            if (mind.OwnedEntity == null)
+                continue;
+
+            if (mind.Session == null)
+                continue;
+
+            if (!_mobStateSystem.IsAlive(mind.OwnedEntity.Value))
+                continue;
+
+            if (mind.CurrentEntity != mind.OwnedEntity)
+                continue;
+
+            traitors.Add((traitor, mind));
+        }
+
+        return traitors;
+    }
+    // WD EDIT END
 }
