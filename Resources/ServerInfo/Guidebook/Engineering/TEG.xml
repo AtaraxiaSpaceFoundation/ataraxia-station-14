@@ -31,12 +31,33 @@
 
   Кроме сказанного выше, существует множество способов чтобы нагреть (или охладить) газы; здесь мы рассмотрим 2 основных метода, используемые при настройке горячего контура ТЭГа: [color=red]Газодобытчик[/color], и [color=red]Камера сгорания[/color].
 
-  ## Газодобытчик
+  ## Горение в трубах
 
-  Относительно самый простой из способов, на который у вас уйдёт меньше всего усилий, но при этом обеспечит скорость и стабильную выработку электроэнергии.
+  Также известный как наивный метод, этот подход обычно не рекомендуется для повышения эффективности. Тем не менее, если вам нужно всего лишь немного энергии для работы станции и вы не хотите настраивать печь, этот метод подойдет.
 
-  Используя газодобытчик (на примере Водяного пара), вы можете добиться качественного потока в Горячем контуре, который, при необходимости, можно разогреть нагревателем. Однако, в большинстве случаев газ можно использовать и [color=#a4885c]комнатной температуры[/color] (в таком случае, важно, чтобы температура Холодного контура была значительно ниже).
-  Уже использованный газ можно пустить обратно в цикл, предварительно повторно разогрев, либо же выпустить в космос.
+  [color=#444444]TODO: Удалить этот раздел, когда атмосферные трубы будут обновлены с ограничениями по давлению/температуре в будущем рефакторинге атмосферы.[/color]
+
+  Большинство (если не все) горений в трубах имеют следующий общий макет:
+  <Box>
+    Газовый вход -> Высоконапорный насос -> Сегмент трубы (с обогревателем) -> Низконапорный насос -> Циркулятор
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="GasMixer" Rotation="90" Caption="" Margin="-1"/>
+    <GuideEntityEmbed Entity="GasPressurePump" Rotation="90" Caption="" Margin="-1"/>
+    <GuideEntityEmbed Entity="GasPipeTJunction" Rotation="0" Caption="" Margin="-1"/>
+    <GuideEntityEmbed Entity="GasPressurePump" Rotation="90" Caption="" Margin="-1"/>
+    <GuideEntityEmbed Entity="TegCirculator" Rotation="90" Caption="" Margin="-3"/>
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="GasThermoMachineHeaterEnabled" Caption="" Rotation="180" Margin="0"/>
+  </Box>
+  - Газовый вход сам по себе довольно понятен; именно сюда вы будете подавать смесь O2 и Плазмы для сжигания. Рекомендуется соотношение 2:1 (67/33) кислорода к плазме для самой горячей горелки.
+  - Высоконапорный насос выполняет две функции; во-первых, он предотвращает обратный поток сгорания в подающий трубопровод, что было бы плохим решением по многим причинам. Во-вторых, он поддерживает положительное давление в следующем сегменте трубы, что важно для продолжения сгорания, особенно поскольку горячие газы расширяются.
+  - Сегмент трубы — это место, где происходит само сгорание; чтобы его запустить, можно использовать обогреватель для повышения температуры до температуры зажигания плазмы. После этого реакция должна поддерживаться самостоятельно, пока давление и количество веществ остаются достаточно высокими. [color=#a4885c]Будьте осторожны[/color]; если вы хотите убрать обогреватель, он может унести с собой часть этого перегретого газа, передавая его в следующую подключенную трубопроводную сеть. Лучше всего выпустить газ через вентиляционное отверстие, если это необходимо.
+  - Низконапорный насос (давление которого должно быть [italic]чуть ниже[/italic] давления входного насоса) предотвращает [italic]все[/italic] газы от прохода через циркулятор, что могло бы привести к потере молекул, необходимых для поддержания горения.
+  - Циркулятор — это место, куда будет направлен выделяемый тепло; после этого не стесняйтесь утилизировать отработанные газы.
+
+  Замечание: В данном случае используются напорные насосы, так как они работают с давлением (а не с расходом, который относительно быстрее), но их немного легче контролировать с учетом ограниченного запаса плазмы на станции. Тем не менее, приведенные шаги также могут быть выполнены с помощью объемных насосов.
 
   ## Камера сгорания
 
@@ -47,6 +68,7 @@
   - Отвод в космос
   - Массив скрубберов
 
+  Вот один слой примерной настройки:
   <Box>
     <GuideEntityEmbed Entity="WallReinforced" Rotation="0" Caption="" Margin="0"/>
     <GuideEntityEmbed Entity="WallReinforced" Rotation="0" Caption="" Margin="0"/>
@@ -57,15 +79,15 @@
   <Box>
     <GuideEntityEmbed Entity="ReinforcedPlasmaWindow" Rotation="0" Caption="" Margin="0"/>
     <GuideEntityEmbed Entity="GasVentScrubber" Rotation="90" Caption="" Margin="0"/>
-    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="90" Caption="" Margin="0"/>
-    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="0" Caption="" Margin="0"/>
+    <GuideEntityEmbed Entity="GasPipeTJunction" Rotation="0" Caption="" Margin="0"/>
+    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="-90" Caption="" Margin="0"/>
     <GuideEntityEmbed Entity="ReinforcedPlasmaWindow" Rotation="0" Caption="" Margin="0"/>
   </Box>
   <Box>
     <GuideEntityEmbed Entity="ReinforcedPlasmaWindow" Rotation="0" Caption="" Margin="0"/>
     <GuideEntityEmbed Entity="GasPassiveVent" Rotation="0" Caption="" Margin="0"/>
-    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="90" Caption="" Margin="0"/>
-    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="0" Caption="" Margin="0"/>
+    <GuideEntityEmbed Entity="GasPipeTJunction" Rotation="90" Caption="" Margin="0"/>
+    <GuideEntityEmbed Entity="GasVentScrubber" Rotation="-90" Caption="" Margin="0"/>
     <GuideEntityEmbed Entity="ReinforcedPlasmaWindow" Rotation="0" Caption="" Margin="0"/>
   </Box>
   <Box>
