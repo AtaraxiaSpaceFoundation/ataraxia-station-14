@@ -17,8 +17,6 @@ cmd-customvote-on-finished-tie = Ничья между { $ties }!
 cmd-customvote-on-finished-win = { $winner } побеждает!
 cmd-customvote-arg-title = <title>
 cmd-customvote-arg-option-n = <option{ $n }>
-cmd-customvote-on-finished-votes = Количество голосов за варианты в голосовании "{ $title }":
-cmd-customvote-option-votes = { $option } - { $votes }
 
 ## 'vote' command
 

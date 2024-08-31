@@ -12,7 +12,6 @@ permissions-eui-edit-admin-window-name-edit-placeholder = Имя или ID по�
 permissions-eui-edit-admin-window-title-edit-placeholder = Пользовательское название, оставить пустым, чтобы унаследовать название ранга.
 permissions-eui-edit-admin-window-no-rank-button = Нет ранга
 permissions-eui-edit-admin-rank-window-name-edit-placeholder = Название ранга
-permissions-eui-edit-admin-window-server-edit-placeholder = Имя сервера
 permissions-eui-edit-admin-title-control-text = отсутствует
 permissions-eui-edit-no-rank-text = отсутствует
 permissions-eui-edit-title-button = Редактировать

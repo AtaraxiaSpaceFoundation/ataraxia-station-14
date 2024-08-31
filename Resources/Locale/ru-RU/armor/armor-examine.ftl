@@ -10,7 +10,6 @@ armor-damage-type-piercing = Колющий
 armor-damage-type-heat = Высокотемпературный
 armor-damage-type-radiation = Радиационный
 armor-damage-type-caustic = Кислотный
-armor-damage-type-stun = Оглушающий
 armor-damage-type-bloodloss = От кровопотери
 armor-damage-type-asphyxiation = От удушения
 armor-damage-type-cellular = Клеточный

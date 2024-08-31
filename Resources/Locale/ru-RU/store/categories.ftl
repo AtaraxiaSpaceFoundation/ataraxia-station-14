@@ -12,7 +12,11 @@ store-category-wearables = Экипировка
 store-category-implants = Импланты
 store-category-job = Работа
 store-category-pointless = Безделушки
-# Revenant && Changeling
+# Revenant
 store-category-abilities = Способности
-store-category-stings = Жала
-store-category-boosters = Усиления
+# Wizard
+store-caregory-spellbook-offensive = Атакующие заклинания
+store-caregory-spellbook-defensive = Защитные заклинания
+store-caregory-spellbook-utility = Вспомогательные заклинания
+store-caregory-spellbook-equipment = Волшебное снаряжение
+store-caregory-spellbook-events = Заклинания событий

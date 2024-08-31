@@ -1,7 +1,6 @@
 stamp-component-stamped-name-default = VIP
 stamp-component-stamped-name-detective = Детектив
 stamp-component-stamped-name-mime = Мим
-stamp-component-stamped-name-inspector = Инспектор
 stamp-component-stamped-name-captain = Капитан
 stamp-component-stamped-name-centcom = Центком
 stamp-component-stamped-name-chaplain = Священник
@@ -18,5 +17,3 @@ stamp-component-stamped-name-warden = Смотритель
 stamp-component-stamped-name-trader = Торговец
 stamp-component-stamped-name-syndicate = Синдикат
 stamp-component-stamped-name-ce = Старший инженер
-stamp-component-stamped-name-iaa = Агент внутренних дел
-stamp-component-stamped-name-geraldiy = Древние

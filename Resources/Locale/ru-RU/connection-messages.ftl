@@ -9,15 +9,15 @@ whitelist-playercount-invalid =
                *[other] ->  и ниже { $max } игроков, так что, возможно, вы сможете присоединиться позже.
             }
     }
-whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://backmen.ru).
+whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://discord.com/invite/2Jz7yrHAAw).
 cmd-whitelistadd-desc = Добавить игрока в вайтлист сервера.
-cmd-whitelistadd-help = Использование: whitelistadd <username>
+cmd-whitelistadd-help = Использование: whitelistadd <username или  User ID>
 cmd-whitelistadd-existing = { $username } уже находится в вайтлисте!
 cmd-whitelistadd-added = { $username } добавлен в вайтлист
 cmd-whitelistadd-not-found = Не удалось найти игрока '{ $username }'
 cmd-whitelistadd-arg-player = [player]
 cmd-whitelistremove-desc = Удалить игрока с вайтлиста сервера.
-cmd-whitelistremove-help = Использование: whitelistremove <username>
+cmd-whitelistremove-help = Использование: whitelistremove <username или  User ID>
 cmd-whitelistremove-existing = { $username } не находится в вайтлисте!
 cmd-whitelistremove-removed = { $username } удалён с вайтлиста
 cmd-whitelistremove-not-found = Не удалось найти игрока '{ $username }'
@@ -35,8 +35,12 @@ panic-bunker-account-denied = Этот сервер находится в реж
 panic-bunker-account-denied-reason = Этот сервер находится в режиме "Бункер", часто используемом в качестве меры предосторожности против рейдов. Новые подключения от аккаунтов, не соответствующих определённым требованиям, временно не принимаются. Повторите попытку позже Причина: "{ $reason }"
 panic-bunker-account-reason-account = Ваш аккаунт Space Station 14 слишком новый. Он должен быть старше { $minutes } минут
 panic-bunker-account-reason-overall =
-    Необходимо минимальное отыгранное Вами время на сервере — { $hours } { $hours ->
-        [one] час
-        [few] часа
-       *[other] часов
+    Необходимо минимальное отыгранное Вами время на сервере — { $minutes } { $minutes ->
+        [one] минута
+        [few] минуты
+       *[other] минут
     }.
+baby-jail-account-denied = Этот сервер предназначен для новичков, новых игроков и тех, кто хочет им помочь. Новые подключения с аккаунтов, которые слишком стары или не находятся в белом списке, не принимаются. Посмотрите другие серверы и узнайте о всех возможностях Space Station 14. Удачи!
+baby-jail-account-denied-reason = Этот сервер предназначен для новичков, новых игроков и тех, кто хочет им помочь. Новые подключения с аккаунтов, которые слишком стары или не находятся в белом списке, не принимаются. Посмотрите другие серверы и узнайте о всех возможностях Space Station 14. Удачи! Причина: "{ $reason }"
+baby-jail-account-reason-account = Ваш аккаунт Space Station 14 слишком стар. Он должен быть моложе { $minutes } минут.
+baby-jail-account-reason-overall = Ваше общее время игры на сервере должно быть моложе { $minutes } минут.

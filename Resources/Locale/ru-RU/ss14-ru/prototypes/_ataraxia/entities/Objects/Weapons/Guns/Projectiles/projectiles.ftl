@@ -1,1 +1,0 @@
-ent-BulletPlasmaCutter = заряд плазмы

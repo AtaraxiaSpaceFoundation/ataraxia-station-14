@@ -10,12 +10,4 @@ store-currency-display-debugdollar =
     }
 store-currency-display-telecrystal = ТК
 store-currency-display-stolen-essence = Украденная эссенция
-store-currency-display-space-cash =
-    { $amount ->
-        [one] { $amount } доллар
-        [few] { $amount } доллара
-       *[other] { $amount } долларов
-    }
-
-store-currency-display-changeling-point = Очки ДНК
-store-currency-display-bluespace = БС
+store-currency-display-wizcoin = Маг₭øин™

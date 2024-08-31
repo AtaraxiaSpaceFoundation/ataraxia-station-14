@@ -15,9 +15,6 @@ implanter-label = [color=green]{ $implantName  }[/color]
     Режим: [color=white]{ $modeString }[/color]
 implanter-contained-implant-text = [color=green]{ $desc }[/color]
 
-## Implant Popups
-
-scramble-implant-activated-popup = Ваша внешность меняется!
 ## Implanter Actions
 
 scramble-implant-activated-popup = Вы превратились в { $identity }

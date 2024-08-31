@@ -1,4 +1,3 @@
-
 # This should probably use the same prefix system as the mobster accent.
 # For the record, these do not work right now - even when uncommented.
 
@@ -94,9 +93,9 @@ accent-italian-words-42 = почему
 accent-italian-words-replace-42 = perché
 accent-italian-words-43 = вино
 accent-italian-words-replace-43 = vino
-accent-italian-words-44 = Ассистент
+accent-italian-words-44 = ассистент
 accent-italian-words-replace-44 = goombah
-accent-italian-words-45 = Ассистенты
+accent-italian-words-45 = ассистенты
 accent-italian-words-replace-45 = goombahs
 accent-italian-words-46 = я
 accent-italian-words-replace-46 = sono
@@ -104,4 +103,3 @@ accent-italian-words-47 = мы
 accent-italian-words-replace-47 = noi
 accent-italian-words-48 = и
 accent-italian-words-replace-48 = é
-
