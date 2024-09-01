@@ -31,4 +31,5 @@
       - VendingMachineSoda
       - VendingMachineStarkist
       - VendingMachineSpaceUp
+      - PrizeCounter # Ataraxia
     chance: 1
