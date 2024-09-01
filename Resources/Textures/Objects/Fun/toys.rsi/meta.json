@@ -8,384 +8,396 @@
     },
     "states": [
         {
-            "name": "plushie_jester"
+          "name": "plushie_jester"
         },
         {
-            "name": "plushie_slips"
+          "name": "plushie_arachne"
         },
         {
-            "name": "plushie_trystan"
+          "name": "plushie_slips"
         },
         {
-            "name": "plushie_vulp"
+          "name": "plushie_trystan"
         },
         {
-            "name": "ipc"
+          "name": "plushie_vulp"
         },
         {
-            "name": "deer"
+          "name": "ipc"
         },
         {
-            "name": "grey"
+          "name": "deer"
         },
         {
-            "name": "loveable"
+          "name": "grey"
         },
         {
-            "name": "abductor"
+          "name": "loveable"
         },
         {
-            "name": "abductor_agent"
+          "name": "abductor"
         },
         {
-            "name": "gnome"
+          "name": "abductor_agent"
         },
         {
-            "name": "plushie_ratvar"
+          "name": "gnome"
         },
         {
-            "name": "plushie_penguin"
+          "name": "plushie_ratvar"
         },
         {
-            "name": "plushie_moth"
+          "name": "plushie_penguin"
         },
         {
-            "name": "plushie_rouny",
-            "directions": 4
+          "name": "plushie_moth"
         },
         {
-            "name": "plushie_spacelizard"
+          "name": "plushie_rouny",
+          "directions": 4
         },
         {
-            "name": "carpplush"
+          "name": "plushie_spacelizard"
         },
         {
-            "name": "holoplush",
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
+          "name": "carpplush"
+        },
+        {
+          "name": "holoplush",
+          "delays": [
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
             ]
+          ]
         },
         {
-            "name": "magicplush"
+          "name": "magicplush"
         },
         {
-            "name": "rainbowcarpplush"
+          "name": "rainbowcarpplush"
         },
         {
-            "name": "narplush"
+          "name": "rainbowcarpplush-inhand-left",
+          "directions": 4
         },
         {
-            "name": "plushie_h"
+          "name": "rainbowcarpplush-inhand-right",
+          "directions": 4
         },
         {
-            "name": "bee-equipped-HELMET",
-            "directions": 4
+          "name": "narplush"
         },
         {
-            "name": "bee-inhand-left",
-            "directions": 4
+          "name": "plushie_h"
         },
         {
-            "name": "bee-inhand-right",
-            "directions": 4
+          "name": "bee-equipped-HELMET",
+          "directions": 4
         },
         {
-            "name": "plushie_hampter"
+          "name": "bee-inhand-left",
+          "directions": 4
         },
         {
-            "name": "plushie_arachnid"
+          "name": "bee-inhand-right",
+          "directions": 4
         },
         {
-            "name": "plushie_lizard"
+          "name": "plushie_hampter"
         },
         {
-            "name": "plushie_lizard_mirrored"
+          "name": "plushie_arachnid"
         },
         {
-            "name": "plushie_lamp"
+          "name": "plushie_lizard"
         },
         {
-            "name": "plushie_nuke"
+          "name": "plushie_lizard_mirrored"
         },
         {
-            "name": "plushie_atmosian"
+          "name": "lizard-equipped-HELMET",
+          "directions": 4
         },
         {
-            "name": "plushie_slime"
+          "name": "plushie_lamp"
         },
         {
-            "name": "plushie_snake"
+          "name": "plushie_nuke"
         },
         {
-            "name": "plushie_vox"
+          "name": "plushie_atmosian"
         },
         {
-            "name": "plushie_diona"
+          "name": "plushie_slime"
         },
         {
-            "name": "plushie_arachne"
+          "name": "plushie_snake"
         },
         {
-            "name": "plushie_human"
+          "name": "plushie_vox"
         },
         {
-            "name": "plushie_diona1"
+          "name": "plushie_diona"
         },
         {
-            "name": "plushie_xeno"
+          "name": "plushie_human"
         },
         {
-            "name": "carpplush-inhand-left",
-            "directions": 4
+          "name": "plushie_diona1"
         },
         {
-            "name": "carpplush-inhand-right",
-            "directions": 4
+          "name": "plushie_xeno"
         },
         {
-            "name": "AI"
+          "name": "carpplush-inhand-left",
+          "directions": 4
         },
         {
-            "name": "base"
+          "name": "carpplush-inhand-right",
+          "directions": 4
         },
         {
-            "name": "bolt-closed"
+          "name": "AI"
         },
         {
-            "name": "bolt-open"
+          "name": "base"
         },
         {
-            "name": "foamblade"
+          "name": "bolt-closed"
         },
         {
-            "name": "foamcrossbow"
+          "name": "bolt-open"
         },
         {
-            "name": "foamdart"
+          "name": "foamblade"
         },
         {
-            "name": "foambox"
+          "name": "foamcrossbow"
         },
         {
-            "name": "ian"
+          "name": "foamdart"
         },
         {
-            "name": "nuketoy"
+          "name": "foambox"
         },
         {
-            "name": "snappop"
+          "name": "ian"
         },
         {
-            "name": "spbox"
+          "name": "nuketoy"
         },
         {
-            "name": "toy_mouse"
+          "name": "snappop"
         },
         {
-            "name": "mouse-equipped-HELMET",
-            "directions": 4
+          "name": "spbox"
         },
         {
-            "name": "capbullet"
+          "name": "toy_mouse"
         },
         {
-            "name": "foamcrossbow-inhand-right",
-            "directions": 4
+          "name": "mouse-equipped-HELMET",
+          "directions": 4
         },
         {
-            "name": "foamcrossbow-inhand-left",
-            "directions": 4
+          "name": "capbullet"
         },
         {
-            "name": "capgun-inhand-right",
-            "directions": 4
+          "name": "foamcrossbow-inhand-right",
+          "directions": 4
         },
         {
-            "name": "capgun-inhand-left",
-            "directions": 4
+          "name": "foamcrossbow-inhand-left",
+          "directions": 4
         },
         {
-            "name": "foamblade-inhand-right",
-            "directions": 4
+          "name": "capgun-inhand-right",
+          "directions": 4
         },
         {
-            "name": "foamblade-inhand-left",
-            "directions": 4
+          "name": "capgun-inhand-left",
+          "directions": 4
         },
         {
-            "name": "corgib-inhand-right",
-            "directions": 4
+          "name": "foamblade-inhand-right",
+          "directions": 4
         },
         {
-            "name": "corgib-inhand-left",
-            "directions": 4
+          "name": "foamblade-inhand-left",
+          "directions": 4
         },
         {
-            "name": "ntb-inhand-right",
-            "directions": 4
+          "name": "corgib-inhand-right",
+          "directions": 4
         },
         {
-            "name": "ntb-inhand-left",
-            "directions": 4
+          "name": "corgib-inhand-left",
+          "directions": 4
         },
         {
-            "name": "synb-inhand-left",
-            "directions": 4
+          "name": "ntb-inhand-right",
+          "directions": 4
         },
         {
-            "name": "synb-inhand-right",
-            "directions": 4
+          "name": "ntb-inhand-left",
+          "directions": 4
         },
         {
-            "name": "synb"
+          "name": "synb-inhand-left",
+          "directions": 4
         },
         {
-            "name": "ntb"
+          "name": "synb-inhand-right",
+          "directions": 4
         },
         {
-            "name": "corgib"
+          "name": "synb"
         },
         {
-            "name": "football"
+          "name": "ntb"
         },
         {
-            "name": "footb-inhand-right",
-            "directions": 4
+          "name": "corgib"
         },
         {
-            "name": "footb-inhand-left",
-            "directions": 4
+          "name": "football"
         },
         {
-            "name": "basketball"
+          "name": "footb-inhand-right",
+          "directions": 4
         },
         {
-            "name": "bask-inhand-right",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
+          "name": "footb-inhand-left",
+          "directions": 4
+        },
+        {
+          "name": "basketball"
+        },
+        {
+          "name": "bask-inhand-right",
+          "directions": 4,
+          "delays": [
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
             ]
+          ]
         },
         {
-            "name": "bask-inhand-left",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
+          "name": "bask-inhand-left",
+          "directions": 4,
+          "delays": [
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
             ]
+          ]
         },
         {
-            "name": "singularitytoy",
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
+          "name": "singularitytoy",
+          "delays": [
+            [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
             ]
+          ]
         },
         {
-            "name": "orb",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
+          "name": "orb",
+          "delays": [
+            [
+              0.2,
+              0.2,
+              0.2,
+              0.2
             ]
+          ]
         },
         {
-            "name": "orb-inhand-left",
-            "directions": 4
+          "name": "orb-inhand-left",
+          "directions": 4
         },
         {
-            "name": "orb-inhand-right",
-            "directions": 4
+          "name": "orb-inhand-right",
+          "directions": 4
         },
         {
-            "name": "beachball"
+          "name": "beachball"
         },
         {
-            "name": "beachb-inhand-left",
-            "directions": 4
+          "name": "beachb-inhand-left",
+          "directions": 4
         },
         {
-            "name": "beachb-inhand-right",
-            "directions": 4
+          "name": "beachb-inhand-right",
+          "directions": 4
         }
     ]
 }

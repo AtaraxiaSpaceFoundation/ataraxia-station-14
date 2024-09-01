@@ -1331,8 +1331,8 @@
         - RawMaterial
         - Plastic
 
-
 - type: entity
+  parent: BaseLathe
   id: PrizeCounter
   name: prize counter
   description: Claim your prize and win some toys and cute plushies!
@@ -1372,9 +1372,6 @@
     runningState: icon
     staticRecipes:
       - PrizeBall
-      - PlushieMothRandom
-      - PlushieMothMusician
-      - PlushieMothBartender
       - PlushieBee
       - PlushieHampter
       - PlushieRouny
