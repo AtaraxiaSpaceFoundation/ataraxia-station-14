@@ -885,6 +885,9 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitDeathsquad
+  - type: StaminaDamageResistance
+    coefficient: 0.1 # 90%
+  - type: GiftIgnore # WD EDIT
 
 #CBURN Hardsuit
 - type: entity

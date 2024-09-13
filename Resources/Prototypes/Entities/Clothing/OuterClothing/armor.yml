@@ -212,6 +212,10 @@
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
+  - type: Tag
+    tags:
+      - FullBodyOuter
+  - type: GiftIgnore # WD EDIT
 
 - type: entity
   parent: ClothingOuterArmorHeavy

@@ -121,4 +121,9 @@ public enum LogType
     /// </summary>
     ExplosionHit = 94,
 
+    // WD EDIT
+    AspectAnnounced = 91,
+    AspectStarted = 92,
+    AspectStopped = 93,
+    // WD EDIT
 }
