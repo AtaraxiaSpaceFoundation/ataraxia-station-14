@@ -6,6 +6,13 @@
   ghostName: PuroSlavKing
   ghostDescription: Hello world!
 
+- type: customGhost
+  id: puroslavking-local-ghost
+  ckey: localhost@PuroSlavKing
+  sprite: _Ataraxia/Ghosts/PuroSlavKing.rsi
+  ghostName: PuroSlavKing
+  ghostDescription: Hello world!
+
 # yourmommy
 - type: customGhost
   id: yourmommy-ghost
