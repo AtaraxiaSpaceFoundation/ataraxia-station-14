@@ -1,0 +1,22 @@
+﻿- type: trait
+  id: ForeignerLight
+  category: Quirks
+  points: 1
+  requirements:
+    - !type:TraitGroupExclusionRequirement
+      prototypes: [ Foreigner ]
+  components:
+    - type: ForeignerTrait
+      cantUnderstand: false # Allows to understand
+      baseTranslator: TranslatorForeigner
+
+- type: trait
+  id: Foreigner
+  category: Quirks
+  points: 2
+  requirements: # TODO: Add a requirement to know at least 1 non-gc language
+    - !type:TraitGroupExclusionRequirement
+      prototypes: [ ForeignerLight ]
+  components:
+    - type: ForeignerTrait
+      baseTranslator: TranslatorForeigner

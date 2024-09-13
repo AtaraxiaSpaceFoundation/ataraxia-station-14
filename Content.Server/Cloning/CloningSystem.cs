@@ -33,6 +33,22 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Server.Traits.Assorted; //Nyano - Summary: allows the potential psionic ability to be written to the character.
+using Content.Shared.Speech; //DeltaV Start Metem Usings
+using Content.Shared.Tag;
+using Content.Shared.Preferences;
+using Content.Shared.Emoting;
+using Content.Server.Speech.Components;
+using Content.Server.StationEvents.Components;
+using Content.Server.Ghost.Roles.Components;
+using Content.Server.Nyanotrasen.Cloning;
+using Content.Shared.Humanoid.Prototypes;
+using Robust.Shared.GameObjects.Components.Localization; //DeltaV End Metem Usings
+using Content.Server.EntityList;
+using Content.Shared.SSDIndicator;
+using Content.Shared.Damage.ForceSay;
+using Content.Server.Polymorph.Components;
+using Content.Shared.Chat;
 
 namespace Content.Server.Cloning
 {
@@ -210,8 +226,7 @@ namespace Content.Server.Cloning
             }
             // end of genetic damage checks
 
-            var mob = Spawn(speciesPrototype.Prototype, _transformSystem.GetMapCoordinates(uid));
-            _humanoidSystem.CloneAppearance(bodyToClone, mob);
+            var mob = FetchAndSpawnMob(clonePod, pref, speciesPrototype, humanoid, bodyToClone, karmaBonus); //DeltaV Replaces CloneAppearance with Metem/Clone via FetchAndSpawnMob
 
             var ev = new CloningEvent(bodyToClone, mob);
             RaiseLocalEvent(bodyToClone, ref ev);
