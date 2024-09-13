@@ -1087,9 +1087,6 @@
   id: PrisonUniform
 
 - type: Tag
-  id: PrizeTicket
-
-- type: Tag
   id: ProximitySensor
 
 - type: Tag
