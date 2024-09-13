@@ -120,12 +120,12 @@
   objectType: Item
 
 - type: construction
-  name: cloth wraps
-  id: ClothingClothWrap
-  graph: ClothingClothWrap
+  name: justice helm
+  id: ClothingHeadHelmetJustice
+  graph: HelmetJustice
   startNode: start
-  targetNode: shoes
+  targetNode: helmet
   category: construction-category-clothing
-  description: A roll of treated canvas used for wrapping claws or paws.
-  icon: { sprite: Clothing/Shoes/Misc/clothWrap.rsi, state: icon }
+  description: Advanced security gear. Protects the station from ne'er-do-wells.
+  icon: { sprite: Clothing/Head/Helmets/justice.rsi, state: icon }
   objectType: Item
