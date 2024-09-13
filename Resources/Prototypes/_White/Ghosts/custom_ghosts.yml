@@ -1,0 +1,36 @@
+#scituzer2
+- type: customGhost
+  id: scituzer2-ghost
+  ckey: scituzer2
+  sprite: _White/Ghosts/scituzer2-ghost.rsi
+  ghostName: Black Harpy
+  ghostDescription: A race of harpies that have charming onyx wings. Although they are a clever race, particularly having the highest intelligence of all harpies, on the other hand, they are exceedingly belligerent and ferocious. This one specifically used to be project lead of this project - but all she saw is world on fire.
+
+#warete
+- type: customGhost
+  id: warete-ghost
+  ckey: warete
+  sprite: _White/Ghosts/warete-ghost.rsi
+  alpha: 0.8
+  ghostName: Fiammetta
+  ghostDescription: Горничная под своим кодовым именем. Следит за порядком в кафе Мастера.
+  size: 0.7, 0.7
+
+#pointpng
+- type: customGhost
+  id: cheeseCheese-ghost
+  ckey: cheese_cheese
+  sprite: _White/Ghosts/cheese_cheese-ghost.rsi
+  alpha: 0.8
+  ghostName: Фырчало
+  ghostDescription: Инженерный борг
+
+#mapperian
+- type: customGhost
+  id: mapperian-ghost
+  ckey: mapperian
+  sprite: _White/Ghosts/mapperian-ghost.rsi
+  alpha: 0.9
+  ghostName: Alice Liddell
+  ghostDescription: found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you found you
+  size: 0.7, 0.7

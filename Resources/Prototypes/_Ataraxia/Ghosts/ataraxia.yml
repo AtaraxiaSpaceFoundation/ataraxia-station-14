@@ -1,0 +1,91 @@
+# PuroSlavKing
+- type: customGhost
+  id: puroslavking-ghost
+  ckey: PuroSlavKing
+  sprite: _Ataraxia/Ghosts/PuroSlavKing.rsi
+  ghostName: PuroSlavKing
+  ghostDescription: Hello world!
+
+# yourmommy
+- type: customGhost
+  id: yourmommy-ghost
+  ckey: yourmommy
+  sprite: _Ataraxia/Ghosts/yourmommy-ghost.rsi
+  alpha: 1
+  ghostName: yourmommy
+  ghostDescription: Самая праздничная киса на диком западе.
+
+# GodFace
+- type: customGhost
+  id: godface-ghost
+  ckey: GodFace
+  sprite: _Ataraxia/Ghosts/GodFace.rsi
+  ghostName: GodFace
+  ghostDescription: В рамке явно должны оказаться вы!
+
+# LIZARDWIZARD
+- type: customGhost
+  id: LIZARDWIZARD-ghost
+  ckey: LIZARDWIZARD
+  sprite: _Ataraxia/Ghosts/LIZARDWIZARD.rsi
+  ghostName: LIZARDWIZARD
+  ghostDescription: Фр-Йиф.
+
+# idoffront
+- type: customGhost
+  id: idoffront-ghost
+  ckey: idoffront
+  sprite: _Ataraxia/Ghosts/idoffront.rsi
+  alpha: 0.8
+  ghostName: idoffront
+  ghostDescription: 1000-7.
+
+# trest100
+- type: customGhost
+  id: Trest100-ghost
+  ckey: trest100
+  sprite: _Ataraxia/Ghosts/trest100-ghost.rsi
+  alpha: 0.8
+  ghostName: Трести
+  ghostDescription: на что пялишся?
+
+# Vetochka
+- type: customGhost
+  id: Veta-ghost
+  ckey: Vetochka
+  sprite: _Ataraxia/Ghosts/Vetochka-ghost.rsi
+  ghostName: Vetochka
+  ghostDescription: Она могла быть твоей мамой, но увы...
+
+# Boroven
+- type: customGhost
+  id: kor-ghost
+  ckey: Boroven
+  sprite: _Ataraxia/Ghosts/Boroven-ghost.rsi
+  ghostName: Выживший
+  ghostDescription: Щупальца отдают химикатами, а крест слился с телом
+
+# Spac__
+- type: customGhost
+  id: Spac-ghost
+  ckey: Spac__
+  sprite: _Ataraxia/Ghosts/spac-ghost.rsi
+  ghostName: Шпаки
+  ghostDescription: я конечно не свитер, но меня тоже можно связать и натянуть
+
+# kreses
+- type: customGhost
+  id: kreses-ghost
+  ckey: kreses
+  sprite: _Ataraxia/Ghosts/kreses-ghost.rsi
+  alpha: 0.8
+  ghostName: Дракон сингулярности
+  ghostDescription: Владыка сингулярности
+
+# joulerk
+- type: customGhost
+  id: joulerk-ghost
+  ckey: Joulerk
+  sprite: _Ataraxia/Ghosts/joulerk-ghost.rsi
+  ghostName: ЛЕРК
+  ghostDescription: Летающее бирюзовое существо, напоминающее кота, с пушистым телом, грациозными движениями и глазами, сверкающими с загадочным блеском.
