@@ -35,6 +35,6 @@ tool-quality-digging-name = Digging
 tool-quality-digging-tool-name = Shovel
 
 # White Dream
-tool-quality-advanced-prying-tool-name = Advanced Prying
+tool-quality-advanced-prying-name = Advanced Prying
 tool-quality-advanced-prying-tool-name = Axe
 # White Dream
