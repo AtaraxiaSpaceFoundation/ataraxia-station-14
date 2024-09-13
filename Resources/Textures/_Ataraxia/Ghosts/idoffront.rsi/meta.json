@@ -1,0 +1,21 @@
+{
+  "license": "CC-BY-SA-3.0",
+  "copyright": "IDK",
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "animated",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}
